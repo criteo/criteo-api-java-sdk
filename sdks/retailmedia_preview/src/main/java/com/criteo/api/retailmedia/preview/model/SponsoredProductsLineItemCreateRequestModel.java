@@ -110,9 +110,17 @@ public class SponsoredProductsLineItemCreateRequestModel {
   @SerializedName(SERIALIZED_NAME_BUDGET)
   private Double budget;
 
+  public static final String SERIALIZED_NAME_CONQUESTING_ADSTRATEGY_ENABLED = "conquestingAdstrategyEnabled";
+  @SerializedName(SERIALIZED_NAME_CONQUESTING_ADSTRATEGY_ENABLED)
+  private Boolean conquestingAdstrategyEnabled;
+
   public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
   @SerializedName(SERIALIZED_NAME_DAILY_PACING)
   private Double dailyPacing;
+
+  public static final String SERIALIZED_NAME_DEFENSIVE_ADSTRATEGY_ENABLED = "defensiveAdstrategyEnabled";
+  @SerializedName(SERIALIZED_NAME_DEFENSIVE_ADSTRATEGY_ENABLED)
+  private Boolean defensiveAdstrategyEnabled;
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
@@ -138,62 +146,13 @@ public class SponsoredProductsLineItemCreateRequestModel {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_NEUTRAL_ADSTRATEGY_ENABLED = "neutralAdstrategyEnabled";
+  @SerializedName(SERIALIZED_NAME_NEUTRAL_ADSTRATEGY_ENABLED)
+  private Boolean neutralAdstrategyEnabled;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
-
-  /**
-   * Status of a line item.
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    ACTIVE("Active"),
-    
-    PAUSED("Paused"),
-    
-    DRAFT("Draft");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
 
   public static final String SERIALIZED_NAME_TARGET_BID = "targetBid";
   @SerializedName(SERIALIZED_NAME_TARGET_BID)
@@ -250,6 +209,28 @@ public class SponsoredProductsLineItemCreateRequestModel {
   }
 
 
+  public SponsoredProductsLineItemCreateRequestModel conquestingAdstrategyEnabled(Boolean conquestingAdstrategyEnabled) {
+    
+    this.conquestingAdstrategyEnabled = conquestingAdstrategyEnabled;
+    return this;
+  }
+
+   /**
+   * Get conquestingAdstrategyEnabled
+   * @return conquestingAdstrategyEnabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getConquestingAdstrategyEnabled() {
+    return conquestingAdstrategyEnabled;
+  }
+
+
+  public void setConquestingAdstrategyEnabled(Boolean conquestingAdstrategyEnabled) {
+    this.conquestingAdstrategyEnabled = conquestingAdstrategyEnabled;
+  }
+
+
   public SponsoredProductsLineItemCreateRequestModel dailyPacing(Double dailyPacing) {
     
     this.dailyPacing = dailyPacing;
@@ -269,6 +250,28 @@ public class SponsoredProductsLineItemCreateRequestModel {
 
   public void setDailyPacing(Double dailyPacing) {
     this.dailyPacing = dailyPacing;
+  }
+
+
+  public SponsoredProductsLineItemCreateRequestModel defensiveAdstrategyEnabled(Boolean defensiveAdstrategyEnabled) {
+    
+    this.defensiveAdstrategyEnabled = defensiveAdstrategyEnabled;
+    return this;
+  }
+
+   /**
+   * Get defensiveAdstrategyEnabled
+   * @return defensiveAdstrategyEnabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getDefensiveAdstrategyEnabled() {
+    return defensiveAdstrategyEnabled;
+  }
+
+
+  public void setDefensiveAdstrategyEnabled(Boolean defensiveAdstrategyEnabled) {
+    this.defensiveAdstrategyEnabled = defensiveAdstrategyEnabled;
   }
 
 
@@ -404,6 +407,28 @@ public class SponsoredProductsLineItemCreateRequestModel {
   }
 
 
+  public SponsoredProductsLineItemCreateRequestModel neutralAdstrategyEnabled(Boolean neutralAdstrategyEnabled) {
+    
+    this.neutralAdstrategyEnabled = neutralAdstrategyEnabled;
+    return this;
+  }
+
+   /**
+   * Get neutralAdstrategyEnabled
+   * @return neutralAdstrategyEnabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getNeutralAdstrategyEnabled() {
+    return neutralAdstrategyEnabled;
+  }
+
+
+  public void setNeutralAdstrategyEnabled(Boolean neutralAdstrategyEnabled) {
+    this.neutralAdstrategyEnabled = neutralAdstrategyEnabled;
+  }
+
+
   public SponsoredProductsLineItemCreateRequestModel startDate(OffsetDateTime startDate) {
     
     this.startDate = startDate;
@@ -423,28 +448,6 @@ public class SponsoredProductsLineItemCreateRequestModel {
 
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
-  }
-
-
-  public SponsoredProductsLineItemCreateRequestModel status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Status of a line item.
-   * @return status
-  **/
-  @javax.annotation.Nullable
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
   }
 
 
@@ -504,15 +507,17 @@ public class SponsoredProductsLineItemCreateRequestModel {
     SponsoredProductsLineItemCreateRequestModel sponsoredProductsLineItemCreateRequestModel = (SponsoredProductsLineItemCreateRequestModel) o;
     return Objects.equals(this.bidStrategy, sponsoredProductsLineItemCreateRequestModel.bidStrategy) &&
         Objects.equals(this.budget, sponsoredProductsLineItemCreateRequestModel.budget) &&
+        Objects.equals(this.conquestingAdstrategyEnabled, sponsoredProductsLineItemCreateRequestModel.conquestingAdstrategyEnabled) &&
         Objects.equals(this.dailyPacing, sponsoredProductsLineItemCreateRequestModel.dailyPacing) &&
+        Objects.equals(this.defensiveAdstrategyEnabled, sponsoredProductsLineItemCreateRequestModel.defensiveAdstrategyEnabled) &&
         Objects.equals(this.endDate, sponsoredProductsLineItemCreateRequestModel.endDate) &&
         Objects.equals(this.flightSchedule, sponsoredProductsLineItemCreateRequestModel.flightSchedule) &&
         Objects.equals(this.isAutoDailyPacing, sponsoredProductsLineItemCreateRequestModel.isAutoDailyPacing) &&
         Objects.equals(this.maxBid, sponsoredProductsLineItemCreateRequestModel.maxBid) &&
         Objects.equals(this.monthlyPacing, sponsoredProductsLineItemCreateRequestModel.monthlyPacing) &&
         Objects.equals(this.name, sponsoredProductsLineItemCreateRequestModel.name) &&
+        Objects.equals(this.neutralAdstrategyEnabled, sponsoredProductsLineItemCreateRequestModel.neutralAdstrategyEnabled) &&
         Objects.equals(this.startDate, sponsoredProductsLineItemCreateRequestModel.startDate) &&
-        Objects.equals(this.status, sponsoredProductsLineItemCreateRequestModel.status) &&
         Objects.equals(this.targetBid, sponsoredProductsLineItemCreateRequestModel.targetBid) &&
         Objects.equals(this.targetRetailerId, sponsoredProductsLineItemCreateRequestModel.targetRetailerId);
   }
@@ -523,7 +528,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidStrategy, budget, dailyPacing, endDate, flightSchedule, isAutoDailyPacing, maxBid, monthlyPacing, name, startDate, status, targetBid, targetRetailerId);
+    return Objects.hash(bidStrategy, budget, conquestingAdstrategyEnabled, dailyPacing, defensiveAdstrategyEnabled, endDate, flightSchedule, isAutoDailyPacing, maxBid, monthlyPacing, name, neutralAdstrategyEnabled, startDate, targetBid, targetRetailerId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -539,15 +544,17 @@ public class SponsoredProductsLineItemCreateRequestModel {
     sb.append("class SponsoredProductsLineItemCreateRequestModel {\n");
     sb.append("    bidStrategy: ").append(toIndentedString(bidStrategy)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    conquestingAdstrategyEnabled: ").append(toIndentedString(conquestingAdstrategyEnabled)).append("\n");
     sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
+    sb.append("    defensiveAdstrategyEnabled: ").append(toIndentedString(defensiveAdstrategyEnabled)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    flightSchedule: ").append(toIndentedString(flightSchedule)).append("\n");
     sb.append("    isAutoDailyPacing: ").append(toIndentedString(isAutoDailyPacing)).append("\n");
     sb.append("    maxBid: ").append(toIndentedString(maxBid)).append("\n");
     sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    neutralAdstrategyEnabled: ").append(toIndentedString(neutralAdstrategyEnabled)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    targetBid: ").append(toIndentedString(targetBid)).append("\n");
     sb.append("    targetRetailerId: ").append(toIndentedString(targetRetailerId)).append("\n");
     sb.append("}");
@@ -574,15 +581,17 @@ public class SponsoredProductsLineItemCreateRequestModel {
     openapiFields = new HashSet<String>();
     openapiFields.add("bidStrategy");
     openapiFields.add("budget");
+    openapiFields.add("conquestingAdstrategyEnabled");
     openapiFields.add("dailyPacing");
+    openapiFields.add("defensiveAdstrategyEnabled");
     openapiFields.add("endDate");
     openapiFields.add("flightSchedule");
     openapiFields.add("isAutoDailyPacing");
     openapiFields.add("maxBid");
     openapiFields.add("monthlyPacing");
     openapiFields.add("name");
+    openapiFields.add("neutralAdstrategyEnabled");
     openapiFields.add("startDate");
-    openapiFields.add("status");
     openapiFields.add("targetBid");
     openapiFields.add("targetRetailerId");
 
@@ -629,9 +638,6 @@ public class SponsoredProductsLineItemCreateRequestModel {
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));

@@ -10,10 +10,10 @@ Settings to target users based on their behavior
 |------------ | ------------- | ------------- | -------------|
 |**brandIds** | **Set&lt;String&gt;** | Choose the brands your segment might be interested in |  [optional] |
 |**categoryIds** | **Set&lt;String&gt;** | Choose the categories your segment might be interested in |  [optional] |
-|**lookbackDays** | [**LookbackDaysEnum**](#LookbackDaysEnum) | Number of days of the lookback windows |  [optional] |
+|**lookbackDays** | [**LookbackDaysEnum**](#LookbackDaysEnum) | Number of days of the lookback windows |  |
 |**maxPrice** | **Double** | Reach people who’ve shown interest in products with a maximum price |  [optional] |
 |**minPrice** | **Double** | Reach people who’ve shown interest in products with a minimum price |  [optional] |
-|**shopperActivity** | [**ShopperActivityEnum**](#ShopperActivityEnum) | Types of shopper activity. |  [optional] |
+|**shopperActivity** | [**ShopperActivityEnum**](#ShopperActivityEnum) | Types of shopper activity. |  |
 
 
 

@@ -1655,7 +1655,8 @@ paths:
         name: lineItemId
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
       responses:
         "200":
@@ -2212,7 +2213,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PageOfSponsoredProductsLineItem'
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata'
           description: Success
       tags:
       - Campaign
@@ -2233,20 +2234,20 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/SponsoredProductsLineItemCreateRequestModel'
+              $ref: '#/components/schemas/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel'
           application/json:
             schema:
-              $ref: '#/components/schemas/SponsoredProductsLineItemCreateRequestModel'
+              $ref: '#/components/schemas/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel'
           text/json:
             schema:
-              $ref: '#/components/schemas/SponsoredProductsLineItemCreateRequestModel'
+              $ref: '#/components/schemas/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/SponsoredProductsLineItemCreateRequestModel'
+              $ref: '#/components/schemas/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel'
         description: The line item settings to create a line item with
         x-bodyName: lineItem
       responses:
-        "201":
+        "200":
           content:
             application/json:
               schema:
@@ -8136,6 +8137,139 @@ components:
           readOnly: true
           type: array
       type: object
+    EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata.
+      example:
+        metadata:
+          offset: 1
+          count: 0
+          limit: 6
+        data:
+        - attributes:
+            neutralAdstrategyEnabled: true
+            bidStrategy: Unknown
+            budgetRemaining: 6.027456183070403
+            endDate: 2000-01-23T04:56:07.000+00:00
+            campaignId: campaignId
+            defensiveAdstrategyEnabled: true
+            targetBid: 7.061401241503109
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            maxBid: 5.637376656633329
+            flightSchedule:
+              legs:
+              - dayOfWeek: sunday
+                startTime: startTime
+                endTime: endTime
+              - dayOfWeek: sunday
+                startTime: startTime
+                endTime: endTime
+            name: name
+            conquestingAdstrategyEnabled: true
+            isAutoDailyPacing: true
+            targetRetailerId: targetRetailerId
+            dailyPacing: 5.962133916683182
+            monthlyPacing: 2.3021358869347655
+            startDate: 2000-01-23T04:56:07.000+00:00
+            budget: 0.8008281904610115
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            neutralAdstrategyEnabled: true
+            bidStrategy: Unknown
+            budgetRemaining: 6.027456183070403
+            endDate: 2000-01-23T04:56:07.000+00:00
+            campaignId: campaignId
+            defensiveAdstrategyEnabled: true
+            targetBid: 7.061401241503109
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            maxBid: 5.637376656633329
+            flightSchedule:
+              legs:
+              - dayOfWeek: sunday
+                startTime: startTime
+                endTime: endTime
+              - dayOfWeek: sunday
+                startTime: startTime
+                endTime: endTime
+            name: name
+            conquestingAdstrategyEnabled: true
+            isAutoDailyPacing: true
+            targetRetailerId: targetRetailerId
+            dailyPacing: 5.962133916683182
+            monthlyPacing: 2.3021358869347655
+            startDate: 2000-01-23T04:56:07.000+00:00
+            budget: 0.8008281904610115
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceOfSponsoredProductsLineItem'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     EntityResourceLineItemKeywordReviewReport:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
@@ -8223,29 +8357,30 @@ components:
       description: "A domain entity exposed by the API, identified by a unique id."
       example:
         attributes:
-          externalLineItemId: 5
+          neutralAdstrategyEnabled: true
           bidStrategy: Unknown
           budgetRemaining: 6.027456183070403
           endDate: 2000-01-23T04:56:07.000+00:00
           campaignId: campaignId
-          targetBid: 9.301444243932576
+          defensiveAdstrategyEnabled: true
+          targetBid: 7.061401241503109
           createdAt: 2000-01-23T04:56:07.000+00:00
           budgetSpent: 1.4658129805029452
-          maxBid: 2.3021358869347655
+          maxBid: 5.637376656633329
           flightSchedule:
             legs:
-            - dayOfWeek: Sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
-            - dayOfWeek: Sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
+            - dayOfWeek: sunday
+              startTime: startTime
+              endTime: endTime
+            - dayOfWeek: sunday
+              startTime: startTime
+              endTime: endTime
           name: name
-          buyType: Unknown
+          conquestingAdstrategyEnabled: true
           isAutoDailyPacing: true
           targetRetailerId: targetRetailerId
           dailyPacing: 5.962133916683182
-          monthlyPacing: 7.061401241503109
+          monthlyPacing: 2.3021358869347655
           startDate: 2000-01-23T04:56:07.000+00:00
           budget: 0.8008281904610115
           status: unknown
@@ -8343,29 +8478,30 @@ components:
       example:
         data:
           attributes:
-            externalLineItemId: 5
+            neutralAdstrategyEnabled: true
             bidStrategy: Unknown
             budgetRemaining: 6.027456183070403
             endDate: 2000-01-23T04:56:07.000+00:00
             campaignId: campaignId
-            targetBid: 9.301444243932576
+            defensiveAdstrategyEnabled: true
+            targetBid: 7.061401241503109
             createdAt: 2000-01-23T04:56:07.000+00:00
             budgetSpent: 1.4658129805029452
-            maxBid: 2.3021358869347655
+            maxBid: 5.637376656633329
             flightSchedule:
               legs:
-              - dayOfWeek: Sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
-              - dayOfWeek: Sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+              - dayOfWeek: sunday
+                startTime: startTime
+                endTime: endTime
+              - dayOfWeek: sunday
+                startTime: startTime
+                endTime: endTime
             name: name
-            buyType: Unknown
+            conquestingAdstrategyEnabled: true
             isAutoDailyPacing: true
             targetRetailerId: targetRetailerId
             dailyPacing: 5.962133916683182
-            monthlyPacing: 7.061401241503109
+            monthlyPacing: 2.3021358869347655
             startDate: 2000-01-23T04:56:07.000+00:00
             budget: 0.8008281904610115
             status: unknown
@@ -9151,29 +9287,27 @@ components:
       description: A leg of a flight schedule outlining which days and times the line
         item will run.
       example:
-        dayOfWeek: Sunday
-        startTime: 2000-01-23T04:56:07.000+00:00
-        endTime: 2000-01-23T04:56:07.000+00:00
+        dayOfWeek: sunday
+        startTime: startTime
+        endTime: endTime
       properties:
         dayOfWeek:
           description: Enum for the days of the week.
           enum:
-          - Sunday
-          - Monday
-          - Tuesday
-          - Wednesday
-          - Thursday
-          - Friday
-          - Saturday
-          - Everyday
-          - Weekdays
-          - Weekends
+          - sunday
+          - monday
+          - tuesday
+          - wednesday
+          - thursday
+          - friday
+          - saturday
+          - everyday
+          - weekdays
+          - weekends
           type: string
         endTime:
-          format: date-time
           type: string
         startTime:
-          format: date-time
           type: string
       required:
       - dayOfWeek
@@ -9185,12 +9319,12 @@ components:
       description: A flight schedule for a line item.
       example:
         legs:
-        - dayOfWeek: Sunday
-          startTime: 2000-01-23T04:56:07.000+00:00
-          endTime: 2000-01-23T04:56:07.000+00:00
-        - dayOfWeek: Sunday
-          startTime: 2000-01-23T04:56:07.000+00:00
-          endTime: 2000-01-23T04:56:07.000+00:00
+        - dayOfWeek: sunday
+          startTime: startTime
+          endTime: endTime
+        - dayOfWeek: sunday
+          startTime: startTime
+          endTime: endTime
       nullable: true
       properties:
         legs:
@@ -10171,81 +10305,6 @@ components:
         data:
           items:
             $ref: '#/components/schemas/BalanceHistoryChangeDataCaptureV1'
-          type: array
-        meta:
-          $ref: '#/components/schemas/Metadata'
-      required:
-      - data
-      - meta
-      type: object
-    PageOfSponsoredProductsLineItem:
-      additionalProperties: false
-      description: A wrapper class to return a single page of items with metadata
-        for offset and limit based paging.
-      example:
-        data:
-        - externalLineItemId: 5
-          bidStrategy: Unknown
-          budgetRemaining: 6.027456183070403
-          endDate: 2000-01-23T04:56:07.000+00:00
-          campaignId: campaignId
-          targetBid: 9.301444243932576
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          budgetSpent: 1.4658129805029452
-          maxBid: 2.3021358869347655
-          flightSchedule:
-            legs:
-            - dayOfWeek: Sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
-            - dayOfWeek: Sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
-          name: name
-          buyType: Unknown
-          isAutoDailyPacing: true
-          targetRetailerId: targetRetailerId
-          dailyPacing: 5.962133916683182
-          monthlyPacing: 7.061401241503109
-          startDate: 2000-01-23T04:56:07.000+00:00
-          budget: 0.8008281904610115
-          status: unknown
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - externalLineItemId: 5
-          bidStrategy: Unknown
-          budgetRemaining: 6.027456183070403
-          endDate: 2000-01-23T04:56:07.000+00:00
-          campaignId: campaignId
-          targetBid: 9.301444243932576
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          budgetSpent: 1.4658129805029452
-          maxBid: 2.3021358869347655
-          flightSchedule:
-            legs:
-            - dayOfWeek: Sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
-            - dayOfWeek: Sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
-          name: name
-          buyType: Unknown
-          isAutoDailyPacing: true
-          targetRetailerId: targetRetailerId
-          dailyPacing: 5.962133916683182
-          monthlyPacing: 7.061401241503109
-          startDate: 2000-01-23T04:56:07.000+00:00
-          budget: 0.8008281904610115
-          status: unknown
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        meta:
-          offset: 1
-          count: 0
-          limit: 6
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/SponsoredProductsLineItem'
           type: array
         meta:
           $ref: '#/components/schemas/Metadata'
@@ -17567,29 +17626,30 @@ components:
       additionalProperties: false
       description: A model representing a Sponsored Products Line Item.
       example:
-        externalLineItemId: 5
+        neutralAdstrategyEnabled: true
         bidStrategy: Unknown
         budgetRemaining: 6.027456183070403
         endDate: 2000-01-23T04:56:07.000+00:00
         campaignId: campaignId
-        targetBid: 9.301444243932576
+        defensiveAdstrategyEnabled: true
+        targetBid: 7.061401241503109
         createdAt: 2000-01-23T04:56:07.000+00:00
         budgetSpent: 1.4658129805029452
-        maxBid: 2.3021358869347655
+        maxBid: 5.637376656633329
         flightSchedule:
           legs:
-          - dayOfWeek: Sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
-          - dayOfWeek: Sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
+          - dayOfWeek: sunday
+            startTime: startTime
+            endTime: endTime
+          - dayOfWeek: sunday
+            startTime: startTime
+            endTime: endTime
         name: name
-        buyType: Unknown
+        conquestingAdstrategyEnabled: true
         isAutoDailyPacing: true
         targetRetailerId: targetRetailerId
         dailyPacing: 5.962133916683182
-        monthlyPacing: 7.061401241503109
+        monthlyPacing: 2.3021358869347655
         startDate: 2000-01-23T04:56:07.000+00:00
         budget: 0.8008281904610115
         status: unknown
@@ -17616,16 +17676,12 @@ components:
           format: double
           nullable: true
           type: number
-        buyType:
-          enum:
-          - Unknown
-          - Auction
-          - Preferred
-          nullable: true
-          type: string
         campaignId:
-          format: int64
+          format: long-id
           type: string
+        conquestingAdstrategyEnabled:
+          nullable: true
+          type: boolean
         createdAt:
           format: date-time
           type: string
@@ -17633,13 +17689,13 @@ components:
           format: double
           nullable: true
           type: number
+        defensiveAdstrategyEnabled:
+          nullable: true
+          type: boolean
         endDate:
           format: date-time
           nullable: true
           type: string
-        externalLineItemId:
-          format: int64
-          type: integer
         flightSchedule:
           $ref: '#/components/schemas/FlightSchedule'
         isAutoDailyPacing:
@@ -17657,6 +17713,9 @@ components:
           maxLength: 255
           minLength: 0
           type: string
+        neutralAdstrategyEnabled:
+          nullable: true
+          type: boolean
         startDate:
           format: date-time
           type: string
@@ -17679,7 +17738,7 @@ components:
           nullable: true
           type: number
         targetRetailerId:
-          format: int64
+          format: long-id
           type: string
         updatedAt:
           format: date-time
@@ -17688,7 +17747,6 @@ components:
       - budgetRemaining
       - campaignId
       - createdAt
-      - externalLineItemId
       - name
       - startDate
       - targetRetailerId
@@ -17698,26 +17756,28 @@ components:
       additionalProperties: false
       description: Model to create a retail media auction line item
       example:
+        neutralAdstrategyEnabled: true
         bidStrategy: Conversion
         endDate: 2000-01-23T04:56:07.000+00:00
+        defensiveAdstrategyEnabled: true
         targetBid: 5.637376656633329
         maxBid: 1.4658129805029452
         flightSchedule:
           legs:
-          - dayOfWeek: Sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
-          - dayOfWeek: Sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
+          - dayOfWeek: sunday
+            startTime: startTime
+            endTime: endTime
+          - dayOfWeek: sunday
+            startTime: startTime
+            endTime: endTime
         name: name
+        conquestingAdstrategyEnabled: true
         isAutoDailyPacing: false
         targetRetailerId: targetRetailerId
         dailyPacing: 6.027456183070403
         monthlyPacing: 5.962133916683182
         startDate: 2000-01-23T04:56:07.000+00:00
         budget: 0.8008281904610115
-        status: Active
       properties:
         bidStrategy:
           default: Conversion
@@ -17731,10 +17791,16 @@ components:
           format: double
           nullable: true
           type: number
+        conquestingAdstrategyEnabled:
+          nullable: true
+          type: boolean
         dailyPacing:
           format: double
           nullable: true
           type: number
+        defensiveAdstrategyEnabled:
+          nullable: true
+          type: boolean
         endDate:
           format: date-time
           nullable: true
@@ -17756,22 +17822,18 @@ components:
           maxLength: 255
           minLength: 0
           type: string
+        neutralAdstrategyEnabled:
+          nullable: true
+          type: boolean
         startDate:
           format: date-time
-          type: string
-        status:
-          description: Status of a line item.
-          enum:
-          - Active
-          - Paused
-          - Draft
           type: string
         targetBid:
           format: double
           nullable: true
           type: number
         targetRetailerId:
-          format: int64
+          format: long-id
           type: string
       required:
       - name
@@ -17787,12 +17849,12 @@ components:
         maxBid: 1.4658129805029452
         flightSchedule:
           legs:
-          - dayOfWeek: Sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
-          - dayOfWeek: Sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
+          - dayOfWeek: sunday
+            startTime: startTime
+            endTime: endTime
+          - dayOfWeek: sunday
+            startTime: startTime
+            endTime: endTime
         name: name
         isAutoDailyPacing: true
         dailyPacing: 6.027456183070403
@@ -18958,6 +19020,40 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceOfSellerCatalogRequestV2'
       type: object
+    ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value objects.
+      example:
+        data:
+          attributes:
+            neutralAdstrategyEnabled: true
+            bidStrategy: Conversion
+            endDate: 2000-01-23T04:56:07.000+00:00
+            defensiveAdstrategyEnabled: true
+            targetBid: 5.637376656633329
+            maxBid: 1.4658129805029452
+            flightSchedule:
+              legs:
+              - dayOfWeek: sunday
+                startTime: startTime
+                endTime: endTime
+              - dayOfWeek: sunday
+                startTime: startTime
+                endTime: endTime
+            name: name
+            conquestingAdstrategyEnabled: true
+            isAutoDailyPacing: false
+            targetRetailerId: targetRetailerId
+            dailyPacing: 6.027456183070403
+            monthlyPacing: 5.962133916683182
+            startDate: 2000-01-23T04:56:07.000+00:00
+            budget: 0.8008281904610115
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfSponsoredProductsLineItemCreateRequestModel'
+      type: object
     ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -18970,12 +19066,12 @@ components:
             maxBid: 1.4658129805029452
             flightSchedule:
               legs:
-              - dayOfWeek: Sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
-              - dayOfWeek: Sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+              - dayOfWeek: sunday
+                startTime: startTime
+                endTime: endTime
+              - dayOfWeek: sunday
+                startTime: startTime
+                endTime: endTime
             name: name
             isAutoDailyPacing: true
             dailyPacing: 6.027456183070403
@@ -19107,6 +19203,42 @@ components:
           description: The Type of the resource.
           type: string
       type: object
+    ValueResourceOfSponsoredProductsLineItemCreateRequestModel:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          neutralAdstrategyEnabled: true
+          bidStrategy: Conversion
+          endDate: 2000-01-23T04:56:07.000+00:00
+          defensiveAdstrategyEnabled: true
+          targetBid: 5.637376656633329
+          maxBid: 1.4658129805029452
+          flightSchedule:
+            legs:
+            - dayOfWeek: sunday
+              startTime: startTime
+              endTime: endTime
+            - dayOfWeek: sunday
+              startTime: startTime
+              endTime: endTime
+          name: name
+          conquestingAdstrategyEnabled: true
+          isAutoDailyPacing: false
+          targetRetailerId: targetRetailerId
+          dailyPacing: 6.027456183070403
+          monthlyPacing: 5.962133916683182
+          startDate: 2000-01-23T04:56:07.000+00:00
+          budget: 0.8008281904610115
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SponsoredProductsLineItemCreateRequestModel'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     ValueResourceOfSponsoredProductsLineItemUpdateRequestModel:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -19117,12 +19249,12 @@ components:
           maxBid: 1.4658129805029452
           flightSchedule:
             legs:
-            - dayOfWeek: Sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
-            - dayOfWeek: Sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
+            - dayOfWeek: sunday
+              startTime: startTime
+              endTime: endTime
+            - dayOfWeek: sunday
+              startTime: startTime
+              endTime: endTime
           name: name
           isAutoDailyPacing: true
           dailyPacing: 6.027456183070403

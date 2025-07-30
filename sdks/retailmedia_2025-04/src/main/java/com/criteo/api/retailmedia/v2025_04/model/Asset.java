@@ -57,10 +57,6 @@ public class Asset {
   @SerializedName(SERIALIZED_NAME_FILE_LOCATION)
   private String fileLocation;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
   public Asset() {
   }
 
@@ -105,28 +101,6 @@ public class Asset {
 
   public void setFileLocation(String fileLocation) {
     this.fileLocation = fileLocation;
-  }
-
-
-  public Asset id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @javax.annotation.Nullable
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
   }
 
   /**
@@ -185,8 +159,7 @@ public class Asset {
     }
     Asset asset = (Asset) o;
     return Objects.equals(this.fileExtension, asset.fileExtension) &&
-        Objects.equals(this.fileLocation, asset.fileLocation) &&
-        Objects.equals(this.id, asset.id)&&
+        Objects.equals(this.fileLocation, asset.fileLocation)&&
         Objects.equals(this.additionalProperties, asset.additionalProperties);
   }
 
@@ -196,7 +169,7 @@ public class Asset {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fileExtension, fileLocation, id, additionalProperties);
+    return Objects.hash(fileExtension, fileLocation, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -212,7 +185,6 @@ public class Asset {
     sb.append("class Asset {\n");
     sb.append("    fileExtension: ").append(toIndentedString(fileExtension)).append("\n");
     sb.append("    fileLocation: ").append(toIndentedString(fileLocation)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -238,7 +210,6 @@ public class Asset {
     openapiFields = new HashSet<String>();
     openapiFields.add("fileExtension");
     openapiFields.add("fileLocation");
-    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -269,9 +240,6 @@ public class Asset {
       }
       if ((jsonObj.get("fileLocation") != null && !jsonObj.get("fileLocation").isJsonNull()) && !jsonObj.get("fileLocation").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fileLocation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fileLocation").toString()));
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 

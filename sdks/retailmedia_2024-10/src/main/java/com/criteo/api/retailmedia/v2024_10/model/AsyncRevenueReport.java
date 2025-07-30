@@ -441,7 +441,9 @@ public class AsyncRevenueReport {
     
     TAXONOMY7ID("taxonomy7Id"),
     
-    TAXONOMY7NAME("taxonomy7Name");
+    TAXONOMY7NAME("taxonomy7Name"),
+    
+    TARGETEDKEYWORDTYPE("targetedKeywordType");
 
     private String value;
 
@@ -969,6 +971,61 @@ public class AsyncRevenueReport {
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
+
+  /**
+   * Gets or Sets targetedKeywordTypes
+   */
+  @JsonAdapter(TargetedKeywordTypesEnum.Adapter.class)
+  public enum TargetedKeywordTypesEnum {
+    UNKNOWN("unknown"),
+    
+    GENERIC("generic"),
+    
+    BRANDED("branded"),
+    
+    CONQUESTING("conquesting");
+
+    private String value;
+
+    TargetedKeywordTypesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TargetedKeywordTypesEnum fromValue(String value) {
+      for (TargetedKeywordTypesEnum b : TargetedKeywordTypesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TargetedKeywordTypesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TargetedKeywordTypesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TargetedKeywordTypesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TargetedKeywordTypesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TARGETED_KEYWORD_TYPES = "targetedKeywordTypes";
+  @SerializedName(SERIALIZED_NAME_TARGETED_KEYWORD_TYPES)
+  private List<TargetedKeywordTypesEnum> targetedKeywordTypes = null;
 
   public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
   @SerializedName(SERIALIZED_NAME_TIMEZONE)
@@ -1623,6 +1680,36 @@ public class AsyncRevenueReport {
   }
 
 
+  public AsyncRevenueReport targetedKeywordTypes(List<TargetedKeywordTypesEnum> targetedKeywordTypes) {
+    
+    this.targetedKeywordTypes = targetedKeywordTypes;
+    return this;
+  }
+
+  public AsyncRevenueReport addTargetedKeywordTypesItem(TargetedKeywordTypesEnum targetedKeywordTypesItem) {
+    if (this.targetedKeywordTypes == null) {
+      this.targetedKeywordTypes = new ArrayList<>();
+    }
+    this.targetedKeywordTypes.add(targetedKeywordTypesItem);
+    return this;
+  }
+
+   /**
+   * Filter on targeted keyword type: unknown, generic, branded, conquesting
+   * @return targetedKeywordTypes
+  **/
+  @javax.annotation.Nullable
+
+  public List<TargetedKeywordTypesEnum> getTargetedKeywordTypes() {
+    return targetedKeywordTypes;
+  }
+
+
+  public void setTargetedKeywordTypes(List<TargetedKeywordTypesEnum> targetedKeywordTypes) {
+    this.targetedKeywordTypes = targetedKeywordTypes;
+  }
+
+
   public AsyncRevenueReport timezone(String timezone) {
     
     this.timezone = timezone;
@@ -1764,6 +1851,7 @@ public class AsyncRevenueReport {
         Objects.equals(this.skuRelations, asyncRevenueReport.skuRelations) &&
         Objects.equals(this.soldBy, asyncRevenueReport.soldBy) &&
         Objects.equals(this.startDate, asyncRevenueReport.startDate) &&
+        Objects.equals(this.targetedKeywordTypes, asyncRevenueReport.targetedKeywordTypes) &&
         Objects.equals(this.timezone, asyncRevenueReport.timezone) &&
         Objects.equals(this.viewAttributionWindow, asyncRevenueReport.viewAttributionWindow) &&
         Objects.equals(this.viewMatchLevel, asyncRevenueReport.viewMatchLevel)&&
@@ -1772,7 +1860,7 @@ public class AsyncRevenueReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIds, advertiserTypes, buyType, campaignIds, campaignType, clickAttributionWindow, clickMatchLevel, dimensions, endDate, format, id, ids, lineItemIds, metrics, reportType, retailerIds, revenueType, salesChannel, skuRelations, soldBy, startDate, timezone, viewAttributionWindow, viewMatchLevel, additionalProperties);
+    return Objects.hash(accountIds, advertiserTypes, buyType, campaignIds, campaignType, clickAttributionWindow, clickMatchLevel, dimensions, endDate, format, id, ids, lineItemIds, metrics, reportType, retailerIds, revenueType, salesChannel, skuRelations, soldBy, startDate, targetedKeywordTypes, timezone, viewAttributionWindow, viewMatchLevel, additionalProperties);
   }
 
   @Override
@@ -1800,6 +1888,7 @@ public class AsyncRevenueReport {
     sb.append("    skuRelations: ").append(toIndentedString(skuRelations)).append("\n");
     sb.append("    soldBy: ").append(toIndentedString(soldBy)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    targetedKeywordTypes: ").append(toIndentedString(targetedKeywordTypes)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    viewMatchLevel: ").append(toIndentedString(viewMatchLevel)).append("\n");
@@ -1847,6 +1936,7 @@ public class AsyncRevenueReport {
     openapiFields.add("skuRelations");
     openapiFields.add("soldBy");
     openapiFields.add("startDate");
+    openapiFields.add("targetedKeywordTypes");
     openapiFields.add("timezone");
     openapiFields.add("viewAttributionWindow");
     openapiFields.add("viewMatchLevel");
@@ -1941,6 +2031,10 @@ public class AsyncRevenueReport {
       }
       if ((jsonObj.get("soldBy") != null && !jsonObj.get("soldBy").isJsonNull()) && !jsonObj.get("soldBy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `soldBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("soldBy").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("targetedKeywordTypes") != null && !jsonObj.get("targetedKeywordTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `targetedKeywordTypes` to be an array in the JSON string but got `%s`", jsonObj.get("targetedKeywordTypes").toString()));
       }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));

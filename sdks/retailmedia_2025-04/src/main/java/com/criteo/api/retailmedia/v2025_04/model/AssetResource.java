@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2025_04.JSON;
 
 /**
- * A class that represents an entity in a guild compliant way
+ * A class that represents a domain entity exposed by an API
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AssetResource {

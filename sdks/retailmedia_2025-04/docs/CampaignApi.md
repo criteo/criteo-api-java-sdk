@@ -2735,7 +2735,7 @@ public class Example {
 
 
 
-Get current campaign budget overrides by given external campaign id.
+Get current campaign budget overrides by given campaign id.
 
 ### Example
 
@@ -2776,7 +2776,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long campaignId = 56L; // Long | External campaign id.
+        Long campaignId = 56L; // Long | Campaign id.
         try {
             ValueResourceOutcomeOfCampaignBudgetOverrides result = apiInstance.getCampaignBudgetOverrides(campaignId);
             System.out.println(result);
@@ -2796,7 +2796,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Long**| External campaign id. | |
+| **campaignId** | **Long**| Campaign id. | |
 
 ### Return type
 
@@ -3045,7 +3045,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String externalLineItemId = "externalLineItemId_example"; // String | The external line item identifier
+        String externalLineItemId = "externalLineItemId_example"; // String | The line item identifier
         try {
             ValueResourceOutcomeOfRecommendedKeywordsResult result = apiInstance.getRecommendedKeywords(externalLineItemId);
             System.out.println(result);
@@ -3065,7 +3065,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **externalLineItemId** | **String**| The external line item identifier | |
+| **externalLineItemId** | **String**| The line item identifier | |
 
 ### Return type
 
@@ -5478,7 +5478,7 @@ null (empty response body)
 
 
 
-Update campaign budget overrides by given external campaign id and new campaign budget overrides settings.
+Update campaign budget overrides by given campaign id and new campaign budget overrides settings.
 
 ### Example
 
@@ -5519,7 +5519,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long campaignId = 56L; // Long | External campaign id.
+        Long campaignId = 56L; // Long | Campaign id.
         ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides = new ValueResourceInputOfCampaignBudgetOverrides(); // ValueResourceInputOfCampaignBudgetOverrides | New campaign budget overrides settings value resource input.
         try {
             ValueResourceOutcomeOfCampaignBudgetOverrides result = apiInstance.updateCampaignBudgetOverrides(campaignId, valueResourceInputOfCampaignBudgetOverrides);
@@ -5540,7 +5540,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Long**| External campaign id. | |
+| **campaignId** | **Long**| Campaign id. | |
 | **valueResourceInputOfCampaignBudgetOverrides** | [**ValueResourceInputOfCampaignBudgetOverrides**](ValueResourceInputOfCampaignBudgetOverrides.md)| New campaign budget overrides settings value resource input. | [optional] |
 
 ### Return type
@@ -5569,7 +5569,7 @@ public class Example {
 
 
 
-Update line item budget overrides by given external line item id and new line item budget overrides settings.
+Update line item budget overrides by given line item id and new line item budget overrides settings.
 
 ### Example
 
@@ -5610,7 +5610,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | Line item external id.
+        String lineItemId = "lineItemId_example"; // String | Line item id.
         ValueResourceInputOfLineItemBudgetOverrides valueResourceInputOfLineItemBudgetOverrides = new ValueResourceInputOfLineItemBudgetOverrides(); // ValueResourceInputOfLineItemBudgetOverrides | New line item budget overrides settings value resource input.
         try {
             ValueResourceOutcomeOfLineItemBudgetOverrides result = apiInstance.updateLineItemBudgetOverrides(lineItemId, valueResourceInputOfLineItemBudgetOverrides);
@@ -5631,7 +5631,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| Line item external id. | |
+| **lineItemId** | **String**| Line item id. | |
 | **valueResourceInputOfLineItemBudgetOverrides** | [**ValueResourceInputOfLineItemBudgetOverrides**](ValueResourceInputOfLineItemBudgetOverrides.md)| New line item budget overrides settings value resource input. | [optional] |
 
 ### Return type

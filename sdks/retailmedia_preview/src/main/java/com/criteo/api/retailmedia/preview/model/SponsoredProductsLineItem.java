@@ -118,62 +118,13 @@ public class SponsoredProductsLineItem {
   @SerializedName(SERIALIZED_NAME_BUDGET_SPENT)
   private Double budgetSpent;
 
-  /**
-   * Gets or Sets buyType
-   */
-  @JsonAdapter(BuyTypeEnum.Adapter.class)
-  public enum BuyTypeEnum {
-    UNKNOWN("Unknown"),
-    
-    AUCTION("Auction"),
-    
-    PREFERRED("Preferred");
-
-    private String value;
-
-    BuyTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static BuyTypeEnum fromValue(String value) {
-      for (BuyTypeEnum b : BuyTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<BuyTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final BuyTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public BuyTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return BuyTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_BUY_TYPE = "buyType";
-  @SerializedName(SERIALIZED_NAME_BUY_TYPE)
-  private BuyTypeEnum buyType;
-
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private String campaignId;
+
+  public static final String SERIALIZED_NAME_CONQUESTING_ADSTRATEGY_ENABLED = "conquestingAdstrategyEnabled";
+  @SerializedName(SERIALIZED_NAME_CONQUESTING_ADSTRATEGY_ENABLED)
+  private Boolean conquestingAdstrategyEnabled;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -183,13 +134,13 @@ public class SponsoredProductsLineItem {
   @SerializedName(SERIALIZED_NAME_DAILY_PACING)
   private Double dailyPacing;
 
+  public static final String SERIALIZED_NAME_DEFENSIVE_ADSTRATEGY_ENABLED = "defensiveAdstrategyEnabled";
+  @SerializedName(SERIALIZED_NAME_DEFENSIVE_ADSTRATEGY_ENABLED)
+  private Boolean defensiveAdstrategyEnabled;
+
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private OffsetDateTime endDate;
-
-  public static final String SERIALIZED_NAME_EXTERNAL_LINE_ITEM_ID = "externalLineItemId";
-  @SerializedName(SERIALIZED_NAME_EXTERNAL_LINE_ITEM_ID)
-  private Long externalLineItemId;
 
   public static final String SERIALIZED_NAME_FLIGHT_SCHEDULE = "flightSchedule";
   @SerializedName(SERIALIZED_NAME_FLIGHT_SCHEDULE)
@@ -210,6 +161,10 @@ public class SponsoredProductsLineItem {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_NEUTRAL_ADSTRATEGY_ENABLED = "neutralAdstrategyEnabled";
+  @SerializedName(SERIALIZED_NAME_NEUTRAL_ADSTRATEGY_ENABLED)
+  private Boolean neutralAdstrategyEnabled;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -383,28 +338,6 @@ public class SponsoredProductsLineItem {
   }
 
 
-  public SponsoredProductsLineItem buyType(BuyTypeEnum buyType) {
-    
-    this.buyType = buyType;
-    return this;
-  }
-
-   /**
-   * Get buyType
-   * @return buyType
-  **/
-  @javax.annotation.Nullable
-
-  public BuyTypeEnum getBuyType() {
-    return buyType;
-  }
-
-
-  public void setBuyType(BuyTypeEnum buyType) {
-    this.buyType = buyType;
-  }
-
-
   public SponsoredProductsLineItem campaignId(String campaignId) {
     
     this.campaignId = campaignId;
@@ -424,6 +357,28 @@ public class SponsoredProductsLineItem {
 
   public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
+  }
+
+
+  public SponsoredProductsLineItem conquestingAdstrategyEnabled(Boolean conquestingAdstrategyEnabled) {
+    
+    this.conquestingAdstrategyEnabled = conquestingAdstrategyEnabled;
+    return this;
+  }
+
+   /**
+   * Get conquestingAdstrategyEnabled
+   * @return conquestingAdstrategyEnabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getConquestingAdstrategyEnabled() {
+    return conquestingAdstrategyEnabled;
+  }
+
+
+  public void setConquestingAdstrategyEnabled(Boolean conquestingAdstrategyEnabled) {
+    this.conquestingAdstrategyEnabled = conquestingAdstrategyEnabled;
   }
 
 
@@ -471,6 +426,28 @@ public class SponsoredProductsLineItem {
   }
 
 
+  public SponsoredProductsLineItem defensiveAdstrategyEnabled(Boolean defensiveAdstrategyEnabled) {
+    
+    this.defensiveAdstrategyEnabled = defensiveAdstrategyEnabled;
+    return this;
+  }
+
+   /**
+   * Get defensiveAdstrategyEnabled
+   * @return defensiveAdstrategyEnabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getDefensiveAdstrategyEnabled() {
+    return defensiveAdstrategyEnabled;
+  }
+
+
+  public void setDefensiveAdstrategyEnabled(Boolean defensiveAdstrategyEnabled) {
+    this.defensiveAdstrategyEnabled = defensiveAdstrategyEnabled;
+  }
+
+
   public SponsoredProductsLineItem endDate(OffsetDateTime endDate) {
     
     this.endDate = endDate;
@@ -490,28 +467,6 @@ public class SponsoredProductsLineItem {
 
   public void setEndDate(OffsetDateTime endDate) {
     this.endDate = endDate;
-  }
-
-
-  public SponsoredProductsLineItem externalLineItemId(Long externalLineItemId) {
-    
-    this.externalLineItemId = externalLineItemId;
-    return this;
-  }
-
-   /**
-   * Get externalLineItemId
-   * @return externalLineItemId
-  **/
-  @javax.annotation.Nonnull
-
-  public Long getExternalLineItemId() {
-    return externalLineItemId;
-  }
-
-
-  public void setExternalLineItemId(Long externalLineItemId) {
-    this.externalLineItemId = externalLineItemId;
   }
 
 
@@ -622,6 +577,28 @@ public class SponsoredProductsLineItem {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public SponsoredProductsLineItem neutralAdstrategyEnabled(Boolean neutralAdstrategyEnabled) {
+    
+    this.neutralAdstrategyEnabled = neutralAdstrategyEnabled;
+    return this;
+  }
+
+   /**
+   * Get neutralAdstrategyEnabled
+   * @return neutralAdstrategyEnabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getNeutralAdstrategyEnabled() {
+    return neutralAdstrategyEnabled;
+  }
+
+
+  public void setNeutralAdstrategyEnabled(Boolean neutralAdstrategyEnabled) {
+    this.neutralAdstrategyEnabled = neutralAdstrategyEnabled;
   }
 
 
@@ -749,17 +726,18 @@ public class SponsoredProductsLineItem {
         Objects.equals(this.budget, sponsoredProductsLineItem.budget) &&
         Objects.equals(this.budgetRemaining, sponsoredProductsLineItem.budgetRemaining) &&
         Objects.equals(this.budgetSpent, sponsoredProductsLineItem.budgetSpent) &&
-        Objects.equals(this.buyType, sponsoredProductsLineItem.buyType) &&
         Objects.equals(this.campaignId, sponsoredProductsLineItem.campaignId) &&
+        Objects.equals(this.conquestingAdstrategyEnabled, sponsoredProductsLineItem.conquestingAdstrategyEnabled) &&
         Objects.equals(this.createdAt, sponsoredProductsLineItem.createdAt) &&
         Objects.equals(this.dailyPacing, sponsoredProductsLineItem.dailyPacing) &&
+        Objects.equals(this.defensiveAdstrategyEnabled, sponsoredProductsLineItem.defensiveAdstrategyEnabled) &&
         Objects.equals(this.endDate, sponsoredProductsLineItem.endDate) &&
-        Objects.equals(this.externalLineItemId, sponsoredProductsLineItem.externalLineItemId) &&
         Objects.equals(this.flightSchedule, sponsoredProductsLineItem.flightSchedule) &&
         Objects.equals(this.isAutoDailyPacing, sponsoredProductsLineItem.isAutoDailyPacing) &&
         Objects.equals(this.maxBid, sponsoredProductsLineItem.maxBid) &&
         Objects.equals(this.monthlyPacing, sponsoredProductsLineItem.monthlyPacing) &&
         Objects.equals(this.name, sponsoredProductsLineItem.name) &&
+        Objects.equals(this.neutralAdstrategyEnabled, sponsoredProductsLineItem.neutralAdstrategyEnabled) &&
         Objects.equals(this.startDate, sponsoredProductsLineItem.startDate) &&
         Objects.equals(this.status, sponsoredProductsLineItem.status) &&
         Objects.equals(this.targetBid, sponsoredProductsLineItem.targetBid) &&
@@ -773,7 +751,7 @@ public class SponsoredProductsLineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidStrategy, budget, budgetRemaining, budgetSpent, buyType, campaignId, createdAt, dailyPacing, endDate, externalLineItemId, flightSchedule, isAutoDailyPacing, maxBid, monthlyPacing, name, startDate, status, targetBid, targetRetailerId, updatedAt);
+    return Objects.hash(bidStrategy, budget, budgetRemaining, budgetSpent, campaignId, conquestingAdstrategyEnabled, createdAt, dailyPacing, defensiveAdstrategyEnabled, endDate, flightSchedule, isAutoDailyPacing, maxBid, monthlyPacing, name, neutralAdstrategyEnabled, startDate, status, targetBid, targetRetailerId, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -791,17 +769,18 @@ public class SponsoredProductsLineItem {
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    budgetRemaining: ").append(toIndentedString(budgetRemaining)).append("\n");
     sb.append("    budgetSpent: ").append(toIndentedString(budgetSpent)).append("\n");
-    sb.append("    buyType: ").append(toIndentedString(buyType)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    conquestingAdstrategyEnabled: ").append(toIndentedString(conquestingAdstrategyEnabled)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
+    sb.append("    defensiveAdstrategyEnabled: ").append(toIndentedString(defensiveAdstrategyEnabled)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    externalLineItemId: ").append(toIndentedString(externalLineItemId)).append("\n");
     sb.append("    flightSchedule: ").append(toIndentedString(flightSchedule)).append("\n");
     sb.append("    isAutoDailyPacing: ").append(toIndentedString(isAutoDailyPacing)).append("\n");
     sb.append("    maxBid: ").append(toIndentedString(maxBid)).append("\n");
     sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    neutralAdstrategyEnabled: ").append(toIndentedString(neutralAdstrategyEnabled)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    targetBid: ").append(toIndentedString(targetBid)).append("\n");
@@ -833,17 +812,18 @@ public class SponsoredProductsLineItem {
     openapiFields.add("budget");
     openapiFields.add("budgetRemaining");
     openapiFields.add("budgetSpent");
-    openapiFields.add("buyType");
     openapiFields.add("campaignId");
+    openapiFields.add("conquestingAdstrategyEnabled");
     openapiFields.add("createdAt");
     openapiFields.add("dailyPacing");
+    openapiFields.add("defensiveAdstrategyEnabled");
     openapiFields.add("endDate");
-    openapiFields.add("externalLineItemId");
     openapiFields.add("flightSchedule");
     openapiFields.add("isAutoDailyPacing");
     openapiFields.add("maxBid");
     openapiFields.add("monthlyPacing");
     openapiFields.add("name");
+    openapiFields.add("neutralAdstrategyEnabled");
     openapiFields.add("startDate");
     openapiFields.add("status");
     openapiFields.add("targetBid");
@@ -855,7 +835,6 @@ public class SponsoredProductsLineItem {
     openapiRequiredFields.add("budgetRemaining");
     openapiRequiredFields.add("campaignId");
     openapiRequiredFields.add("createdAt");
-    openapiRequiredFields.add("externalLineItemId");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("targetRetailerId");
@@ -891,9 +870,6 @@ public class SponsoredProductsLineItem {
       }
       if ((jsonObj.get("bidStrategy") != null && !jsonObj.get("bidStrategy").isJsonNull()) && !jsonObj.get("bidStrategy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bidStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bidStrategy").toString()));
-      }
-      if ((jsonObj.get("buyType") != null && !jsonObj.get("buyType").isJsonNull()) && !jsonObj.get("buyType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `buyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buyType").toString()));
       }
       if (!jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));

@@ -49,7 +49,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2024_07.JSON;
 
 /**
- * A class implementing the response of the Criteo API as described in API Guild Guidelines with a single entity as body
+ * A top-level object that encapsulates a Criteo API response for a single entity
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AssetResponse {

@@ -12,17 +12,18 @@ A model representing a Sponsored Products Line Item.
 |**budget** | **Double** |  |  [optional] |
 |**budgetRemaining** | **Double** |  |  |
 |**budgetSpent** | **Double** |  |  [optional] |
-|**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) |  |  [optional] |
 |**campaignId** | **String** |  |  |
+|**conquestingAdstrategyEnabled** | **Boolean** |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**dailyPacing** | **Double** |  |  [optional] |
+|**defensiveAdstrategyEnabled** | **Boolean** |  |  [optional] |
 |**endDate** | **OffsetDateTime** |  |  [optional] |
-|**externalLineItemId** | **Long** |  |  |
 |**flightSchedule** | [**FlightSchedule**](FlightSchedule.md) |  |  [optional] |
 |**isAutoDailyPacing** | **Boolean** |  |  [optional] |
 |**maxBid** | **Double** |  |  [optional] |
 |**monthlyPacing** | **Double** |  |  [optional] |
 |**name** | **String** |  |  |
+|**neutralAdstrategyEnabled** | **Boolean** |  |  [optional] |
 |**startDate** | **OffsetDateTime** |  |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Status of a line item. |  [optional] |
 |**targetBid** | **Double** |  |  [optional] |
@@ -39,16 +40,6 @@ A model representing a Sponsored Products Line Item.
 | CONVERSION | &quot;Conversion&quot; |
 | CLICKS | &quot;Clicks&quot; |
 | REVENUE | &quot;Revenue&quot; |
-
-
-
-## Enum: BuyTypeEnum
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
-| AUCTION | &quot;Auction&quot; |
-| PREFERRED | &quot;Preferred&quot; |
 
 
 

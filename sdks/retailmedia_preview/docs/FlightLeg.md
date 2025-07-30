@@ -9,8 +9,8 @@ A leg of a flight schedule outlining which days and times the line item will run
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**dayOfWeek** | [**DayOfWeekEnum**](#DayOfWeekEnum) | Enum for the days of the week. |  |
-|**endTime** | **OffsetDateTime** |  |  |
-|**startTime** | **OffsetDateTime** |  |  |
+|**endTime** | **String** |  |  |
+|**startTime** | **String** |  |  |
 
 
 
@@ -18,16 +18,16 @@ A leg of a flight schedule outlining which days and times the line item will run
 
 | Name | Value |
 |---- | -----|
-| SUNDAY | &quot;Sunday&quot; |
-| MONDAY | &quot;Monday&quot; |
-| TUESDAY | &quot;Tuesday&quot; |
-| WEDNESDAY | &quot;Wednesday&quot; |
-| THURSDAY | &quot;Thursday&quot; |
-| FRIDAY | &quot;Friday&quot; |
-| SATURDAY | &quot;Saturday&quot; |
-| EVERYDAY | &quot;Everyday&quot; |
-| WEEKDAYS | &quot;Weekdays&quot; |
-| WEEKENDS | &quot;Weekends&quot; |
+| SUNDAY | &quot;sunday&quot; |
+| MONDAY | &quot;monday&quot; |
+| TUESDAY | &quot;tuesday&quot; |
+| WEDNESDAY | &quot;wednesday&quot; |
+| THURSDAY | &quot;thursday&quot; |
+| FRIDAY | &quot;friday&quot; |
+| SATURDAY | &quot;saturday&quot; |
+| EVERYDAY | &quot;everyday&quot; |
+| WEEKDAYS | &quot;weekdays&quot; |
+| WEEKENDS | &quot;weekends&quot; |
 
 
 

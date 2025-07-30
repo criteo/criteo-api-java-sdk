@@ -4162,7 +4162,7 @@ public class CampaignApi {
     }
     /**
      * Build call for getCampaignBudgetOverrides
-     * @param campaignId External campaign id. (required)
+     * @param campaignId Campaign id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4230,8 +4230,8 @@ public class CampaignApi {
 
     /**
      * 
-     * Get current campaign budget overrides by given external campaign id.
-     * @param campaignId External campaign id. (required)
+     * Get current campaign budget overrides by given campaign id.
+     * @param campaignId Campaign id. (required)
      * @return ValueResourceOutcomeOfCampaignBudgetOverrides
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4247,8 +4247,8 @@ public class CampaignApi {
 
     /**
      * 
-     * Get current campaign budget overrides by given external campaign id.
-     * @param campaignId External campaign id. (required)
+     * Get current campaign budget overrides by given campaign id.
+     * @param campaignId Campaign id. (required)
      * @return ApiResponse&lt;ValueResourceOutcomeOfCampaignBudgetOverrides&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4265,8 +4265,8 @@ public class CampaignApi {
 
     /**
      *  (asynchronously)
-     * Get current campaign budget overrides by given external campaign id.
-     * @param campaignId External campaign id. (required)
+     * Get current campaign budget overrides by given campaign id.
+     * @param campaignId Campaign id. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4408,7 +4408,7 @@ public class CampaignApi {
     }
     /**
      * Build call for getRecommendedKeywords
-     * @param externalLineItemId The external line item identifier (required)
+     * @param externalLineItemId The line item identifier (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4477,7 +4477,7 @@ public class CampaignApi {
     /**
      * 
      * Retrieves a collection of recommended keywords for a line item
-     * @param externalLineItemId The external line item identifier (required)
+     * @param externalLineItemId The line item identifier (required)
      * @return ValueResourceOutcomeOfRecommendedKeywordsResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4494,7 +4494,7 @@ public class CampaignApi {
     /**
      * 
      * Retrieves a collection of recommended keywords for a line item
-     * @param externalLineItemId The external line item identifier (required)
+     * @param externalLineItemId The line item identifier (required)
      * @return ApiResponse&lt;ValueResourceOutcomeOfRecommendedKeywordsResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4512,7 +4512,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Retrieves a collection of recommended keywords for a line item
-     * @param externalLineItemId The external line item identifier (required)
+     * @param externalLineItemId The line item identifier (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -8224,7 +8224,7 @@ public class CampaignApi {
     }
     /**
      * Build call for updateCampaignBudgetOverrides
-     * @param campaignId External campaign id. (required)
+     * @param campaignId Campaign id. (required)
      * @param valueResourceInputOfCampaignBudgetOverrides New campaign budget overrides settings value resource input. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -8297,8 +8297,8 @@ public class CampaignApi {
 
     /**
      * 
-     * Update campaign budget overrides by given external campaign id and new campaign budget overrides settings.
-     * @param campaignId External campaign id. (required)
+     * Update campaign budget overrides by given campaign id and new campaign budget overrides settings.
+     * @param campaignId Campaign id. (required)
      * @param valueResourceInputOfCampaignBudgetOverrides New campaign budget overrides settings value resource input. (optional)
      * @return ValueResourceOutcomeOfCampaignBudgetOverrides
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -8315,8 +8315,8 @@ public class CampaignApi {
 
     /**
      * 
-     * Update campaign budget overrides by given external campaign id and new campaign budget overrides settings.
-     * @param campaignId External campaign id. (required)
+     * Update campaign budget overrides by given campaign id and new campaign budget overrides settings.
+     * @param campaignId Campaign id. (required)
      * @param valueResourceInputOfCampaignBudgetOverrides New campaign budget overrides settings value resource input. (optional)
      * @return ApiResponse&lt;ValueResourceOutcomeOfCampaignBudgetOverrides&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -8334,8 +8334,8 @@ public class CampaignApi {
 
     /**
      *  (asynchronously)
-     * Update campaign budget overrides by given external campaign id and new campaign budget overrides settings.
-     * @param campaignId External campaign id. (required)
+     * Update campaign budget overrides by given campaign id and new campaign budget overrides settings.
+     * @param campaignId Campaign id. (required)
      * @param valueResourceInputOfCampaignBudgetOverrides New campaign budget overrides settings value resource input. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -8355,7 +8355,7 @@ public class CampaignApi {
     }
     /**
      * Build call for updateLineItemBudgetOverrides
-     * @param lineItemId Line item external id. (required)
+     * @param lineItemId Line item id. (required)
      * @param valueResourceInputOfLineItemBudgetOverrides New line item budget overrides settings value resource input. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -8428,8 +8428,8 @@ public class CampaignApi {
 
     /**
      * 
-     * Update line item budget overrides by given external line item id and new line item budget overrides settings.
-     * @param lineItemId Line item external id. (required)
+     * Update line item budget overrides by given line item id and new line item budget overrides settings.
+     * @param lineItemId Line item id. (required)
      * @param valueResourceInputOfLineItemBudgetOverrides New line item budget overrides settings value resource input. (optional)
      * @return ValueResourceOutcomeOfLineItemBudgetOverrides
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -8446,8 +8446,8 @@ public class CampaignApi {
 
     /**
      * 
-     * Update line item budget overrides by given external line item id and new line item budget overrides settings.
-     * @param lineItemId Line item external id. (required)
+     * Update line item budget overrides by given line item id and new line item budget overrides settings.
+     * @param lineItemId Line item id. (required)
      * @param valueResourceInputOfLineItemBudgetOverrides New line item budget overrides settings value resource input. (optional)
      * @return ApiResponse&lt;ValueResourceOutcomeOfLineItemBudgetOverrides&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -8465,8 +8465,8 @@ public class CampaignApi {
 
     /**
      *  (asynchronously)
-     * Update line item budget overrides by given external line item id and new line item budget overrides settings.
-     * @param lineItemId Line item external id. (required)
+     * Update line item budget overrides by given line item id and new line item budget overrides settings.
+     * @param lineItemId Line item id. (required)
      * @param valueResourceInputOfLineItemBudgetOverrides New line item budget overrides settings value resource input. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

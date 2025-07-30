@@ -29,6 +29,7 @@ Async Revenue report body request
 |**skuRelations** | [**List&lt;SkuRelationsEnum&gt;**](#List&lt;SkuRelationsEnum&gt;) | Filter on sku relations: Same SKU, Same Parent SKU, Same Category, Same Brand or Same Seller |  [optional] |
 |**soldBy** | [**SoldByEnum**](#SoldByEnum) | Filter on the seller: Indirect Sold, Direct Sold or Private Market |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date |  |
+|**targetedKeywordTypes** | [**List&lt;TargetedKeywordTypesEnum&gt;**](#List&lt;TargetedKeywordTypesEnum&gt;) | Filter on targeted keyword type: unknown, generic, branded, conquesting |  [optional] |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 |**viewMatchLevel** | [**ViewMatchLevelEnum**](#ViewMatchLevelEnum) | View Match Level: Campaign, Same SKU, Same Category or Same Brand |  [optional] |
@@ -146,6 +147,7 @@ Async Revenue report body request
 | TAXONOMY6NAME | &quot;taxonomy6Name&quot; |
 | TAXONOMY7ID | &quot;taxonomy7Id&quot; |
 | TAXONOMY7NAME | &quot;taxonomy7Name&quot; |
+| TARGETEDKEYWORDTYPE | &quot;targetedKeywordType&quot; |
 
 
 
@@ -261,6 +263,17 @@ Async Revenue report body request
 | DIRECTSOLD | &quot;directSold&quot; |
 | INDIRECTSOLD | &quot;indirectSold&quot; |
 | PRIVATEMARKET | &quot;privateMarket&quot; |
+
+
+
+## Enum: List&lt;TargetedKeywordTypesEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| GENERIC | &quot;generic&quot; |
+| BRANDED | &quot;branded&quot; |
+| CONQUESTING | &quot;conquesting&quot; |
 
 
 

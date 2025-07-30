@@ -38,11 +38,11 @@ import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeB
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeCategory202204;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeCategory202204Metadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata;
+import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfCatalogStatusV2;
 import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfSponsoredProductsLineItem;
 import com.criteo.api.retailmedia.preview.model.KeywordsModelResponse;
 import com.criteo.api.retailmedia.preview.model.Outcome;
-import com.criteo.api.retailmedia.preview.model.PageOfSponsoredProductsLineItem;
 import com.criteo.api.retailmedia.preview.model.PlacementPreviewListResponse;
 import com.criteo.api.retailmedia.preview.model.PreferredLineItemCreateModelV2Request;
 import com.criteo.api.retailmedia.preview.model.PreferredLineItemUpdateModelV2Request;
@@ -63,11 +63,11 @@ import com.criteo.api.retailmedia.preview.model.SkuSearchRequestSlimPreviewReque
 import com.criteo.api.retailmedia.preview.model.SkuSearchRequestSlimV2PreviewRequest;
 import com.criteo.api.retailmedia.preview.model.SkuSlimDataPreviewListResponse;
 import com.criteo.api.retailmedia.preview.model.SkuSlimDataV2ListResponse;
-import com.criteo.api.retailmedia.preview.model.SponsoredProductsLineItemCreateRequestModel;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputBrandIdSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputCategoriesSearchRequestV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfBrandCatalogRequestV2;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSellerCatalogRequestV2;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputRecommendedCategoriesRequestV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputRecommendedKeywordsRequestV1;
@@ -545,17 +545,17 @@ public class CampaignApi {
     /**
      * Build call for createAuctionLineItemV2
      * @param campaignId The given campaign id (required)
-     * @param sponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAuctionLineItemV2Call(String campaignId, SponsoredProductsLineItemCreateRequestModel sponsoredProductsLineItemCreateRequestModel, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAuctionLineItemV2Call(String campaignId, ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel valueResourceInputOfSponsoredProductsLineItemCreateRequestModel, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -569,7 +569,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = sponsoredProductsLineItemCreateRequestModel;
+        Object localVarPostBody = valueResourceInputOfSponsoredProductsLineItemCreateRequestModel;
 
         // create path and map variables
         String localVarPath = "/preview/retail-media/campaigns/{campaignId}/auction-line-items"
@@ -605,13 +605,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAuctionLineItemV2ValidateBeforeCall(String campaignId, SponsoredProductsLineItemCreateRequestModel sponsoredProductsLineItemCreateRequestModel, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAuctionLineItemV2ValidateBeforeCall(String campaignId, ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel valueResourceInputOfSponsoredProductsLineItemCreateRequestModel, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling createAuctionLineItemV2(Async)");
         }
 
-        return createAuctionLineItemV2Call(campaignId, sponsoredProductsLineItemCreateRequestModel, _callback);
+        return createAuctionLineItemV2Call(campaignId, valueResourceInputOfSponsoredProductsLineItemCreateRequestModel, _callback);
 
     }
 
@@ -619,17 +619,17 @@ public class CampaignApi {
      * 
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
-     * @param sponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
      * @return EntityResourceOutcomeOfSponsoredProductsLineItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceOutcomeOfSponsoredProductsLineItem createAuctionLineItemV2(String campaignId, SponsoredProductsLineItemCreateRequestModel sponsoredProductsLineItemCreateRequestModel) throws ApiException {
-        ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> localVarResp = createAuctionLineItemV2WithHttpInfo(campaignId, sponsoredProductsLineItemCreateRequestModel);
+    public EntityResourceOutcomeOfSponsoredProductsLineItem createAuctionLineItemV2(String campaignId, ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel valueResourceInputOfSponsoredProductsLineItemCreateRequestModel) throws ApiException {
+        ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> localVarResp = createAuctionLineItemV2WithHttpInfo(campaignId, valueResourceInputOfSponsoredProductsLineItemCreateRequestModel);
         return localVarResp.getData();
     }
 
@@ -637,17 +637,17 @@ public class CampaignApi {
      * 
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
-     * @param sponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
      * @return ApiResponse&lt;EntityResourceOutcomeOfSponsoredProductsLineItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> createAuctionLineItemV2WithHttpInfo(String campaignId, SponsoredProductsLineItemCreateRequestModel sponsoredProductsLineItemCreateRequestModel) throws ApiException {
-        okhttp3.Call localVarCall = createAuctionLineItemV2ValidateBeforeCall(campaignId, sponsoredProductsLineItemCreateRequestModel, null);
+    public ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> createAuctionLineItemV2WithHttpInfo(String campaignId, ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel valueResourceInputOfSponsoredProductsLineItemCreateRequestModel) throws ApiException {
+        okhttp3.Call localVarCall = createAuctionLineItemV2ValidateBeforeCall(campaignId, valueResourceInputOfSponsoredProductsLineItemCreateRequestModel, null);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfSponsoredProductsLineItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -656,19 +656,19 @@ public class CampaignApi {
      *  (asynchronously)
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
-     * @param sponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAuctionLineItemV2Async(String campaignId, SponsoredProductsLineItemCreateRequestModel sponsoredProductsLineItemCreateRequestModel, final ApiCallback<EntityResourceOutcomeOfSponsoredProductsLineItem> _callback) throws ApiException {
+    public okhttp3.Call createAuctionLineItemV2Async(String campaignId, ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel valueResourceInputOfSponsoredProductsLineItemCreateRequestModel, final ApiCallback<EntityResourceOutcomeOfSponsoredProductsLineItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAuctionLineItemV2ValidateBeforeCall(campaignId, sponsoredProductsLineItemCreateRequestModel, _callback);
+        okhttp3.Call localVarCall = createAuctionLineItemV2ValidateBeforeCall(campaignId, valueResourceInputOfSponsoredProductsLineItemCreateRequestModel, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfSponsoredProductsLineItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2559,7 +2559,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAuctionLineItemV2Call(String lineItemId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAuctionLineItemV2Call(Long lineItemId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2605,7 +2605,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAuctionLineItemV2ValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAuctionLineItemV2ValidateBeforeCall(Long lineItemId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling getAuctionLineItemV2(Async)");
@@ -2627,7 +2627,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceOutcomeOfSponsoredProductsLineItem getAuctionLineItemV2(String lineItemId) throws ApiException {
+    public EntityResourceOutcomeOfSponsoredProductsLineItem getAuctionLineItemV2(Long lineItemId) throws ApiException {
         ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> localVarResp = getAuctionLineItemV2WithHttpInfo(lineItemId);
         return localVarResp.getData();
     }
@@ -2644,7 +2644,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> getAuctionLineItemV2WithHttpInfo(String lineItemId) throws ApiException {
+    public ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> getAuctionLineItemV2WithHttpInfo(Long lineItemId) throws ApiException {
         okhttp3.Call localVarCall = getAuctionLineItemV2ValidateBeforeCall(lineItemId, null);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfSponsoredProductsLineItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2663,7 +2663,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAuctionLineItemV2Async(String lineItemId, final ApiCallback<EntityResourceOutcomeOfSponsoredProductsLineItem> _callback) throws ApiException {
+    public okhttp3.Call getAuctionLineItemV2Async(Long lineItemId, final ApiCallback<EntityResourceOutcomeOfSponsoredProductsLineItem> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAuctionLineItemV2ValidateBeforeCall(lineItemId, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfSponsoredProductsLineItem>(){}.getType();
@@ -2760,7 +2760,7 @@ public class CampaignApi {
      * @param limitToId The ids that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @return PageOfSponsoredProductsLineItem
+     * @return EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2768,8 +2768,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public PageOfSponsoredProductsLineItem getAuctionLineItemsByCampaignIdV2(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        ApiResponse<PageOfSponsoredProductsLineItem> localVarResp = getAuctionLineItemsByCampaignIdV2WithHttpInfo(campaignId, limitToId, pageIndex, pageSize);
+    public EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata getAuctionLineItemsByCampaignIdV2(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata> localVarResp = getAuctionLineItemsByCampaignIdV2WithHttpInfo(campaignId, limitToId, pageIndex, pageSize);
         return localVarResp.getData();
     }
 
@@ -2780,7 +2780,7 @@ public class CampaignApi {
      * @param limitToId The ids that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @return ApiResponse&lt;PageOfSponsoredProductsLineItem&gt;
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2788,9 +2788,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PageOfSponsoredProductsLineItem> getAuctionLineItemsByCampaignIdV2WithHttpInfo(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+    public ApiResponse<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata> getAuctionLineItemsByCampaignIdV2WithHttpInfo(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = getAuctionLineItemsByCampaignIdV2ValidateBeforeCall(campaignId, limitToId, pageIndex, pageSize, null);
-        Type localVarReturnType = new TypeToken<PageOfSponsoredProductsLineItem>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2810,10 +2810,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAuctionLineItemsByCampaignIdV2Async(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<PageOfSponsoredProductsLineItem> _callback) throws ApiException {
+    public okhttp3.Call getAuctionLineItemsByCampaignIdV2Async(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAuctionLineItemsByCampaignIdV2ValidateBeforeCall(campaignId, limitToId, pageIndex, pageSize, _callback);
-        Type localVarReturnType = new TypeToken<PageOfSponsoredProductsLineItem>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

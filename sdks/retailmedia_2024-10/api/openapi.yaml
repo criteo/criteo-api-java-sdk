@@ -2159,11 +2159,10 @@ paths:
       x-accepts: application/json
   /2024-10/retail-media/campaigns/{campaignId}/campaign-budget-overrides:
     get:
-      description: Get current campaign budget overrides by given external campaign
-        id.
+      description: Get current campaign budget overrides by given campaign id.
       operationId: GetCampaignBudgetOverrides
       parameters:
-      - description: External campaign id.
+      - description: Campaign id.
         explode: false
         in: path
         name: campaignId
@@ -2183,11 +2182,11 @@ paths:
       - Campaign
       x-accepts: application/json
     put:
-      description: Update campaign budget overrides by given external campaign id
-        and new campaign budget overrides settings.
+      description: Update campaign budget overrides by given campaign id and new campaign
+        budget overrides settings.
       operationId: UpdateCampaignBudgetOverrides
       parameters:
-      - description: External campaign id.
+      - description: Campaign id.
         explode: false
         in: path
         name: campaignId
@@ -2813,11 +2812,11 @@ paths:
       - Campaign
       x-accepts: application/json
     put:
-      description: Update line item budget overrides by given external line item id
-        and new line item budget overrides settings.
+      description: Update line item budget overrides by given line item id and new
+        line item budget overrides settings.
       operationId: UpdateLineItemBudgetOverrides
       parameters:
-      - description: Line item external id.
+      - description: Line item id.
         explode: false
         in: path
         name: lineItemId
@@ -4105,7 +4104,6 @@ components:
       example:
         fileExtension: fileExtension
         fileLocation: fileLocation
-        id: id
       nullable: true
       properties:
         fileExtension:
@@ -4116,19 +4114,19 @@ components:
           description: A url pointing towards the static file the asset represents.
           nullable: true
           type: string
-        id:
-          nullable: true
-          type: string
       required:
       - fileExtension
       type: object
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAsset
+        version: "202110"
     AssetResource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           fileExtension: fileExtension
           fileLocation: fileLocation
-          id: id
         id: id
         type: type
       nullable: true
@@ -4143,14 +4141,13 @@ components:
           type: string
       type: object
     AssetResponse:
-      description: A class implementing the response of the Criteo API as described
-        in API Guild Guidelines with a single entity as body
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity
       example:
         data:
           attributes:
             fileExtension: fileExtension
             fileLocation: fileLocation
-            id: id
           id: id
           type: type
         warnings:
@@ -4204,14 +4201,12 @@ components:
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AsyncCampaignsReport:
       description: Async Campaigns report body request
@@ -4910,19 +4905,10 @@ components:
         advertiserTypes:
         - retailer
         - retailer
-        campaignType: all
-        clickAttributionWindow: none
         endDate: 2000-01-23T04:56:07.000+00:00
-        lineItemIds:
-        - lineItemIds
-        - lineItemIds
         timezone: UTC
         soldBy: directSold
-        format: json
         revenueType: auction
-        skuRelations:
-        - sameSku
-        - sameSku
         retailerIds:
         - retailerIds
         - retailerIds
@@ -4932,8 +4918,21 @@ components:
         accountIds:
         - accountIds
         - accountIds
-        clickMatchLevel: campaign
         viewAttributionWindow: none
+        id: id
+        campaignType: all
+        clickAttributionWindow: none
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        format: json
+        skuRelations:
+        - sameSku
+        - sameSku
+        targetedKeywordTypes:
+        - unknown
+        - unknown
+        clickMatchLevel: campaign
         ids:
         - ids
         - ids
@@ -4941,7 +4940,6 @@ components:
         campaignIds:
         - campaignIds
         - campaignIds
-        id: id
         metrics:
         - numberOfCampaigns
         - numberOfCampaigns
@@ -5063,6 +5061,7 @@ components:
             - taxonomy6Name
             - taxonomy7Id
             - taxonomy7Name
+            - targetedKeywordType
             type: string
           type: array
         endDate:
@@ -5194,6 +5193,17 @@ components:
           description: Start date
           format: date-time
           type: string
+        targetedKeywordTypes:
+          description: "Filter on targeted keyword type: unknown, generic, branded,\
+            \ conquesting"
+          items:
+            enum:
+            - unknown
+            - generic
+            - branded
+            - conquesting
+            type: string
+          type: array
         timezone:
           default: UTC
           description: "Time zone : see criteo developer portal for supported time\
@@ -5232,19 +5242,10 @@ components:
             advertiserTypes:
             - retailer
             - retailer
-            campaignType: all
-            clickAttributionWindow: none
             endDate: 2000-01-23T04:56:07.000+00:00
-            lineItemIds:
-            - lineItemIds
-            - lineItemIds
             timezone: UTC
             soldBy: directSold
-            format: json
             revenueType: auction
-            skuRelations:
-            - sameSku
-            - sameSku
             retailerIds:
             - retailerIds
             - retailerIds
@@ -5254,8 +5255,21 @@ components:
             accountIds:
             - accountIds
             - accountIds
-            clickMatchLevel: campaign
             viewAttributionWindow: none
+            id: id
+            campaignType: all
+            clickAttributionWindow: none
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            format: json
+            skuRelations:
+            - sameSku
+            - sameSku
+            targetedKeywordTypes:
+            - unknown
+            - unknown
+            clickMatchLevel: campaign
             ids:
             - ids
             - ids
@@ -5263,7 +5277,6 @@ components:
             campaignIds:
             - campaignIds
             - campaignIds
-            id: id
             metrics:
             - numberOfCampaigns
             - numberOfCampaigns
@@ -5284,19 +5297,10 @@ components:
           advertiserTypes:
           - retailer
           - retailer
-          campaignType: all
-          clickAttributionWindow: none
           endDate: 2000-01-23T04:56:07.000+00:00
-          lineItemIds:
-          - lineItemIds
-          - lineItemIds
           timezone: UTC
           soldBy: directSold
-          format: json
           revenueType: auction
-          skuRelations:
-          - sameSku
-          - sameSku
           retailerIds:
           - retailerIds
           - retailerIds
@@ -5306,8 +5310,21 @@ components:
           accountIds:
           - accountIds
           - accountIds
-          clickMatchLevel: campaign
           viewAttributionWindow: none
+          id: id
+          campaignType: all
+          clickAttributionWindow: none
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          format: json
+          skuRelations:
+          - sameSku
+          - sameSku
+          targetedKeywordTypes:
+          - unknown
+          - unknown
+          clickMatchLevel: campaign
           ids:
           - ids
           - ids
@@ -5315,7 +5332,6 @@ components:
           campaignIds:
           - campaignIds
           - campaignIds
-          id: id
           metrics:
           - numberOfCampaigns
           - numberOfCampaigns
@@ -14674,6 +14690,9 @@ components:
           - Buy
           - AddToCart
           type: string
+      required:
+      - lookbackDays
+      - shopperActivity
       type: object
     RmEventsUpdateV1:
       description: Settings to target users based on their behavior

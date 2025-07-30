@@ -261,7 +261,7 @@ public class RmEventsCreateV1 {
    * Number of days of the lookback windows
    * @return lookbackDays
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public LookbackDaysEnum getLookbackDays() {
     return lookbackDays;
@@ -327,7 +327,7 @@ public class RmEventsCreateV1 {
    * Types of shopper activity.
    * @return shopperActivity
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public ShopperActivityEnum getShopperActivity() {
     return shopperActivity;
@@ -449,6 +449,8 @@ public class RmEventsCreateV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("lookbackDays");
+    openapiRequiredFields.add("shopperActivity");
   }
 
  /**
@@ -463,6 +465,13 @@ public class RmEventsCreateV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RmEventsCreateV1 is not found in the empty JSON string", RmEventsCreateV1.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : RmEventsCreateV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
@@ -471,10 +480,10 @@ public class RmEventsCreateV1 {
       if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `categoryIds` to be an array in the JSON string but got `%s`", jsonObj.get("categoryIds").toString()));
       }
-      if ((jsonObj.get("lookbackDays") != null && !jsonObj.get("lookbackDays").isJsonNull()) && !jsonObj.get("lookbackDays").isJsonPrimitive()) {
+      if (!jsonObj.get("lookbackDays").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lookbackDays` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lookbackDays").toString()));
       }
-      if ((jsonObj.get("shopperActivity") != null && !jsonObj.get("shopperActivity").isJsonNull()) && !jsonObj.get("shopperActivity").isJsonPrimitive()) {
+      if (!jsonObj.get("shopperActivity").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `shopperActivity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shopperActivity").toString()));
       }
   }

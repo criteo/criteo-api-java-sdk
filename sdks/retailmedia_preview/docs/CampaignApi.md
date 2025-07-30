@@ -333,7 +333,7 @@ public class Example {
 
 ## createAuctionLineItemV2
 
-> EntityResourceOutcomeOfSponsoredProductsLineItem createAuctionLineItemV2(campaignId, sponsoredProductsLineItemCreateRequestModel)
+> EntityResourceOutcomeOfSponsoredProductsLineItem createAuctionLineItemV2(campaignId, valueResourceInputOfSponsoredProductsLineItemCreateRequestModel)
 
 
 
@@ -379,9 +379,9 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String campaignId = "campaignId_example"; // String | The given campaign id
-        SponsoredProductsLineItemCreateRequestModel sponsoredProductsLineItemCreateRequestModel = new SponsoredProductsLineItemCreateRequestModel(); // SponsoredProductsLineItemCreateRequestModel | The line item settings to create a line item with
+        ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel valueResourceInputOfSponsoredProductsLineItemCreateRequestModel = new ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel(); // ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel | The line item settings to create a line item with
         try {
-            EntityResourceOutcomeOfSponsoredProductsLineItem result = apiInstance.createAuctionLineItemV2(campaignId, sponsoredProductsLineItemCreateRequestModel);
+            EntityResourceOutcomeOfSponsoredProductsLineItem result = apiInstance.createAuctionLineItemV2(campaignId, valueResourceInputOfSponsoredProductsLineItemCreateRequestModel);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#createAuctionLineItemV2");
@@ -400,7 +400,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **campaignId** | **String**| The given campaign id | |
-| **sponsoredProductsLineItemCreateRequestModel** | [**SponsoredProductsLineItemCreateRequestModel**](SponsoredProductsLineItemCreateRequestModel.md)| The line item settings to create a line item with | [optional] |
+| **valueResourceInputOfSponsoredProductsLineItemCreateRequestModel** | [**ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel**](ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.md)| The line item settings to create a line item with | [optional] |
 
 ### Return type
 
@@ -419,7 +419,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Success |  -  |
+| **200** | Success |  -  |
 
 
 ## deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
@@ -1751,7 +1751,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The id of the line item
+        Long lineItemId = 56L; // Long | The id of the line item
         try {
             EntityResourceOutcomeOfSponsoredProductsLineItem result = apiInstance.getAuctionLineItemV2(lineItemId);
             System.out.println(result);
@@ -1771,7 +1771,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The id of the line item | |
+| **lineItemId** | **Long**| The id of the line item | |
 
 ### Return type
 
@@ -1795,7 +1795,7 @@ public class Example {
 
 ## getAuctionLineItemsByCampaignIdV2
 
-> PageOfSponsoredProductsLineItem getAuctionLineItemsByCampaignIdV2(campaignId, limitToId, pageIndex, pageSize)
+> EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata getAuctionLineItemsByCampaignIdV2(campaignId, limitToId, pageIndex, pageSize)
 
 
 
@@ -1845,7 +1845,7 @@ public class Example {
         Integer pageIndex = 0; // Integer | The 0 indexed page index you would like to receive given the page size
         Integer pageSize = 25; // Integer | The maximum number of items you would like to receive in this request
         try {
-            PageOfSponsoredProductsLineItem result = apiInstance.getAuctionLineItemsByCampaignIdV2(campaignId, limitToId, pageIndex, pageSize);
+            EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata result = apiInstance.getAuctionLineItemsByCampaignIdV2(campaignId, limitToId, pageIndex, pageSize);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getAuctionLineItemsByCampaignIdV2");
@@ -1870,7 +1870,7 @@ public class Example {
 
 ### Return type
 
-[**PageOfSponsoredProductsLineItem**](PageOfSponsoredProductsLineItem.md)
+[**EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata**](EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.md)
 
 ### Authorization
 
