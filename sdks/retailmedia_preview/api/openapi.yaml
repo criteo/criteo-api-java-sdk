@@ -60,6 +60,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Accounts_Read
       tags:
       - Accounts
       x-accepts: application/json
@@ -126,6 +129,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -182,6 +188,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Read
       tags:
       - Audience
       x-accepts: application/json
@@ -247,6 +256,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -314,6 +326,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -379,6 +394,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -445,6 +463,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -534,6 +555,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Read
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -601,6 +625,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -667,6 +694,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -734,6 +764,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -805,6 +838,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -871,6 +907,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -960,6 +999,9 @@ paths:
             application/json: {}
             text/json: {}
           description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - RetailMedia_Audience_Read
       tags:
       - Audience
       x-content-type: application/json-patch+json
@@ -1022,6 +1064,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedResourceCollectionOutcomeOfBalanceResponseV2'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Balance_Read
       tags:
       - Balance
       x-accepts: application/json
@@ -1059,6 +1104,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/BalanceResponseV2Response'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Balance_Manage
       tags:
       - Balance
       x-content-type: application/json
@@ -1097,6 +1145,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/BalanceResponseV2Response'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Balance_Read
       tags:
       - Balance
       x-accepts: application/json
@@ -1141,6 +1192,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/BalanceResponseV2Response'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Balance_Manage
       tags:
       - Balance
       x-content-type: application/json
@@ -1188,6 +1242,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/BalanceResponseV2Response'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Balance_Manage
       tags:
       - Balance
       x-content-type: application/json
@@ -1225,6 +1282,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Creative2Response'
           description: Creatives created
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -1263,6 +1323,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Creative2Response'
           description: Creatives found
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -1308,6 +1371,9 @@ paths:
           description: Success
         "204":
           description: Creative updated
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -1348,6 +1414,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Creative2ListResponse'
           description: Creatives found
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -1403,6 +1472,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -1462,6 +1534,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityResourceOutcomeOfCatalogStatusV2'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -1522,6 +1597,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityResourceOutcomeOfCatalogStatusV2'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -1582,6 +1660,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Bad Request
+      security:
+      - oauth:
+        - RetailMedia_Accounts_Read
       tags:
       - Accounts
       x-content-type: application/json-patch+json
@@ -1640,6 +1721,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Accounts_Manage
       tags:
       - Accounts
       x-content-type: application/json-patch+json
@@ -1665,6 +1749,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityResourceOutcomeOfSponsoredProductsLineItem'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -1704,6 +1791,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityResourceOutcomeOfSponsoredProductsLineItem'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json-patch+json
@@ -1777,6 +1867,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorCodeResponse'
           description: Forbidden
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json
@@ -1816,6 +1909,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorCodeResponse'
           description: Forbidden
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
       x-accepts: application/json
@@ -1871,6 +1967,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/PageOfBalanceHistoryChangeDataCaptureV1'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Balance_Read
       tags:
       - Balance
       x-accepts: application/json
@@ -1920,6 +2019,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Billing_Read
       tags:
       - Billing
       x-content-type: application/json
@@ -1957,6 +2059,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Billing_Read
       tags:
       - Billing
       x-accepts: application/json
@@ -1997,6 +2102,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Billing_Read
       tags:
       - Billing
       x-accepts: application/json
@@ -2058,6 +2166,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-content-type: application/json-patch+json
@@ -2119,6 +2230,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/PreferredLineItemV2PagedListResponse'
           description: Bad Request
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -2155,6 +2269,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/PreferredLineItemV2Response'
           description: Bad Request
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -2215,6 +2332,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -2253,6 +2373,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityResourceOutcomeOfSponsoredProductsLineItem'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json-patch+json
@@ -2325,6 +2448,9 @@ paths:
                 $ref: '#/components/schemas/FailResponse'
           description: "Service Unavailable. Allowed error types and errors: [(type=\"\
             availability\", code=\"service-unavailable\")]"
+      security:
+      - oauth:
+        - RetailMedia_Catalog_Manage
       tags:
       - Catalog
       x-content-type: application/json
@@ -2395,6 +2521,9 @@ paths:
                 $ref: '#/components/schemas/FailResponse'
           description: "Service Unavailable. Allowed error types and errors: [(type=\"\
             availability\", code=\"service-unavailable\")]"
+      security:
+      - oauth:
+        - RetailMedia_Catalog_Read
       tags:
       - Catalog
       x-accepts: application/json
@@ -2448,6 +2577,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityResourceOutcomeOfCatalogStatusV2'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -2499,6 +2631,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/SkuDataPreviewListResponse'
           description: Skus found.
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-content-type: application/json
@@ -2548,135 +2683,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/SkuDataPreviewListResponse'
           description: Skus found.
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/catalogs/sku-search/accounts/{account-id}/retailers/{retailer-id}:
-    post:
-      description: "Endpoint to search skus by text, account and retailer with an\
-        \ option to filter by brands id's."
-      operationId: SkuSearchApi_PostApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId
-      parameters:
-      - description: The account for which skus should be searched for.
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The maximum number of results to return with each call. Must
-          be greater than zero.
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 100
-          format: int32
-          maximum: 1500.0
-          minimum: 1.0
-          type: integer
-        style: form
-      - description: The start position in the overall list of matches. Must be zero
-          or greater.
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      - description: The client id/retailer id for which skus should be searched for.
-        explode: false
-        in: path
-        name: retailer-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SkuSearchRequestSlimPreviewRequest'
-        description: ""
-        x-bodyName: skuRequest
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SkuSlimDataPreviewListResponse'
-          description: Skus found.
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/catalogs/sku/search/retailers/{retailer-id}:
-    post:
-      description: Endpoint to search skus by text for a retailer with an option to
-        filter by brands id's.
-      operationId: SkuSearchApi_PostApiV1ExternalCatalogsSkuSearchRetailerByRetailerId
-      parameters:
-      - description: "The maximum number of results to return with each call. Must\
-          \ be greater than zero and less than 1500. 10,000 records deep is the max\
-          \ limit."
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 100
-          format: int32
-          maximum: 1500.0
-          minimum: 1.0
-          type: integer
-        style: form
-      - description: The start position in the overall list of matches. Must be zero
-          or greater.
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      - description: The client id/retailer id for which skus should be searched for.
-        explode: false
-        in: path
-        name: retailer-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The account id of the initiator of the call.
-        explode: false
-        in: header
-        name: X-Origin-Account
-        required: false
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SkuSearchRequestSlimV2PreviewRequest'
-        description: ""
-        x-bodyName: skuRequest
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SkuSlimDataV2ListResponse'
-          description: Skus found.
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-content-type: application/json
@@ -2715,6 +2724,9 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
+      security:
+      - oauth:
+        - RetailMedia_OnSiteRecommendation_Read
       tags:
       - OnSiteRecommendation
       x-content-type: application/json
@@ -2745,6 +2757,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResourceOutcome'
           description: Bad Request
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -2779,6 +2794,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResourceOutcome'
           description: Bad Request
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -2815,6 +2833,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResourceOutcome'
           description: Bad Request
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -2863,6 +2884,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ValueResourceOutcomeRetailMediaKeywordsReviewResult'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json-patch+json
@@ -2887,6 +2911,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductButtonListResponse'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -2914,6 +2941,9 @@ paths:
       responses:
         "200":
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-accepts: application/json
@@ -2944,6 +2974,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductButtonListResponse'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -2981,6 +3014,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductButtonListResponse'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -3012,6 +3048,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductButtonListResponse'
           description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -3070,6 +3109,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductResourceOutcome'
           description: Invalid external line item ID
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -3113,6 +3155,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductResourceOutcome'
           description: Invalid external line item ID
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -3151,6 +3196,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductResourceOutcome'
           description: Invalid external line item ID
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -3190,6 +3238,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductResourceOutcome'
           description: Invalid external line item ID
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -3229,6 +3280,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductResourceOutcome'
           description: Invalid external line item ID
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -3248,6 +3302,8 @@ paths:
           content:
             application/json: {}
           description: Not Found
+      security:
+      - oauth: []
       tags:
       - Gateway
       x-accepts: application/json
@@ -3277,6 +3333,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/PreferredLineItemV2Response'
           description: Bad Request
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -3313,6 +3372,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/PreferredLineItemV2Response'
           description: Bad Request
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -3370,6 +3432,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ReportOutcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
       tags:
       - Analytics
       x-accepts: application/json
@@ -3423,6 +3488,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ReportOutcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
       tags:
       - Analytics
       x-accepts: application/json
@@ -3485,6 +3553,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ReportOutcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
       tags:
       - Analytics
       x-content-type: application/json-patch+json
@@ -3548,6 +3619,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ReportOutcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
       tags:
       - Analytics
       x-content-type: application/json-patch+json
@@ -3611,6 +3685,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ReportOutcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
       tags:
       - Analytics
       x-content-type: application/json-patch+json
@@ -3674,6 +3751,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ReportOutcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
       tags:
       - Analytics
       x-content-type: application/json-patch+json
@@ -3737,6 +3817,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ReportOutcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
       tags:
       - Analytics
       x-content-type: application/json-patch+json
@@ -3798,6 +3881,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ReportOutcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
       tags:
       - Analytics
       x-content-type: application/json-patch+json
@@ -3859,6 +3945,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ReportOutcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
       tags:
       - Analytics
       x-content-type: application/json-patch+json
@@ -3920,6 +4009,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ReportOutcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
       tags:
       - Analytics
       x-content-type: application/json-patch+json
@@ -3959,6 +4051,9 @@ paths:
           content:
             application/json: {}
           description: forbidden
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -3986,6 +4081,9 @@ paths:
           content:
             application/json: {}
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -4036,6 +4134,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/BrandPreviewListResponse'
           description: Brands found.
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -4107,6 +4208,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Bad Request
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-content-type: application/json-patch+json
@@ -4161,6 +4265,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Forbidden
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-content-type: application/json-patch+json
@@ -4197,6 +4304,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Bad Request
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-content-type: application/json
@@ -4230,6 +4340,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/SellerPreviewResponse'
           description: Seller found.
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -6358,17 +6471,6 @@ components:
           type: array
       title: BotMessage
       type: object
-    Brand:
-      description: Brand of the product.
-      example:
-        name: name
-      properties:
-        name:
-          description: The name of the brand.
-          maxLength: 120
-          minLength: 0
-          type: string
-      type: object
     BrandCatalogRequestV2:
       description: A request for a catalog under the specified format.
       example:
@@ -6627,18 +6729,6 @@ components:
           type: array
         textSubstring:
           description: Categories search text substring criteria.
-          nullable: true
-          type: string
-      type: object
-    Category:
-      description: Retailer Category.
-      example:
-        text: text
-      properties:
-        text:
-          description: The full category breadcrumb in the retailers catalog.
-          maxLength: 1000
-          minLength: 0
           nullable: true
           type: string
       type: object
@@ -13472,108 +13562,6 @@ components:
           description: Canonical type name of the entity
           type: string
       type: object
-    ResourceOfSkuSearchRequestSlimPreview:
-      description: Data model for a Resource
-      example:
-        attributes:
-          searchString: searchString
-          limitResultsToSkusWithBrandIds:
-          - limitResultsToSkusWithBrandIds
-          - limitResultsToSkusWithBrandIds
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/SkuSearchRequestSlimPreview'
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
-          type: string
-      type: object
-    ResourceOfSkuSearchRequestSlimV2Preview:
-      description: Data model for a Resource
-      example:
-        attributes:
-          searchString: searchString
-          brandId:
-          - brandId
-          - brandId
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/SkuSearchRequestSlimV2Preview'
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
-          type: string
-      type: object
-    ResourceOfSkuSlimDataPreview:
-      description: Data model for a Resource
-      example:
-        attributes:
-          globalBrandName: globalBrandName
-          gtin: gtin
-          globalCategoryId: globalCategoryId
-          retailerBrandName: retailerBrandName
-          mpn: mpn
-          retailerBrandId: retailerBrandId
-          globalBrandId: globalBrandId
-          price: 0.8008281904610115
-          imageUrl: imageUrl
-          name: name
-          isInStock: true
-          category: category
-          categoryId: categoryId
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/SkuSlimDataPreview'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-      type: object
-    ResourceOfSkuSlimDataV2:
-      description: Data model for a Resource
-      example:
-        attributes:
-          gtin: gtin
-          price: 0.8008281904610115
-          imageUrl: imageUrl
-          name: name
-          description: description
-          mpn: mpn
-          isInStock: true
-          category:
-            text: text
-          brand:
-            name: name
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/SkuSlimDataV2'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-      type: object
     ResourceOfUpdateBalanceModelV2:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -17214,413 +17202,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfSkuSearchRequestPreview'
-      type: object
-    SkuSearchRequestSlimPreview:
-      description: A request for sku by search text and brand ids.
-      example:
-        searchString: searchString
-        limitResultsToSkusWithBrandIds:
-        - limitResultsToSkusWithBrandIds
-        - limitResultsToSkusWithBrandIds
-      properties:
-        limitResultsToSkusWithBrandIds:
-          description: A list of brand Id's to limit the search results to
-          items:
-            format: long-id
-            type: string
-          type: array
-        searchString:
-          description: "Query string to search for across SKU's properties (gtin,\
-            \ mpn, feed ID, Title, and Description)"
-          type: string
-      required:
-      - limitResultsToSkusWithBrandIds
-      - searchString
-      type: object
-    SkuSearchRequestSlimPreviewRequest:
-      description: Data model for an input resource
-      example:
-        data:
-          attributes:
-            searchString: searchString
-            limitResultsToSkusWithBrandIds:
-            - limitResultsToSkusWithBrandIds
-            - limitResultsToSkusWithBrandIds
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfSkuSearchRequestSlimPreview'
-      type: object
-    SkuSearchRequestSlimV2Preview:
-      description: A request for sku by search text and brand ids.
-      example:
-        searchString: searchString
-        brandId:
-        - brandId
-        - brandId
-      properties:
-        brandId:
-          description: A list of brand Id's to limit the search results to
-          items:
-            format: long-id
-            type: string
-          type: array
-        searchString:
-          description: "Query string to search for across SKU's properties (gtin,\
-            \ mpn, feed ID, Title, and Description)"
-          type: string
-      required:
-      - searchString
-      type: object
-    SkuSearchRequestSlimV2PreviewRequest:
-      description: Data model for an input resource
-      example:
-        data:
-          attributes:
-            searchString: searchString
-            brandId:
-            - brandId
-            - brandId
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfSkuSearchRequestSlimV2Preview'
-      type: object
-    SkuSlimDataPreview:
-      description: Slim  version of Sku Data model
-      example:
-        globalBrandName: globalBrandName
-        gtin: gtin
-        globalCategoryId: globalCategoryId
-        retailerBrandName: retailerBrandName
-        mpn: mpn
-        retailerBrandId: retailerBrandId
-        globalBrandId: globalBrandId
-        price: 0.8008281904610115
-        imageUrl: imageUrl
-        name: name
-        isInStock: true
-        category: category
-        categoryId: categoryId
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        category:
-          description: The full category breadcrumb in the retailers catalog.
-          maxLength: 1000
-          minLength: 0
-          type: string
-        categoryId:
-          description: The category Id.
-          type: string
-        globalBrandId:
-          description: The global brand id associated to the product.
-          type: string
-        globalBrandName:
-          description: The name of the global brand.
-          maxLength: 120
-          minLength: 0
-          type: string
-        globalCategoryId:
-          description: The global category Id.
-          type: string
-        gtin:
-          description: A GTIN identifier for the product if available. Covers variations
-            such as EANs and UPCs.
-          nullable: true
-          type: string
-        imageUrl:
-          description: An http image resource provided by the retailer.
-          type: string
-        isInStock:
-          description: An indication of if the retailer currently has the product
-            in stock.
-          type: boolean
-        mpn:
-          description: The MPN for the product if available.
-          nullable: true
-          type: string
-        name:
-          description: A short product name.
-          maxLength: 1000
-          minLength: 0
-          type: string
-        price:
-          description: The price of the product on the retailer site. Can be omitted
-            in certain circumstances
-          format: double
-          nullable: true
-          type: number
-        retailerBrandId:
-          description: The retailer brand id associated to the product.
-          type: string
-        retailerBrandName:
-          description: The name of the retailer brand.
-          maxLength: 120
-          minLength: 0
-          type: string
-        updatedAt:
-          description: The last time this product was updated in the Retail Media
-            Catalog. Represented as a UTC ISO8601 string.
-          format: date-time
-          type: string
-      required:
-      - categoryId
-      - globalBrandId
-      - globalBrandName
-      - isInStock
-      - price
-      - updatedAt
-      type: object
-    SkuSlimDataPreviewListResponse:
-      description: Data model for a list of response resources
-      example:
-        data:
-        - attributes:
-            globalBrandName: globalBrandName
-            gtin: gtin
-            globalCategoryId: globalCategoryId
-            retailerBrandName: retailerBrandName
-            mpn: mpn
-            retailerBrandId: retailerBrandId
-            globalBrandId: globalBrandId
-            price: 0.8008281904610115
-            imageUrl: imageUrl
-            name: name
-            isInStock: true
-            category: category
-            categoryId: categoryId
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        - attributes:
-            globalBrandName: globalBrandName
-            gtin: gtin
-            globalCategoryId: globalCategoryId
-            retailerBrandName: retailerBrandName
-            mpn: mpn
-            retailerBrandId: retailerBrandId
-            globalBrandId: globalBrandId
-            price: 0.8008281904610115
-            imageUrl: imageUrl
-            name: name
-            isInStock: true
-            category: category
-            categoryId: categoryId
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfSkuSlimDataPreview'
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-      type: object
-    SkuSlimDataV2:
-      description: Slim  version of Sku Data model
-      example:
-        gtin: gtin
-        price: 0.8008281904610115
-        imageUrl: imageUrl
-        name: name
-        description: description
-        mpn: mpn
-        isInStock: true
-        category:
-          text: text
-        brand:
-          name: name
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        brand:
-          $ref: '#/components/schemas/Brand'
-        category:
-          $ref: '#/components/schemas/Category'
-        description:
-          description: A short description of the product.
-          nullable: true
-          type: string
-        gtin:
-          description: A GTIN identifier for the product if available. Covers variations
-            such as EANs and UPCs.
-          nullable: true
-          type: string
-        imageUrl:
-          description: An http image resource provided by the retailer.
-          type: string
-        isInStock:
-          description: An indication of if the retailer currently has the product
-            in stock.
-          type: boolean
-        mpn:
-          description: The MPN for the product if available.
-          nullable: true
-          type: string
-        name:
-          description: A short product name.
-          maxLength: 1000
-          minLength: 0
-          type: string
-        price:
-          description: The price of the product on the retailer site. Can be omitted
-            in certain circumstances
-          format: double
-          nullable: true
-          type: number
-        updatedAt:
-          description: The last time this product was updated in the Retail Media
-            Catalog. Represented as a UTC ISO8601 string.
-          format: date-time
-          type: string
-      required:
-      - isInStock
-      - price
-      - updatedAt
-      type: object
-    SkuSlimDataV2ListResponse:
-      description: Data model for a list of response resources
-      example:
-        data:
-        - attributes:
-            gtin: gtin
-            price: 0.8008281904610115
-            imageUrl: imageUrl
-            name: name
-            description: description
-            mpn: mpn
-            isInStock: true
-            category:
-              text: text
-            brand:
-              name: name
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        - attributes:
-            gtin: gtin
-            price: 0.8008281904610115
-            imageUrl: imageUrl
-            name: name
-            description: description
-            mpn: mpn
-            isInStock: true
-            category:
-              text: text
-            brand:
-              name: name
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfSkuSlimDataV2'
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
       type: object
     SponsoredProductsLineItem:
       additionalProperties: false

@@ -19,9 +19,9 @@ import com.criteo.api.marketingsolutions.preview.model.ApplicationSummaryModelRe
 public class GatewayApiTest {
     private ApiClient client;
 
-    private static String clientId = System.getenv("TEST_CLIENT_ID");
-    private static String clientSecret = System.getenv("TEST_CLIENT_SECRET");
-    private static Integer applicationId = Integer.parseInt(System.getenv("TEST_APPLICATION_ID"));
+    private static String clientId = System.getenv("MARKETINGSOLUTIONS_TEST_CLIENT_ID");
+    private static String clientSecret = System.getenv("MARKETINGSOLUTIONS_TEST_CLIENT_SECRET");
+    private static Integer applicationId = Integer.parseInt(System.getenv("MARKETINGSOLUTIONS_TEST_APPLICATION_ID"));
 
     @BeforeEach
     public void setUp() {
