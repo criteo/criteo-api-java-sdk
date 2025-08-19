@@ -47,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A model representing a Sponsored Products Line Item.
+ * Model of a retail media auction line item.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SponsoredProductsLineItem {
@@ -56,13 +56,13 @@ public class SponsoredProductsLineItem {
    */
   @JsonAdapter(BidStrategyEnum.Adapter.class)
   public enum BidStrategyEnum {
-    UNKNOWN("Unknown"),
+    UNKNOWN("unknown"),
     
-    CONVERSION("Conversion"),
+    CONVERSION("conversion"),
     
-    CLICKS("Clicks"),
+    CLICKS("clicks"),
     
-    REVENUE("Revenue");
+    REVENUE("revenue");
 
     private String value;
 

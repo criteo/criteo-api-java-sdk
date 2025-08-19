@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -117,11 +118,11 @@ public class FlightLeg {
 
   public static final String SERIALIZED_NAME_END_TIME = "endTime";
   @SerializedName(SERIALIZED_NAME_END_TIME)
-  private String endTime;
+  private OffsetDateTime endTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
-  private String startTime;
+  private OffsetDateTime startTime;
 
   public FlightLeg() {
   }
@@ -148,7 +149,7 @@ public class FlightLeg {
   }
 
 
-  public FlightLeg endTime(String endTime) {
+  public FlightLeg endTime(OffsetDateTime endTime) {
     
     this.endTime = endTime;
     return this;
@@ -160,17 +161,17 @@ public class FlightLeg {
   **/
   @javax.annotation.Nonnull
 
-  public String getEndTime() {
+  public OffsetDateTime getEndTime() {
     return endTime;
   }
 
 
-  public void setEndTime(String endTime) {
+  public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
-  public FlightLeg startTime(String startTime) {
+  public FlightLeg startTime(OffsetDateTime startTime) {
     
     this.startTime = startTime;
     return this;
@@ -182,12 +183,12 @@ public class FlightLeg {
   **/
   @javax.annotation.Nonnull
 
-  public String getStartTime() {
+  public OffsetDateTime getStartTime() {
     return startTime;
   }
 
 
-  public void setStartTime(String startTime) {
+  public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
@@ -281,12 +282,6 @@ public class FlightLeg {
       }
       if (!jsonObj.get("dayOfWeek").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dayOfWeek` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dayOfWeek").toString()));
-      }
-      if (!jsonObj.get("endTime").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `endTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endTime").toString()));
-      }
-      if (!jsonObj.get("startTime").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `startTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startTime").toString()));
       }
   }
 

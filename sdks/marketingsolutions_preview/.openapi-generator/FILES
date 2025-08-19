@@ -44,9 +44,6 @@ docs/AdaptiveAttributes.md
 docs/AdaptiveColors.md
 docs/AdaptiveWriteAttributes.md
 docs/AdvertiserApi.md
-docs/AdvertiserCreationInput.md
-docs/AdvertiserCreationRequest.md
-docs/AdvertiserCreationResponse.md
 docs/AdvertiserDatasetListResponse.md
 docs/AlgebraNodeV1.md
 docs/AnalyticsApi.md
@@ -372,13 +369,11 @@ docs/TransparencyReport.md
 docs/TransparencyReportFile.md
 docs/TransparencyReportListResponse.md
 docs/TransparencyReportResource.md
-docs/UnauthorizedResponseV2.md
 docs/UpdateCoupon.md
 docs/UserDef.md
 docs/ValueResourceCollectionOutcomeOfProductFilterConfig.md
 docs/ValueResourceInputOfCreateProductFilterRequest.md
 docs/ValueResourceInputOfCreateProductSetRequest.md
-docs/ValueResourceOfAdvertiserCreationInput.md
 docs/ValueResourceOfCreateProductFilterRequest.md
 docs/ValueResourceOfCreateProductSetRequest.md
 docs/ValueResourceOfProductFilterConfig.md
@@ -464,9 +459,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/AdWrite.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdaptiveAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdaptiveColors.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdaptiveWriteAttributes.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/AdvertiserCreationInput.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/AdvertiserCreationRequest.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/AdvertiserCreationResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdvertiserDatasetListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AlgebraNodeV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ApiErrorResponse.java
@@ -784,13 +776,11 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/TransparencyReport
 src/main/java/com/criteo/api/marketingsolutions/preview/model/TransparencyReportFile.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/TransparencyReportListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/TransparencyReportResource.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/UnauthorizedResponseV2.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UpdateCoupon.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UserDef.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceCollectionOutcomeOfProductFilterConfig.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceInputOfCreateProductFilterRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceInputOfCreateProductSetRequest.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfAdvertiserCreationInput.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfCreateProductFilterRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfCreateProductSetRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfProductFilterConfig.java

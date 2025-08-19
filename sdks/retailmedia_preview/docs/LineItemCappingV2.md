@@ -1,6 +1,6 @@
 
 
-# ExternalLineItemCappingV2
+# LineItemCappingV2
 
 Frequency Capping for a Preferred Line Item
 

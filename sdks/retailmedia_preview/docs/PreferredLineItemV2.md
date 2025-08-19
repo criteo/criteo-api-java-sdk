@@ -1,6 +1,6 @@
 
 
-# ExternalPreferredLineItemV2
+# PreferredLineItemV2
 
 A Retail Media Preferred Line Item used to hold bid settings for one or many promoted products on a single retailer
 
@@ -8,22 +8,21 @@ A Retail Media Preferred Line Item used to hold bid settings for one or many pro
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**budget** | **BigDecimal** |  |  [optional] |
-|**budgetRemaining** | **BigDecimal** |  |  [optional] |
-|**budgetSpent** | **BigDecimal** |  |  [optional] |
+|**budget** | **Double** |  |  |
+|**budgetRemaining** | **Double** |  |  [optional] |
+|**budgetSpent** | **Double** |  |  [optional] |
 |**campaignId** | **String** |  |  |
-|**capping** | [**ExternalLineItemCappingV2**](ExternalLineItemCappingV2.md) |  |  [optional] |
-|**createdAt** | **OffsetDateTime** |  |  |
+|**capping** | [**LineItemCappingV2**](LineItemCappingV2.md) |  |  [optional] |
+|**createdAt** | **OffsetDateTime** |  |  [optional] |
 |**creativeId** | **String** | External creative Id |  [optional] |
 |**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
-|**id** | **String** | Id of the entity |  [optional] |
 |**name** | **String** |  |  |
 |**pacing** | [**PacingEnum**](#PacingEnum) |  |  [optional] |
-|**page** | [**ExternalLineItemPageV2**](ExternalLineItemPageV2.md) |  |  [optional] |
+|**page** | [**LineItemPageV2**](LineItemPageV2.md) |  |  [optional] |
 |**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Line Item Status Enum |  |
 |**targetRetailerId** | **String** |  |  |
-|**updatedAt** | **OffsetDateTime** |  |  |
+|**updatedAt** | **OffsetDateTime** |  |  [optional] |
 
 
 

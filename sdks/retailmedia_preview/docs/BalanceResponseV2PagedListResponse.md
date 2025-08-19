@@ -1,6 +1,6 @@
 
 
-# PagedResourceCollectionOutcomeOfBalanceResponseV2
+# BalanceResponseV2PagedListResponse
 
 Data model for a paged list of response resources
 

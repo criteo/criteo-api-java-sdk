@@ -8,7 +8,7 @@ A top-level object that encapsulates a Criteo API request for a single value.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**RmAudienceComputeSizesEntityV1Resource**](RmAudienceComputeSizesEntityV1Resource.md) |  |  [optional] |
+|**data** | [**RmAudienceComputeSizeEntityV1Resource**](RmAudienceComputeSizeEntityV1Resource.md) |  |  [optional] |
 
 
 

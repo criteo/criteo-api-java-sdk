@@ -1,6 +1,6 @@
 
 
-# ExternalLineItemPageV2
+# LineItemPageV2
 
 Page information for a preferred line item
 
@@ -8,7 +8,7 @@ Page information for a preferred line item
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**categories** | [**List&lt;ExternalLineItemPageCategoryV2&gt;**](ExternalLineItemPageCategoryV2.md) |  |  [optional] |
+|**categories** | [**List&lt;LineItemPageCategoryV2&gt;**](LineItemPageCategoryV2.md) |  |  [optional] |
 |**pageType** | [**PageTypeEnum**](#PageTypeEnum) | Page Type Enum |  |
 |**searchKeywords** | **List&lt;String&gt;** |  |  [optional] |
 

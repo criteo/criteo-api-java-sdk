@@ -2,7 +2,7 @@
 
 # SponsoredProductsLineItem
 
-A model representing a Sponsored Products Line Item.
+Model of a retail media auction line item.
 
 ## Properties
 
@@ -36,10 +36,10 @@ A model representing a Sponsored Products Line Item.
 
 | Name | Value |
 |---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
-| CONVERSION | &quot;Conversion&quot; |
-| CLICKS | &quot;Clicks&quot; |
-| REVENUE | &quot;Revenue&quot; |
+| UNKNOWN | &quot;unknown&quot; |
+| CONVERSION | &quot;conversion&quot; |
+| CLICKS | &quot;clicks&quot; |
+| REVENUE | &quot;revenue&quot; |
 
 
 

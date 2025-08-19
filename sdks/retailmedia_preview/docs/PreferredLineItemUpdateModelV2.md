@@ -1,6 +1,6 @@
 
 
-# ExternalPreferredLineItemUpdateModelV2
+# PreferredLineItemUpdateModelV2
 
 Model used to update a preferred line item
 
@@ -9,12 +9,12 @@ Model used to update a preferred line item
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**budget** | **Double** |  |  [optional] |
-|**capping** | [**ExternalLineItemCappingV2**](ExternalLineItemCappingV2.md) |  |  [optional] |
+|**capping** | [**LineItemCappingV2**](LineItemCappingV2.md) |  |  [optional] |
 |**creativeId** | **String** |  |  [optional] |
 |**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
 |**name** | **String** |  |  |
 |**pacing** | [**PacingEnum**](#PacingEnum) |  |  [optional] |
-|**page** | [**ExternalLineItemPageV2**](ExternalLineItemPageV2.md) |  |  [optional] |
+|**page** | [**LineItemPageV2**](LineItemPageV2.md) |  |  [optional] |
 |**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Line Item Status Enum |  |
 

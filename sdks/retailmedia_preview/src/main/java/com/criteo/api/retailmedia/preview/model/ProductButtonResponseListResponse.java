@@ -15,13 +15,17 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.RmAudienceComputeSizesEntityV1;
+import com.criteo.api.retailmedia.preview.model.CommonProblem;
+import com.criteo.api.retailmedia.preview.model.ResourceOfProductButtonResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,63 +49,89 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for a single value
+ * A top-level object that encapsulates a Criteo API response for several entities
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class RmAudienceComputeSizesEntityV1Resource {
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private RmAudienceComputeSizesEntityV1 attributes;
+public class ProductButtonResponseListResponse {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<ResourceOfProductButtonResponse> data = null;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  public static final String SERIALIZED_NAME_ERRORS = "errors";
+  @SerializedName(SERIALIZED_NAME_ERRORS)
+  private List<CommonProblem> errors = null;
 
-  public RmAudienceComputeSizesEntityV1Resource() {
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CommonProblem> warnings = null;
+
+  public ProductButtonResponseListResponse() {
   }
 
-  public RmAudienceComputeSizesEntityV1Resource attributes(RmAudienceComputeSizesEntityV1 attributes) {
+  
+  public ProductButtonResponseListResponse(
+     List<CommonProblem> errors, 
+     List<CommonProblem> warnings
+  ) {
+    this();
+    this.errors = errors;
+    this.warnings = warnings;
+  }
+
+  public ProductButtonResponseListResponse data(List<ResourceOfProductButtonResponse> data) {
     
-    this.attributes = attributes;
+    this.data = data;
+    return this;
+  }
+
+  public ProductButtonResponseListResponse addDataItem(ResourceOfProductButtonResponse dataItem) {
+    if (this.data == null) {
+      this.data = null;
+    }
+    this.data.add(dataItem);
     return this;
   }
 
    /**
-   * Get attributes
-   * @return attributes
+   * Get data
+   * @return data
   **/
   @javax.annotation.Nullable
 
-  public RmAudienceComputeSizesEntityV1 getAttributes() {
-    return attributes;
+  public List<ResourceOfProductButtonResponse> getData() {
+    return data;
   }
 
 
-  public void setAttributes(RmAudienceComputeSizesEntityV1 attributes) {
-    this.attributes = attributes;
+  public void setData(List<ResourceOfProductButtonResponse> data) {
+    this.data = data;
   }
 
-
-  public RmAudienceComputeSizesEntityV1Resource type(String type) {
-    
-    this.type = type;
-    return this;
-  }
 
    /**
-   * Get type
-   * @return type
+   * Get errors
+   * @return errors
   **/
   @javax.annotation.Nullable
 
-  public String getType() {
-    return type;
+  public List<CommonProblem> getErrors() {
+    return errors;
   }
 
 
-  public void setType(String type) {
-    this.type = type;
+
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<CommonProblem> getWarnings() {
+    return warnings;
   }
+
+
 
   /**
    * A container for additional, undeclared properties.
@@ -116,9 +146,9 @@ public class RmAudienceComputeSizesEntityV1Resource {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the RmAudienceComputeSizesEntityV1Resource instance itself
+   * @return the ProductButtonResponseListResponse instance itself
    */
-  public RmAudienceComputeSizesEntityV1Resource putAdditionalProperty(String key, Object value) {
+  public ProductButtonResponseListResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -157,23 +187,36 @@ public class RmAudienceComputeSizesEntityV1Resource {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RmAudienceComputeSizesEntityV1Resource rmAudienceComputeSizesEntityV1Resource = (RmAudienceComputeSizesEntityV1Resource) o;
-    return Objects.equals(this.attributes, rmAudienceComputeSizesEntityV1Resource.attributes) &&
-        Objects.equals(this.type, rmAudienceComputeSizesEntityV1Resource.type)&&
-        Objects.equals(this.additionalProperties, rmAudienceComputeSizesEntityV1Resource.additionalProperties);
+    ProductButtonResponseListResponse productButtonResponseListResponse = (ProductButtonResponseListResponse) o;
+    return Objects.equals(this.data, productButtonResponseListResponse.data) &&
+        Objects.equals(this.errors, productButtonResponseListResponse.errors) &&
+        Objects.equals(this.warnings, productButtonResponseListResponse.warnings)&&
+        Objects.equals(this.additionalProperties, productButtonResponseListResponse.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, type, additionalProperties);
+    return Objects.hash(data, errors, warnings, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RmAudienceComputeSizesEntityV1Resource {\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("class ProductButtonResponseListResponse {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -197,8 +240,9 @@ public class RmAudienceComputeSizesEntityV1Resource {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("attributes");
-    openapiFields.add("type");
+    openapiFields.add("data");
+    openapiFields.add("errors");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -208,20 +252,55 @@ public class RmAudienceComputeSizesEntityV1Resource {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to RmAudienceComputeSizesEntityV1Resource
+  * @throws IOException if the JSON Object is invalid with respect to ProductButtonResponseListResponse
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!RmAudienceComputeSizesEntityV1Resource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RmAudienceComputeSizesEntityV1Resource is not found in the empty JSON string", RmAudienceComputeSizesEntityV1Resource.openapiRequiredFields.toString()));
+        if (!ProductButtonResponseListResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductButtonResponseListResponse is not found in the empty JSON string", ProductButtonResponseListResponse.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        RmAudienceComputeSizesEntityV1.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+        if (jsonArraydata != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("data").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+          }
+
+          // validate the optional field `data` (array)
+          for (int i = 0; i < jsonArraydata.size(); i++) {
+            ResourceOfProductButtonResponse.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+          };
+        }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
+        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
+        if (jsonArrayerrors != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("errors").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
+          }
+
+          // validate the optional field `errors` (array)
+          for (int i = 0; i < jsonArrayerrors.size(); i++) {
+            CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 
@@ -229,16 +308,16 @@ public class RmAudienceComputeSizesEntityV1Resource {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RmAudienceComputeSizesEntityV1Resource.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RmAudienceComputeSizesEntityV1Resource' and its subtypes
+       if (!ProductButtonResponseListResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ProductButtonResponseListResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RmAudienceComputeSizesEntityV1Resource> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RmAudienceComputeSizesEntityV1Resource.class));
+       final TypeAdapter<ProductButtonResponseListResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ProductButtonResponseListResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RmAudienceComputeSizesEntityV1Resource>() {
+       return (TypeAdapter<T>) new TypeAdapter<ProductButtonResponseListResponse>() {
            @Override
-           public void write(JsonWriter out, RmAudienceComputeSizesEntityV1Resource value) throws IOException {
+           public void write(JsonWriter out, ProductButtonResponseListResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -261,11 +340,11 @@ public class RmAudienceComputeSizesEntityV1Resource {
            }
 
            @Override
-           public RmAudienceComputeSizesEntityV1Resource read(JsonReader in) throws IOException {
+           public ProductButtonResponseListResponse read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             RmAudienceComputeSizesEntityV1Resource instance = thisAdapter.fromJsonTree(jsonObj);
+             ProductButtonResponseListResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -292,18 +371,18 @@ public class RmAudienceComputeSizesEntityV1Resource {
   }
 
  /**
-  * Create an instance of RmAudienceComputeSizesEntityV1Resource given an JSON string
+  * Create an instance of ProductButtonResponseListResponse given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of RmAudienceComputeSizesEntityV1Resource
-  * @throws IOException if the JSON string is invalid with respect to RmAudienceComputeSizesEntityV1Resource
+  * @return An instance of ProductButtonResponseListResponse
+  * @throws IOException if the JSON string is invalid with respect to ProductButtonResponseListResponse
   */
-  public static RmAudienceComputeSizesEntityV1Resource fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RmAudienceComputeSizesEntityV1Resource.class);
+  public static ProductButtonResponseListResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ProductButtonResponseListResponse.class);
   }
 
  /**
-  * Convert an instance of RmAudienceComputeSizesEntityV1Resource to an JSON string
+  * Convert an instance of ProductButtonResponseListResponse to an JSON string
   *
   * @return JSON string
   */

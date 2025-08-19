@@ -1,6 +1,6 @@
 
 
-# ExternalPreferredLineItemCreateModelV2
+# PreferredLineItemCreateModelV2
 
 Model used to create a preferred line item
 
@@ -9,12 +9,12 @@ Model used to create a preferred line item
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**budget** | **Double** |  |  |
-|**capping** | [**ExternalLineItemCappingV2**](ExternalLineItemCappingV2.md) |  |  [optional] |
+|**capping** | [**LineItemCappingV2**](LineItemCappingV2.md) |  |  [optional] |
 |**creativeId** | **String** |  |  [optional] |
 |**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
 |**name** | **String** |  |  |
 |**pacing** | [**PacingEnum**](#PacingEnum) | Line Item Pacing Enum |  |
-|**page** | [**ExternalLineItemPageV2**](ExternalLineItemPageV2.md) |  |  |
+|**page** | [**LineItemPageV2**](LineItemPageV2.md) |  |  |
 |**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Line Item Status Enum |  [optional] |
 |**targetRetailerId** | **String** |  |  |

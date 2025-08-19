@@ -46,145 +46,114 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * The Product Button entity used for output
+ * Audience of people of interest for a marketer.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExternalProductButtonResponse {
-  public static final String SERIALIZED_NAME_BACKGROUND_IMAGE = "backgroundImage";
-  @SerializedName(SERIALIZED_NAME_BACKGROUND_IMAGE)
-  private String backgroundImage;
+public class RmAudienceComputeSizeEntityV1 {
+  /**
+   * Channel to compute the sizes for.
+   */
+  @JsonAdapter(ChannelEnum.Adapter.class)
+  public enum ChannelEnum {
+    ONSITE("Onsite"),
+    
+    OFFSITE("Offsite");
 
-  public static final String SERIALIZED_NAME_IS_MANDATORY = "isMandatory";
-  @SerializedName(SERIALIZED_NAME_IS_MANDATORY)
-  private Integer isMandatory;
+    private String value;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+    ChannelEnum(String value) {
+      this.value = value;
+    }
 
-  public static final String SERIALIZED_NAME_RANK = "rank";
-  @SerializedName(SERIALIZED_NAME_RANK)
-  private Integer rank;
+    public String getValue() {
+      return value;
+    }
 
-  public static final String SERIALIZED_NAME_SKUS = "skus";
-  @SerializedName(SERIALIZED_NAME_SKUS)
-  private List<String> skus = new ArrayList<>();
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
 
-  public ExternalProductButtonResponse() {
+    public static ChannelEnum fromValue(String value) {
+      for (ChannelEnum b : ChannelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ChannelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ChannelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ChannelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ChannelEnum.fromValue(value);
+      }
+    }
   }
 
-  public ExternalProductButtonResponse backgroundImage(String backgroundImage) {
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  private ChannelEnum channel;
+
+  public static final String SERIALIZED_NAME_IDS = "ids";
+  @SerializedName(SERIALIZED_NAME_IDS)
+  private List<String> ids = new ArrayList<>();
+
+  public RmAudienceComputeSizeEntityV1() {
+  }
+
+  public RmAudienceComputeSizeEntityV1 channel(ChannelEnum channel) {
     
-    this.backgroundImage = backgroundImage;
+    this.channel = channel;
     return this;
   }
 
    /**
-   * URL of the background image
-   * @return backgroundImage
+   * Channel to compute the sizes for.
+   * @return channel
   **/
   @javax.annotation.Nonnull
 
-  public String getBackgroundImage() {
-    return backgroundImage;
+  public ChannelEnum getChannel() {
+    return channel;
   }
 
 
-  public void setBackgroundImage(String backgroundImage) {
-    this.backgroundImage = backgroundImage;
+  public void setChannel(ChannelEnum channel) {
+    this.channel = channel;
   }
 
 
-  public ExternalProductButtonResponse isMandatory(Integer isMandatory) {
+  public RmAudienceComputeSizeEntityV1 ids(List<String> ids) {
     
-    this.isMandatory = isMandatory;
+    this.ids = ids;
+    return this;
+  }
+
+  public RmAudienceComputeSizeEntityV1 addIdsItem(String idsItem) {
+    this.ids.add(idsItem);
     return this;
   }
 
    /**
-   * If the Product Button is Mandatory
-   * @return isMandatory
+   * List of ids of the segments whose size is requested.
+   * @return ids
   **/
   @javax.annotation.Nonnull
 
-  public Integer getIsMandatory() {
-    return isMandatory;
+  public List<String> getIds() {
+    return ids;
   }
 
 
-  public void setIsMandatory(Integer isMandatory) {
-    this.isMandatory = isMandatory;
-  }
-
-
-  public ExternalProductButtonResponse name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Name of the Product Button
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public ExternalProductButtonResponse rank(Integer rank) {
-    
-    this.rank = rank;
-    return this;
-  }
-
-   /**
-   * Rank of the Product Button
-   * @return rank
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getRank() {
-    return rank;
-  }
-
-
-  public void setRank(Integer rank) {
-    this.rank = rank;
-  }
-
-
-  public ExternalProductButtonResponse skus(List<String> skus) {
-    
-    this.skus = skus;
-    return this;
-  }
-
-  public ExternalProductButtonResponse addSkusItem(String skusItem) {
-    this.skus.add(skusItem);
-    return this;
-  }
-
-   /**
-   * List of skus on the Product Button
-   * @return skus
-  **/
-  @javax.annotation.Nonnull
-
-  public List<String> getSkus() {
-    return skus;
-  }
-
-
-  public void setSkus(List<String> skus) {
-    this.skus = skus;
+  public void setIds(List<String> ids) {
+    this.ids = ids;
   }
 
   /**
@@ -200,9 +169,9 @@ public class ExternalProductButtonResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ExternalProductButtonResponse instance itself
+   * @return the RmAudienceComputeSizeEntityV1 instance itself
    */
-  public ExternalProductButtonResponse putAdditionalProperty(String key, Object value) {
+  public RmAudienceComputeSizeEntityV1 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -241,29 +210,23 @@ public class ExternalProductButtonResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExternalProductButtonResponse externalProductButtonResponse = (ExternalProductButtonResponse) o;
-    return Objects.equals(this.backgroundImage, externalProductButtonResponse.backgroundImage) &&
-        Objects.equals(this.isMandatory, externalProductButtonResponse.isMandatory) &&
-        Objects.equals(this.name, externalProductButtonResponse.name) &&
-        Objects.equals(this.rank, externalProductButtonResponse.rank) &&
-        Objects.equals(this.skus, externalProductButtonResponse.skus)&&
-        Objects.equals(this.additionalProperties, externalProductButtonResponse.additionalProperties);
+    RmAudienceComputeSizeEntityV1 rmAudienceComputeSizeEntityV1 = (RmAudienceComputeSizeEntityV1) o;
+    return Objects.equals(this.channel, rmAudienceComputeSizeEntityV1.channel) &&
+        Objects.equals(this.ids, rmAudienceComputeSizeEntityV1.ids)&&
+        Objects.equals(this.additionalProperties, rmAudienceComputeSizeEntityV1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(backgroundImage, isMandatory, name, rank, skus, additionalProperties);
+    return Objects.hash(channel, ids, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExternalProductButtonResponse {\n");
-    sb.append("    backgroundImage: ").append(toIndentedString(backgroundImage)).append("\n");
-    sb.append("    isMandatory: ").append(toIndentedString(isMandatory)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
-    sb.append("    skus: ").append(toIndentedString(skus)).append("\n");
+    sb.append("class RmAudienceComputeSizeEntityV1 {\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+    sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -287,51 +250,42 @@ public class ExternalProductButtonResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("backgroundImage");
-    openapiFields.add("isMandatory");
-    openapiFields.add("name");
-    openapiFields.add("rank");
-    openapiFields.add("skus");
+    openapiFields.add("channel");
+    openapiFields.add("ids");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("backgroundImage");
-    openapiRequiredFields.add("isMandatory");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("rank");
-    openapiRequiredFields.add("skus");
+    openapiRequiredFields.add("channel");
+    openapiRequiredFields.add("ids");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExternalProductButtonResponse
+  * @throws IOException if the JSON Object is invalid with respect to RmAudienceComputeSizeEntityV1
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ExternalProductButtonResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalProductButtonResponse is not found in the empty JSON string", ExternalProductButtonResponse.openapiRequiredFields.toString()));
+        if (!RmAudienceComputeSizeEntityV1.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RmAudienceComputeSizeEntityV1 is not found in the empty JSON string", RmAudienceComputeSizeEntityV1.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExternalProductButtonResponse.openapiRequiredFields) {
+      for (String requiredField : RmAudienceComputeSizeEntityV1.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("backgroundImage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `backgroundImage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("backgroundImage").toString()));
-      }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if (!jsonObj.get("channel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }
       // ensure the required json array is present
-      if (jsonObj.get("skus") == null) {
+      if (jsonObj.get("ids") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("skus").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `skus` to be an array in the JSON string but got `%s`", jsonObj.get("skus").toString()));
+      } else if (!jsonObj.get("ids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ids` to be an array in the JSON string but got `%s`", jsonObj.get("ids").toString()));
       }
   }
 
@@ -339,16 +293,16 @@ public class ExternalProductButtonResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExternalProductButtonResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExternalProductButtonResponse' and its subtypes
+       if (!RmAudienceComputeSizeEntityV1.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RmAudienceComputeSizeEntityV1' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExternalProductButtonResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalProductButtonResponse.class));
+       final TypeAdapter<RmAudienceComputeSizeEntityV1> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RmAudienceComputeSizeEntityV1.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExternalProductButtonResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<RmAudienceComputeSizeEntityV1>() {
            @Override
-           public void write(JsonWriter out, ExternalProductButtonResponse value) throws IOException {
+           public void write(JsonWriter out, RmAudienceComputeSizeEntityV1 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -371,11 +325,11 @@ public class ExternalProductButtonResponse {
            }
 
            @Override
-           public ExternalProductButtonResponse read(JsonReader in) throws IOException {
+           public RmAudienceComputeSizeEntityV1 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ExternalProductButtonResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             RmAudienceComputeSizeEntityV1 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -402,18 +356,18 @@ public class ExternalProductButtonResponse {
   }
 
  /**
-  * Create an instance of ExternalProductButtonResponse given an JSON string
+  * Create an instance of RmAudienceComputeSizeEntityV1 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExternalProductButtonResponse
-  * @throws IOException if the JSON string is invalid with respect to ExternalProductButtonResponse
+  * @return An instance of RmAudienceComputeSizeEntityV1
+  * @throws IOException if the JSON string is invalid with respect to RmAudienceComputeSizeEntityV1
   */
-  public static ExternalProductButtonResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExternalProductButtonResponse.class);
+  public static RmAudienceComputeSizeEntityV1 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RmAudienceComputeSizeEntityV1.class);
   }
 
  /**
-  * Convert an instance of ExternalProductButtonResponse to an JSON string
+  * Convert an instance of RmAudienceComputeSizeEntityV1 to an JSON string
   *
   * @return JSON string
   */

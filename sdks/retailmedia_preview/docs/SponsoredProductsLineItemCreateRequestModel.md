@@ -30,10 +30,10 @@ Model to create a retail media auction line item
 
 | Name | Value |
 |---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
-| CONVERSION | &quot;Conversion&quot; |
-| CLICKS | &quot;Clicks&quot; |
-| REVENUE | &quot;Revenue&quot; |
+| UNKNOWN | &quot;unknown&quot; |
+| CONVERSION | &quot;conversion&quot; |
+| CLICKS | &quot;clicks&quot; |
+| REVENUE | &quot;revenue&quot; |
 
 
 

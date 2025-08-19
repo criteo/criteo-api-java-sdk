@@ -1,6 +1,6 @@
 
 
-# ValueResourceOfAdvertiserCreationInput
+# RmAudienceComputeSizeEntityV1Resource
 
 A top-level object that encapsulates a Criteo API response for a single value
 
@@ -8,7 +8,7 @@ A top-level object that encapsulates a Criteo API response for a single value
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**AdvertiserCreationInput**](AdvertiserCreationInput.md) |  |  [optional] |
+|**attributes** | [**RmAudienceComputeSizeEntityV1**](RmAudienceComputeSizeEntityV1.md) |  |  [optional] |
 |**type** | **String** |  |  [optional] |
 
 

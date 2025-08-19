@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.ExternalProductButtonRequest;
+import com.criteo.api.retailmedia.preview.model.ProductButtonRequest;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -45,13 +45,13 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Data model for a Resource
+ * A class that represents a domain entity exposed by an API
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResourceOfProductButtonRequest {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ExternalProductButtonRequest attributes;
+  private ProductButtonRequest attributes;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -64,7 +64,7 @@ public class ResourceOfProductButtonRequest {
   public ResourceOfProductButtonRequest() {
   }
 
-  public ResourceOfProductButtonRequest attributes(ExternalProductButtonRequest attributes) {
+  public ResourceOfProductButtonRequest attributes(ProductButtonRequest attributes) {
     
     this.attributes = attributes;
     return this;
@@ -76,12 +76,12 @@ public class ResourceOfProductButtonRequest {
   **/
   @javax.annotation.Nullable
 
-  public ExternalProductButtonRequest getAttributes() {
+  public ProductButtonRequest getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(ExternalProductButtonRequest attributes) {
+  public void setAttributes(ProductButtonRequest attributes) {
     this.attributes = attributes;
   }
 
@@ -247,7 +247,7 @@ public class ResourceOfProductButtonRequest {
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ExternalProductButtonRequest.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        ProductButtonRequest.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

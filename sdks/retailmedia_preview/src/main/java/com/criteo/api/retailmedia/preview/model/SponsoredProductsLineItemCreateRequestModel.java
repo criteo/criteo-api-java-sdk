@@ -56,13 +56,13 @@ public class SponsoredProductsLineItemCreateRequestModel {
    */
   @JsonAdapter(BidStrategyEnum.Adapter.class)
   public enum BidStrategyEnum {
-    UNKNOWN("Unknown"),
+    UNKNOWN("unknown"),
     
-    CONVERSION("Conversion"),
+    CONVERSION("conversion"),
     
-    CLICKS("Clicks"),
+    CLICKS("clicks"),
     
-    REVENUE("Revenue");
+    REVENUE("revenue");
 
     private String value;
 

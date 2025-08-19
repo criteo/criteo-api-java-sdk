@@ -15,16 +15,12 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.ProblemDetails;
-import com.criteo.api.retailmedia.preview.model.ResourceOfProductButtonResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,89 +44,63 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Data model for a list of response resources
+ * Category information for a preferred line item page
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ProductButtonListResponse {
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ResourceOfProductButtonResponse> data = null;
+public class LineItemPageCategoryV2 {
+  public static final String SERIALIZED_NAME_CATEGORY_ID = "categoryId";
+  @SerializedName(SERIALIZED_NAME_CATEGORY_ID)
+  private String categoryId;
 
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<ProblemDetails> errors = null;
+  public static final String SERIALIZED_NAME_INCLUDE_CHILDREN = "includeChildren";
+  @SerializedName(SERIALIZED_NAME_INCLUDE_CHILDREN)
+  private Boolean includeChildren = true;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<ProblemDetails> warnings = null;
-
-  public ProductButtonListResponse() {
+  public LineItemPageCategoryV2() {
   }
 
-  
-  public ProductButtonListResponse(
-     List<ProblemDetails> errors, 
-     List<ProblemDetails> warnings
-  ) {
-    this();
-    this.errors = errors;
-    this.warnings = warnings;
-  }
-
-  public ProductButtonListResponse data(List<ResourceOfProductButtonResponse> data) {
+  public LineItemPageCategoryV2 categoryId(String categoryId) {
     
-    this.data = data;
-    return this;
-  }
-
-  public ProductButtonListResponse addDataItem(ResourceOfProductButtonResponse dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<>();
-    }
-    this.data.add(dataItem);
+    this.categoryId = categoryId;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Get categoryId
+   * @return categoryId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public List<ResourceOfProductButtonResponse> getData() {
-    return data;
+  public String getCategoryId() {
+    return categoryId;
   }
 
 
-  public void setData(List<ResourceOfProductButtonResponse> data) {
-    this.data = data;
+  public void setCategoryId(String categoryId) {
+    this.categoryId = categoryId;
   }
 
+
+  public LineItemPageCategoryV2 includeChildren(Boolean includeChildren) {
+    
+    this.includeChildren = includeChildren;
+    return this;
+  }
 
    /**
-   * Get errors
-   * @return errors
+   * Get includeChildren
+   * @return includeChildren
   **/
   @javax.annotation.Nullable
 
-  public List<ProblemDetails> getErrors() {
-    return errors;
+  public Boolean getIncludeChildren() {
+    return includeChildren;
   }
 
 
-
-
-   /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<ProblemDetails> getWarnings() {
-    return warnings;
+  public void setIncludeChildren(Boolean includeChildren) {
+    this.includeChildren = includeChildren;
   }
-
-
 
   /**
    * A container for additional, undeclared properties.
@@ -145,9 +115,9 @@ public class ProductButtonListResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ProductButtonListResponse instance itself
+   * @return the LineItemPageCategoryV2 instance itself
    */
-  public ProductButtonListResponse putAdditionalProperty(String key, Object value) {
+  public LineItemPageCategoryV2 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -186,25 +156,23 @@ public class ProductButtonListResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductButtonListResponse productButtonListResponse = (ProductButtonListResponse) o;
-    return Objects.equals(this.data, productButtonListResponse.data) &&
-        Objects.equals(this.errors, productButtonListResponse.errors) &&
-        Objects.equals(this.warnings, productButtonListResponse.warnings)&&
-        Objects.equals(this.additionalProperties, productButtonListResponse.additionalProperties);
+    LineItemPageCategoryV2 lineItemPageCategoryV2 = (LineItemPageCategoryV2) o;
+    return Objects.equals(this.categoryId, lineItemPageCategoryV2.categoryId) &&
+        Objects.equals(this.includeChildren, lineItemPageCategoryV2.includeChildren)&&
+        Objects.equals(this.additionalProperties, lineItemPageCategoryV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, errors, warnings, additionalProperties);
+    return Objects.hash(categoryId, includeChildren, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductButtonListResponse {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("class LineItemPageCategoryV2 {\n");
+    sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
+    sb.append("    includeChildren: ").append(toIndentedString(includeChildren)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -228,67 +196,35 @@ public class ProductButtonListResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("data");
-    openapiFields.add("errors");
-    openapiFields.add("warnings");
+    openapiFields.add("categoryId");
+    openapiFields.add("includeChildren");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("categoryId");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ProductButtonListResponse
+  * @throws IOException if the JSON Object is invalid with respect to LineItemPageCategoryV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ProductButtonListResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductButtonListResponse is not found in the empty JSON string", ProductButtonListResponse.openapiRequiredFields.toString()));
+        if (!LineItemPageCategoryV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemPageCategoryV2 is not found in the empty JSON string", LineItemPageCategoryV2.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-        if (jsonArraydata != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("data").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
-          }
 
-          // validate the optional field `data` (array)
-          for (int i = 0; i < jsonArraydata.size(); i++) {
-            ResourceOfProductButtonResponse.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
-          };
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : LineItemPageCategoryV2.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
-        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
-        if (jsonArrayerrors != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("errors").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
-          }
-
-          // validate the optional field `errors` (array)
-          for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
-          };
-        }
-      }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
+      if (!jsonObj.get("categoryId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `categoryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("categoryId").toString()));
       }
   }
 
@@ -296,16 +232,16 @@ public class ProductButtonListResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ProductButtonListResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ProductButtonListResponse' and its subtypes
+       if (!LineItemPageCategoryV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LineItemPageCategoryV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ProductButtonListResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ProductButtonListResponse.class));
+       final TypeAdapter<LineItemPageCategoryV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemPageCategoryV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ProductButtonListResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<LineItemPageCategoryV2>() {
            @Override
-           public void write(JsonWriter out, ProductButtonListResponse value) throws IOException {
+           public void write(JsonWriter out, LineItemPageCategoryV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -328,11 +264,11 @@ public class ProductButtonListResponse {
            }
 
            @Override
-           public ProductButtonListResponse read(JsonReader in) throws IOException {
+           public LineItemPageCategoryV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ProductButtonListResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             LineItemPageCategoryV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -359,18 +295,18 @@ public class ProductButtonListResponse {
   }
 
  /**
-  * Create an instance of ProductButtonListResponse given an JSON string
+  * Create an instance of LineItemPageCategoryV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ProductButtonListResponse
-  * @throws IOException if the JSON string is invalid with respect to ProductButtonListResponse
+  * @return An instance of LineItemPageCategoryV2
+  * @throws IOException if the JSON string is invalid with respect to LineItemPageCategoryV2
   */
-  public static ProductButtonListResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ProductButtonListResponse.class);
+  public static LineItemPageCategoryV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LineItemPageCategoryV2.class);
   }
 
  /**
-  * Convert an instance of ProductButtonListResponse to an JSON string
+  * Convert an instance of LineItemPageCategoryV2 to an JSON string
   *
   * @return JSON string
   */

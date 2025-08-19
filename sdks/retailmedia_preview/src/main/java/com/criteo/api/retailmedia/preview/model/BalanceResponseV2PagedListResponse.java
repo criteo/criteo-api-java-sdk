@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo API - MarketingSolutions
+ * Criteo API - RetailMedia
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -11,13 +11,13 @@
  */
 
 
-package com.criteo.api.marketingsolutions.preview.model;
+package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.CommonProblem;
-import com.criteo.api.marketingsolutions.preview.model.CriteoApiWarningV2;
-import com.criteo.api.marketingsolutions.preview.model.EntityV2OfObject;
+import com.criteo.api.retailmedia.preview.model.CommonProblem;
+import com.criteo.api.retailmedia.preview.model.PageMetadata;
+import com.criteo.api.retailmedia.preview.model.ResourceOfBalanceResponseV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -47,31 +47,53 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.criteo.api.marketingsolutions.preview.JSON;
+import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Advertiser Creation Response
+ * Data model for a paged list of response resources
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class AdvertiserCreationResponse {
+public class BalanceResponseV2PagedListResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private EntityV2OfObject data;
+  private List<ResourceOfBalanceResponseV2> data = null;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<CommonProblem> errors = null;
 
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private PageMetadata metadata;
+
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CriteoApiWarningV2> warnings = null;
+  private List<CommonProblem> warnings = null;
 
-  public AdvertiserCreationResponse() {
+  public BalanceResponseV2PagedListResponse() {
   }
 
-  public AdvertiserCreationResponse data(EntityV2OfObject data) {
+  
+  public BalanceResponseV2PagedListResponse(
+     List<CommonProblem> errors, 
+     List<CommonProblem> warnings
+  ) {
+    this();
+    this.errors = errors;
+    this.warnings = warnings;
+  }
+
+  public BalanceResponseV2PagedListResponse data(List<ResourceOfBalanceResponseV2> data) {
     
     this.data = data;
+    return this;
+  }
+
+  public BalanceResponseV2PagedListResponse addDataItem(ResourceOfBalanceResponseV2 dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<>();
+    }
+    this.data.add(dataItem);
     return this;
   }
 
@@ -81,32 +103,18 @@ public class AdvertiserCreationResponse {
   **/
   @javax.annotation.Nullable
 
-  public EntityV2OfObject getData() {
+  public List<ResourceOfBalanceResponseV2> getData() {
     return data;
   }
 
 
-  public void setData(EntityV2OfObject data) {
+  public void setData(List<ResourceOfBalanceResponseV2> data) {
     this.data = data;
   }
 
 
-  public AdvertiserCreationResponse errors(List<CommonProblem> errors) {
-    
-    this.errors = errors;
-    return this;
-  }
-
-  public AdvertiserCreationResponse addErrorsItem(CommonProblem errorsItem) {
-    if (this.errors == null) {
-      this.errors = null;
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
    /**
-   * Error list returned by the Criteo API  For successful requests it is empty
+   * Get errors
    * @return errors
   **/
   @javax.annotation.Nullable
@@ -116,39 +124,41 @@ public class AdvertiserCreationResponse {
   }
 
 
-  public void setErrors(List<CommonProblem> errors) {
-    this.errors = errors;
-  }
 
 
-  public AdvertiserCreationResponse warnings(List<CriteoApiWarningV2> warnings) {
+  public BalanceResponseV2PagedListResponse metadata(PageMetadata metadata) {
     
-    this.warnings = warnings;
-    return this;
-  }
-
-  public AdvertiserCreationResponse addWarningsItem(CriteoApiWarningV2 warningsItem) {
-    if (this.warnings == null) {
-      this.warnings = null;
-    }
-    this.warnings.add(warningsItem);
+    this.metadata = metadata;
     return this;
   }
 
    /**
-   * Warnings list returned by the Criteo API  In some situations the operations are successful but it may be useful to issue warnings to the API consumer.  For example the endpoint, entity or field is deprecated. Warnings are like compiler warnings, they indicate that problems may occur in the future.
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+
+  public PageMetadata getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(PageMetadata metadata) {
+    this.metadata = metadata;
+  }
+
+
+   /**
+   * Get warnings
    * @return warnings
   **/
   @javax.annotation.Nullable
 
-  public List<CriteoApiWarningV2> getWarnings() {
+  public List<CommonProblem> getWarnings() {
     return warnings;
   }
 
 
-  public void setWarnings(List<CriteoApiWarningV2> warnings) {
-    this.warnings = warnings;
-  }
 
   /**
    * A container for additional, undeclared properties.
@@ -163,9 +173,9 @@ public class AdvertiserCreationResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the AdvertiserCreationResponse instance itself
+   * @return the BalanceResponseV2PagedListResponse instance itself
    */
-  public AdvertiserCreationResponse putAdditionalProperty(String key, Object value) {
+  public BalanceResponseV2PagedListResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -204,11 +214,12 @@ public class AdvertiserCreationResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AdvertiserCreationResponse advertiserCreationResponse = (AdvertiserCreationResponse) o;
-    return Objects.equals(this.data, advertiserCreationResponse.data) &&
-        Objects.equals(this.errors, advertiserCreationResponse.errors) &&
-        Objects.equals(this.warnings, advertiserCreationResponse.warnings)&&
-        Objects.equals(this.additionalProperties, advertiserCreationResponse.additionalProperties);
+    BalanceResponseV2PagedListResponse balanceResponseV2PagedListResponse = (BalanceResponseV2PagedListResponse) o;
+    return Objects.equals(this.data, balanceResponseV2PagedListResponse.data) &&
+        Objects.equals(this.errors, balanceResponseV2PagedListResponse.errors) &&
+        Objects.equals(this.metadata, balanceResponseV2PagedListResponse.metadata) &&
+        Objects.equals(this.warnings, balanceResponseV2PagedListResponse.warnings)&&
+        Objects.equals(this.additionalProperties, balanceResponseV2PagedListResponse.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -217,7 +228,7 @@ public class AdvertiserCreationResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, errors, warnings, additionalProperties);
+    return Objects.hash(data, errors, metadata, warnings, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -230,9 +241,10 @@ public class AdvertiserCreationResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AdvertiserCreationResponse {\n");
+    sb.append("class BalanceResponseV2PagedListResponse {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -259,6 +271,7 @@ public class AdvertiserCreationResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("data");
     openapiFields.add("errors");
+    openapiFields.add("metadata");
     openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
@@ -269,17 +282,27 @@ public class AdvertiserCreationResponse {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to AdvertiserCreationResponse
+  * @throws IOException if the JSON Object is invalid with respect to BalanceResponseV2PagedListResponse
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!AdvertiserCreationResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdvertiserCreationResponse is not found in the empty JSON string", AdvertiserCreationResponse.openapiRequiredFields.toString()));
+        if (!BalanceResponseV2PagedListResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in BalanceResponseV2PagedListResponse is not found in the empty JSON string", BalanceResponseV2PagedListResponse.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        EntityV2OfObject.validateJsonObject(jsonObj.getAsJsonObject("data"));
+        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+        if (jsonArraydata != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("data").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+          }
+
+          // validate the optional field `data` (array)
+          for (int i = 0; i < jsonArraydata.size(); i++) {
+            ResourceOfBalanceResponseV2.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+          };
+        }
       }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
@@ -295,6 +318,10 @@ public class AdvertiserCreationResponse {
           };
         }
       }
+      // validate the optional field `metadata`
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
+      }
       if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
         JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
         if (jsonArraywarnings != null) {
@@ -305,7 +332,7 @@ public class AdvertiserCreationResponse {
 
           // validate the optional field `warnings` (array)
           for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CriteoApiWarningV2.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }
@@ -315,16 +342,16 @@ public class AdvertiserCreationResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!AdvertiserCreationResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'AdvertiserCreationResponse' and its subtypes
+       if (!BalanceResponseV2PagedListResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BalanceResponseV2PagedListResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<AdvertiserCreationResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(AdvertiserCreationResponse.class));
+       final TypeAdapter<BalanceResponseV2PagedListResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BalanceResponseV2PagedListResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<AdvertiserCreationResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<BalanceResponseV2PagedListResponse>() {
            @Override
-           public void write(JsonWriter out, AdvertiserCreationResponse value) throws IOException {
+           public void write(JsonWriter out, BalanceResponseV2PagedListResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -347,11 +374,11 @@ public class AdvertiserCreationResponse {
            }
 
            @Override
-           public AdvertiserCreationResponse read(JsonReader in) throws IOException {
+           public BalanceResponseV2PagedListResponse read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             AdvertiserCreationResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             BalanceResponseV2PagedListResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -378,18 +405,18 @@ public class AdvertiserCreationResponse {
   }
 
  /**
-  * Create an instance of AdvertiserCreationResponse given an JSON string
+  * Create an instance of BalanceResponseV2PagedListResponse given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of AdvertiserCreationResponse
-  * @throws IOException if the JSON string is invalid with respect to AdvertiserCreationResponse
+  * @return An instance of BalanceResponseV2PagedListResponse
+  * @throws IOException if the JSON string is invalid with respect to BalanceResponseV2PagedListResponse
   */
-  public static AdvertiserCreationResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, AdvertiserCreationResponse.class);
+  public static BalanceResponseV2PagedListResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BalanceResponseV2PagedListResponse.class);
   }
 
  /**
-  * Convert an instance of AdvertiserCreationResponse to an JSON string
+  * Convert an instance of BalanceResponseV2PagedListResponse to an JSON string
   *
   * @return JSON string
   */

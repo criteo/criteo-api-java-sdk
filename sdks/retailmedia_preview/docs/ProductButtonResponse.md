@@ -1,8 +1,8 @@
 
 
-# ExternalProductButtonResponse
+# ProductButtonResponse
 
-The Product Button entity used for output
+The Product Button entity
 
 ## Properties
 

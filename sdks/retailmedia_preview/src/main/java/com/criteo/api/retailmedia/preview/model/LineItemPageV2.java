@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.ExternalLineItemPageCategoryV2;
+import com.criteo.api.retailmedia.preview.model.LineItemPageCategoryV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,10 +51,10 @@ import com.criteo.api.retailmedia.preview.JSON;
  * Page information for a preferred line item
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExternalLineItemPageV2 {
+public class LineItemPageV2 {
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
-  private List<ExternalLineItemPageCategoryV2> categories = null;
+  private List<LineItemPageCategoryV2> categories = null;
 
   /**
    * Page Type Enum
@@ -133,16 +133,16 @@ public class ExternalLineItemPageV2 {
   @SerializedName(SERIALIZED_NAME_SEARCH_KEYWORDS)
   private List<String> searchKeywords = null;
 
-  public ExternalLineItemPageV2() {
+  public LineItemPageV2() {
   }
 
-  public ExternalLineItemPageV2 categories(List<ExternalLineItemPageCategoryV2> categories) {
+  public LineItemPageV2 categories(List<LineItemPageCategoryV2> categories) {
     
     this.categories = categories;
     return this;
   }
 
-  public ExternalLineItemPageV2 addCategoriesItem(ExternalLineItemPageCategoryV2 categoriesItem) {
+  public LineItemPageV2 addCategoriesItem(LineItemPageCategoryV2 categoriesItem) {
     if (this.categories == null) {
       this.categories = null;
     }
@@ -156,17 +156,17 @@ public class ExternalLineItemPageV2 {
   **/
   @javax.annotation.Nullable
 
-  public List<ExternalLineItemPageCategoryV2> getCategories() {
+  public List<LineItemPageCategoryV2> getCategories() {
     return categories;
   }
 
 
-  public void setCategories(List<ExternalLineItemPageCategoryV2> categories) {
+  public void setCategories(List<LineItemPageCategoryV2> categories) {
     this.categories = categories;
   }
 
 
-  public ExternalLineItemPageV2 pageType(PageTypeEnum pageType) {
+  public LineItemPageV2 pageType(PageTypeEnum pageType) {
     
     this.pageType = pageType;
     return this;
@@ -188,13 +188,13 @@ public class ExternalLineItemPageV2 {
   }
 
 
-  public ExternalLineItemPageV2 searchKeywords(List<String> searchKeywords) {
+  public LineItemPageV2 searchKeywords(List<String> searchKeywords) {
     
     this.searchKeywords = searchKeywords;
     return this;
   }
 
-  public ExternalLineItemPageV2 addSearchKeywordsItem(String searchKeywordsItem) {
+  public LineItemPageV2 addSearchKeywordsItem(String searchKeywordsItem) {
     if (this.searchKeywords == null) {
       this.searchKeywords = null;
     }
@@ -230,9 +230,9 @@ public class ExternalLineItemPageV2 {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ExternalLineItemPageV2 instance itself
+   * @return the LineItemPageV2 instance itself
    */
-  public ExternalLineItemPageV2 putAdditionalProperty(String key, Object value) {
+  public LineItemPageV2 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -271,11 +271,11 @@ public class ExternalLineItemPageV2 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExternalLineItemPageV2 externalLineItemPageV2 = (ExternalLineItemPageV2) o;
-    return Objects.equals(this.categories, externalLineItemPageV2.categories) &&
-        Objects.equals(this.pageType, externalLineItemPageV2.pageType) &&
-        Objects.equals(this.searchKeywords, externalLineItemPageV2.searchKeywords)&&
-        Objects.equals(this.additionalProperties, externalLineItemPageV2.additionalProperties);
+    LineItemPageV2 lineItemPageV2 = (LineItemPageV2) o;
+    return Objects.equals(this.categories, lineItemPageV2.categories) &&
+        Objects.equals(this.pageType, lineItemPageV2.pageType) &&
+        Objects.equals(this.searchKeywords, lineItemPageV2.searchKeywords)&&
+        Objects.equals(this.additionalProperties, lineItemPageV2.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -297,7 +297,7 @@ public class ExternalLineItemPageV2 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExternalLineItemPageV2 {\n");
+    sb.append("class LineItemPageV2 {\n");
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
     sb.append("    pageType: ").append(toIndentedString(pageType)).append("\n");
     sb.append("    searchKeywords: ").append(toIndentedString(searchKeywords)).append("\n");
@@ -337,17 +337,17 @@ public class ExternalLineItemPageV2 {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExternalLineItemPageV2
+  * @throws IOException if the JSON Object is invalid with respect to LineItemPageV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ExternalLineItemPageV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalLineItemPageV2 is not found in the empty JSON string", ExternalLineItemPageV2.openapiRequiredFields.toString()));
+        if (!LineItemPageV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemPageV2 is not found in the empty JSON string", LineItemPageV2.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExternalLineItemPageV2.openapiRequiredFields) {
+      for (String requiredField : LineItemPageV2.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -362,7 +362,7 @@ public class ExternalLineItemPageV2 {
 
           // validate the optional field `categories` (array)
           for (int i = 0; i < jsonArraycategories.size(); i++) {
-            ExternalLineItemPageCategoryV2.validateJsonObject(jsonArraycategories.get(i).getAsJsonObject());
+            LineItemPageCategoryV2.validateJsonObject(jsonArraycategories.get(i).getAsJsonObject());
           };
         }
       }
@@ -379,16 +379,16 @@ public class ExternalLineItemPageV2 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExternalLineItemPageV2.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExternalLineItemPageV2' and its subtypes
+       if (!LineItemPageV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LineItemPageV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExternalLineItemPageV2> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalLineItemPageV2.class));
+       final TypeAdapter<LineItemPageV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemPageV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExternalLineItemPageV2>() {
+       return (TypeAdapter<T>) new TypeAdapter<LineItemPageV2>() {
            @Override
-           public void write(JsonWriter out, ExternalLineItemPageV2 value) throws IOException {
+           public void write(JsonWriter out, LineItemPageV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -411,11 +411,11 @@ public class ExternalLineItemPageV2 {
            }
 
            @Override
-           public ExternalLineItemPageV2 read(JsonReader in) throws IOException {
+           public LineItemPageV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ExternalLineItemPageV2 instance = thisAdapter.fromJsonTree(jsonObj);
+             LineItemPageV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -442,18 +442,18 @@ public class ExternalLineItemPageV2 {
   }
 
  /**
-  * Create an instance of ExternalLineItemPageV2 given an JSON string
+  * Create an instance of LineItemPageV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExternalLineItemPageV2
-  * @throws IOException if the JSON string is invalid with respect to ExternalLineItemPageV2
+  * @return An instance of LineItemPageV2
+  * @throws IOException if the JSON string is invalid with respect to LineItemPageV2
   */
-  public static ExternalLineItemPageV2 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExternalLineItemPageV2.class);
+  public static LineItemPageV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LineItemPageV2.class);
   }
 
  /**
-  * Convert an instance of ExternalLineItemPageV2 to an JSON string
+  * Convert an instance of LineItemPageV2 to an JSON string
   *
   * @return JSON string
   */

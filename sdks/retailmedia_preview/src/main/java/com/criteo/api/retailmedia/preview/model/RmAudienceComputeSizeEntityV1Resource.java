@@ -15,6 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.retailmedia.preview.model.RmAudienceComputeSizeEntityV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -44,62 +45,62 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Category information for a preferred line item page
+ * A top-level object that encapsulates a Criteo API response for a single value
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExternalLineItemPageCategoryV2 {
-  public static final String SERIALIZED_NAME_CATEGORY_ID = "categoryId";
-  @SerializedName(SERIALIZED_NAME_CATEGORY_ID)
-  private String categoryId;
+public class RmAudienceComputeSizeEntityV1Resource {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private RmAudienceComputeSizeEntityV1 attributes;
 
-  public static final String SERIALIZED_NAME_INCLUDE_CHILDREN = "includeChildren";
-  @SerializedName(SERIALIZED_NAME_INCLUDE_CHILDREN)
-  private Boolean includeChildren = true;
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
-  public ExternalLineItemPageCategoryV2() {
+  public RmAudienceComputeSizeEntityV1Resource() {
   }
 
-  public ExternalLineItemPageCategoryV2 categoryId(String categoryId) {
+  public RmAudienceComputeSizeEntityV1Resource attributes(RmAudienceComputeSizeEntityV1 attributes) {
     
-    this.categoryId = categoryId;
+    this.attributes = attributes;
     return this;
   }
 
    /**
-   * Get categoryId
-   * @return categoryId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getCategoryId() {
-    return categoryId;
-  }
-
-
-  public void setCategoryId(String categoryId) {
-    this.categoryId = categoryId;
-  }
-
-
-  public ExternalLineItemPageCategoryV2 includeChildren(Boolean includeChildren) {
-    
-    this.includeChildren = includeChildren;
-    return this;
-  }
-
-   /**
-   * Get includeChildren
-   * @return includeChildren
+   * Get attributes
+   * @return attributes
   **/
   @javax.annotation.Nullable
 
-  public Boolean getIncludeChildren() {
-    return includeChildren;
+  public RmAudienceComputeSizeEntityV1 getAttributes() {
+    return attributes;
   }
 
 
-  public void setIncludeChildren(Boolean includeChildren) {
-    this.includeChildren = includeChildren;
+  public void setAttributes(RmAudienceComputeSizeEntityV1 attributes) {
+    this.attributes = attributes;
+  }
+
+
+  public RmAudienceComputeSizeEntityV1Resource type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -115,9 +116,9 @@ public class ExternalLineItemPageCategoryV2 {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ExternalLineItemPageCategoryV2 instance itself
+   * @return the RmAudienceComputeSizeEntityV1Resource instance itself
    */
-  public ExternalLineItemPageCategoryV2 putAdditionalProperty(String key, Object value) {
+  public RmAudienceComputeSizeEntityV1Resource putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -156,23 +157,23 @@ public class ExternalLineItemPageCategoryV2 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExternalLineItemPageCategoryV2 externalLineItemPageCategoryV2 = (ExternalLineItemPageCategoryV2) o;
-    return Objects.equals(this.categoryId, externalLineItemPageCategoryV2.categoryId) &&
-        Objects.equals(this.includeChildren, externalLineItemPageCategoryV2.includeChildren)&&
-        Objects.equals(this.additionalProperties, externalLineItemPageCategoryV2.additionalProperties);
+    RmAudienceComputeSizeEntityV1Resource rmAudienceComputeSizeEntityV1Resource = (RmAudienceComputeSizeEntityV1Resource) o;
+    return Objects.equals(this.attributes, rmAudienceComputeSizeEntityV1Resource.attributes) &&
+        Objects.equals(this.type, rmAudienceComputeSizeEntityV1Resource.type)&&
+        Objects.equals(this.additionalProperties, rmAudienceComputeSizeEntityV1Resource.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(categoryId, includeChildren, additionalProperties);
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExternalLineItemPageCategoryV2 {\n");
-    sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
-    sb.append("    includeChildren: ").append(toIndentedString(includeChildren)).append("\n");
+    sb.append("class RmAudienceComputeSizeEntityV1Resource {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -196,35 +197,31 @@ public class ExternalLineItemPageCategoryV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("categoryId");
-    openapiFields.add("includeChildren");
+    openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("categoryId");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExternalLineItemPageCategoryV2
+  * @throws IOException if the JSON Object is invalid with respect to RmAudienceComputeSizeEntityV1Resource
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ExternalLineItemPageCategoryV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalLineItemPageCategoryV2 is not found in the empty JSON string", ExternalLineItemPageCategoryV2.openapiRequiredFields.toString()));
+        if (!RmAudienceComputeSizeEntityV1Resource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RmAudienceComputeSizeEntityV1Resource is not found in the empty JSON string", RmAudienceComputeSizeEntityV1Resource.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExternalLineItemPageCategoryV2.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        RmAudienceComputeSizeEntityV1.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
-      if (!jsonObj.get("categoryId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `categoryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("categoryId").toString()));
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 
@@ -232,16 +229,16 @@ public class ExternalLineItemPageCategoryV2 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExternalLineItemPageCategoryV2.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExternalLineItemPageCategoryV2' and its subtypes
+       if (!RmAudienceComputeSizeEntityV1Resource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RmAudienceComputeSizeEntityV1Resource' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExternalLineItemPageCategoryV2> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalLineItemPageCategoryV2.class));
+       final TypeAdapter<RmAudienceComputeSizeEntityV1Resource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RmAudienceComputeSizeEntityV1Resource.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExternalLineItemPageCategoryV2>() {
+       return (TypeAdapter<T>) new TypeAdapter<RmAudienceComputeSizeEntityV1Resource>() {
            @Override
-           public void write(JsonWriter out, ExternalLineItemPageCategoryV2 value) throws IOException {
+           public void write(JsonWriter out, RmAudienceComputeSizeEntityV1Resource value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -264,11 +261,11 @@ public class ExternalLineItemPageCategoryV2 {
            }
 
            @Override
-           public ExternalLineItemPageCategoryV2 read(JsonReader in) throws IOException {
+           public RmAudienceComputeSizeEntityV1Resource read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ExternalLineItemPageCategoryV2 instance = thisAdapter.fromJsonTree(jsonObj);
+             RmAudienceComputeSizeEntityV1Resource instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -295,18 +292,18 @@ public class ExternalLineItemPageCategoryV2 {
   }
 
  /**
-  * Create an instance of ExternalLineItemPageCategoryV2 given an JSON string
+  * Create an instance of RmAudienceComputeSizeEntityV1Resource given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExternalLineItemPageCategoryV2
-  * @throws IOException if the JSON string is invalid with respect to ExternalLineItemPageCategoryV2
+  * @return An instance of RmAudienceComputeSizeEntityV1Resource
+  * @throws IOException if the JSON string is invalid with respect to RmAudienceComputeSizeEntityV1Resource
   */
-  public static ExternalLineItemPageCategoryV2 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExternalLineItemPageCategoryV2.class);
+  public static RmAudienceComputeSizeEntityV1Resource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RmAudienceComputeSizeEntityV1Resource.class);
   }
 
  /**
-  * Convert an instance of ExternalLineItemPageCategoryV2 to an JSON string
+  * Convert an instance of RmAudienceComputeSizeEntityV1Resource to an JSON string
   *
   * @return JSON string
   */

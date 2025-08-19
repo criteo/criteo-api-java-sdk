@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo API - MarketingSolutions
+ * Criteo API - RetailMedia
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -11,11 +11,10 @@
  */
 
 
-package com.criteo.api.marketingsolutions.preview.model;
+package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.AdvertiserCreationInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,64 +41,113 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.criteo.api.marketingsolutions.preview.JSON;
+import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for a single value
+ * Frequency Capping for a Preferred Line Item
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ValueResourceOfAdvertiserCreationInput {
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private AdvertiserCreationInput attributes;
+public class LineItemCappingV2 {
+  public static final String SERIALIZED_NAME_COUNT = "count";
+  @SerializedName(SERIALIZED_NAME_COUNT)
+  private Integer count;
+
+  /**
+   * Line Item Capping Type Enum
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    UNKNOWN("unknown"),
+    
+    DAY("day"),
+    
+    SESSION("session");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  private TypeEnum type;
 
-  public ValueResourceOfAdvertiserCreationInput() {
+  public LineItemCappingV2() {
   }
 
-  public ValueResourceOfAdvertiserCreationInput attributes(AdvertiserCreationInput attributes) {
+  public LineItemCappingV2 count(Integer count) {
     
-    this.attributes = attributes;
+    this.count = count;
     return this;
   }
 
    /**
-   * Get attributes
-   * @return attributes
+   * Get count
+   * @return count
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public AdvertiserCreationInput getAttributes() {
-    return attributes;
+  public Integer getCount() {
+    return count;
   }
 
 
-  public void setAttributes(AdvertiserCreationInput attributes) {
-    this.attributes = attributes;
+  public void setCount(Integer count) {
+    this.count = count;
   }
 
 
-  public ValueResourceOfAdvertiserCreationInput type(String type) {
+  public LineItemCappingV2 type(TypeEnum type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Get type
+   * Line Item Capping Type Enum
    * @return type
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getType() {
+  public TypeEnum getType() {
     return type;
   }
 
 
-  public void setType(String type) {
+  public void setType(TypeEnum type) {
     this.type = type;
   }
 
@@ -116,9 +164,9 @@ public class ValueResourceOfAdvertiserCreationInput {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ValueResourceOfAdvertiserCreationInput instance itself
+   * @return the LineItemCappingV2 instance itself
    */
-  public ValueResourceOfAdvertiserCreationInput putAdditionalProperty(String key, Object value) {
+  public LineItemCappingV2 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -157,22 +205,22 @@ public class ValueResourceOfAdvertiserCreationInput {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ValueResourceOfAdvertiserCreationInput valueResourceOfAdvertiserCreationInput = (ValueResourceOfAdvertiserCreationInput) o;
-    return Objects.equals(this.attributes, valueResourceOfAdvertiserCreationInput.attributes) &&
-        Objects.equals(this.type, valueResourceOfAdvertiserCreationInput.type)&&
-        Objects.equals(this.additionalProperties, valueResourceOfAdvertiserCreationInput.additionalProperties);
+    LineItemCappingV2 lineItemCappingV2 = (LineItemCappingV2) o;
+    return Objects.equals(this.count, lineItemCappingV2.count) &&
+        Objects.equals(this.type, lineItemCappingV2.type)&&
+        Objects.equals(this.additionalProperties, lineItemCappingV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, type, additionalProperties);
+    return Objects.hash(count, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ValueResourceOfAdvertiserCreationInput {\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("class LineItemCappingV2 {\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -197,30 +245,35 @@ public class ValueResourceOfAdvertiserCreationInput {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("attributes");
+    openapiFields.add("count");
     openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("count");
+    openapiRequiredFields.add("type");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ValueResourceOfAdvertiserCreationInput
+  * @throws IOException if the JSON Object is invalid with respect to LineItemCappingV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ValueResourceOfAdvertiserCreationInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceOfAdvertiserCreationInput is not found in the empty JSON string", ValueResourceOfAdvertiserCreationInput.openapiRequiredFields.toString()));
+        if (!LineItemCappingV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemCappingV2 is not found in the empty JSON string", LineItemCappingV2.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        AdvertiserCreationInput.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : LineItemCappingV2.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+      if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
@@ -229,16 +282,16 @@ public class ValueResourceOfAdvertiserCreationInput {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ValueResourceOfAdvertiserCreationInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ValueResourceOfAdvertiserCreationInput' and its subtypes
+       if (!LineItemCappingV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LineItemCappingV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ValueResourceOfAdvertiserCreationInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceOfAdvertiserCreationInput.class));
+       final TypeAdapter<LineItemCappingV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemCappingV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ValueResourceOfAdvertiserCreationInput>() {
+       return (TypeAdapter<T>) new TypeAdapter<LineItemCappingV2>() {
            @Override
-           public void write(JsonWriter out, ValueResourceOfAdvertiserCreationInput value) throws IOException {
+           public void write(JsonWriter out, LineItemCappingV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -261,11 +314,11 @@ public class ValueResourceOfAdvertiserCreationInput {
            }
 
            @Override
-           public ValueResourceOfAdvertiserCreationInput read(JsonReader in) throws IOException {
+           public LineItemCappingV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ValueResourceOfAdvertiserCreationInput instance = thisAdapter.fromJsonTree(jsonObj);
+             LineItemCappingV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -292,18 +345,18 @@ public class ValueResourceOfAdvertiserCreationInput {
   }
 
  /**
-  * Create an instance of ValueResourceOfAdvertiserCreationInput given an JSON string
+  * Create an instance of LineItemCappingV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ValueResourceOfAdvertiserCreationInput
-  * @throws IOException if the JSON string is invalid with respect to ValueResourceOfAdvertiserCreationInput
+  * @return An instance of LineItemCappingV2
+  * @throws IOException if the JSON string is invalid with respect to LineItemCappingV2
   */
-  public static ValueResourceOfAdvertiserCreationInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ValueResourceOfAdvertiserCreationInput.class);
+  public static LineItemCappingV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LineItemCappingV2.class);
   }
 
  /**
-  * Convert an instance of ValueResourceOfAdvertiserCreationInput to an JSON string
+  * Convert an instance of LineItemCappingV2 to an JSON string
   *
   * @return JSON string
   */

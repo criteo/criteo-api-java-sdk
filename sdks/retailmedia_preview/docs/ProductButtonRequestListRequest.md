@@ -1,8 +1,8 @@
 
 
-# ProductButtonListRequest
+# ProductButtonRequestListRequest
 
-Data model for a list of input resources
+A top-level object that encapsulates a Criteo API request for several entities
 
 ## Properties
 

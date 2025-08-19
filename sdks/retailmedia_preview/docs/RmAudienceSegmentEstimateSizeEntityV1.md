@@ -18,7 +18,6 @@ Set of rules that defines specific people to target.
 
 | Name | Value |
 |---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
 | ONSITE | &quot;Onsite&quot; |
 | OFFSITE | &quot;Offsite&quot; |
 

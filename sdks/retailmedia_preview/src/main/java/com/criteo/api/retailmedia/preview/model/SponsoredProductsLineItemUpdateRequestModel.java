@@ -56,13 +56,13 @@ public class SponsoredProductsLineItemUpdateRequestModel {
    */
   @JsonAdapter(BidStrategyEnum.Adapter.class)
   public enum BidStrategyEnum {
-    UNKNOWN("Unknown"),
+    UNKNOWN("unknown"),
     
-    CONVERSION("Conversion"),
+    CONVERSION("conversion"),
     
-    CLICKS("Clicks"),
+    CLICKS("clicks"),
     
-    REVENUE("Revenue");
+    REVENUE("revenue");
 
     private String value;
 
@@ -147,11 +147,11 @@ public class SponsoredProductsLineItemUpdateRequestModel {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    ACTIVE("Active"),
+    ACTIVE("active"),
     
-    PAUSED("Paused"),
+    PAUSED("paused"),
     
-    DRAFT("Draft");
+    DRAFT("draft");
 
     private String value;
 

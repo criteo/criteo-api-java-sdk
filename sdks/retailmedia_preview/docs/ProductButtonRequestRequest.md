@@ -1,6 +1,6 @@
 
 
-# PreferredLineItemUpdateModelV2Request
+# ProductButtonRequestRequest
 
 A top-level object that encapsulates a Criteo API request for a single entity
 
@@ -8,7 +8,7 @@ A top-level object that encapsulates a Criteo API request for a single entity
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**ResourceOfPreferredLineItemUpdateModelV2**](ResourceOfPreferredLineItemUpdateModelV2.md) |  |  [optional] |
+|**data** | [**ResourceOfProductButtonRequest**](ResourceOfProductButtonRequest.md) |  |  [optional] |
 
 
 

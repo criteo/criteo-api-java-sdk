@@ -304,113 +304,6 @@ paths:
       tags:
       - Creative
       x-accepts: application/json
-  /preview/advertisers:
-    post:
-      description: Create a new advertiser based on provided parameters. This could
-        take up to 30 seconds.
-      operationId: createAdvertiser
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AdvertiserCreationRequest'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AdvertiserCreationRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AdvertiserCreationRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/AdvertiserCreationRequest'
-        description: ""
-        required: true
-        x-bodyName: advertiserCreation
-      responses:
-        "201":
-          content:
-            application/json:
-              example:
-                data:
-                  type: advertiser
-                  id: "73550"
-                errors: []
-                warnings: []
-              schema:
-                $ref: '#/components/schemas/AdvertiserCreationResponse'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AdvertiserCreationResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AdvertiserCreationResponse'
-          description: Success
-        "400":
-          content:
-            application/json:
-              example:
-                errors:
-                - traceId: cb381a21702b247f
-                  type: validation
-                  code: invalid
-                  title: Failed to create Advertiser
-                  detail: Failed to create Advertiser
-                warnings: []
-              schema:
-                $ref: '#/components/schemas/AdvertiserCreationResponse'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AdvertiserCreationResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AdvertiserCreationResponse'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              example:
-                errors:
-                - traceId: cb381a21702b247f
-                  type: authentication
-                  code: invalid
-                  title: Permission Denied; This endpoint expects a user token
-                  detail: Permission Denied; This endpoint expects a user token
-                warnings: []
-              schema:
-                $ref: '#/components/schemas/UnauthorizedResponseV2'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedResponseV2'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/UnauthorizedResponseV2'
-          description: Unauthorized
-        "500":
-          content:
-            application/json:
-              example:
-                errors:
-                - traceId: cb381a21702b247f
-                  type: availability
-                  code: internal-error
-                  title: Internal Server Error
-                  detail: Internal Server Error
-                warnings: []
-              schema:
-                $ref: '#/components/schemas/AdvertiserCreationResponse'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AdvertiserCreationResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AdvertiserCreationResponse'
-          description: Server Error
-      security:
-      - oauth: []
-      tags:
-      - Advertiser
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
   /preview/advertisers/{advertiser-id}/ads:
     get:
       description: Get the list of self-services Ads for a given advertiser
@@ -9055,117 +8948,6 @@ components:
           type: array
           uniqueItems: false
       type: object
-    AdvertiserCreationInput:
-      description: Information for creating an advertiser
-      properties:
-        accountName:
-          description: The Account Name; This will not be in fact the Advertiser name
-          type: string
-        agencyId:
-          description: ID of the agency requesting the advertiser creation
-          type: string
-        countryIsoCode:
-          description: Country ISO code
-          type: string
-        currencyIsoCode:
-          description: Currency ISO code
-          type: string
-        industryId:
-          description: Industry ID
-          type: string
-        websiteUrl:
-          description: Website url
-          type: string
-      required:
-      - accountName
-      - agencyId
-      - countryIsoCode
-      - currencyIsoCode
-      - industryId
-      - websiteUrl
-      type: object
-    AdvertiserCreationRequest:
-      description: Advertiser Creation Request
-      example:
-        data:
-          type: advertiser
-          attributes:
-            agencyId: agencyId
-            accountName: AdvertiserName
-            websiteUrl: http://website_URL.com
-            countryIsoCode: RO
-            currencyIsoCode: EUR
-            industryId: "200006"
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfAdvertiserCreationInput'
-      type: object
-    AdvertiserCreationResponse:
-      description: Advertiser Creation Response
-      example:
-        data:
-          relationships: "{}"
-          meta: "{}"
-          attributes: "{}"
-          id: id
-          type: campaign
-        warnings:
-        - traceId: traceId
-          code: internal-error
-          instance: instance
-          detail: detail
-          title: title
-          type: access-control
-        - traceId: traceId
-          code: internal-error
-          instance: instance
-          detail: detail
-          title: title
-          type: access-control
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/EntityV2OfObject'
-        errors:
-          description: "Error list returned by the Criteo API\r\nFor successful requests\
-            \ it is empty"
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          type: array
-          uniqueItems: false
-        warnings:
-          description: "Warnings list returned by the Criteo API\r\nIn some situations\
-            \ the operations are successful but it may be useful to issue warnings\
-            \ to the API consumer.\r\nFor example the endpoint, entity or field is\
-            \ deprecated. Warnings are like compiler warnings, they indicate that\
-            \ problems may occur in the future."
-          items:
-            $ref: '#/components/schemas/CriteoApiWarningV2'
-          nullable: true
-          type: array
-          uniqueItems: false
-      type: object
     AdvertiserDatasetListResponse:
       description: Get datasets response.
       example:
@@ -14519,7 +14301,6 @@ components:
         attributes: "{}"
         id: id
         type: campaign
-      nullable: true
       properties:
         attributes:
           description: "Generic Criteo API successful data model\r\nWhile others may\
@@ -23893,31 +23674,6 @@ components:
           nullable: true
           type: string
       type: object
-    UnauthorizedResponseV2:
-      description: Unauthorized Response
-      properties:
-        data:
-          $ref: '#/components/schemas/EntityV2OfObject'
-        errors:
-          description: "Error list returned by the Criteo API\r\nFor successful requests\
-            \ it is empty"
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          type: array
-          uniqueItems: false
-        warnings:
-          description: "Warnings list returned by the Criteo API\r\nIn some situations\
-            \ the operations are successful but it may be useful to issue warnings\
-            \ to the API consumer.\r\nFor example the endpoint, entity or field is\
-            \ deprecated. Warnings are like compiler warnings, they indicate that\
-            \ problems may occur in the future."
-          items:
-            $ref: '#/components/schemas/CriteoApiWarningV2'
-          nullable: true
-          type: array
-          uniqueItems: false
-      type: object
     UpdateCoupon:
       description: Entity to edit a Coupon
       example:
@@ -24056,15 +23812,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceOfCreateProductSetRequest'
-      type: object
-    ValueResourceOfAdvertiserCreationInput:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
-      properties:
-        attributes:
-          $ref: '#/components/schemas/AdvertiserCreationInput'
-        type:
-          type: string
       type: object
     ValueResourceOfCreateProductFilterRequest:
       description: A top-level object that encapsulates a Criteo API response for

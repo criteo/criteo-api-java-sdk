@@ -485,7 +485,7 @@ paths:
           type: string
         style: simple
       - description: The number of elements to be returned. The default is 50 and
-          the maximum is 100.
+          the maximum is 500.
         explode: true
         in: query
         name: limit
@@ -493,7 +493,7 @@ paths:
         schema:
           default: 50
           format: int32
-          maximum: 100
+          maximum: 500
           minimum: 0
           type: integer
         style: form
@@ -929,7 +929,7 @@ paths:
           type: string
         style: simple
       - description: The number of elements to be returned. The default is 50 and
-          the maximum is 100.
+          the maximum is 500.
         explode: true
         in: query
         name: limit
@@ -937,7 +937,7 @@ paths:
         schema:
           default: 50
           format: int32
-          maximum: 100
+          maximum: 500
           minimum: 0
           type: integer
         style: form
@@ -1009,7 +1009,7 @@ paths:
   /preview/retail-media/accounts/{account-id}/balances:
     get:
       description: Gets page of balance objects for the given account id
-      operationId: GetApiV2ExternalAccountBalancesByAccountId
+      operationId: Balances_GetApiExternalV2AccountBalancesByAccountId
       parameters:
       - description: The account to get balances for
         explode: false
@@ -1038,6 +1038,8 @@ paths:
         schema:
           default: 0
           format: int32
+          maximum: 2147483647
+          minimum: 0
           type: integer
         style: form
       - description: The maximum number of items you would like to receive in this
@@ -1049,6 +1051,8 @@ paths:
         schema:
           default: 25
           format: int32
+          maximum: 2147483647
+          minimum: 1
           type: integer
         style: form
       responses:
@@ -1056,13 +1060,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/PagedResourceCollectionOutcomeOfBalanceResponseV2'
+                $ref: '#/components/schemas/BalanceResponseV2PagedListResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/PagedResourceCollectionOutcomeOfBalanceResponseV2'
+                $ref: '#/components/schemas/BalanceResponseV2PagedListResponse'
             text/json:
               schema:
-                $ref: '#/components/schemas/PagedResourceCollectionOutcomeOfBalanceResponseV2'
+                $ref: '#/components/schemas/BalanceResponseV2PagedListResponse'
           description: Success
       security:
       - oauth:
@@ -1072,7 +1076,7 @@ paths:
       x-accepts: application/json
     post:
       description: Create balance for the given account id
-      operationId: PostApiV2ExternalAccountBalancesByAccountId
+      operationId: Balances_PostApiExternalV2AccountBalancesByAccountId
       parameters:
       - description: The account to create balances for
         explode: false
@@ -1089,20 +1093,13 @@ paths:
               $ref: '#/components/schemas/CreateBalanceV2Request'
         description: An object that represents the available options to set when creating
           a Retail Media Balance
-        required: true
         x-bodyName: createBalance
       responses:
         "201":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/BalanceResponseV2Response'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponseV2Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/plain: {}
+            application/json: {}
+            text/json: {}
           description: Success
       security:
       - oauth:
@@ -1114,7 +1111,7 @@ paths:
   /preview/retail-media/accounts/{account-id}/balances/{balance-id}:
     get:
       description: Get a balance for the given account id and balance id
-      operationId: "GetApiV2ExternalAccountByAccountId}Balances{balanceId"
+      operationId: "Balances_GetApiExternalV2AccountByAccountId}Balances{balanceId"
       parameters:
       - description: The account of the balance
         explode: false
@@ -1153,7 +1150,7 @@ paths:
       x-accepts: application/json
     patch:
       description: Modify a balance for the given account id
-      operationId: "PatchApiV2ExternalAccountByAccountId}Balances{balanceId"
+      operationId: "Balances_PatchApiExternalV2AccountByAccountId}Balances{balanceId"
       parameters:
       - description: The account of the balance
         explode: false
@@ -1177,7 +1174,6 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateBalanceModelV2Request'
         description: An object that represents the available options to modify a balance.
-        required: true
         x-bodyName: updateBalanceModel
       responses:
         "200":
@@ -1202,7 +1198,7 @@ paths:
   /preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates:
     post:
       description: Change dates of a balance for the given account id
-      operationId: "PostApiV2ExternalAccountChangeDatesByAccountId}Balances{balanceId"
+      operationId: "Balances_PostApiExternalV2AccountChangeDatesByAccountId}Balances{balanceId"
       parameters:
       - description: The account of the balance
         explode: false
@@ -1227,7 +1223,6 @@ paths:
               $ref: '#/components/schemas/ChangeDatesOfBalanceV2Request'
         description: An object that represents the available options to modify schedule
           of a balance.
-        required: true
         x-bodyName: changeDatesOfBalance
       responses:
         "200":
@@ -1760,7 +1755,7 @@ paths:
         a request.
       operationId: UpdateAuctionLineItemV2
       parameters:
-      - description: The line item ID of the sponsored products line item.
+      - description: The external line item ID of the sponsored products line item.
         explode: false
         in: path
         name: lineItemId
@@ -1869,7 +1864,7 @@ paths:
           description: Forbidden
       security:
       - oauth:
-        - MarketingSolutions_Audience_Manage
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json
@@ -1911,7 +1906,7 @@ paths:
           description: Forbidden
       security:
       - oauth:
-        - MarketingSolutions_Audience_Manage
+        - RetailMedia_Audience_Manage
       tags:
       - Audience
       x-accepts: application/json
@@ -2177,7 +2172,7 @@ paths:
     get:
       description: Gets page of preferred line item objects for the given campaign
         id
-      operationId: GetApiV2ExternalCampaignPreferredLineItemsByCampaignId
+      operationId: LineItems_GetApiExternalV2CampaignPreferredLineItemsByCampaignId
       parameters:
       - description: The given campaign id
         explode: false
@@ -2204,7 +2199,10 @@ paths:
         name: pageIndex
         required: false
         schema:
+          default: 0
           format: int32
+          maximum: 2147483647
+          minimum: 0
           type: integer
         style: form
       - description: The maximum number of items you would like to receive in this
@@ -2214,19 +2212,34 @@ paths:
         name: pageSize
         required: false
         schema:
+          default: 25
           format: int32
+          maximum: 2147483647
+          minimum: 1
           type: integer
         style: form
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2PagedListResponse'
             application/json:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2PagedListResponse'
+            text/json:
               schema:
                 $ref: '#/components/schemas/PreferredLineItemV2PagedListResponse'
           description: Success
         "400":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2PagedListResponse'
             application/json:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2PagedListResponse'
+            text/json:
               schema:
                 $ref: '#/components/schemas/PreferredLineItemV2PagedListResponse'
           description: Bad Request
@@ -2238,7 +2251,7 @@ paths:
       x-accepts: application/json
     post:
       description: Creates a new preferred line item with the specified settings
-      operationId: LineItemsApi_PostApi202110ExternalCampaignPreferredLineItemsByCampaignId
+      operationId: LineItems_PostApiExternalV2CampaignPreferredLineItemsByCampaignId
       parameters:
       - description: The given campaign id
         explode: false
@@ -2254,18 +2267,23 @@ paths:
             schema:
               $ref: '#/components/schemas/PreferredLineItemCreateModelV2Request'
         description: The line item settings to create a line item with
-        required: true
         x-bodyName: lineItem
       responses:
         "201":
           content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PreferredLineItemV2Response'
+            text/plain: {}
+            application/json: {}
+            text/json: {}
           description: Success
         "400":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2Response'
             application/json:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2Response'
+            text/json:
               schema:
                 $ref: '#/components/schemas/PreferredLineItemV2Response'
           description: Bad Request
@@ -2367,7 +2385,7 @@ paths:
         description: The line item settings to create a line item with
         x-bodyName: lineItem
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
@@ -2893,10 +2911,10 @@ paths:
       x-accepts: application/json
   /preview/retail-media/line-items/{line-item-id}/product-buttons:
     get:
-      description: Get all the product buttons associated with a line item
-      operationId: ProductButtons_GetApi202210ExternalLineItemProductButtonsByLineItemId
+      description: Get LineItem Product Buttons
+      operationId: ProductButtons_GetApiExternalV1LineItemProductButtonsByLineItemId
       parameters:
-      - description: Long external id of the associated line item
+      - description: External LineItemId for productButton retrieval
         explode: false
         in: path
         name: line-item-id
@@ -2907,10 +2925,16 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductButtonListResponse'
-          description: Success
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
+          description: ProductButtons found
       security:
       - oauth:
         - RetailMedia_Campaign_Read
@@ -2919,10 +2943,10 @@ paths:
       x-accepts: application/json
   /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}:
     delete:
-      description: Delete a product button
-      operationId: ProductButtons_DeleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
+      description: Delete Specific Product Button
+      operationId: "ProductButtons_DeleteApiExternalV1LineItemByLineItemId}ProductButtons{productButtonId"
       parameters:
-      - description: Long external id of the associated line item
+      - description: External LineItemId for productButton delete
         explode: false
         in: path
         name: line-item-id
@@ -2930,36 +2954,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Sequential id of the product button
-        explode: false
-        in: path
-        name: product-button-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Manage
-      tags:
-      - Campaign
-      x-accepts: application/json
-    get:
-      description: Get a single product button
-      operationId: ProductButtons_GetApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
-      parameters:
-      - description: Long external id of the associated line item
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Sequential id of the product button
+      - description: productButtonId used for delete
         explode: false
         in: path
         name: product-button-id
@@ -2970,21 +2965,27 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductButtonListResponse'
-          description: Success
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
+          description: ProductButton deleted
       security:
       - oauth:
-        - RetailMedia_Campaign_Read
+        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-accepts: application/json
-    put:
-      description: Update a product button
-      operationId: ProductButtons_PutApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
+    get:
+      description: Get Specific Product Button
+      operationId: "ProductButtons_GetApiExternalV1LineItemByLineItemId}ProductButtons{productButtonId"
       parameters:
-      - description: Long external id of the associated line item
+      - description: External LineItemId for productButton retrieval
         explode: false
         in: path
         name: line-item-id
@@ -2992,7 +2993,46 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Sequential id of the product button
+      - description: productButtonId used for retrieval
+        explode: false
+        in: path
+        name: product-button-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
+          description: ProductButton found
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: Update Specific Product Button
+      operationId: "ProductButtons_PutApiExternalV1LineItemByLineItemId}ProductButtons{productButtonId"
+      parameters:
+      - description: External LineItemId for productButton update
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: productButtonId used for update
         explode: false
         in: path
         name: product-button-id
@@ -3004,16 +3044,22 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductButtonRequest'
-        description: Details of the updated product button
+              $ref: '#/components/schemas/ProductButtonRequestRequest'
+        description: Specific Product button update info
         x-bodyName: productButton
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductButtonListResponse'
-          description: Success
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
+          description: ProductButton updated
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
@@ -3023,10 +3069,10 @@ paths:
       x-accepts: application/json
   /preview/retail-media/line-items/{line-item-id}/product-buttons/create:
     post:
-      description: Append new product buttons to a line item
-      operationId: ProductButtons_PostApi202210ExternalLineItemProductButtonsCreateByLineItemId
+      description: Add Specific Product Buttons
+      operationId: ProductButtons_PostApiExternalV1LineItemProductButtonsCreateByLineItemId
       parameters:
-      - description: Long external id of the associated line item
+      - description: External LineItemId for productButton retrieval
         explode: false
         in: path
         name: line-item-id
@@ -3038,16 +3084,22 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductButtonListRequest'
-        description: List of product buttons to append to the specified line item
+              $ref: '#/components/schemas/ProductButtonRequestListRequest'
+        description: List of Product Buttons to append
         x-bodyName: productButtons
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductButtonListResponse'
-          description: Success
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductButtonResponseListResponse'
+          description: ProductButtons added
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
@@ -3310,7 +3362,7 @@ paths:
   /preview/retail-media/preferred-line-items/{line-item-id}:
     get:
       description: Gets the preferred line item for the given line item id
-      operationId: GetApiV2ExternalPreferredLineItemByLineItemId
+      operationId: LineItems_GetApiExternalV2PreferredLineItemByLineItemId
       parameters:
       - description: The given line item id
         explode: false
@@ -3323,13 +3375,25 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2Response'
             application/json:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2Response'
+            text/json:
               schema:
                 $ref: '#/components/schemas/PreferredLineItemV2Response'
           description: Success
         "400":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2Response'
             application/json:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2Response'
+            text/json:
               schema:
                 $ref: '#/components/schemas/PreferredLineItemV2Response'
           description: Bad Request
@@ -3341,7 +3405,7 @@ paths:
       x-accepts: application/json
     put:
       description: Updates the preferred line item for the given line item id
-      operationId: LineItemsApi_PutApi202110ExternalPreferredLineItemByLineItemId
+      operationId: LineItems_PutApiExternalV2PreferredLineItemByLineItemId
       parameters:
       - description: The given line item id
         explode: false
@@ -3357,18 +3421,29 @@ paths:
             schema:
               $ref: '#/components/schemas/PreferredLineItemUpdateModelV2Request'
         description: The line item settings to create a line item with
-        required: true
         x-bodyName: lineItem
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2Response'
             application/json:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2Response'
+            text/json:
               schema:
                 $ref: '#/components/schemas/PreferredLineItemV2Response'
           description: Success
         "400":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2Response'
             application/json:
+              schema:
+                $ref: '#/components/schemas/PreferredLineItemV2Response'
+            text/json:
               schema:
                 $ref: '#/components/schemas/PreferredLineItemV2Response'
           description: Bad Request
@@ -6242,7 +6317,7 @@ components:
         any or all campaigns in an account
       example:
         privateMarketBillingType: notApplicable
-        endDate: 2000-01-23
+        endDate: endDate
         deposited: 0.8008281904610115
         spent: 1.4658129805029452
         memo: memo
@@ -6252,7 +6327,7 @@ components:
         balanceType: unknown
         name: name
         poNumber: poNumber
-        startDate: 2000-01-23
+        startDate: startDate
         status: unknown
         updatedAt: 2000-01-23T04:56:07.000+00:00
       nullable: true
@@ -6270,12 +6345,11 @@ components:
           type: string
         deposited:
           description: Amount of billable funds allotted to the balance.
-          format: decimal
+          format: double
           nullable: true
           type: number
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
-          format: date
           nullable: true
           type: string
         memo:
@@ -6299,7 +6373,7 @@ components:
           type: string
         remaining:
           description: Amount of remaining funds of the balance.
-          format: decimal
+          format: double
           nullable: true
           type: number
         spendType:
@@ -6311,12 +6385,11 @@ components:
           type: string
         spent:
           description: Amount of spent funds of the balance.
-          format: decimal
+          format: double
           nullable: true
           type: number
         startDate:
           description: Start date of the balance in the format YYYY-MM-DD.
-          format: date
           type: string
         status:
           description: Status of the balance.
@@ -6337,14 +6410,20 @@ components:
       - spendType
       - startDate
       type: object
-    BalanceResponseV2Response:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single entity
+    BalanceResponseV2PagedListResponse:
+      description: Data model for a paged list of response resources
       example:
+        metadata:
+          currentPageSize: 5
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 7
+          totalItemsAcrossAllPages: 2
+          currentPageIndex: 5
         data:
-          attributes:
+        - attributes:
             privateMarketBillingType: notApplicable
-            endDate: 2000-01-23
+            endDate: endDate
             deposited: 0.8008281904610115
             spent: 1.4658129805029452
             memo: memo
@@ -6354,7 +6433,106 @@ components:
             balanceType: unknown
             name: name
             poNumber: poNumber
-            startDate: 2000-01-23
+            startDate: startDate
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            privateMarketBillingType: notApplicable
+            endDate: endDate
+            deposited: 0.8008281904610115
+            spent: 1.4658129805029452
+            memo: memo
+            spendType: Onsite
+            remaining: 6.027456183070403
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            poNumber: poNumber
+            startDate: startDate
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfBalanceResponseV2'
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+      type: object
+    BalanceResponseV2Response:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity
+      example:
+        data:
+          attributes:
+            privateMarketBillingType: notApplicable
+            endDate: endDate
+            deposited: 0.8008281904610115
+            spent: 1.4658129805029452
+            memo: memo
+            spendType: Onsite
+            remaining: 6.027456183070403
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            poNumber: poNumber
+            startDate: startDate
             status: unknown
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
@@ -6764,15 +6942,12 @@ components:
       properties:
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
-          nullable: true
           type: string
         memo:
           description: Memo.
-          nullable: true
           type: string
         startDate:
           description: Start date of the balance in the format YYYY-MM-DD.
-          nullable: true
           type: string
       type: object
     ChangeDatesOfBalanceV2Request:
@@ -7013,21 +7188,20 @@ components:
       description: An object that represents the available options to set when creating
         a Retail Media Balance
       example:
-        endDate: 2000-01-23
+        endDate: endDate
         deposited: 0.8008281904610115
         name: name
         memo: memo
         poNumber: poNumber
         spendType: Onsite
-        startDate: 2000-01-23
+        startDate: startDate
       properties:
         deposited:
           description: Amount of billable funds allotted to the balance.
-          format: decimal
+          format: double
           type: number
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
-          format: date
           nullable: true
           type: string
         memo:
@@ -7050,7 +7224,6 @@ components:
           type: string
         startDate:
           description: Start date of the balance in the format YYYY-MM-DD.
-          format: date
           type: string
       required:
       - name
@@ -7063,13 +7236,13 @@ components:
       example:
         data:
           attributes:
-            endDate: 2000-01-23
+            endDate: endDate
             deposited: 0.8008281904610115
             name: name
             memo: memo
             poNumber: poNumber
             spendType: Onsite
-            startDate: 2000-01-23
+            startDate: startDate
           id: id
           type: type
       properties:
@@ -8239,7 +8412,7 @@ components:
         data:
         - attributes:
             neutralAdstrategyEnabled: true
-            bidStrategy: Unknown
+            bidStrategy: unknown
             budgetRemaining: 6.027456183070403
             endDate: 2000-01-23T04:56:07.000+00:00
             campaignId: campaignId
@@ -8251,11 +8424,11 @@ components:
             flightSchedule:
               legs:
               - dayOfWeek: sunday
-                startTime: startTime
-                endTime: endTime
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
               - dayOfWeek: sunday
-                startTime: startTime
-                endTime: endTime
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
             name: name
             conquestingAdstrategyEnabled: true
             isAutoDailyPacing: true
@@ -8270,7 +8443,7 @@ components:
           type: type
         - attributes:
             neutralAdstrategyEnabled: true
-            bidStrategy: Unknown
+            bidStrategy: unknown
             budgetRemaining: 6.027456183070403
             endDate: 2000-01-23T04:56:07.000+00:00
             campaignId: campaignId
@@ -8282,11 +8455,11 @@ components:
             flightSchedule:
               legs:
               - dayOfWeek: sunday
-                startTime: startTime
-                endTime: endTime
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
               - dayOfWeek: sunday
-                startTime: startTime
-                endTime: endTime
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
             name: name
             conquestingAdstrategyEnabled: true
             isAutoDailyPacing: true
@@ -8448,7 +8621,7 @@ components:
       example:
         attributes:
           neutralAdstrategyEnabled: true
-          bidStrategy: Unknown
+          bidStrategy: unknown
           budgetRemaining: 6.027456183070403
           endDate: 2000-01-23T04:56:07.000+00:00
           campaignId: campaignId
@@ -8460,11 +8633,11 @@ components:
           flightSchedule:
             legs:
             - dayOfWeek: sunday
-              startTime: startTime
-              endTime: endTime
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
             - dayOfWeek: sunday
-              startTime: startTime
-              endTime: endTime
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
           name: name
           conquestingAdstrategyEnabled: true
           isAutoDailyPacing: true
@@ -8569,7 +8742,7 @@ components:
         data:
           attributes:
             neutralAdstrategyEnabled: true
-            bidStrategy: Unknown
+            bidStrategy: unknown
             budgetRemaining: 6.027456183070403
             endDate: 2000-01-23T04:56:07.000+00:00
             campaignId: campaignId
@@ -8581,11 +8754,11 @@ components:
             flightSchedule:
               legs:
               - dayOfWeek: sunday
-                startTime: startTime
-                endTime: endTime
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
               - dayOfWeek: sunday
-                startTime: startTime
-                endTime: endTime
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
             name: name
             conquestingAdstrategyEnabled: true
             isAutoDailyPacing: true
@@ -8861,422 +9034,6 @@ components:
           nullable: true
           type: integer
       type: object
-    ExternalLineItemCappingV2:
-      description: Frequency Capping for a Preferred Line Item
-      example:
-        count: 5
-        type: unknown
-      nullable: true
-      properties:
-        count:
-          format: int32
-          type: integer
-        type:
-          description: Line Item Capping Type Enum
-          enum:
-          - unknown
-          - day
-          - session
-          type: string
-      required:
-      - count
-      - type
-      type: object
-    ExternalLineItemPageCategoryV2:
-      description: Category information for a preferred line item page
-      example:
-        includeChildren: true
-        categoryId: categoryId
-      properties:
-        categoryId:
-          type: string
-        includeChildren:
-          default: true
-          type: boolean
-      required:
-      - categoryId
-      type: object
-    ExternalLineItemPageV2:
-      description: Page information for a preferred line item
-      example:
-        pageType: unknown
-        searchKeywords:
-        - searchKeywords
-        - searchKeywords
-        categories:
-        - includeChildren: true
-          categoryId: categoryId
-        - includeChildren: true
-          categoryId: categoryId
-      properties:
-        categories:
-          items:
-            $ref: '#/components/schemas/ExternalLineItemPageCategoryV2'
-          nullable: true
-          type: array
-        pageType:
-          description: Page Type Enum
-          enum:
-          - unknown
-          - search
-          - home
-          - browse
-          - checkout
-          - category
-          - productDetail
-          - confirmation
-          - merchandising
-          - deals
-          - favorites
-          - searchBar
-          - categoryMenu
-          type: string
-        searchKeywords:
-          items:
-            type: string
-          nullable: true
-          type: array
-      required:
-      - pageType
-      type: object
-    ExternalPreferredLineItemCreateModelV2:
-      description: Model used to create a preferred line item
-      example:
-        pacing: unknown
-        endDate: 2000-01-23
-        name: name
-        capping:
-          count: 5
-          type: unknown
-        page:
-          pageType: unknown
-          searchKeywords:
-          - searchKeywords
-          - searchKeywords
-          categories:
-          - includeChildren: true
-            categoryId: categoryId
-          - includeChildren: true
-            categoryId: categoryId
-        targetRetailerId: targetRetailerId
-        creativeId: creativeId
-        startDate: 2000-01-23
-        budget: 0.8008281904610115
-        status: unknown
-      properties:
-        budget:
-          format: double
-          type: number
-        capping:
-          $ref: '#/components/schemas/ExternalLineItemCappingV2'
-        creativeId:
-          format: long-id
-          nullable: true
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        name:
-          maxLength: 255
-          minLength: 0
-          type: string
-        pacing:
-          description: Line Item Pacing Enum
-          enum:
-          - unknown
-          - standard
-          - accelerated
-          type: string
-        page:
-          $ref: '#/components/schemas/ExternalLineItemPageV2'
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        status:
-          description: Line Item Status Enum
-          enum:
-          - unknown
-          - active
-          - scheduled
-          - draft
-          - paused
-          - budgetHit
-          - ended
-          - archived
-          - noFunds
-          type: string
-        targetRetailerId:
-          format: long-id
-          type: string
-      required:
-      - budget
-      - endDate
-      - name
-      - pacing
-      - page
-      - startDate
-      - targetRetailerId
-      type: object
-    ExternalPreferredLineItemUpdateModelV2:
-      description: Model used to update a preferred line item
-      example:
-        pacing: accelerated
-        endDate: 2000-01-23
-        name: name
-        capping:
-          count: 5
-          type: unknown
-        page:
-          pageType: unknown
-          searchKeywords:
-          - searchKeywords
-          - searchKeywords
-          categories:
-          - includeChildren: true
-            categoryId: categoryId
-          - includeChildren: true
-            categoryId: categoryId
-        creativeId: creativeId
-        startDate: 2000-01-23
-        budget: 0.8008281904610115
-        status: unknown
-      properties:
-        budget:
-          format: double
-          type: number
-        capping:
-          $ref: '#/components/schemas/ExternalLineItemCappingV2'
-        creativeId:
-          format: long-id
-          nullable: true
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        name:
-          maxLength: 255
-          minLength: 0
-          type: string
-        pacing:
-          default: accelerated
-          enum:
-          - unknown
-          - standard
-          - accelerated
-          type: string
-        page:
-          $ref: '#/components/schemas/ExternalLineItemPageV2'
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        status:
-          description: Line Item Status Enum
-          enum:
-          - unknown
-          - active
-          - scheduled
-          - draft
-          - paused
-          - budgetHit
-          - ended
-          - archived
-          - noFunds
-          type: string
-      required:
-      - endDate
-      - name
-      - startDate
-      - status
-      type: object
-    ExternalPreferredLineItemV2:
-      description: A Retail Media Preferred Line Item used to hold bid settings for
-        one or many promoted products on a single retailer
-      example:
-        budgetRemaining: 6.027456183070403
-        endDate: 2000-01-23
-        campaignId: campaignId
-        capping:
-          count: 5
-          type: unknown
-        creativeId: creativeId
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        pacing: unknown
-        budgetSpent: 1.4658129805029452
-        name: name
-        id: id
-        page:
-          pageType: unknown
-          searchKeywords:
-          - searchKeywords
-          - searchKeywords
-          categories:
-          - includeChildren: true
-            categoryId: categoryId
-          - includeChildren: true
-            categoryId: categoryId
-        targetRetailerId: targetRetailerId
-        startDate: 2000-01-23
-        budget: 0.8008281904610115
-        status: unknown
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        budget:
-          format: decimal
-          nullable: true
-          type: number
-        budgetRemaining:
-          format: decimal
-          nullable: true
-          type: number
-        budgetSpent:
-          format: decimal
-          nullable: true
-          type: number
-        campaignId:
-          format: long-id
-          type: string
-        capping:
-          $ref: '#/components/schemas/ExternalLineItemCappingV2'
-        createdAt:
-          format: date-time
-          type: string
-        creativeId:
-          description: External creative Id
-          format: long-id
-          nullable: true
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        name:
-          maxLength: 255
-          minLength: 0
-          type: string
-        pacing:
-          enum:
-          - unknown
-          - standard
-          - accelerated
-          nullable: true
-          type: string
-        page:
-          $ref: '#/components/schemas/ExternalLineItemPageV2'
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        status:
-          description: Line Item Status Enum
-          enum:
-          - unknown
-          - active
-          - scheduled
-          - draft
-          - paused
-          - budgetHit
-          - ended
-          - archived
-          - noFunds
-          type: string
-        targetRetailerId:
-          format: long-id
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - campaignId
-      - createdAt
-      - endDate
-      - name
-      - startDate
-      - status
-      - targetRetailerId
-      - updatedAt
-      type: object
-    ExternalProductButtonRequest:
-      description: The Product Button entity used for input
-      example:
-        skus:
-        - skus
-        - skus
-        backgroundImage: backgroundImage
-        name: name
-        isMandatory: 0
-      properties:
-        backgroundImage:
-          description: URL of the background image
-          type: string
-        isMandatory:
-          description: If the Product Button is Mandatory
-          format: int32
-          type: integer
-        name:
-          description: Name of the Product Button
-          type: string
-        skus:
-          description: List of skus on the Product Button
-          items:
-            type: string
-          type: array
-      required:
-      - backgroundImage
-      - isMandatory
-      - name
-      - skus
-      type: object
-    ExternalProductButtonResponse:
-      description: The Product Button entity used for output
-      example:
-        skus:
-        - skus
-        - skus
-        backgroundImage: backgroundImage
-        name: name
-        rank: 6
-        isMandatory: 0
-      properties:
-        backgroundImage:
-          description: URL of the background image
-          type: string
-        isMandatory:
-          description: If the Product Button is Mandatory
-          format: int32
-          type: integer
-        name:
-          description: Name of the Product Button
-          type: string
-        rank:
-          description: Rank of the Product Button
-          format: int32
-          type: integer
-        skus:
-          description: List of skus on the Product Button
-          items:
-            type: string
-          type: array
-      required:
-      - backgroundImage
-      - isMandatory
-      - name
-      - rank
-      - skus
-      type: object
     ExternalRetailMediaChildAccount:
       additionalProperties: false
       description: The details for a newly created account
@@ -9378,8 +9135,8 @@ components:
         item will run.
       example:
         dayOfWeek: sunday
-        startTime: startTime
-        endTime: endTime
+        startTime: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
       properties:
         dayOfWeek:
           description: Enum for the days of the week.
@@ -9396,8 +9153,10 @@ components:
           - weekends
           type: string
         endTime:
+          format: date-time
           type: string
         startTime:
+          format: date-time
           type: string
       required:
       - dayOfWeek
@@ -9410,11 +9169,11 @@ components:
       example:
         legs:
         - dayOfWeek: sunday
-          startTime: startTime
-          endTime: endTime
+          startTime: 2000-01-23T04:56:07.000+00:00
+          endTime: 2000-01-23T04:56:07.000+00:00
         - dayOfWeek: sunday
-          startTime: startTime
-          endTime: endTime
+          startTime: 2000-01-23T04:56:07.000+00:00
+          endTime: 2000-01-23T04:56:07.000+00:00
       nullable: true
       properties:
         legs:
@@ -9666,7 +9425,7 @@ components:
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/ExternalPreferredLineItemCreateModelV2'
+          $ref: '#/components/schemas/PreferredLineItemCreateModelV2'
         type:
           type: string
       type: object
@@ -9883,6 +9642,26 @@ components:
           readOnly: true
           type: array
       type: object
+    LineItemCappingV2:
+      description: Frequency Capping for a Preferred Line Item
+      example:
+        count: 5
+        type: unknown
+      properties:
+        count:
+          format: int32
+          type: integer
+        type:
+          description: Line Item Capping Type Enum
+          enum:
+          - unknown
+          - day
+          - session
+          type: string
+      required:
+      - count
+      - type
+      type: object
     LineItemKeywordReviewReport:
       additionalProperties: false
       description: Reports on a line item which contains one or more actionable keyword
@@ -9943,6 +9722,64 @@ components:
       - lineItemName
       - retailerId
       - retailerName
+      type: object
+    LineItemPageCategoryV2:
+      description: Category information for a preferred line item page
+      example:
+        includeChildren: true
+        categoryId: categoryId
+      properties:
+        categoryId:
+          type: string
+        includeChildren:
+          default: true
+          type: boolean
+      required:
+      - categoryId
+      type: object
+    LineItemPageV2:
+      description: Page information for a preferred line item
+      example:
+        pageType: unknown
+        searchKeywords:
+        - searchKeywords
+        - searchKeywords
+        categories:
+        - includeChildren: true
+          categoryId: categoryId
+        - includeChildren: true
+          categoryId: categoryId
+      nullable: true
+      properties:
+        categories:
+          items:
+            $ref: '#/components/schemas/LineItemPageCategoryV2'
+          nullable: true
+          type: array
+        pageType:
+          description: Page Type Enum
+          enum:
+          - unknown
+          - search
+          - home
+          - browse
+          - checkout
+          - category
+          - productDetail
+          - confirmation
+          - merchandising
+          - deals
+          - favorites
+          - searchBar
+          - categoryMenu
+          type: string
+        searchKeywords:
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - pageType
       type: object
     LineItemProductStatus:
       description: The status of a promoted product in the context of the line item.
@@ -10226,111 +10063,6 @@ components:
           readOnly: true
           type: array
       type: object
-    PagedResourceCollectionOutcomeOfBalanceResponseV2:
-      description: Data model for a paged list of response resources
-      example:
-        metadata:
-          currentPageSize: 5
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 7
-          totalItemsAcrossAllPages: 2
-          currentPageIndex: 5
-        data:
-        - attributes:
-            privateMarketBillingType: notApplicable
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 1.4658129805029452
-            memo: memo
-            spendType: Onsite
-            remaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            poNumber: poNumber
-            startDate: 2000-01-23
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        - attributes:
-            privateMarketBillingType: notApplicable
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 1.4658129805029452
-            memo: memo
-            spendType: Onsite
-            remaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            poNumber: poNumber
-            startDate: 2000-01-23
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfBalanceResponseV2'
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-      type: object
     PageMetadata:
       description: Metadata related to the current request
       example:
@@ -10340,6 +10072,7 @@ components:
         totalPages: 7
         totalItemsAcrossAllPages: 2
         currentPageIndex: 5
+      nullable: true
       properties:
         currentPageIndex:
           format: int32
@@ -10670,6 +10403,87 @@ components:
           readOnly: true
           type: array
       type: object
+    PreferredLineItemCreateModelV2:
+      description: Model used to create a preferred line item
+      example:
+        pacing: unknown
+        endDate: 2000-01-23
+        name: name
+        capping:
+          count: 5
+          type: unknown
+        page:
+          pageType: unknown
+          searchKeywords:
+          - searchKeywords
+          - searchKeywords
+          categories:
+          - includeChildren: true
+            categoryId: categoryId
+          - includeChildren: true
+            categoryId: categoryId
+        targetRetailerId: targetRetailerId
+        creativeId: creativeId
+        startDate: 2000-01-23
+        budget: 0.8008281904610115
+        status: unknown
+      properties:
+        budget:
+          format: double
+          type: number
+        capping:
+          $ref: '#/components/schemas/LineItemCappingV2'
+        creativeId:
+          format: long-id
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        pacing:
+          description: Line Item Pacing Enum
+          enum:
+          - unknown
+          - standard
+          - accelerated
+          type: string
+        page:
+          $ref: '#/components/schemas/LineItemPageV2'
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        status:
+          description: Line Item Status Enum
+          enum:
+          - unknown
+          - active
+          - scheduled
+          - draft
+          - paused
+          - budgetHit
+          - ended
+          - archived
+          - noFunds
+          type: string
+        targetRetailerId:
+          format: long-id
+          type: string
+      required:
+      - budget
+      - endDate
+      - name
+      - pacing
+      - page
+      - startDate
+      - targetRetailerId
+      type: object
     PreferredLineItemCreateModelV2Request:
       description: Data model for a create input resource
       example:
@@ -10701,8 +10515,83 @@ components:
         data:
           $ref: '#/components/schemas/InputResourceOfPreferredLineItemCreateModelV2'
       type: object
+    PreferredLineItemUpdateModelV2:
+      description: Model used to update a preferred line item
+      example:
+        pacing: accelerated
+        endDate: 2000-01-23
+        name: name
+        capping:
+          count: 5
+          type: unknown
+        page:
+          pageType: unknown
+          searchKeywords:
+          - searchKeywords
+          - searchKeywords
+          categories:
+          - includeChildren: true
+            categoryId: categoryId
+          - includeChildren: true
+            categoryId: categoryId
+        creativeId: creativeId
+        startDate: 2000-01-23
+        budget: 0.8008281904610115
+        status: unknown
+      properties:
+        budget:
+          format: double
+          type: number
+        capping:
+          $ref: '#/components/schemas/LineItemCappingV2'
+        creativeId:
+          format: long-id
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        pacing:
+          default: accelerated
+          enum:
+          - unknown
+          - standard
+          - accelerated
+          type: string
+        page:
+          $ref: '#/components/schemas/LineItemPageV2'
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        status:
+          description: Line Item Status Enum
+          enum:
+          - unknown
+          - active
+          - scheduled
+          - draft
+          - paused
+          - budgetHit
+          - ended
+          - archived
+          - noFunds
+          type: string
+      required:
+      - endDate
+      - name
+      - startDate
+      - status
+      type: object
     PreferredLineItemUpdateModelV2Request:
-      description: Data model for an input resource
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity
       example:
         data:
           attributes:
@@ -10732,6 +10621,112 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfPreferredLineItemUpdateModelV2'
       type: object
+    PreferredLineItemV2:
+      description: A Retail Media Preferred Line Item used to hold bid settings for
+        one or many promoted products on a single retailer
+      example:
+        budgetRemaining: 6.027456183070403
+        endDate: 2000-01-23
+        campaignId: campaignId
+        capping:
+          count: 5
+          type: unknown
+        creativeId: creativeId
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        pacing: unknown
+        budgetSpent: 1.4658129805029452
+        name: name
+        page:
+          pageType: unknown
+          searchKeywords:
+          - searchKeywords
+          - searchKeywords
+          categories:
+          - includeChildren: true
+            categoryId: categoryId
+          - includeChildren: true
+            categoryId: categoryId
+        targetRetailerId: targetRetailerId
+        startDate: 2000-01-23
+        budget: 0.8008281904610115
+        status: unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        budget:
+          format: double
+          type: number
+        budgetRemaining:
+          format: double
+          nullable: true
+          type: number
+        budgetSpent:
+          format: double
+          nullable: true
+          type: number
+        campaignId:
+          format: long-id
+          type: string
+        capping:
+          $ref: '#/components/schemas/LineItemCappingV2'
+        createdAt:
+          format: date-time
+          type: string
+        creativeId:
+          description: External creative Id
+          format: long-id
+          nullable: true
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        pacing:
+          enum:
+          - unknown
+          - standard
+          - accelerated
+          nullable: true
+          type: string
+        page:
+          $ref: '#/components/schemas/LineItemPageV2'
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        status:
+          description: Line Item Status Enum
+          enum:
+          - unknown
+          - active
+          - scheduled
+          - draft
+          - paused
+          - budgetHit
+          - ended
+          - archived
+          - noFunds
+          type: string
+        targetRetailerId:
+          format: long-id
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - budget
+      - campaignId
+      - endDate
+      - name
+      - startDate
+      - status
+      - targetRetailerId
+      type: object
     PreferredLineItemV2PagedListResponse:
       description: Data model for a paged list of response resources
       example:
@@ -10755,7 +10750,6 @@ components:
             pacing: unknown
             budgetSpent: 1.4658129805029452
             name: name
-            id: id
             page:
               pageType: unknown
               searchKeywords:
@@ -10785,7 +10779,6 @@ components:
             pacing: unknown
             budgetSpent: 1.4658129805029452
             name: name
-            id: id
             page:
               pageType: unknown
               searchKeywords:
@@ -10880,7 +10873,6 @@ components:
             pacing: unknown
             budgetSpent: 1.4658129805029452
             name: name
-            id: id
             page:
               pageType: unknown
               searchKeywords:
@@ -11538,8 +11530,40 @@ components:
       - link
       - title
       type: object
-    ProductButtonListRequest:
-      description: Data model for a list of input resources
+    ProductButtonRequest:
+      description: The Product Button entity used for Input
+      example:
+        skus:
+        - skus
+        - skus
+        backgroundImage: backgroundImage
+        name: name
+        isMandatory: 0
+      properties:
+        backgroundImage:
+          description: URL of the background image
+          type: string
+        isMandatory:
+          description: If the Product Button is Mandatory
+          format: int32
+          type: integer
+        name:
+          description: Name of the Product Button
+          type: string
+        skus:
+          description: List of skus on the Product Button
+          items:
+            type: string
+          type: array
+      required:
+      - backgroundImage
+      - isMandatory
+      - name
+      - skus
+      type: object
+    ProductButtonRequestListRequest:
+      description: A top-level object that encapsulates a Criteo API request for several
+        entities
       example:
         data:
         - attributes:
@@ -11560,96 +11584,16 @@ components:
             isMandatory: 0
           id: id
           type: type
+      nullable: true
       properties:
         data:
           items:
             $ref: '#/components/schemas/ResourceOfProductButtonRequest'
           type: array
       type: object
-    ProductButtonListResponse:
-      description: Data model for a list of response resources
-      example:
-        data:
-        - attributes:
-            skus:
-            - skus
-            - skus
-            backgroundImage: backgroundImage
-            name: name
-            rank: 6
-            isMandatory: 0
-          id: id
-          type: type
-        - attributes:
-            skus:
-            - skus
-            - skus
-            backgroundImage: backgroundImage
-            name: name
-            rank: 6
-            isMandatory: 0
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfProductButtonResponse'
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-      type: object
-    ProductButtonRequest:
-      description: Data model for an input resource
+    ProductButtonRequestRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity
       example:
         data:
           attributes:
@@ -11661,9 +11605,134 @@ components:
             isMandatory: 0
           id: id
           type: type
+      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfProductButtonRequest'
+      type: object
+    ProductButtonResponse:
+      description: The Product Button entity
+      example:
+        skus:
+        - skus
+        - skus
+        backgroundImage: backgroundImage
+        name: name
+        rank: 6
+        isMandatory: 0
+      properties:
+        backgroundImage:
+          description: URL of the background image
+          type: string
+        isMandatory:
+          description: If the Product Button is Mandatory
+          format: int32
+          type: integer
+        name:
+          description: Name of the Product Button
+          type: string
+        rank:
+          description: Rank of the Product Button
+          format: int32
+          type: integer
+        skus:
+          description: List of skus on the Product Button
+          items:
+            type: string
+          type: array
+      required:
+      - backgroundImage
+      - isMandatory
+      - name
+      - rank
+      - skus
+      type: object
+    ProductButtonResponseListResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
+      example:
+        data:
+        - attributes:
+            skus:
+            - skus
+            - skus
+            backgroundImage: backgroundImage
+            name: name
+            rank: 6
+            isMandatory: 0
+          id: id
+          type: type
+        - attributes:
+            skus:
+            - skus
+            - skus
+            backgroundImage: backgroundImage
+            name: name
+            rank: 6
+            isMandatory: 0
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      nullable: true
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfProductButtonResponse'
+          nullable: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     ProductImporterError:
       description: Error descriptor.
@@ -13125,7 +13194,7 @@ components:
       example:
         attributes:
           privateMarketBillingType: notApplicable
-          endDate: 2000-01-23
+          endDate: endDate
           deposited: 0.8008281904610115
           spent: 1.4658129805029452
           memo: memo
@@ -13135,7 +13204,7 @@ components:
           balanceType: unknown
           name: name
           poNumber: poNumber
-          startDate: 2000-01-23
+          startDate: startDate
           status: unknown
           updatedAt: 2000-01-23T04:56:07.000+00:00
         id: id
@@ -13221,13 +13290,13 @@ components:
       description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          endDate: 2000-01-23
+          endDate: endDate
           deposited: 0.8008281904610115
           name: name
           memo: memo
           poNumber: poNumber
           spendType: Onsite
-          startDate: 2000-01-23
+          startDate: startDate
         id: id
         type: type
       properties:
@@ -13346,7 +13415,7 @@ components:
           type: string
       type: object
     ResourceOfPreferredLineItemUpdateModelV2:
-      description: Data model for a Resource
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           pacing: accelerated
@@ -13373,7 +13442,7 @@ components:
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/ExternalPreferredLineItemUpdateModelV2'
+          $ref: '#/components/schemas/PreferredLineItemUpdateModelV2'
         id:
           description: Id of the entity
           type: string
@@ -13382,7 +13451,7 @@ components:
           type: string
       type: object
     ResourceOfPreferredLineItemV2:
-      description: Data model for a Resource
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           budgetRemaining: 6.027456183070403
@@ -13396,7 +13465,6 @@ components:
           pacing: unknown
           budgetSpent: 1.4658129805029452
           name: name
-          id: id
           page:
             pageType: unknown
             searchKeywords:
@@ -13417,7 +13485,7 @@ components:
       nullable: true
       properties:
         attributes:
-          $ref: '#/components/schemas/ExternalPreferredLineItemV2'
+          $ref: '#/components/schemas/PreferredLineItemV2'
         id:
           description: Id of the entity
           nullable: true
@@ -13428,7 +13496,7 @@ components:
           type: string
       type: object
     ResourceOfProductButtonRequest:
-      description: Data model for a Resource
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           skus:
@@ -13439,9 +13507,10 @@ components:
           isMandatory: 0
         id: id
         type: type
+      nullable: true
       properties:
         attributes:
-          $ref: '#/components/schemas/ExternalProductButtonRequest'
+          $ref: '#/components/schemas/ProductButtonRequest'
         id:
           description: Id of the entity
           type: string
@@ -13450,7 +13519,7 @@ components:
           type: string
       type: object
     ResourceOfProductButtonResponse:
-      description: Data model for an output resource
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           skus:
@@ -13462,9 +13531,10 @@ components:
           isMandatory: 0
         id: id
         type: type
+      nullable: true
       properties:
         attributes:
-          $ref: '#/components/schemas/ExternalProductButtonResponse'
+          $ref: '#/components/schemas/ProductButtonResponse'
         id:
           description: Id of the entity
           nullable: true
@@ -14010,10 +14080,10 @@ components:
             $ref: '#/components/schemas/RmAudienceUpdateEntityV1Resource'
           type: array
       type: object
-    RmAudienceComputeSizesEntityV1:
+    RmAudienceComputeSizeEntityV1:
       description: Audience of people of interest for a marketer.
       example:
-        channel: Unknown
+        channel: Onsite
         ids:
         - ids
         - ids
@@ -14021,7 +14091,6 @@ components:
         channel:
           description: Channel to compute the sizes for.
           enum:
-          - Unknown
           - Onsite
           - Offsite
           type: string
@@ -14034,19 +14103,19 @@ components:
       - channel
       - ids
       type: object
-    RmAudienceComputeSizesEntityV1Resource:
+    RmAudienceComputeSizeEntityV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
       example:
         attributes:
-          channel: Unknown
+          channel: Onsite
           ids:
           - ids
           - ids
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/RmAudienceComputeSizesEntityV1'
+          $ref: '#/components/schemas/RmAudienceComputeSizeEntityV1'
         type:
           type: string
       type: object
@@ -14056,14 +14125,14 @@ components:
       example:
         data:
           attributes:
-            channel: Unknown
+            channel: Onsite
             ids:
             - ids
             - ids
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/RmAudienceComputeSizesEntityV1Resource'
+          $ref: '#/components/schemas/RmAudienceComputeSizeEntityV1Resource'
       type: object
     RmAudienceCreateEntityV1:
       description: Audience of people of interest for a marketer.
@@ -14484,7 +14553,7 @@ components:
     RmAudienceEstimateSizeEntityV1:
       description: Audience of people of interest for a marketer.
       example:
-        channel: Unknown
+        channel: Onsite
         algebra:
           not: null
           or:
@@ -14501,7 +14570,6 @@ components:
         channel:
           description: Channel to estimate the size
           enum:
-          - Unknown
           - Onsite
           - Offsite
           type: string
@@ -14518,7 +14586,7 @@ components:
         a single value
       example:
         attributes:
-          channel: Unknown
+          channel: Onsite
           algebra:
             not: null
             or:
@@ -14542,7 +14610,7 @@ components:
       example:
         data:
           attributes:
-            channel: Unknown
+            channel: Onsite
             algebra:
               not: null
               or:
@@ -14670,8 +14738,8 @@ components:
               - categoryIds
               minPrice: 6.027456183070403
               maxPrice: 0.8008281904610115
-              lookbackDays: Unknown
-              shopperActivity: Unknown
+              lookbackDays: Last7Days
+              shopperActivity: View
               brandIds:
               - brandIds
               - brandIds
@@ -14688,8 +14756,8 @@ components:
               - categoryIds
               minPrice: 6.027456183070403
               maxPrice: 0.8008281904610115
-              lookbackDays: Unknown
-              shopperActivity: Unknown
+              lookbackDays: Last7Days
+              shopperActivity: View
               brandIds:
               - brandIds
               - brandIds
@@ -14735,8 +14803,8 @@ components:
                 value: 0.8008281904610115
               maxPrice:
                 value: 0.8008281904610115
-              lookbackDays: Unknown
-              shopperActivity: Unknown
+              lookbackDays: Last7Days
+              shopperActivity: View
               brandIds:
               - brandIds
               - brandIds
@@ -14755,8 +14823,8 @@ components:
                 value: 0.8008281904610115
               maxPrice:
                 value: 0.8008281904610115
-              lookbackDays: Unknown
-              shopperActivity: Unknown
+              lookbackDays: Last7Days
+              shopperActivity: View
               brandIds:
               - brandIds
               - brandIds
@@ -14771,7 +14839,7 @@ components:
     RmAudienceSegmentComputeSizeEntityV1:
       description: Segment Ids and channel whose size was requested.
       example:
-        channel: Unknown
+        channel: Onsite
         ids:
         - ids
         - ids
@@ -14779,7 +14847,6 @@ components:
         channel:
           description: Channel to compute the sizes for.
           enum:
-          - Unknown
           - Onsite
           - Offsite
           type: string
@@ -14797,7 +14864,7 @@ components:
         a single value
       example:
         attributes:
-          channel: Unknown
+          channel: Onsite
           ids:
           - ids
           - ids
@@ -14814,7 +14881,7 @@ components:
       example:
         data:
           attributes:
-            channel: Unknown
+            channel: Onsite
             ids:
             - ids
             - ids
@@ -14837,8 +14904,8 @@ components:
           - categoryIds
           minPrice: 6.027456183070403
           maxPrice: 0.8008281904610115
-          lookbackDays: Unknown
-          shopperActivity: Unknown
+          lookbackDays: Last7Days
+          shopperActivity: View
           brandIds:
           - brandIds
           - brandIds
@@ -14876,8 +14943,8 @@ components:
             - categoryIds
             minPrice: 6.027456183070403
             maxPrice: 0.8008281904610115
-            lookbackDays: Unknown
-            shopperActivity: Unknown
+            lookbackDays: Last7Days
+            shopperActivity: View
             brandIds:
             - brandIds
             - brandIds
@@ -15303,7 +15370,7 @@ components:
     RmAudienceSegmentEstimateSizeEntityV1:
       description: Set of rules that defines specific people to target.
       example:
-        channel: Unknown
+        channel: Onsite
         retailerId: retailerId
         events:
           categoryIds:
@@ -15311,8 +15378,8 @@ components:
           - categoryIds
           minPrice: 6.027456183070403
           maxPrice: 0.8008281904610115
-          lookbackDays: Unknown
-          shopperActivity: Unknown
+          lookbackDays: Last7Days
+          shopperActivity: View
           brandIds:
           - brandIds
           - brandIds
@@ -15320,7 +15387,6 @@ components:
         channel:
           description: Channel to estimate the size
           enum:
-          - Unknown
           - Onsite
           - Offsite
           type: string
@@ -15339,7 +15405,7 @@ components:
         a single value
       example:
         attributes:
-          channel: Unknown
+          channel: Onsite
           retailerId: retailerId
           events:
             categoryIds:
@@ -15347,8 +15413,8 @@ components:
             - categoryIds
             minPrice: 6.027456183070403
             maxPrice: 0.8008281904610115
-            lookbackDays: Unknown
-            shopperActivity: Unknown
+            lookbackDays: Last7Days
+            shopperActivity: View
             brandIds:
             - brandIds
             - brandIds
@@ -15365,7 +15431,7 @@ components:
       example:
         data:
           attributes:
-            channel: Unknown
+            channel: Onsite
             retailerId: retailerId
             events:
               categoryIds:
@@ -15373,8 +15439,8 @@ components:
               - categoryIds
               minPrice: 6.027456183070403
               maxPrice: 0.8008281904610115
-              lookbackDays: Unknown
-              shopperActivity: Unknown
+              lookbackDays: Last7Days
+              shopperActivity: View
               brandIds:
               - brandIds
               - brandIds
@@ -15822,8 +15888,8 @@ components:
             value: 0.8008281904610115
           maxPrice:
             value: 0.8008281904610115
-          lookbackDays: Unknown
-          shopperActivity: Unknown
+          lookbackDays: Last7Days
+          shopperActivity: View
           brandIds:
           - brandIds
           - brandIds
@@ -15859,8 +15925,8 @@ components:
               value: 0.8008281904610115
             maxPrice:
               value: 0.8008281904610115
-            lookbackDays: Unknown
-            shopperActivity: Unknown
+            lookbackDays: Last7Days
+            shopperActivity: View
             brandIds:
             - brandIds
             - brandIds
@@ -16393,8 +16459,8 @@ components:
         - categoryIds
         minPrice: 6.027456183070403
         maxPrice: 0.8008281904610115
-        lookbackDays: Unknown
-        shopperActivity: Unknown
+        lookbackDays: Last7Days
+        shopperActivity: View
         brandIds:
         - brandIds
         - brandIds
@@ -16414,7 +16480,6 @@ components:
         lookbackDays:
           description: Number of days of the lookback windows
           enum:
-          - Unknown
           - Last7Days
           - Last14Days
           - Last30Days
@@ -16438,7 +16503,6 @@ components:
         shopperActivity:
           description: Types of shopper activity.
           enum:
-          - Unknown
           - View
           - Buy
           - AddToCart
@@ -16455,8 +16519,8 @@ components:
         - categoryIds
         minPrice: 6.027456183070403
         maxPrice: 0.8008281904610115
-        lookbackDays: Unknown
-        shopperActivity: Unknown
+        lookbackDays: Last7Days
+        shopperActivity: View
         brandIds:
         - brandIds
         - brandIds
@@ -16473,7 +16537,6 @@ components:
           uniqueItems: true
         lookbackDays:
           enum:
-          - Unknown
           - Last7Days
           - Last14Days
           - Last30Days
@@ -16492,7 +16555,6 @@ components:
           type: number
         shopperActivity:
           enum:
-          - Unknown
           - View
           - Buy
           - AddToCart
@@ -16511,8 +16573,8 @@ components:
           value: 0.8008281904610115
         maxPrice:
           value: 0.8008281904610115
-        lookbackDays: Unknown
-        shopperActivity: Unknown
+        lookbackDays: Last7Days
+        shopperActivity: View
         brandIds:
         - brandIds
         - brandIds
@@ -16530,7 +16592,6 @@ components:
         lookbackDays:
           description: Number of days of the lookback windows
           enum:
-          - Unknown
           - Last7Days
           - Last14Days
           - Last30Days
@@ -16548,7 +16609,6 @@ components:
         shopperActivity:
           description: Types of shopper activity.
           enum:
-          - Unknown
           - View
           - Buy
           - AddToCart
@@ -17205,10 +17265,10 @@ components:
       type: object
     SponsoredProductsLineItem:
       additionalProperties: false
-      description: A model representing a Sponsored Products Line Item.
+      description: Model of a retail media auction line item.
       example:
         neutralAdstrategyEnabled: true
-        bidStrategy: Unknown
+        bidStrategy: unknown
         budgetRemaining: 6.027456183070403
         endDate: 2000-01-23T04:56:07.000+00:00
         campaignId: campaignId
@@ -17220,11 +17280,11 @@ components:
         flightSchedule:
           legs:
           - dayOfWeek: sunday
-            startTime: startTime
-            endTime: endTime
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
           - dayOfWeek: sunday
-            startTime: startTime
-            endTime: endTime
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
         name: name
         conquestingAdstrategyEnabled: true
         isAutoDailyPacing: true
@@ -17239,10 +17299,10 @@ components:
       properties:
         bidStrategy:
           enum:
-          - Unknown
-          - Conversion
-          - Clicks
-          - Revenue
+          - unknown
+          - conversion
+          - clicks
+          - revenue
           nullable: true
           type: string
         budget:
@@ -17338,7 +17398,7 @@ components:
       description: Model to create a retail media auction line item
       example:
         neutralAdstrategyEnabled: true
-        bidStrategy: Conversion
+        bidStrategy: conversion
         endDate: 2000-01-23T04:56:07.000+00:00
         defensiveAdstrategyEnabled: true
         targetBid: 5.637376656633329
@@ -17346,11 +17406,11 @@ components:
         flightSchedule:
           legs:
           - dayOfWeek: sunday
-            startTime: startTime
-            endTime: endTime
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
           - dayOfWeek: sunday
-            startTime: startTime
-            endTime: endTime
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
         name: name
         conquestingAdstrategyEnabled: true
         isAutoDailyPacing: false
@@ -17361,12 +17421,12 @@ components:
         budget: 0.8008281904610115
       properties:
         bidStrategy:
-          default: Conversion
+          default: conversion
           enum:
-          - Unknown
-          - Conversion
-          - Clicks
-          - Revenue
+          - unknown
+          - conversion
+          - clicks
+          - revenue
           type: string
         budget:
           format: double
@@ -17425,17 +17485,17 @@ components:
       additionalProperties: false
       description: A request to update a Sponsored Products Line Item.
       example:
-        bidStrategy: Conversion
+        bidStrategy: conversion
         endDate: 2000-01-23T04:56:07.000+00:00
         maxBid: 1.4658129805029452
         flightSchedule:
           legs:
           - dayOfWeek: sunday
-            startTime: startTime
-            endTime: endTime
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
           - dayOfWeek: sunday
-            startTime: startTime
-            endTime: endTime
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
         name: name
         isAutoDailyPacing: true
         dailyPacing: 6.027456183070403
@@ -17443,15 +17503,15 @@ components:
         startDate: 2000-01-23T04:56:07.000+00:00
         targetBid: 5.637376656633329
         budget: 0.8008281904610115
-        status: Active
+        status: active
       properties:
         bidStrategy:
-          default: Conversion
+          default: conversion
           enum:
-          - Unknown
-          - Conversion
-          - Clicks
-          - Revenue
+          - unknown
+          - conversion
+          - clicks
+          - revenue
           type: string
         budget:
           format: double
@@ -17487,9 +17547,9 @@ components:
         status:
           description: Status of a line item.
           enum:
-          - Active
-          - Paused
-          - Draft
+          - active
+          - paused
+          - draft
           type: string
         targetBid:
           format: double
@@ -18609,7 +18669,7 @@ components:
         data:
           attributes:
             neutralAdstrategyEnabled: true
-            bidStrategy: Conversion
+            bidStrategy: conversion
             endDate: 2000-01-23T04:56:07.000+00:00
             defensiveAdstrategyEnabled: true
             targetBid: 5.637376656633329
@@ -18617,11 +18677,11 @@ components:
             flightSchedule:
               legs:
               - dayOfWeek: sunday
-                startTime: startTime
-                endTime: endTime
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
               - dayOfWeek: sunday
-                startTime: startTime
-                endTime: endTime
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
             name: name
             conquestingAdstrategyEnabled: true
             isAutoDailyPacing: false
@@ -18642,17 +18702,17 @@ components:
       example:
         data:
           attributes:
-            bidStrategy: Conversion
+            bidStrategy: conversion
             endDate: 2000-01-23T04:56:07.000+00:00
             maxBid: 1.4658129805029452
             flightSchedule:
               legs:
               - dayOfWeek: sunday
-                startTime: startTime
-                endTime: endTime
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
               - dayOfWeek: sunday
-                startTime: startTime
-                endTime: endTime
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
             name: name
             isAutoDailyPacing: true
             dailyPacing: 6.027456183070403
@@ -18660,7 +18720,7 @@ components:
             startDate: 2000-01-23T04:56:07.000+00:00
             targetBid: 5.637376656633329
             budget: 0.8008281904610115
-            status: Active
+            status: active
           type: type
       properties:
         data:
@@ -18790,7 +18850,7 @@ components:
       example:
         attributes:
           neutralAdstrategyEnabled: true
-          bidStrategy: Conversion
+          bidStrategy: conversion
           endDate: 2000-01-23T04:56:07.000+00:00
           defensiveAdstrategyEnabled: true
           targetBid: 5.637376656633329
@@ -18798,11 +18858,11 @@ components:
           flightSchedule:
             legs:
             - dayOfWeek: sunday
-              startTime: startTime
-              endTime: endTime
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
             - dayOfWeek: sunday
-              startTime: startTime
-              endTime: endTime
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
           name: name
           conquestingAdstrategyEnabled: true
           isAutoDailyPacing: false
@@ -18825,17 +18885,17 @@ components:
       description: A value resource exposed by the API.
       example:
         attributes:
-          bidStrategy: Conversion
+          bidStrategy: conversion
           endDate: 2000-01-23T04:56:07.000+00:00
           maxBid: 1.4658129805029452
           flightSchedule:
             legs:
             - dayOfWeek: sunday
-              startTime: startTime
-              endTime: endTime
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
             - dayOfWeek: sunday
-              startTime: startTime
-              endTime: endTime
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
           name: name
           isAutoDailyPacing: true
           dailyPacing: 6.027456183070403
@@ -18843,7 +18903,7 @@ components:
           startDate: 2000-01-23T04:56:07.000+00:00
           targetBid: 5.637376656633329
           budget: 0.8008281904610115
-          status: Active
+          status: active
         type: type
       properties:
         attributes:

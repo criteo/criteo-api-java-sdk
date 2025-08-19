@@ -9,8 +9,8 @@ A leg of a flight schedule outlining which days and times the line item will run
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**dayOfWeek** | [**DayOfWeekEnum**](#DayOfWeekEnum) | Enum for the days of the week. |  |
-|**endTime** | **String** |  |  |
-|**startTime** | **String** |  |  |
+|**endTime** | **OffsetDateTime** |  |  |
+|**startTime** | **OffsetDateTime** |  |  |
 
 
 

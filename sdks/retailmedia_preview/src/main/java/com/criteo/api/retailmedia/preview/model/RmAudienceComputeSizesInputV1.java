@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.RmAudienceComputeSizesEntityV1Resource;
+import com.criteo.api.retailmedia.preview.model.RmAudienceComputeSizeEntityV1Resource;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,12 +51,12 @@ import com.criteo.api.retailmedia.preview.JSON;
 public class RmAudienceComputeSizesInputV1 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private RmAudienceComputeSizesEntityV1Resource data;
+  private RmAudienceComputeSizeEntityV1Resource data;
 
   public RmAudienceComputeSizesInputV1() {
   }
 
-  public RmAudienceComputeSizesInputV1 data(RmAudienceComputeSizesEntityV1Resource data) {
+  public RmAudienceComputeSizesInputV1 data(RmAudienceComputeSizeEntityV1Resource data) {
     
     this.data = data;
     return this;
@@ -68,12 +68,12 @@ public class RmAudienceComputeSizesInputV1 {
   **/
   @javax.annotation.Nullable
 
-  public RmAudienceComputeSizesEntityV1Resource getData() {
+  public RmAudienceComputeSizeEntityV1Resource getData() {
     return data;
   }
 
 
-  public void setData(RmAudienceComputeSizesEntityV1Resource data) {
+  public void setData(RmAudienceComputeSizeEntityV1Resource data) {
     this.data = data;
   }
 
@@ -189,7 +189,7 @@ public class RmAudienceComputeSizesInputV1 {
       }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        RmAudienceComputeSizesEntityV1Resource.validateJsonObject(jsonObj.getAsJsonObject("data"));
+        RmAudienceComputeSizeEntityV1Resource.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 

@@ -15,14 +15,14 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.retailmedia.preview.model.ResourceOfProductButtonRequest;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,116 +46,36 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Audience of people of interest for a marketer.
+ * A top-level object that encapsulates a Criteo API request for a single entity
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class RmAudienceComputeSizesEntityV1 {
-  /**
-   * Channel to compute the sizes for.
-   */
-  @JsonAdapter(ChannelEnum.Adapter.class)
-  public enum ChannelEnum {
-    UNKNOWN("Unknown"),
-    
-    ONSITE("Onsite"),
-    
-    OFFSITE("Offsite");
+public class ProductButtonRequestRequest {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private ResourceOfProductButtonRequest data;
 
-    private String value;
-
-    ChannelEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ChannelEnum fromValue(String value) {
-      for (ChannelEnum b : ChannelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ChannelEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ChannelEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ChannelEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ChannelEnum.fromValue(value);
-      }
-    }
+  public ProductButtonRequestRequest() {
   }
 
-  public static final String SERIALIZED_NAME_CHANNEL = "channel";
-  @SerializedName(SERIALIZED_NAME_CHANNEL)
-  private ChannelEnum channel;
-
-  public static final String SERIALIZED_NAME_IDS = "ids";
-  @SerializedName(SERIALIZED_NAME_IDS)
-  private List<String> ids = new ArrayList<>();
-
-  public RmAudienceComputeSizesEntityV1() {
-  }
-
-  public RmAudienceComputeSizesEntityV1 channel(ChannelEnum channel) {
+  public ProductButtonRequestRequest data(ResourceOfProductButtonRequest data) {
     
-    this.channel = channel;
+    this.data = data;
     return this;
   }
 
    /**
-   * Channel to compute the sizes for.
-   * @return channel
+   * Get data
+   * @return data
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public ChannelEnum getChannel() {
-    return channel;
+  public ResourceOfProductButtonRequest getData() {
+    return data;
   }
 
 
-  public void setChannel(ChannelEnum channel) {
-    this.channel = channel;
-  }
-
-
-  public RmAudienceComputeSizesEntityV1 ids(List<String> ids) {
-    
-    this.ids = ids;
-    return this;
-  }
-
-  public RmAudienceComputeSizesEntityV1 addIdsItem(String idsItem) {
-    this.ids.add(idsItem);
-    return this;
-  }
-
-   /**
-   * List of ids of the segments whose size is requested.
-   * @return ids
-  **/
-  @javax.annotation.Nonnull
-
-  public List<String> getIds() {
-    return ids;
-  }
-
-
-  public void setIds(List<String> ids) {
-    this.ids = ids;
+  public void setData(ResourceOfProductButtonRequest data) {
+    this.data = data;
   }
 
   /**
@@ -171,9 +91,9 @@ public class RmAudienceComputeSizesEntityV1 {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the RmAudienceComputeSizesEntityV1 instance itself
+   * @return the ProductButtonRequestRequest instance itself
    */
-  public RmAudienceComputeSizesEntityV1 putAdditionalProperty(String key, Object value) {
+  public ProductButtonRequestRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -212,23 +132,32 @@ public class RmAudienceComputeSizesEntityV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RmAudienceComputeSizesEntityV1 rmAudienceComputeSizesEntityV1 = (RmAudienceComputeSizesEntityV1) o;
-    return Objects.equals(this.channel, rmAudienceComputeSizesEntityV1.channel) &&
-        Objects.equals(this.ids, rmAudienceComputeSizesEntityV1.ids)&&
-        Objects.equals(this.additionalProperties, rmAudienceComputeSizesEntityV1.additionalProperties);
+    ProductButtonRequestRequest productButtonRequestRequest = (ProductButtonRequestRequest) o;
+    return Objects.equals(this.data, productButtonRequestRequest.data)&&
+        Objects.equals(this.additionalProperties, productButtonRequestRequest.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(channel, ids, additionalProperties);
+    return Objects.hash(data, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RmAudienceComputeSizesEntityV1 {\n");
-    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
-    sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
+    sb.append("class ProductButtonRequestRequest {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -252,42 +181,27 @@ public class RmAudienceComputeSizesEntityV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("channel");
-    openapiFields.add("ids");
+    openapiFields.add("data");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("channel");
-    openapiRequiredFields.add("ids");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to RmAudienceComputeSizesEntityV1
+  * @throws IOException if the JSON Object is invalid with respect to ProductButtonRequestRequest
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!RmAudienceComputeSizesEntityV1.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RmAudienceComputeSizesEntityV1 is not found in the empty JSON string", RmAudienceComputeSizesEntityV1.openapiRequiredFields.toString()));
+        if (!ProductButtonRequestRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductButtonRequestRequest is not found in the empty JSON string", ProductButtonRequestRequest.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RmAudienceComputeSizesEntityV1.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("channel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("ids") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ids` to be an array in the JSON string but got `%s`", jsonObj.get("ids").toString()));
+      // validate the optional field `data`
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        ResourceOfProductButtonRequest.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 
@@ -295,16 +209,16 @@ public class RmAudienceComputeSizesEntityV1 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RmAudienceComputeSizesEntityV1.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RmAudienceComputeSizesEntityV1' and its subtypes
+       if (!ProductButtonRequestRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ProductButtonRequestRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RmAudienceComputeSizesEntityV1> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RmAudienceComputeSizesEntityV1.class));
+       final TypeAdapter<ProductButtonRequestRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ProductButtonRequestRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RmAudienceComputeSizesEntityV1>() {
+       return (TypeAdapter<T>) new TypeAdapter<ProductButtonRequestRequest>() {
            @Override
-           public void write(JsonWriter out, RmAudienceComputeSizesEntityV1 value) throws IOException {
+           public void write(JsonWriter out, ProductButtonRequestRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -327,11 +241,11 @@ public class RmAudienceComputeSizesEntityV1 {
            }
 
            @Override
-           public RmAudienceComputeSizesEntityV1 read(JsonReader in) throws IOException {
+           public ProductButtonRequestRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             RmAudienceComputeSizesEntityV1 instance = thisAdapter.fromJsonTree(jsonObj);
+             ProductButtonRequestRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -358,18 +272,18 @@ public class RmAudienceComputeSizesEntityV1 {
   }
 
  /**
-  * Create an instance of RmAudienceComputeSizesEntityV1 given an JSON string
+  * Create an instance of ProductButtonRequestRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of RmAudienceComputeSizesEntityV1
-  * @throws IOException if the JSON string is invalid with respect to RmAudienceComputeSizesEntityV1
+  * @return An instance of ProductButtonRequestRequest
+  * @throws IOException if the JSON string is invalid with respect to ProductButtonRequestRequest
   */
-  public static RmAudienceComputeSizesEntityV1 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RmAudienceComputeSizesEntityV1.class);
+  public static ProductButtonRequestRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ProductButtonRequestRequest.class);
   }
 
  /**
-  * Convert an instance of RmAudienceComputeSizesEntityV1 to an JSON string
+  * Convert an instance of ProductButtonRequestRequest to an JSON string
   *
   * @return JSON string
   */

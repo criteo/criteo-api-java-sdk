@@ -4,18 +4,18 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getApiV2ExternalAccountBalancesByAccountId**](BalanceApi.md#getApiV2ExternalAccountBalancesByAccountId) | **GET** /preview/retail-media/accounts/{account-id}/balances |  |
-| [**getApiV2ExternalAccountByAccountIdBalancesbalanceId**](BalanceApi.md#getApiV2ExternalAccountByAccountIdBalancesbalanceId) | **GET** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
+| [**getApiExternalV2AccountBalancesByAccountId**](BalanceApi.md#getApiExternalV2AccountBalancesByAccountId) | **GET** /preview/retail-media/accounts/{account-id}/balances |  |
+| [**getApiExternalV2AccountByAccountIdBalancesbalanceId**](BalanceApi.md#getApiExternalV2AccountByAccountIdBalancesbalanceId) | **GET** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
 | [**getBalanceHistory**](BalanceApi.md#getBalanceHistory) | **GET** /preview/retail-media/balances/{balanceId}/history |  |
-| [**patchApiV2ExternalAccountByAccountIdBalancesbalanceId**](BalanceApi.md#patchApiV2ExternalAccountByAccountIdBalancesbalanceId) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
-| [**postApiV2ExternalAccountBalancesByAccountId**](BalanceApi.md#postApiV2ExternalAccountBalancesByAccountId) | **POST** /preview/retail-media/accounts/{account-id}/balances |  |
-| [**postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId**](BalanceApi.md#postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId) | **POST** /preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |  |
+| [**patchApiExternalV2AccountByAccountIdBalancesbalanceId**](BalanceApi.md#patchApiExternalV2AccountByAccountIdBalancesbalanceId) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
+| [**postApiExternalV2AccountBalancesByAccountId**](BalanceApi.md#postApiExternalV2AccountBalancesByAccountId) | **POST** /preview/retail-media/accounts/{account-id}/balances |  |
+| [**postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId**](BalanceApi.md#postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId) | **POST** /preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |  |
 
 
 
-## getApiV2ExternalAccountBalancesByAccountId
+## getApiExternalV2AccountBalancesByAccountId
 
-> PagedResourceCollectionOutcomeOfBalanceResponseV2 getApiV2ExternalAccountBalancesByAccountId(accountId, limitToId, pageIndex, pageSize)
+> BalanceResponseV2PagedListResponse getApiExternalV2AccountBalancesByAccountId(accountId, limitToId, pageIndex, pageSize)
 
 
 
@@ -65,10 +65,10 @@ public class Example {
         Integer pageIndex = 0; // Integer | The 0 indexed page index you would like to receive given the page size
         Integer pageSize = 25; // Integer | The maximum number of items you would like to receive in this request
         try {
-            PagedResourceCollectionOutcomeOfBalanceResponseV2 result = apiInstance.getApiV2ExternalAccountBalancesByAccountId(accountId, limitToId, pageIndex, pageSize);
+            BalanceResponseV2PagedListResponse result = apiInstance.getApiExternalV2AccountBalancesByAccountId(accountId, limitToId, pageIndex, pageSize);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#getApiV2ExternalAccountBalancesByAccountId");
+            System.err.println("Exception when calling BalanceApi#getApiExternalV2AccountBalancesByAccountId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -90,7 +90,7 @@ public class Example {
 
 ### Return type
 
-[**PagedResourceCollectionOutcomeOfBalanceResponseV2**](PagedResourceCollectionOutcomeOfBalanceResponseV2.md)
+[**BalanceResponseV2PagedListResponse**](BalanceResponseV2PagedListResponse.md)
 
 ### Authorization
 
@@ -108,9 +108,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## getApiV2ExternalAccountByAccountIdBalancesbalanceId
+## getApiExternalV2AccountByAccountIdBalancesbalanceId
 
-> BalanceResponseV2Response getApiV2ExternalAccountByAccountIdBalancesbalanceId(accountId, balanceId)
+> BalanceResponseV2Response getApiExternalV2AccountByAccountIdBalancesbalanceId(accountId, balanceId)
 
 
 
@@ -158,10 +158,10 @@ public class Example {
         String accountId = "accountId_example"; // String | The account of the balance
         String balanceId = "balanceId_example"; // String | The balance id
         try {
-            BalanceResponseV2Response result = apiInstance.getApiV2ExternalAccountByAccountIdBalancesbalanceId(accountId, balanceId);
+            BalanceResponseV2Response result = apiInstance.getApiExternalV2AccountByAccountIdBalancesbalanceId(accountId, balanceId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#getApiV2ExternalAccountByAccountIdBalancesbalanceId");
+            System.err.println("Exception when calling BalanceApi#getApiExternalV2AccountByAccountIdBalancesbalanceId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -294,9 +294,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## patchApiV2ExternalAccountByAccountIdBalancesbalanceId
+## patchApiExternalV2AccountByAccountIdBalancesbalanceId
 
-> BalanceResponseV2Response patchApiV2ExternalAccountByAccountIdBalancesbalanceId(accountId, balanceId, updateBalanceModelV2Request)
+> BalanceResponseV2Response patchApiExternalV2AccountByAccountIdBalancesbalanceId(accountId, balanceId, updateBalanceModelV2Request)
 
 
 
@@ -345,10 +345,10 @@ public class Example {
         String balanceId = "balanceId_example"; // String | The balance to change the dates
         UpdateBalanceModelV2Request updateBalanceModelV2Request = new UpdateBalanceModelV2Request(); // UpdateBalanceModelV2Request | An object that represents the available options to modify a balance.
         try {
-            BalanceResponseV2Response result = apiInstance.patchApiV2ExternalAccountByAccountIdBalancesbalanceId(accountId, balanceId, updateBalanceModelV2Request);
+            BalanceResponseV2Response result = apiInstance.patchApiExternalV2AccountByAccountIdBalancesbalanceId(accountId, balanceId, updateBalanceModelV2Request);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#patchApiV2ExternalAccountByAccountIdBalancesbalanceId");
+            System.err.println("Exception when calling BalanceApi#patchApiExternalV2AccountByAccountIdBalancesbalanceId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -365,7 +365,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The account of the balance | |
 | **balanceId** | **String**| The balance to change the dates | |
-| **updateBalanceModelV2Request** | [**UpdateBalanceModelV2Request**](UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | |
+| **updateBalanceModelV2Request** | [**UpdateBalanceModelV2Request**](UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | [optional] |
 
 ### Return type
 
@@ -387,9 +387,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## postApiV2ExternalAccountBalancesByAccountId
+## postApiExternalV2AccountBalancesByAccountId
 
-> BalanceResponseV2Response postApiV2ExternalAccountBalancesByAccountId(accountId, createBalanceV2Request)
+> postApiExternalV2AccountBalancesByAccountId(accountId, createBalanceV2Request)
 
 
 
@@ -437,10 +437,9 @@ public class Example {
         String accountId = "accountId_example"; // String | The account to create balances for
         CreateBalanceV2Request createBalanceV2Request = new CreateBalanceV2Request(); // CreateBalanceV2Request | An object that represents the available options to set when creating a Retail Media Balance
         try {
-            BalanceResponseV2Response result = apiInstance.postApiV2ExternalAccountBalancesByAccountId(accountId, createBalanceV2Request);
-            System.out.println(result);
+            apiInstance.postApiExternalV2AccountBalancesByAccountId(accountId, createBalanceV2Request);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#postApiV2ExternalAccountBalancesByAccountId");
+            System.err.println("Exception when calling BalanceApi#postApiExternalV2AccountBalancesByAccountId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -456,11 +455,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The account to create balances for | |
-| **createBalanceV2Request** | [**CreateBalanceV2Request**](CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | |
+| **createBalanceV2Request** | [**CreateBalanceV2Request**](CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | [optional] |
 
 ### Return type
 
-[**BalanceResponseV2Response**](BalanceResponseV2Response.md)
+null (empty response body)
 
 ### Authorization
 
@@ -478,9 +477,9 @@ public class Example {
 | **201** | Success |  -  |
 
 
-## postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId
+## postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId
 
-> BalanceResponseV2Response postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId(accountId, balanceId, changeDatesOfBalanceV2Request)
+> BalanceResponseV2Response postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId(accountId, balanceId, changeDatesOfBalanceV2Request)
 
 
 
@@ -529,10 +528,10 @@ public class Example {
         String balanceId = "balanceId_example"; // String | The balance to change the dates
         ChangeDatesOfBalanceV2Request changeDatesOfBalanceV2Request = new ChangeDatesOfBalanceV2Request(); // ChangeDatesOfBalanceV2Request | An object that represents the available options to modify schedule of a balance.
         try {
-            BalanceResponseV2Response result = apiInstance.postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId(accountId, balanceId, changeDatesOfBalanceV2Request);
+            BalanceResponseV2Response result = apiInstance.postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId(accountId, balanceId, changeDatesOfBalanceV2Request);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId");
+            System.err.println("Exception when calling BalanceApi#postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -549,7 +548,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The account of the balance | |
 | **balanceId** | **String**| The balance to change the dates | |
-| **changeDatesOfBalanceV2Request** | [**ChangeDatesOfBalanceV2Request**](ChangeDatesOfBalanceV2Request.md)| An object that represents the available options to modify schedule of a balance. | |
+| **changeDatesOfBalanceV2Request** | [**ChangeDatesOfBalanceV2Request**](ChangeDatesOfBalanceV2Request.md)| An object that represents the available options to modify schedule of a balance. | [optional] |
 
 ### Return type
 

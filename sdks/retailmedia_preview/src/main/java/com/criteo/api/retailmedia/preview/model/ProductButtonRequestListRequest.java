@@ -15,6 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.retailmedia.preview.model.ResourceOfProductButtonRequest;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,119 +47,44 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * The Product Button entity used for input
+ * A top-level object that encapsulates a Criteo API request for several entities
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExternalProductButtonRequest {
-  public static final String SERIALIZED_NAME_BACKGROUND_IMAGE = "backgroundImage";
-  @SerializedName(SERIALIZED_NAME_BACKGROUND_IMAGE)
-  private String backgroundImage;
+public class ProductButtonRequestListRequest {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<ResourceOfProductButtonRequest> data = null;
 
-  public static final String SERIALIZED_NAME_IS_MANDATORY = "isMandatory";
-  @SerializedName(SERIALIZED_NAME_IS_MANDATORY)
-  private Integer isMandatory;
-
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_SKUS = "skus";
-  @SerializedName(SERIALIZED_NAME_SKUS)
-  private List<String> skus = new ArrayList<>();
-
-  public ExternalProductButtonRequest() {
+  public ProductButtonRequestListRequest() {
   }
 
-  public ExternalProductButtonRequest backgroundImage(String backgroundImage) {
+  public ProductButtonRequestListRequest data(List<ResourceOfProductButtonRequest> data) {
     
-    this.backgroundImage = backgroundImage;
+    this.data = data;
+    return this;
+  }
+
+  public ProductButtonRequestListRequest addDataItem(ResourceOfProductButtonRequest dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<>();
+    }
+    this.data.add(dataItem);
     return this;
   }
 
    /**
-   * URL of the background image
-   * @return backgroundImage
+   * Get data
+   * @return data
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public String getBackgroundImage() {
-    return backgroundImage;
+  public List<ResourceOfProductButtonRequest> getData() {
+    return data;
   }
 
 
-  public void setBackgroundImage(String backgroundImage) {
-    this.backgroundImage = backgroundImage;
-  }
-
-
-  public ExternalProductButtonRequest isMandatory(Integer isMandatory) {
-    
-    this.isMandatory = isMandatory;
-    return this;
-  }
-
-   /**
-   * If the Product Button is Mandatory
-   * @return isMandatory
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getIsMandatory() {
-    return isMandatory;
-  }
-
-
-  public void setIsMandatory(Integer isMandatory) {
-    this.isMandatory = isMandatory;
-  }
-
-
-  public ExternalProductButtonRequest name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Name of the Product Button
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public ExternalProductButtonRequest skus(List<String> skus) {
-    
-    this.skus = skus;
-    return this;
-  }
-
-  public ExternalProductButtonRequest addSkusItem(String skusItem) {
-    this.skus.add(skusItem);
-    return this;
-  }
-
-   /**
-   * List of skus on the Product Button
-   * @return skus
-  **/
-  @javax.annotation.Nonnull
-
-  public List<String> getSkus() {
-    return skus;
-  }
-
-
-  public void setSkus(List<String> skus) {
-    this.skus = skus;
+  public void setData(List<ResourceOfProductButtonRequest> data) {
+    this.data = data;
   }
 
   /**
@@ -174,9 +100,9 @@ public class ExternalProductButtonRequest {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ExternalProductButtonRequest instance itself
+   * @return the ProductButtonRequestListRequest instance itself
    */
-  public ExternalProductButtonRequest putAdditionalProperty(String key, Object value) {
+  public ProductButtonRequestListRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -215,27 +141,21 @@ public class ExternalProductButtonRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExternalProductButtonRequest externalProductButtonRequest = (ExternalProductButtonRequest) o;
-    return Objects.equals(this.backgroundImage, externalProductButtonRequest.backgroundImage) &&
-        Objects.equals(this.isMandatory, externalProductButtonRequest.isMandatory) &&
-        Objects.equals(this.name, externalProductButtonRequest.name) &&
-        Objects.equals(this.skus, externalProductButtonRequest.skus)&&
-        Objects.equals(this.additionalProperties, externalProductButtonRequest.additionalProperties);
+    ProductButtonRequestListRequest productButtonRequestListRequest = (ProductButtonRequestListRequest) o;
+    return Objects.equals(this.data, productButtonRequestListRequest.data)&&
+        Objects.equals(this.additionalProperties, productButtonRequestListRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(backgroundImage, isMandatory, name, skus, additionalProperties);
+    return Objects.hash(data, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExternalProductButtonRequest {\n");
-    sb.append("    backgroundImage: ").append(toIndentedString(backgroundImage)).append("\n");
-    sb.append("    isMandatory: ").append(toIndentedString(isMandatory)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    skus: ").append(toIndentedString(skus)).append("\n");
+    sb.append("class ProductButtonRequestListRequest {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -259,49 +179,37 @@ public class ExternalProductButtonRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("backgroundImage");
-    openapiFields.add("isMandatory");
-    openapiFields.add("name");
-    openapiFields.add("skus");
+    openapiFields.add("data");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("backgroundImage");
-    openapiRequiredFields.add("isMandatory");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("skus");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExternalProductButtonRequest
+  * @throws IOException if the JSON Object is invalid with respect to ProductButtonRequestListRequest
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ExternalProductButtonRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalProductButtonRequest is not found in the empty JSON string", ExternalProductButtonRequest.openapiRequiredFields.toString()));
+        if (!ProductButtonRequestListRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductButtonRequestListRequest is not found in the empty JSON string", ProductButtonRequestListRequest.openapiRequiredFields.toString()));
         }
       }
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+        if (jsonArraydata != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("data").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+          }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExternalProductButtonRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+          // validate the optional field `data` (array)
+          for (int i = 0; i < jsonArraydata.size(); i++) {
+            ResourceOfProductButtonRequest.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+          };
         }
-      }
-      if (!jsonObj.get("backgroundImage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `backgroundImage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("backgroundImage").toString()));
-      }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("skus") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("skus").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `skus` to be an array in the JSON string but got `%s`", jsonObj.get("skus").toString()));
       }
   }
 
@@ -309,16 +217,16 @@ public class ExternalProductButtonRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExternalProductButtonRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExternalProductButtonRequest' and its subtypes
+       if (!ProductButtonRequestListRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ProductButtonRequestListRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExternalProductButtonRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalProductButtonRequest.class));
+       final TypeAdapter<ProductButtonRequestListRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ProductButtonRequestListRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExternalProductButtonRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<ProductButtonRequestListRequest>() {
            @Override
-           public void write(JsonWriter out, ExternalProductButtonRequest value) throws IOException {
+           public void write(JsonWriter out, ProductButtonRequestListRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -341,11 +249,11 @@ public class ExternalProductButtonRequest {
            }
 
            @Override
-           public ExternalProductButtonRequest read(JsonReader in) throws IOException {
+           public ProductButtonRequestListRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ExternalProductButtonRequest instance = thisAdapter.fromJsonTree(jsonObj);
+             ProductButtonRequestListRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -372,18 +280,18 @@ public class ExternalProductButtonRequest {
   }
 
  /**
-  * Create an instance of ExternalProductButtonRequest given an JSON string
+  * Create an instance of ProductButtonRequestListRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExternalProductButtonRequest
-  * @throws IOException if the JSON string is invalid with respect to ExternalProductButtonRequest
+  * @return An instance of ProductButtonRequestListRequest
+  * @throws IOException if the JSON string is invalid with respect to ProductButtonRequestListRequest
   */
-  public static ExternalProductButtonRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExternalProductButtonRequest.class);
+  public static ProductButtonRequestListRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ProductButtonRequestListRequest.class);
   }
 
  /**
-  * Convert an instance of ExternalProductButtonRequest to an JSON string
+  * Convert an instance of ProductButtonRequestListRequest to an JSON string
   *
   * @return JSON string
   */

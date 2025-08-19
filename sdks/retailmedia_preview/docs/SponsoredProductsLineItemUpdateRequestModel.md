@@ -27,10 +27,10 @@ A request to update a Sponsored Products Line Item.
 
 | Name | Value |
 |---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
-| CONVERSION | &quot;Conversion&quot; |
-| CLICKS | &quot;Clicks&quot; |
-| REVENUE | &quot;Revenue&quot; |
+| UNKNOWN | &quot;unknown&quot; |
+| CONVERSION | &quot;conversion&quot; |
+| CLICKS | &quot;clicks&quot; |
+| REVENUE | &quot;revenue&quot; |
 
 
 
@@ -38,9 +38,9 @@ A request to update a Sponsored Products Line Item.
 
 | Name | Value |
 |---- | -----|
-| ACTIVE | &quot;Active&quot; |
-| PAUSED | &quot;Paused&quot; |
-| DRAFT | &quot;Draft&quot; |
+| ACTIVE | &quot;active&quot; |
+| PAUSED | &quot;paused&quot; |
+| DRAFT | &quot;draft&quot; |
 
 
 

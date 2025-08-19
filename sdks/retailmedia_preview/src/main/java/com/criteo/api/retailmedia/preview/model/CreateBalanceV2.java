@@ -21,8 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -53,11 +51,11 @@ import com.criteo.api.retailmedia.preview.JSON;
 public class CreateBalanceV2 {
   public static final String SERIALIZED_NAME_DEPOSITED = "deposited";
   @SerializedName(SERIALIZED_NAME_DEPOSITED)
-  private BigDecimal deposited;
+  private Double deposited;
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
-  private LocalDate endDate;
+  private String endDate;
 
   public static final String SERIALIZED_NAME_MEMO = "memo";
   @SerializedName(SERIALIZED_NAME_MEMO)
@@ -126,12 +124,12 @@ public class CreateBalanceV2 {
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
-  private LocalDate startDate;
+  private String startDate;
 
   public CreateBalanceV2() {
   }
 
-  public CreateBalanceV2 deposited(BigDecimal deposited) {
+  public CreateBalanceV2 deposited(Double deposited) {
     
     this.deposited = deposited;
     return this;
@@ -143,17 +141,17 @@ public class CreateBalanceV2 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getDeposited() {
+  public Double getDeposited() {
     return deposited;
   }
 
 
-  public void setDeposited(BigDecimal deposited) {
+  public void setDeposited(Double deposited) {
     this.deposited = deposited;
   }
 
 
-  public CreateBalanceV2 endDate(LocalDate endDate) {
+  public CreateBalanceV2 endDate(String endDate) {
     
     this.endDate = endDate;
     return this;
@@ -165,12 +163,12 @@ public class CreateBalanceV2 {
   **/
   @javax.annotation.Nullable
 
-  public LocalDate getEndDate() {
+  public String getEndDate() {
     return endDate;
   }
 
 
-  public void setEndDate(LocalDate endDate) {
+  public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
 
@@ -263,7 +261,7 @@ public class CreateBalanceV2 {
   }
 
 
-  public CreateBalanceV2 startDate(LocalDate startDate) {
+  public CreateBalanceV2 startDate(String startDate) {
     
     this.startDate = startDate;
     return this;
@@ -275,12 +273,12 @@ public class CreateBalanceV2 {
   **/
   @javax.annotation.Nonnull
 
-  public LocalDate getStartDate() {
+  public String getStartDate() {
     return startDate;
   }
 
 
-  public void setStartDate(LocalDate startDate) {
+  public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
@@ -433,6 +431,9 @@ public class CreateBalanceV2 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
+      }
       if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
       }
@@ -444,6 +445,9 @@ public class CreateBalanceV2 {
       }
       if (!jsonObj.get("spendType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `spendType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spendType").toString()));
+      }
+      if (!jsonObj.get("startDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
       }
   }
 

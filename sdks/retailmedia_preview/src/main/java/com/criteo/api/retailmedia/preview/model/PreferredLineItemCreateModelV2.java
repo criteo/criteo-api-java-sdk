@@ -15,8 +15,8 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.ExternalLineItemCappingV2;
-import com.criteo.api.retailmedia.preview.model.ExternalLineItemPageV2;
+import com.criteo.api.retailmedia.preview.model.LineItemCappingV2;
+import com.criteo.api.retailmedia.preview.model.LineItemPageV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,7 +24,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,17 +47,17 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Model used to update a preferred line item
+ * Model used to create a preferred line item
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExternalPreferredLineItemUpdateModelV2 {
+public class PreferredLineItemCreateModelV2 {
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
   private Double budget;
 
   public static final String SERIALIZED_NAME_CAPPING = "capping";
   @SerializedName(SERIALIZED_NAME_CAPPING)
-  private ExternalLineItemCappingV2 capping;
+  private LineItemCappingV2 capping;
 
   public static final String SERIALIZED_NAME_CREATIVE_ID = "creativeId";
   @SerializedName(SERIALIZED_NAME_CREATIVE_ID)
@@ -73,7 +72,7 @@ public class ExternalPreferredLineItemUpdateModelV2 {
   private String name;
 
   /**
-   * Gets or Sets pacing
+   * Line Item Pacing Enum
    */
   @JsonAdapter(PacingEnum.Adapter.class)
   public enum PacingEnum {
@@ -123,11 +122,11 @@ public class ExternalPreferredLineItemUpdateModelV2 {
 
   public static final String SERIALIZED_NAME_PACING = "pacing";
   @SerializedName(SERIALIZED_NAME_PACING)
-  private PacingEnum pacing = PacingEnum.ACCELERATED;
+  private PacingEnum pacing;
 
   public static final String SERIALIZED_NAME_PAGE = "page";
   @SerializedName(SERIALIZED_NAME_PAGE)
-  private ExternalLineItemPageV2 page;
+  private LineItemPageV2 page;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -198,10 +197,14 @@ public class ExternalPreferredLineItemUpdateModelV2 {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public ExternalPreferredLineItemUpdateModelV2() {
+  public static final String SERIALIZED_NAME_TARGET_RETAILER_ID = "targetRetailerId";
+  @SerializedName(SERIALIZED_NAME_TARGET_RETAILER_ID)
+  private String targetRetailerId;
+
+  public PreferredLineItemCreateModelV2() {
   }
 
-  public ExternalPreferredLineItemUpdateModelV2 budget(Double budget) {
+  public PreferredLineItemCreateModelV2 budget(Double budget) {
     
     this.budget = budget;
     return this;
@@ -211,7 +214,7 @@ public class ExternalPreferredLineItemUpdateModelV2 {
    * Get budget
    * @return budget
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public Double getBudget() {
     return budget;
@@ -223,7 +226,7 @@ public class ExternalPreferredLineItemUpdateModelV2 {
   }
 
 
-  public ExternalPreferredLineItemUpdateModelV2 capping(ExternalLineItemCappingV2 capping) {
+  public PreferredLineItemCreateModelV2 capping(LineItemCappingV2 capping) {
     
     this.capping = capping;
     return this;
@@ -235,17 +238,17 @@ public class ExternalPreferredLineItemUpdateModelV2 {
   **/
   @javax.annotation.Nullable
 
-  public ExternalLineItemCappingV2 getCapping() {
+  public LineItemCappingV2 getCapping() {
     return capping;
   }
 
 
-  public void setCapping(ExternalLineItemCappingV2 capping) {
+  public void setCapping(LineItemCappingV2 capping) {
     this.capping = capping;
   }
 
 
-  public ExternalPreferredLineItemUpdateModelV2 creativeId(String creativeId) {
+  public PreferredLineItemCreateModelV2 creativeId(String creativeId) {
     
     this.creativeId = creativeId;
     return this;
@@ -267,7 +270,7 @@ public class ExternalPreferredLineItemUpdateModelV2 {
   }
 
 
-  public ExternalPreferredLineItemUpdateModelV2 endDate(LocalDate endDate) {
+  public PreferredLineItemCreateModelV2 endDate(LocalDate endDate) {
     
     this.endDate = endDate;
     return this;
@@ -289,7 +292,7 @@ public class ExternalPreferredLineItemUpdateModelV2 {
   }
 
 
-  public ExternalPreferredLineItemUpdateModelV2 name(String name) {
+  public PreferredLineItemCreateModelV2 name(String name) {
     
     this.name = name;
     return this;
@@ -311,17 +314,17 @@ public class ExternalPreferredLineItemUpdateModelV2 {
   }
 
 
-  public ExternalPreferredLineItemUpdateModelV2 pacing(PacingEnum pacing) {
+  public PreferredLineItemCreateModelV2 pacing(PacingEnum pacing) {
     
     this.pacing = pacing;
     return this;
   }
 
    /**
-   * Get pacing
+   * Line Item Pacing Enum
    * @return pacing
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public PacingEnum getPacing() {
     return pacing;
@@ -333,7 +336,7 @@ public class ExternalPreferredLineItemUpdateModelV2 {
   }
 
 
-  public ExternalPreferredLineItemUpdateModelV2 page(ExternalLineItemPageV2 page) {
+  public PreferredLineItemCreateModelV2 page(LineItemPageV2 page) {
     
     this.page = page;
     return this;
@@ -345,17 +348,17 @@ public class ExternalPreferredLineItemUpdateModelV2 {
   **/
   @javax.annotation.Nullable
 
-  public ExternalLineItemPageV2 getPage() {
+  public LineItemPageV2 getPage() {
     return page;
   }
 
 
-  public void setPage(ExternalLineItemPageV2 page) {
+  public void setPage(LineItemPageV2 page) {
     this.page = page;
   }
 
 
-  public ExternalPreferredLineItemUpdateModelV2 startDate(LocalDate startDate) {
+  public PreferredLineItemCreateModelV2 startDate(LocalDate startDate) {
     
     this.startDate = startDate;
     return this;
@@ -377,7 +380,7 @@ public class ExternalPreferredLineItemUpdateModelV2 {
   }
 
 
-  public ExternalPreferredLineItemUpdateModelV2 status(StatusEnum status) {
+  public PreferredLineItemCreateModelV2 status(StatusEnum status) {
     
     this.status = status;
     return this;
@@ -387,7 +390,7 @@ public class ExternalPreferredLineItemUpdateModelV2 {
    * Line Item Status Enum
    * @return status
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public StatusEnum getStatus() {
     return status;
@@ -396,6 +399,28 @@ public class ExternalPreferredLineItemUpdateModelV2 {
 
   public void setStatus(StatusEnum status) {
     this.status = status;
+  }
+
+
+  public PreferredLineItemCreateModelV2 targetRetailerId(String targetRetailerId) {
+    
+    this.targetRetailerId = targetRetailerId;
+    return this;
+  }
+
+   /**
+   * Get targetRetailerId
+   * @return targetRetailerId
+  **/
+  @javax.annotation.Nonnull
+
+  public String getTargetRetailerId() {
+    return targetRetailerId;
+  }
+
+
+  public void setTargetRetailerId(String targetRetailerId) {
+    this.targetRetailerId = targetRetailerId;
   }
 
   /**
@@ -411,9 +436,9 @@ public class ExternalPreferredLineItemUpdateModelV2 {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ExternalPreferredLineItemUpdateModelV2 instance itself
+   * @return the PreferredLineItemCreateModelV2 instance itself
    */
-  public ExternalPreferredLineItemUpdateModelV2 putAdditionalProperty(String key, Object value) {
+  public PreferredLineItemCreateModelV2 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -452,39 +477,29 @@ public class ExternalPreferredLineItemUpdateModelV2 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExternalPreferredLineItemUpdateModelV2 externalPreferredLineItemUpdateModelV2 = (ExternalPreferredLineItemUpdateModelV2) o;
-    return Objects.equals(this.budget, externalPreferredLineItemUpdateModelV2.budget) &&
-        Objects.equals(this.capping, externalPreferredLineItemUpdateModelV2.capping) &&
-        Objects.equals(this.creativeId, externalPreferredLineItemUpdateModelV2.creativeId) &&
-        Objects.equals(this.endDate, externalPreferredLineItemUpdateModelV2.endDate) &&
-        Objects.equals(this.name, externalPreferredLineItemUpdateModelV2.name) &&
-        Objects.equals(this.pacing, externalPreferredLineItemUpdateModelV2.pacing) &&
-        Objects.equals(this.page, externalPreferredLineItemUpdateModelV2.page) &&
-        Objects.equals(this.startDate, externalPreferredLineItemUpdateModelV2.startDate) &&
-        Objects.equals(this.status, externalPreferredLineItemUpdateModelV2.status)&&
-        Objects.equals(this.additionalProperties, externalPreferredLineItemUpdateModelV2.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    PreferredLineItemCreateModelV2 preferredLineItemCreateModelV2 = (PreferredLineItemCreateModelV2) o;
+    return Objects.equals(this.budget, preferredLineItemCreateModelV2.budget) &&
+        Objects.equals(this.capping, preferredLineItemCreateModelV2.capping) &&
+        Objects.equals(this.creativeId, preferredLineItemCreateModelV2.creativeId) &&
+        Objects.equals(this.endDate, preferredLineItemCreateModelV2.endDate) &&
+        Objects.equals(this.name, preferredLineItemCreateModelV2.name) &&
+        Objects.equals(this.pacing, preferredLineItemCreateModelV2.pacing) &&
+        Objects.equals(this.page, preferredLineItemCreateModelV2.page) &&
+        Objects.equals(this.startDate, preferredLineItemCreateModelV2.startDate) &&
+        Objects.equals(this.status, preferredLineItemCreateModelV2.status) &&
+        Objects.equals(this.targetRetailerId, preferredLineItemCreateModelV2.targetRetailerId)&&
+        Objects.equals(this.additionalProperties, preferredLineItemCreateModelV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(budget, capping, creativeId, endDate, name, pacing, page, startDate, status, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(budget, capping, creativeId, endDate, name, pacing, page, startDate, status, targetRetailerId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExternalPreferredLineItemUpdateModelV2 {\n");
+    sb.append("class PreferredLineItemCreateModelV2 {\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    capping: ").append(toIndentedString(capping)).append("\n");
     sb.append("    creativeId: ").append(toIndentedString(creativeId)).append("\n");
@@ -494,6 +509,7 @@ public class ExternalPreferredLineItemUpdateModelV2 {
     sb.append("    page: ").append(toIndentedString(page)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    targetRetailerId: ").append(toIndentedString(targetRetailerId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -526,37 +542,41 @@ public class ExternalPreferredLineItemUpdateModelV2 {
     openapiFields.add("page");
     openapiFields.add("startDate");
     openapiFields.add("status");
+    openapiFields.add("targetRetailerId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("budget");
     openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("pacing");
+    openapiRequiredFields.add("page");
     openapiRequiredFields.add("startDate");
-    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("targetRetailerId");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExternalPreferredLineItemUpdateModelV2
+  * @throws IOException if the JSON Object is invalid with respect to PreferredLineItemCreateModelV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ExternalPreferredLineItemUpdateModelV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalPreferredLineItemUpdateModelV2 is not found in the empty JSON string", ExternalPreferredLineItemUpdateModelV2.openapiRequiredFields.toString()));
+        if (!PreferredLineItemCreateModelV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PreferredLineItemCreateModelV2 is not found in the empty JSON string", PreferredLineItemCreateModelV2.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExternalPreferredLineItemUpdateModelV2.openapiRequiredFields) {
+      for (String requiredField : PreferredLineItemCreateModelV2.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
       // validate the optional field `capping`
       if (jsonObj.get("capping") != null && !jsonObj.get("capping").isJsonNull()) {
-        ExternalLineItemCappingV2.validateJsonObject(jsonObj.getAsJsonObject("capping"));
+        LineItemCappingV2.validateJsonObject(jsonObj.getAsJsonObject("capping"));
       }
       if ((jsonObj.get("creativeId") != null && !jsonObj.get("creativeId").isJsonNull()) && !jsonObj.get("creativeId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creativeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeId").toString()));
@@ -564,15 +584,16 @@ public class ExternalPreferredLineItemUpdateModelV2 {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("pacing") != null && !jsonObj.get("pacing").isJsonNull()) && !jsonObj.get("pacing").isJsonPrimitive()) {
+      if (!jsonObj.get("pacing").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `pacing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pacing").toString()));
       }
-      // validate the optional field `page`
-      if (jsonObj.get("page") != null && !jsonObj.get("page").isJsonNull()) {
-        ExternalLineItemPageV2.validateJsonObject(jsonObj.getAsJsonObject("page"));
-      }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
+      // validate the required field `page`
+      LineItemPageV2.validateJsonObject(jsonObj.getAsJsonObject("page"));
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));
       }
   }
 
@@ -580,16 +601,16 @@ public class ExternalPreferredLineItemUpdateModelV2 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExternalPreferredLineItemUpdateModelV2.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExternalPreferredLineItemUpdateModelV2' and its subtypes
+       if (!PreferredLineItemCreateModelV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PreferredLineItemCreateModelV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExternalPreferredLineItemUpdateModelV2> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalPreferredLineItemUpdateModelV2.class));
+       final TypeAdapter<PreferredLineItemCreateModelV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PreferredLineItemCreateModelV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExternalPreferredLineItemUpdateModelV2>() {
+       return (TypeAdapter<T>) new TypeAdapter<PreferredLineItemCreateModelV2>() {
            @Override
-           public void write(JsonWriter out, ExternalPreferredLineItemUpdateModelV2 value) throws IOException {
+           public void write(JsonWriter out, PreferredLineItemCreateModelV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -612,11 +633,11 @@ public class ExternalPreferredLineItemUpdateModelV2 {
            }
 
            @Override
-           public ExternalPreferredLineItemUpdateModelV2 read(JsonReader in) throws IOException {
+           public PreferredLineItemCreateModelV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ExternalPreferredLineItemUpdateModelV2 instance = thisAdapter.fromJsonTree(jsonObj);
+             PreferredLineItemCreateModelV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -643,18 +664,18 @@ public class ExternalPreferredLineItemUpdateModelV2 {
   }
 
  /**
-  * Create an instance of ExternalPreferredLineItemUpdateModelV2 given an JSON string
+  * Create an instance of PreferredLineItemCreateModelV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExternalPreferredLineItemUpdateModelV2
-  * @throws IOException if the JSON string is invalid with respect to ExternalPreferredLineItemUpdateModelV2
+  * @return An instance of PreferredLineItemCreateModelV2
+  * @throws IOException if the JSON string is invalid with respect to PreferredLineItemCreateModelV2
   */
-  public static ExternalPreferredLineItemUpdateModelV2 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExternalPreferredLineItemUpdateModelV2.class);
+  public static PreferredLineItemCreateModelV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PreferredLineItemCreateModelV2.class);
   }
 
  /**
-  * Convert an instance of ExternalPreferredLineItemUpdateModelV2 to an JSON string
+  * Convert an instance of PreferredLineItemCreateModelV2 to an JSON string
   *
   * @return JSON string
   */

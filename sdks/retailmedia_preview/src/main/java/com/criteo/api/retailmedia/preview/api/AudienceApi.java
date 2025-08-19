@@ -1875,7 +1875,7 @@ public class AudienceApi {
      * Build call for searchAudienceSegments
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentSearchInputV1 Segment search filters. (required)
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1969,7 +1969,7 @@ public class AudienceApi {
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentSearchInputV1 Segment search filters. (required)
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @return RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1992,7 +1992,7 @@ public class AudienceApi {
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentSearchInputV1 Segment search filters. (required)
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @return ApiResponse&lt;RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2016,7 +2016,7 @@ public class AudienceApi {
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentSearchInputV1 Segment search filters. (required)
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2041,7 +2041,7 @@ public class AudienceApi {
      * Build call for searchAudiences
      * @param accountId Account Id (required)
      * @param rmAudienceSearchInputV1 Audience search filters. (required)
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2135,7 +2135,7 @@ public class AudienceApi {
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSearchInputV1 Audience search filters. (required)
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @return RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2158,7 +2158,7 @@ public class AudienceApi {
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSearchInputV1 Audience search filters. (required)
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @return ApiResponse&lt;RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2182,7 +2182,7 @@ public class AudienceApi {
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSearchInputV1 Audience search filters. (required)
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

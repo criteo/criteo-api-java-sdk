@@ -15,13 +15,14 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.ResourceOfProductButtonRequest;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,36 +46,119 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Data model for an input resource
+ * The Product Button entity used for Input
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductButtonRequest {
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private ResourceOfProductButtonRequest data;
+  public static final String SERIALIZED_NAME_BACKGROUND_IMAGE = "backgroundImage";
+  @SerializedName(SERIALIZED_NAME_BACKGROUND_IMAGE)
+  private String backgroundImage;
+
+  public static final String SERIALIZED_NAME_IS_MANDATORY = "isMandatory";
+  @SerializedName(SERIALIZED_NAME_IS_MANDATORY)
+  private Integer isMandatory;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_SKUS = "skus";
+  @SerializedName(SERIALIZED_NAME_SKUS)
+  private List<String> skus = new ArrayList<>();
 
   public ProductButtonRequest() {
   }
 
-  public ProductButtonRequest data(ResourceOfProductButtonRequest data) {
+  public ProductButtonRequest backgroundImage(String backgroundImage) {
     
-    this.data = data;
+    this.backgroundImage = backgroundImage;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * URL of the background image
+   * @return backgroundImage
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public ResourceOfProductButtonRequest getData() {
-    return data;
+  public String getBackgroundImage() {
+    return backgroundImage;
   }
 
 
-  public void setData(ResourceOfProductButtonRequest data) {
-    this.data = data;
+  public void setBackgroundImage(String backgroundImage) {
+    this.backgroundImage = backgroundImage;
+  }
+
+
+  public ProductButtonRequest isMandatory(Integer isMandatory) {
+    
+    this.isMandatory = isMandatory;
+    return this;
+  }
+
+   /**
+   * If the Product Button is Mandatory
+   * @return isMandatory
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getIsMandatory() {
+    return isMandatory;
+  }
+
+
+  public void setIsMandatory(Integer isMandatory) {
+    this.isMandatory = isMandatory;
+  }
+
+
+  public ProductButtonRequest name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the Product Button
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public ProductButtonRequest skus(List<String> skus) {
+    
+    this.skus = skus;
+    return this;
+  }
+
+  public ProductButtonRequest addSkusItem(String skusItem) {
+    this.skus.add(skusItem);
+    return this;
+  }
+
+   /**
+   * List of skus on the Product Button
+   * @return skus
+  **/
+  @javax.annotation.Nonnull
+
+  public List<String> getSkus() {
+    return skus;
+  }
+
+
+  public void setSkus(List<String> skus) {
+    this.skus = skus;
   }
 
   /**
@@ -132,20 +216,26 @@ public class ProductButtonRequest {
       return false;
     }
     ProductButtonRequest productButtonRequest = (ProductButtonRequest) o;
-    return Objects.equals(this.data, productButtonRequest.data)&&
+    return Objects.equals(this.backgroundImage, productButtonRequest.backgroundImage) &&
+        Objects.equals(this.isMandatory, productButtonRequest.isMandatory) &&
+        Objects.equals(this.name, productButtonRequest.name) &&
+        Objects.equals(this.skus, productButtonRequest.skus)&&
         Objects.equals(this.additionalProperties, productButtonRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, additionalProperties);
+    return Objects.hash(backgroundImage, isMandatory, name, skus, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductButtonRequest {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    backgroundImage: ").append(toIndentedString(backgroundImage)).append("\n");
+    sb.append("    isMandatory: ").append(toIndentedString(isMandatory)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    skus: ").append(toIndentedString(skus)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -169,10 +259,17 @@ public class ProductButtonRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("data");
+    openapiFields.add("backgroundImage");
+    openapiFields.add("isMandatory");
+    openapiFields.add("name");
+    openapiFields.add("skus");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("backgroundImage");
+    openapiRequiredFields.add("isMandatory");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("skus");
   }
 
  /**
@@ -187,9 +284,24 @@ public class ProductButtonRequest {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ProductButtonRequest is not found in the empty JSON string", ProductButtonRequest.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        ResourceOfProductButtonRequest.validateJsonObject(jsonObj.getAsJsonObject("data"));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ProductButtonRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("backgroundImage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `backgroundImage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("backgroundImage").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("skus") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("skus").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `skus` to be an array in the JSON string but got `%s`", jsonObj.get("skus").toString()));
       }
   }
 

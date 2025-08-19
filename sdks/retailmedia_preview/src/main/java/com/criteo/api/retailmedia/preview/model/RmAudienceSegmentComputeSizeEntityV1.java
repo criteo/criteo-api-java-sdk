@@ -55,8 +55,6 @@ public class RmAudienceSegmentComputeSizeEntityV1 {
    */
   @JsonAdapter(ChannelEnum.Adapter.class)
   public enum ChannelEnum {
-    UNKNOWN("Unknown"),
-    
     ONSITE("Onsite"),
     
     OFFSITE("Offsite");

@@ -1,6 +1,6 @@
 
 
-# ExternalLineItemPageCategoryV2
+# LineItemPageCategoryV2
 
 Category information for a preferred line item page
 

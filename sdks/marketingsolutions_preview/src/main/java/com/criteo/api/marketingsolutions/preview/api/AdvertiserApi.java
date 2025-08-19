@@ -27,12 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.criteo.api.marketingsolutions.preview.model.AdvertiserCreationRequest;
-import com.criteo.api.marketingsolutions.preview.model.AdvertiserCreationResponse;
 import com.criteo.api.marketingsolutions.preview.model.AdvertiserDatasetListResponse;
 import com.criteo.api.marketingsolutions.preview.model.GetPortfolioResponse;
 import com.criteo.api.marketingsolutions.preview.model.ListAvailableIndustriesResponse;
-import com.criteo.api.marketingsolutions.preview.model.UnauthorizedResponseV2;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -194,146 +191,6 @@ public class AdvertiserApi {
 
         okhttp3.Call localVarCall = apiPortfolioGetValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<GetPortfolioResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for createAdvertiser
-     * @param advertiserCreationRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createAdvertiserCall(AdvertiserCreationRequest advertiserCreationRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = advertiserCreationRequest;
-
-        // create path and map variables
-        String localVarPath = "/preview/advertisers";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "text/plain",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAdvertiserValidateBeforeCall(AdvertiserCreationRequest advertiserCreationRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'advertiserCreationRequest' is set
-        if (advertiserCreationRequest == null) {
-            throw new ApiException("Missing the required parameter 'advertiserCreationRequest' when calling createAdvertiser(Async)");
-        }
-
-        return createAdvertiserCall(advertiserCreationRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * Create a new advertiser based on provided parameters. This could take up to 30 seconds.
-     * @param advertiserCreationRequest  (required)
-     * @return AdvertiserCreationResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public AdvertiserCreationResponse createAdvertiser(AdvertiserCreationRequest advertiserCreationRequest) throws ApiException {
-        ApiResponse<AdvertiserCreationResponse> localVarResp = createAdvertiserWithHttpInfo(advertiserCreationRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Create a new advertiser based on provided parameters. This could take up to 30 seconds.
-     * @param advertiserCreationRequest  (required)
-     * @return ApiResponse&lt;AdvertiserCreationResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AdvertiserCreationResponse> createAdvertiserWithHttpInfo(AdvertiserCreationRequest advertiserCreationRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAdvertiserValidateBeforeCall(advertiserCreationRequest, null);
-        Type localVarReturnType = new TypeToken<AdvertiserCreationResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Create a new advertiser based on provided parameters. This could take up to 30 seconds.
-     * @param advertiserCreationRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createAdvertiserAsync(AdvertiserCreationRequest advertiserCreationRequest, final ApiCallback<AdvertiserCreationResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createAdvertiserValidateBeforeCall(advertiserCreationRequest, _callback);
-        Type localVarReturnType = new TypeToken<AdvertiserCreationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
