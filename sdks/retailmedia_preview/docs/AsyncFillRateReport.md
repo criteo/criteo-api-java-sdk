@@ -69,8 +69,6 @@ Async FillRate report body request
 | REVENUE | &quot;revenue&quot; |
 | WORKINGMEDIA | &quot;workingMedia&quot; |
 | NETREVENUE | &quot;netRevenue&quot; |
-| UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
-| FREQUENCY | &quot;frequency&quot; |
 
 
 

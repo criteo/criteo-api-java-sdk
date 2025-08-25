@@ -1097,9 +1097,15 @@ paths:
       responses:
         "201":
           content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
           description: Success
       security:
       - oauth:
@@ -2914,7 +2920,7 @@ paths:
       description: Get LineItem Product Buttons
       operationId: ProductButtons_GetApiExternalV1LineItemProductButtonsByLineItemId
       parameters:
-      - description: External LineItemId for productButton retrieval
+      - description: LineItemId for productButton retrieval
         explode: false
         in: path
         name: line-item-id
@@ -2946,7 +2952,7 @@ paths:
       description: Delete Specific Product Button
       operationId: "ProductButtons_DeleteApiExternalV1LineItemByLineItemId}ProductButtons{productButtonId"
       parameters:
-      - description: External LineItemId for productButton delete
+      - description: LineItemId for productButton delete
         explode: false
         in: path
         name: line-item-id
@@ -2985,7 +2991,7 @@ paths:
       description: Get Specific Product Button
       operationId: "ProductButtons_GetApiExternalV1LineItemByLineItemId}ProductButtons{productButtonId"
       parameters:
-      - description: External LineItemId for productButton retrieval
+      - description: LineItemId for productButton retrieval
         explode: false
         in: path
         name: line-item-id
@@ -3024,7 +3030,7 @@ paths:
       description: Update Specific Product Button
       operationId: "ProductButtons_PutApiExternalV1LineItemByLineItemId}ProductButtons{productButtonId"
       parameters:
-      - description: External LineItemId for productButton update
+      - description: LineItemId for productButton update
         explode: false
         in: path
         name: line-item-id
@@ -3072,7 +3078,7 @@ paths:
       description: Add Specific Product Buttons
       operationId: ProductButtons_PostApiExternalV1LineItemProductButtonsCreateByLineItemId
       parameters:
-      - description: External LineItemId for productButton retrieval
+      - description: LineItemId for productButton retrieval
         explode: false
         in: path
         name: line-item-id
@@ -5388,8 +5394,6 @@ components:
             - revenue
             - workingMedia
             - netRevenue
-            - uniqueVisitors
-            - frequency
             type: string
           minItems: 1
           type: array
@@ -10636,6 +10640,7 @@ components:
         pacing: unknown
         budgetSpent: 1.4658129805029452
         name: name
+        id: id
         page:
           pageType: unknown
           searchKeywords:
@@ -10672,7 +10677,7 @@ components:
           format: date-time
           type: string
         creativeId:
-          description: External creative Id
+          description: creative Id
           format: long-id
           nullable: true
           type: string
@@ -10680,6 +10685,9 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
+          type: string
+        id:
+          nullable: true
           type: string
         name:
           maxLength: 255
@@ -10750,6 +10758,7 @@ components:
             pacing: unknown
             budgetSpent: 1.4658129805029452
             name: name
+            id: id
             page:
               pageType: unknown
               searchKeywords:
@@ -10779,6 +10788,7 @@ components:
             pacing: unknown
             budgetSpent: 1.4658129805029452
             name: name
+            id: id
             page:
               pageType: unknown
               searchKeywords:
@@ -10873,6 +10883,7 @@ components:
             pacing: unknown
             budgetSpent: 1.4658129805029452
             name: name
+            id: id
             page:
               pageType: unknown
               searchKeywords:
@@ -13465,6 +13476,7 @@ components:
           pacing: unknown
           budgetSpent: 1.4658129805029452
           name: name
+          id: id
           page:
             pageType: unknown
             searchKeywords:

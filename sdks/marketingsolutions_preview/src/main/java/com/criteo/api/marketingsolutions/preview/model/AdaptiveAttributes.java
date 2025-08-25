@@ -262,7 +262,7 @@ public class AdaptiveAttributes {
    * Font of the description  Valid supported font like \&quot;Arial\&quot;
    * @return descriptionFont
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getDescriptionFont() {
     return descriptionFont;
@@ -284,7 +284,7 @@ public class AdaptiveAttributes {
    * The description text of the banner
    * @return descriptionText
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getDescriptionText() {
     return descriptionText;
@@ -328,7 +328,7 @@ public class AdaptiveAttributes {
    * The headline text of the banner
    * @return headlineText
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getHeadlineText() {
     return headlineText;

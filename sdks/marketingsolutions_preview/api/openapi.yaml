@@ -7531,15 +7531,18 @@ components:
           $ref: '#/components/schemas/AdaptiveColors'
         descriptionFont:
           description: "Font of the description\r\nValid supported font like \"Arial\""
+          nullable: true
           type: string
         descriptionText:
           description: The description text of the banner
+          nullable: true
           type: string
         headlineFont:
           description: "Font of the headline\r\nValid supported font like \"Arial\""
           type: string
         headlineText:
           description: The headline text of the banner
+          nullable: true
           type: string
         imageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\

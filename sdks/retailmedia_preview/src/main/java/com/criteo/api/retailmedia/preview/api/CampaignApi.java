@@ -671,7 +671,7 @@ public class CampaignApi {
     }
     /**
      * Build call for deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
-     * @param lineItemId External LineItemId for productButton delete (required)
+     * @param lineItemId LineItemId for productButton delete (required)
      * @param productButtonId productButtonId used for delete (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -749,7 +749,7 @@ public class CampaignApi {
     /**
      * 
      * Delete Specific Product Button
-     * @param lineItemId External LineItemId for productButton delete (required)
+     * @param lineItemId LineItemId for productButton delete (required)
      * @param productButtonId productButtonId used for delete (required)
      * @return ProductButtonResponseListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -767,7 +767,7 @@ public class CampaignApi {
     /**
      * 
      * Delete Specific Product Button
-     * @param lineItemId External LineItemId for productButton delete (required)
+     * @param lineItemId LineItemId for productButton delete (required)
      * @param productButtonId productButtonId used for delete (required)
      * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -786,7 +786,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Delete Specific Product Button
-     * @param lineItemId External LineItemId for productButton delete (required)
+     * @param lineItemId LineItemId for productButton delete (required)
      * @param productButtonId productButtonId used for delete (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1216,7 +1216,7 @@ public class CampaignApi {
     }
     /**
      * Build call for getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonId productButtonId used for retrieval (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1294,7 +1294,7 @@ public class CampaignApi {
     /**
      * 
      * Get Specific Product Button
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonId productButtonId used for retrieval (required)
      * @return ProductButtonResponseListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1312,7 +1312,7 @@ public class CampaignApi {
     /**
      * 
      * Get Specific Product Button
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonId productButtonId used for retrieval (required)
      * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1331,7 +1331,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Get Specific Product Button
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonId productButtonId used for retrieval (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1351,7 +1351,7 @@ public class CampaignApi {
     }
     /**
      * Build call for getApiExternalV1LineItemProductButtonsByLineItemId
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1422,7 +1422,7 @@ public class CampaignApi {
     /**
      * 
      * Get LineItem Product Buttons
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @return ProductButtonResponseListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1439,7 +1439,7 @@ public class CampaignApi {
     /**
      * 
      * Get LineItem Product Buttons
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1457,7 +1457,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Get LineItem Product Buttons
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3242,7 +3242,7 @@ public class CampaignApi {
     }
     /**
      * Build call for postApiExternalV1LineItemProductButtonsCreateByLineItemId
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonRequestListRequest List of Product Buttons to append (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3315,7 +3315,7 @@ public class CampaignApi {
     /**
      * 
      * Add Specific Product Buttons
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonRequestListRequest List of Product Buttons to append (optional)
      * @return ProductButtonResponseListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3333,7 +3333,7 @@ public class CampaignApi {
     /**
      * 
      * Add Specific Product Buttons
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonRequestListRequest List of Product Buttons to append (optional)
      * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3352,7 +3352,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Add Specific Product Buttons
-     * @param lineItemId External LineItemId for productButton retrieval (required)
+     * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonRequestListRequest List of Product Buttons to append (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4309,7 +4309,7 @@ public class CampaignApi {
     }
     /**
      * Build call for putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
-     * @param lineItemId External LineItemId for productButton update (required)
+     * @param lineItemId LineItemId for productButton update (required)
      * @param productButtonId productButtonId used for update (required)
      * @param productButtonRequestRequest Specific Product button update info (optional)
      * @param _callback Callback for upload/download progress
@@ -4389,7 +4389,7 @@ public class CampaignApi {
     /**
      * 
      * Update Specific Product Button
-     * @param lineItemId External LineItemId for productButton update (required)
+     * @param lineItemId LineItemId for productButton update (required)
      * @param productButtonId productButtonId used for update (required)
      * @param productButtonRequestRequest Specific Product button update info (optional)
      * @return ProductButtonResponseListResponse
@@ -4408,7 +4408,7 @@ public class CampaignApi {
     /**
      * 
      * Update Specific Product Button
-     * @param lineItemId External LineItemId for productButton update (required)
+     * @param lineItemId LineItemId for productButton update (required)
      * @param productButtonId productButtonId used for update (required)
      * @param productButtonRequestRequest Specific Product button update info (optional)
      * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
@@ -4428,7 +4428,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Update Specific Product Button
-     * @param lineItemId External LineItemId for productButton update (required)
+     * @param lineItemId LineItemId for productButton update (required)
      * @param productButtonId productButtonId used for update (required)
      * @param productButtonRequestRequest Specific Product button update info (optional)
      * @param _callback The callback to be executed when the API call finishes

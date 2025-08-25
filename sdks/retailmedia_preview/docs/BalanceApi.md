@@ -389,7 +389,7 @@ public class Example {
 
 ## postApiExternalV2AccountBalancesByAccountId
 
-> postApiExternalV2AccountBalancesByAccountId(accountId, createBalanceV2Request)
+> BalanceResponseV2Response postApiExternalV2AccountBalancesByAccountId(accountId, createBalanceV2Request)
 
 
 
@@ -437,7 +437,8 @@ public class Example {
         String accountId = "accountId_example"; // String | The account to create balances for
         CreateBalanceV2Request createBalanceV2Request = new CreateBalanceV2Request(); // CreateBalanceV2Request | An object that represents the available options to set when creating a Retail Media Balance
         try {
-            apiInstance.postApiExternalV2AccountBalancesByAccountId(accountId, createBalanceV2Request);
+            BalanceResponseV2Response result = apiInstance.postApiExternalV2AccountBalancesByAccountId(accountId, createBalanceV2Request);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BalanceApi#postApiExternalV2AccountBalancesByAccountId");
             System.err.println("Status code: " + e.getCode());
@@ -459,7 +460,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**BalanceResponseV2Response**](BalanceResponseV2Response.md)
 
 ### Authorization
 

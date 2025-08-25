@@ -14,8 +14,9 @@ A Retail Media Preferred Line Item used to hold bid settings for one or many pro
 |**campaignId** | **String** |  |  |
 |**capping** | [**LineItemCappingV2**](LineItemCappingV2.md) |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  [optional] |
-|**creativeId** | **String** | External creative Id |  [optional] |
+|**creativeId** | **String** | creative Id |  [optional] |
 |**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
+|**id** | **String** |  |  [optional] |
 |**name** | **String** |  |  |
 |**pacing** | [**PacingEnum**](#PacingEnum) |  |  [optional] |
 |**page** | [**LineItemPageV2**](LineItemPageV2.md) |  |  [optional] |

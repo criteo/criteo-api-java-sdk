@@ -467,7 +467,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | External LineItemId for productButton delete
+        String lineItemId = "lineItemId_example"; // String | LineItemId for productButton delete
         String productButtonId = "productButtonId_example"; // String | productButtonId used for delete
         try {
             ProductButtonResponseListResponse result = apiInstance.deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId(lineItemId, productButtonId);
@@ -488,7 +488,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| External LineItemId for productButton delete | |
+| **lineItemId** | **String**| LineItemId for productButton delete | |
 | **productButtonId** | **String**| productButtonId used for delete | |
 
 ### Return type
@@ -836,7 +836,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | External LineItemId for productButton retrieval
+        String lineItemId = "lineItemId_example"; // String | LineItemId for productButton retrieval
         String productButtonId = "productButtonId_example"; // String | productButtonId used for retrieval
         try {
             ProductButtonResponseListResponse result = apiInstance.getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId(lineItemId, productButtonId);
@@ -857,7 +857,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| External LineItemId for productButton retrieval | |
+| **lineItemId** | **String**| LineItemId for productButton retrieval | |
 | **productButtonId** | **String**| productButtonId used for retrieval | |
 
 ### Return type
@@ -927,7 +927,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | External LineItemId for productButton retrieval
+        String lineItemId = "lineItemId_example"; // String | LineItemId for productButton retrieval
         try {
             ProductButtonResponseListResponse result = apiInstance.getApiExternalV1LineItemProductButtonsByLineItemId(lineItemId);
             System.out.println(result);
@@ -947,7 +947,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| External LineItemId for productButton retrieval | |
+| **lineItemId** | **String**| LineItemId for productButton retrieval | |
 
 ### Return type
 
@@ -2212,7 +2212,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | External LineItemId for productButton retrieval
+        String lineItemId = "lineItemId_example"; // String | LineItemId for productButton retrieval
         ProductButtonRequestListRequest productButtonRequestListRequest = new ProductButtonRequestListRequest(); // ProductButtonRequestListRequest | List of Product Buttons to append
         try {
             ProductButtonResponseListResponse result = apiInstance.postApiExternalV1LineItemProductButtonsCreateByLineItemId(lineItemId, productButtonRequestListRequest);
@@ -2233,7 +2233,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| External LineItemId for productButton retrieval | |
+| **lineItemId** | **String**| LineItemId for productButton retrieval | |
 | **productButtonRequestListRequest** | [**ProductButtonRequestListRequest**](ProductButtonRequestListRequest.md)| List of Product Buttons to append | [optional] |
 
 ### Return type
@@ -2948,7 +2948,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | External LineItemId for productButton update
+        String lineItemId = "lineItemId_example"; // String | LineItemId for productButton update
         String productButtonId = "productButtonId_example"; // String | productButtonId used for update
         ProductButtonRequestRequest productButtonRequestRequest = new ProductButtonRequestRequest(); // ProductButtonRequestRequest | Specific Product button update info
         try {
@@ -2970,7 +2970,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| External LineItemId for productButton update | |
+| **lineItemId** | **String**| LineItemId for productButton update | |
 | **productButtonId** | **String**| productButtonId used for update | |
 | **productButtonRequestRequest** | [**ProductButtonRequestRequest**](ProductButtonRequestRequest.md)| Specific Product button update info | [optional] |
 

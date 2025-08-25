@@ -726,6 +726,7 @@ public class BalanceApi {
      * Create balance for the given account id
      * @param accountId The account to create balances for (required)
      * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @return BalanceResponseV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -733,8 +734,9 @@ public class BalanceApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void postApiExternalV2AccountBalancesByAccountId(String accountId, CreateBalanceV2Request createBalanceV2Request) throws ApiException {
-        postApiExternalV2AccountBalancesByAccountIdWithHttpInfo(accountId, createBalanceV2Request);
+    public BalanceResponseV2Response postApiExternalV2AccountBalancesByAccountId(String accountId, CreateBalanceV2Request createBalanceV2Request) throws ApiException {
+        ApiResponse<BalanceResponseV2Response> localVarResp = postApiExternalV2AccountBalancesByAccountIdWithHttpInfo(accountId, createBalanceV2Request);
+        return localVarResp.getData();
     }
 
     /**
@@ -742,7 +744,7 @@ public class BalanceApi {
      * Create balance for the given account id
      * @param accountId The account to create balances for (required)
      * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;BalanceResponseV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -750,9 +752,10 @@ public class BalanceApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> postApiExternalV2AccountBalancesByAccountIdWithHttpInfo(String accountId, CreateBalanceV2Request createBalanceV2Request) throws ApiException {
+    public ApiResponse<BalanceResponseV2Response> postApiExternalV2AccountBalancesByAccountIdWithHttpInfo(String accountId, CreateBalanceV2Request createBalanceV2Request) throws ApiException {
         okhttp3.Call localVarCall = postApiExternalV2AccountBalancesByAccountIdValidateBeforeCall(accountId, createBalanceV2Request, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -769,10 +772,11 @@ public class BalanceApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiExternalV2AccountBalancesByAccountIdAsync(String accountId, CreateBalanceV2Request createBalanceV2Request, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postApiExternalV2AccountBalancesByAccountIdAsync(String accountId, CreateBalanceV2Request createBalanceV2Request, final ApiCallback<BalanceResponseV2Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postApiExternalV2AccountBalancesByAccountIdValidateBeforeCall(accountId, createBalanceV2Request, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

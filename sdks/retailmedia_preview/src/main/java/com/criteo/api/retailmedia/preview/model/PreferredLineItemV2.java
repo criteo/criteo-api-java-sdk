@@ -85,6 +85,10 @@ public class PreferredLineItemV2 {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private LocalDate endDate;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -365,7 +369,7 @@ public class PreferredLineItemV2 {
   }
 
    /**
-   * External creative Id
+   * creative Id
    * @return creativeId
   **/
   @javax.annotation.Nullable
@@ -399,6 +403,28 @@ public class PreferredLineItemV2 {
 
   public void setEndDate(LocalDate endDate) {
     this.endDate = endDate;
+  }
+
+
+  public PreferredLineItemV2 id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -618,6 +644,7 @@ public class PreferredLineItemV2 {
         Objects.equals(this.createdAt, preferredLineItemV2.createdAt) &&
         Objects.equals(this.creativeId, preferredLineItemV2.creativeId) &&
         Objects.equals(this.endDate, preferredLineItemV2.endDate) &&
+        Objects.equals(this.id, preferredLineItemV2.id) &&
         Objects.equals(this.name, preferredLineItemV2.name) &&
         Objects.equals(this.pacing, preferredLineItemV2.pacing) &&
         Objects.equals(this.page, preferredLineItemV2.page) &&
@@ -634,7 +661,7 @@ public class PreferredLineItemV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(budget, budgetRemaining, budgetSpent, campaignId, capping, createdAt, creativeId, endDate, name, pacing, page, startDate, status, targetRetailerId, updatedAt, additionalProperties);
+    return Objects.hash(budget, budgetRemaining, budgetSpent, campaignId, capping, createdAt, creativeId, endDate, id, name, pacing, page, startDate, status, targetRetailerId, updatedAt, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -656,6 +683,7 @@ public class PreferredLineItemV2 {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    creativeId: ").append(toIndentedString(creativeId)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    pacing: ").append(toIndentedString(pacing)).append("\n");
     sb.append("    page: ").append(toIndentedString(page)).append("\n");
@@ -694,6 +722,7 @@ public class PreferredLineItemV2 {
     openapiFields.add("createdAt");
     openapiFields.add("creativeId");
     openapiFields.add("endDate");
+    openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("pacing");
     openapiFields.add("page");
@@ -741,6 +770,9 @@ public class PreferredLineItemV2 {
       }
       if ((jsonObj.get("creativeId") != null && !jsonObj.get("creativeId").isJsonNull()) && !jsonObj.get("creativeId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creativeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeId").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

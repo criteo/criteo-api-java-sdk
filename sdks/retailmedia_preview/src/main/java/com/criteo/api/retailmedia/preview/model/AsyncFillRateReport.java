@@ -218,11 +218,7 @@ public class AsyncFillRateReport {
     
     WORKINGMEDIA("workingMedia"),
     
-    NETREVENUE("netRevenue"),
-    
-    UNIQUEVISITORS("uniqueVisitors"),
-    
-    FREQUENCY("frequency");
+    NETREVENUE("netRevenue");
 
     private String value;
 
