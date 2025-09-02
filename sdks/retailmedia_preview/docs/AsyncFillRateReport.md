@@ -8,6 +8,7 @@ Async FillRate report body request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**adServerType** | [**AdServerTypeEnum**](#AdServerTypeEnum) | Filter on the type of the ad server: criteo, gam, all |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
@@ -15,6 +16,16 @@ Async FillRate report body request
 |**startDate** | **OffsetDateTime** | Start date |  |
 |**supplyAccountIds** | **List&lt;String&gt;** | Supply account ids to report on |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
+
+
+
+## Enum: AdServerTypeEnum
+
+| Name | Value |
+|---- | -----|
+| ALL | &quot;all&quot; |
+| GAM | &quot;gam&quot; |
+| CRITEO | &quot;criteo&quot; |
 
 
 
@@ -32,6 +43,7 @@ Async FillRate report body request
 | SERVEDCATEGORY | &quot;servedCategory&quot; |
 | RETAILERCATEGORYID | &quot;retailerCategoryId&quot; |
 | RETAILERCATEGORYNAME | &quot;retailerCategoryName&quot; |
+| ADSERVERTYPE | &quot;adServerType&quot; |
 
 
 

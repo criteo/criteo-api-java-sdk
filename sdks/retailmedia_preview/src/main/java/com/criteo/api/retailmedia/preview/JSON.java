@@ -112,6 +112,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.AsyncFillRateReport.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.AsyncFillRateReportRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.AsyncFillRateReportResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.AsyncJobResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.AsyncLineItemsReport.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.AsyncLineItemsReportRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.AsyncLineItemsReportResource.CustomTypeAdapterFactory());
@@ -191,6 +192,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.LineItemKeywordReviewReport.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.LineItemPageCategoryV2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.LineItemPageV2.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.LoadSkuOffersRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.LoyaltyPoints.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ManagedServiceFee.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.Message.CustomTypeAdapterFactory());
@@ -200,6 +202,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.Metadata.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.NillableDecimal.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.NillableString.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.OfferLoad.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.OfferUpdate.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.Outcome.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.PageMetadata.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.PageOfBalanceHistoryChangeDataCaptureV1.CustomTypeAdapterFactory());
@@ -356,8 +360,11 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.SetBidsModel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.SetBidsModelRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.SetBidsModelResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.SetSkuBuyBoxWinnersRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.SkuBuyBoxWinner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.SkuDataPreview.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.SkuDataPreviewListResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.SkuOfferLoad.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.SkuSearchRequestPreview.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.SkuSearchRequestPreviewRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.SponsoredProductsLineItem.CustomTypeAdapterFactory());
@@ -378,9 +385,11 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.TextVariableValue.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.UpdateBalanceModelV2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.UpdateBalanceModelV2Request.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.UpdateOffersRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceAccountFeesSearchRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceAccountFeesUpdateRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceAccountFeesUpdateResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceAsyncJobResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceBrandIdSearchRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceCategoriesSearchRequestV1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata.CustomTypeAdapterFactory());
@@ -388,6 +397,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputAccountFeesUpdateRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputBrandIdSearchRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputCategoriesSearchRequestV1.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputLoadSkuOffersRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputOfBrandCatalogRequestV2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSellerCatalogRequestV2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.CustomTypeAdapterFactory());
@@ -396,11 +406,15 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputRecommendedCategoriesRequestV1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputRecommendedKeywordsRequestV1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputRetailMediaKeywordsReview.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputSetSkuBuyBoxWinnersRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceInputUpdateOffersRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceLoadSkuOffersRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceOfBrandCatalogRequestV2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceOfSellerCatalogRequestV2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceOfSponsoredProductsLineItemCreateRequestModel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeAccountFeesUpdateResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeAsyncJobResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeRecommendedKeywordsResponseV1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeRetailMediaKeywordsReviewResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourcePartnerBillingReportRequestV1.CustomTypeAdapterFactory());
@@ -410,6 +424,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceRecommendedKeywordsResponseV1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceRetailMediaKeywordsReview.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceRetailMediaKeywordsReviewResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceSetSkuBuyBoxWinnersRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.ValueResourceUpdateOffersRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.VideoVariableValue.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();
     }

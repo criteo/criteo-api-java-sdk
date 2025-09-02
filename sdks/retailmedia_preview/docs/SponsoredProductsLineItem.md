@@ -8,27 +8,25 @@ Model of a retail media auction line item.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) |  |  [optional] |
-|**budget** | **Double** |  |  [optional] |
-|**budgetRemaining** | **Double** |  |  |
-|**budgetSpent** | **Double** |  |  [optional] |
-|**campaignId** | **String** |  |  |
-|**conquestingAdstrategyEnabled** | **Boolean** |  |  [optional] |
-|**createdAt** | **OffsetDateTime** |  |  |
-|**dailyPacing** | **Double** |  |  [optional] |
-|**defensiveAdstrategyEnabled** | **Boolean** |  |  [optional] |
-|**endDate** | **OffsetDateTime** |  |  [optional] |
+|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) | Optional field. |  [optional] |
+|**budget** | **Double** | The total budget allocated for this line item. |  [optional] |
+|**budgetRemaining** | **Double** | The amount of the budget that remains available. |  |
+|**budgetSpent** | **Double** | The amount of the budget that has been spent so far. |  [optional] |
+|**campaignId** | **String** | The ID of the campaign this line item belongs to. |  |
+|**createdAt** | **OffsetDateTime** | The date and time when the line item was created. |  |
+|**dailyPacing** | **Double** | The daily pacing limit for budget spending. |  [optional] |
+|**endDate** | **OffsetDateTime** | The date and time when the line item stops running. |  [optional] |
 |**flightSchedule** | [**FlightSchedule**](FlightSchedule.md) |  |  [optional] |
-|**isAutoDailyPacing** | **Boolean** |  |  [optional] |
-|**maxBid** | **Double** |  |  [optional] |
-|**monthlyPacing** | **Double** |  |  [optional] |
-|**name** | **String** |  |  |
-|**neutralAdstrategyEnabled** | **Boolean** |  |  [optional] |
-|**startDate** | **OffsetDateTime** |  |  |
-|**status** | [**StatusEnum**](#StatusEnum) | Status of a line item. |  [optional] |
-|**targetBid** | **Double** |  |  [optional] |
+|**isAutoDailyPacing** | **Boolean** | Indicates whether automatic daily pacing is enabled. |  [optional] |
+|**keywordStrategy** | [**KeywordStrategyEnum**](#KeywordStrategyEnum) | The keyword targeting strategy for this line item. |  [optional] |
+|**maxBid** | **Double** | The maximum bid amount allowed for this line item. |  [optional] |
+|**monthlyPacing** | **Double** | The monthly pacing limit for budget spending. |  [optional] |
+|**name** | **String** | The name of the line item. |  |
+|**startDate** | **OffsetDateTime** | The date and time when the line item starts running. |  |
+|**status** | [**StatusEnum**](#StatusEnum) | The current status of the line item. |  [optional] |
+|**targetBid** | **Double** | The target bid amount for the line item. |  [optional] |
 |**targetRetailerId** | **String** |  |  |
-|**updatedAt** | **OffsetDateTime** |  |  |
+|**updatedAt** | **OffsetDateTime** | The date and time when the line item was last updated. |  |
 
 
 
@@ -40,6 +38,17 @@ Model of a retail media auction line item.
 | CONVERSION | &quot;conversion&quot; |
 | CLICKS | &quot;clicks&quot; |
 | REVENUE | &quot;revenue&quot; |
+
+
+
+## Enum: KeywordStrategyEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| CONQUESTING | &quot;conquesting&quot; |
+| GENERICANDBRANDED | &quot;genericAndBranded&quot; |
+| GENERICBRANDEDANDCONQUESTING | &quot;genericBrandedAndConquesting&quot; |
 
 
 

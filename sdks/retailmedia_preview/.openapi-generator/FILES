@@ -27,6 +27,7 @@ docs/AsyncCampaignsReportResource.md
 docs/AsyncFillRateReport.md
 docs/AsyncFillRateReportRequest.md
 docs/AsyncFillRateReportResource.md
+docs/AsyncJobResponse.md
 docs/AsyncLineItemsReport.md
 docs/AsyncLineItemsReportRequest.md
 docs/AsyncLineItemsReportResource.md
@@ -113,6 +114,7 @@ docs/LineItemKeywordReviewReport.md
 docs/LineItemPageCategoryV2.md
 docs/LineItemPageV2.md
 docs/LineItemProductStatus.md
+docs/LoadSkuOffersRequest.md
 docs/LoyaltyPoints.md
 docs/ManagedServiceFee.md
 docs/MatchTypeModel.md
@@ -123,6 +125,8 @@ docs/MessageError.md
 docs/Metadata.md
 docs/NillableDecimal.md
 docs/NillableString.md
+docs/OfferLoad.md
+docs/OfferUpdate.md
 docs/OnSiteRecommendationApi.md
 docs/Outcome.md
 docs/PageMetadata.md
@@ -281,8 +285,11 @@ docs/SetBidModel.md
 docs/SetBidsModel.md
 docs/SetBidsModelRequest.md
 docs/SetBidsModelResource.md
+docs/SetSkuBuyBoxWinnersRequest.md
+docs/SkuBuyBoxWinner.md
 docs/SkuDataPreview.md
 docs/SkuDataPreviewListResponse.md
+docs/SkuOfferLoad.md
 docs/SkuSearchRequestPreview.md
 docs/SkuSearchRequestPreviewRequest.md
 docs/SponsoredProductsLineItem.md
@@ -303,9 +310,11 @@ docs/TemplateVariableValue.md
 docs/TextVariableValue.md
 docs/UpdateBalanceModelV2.md
 docs/UpdateBalanceModelV2Request.md
+docs/UpdateOffersRequest.md
 docs/ValueResourceAccountFeesSearchRequest.md
 docs/ValueResourceAccountFeesUpdateRequest.md
 docs/ValueResourceAccountFeesUpdateResult.md
+docs/ValueResourceAsyncJobResponse.md
 docs/ValueResourceBrandIdSearchRequest.md
 docs/ValueResourceCategoriesSearchRequestV1.md
 docs/ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata.md
@@ -313,6 +322,7 @@ docs/ValueResourceInputAccountFeesSearchRequest.md
 docs/ValueResourceInputAccountFeesUpdateRequest.md
 docs/ValueResourceInputBrandIdSearchRequest.md
 docs/ValueResourceInputCategoriesSearchRequestV1.md
+docs/ValueResourceInputLoadSkuOffersRequest.md
 docs/ValueResourceInputOfBrandCatalogRequestV2.md
 docs/ValueResourceInputOfSellerCatalogRequestV2.md
 docs/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.md
@@ -321,11 +331,15 @@ docs/ValueResourceInputPartnerBillingReportRequestV1.md
 docs/ValueResourceInputRecommendedCategoriesRequestV1.md
 docs/ValueResourceInputRecommendedKeywordsRequestV1.md
 docs/ValueResourceInputRetailMediaKeywordsReview.md
+docs/ValueResourceInputSetSkuBuyBoxWinnersRequest.md
+docs/ValueResourceInputUpdateOffersRequest.md
+docs/ValueResourceLoadSkuOffersRequest.md
 docs/ValueResourceOfBrandCatalogRequestV2.md
 docs/ValueResourceOfSellerCatalogRequestV2.md
 docs/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.md
 docs/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.md
 docs/ValueResourceOutcomeAccountFeesUpdateResult.md
+docs/ValueResourceOutcomeAsyncJobResponse.md
 docs/ValueResourceOutcomeRecommendedKeywordsResponseV1.md
 docs/ValueResourceOutcomeRetailMediaKeywordsReviewResult.md
 docs/ValueResourcePartnerBillingReportRequestV1.md
@@ -335,6 +349,8 @@ docs/ValueResourceRecommendedKeywordsRequestV1.md
 docs/ValueResourceRecommendedKeywordsResponseV1.md
 docs/ValueResourceRetailMediaKeywordsReview.md
 docs/ValueResourceRetailMediaKeywordsReviewResult.md
+docs/ValueResourceSetSkuBuyBoxWinnersRequest.md
+docs/ValueResourceUpdateOffersRequest.md
 docs/VideoVariableValue.md
 git_push.sh
 gradle.properties
@@ -396,6 +412,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/AsyncCampaignsReportResou
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncFillRateReport.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncFillRateReportRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncFillRateReportResource.java
+src/main/java/com/criteo/api/retailmedia/preview/model/AsyncJobResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncLineItemsReport.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncLineItemsReportRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncLineItemsReportResource.java
@@ -476,6 +493,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/LineItemKeywordReviewRepo
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemPageCategoryV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemPageV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemProductStatus.java
+src/main/java/com/criteo/api/retailmedia/preview/model/LoadSkuOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LoyaltyPoints.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ManagedServiceFee.java
 src/main/java/com/criteo/api/retailmedia/preview/model/MatchTypeModel.java
@@ -486,6 +504,8 @@ src/main/java/com/criteo/api/retailmedia/preview/model/MessageError.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Metadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/NillableDecimal.java
 src/main/java/com/criteo/api/retailmedia/preview/model/NillableString.java
+src/main/java/com/criteo/api/retailmedia/preview/model/OfferLoad.java
+src/main/java/com/criteo/api/retailmedia/preview/model/OfferUpdate.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Outcome.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageOfBalanceHistoryChangeDataCaptureV1.java
@@ -643,8 +663,11 @@ src/main/java/com/criteo/api/retailmedia/preview/model/SetBidModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SetBidsModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SetBidsModelRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SetBidsModelResource.java
+src/main/java/com/criteo/api/retailmedia/preview/model/SetSkuBuyBoxWinnersRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/SkuBuyBoxWinner.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuDataPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuDataPreviewListResponse.java
+src/main/java/com/criteo/api/retailmedia/preview/model/SkuOfferLoad.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuSearchRequestPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuSearchRequestPreviewRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SponsoredProductsLineItem.java
@@ -665,9 +688,11 @@ src/main/java/com/criteo/api/retailmedia/preview/model/TemplateVariableValue.jav
 src/main/java/com/criteo/api/retailmedia/preview/model/TextVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/UpdateBalanceModelV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/UpdateBalanceModelV2Request.java
+src/main/java/com/criteo/api/retailmedia/preview/model/UpdateOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceAccountFeesSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceAccountFeesUpdateRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceAccountFeesUpdateResult.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceAsyncJobResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceBrandIdSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceCategoriesSearchRequestV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata.java
@@ -675,6 +700,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputAccount
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputAccountFeesUpdateRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputBrandIdSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputCategoriesSearchRequestV1.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputLoadSkuOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfBrandCatalogRequestV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfSellerCatalogRequestV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.java
@@ -683,11 +709,15 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputPartner
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputRecommendedCategoriesRequestV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputRecommendedKeywordsRequestV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputRetailMediaKeywordsReview.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputSetSkuBuyBoxWinnersRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputUpdateOffersRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceLoadSkuOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfBrandCatalogRequestV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfSellerCatalogRequestV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeAccountFeesUpdateResult.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeAsyncJobResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeRecommendedKeywordsResponseV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeRetailMediaKeywordsReviewResult.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourcePartnerBillingReportRequestV1.java
@@ -697,6 +727,8 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceRecommendedK
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceRecommendedKeywordsResponseV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceRetailMediaKeywordsReview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceRetailMediaKeywordsReviewResult.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceSetSkuBuyBoxWinnersRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceUpdateOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/VideoVariableValue.java
 src/test/java/com/criteo/api/retailmedia/preview/ExampleApplication.java
 src/test/java/com/criteo/api/retailmedia/preview/GatewayApiTest.java

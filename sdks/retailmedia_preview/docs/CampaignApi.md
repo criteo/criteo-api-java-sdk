@@ -410,7 +410,7 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Content-Type**: application/json, text/json, application/*+json
 - **Accept**: application/json
 
 
@@ -2444,7 +2444,7 @@ public class Example {
 
 ## postApiExternalV2CampaignPreferredLineItemsByCampaignId
 
-> postApiExternalV2CampaignPreferredLineItemsByCampaignId(campaignId, preferredLineItemCreateModelV2Request)
+> PreferredLineItemV2Response postApiExternalV2CampaignPreferredLineItemsByCampaignId(campaignId, preferredLineItemCreateModelV2Request)
 
 
 
@@ -2492,7 +2492,8 @@ public class Example {
         String campaignId = "campaignId_example"; // String | The given campaign id
         PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request = new PreferredLineItemCreateModelV2Request(); // PreferredLineItemCreateModelV2Request | The line item settings to create a line item with
         try {
-            apiInstance.postApiExternalV2CampaignPreferredLineItemsByCampaignId(campaignId, preferredLineItemCreateModelV2Request);
+            PreferredLineItemV2Response result = apiInstance.postApiExternalV2CampaignPreferredLineItemsByCampaignId(campaignId, preferredLineItemCreateModelV2Request);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#postApiExternalV2CampaignPreferredLineItemsByCampaignId");
             System.err.println("Status code: " + e.getCode());
@@ -2514,7 +2515,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**PreferredLineItemV2Response**](PreferredLineItemV2Response.md)
 
 ### Authorization
 
@@ -3596,7 +3597,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The external line item ID of the sponsored products line item.
+        Long lineItemId = 56L; // Long | The external line item ID of the sponsored products line item.
         ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel = new ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel(); // ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel | An update request containing all details of the requested update.
         try {
             EntityResourceOutcomeOfSponsoredProductsLineItem result = apiInstance.updateAuctionLineItemV2(lineItemId, valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel);
@@ -3617,7 +3618,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The external line item ID of the sponsored products line item. | |
+| **lineItemId** | **Long**| The external line item ID of the sponsored products line item. | |
 | **valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel** | [**ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel**](ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md)| An update request containing all details of the requested update. | [optional] |
 
 ### Return type
@@ -3630,7 +3631,7 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Content-Type**: application/json, text/json, application/*+json
 - **Accept**: application/json
 
 

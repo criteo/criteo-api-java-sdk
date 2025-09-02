@@ -283,6 +283,61 @@ public class SyncAttributedTransactionsReport {
   private List<String> lineItemIds = null;
 
   /**
+   * Filter on the type of media: unknown, display, video
+   */
+  @JsonAdapter(MediaTypeEnum.Adapter.class)
+  public enum MediaTypeEnum {
+    UNKNOWN("unknown"),
+    
+    VIDEO("video"),
+    
+    DISPLAY("display"),
+    
+    ALL("all");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MediaTypeEnum fromValue(String value) {
+      for (MediaTypeEnum b : MediaTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MediaTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MediaTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MediaTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MediaTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_MEDIA_TYPE = "mediaType";
+  @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
+  private MediaTypeEnum mediaType = MediaTypeEnum.ALL;
+
+  /**
    * Gets or Sets metrics
    */
   @JsonAdapter(MetricsEnum.Adapter.class)
@@ -632,6 +687,28 @@ public class SyncAttributedTransactionsReport {
   }
 
 
+  public SyncAttributedTransactionsReport mediaType(MediaTypeEnum mediaType) {
+    
+    this.mediaType = mediaType;
+    return this;
+  }
+
+   /**
+   * Filter on the type of media: unknown, display, video
+   * @return mediaType
+  **/
+  @javax.annotation.Nullable
+
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+
+
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
+
   public SyncAttributedTransactionsReport metrics(List<MetricsEnum> metrics) {
     
     this.metrics = metrics;
@@ -811,6 +888,7 @@ public class SyncAttributedTransactionsReport {
         Objects.equals(this.dimensions, syncAttributedTransactionsReport.dimensions) &&
         Objects.equals(this.endDate, syncAttributedTransactionsReport.endDate) &&
         Objects.equals(this.lineItemIds, syncAttributedTransactionsReport.lineItemIds) &&
+        Objects.equals(this.mediaType, syncAttributedTransactionsReport.mediaType) &&
         Objects.equals(this.metrics, syncAttributedTransactionsReport.metrics) &&
         Objects.equals(this.salesChannel, syncAttributedTransactionsReport.salesChannel) &&
         Objects.equals(this.startDate, syncAttributedTransactionsReport.startDate) &&
@@ -821,7 +899,7 @@ public class SyncAttributedTransactionsReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, campaignIds, campaignType, clickAttributionWindow, dimensions, endDate, lineItemIds, metrics, salesChannel, startDate, timezone, viewAttributionWindow, additionalProperties);
+    return Objects.hash(accountId, campaignIds, campaignType, clickAttributionWindow, dimensions, endDate, lineItemIds, mediaType, metrics, salesChannel, startDate, timezone, viewAttributionWindow, additionalProperties);
   }
 
   @Override
@@ -835,6 +913,7 @@ public class SyncAttributedTransactionsReport {
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    lineItemIds: ").append(toIndentedString(lineItemIds)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    salesChannel: ").append(toIndentedString(salesChannel)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
@@ -870,6 +949,7 @@ public class SyncAttributedTransactionsReport {
     openapiFields.add("dimensions");
     openapiFields.add("endDate");
     openapiFields.add("lineItemIds");
+    openapiFields.add("mediaType");
     openapiFields.add("metrics");
     openapiFields.add("salesChannel");
     openapiFields.add("startDate");
@@ -922,6 +1002,9 @@ public class SyncAttributedTransactionsReport {
       // ensure the optional json data is an array if present
       if (jsonObj.get("lineItemIds") != null && !jsonObj.get("lineItemIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineItemIds` to be an array in the JSON string but got `%s`", jsonObj.get("lineItemIds").toString()));
+      }
+      if ((jsonObj.get("mediaType") != null && !jsonObj.get("mediaType").isJsonNull()) && !jsonObj.get("mediaType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mediaType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaType").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonArray()) {

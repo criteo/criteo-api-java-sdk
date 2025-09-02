@@ -52,6 +52,59 @@ import com.criteo.api.retailmedia.preview.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AsyncFillRateReport {
   /**
+   * Filter on the type of the ad server: criteo, gam, all
+   */
+  @JsonAdapter(AdServerTypeEnum.Adapter.class)
+  public enum AdServerTypeEnum {
+    ALL("all"),
+    
+    GAM("gam"),
+    
+    CRITEO("criteo");
+
+    private String value;
+
+    AdServerTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AdServerTypeEnum fromValue(String value) {
+      for (AdServerTypeEnum b : AdServerTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AdServerTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AdServerTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AdServerTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AdServerTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_AD_SERVER_TYPE = "adServerType";
+  @SerializedName(SERIALIZED_NAME_AD_SERVER_TYPE)
+  private AdServerTypeEnum adServerType = AdServerTypeEnum.ALL;
+
+  /**
    * Gets or Sets dimensions
    */
   @JsonAdapter(DimensionsEnum.Adapter.class)
@@ -74,7 +127,9 @@ public class AsyncFillRateReport {
     
     RETAILERCATEGORYID("retailerCategoryId"),
     
-    RETAILERCATEGORYNAME("retailerCategoryName");
+    RETAILERCATEGORYNAME("retailerCategoryName"),
+    
+    ADSERVERTYPE("adServerType");
 
     private String value;
 
@@ -276,6 +331,28 @@ public class AsyncFillRateReport {
 
   public AsyncFillRateReport() {
   }
+
+  public AsyncFillRateReport adServerType(AdServerTypeEnum adServerType) {
+    
+    this.adServerType = adServerType;
+    return this;
+  }
+
+   /**
+   * Filter on the type of the ad server: criteo, gam, all
+   * @return adServerType
+  **/
+  @javax.annotation.Nullable
+
+  public AdServerTypeEnum getAdServerType() {
+    return adServerType;
+  }
+
+
+  public void setAdServerType(AdServerTypeEnum adServerType) {
+    this.adServerType = adServerType;
+  }
+
 
   public AsyncFillRateReport dimensions(List<DimensionsEnum> dimensions) {
     
@@ -500,7 +577,8 @@ public class AsyncFillRateReport {
       return false;
     }
     AsyncFillRateReport asyncFillRateReport = (AsyncFillRateReport) o;
-    return Objects.equals(this.dimensions, asyncFillRateReport.dimensions) &&
+    return Objects.equals(this.adServerType, asyncFillRateReport.adServerType) &&
+        Objects.equals(this.dimensions, asyncFillRateReport.dimensions) &&
         Objects.equals(this.endDate, asyncFillRateReport.endDate) &&
         Objects.equals(this.format, asyncFillRateReport.format) &&
         Objects.equals(this.metrics, asyncFillRateReport.metrics) &&
@@ -512,13 +590,14 @@ public class AsyncFillRateReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(dimensions, endDate, format, metrics, startDate, supplyAccountIds, timezone, additionalProperties);
+    return Objects.hash(adServerType, dimensions, endDate, format, metrics, startDate, supplyAccountIds, timezone, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AsyncFillRateReport {\n");
+    sb.append("    adServerType: ").append(toIndentedString(adServerType)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
@@ -549,6 +628,7 @@ public class AsyncFillRateReport {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("adServerType");
     openapiFields.add("dimensions");
     openapiFields.add("endDate");
     openapiFields.add("format");
@@ -584,6 +664,9 @@ public class AsyncFillRateReport {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      if ((jsonObj.get("adServerType") != null && !jsonObj.get("adServerType").isJsonNull()) && !jsonObj.get("adServerType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adServerType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adServerType").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("dimensions") == null) {

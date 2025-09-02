@@ -15,6 +15,7 @@ Attributed Transactions report body request
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**lineItemIds** | **List&lt;String&gt;** | Line item ids to filter |  [optional] |
+|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Filter on the type of media: unknown, display, video |  [optional] |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date |  |
@@ -78,6 +79,17 @@ Attributed Transactions report body request
 | SALESELLERNAME | &quot;saleSellerName&quot; |
 | ACTIVITYSELLERID | &quot;activitySellerId&quot; |
 | ACTIVITYSELLERNAME | &quot;activitySellerName&quot; |
+
+
+
+## Enum: MediaTypeEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| VIDEO | &quot;video&quot; |
+| DISPLAY | &quot;display&quot; |
+| ALL | &quot;all&quot; |
 
 
 

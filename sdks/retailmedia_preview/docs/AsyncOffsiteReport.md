@@ -115,7 +115,7 @@ Async Offsite report body request
 | Name | Value |
 |---- | -----|
 | AUDIENCE | &quot;audience&quot; |
-| UNIQUEUSERS | &quot;uniqueUsers&quot; |
+| UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | REACHRATE | &quot;reachRate&quot; |
 | IMPRESSIONS | &quot;impressions&quot; |
 | FREQUENCY | &quot;frequency&quot; |
@@ -127,8 +127,8 @@ Async Offsite report body request
 | ECPM | &quot;ecpm&quot; |
 | CPM | &quot;cpm&quot; |
 | SPEND | &quot;spend&quot; |
-| UNITS | &quot;units&quot; |
-| SALES | &quot;sales&quot; |
+| ATTRIBUTEDUNITS | &quot;attributedUnits&quot; |
+| ATTRIBUTEDSALES | &quot;attributedSales&quot; |
 | ROAS | &quot;roas&quot; |
 | VIDEOSTARTS | &quot;videoStarts&quot; |
 | VIDEOSPLAYEDTO25 | &quot;videosPlayedTo25&quot; |

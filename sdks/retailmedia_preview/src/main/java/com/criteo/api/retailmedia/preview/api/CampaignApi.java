@@ -586,7 +586,6 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
             "application/*+json"
@@ -3724,6 +3723,7 @@ public class CampaignApi {
      * Creates a new preferred line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
+     * @return PreferredLineItemV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3732,8 +3732,9 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public void postApiExternalV2CampaignPreferredLineItemsByCampaignId(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request) throws ApiException {
-        postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo(campaignId, preferredLineItemCreateModelV2Request);
+    public PreferredLineItemV2Response postApiExternalV2CampaignPreferredLineItemsByCampaignId(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request) throws ApiException {
+        ApiResponse<PreferredLineItemV2Response> localVarResp = postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo(campaignId, preferredLineItemCreateModelV2Request);
+        return localVarResp.getData();
     }
 
     /**
@@ -3741,7 +3742,7 @@ public class CampaignApi {
      * Creates a new preferred line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;PreferredLineItemV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3750,9 +3751,10 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request) throws ApiException {
+    public ApiResponse<PreferredLineItemV2Response> postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request) throws ApiException {
         okhttp3.Call localVarCall = postApiExternalV2CampaignPreferredLineItemsByCampaignIdValidateBeforeCall(campaignId, preferredLineItemCreateModelV2Request, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3770,10 +3772,11 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiExternalV2CampaignPreferredLineItemsByCampaignIdAsync(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postApiExternalV2CampaignPreferredLineItemsByCampaignIdAsync(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request, final ApiCallback<PreferredLineItemV2Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postApiExternalV2CampaignPreferredLineItemsByCampaignIdValidateBeforeCall(campaignId, preferredLineItemCreateModelV2Request, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -5273,7 +5276,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAuctionLineItemV2Call(String lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAuctionLineItemV2Call(Long lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5308,7 +5311,6 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
             "application/*+json"
@@ -5323,7 +5325,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAuctionLineItemV2ValidateBeforeCall(String lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAuctionLineItemV2ValidateBeforeCall(Long lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling updateAuctionLineItemV2(Async)");
@@ -5346,7 +5348,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceOutcomeOfSponsoredProductsLineItem updateAuctionLineItemV2(String lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel) throws ApiException {
+    public EntityResourceOutcomeOfSponsoredProductsLineItem updateAuctionLineItemV2(Long lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel) throws ApiException {
         ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> localVarResp = updateAuctionLineItemV2WithHttpInfo(lineItemId, valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel);
         return localVarResp.getData();
     }
@@ -5364,7 +5366,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> updateAuctionLineItemV2WithHttpInfo(String lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel) throws ApiException {
+    public ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> updateAuctionLineItemV2WithHttpInfo(Long lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel) throws ApiException {
         okhttp3.Call localVarCall = updateAuctionLineItemV2ValidateBeforeCall(lineItemId, valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, null);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfSponsoredProductsLineItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -5384,7 +5386,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAuctionLineItemV2Async(String lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback<EntityResourceOutcomeOfSponsoredProductsLineItem> _callback) throws ApiException {
+    public okhttp3.Call updateAuctionLineItemV2Async(Long lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback<EntityResourceOutcomeOfSponsoredProductsLineItem> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAuctionLineItemV2ValidateBeforeCall(lineItemId, valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfSponsoredProductsLineItem>(){}.getType();

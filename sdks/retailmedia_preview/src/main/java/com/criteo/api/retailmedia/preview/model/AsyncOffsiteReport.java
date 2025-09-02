@@ -440,7 +440,7 @@ public class AsyncOffsiteReport {
   public enum MetricsEnum {
     AUDIENCE("audience"),
     
-    UNIQUEUSERS("uniqueUsers"),
+    UNIQUEVISITORS("uniqueVisitors"),
     
     REACHRATE("reachRate"),
     
@@ -464,9 +464,9 @@ public class AsyncOffsiteReport {
     
     SPEND("spend"),
     
-    UNITS("units"),
+    ATTRIBUTEDUNITS("attributedUnits"),
     
-    SALES("sales"),
+    ATTRIBUTEDSALES("attributedSales"),
     
     ROAS("roas"),
     
