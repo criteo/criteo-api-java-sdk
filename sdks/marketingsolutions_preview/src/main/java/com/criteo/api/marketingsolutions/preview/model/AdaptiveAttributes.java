@@ -306,7 +306,7 @@ public class AdaptiveAttributes {
    * Font of the headline  Valid supported font like \&quot;Arial\&quot;
    * @return headlineFont
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getHeadlineFont() {
     return headlineFont;
