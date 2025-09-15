@@ -42,7 +42,6 @@ import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeO
 import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfCatalogStatusV2;
 import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfSponsoredProductsLineItem;
 import com.criteo.api.retailmedia.preview.model.KeywordsModelResponse;
-import com.criteo.api.retailmedia.preview.model.Outcome;
 import com.criteo.api.retailmedia.preview.model.PlacementPreviewListResponse;
 import com.criteo.api.retailmedia.preview.model.PreferredLineItemCreateModelV2Request;
 import com.criteo.api.retailmedia.preview.model.PreferredLineItemUpdateModelV2Request;
@@ -126,7 +125,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call addRemoveKeywordsCall(String id, AddRemoveKeywordsModelRequest addRemoveKeywordsModelRequest, final ApiCallback _callback) throws ApiException {
@@ -197,7 +195,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcome addRemoveKeywords(String id, AddRemoveKeywordsModelRequest addRemoveKeywordsModelRequest) throws ApiException {
@@ -216,7 +213,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcome> addRemoveKeywordsWithHttpInfo(String id, AddRemoveKeywordsModelRequest addRemoveKeywordsModelRequest) throws ApiException {
@@ -237,13 +233,140 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call addRemoveKeywordsAsync(String id, AddRemoveKeywordsModelRequest addRemoveKeywordsModelRequest, final ApiCallback<ResourceOutcome> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addRemoveKeywordsValidateBeforeCall(id, addRemoveKeywordsModelRequest, _callback);
         Type localVarReturnType = new TypeToken<ResourceOutcome>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for appendProductButtonByLineItemId
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @param productButtonRequestListRequest List of Product Buttons to append (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButtons added </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call appendProductButtonByLineItemIdCall(String lineItemId, ProductButtonRequestListRequest productButtonRequestListRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = productButtonRequestListRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/product-buttons/create"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call appendProductButtonByLineItemIdValidateBeforeCall(String lineItemId, ProductButtonRequestListRequest productButtonRequestListRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling appendProductButtonByLineItemId(Async)");
+        }
+
+        return appendProductButtonByLineItemIdCall(lineItemId, productButtonRequestListRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Add Specific Product Buttons
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @param productButtonRequestListRequest List of Product Buttons to append (optional)
+     * @return ProductButtonResponseListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButtons added </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProductButtonResponseListResponse appendProductButtonByLineItemId(String lineItemId, ProductButtonRequestListRequest productButtonRequestListRequest) throws ApiException {
+        ApiResponse<ProductButtonResponseListResponse> localVarResp = appendProductButtonByLineItemIdWithHttpInfo(lineItemId, productButtonRequestListRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Add Specific Product Buttons
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @param productButtonRequestListRequest List of Product Buttons to append (optional)
+     * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButtons added </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProductButtonResponseListResponse> appendProductButtonByLineItemIdWithHttpInfo(String lineItemId, ProductButtonRequestListRequest productButtonRequestListRequest) throws ApiException {
+        okhttp3.Call localVarCall = appendProductButtonByLineItemIdValidateBeforeCall(lineItemId, productButtonRequestListRequest, null);
+        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Add Specific Product Buttons
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @param productButtonRequestListRequest List of Product Buttons to append (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButtons added </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call appendProductButtonByLineItemIdAsync(String lineItemId, ProductButtonRequestListRequest productButtonRequestListRequest, final ApiCallback<ProductButtonResponseListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = appendProductButtonByLineItemIdValidateBeforeCall(lineItemId, productButtonRequestListRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -259,8 +382,6 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call appendPromotedProductsCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
@@ -332,8 +453,6 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public ProductResourceOutcome appendPromotedProducts(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
@@ -353,8 +472,6 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ProductResourceOutcome> appendPromotedProductsWithHttpInfo(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
@@ -376,165 +493,12 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call appendPromotedProductsAsync(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback<ProductResourceOutcome> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = appendPromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, _callback);
         Type localVarReturnType = new TypeToken<ProductResourceOutcome>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for categoriesSearchV1
-     * @param retailerId Retailer id. (required)
-     * @param limit Limit of the search result. (optional, default to 50)
-     * @param offset Offset of the search result. (optional, default to 0)
-     * @param valueResourceInputCategoriesSearchRequestV1 Request of categories search. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call categoriesSearchV1Call(Integer retailerId, Integer limit, Integer offset, ValueResourceInputCategoriesSearchRequestV1 valueResourceInputCategoriesSearchRequestV1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = valueResourceInputCategoriesSearchRequestV1;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/retailers/{retailerId}/categories/search"
-            .replace("{" + "retailerId" + "}", localVarApiClient.escapeString(retailerId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call categoriesSearchV1ValidateBeforeCall(Integer retailerId, Integer limit, Integer offset, ValueResourceInputCategoriesSearchRequestV1 valueResourceInputCategoriesSearchRequestV1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'retailerId' is set
-        if (retailerId == null) {
-            throw new ApiException("Missing the required parameter 'retailerId' when calling categoriesSearchV1(Async)");
-        }
-
-        return categoriesSearchV1Call(retailerId, limit, offset, valueResourceInputCategoriesSearchRequestV1, _callback);
-
-    }
-
-    /**
-     * 
-     * Search a retailer categories by given text substring and category ids.
-     * @param retailerId Retailer id. (required)
-     * @param limit Limit of the search result. (optional, default to 50)
-     * @param offset Offset of the search result. (optional, default to 0)
-     * @param valueResourceInputCategoriesSearchRequestV1 Request of categories search. (optional)
-     * @return EntityResourceCollectionOutcomeCategory202204Metadata
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public EntityResourceCollectionOutcomeCategory202204Metadata categoriesSearchV1(Integer retailerId, Integer limit, Integer offset, ValueResourceInputCategoriesSearchRequestV1 valueResourceInputCategoriesSearchRequestV1) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeCategory202204Metadata> localVarResp = categoriesSearchV1WithHttpInfo(retailerId, limit, offset, valueResourceInputCategoriesSearchRequestV1);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Search a retailer categories by given text substring and category ids.
-     * @param retailerId Retailer id. (required)
-     * @param limit Limit of the search result. (optional, default to 50)
-     * @param offset Offset of the search result. (optional, default to 0)
-     * @param valueResourceInputCategoriesSearchRequestV1 Request of categories search. (optional)
-     * @return ApiResponse&lt;EntityResourceCollectionOutcomeCategory202204Metadata&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<EntityResourceCollectionOutcomeCategory202204Metadata> categoriesSearchV1WithHttpInfo(Integer retailerId, Integer limit, Integer offset, ValueResourceInputCategoriesSearchRequestV1 valueResourceInputCategoriesSearchRequestV1) throws ApiException {
-        okhttp3.Call localVarCall = categoriesSearchV1ValidateBeforeCall(retailerId, limit, offset, valueResourceInputCategoriesSearchRequestV1, null);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeCategory202204Metadata>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Search a retailer categories by given text substring and category ids.
-     * @param retailerId Retailer id. (required)
-     * @param limit Limit of the search result. (optional, default to 50)
-     * @param offset Offset of the search result. (optional, default to 0)
-     * @param valueResourceInputCategoriesSearchRequestV1 Request of categories search. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call categoriesSearchV1Async(Integer retailerId, Integer limit, Integer offset, ValueResourceInputCategoriesSearchRequestV1 valueResourceInputCategoriesSearchRequestV1, final ApiCallback<EntityResourceCollectionOutcomeCategory202204Metadata> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = categoriesSearchV1ValidateBeforeCall(retailerId, limit, offset, valueResourceInputCategoriesSearchRequestV1, _callback);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeCategory202204Metadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -586,9 +550,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -669,7 +631,135 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
+     * Build call for createPreferredLineItemByCampaignId
+     * @param campaignId The given campaign id (required)
+     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createPreferredLineItemByCampaignIdCall(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = preferredLineItemCreateModelV2Request;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/campaigns/{campaign-id}/preferred-line-items"
+            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createPreferredLineItemByCampaignIdValidateBeforeCall(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling createPreferredLineItemByCampaignId(Async)");
+        }
+
+        return createPreferredLineItemByCampaignIdCall(campaignId, preferredLineItemCreateModelV2Request, _callback);
+
+    }
+
+    /**
+     * 
+     * Creates a new preferred line item with the specified settings
+     * @param campaignId The given campaign id (required)
+     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
+     * @return PreferredLineItemV2Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public PreferredLineItemV2Response createPreferredLineItemByCampaignId(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request) throws ApiException {
+        ApiResponse<PreferredLineItemV2Response> localVarResp = createPreferredLineItemByCampaignIdWithHttpInfo(campaignId, preferredLineItemCreateModelV2Request);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Creates a new preferred line item with the specified settings
+     * @param campaignId The given campaign id (required)
+     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
+     * @return ApiResponse&lt;PreferredLineItemV2Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PreferredLineItemV2Response> createPreferredLineItemByCampaignIdWithHttpInfo(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request) throws ApiException {
+        okhttp3.Call localVarCall = createPreferredLineItemByCampaignIdValidateBeforeCall(campaignId, preferredLineItemCreateModelV2Request, null);
+        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Creates a new preferred line item with the specified settings
+     * @param campaignId The given campaign id (required)
+     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createPreferredLineItemByCampaignIdAsync(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request, final ApiCallback<PreferredLineItemV2Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createPreferredLineItemByCampaignIdValidateBeforeCall(campaignId, preferredLineItemCreateModelV2Request, _callback);
+        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteProductButtonByLineItemAndProductButtonId
      * @param lineItemId LineItemId for productButton delete (required)
      * @param productButtonId productButtonId used for delete (required)
      * @param _callback Callback for upload/download progress
@@ -681,7 +771,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> ProductButton deleted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdCall(String lineItemId, String productButtonId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteProductButtonByLineItemAndProductButtonIdCall(String lineItemId, String productButtonId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -709,9 +799,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -730,18 +818,18 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdValidateBeforeCall(String lineItemId, String productButtonId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteProductButtonByLineItemAndProductButtonIdValidateBeforeCall(String lineItemId, String productButtonId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId(Async)");
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling deleteProductButtonByLineItemAndProductButtonId(Async)");
         }
 
         // verify the required parameter 'productButtonId' is set
         if (productButtonId == null) {
-            throw new ApiException("Missing the required parameter 'productButtonId' when calling deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId(Async)");
+            throw new ApiException("Missing the required parameter 'productButtonId' when calling deleteProductButtonByLineItemAndProductButtonId(Async)");
         }
 
-        return deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdCall(lineItemId, productButtonId, _callback);
+        return deleteProductButtonByLineItemAndProductButtonIdCall(lineItemId, productButtonId, _callback);
 
     }
 
@@ -758,8 +846,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> ProductButton deleted </td><td>  -  </td></tr>
      </table>
      */
-    public ProductButtonResponseListResponse deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId(String lineItemId, String productButtonId) throws ApiException {
-        ApiResponse<ProductButtonResponseListResponse> localVarResp = deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo(lineItemId, productButtonId);
+    public ProductButtonResponseListResponse deleteProductButtonByLineItemAndProductButtonId(String lineItemId, String productButtonId) throws ApiException {
+        ApiResponse<ProductButtonResponseListResponse> localVarResp = deleteProductButtonByLineItemAndProductButtonIdWithHttpInfo(lineItemId, productButtonId);
         return localVarResp.getData();
     }
 
@@ -776,8 +864,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> ProductButton deleted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProductButtonResponseListResponse> deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo(String lineItemId, String productButtonId) throws ApiException {
-        okhttp3.Call localVarCall = deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdValidateBeforeCall(lineItemId, productButtonId, null);
+    public ApiResponse<ProductButtonResponseListResponse> deleteProductButtonByLineItemAndProductButtonIdWithHttpInfo(String lineItemId, String productButtonId) throws ApiException {
+        okhttp3.Call localVarCall = deleteProductButtonByLineItemAndProductButtonIdValidateBeforeCall(lineItemId, productButtonId, null);
         Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -796,9 +884,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> ProductButton deleted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync(String lineItemId, String productButtonId, final ApiCallback<ProductButtonResponseListResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteProductButtonByLineItemAndProductButtonIdAsync(String lineItemId, String productButtonId, final ApiCallback<ProductButtonResponseListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdValidateBeforeCall(lineItemId, productButtonId, _callback);
+        okhttp3.Call localVarCall = deleteProductButtonByLineItemAndProductButtonIdValidateBeforeCall(lineItemId, productButtonId, _callback);
         Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -814,8 +902,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deletePromotedProductsCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
@@ -845,7 +931,6 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -885,8 +970,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public void deletePromotedProducts(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
@@ -904,8 +987,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deletePromotedProductsWithHttpInfo(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
@@ -925,8 +1006,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deletePromotedProductsAsync(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback<Void> _callback) throws ApiException {
@@ -945,7 +1024,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchKeywordsCall(String id, final ApiCallback _callback) throws ApiException {
@@ -1014,7 +1092,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public KeywordsModelResponse fetchKeywords(String id) throws ApiException {
@@ -1032,7 +1109,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<KeywordsModelResponse> fetchKeywordsWithHttpInfo(String id) throws ApiException {
@@ -1052,7 +1128,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchKeywordsAsync(String id, final ApiCallback<KeywordsModelResponse> _callback) throws ApiException {
@@ -1075,7 +1150,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Promoted products associated with the line item </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchPromotedProductsCall(String lineItemId, String fields, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
@@ -1159,7 +1233,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Promoted products associated with the line item </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public PromotedProductResourceCollectionOutcome fetchPromotedProducts(String lineItemId, String fields, Integer limit, Integer offset) throws ApiException {
@@ -1180,7 +1253,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Promoted products associated with the line item </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<PromotedProductResourceCollectionOutcome> fetchPromotedProductsWithHttpInfo(String lineItemId, String fields, Integer limit, Integer offset) throws ApiException {
@@ -1203,426 +1275,12 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Promoted products associated with the line item </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchPromotedProductsAsync(String lineItemId, String fields, Integer limit, Integer offset, final ApiCallback<PromotedProductResourceCollectionOutcome> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = fetchPromotedProductsValidateBeforeCall(lineItemId, fields, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<PromotedProductResourceCollectionOutcome>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @param productButtonId productButtonId used for retrieval (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButton found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdCall(String lineItemId, String productButtonId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}"
-            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()))
-            .replace("{" + "product-button-id" + "}", localVarApiClient.escapeString(productButtonId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdValidateBeforeCall(String lineItemId, String productButtonId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId(Async)");
-        }
-
-        // verify the required parameter 'productButtonId' is set
-        if (productButtonId == null) {
-            throw new ApiException("Missing the required parameter 'productButtonId' when calling getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId(Async)");
-        }
-
-        return getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdCall(lineItemId, productButtonId, _callback);
-
-    }
-
-    /**
-     * 
-     * Get Specific Product Button
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @param productButtonId productButtonId used for retrieval (required)
-     * @return ProductButtonResponseListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButton found </td><td>  -  </td></tr>
-     </table>
-     */
-    public ProductButtonResponseListResponse getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId(String lineItemId, String productButtonId) throws ApiException {
-        ApiResponse<ProductButtonResponseListResponse> localVarResp = getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo(lineItemId, productButtonId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get Specific Product Button
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @param productButtonId productButtonId used for retrieval (required)
-     * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButton found </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ProductButtonResponseListResponse> getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo(String lineItemId, String productButtonId) throws ApiException {
-        okhttp3.Call localVarCall = getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdValidateBeforeCall(lineItemId, productButtonId, null);
-        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get Specific Product Button
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @param productButtonId productButtonId used for retrieval (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButton found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync(String lineItemId, String productButtonId, final ApiCallback<ProductButtonResponseListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdValidateBeforeCall(lineItemId, productButtonId, _callback);
-        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getApiExternalV1LineItemProductButtonsByLineItemId
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButtons found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApiExternalV1LineItemProductButtonsByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/product-buttons"
-            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiExternalV1LineItemProductButtonsByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling getApiExternalV1LineItemProductButtonsByLineItemId(Async)");
-        }
-
-        return getApiExternalV1LineItemProductButtonsByLineItemIdCall(lineItemId, _callback);
-
-    }
-
-    /**
-     * 
-     * Get LineItem Product Buttons
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @return ProductButtonResponseListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButtons found </td><td>  -  </td></tr>
-     </table>
-     */
-    public ProductButtonResponseListResponse getApiExternalV1LineItemProductButtonsByLineItemId(String lineItemId) throws ApiException {
-        ApiResponse<ProductButtonResponseListResponse> localVarResp = getApiExternalV1LineItemProductButtonsByLineItemIdWithHttpInfo(lineItemId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get LineItem Product Buttons
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButtons found </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ProductButtonResponseListResponse> getApiExternalV1LineItemProductButtonsByLineItemIdWithHttpInfo(String lineItemId) throws ApiException {
-        okhttp3.Call localVarCall = getApiExternalV1LineItemProductButtonsByLineItemIdValidateBeforeCall(lineItemId, null);
-        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get LineItem Product Buttons
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButtons found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApiExternalV1LineItemProductButtonsByLineItemIdAsync(String lineItemId, final ApiCallback<ProductButtonResponseListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getApiExternalV1LineItemProductButtonsByLineItemIdValidateBeforeCall(lineItemId, _callback);
-        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getApiExternalV2CampaignPreferredLineItemsByCampaignId
-     * @param campaignId The given campaign id (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApiExternalV2CampaignPreferredLineItemsByCampaignIdCall(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/campaigns/{campaign-id}/preferred-line-items"
-            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (limitToId != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToId", limitToId));
-        }
-
-        if (pageIndex != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
-        }
-
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiExternalV2CampaignPreferredLineItemsByCampaignIdValidateBeforeCall(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'campaignId' is set
-        if (campaignId == null) {
-            throw new ApiException("Missing the required parameter 'campaignId' when calling getApiExternalV2CampaignPreferredLineItemsByCampaignId(Async)");
-        }
-
-        return getApiExternalV2CampaignPreferredLineItemsByCampaignIdCall(campaignId, limitToId, pageIndex, pageSize, _callback);
-
-    }
-
-    /**
-     * 
-     * Gets page of preferred line item objects for the given campaign id
-     * @param campaignId The given campaign id (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @return PreferredLineItemV2PagedListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public PreferredLineItemV2PagedListResponse getApiExternalV2CampaignPreferredLineItemsByCampaignId(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        ApiResponse<PreferredLineItemV2PagedListResponse> localVarResp = getApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo(campaignId, limitToId, pageIndex, pageSize);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Gets page of preferred line item objects for the given campaign id
-     * @param campaignId The given campaign id (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @return ApiResponse&lt;PreferredLineItemV2PagedListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PreferredLineItemV2PagedListResponse> getApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = getApiExternalV2CampaignPreferredLineItemsByCampaignIdValidateBeforeCall(campaignId, limitToId, pageIndex, pageSize, null);
-        Type localVarReturnType = new TypeToken<PreferredLineItemV2PagedListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Gets page of preferred line item objects for the given campaign id
-     * @param campaignId The given campaign id (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApiExternalV2CampaignPreferredLineItemsByCampaignIdAsync(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<PreferredLineItemV2PagedListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getApiExternalV2CampaignPreferredLineItemsByCampaignIdValidateBeforeCall(campaignId, limitToId, pageIndex, pageSize, _callback);
-        Type localVarReturnType = new TypeToken<PreferredLineItemV2PagedListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1636,8 +1294,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getApiExternalV2CatalogStatusByCatalogIdCall(String catalogId, final ApiCallback _callback) throws ApiException {
@@ -1667,9 +1323,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1708,8 +1362,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public EntityResourceOutcomeOfCatalogStatusV2 getApiExternalV2CatalogStatusByCatalogId(String catalogId) throws ApiException {
@@ -1727,8 +1379,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<EntityResourceOutcomeOfCatalogStatusV2> getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo(String catalogId) throws ApiException {
@@ -1748,143 +1398,12 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getApiExternalV2CatalogStatusByCatalogIdAsync(String catalogId, final ApiCallback<EntityResourceOutcomeOfCatalogStatusV2> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getApiExternalV2CatalogStatusByCatalogIdValidateBeforeCall(catalogId, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfCatalogStatusV2>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getApiExternalV2PreferredLineItemByLineItemId
-     * @param lineItemId The given line item id (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApiExternalV2PreferredLineItemByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/preferred-line-items/{line-item-id}"
-            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiExternalV2PreferredLineItemByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling getApiExternalV2PreferredLineItemByLineItemId(Async)");
-        }
-
-        return getApiExternalV2PreferredLineItemByLineItemIdCall(lineItemId, _callback);
-
-    }
-
-    /**
-     * 
-     * Gets the preferred line item for the given line item id
-     * @param lineItemId The given line item id (required)
-     * @return PreferredLineItemV2Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public PreferredLineItemV2Response getApiExternalV2PreferredLineItemByLineItemId(String lineItemId) throws ApiException {
-        ApiResponse<PreferredLineItemV2Response> localVarResp = getApiExternalV2PreferredLineItemByLineItemIdWithHttpInfo(lineItemId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Gets the preferred line item for the given line item id
-     * @param lineItemId The given line item id (required)
-     * @return ApiResponse&lt;PreferredLineItemV2Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PreferredLineItemV2Response> getApiExternalV2PreferredLineItemByLineItemIdWithHttpInfo(String lineItemId) throws ApiException {
-        okhttp3.Call localVarCall = getApiExternalV2PreferredLineItemByLineItemIdValidateBeforeCall(lineItemId, null);
-        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Gets the preferred line item for the given line item id
-     * @param lineItemId The given line item id (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApiExternalV2PreferredLineItemByLineItemIdAsync(String lineItemId, final ApiCallback<PreferredLineItemV2Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getApiExternalV2PreferredLineItemByLineItemIdValidateBeforeCall(lineItemId, _callback);
-        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2171,7 +1690,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> bids found </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdCall(String retailerId, List<String> fields, final ApiCallback _callback) throws ApiException {
@@ -2245,7 +1763,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> bids found </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
      </table>
      */
     public CpcRateCardPreviewResponse getApiV1ExternalRetailerCategoryCpcRatesByRetailerId(String retailerId, List<String> fields) throws ApiException {
@@ -2264,7 +1781,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> bids found </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CpcRateCardPreviewResponse> getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdWithHttpInfo(String retailerId, List<String> fields) throws ApiException {
@@ -2285,7 +1801,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> bids found </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdAsync(String retailerId, List<String> fields, final ApiCallback<CpcRateCardPreviewResponse> _callback) throws ApiException {
@@ -2305,7 +1820,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> placements records. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getApiV1ExternalRetailerPlacementsByRetailerIdCall(String retailerId, final ApiCallback _callback) throws ApiException {
@@ -2374,7 +1888,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> placements records. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public PlacementPreviewListResponse getApiV1ExternalRetailerPlacementsByRetailerId(String retailerId) throws ApiException {
@@ -2392,7 +1905,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> placements records. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<PlacementPreviewListResponse> getApiV1ExternalRetailerPlacementsByRetailerIdWithHttpInfo(String retailerId) throws ApiException {
@@ -2412,7 +1924,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> placements records. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getApiV1ExternalRetailerPlacementsByRetailerIdAsync(String retailerId, final ApiCallback<PlacementPreviewListResponse> _callback) throws ApiException {
@@ -2463,9 +1974,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2828,6 +2337,532 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for getPreferredLineItemsByCampaignId
+     * @param campaignId The given campaign id (required)
+     * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPreferredLineItemsByCampaignIdCall(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/campaigns/{campaign-id}/preferred-line-items"
+            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limitToId != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToId", limitToId));
+        }
+
+        if (pageIndex != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPreferredLineItemsByCampaignIdValidateBeforeCall(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling getPreferredLineItemsByCampaignId(Async)");
+        }
+
+        return getPreferredLineItemsByCampaignIdCall(campaignId, limitToId, pageIndex, pageSize, _callback);
+
+    }
+
+    /**
+     * 
+     * Gets page of preferred line item objects for the given campaign id
+     * @param campaignId The given campaign id (required)
+     * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @return PreferredLineItemV2PagedListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public PreferredLineItemV2PagedListResponse getPreferredLineItemsByCampaignId(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+        ApiResponse<PreferredLineItemV2PagedListResponse> localVarResp = getPreferredLineItemsByCampaignIdWithHttpInfo(campaignId, limitToId, pageIndex, pageSize);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Gets page of preferred line item objects for the given campaign id
+     * @param campaignId The given campaign id (required)
+     * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @return ApiResponse&lt;PreferredLineItemV2PagedListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PreferredLineItemV2PagedListResponse> getPreferredLineItemsByCampaignIdWithHttpInfo(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = getPreferredLineItemsByCampaignIdValidateBeforeCall(campaignId, limitToId, pageIndex, pageSize, null);
+        Type localVarReturnType = new TypeToken<PreferredLineItemV2PagedListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Gets page of preferred line item objects for the given campaign id
+     * @param campaignId The given campaign id (required)
+     * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPreferredLineItemsByCampaignIdAsync(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<PreferredLineItemV2PagedListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPreferredLineItemsByCampaignIdValidateBeforeCall(campaignId, limitToId, pageIndex, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<PreferredLineItemV2PagedListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getPreferredLineItemsByLineItemId
+     * @param lineItemId The given line item id (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPreferredLineItemsByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/preferred-line-items/{line-item-id}"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPreferredLineItemsByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling getPreferredLineItemsByLineItemId(Async)");
+        }
+
+        return getPreferredLineItemsByLineItemIdCall(lineItemId, _callback);
+
+    }
+
+    /**
+     * 
+     * Gets the preferred line item for the given line item id
+     * @param lineItemId The given line item id (required)
+     * @return PreferredLineItemV2Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public PreferredLineItemV2Response getPreferredLineItemsByLineItemId(String lineItemId) throws ApiException {
+        ApiResponse<PreferredLineItemV2Response> localVarResp = getPreferredLineItemsByLineItemIdWithHttpInfo(lineItemId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Gets the preferred line item for the given line item id
+     * @param lineItemId The given line item id (required)
+     * @return ApiResponse&lt;PreferredLineItemV2Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PreferredLineItemV2Response> getPreferredLineItemsByLineItemIdWithHttpInfo(String lineItemId) throws ApiException {
+        okhttp3.Call localVarCall = getPreferredLineItemsByLineItemIdValidateBeforeCall(lineItemId, null);
+        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Gets the preferred line item for the given line item id
+     * @param lineItemId The given line item id (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPreferredLineItemsByLineItemIdAsync(String lineItemId, final ApiCallback<PreferredLineItemV2Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPreferredLineItemsByLineItemIdValidateBeforeCall(lineItemId, _callback);
+        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getProductButtonByLineItemAndProductButtonId
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @param productButtonId productButtonId used for retrieval (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButton found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getProductButtonByLineItemAndProductButtonIdCall(String lineItemId, String productButtonId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()))
+            .replace("{" + "product-button-id" + "}", localVarApiClient.escapeString(productButtonId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getProductButtonByLineItemAndProductButtonIdValidateBeforeCall(String lineItemId, String productButtonId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling getProductButtonByLineItemAndProductButtonId(Async)");
+        }
+
+        // verify the required parameter 'productButtonId' is set
+        if (productButtonId == null) {
+            throw new ApiException("Missing the required parameter 'productButtonId' when calling getProductButtonByLineItemAndProductButtonId(Async)");
+        }
+
+        return getProductButtonByLineItemAndProductButtonIdCall(lineItemId, productButtonId, _callback);
+
+    }
+
+    /**
+     * 
+     * Get Specific Product Button
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @param productButtonId productButtonId used for retrieval (required)
+     * @return ProductButtonResponseListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButton found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProductButtonResponseListResponse getProductButtonByLineItemAndProductButtonId(String lineItemId, String productButtonId) throws ApiException {
+        ApiResponse<ProductButtonResponseListResponse> localVarResp = getProductButtonByLineItemAndProductButtonIdWithHttpInfo(lineItemId, productButtonId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get Specific Product Button
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @param productButtonId productButtonId used for retrieval (required)
+     * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButton found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProductButtonResponseListResponse> getProductButtonByLineItemAndProductButtonIdWithHttpInfo(String lineItemId, String productButtonId) throws ApiException {
+        okhttp3.Call localVarCall = getProductButtonByLineItemAndProductButtonIdValidateBeforeCall(lineItemId, productButtonId, null);
+        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get Specific Product Button
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @param productButtonId productButtonId used for retrieval (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButton found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getProductButtonByLineItemAndProductButtonIdAsync(String lineItemId, String productButtonId, final ApiCallback<ProductButtonResponseListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getProductButtonByLineItemAndProductButtonIdValidateBeforeCall(lineItemId, productButtonId, _callback);
+        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getProductButtonsByLineItemId
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButtons found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getProductButtonsByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/product-buttons"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getProductButtonsByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling getProductButtonsByLineItemId(Async)");
+        }
+
+        return getProductButtonsByLineItemIdCall(lineItemId, _callback);
+
+    }
+
+    /**
+     * 
+     * Get LineItem Product Buttons
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @return ProductButtonResponseListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButtons found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProductButtonResponseListResponse getProductButtonsByLineItemId(String lineItemId) throws ApiException {
+        ApiResponse<ProductButtonResponseListResponse> localVarResp = getProductButtonsByLineItemIdWithHttpInfo(lineItemId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get LineItem Product Buttons
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButtons found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProductButtonResponseListResponse> getProductButtonsByLineItemIdWithHttpInfo(String lineItemId) throws ApiException {
+        okhttp3.Call localVarCall = getProductButtonsByLineItemIdValidateBeforeCall(lineItemId, null);
+        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get LineItem Product Buttons
+     * @param lineItemId LineItemId for productButton retrieval (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButtons found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getProductButtonsByLineItemIdAsync(String lineItemId, final ApiCallback<ProductButtonResponseListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getProductButtonsByLineItemIdValidateBeforeCall(lineItemId, _callback);
+        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getRecommendedCategories
      * @param retailerId Retailer id. (required)
      * @param valueResourceInputRecommendedCategoriesRequestV1 Request of recommended categories. (optional)
@@ -2838,8 +2873,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getRecommendedCategoriesCall(Integer retailerId, ValueResourceInputRecommendedCategoriesRequestV1 valueResourceInputRecommendedCategoriesRequestV1, final ApiCallback _callback) throws ApiException {
@@ -2877,10 +2910,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2913,8 +2943,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public EntityResourceCollectionOutcomeCategory202204 getRecommendedCategories(Integer retailerId, ValueResourceInputRecommendedCategoriesRequestV1 valueResourceInputRecommendedCategoriesRequestV1) throws ApiException {
@@ -2933,8 +2961,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<EntityResourceCollectionOutcomeCategory202204> getRecommendedCategoriesWithHttpInfo(Integer retailerId, ValueResourceInputRecommendedCategoriesRequestV1 valueResourceInputRecommendedCategoriesRequestV1) throws ApiException {
@@ -2955,8 +2981,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getRecommendedCategoriesAsync(Integer retailerId, ValueResourceInputRecommendedCategoriesRequestV1 valueResourceInputRecommendedCategoriesRequestV1, final ApiCallback<EntityResourceCollectionOutcomeCategory202204> _callback) throws ApiException {
@@ -3015,9 +3039,7 @@ public class CampaignApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3118,8 +3140,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products paused </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call pausePromotedProductsCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
@@ -3149,7 +3169,6 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3189,8 +3208,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products paused </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public void pausePromotedProducts(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
@@ -3208,8 +3225,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products paused </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> pausePromotedProductsWithHttpInfo(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
@@ -3229,144 +3244,12 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products paused </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call pausePromotedProductsAsync(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = pausePromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postApiExternalV1LineItemProductButtonsCreateByLineItemId
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @param productButtonRequestListRequest List of Product Buttons to append (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButtons added </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApiExternalV1LineItemProductButtonsCreateByLineItemIdCall(String lineItemId, ProductButtonRequestListRequest productButtonRequestListRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = productButtonRequestListRequest;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/product-buttons/create"
-            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApiExternalV1LineItemProductButtonsCreateByLineItemIdValidateBeforeCall(String lineItemId, ProductButtonRequestListRequest productButtonRequestListRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling postApiExternalV1LineItemProductButtonsCreateByLineItemId(Async)");
-        }
-
-        return postApiExternalV1LineItemProductButtonsCreateByLineItemIdCall(lineItemId, productButtonRequestListRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * Add Specific Product Buttons
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @param productButtonRequestListRequest List of Product Buttons to append (optional)
-     * @return ProductButtonResponseListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButtons added </td><td>  -  </td></tr>
-     </table>
-     */
-    public ProductButtonResponseListResponse postApiExternalV1LineItemProductButtonsCreateByLineItemId(String lineItemId, ProductButtonRequestListRequest productButtonRequestListRequest) throws ApiException {
-        ApiResponse<ProductButtonResponseListResponse> localVarResp = postApiExternalV1LineItemProductButtonsCreateByLineItemIdWithHttpInfo(lineItemId, productButtonRequestListRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Add Specific Product Buttons
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @param productButtonRequestListRequest List of Product Buttons to append (optional)
-     * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButtons added </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ProductButtonResponseListResponse> postApiExternalV1LineItemProductButtonsCreateByLineItemIdWithHttpInfo(String lineItemId, ProductButtonRequestListRequest productButtonRequestListRequest) throws ApiException {
-        okhttp3.Call localVarCall = postApiExternalV1LineItemProductButtonsCreateByLineItemIdValidateBeforeCall(lineItemId, productButtonRequestListRequest, null);
-        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Add Specific Product Buttons
-     * @param lineItemId LineItemId for productButton retrieval (required)
-     * @param productButtonRequestListRequest List of Product Buttons to append (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButtons added </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApiExternalV1LineItemProductButtonsCreateByLineItemIdAsync(String lineItemId, ProductButtonRequestListRequest productButtonRequestListRequest, final ApiCallback<ProductButtonResponseListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postApiExternalV1LineItemProductButtonsCreateByLineItemIdValidateBeforeCall(lineItemId, productButtonRequestListRequest, _callback);
-        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -3380,8 +3263,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postApiExternalV2AccountBrandCatalogExportByAccountIdCall(String accountId, ValueResourceInputOfBrandCatalogRequestV2 valueResourceInputOfBrandCatalogRequestV2, final ApiCallback _callback) throws ApiException {
@@ -3411,9 +3292,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3454,8 +3333,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public EntityResourceOutcomeOfCatalogStatusV2 postApiExternalV2AccountBrandCatalogExportByAccountId(String accountId, ValueResourceInputOfBrandCatalogRequestV2 valueResourceInputOfBrandCatalogRequestV2) throws ApiException {
@@ -3474,8 +3351,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<EntityResourceOutcomeOfCatalogStatusV2> postApiExternalV2AccountBrandCatalogExportByAccountIdWithHttpInfo(String accountId, ValueResourceInputOfBrandCatalogRequestV2 valueResourceInputOfBrandCatalogRequestV2) throws ApiException {
@@ -3496,8 +3371,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postApiExternalV2AccountBrandCatalogExportByAccountIdAsync(String accountId, ValueResourceInputOfBrandCatalogRequestV2 valueResourceInputOfBrandCatalogRequestV2, final ApiCallback<EntityResourceOutcomeOfCatalogStatusV2> _callback) throws ApiException {
@@ -3518,8 +3391,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postApiExternalV2AccountSellerCatalogExportByAccountIdCall(String accountId, ValueResourceInputOfSellerCatalogRequestV2 valueResourceInputOfSellerCatalogRequestV2, final ApiCallback _callback) throws ApiException {
@@ -3549,9 +3420,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3592,8 +3461,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public EntityResourceOutcomeOfCatalogStatusV2 postApiExternalV2AccountSellerCatalogExportByAccountId(String accountId, ValueResourceInputOfSellerCatalogRequestV2 valueResourceInputOfSellerCatalogRequestV2) throws ApiException {
@@ -3612,8 +3479,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<EntityResourceOutcomeOfCatalogStatusV2> postApiExternalV2AccountSellerCatalogExportByAccountIdWithHttpInfo(String accountId, ValueResourceInputOfSellerCatalogRequestV2 valueResourceInputOfSellerCatalogRequestV2) throws ApiException {
@@ -3634,148 +3499,12 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postApiExternalV2AccountSellerCatalogExportByAccountIdAsync(String accountId, ValueResourceInputOfSellerCatalogRequestV2 valueResourceInputOfSellerCatalogRequestV2, final ApiCallback<EntityResourceOutcomeOfCatalogStatusV2> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postApiExternalV2AccountSellerCatalogExportByAccountIdValidateBeforeCall(accountId, valueResourceInputOfSellerCatalogRequestV2, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfCatalogStatusV2>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postApiExternalV2CampaignPreferredLineItemsByCampaignId
-     * @param campaignId The given campaign id (required)
-     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApiExternalV2CampaignPreferredLineItemsByCampaignIdCall(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = preferredLineItemCreateModelV2Request;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/campaigns/{campaign-id}/preferred-line-items"
-            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApiExternalV2CampaignPreferredLineItemsByCampaignIdValidateBeforeCall(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'campaignId' is set
-        if (campaignId == null) {
-            throw new ApiException("Missing the required parameter 'campaignId' when calling postApiExternalV2CampaignPreferredLineItemsByCampaignId(Async)");
-        }
-
-        return postApiExternalV2CampaignPreferredLineItemsByCampaignIdCall(campaignId, preferredLineItemCreateModelV2Request, _callback);
-
-    }
-
-    /**
-     * 
-     * Creates a new preferred line item with the specified settings
-     * @param campaignId The given campaign id (required)
-     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
-     * @return PreferredLineItemV2Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public PreferredLineItemV2Response postApiExternalV2CampaignPreferredLineItemsByCampaignId(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request) throws ApiException {
-        ApiResponse<PreferredLineItemV2Response> localVarResp = postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo(campaignId, preferredLineItemCreateModelV2Request);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Creates a new preferred line item with the specified settings
-     * @param campaignId The given campaign id (required)
-     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
-     * @return ApiResponse&lt;PreferredLineItemV2Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PreferredLineItemV2Response> postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request) throws ApiException {
-        okhttp3.Call localVarCall = postApiExternalV2CampaignPreferredLineItemsByCampaignIdValidateBeforeCall(campaignId, preferredLineItemCreateModelV2Request, null);
-        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Creates a new preferred line item with the specified settings
-     * @param campaignId The given campaign id (required)
-     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApiExternalV2CampaignPreferredLineItemsByCampaignIdAsync(String campaignId, PreferredLineItemCreateModelV2Request preferredLineItemCreateModelV2Request, final ApiCallback<PreferredLineItemV2Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postApiExternalV2CampaignPreferredLineItemsByCampaignIdValidateBeforeCall(campaignId, preferredLineItemCreateModelV2Request, _callback);
-        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4087,9 +3816,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4221,9 +3948,7 @@ public class CampaignApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4311,280 +4036,6 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
-     * @param lineItemId LineItemId for productButton update (required)
-     * @param productButtonId productButtonId used for update (required)
-     * @param productButtonRequestRequest Specific Product button update info (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButton updated </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdCall(String lineItemId, String productButtonId, ProductButtonRequestRequest productButtonRequestRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = productButtonRequestRequest;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}"
-            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()))
-            .replace("{" + "product-button-id" + "}", localVarApiClient.escapeString(productButtonId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdValidateBeforeCall(String lineItemId, String productButtonId, ProductButtonRequestRequest productButtonRequestRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId(Async)");
-        }
-
-        // verify the required parameter 'productButtonId' is set
-        if (productButtonId == null) {
-            throw new ApiException("Missing the required parameter 'productButtonId' when calling putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId(Async)");
-        }
-
-        return putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdCall(lineItemId, productButtonId, productButtonRequestRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * Update Specific Product Button
-     * @param lineItemId LineItemId for productButton update (required)
-     * @param productButtonId productButtonId used for update (required)
-     * @param productButtonRequestRequest Specific Product button update info (optional)
-     * @return ProductButtonResponseListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButton updated </td><td>  -  </td></tr>
-     </table>
-     */
-    public ProductButtonResponseListResponse putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId(String lineItemId, String productButtonId, ProductButtonRequestRequest productButtonRequestRequest) throws ApiException {
-        ApiResponse<ProductButtonResponseListResponse> localVarResp = putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo(lineItemId, productButtonId, productButtonRequestRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Update Specific Product Button
-     * @param lineItemId LineItemId for productButton update (required)
-     * @param productButtonId productButtonId used for update (required)
-     * @param productButtonRequestRequest Specific Product button update info (optional)
-     * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButton updated </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ProductButtonResponseListResponse> putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo(String lineItemId, String productButtonId, ProductButtonRequestRequest productButtonRequestRequest) throws ApiException {
-        okhttp3.Call localVarCall = putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdValidateBeforeCall(lineItemId, productButtonId, productButtonRequestRequest, null);
-        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Update Specific Product Button
-     * @param lineItemId LineItemId for productButton update (required)
-     * @param productButtonId productButtonId used for update (required)
-     * @param productButtonRequestRequest Specific Product button update info (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ProductButton updated </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync(String lineItemId, String productButtonId, ProductButtonRequestRequest productButtonRequestRequest, final ApiCallback<ProductButtonResponseListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdValidateBeforeCall(lineItemId, productButtonId, productButtonRequestRequest, _callback);
-        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for putApiExternalV2PreferredLineItemByLineItemId
-     * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call putApiExternalV2PreferredLineItemByLineItemIdCall(String lineItemId, PreferredLineItemUpdateModelV2Request preferredLineItemUpdateModelV2Request, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = preferredLineItemUpdateModelV2Request;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/preferred-line-items/{line-item-id}"
-            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call putApiExternalV2PreferredLineItemByLineItemIdValidateBeforeCall(String lineItemId, PreferredLineItemUpdateModelV2Request preferredLineItemUpdateModelV2Request, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling putApiExternalV2PreferredLineItemByLineItemId(Async)");
-        }
-
-        return putApiExternalV2PreferredLineItemByLineItemIdCall(lineItemId, preferredLineItemUpdateModelV2Request, _callback);
-
-    }
-
-    /**
-     * 
-     * Updates the preferred line item for the given line item id
-     * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
-     * @return PreferredLineItemV2Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public PreferredLineItemV2Response putApiExternalV2PreferredLineItemByLineItemId(String lineItemId, PreferredLineItemUpdateModelV2Request preferredLineItemUpdateModelV2Request) throws ApiException {
-        ApiResponse<PreferredLineItemV2Response> localVarResp = putApiExternalV2PreferredLineItemByLineItemIdWithHttpInfo(lineItemId, preferredLineItemUpdateModelV2Request);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Updates the preferred line item for the given line item id
-     * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
-     * @return ApiResponse&lt;PreferredLineItemV2Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PreferredLineItemV2Response> putApiExternalV2PreferredLineItemByLineItemIdWithHttpInfo(String lineItemId, PreferredLineItemUpdateModelV2Request preferredLineItemUpdateModelV2Request) throws ApiException {
-        okhttp3.Call localVarCall = putApiExternalV2PreferredLineItemByLineItemIdValidateBeforeCall(lineItemId, preferredLineItemUpdateModelV2Request, null);
-        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Updates the preferred line item for the given line item id
-     * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call putApiExternalV2PreferredLineItemByLineItemIdAsync(String lineItemId, PreferredLineItemUpdateModelV2Request preferredLineItemUpdateModelV2Request, final ApiCallback<PreferredLineItemV2Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putApiExternalV2PreferredLineItemByLineItemIdValidateBeforeCall(lineItemId, preferredLineItemUpdateModelV2Request, _callback);
-        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for putApiV2ExternalAccountByAccountIdCreativescreativeId
      * @param accountId External account id containing the creative (required)
      * @param creativeId Creative to update (required)
@@ -4627,9 +4078,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4739,7 +4188,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call recommendedKeywordsCall(String retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1, final ApiCallback _callback) throws ApiException {
@@ -4810,7 +4258,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public ValueResourceOutcomeRecommendedKeywordsResponseV1 recommendedKeywords(String retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1) throws ApiException {
@@ -4829,7 +4276,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ValueResourceOutcomeRecommendedKeywordsResponseV1> recommendedKeywordsWithHttpInfo(String retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1) throws ApiException {
@@ -4850,7 +4296,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call recommendedKeywordsAsync(String retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1, final ApiCallback<ValueResourceOutcomeRecommendedKeywordsResponseV1> _callback) throws ApiException {
@@ -4861,7 +4306,7 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for searchBrandsByNameAsyncV1
+     * Build call for searchBrands
      * @param limit the number of brands to return (optional, default to 25)
      * @param offset offset of paginated results (optional, default to 0)
      * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
@@ -4874,7 +4319,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchBrandsByNameAsyncV1Call(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchBrandsCall(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4908,9 +4353,7 @@ public class CampaignApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4918,10 +4361,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -4933,8 +4373,8 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchBrandsByNameAsyncV1ValidateBeforeCall(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
-        return searchBrandsByNameAsyncV1Call(limit, offset, valueResourceInputBrandIdSearchRequest, _callback);
+    private okhttp3.Call searchBrandsValidateBeforeCall(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
+        return searchBrandsCall(limit, offset, valueResourceInputBrandIdSearchRequest, _callback);
 
     }
 
@@ -4952,8 +4392,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrandsByNameAsyncV1(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> localVarResp = searchBrandsByNameAsyncV1WithHttpInfo(limit, offset, valueResourceInputBrandIdSearchRequest);
+    public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrands(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> localVarResp = searchBrandsWithHttpInfo(limit, offset, valueResourceInputBrandIdSearchRequest);
         return localVarResp.getData();
     }
 
@@ -4971,8 +4411,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> searchBrandsByNameAsyncV1WithHttpInfo(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
-        okhttp3.Call localVarCall = searchBrandsByNameAsyncV1ValidateBeforeCall(limit, offset, valueResourceInputBrandIdSearchRequest, null);
+    public ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> searchBrandsWithHttpInfo(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
+        okhttp3.Call localVarCall = searchBrandsValidateBeforeCall(limit, offset, valueResourceInputBrandIdSearchRequest, null);
         Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4992,10 +4432,154 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchBrandsByNameAsyncV1Async(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> _callback) throws ApiException {
+    public okhttp3.Call searchBrandsAsync(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchBrandsByNameAsyncV1ValidateBeforeCall(limit, offset, valueResourceInputBrandIdSearchRequest, _callback);
+        okhttp3.Call localVarCall = searchBrandsValidateBeforeCall(limit, offset, valueResourceInputBrandIdSearchRequest, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for searchCategory
+     * @param retailerId Retailer id. (required)
+     * @param limit Limit of the search result. (optional, default to 50)
+     * @param offset Offset of the search result. (optional, default to 0)
+     * @param valueResourceInputCategoriesSearchRequestV1 Request of categories search. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchCategoryCall(Integer retailerId, Integer limit, Integer offset, ValueResourceInputCategoriesSearchRequestV1 valueResourceInputCategoriesSearchRequestV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputCategoriesSearchRequestV1;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/retailers/{retailerId}/categories/search"
+            .replace("{" + "retailerId" + "}", localVarApiClient.escapeString(retailerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call searchCategoryValidateBeforeCall(Integer retailerId, Integer limit, Integer offset, ValueResourceInputCategoriesSearchRequestV1 valueResourceInputCategoriesSearchRequestV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'retailerId' is set
+        if (retailerId == null) {
+            throw new ApiException("Missing the required parameter 'retailerId' when calling searchCategory(Async)");
+        }
+
+        return searchCategoryCall(retailerId, limit, offset, valueResourceInputCategoriesSearchRequestV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Search a retailer categories by given text substring and category ids.
+     * @param retailerId Retailer id. (required)
+     * @param limit Limit of the search result. (optional, default to 50)
+     * @param offset Offset of the search result. (optional, default to 0)
+     * @param valueResourceInputCategoriesSearchRequestV1 Request of categories search. (optional)
+     * @return EntityResourceCollectionOutcomeCategory202204Metadata
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceCollectionOutcomeCategory202204Metadata searchCategory(Integer retailerId, Integer limit, Integer offset, ValueResourceInputCategoriesSearchRequestV1 valueResourceInputCategoriesSearchRequestV1) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeCategory202204Metadata> localVarResp = searchCategoryWithHttpInfo(retailerId, limit, offset, valueResourceInputCategoriesSearchRequestV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Search a retailer categories by given text substring and category ids.
+     * @param retailerId Retailer id. (required)
+     * @param limit Limit of the search result. (optional, default to 50)
+     * @param offset Offset of the search result. (optional, default to 0)
+     * @param valueResourceInputCategoriesSearchRequestV1 Request of categories search. (optional)
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeCategory202204Metadata&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceCollectionOutcomeCategory202204Metadata> searchCategoryWithHttpInfo(Integer retailerId, Integer limit, Integer offset, ValueResourceInputCategoriesSearchRequestV1 valueResourceInputCategoriesSearchRequestV1) throws ApiException {
+        okhttp3.Call localVarCall = searchCategoryValidateBeforeCall(retailerId, limit, offset, valueResourceInputCategoriesSearchRequestV1, null);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeCategory202204Metadata>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Search a retailer categories by given text substring and category ids.
+     * @param retailerId Retailer id. (required)
+     * @param limit Limit of the search result. (optional, default to 50)
+     * @param offset Offset of the search result. (optional, default to 0)
+     * @param valueResourceInputCategoriesSearchRequestV1 Request of categories search. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchCategoryAsync(Integer retailerId, Integer limit, Integer offset, ValueResourceInputCategoriesSearchRequestV1 valueResourceInputCategoriesSearchRequestV1, final ApiCallback<EntityResourceCollectionOutcomeCategory202204Metadata> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = searchCategoryValidateBeforeCall(retailerId, limit, offset, valueResourceInputCategoriesSearchRequestV1, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeCategory202204Metadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -5010,7 +4594,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setKeywordBidsCall(String id, SetBidsModelRequest setBidsModelRequest, final ApiCallback _callback) throws ApiException {
@@ -5081,7 +4664,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcome setKeywordBids(String id, SetBidsModelRequest setBidsModelRequest) throws ApiException {
@@ -5100,7 +4682,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcome> setKeywordBidsWithHttpInfo(String id, SetBidsModelRequest setBidsModelRequest) throws ApiException {
@@ -5121,7 +4702,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setKeywordBidsAsync(String id, SetBidsModelRequest setBidsModelRequest, final ApiCallback<ResourceOutcome> _callback) throws ApiException {
@@ -5142,8 +4722,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products un-paused </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call unpausePromotedProductsCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
@@ -5173,7 +4751,6 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5213,8 +4790,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products un-paused </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public void unpausePromotedProducts(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
@@ -5232,8 +4807,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products un-paused </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> unpausePromotedProductsWithHttpInfo(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
@@ -5253,8 +4826,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products un-paused </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call unpausePromotedProductsAsync(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback<Void> _callback) throws ApiException {
@@ -5311,9 +4882,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -5433,9 +5002,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5443,10 +5010,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -5523,6 +5087,272 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = updateKeywordReviewsV1ValidateBeforeCall(lineItemId, valueResourceInputRetailMediaKeywordsReview, _callback);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeRetailMediaKeywordsReviewResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updatePreferredLineItemByLineItemId
+     * @param lineItemId The given line item id (required)
+     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updatePreferredLineItemByLineItemIdCall(String lineItemId, PreferredLineItemUpdateModelV2Request preferredLineItemUpdateModelV2Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = preferredLineItemUpdateModelV2Request;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/preferred-line-items/{line-item-id}"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updatePreferredLineItemByLineItemIdValidateBeforeCall(String lineItemId, PreferredLineItemUpdateModelV2Request preferredLineItemUpdateModelV2Request, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling updatePreferredLineItemByLineItemId(Async)");
+        }
+
+        return updatePreferredLineItemByLineItemIdCall(lineItemId, preferredLineItemUpdateModelV2Request, _callback);
+
+    }
+
+    /**
+     * 
+     * Updates the preferred line item for the given line item id
+     * @param lineItemId The given line item id (required)
+     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
+     * @return PreferredLineItemV2Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public PreferredLineItemV2Response updatePreferredLineItemByLineItemId(String lineItemId, PreferredLineItemUpdateModelV2Request preferredLineItemUpdateModelV2Request) throws ApiException {
+        ApiResponse<PreferredLineItemV2Response> localVarResp = updatePreferredLineItemByLineItemIdWithHttpInfo(lineItemId, preferredLineItemUpdateModelV2Request);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Updates the preferred line item for the given line item id
+     * @param lineItemId The given line item id (required)
+     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
+     * @return ApiResponse&lt;PreferredLineItemV2Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PreferredLineItemV2Response> updatePreferredLineItemByLineItemIdWithHttpInfo(String lineItemId, PreferredLineItemUpdateModelV2Request preferredLineItemUpdateModelV2Request) throws ApiException {
+        okhttp3.Call localVarCall = updatePreferredLineItemByLineItemIdValidateBeforeCall(lineItemId, preferredLineItemUpdateModelV2Request, null);
+        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Updates the preferred line item for the given line item id
+     * @param lineItemId The given line item id (required)
+     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updatePreferredLineItemByLineItemIdAsync(String lineItemId, PreferredLineItemUpdateModelV2Request preferredLineItemUpdateModelV2Request, final ApiCallback<PreferredLineItemV2Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updatePreferredLineItemByLineItemIdValidateBeforeCall(lineItemId, preferredLineItemUpdateModelV2Request, _callback);
+        Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateProductButtonByLineItemAndProductButtonId
+     * @param lineItemId LineItemId for productButton update (required)
+     * @param productButtonId productButtonId used for update (required)
+     * @param productButtonRequestRequest Specific Product button update info (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButton updated </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateProductButtonByLineItemAndProductButtonIdCall(String lineItemId, String productButtonId, ProductButtonRequestRequest productButtonRequestRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = productButtonRequestRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()))
+            .replace("{" + "product-button-id" + "}", localVarApiClient.escapeString(productButtonId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateProductButtonByLineItemAndProductButtonIdValidateBeforeCall(String lineItemId, String productButtonId, ProductButtonRequestRequest productButtonRequestRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling updateProductButtonByLineItemAndProductButtonId(Async)");
+        }
+
+        // verify the required parameter 'productButtonId' is set
+        if (productButtonId == null) {
+            throw new ApiException("Missing the required parameter 'productButtonId' when calling updateProductButtonByLineItemAndProductButtonId(Async)");
+        }
+
+        return updateProductButtonByLineItemAndProductButtonIdCall(lineItemId, productButtonId, productButtonRequestRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Update Specific Product Button
+     * @param lineItemId LineItemId for productButton update (required)
+     * @param productButtonId productButtonId used for update (required)
+     * @param productButtonRequestRequest Specific Product button update info (optional)
+     * @return ProductButtonResponseListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButton updated </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProductButtonResponseListResponse updateProductButtonByLineItemAndProductButtonId(String lineItemId, String productButtonId, ProductButtonRequestRequest productButtonRequestRequest) throws ApiException {
+        ApiResponse<ProductButtonResponseListResponse> localVarResp = updateProductButtonByLineItemAndProductButtonIdWithHttpInfo(lineItemId, productButtonId, productButtonRequestRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Update Specific Product Button
+     * @param lineItemId LineItemId for productButton update (required)
+     * @param productButtonId productButtonId used for update (required)
+     * @param productButtonRequestRequest Specific Product button update info (optional)
+     * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButton updated </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProductButtonResponseListResponse> updateProductButtonByLineItemAndProductButtonIdWithHttpInfo(String lineItemId, String productButtonId, ProductButtonRequestRequest productButtonRequestRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateProductButtonByLineItemAndProductButtonIdValidateBeforeCall(lineItemId, productButtonId, productButtonRequestRequest, null);
+        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Update Specific Product Button
+     * @param lineItemId LineItemId for productButton update (required)
+     * @param productButtonId productButtonId used for update (required)
+     * @param productButtonRequestRequest Specific Product button update info (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ProductButton updated </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateProductButtonByLineItemAndProductButtonIdAsync(String lineItemId, String productButtonId, ProductButtonRequestRequest productButtonRequestRequest, final ApiCallback<ProductButtonResponseListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateProductButtonByLineItemAndProductButtonIdValidateBeforeCall(lineItemId, productButtonId, productButtonRequestRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProductButtonResponseListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

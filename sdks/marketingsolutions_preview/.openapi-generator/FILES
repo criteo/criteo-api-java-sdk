@@ -47,7 +47,6 @@ docs/AdvertiserApi.md
 docs/AdvertiserDatasetListResponse.md
 docs/AlgebraNodeV1.md
 docs/AnalyticsApi.md
-docs/ApiErrorResponse.md
 docs/ApiRequestOfTargetingEntity.md
 docs/ApiResponseOfTargetingEntity.md
 docs/ApplicationSummaryModel.md
@@ -181,13 +180,10 @@ docs/EntityOfPortfolioMessage.md
 docs/EntityV2OfDataset.md
 docs/EntityV2OfObject.md
 docs/EntityWrapperOfTargetingEntity.md
-docs/ErrorCodeResponse.md
-docs/ErrorDescription.md
 docs/ExportColumn.md
 docs/ExportMetaData.md
 docs/ExportResult.md
 docs/ExportResultData.md
-docs/FailResponse.md
 docs/GatewayApi.md
 docs/GenerateAudiencePerformanceReport.md
 docs/GenerateAudiencePerformanceReportRequest.md
@@ -461,7 +457,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/AdaptiveColors.jav
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdaptiveWriteAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdvertiserDatasetListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AlgebraNodeV1.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ApiErrorResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ApiRequestOfTargetingEntity.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ApiResponseOfTargetingEntity.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ApplicationSummaryModel.java
@@ -591,13 +586,10 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/EntityOfPortfolioM
 src/main/java/com/criteo/api/marketingsolutions/preview/model/EntityV2OfDataset.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/EntityV2OfObject.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/EntityWrapperOfTargetingEntity.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ErrorCodeResponse.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ErrorDescription.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportColumn.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportMetaData.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportResult.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportResultData.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/FailResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateAudiencePerformanceReport.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateAudiencePerformanceReportRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateAudiencePerformanceReportResource.java

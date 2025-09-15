@@ -4,22 +4,22 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getApiExternalV2AccountBalancesByAccountId**](BalanceApi.md#getApiExternalV2AccountBalancesByAccountId) | **GET** /preview/retail-media/accounts/{account-id}/balances |  |
-| [**getApiExternalV2AccountByAccountIdBalancesbalanceId**](BalanceApi.md#getApiExternalV2AccountByAccountIdBalancesbalanceId) | **GET** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
+| [**changeDatesByAccountAndBalanceId**](BalanceApi.md#changeDatesByAccountAndBalanceId) | **POST** /preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |  |
+| [**createBalanceByAccountId**](BalanceApi.md#createBalanceByAccountId) | **POST** /preview/retail-media/accounts/{account-id}/balances |  |
+| [**getBalanceByAccountAndBalanceId**](BalanceApi.md#getBalanceByAccountAndBalanceId) | **GET** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
 | [**getBalanceHistory**](BalanceApi.md#getBalanceHistory) | **GET** /preview/retail-media/balances/{balanceId}/history |  |
-| [**patchApiExternalV2AccountByAccountIdBalancesbalanceId**](BalanceApi.md#patchApiExternalV2AccountByAccountIdBalancesbalanceId) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
-| [**postApiExternalV2AccountBalancesByAccountId**](BalanceApi.md#postApiExternalV2AccountBalancesByAccountId) | **POST** /preview/retail-media/accounts/{account-id}/balances |  |
-| [**postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId**](BalanceApi.md#postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId) | **POST** /preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |  |
+| [**getBalancesByAccountId**](BalanceApi.md#getBalancesByAccountId) | **GET** /preview/retail-media/accounts/{account-id}/balances |  |
+| [**modifyBalanceByAccountAndBalanceId**](BalanceApi.md#modifyBalanceByAccountAndBalanceId) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
 
 
 
-## getApiExternalV2AccountBalancesByAccountId
+## changeDatesByAccountAndBalanceId
 
-> BalanceResponseV2PagedListResponse getApiExternalV2AccountBalancesByAccountId(accountId, limitToId, pageIndex, pageSize)
+> BalanceResponseV2Response changeDatesByAccountAndBalanceId(accountId, balanceId, changeDatesOfBalanceV2Request)
 
 
 
-Gets page of balance objects for the given account id
+Change dates of a balance for the given account id
 
 ### Example
 
@@ -60,15 +60,14 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         BalanceApi apiInstance = new BalanceApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account to get balances for
-        List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
-        Integer pageIndex = 0; // Integer | The 0 indexed page index you would like to receive given the page size
-        Integer pageSize = 25; // Integer | The maximum number of items you would like to receive in this request
+        String accountId = "accountId_example"; // String | The account of the balance
+        String balanceId = "balanceId_example"; // String | The balance to change the dates
+        ChangeDatesOfBalanceV2Request changeDatesOfBalanceV2Request = new ChangeDatesOfBalanceV2Request(); // ChangeDatesOfBalanceV2Request | An object that represents the available options to modify schedule of a balance.
         try {
-            BalanceResponseV2PagedListResponse result = apiInstance.getApiExternalV2AccountBalancesByAccountId(accountId, limitToId, pageIndex, pageSize);
+            BalanceResponseV2Response result = apiInstance.changeDatesByAccountAndBalanceId(accountId, balanceId, changeDatesOfBalanceV2Request);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#getApiExternalV2AccountBalancesByAccountId");
+            System.err.println("Exception when calling BalanceApi#changeDatesByAccountAndBalanceId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -83,14 +82,13 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account to get balances for | |
-| **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
-| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
-| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
+| **accountId** | **String**| The account of the balance | |
+| **balanceId** | **String**| The balance to change the dates | |
+| **changeDatesOfBalanceV2Request** | [**ChangeDatesOfBalanceV2Request**](ChangeDatesOfBalanceV2Request.md)| An object that represents the available options to modify schedule of a balance. | [optional] |
 
 ### Return type
 
-[**BalanceResponseV2PagedListResponse**](BalanceResponseV2PagedListResponse.md)
+[**BalanceResponseV2Response**](BalanceResponseV2Response.md)
 
 ### Authorization
 
@@ -98,8 +96,8 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
@@ -108,9 +106,100 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## getApiExternalV2AccountByAccountIdBalancesbalanceId
+## createBalanceByAccountId
 
-> BalanceResponseV2Response getApiExternalV2AccountByAccountIdBalancesbalanceId(accountId, balanceId)
+> BalanceResponseV2Response createBalanceByAccountId(accountId, createBalanceV2Request)
+
+
+
+Create balance for the given account id
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.BalanceApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        BalanceApi apiInstance = new BalanceApi(defaultClient);
+        String accountId = "accountId_example"; // String | The account to create balances for
+        CreateBalanceV2Request createBalanceV2Request = new CreateBalanceV2Request(); // CreateBalanceV2Request | An object that represents the available options to set when creating a Retail Media Balance
+        try {
+            BalanceResponseV2Response result = apiInstance.createBalanceByAccountId(accountId, createBalanceV2Request);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling BalanceApi#createBalanceByAccountId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| The account to create balances for | |
+| **createBalanceV2Request** | [**CreateBalanceV2Request**](CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | [optional] |
+
+### Return type
+
+[**BalanceResponseV2Response**](BalanceResponseV2Response.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Success |  -  |
+
+
+## getBalanceByAccountAndBalanceId
+
+> BalanceResponseV2Response getBalanceByAccountAndBalanceId(accountId, balanceId)
 
 
 
@@ -158,10 +247,10 @@ public class Example {
         String accountId = "accountId_example"; // String | The account of the balance
         String balanceId = "balanceId_example"; // String | The balance id
         try {
-            BalanceResponseV2Response result = apiInstance.getApiExternalV2AccountByAccountIdBalancesbalanceId(accountId, balanceId);
+            BalanceResponseV2Response result = apiInstance.getBalanceByAccountAndBalanceId(accountId, balanceId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#getApiExternalV2AccountByAccountIdBalancesbalanceId");
+            System.err.println("Exception when calling BalanceApi#getBalanceByAccountAndBalanceId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -190,7 +279,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
@@ -294,9 +383,104 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## patchApiExternalV2AccountByAccountIdBalancesbalanceId
+## getBalancesByAccountId
 
-> BalanceResponseV2Response patchApiExternalV2AccountByAccountIdBalancesbalanceId(accountId, balanceId, updateBalanceModelV2Request)
+> BalanceResponseV2PagedListResponse getBalancesByAccountId(accountId, limitToId, pageIndex, pageSize)
+
+
+
+Gets page of balance objects for the given account id
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.BalanceApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        BalanceApi apiInstance = new BalanceApi(defaultClient);
+        String accountId = "accountId_example"; // String | The account to get balances for
+        List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
+        Integer pageIndex = 0; // Integer | The 0 indexed page index you would like to receive given the page size
+        Integer pageSize = 25; // Integer | The maximum number of items you would like to receive in this request
+        try {
+            BalanceResponseV2PagedListResponse result = apiInstance.getBalancesByAccountId(accountId, limitToId, pageIndex, pageSize);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling BalanceApi#getBalancesByAccountId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| The account to get balances for | |
+| **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
+| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
+| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
+
+### Return type
+
+[**BalanceResponseV2PagedListResponse**](BalanceResponseV2PagedListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## modifyBalanceByAccountAndBalanceId
+
+> BalanceResponseV2Response modifyBalanceByAccountAndBalanceId(accountId, balanceId, updateBalanceModelV2Request)
 
 
 
@@ -345,10 +529,10 @@ public class Example {
         String balanceId = "balanceId_example"; // String | The balance to change the dates
         UpdateBalanceModelV2Request updateBalanceModelV2Request = new UpdateBalanceModelV2Request(); // UpdateBalanceModelV2Request | An object that represents the available options to modify a balance.
         try {
-            BalanceResponseV2Response result = apiInstance.patchApiExternalV2AccountByAccountIdBalancesbalanceId(accountId, balanceId, updateBalanceModelV2Request);
+            BalanceResponseV2Response result = apiInstance.modifyBalanceByAccountAndBalanceId(accountId, balanceId, updateBalanceModelV2Request);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#patchApiExternalV2AccountByAccountIdBalancesbalanceId");
+            System.err.println("Exception when calling BalanceApi#modifyBalanceByAccountAndBalanceId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -378,191 +562,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: text/plain, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## postApiExternalV2AccountBalancesByAccountId
-
-> BalanceResponseV2Response postApiExternalV2AccountBalancesByAccountId(accountId, createBalanceV2Request)
-
-
-
-Create balance for the given account id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.BalanceApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        BalanceApi apiInstance = new BalanceApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account to create balances for
-        CreateBalanceV2Request createBalanceV2Request = new CreateBalanceV2Request(); // CreateBalanceV2Request | An object that represents the available options to set when creating a Retail Media Balance
-        try {
-            BalanceResponseV2Response result = apiInstance.postApiExternalV2AccountBalancesByAccountId(accountId, createBalanceV2Request);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#postApiExternalV2AccountBalancesByAccountId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account to create balances for | |
-| **createBalanceV2Request** | [**CreateBalanceV2Request**](CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | [optional] |
-
-### Return type
-
-[**BalanceResponseV2Response**](BalanceResponseV2Response.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: text/plain, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Success |  -  |
-
-
-## postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId
-
-> BalanceResponseV2Response postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId(accountId, balanceId, changeDatesOfBalanceV2Request)
-
-
-
-Change dates of a balance for the given account id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.BalanceApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        BalanceApi apiInstance = new BalanceApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account of the balance
-        String balanceId = "balanceId_example"; // String | The balance to change the dates
-        ChangeDatesOfBalanceV2Request changeDatesOfBalanceV2Request = new ChangeDatesOfBalanceV2Request(); // ChangeDatesOfBalanceV2Request | An object that represents the available options to modify schedule of a balance.
-        try {
-            BalanceResponseV2Response result = apiInstance.postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId(accountId, balanceId, changeDatesOfBalanceV2Request);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account of the balance | |
-| **balanceId** | **String**| The balance to change the dates | |
-| **changeDatesOfBalanceV2Request** | [**ChangeDatesOfBalanceV2Request**](ChangeDatesOfBalanceV2Request.md)| An object that represents the available options to modify schedule of a balance. | [optional] |
-
-### Return type
-
-[**BalanceResponseV2Response**](BalanceResponseV2Response.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details

@@ -104,17 +104,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## bulkCreateAudiences
@@ -196,17 +193,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## bulkDeleteAudienceSegments
@@ -288,17 +282,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## bulkDeleteAudiences
@@ -380,8 +371,8 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
@@ -389,9 +380,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **204** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## bulkUpdateAudienceSegments
@@ -473,17 +461,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## bulkUpdateAudiences
@@ -565,17 +550,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## computeAudienceSegmentsSizes
@@ -657,17 +639,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## computeAudiencesSizes
@@ -749,17 +728,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## estimateAudienceSegmentSize
@@ -841,17 +817,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## estimateAudienceSize
@@ -933,17 +906,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## getAudienceSegmentContactListStatistics
@@ -1026,15 +996,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## getAudienceSegmentsInMarketBrands
@@ -1119,15 +1087,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## getAudienceSegmentsInMarketInterests
@@ -1212,15 +1178,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## modifyAudienceUsersWithAttributes
@@ -1312,7 +1276,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Summary of created request |  -  |
-| **401** | Not authorized |  -  |
 
 
 ## previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDelete
@@ -1402,7 +1365,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The Contact List was emptied |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatch
@@ -1494,8 +1456,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Summary of created request |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Audience 123 not found |  -  |
 
 
 ## searchAudienceSegments
@@ -1581,17 +1541,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## searchAudiences
@@ -1677,15 +1634,12 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 

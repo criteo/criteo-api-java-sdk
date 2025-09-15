@@ -29,7 +29,6 @@ import java.io.IOException;
 
 import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomePartnerBillingReportStatusV1;
 import java.io.File;
-import com.criteo.api.retailmedia.preview.model.Outcome;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputPartnerBillingReportRequestV1;
 
 import java.lang.reflect.Type;
@@ -86,8 +85,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaBillingPartnerReportPostCall(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback _callback) throws ApiException {
@@ -116,9 +113,7 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -153,8 +148,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public EntityResourceOutcomePartnerBillingReportStatusV1 previewRetailMediaBillingPartnerReportPost(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1) throws ApiException {
@@ -172,8 +165,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> previewRetailMediaBillingPartnerReportPostWithHttpInfo(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1) throws ApiException {
@@ -193,8 +184,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaBillingPartnerReportPostAsync(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback<EntityResourceOutcomePartnerBillingReportStatusV1> _callback) throws ApiException {
@@ -214,7 +203,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaBillingPartnerReportRequestIdOutputGetCall(String requestId, final ApiCallback _callback) throws ApiException {
@@ -284,7 +272,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public File previewRetailMediaBillingPartnerReportRequestIdOutputGet(String requestId) throws ApiException {
@@ -302,7 +289,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<File> previewRetailMediaBillingPartnerReportRequestIdOutputGetWithHttpInfo(String requestId) throws ApiException {
@@ -322,7 +308,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaBillingPartnerReportRequestIdOutputGetAsync(String requestId, final ApiCallback<File> _callback) throws ApiException {
@@ -342,7 +327,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaBillingPartnerReportRequestIdStatusGetCall(String requestId, final ApiCallback _callback) throws ApiException {
@@ -372,9 +356,7 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -413,7 +395,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public EntityResourceOutcomePartnerBillingReportStatusV1 previewRetailMediaBillingPartnerReportRequestIdStatusGet(String requestId) throws ApiException {
@@ -431,7 +412,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> previewRetailMediaBillingPartnerReportRequestIdStatusGetWithHttpInfo(String requestId) throws ApiException {
@@ -451,7 +431,6 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaBillingPartnerReportRequestIdStatusGetAsync(String requestId, final ApiCallback<EntityResourceOutcomePartnerBillingReportStatusV1> _callback) throws ApiException {

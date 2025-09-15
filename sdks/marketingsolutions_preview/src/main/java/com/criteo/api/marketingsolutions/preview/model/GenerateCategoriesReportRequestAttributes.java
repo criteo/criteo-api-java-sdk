@@ -76,9 +76,60 @@ public class GenerateCategoriesReportRequestAttributes {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private OffsetDateTime endDate;
 
+  /**
+   * The file format of the generated report
+   */
+  @JsonAdapter(FormatEnum.Adapter.class)
+  public enum FormatEnum {
+    CSV("csv"),
+    
+    EXCEL("excel"),
+    
+    XML("xml"),
+    
+    JSON("json");
+
+    private String value;
+
+    FormatEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FormatEnum fromValue(String value) {
+      for (FormatEnum b : FormatEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FormatEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FormatEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FormatEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
-  private String format;
+  private FormatEnum format = FormatEnum.JSON;
 
   public static final String SERIALIZED_NAME_SHOULD_DISPLAY_DOMAIN_DIMENSION = "shouldDisplayDomainDimension";
   @SerializedName(SERIALIZED_NAME_SHOULD_DISPLAY_DOMAIN_DIMENSION)
@@ -232,24 +283,24 @@ public class GenerateCategoriesReportRequestAttributes {
   }
 
 
-  public GenerateCategoriesReportRequestAttributes format(String format) {
+  public GenerateCategoriesReportRequestAttributes format(FormatEnum format) {
     
     this.format = format;
     return this;
   }
 
    /**
-   * The file format of the generated report: csv, xml, excel or json.
+   * The file format of the generated report
    * @return format
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public String getFormat() {
+  public FormatEnum getFormat() {
     return format;
   }
 
 
-  public void setFormat(String format) {
+  public void setFormat(FormatEnum format) {
     this.format = format;
   }
 
@@ -409,7 +460,6 @@ public class GenerateCategoriesReportRequestAttributes {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("advertiserIds");
     openapiRequiredFields.add("endDate");
-    openapiRequiredFields.add("format");
     openapiRequiredFields.add("startDate");
   }
 
@@ -458,7 +508,7 @@ public class GenerateCategoriesReportRequestAttributes {
       if ((jsonObj.get("domain") != null && !jsonObj.get("domain").isJsonNull()) && !jsonObj.get("domain").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `domain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("domain").toString()));
       }
-      if (!jsonObj.get("format").isJsonPrimitive()) {
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
       }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {

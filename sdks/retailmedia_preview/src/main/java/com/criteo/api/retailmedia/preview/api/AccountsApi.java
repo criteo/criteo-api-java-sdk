@@ -28,7 +28,6 @@ import java.io.IOException;
 
 
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata;
-import com.criteo.api.retailmedia.preview.model.Outcome;
 import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputAccountFeesSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputAccountFeesUpdateRequest;
@@ -229,7 +228,6 @@ public class AccountsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaAccountsFeesSearchPostCall(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback _callback) throws ApiException {
@@ -274,10 +272,7 @@ public class AccountsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -306,7 +301,6 @@ public class AccountsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata previewRetailMediaAccountsFeesSearchPost(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
@@ -326,7 +320,6 @@ public class AccountsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> previewRetailMediaAccountsFeesSearchPostWithHttpInfo(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
@@ -348,7 +341,6 @@ public class AccountsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaAccountsFeesSearchPostAsync(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> _callback) throws ApiException {
@@ -368,8 +360,6 @@ public class AccountsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaAccountsFeesUpdatePostCall(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest, final ApiCallback _callback) throws ApiException {
@@ -398,9 +388,7 @@ public class AccountsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -408,10 +396,7 @@ public class AccountsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -438,8 +423,6 @@ public class AccountsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ValueResourceOutcomeAccountFeesUpdateResult previewRetailMediaAccountsFeesUpdatePost(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest) throws ApiException {
@@ -457,8 +440,6 @@ public class AccountsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ValueResourceOutcomeAccountFeesUpdateResult> previewRetailMediaAccountsFeesUpdatePostWithHttpInfo(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest) throws ApiException {
@@ -478,8 +459,6 @@ public class AccountsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaAccountsFeesUpdatePostAsync(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest, final ApiCallback<ValueResourceOutcomeAccountFeesUpdateResult> _callback) throws ApiException {

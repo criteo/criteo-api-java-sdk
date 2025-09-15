@@ -89,10 +89,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set created successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Cannot process entity content </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createProductSetCall(ValueResourceInputOfCreateProductSetRequest valueResourceInputOfCreateProductSetRequest, final ApiCallback _callback) throws ApiException {
@@ -121,9 +117,7 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -131,10 +125,7 @@ public class RecoApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -161,10 +152,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set created successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Cannot process entity content </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcomeOfProductSet createProductSet(ValueResourceInputOfCreateProductSetRequest valueResourceInputOfCreateProductSetRequest) throws ApiException {
@@ -182,10 +169,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set created successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Cannot process entity content </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcomeOfProductSet> createProductSetWithHttpInfo(ValueResourceInputOfCreateProductSetRequest valueResourceInputOfCreateProductSetRequest) throws ApiException {
@@ -205,10 +188,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set created successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Cannot process entity content </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createProductSetAsync(ValueResourceInputOfCreateProductSetRequest valueResourceInputOfCreateProductSetRequest, final ApiCallback<ResourceOutcomeOfProductSet> _callback) throws ApiException {
@@ -228,10 +207,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call disableProductFilteringCall(String adId, final ApiCallback _callback) throws ApiException {
@@ -261,9 +236,7 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -302,10 +275,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public ValueResourceOutcomeOfProductFilterConfig disableProductFiltering(String adId) throws ApiException {
@@ -323,10 +292,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ValueResourceOutcomeOfProductFilterConfig> disableProductFilteringWithHttpInfo(String adId) throws ApiException {
@@ -346,10 +311,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call disableProductFilteringAsync(String adId, final ApiCallback<ValueResourceOutcomeOfProductFilterConfig> _callback) throws ApiException {
@@ -370,8 +331,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call enableProductFilteringCall(String adId, ValueResourceInputOfCreateProductFilterRequest valueResourceInputOfCreateProductFilterRequest, final ApiCallback _callback) throws ApiException {
@@ -401,9 +360,7 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -411,10 +368,7 @@ public class RecoApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -447,8 +401,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public ValueResourceOutcomeOfProductFilterConfig enableProductFiltering(String adId, ValueResourceInputOfCreateProductFilterRequest valueResourceInputOfCreateProductFilterRequest) throws ApiException {
@@ -467,8 +419,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ValueResourceOutcomeOfProductFilterConfig> enableProductFilteringWithHttpInfo(String adId, ValueResourceInputOfCreateProductFilterRequest valueResourceInputOfCreateProductFilterRequest) throws ApiException {
@@ -489,8 +439,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call enableProductFilteringAsync(String adId, ValueResourceInputOfCreateProductFilterRequest valueResourceInputOfCreateProductFilterRequest, final ApiCallback<ValueResourceOutcomeOfProductFilterConfig> _callback) throws ApiException {
@@ -510,8 +458,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Successful operation. Returns the product filtering configuration if it exists, or empty data if it doesn&#39;t. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchProductFilteringConfigCall(String adId, final ApiCallback _callback) throws ApiException {
@@ -541,9 +487,7 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -582,8 +526,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Successful operation. Returns the product filtering configuration if it exists, or empty data if it doesn&#39;t. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public ValueResourceOutcomeOfProductFilterConfig fetchProductFilteringConfig(String adId) throws ApiException {
@@ -601,8 +543,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Successful operation. Returns the product filtering configuration if it exists, or empty data if it doesn&#39;t. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ValueResourceOutcomeOfProductFilterConfig> fetchProductFilteringConfigWithHttpInfo(String adId) throws ApiException {
@@ -622,8 +562,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Successful operation. Returns the product filtering configuration if it exists, or empty data if it doesn&#39;t. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchProductFilteringConfigAsync(String adId, final ApiCallback<ValueResourceOutcomeOfProductFilterConfig> _callback) throws ApiException {
@@ -643,8 +581,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchProductFilteringUsagesCall(String productSetId, final ApiCallback _callback) throws ApiException {
@@ -674,9 +610,7 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -715,8 +649,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public ValueResourceCollectionOutcomeOfProductFilterConfig fetchProductFilteringUsages(String productSetId) throws ApiException {
@@ -734,8 +666,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ValueResourceCollectionOutcomeOfProductFilterConfig> fetchProductFilteringUsagesWithHttpInfo(String productSetId) throws ApiException {
@@ -755,8 +685,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchProductFilteringUsagesAsync(String productSetId, final ApiCallback<ValueResourceCollectionOutcomeOfProductFilterConfig> _callback) throws ApiException {
@@ -776,9 +704,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set fetched successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchProductSetCall(String productSetId, final ApiCallback _callback) throws ApiException {
@@ -808,9 +733,7 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -849,9 +772,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set fetched successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcomeOfProductSet fetchProductSet(String productSetId) throws ApiException {
@@ -869,9 +789,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set fetched successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcomeOfProductSet> fetchProductSetWithHttpInfo(String productSetId) throws ApiException {
@@ -891,9 +808,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set fetched successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchProductSetAsync(String productSetId, final ApiCallback<ResourceOutcomeOfProductSet> _callback) throws ApiException {
@@ -913,9 +827,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Products sets fetched successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchProductSetsCall(String datasetId, final ApiCallback _callback) throws ApiException {
@@ -945,9 +856,7 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -986,9 +895,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Products sets fetched successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public ResourceCollectionOutcomeOfProductSet fetchProductSets(String datasetId) throws ApiException {
@@ -1006,9 +912,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Products sets fetched successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceCollectionOutcomeOfProductSet> fetchProductSetsWithHttpInfo(String datasetId) throws ApiException {
@@ -1028,9 +931,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Products sets fetched successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call fetchProductSetsAsync(String datasetId, final ApiCallback<ResourceCollectionOutcomeOfProductSet> _callback) throws ApiException {
@@ -1050,9 +950,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> ProductSet removed successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Request was not valid </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call removeProductSetCall(String productSetId, final ApiCallback _callback) throws ApiException {
@@ -1082,9 +979,7 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1123,9 +1018,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> ProductSet removed successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Request was not valid </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public Outcome removeProductSet(String productSetId) throws ApiException {
@@ -1143,9 +1035,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> ProductSet removed successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Request was not valid </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Outcome> removeProductSetWithHttpInfo(String productSetId) throws ApiException {
@@ -1165,9 +1054,6 @@ public class RecoApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> ProductSet removed successfully </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Request was not valid </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call removeProductSetAsync(String productSetId, final ApiCallback<Outcome> _callback) throws ApiException {

@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.criteo.api.retailmedia.preview.model.ErrorCodeResponse;
 import com.criteo.api.retailmedia.preview.model.RetailMediaContactlistAmendmentRequest;
 import com.criteo.api.retailmedia.preview.model.RetailMediaContactlistOperation;
 import com.criteo.api.retailmedia.preview.model.RmAudienceBulkCreateInputV1;
@@ -108,9 +107,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkCreateAudienceCall(String accountId, RmAudienceBulkCreateInputV1 rmAudienceBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
@@ -140,9 +136,7 @@ public class AudienceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -150,10 +144,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -191,9 +182,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceEntityV1ListResponse bulkCreateAudience(String accountId, RmAudienceBulkCreateInputV1 rmAudienceBulkCreateInputV1) throws ApiException {
@@ -212,9 +200,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceEntityV1ListResponse> bulkCreateAudienceWithHttpInfo(String accountId, RmAudienceBulkCreateInputV1 rmAudienceBulkCreateInputV1) throws ApiException {
@@ -235,9 +220,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkCreateAudienceAsync(String accountId, RmAudienceBulkCreateInputV1 rmAudienceBulkCreateInputV1, final ApiCallback<RmAudienceEntityV1ListResponse> _callback) throws ApiException {
@@ -258,9 +240,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkCreateAudienceSegmentsCall(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
@@ -290,9 +269,7 @@ public class AudienceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -300,10 +277,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -341,9 +315,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceSegmentEntityV1ListResponse bulkCreateAudienceSegments(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1) throws ApiException {
@@ -362,9 +333,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceSegmentEntityV1ListResponse> bulkCreateAudienceSegmentsWithHttpInfo(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1) throws ApiException {
@@ -385,9 +353,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkCreateAudienceSegmentsAsync(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1, final ApiCallback<RmAudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
@@ -408,9 +373,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkDeleteAudienceSegmentsCall(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
@@ -440,9 +402,7 @@ public class AudienceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -450,10 +410,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -491,9 +448,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceSegmentIdEntityV1ListResponse bulkDeleteAudienceSegments(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1) throws ApiException {
@@ -512,9 +466,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceSegmentIdEntityV1ListResponse> bulkDeleteAudienceSegmentsWithHttpInfo(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1) throws ApiException {
@@ -535,9 +486,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkDeleteAudienceSegmentsAsync(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1, final ApiCallback<RmAudienceSegmentIdEntityV1ListResponse> _callback) throws ApiException {
@@ -559,9 +507,6 @@ public class AudienceApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkDeleteAudiencesCall(String accountId, RmAudienceBulkDeleteInputV1 rmAudienceBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
@@ -591,9 +536,7 @@ public class AudienceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -601,10 +544,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -643,9 +583,6 @@ public class AudienceApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceSegmentIdEntityV1ListResponse bulkDeleteAudiences(String accountId, RmAudienceBulkDeleteInputV1 rmAudienceBulkDeleteInputV1) throws ApiException {
@@ -665,9 +602,6 @@ public class AudienceApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceSegmentIdEntityV1ListResponse> bulkDeleteAudiencesWithHttpInfo(String accountId, RmAudienceBulkDeleteInputV1 rmAudienceBulkDeleteInputV1) throws ApiException {
@@ -689,9 +623,6 @@ public class AudienceApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkDeleteAudiencesAsync(String accountId, RmAudienceBulkDeleteInputV1 rmAudienceBulkDeleteInputV1, final ApiCallback<RmAudienceSegmentIdEntityV1ListResponse> _callback) throws ApiException {
@@ -712,9 +643,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkUpdateAudienceCall(String accountId, RmAudienceBulkUpdateInputV1 rmAudienceBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
@@ -744,9 +672,7 @@ public class AudienceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -754,10 +680,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -795,9 +718,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceEntityV1ListResponse bulkUpdateAudience(String accountId, RmAudienceBulkUpdateInputV1 rmAudienceBulkUpdateInputV1) throws ApiException {
@@ -816,9 +736,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceEntityV1ListResponse> bulkUpdateAudienceWithHttpInfo(String accountId, RmAudienceBulkUpdateInputV1 rmAudienceBulkUpdateInputV1) throws ApiException {
@@ -839,9 +756,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkUpdateAudienceAsync(String accountId, RmAudienceBulkUpdateInputV1 rmAudienceBulkUpdateInputV1, final ApiCallback<RmAudienceEntityV1ListResponse> _callback) throws ApiException {
@@ -862,9 +776,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkUpdateAudienceSegmentsCall(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
@@ -894,9 +805,7 @@ public class AudienceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -904,10 +813,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -945,9 +851,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceSegmentEntityV1ListResponse bulkUpdateAudienceSegments(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1) throws ApiException {
@@ -966,9 +869,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceSegmentEntityV1ListResponse> bulkUpdateAudienceSegmentsWithHttpInfo(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1) throws ApiException {
@@ -989,9 +889,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call bulkUpdateAudienceSegmentsAsync(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1, final ApiCallback<RmAudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
@@ -1012,9 +909,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call computeAudienceSegmentsSizesCall(String accountId, RmAudienceSegmentComputeSizesInputV1 rmAudienceSegmentComputeSizesInputV1, final ApiCallback _callback) throws ApiException {
@@ -1044,9 +938,7 @@ public class AudienceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1054,10 +946,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1095,9 +984,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceSegmentSizeEntityV1ListResponse computeAudienceSegmentsSizes(String accountId, RmAudienceSegmentComputeSizesInputV1 rmAudienceSegmentComputeSizesInputV1) throws ApiException {
@@ -1116,9 +1002,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceSegmentSizeEntityV1ListResponse> computeAudienceSegmentsSizesWithHttpInfo(String accountId, RmAudienceSegmentComputeSizesInputV1 rmAudienceSegmentComputeSizesInputV1) throws ApiException {
@@ -1139,9 +1022,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call computeAudienceSegmentsSizesAsync(String accountId, RmAudienceSegmentComputeSizesInputV1 rmAudienceSegmentComputeSizesInputV1, final ApiCallback<RmAudienceSegmentSizeEntityV1ListResponse> _callback) throws ApiException {
@@ -1162,9 +1042,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call computeAudiencesSizesCall(String accountId, RmAudienceComputeSizesInputV1 rmAudienceComputeSizesInputV1, final ApiCallback _callback) throws ApiException {
@@ -1194,9 +1071,7 @@ public class AudienceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1204,10 +1079,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1245,9 +1117,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceSizeEntityV1ListResponse computeAudiencesSizes(String accountId, RmAudienceComputeSizesInputV1 rmAudienceComputeSizesInputV1) throws ApiException {
@@ -1266,9 +1135,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceSizeEntityV1ListResponse> computeAudiencesSizesWithHttpInfo(String accountId, RmAudienceComputeSizesInputV1 rmAudienceComputeSizesInputV1) throws ApiException {
@@ -1289,9 +1155,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call computeAudiencesSizesAsync(String accountId, RmAudienceComputeSizesInputV1 rmAudienceComputeSizesInputV1, final ApiCallback<RmAudienceSizeEntityV1ListResponse> _callback) throws ApiException {
@@ -1311,7 +1174,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteContactListIdentifiersCall(Long audienceSegmentId, final ApiCallback _callback) throws ApiException {
@@ -1379,7 +1241,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public void deleteContactListIdentifiers(Long audienceSegmentId) throws ApiException {
@@ -1396,7 +1257,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteContactListIdentifiersWithHttpInfo(Long audienceSegmentId) throws ApiException {
@@ -1415,7 +1275,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteContactListIdentifiersAsync(Long audienceSegmentId, final ApiCallback<Void> _callback) throws ApiException {
@@ -1435,9 +1294,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call estimateAudienceSegmentSizeCall(String accountId, RmAudienceSegmentEstimateSizeInputV1 rmAudienceSegmentEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
@@ -1467,9 +1323,7 @@ public class AudienceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1477,10 +1331,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1518,9 +1369,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceSegmentSizeEstimationV1Response estimateAudienceSegmentSize(String accountId, RmAudienceSegmentEstimateSizeInputV1 rmAudienceSegmentEstimateSizeInputV1) throws ApiException {
@@ -1539,9 +1387,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceSegmentSizeEstimationV1Response> estimateAudienceSegmentSizeWithHttpInfo(String accountId, RmAudienceSegmentEstimateSizeInputV1 rmAudienceSegmentEstimateSizeInputV1) throws ApiException {
@@ -1562,9 +1407,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call estimateAudienceSegmentSizeAsync(String accountId, RmAudienceSegmentEstimateSizeInputV1 rmAudienceSegmentEstimateSizeInputV1, final ApiCallback<RmAudienceSegmentSizeEstimationV1Response> _callback) throws ApiException {
@@ -1585,9 +1427,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call estimateAudienceSizeCall(String accountId, RmAudienceEstimateSizeInputV1 rmAudienceEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
@@ -1617,9 +1456,7 @@ public class AudienceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1627,10 +1464,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1668,9 +1502,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceSizeEstimationV1Response estimateAudienceSize(String accountId, RmAudienceEstimateSizeInputV1 rmAudienceEstimateSizeInputV1) throws ApiException {
@@ -1689,9 +1520,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceSizeEstimationV1Response> estimateAudienceSizeWithHttpInfo(String accountId, RmAudienceEstimateSizeInputV1 rmAudienceEstimateSizeInputV1) throws ApiException {
@@ -1712,9 +1540,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call estimateAudienceSizeAsync(String accountId, RmAudienceEstimateSizeInputV1 rmAudienceEstimateSizeInputV1, final ApiCallback<RmAudienceSizeEstimationV1Response> _callback) throws ApiException {
@@ -1735,9 +1560,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAudienceSegmentContactListStatisticsCall(String accountId, String audienceSegmentId, final ApiCallback _callback) throws ApiException {
@@ -1768,9 +1590,7 @@ public class AudienceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1815,9 +1635,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmContactListStatisticsEntityV1Response getAudienceSegmentContactListStatistics(String accountId, String audienceSegmentId) throws ApiException {
@@ -1836,9 +1653,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmContactListStatisticsEntityV1Response> getAudienceSegmentContactListStatisticsWithHttpInfo(String accountId, String audienceSegmentId) throws ApiException {
@@ -1859,9 +1673,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAudienceSegmentContactListStatisticsAsync(String accountId, String audienceSegmentId, final ApiCallback<RmContactListStatisticsEntityV1Response> _callback) throws ApiException {
@@ -1884,9 +1695,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call searchAudienceSegmentsCall(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
@@ -1924,9 +1732,7 @@ public class AudienceApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1934,10 +1740,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1977,9 +1780,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse searchAudienceSegments(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset) throws ApiException {
@@ -2000,9 +1800,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse> searchAudienceSegmentsWithHttpInfo(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset) throws ApiException {
@@ -2025,9 +1822,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call searchAudienceSegmentsAsync(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse> _callback) throws ApiException {
@@ -2050,9 +1844,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call searchAudiencesCall(String accountId, RmAudienceSearchInputV1 rmAudienceSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
@@ -2090,9 +1881,7 @@ public class AudienceApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2100,10 +1889,7 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2143,9 +1929,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse searchAudiences(String accountId, RmAudienceSearchInputV1 rmAudienceSearchInputV1, Integer limit, Integer offset) throws ApiException {
@@ -2166,9 +1949,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse> searchAudiencesWithHttpInfo(String accountId, RmAudienceSearchInputV1 rmAudienceSearchInputV1, Integer limit, Integer offset) throws ApiException {
@@ -2191,9 +1971,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call searchAudiencesAsync(String accountId, RmAudienceSearchInputV1 rmAudienceSearchInputV1, Integer limit, Integer offset, final ApiCallback<RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse> _callback) throws ApiException {
@@ -2214,7 +1991,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateContactListIdentifiersCall(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
@@ -2290,7 +2066,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public RetailMediaContactlistOperation updateContactListIdentifiers(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest) throws ApiException {
@@ -2309,7 +2084,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RetailMediaContactlistOperation> updateContactListIdentifiersWithHttpInfo(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest) throws ApiException {
@@ -2330,7 +2104,6 @@ public class AudienceApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateContactListIdentifiersAsync(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback<RetailMediaContactlistOperation> _callback) throws ApiException {

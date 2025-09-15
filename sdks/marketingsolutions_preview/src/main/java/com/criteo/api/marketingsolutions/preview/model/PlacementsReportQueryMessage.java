@@ -151,9 +151,60 @@ public class PlacementsReportQueryMessage {
   @SerializedName(SERIALIZED_NAME_ENVIRONMENT)
   private String environment;
 
+  /**
+   * The file format of the generated report
+   */
+  @JsonAdapter(FormatEnum.Adapter.class)
+  public enum FormatEnum {
+    CSV("csv"),
+    
+    EXCEL("excel"),
+    
+    XML("xml"),
+    
+    JSON("json");
+
+    private String value;
+
+    FormatEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FormatEnum fromValue(String value) {
+      for (FormatEnum b : FormatEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FormatEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FormatEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FormatEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
-  private String format;
+  private FormatEnum format = FormatEnum.JSON;
 
   public static final String SERIALIZED_NAME_METRICS = "metrics";
   @SerializedName(SERIALIZED_NAME_METRICS)
@@ -355,24 +406,24 @@ public class PlacementsReportQueryMessage {
   }
 
 
-  public PlacementsReportQueryMessage format(String format) {
+  public PlacementsReportQueryMessage format(FormatEnum format) {
     
     this.format = format;
     return this;
   }
 
    /**
-   * The file format of the generated report: csv, xml, excel or json.
+   * The file format of the generated report
    * @return format
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public String getFormat() {
+  public FormatEnum getFormat() {
     return format;
   }
 
 
-  public void setFormat(String format) {
+  public void setFormat(FormatEnum format) {
     this.format = format;
   }
 
@@ -570,7 +621,6 @@ public class PlacementsReportQueryMessage {
     openapiRequiredFields.add("currency");
     openapiRequiredFields.add("dimensions");
     openapiRequiredFields.add("endDate");
-    openapiRequiredFields.add("format");
     openapiRequiredFields.add("metrics");
     openapiRequiredFields.add("startDate");
   }
@@ -623,7 +673,7 @@ public class PlacementsReportQueryMessage {
       if ((jsonObj.get("environment") != null && !jsonObj.get("environment").isJsonNull()) && !jsonObj.get("environment").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `environment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("environment").toString()));
       }
-      if (!jsonObj.get("format").isJsonPrimitive()) {
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
       }
       // ensure the required json array is present

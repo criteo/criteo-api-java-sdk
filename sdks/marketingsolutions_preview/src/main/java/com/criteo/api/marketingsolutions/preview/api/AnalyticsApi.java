@@ -37,7 +37,6 @@ import com.criteo.api.marketingsolutions.preview.model.GenerateStatisticsReportR
 import com.criteo.api.marketingsolutions.preview.model.GenerateTopProductsReportRequestAttributesRequest;
 import com.criteo.api.marketingsolutions.preview.model.JsonReportRowsListResponse;
 import com.criteo.api.marketingsolutions.preview.model.MarketingSolutionsReportStatusResponse;
-import com.criteo.api.marketingsolutions.preview.model.Outcome;
 import com.criteo.api.marketingsolutions.preview.model.PlacementsReportQueryMessageListRequest;
 import com.criteo.api.marketingsolutions.preview.model.StatisticsReportQueryMessage;
 import com.criteo.api.marketingsolutions.preview.model.TransactionsReportQueryMessageListRequest;
@@ -98,8 +97,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdsetReportCall(StatisticsReportQueryMessage statisticsReportQueryMessage, final ApiCallback _callback) throws ApiException {
@@ -128,9 +125,7 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json",
             "text/csv",
             "text/xml",
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -141,10 +136,7 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -171,8 +163,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public File getAdsetReport(StatisticsReportQueryMessage statisticsReportQueryMessage) throws ApiException {
@@ -190,8 +180,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<File> getAdsetReportWithHttpInfo(StatisticsReportQueryMessage statisticsReportQueryMessage) throws ApiException {
@@ -211,8 +199,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdsetReportAsync(StatisticsReportQueryMessage statisticsReportQueryMessage, final ApiCallback<File> _callback) throws ApiException {
@@ -232,8 +218,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAsyncAdsetReportCall(GenerateStatisticsReportRequest generateStatisticsReportRequest, final ApiCallback _callback) throws ApiException {
@@ -262,9 +246,7 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json",
             "application/xml",
             "text/xml"
         };
@@ -274,10 +256,7 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
-            "text/json",
-            "application/*+json",
             "application/xml",
             "text/xml",
             "application/*+xml"
@@ -307,8 +286,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public MarketingSolutionsReportStatusResponse getAsyncAdsetReport(GenerateStatisticsReportRequest generateStatisticsReportRequest) throws ApiException {
@@ -326,8 +303,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<MarketingSolutionsReportStatusResponse> getAsyncAdsetReportWithHttpInfo(GenerateStatisticsReportRequest generateStatisticsReportRequest) throws ApiException {
@@ -347,8 +322,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAsyncAdsetReportAsync(GenerateStatisticsReportRequest generateStatisticsReportRequest, final ApiCallback<MarketingSolutionsReportStatusResponse> _callback) throws ApiException {
@@ -368,8 +341,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAsyncAudienceReportCall(GenerateAudiencePerformanceReportRequest generateAudiencePerformanceReportRequest, final ApiCallback _callback) throws ApiException {
@@ -398,9 +369,7 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json",
             "application/xml",
             "text/xml"
         };
@@ -410,10 +379,7 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
-            "text/json",
-            "application/*+json",
             "application/xml",
             "text/xml",
             "application/*+xml"
@@ -443,8 +409,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public MarketingSolutionsReportStatusResponse getAsyncAudienceReport(GenerateAudiencePerformanceReportRequest generateAudiencePerformanceReportRequest) throws ApiException {
@@ -462,8 +426,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<MarketingSolutionsReportStatusResponse> getAsyncAudienceReportWithHttpInfo(GenerateAudiencePerformanceReportRequest generateAudiencePerformanceReportRequest) throws ApiException {
@@ -483,8 +445,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAsyncAudienceReportAsync(GenerateAudiencePerformanceReportRequest generateAudiencePerformanceReportRequest, final ApiCallback<MarketingSolutionsReportStatusResponse> _callback) throws ApiException {
@@ -533,9 +493,7 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -629,8 +587,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAsyncExportStatusCall(String reportId, final ApiCallback _callback) throws ApiException {
@@ -660,9 +616,7 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json",
             "application/xml",
             "text/xml"
         };
@@ -703,8 +657,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public MarketingSolutionsReportStatusResponse getAsyncExportStatus(String reportId) throws ApiException {
@@ -722,8 +674,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<MarketingSolutionsReportStatusResponse> getAsyncExportStatusWithHttpInfo(String reportId) throws ApiException {
@@ -743,8 +693,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAsyncExportStatusAsync(String reportId, final ApiCallback<MarketingSolutionsReportStatusResponse> _callback) throws ApiException {
@@ -764,8 +712,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCategoriesReportCall(GenerateCategoriesReportRequestAttributesRequest generateCategoriesReportRequestAttributesRequest, final ApiCallback _callback) throws ApiException {
@@ -794,11 +740,10 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json",
-            "application/xml",
-            "text/xml"
+            "text/csv",
+            "text/xml",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -806,10 +751,7 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
-            "text/json",
-            "application/*+json",
             "application/xml",
             "text/xml",
             "application/*+xml"
@@ -839,8 +781,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public File getCategoriesReport(GenerateCategoriesReportRequestAttributesRequest generateCategoriesReportRequestAttributesRequest) throws ApiException {
@@ -858,8 +798,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<File> getCategoriesReportWithHttpInfo(GenerateCategoriesReportRequestAttributesRequest generateCategoriesReportRequestAttributesRequest) throws ApiException {
@@ -879,8 +817,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCategoriesReportAsync(GenerateCategoriesReportRequestAttributesRequest generateCategoriesReportRequestAttributesRequest, final ApiCallback<File> _callback) throws ApiException {
@@ -900,8 +836,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCreativesReportCall(GenerateCreativesReportRequestAttributesRequest generateCreativesReportRequestAttributesRequest, final ApiCallback _callback) throws ApiException {
@@ -930,9 +864,7 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json",
             "application/xml",
             "text/xml"
         };
@@ -942,10 +874,7 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
-            "text/json",
-            "application/*+json",
             "application/xml",
             "text/xml",
             "application/*+xml"
@@ -975,8 +904,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public JsonReportRowsListResponse getCreativesReport(GenerateCreativesReportRequestAttributesRequest generateCreativesReportRequestAttributesRequest) throws ApiException {
@@ -994,8 +921,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<JsonReportRowsListResponse> getCreativesReportWithHttpInfo(GenerateCreativesReportRequestAttributesRequest generateCreativesReportRequestAttributesRequest) throws ApiException {
@@ -1015,8 +940,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCreativesReportAsync(GenerateCreativesReportRequestAttributesRequest generateCreativesReportRequestAttributesRequest, final ApiCallback<JsonReportRowsListResponse> _callback) throws ApiException {
@@ -1036,8 +959,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlacementsReportCall(PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest, final ApiCallback _callback) throws ApiException {
@@ -1066,13 +987,10 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json",
             "text/csv",
-            "application/xml",
-            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            "text/xml"
+            "text/xml",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1080,10 +998,10 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
-            "text/json",
-            "application/*+json"
+            "application/xml",
+            "text/xml",
+            "application/*+xml"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1110,8 +1028,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public File getPlacementsReport(PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest) throws ApiException {
@@ -1129,8 +1045,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<File> getPlacementsReportWithHttpInfo(PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest) throws ApiException {
@@ -1150,8 +1064,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlacementsReportAsync(PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest, final ApiCallback<File> _callback) throws ApiException {
@@ -1171,8 +1083,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getRealtimeStatisticsReportCall(GenerateRealtimeStatisticsReportRequestAttributesRequest generateRealtimeStatisticsReportRequestAttributesRequest, final ApiCallback _callback) throws ApiException {
@@ -1201,9 +1111,7 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json",
             "application/xml",
             "text/xml"
         };
@@ -1213,10 +1121,7 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
-            "text/json",
-            "application/*+json",
             "application/xml",
             "text/xml",
             "application/*+xml"
@@ -1246,8 +1151,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public JsonReportRowsListResponse getRealtimeStatisticsReport(GenerateRealtimeStatisticsReportRequestAttributesRequest generateRealtimeStatisticsReportRequestAttributesRequest) throws ApiException {
@@ -1265,8 +1168,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<JsonReportRowsListResponse> getRealtimeStatisticsReportWithHttpInfo(GenerateRealtimeStatisticsReportRequestAttributesRequest generateRealtimeStatisticsReportRequestAttributesRequest) throws ApiException {
@@ -1286,8 +1187,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getRealtimeStatisticsReportAsync(GenerateRealtimeStatisticsReportRequestAttributesRequest generateRealtimeStatisticsReportRequestAttributesRequest, final ApiCallback<JsonReportRowsListResponse> _callback) throws ApiException {
@@ -1307,8 +1206,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTopProductsReportCall(GenerateTopProductsReportRequestAttributesRequest generateTopProductsReportRequestAttributesRequest, final ApiCallback _callback) throws ApiException {
@@ -1337,9 +1234,7 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json",
             "application/xml",
             "text/xml"
         };
@@ -1349,10 +1244,7 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
-            "text/json",
-            "application/*+json",
             "application/xml",
             "text/xml",
             "application/*+xml"
@@ -1382,8 +1274,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public JsonReportRowsListResponse getTopProductsReport(GenerateTopProductsReportRequestAttributesRequest generateTopProductsReportRequestAttributesRequest) throws ApiException {
@@ -1401,8 +1291,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<JsonReportRowsListResponse> getTopProductsReportWithHttpInfo(GenerateTopProductsReportRequestAttributesRequest generateTopProductsReportRequestAttributesRequest) throws ApiException {
@@ -1422,8 +1310,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTopProductsReportAsync(GenerateTopProductsReportRequestAttributesRequest generateTopProductsReportRequestAttributesRequest, final ApiCallback<JsonReportRowsListResponse> _callback) throws ApiException {
@@ -1443,8 +1329,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTransactionsReportCall(TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest, final ApiCallback _callback) throws ApiException {
@@ -1473,9 +1357,7 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json",
             "text/csv",
             "text/xml",
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -1486,10 +1368,10 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
-            "text/json",
-            "application/*+json"
+            "application/xml",
+            "text/xml",
+            "application/*+xml"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1516,8 +1398,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public File getTransactionsReport(TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest) throws ApiException {
@@ -1535,8 +1415,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<File> getTransactionsReportWithHttpInfo(TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest) throws ApiException {
@@ -1556,8 +1434,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTransactionsReportAsync(TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest, final ApiCallback<File> _callback) throws ApiException {
@@ -1578,8 +1454,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTransparencyReportCall(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage, final ApiCallback _callback) throws ApiException {
@@ -1609,9 +1483,7 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json",
             "application/xml",
             "text/xml"
         };
@@ -1621,10 +1493,10 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
-            "text/json",
-            "application/*+json"
+            "application/xml",
+            "text/xml",
+            "application/*+xml"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1657,8 +1529,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public TransparencyReportListResponse getTransparencyReport(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage) throws ApiException {
@@ -1677,8 +1547,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<TransparencyReportListResponse> getTransparencyReportWithHttpInfo(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage) throws ApiException {
@@ -1699,8 +1567,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTransparencyReportAsync(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage, final ApiCallback<TransparencyReportListResponse> _callback) throws ApiException {

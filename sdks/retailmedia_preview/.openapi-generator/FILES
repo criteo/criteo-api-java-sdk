@@ -89,11 +89,9 @@ docs/EntityResourceOutcomeOfCatalogStatusV2.md
 docs/EntityResourceOutcomeOfSponsoredProductsLineItem.md
 docs/EntityResourceOutcomePartnerBillingReportStatusV1.md
 docs/EntityResourcePartnerBillingReportStatusV1.md
-docs/ErrorCodeResponse.md
 docs/ExportReportColumn.md
 docs/ExportReportMetaData.md
 docs/ExternalRetailMediaChildAccount.md
-docs/FailResponse.md
 docs/FilesVariableValue.md
 docs/FlightLeg.md
 docs/FlightSchedule.md
@@ -128,7 +126,6 @@ docs/NillableString.md
 docs/OfferLoad.md
 docs/OfferUpdate.md
 docs/OnSiteRecommendationApi.md
-docs/Outcome.md
 docs/PageMetadata.md
 docs/PageOfBalanceHistoryChangeDataCaptureV1.md
 docs/PageTypeEnvironment2.md
@@ -154,8 +151,6 @@ docs/ProductButtonRequestListRequest.md
 docs/ProductButtonRequestRequest.md
 docs/ProductButtonResponse.md
 docs/ProductButtonResponseListResponse.md
-docs/ProductImporterError.md
-docs/ProductImporterWarning.md
 docs/ProductMetadata.md
 docs/ProductRecommendation.md
 docs/ProductResourceOutcome.md
@@ -180,7 +175,6 @@ docs/ReportDetailErrors.md
 docs/ReportDetailWarning.md
 docs/ReportDetailWarnings.md
 docs/ReportOkResponse.md
-docs/ReportOutcome.md
 docs/ReportResponse.md
 docs/ResourceOfBalanceResponseV2.md
 docs/ResourceOfBrandPreview.md
@@ -469,11 +463,9 @@ src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOutcomeOfCa
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOutcomeOfSponsoredProductsLineItem.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOutcomePartnerBillingReportStatusV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourcePartnerBillingReportStatusV1.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ErrorCodeResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ExportReportColumn.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ExportReportMetaData.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ExternalRetailMediaChildAccount.java
-src/main/java/com/criteo/api/retailmedia/preview/model/FailResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/FilesVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/FlightLeg.java
 src/main/java/com/criteo/api/retailmedia/preview/model/FlightSchedule.java
@@ -506,7 +498,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/NillableDecimal.java
 src/main/java/com/criteo/api/retailmedia/preview/model/NillableString.java
 src/main/java/com/criteo/api/retailmedia/preview/model/OfferLoad.java
 src/main/java/com/criteo/api/retailmedia/preview/model/OfferUpdate.java
-src/main/java/com/criteo/api/retailmedia/preview/model/Outcome.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageOfBalanceHistoryChangeDataCaptureV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageTypeEnvironment2.java
@@ -532,8 +523,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ProductButtonRequestListR
 src/main/java/com/criteo/api/retailmedia/preview/model/ProductButtonRequestRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ProductButtonResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ProductButtonResponseListResponse.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ProductImporterError.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ProductImporterWarning.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ProductMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ProductRecommendation.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ProductResourceOutcome.java
@@ -558,7 +547,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ReportDetailErrors.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ReportDetailWarning.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ReportDetailWarnings.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ReportOkResponse.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ReportOutcome.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ReportResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfBalanceResponseV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfBrandPreview.java

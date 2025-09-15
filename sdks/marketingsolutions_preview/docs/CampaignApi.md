@@ -124,16 +124,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The ad set that has been created and errors / warnings |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
 
 
 ## createCampaign
@@ -215,16 +213,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The campaign that has been created and errors / warnings |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
 
 
 ## deleteAdvertiserBundleRules
@@ -308,17 +304,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## deleteAdvertiserDomainRules
@@ -402,17 +395,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## deleteCampaignBundleRules
@@ -496,17 +486,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## deleteCampaignDomainRules
@@ -590,17 +577,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## disableAdSetTargetingDealIds
@@ -683,15 +667,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the errors/warnings if any |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## disableAdSetTargetingVideoPositioning
@@ -774,16 +756,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the errors/warnings if any |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## getAdSetTargetingDealIds
@@ -866,15 +845,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the Deal Id Targeting configuration |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## getAdSetTargetingVideoPositioning
@@ -957,16 +934,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the Video Positioning Targeting configuration |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## getAdSetV24Q3
@@ -1049,15 +1023,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | data for the ad set |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## getAdvertiserBundleRules
@@ -1140,16 +1112,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## getAdvertiserDomainRules
@@ -1232,16 +1201,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## getCampaignBundleRules
@@ -1324,16 +1290,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## getCampaignDomainRules
@@ -1416,16 +1379,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## getCampaignV23Q1
@@ -1508,15 +1468,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | data for the campaign |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## getCategoryBidList
@@ -1599,16 +1557,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of Category Bids for all valid Categories associated to an Ad Set. |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## getDisplayMultipliers
@@ -1691,16 +1646,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of Display Multipliers for all valid Categories associated to an Ad Set. |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## getSupplyVendorList
@@ -1779,15 +1731,13 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the errors/warnings if any |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## patchAdSetsV24Q3
@@ -1869,16 +1819,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of patched adSets. |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## patchCampaigns
@@ -1960,16 +1908,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of patched campaigns. |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## patchCategoryBidList
@@ -2053,17 +1999,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of updated Category Bids for given Categories associated to an Ad Set. |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## patchDisplayMultipliers
@@ -2147,17 +2090,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of updated Display Multipliers for given Categories associated to an Ad Set. |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## postAdvertiserBundleRules
@@ -2241,17 +2181,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## postAdvertiserDomainRules
@@ -2335,8 +2272,8 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
@@ -2426,17 +2363,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## postCampaignDomainRules
@@ -2520,17 +2454,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## putAdvertiserBundleRules
@@ -2614,17 +2545,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## putAdvertiserDomainRules
@@ -2708,17 +2636,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## putCampaignBundleRules
@@ -2802,17 +2727,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## putCampaignDomainRules
@@ -2896,17 +2818,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## searchAdSetsV24Q3
@@ -2988,17 +2907,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | data for the ad sets |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## searchCampaignsV23Q1
@@ -3080,17 +2996,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | data for the campaigns |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## setAdSetTargetingDealIds
@@ -3174,17 +3087,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the errors/warnings if any |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## setAdSetTargetingVideoPositioning
@@ -3268,17 +3178,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | the errors/warnings if any |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## startAdSets
@@ -3360,16 +3267,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of ad sets that have been started and errors / warnings by ad set |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
 
 
 ## stopAdSets
@@ -3451,16 +3356,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of ad sets that have been stopped and errors / warnings by ad set |  -  |
-| **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
 
 
 ## updateAdSetAudience
@@ -3544,15 +3447,12 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 

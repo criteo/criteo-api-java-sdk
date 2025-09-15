@@ -94,18 +94,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Product set created successfully |  -  |
-| **400** | Unable to parse the request parameters |  -  |
-| **403** | Operation forbidden |  -  |
-| **422** | Cannot process entity content |  -  |
-| **500** | Internal Error |  -  |
 
 
 ## disableProductFiltering
@@ -188,17 +184,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful operation |  -  |
-| **400** | Operation failure |  -  |
-| **403** | Operation failure |  -  |
-| **404** | Operation failure |  -  |
-| **409** | Operation failure |  -  |
 
 
 ## enableProductFiltering
@@ -282,16 +274,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | successful operation |  -  |
-| **400** | Operation failure |  -  |
-| **403** | Operation failure |  -  |
 
 
 ## fetchProductFilteringConfig
@@ -374,15 +364,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful operation. Returns the product filtering configuration if it exists, or empty data if it doesn&#39;t. |  -  |
-| **400** | Operation failure |  -  |
-| **403** | Operation failure |  -  |
 
 
 ## fetchProductFilteringUsages
@@ -465,15 +453,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | successful operation |  -  |
-| **400** | Operation failure |  -  |
-| **403** | Operation failure |  -  |
 
 
 ## fetchProductSet
@@ -556,16 +542,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Product set fetched successfully |  -  |
-| **400** | Unable to parse the request parameters |  -  |
-| **403** | Operation forbidden |  -  |
-| **500** | Internal Error |  -  |
 
 
 ## fetchProductSets
@@ -648,16 +631,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Products sets fetched successfully |  -  |
-| **400** | Unable to parse the request parameters |  -  |
-| **403** | Operation forbidden |  -  |
-| **500** | Internal Error |  -  |
 
 
 ## removeProductSet
@@ -740,14 +720,11 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | ProductSet removed successfully |  -  |
-| **400** | Request was not valid |  -  |
-| **403** | Operation forbidden |  -  |
-| **500** | Internal Error |  -  |
 

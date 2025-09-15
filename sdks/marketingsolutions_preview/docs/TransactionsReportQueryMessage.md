@@ -12,9 +12,20 @@ This is the message defining the query for Transaction report
 |**currency** | **String** | The currency used for the report. ISO 4217 code (three-letter capitals). |  |
 |**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
 |**eventType** | **String** | Apply a filter on Event type . |  [optional] |
-|**format** | **String** | The file format of the generated report: csv, xml, excel or json. |  |
+|**format** | [**FormatEnum**](#FormatEnum) | The file format of the generated report |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
 |**timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional] |
+
+
+
+## Enum: FormatEnum
+
+| Name | Value |
+|---- | -----|
+| CSV | &quot;csv&quot; |
+| EXCEL | &quot;excel&quot; |
+| XML | &quot;xml&quot; |
+| JSON | &quot;json&quot; |
 
 
 

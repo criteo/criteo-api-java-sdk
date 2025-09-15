@@ -66,9 +66,60 @@ public class TransactionsReportQueryMessage {
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
   private String eventType;
 
+  /**
+   * The file format of the generated report
+   */
+  @JsonAdapter(FormatEnum.Adapter.class)
+  public enum FormatEnum {
+    CSV("csv"),
+    
+    EXCEL("excel"),
+    
+    XML("xml"),
+    
+    JSON("json");
+
+    private String value;
+
+    FormatEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FormatEnum fromValue(String value) {
+      for (FormatEnum b : FormatEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FormatEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FormatEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FormatEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
-  private String format;
+  private FormatEnum format = FormatEnum.JSON;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -169,24 +220,24 @@ public class TransactionsReportQueryMessage {
   }
 
 
-  public TransactionsReportQueryMessage format(String format) {
+  public TransactionsReportQueryMessage format(FormatEnum format) {
     
     this.format = format;
     return this;
   }
 
    /**
-   * The file format of the generated report: csv, xml, excel or json.
+   * The file format of the generated report
    * @return format
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public String getFormat() {
+  public FormatEnum getFormat() {
     return format;
   }
 
 
-  public void setFormat(String format) {
+  public void setFormat(FormatEnum format) {
     this.format = format;
   }
 
@@ -315,7 +366,6 @@ public class TransactionsReportQueryMessage {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("currency");
     openapiRequiredFields.add("endDate");
-    openapiRequiredFields.add("format");
     openapiRequiredFields.add("startDate");
   }
 
@@ -355,7 +405,7 @@ public class TransactionsReportQueryMessage {
       if ((jsonObj.get("eventType") != null && !jsonObj.get("eventType").isJsonNull()) && !jsonObj.get("eventType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `eventType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventType").toString()));
       }
-      if (!jsonObj.get("format").isJsonPrimitive()) {
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
       }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {

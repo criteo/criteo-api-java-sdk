@@ -28,7 +28,6 @@ import java.io.IOException;
 
 
 import com.criteo.api.retailmedia.preview.model.BatchAcceptedResponse;
-import com.criteo.api.retailmedia.preview.model.FailResponse;
 import com.criteo.api.retailmedia.preview.model.ProductsCustomBatchRequest;
 import com.criteo.api.retailmedia.preview.model.ReportOkResponse;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputLoadSkuOffersRequest;
@@ -91,8 +90,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call offerLoadV1Call(Integer retailerId, ValueResourceInputLoadSkuOffersRequest valueResourceInputLoadSkuOffersRequest, final ApiCallback _callback) throws ApiException {
@@ -122,9 +119,7 @@ public class CatalogApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -132,10 +127,7 @@ public class CatalogApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -168,8 +160,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ValueResourceOutcomeAsyncJobResponse offerLoadV1(Integer retailerId, ValueResourceInputLoadSkuOffersRequest valueResourceInputLoadSkuOffersRequest) throws ApiException {
@@ -188,8 +178,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ValueResourceOutcomeAsyncJobResponse> offerLoadV1WithHttpInfo(Integer retailerId, ValueResourceInputLoadSkuOffersRequest valueResourceInputLoadSkuOffersRequest) throws ApiException {
@@ -210,8 +198,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call offerLoadV1Async(Integer retailerId, ValueResourceInputLoadSkuOffersRequest valueResourceInputLoadSkuOffersRequest, final ApiCallback<ValueResourceOutcomeAsyncJobResponse> _callback) throws ApiException {
@@ -232,8 +218,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call offerSetBbwV1Call(Integer retailerId, ValueResourceInputSetSkuBuyBoxWinnersRequest valueResourceInputSetSkuBuyBoxWinnersRequest, final ApiCallback _callback) throws ApiException {
@@ -263,9 +247,7 @@ public class CatalogApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -273,10 +255,7 @@ public class CatalogApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -309,8 +288,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ValueResourceOutcomeAsyncJobResponse offerSetBbwV1(Integer retailerId, ValueResourceInputSetSkuBuyBoxWinnersRequest valueResourceInputSetSkuBuyBoxWinnersRequest) throws ApiException {
@@ -329,8 +306,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ValueResourceOutcomeAsyncJobResponse> offerSetBbwV1WithHttpInfo(Integer retailerId, ValueResourceInputSetSkuBuyBoxWinnersRequest valueResourceInputSetSkuBuyBoxWinnersRequest) throws ApiException {
@@ -351,8 +326,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call offerSetBbwV1Async(Integer retailerId, ValueResourceInputSetSkuBuyBoxWinnersRequest valueResourceInputSetSkuBuyBoxWinnersRequest, final ApiCallback<ValueResourceOutcomeAsyncJobResponse> _callback) throws ApiException {
@@ -373,8 +346,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call offerUpdateV1Call(Integer retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest, final ApiCallback _callback) throws ApiException {
@@ -404,9 +375,7 @@ public class CatalogApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -414,10 +383,7 @@ public class CatalogApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -450,8 +416,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ValueResourceOutcomeAsyncJobResponse offerUpdateV1(Integer retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest) throws ApiException {
@@ -470,8 +434,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ValueResourceOutcomeAsyncJobResponse> offerUpdateV1WithHttpInfo(Integer retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest) throws ApiException {
@@ -492,8 +454,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call offerUpdateV1Async(Integer retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest, final ApiCallback<ValueResourceOutcomeAsyncJobResponse> _callback) throws ApiException {
@@ -513,13 +473,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;required-field\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;required-field\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;json-format\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 413 </td><td> Request too large. By default, payload up to 16 MB is rejected. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;too-many-requests\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaCatalogProductsBatchPostCall(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback _callback) throws ApiException {
@@ -588,13 +541,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;required-field\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;required-field\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;json-format\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 413 </td><td> Request too large. By default, payload up to 16 MB is rejected. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;too-many-requests\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
      </table>
      */
     public BatchAcceptedResponse previewRetailMediaCatalogProductsBatchPost(ProductsCustomBatchRequest productsCustomBatchRequest) throws ApiException {
@@ -612,13 +558,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;required-field\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;required-field\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;json-format\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 413 </td><td> Request too large. By default, payload up to 16 MB is rejected. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;too-many-requests\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<BatchAcceptedResponse> previewRetailMediaCatalogProductsBatchPostWithHttpInfo(ProductsCustomBatchRequest productsCustomBatchRequest) throws ApiException {
@@ -638,13 +577,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;required-field\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;required-field\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;json-format\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 413 </td><td> Request too large. By default, payload up to 16 MB is rejected. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;too-many-requests\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaCatalogProductsBatchPostAsync(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback<BatchAcceptedResponse> _callback) throws ApiException {
@@ -664,13 +596,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-token-is-malformed\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-report-is-expired\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-not-found\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaCatalogProductsBatchReportOperationTokenGetCall(String operationToken, final ApiCallback _callback) throws ApiException {
@@ -739,13 +664,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-token-is-malformed\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-report-is-expired\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-not-found\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
      </table>
      */
     public ReportOkResponse previewRetailMediaCatalogProductsBatchReportOperationTokenGet(String operationToken) throws ApiException {
@@ -763,13 +681,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-token-is-malformed\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-report-is-expired\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-not-found\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ReportOkResponse> previewRetailMediaCatalogProductsBatchReportOperationTokenGetWithHttpInfo(String operationToken) throws ApiException {
@@ -789,13 +700,6 @@ public class CatalogApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-token-is-malformed\&quot;),(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-report-is-expired\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found. Allowed error types and errors: [(type&#x3D;\&quot;validation\&quot;, code&#x3D;\&quot;catalog-operation-not-found\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call previewRetailMediaCatalogProductsBatchReportOperationTokenGetAsync(String operationToken, final ApiCallback<ReportOkResponse> _callback) throws ApiException {
