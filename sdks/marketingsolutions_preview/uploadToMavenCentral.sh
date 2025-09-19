@@ -2,21 +2,42 @@
 
 set -e
 
-## See https://central.sonatype.org/publish/generate-portal-token/ to generate it
-#if [[ -z "$SONATYPE_USERNAME" ]]; then
-#  echo error: empty SONATYPE_USERNAME
-#  exit 1
-#fi
-## See https://central.sonatype.org/publish/generate-portal-token/ to generate it
-#if [[ -z "$SONATYPE_PASSWORD" ]]; then
-#  echo error: empty SONATYPE_PASSWORD
-#  exit 1
-#fi
+# See https://central.sonatype.org/publish/generate-portal-token/ to generate it
+if [[ -z "$SONATYPE_USERNAME" ]]; then
+  echo error: empty SONATYPE_USERNAME
+  exit 1
+fi
+# See https://central.sonatype.org/publish/generate-portal-token/ to generate it
+if [[ -z "$SONATYPE_PASSWORD" ]]; then
+  echo error: empty SONATYPE_PASSWORD
+  exit 1
+fi
 
 VERSION="2024.07.0.250919"
 
 ./gradlew clean build publishMavenJavaPublicationToMavenLocal -x test
 
-find . -type f
+POM_FILE=build/publications/mavenJava/criteo-api-marketingsolutions-sdk-2024.07.0.250919.pom
+mv build/publications/mavenJava/pom-default.xml "$POM_FILE"
+mv build/publications/mavenJava/pom-default.xml.asc "$POM_FILE".asc
+md5sum < "$POM_FILE" | cut -d' ' -f1 > "$POM_FILE".md5
+sha1sum < "$POM_FILE" | cut -d' ' -f1 > "$POM_FILE".sha1
 
-# TODO: find out whether we need to do something to sign the artifacts
+for JAR in build/libs/*jar; do
+  md5sum < "$JAR" | cut -d' ' -f1 > "$JAR".md5
+  sha1sum < "$JAR" | cut -d' ' -f1 > "$JAR".sha1
+done
+
+BUNDLE_DIR=temp_for_upload_to_mvn_central
+rm -rf $BUNDLE_DIR
+GROUPID_TO_PATH=$(echo -n "com.criteo" | tr ':' '/')
+FULL_BUNDLE_DIR="$BUNDLE_DIR/$GROUPID_TO_PATH/2024.07.0.250919"
+mkdir -p "$FULL_BUNDLE_DIR"
+
+cp build/libs/* "$FULL_BUNDLE_DIR"
+cp "$POM_FILE"* "$FULL_BUNDLE_DIR"
+
+pushd "$BUNDLE_DIR"
+BUNDLE=bundle-"$VERSION".tar.gz
+tar zcf "$BUNDLE" *
+
