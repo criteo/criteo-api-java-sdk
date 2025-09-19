@@ -42,3 +42,9 @@ BUNDLE=bundle-"$VERSION".tar.gz
 tar zcf "$BUNDLE" *
 
 find . -type f
+mkdir temp
+cp $BUNDLE temp
+cd temp
+tar xf $BUNDLE
+echo "uncompressed bundle:"
+find . -type f
