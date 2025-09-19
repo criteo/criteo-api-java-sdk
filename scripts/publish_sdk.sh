@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Looping through generated Java SDKs..."
 
 ORIGINAL_TOP_DIR=$(pwd)
@@ -11,10 +13,8 @@ for dir in $ORIGINAL_TOP_DIR/sdks/*;
                 cd "$dir"
                 echo "Publishing SDK to Maven Central for $dir."
                 chmod +x gradlew
-                # Use this instead to only upload to the staging repo
-                #./gradlew publishToSonatype closeSonatypeStagingRepository; gradlew_return_code=$?
-                ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository; gradlew_return_code=$?
-                if (( gradlew_return_code !=0 )); then
+                chmod +x uploadToMavenCentral.sh
+                if ! ./uploadToMavenCentral.sh; then
                     echo "Publication failed"
                     DID_FAIL=true
                 fi
