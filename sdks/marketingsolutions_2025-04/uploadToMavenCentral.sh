@@ -2,16 +2,16 @@
 
 set -e
 
-# See https://central.sonatype.org/publish/generate-portal-token/ to generate it
-if [[ -z "$USER_NAME" ]]; then
-  echo error: empty USER_NAME
-  exit 1
-fi
-# See https://central.sonatype.org/publish/generate-portal-token/ to generate it
-if [[ -z "$PASSWORD" ]]; then
-  echo error: empty PASSWORD
-  exit 1
-fi
+## See https://central.sonatype.org/publish/generate-portal-token/ to generate it
+#if [[ -z "$SONATYPE_USERNAME" ]]; then
+#  echo error: empty SONATYPE_USERNAME
+#  exit 1
+#fi
+## See https://central.sonatype.org/publish/generate-portal-token/ to generate it
+#if [[ -z "$SONATYPE_PASSWORD" ]]; then
+#  echo error: empty SONATYPE_PASSWORD
+#  exit 1
+#fi
 
 VERSION="2024.07.0.250919"
 
