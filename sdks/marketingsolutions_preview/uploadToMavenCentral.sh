@@ -7,6 +7,7 @@ if [[ -z "$SONATYPE_USERNAME" ]]; then
   echo error: empty SONATYPE_USERNAME
   exit 1
 fi
+echo -n $SONATYPE_USERNAME | wc -c
 # See https://central.sonatype.org/publish/generate-portal-token/ to generate it
 if [[ -z "$SONATYPE_PASSWORD" ]]; then
   echo error: empty SONATYPE_PASSWORD
