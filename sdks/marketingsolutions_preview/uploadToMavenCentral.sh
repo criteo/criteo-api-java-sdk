@@ -13,11 +13,11 @@ if [[ -z "$SONATYPE_PASSWORD" ]]; then
   exit 1
 fi
 
-VERSION="2024.07.0.250919"
+VERSION="0.0.250919"
 
 ./gradlew clean build publishMavenJavaPublicationToMavenLocal -x test
 
-POM_FILE=build/publications/mavenJava/criteo-api-marketingsolutions-sdk-2024.07.0.250919.pom
+POM_FILE=build/publications/mavenJava/criteo-api-marketingsolutions-sdk-0.0.250919.pom
 mv build/publications/mavenJava/pom-default.xml "$POM_FILE"
 mv build/publications/mavenJava/pom-default.xml.asc "$POM_FILE".asc
 md5sum < "$POM_FILE" | cut -d' ' -f1 > "$POM_FILE".md5
@@ -31,7 +31,7 @@ done
 BUNDLE_DIR=temp_for_upload_to_mvn_central
 rm -rf $BUNDLE_DIR
 GROUPID_TO_PATH=$(echo -n "com.criteo" | tr ':' '/')
-FULL_BUNDLE_DIR="$BUNDLE_DIR/$GROUPID_TO_PATH/2024.07.0.250919"
+FULL_BUNDLE_DIR="$BUNDLE_DIR/$GROUPID_TO_PATH/0.0.250919"
 mkdir -p "$FULL_BUNDLE_DIR"
 
 cp build/libs/* "$FULL_BUNDLE_DIR"
@@ -41,10 +41,16 @@ pushd "$BUNDLE_DIR"
 BUNDLE=bundle-"$VERSION".tar.gz
 tar zcf "$BUNDLE" *
 
-find . -type f
-mkdir temp
-cp $BUNDLE temp
-cd temp
-tar xf $BUNDLE
-echo "uncompressed bundle:"
-find . -type f
+TOKEN=$(echo -n "$SONATYPE_USERNAME:$SONATYPE_PASSWORD" | base64)
+
+curl \
+  -H "Authorization: Bearer $TOKEN" \
+  --form bundle=@"$BUNDLE" \
+  -XPOST 'https://central.sonatype.com/api/v1/publisher/upload?publishingType=AUTOMATIC'
+
+# To check the status afterwards:
+# ID=<output of previous curl command>
+# curl --request POST \
+#   --header "Authorization: Bearer $TOKEN" \
+#     "https://central.sonatype.com/api/v1/publisher/status?id=$ID" \
+#     | jq
