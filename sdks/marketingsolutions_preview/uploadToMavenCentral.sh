@@ -41,3 +41,4 @@ pushd "$BUNDLE_DIR"
 BUNDLE=bundle-"$VERSION".tar.gz
 tar zcf "$BUNDLE" *
 
+find . -type f
