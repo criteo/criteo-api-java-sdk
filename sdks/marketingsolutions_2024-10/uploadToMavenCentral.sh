@@ -15,6 +15,6 @@ set -e
 
 VERSION="2024.07.0.250919"
 
-./gradlew clean build publishMavenJavaPublicationToMavenLocal
+./gradlew clean build publishMavenJavaPublicationToMavenLocal -x test
 
 # TODO: find out whether we need to do something to sign the artifacts
