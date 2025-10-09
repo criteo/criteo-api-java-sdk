@@ -75,7 +75,7 @@ public class OnSiteRecommendationApi {
     }
 
     /**
-     * Build call for apiV1RecoPost
+     * Build call for searchRecommendedProducts
      * @param onSiteRecoRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -86,7 +86,7 @@ public class OnSiteRecommendationApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call apiV1RecoPostCall(OnSiteRecoRequest onSiteRecoRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchRecommendedProductsCall(OnSiteRecoRequest onSiteRecoRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,8 +132,8 @@ public class OnSiteRecommendationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call apiV1RecoPostValidateBeforeCall(OnSiteRecoRequest onSiteRecoRequest, final ApiCallback _callback) throws ApiException {
-        return apiV1RecoPostCall(onSiteRecoRequest, _callback);
+    private okhttp3.Call searchRecommendedProductsValidateBeforeCall(OnSiteRecoRequest onSiteRecoRequest, final ApiCallback _callback) throws ApiException {
+        return searchRecommendedProductsCall(onSiteRecoRequest, _callback);
 
     }
 
@@ -149,8 +149,8 @@ public class OnSiteRecommendationApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public OnSiteRecoResponse apiV1RecoPost(OnSiteRecoRequest onSiteRecoRequest) throws ApiException {
-        ApiResponse<OnSiteRecoResponse> localVarResp = apiV1RecoPostWithHttpInfo(onSiteRecoRequest);
+    public OnSiteRecoResponse searchRecommendedProducts(OnSiteRecoRequest onSiteRecoRequest) throws ApiException {
+        ApiResponse<OnSiteRecoResponse> localVarResp = searchRecommendedProductsWithHttpInfo(onSiteRecoRequest);
         return localVarResp.getData();
     }
 
@@ -166,8 +166,8 @@ public class OnSiteRecommendationApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OnSiteRecoResponse> apiV1RecoPostWithHttpInfo(OnSiteRecoRequest onSiteRecoRequest) throws ApiException {
-        okhttp3.Call localVarCall = apiV1RecoPostValidateBeforeCall(onSiteRecoRequest, null);
+    public ApiResponse<OnSiteRecoResponse> searchRecommendedProductsWithHttpInfo(OnSiteRecoRequest onSiteRecoRequest) throws ApiException {
+        okhttp3.Call localVarCall = searchRecommendedProductsValidateBeforeCall(onSiteRecoRequest, null);
         Type localVarReturnType = new TypeToken<OnSiteRecoResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -185,9 +185,9 @@ public class OnSiteRecommendationApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call apiV1RecoPostAsync(OnSiteRecoRequest onSiteRecoRequest, final ApiCallback<OnSiteRecoResponse> _callback) throws ApiException {
+    public okhttp3.Call searchRecommendedProductsAsync(OnSiteRecoRequest onSiteRecoRequest, final ApiCallback<OnSiteRecoResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = apiV1RecoPostValidateBeforeCall(onSiteRecoRequest, _callback);
+        okhttp3.Call localVarCall = searchRecommendedProductsValidateBeforeCall(onSiteRecoRequest, _callback);
         Type localVarReturnType = new TypeToken<OnSiteRecoResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

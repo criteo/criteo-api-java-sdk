@@ -59,7 +59,9 @@ public class RmContactListCreateV1 {
     
     IDENTITYLINK("IdentityLink"),
     
-    CUSTOMERID("CustomerId");
+    CUSTOMERID("CustomerId"),
+    
+    PHONENUMBER("PhoneNumber");
 
     private String value;
 

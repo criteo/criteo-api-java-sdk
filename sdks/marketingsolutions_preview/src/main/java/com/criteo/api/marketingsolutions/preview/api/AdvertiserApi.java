@@ -76,7 +76,7 @@ public class AdvertiserApi {
     }
 
     /**
-     * Build call for apiPortfolioGet
+     * Build call for listAdvertisers
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -86,7 +86,7 @@ public class AdvertiserApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call apiPortfolioGetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listAdvertisersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -131,8 +131,8 @@ public class AdvertiserApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call apiPortfolioGetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return apiPortfolioGetCall(_callback);
+    private okhttp3.Call listAdvertisersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return listAdvertisersCall(_callback);
 
     }
 
@@ -147,8 +147,8 @@ public class AdvertiserApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public GetPortfolioResponse apiPortfolioGet() throws ApiException {
-        ApiResponse<GetPortfolioResponse> localVarResp = apiPortfolioGetWithHttpInfo();
+    public GetPortfolioResponse listAdvertisers() throws ApiException {
+        ApiResponse<GetPortfolioResponse> localVarResp = listAdvertisersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class AdvertiserApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetPortfolioResponse> apiPortfolioGetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = apiPortfolioGetValidateBeforeCall(null);
+    public ApiResponse<GetPortfolioResponse> listAdvertisersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listAdvertisersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetPortfolioResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -181,15 +181,15 @@ public class AdvertiserApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call apiPortfolioGetAsync(final ApiCallback<GetPortfolioResponse> _callback) throws ApiException {
+    public okhttp3.Call listAdvertisersAsync(final ApiCallback<GetPortfolioResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = apiPortfolioGetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = listAdvertisersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<GetPortfolioResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getDatasetList
+     * Build call for listDatasetsByAdvertiser
      * @param advertiserId The id of the Advertiser for which Datasets are being retrieved. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -200,7 +200,7 @@ public class AdvertiserApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDatasetListCall(String advertiserId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listDatasetsByAdvertiserCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -246,13 +246,13 @@ public class AdvertiserApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDatasetListValidateBeforeCall(String advertiserId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDatasetsByAdvertiserValidateBeforeCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
-            throw new ApiException("Missing the required parameter 'advertiserId' when calling getDatasetList(Async)");
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling listDatasetsByAdvertiser(Async)");
         }
 
-        return getDatasetListCall(advertiserId, _callback);
+        return listDatasetsByAdvertiserCall(advertiserId, _callback);
 
     }
 
@@ -268,8 +268,8 @@ public class AdvertiserApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public AdvertiserDatasetListResponse getDatasetList(String advertiserId) throws ApiException {
-        ApiResponse<AdvertiserDatasetListResponse> localVarResp = getDatasetListWithHttpInfo(advertiserId);
+    public AdvertiserDatasetListResponse listDatasetsByAdvertiser(String advertiserId) throws ApiException {
+        ApiResponse<AdvertiserDatasetListResponse> localVarResp = listDatasetsByAdvertiserWithHttpInfo(advertiserId);
         return localVarResp.getData();
     }
 
@@ -285,8 +285,8 @@ public class AdvertiserApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdvertiserDatasetListResponse> getDatasetListWithHttpInfo(String advertiserId) throws ApiException {
-        okhttp3.Call localVarCall = getDatasetListValidateBeforeCall(advertiserId, null);
+    public ApiResponse<AdvertiserDatasetListResponse> listDatasetsByAdvertiserWithHttpInfo(String advertiserId) throws ApiException {
+        okhttp3.Call localVarCall = listDatasetsByAdvertiserValidateBeforeCall(advertiserId, null);
         Type localVarReturnType = new TypeToken<AdvertiserDatasetListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -304,9 +304,9 @@ public class AdvertiserApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDatasetListAsync(String advertiserId, final ApiCallback<AdvertiserDatasetListResponse> _callback) throws ApiException {
+    public okhttp3.Call listDatasetsByAdvertiserAsync(String advertiserId, final ApiCallback<AdvertiserDatasetListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDatasetListValidateBeforeCall(advertiserId, _callback);
+        okhttp3.Call localVarCall = listDatasetsByAdvertiserValidateBeforeCall(advertiserId, _callback);
         Type localVarReturnType = new TypeToken<AdvertiserDatasetListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

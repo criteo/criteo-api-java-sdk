@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.v2024_07.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2024_07.model.ExternalCommonLineItem;
+import com.criteo.api.retailmedia.v2024_07.model.CommonLineItem;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,13 +46,13 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2024_07.JSON;
 
 /**
- * Data model for a Resource
+ * A class that represents a domain entity exposed by an API
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResourceOfCommonLineItem {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ExternalCommonLineItem attributes;
+  private CommonLineItem attributes;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -65,7 +65,7 @@ public class ResourceOfCommonLineItem {
   public ResourceOfCommonLineItem() {
   }
 
-  public ResourceOfCommonLineItem attributes(ExternalCommonLineItem attributes) {
+  public ResourceOfCommonLineItem attributes(CommonLineItem attributes) {
     
     this.attributes = attributes;
     return this;
@@ -77,12 +77,12 @@ public class ResourceOfCommonLineItem {
   **/
   @javax.annotation.Nullable
 
-  public ExternalCommonLineItem getAttributes() {
+  public CommonLineItem getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(ExternalCommonLineItem attributes) {
+  public void setAttributes(CommonLineItem attributes) {
     this.attributes = attributes;
   }
 
@@ -259,7 +259,7 @@ public class ResourceOfCommonLineItem {
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ExternalCommonLineItem.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        CommonLineItem.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

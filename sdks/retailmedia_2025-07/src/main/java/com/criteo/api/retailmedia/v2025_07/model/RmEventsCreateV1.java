@@ -63,8 +63,6 @@ public class RmEventsCreateV1 {
    */
   @JsonAdapter(LookbackDaysEnum.Adapter.class)
   public enum LookbackDaysEnum {
-    UNKNOWN("Unknown"),
-    
     LAST7DAYS("Last7Days"),
     
     LAST14DAYS("Last14Days"),
@@ -138,8 +136,6 @@ public class RmEventsCreateV1 {
    */
   @JsonAdapter(ShopperActivityEnum.Adapter.class)
   public enum ShopperActivityEnum {
-    UNKNOWN("Unknown"),
-    
     VIEW("View"),
     
     BUY("Buy"),

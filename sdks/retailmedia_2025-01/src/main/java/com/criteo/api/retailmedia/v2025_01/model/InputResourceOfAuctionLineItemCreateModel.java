@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.v2025_01.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2025_01.model.ExternalAuctionLineItemCreateModel;
+import com.criteo.api.retailmedia.v2025_01.model.AuctionLineItemCreateModel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,7 +51,7 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
 public class InputResourceOfAuctionLineItemCreateModel {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ExternalAuctionLineItemCreateModel attributes;
+  private AuctionLineItemCreateModel attributes;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -60,7 +60,7 @@ public class InputResourceOfAuctionLineItemCreateModel {
   public InputResourceOfAuctionLineItemCreateModel() {
   }
 
-  public InputResourceOfAuctionLineItemCreateModel attributes(ExternalAuctionLineItemCreateModel attributes) {
+  public InputResourceOfAuctionLineItemCreateModel attributes(AuctionLineItemCreateModel attributes) {
     
     this.attributes = attributes;
     return this;
@@ -72,12 +72,12 @@ public class InputResourceOfAuctionLineItemCreateModel {
   **/
   @javax.annotation.Nullable
 
-  public ExternalAuctionLineItemCreateModel getAttributes() {
+  public AuctionLineItemCreateModel getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(ExternalAuctionLineItemCreateModel attributes) {
+  public void setAttributes(AuctionLineItemCreateModel attributes) {
     this.attributes = attributes;
   }
 
@@ -218,7 +218,7 @@ public class InputResourceOfAuctionLineItemCreateModel {
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ExternalAuctionLineItemCreateModel.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        AuctionLineItemCreateModel.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

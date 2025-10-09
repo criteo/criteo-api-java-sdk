@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2025_07.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for a single value.
+ * A value resource exposed by the API.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ValueResourceOfCampaignBudgetOverrides {
@@ -90,7 +90,7 @@ public class ValueResourceOfCampaignBudgetOverrides {
   }
 
    /**
-   * Get type
+   * Type of the resource.
    * @return type
   **/
   @javax.annotation.Nullable

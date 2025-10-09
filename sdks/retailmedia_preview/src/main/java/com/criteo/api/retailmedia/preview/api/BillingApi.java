@@ -76,7 +76,7 @@ public class BillingApi {
     }
 
     /**
-     * Build call for previewRetailMediaBillingPartnerReportPost
+     * Build call for createPartnerBillingReportRequestV1
      * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -87,7 +87,7 @@ public class BillingApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaBillingPartnerReportPostCall(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createPartnerBillingReportRequestV1Call(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -133,8 +133,8 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaBillingPartnerReportPostValidateBeforeCall(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback _callback) throws ApiException {
-        return previewRetailMediaBillingPartnerReportPostCall(valueResourceInputPartnerBillingReportRequestV1, _callback);
+    private okhttp3.Call createPartnerBillingReportRequestV1ValidateBeforeCall(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback _callback) throws ApiException {
+        return createPartnerBillingReportRequestV1Call(valueResourceInputPartnerBillingReportRequestV1, _callback);
 
     }
 
@@ -150,8 +150,8 @@ public class BillingApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceOutcomePartnerBillingReportStatusV1 previewRetailMediaBillingPartnerReportPost(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1) throws ApiException {
-        ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> localVarResp = previewRetailMediaBillingPartnerReportPostWithHttpInfo(valueResourceInputPartnerBillingReportRequestV1);
+    public EntityResourceOutcomePartnerBillingReportStatusV1 createPartnerBillingReportRequestV1(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1) throws ApiException {
+        ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> localVarResp = createPartnerBillingReportRequestV1WithHttpInfo(valueResourceInputPartnerBillingReportRequestV1);
         return localVarResp.getData();
     }
 
@@ -167,8 +167,8 @@ public class BillingApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> previewRetailMediaBillingPartnerReportPostWithHttpInfo(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaBillingPartnerReportPostValidateBeforeCall(valueResourceInputPartnerBillingReportRequestV1, null);
+    public ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> createPartnerBillingReportRequestV1WithHttpInfo(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1) throws ApiException {
+        okhttp3.Call localVarCall = createPartnerBillingReportRequestV1ValidateBeforeCall(valueResourceInputPartnerBillingReportRequestV1, null);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomePartnerBillingReportStatusV1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -186,15 +186,15 @@ public class BillingApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaBillingPartnerReportPostAsync(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback<EntityResourceOutcomePartnerBillingReportStatusV1> _callback) throws ApiException {
+    public okhttp3.Call createPartnerBillingReportRequestV1Async(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback<EntityResourceOutcomePartnerBillingReportStatusV1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = previewRetailMediaBillingPartnerReportPostValidateBeforeCall(valueResourceInputPartnerBillingReportRequestV1, _callback);
+        okhttp3.Call localVarCall = createPartnerBillingReportRequestV1ValidateBeforeCall(valueResourceInputPartnerBillingReportRequestV1, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomePartnerBillingReportStatusV1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for previewRetailMediaBillingPartnerReportRequestIdOutputGet
+     * Build call for getPartnerBillingReportOutputV1
      * @param requestId The id of a Partner Billing Report request. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -205,7 +205,7 @@ public class BillingApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaBillingPartnerReportRequestIdOutputGetCall(String requestId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPartnerBillingReportOutputV1Call(String requestId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -252,13 +252,13 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaBillingPartnerReportRequestIdOutputGetValidateBeforeCall(String requestId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPartnerBillingReportOutputV1ValidateBeforeCall(String requestId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'requestId' is set
         if (requestId == null) {
-            throw new ApiException("Missing the required parameter 'requestId' when calling previewRetailMediaBillingPartnerReportRequestIdOutputGet(Async)");
+            throw new ApiException("Missing the required parameter 'requestId' when calling getPartnerBillingReportOutputV1(Async)");
         }
 
-        return previewRetailMediaBillingPartnerReportRequestIdOutputGetCall(requestId, _callback);
+        return getPartnerBillingReportOutputV1Call(requestId, _callback);
 
     }
 
@@ -274,8 +274,8 @@ public class BillingApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public File previewRetailMediaBillingPartnerReportRequestIdOutputGet(String requestId) throws ApiException {
-        ApiResponse<File> localVarResp = previewRetailMediaBillingPartnerReportRequestIdOutputGetWithHttpInfo(requestId);
+    public File getPartnerBillingReportOutputV1(String requestId) throws ApiException {
+        ApiResponse<File> localVarResp = getPartnerBillingReportOutputV1WithHttpInfo(requestId);
         return localVarResp.getData();
     }
 
@@ -291,8 +291,8 @@ public class BillingApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<File> previewRetailMediaBillingPartnerReportRequestIdOutputGetWithHttpInfo(String requestId) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaBillingPartnerReportRequestIdOutputGetValidateBeforeCall(requestId, null);
+    public ApiResponse<File> getPartnerBillingReportOutputV1WithHttpInfo(String requestId) throws ApiException {
+        okhttp3.Call localVarCall = getPartnerBillingReportOutputV1ValidateBeforeCall(requestId, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -310,15 +310,15 @@ public class BillingApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaBillingPartnerReportRequestIdOutputGetAsync(String requestId, final ApiCallback<File> _callback) throws ApiException {
+    public okhttp3.Call getPartnerBillingReportOutputV1Async(String requestId, final ApiCallback<File> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = previewRetailMediaBillingPartnerReportRequestIdOutputGetValidateBeforeCall(requestId, _callback);
+        okhttp3.Call localVarCall = getPartnerBillingReportOutputV1ValidateBeforeCall(requestId, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for previewRetailMediaBillingPartnerReportRequestIdStatusGet
+     * Build call for getPartnerBillingReportStatusV1
      * @param requestId The id of a Partner Billing Report request. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -329,7 +329,7 @@ public class BillingApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaBillingPartnerReportRequestIdStatusGetCall(String requestId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPartnerBillingReportStatusV1Call(String requestId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -375,13 +375,13 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaBillingPartnerReportRequestIdStatusGetValidateBeforeCall(String requestId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPartnerBillingReportStatusV1ValidateBeforeCall(String requestId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'requestId' is set
         if (requestId == null) {
-            throw new ApiException("Missing the required parameter 'requestId' when calling previewRetailMediaBillingPartnerReportRequestIdStatusGet(Async)");
+            throw new ApiException("Missing the required parameter 'requestId' when calling getPartnerBillingReportStatusV1(Async)");
         }
 
-        return previewRetailMediaBillingPartnerReportRequestIdStatusGetCall(requestId, _callback);
+        return getPartnerBillingReportStatusV1Call(requestId, _callback);
 
     }
 
@@ -397,8 +397,8 @@ public class BillingApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceOutcomePartnerBillingReportStatusV1 previewRetailMediaBillingPartnerReportRequestIdStatusGet(String requestId) throws ApiException {
-        ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> localVarResp = previewRetailMediaBillingPartnerReportRequestIdStatusGetWithHttpInfo(requestId);
+    public EntityResourceOutcomePartnerBillingReportStatusV1 getPartnerBillingReportStatusV1(String requestId) throws ApiException {
+        ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> localVarResp = getPartnerBillingReportStatusV1WithHttpInfo(requestId);
         return localVarResp.getData();
     }
 
@@ -414,8 +414,8 @@ public class BillingApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> previewRetailMediaBillingPartnerReportRequestIdStatusGetWithHttpInfo(String requestId) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaBillingPartnerReportRequestIdStatusGetValidateBeforeCall(requestId, null);
+    public ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> getPartnerBillingReportStatusV1WithHttpInfo(String requestId) throws ApiException {
+        okhttp3.Call localVarCall = getPartnerBillingReportStatusV1ValidateBeforeCall(requestId, null);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomePartnerBillingReportStatusV1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -433,9 +433,9 @@ public class BillingApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaBillingPartnerReportRequestIdStatusGetAsync(String requestId, final ApiCallback<EntityResourceOutcomePartnerBillingReportStatusV1> _callback) throws ApiException {
+    public okhttp3.Call getPartnerBillingReportStatusV1Async(String requestId, final ApiCallback<EntityResourceOutcomePartnerBillingReportStatusV1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = previewRetailMediaBillingPartnerReportRequestIdStatusGetValidateBeforeCall(requestId, _callback);
+        okhttp3.Call localVarCall = getPartnerBillingReportStatusV1ValidateBeforeCall(requestId, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomePartnerBillingReportStatusV1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

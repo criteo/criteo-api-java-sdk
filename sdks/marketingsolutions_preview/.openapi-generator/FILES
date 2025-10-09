@@ -42,6 +42,7 @@ docs/AdSetTargetingVideoPositioningSetResultResponse.md
 docs/AdWrite.md
 docs/AdaptiveAttributes.md
 docs/AdaptiveColors.md
+docs/AdaptiveReadAttributes.md
 docs/AdaptiveWriteAttributes.md
 docs/AdvertiserApi.md
 docs/AdvertiserDatasetListResponse.md
@@ -165,6 +166,7 @@ docs/CreateProductFilterRequest.md
 docs/CreateProductSetRequest.md
 docs/Creative.md
 docs/CreativeApi.md
+docs/CreativeRead.md
 docs/CreativeWrite.md
 docs/CriteoApiError.md
 docs/CriteoApiWarning.md
@@ -314,7 +316,7 @@ docs/RequestsAdSetId.md
 docs/RequestsPatchAdSetV24Q3.md
 docs/ResourceCollectionOutcomeOfAd.md
 docs/ResourceCollectionOutcomeOfCoupon.md
-docs/ResourceCollectionOutcomeOfCreative.md
+docs/ResourceCollectionOutcomeOfCreativeRead.md
 docs/ResourceCollectionOutcomeOfProductSet.md
 docs/ResourceInputOfAdWrite.md
 docs/ResourceInputOfCreateCoupon.md
@@ -326,6 +328,7 @@ docs/ResourceOfCoupon.md
 docs/ResourceOfCouponSupportedSizes.md
 docs/ResourceOfCreateCoupon.md
 docs/ResourceOfCreative.md
+docs/ResourceOfCreativeRead.md
 docs/ResourceOfCreativeWrite.md
 docs/ResourceOfProductSet.md
 docs/ResourceOfUpdateCoupon.md
@@ -454,6 +457,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingVide
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdWrite.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdaptiveAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdaptiveColors.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/AdaptiveReadAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdaptiveWriteAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdvertiserDatasetListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AlgebraNodeV1.java
@@ -571,6 +575,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateImageSlide.j
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateProductFilterRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateProductSetRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Creative.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreativeRead.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreativeWrite.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CriteoApiError.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CriteoApiWarning.java
@@ -717,7 +722,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/RequestsAdSetId.ja
 src/main/java/com/criteo/api/marketingsolutions/preview/model/RequestsPatchAdSetV24Q3.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceCollectionOutcomeOfAd.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceCollectionOutcomeOfCoupon.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceCollectionOutcomeOfCreative.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceCollectionOutcomeOfCreativeRead.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceCollectionOutcomeOfProductSet.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceInputOfAdWrite.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceInputOfCreateCoupon.java
@@ -729,6 +734,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceOfCoupon.j
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceOfCouponSupportedSizes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceOfCreateCoupon.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceOfCreative.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceOfCreativeRead.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceOfCreativeWrite.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceOfProductSet.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceOfUpdateCoupon.java

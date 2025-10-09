@@ -8,7 +8,7 @@ A class that represents a domain entity exposed by an API
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**ExternalLineItemBidMultipliersV2**](ExternalLineItemBidMultipliersV2.md) |  |  [optional] |
+|**attributes** | [**LineItemBidMultipliersV2**](LineItemBidMultipliersV2.md) |  |  [optional] |
 |**id** | **String** | Id of the entity |  [optional] |
 |**type** | **String** | Canonical type name of the entity |  [optional] |
 

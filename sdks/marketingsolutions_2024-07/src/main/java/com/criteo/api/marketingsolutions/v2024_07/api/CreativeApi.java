@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import com.criteo.api.marketingsolutions.v2024_07.model.ResourceCollectionOutcomeOfAd;
 import com.criteo.api.marketingsolutions.v2024_07.model.ResourceCollectionOutcomeOfCoupon;
-import com.criteo.api.marketingsolutions.v2024_07.model.ResourceCollectionOutcomeOfCreative;
+import com.criteo.api.marketingsolutions.v2024_07.model.ResourceCollectionOutcomeOfCreativeRead;
 import com.criteo.api.marketingsolutions.v2024_07.model.ResourceInputOfAdWrite;
 import com.criteo.api.marketingsolutions.v2024_07.model.ResourceInputOfCreateCoupon;
 import com.criteo.api.marketingsolutions.v2024_07.model.ResourceInputOfCreativeWrite;
@@ -94,9 +94,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created Ad is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createAdvertiserAdCall(String advertiserId, ResourceInputOfAdWrite resourceInputOfAdWrite, final ApiCallback _callback) throws ApiException {
@@ -126,9 +123,7 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -136,10 +131,7 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -177,9 +169,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created Ad is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcomeOfAd createAdvertiserAd(String advertiserId, ResourceInputOfAdWrite resourceInputOfAdWrite) throws ApiException {
@@ -198,9 +187,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created Ad is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcomeOfAd> createAdvertiserAdWithHttpInfo(String advertiserId, ResourceInputOfAdWrite resourceInputOfAdWrite) throws ApiException {
@@ -221,9 +207,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created Ad is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createAdvertiserAdAsync(String advertiserId, ResourceInputOfAdWrite resourceInputOfAdWrite, final ApiCallback<ResourceOutcomeOfAd> _callback) throws ApiException {
@@ -244,8 +227,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createAdvertiserCouponCall(String advertiserId, ResourceInputOfCreateCoupon resourceInputOfCreateCoupon, final ApiCallback _callback) throws ApiException {
@@ -275,9 +256,7 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -285,10 +264,7 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -326,8 +302,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcomeOfCoupon createAdvertiserCoupon(String advertiserId, ResourceInputOfCreateCoupon resourceInputOfCreateCoupon) throws ApiException {
@@ -346,8 +320,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcomeOfCoupon> createAdvertiserCouponWithHttpInfo(String advertiserId, ResourceInputOfCreateCoupon resourceInputOfCreateCoupon) throws ApiException {
@@ -368,8 +340,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createAdvertiserCouponAsync(String advertiserId, ResourceInputOfCreateCoupon resourceInputOfCreateCoupon, final ApiCallback<ResourceOutcomeOfCoupon> _callback) throws ApiException {
@@ -390,9 +360,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createAdvertiserCreativeCall(String advertiserId, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite, final ApiCallback _callback) throws ApiException {
@@ -422,9 +389,7 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -432,10 +397,7 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -473,9 +435,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcomeOfCreative createAdvertiserCreative(String advertiserId, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite) throws ApiException {
@@ -494,9 +453,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcomeOfCreative> createAdvertiserCreativeWithHttpInfo(String advertiserId, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite) throws ApiException {
@@ -517,9 +473,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The created creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createAdvertiserCreativeAsync(String advertiserId, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite, final ApiCallback<ResourceOutcomeOfCreative> _callback) throws ApiException {
@@ -539,9 +492,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The ad was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteAdCall(Integer id, final ApiCallback _callback) throws ApiException {
@@ -608,9 +558,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The ad was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public void deleteAd(Integer id) throws ApiException {
@@ -627,9 +574,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The ad was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteAdWithHttpInfo(Integer id) throws ApiException {
@@ -648,9 +592,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The ad was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteAdAsync(Integer id, final ApiCallback<Void> _callback) throws ApiException {
@@ -670,8 +611,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The Coupon was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteAdvertiserCouponCall(String advertiserId, String id, final ApiCallback _callback) throws ApiException {
@@ -745,8 +684,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The Coupon was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public void deleteAdvertiserCoupon(String advertiserId, String id) throws ApiException {
@@ -764,8 +701,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The Coupon was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteAdvertiserCouponWithHttpInfo(String advertiserId, String id) throws ApiException {
@@ -785,8 +720,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The Coupon was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteAdvertiserCouponAsync(String advertiserId, String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -805,9 +738,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The creative was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCreativeCall(String id, final ApiCallback _callback) throws ApiException {
@@ -874,9 +804,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The creative was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public void deleteCreative(String id) throws ApiException {
@@ -893,9 +820,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The creative was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteCreativeWithHttpInfo(String id) throws ApiException {
@@ -914,9 +838,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> The creative was deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCreativeAsync(String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -937,8 +858,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call editAdvertiserCouponCall(String advertiserId, String id, ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon, final ApiCallback _callback) throws ApiException {
@@ -969,9 +888,7 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -979,10 +896,7 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1026,8 +940,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcomeOfCoupon editAdvertiserCoupon(String advertiserId, String id, ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon) throws ApiException {
@@ -1047,8 +959,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcomeOfCoupon> editAdvertiserCouponWithHttpInfo(String advertiserId, String id, ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon) throws ApiException {
@@ -1070,8 +980,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call editAdvertiserCouponAsync(String advertiserId, String id, ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon, final ApiCallback<ResourceOutcomeOfCoupon> _callback) throws ApiException {
@@ -1092,9 +1000,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call editCreativeCall(String id, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite, final ApiCallback _callback) throws ApiException {
@@ -1124,9 +1029,7 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1134,10 +1037,7 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1175,9 +1075,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcomeOfCreative editCreative(String id, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite) throws ApiException {
@@ -1196,9 +1093,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcomeOfCreative> editCreativeWithHttpInfo(String id, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite) throws ApiException {
@@ -1219,9 +1113,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call editCreativeAsync(String id, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite, final ApiCallback<ResourceOutcomeOfCreative> _callback) throws ApiException {
@@ -1243,8 +1134,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The preview HTML of a specific Creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call generateCreativePreviewCall(String id, Integer height, Integer width, final ApiCallback _callback) throws ApiException {
@@ -1283,8 +1172,7 @@ public class CreativeApi {
 
         final String[] localVarAccepts = {
             "text/html",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1325,8 +1213,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The preview HTML of a specific Creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public String generateCreativePreview(String id, Integer height, Integer width) throws ApiException {
@@ -1346,8 +1232,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The preview HTML of a specific Creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<String> generateCreativePreviewWithHttpInfo(String id, Integer height, Integer width) throws ApiException {
@@ -1369,8 +1253,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The preview HTML of a specific Creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call generateCreativePreviewAsync(String id, Integer height, Integer width, final ApiCallback<String> _callback) throws ApiException {
@@ -1390,9 +1272,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found ad is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdCall(Integer id, final ApiCallback _callback) throws ApiException {
@@ -1422,9 +1301,7 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1463,9 +1340,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found ad is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcomeOfAd getAd(Integer id) throws ApiException {
@@ -1483,9 +1357,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found ad is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcomeOfAd> getAdWithHttpInfo(Integer id) throws ApiException {
@@ -1505,9 +1376,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found ad is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdAsync(Integer id, final ApiCallback<ResourceOutcomeOfAd> _callback) throws ApiException {
@@ -1529,9 +1397,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of self-services Ads is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserAdsCall(String advertiserId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
@@ -1569,9 +1434,7 @@ public class CreativeApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1612,9 +1475,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of self-services Ads is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceCollectionOutcomeOfAd getAdvertiserAds(String advertiserId, Integer limit, Integer offset) throws ApiException {
@@ -1634,9 +1494,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of self-services Ads is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceCollectionOutcomeOfAd> getAdvertiserAdsWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
@@ -1658,9 +1515,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of self-services Ads is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserAdsAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<ResourceCollectionOutcomeOfAd> _callback) throws ApiException {
@@ -1681,8 +1535,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCouponCall(String advertiserId, String id, final ApiCallback _callback) throws ApiException {
@@ -1713,9 +1565,7 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1760,8 +1610,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcomeOfCoupon getAdvertiserCoupon(String advertiserId, String id) throws ApiException {
@@ -1780,8 +1628,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcomeOfCoupon> getAdvertiserCouponWithHttpInfo(String advertiserId, String id) throws ApiException {
@@ -1802,8 +1648,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCouponAsync(String advertiserId, String id, final ApiCallback<ResourceOutcomeOfCoupon> _callback) throws ApiException {
@@ -1826,8 +1670,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The preview HTML of a specific Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCouponPreviewCall(String advertiserId, String id, Integer height, Integer width, final ApiCallback _callback) throws ApiException {
@@ -1867,8 +1709,7 @@ public class CreativeApi {
 
         final String[] localVarAccepts = {
             "text/html",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1915,8 +1756,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The preview HTML of a specific Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public String getAdvertiserCouponPreview(String advertiserId, String id, Integer height, Integer width) throws ApiException {
@@ -1937,8 +1776,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The preview HTML of a specific Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<String> getAdvertiserCouponPreviewWithHttpInfo(String advertiserId, String id, Integer height, Integer width) throws ApiException {
@@ -1961,8 +1798,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The preview HTML of a specific Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCouponPreviewAsync(String advertiserId, String id, Integer height, Integer width, final ApiCallback<String> _callback) throws ApiException {
@@ -1983,8 +1818,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of Coupon supported sizes is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCouponSupportedSizesCall(String advertiserId, String adSetId, final ApiCallback _callback) throws ApiException {
@@ -2018,9 +1851,7 @@ public class CreativeApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2060,8 +1891,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of Coupon supported sizes is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcomeOfCouponSupportedSizes getAdvertiserCouponSupportedSizes(String advertiserId, String adSetId) throws ApiException {
@@ -2080,8 +1909,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of Coupon supported sizes is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcomeOfCouponSupportedSizes> getAdvertiserCouponSupportedSizesWithHttpInfo(String advertiserId, String adSetId) throws ApiException {
@@ -2102,8 +1929,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of Coupon supported sizes is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCouponSupportedSizesAsync(String advertiserId, String adSetId, final ApiCallback<ResourceOutcomeOfCouponSupportedSizes> _callback) throws ApiException {
@@ -2125,8 +1950,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of self-services Coupons is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCouponsCall(String advertiserId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
@@ -2164,9 +1987,7 @@ public class CreativeApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2207,8 +2028,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of self-services Coupons is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceCollectionOutcomeOfCoupon getAdvertiserCoupons(String advertiserId, Integer limit, Integer offset) throws ApiException {
@@ -2228,8 +2047,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of self-services Coupons is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceCollectionOutcomeOfCoupon> getAdvertiserCouponsWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
@@ -2251,8 +2068,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The list of self-services Coupons is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCouponsAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<ResourceCollectionOutcomeOfCoupon> _callback) throws ApiException {
@@ -2273,10 +2088,7 @@ public class CreativeApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCreativesCall(String advertiserId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
@@ -2314,9 +2126,7 @@ public class CreativeApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2351,19 +2161,16 @@ public class CreativeApi {
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)
-     * @return ResourceCollectionOutcomeOfCreative
+     * @return ResourceCollectionOutcomeOfCreativeRead
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
      </table>
      */
-    public ResourceCollectionOutcomeOfCreative getAdvertiserCreatives(String advertiserId, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<ResourceCollectionOutcomeOfCreative> localVarResp = getAdvertiserCreativesWithHttpInfo(advertiserId, limit, offset);
+    public ResourceCollectionOutcomeOfCreativeRead getAdvertiserCreatives(String advertiserId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<ResourceCollectionOutcomeOfCreativeRead> localVarResp = getAdvertiserCreativesWithHttpInfo(advertiserId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -2373,20 +2180,17 @@ public class CreativeApi {
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)
-     * @return ApiResponse&lt;ResourceCollectionOutcomeOfCreative&gt;
+     * @return ApiResponse&lt;ResourceCollectionOutcomeOfCreativeRead&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResourceCollectionOutcomeOfCreative> getAdvertiserCreativesWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<ResourceCollectionOutcomeOfCreativeRead> getAdvertiserCreativesWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getAdvertiserCreativesValidateBeforeCall(advertiserId, limit, offset, null);
-        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCreative>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCreativeRead>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2402,16 +2206,13 @@ public class CreativeApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdvertiserCreativesAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<ResourceCollectionOutcomeOfCreative> _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserCreativesAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<ResourceCollectionOutcomeOfCreativeRead> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdvertiserCreativesValidateBeforeCall(advertiserId, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCreative>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCreativeRead>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2425,9 +2226,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCreativeCall(String id, final ApiCallback _callback) throws ApiException {
@@ -2457,9 +2255,7 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2498,9 +2294,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceOutcomeOfCreative getCreative(String id) throws ApiException {
@@ -2518,9 +2311,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceOutcomeOfCreative> getCreativeWithHttpInfo(String id) throws ApiException {
@@ -2540,9 +2330,6 @@ public class CreativeApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The found creative is returned. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCreativeAsync(String id, final ApiCallback<ResourceOutcomeOfCreative> _callback) throws ApiException {

@@ -4,13 +4,13 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**apiPortfolioGet**](AdvertiserApi.md#apiPortfolioGet) | **GET** /2025-07/advertisers/me |  |
+| [**listAdvertisers**](AdvertiserApi.md#listAdvertisers) | **GET** /2025-07/advertisers/me |  |
 
 
 
-## apiPortfolioGet
+## listAdvertisers
 
-> GetPortfolioResponse apiPortfolioGet()
+> GetPortfolioResponse listAdvertisers()
 
 
 
@@ -56,10 +56,10 @@ public class Example {
 
         AdvertiserApi apiInstance = new AdvertiserApi(defaultClient);
         try {
-            GetPortfolioResponse result = apiInstance.apiPortfolioGet();
+            GetPortfolioResponse result = apiInstance.listAdvertisers();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AdvertiserApi#apiPortfolioGet");
+            System.err.println("Exception when calling AdvertiserApi#listAdvertisers");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -84,12 +84,11 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **401** | Unauthorized |  -  |
 

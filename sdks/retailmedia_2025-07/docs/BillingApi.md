@@ -4,15 +4,15 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**call07retailMediaBillingPartnerReportPost**](BillingApi.md#call07retailMediaBillingPartnerReportPost) | **POST** /2025-07/retail-media/billing/partner-report |  |
-| [**call07retailMediaBillingPartnerReportRequestIdOutputGet**](BillingApi.md#call07retailMediaBillingPartnerReportRequestIdOutputGet) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/output |  |
-| [**call07retailMediaBillingPartnerReportRequestIdStatusGet**](BillingApi.md#call07retailMediaBillingPartnerReportRequestIdStatusGet) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/status |  |
+| [**createPartnerBillingReportRequestV1**](BillingApi.md#createPartnerBillingReportRequestV1) | **POST** /2025-07/retail-media/billing/partner-report |  |
+| [**getPartnerBillingReportOutputV1**](BillingApi.md#getPartnerBillingReportOutputV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/output |  |
+| [**getPartnerBillingReportStatusV1**](BillingApi.md#getPartnerBillingReportStatusV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/status |  |
 
 
 
-## call07retailMediaBillingPartnerReportPost
+## createPartnerBillingReportRequestV1
 
-> EntityResourceOutcomePartnerBillingReportStatusV1 call07retailMediaBillingPartnerReportPost(valueResourceInputPartnerBillingReportRequestV1)
+> EntityResourceOutcomePartnerBillingReportStatusV1 createPartnerBillingReportRequestV1(valueResourceInputPartnerBillingReportRequestV1)
 
 
 
@@ -59,10 +59,10 @@ public class Example {
         BillingApi apiInstance = new BillingApi(defaultClient);
         ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1 = new ValueResourceInputPartnerBillingReportRequestV1(); // ValueResourceInputPartnerBillingReportRequestV1 | Partner Billing Report request object.
         try {
-            EntityResourceOutcomePartnerBillingReportStatusV1 result = apiInstance.call07retailMediaBillingPartnerReportPost(valueResourceInputPartnerBillingReportRequestV1);
+            EntityResourceOutcomePartnerBillingReportStatusV1 result = apiInstance.createPartnerBillingReportRequestV1(valueResourceInputPartnerBillingReportRequestV1);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BillingApi#call07retailMediaBillingPartnerReportPost");
+            System.err.println("Exception when calling BillingApi#createPartnerBillingReportRequestV1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -90,20 +90,18 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **403** | Forbidden |  -  |
 
 
-## call07retailMediaBillingPartnerReportRequestIdOutputGet
+## getPartnerBillingReportOutputV1
 
-> File call07retailMediaBillingPartnerReportRequestIdOutputGet(requestId)
+> File getPartnerBillingReportOutputV1(requestId)
 
 
 
@@ -150,10 +148,10 @@ public class Example {
         BillingApi apiInstance = new BillingApi(defaultClient);
         String requestId = "requestId_example"; // String | The id of a Partner Billing Report request.
         try {
-            File result = apiInstance.call07retailMediaBillingPartnerReportRequestIdOutputGet(requestId);
+            File result = apiInstance.getPartnerBillingReportOutputV1(requestId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BillingApi#call07retailMediaBillingPartnerReportRequestIdOutputGet");
+            System.err.println("Exception when calling BillingApi#getPartnerBillingReportOutputV1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -188,12 +186,11 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **403** | Forbidden |  -  |
 
 
-## call07retailMediaBillingPartnerReportRequestIdStatusGet
+## getPartnerBillingReportStatusV1
 
-> EntityResourceOutcomePartnerBillingReportStatusV1 call07retailMediaBillingPartnerReportRequestIdStatusGet(requestId)
+> EntityResourceOutcomePartnerBillingReportStatusV1 getPartnerBillingReportStatusV1(requestId)
 
 
 
@@ -240,10 +237,10 @@ public class Example {
         BillingApi apiInstance = new BillingApi(defaultClient);
         String requestId = "requestId_example"; // String | The id of a Partner Billing Report request.
         try {
-            EntityResourceOutcomePartnerBillingReportStatusV1 result = apiInstance.call07retailMediaBillingPartnerReportRequestIdStatusGet(requestId);
+            EntityResourceOutcomePartnerBillingReportStatusV1 result = apiInstance.getPartnerBillingReportStatusV1(requestId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BillingApi#call07retailMediaBillingPartnerReportRequestIdStatusGet");
+            System.err.println("Exception when calling BillingApi#getPartnerBillingReportStatusV1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -271,12 +268,11 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **403** | Forbidden |  -  |
 

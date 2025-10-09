@@ -4,15 +4,15 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**previewRetailMediaBillingPartnerReportPost**](BillingApi.md#previewRetailMediaBillingPartnerReportPost) | **POST** /preview/retail-media/billing/partner-report |  |
-| [**previewRetailMediaBillingPartnerReportRequestIdOutputGet**](BillingApi.md#previewRetailMediaBillingPartnerReportRequestIdOutputGet) | **GET** /preview/retail-media/billing/partner-report/{requestId}/output |  |
-| [**previewRetailMediaBillingPartnerReportRequestIdStatusGet**](BillingApi.md#previewRetailMediaBillingPartnerReportRequestIdStatusGet) | **GET** /preview/retail-media/billing/partner-report/{requestId}/status |  |
+| [**createPartnerBillingReportRequestV1**](BillingApi.md#createPartnerBillingReportRequestV1) | **POST** /preview/retail-media/billing/partner-report |  |
+| [**getPartnerBillingReportOutputV1**](BillingApi.md#getPartnerBillingReportOutputV1) | **GET** /preview/retail-media/billing/partner-report/{requestId}/output |  |
+| [**getPartnerBillingReportStatusV1**](BillingApi.md#getPartnerBillingReportStatusV1) | **GET** /preview/retail-media/billing/partner-report/{requestId}/status |  |
 
 
 
-## previewRetailMediaBillingPartnerReportPost
+## createPartnerBillingReportRequestV1
 
-> EntityResourceOutcomePartnerBillingReportStatusV1 previewRetailMediaBillingPartnerReportPost(valueResourceInputPartnerBillingReportRequestV1)
+> EntityResourceOutcomePartnerBillingReportStatusV1 createPartnerBillingReportRequestV1(valueResourceInputPartnerBillingReportRequestV1)
 
 
 
@@ -59,10 +59,10 @@ public class Example {
         BillingApi apiInstance = new BillingApi(defaultClient);
         ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1 = new ValueResourceInputPartnerBillingReportRequestV1(); // ValueResourceInputPartnerBillingReportRequestV1 | Partner Billing Report request object.
         try {
-            EntityResourceOutcomePartnerBillingReportStatusV1 result = apiInstance.previewRetailMediaBillingPartnerReportPost(valueResourceInputPartnerBillingReportRequestV1);
+            EntityResourceOutcomePartnerBillingReportStatusV1 result = apiInstance.createPartnerBillingReportRequestV1(valueResourceInputPartnerBillingReportRequestV1);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BillingApi#previewRetailMediaBillingPartnerReportPost");
+            System.err.println("Exception when calling BillingApi#createPartnerBillingReportRequestV1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -99,9 +99,9 @@ public class Example {
 | **201** | Success |  -  |
 
 
-## previewRetailMediaBillingPartnerReportRequestIdOutputGet
+## getPartnerBillingReportOutputV1
 
-> File previewRetailMediaBillingPartnerReportRequestIdOutputGet(requestId)
+> File getPartnerBillingReportOutputV1(requestId)
 
 
 
@@ -148,10 +148,10 @@ public class Example {
         BillingApi apiInstance = new BillingApi(defaultClient);
         String requestId = "requestId_example"; // String | The id of a Partner Billing Report request.
         try {
-            File result = apiInstance.previewRetailMediaBillingPartnerReportRequestIdOutputGet(requestId);
+            File result = apiInstance.getPartnerBillingReportOutputV1(requestId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BillingApi#previewRetailMediaBillingPartnerReportRequestIdOutputGet");
+            System.err.println("Exception when calling BillingApi#getPartnerBillingReportOutputV1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -188,9 +188,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## previewRetailMediaBillingPartnerReportRequestIdStatusGet
+## getPartnerBillingReportStatusV1
 
-> EntityResourceOutcomePartnerBillingReportStatusV1 previewRetailMediaBillingPartnerReportRequestIdStatusGet(requestId)
+> EntityResourceOutcomePartnerBillingReportStatusV1 getPartnerBillingReportStatusV1(requestId)
 
 
 
@@ -237,10 +237,10 @@ public class Example {
         BillingApi apiInstance = new BillingApi(defaultClient);
         String requestId = "requestId_example"; // String | The id of a Partner Billing Report request.
         try {
-            EntityResourceOutcomePartnerBillingReportStatusV1 result = apiInstance.previewRetailMediaBillingPartnerReportRequestIdStatusGet(requestId);
+            EntityResourceOutcomePartnerBillingReportStatusV1 result = apiInstance.getPartnerBillingReportStatusV1(requestId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BillingApi#previewRetailMediaBillingPartnerReportRequestIdStatusGet");
+            System.err.println("Exception when calling BillingApi#getPartnerBillingReportStatusV1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());

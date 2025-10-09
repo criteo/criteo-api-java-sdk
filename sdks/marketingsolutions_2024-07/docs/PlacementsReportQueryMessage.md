@@ -16,7 +16,7 @@ This is the message defining the query for Placements report
 |**disclosed** | **Boolean** | Returns disclosed or undisclosed placements. |  [optional] |
 |**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
 |**environment** | **String** | Type of environment: Web, Android or iOS. |  [optional] |
-|**format** | **String** | The file format of the generated report: csv, xml, excel or json. |  |
+|**format** | [**FormatEnum**](#FormatEnum) | The file format of the generated report |  [optional] |
 |**metrics** | **List&lt;String&gt;** | The list of metrics to report. |  |
 |**placement** | **String** | Filter the value of the placement |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
@@ -40,6 +40,17 @@ This is the message defining the query for Placements report
 | SOCIALPLATFORM | &quot;SocialPlatform&quot; |
 | CATEGORYID | &quot;CategoryId&quot; |
 | CATEGORYNAME | &quot;CategoryName&quot; |
+
+
+
+## Enum: FormatEnum
+
+| Name | Value |
+|---- | -----|
+| CSV | &quot;csv&quot; |
+| EXCEL | &quot;excel&quot; |
+| XML | &quot;xml&quot; |
+| JSON | &quot;json&quot; |
 
 
 

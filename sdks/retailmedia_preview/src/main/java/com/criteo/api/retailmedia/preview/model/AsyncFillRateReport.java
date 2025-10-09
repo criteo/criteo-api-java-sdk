@@ -273,7 +273,17 @@ public class AsyncFillRateReport {
     
     WORKINGMEDIA("workingMedia"),
     
-    NETREVENUE("netRevenue");
+    NETREVENUE("netRevenue"),
+    
+    NONDELIVERABLEPLACEMENTS("nonDeliverablePlacements"),
+    
+    DELIVERABLEPLACEMENTS("deliverablePlacements"),
+    
+    PLACEMENTSWITHCANDIDATES("placementsWithCandidates"),
+    
+    COVEREDPLACEMENTS("coveredPlacements"),
+    
+    COVERAGERATE("coverageRate");
 
     private String value;
 

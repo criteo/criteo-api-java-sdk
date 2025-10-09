@@ -2,13 +2,13 @@
 
 # ResourceOfAuctionLineItemUpdateModel
 
-Data model for a Resource
+A class that represents a domain entity exposed by an API
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**ExternalAuctionLineItemUpdateModel**](ExternalAuctionLineItemUpdateModel.md) |  |  [optional] |
+|**attributes** | [**AuctionLineItemUpdateModel**](AuctionLineItemUpdateModel.md) |  |  [optional] |
 |**id** | **String** | Id of the entity |  [optional] |
 |**type** | **String** | Canonical type name of the entity |  [optional] |
 

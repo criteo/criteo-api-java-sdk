@@ -18,7 +18,7 @@ paths:
   /2025-01/advertisers/me:
     get:
       description: Fetch the portfolio of Advertisers for this account
-      operationId: ApiPortfolioGet
+      operationId: ListAdvertisers
       responses:
         "200":
           content:
@@ -41,25 +41,9 @@ paths:
                 warnings: []
               schema:
                 $ref: '#/components/schemas/GetPortfolioResponse'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/GetPortfolioResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/GetPortfolioResponse'
           description: Success
-        "401":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/GetPortfolioResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPortfolioResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/GetPortfolioResponse'
-          description: Unauthorized
+      security:
+      - oauth: []
       tags:
       - Advertiser
       x-accepts: application/json
@@ -95,27 +79,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeleteAudienceContactListResponse'
           description: The Contact List was emptied
-        "403":
-          content:
-            application/json:
-              example:
-                errors:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: validation
-                  code: audience-invalid
-                  instance: /audience/314159
-                  title: Audience is invalid
-                  detail: "Audience is not found, please choose a valid audience"
-                warnings:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: deprecation
-                  code: deprecated-field
-                  instance: /audiences/314195
-                  title: '''nbValidIds'' is deprecated'
-                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
-              schema:
-                $ref: '#/components/schemas/ErrorCodeResponse'
-          description: Forbidden
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
       x-accepts: application/json
@@ -165,48 +131,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ModifyAudienceResponse'
           description: Summary of created request
-        "403":
-          content:
-            application/json:
-              example:
-                errors:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: validation
-                  code: audience-invalid
-                  instance: /audience/314159
-                  title: Audience is invalid
-                  detail: "Audience is not found, please choose a valid audience"
-                warnings:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: deprecation
-                  code: deprecated-field
-                  instance: /audiences/314195
-                  title: '''nbValidIds'' is deprecated'
-                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
-              schema:
-                $ref: '#/components/schemas/ErrorCodeResponse'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              example:
-                errors:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: validation
-                  code: audience-invalid
-                  instance: /audience/314159
-                  title: Audience is invalid
-                  detail: "Audience is not found, please choose a valid audience"
-                warnings:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: deprecation
-                  code: deprecated-field
-                  instance: /audiences/314195
-                  title: '''nbValidIds'' is deprecated'
-                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
-              schema:
-                $ref: '#/components/schemas/ErrorCodeResponse'
-          description: Audience 123 not found
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json
@@ -227,45 +154,45 @@ paths:
         style: simple
       requestBody:
         content:
-          application/json-patch+json:
-            example:
-              shouldDisplayProductIds: false
-              startDate: 2024-04-24T00:00:00.0000000+02:00
-              endDate: 2024-04-27T00:00:00.0000000+02:00
-            schema:
-              $ref: '#/components/schemas/TransparencyQueryMessage'
           application/json:
             example:
               shouldDisplayProductIds: false
-              startDate: 2024-04-24T00:00:00.0000000+02:00
-              endDate: 2024-04-27T00:00:00.0000000+02:00
+              startDate: 2025-05-31T00:00:00.0000000+00:00
+              endDate: 2025-06-03T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
-          text/json:
-            example:
-              shouldDisplayProductIds: false
-              startDate: 2024-04-24T00:00:00.0000000+02:00
-              endDate: 2024-04-27T00:00:00.0000000+02:00
+          application/xml:
+            example: |-
+              <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
+                <EndDate>2025-06-03T00:00:00+00:00</EndDate>
+                <StartDate>2025-05-31T00:00:00+00:00</StartDate>
+                <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
+              </TransparencyQueryMessage>
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
-          application/*+json:
-            example:
-              shouldDisplayProductIds: false
-              startDate: 2024-04-24T00:00:00.0000000+02:00
-              endDate: 2024-04-27T00:00:00.0000000+02:00
+          text/xml:
+            example: |-
+              <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
+                <EndDate>2025-06-03T00:00:00+00:00</EndDate>
+                <StartDate>2025-05-31T00:00:00+00:00</StartDate>
+                <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
+              </TransparencyQueryMessage>
+            schema:
+              $ref: '#/components/schemas/TransparencyQueryMessage'
+          application/*+xml:
+            example: |-
+              <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
+                <EndDate>2025-06-03T00:00:00+00:00</EndDate>
+                <StartDate>2025-05-31T00:00:00+00:00</StartDate>
+                <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
+              </TransparencyQueryMessage>
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
         description: The query message.
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/TransparencyReportListResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/TransparencyReportListResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/TransparencyReportListResponse'
             application/xml:
@@ -275,116 +202,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransparencyReportListResponse'
           description: Success
-        "400":
-          content:
-            text/plain:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-          description: Bad Request
-        "403":
-          content:
-            text/plain:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-          description: Forbidden
+      security:
+      - oauth:
+        - MarketingSolutions_Analytics_Read
       tags:
       - Analytics
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/ad-sets:
     patch:
       description: Patch a list of AdSets.
-      operationId: PatchAdSetsV24Q1
+      operationId: PatchAdSets
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
         description: List of adsets to patch.
@@ -392,48 +223,23 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResponsesAdSetIdV24Q1'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponsesAdSetIdV24Q1'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResponsesAdSetIdV24Q1'
           description: List of patched adSets.
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource or
-            the resource does not exist.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Manage
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
     post:
       description: Create the specified ad set
-      operationId: CreateAdSetV24Q1
+      operationId: CreateAdSet
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CreateAdSetV24Q1Request'
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreateAdSetV24Q1Request'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CreateAdSetV24Q1Request'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/CreateAdSetV24Q1Request'
         description: the ad sets to create
@@ -442,36 +248,21 @@ paths:
       responses:
         "201":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
           description: The ad set that has been created and errors / warnings
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Manage
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/ad-sets/{ad-set-id}:
     get:
       description: Get the data for the specified ad set
-      operationId: GetAdSetV24Q1
+      operationId: GetAdSet
       parameters:
       - description: Id of the ad set
         explode: false
@@ -484,29 +275,13 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
           description: data for the ad set
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource or
-            the resource does not exist.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -525,16 +300,7 @@ paths:
         style: simple
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AdSetAudienceLinkInputEntityV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AdSetAudienceLinkInputEntityV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AdSetAudienceLinkInputEntityV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AdSetAudienceLinkInputEntityV1'
         description: Ad set-Audience update request.
@@ -543,43 +309,22 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AdSetAudienceLinkEntityV1Response'
             application/json:
               schema:
                 $ref: '#/components/schemas/AdSetAudienceLinkEntityV1Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AdSetAudienceLinkEntityV1Response'
           description: Success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Manage
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/ad-sets/{ad-set-id}/category-bids:
     get:
       description: Get the Category Bids for all valid Categories associated to an
         Ad Set
-      operationId: GetCategoryBidList
+      operationId: GetAdSetCategoryBids
       parameters:
       - description: Id of the Ad Set
         explode: false
@@ -592,43 +337,21 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AdSetCategoryBidListResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/AdSetCategoryBidListResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/AdSetCategoryBidListResponse'
           description: List of Category Bids for all valid Categories associated to
             an Ad Set.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource or
-            the resource does not exist.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
     patch:
       description: Patch Category Bids for one or more Categories in a single request.
         Partial success policy is followed.
-      operationId: PatchCategoryBidList
+      operationId: PatchAdSetCategoryBids
       parameters:
       - description: Id of the Ad Set
         explode: false
@@ -640,55 +363,24 @@ paths:
         style: simple
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/PatchAdSetCategoryBidListRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/PatchAdSetCategoryBidListRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/PatchAdSetCategoryBidListRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/PatchAdSetCategoryBidListRequest'
         x-bodyName: categoryBidsToUpdate
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/PatchAdSetCategoryBidResultListResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/PatchAdSetCategoryBidResultListResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/PatchAdSetCategoryBidResultListResponse'
           description: List of updated Category Bids for given Categories associated
             to an Ad Set.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource or
-            the resource does not exist.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Manage
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers:
     get:
@@ -707,36 +399,14 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AdSetDisplayMultiplierListResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/AdSetDisplayMultiplierListResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/AdSetDisplayMultiplierListResponse'
           description: List of Display Multipliers for all valid Categories associated
             to an Ad Set.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource or
-            the resource does not exist.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
@@ -755,110 +425,48 @@ paths:
         style: simple
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/PatchAdSetDisplayMultiplierListRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/PatchAdSetDisplayMultiplierListRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/PatchAdSetDisplayMultiplierListRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/PatchAdSetDisplayMultiplierListRequest'
         x-bodyName: displayMultipliersToUpdate
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/PatchAdSetDisplayMultiplierResultListResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/PatchAdSetDisplayMultiplierResultListResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/PatchAdSetDisplayMultiplierResultListResponse'
           description: List of updated Display Multipliers for given Categories associated
             to an Ad Set.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource or
-            the resource does not exist.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Manage
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/ad-sets/search:
     post:
       description: Search for ad sets
-      operationId: SearchAdSetsV24Q1
+      operationId: SearchAdSets
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
         x-bodyName: request
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResponsesReadAdSetV24Q1'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponsesReadAdSetV24Q1'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResponsesReadAdSetV24Q1'
           description: data for the ad sets
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource or
-            the resource does not exist.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Read
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/ad-sets/start:
     post:
@@ -866,16 +474,7 @@ paths:
       operationId: StartAdSets
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/RequestsAdSetId'
           application/json:
-            schema:
-              $ref: '#/components/schemas/RequestsAdSetId'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/RequestsAdSetId'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/RequestsAdSetId'
         description: All the ad sets to start
@@ -883,32 +482,17 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResponsesAdSetId'
             application/json:
-              schema:
-                $ref: '#/components/schemas/ResponsesAdSetId'
-            text/json:
               schema:
                 $ref: '#/components/schemas/ResponsesAdSetId'
           description: List of ad sets that have been started and errors / warnings
             by ad set
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Manage
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/ad-sets/stop:
     post:
@@ -916,16 +500,7 @@ paths:
       operationId: StopAdSets
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/RequestsAdSetId'
           application/json:
-            schema:
-              $ref: '#/components/schemas/RequestsAdSetId'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/RequestsAdSetId'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/RequestsAdSetId'
         description: All the ad sets to stop
@@ -933,32 +508,17 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResponsesAdSetId'
             application/json:
-              schema:
-                $ref: '#/components/schemas/ResponsesAdSetId'
-            text/json:
               schema:
                 $ref: '#/components/schemas/ResponsesAdSetId'
           description: List of ad sets that have been stopped and errors / warnings
             by ad set
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Manage
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/ads/{id}:
     delete:
@@ -977,12 +537,9 @@ paths:
       responses:
         "204":
           description: The ad was deleted.
-        "400":
-          description: The request contained invalid parameters.
-        "401":
-          description: The request was not properly authorized.
-        "500":
-          description: A non-request based error occurred on the server.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Manage
       tags:
       - Creative
       x-accepts: application/json
@@ -1002,34 +559,13 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfAd'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceOutcomeOfAd'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfAd'
           description: The found ad is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
-        "500":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: A non-request based error occurred on the server.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Read
       tags:
       - Creative
       x-accepts: application/json
@@ -1070,34 +606,13 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceCollectionOutcomeOfAd'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceCollectionOutcomeOfAd'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceCollectionOutcomeOfAd'
           description: The list of self-services Ads is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
-        "500":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: A non-request based error occurred on the server.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Read
       tags:
       - Creative
       x-accepts: application/json
@@ -1115,16 +630,7 @@ paths:
         style: simple
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfAdWrite'
           application/json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfAdWrite'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfAdWrite'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfAdWrite'
         required: true
@@ -1132,37 +638,16 @@ paths:
       responses:
         "201":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfAd'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceOutcomeOfAd'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfAd'
           description: The created Ad is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
-        "500":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: A non-request based error occurred on the server.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Manage
       tags:
       - Creative
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/advertisers/{advertiser-id}/coupons:
     get:
@@ -1201,28 +686,13 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCoupon'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceCollectionOutcomeOfCoupon'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCoupon'
           description: The list of self-services Coupons is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Read
       tags:
       - Creative
       x-accepts: application/json
@@ -1240,16 +710,7 @@ paths:
         style: simple
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
           application/json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
         required: true
@@ -1257,31 +718,16 @@ paths:
       responses:
         "201":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
           description: The created Coupon is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Manage
       tags:
       - Creative
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/advertisers/{advertiser-id}/coupons-supported-sizes:
     get:
@@ -1308,28 +754,13 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCouponSupportedSizes'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceOutcomeOfCouponSupportedSizes'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCouponSupportedSizes'
           description: The list of Coupon supported sizes is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Read
       tags:
       - Creative
       x-accepts: application/json
@@ -1357,10 +788,9 @@ paths:
       responses:
         "204":
           description: The Coupon was deleted.
-        "400":
-          description: The request contained invalid parameters.
-        "403":
-          description: The request was not properly authorized.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Manage
       tags:
       - Creative
       x-accepts: application/json
@@ -1387,28 +817,13 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
           description: The found Coupon is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Read
       tags:
       - Creative
       x-accepts: application/json
@@ -1434,16 +849,7 @@ paths:
         style: simple
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
           application/json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
         required: true
@@ -1451,31 +857,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
           description: The edited Coupon is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Manage
       tags:
       - Creative
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}/preview:
     get:
@@ -1525,22 +916,10 @@ paths:
             application/json:
               schema:
                 type: string
-            text/json:
-              schema:
-                type: string
           description: The preview HTML of a specific Coupon is returned.
-        "400":
-          content:
-            text/html: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "403":
-          content:
-            text/html: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Read
       tags:
       - Creative
       x-accepts: application/json
@@ -1581,34 +960,15 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreative'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreative'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreative'
-          description: The list of self-services Creatives is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
-        "500":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: A non-request based error occurred on the server.
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreativeRead'
+          description: The list of self-services Creatives is returned.This list will
+            contain creatives in draft status as well which will have some properties
+            as null
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Read
       tags:
       - Creative
       x-accepts: application/json
@@ -1626,16 +986,7 @@ paths:
         style: simple
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           application/json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
         required: true
@@ -1643,37 +994,16 @@ paths:
       responses:
         "201":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceOutcomeOfCreative'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
           description: The created creative is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
-        "500":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: A non-request based error occurred on the server.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Manage
       tags:
       - Creative
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audience-segments:
     patch:
@@ -1683,16 +1013,7 @@ paths:
       operationId: bulkUpdateAudienceSegments
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentBulkUpdateInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentBulkUpdateInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentBulkUpdateInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceSegmentBulkUpdateInputV1'
         description: Segment Update request
@@ -1701,37 +1022,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentEntityV1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/AudienceSegmentEntityV1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentEntityV1ListResponse'
           description: Success or partial success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list:
     delete:
@@ -1765,27 +1065,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeleteAudienceContactListResponse'
           description: The Contact List was emptied
-        "403":
-          content:
-            application/json:
-              example:
-                errors:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: validation
-                  code: audience-invalid
-                  instance: /audience/314159
-                  title: Audience is invalid
-                  detail: "Audience is not found, please choose a valid audience"
-                warnings:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: deprecation
-                  code: deprecated-field
-                  instance: /audiences/314195
-                  title: '''nbValidIds'' is deprecated'
-                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
-              schema:
-                $ref: '#/components/schemas/ErrorCodeResponse'
-          description: Forbidden
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
       x-accepts: application/json
@@ -1835,48 +1117,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ModifyAudienceResponse'
           description: Summary of created request
-        "403":
-          content:
-            application/json:
-              example:
-                errors:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: validation
-                  code: audience-invalid
-                  instance: /audience/314159
-                  title: Audience is invalid
-                  detail: "Audience is not found, please choose a valid audience"
-                warnings:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: deprecation
-                  code: deprecated-field
-                  instance: /audiences/314195
-                  title: '''nbValidIds'' is deprecated'
-                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
-              schema:
-                $ref: '#/components/schemas/ErrorCodeResponse'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              example:
-                errors:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: validation
-                  code: audience-invalid
-                  instance: /audience/314159
-                  title: Audience is invalid
-                  detail: "Audience is not found, please choose a valid audience"
-                warnings:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: deprecation
-                  code: deprecated-field
-                  instance: /audiences/314195
-                  title: '''nbValidIds'' is deprecated'
-                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
-              schema:
-                $ref: '#/components/schemas/ErrorCodeResponse'
-          description: Audience 123 not found
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
       x-content-type: application/json
@@ -1898,28 +1141,13 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ContactListStatisticsEntityV1Response'
             application/json:
               schema:
                 $ref: '#/components/schemas/ContactListStatisticsEntityV1Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ContactListStatisticsEntityV1Response'
           description: Success
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Read
       tags:
       - Audience
       x-accepts: application/json
@@ -1930,16 +1158,7 @@ paths:
       operationId: computeAudienceSegmentsSizes
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentComputeSizesInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentComputeSizesInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentComputeSizesInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceSegmentComputeSizesInputV1'
         description: ""
@@ -1948,37 +1167,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentSizeEntityV1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/AudienceSegmentSizeEntityV1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentSizeEntityV1ListResponse'
           description: Success or partial success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audience-segments/create:
     post:
@@ -1987,16 +1185,7 @@ paths:
       operationId: bulkCreateAudienceSegments
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentBulkCreateInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentBulkCreateInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentBulkCreateInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceSegmentBulkCreateInputV1'
         description: Segment creation parameter
@@ -2005,37 +1194,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentEntityV1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/AudienceSegmentEntityV1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentEntityV1ListResponse'
           description: Success or partial success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audience-segments/delete:
     post:
@@ -2043,16 +1211,7 @@ paths:
       operationId: bulkDeleteAudienceSegments
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentBulkDeleteInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentBulkDeleteInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentBulkDeleteInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceSegmentBulkDeleteInputV1'
         description: Segment delete request.
@@ -2061,37 +1220,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentIdEntityV1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/AudienceSegmentIdEntityV1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentIdEntityV1ListResponse'
           description: Success or partial success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audience-segments/estimate-size:
     post:
@@ -2100,16 +1238,7 @@ paths:
       operationId: estimateAudienceSegmentSize
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentEstimateSizeInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentEstimateSizeInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentEstimateSizeInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceSegmentEstimateSizeInputV1'
         description: ""
@@ -2118,37 +1247,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentSizeEstimationV1Response'
             application/json:
               schema:
                 $ref: '#/components/schemas/AudienceSegmentSizeEstimationV1Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentSizeEstimationV1Response'
           description: Success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audience-segments/in-market-brands:
     get:
@@ -2175,28 +1283,13 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/InMarketAudienceSegmentBrandEntityV1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/InMarketAudienceSegmentBrandEntityV1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/InMarketAudienceSegmentBrandEntityV1ListResponse'
           description: Success
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Read
       tags:
       - Audience
       x-accepts: application/json
@@ -2226,28 +1319,13 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/InMarketAudienceSegmentInterestEntityV1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/InMarketAudienceSegmentInterestEntityV1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/InMarketAudienceSegmentInterestEntityV1ListResponse'
           description: Success
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Read
       tags:
       - Audience
       x-accepts: application/json
@@ -2282,16 +1360,7 @@ paths:
         style: form
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentSearchInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentSearchInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSegmentSearchInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceSegmentSearchInputV1'
         description: Segment search filters.
@@ -2300,37 +1369,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse'
           description: Success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Read
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audiences:
     patch:
@@ -2340,16 +1388,7 @@ paths:
       operationId: bulkUpdateAudiences
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceBulkUpdateInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceBulkUpdateInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceBulkUpdateInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceBulkUpdateInputV1'
         description: ""
@@ -2358,37 +1397,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceEntityV1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/AudienceEntityV1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AudienceEntityV1ListResponse'
           description: Success or partial success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audiences/compute-sizes:
     post:
@@ -2397,16 +1415,7 @@ paths:
       operationId: computeAudiencesSizes
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceComputeSizesInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceComputeSizesInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceComputeSizesInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceComputeSizesInputV1'
         description: ""
@@ -2415,37 +1424,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceSizeEntityV1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/AudienceSizeEntityV1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AudienceSizeEntityV1ListResponse'
           description: Success or partial success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audiences/create:
     post:
@@ -2455,16 +1443,7 @@ paths:
       operationId: bulkCreateAudiences
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceBulkCreateInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceBulkCreateInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceBulkCreateInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceBulkCreateInputV1'
         description: ""
@@ -2473,37 +1452,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceEntityV1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/AudienceEntityV1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AudienceEntityV1ListResponse'
           description: Success or partial success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audiences/delete:
     post:
@@ -2511,16 +1469,7 @@ paths:
       operationId: bulkDeleteAudiences
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceBulkDeleteInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceBulkDeleteInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceBulkDeleteInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceBulkDeleteInputV1'
         description: ""
@@ -2529,43 +1478,20 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceIdEntityV1ListResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/AudienceIdEntityV1ListResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/AudienceIdEntityV1ListResponse'
           description: Success
         "204":
           content:
-            text/plain: {}
             application/json: {}
-            text/json: {}
           description: Success or partial success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audiences/estimate-size:
     post:
@@ -2574,16 +1500,7 @@ paths:
       operationId: estimateAudienceSize
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceEstimateSizeInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceEstimateSizeInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceEstimateSizeInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceEstimateSizeInputV1'
         description: ""
@@ -2592,37 +1509,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceSizeEstimationV1Response'
             application/json:
               schema:
                 $ref: '#/components/schemas/AudienceSizeEstimationV1Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AudienceSizeEstimationV1Response'
           description: Success or partial success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/audiences/search:
     post:
@@ -2655,16 +1551,7 @@ paths:
         style: form
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AudienceSearchInputV1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSearchInputV1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AudienceSearchInputV1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceSearchInputV1'
         description: Audience search filters.
@@ -2673,37 +1560,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AudienceEntityV1AudienceSearchMetadataV1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/AudienceEntityV1AudienceSearchMetadataV1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AudienceEntityV1AudienceSearchMetadataV1ListResponse'
           description: Success
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Read
       tags:
       - Audience
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/campaigns:
     patch:
@@ -2711,16 +1577,7 @@ paths:
       operationId: PatchCampaigns
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/PatchCampaignListRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/PatchCampaignListRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/PatchCampaignListRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/PatchCampaignListRequest'
         description: List of campaigns to patch.
@@ -2728,48 +1585,23 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/PatchResultCampaignListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/PatchResultCampaignListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/PatchResultCampaignListResponse'
           description: List of patched campaigns.
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource or
-            the resource does not exist.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Manage
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
     post:
       description: Create the specified campaign
       operationId: CreateCampaign
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CreateCampaignRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreateCampaignRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CreateCampaignRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/CreateCampaignRequest'
         description: the campaigns to create
@@ -2778,36 +1610,21 @@ paths:
       responses:
         "201":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CampaignV23Q1Response'
             application/json:
               schema:
                 $ref: '#/components/schemas/CampaignV23Q1Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/CampaignV23Q1Response'
           description: The campaign that has been created and errors / warnings
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Manage
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/campaigns/{campaign-id}:
     get:
       description: Get the data for the specified campaign
-      operationId: GetCampaignV23Q1
+      operationId: GetCampaign
       parameters:
       - description: Id of the campaign
         explode: false
@@ -2820,48 +1637,23 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CampaignV23Q1Response'
             application/json:
               schema:
                 $ref: '#/components/schemas/CampaignV23Q1Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/CampaignV23Q1Response'
           description: data for the campaign
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource or
-            the resource does not exist.
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Read
       tags:
       - Campaign
       x-accepts: application/json
   /2025-01/marketing-solutions/campaigns/search:
     post:
       description: Search for campaigns
-      operationId: SearchCampaignsV23Q1
+      operationId: SearchCampaigns
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CampaignSearchRequestV23Q1'
           application/json:
-            schema:
-              $ref: '#/components/schemas/CampaignSearchRequestV23Q1'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CampaignSearchRequestV23Q1'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/CampaignSearchRequestV23Q1'
         description: filters on campaigns
@@ -2869,37 +1661,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CampaignV23Q1ListResponse'
             application/json:
               schema:
                 $ref: '#/components/schemas/CampaignV23Q1ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/CampaignV23Q1ListResponse'
           description: data for the campaigns
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Forbidden
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Read
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/creatives/{id}:
     delete:
@@ -2917,12 +1688,9 @@ paths:
       responses:
         "204":
           description: The creative was deleted.
-        "400":
-          description: The request contained invalid parameters.
-        "401":
-          description: The request was not properly authorized.
-        "500":
-          description: A non-request based error occurred on the server.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Manage
       tags:
       - Creative
       x-accepts: application/json
@@ -2941,34 +1709,13 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceOutcomeOfCreative'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
           description: The found creative is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
-        "500":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: A non-request based error occurred on the server.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Read
       tags:
       - Creative
       x-accepts: application/json
@@ -2986,16 +1733,7 @@ paths:
         style: simple
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           application/json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
         required: true
@@ -3003,37 +1741,16 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceOutcomeOfCreative'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
           description: The edited creative is returned.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
-        "500":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: A non-request based error occurred on the server.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Manage
       tags:
       - Creative
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/marketing-solutions/creatives/{id}/preview:
     post:
@@ -3075,22 +1792,10 @@ paths:
             application/json:
               schema:
                 type: string
-            text/json:
-              schema:
-                type: string
           description: The preview HTML of a specific Creative is returned.
-        "400":
-          content:
-            text/html: {}
-            application/json: {}
-            text/json: {}
-          description: The request contained invalid parameters.
-        "403":
-          content:
-            text/html: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Manage
       tags:
       - Creative
       x-accepts: application/json
@@ -3105,10 +1810,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApplicationSummaryModelResponse'
           description: Success
-        "404":
-          content:
-            application/json: {}
-          description: Not Found
+      security:
+      - oauth: []
       tags:
       - Gateway
       x-accepts: application/json
@@ -3121,30 +1824,22 @@ paths:
       operationId: GetPlacementsReport
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
           application/json:
             schema:
               $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
-          text/json:
+          application/xml:
             schema:
               $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
-          application/*+json:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
+          application/*+xml:
             schema:
               $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                format: binary
-                type: string
             application/json:
-              schema:
-                format: binary
-                type: string
-            text/json:
               schema:
                 format: binary
                 type: string
@@ -3152,7 +1847,7 @@ paths:
               schema:
                 format: binary
                 type: string
-            application/xml:
+            text/xml:
               schema:
                 format: binary
                 type: string
@@ -3161,99 +1856,12 @@ paths:
                 format: binary
                 type: string
           description: Success
-        "400":
-          content:
-            text/plain:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-          description: Bad Request
-        "403":
-          content:
-            text/plain:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-          description: Forbidden
+      security:
+      - oauth:
+        - MarketingSolutions_Analytics_Read
       tags:
       - Analytics
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/statistics/report:
     post:
@@ -3263,49 +1871,6 @@ paths:
       operationId: GetAdsetReport
       requestBody:
         content:
-          application/json-patch+json:
-            example:
-              advertiserIds: "123,456,789"
-              adSetIds:
-              - "12345"
-              - "54321"
-              adSetNames:
-              - myAdSet1
-              - myAdSet2
-              adSetStatus:
-              - Active
-              dimensions:
-              - CampaignId
-              - Campaign
-              - AdsetId
-              - Adset
-              - AdvertiserId
-              - Advertiser
-              - AdId
-              - Ad
-              - CouponId
-              - Coupon
-              - CategoryId
-              - Category
-              - Hour
-              - Day
-              - Week
-              - Month
-              - Year
-              - Os
-              - Device
-              metrics:
-              - Clicks
-              - Displays
-              - Cpc
-              - Visits
-              currency: EUR
-              format: csv
-              timezone: Europe/Paris
-              startDate: 2024-04-24T00:00:00.0000000+02:00
-              endDate: 2024-04-27T00:00:00.0000000+02:00
-            schema:
-              $ref: '#/components/schemas/StatisticsReportQueryMessage'
           application/json:
             example:
               advertiserIds: "123,456,789"
@@ -3345,108 +1910,14 @@ paths:
               currency: EUR
               format: csv
               timezone: Europe/Paris
-              startDate: 2024-04-24T00:00:00.0000000+02:00
-              endDate: 2024-04-27T00:00:00.0000000+02:00
-            schema:
-              $ref: '#/components/schemas/StatisticsReportQueryMessage'
-          text/json:
-            example:
-              advertiserIds: "123,456,789"
-              adSetIds:
-              - "12345"
-              - "54321"
-              adSetNames:
-              - myAdSet1
-              - myAdSet2
-              adSetStatus:
-              - Active
-              dimensions:
-              - CampaignId
-              - Campaign
-              - AdsetId
-              - Adset
-              - AdvertiserId
-              - Advertiser
-              - AdId
-              - Ad
-              - CouponId
-              - Coupon
-              - CategoryId
-              - Category
-              - Hour
-              - Day
-              - Week
-              - Month
-              - Year
-              - Os
-              - Device
-              metrics:
-              - Clicks
-              - Displays
-              - Cpc
-              - Visits
-              currency: EUR
-              format: csv
-              timezone: Europe/Paris
-              startDate: 2024-04-24T00:00:00.0000000+02:00
-              endDate: 2024-04-27T00:00:00.0000000+02:00
-            schema:
-              $ref: '#/components/schemas/StatisticsReportQueryMessage'
-          application/*+json:
-            example:
-              advertiserIds: "123,456,789"
-              adSetIds:
-              - "12345"
-              - "54321"
-              adSetNames:
-              - myAdSet1
-              - myAdSet2
-              adSetStatus:
-              - Active
-              dimensions:
-              - CampaignId
-              - Campaign
-              - AdsetId
-              - Adset
-              - AdvertiserId
-              - Advertiser
-              - AdId
-              - Ad
-              - CouponId
-              - Coupon
-              - CategoryId
-              - Category
-              - Hour
-              - Day
-              - Week
-              - Month
-              - Year
-              - Os
-              - Device
-              metrics:
-              - Clicks
-              - Displays
-              - Cpc
-              - Visits
-              currency: EUR
-              format: csv
-              timezone: Europe/Paris
-              startDate: 2024-04-24T00:00:00.0000000+02:00
-              endDate: 2024-04-27T00:00:00.0000000+02:00
+              startDate: 2025-05-31T00:00:00.0000000+00:00
+              endDate: 2025-06-03T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/StatisticsReportQueryMessage'
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                format: binary
-                type: string
             application/json:
-              schema:
-                format: binary
-                type: string
-            text/json:
               schema:
                 format: binary
                 type: string
@@ -3463,123 +1934,12 @@ paths:
                 format: binary
                 type: string
           description: Success
-        "400":
-          content:
-            text/plain:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/csv:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-          description: Bad Request
-        "403":
-          content:
-            text/plain:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/csv:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-          description: Forbidden
+      security:
+      - oauth:
+        - MarketingSolutions_Analytics_Read
       tags:
       - Analytics
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
   /2025-01/transactions/report:
     post:
@@ -3587,30 +1947,22 @@ paths:
       operationId: GetTransactionsReport
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
           application/json:
             schema:
               $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
-          text/json:
+          application/xml:
             schema:
               $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
-          application/*+json:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
+          application/*+xml:
             schema:
               $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                format: binary
-                type: string
             application/json:
-              schema:
-                format: binary
-                type: string
-            text/json:
               schema:
                 format: binary
                 type: string
@@ -3627,123 +1979,12 @@ paths:
                 format: binary
                 type: string
           description: Success
-        "400":
-          content:
-            text/plain:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/csv:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-          description: Bad Request
-        "403":
-          content:
-            text/plain:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/json:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/csv:
-              example:
-                warnings: []
-                errors:
-                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
-                  type: validation
-                  code: required-field
-                  instance: /report
-                  title: Start date and end date are required.
-                  detail: ""
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-          description: Forbidden
+      security:
+      - oauth:
+        - MarketingSolutions_Analytics_Read
       tags:
       - Analytics
-      x-content-type: application/json-patch+json
+      x-content-type: application/json
       x-accepts: application/json
 components:
   schemas:
@@ -3936,6 +2177,7 @@ components:
         ctaBackgroundColor: ctaBackgroundColor
         text1Color: text1Color
         logoAreaAndTitleColor: logoAreaAndTitleColor
+      nullable: true
       properties:
         backgroundColor:
           description: "Color of the creative's background.\r\nA valid RGB24 color\
@@ -3968,6 +2210,129 @@ components:
       - logoAreaAndTitleColor
       - text1Color
       - text2Color
+      type: object
+    AdaptiveReadAttributes:
+      description: The attributes specific to Adaptive creatives read
+      example:
+        descriptionFont: descriptionFont
+        imageDisplay: ShowFullImage
+        videos:
+        - duration: 0.8008281904610115
+          shape: Horizontal
+          url: https://openapi-generator.tech
+        - duration: 0.8008281904610115
+          shape: Horizontal
+          url: https://openapi-generator.tech
+        descriptionText: descriptionText
+        headlineFont: headlineFont
+        imageSets:
+        - images:
+          - shape: Horizontal
+            url: https://openapi-generator.tech
+          - shape: Horizontal
+            url: https://openapi-generator.tech
+          headlineText: headlineText
+        - images:
+          - shape: Horizontal
+            url: https://openapi-generator.tech
+          - shape: Horizontal
+            url: https://openapi-generator.tech
+          headlineText: headlineText
+        callsToAction:
+        - callsToAction
+        - callsToAction
+        landingPageUrl: https://openapi-generator.tech
+        layouts:
+        - Editorial
+        - Editorial
+        logos:
+        - shape: Horizontal
+          url: https://openapi-generator.tech
+        - shape: Horizontal
+          url: https://openapi-generator.tech
+        colors:
+          backgroundColor: backgroundColor
+          ctaTextColor: ctaTextColor
+          text2Color: text2Color
+          ctaBackgroundColor: ctaBackgroundColor
+          text1Color: text1Color
+          logoAreaAndTitleColor: logoAreaAndTitleColor
+        headlineText: headlineText
+      nullable: true
+      properties:
+        callsToAction:
+          description: "A Call-to-Action (CTA) is an action-driven instruction to\
+            \ your audience intended to provoke an immediate\r\nresponse, such as\
+            \ “Buy now” or “Go!”."
+          items:
+            type: string
+          nullable: true
+          type: array
+        colors:
+          $ref: '#/components/schemas/AdaptiveColors'
+        descriptionFont:
+          description: "Font of the description\r\nValid supported font like \"Arial\""
+          nullable: true
+          type: string
+        descriptionText:
+          description: The description text of the banner
+          nullable: true
+          type: string
+        headlineFont:
+          description: "Font of the headline\r\nValid supported font like \"Arial\""
+          nullable: true
+          type: string
+        headlineText:
+          description: The headline text of the banner
+          nullable: true
+          type: string
+        imageDisplay:
+          description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
+            \ whether your image set should fit inside the allocated\r\nspace (\"\
+            ShowFullImage\") or whether it should fill that space (\"ZoomOnImage\"\
+            ). If you choose ZoomOnImage, there may be some\r\nimage cropping."
+          enum:
+          - ShowFullImage
+          - ZoomOnImage
+          nullable: true
+          type: string
+        imageSets:
+          description: "Multiple image sets, each image set consists of multiple images\
+            \ and a headline text."
+          items:
+            $ref: '#/components/schemas/ImageSet'
+          nullable: true
+          type: array
+        landingPageUrl:
+          description: Web redirection of the landing page url
+          format: uri
+          nullable: true
+          type: string
+        layouts:
+          description: "The Adaptive layouts that are enabled.\r\nIt can contain any\
+            \ of the following values: \"Editorial\", “Montage“, \"InBannerVideo\"\
+            ."
+          items:
+            enum:
+            - Editorial
+            - Montage
+            - InBannerVideo
+            type: string
+          nullable: true
+          type: array
+        logos:
+          description: Logo images uploaded on demostatic.criteo.com when deploying
+            and then static.criteo.net
+          items:
+            $ref: '#/components/schemas/ImageShape'
+          nullable: true
+          type: array
+        videos:
+          description: Multiple videos potentially in different shapes.
+          items:
+            $ref: '#/components/schemas/VideoDetail'
+          nullable: true
+          type: array
       type: object
     AdaptiveWriteAttributes:
       description: The attributes specific to create or update an Adaptive creative
@@ -9111,6 +7476,131 @@ components:
       - name
       - status
       type: object
+    CreativeRead:
+      description: A CreativeRead is a project with the necessary information to display
+        a creative
+      example:
+        dynamicAttributes:
+          creativeBackgroundColor: creativeBackgroundColor
+          primaryFont: primaryFont
+          pricesColor: pricesColor
+          bodyTextColor: bodyTextColor
+          callsToAction:
+          - callsToAction
+          - callsToAction
+          logos:
+          - shape: Horizontal
+            url: https://openapi-generator.tech
+          - shape: Horizontal
+            url: https://openapi-generator.tech
+          productImageDisplay: ShowFullImage
+        adaptiveAttributes:
+          descriptionFont: descriptionFont
+          imageDisplay: ShowFullImage
+          videos:
+          - duration: 0.8008281904610115
+            shape: Horizontal
+            url: https://openapi-generator.tech
+          - duration: 0.8008281904610115
+            shape: Horizontal
+            url: https://openapi-generator.tech
+          descriptionText: descriptionText
+          headlineFont: headlineFont
+          imageSets:
+          - images:
+            - shape: Horizontal
+              url: https://openapi-generator.tech
+            - shape: Horizontal
+              url: https://openapi-generator.tech
+            headlineText: headlineText
+          - images:
+            - shape: Horizontal
+              url: https://openapi-generator.tech
+            - shape: Horizontal
+              url: https://openapi-generator.tech
+            headlineText: headlineText
+          callsToAction:
+          - callsToAction
+          - callsToAction
+          landingPageUrl: https://openapi-generator.tech
+          layouts:
+          - Editorial
+          - Editorial
+          logos:
+          - shape: Horizontal
+            url: https://openapi-generator.tech
+          - shape: Horizontal
+            url: https://openapi-generator.tech
+          colors:
+            backgroundColor: backgroundColor
+            ctaTextColor: ctaTextColor
+            text2Color: text2Color
+            ctaBackgroundColor: ctaBackgroundColor
+            text1Color: text1Color
+            logoAreaAndTitleColor: logoAreaAndTitleColor
+          headlineText: headlineText
+        imageAttributes:
+          urls:
+          - urls
+          - urls
+          landingPageUrl: landingPageUrl
+        author: author
+        format: format
+        name: name
+        datasetId: datasetId
+        description: description
+        advertiserId: advertiserId
+        htmlTagAttributes:
+          tags:
+          - htmlTag: htmlTag
+            size:
+              width: 1
+              height: 6
+          - htmlTag: htmlTag
+            size:
+              width: 1
+              height: 6
+        status: status
+      nullable: true
+      properties:
+        adaptiveAttributes:
+          $ref: '#/components/schemas/AdaptiveReadAttributes'
+        advertiserId:
+          description: Advertiser linked to the Creative
+          type: string
+        author:
+          description: The login of the person who created this creative (
+          type: string
+        datasetId:
+          description: Data set id linked to the Creative
+          nullable: true
+          type: string
+        description:
+          description: The description of the creative
+          nullable: true
+          type: string
+        dynamicAttributes:
+          $ref: '#/components/schemas/DynamicAttributes'
+        format:
+          description: The format of the creative
+          nullable: true
+          type: string
+        htmlTagAttributes:
+          $ref: '#/components/schemas/HtmlTagAttributes'
+        imageAttributes:
+          $ref: '#/components/schemas/ImageAttributes'
+        name:
+          description: The name of the creative
+          type: string
+        status:
+          description: The status of the creative
+          type: string
+      required:
+      - advertiserId
+      - author
+      - name
+      - status
+      type: object
     CreativeWrite:
       description: Entity to create or update a creative
       example:
@@ -9556,21 +8046,6 @@ components:
           example: campaign
           nullable: true
           type: string
-      type: object
-    ErrorCodeResponse:
-      description: Definition of the error code
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/AudienceError'
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/AudienceWarning'
-          nullable: true
-          type: array
-      required:
-      - errors
       type: object
     GetPortfolioResponse:
       description: Portfolio fetch Response
@@ -10612,25 +9087,6 @@ components:
           nullable: true
           type: string
       type: object
-    Outcome:
-      additionalProperties: false
-      description: The outcome of an API call.
-      properties:
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     PatchAdSetBiddingV24Q1:
       description: ad set bidding patch model
       example:
@@ -11233,7 +9689,7 @@ components:
         disclosed: true
         endDate: 2000-01-23T04:56:07.000+00:00
         timezone: UTC
-        format: format
+        format: json
         advertiserIds: advertiserIds
         environment: environment
         adsetIds: adsetIds
@@ -11295,8 +9751,13 @@ components:
           nullable: true
           type: string
         format:
-          description: "The file format of the generated report: csv, xml, excel or\
-            \ json."
+          default: json
+          description: The file format of the generated report
+          enum:
+          - csv
+          - excel
+          - xml
+          - json
           type: string
         metrics:
           description: The list of metrics to report.
@@ -11323,7 +9784,6 @@ components:
       - currency
       - dimensions
       - endDate
-      - format
       - metrics
       - startDate
       type: object
@@ -11337,7 +9797,7 @@ components:
             disclosed: true
             endDate: 2000-01-23T04:56:07.000+00:00
             timezone: UTC
-            format: format
+            format: json
             advertiserIds: advertiserIds
             environment: environment
             adsetIds: adsetIds
@@ -11356,7 +9816,7 @@ components:
             disclosed: true
             endDate: 2000-01-23T04:56:07.000+00:00
             timezone: UTC
-            format: format
+            format: json
             advertiserIds: advertiserIds
             environment: environment
             adsetIds: adsetIds
@@ -11386,7 +9846,7 @@ components:
           disclosed: true
           endDate: 2000-01-23T04:56:07.000+00:00
           timezone: UTC
-          format: format
+          format: json
           advertiserIds: advertiserIds
           environment: environment
           adsetIds: adsetIds
@@ -12156,7 +10616,7 @@ components:
           readOnly: true
           type: array
       type: object
-    ResourceCollectionOutcomeOfCreative:
+    ResourceCollectionOutcomeOfCreativeRead:
       description: A top-level object that encapsulates a Criteo API response for
         several entities.
       example:
@@ -12231,7 +10691,6 @@ components:
             name: name
             datasetId: datasetId
             description: description
-            id: id
             advertiserId: advertiserId
             htmlTagAttributes:
               tags:
@@ -12316,7 +10775,6 @@ components:
             name: name
             datasetId: datasetId
             description: description
-            id: id
             advertiserId: advertiserId
             htmlTagAttributes:
               tags:
@@ -12376,7 +10834,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/ResourceOfCreative'
+            $ref: '#/components/schemas/ResourceOfCreativeRead'
           nullable: true
           type: array
         errors:
@@ -12779,6 +11237,104 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/Creative'
+        id:
+          description: Unique identifier of this resource.
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+      type: object
+    ResourceOfCreativeRead:
+      description: A class that represents a domain entity exposed by an API.
+      example:
+        attributes:
+          dynamicAttributes:
+            creativeBackgroundColor: creativeBackgroundColor
+            primaryFont: primaryFont
+            pricesColor: pricesColor
+            bodyTextColor: bodyTextColor
+            callsToAction:
+            - callsToAction
+            - callsToAction
+            logos:
+            - shape: Horizontal
+              url: https://openapi-generator.tech
+            - shape: Horizontal
+              url: https://openapi-generator.tech
+            productImageDisplay: ShowFullImage
+          adaptiveAttributes:
+            descriptionFont: descriptionFont
+            imageDisplay: ShowFullImage
+            videos:
+            - duration: 0.8008281904610115
+              shape: Horizontal
+              url: https://openapi-generator.tech
+            - duration: 0.8008281904610115
+              shape: Horizontal
+              url: https://openapi-generator.tech
+            descriptionText: descriptionText
+            headlineFont: headlineFont
+            imageSets:
+            - images:
+              - shape: Horizontal
+                url: https://openapi-generator.tech
+              - shape: Horizontal
+                url: https://openapi-generator.tech
+              headlineText: headlineText
+            - images:
+              - shape: Horizontal
+                url: https://openapi-generator.tech
+              - shape: Horizontal
+                url: https://openapi-generator.tech
+              headlineText: headlineText
+            callsToAction:
+            - callsToAction
+            - callsToAction
+            landingPageUrl: https://openapi-generator.tech
+            layouts:
+            - Editorial
+            - Editorial
+            logos:
+            - shape: Horizontal
+              url: https://openapi-generator.tech
+            - shape: Horizontal
+              url: https://openapi-generator.tech
+            colors:
+              backgroundColor: backgroundColor
+              ctaTextColor: ctaTextColor
+              text2Color: text2Color
+              ctaBackgroundColor: ctaBackgroundColor
+              text1Color: text1Color
+              logoAreaAndTitleColor: logoAreaAndTitleColor
+            headlineText: headlineText
+          imageAttributes:
+            urls:
+            - urls
+            - urls
+            landingPageUrl: landingPageUrl
+          author: author
+          format: format
+          name: name
+          datasetId: datasetId
+          description: description
+          advertiserId: advertiserId
+          htmlTagAttributes:
+            tags:
+            - htmlTag: htmlTag
+              size:
+                width: 1
+                height: 6
+            - htmlTag: htmlTag
+              size:
+                width: 1
+                height: 6
+          status: status
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CreativeRead'
         id:
           description: Unique identifier of this resource.
           nullable: true
@@ -13797,11 +12353,11 @@ components:
         adSetNames:
         - adSetNames
         - adSetNames
-        format: format
+        format: json
         currency: currency
         metrics:
-        - metrics
-        - metrics
+        - Clicks
+        - Clicks
         startDate: 2000-01-23T04:56:07.000+00:00
         dimensions:
         - AdsetId
@@ -13872,12 +12428,252 @@ components:
           format: date-time
           type: string
         format:
-          description: "The file format of the generated report: csv, xml, excel or\
-            \ json."
+          default: json
+          description: The file format of the generated report
+          enum:
+          - csv
+          - excel
+          - xml
+          - json
           type: string
         metrics:
           description: The list of metrics to report.
           items:
+            enum:
+            - Clicks
+            - Displays
+            - AdvertiserCost
+            - SalesPc30dClientAttribution
+            - SalesClientAttribution
+            - SalesPc30d
+            - SalesAllPc30dClientAttribution
+            - SalesAllClientAttribution
+            - SalesAllPc30d
+            - SalesPv24h
+            - SalesAllPv24h
+            - SalesPc30Pv24
+            - SalesAllPc30Pv24
+            - SalesPc30dPv24h
+            - SalesAllPc30dPv24h
+            - SalesPc7dPv24
+            - SalesAllPc7dPv24
+            - SalesPc7dPv24h
+            - SalesAllPc7dPv24h
+            - SalesLc
+            - SalesAllLc
+            - SalesPc7d
+            - SalesAllPc7d
+            - SalesPc1d
+            - SalesAllPc1d
+            - SalesPiPc
+            - SalesPiPv
+            - SalesPiPcPv
+            - PostInstallSales
+            - SalesOfflinePc
+            - SalesOfflinePv
+            - SalesOfflinePc30d
+            - SalesOfflinePv24h
+            - RevenueGeneratedPc30dClientAttribution
+            - RevenueGeneratedClientAttribution
+            - RevenueGeneratedPc30d
+            - RevenueGeneratedAllPc30dClientAttribution
+            - RevenueGeneratedAllClientAttribution
+            - RevenueGeneratedAllPc30d
+            - RevenueGeneratedPv24h
+            - RevenueGeneratedAllPv24h
+            - RevenueGeneratedPc30Pv24
+            - RevenueGeneratedAllPc30Pv24
+            - RevenueGeneratedPc30dPv24h
+            - RevenueGeneratedAllPc30dPv24h
+            - RevenueGeneratedPc7dPv24h
+            - RevenueGeneratedAllPc7dPv24h
+            - RevenueGeneratedPc7dPv24
+            - RevenueGeneratedAllPc7dPv24
+            - RevenueGeneratedLc
+            - RevenueGeneratedAllLc
+            - RevenueGeneratedPc7d
+            - RevenueGeneratedAllPc7d
+            - RevenueGeneratedPc1d
+            - RevenueGeneratedAllPc1d
+            - RevenueGeneratedOfflinePc
+            - RevenueGeneratedOfflinePv
+            - RevenueGeneratedOfflinePc30d
+            - RevenueGeneratedOfflinePv24h
+            - ConversionRatePc30dClientAttribution
+            - ConversionRateClientAttribution
+            - ConversionRatePc30d
+            - ConversionRateAllPc30dClientAttribution
+            - ConversionRateAllClientAttribution
+            - ConversionRateAllPc30d
+            - ConversionRatePv24h
+            - ConversionRateAllPv24h
+            - ConversionRatePc30Pv24
+            - ConversionRateAllPc30Pv24
+            - ConversionRatePc30dPv24h
+            - ConversionRateAllPc30dPv24h
+            - ConversionRatePc7dPv24
+            - ConversionRateAllPc7dPv24
+            - ConversionRatePc7dPv24h
+            - ConversionRateAllPc7dPv24h
+            - ConversionRatePc7d
+            - ConversionRateAllPc7d
+            - ConversionRatePc1d
+            - ConversionRateAllPc1d
+            - ConversionRatePiPcPv
+            - PostInstallConversionRate
+            - ECosPc30dClientAttribution
+            - ECosClientAttribution
+            - ECosPc30d
+            - ECosAllPc30dClientAttribution
+            - ECosAllClientAttribution
+            - ECosAllPc30d
+            - ECosPv24h
+            - ECosAllPv24h
+            - ECosPc30Pv24
+            - ECosAllPc30Pv24
+            - ECosPc30dPv24h
+            - ECosAllPc30dPv24h
+            - ECosPc7dPv24h
+            - ECosAllPc7dPv24h
+            - ECosPc7dPv24
+            - ECosAllPc7dPv24
+            - ECosPc7d
+            - ECosAllPc7d
+            - ECosPc1d
+            - ECosAllPc1d
+            - CostPerOrderPc30dClientAttribution
+            - CostPerOrderClientAttribution
+            - CostPerOrderPc30d
+            - CostPerOrderAllPc30dClientAttribution
+            - CostPerOrderAllClientAttribution
+            - CostPerOrderAllPc30d
+            - CostPerOrderPv24h
+            - CostPerOrderAllPv24h
+            - CostPerOrderPc30Pv24
+            - CostPerOrderAllPc30Pv24
+            - CostPerOrderPc30dPv24h
+            - CostPerOrderAllPc30dPv24h
+            - CostPerOrderPc7dPv24h
+            - CostPerOrderAllPc7dPv24h
+            - CostPerOrderPc7dPv24
+            - CostPerOrderAllPc7dPv24
+            - CostPerOrderPc7d
+            - CostPerOrderAllPc7d
+            - CostPerOrderPc1d
+            - CostPerOrderAllPc1d
+            - ExposedUsers
+            - Audience
+            - Reach
+            - AverageCartPc30dClientAttribution
+            - AverageCartAllPc30dClientAttribution
+            - AverageCartClientAttribution
+            - AverageCartAllClientAttribution
+            - AverageCartPc30d
+            - AverageCartAllPc30d
+            - AverageCartPv24h
+            - AverageCartAllPv24h
+            - AverageCartPc1d
+            - AverageCartAllPc1d
+            - AverageCartPc7d
+            - AverageCartAllPc7d
+            - AverageCartPc30Pv24
+            - AverageCartAllPc30Pv24
+            - AverageCartPc30dPv24h
+            - AverageCartAllPc30dPv24h
+            - AverageCartPc7dPv24h
+            - AverageCartAllPc7dPv24h
+            - AverageCartPc7dPv24
+            - AverageCartAllPc7dPv24
+            - ClickThroughRate
+            - ECpc
+            - Cpc
+            - ECpm
+            - ReturnOnAdvertisingSpendingClientAttribution
+            - ReturnOnAdvertisingSpendingAllClientAttribution
+            - AdvertiserValue
+            - AdvertiserAllValue
+            - CostOfAdvertiserValue
+            - CostOfAdvertiserValueAll
+            - AppInstallsPcPv
+            - AppInstalls
+            - QualifiedVisits
+            - Visits
+            - VisitsPV1D
+            - OrderValuePi
+            - PostInstallOrderValue
+            - BounceRate
+            - CostPerInstallPcPv
+            - CostPerInstall
+            - CostPerVisit
+            - CostPerVisitPV1D
+            - CostPerQualifiedVisit
+            - InstallRatePcPv
+            - InstallRate
+            - OmnichannelRoasPc30d
+            - OmnichannelRoasAllPc30d
+            - OmnichannelRevenuePc30d
+            - OmnichannelRevenueAllPc30d
+            - OmnichannelSalesPc30d
+            - OmnichannelSalesAllPc30d
+            - OmnichannelRoasAllPv24h
+            - OmnichannelRoasPv24h
+            - OmnichannelRevenueAllPv24h
+            - OmnichannelRevenuePv24h
+            - OmnichannelSalesAllPv24h
+            - OmnichannelSalesPv24h
+            - OmnichannelRoasClientAttribution
+            - OmnichannelRevenueClientAttribution
+            - OmnichannelSalesClientAttribution
+            - RoasAllPc30dClientAttribution
+            - RoasPc30dClientAttribution
+            - RoasAllClientAttribution
+            - RoasClientAttribution
+            - RoasAllPc30d
+            - RoasPc30d
+            - RoasAllPc7d
+            - RoasPc7d
+            - RoasAllPc1d
+            - RoasPc1d
+            - RoasAllPv24h
+            - RoasPv24h
+            - RoasPc30Pv24
+            - RoasAllPc30Pv24
+            - RoasPc30dPv24h
+            - RoasAllPc30dPv24h
+            - RoasPc7dPv24
+            - RoasAllPc7dPv24
+            - RoasPc7dPv24h
+            - RoasAllPc7dPv24h
+            - CostOfSalePi
+            - CostPerOrderPi
+            - PostInstallCostOfSale
+            - PostInstallCostPerOrder
+            - ReturnOnAdvertiserSpendingPi
+            - PostInstallRoas
+            - ReturnOnAdvertiserSpendingOfflinePc
+            - ReturnOnAdvertiserSpendingOfflinePv
+            - RoasOfflinePc30d
+            - RoasOfflinePv24h
+            - PotentialDisplays
+            - OverallCompetitionWin
+            - ViewableDisplays
+            - NonViewableDisplays
+            - UntrackableDisplays
+            - Frequency
+            - InvalidDisplays
+            - InvalidClicks
+            - ResultType
+            - VideoStarted
+            - VideoFirstQuartile
+            - VideoMidpoint
+            - VideoThirdQuartile
+            - VideoCompleted
+            - VideoAvoc
+            - VideoStartRate
+            - VideoCompletionRate
+            - VideoAverageViewRate
+            - VideoCpv
+            - VideoCpcv
             type: string
           type: array
         startDate:
@@ -13895,7 +12691,6 @@ components:
       - currency
       - dimensions
       - endDate
-      - format
       - metrics
       - startDate
       type: object
@@ -13921,7 +12716,7 @@ components:
         advertiserIds: advertiserIds
         endDate: 2000-01-23T04:56:07.000+00:00
         timezone: UTC
-        format: format
+        format: json
         currency: currency
         eventType: eventType
         startDate: 2000-01-23T04:56:07.000+00:00
@@ -13945,8 +12740,13 @@ components:
           nullable: true
           type: string
         format:
-          description: "The file format of the generated report: csv, xml, excel or\
-            \ json."
+          default: json
+          description: The file format of the generated report
+          enum:
+          - csv
+          - excel
+          - xml
+          - json
           type: string
         startDate:
           description: "Start date of the report. Date component of ISO 8061 format,\
@@ -13962,7 +12762,6 @@ components:
       required:
       - currency
       - endDate
-      - format
       - startDate
       type: object
     TransactionsReportQueryMessageListRequest:
@@ -13975,7 +12774,7 @@ components:
             advertiserIds: advertiserIds
             endDate: 2000-01-23T04:56:07.000+00:00
             timezone: UTC
-            format: format
+            format: json
             currency: currency
             eventType: eventType
             startDate: 2000-01-23T04:56:07.000+00:00
@@ -13984,7 +12783,7 @@ components:
             advertiserIds: advertiserIds
             endDate: 2000-01-23T04:56:07.000+00:00
             timezone: UTC
-            format: format
+            format: json
             currency: currency
             eventType: eventType
             startDate: 2000-01-23T04:56:07.000+00:00
@@ -14004,7 +12803,7 @@ components:
           advertiserIds: advertiserIds
           endDate: 2000-01-23T04:56:07.000+00:00
           timezone: UTC
-          format: format
+          format: json
           currency: currency
           eventType: eventType
           startDate: 2000-01-23T04:56:07.000+00:00

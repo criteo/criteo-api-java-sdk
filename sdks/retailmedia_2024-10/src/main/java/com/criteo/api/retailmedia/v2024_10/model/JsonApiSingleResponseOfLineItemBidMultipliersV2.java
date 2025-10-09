@@ -17,7 +17,7 @@ import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.v2024_10.model.CommonError;
 import com.criteo.api.retailmedia.v2024_10.model.CommonWarning;
-import com.criteo.api.retailmedia.v2024_10.model.JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2;
+import com.criteo.api.retailmedia.v2024_10.model.JsonApiBodyWithLineItemBidMultipliersV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -56,7 +56,7 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
 public class JsonApiSingleResponseOfLineItemBidMultipliersV2 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2 data;
+  private JsonApiBodyWithLineItemBidMultipliersV2 data;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -69,7 +69,7 @@ public class JsonApiSingleResponseOfLineItemBidMultipliersV2 {
   public JsonApiSingleResponseOfLineItemBidMultipliersV2() {
   }
 
-  public JsonApiSingleResponseOfLineItemBidMultipliersV2 data(JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2 data) {
+  public JsonApiSingleResponseOfLineItemBidMultipliersV2 data(JsonApiBodyWithLineItemBidMultipliersV2 data) {
     
     this.data = data;
     return this;
@@ -81,12 +81,12 @@ public class JsonApiSingleResponseOfLineItemBidMultipliersV2 {
   **/
   @javax.annotation.Nonnull
 
-  public JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2 getData() {
+  public JsonApiBodyWithLineItemBidMultipliersV2 getData() {
     return data;
   }
 
 
-  public void setData(JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2 data) {
+  public void setData(JsonApiBodyWithLineItemBidMultipliersV2 data) {
     this.data = data;
   }
 
@@ -286,7 +286,7 @@ public class JsonApiSingleResponseOfLineItemBidMultipliersV2 {
         }
       }
       // validate the required field `data`
-      JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2.validateJsonObject(jsonObj.getAsJsonObject("data"));
+      JsonApiBodyWithLineItemBidMultipliersV2.validateJsonObject(jsonObj.getAsJsonObject("data"));
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {

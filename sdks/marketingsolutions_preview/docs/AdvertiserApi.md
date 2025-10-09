@@ -4,15 +4,15 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**apiPortfolioGet**](AdvertiserApi.md#apiPortfolioGet) | **GET** /preview/advertisers/me |  |
-| [**getDatasetList**](AdvertiserApi.md#getDatasetList) | **GET** /preview/advertisers/{advertiser-id}/datasets |  |
+| [**listAdvertisers**](AdvertiserApi.md#listAdvertisers) | **GET** /preview/advertisers/me |  |
+| [**listDatasetsByAdvertiser**](AdvertiserApi.md#listDatasetsByAdvertiser) | **GET** /preview/advertisers/{advertiser-id}/datasets |  |
 | [**listIndustries**](AdvertiserApi.md#listIndustries) | **GET** /preview/industries |  |
 
 
 
-## apiPortfolioGet
+## listAdvertisers
 
-> GetPortfolioResponse apiPortfolioGet()
+> GetPortfolioResponse listAdvertisers()
 
 
 
@@ -58,10 +58,10 @@ public class Example {
 
         AdvertiserApi apiInstance = new AdvertiserApi(defaultClient);
         try {
-            GetPortfolioResponse result = apiInstance.apiPortfolioGet();
+            GetPortfolioResponse result = apiInstance.listAdvertisers();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AdvertiserApi#apiPortfolioGet");
+            System.err.println("Exception when calling AdvertiserApi#listAdvertisers");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -95,9 +95,9 @@ This endpoint does not need any parameter.
 | **200** | Success |  -  |
 
 
-## getDatasetList
+## listDatasetsByAdvertiser
 
-> AdvertiserDatasetListResponse getDatasetList(advertiserId)
+> AdvertiserDatasetListResponse listDatasetsByAdvertiser(advertiserId)
 
 
 
@@ -144,10 +144,10 @@ public class Example {
         AdvertiserApi apiInstance = new AdvertiserApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The id of the Advertiser for which Datasets are being retrieved.
         try {
-            AdvertiserDatasetListResponse result = apiInstance.getDatasetList(advertiserId);
+            AdvertiserDatasetListResponse result = apiInstance.listDatasetsByAdvertiser(advertiserId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AdvertiserApi#getDatasetList");
+            System.err.println("Exception when calling AdvertiserApi#listDatasetsByAdvertiser");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());

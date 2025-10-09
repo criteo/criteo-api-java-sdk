@@ -238,7 +238,7 @@ public class AdaptiveWriteAttributes {
    * Get colors
    * @return colors
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public AdaptiveColors getColors() {
     return colors;

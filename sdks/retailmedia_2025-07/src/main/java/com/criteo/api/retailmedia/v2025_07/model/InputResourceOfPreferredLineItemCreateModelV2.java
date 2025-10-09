@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.v2025_07.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2025_07.model.ExternalPreferredLineItemCreateModelV2;
+import com.criteo.api.retailmedia.v2025_07.model.PreferredLineItemCreateModelV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,7 +51,7 @@ import com.criteo.api.retailmedia.v2025_07.JSON;
 public class InputResourceOfPreferredLineItemCreateModelV2 {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ExternalPreferredLineItemCreateModelV2 attributes;
+  private PreferredLineItemCreateModelV2 attributes;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -60,7 +60,7 @@ public class InputResourceOfPreferredLineItemCreateModelV2 {
   public InputResourceOfPreferredLineItemCreateModelV2() {
   }
 
-  public InputResourceOfPreferredLineItemCreateModelV2 attributes(ExternalPreferredLineItemCreateModelV2 attributes) {
+  public InputResourceOfPreferredLineItemCreateModelV2 attributes(PreferredLineItemCreateModelV2 attributes) {
     
     this.attributes = attributes;
     return this;
@@ -72,12 +72,12 @@ public class InputResourceOfPreferredLineItemCreateModelV2 {
   **/
   @javax.annotation.Nullable
 
-  public ExternalPreferredLineItemCreateModelV2 getAttributes() {
+  public PreferredLineItemCreateModelV2 getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(ExternalPreferredLineItemCreateModelV2 attributes) {
+  public void setAttributes(PreferredLineItemCreateModelV2 attributes) {
     this.attributes = attributes;
   }
 
@@ -218,7 +218,7 @@ public class InputResourceOfPreferredLineItemCreateModelV2 {
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ExternalPreferredLineItemCreateModelV2.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        PreferredLineItemCreateModelV2.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

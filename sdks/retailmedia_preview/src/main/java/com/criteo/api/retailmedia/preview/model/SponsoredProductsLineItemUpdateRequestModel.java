@@ -52,7 +52,7 @@ import com.criteo.api.retailmedia.preview.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SponsoredProductsLineItemUpdateRequestModel {
   /**
-   * Gets or Sets bidStrategy
+   * The bidding strategy for the line item.
    */
   @JsonAdapter(BidStrategyEnum.Adapter.class)
   public enum BidStrategyEnum {
@@ -138,12 +138,63 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  /**
+   * The optimization strategy for the line item.
+   */
+  @JsonAdapter(OptimizationStrategyEnum.Adapter.class)
+  public enum OptimizationStrategyEnum {
+    MANUAL("manual"),
+    
+    AUTOMATED("automated");
+
+    private String value;
+
+    OptimizationStrategyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static OptimizationStrategyEnum fromValue(String value) {
+      for (OptimizationStrategyEnum b : OptimizationStrategyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<OptimizationStrategyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final OptimizationStrategyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public OptimizationStrategyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return OptimizationStrategyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_OPTIMIZATION_STRATEGY = "optimizationStrategy";
+  @SerializedName(SERIALIZED_NAME_OPTIMIZATION_STRATEGY)
+  private OptimizationStrategyEnum optimizationStrategy = OptimizationStrategyEnum.MANUAL;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
 
   /**
-   * Status of a line item.
+   * The current status of the line item.
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -209,7 +260,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * Get bidStrategy
+   * The bidding strategy for the line item.
    * @return bidStrategy
   **/
   @javax.annotation.Nullable
@@ -231,7 +282,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * Get budget
+   * The total budget allocated for this line item.
    * @return budget
   **/
   @javax.annotation.Nullable
@@ -253,7 +304,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * Get dailyPacing
+   * The daily pacing amount for the line item.
    * @return dailyPacing
   **/
   @javax.annotation.Nullable
@@ -275,7 +326,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * Get endDate
+   * The date and time when the line item stops running.
    * @return endDate
   **/
   @javax.annotation.Nullable
@@ -319,7 +370,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * Get isAutoDailyPacing
+   * True if daily pacing is automatic, false if manual.
    * @return isAutoDailyPacing
   **/
   @javax.annotation.Nonnull
@@ -341,7 +392,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * Get maxBid
+   * The maximum bid amount for the line item.
    * @return maxBid
   **/
   @javax.annotation.Nullable
@@ -363,7 +414,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * Get monthlyPacing
+   * The monthly pacing amount for the line item.
    * @return monthlyPacing
   **/
   @javax.annotation.Nullable
@@ -385,7 +436,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * Get name
+   * The name of this line item.
    * @return name
   **/
   @javax.annotation.Nonnull
@@ -400,6 +451,28 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
 
+  public SponsoredProductsLineItemUpdateRequestModel optimizationStrategy(OptimizationStrategyEnum optimizationStrategy) {
+    
+    this.optimizationStrategy = optimizationStrategy;
+    return this;
+  }
+
+   /**
+   * The optimization strategy for the line item.
+   * @return optimizationStrategy
+  **/
+  @javax.annotation.Nullable
+
+  public OptimizationStrategyEnum getOptimizationStrategy() {
+    return optimizationStrategy;
+  }
+
+
+  public void setOptimizationStrategy(OptimizationStrategyEnum optimizationStrategy) {
+    this.optimizationStrategy = optimizationStrategy;
+  }
+
+
   public SponsoredProductsLineItemUpdateRequestModel startDate(OffsetDateTime startDate) {
     
     this.startDate = startDate;
@@ -407,7 +480,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * Get startDate
+   * The date and time when the line item starts running.
    * @return startDate
   **/
   @javax.annotation.Nonnull
@@ -429,7 +502,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * Status of a line item.
+   * The current status of the line item.
    * @return status
   **/
   @javax.annotation.Nonnull
@@ -451,10 +524,10 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * Get targetBid
+   * The target bid amount for the line item.
    * @return targetBid
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Double getTargetBid() {
     return targetBid;
@@ -485,6 +558,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
         Objects.equals(this.maxBid, sponsoredProductsLineItemUpdateRequestModel.maxBid) &&
         Objects.equals(this.monthlyPacing, sponsoredProductsLineItemUpdateRequestModel.monthlyPacing) &&
         Objects.equals(this.name, sponsoredProductsLineItemUpdateRequestModel.name) &&
+        Objects.equals(this.optimizationStrategy, sponsoredProductsLineItemUpdateRequestModel.optimizationStrategy) &&
         Objects.equals(this.startDate, sponsoredProductsLineItemUpdateRequestModel.startDate) &&
         Objects.equals(this.status, sponsoredProductsLineItemUpdateRequestModel.status) &&
         Objects.equals(this.targetBid, sponsoredProductsLineItemUpdateRequestModel.targetBid);
@@ -496,7 +570,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidStrategy, budget, dailyPacing, endDate, flightSchedule, isAutoDailyPacing, maxBid, monthlyPacing, name, startDate, status, targetBid);
+    return Objects.hash(bidStrategy, budget, dailyPacing, endDate, flightSchedule, isAutoDailyPacing, maxBid, monthlyPacing, name, optimizationStrategy, startDate, status, targetBid);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -519,6 +593,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
     sb.append("    maxBid: ").append(toIndentedString(maxBid)).append("\n");
     sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    optimizationStrategy: ").append(toIndentedString(optimizationStrategy)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    targetBid: ").append(toIndentedString(targetBid)).append("\n");
@@ -553,6 +628,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
     openapiFields.add("maxBid");
     openapiFields.add("monthlyPacing");
     openapiFields.add("name");
+    openapiFields.add("optimizationStrategy");
     openapiFields.add("startDate");
     openapiFields.add("status");
     openapiFields.add("targetBid");
@@ -563,7 +639,6 @@ public class SponsoredProductsLineItemUpdateRequestModel {
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("status");
-    openapiRequiredFields.add("targetBid");
   }
 
  /**
@@ -602,6 +677,9 @@ public class SponsoredProductsLineItemUpdateRequestModel {
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("optimizationStrategy") != null && !jsonObj.get("optimizationStrategy").isJsonNull()) && !jsonObj.get("optimizationStrategy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `optimizationStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("optimizationStrategy").toString()));
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

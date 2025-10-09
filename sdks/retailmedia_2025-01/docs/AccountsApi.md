@@ -7,7 +7,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**addBrands**](AccountsApi.md#addBrands) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/brands/add |  |
 | [**createPrivateMarketDemandBrandAccount**](AccountsApi.md#createPrivateMarketDemandBrandAccount) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/create-brand-account |  |
 | [**createPrivateMarketDemandSellerAccount**](AccountsApi.md#createPrivateMarketDemandSellerAccount) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/create-seller-account |  |
-| [**getApiV1ExternalAccounts**](AccountsApi.md#getApiV1ExternalAccounts) | **GET** /2025-01/retail-media/accounts |  |
+| [**getAccounts**](AccountsApi.md#getAccounts) | **GET** /2025-01/retail-media/accounts |  |
 | [**grantConsent**](AccountsApi.md#grantConsent) | **POST** /2025-01/retail-media/accounts/{accountId}/grant-consent |  |
 | [**removeBrands**](AccountsApi.md#removeBrands) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/brands/remove |  |
 | [**updateSellers**](AccountsApi.md#updateSellers) | **PUT** /2025-01/retail-media/account-management/accounts/{accountId}/sellers |  |
@@ -287,9 +287,9 @@ public class Example {
 | **201** | Success |  -  |
 
 
-## getApiV1ExternalAccounts
+## getAccounts
 
-> JsonApiPageResponseOfAccount getApiV1ExternalAccounts(limitToId, pageIndex, pageSize)
+> JsonApiPageResponseOfAccount getAccounts(limitToId, pageIndex, pageSize)
 
 
 
@@ -338,10 +338,10 @@ public class Example {
         Integer pageIndex = 0; // Integer | The 0 indexed page index you would like to receive given the page size
         Integer pageSize = 25; // Integer | The maximum number of items you would like to receive in this request
         try {
-            JsonApiPageResponseOfAccount result = apiInstance.getApiV1ExternalAccounts(limitToId, pageIndex, pageSize);
+            JsonApiPageResponseOfAccount result = apiInstance.getAccounts(limitToId, pageIndex, pageSize);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AccountsApi#getApiV1ExternalAccounts");
+            System.err.println("Exception when calling AccountsApi#getAccounts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -371,7 +371,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
@@ -460,7 +460,7 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Content-Type**: application/json
 - **Accept**: Not defined
 
 

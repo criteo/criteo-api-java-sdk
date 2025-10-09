@@ -401,6 +401,8 @@ public class AsyncRevenueReport {
     
     SALESCHANNEL("salesChannel"),
     
+    MEDIATYPE("mediaType"),
+    
     ATTRIBUTIONSETTINGS("attributionSettings"),
     
     ACTIVITYTYPE("activityType"),
@@ -557,6 +559,61 @@ public class AsyncRevenueReport {
   public static final String SERIALIZED_NAME_LINE_ITEM_IDS = "lineItemIds";
   @SerializedName(SERIALIZED_NAME_LINE_ITEM_IDS)
   private List<String> lineItemIds = null;
+
+  /**
+   * Filter on the type of media: unknown, display, video
+   */
+  @JsonAdapter(MediaTypeEnum.Adapter.class)
+  public enum MediaTypeEnum {
+    UNKNOWN("unknown"),
+    
+    VIDEO("video"),
+    
+    DISPLAY("display"),
+    
+    ALL("all");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MediaTypeEnum fromValue(String value) {
+      for (MediaTypeEnum b : MediaTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MediaTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MediaTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MediaTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MediaTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_MEDIA_TYPE = "mediaType";
+  @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
+  private MediaTypeEnum mediaType = MediaTypeEnum.ALL;
 
   /**
    * Gets or Sets metrics
@@ -1480,6 +1537,28 @@ public class AsyncRevenueReport {
   }
 
 
+  public AsyncRevenueReport mediaType(MediaTypeEnum mediaType) {
+    
+    this.mediaType = mediaType;
+    return this;
+  }
+
+   /**
+   * Filter on the type of media: unknown, display, video
+   * @return mediaType
+  **/
+  @javax.annotation.Nullable
+
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+
+
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
+
   public AsyncRevenueReport metrics(List<MetricsEnum> metrics) {
     
     this.metrics = metrics;
@@ -1843,6 +1922,7 @@ public class AsyncRevenueReport {
         Objects.equals(this.id, asyncRevenueReport.id) &&
         Objects.equals(this.ids, asyncRevenueReport.ids) &&
         Objects.equals(this.lineItemIds, asyncRevenueReport.lineItemIds) &&
+        Objects.equals(this.mediaType, asyncRevenueReport.mediaType) &&
         Objects.equals(this.metrics, asyncRevenueReport.metrics) &&
         Objects.equals(this.reportType, asyncRevenueReport.reportType) &&
         Objects.equals(this.retailerIds, asyncRevenueReport.retailerIds) &&
@@ -1860,7 +1940,7 @@ public class AsyncRevenueReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIds, advertiserTypes, buyType, campaignIds, campaignType, clickAttributionWindow, clickMatchLevel, dimensions, endDate, format, id, ids, lineItemIds, metrics, reportType, retailerIds, revenueType, salesChannel, skuRelations, soldBy, startDate, targetedKeywordTypes, timezone, viewAttributionWindow, viewMatchLevel, additionalProperties);
+    return Objects.hash(accountIds, advertiserTypes, buyType, campaignIds, campaignType, clickAttributionWindow, clickMatchLevel, dimensions, endDate, format, id, ids, lineItemIds, mediaType, metrics, reportType, retailerIds, revenueType, salesChannel, skuRelations, soldBy, startDate, targetedKeywordTypes, timezone, viewAttributionWindow, viewMatchLevel, additionalProperties);
   }
 
   @Override
@@ -1880,6 +1960,7 @@ public class AsyncRevenueReport {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
     sb.append("    lineItemIds: ").append(toIndentedString(lineItemIds)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
@@ -1928,6 +2009,7 @@ public class AsyncRevenueReport {
     openapiFields.add("id");
     openapiFields.add("ids");
     openapiFields.add("lineItemIds");
+    openapiFields.add("mediaType");
     openapiFields.add("metrics");
     openapiFields.add("reportType");
     openapiFields.add("retailerIds");
@@ -2007,6 +2089,9 @@ public class AsyncRevenueReport {
       // ensure the optional json data is an array if present
       if (jsonObj.get("lineItemIds") != null && !jsonObj.get("lineItemIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineItemIds` to be an array in the JSON string but got `%s`", jsonObj.get("lineItemIds").toString()));
+      }
+      if ((jsonObj.get("mediaType") != null && !jsonObj.get("mediaType").isJsonNull()) && !jsonObj.get("mediaType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mediaType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaType").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonArray()) {

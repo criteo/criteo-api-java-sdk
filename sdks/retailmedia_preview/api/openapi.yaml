@@ -22,7 +22,7 @@ paths:
     get:
       description: Gets page of private market child accounts that are associated
         with the given account
-      operationId: ExternalApiAccounts_GetApiExternalV1AccountPrivateMarketChildAccountsByAccountId
+      operationId: GetPrivateMarketChildAccountsByAccountId
       parameters:
       - description: Account Id
         explode: false
@@ -801,7 +801,7 @@ paths:
   /preview/retail-media/accounts/{account-id}/creatives:
     post:
       description: Create a creative for an account
-      operationId: PostApiV2ExternalAccountCreativesByAccountId
+      operationId: CreateCreative
       parameters:
       - description: External account id to create a creative for
         explode: false
@@ -835,7 +835,7 @@ paths:
   /preview/retail-media/accounts/{account-id}/creatives/{creative-id}:
     get:
       description: Get the specified creative
-      operationId: "GetApiV2ExternalAccountByAccountId}Creatives{creativeId"
+      operationId: GetCreative
       parameters:
       - description: External account id to retrieve creatives for
         explode: false
@@ -868,7 +868,7 @@ paths:
       x-accepts: application/json
     put:
       description: Update a creative
-      operationId: "PutApiV2ExternalAccountByAccountId}Creatives{creativeId"
+      operationId: UpdateCreative
       parameters:
       - description: External account id containing the creative
         explode: false
@@ -912,7 +912,7 @@ paths:
   /preview/retail-media/accounts/{account-id}/creatives/search:
     post:
       description: Get account creatives
-      operationId: PostApiV2ExternalAccountCreativesSearchByAccountId
+      operationId: SearchAccountCreatives
       parameters:
       - description: External account id to retrieve creatives for
         explode: false
@@ -1030,6 +1030,66 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/retailers/search:
+    post:
+      description: Searches for retailers associated with the specified account based
+        on provided search criteria
+      operationId: SearchRetailersV1
+      parameters:
+      - description: The external account identifier
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The maximum number of items to return. Must be between 1 and
+          10. Default is 5.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 5
+          format: int32
+          maximum: 10
+          minimum: 1
+          type: integer
+        style: form
+      - description: The number of items to skip before starting to collect the result
+          set. Default is 0.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfRetailerSearchRequest'
+        description: The search request containing filtering parameters
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/accounts/{accountId}/seller-catalog-export:
     post:
       description: Create a request for a Catalog available to the indicated account.
@@ -1066,6 +1126,7 @@ paths:
   /preview/retail-media/accounts/fees/search:
     post:
       description: Get fees for provided accounts
+      operationId: AccountFeesSearch
       parameters:
       - description: "used for paging, number of results returned per request, Maximum\
           \ of 500"
@@ -1114,17 +1175,14 @@ paths:
   /preview/retail-media/accounts/fees/update:
     post:
       description: Set fees for provided accounts
+      operationId: UpdateAccountFees
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueResourceInputAccountFeesUpdateRequest'
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeAccountFeesUpdateResult'
+        "204":
           description: Success
       security:
       - oauth:
@@ -1343,6 +1401,7 @@ paths:
   /preview/retail-media/billing/partner-report:
     post:
       description: Create a Partner Billing Report request.
+      operationId: CreatePartnerBillingReportRequestV1
       requestBody:
         content:
           application/json:
@@ -1366,6 +1425,7 @@ paths:
   /preview/retail-media/billing/partner-report/{requestId}/output:
     get:
       description: Get the output of an existing Partner Billing Report.
+      operationId: GetPartnerBillingReportOutputV1
       parameters:
       - description: The id of a Partner Billing Report request.
         explode: false
@@ -1396,6 +1456,7 @@ paths:
   /preview/retail-media/billing/partner-report/{requestId}/status:
     get:
       description: Get the status of an existing Partner Billing Report.
+      operationId: GetPartnerBillingReportStatusV1
       parameters:
       - description: The id of a Partner Billing Report request.
         explode: false
@@ -2690,6 +2751,33 @@ paths:
       - Analytics
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/reports/unfilled-placements:
+    post:
+      description: |-
+        Returns an asynchronous Unfilled Placements Report
+        This endpoint is subject to specific rate limits.
+      operationId: GenerateAsyncUnfilledPlacementsReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AsyncUnfilledPlacementsReportRequest'
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/retailers/{retailer-id}/cpc-rates:
     get:
       description: "Gets the minimum cpc bid for the retailer, and optionally the\
@@ -3118,32 +3206,6 @@ components:
       required:
       - accountIds
       - fees
-      type: object
-    AccountFeesUpdateResult:
-      additionalProperties: false
-      description: "results of the update request, includes any accounts that were\
-        \ not updated successfully"
-      example:
-        failedUpdateAccountIds:
-        - failedUpdateAccountIds
-        - failedUpdateAccountIds
-        successfullyUpdatedAccountIds:
-        - successfullyUpdatedAccountIds
-        - successfullyUpdatedAccountIds
-      nullable: true
-      properties:
-        failedUpdateAccountIds:
-          description: account Id that were not updated in the request
-          items:
-            type: string
-          nullable: true
-          type: array
-        successfullyUpdatedAccountIds:
-          description: account Ids that were successfully updated in the request
-          items:
-            type: string
-          nullable: true
-          type: array
       type: object
     AddRemoveKeywordModel:
       additionalProperties: false
@@ -4080,6 +4142,11 @@ components:
             - revenue
             - workingMedia
             - netRevenue
+            - nonDeliverablePlacements
+            - deliverablePlacements
+            - placementsWithCandidates
+            - coveredPlacements
+            - coverageRate
             type: string
           minItems: 1
           type: array
@@ -4855,6 +4922,200 @@ components:
           readOnly: true
           type: array
       type: object
+    AsyncUnfilledPlacementsReport:
+      description: Async Unfilled Placements report body request
+      example:
+        adServerType: all
+        campaignType: all
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
+        format: json
+        supplyAccountIds:
+        - supplyAccountIds
+        - supplyAccountIds
+        metrics:
+        - totalUnfilledPlacements
+        - totalUnfilledPlacements
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
+      properties:
+        adServerType:
+          default: all
+          description: "Filter on the type of the ad server: criteo, gam, all"
+          enum:
+          - all
+          - gam
+          - criteo
+          type: string
+        campaignType:
+          default: all
+          description: "Filter on the type of the campaign: onsite display, onsite\
+            \ sponsored products, all"
+          enum:
+          - all
+          - sponsoredProducts
+          - onSiteDisplays
+          type: string
+        dimensions:
+          description: List of dimensions to report on
+          items:
+            enum:
+            - date
+            - retailerId
+            - retailerName
+            - placementId
+            - placementName
+            - pageTypeName
+            - servedCategory
+            - environment
+            - retailerCategoryId
+            - retailerCategoryName
+            - adServerType
+            - campaignType
+            type: string
+          minItems: 1
+          type: array
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        format:
+          default: json
+          description: Format of the output
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        metrics:
+          description: List of metrics to report on
+          items:
+            enum:
+            - totalUnfilledPlacements
+            - unfilledUserOptOut
+            - unfilledNotEnoughDemand
+            - unfilledTotalAuctionSettings
+            - unfilledTotalAuctionConsiderations
+            - unfilledAdvertiserAuctionSettings
+            - unfilledRetailerAuctionSettings
+            - unfilledCriteoAuctionSettings
+            - unfilledReturnedButNotPainted
+            - nonDeliverableUnmappedCategories
+            - nonDeliverablePagesWithUnknownProducts
+            - nonDeliverableBlockedOptOut
+            - nonDeliverableBlockedPageCategory
+            - nonDeliverableInactivePlacement
+            - nonDeliverableInsufficientOrganicResults
+            - nonDeliverableInvalidTraffic
+            - nonDeliverableTestPlacement
+            - uncoveredUnusedFormats
+            - uncoveredSearchTermWithoutCategory
+            - uncoveredNoDemandBrandedKeywordConquestingEnabled
+            - uncoveredNoDemandBrandedKeywordConquestingDisabled
+            - uncoveredNoDemandUnbrandedInventory
+            - uncoveredNoDemandOptOut
+            - uncoveredFilteredOutDemand
+            - uncoveredBrokenPlacement
+            - uncoveredNotPainted
+            - availablePlacements
+            - fillRate
+            - placementImpressions
+            - productImpressions
+            - placementClicks
+            - productClicks
+            - clicks
+            - placementImpressionsCTR
+            - productImpressionsCTR
+            - cpm
+            - cpc
+            - placementImpressionsRevenue
+            - productClicksRevenue
+            - revenue
+            - nonDeliverablePlacements
+            - deliverablePlacements
+            - placementsWithCandidates
+            - coveredPlacements
+            - coverageRate
+            type: string
+          minItems: 1
+          type: array
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        supplyAccountIds:
+          description: Supply account ids to report on
+          items:
+            type: string
+          type: array
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
+          type: string
+      required:
+      - dimensions
+      - endDate
+      - metrics
+      - startDate
+      - supplyAccountIds
+      type: object
+    AsyncUnfilledPlacementsReportRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value
+      example:
+        data:
+          attributes:
+            adServerType: all
+            campaignType: all
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
+            format: json
+            supplyAccountIds:
+            - supplyAccountIds
+            - supplyAccountIds
+            metrics:
+            - totalUnfilledPlacements
+            - totalUnfilledPlacements
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - date
+            - date
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncUnfilledPlacementsReportResource'
+      type: object
+    AsyncUnfilledPlacementsReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          adServerType: all
+          campaignType: all
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: UTC
+          format: json
+          supplyAccountIds:
+          - supplyAccountIds
+          - supplyAccountIds
+          metrics:
+          - totalUnfilledPlacements
+          - totalUnfilledPlacements
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - date
+          - date
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AsyncUnfilledPlacementsReport'
+        type:
+          type: string
+      type: object
     AudienceError:
       description: Definition of an audience error
       example:
@@ -5558,6 +5819,53 @@ components:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
+          type: array
+      type: object
+    CampaignAvailability:
+      additionalProperties: false
+      description: "Information about the availability of a specific campaign type\
+        \ and buy type combination, and page types and environments supported for\
+        \ that combination"
+      example:
+        isAvailable: true
+        campaignType: unknown
+        buyType: unknown
+        validCombinations:
+        - pageType: unknown
+          pageEnvironmentType: unknown
+        - pageType: unknown
+          pageEnvironmentType: unknown
+      properties:
+        buyType:
+          description: The buy type this object represents availability for
+          enum:
+          - unknown
+          - auction
+          - preferreddeals
+          - sponsorship
+          - offsite
+          nullable: true
+          type: string
+        campaignType:
+          description: The type of campaign this object represents availability for
+          enum:
+          - unknown
+          - sponsoredproducts
+          - onsitedisplay
+          - offsite
+          nullable: true
+          type: string
+        isAvailable:
+          description: Indicates whether the campaign type and buy type combination
+            is available for the retailer
+          nullable: true
+          type: boolean
+        validCombinations:
+          description: PageType-PageEnvironmentType pairs which are supported for
+            this campaign-buy type combination
+          items:
+            $ref: '#/components/schemas/PageTypeCombination'
+          nullable: true
           type: array
       type: object
     CatalogStatusV2:
@@ -6627,6 +6935,7 @@ components:
       description: settings for DSP fees
       example:
         rate: 0.08008281904610115
+      nullable: true
       properties:
         rate:
           description: decimal fee rate between 0 and 1
@@ -7023,6 +7332,119 @@ components:
           readOnly: true
           type: array
       type: object
+    EntityResourceCollectionOutcomeOfRetailerResultAndMetadata:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata.
+      example:
+        metadata:
+          offset: 1
+          count: 0
+          limit: 6
+        data:
+        - attributes:
+            name: name
+            campaignAvailabilities:
+            - isAvailable: true
+              campaignType: unknown
+              buyType: unknown
+              validCombinations:
+              - pageType: unknown
+                pageEnvironmentType: unknown
+              - pageType: unknown
+                pageEnvironmentType: unknown
+            - isAvailable: true
+              campaignType: unknown
+              buyType: unknown
+              validCombinations:
+              - pageType: unknown
+                pageEnvironmentType: unknown
+              - pageType: unknown
+                pageEnvironmentType: unknown
+          id: id
+          type: type
+        - attributes:
+            name: name
+            campaignAvailabilities:
+            - isAvailable: true
+              campaignType: unknown
+              buyType: unknown
+              validCombinations:
+              - pageType: unknown
+                pageEnvironmentType: unknown
+              - pageType: unknown
+                pageEnvironmentType: unknown
+            - isAvailable: true
+              campaignType: unknown
+              buyType: unknown
+              validCombinations:
+              - pageType: unknown
+                pageEnvironmentType: unknown
+              - pageType: unknown
+                pageEnvironmentType: unknown
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceOfRetailerResult'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -7133,6 +7555,7 @@ components:
         - attributes:
             bidStrategy: unknown
             budgetRemaining: 6.027456183070403
+            optimizationStrategy: manual
             endDate: 2000-01-23T04:56:07.000+00:00
             campaignId: campaignId
             keywordStrategy: unknown
@@ -7162,6 +7585,7 @@ components:
         - attributes:
             bidStrategy: unknown
             budgetRemaining: 6.027456183070403
+            optimizationStrategy: manual
             endDate: 2000-01-23T04:56:07.000+00:00
             campaignId: campaignId
             keywordStrategy: unknown
@@ -7302,6 +7726,43 @@ components:
           nullable: true
           type: string
       type: object
+    EntityResourceOfRetailerResult:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          name: name
+          campaignAvailabilities:
+          - isAvailable: true
+            campaignType: unknown
+            buyType: unknown
+            validCombinations:
+            - pageType: unknown
+              pageEnvironmentType: unknown
+            - pageType: unknown
+              pageEnvironmentType: unknown
+          - isAvailable: true
+            campaignType: unknown
+            buyType: unknown
+            validCombinations:
+            - pageType: unknown
+              pageEnvironmentType: unknown
+            - pageType: unknown
+              pageEnvironmentType: unknown
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RetailerResult'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     EntityResourceOfRetailMediaChildAccount:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
@@ -7338,6 +7799,7 @@ components:
         attributes:
           bidStrategy: unknown
           budgetRemaining: 6.027456183070403
+          optimizationStrategy: manual
           endDate: 2000-01-23T04:56:07.000+00:00
           campaignId: campaignId
           keywordStrategy: unknown
@@ -7457,6 +7919,7 @@ components:
           attributes:
             bidStrategy: unknown
             budgetRemaining: 6.027456183070403
+            optimizationStrategy: manual
             endDate: 2000-01-23T04:56:07.000+00:00
             campaignId: campaignId
             keywordStrategy: unknown
@@ -7804,7 +8267,6 @@ components:
           description: The assets representing the images to be displayed
           items:
             type: string
-          minItems: 1
           type: array
       required:
       - assetIds
@@ -8569,6 +9031,7 @@ components:
         onsiteSponsoredProductsEnabled: true
         rate: 0.6027456183070403
         onsiteDisplayEnabled: true
+      nullable: true
       properties:
         onsiteDisplayEnabled:
           description: whether fee is enabled for display campaigns
@@ -8929,6 +9392,47 @@ components:
       required:
       - data
       - meta
+      type: object
+    PageTypeCombination:
+      additionalProperties: false
+      description: Represents a combination of page type and page environment type
+        for a specific campaign-buy type.
+      example:
+        pageType: unknown
+        pageEnvironmentType: unknown
+      properties:
+        pageEnvironmentType:
+          description: The page types which are supported for this campaign-buy type
+            combination
+          enum:
+          - unknown
+          - web
+          - mobile
+          - app
+          - lockout
+          - mixed
+          - ios
+          - android
+          nullable: true
+          type: string
+        pageType:
+          description: The page types which are supported for this campaign-buy type
+            combination
+          enum:
+          - unknown
+          - search
+          - home
+          - checkout
+          - category
+          - productdetail
+          - confirmation
+          - merchandising
+          - deals
+          - favorites
+          - searchbar
+          - categorymenu
+          nullable: true
+          type: string
       type: object
     PageTypeEnvironment2:
       additionalProperties: false
@@ -9799,9 +10303,6 @@ components:
           $ref: '#/components/schemas/DemandManagedFee'
         managedService:
           $ref: '#/components/schemas/ManagedServiceFee'
-      required:
-      - demandManaged
-      - managedService
       type: object
     ProblemDetails:
       description: Data model for common error or warning
@@ -12426,6 +12927,58 @@ components:
           readOnly: true
           type: array
       type: object
+    RetailerResult:
+      additionalProperties: false
+      description: The result of a query for the configuration of a retailer
+      example:
+        name: name
+        campaignAvailabilities:
+        - isAvailable: true
+          campaignType: unknown
+          buyType: unknown
+          validCombinations:
+          - pageType: unknown
+            pageEnvironmentType: unknown
+          - pageType: unknown
+            pageEnvironmentType: unknown
+        - isAvailable: true
+          campaignType: unknown
+          buyType: unknown
+          validCombinations:
+          - pageType: unknown
+            pageEnvironmentType: unknown
+          - pageType: unknown
+            pageEnvironmentType: unknown
+      nullable: true
+      properties:
+        campaignAvailabilities:
+          description: "A list of campaign availabilities for the retailer, each of\
+            \ which shows the availability of a specific campaign type and buy type\
+            \ combination"
+          items:
+            $ref: '#/components/schemas/CampaignAvailability'
+          nullable: true
+          type: array
+        name:
+          description: Name of the retailer
+          nullable: true
+          type: string
+      type: object
+    RetailerSearchRequest:
+      additionalProperties: false
+      description: Request model for searching retailers
+      example:
+        retailerIdFilter:
+        - retailerIdFilter
+        - retailerIdFilter
+      properties:
+        retailerIdFilter:
+          description: Optional list of retailer IDs to filter the results
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     RetailMediaContactlistAmendment:
       description: Request data of retail media contact list amendment
       example:
@@ -15008,6 +15561,7 @@ components:
           - UserIdentifier
           - IdentityLink
           - CustomerId
+          - PhoneNumber
           type: string
       type: object
     RmContactListStatisticsEntityV1:
@@ -15148,6 +15702,7 @@ components:
           - UserIdentifier
           - IdentityLink
           - CustomerId
+          - PhoneNumber
           nullable: true
           type: string
         isReadOnly:
@@ -16051,6 +16606,7 @@ components:
       example:
         bidStrategy: unknown
         budgetRemaining: 6.027456183070403
+        optimizationStrategy: manual
         endDate: 2000-01-23T04:56:07.000+00:00
         campaignId: campaignId
         keywordStrategy: unknown
@@ -16149,6 +16705,12 @@ components:
           maxLength: 255
           minLength: 0
           type: string
+        optimizationStrategy:
+          enum:
+          - manual
+          - automated
+          nullable: true
+          type: string
         startDate:
           description: The date and time when the line item starts running.
           format: date-time
@@ -16173,6 +16735,7 @@ components:
           nullable: true
           type: number
         targetRetailerId:
+          description: The ID of the retailer targeted by this line item.
           format: long-id
           type: string
         updatedAt:
@@ -16196,6 +16759,7 @@ components:
         endDate: 2000-01-23T04:56:07.000+00:00
         keywordStrategy: conquesting
         targetBid: 5.637376656633329
+        optimizationStrategyEnum: manual
         maxBid: 1.4658129805029452
         flightSchedule:
           legs:
@@ -16268,6 +16832,12 @@ components:
           maxLength: 255
           minLength: 0
           type: string
+        optimizationStrategyEnum:
+          default: manual
+          enum:
+          - manual
+          - automated
+          type: string
         startDate:
           description: The date and time when the line item should start running.
           format: date-time
@@ -16291,7 +16861,9 @@ components:
       description: A request to update a Sponsored Products Line Item.
       example:
         bidStrategy: conversion
+        optimizationStrategy: manual
         endDate: 2000-01-23T04:56:07.000+00:00
+        targetBid: 5.637376656633329
         maxBid: 1.4658129805029452
         flightSchedule:
           legs:
@@ -16306,12 +16878,12 @@ components:
         dailyPacing: 6.027456183070403
         monthlyPacing: 5.962133916683182
         startDate: 2000-01-23T04:56:07.000+00:00
-        targetBid: 5.637376656633329
         budget: 0.8008281904610115
         status: active
       properties:
         bidStrategy:
           default: conversion
+          description: The bidding strategy for the line item.
           enum:
           - unknown
           - conversion
@@ -16319,52 +16891,68 @@ components:
           - revenue
           type: string
         budget:
+          description: The total budget allocated for this line item.
           format: double
           nullable: true
           type: number
         dailyPacing:
+          description: The daily pacing amount for the line item.
           format: double
           nullable: true
           type: number
         endDate:
+          description: The date and time when the line item stops running.
           format: date-time
           nullable: true
           type: string
         flightSchedule:
           $ref: '#/components/schemas/FlightSchedule'
         isAutoDailyPacing:
+          description: "True if daily pacing is automatic, false if manual."
           type: boolean
         maxBid:
+          description: The maximum bid amount for the line item.
           format: double
           nullable: true
           type: number
         monthlyPacing:
+          description: The monthly pacing amount for the line item.
           format: double
           nullable: true
           type: number
         name:
+          description: The name of this line item.
           maxLength: 255
           minLength: 0
           type: string
+        optimizationStrategy:
+          default: manual
+          description: The optimization strategy for the line item.
+          enum:
+          - manual
+          - automated
+          type: string
         startDate:
+          description: The date and time when the line item starts running.
           format: date-time
           type: string
         status:
-          description: Status of a line item.
+          description: The current status of the line item.
           enum:
           - active
           - paused
           - draft
           type: string
         targetBid:
+          description: The target bid amount for the line item.
           format: double
+          nullable: true
           type: number
       required:
       - isAutoDailyPacing
       - name
       - startDate
       - status
-      - targetBid
       type: object
     StatusResponse:
       description: Status of an async report request
@@ -17252,27 +17840,6 @@ components:
           nullable: true
           type: string
       type: object
-    ValueResourceAccountFeesUpdateResult:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          failedUpdateAccountIds:
-          - failedUpdateAccountIds
-          - failedUpdateAccountIds
-          successfullyUpdatedAccountIds:
-          - successfullyUpdatedAccountIds
-          - successfullyUpdatedAccountIds
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/AccountFeesUpdateResult'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
     ValueResourceAsyncJobResponse:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -17418,7 +17985,7 @@ components:
     ValueResourceInputAccountFeesSearchRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -17433,7 +18000,7 @@ components:
     ValueResourceInputAccountFeesUpdateRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -17576,6 +18143,21 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceOfBrandCatalogRequestV2'
       type: object
+    ValueResourceInputOfRetailerSearchRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            retailerIdFilter:
+            - retailerIdFilter
+            - retailerIdFilter
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfRetailerSearchRequest'
+      type: object
     ValueResourceInputOfSellerCatalogRequestV2:
       description: A top-level object that encapsulates a Criteo API request for a
         single value objects.
@@ -17600,7 +18182,7 @@ components:
     ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -17608,6 +18190,7 @@ components:
             endDate: 2000-01-23T04:56:07.000+00:00
             keywordStrategy: conquesting
             targetBid: 5.637376656633329
+            optimizationStrategyEnum: manual
             maxBid: 1.4658129805029452
             flightSchedule:
               legs:
@@ -17632,12 +18215,14 @@ components:
     ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
             bidStrategy: conversion
+            optimizationStrategy: manual
             endDate: 2000-01-23T04:56:07.000+00:00
+            targetBid: 5.637376656633329
             maxBid: 1.4658129805029452
             flightSchedule:
               legs:
@@ -17652,7 +18237,6 @@ components:
             dailyPacing: 6.027456183070403
             monthlyPacing: 5.962133916683182
             startDate: 2000-01-23T04:56:07.000+00:00
-            targetBid: 5.637376656633329
             budget: 0.8008281904610115
             status: active
           type: type
@@ -17663,7 +18247,7 @@ components:
     ValueResourceInputPartnerBillingReportRequestV1:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -17882,6 +18466,23 @@ components:
           description: The Type of the resource.
           type: string
       type: object
+    ValueResourceOfRetailerSearchRequest:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          retailerIdFilter:
+          - retailerIdFilter
+          - retailerIdFilter
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RetailerSearchRequest'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     ValueResourceOfSellerCatalogRequestV2:
       description: A value resource exposed by the API.
       example:
@@ -17913,6 +18514,7 @@ components:
           endDate: 2000-01-23T04:56:07.000+00:00
           keywordStrategy: conquesting
           targetBid: 5.637376656633329
+          optimizationStrategyEnum: manual
           maxBid: 1.4658129805029452
           flightSchedule:
             legs:
@@ -17944,7 +18546,9 @@ components:
       example:
         attributes:
           bidStrategy: conversion
+          optimizationStrategy: manual
           endDate: 2000-01-23T04:56:07.000+00:00
+          targetBid: 5.637376656633329
           maxBid: 1.4658129805029452
           flightSchedule:
             legs:
@@ -17959,7 +18563,6 @@ components:
           dailyPacing: 6.027456183070403
           monthlyPacing: 5.962133916683182
           startDate: 2000-01-23T04:56:07.000+00:00
-          targetBid: 5.637376656633329
           budget: 0.8008281904610115
           status: active
         type: type
@@ -17970,76 +18573,6 @@ components:
           description: Type of the resource.
           nullable: true
           type: string
-      type: object
-    ValueResourceOutcomeAccountFeesUpdateResult:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value object.
-      example:
-        data:
-          attributes:
-            failedUpdateAccountIds:
-            - failedUpdateAccountIds
-            - failedUpdateAccountIds
-            successfullyUpdatedAccountIds:
-            - successfullyUpdatedAccountIds
-            - successfullyUpdatedAccountIds
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceAccountFeesUpdateResult'
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
       type: object
     ValueResourceOutcomeAsyncJobResponse:
       additionalProperties: false

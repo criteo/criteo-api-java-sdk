@@ -29,7 +29,6 @@ import java.io.IOException;
 
 import com.criteo.api.retailmedia.v2025_07.model.EntityResourceOutcomePartnerBillingReportStatusV1;
 import java.io.File;
-import com.criteo.api.retailmedia.v2025_07.model.Outcome;
 import com.criteo.api.retailmedia.v2025_07.model.ValueResourceInputPartnerBillingReportRequestV1;
 
 import java.lang.reflect.Type;
@@ -77,7 +76,7 @@ public class BillingApi {
     }
 
     /**
-     * Build call for call07retailMediaBillingPartnerReportPost
+     * Build call for createPartnerBillingReportRequestV1
      * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -86,11 +85,9 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call call07retailMediaBillingPartnerReportPostCall(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createPartnerBillingReportRequestV1Call(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -116,9 +113,7 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -138,8 +133,8 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call call07retailMediaBillingPartnerReportPostValidateBeforeCall(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback _callback) throws ApiException {
-        return call07retailMediaBillingPartnerReportPostCall(valueResourceInputPartnerBillingReportRequestV1, _callback);
+    private okhttp3.Call createPartnerBillingReportRequestV1ValidateBeforeCall(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback _callback) throws ApiException {
+        return createPartnerBillingReportRequestV1Call(valueResourceInputPartnerBillingReportRequestV1, _callback);
 
     }
 
@@ -153,12 +148,10 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceOutcomePartnerBillingReportStatusV1 call07retailMediaBillingPartnerReportPost(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1) throws ApiException {
-        ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> localVarResp = call07retailMediaBillingPartnerReportPostWithHttpInfo(valueResourceInputPartnerBillingReportRequestV1);
+    public EntityResourceOutcomePartnerBillingReportStatusV1 createPartnerBillingReportRequestV1(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1) throws ApiException {
+        ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> localVarResp = createPartnerBillingReportRequestV1WithHttpInfo(valueResourceInputPartnerBillingReportRequestV1);
         return localVarResp.getData();
     }
 
@@ -172,12 +165,10 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> call07retailMediaBillingPartnerReportPostWithHttpInfo(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1) throws ApiException {
-        okhttp3.Call localVarCall = call07retailMediaBillingPartnerReportPostValidateBeforeCall(valueResourceInputPartnerBillingReportRequestV1, null);
+    public ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> createPartnerBillingReportRequestV1WithHttpInfo(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1) throws ApiException {
+        okhttp3.Call localVarCall = createPartnerBillingReportRequestV1ValidateBeforeCall(valueResourceInputPartnerBillingReportRequestV1, null);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomePartnerBillingReportStatusV1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -193,19 +184,17 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call call07retailMediaBillingPartnerReportPostAsync(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback<EntityResourceOutcomePartnerBillingReportStatusV1> _callback) throws ApiException {
+    public okhttp3.Call createPartnerBillingReportRequestV1Async(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback<EntityResourceOutcomePartnerBillingReportStatusV1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = call07retailMediaBillingPartnerReportPostValidateBeforeCall(valueResourceInputPartnerBillingReportRequestV1, _callback);
+        okhttp3.Call localVarCall = createPartnerBillingReportRequestV1ValidateBeforeCall(valueResourceInputPartnerBillingReportRequestV1, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomePartnerBillingReportStatusV1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for call07retailMediaBillingPartnerReportRequestIdOutputGet
+     * Build call for getPartnerBillingReportOutputV1
      * @param requestId The id of a Partner Billing Report request. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -214,10 +203,9 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call call07retailMediaBillingPartnerReportRequestIdOutputGetCall(String requestId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPartnerBillingReportOutputV1Call(String requestId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -264,13 +252,13 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call call07retailMediaBillingPartnerReportRequestIdOutputGetValidateBeforeCall(String requestId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPartnerBillingReportOutputV1ValidateBeforeCall(String requestId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'requestId' is set
         if (requestId == null) {
-            throw new ApiException("Missing the required parameter 'requestId' when calling call07retailMediaBillingPartnerReportRequestIdOutputGet(Async)");
+            throw new ApiException("Missing the required parameter 'requestId' when calling getPartnerBillingReportOutputV1(Async)");
         }
 
-        return call07retailMediaBillingPartnerReportRequestIdOutputGetCall(requestId, _callback);
+        return getPartnerBillingReportOutputV1Call(requestId, _callback);
 
     }
 
@@ -284,11 +272,10 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public File call07retailMediaBillingPartnerReportRequestIdOutputGet(String requestId) throws ApiException {
-        ApiResponse<File> localVarResp = call07retailMediaBillingPartnerReportRequestIdOutputGetWithHttpInfo(requestId);
+    public File getPartnerBillingReportOutputV1(String requestId) throws ApiException {
+        ApiResponse<File> localVarResp = getPartnerBillingReportOutputV1WithHttpInfo(requestId);
         return localVarResp.getData();
     }
 
@@ -302,11 +289,10 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<File> call07retailMediaBillingPartnerReportRequestIdOutputGetWithHttpInfo(String requestId) throws ApiException {
-        okhttp3.Call localVarCall = call07retailMediaBillingPartnerReportRequestIdOutputGetValidateBeforeCall(requestId, null);
+    public ApiResponse<File> getPartnerBillingReportOutputV1WithHttpInfo(String requestId) throws ApiException {
+        okhttp3.Call localVarCall = getPartnerBillingReportOutputV1ValidateBeforeCall(requestId, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -322,18 +308,17 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call call07retailMediaBillingPartnerReportRequestIdOutputGetAsync(String requestId, final ApiCallback<File> _callback) throws ApiException {
+    public okhttp3.Call getPartnerBillingReportOutputV1Async(String requestId, final ApiCallback<File> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = call07retailMediaBillingPartnerReportRequestIdOutputGetValidateBeforeCall(requestId, _callback);
+        okhttp3.Call localVarCall = getPartnerBillingReportOutputV1ValidateBeforeCall(requestId, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for call07retailMediaBillingPartnerReportRequestIdStatusGet
+     * Build call for getPartnerBillingReportStatusV1
      * @param requestId The id of a Partner Billing Report request. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -342,10 +327,9 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call call07retailMediaBillingPartnerReportRequestIdStatusGetCall(String requestId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPartnerBillingReportStatusV1Call(String requestId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -372,9 +356,7 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -393,13 +375,13 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call call07retailMediaBillingPartnerReportRequestIdStatusGetValidateBeforeCall(String requestId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPartnerBillingReportStatusV1ValidateBeforeCall(String requestId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'requestId' is set
         if (requestId == null) {
-            throw new ApiException("Missing the required parameter 'requestId' when calling call07retailMediaBillingPartnerReportRequestIdStatusGet(Async)");
+            throw new ApiException("Missing the required parameter 'requestId' when calling getPartnerBillingReportStatusV1(Async)");
         }
 
-        return call07retailMediaBillingPartnerReportRequestIdStatusGetCall(requestId, _callback);
+        return getPartnerBillingReportStatusV1Call(requestId, _callback);
 
     }
 
@@ -413,11 +395,10 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceOutcomePartnerBillingReportStatusV1 call07retailMediaBillingPartnerReportRequestIdStatusGet(String requestId) throws ApiException {
-        ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> localVarResp = call07retailMediaBillingPartnerReportRequestIdStatusGetWithHttpInfo(requestId);
+    public EntityResourceOutcomePartnerBillingReportStatusV1 getPartnerBillingReportStatusV1(String requestId) throws ApiException {
+        ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> localVarResp = getPartnerBillingReportStatusV1WithHttpInfo(requestId);
         return localVarResp.getData();
     }
 
@@ -431,11 +412,10 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> call07retailMediaBillingPartnerReportRequestIdStatusGetWithHttpInfo(String requestId) throws ApiException {
-        okhttp3.Call localVarCall = call07retailMediaBillingPartnerReportRequestIdStatusGetValidateBeforeCall(requestId, null);
+    public ApiResponse<EntityResourceOutcomePartnerBillingReportStatusV1> getPartnerBillingReportStatusV1WithHttpInfo(String requestId) throws ApiException {
+        okhttp3.Call localVarCall = getPartnerBillingReportStatusV1ValidateBeforeCall(requestId, null);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomePartnerBillingReportStatusV1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -451,12 +431,11 @@ public class BillingApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call call07retailMediaBillingPartnerReportRequestIdStatusGetAsync(String requestId, final ApiCallback<EntityResourceOutcomePartnerBillingReportStatusV1> _callback) throws ApiException {
+    public okhttp3.Call getPartnerBillingReportStatusV1Async(String requestId, final ApiCallback<EntityResourceOutcomePartnerBillingReportStatusV1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = call07retailMediaBillingPartnerReportRequestIdStatusGetValidateBeforeCall(requestId, _callback);
+        okhttp3.Call localVarCall = getPartnerBillingReportStatusV1ValidateBeforeCall(requestId, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomePartnerBillingReportStatusV1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -21,7 +21,6 @@ Settings to target users based on their behavior
 
 | Name | Value |
 |---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
 | LAST7DAYS | &quot;Last7Days&quot; |
 | LAST14DAYS | &quot;Last14Days&quot; |
 | LAST30DAYS | &quot;Last30Days&quot; |
@@ -38,7 +37,6 @@ Settings to target users based on their behavior
 
 | Name | Value |
 |---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
 | VIEW | &quot;View&quot; |
 | BUY | &quot;Buy&quot; |
 | ADDTOCART | &quot;AddToCart&quot; |

@@ -20,6 +20,7 @@ Settings to target users with your contact lists.
 | USERIDENTIFIER | &quot;UserIdentifier&quot; |
 | IDENTITYLINK | &quot;IdentityLink&quot; |
 | CUSTOMERID | &quot;CustomerId&quot; |
+| PHONENUMBER | &quot;PhoneNumber&quot; |
 
 
 

@@ -18,6 +18,7 @@ Model to create a retail media auction line item
 |**maxBid** | **Double** | The maximum bid amount allowed for this line item. |  [optional] |
 |**monthlyPacing** | **Double** | The monthly pacing limit for budget spending. |  [optional] |
 |**name** | **String** | The name of the line item. |  |
+|**optimizationStrategyEnum** | [**OptimizationStrategyEnumEnum**](#OptimizationStrategyEnumEnum) |  |  [optional] |
 |**startDate** | **OffsetDateTime** | The date and time when the line item should start running. |  |
 |**targetBid** | **Double** | The target bid amount for the line item. |  [optional] |
 |**targetRetailerId** | **String** | The ID of the retailer to target for this line item. |  |
@@ -42,6 +43,15 @@ Model to create a retail media auction line item
 | CONQUESTING | &quot;conquesting&quot; |
 | GENERICANDBRANDED | &quot;genericAndBranded&quot; |
 | GENERICBRANDEDANDCONQUESTING | &quot;genericBrandedAndConquesting&quot; |
+
+
+
+## Enum: OptimizationStrategyEnumEnum
+
+| Name | Value |
+|---- | -----|
+| MANUAL | &quot;manual&quot; |
+| AUTOMATED | &quot;automated&quot; |
 
 
 

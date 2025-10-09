@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +54,7 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
 public class CampaignAttributesV202301 {
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
-  private BigDecimal budget;
+  private Double budget;
 
   /**
    * Gets or Sets clickAttributionScope
@@ -173,7 +172,7 @@ public class CampaignAttributesV202301 {
 
   public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
   @SerializedName(SERIALIZED_NAME_DAILY_PACING)
-  private BigDecimal dailyPacing;
+  private Double dailyPacing;
 
   public static final String SERIALIZED_NAME_DRAWABLE_BALANCE_IDS = "drawableBalanceIds";
   @SerializedName(SERIALIZED_NAME_DRAWABLE_BALANCE_IDS)
@@ -189,7 +188,7 @@ public class CampaignAttributesV202301 {
 
   public static final String SERIALIZED_NAME_MONTHLY_PACING = "monthlyPacing";
   @SerializedName(SERIALIZED_NAME_MONTHLY_PACING)
-  private BigDecimal monthlyPacing;
+  private Double monthlyPacing;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -318,15 +317,15 @@ public class CampaignAttributesV202301 {
   public enum ViewAttributionWindowEnum {
     NONE("none"),
     
-    UNKNOWN("unknown"),
-    
     _1D("1D"),
     
     _7D("7D"),
     
     _14D("14D"),
     
-    _30D("30D");
+    _30D("30D"),
+    
+    UNKNOWN("unknown");
 
     private String value;
 
@@ -373,7 +372,7 @@ public class CampaignAttributesV202301 {
   public CampaignAttributesV202301() {
   }
 
-  public CampaignAttributesV202301 budget(BigDecimal budget) {
+  public CampaignAttributesV202301 budget(Double budget) {
     
     this.budget = budget;
     return this;
@@ -385,12 +384,12 @@ public class CampaignAttributesV202301 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getBudget() {
+  public Double getBudget() {
     return budget;
   }
 
 
-  public void setBudget(BigDecimal budget) {
+  public void setBudget(Double budget) {
     this.budget = budget;
   }
 
@@ -461,7 +460,7 @@ public class CampaignAttributesV202301 {
   }
 
 
-  public CampaignAttributesV202301 dailyPacing(BigDecimal dailyPacing) {
+  public CampaignAttributesV202301 dailyPacing(Double dailyPacing) {
     
     this.dailyPacing = dailyPacing;
     return this;
@@ -473,12 +472,12 @@ public class CampaignAttributesV202301 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getDailyPacing() {
+  public Double getDailyPacing() {
     return dailyPacing;
   }
 
 
-  public void setDailyPacing(BigDecimal dailyPacing) {
+  public void setDailyPacing(Double dailyPacing) {
     this.dailyPacing = dailyPacing;
   }
 
@@ -557,7 +556,7 @@ public class CampaignAttributesV202301 {
   }
 
 
-  public CampaignAttributesV202301 monthlyPacing(BigDecimal monthlyPacing) {
+  public CampaignAttributesV202301 monthlyPacing(Double monthlyPacing) {
     
     this.monthlyPacing = monthlyPacing;
     return this;
@@ -569,12 +568,12 @@ public class CampaignAttributesV202301 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getMonthlyPacing() {
+  public Double getMonthlyPacing() {
     return monthlyPacing;
   }
 
 
-  public void setMonthlyPacing(BigDecimal monthlyPacing) {
+  public void setMonthlyPacing(Double monthlyPacing) {
     this.monthlyPacing = monthlyPacing;
   }
 
@@ -859,10 +858,8 @@ public class CampaignAttributesV202301 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("isAutoDailyPacing");
     openapiRequiredFields.add("name");
-    openapiRequiredFields.add("startDate");
   }
 
  /**

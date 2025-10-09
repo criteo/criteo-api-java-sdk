@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.v2025_01.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2025_01.model.ExternalAddToBasketTarget202110;
+import com.criteo.api.retailmedia.v2025_01.model.AddToBasketTarget202110;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,7 +51,7 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
 public class ValueTypeResourceOfAddToBasketTarget202110 {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ExternalAddToBasketTarget202110 attributes;
+  private AddToBasketTarget202110 attributes;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -60,7 +60,7 @@ public class ValueTypeResourceOfAddToBasketTarget202110 {
   public ValueTypeResourceOfAddToBasketTarget202110() {
   }
 
-  public ValueTypeResourceOfAddToBasketTarget202110 attributes(ExternalAddToBasketTarget202110 attributes) {
+  public ValueTypeResourceOfAddToBasketTarget202110 attributes(AddToBasketTarget202110 attributes) {
     
     this.attributes = attributes;
     return this;
@@ -72,12 +72,12 @@ public class ValueTypeResourceOfAddToBasketTarget202110 {
   **/
   @javax.annotation.Nullable
 
-  public ExternalAddToBasketTarget202110 getAttributes() {
+  public AddToBasketTarget202110 getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(ExternalAddToBasketTarget202110 attributes) {
+  public void setAttributes(AddToBasketTarget202110 attributes) {
     this.attributes = attributes;
   }
 
@@ -218,7 +218,7 @@ public class ValueTypeResourceOfAddToBasketTarget202110 {
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ExternalAddToBasketTarget202110.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        AddToBasketTarget202110.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

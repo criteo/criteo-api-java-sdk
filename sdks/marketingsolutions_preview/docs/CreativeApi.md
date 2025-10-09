@@ -1394,7 +1394,7 @@ public class Example {
 
 ## getAdvertiserCreatives
 
-> ResourceCollectionOutcomeOfCreative getAdvertiserCreatives(advertiserId, limit, offset)
+> ResourceCollectionOutcomeOfCreativeRead getAdvertiserCreatives(advertiserId, limit, offset)
 
 
 
@@ -1443,7 +1443,7 @@ public class Example {
         Integer limit = 56; // Integer | The number of creatives to be returned. The default is 50.
         Integer offset = 56; // Integer | The (zero-based) offset into the collection of creatives. The default is 0.
         try {
-            ResourceCollectionOutcomeOfCreative result = apiInstance.getAdvertiserCreatives(advertiserId, limit, offset);
+            ResourceCollectionOutcomeOfCreativeRead result = apiInstance.getAdvertiserCreatives(advertiserId, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#getAdvertiserCreatives");
@@ -1467,7 +1467,7 @@ public class Example {
 
 ### Return type
 
-[**ResourceCollectionOutcomeOfCreative**](ResourceCollectionOutcomeOfCreative.md)
+[**ResourceCollectionOutcomeOfCreativeRead**](ResourceCollectionOutcomeOfCreativeRead.md)
 
 ### Authorization
 
@@ -1482,7 +1482,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The list of self-services Creatives is returned. |  -  |
+| **200** | The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null |  -  |
 
 
 ## getCreative

@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2025_07.JSON;
 
 /**
- * A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with external Id, Type, and  Attributes properties
+ * A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with Id, Type, and  Attributes properties
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301 {

@@ -466,7 +466,7 @@ public class AccountsApi {
         return localVarCall;
     }
     /**
-     * Build call for getApiV1ExternalAccounts
+     * Build call for getAccounts
      * @param limitToId The ids that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
@@ -479,7 +479,7 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiV1ExternalAccountsCall(List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAccountsCall(List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -517,9 +517,7 @@ public class AccountsApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -538,8 +536,8 @@ public class AccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiV1ExternalAccountsValidateBeforeCall(List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        return getApiV1ExternalAccountsCall(limitToId, pageIndex, pageSize, _callback);
+    private okhttp3.Call getAccountsValidateBeforeCall(List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        return getAccountsCall(limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -557,8 +555,8 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public JsonApiPageResponseOfAccount getApiV1ExternalAccounts(List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        ApiResponse<JsonApiPageResponseOfAccount> localVarResp = getApiV1ExternalAccountsWithHttpInfo(limitToId, pageIndex, pageSize);
+    public JsonApiPageResponseOfAccount getAccounts(List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+        ApiResponse<JsonApiPageResponseOfAccount> localVarResp = getAccountsWithHttpInfo(limitToId, pageIndex, pageSize);
         return localVarResp.getData();
     }
 
@@ -576,8 +574,8 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<JsonApiPageResponseOfAccount> getApiV1ExternalAccountsWithHttpInfo(List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = getApiV1ExternalAccountsValidateBeforeCall(limitToId, pageIndex, pageSize, null);
+    public ApiResponse<JsonApiPageResponseOfAccount> getAccountsWithHttpInfo(List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = getAccountsValidateBeforeCall(limitToId, pageIndex, pageSize, null);
         Type localVarReturnType = new TypeToken<JsonApiPageResponseOfAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -597,9 +595,9 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiV1ExternalAccountsAsync(List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<JsonApiPageResponseOfAccount> _callback) throws ApiException {
+    public okhttp3.Call getAccountsAsync(List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<JsonApiPageResponseOfAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getApiV1ExternalAccountsValidateBeforeCall(limitToId, pageIndex, pageSize, _callback);
+        okhttp3.Call localVarCall = getAccountsValidateBeforeCall(limitToId, pageIndex, pageSize, _callback);
         Type localVarReturnType = new TypeToken<JsonApiPageResponseOfAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -651,10 +649,7 @@ public class AccountsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {

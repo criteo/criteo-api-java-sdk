@@ -105,17 +105,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The created Ad is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **401** | The request was not properly authorized. |  -  |
-| **500** | A non-request based error occurred on the server. |  -  |
 
 
 ## createAdvertiserCoupon
@@ -199,16 +196,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The created Coupon is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **403** | The request was not properly authorized. |  -  |
 
 
 ## createAdvertiserCreative
@@ -292,17 +287,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The created creative is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **401** | The request was not properly authorized. |  -  |
-| **500** | A non-request based error occurred on the server. |  -  |
 
 
 ## deleteAd
@@ -391,9 +383,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | The ad was deleted. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **401** | The request was not properly authorized. |  -  |
-| **500** | A non-request based error occurred on the server. |  -  |
 
 
 ## deleteAdvertiserCoupon
@@ -484,8 +473,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | The Coupon was deleted. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **403** | The request was not properly authorized. |  -  |
 
 
 ## deleteCreative
@@ -574,9 +561,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | The creative was deleted. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **401** | The request was not properly authorized. |  -  |
-| **500** | A non-request based error occurred on the server. |  -  |
 
 
 ## editAdvertiserCoupon
@@ -662,16 +646,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The edited Coupon is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **403** | The request was not properly authorized. |  -  |
 
 
 ## editCreative
@@ -755,17 +737,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The edited creative is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **401** | The request was not properly authorized. |  -  |
-| **500** | A non-request based error occurred on the server. |  -  |
 
 
 ## generateCreativePreview
@@ -852,15 +831,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/html, application/json, text/json
+- **Accept**: text/html, application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The preview HTML of a specific Creative is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **403** | The request was not properly authorized. |  -  |
 
 
 ## getAd
@@ -943,16 +920,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The found ad is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **401** | The request was not properly authorized. |  -  |
-| **500** | A non-request based error occurred on the server. |  -  |
 
 
 ## getAdvertiserAds
@@ -1039,16 +1013,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The list of self-services Ads is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **401** | The request was not properly authorized. |  -  |
-| **500** | A non-request based error occurred on the server. |  -  |
 
 
 ## getAdvertiserCoupon
@@ -1133,15 +1104,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The found Coupon is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **403** | The request was not properly authorized. |  -  |
 
 
 ## getAdvertiserCouponPreview
@@ -1230,15 +1199,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/html, application/json, text/json
+- **Accept**: text/html, application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The preview HTML of a specific Coupon is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **403** | The request was not properly authorized. |  -  |
 
 
 ## getAdvertiserCouponSupportedSizes
@@ -1323,15 +1290,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The list of Coupon supported sizes is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **403** | The request was not properly authorized. |  -  |
 
 
 ## getAdvertiserCoupons
@@ -1418,20 +1383,18 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The list of self-services Coupons is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **403** | The request was not properly authorized. |  -  |
 
 
 ## getAdvertiserCreatives
 
-> ResourceCollectionOutcomeOfCreative getAdvertiserCreatives(advertiserId, limit, offset)
+> ResourceCollectionOutcomeOfCreativeRead getAdvertiserCreatives(advertiserId, limit, offset)
 
 
 
@@ -1480,7 +1443,7 @@ public class Example {
         Integer limit = 56; // Integer | The number of creatives to be returned. The default is 50.
         Integer offset = 56; // Integer | The (zero-based) offset into the collection of creatives. The default is 0.
         try {
-            ResourceCollectionOutcomeOfCreative result = apiInstance.getAdvertiserCreatives(advertiserId, limit, offset);
+            ResourceCollectionOutcomeOfCreativeRead result = apiInstance.getAdvertiserCreatives(advertiserId, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#getAdvertiserCreatives");
@@ -1504,7 +1467,7 @@ public class Example {
 
 ### Return type
 
-[**ResourceCollectionOutcomeOfCreative**](ResourceCollectionOutcomeOfCreative.md)
+[**ResourceCollectionOutcomeOfCreativeRead**](ResourceCollectionOutcomeOfCreativeRead.md)
 
 ### Authorization
 
@@ -1513,16 +1476,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The list of self-services Creatives is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **401** | The request was not properly authorized. |  -  |
-| **500** | A non-request based error occurred on the server. |  -  |
+| **200** | The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null |  -  |
 
 
 ## getCreative
@@ -1605,14 +1565,11 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The found creative is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **401** | The request was not properly authorized. |  -  |
-| **500** | A non-request based error occurred on the server. |  -  |
 

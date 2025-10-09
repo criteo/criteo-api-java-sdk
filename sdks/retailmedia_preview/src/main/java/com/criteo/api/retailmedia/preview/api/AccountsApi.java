@@ -31,7 +31,6 @@ import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeO
 import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputAccountFeesSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputAccountFeesUpdateRequest;
-import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeAccountFeesUpdateResult;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -78,146 +77,7 @@ public class AccountsApi {
     }
 
     /**
-     * Build call for getApiExternalV1AccountPrivateMarketChildAccountsByAccountId
-     * @param accountId Account Id (required)
-     * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
-     * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdCall(String accountId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdValidateBeforeCall(String accountId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'accountId' is set
-        if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling getApiExternalV1AccountPrivateMarketChildAccountsByAccountId(Async)");
-        }
-
-        return getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdCall(accountId, limit, offset, _callback);
-
-    }
-
-    /**
-     * 
-     * Gets page of private market child accounts that are associated with the given account
-     * @param accountId Account Id (required)
-     * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
-     * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
-     * @return EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata getApiExternalV1AccountPrivateMarketChildAccountsByAccountId(String accountId, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata> localVarResp = getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdWithHttpInfo(accountId, limit, offset);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Gets page of private market child accounts that are associated with the given account
-     * @param accountId Account Id (required)
-     * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
-     * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
-     * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata> getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdWithHttpInfo(String accountId, Integer limit, Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdValidateBeforeCall(accountId, limit, offset, null);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Gets page of private market child accounts that are associated with the given account
-     * @param accountId Account Id (required)
-     * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
-     * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdAsync(String accountId, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdValidateBeforeCall(accountId, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for previewRetailMediaAccountsFeesSearchPost
+     * Build call for accountFeesSearch
      * @param limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param offset used for paging, number of records to skip (optional, default to 0)
      * @param valueResourceInputAccountFeesSearchRequest  (optional)
@@ -230,7 +90,7 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaAccountsFeesSearchPostCall(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call accountFeesSearchCall(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -284,8 +144,8 @@ public class AccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaAccountsFeesSearchPostValidateBeforeCall(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback _callback) throws ApiException {
-        return previewRetailMediaAccountsFeesSearchPostCall(limit, offset, valueResourceInputAccountFeesSearchRequest, _callback);
+    private okhttp3.Call accountFeesSearchValidateBeforeCall(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback _callback) throws ApiException {
+        return accountFeesSearchCall(limit, offset, valueResourceInputAccountFeesSearchRequest, _callback);
 
     }
 
@@ -303,8 +163,8 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata previewRetailMediaAccountsFeesSearchPost(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
-        ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> localVarResp = previewRetailMediaAccountsFeesSearchPostWithHttpInfo(limit, offset, valueResourceInputAccountFeesSearchRequest);
+    public ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata accountFeesSearch(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
+        ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> localVarResp = accountFeesSearchWithHttpInfo(limit, offset, valueResourceInputAccountFeesSearchRequest);
         return localVarResp.getData();
     }
 
@@ -322,8 +182,8 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> previewRetailMediaAccountsFeesSearchPostWithHttpInfo(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaAccountsFeesSearchPostValidateBeforeCall(limit, offset, valueResourceInputAccountFeesSearchRequest, null);
+    public ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> accountFeesSearchWithHttpInfo(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
+        okhttp3.Call localVarCall = accountFeesSearchValidateBeforeCall(limit, offset, valueResourceInputAccountFeesSearchRequest, null);
         Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -343,16 +203,18 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaAccountsFeesSearchPostAsync(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> _callback) throws ApiException {
+    public okhttp3.Call accountFeesSearchAsync(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = previewRetailMediaAccountsFeesSearchPostValidateBeforeCall(limit, offset, valueResourceInputAccountFeesSearchRequest, _callback);
+        okhttp3.Call localVarCall = accountFeesSearchValidateBeforeCall(limit, offset, valueResourceInputAccountFeesSearchRequest, _callback);
         Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for previewRetailMediaAccountsFeesUpdatePost
-     * @param valueResourceInputAccountFeesUpdateRequest  (optional)
+     * Build call for getPrivateMarketChildAccountsByAccountId
+     * @param accountId Account Id (required)
+     * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
+     * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -362,7 +224,144 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaAccountsFeesUpdatePostCall(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPrivateMarketChildAccountsByAccountIdCall(String accountId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPrivateMarketChildAccountsByAccountIdValidateBeforeCall(String accountId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling getPrivateMarketChildAccountsByAccountId(Async)");
+        }
+
+        return getPrivateMarketChildAccountsByAccountIdCall(accountId, limit, offset, _callback);
+
+    }
+
+    /**
+     * 
+     * Gets page of private market child accounts that are associated with the given account
+     * @param accountId Account Id (required)
+     * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
+     * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
+     * @return EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata getPrivateMarketChildAccountsByAccountId(String accountId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata> localVarResp = getPrivateMarketChildAccountsByAccountIdWithHttpInfo(accountId, limit, offset);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Gets page of private market child accounts that are associated with the given account
+     * @param accountId Account Id (required)
+     * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
+     * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata> getPrivateMarketChildAccountsByAccountIdWithHttpInfo(String accountId, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = getPrivateMarketChildAccountsByAccountIdValidateBeforeCall(accountId, limit, offset, null);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Gets page of private market child accounts that are associated with the given account
+     * @param accountId Account Id (required)
+     * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
+     * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPrivateMarketChildAccountsByAccountIdAsync(String accountId, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPrivateMarketChildAccountsByAccountIdValidateBeforeCall(accountId, limit, offset, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateAccountFees
+     * @param valueResourceInputAccountFeesUpdateRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAccountFeesCall(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -388,7 +387,6 @@ public class AccountsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -408,8 +406,8 @@ public class AccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaAccountsFeesUpdatePostValidateBeforeCall(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest, final ApiCallback _callback) throws ApiException {
-        return previewRetailMediaAccountsFeesUpdatePostCall(valueResourceInputAccountFeesUpdateRequest, _callback);
+    private okhttp3.Call updateAccountFeesValidateBeforeCall(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest, final ApiCallback _callback) throws ApiException {
+        return updateAccountFeesCall(valueResourceInputAccountFeesUpdateRequest, _callback);
 
     }
 
@@ -417,35 +415,32 @@ public class AccountsApi {
      * 
      * Set fees for provided accounts
      * @param valueResourceInputAccountFeesUpdateRequest  (optional)
-     * @return ValueResourceOutcomeAccountFeesUpdateResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceOutcomeAccountFeesUpdateResult previewRetailMediaAccountsFeesUpdatePost(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest) throws ApiException {
-        ApiResponse<ValueResourceOutcomeAccountFeesUpdateResult> localVarResp = previewRetailMediaAccountsFeesUpdatePostWithHttpInfo(valueResourceInputAccountFeesUpdateRequest);
-        return localVarResp.getData();
+    public void updateAccountFees(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest) throws ApiException {
+        updateAccountFeesWithHttpInfo(valueResourceInputAccountFeesUpdateRequest);
     }
 
     /**
      * 
      * Set fees for provided accounts
      * @param valueResourceInputAccountFeesUpdateRequest  (optional)
-     * @return ApiResponse&lt;ValueResourceOutcomeAccountFeesUpdateResult&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceOutcomeAccountFeesUpdateResult> previewRetailMediaAccountsFeesUpdatePostWithHttpInfo(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaAccountsFeesUpdatePostValidateBeforeCall(valueResourceInputAccountFeesUpdateRequest, null);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeAccountFeesUpdateResult>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    public ApiResponse<Void> updateAccountFeesWithHttpInfo(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateAccountFeesValidateBeforeCall(valueResourceInputAccountFeesUpdateRequest, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -458,14 +453,13 @@ public class AccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaAccountsFeesUpdatePostAsync(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest, final ApiCallback<ValueResourceOutcomeAccountFeesUpdateResult> _callback) throws ApiException {
+    public okhttp3.Call updateAccountFeesAsync(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = previewRetailMediaAccountsFeesUpdatePostValidateBeforeCall(valueResourceInputAccountFeesUpdateRequest, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeAccountFeesUpdateResult>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        okhttp3.Call localVarCall = updateAccountFeesValidateBeforeCall(valueResourceInputAccountFeesUpdateRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

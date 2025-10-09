@@ -37,6 +37,9 @@ import com.criteo.api.marketingsolutions.v2025_07.model.CampaignV23Q1ListRespons
 import com.criteo.api.marketingsolutions.v2025_07.model.CampaignV23Q1Response;
 import com.criteo.api.marketingsolutions.v2025_07.model.CreateAdSetV24Q3Request;
 import com.criteo.api.marketingsolutions.v2025_07.model.CreateCampaignRequest;
+import com.criteo.api.marketingsolutions.v2025_07.model.CreateSellerBudgetMapiMessage;
+import com.criteo.api.marketingsolutions.v2025_07.model.CreateSellerCampaignMessageMapi;
+import java.time.OffsetDateTime;
 import com.criteo.api.marketingsolutions.v2025_07.model.PatchAdSetCategoryBidListRequest;
 import com.criteo.api.marketingsolutions.v2025_07.model.PatchAdSetCategoryBidResultListResponse;
 import com.criteo.api.marketingsolutions.v2025_07.model.PatchAdSetDisplayMultiplierListRequest;
@@ -49,6 +52,12 @@ import com.criteo.api.marketingsolutions.v2025_07.model.ResponseReadAdSetV24Q3;
 import com.criteo.api.marketingsolutions.v2025_07.model.ResponsesAdSetId;
 import com.criteo.api.marketingsolutions.v2025_07.model.ResponsesAdSetIdV24Q3;
 import com.criteo.api.marketingsolutions.v2025_07.model.ResponsesReadAdSetV24Q3;
+import com.criteo.api.marketingsolutions.v2025_07.model.SellerBase;
+import com.criteo.api.marketingsolutions.v2025_07.model.SellerBudgetMessage;
+import com.criteo.api.marketingsolutions.v2025_07.model.SellerCampaignMessage;
+import com.criteo.api.marketingsolutions.v2025_07.model.SellerCampaignUpdate;
+import com.criteo.api.marketingsolutions.v2025_07.model.UpdateSellerBudgetMessage;
+import com.criteo.api.marketingsolutions.v2025_07.model.UpdateSellerBudgetMessageBase;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -95,7 +104,176 @@ public class CampaignApi {
     }
 
     /**
-     * Build call for createAdSetV24Q3
+     * Build call for campaigns
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call campaignsCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/stats/campaigns";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (advertiserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiserId", advertiserId));
+        }
+
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
+        if (clickAttributionPolicy != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("clickAttributionPolicy", clickAttributionPolicy));
+        }
+
+        if (count != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("count", count));
+        }
+
+        if (endDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endDate", endDate));
+        }
+
+        if (intervalSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("intervalSize", intervalSize));
+        }
+
+        if (startDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startDate", startDate));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call campaignsValidateBeforeCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
+        return campaignsCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, _callback);
+
+    }
+
+    /**
+     * 
+     * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public byte[] campaigns(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate) throws ApiException {
+        ApiResponse<byte[]> localVarResp = campaignsWithHttpInfo(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @return ApiResponse&lt;byte[]&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<byte[]> campaignsWithHttpInfo(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate) throws ApiException {
+        okhttp3.Call localVarCall = campaignsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call campaignsAsync(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate, final ApiCallback<byte[]> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = campaignsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, _callback);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createAdSet
      * @param createAdSetV24Q3Request the ad sets to create (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -104,11 +282,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdSetV24Q3Call(CreateAdSetV24Q3Request createAdSetV24Q3Request, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAdSetCall(CreateAdSetV24Q3Request createAdSetV24Q3Request, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,9 +310,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -144,10 +318,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -159,13 +330,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAdSetV24Q3ValidateBeforeCall(CreateAdSetV24Q3Request createAdSetV24Q3Request, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAdSetValidateBeforeCall(CreateAdSetV24Q3Request createAdSetV24Q3Request, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createAdSetV24Q3Request' is set
         if (createAdSetV24Q3Request == null) {
-            throw new ApiException("Missing the required parameter 'createAdSetV24Q3Request' when calling createAdSetV24Q3(Async)");
+            throw new ApiException("Missing the required parameter 'createAdSetV24Q3Request' when calling createAdSet(Async)");
         }
 
-        return createAdSetV24Q3Call(createAdSetV24Q3Request, _callback);
+        return createAdSetCall(createAdSetV24Q3Request, _callback);
 
     }
 
@@ -179,12 +350,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponseReadAdSetV24Q3 createAdSetV24Q3(CreateAdSetV24Q3Request createAdSetV24Q3Request) throws ApiException {
-        ApiResponse<ResponseReadAdSetV24Q3> localVarResp = createAdSetV24Q3WithHttpInfo(createAdSetV24Q3Request);
+    public ResponseReadAdSetV24Q3 createAdSet(CreateAdSetV24Q3Request createAdSetV24Q3Request) throws ApiException {
+        ApiResponse<ResponseReadAdSetV24Q3> localVarResp = createAdSetWithHttpInfo(createAdSetV24Q3Request);
         return localVarResp.getData();
     }
 
@@ -198,12 +367,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponseReadAdSetV24Q3> createAdSetV24Q3WithHttpInfo(CreateAdSetV24Q3Request createAdSetV24Q3Request) throws ApiException {
-        okhttp3.Call localVarCall = createAdSetV24Q3ValidateBeforeCall(createAdSetV24Q3Request, null);
+    public ApiResponse<ResponseReadAdSetV24Q3> createAdSetWithHttpInfo(CreateAdSetV24Q3Request createAdSetV24Q3Request) throws ApiException {
+        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetV24Q3Request, null);
         Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q3>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -219,13 +386,11 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdSetV24Q3Async(CreateAdSetV24Q3Request createAdSetV24Q3Request, final ApiCallback<ResponseReadAdSetV24Q3> _callback) throws ApiException {
+    public okhttp3.Call createAdSetAsync(CreateAdSetV24Q3Request createAdSetV24Q3Request, final ApiCallback<ResponseReadAdSetV24Q3> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAdSetV24Q3ValidateBeforeCall(createAdSetV24Q3Request, _callback);
+        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetV24Q3Request, _callback);
         Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q3>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -240,8 +405,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createCampaignCall(CreateCampaignRequest createCampaignRequest, final ApiCallback _callback) throws ApiException {
@@ -270,9 +433,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -280,10 +441,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -315,8 +473,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public CampaignV23Q1Response createCampaign(CreateCampaignRequest createCampaignRequest) throws ApiException {
@@ -334,8 +490,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CampaignV23Q1Response> createCampaignWithHttpInfo(CreateCampaignRequest createCampaignRequest) throws ApiException {
@@ -355,8 +509,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createCampaignAsync(CreateCampaignRequest createCampaignRequest, final ApiCallback<CampaignV23Q1Response> _callback) throws ApiException {
@@ -367,7 +519,374 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for getAdSetV24Q3
+     * Build call for createSellerBudgets
+     * @param createSellerBudgetMapiMessage  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSellerBudgetsCall(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createSellerBudgetMapiMessage;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/budgets";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createSellerBudgetsValidateBeforeCall(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage, final ApiCallback _callback) throws ApiException {
+        return createSellerBudgetsCall(createSellerBudgetMapiMessage, _callback);
+
+    }
+
+    /**
+     * 
+     * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
+     * @param createSellerBudgetMapiMessage  (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void createSellerBudgets(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage) throws ApiException {
+        createSellerBudgetsWithHttpInfo(createSellerBudgetMapiMessage);
+    }
+
+    /**
+     * 
+     * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
+     * @param createSellerBudgetMapiMessage  (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> createSellerBudgetsWithHttpInfo(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage) throws ApiException {
+        okhttp3.Call localVarCall = createSellerBudgetsValidateBeforeCall(createSellerBudgetMapiMessage, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
+     * @param createSellerBudgetMapiMessage  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSellerBudgetsAsync(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createSellerBudgetsValidateBeforeCall(createSellerBudgetMapiMessage, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createSellerCampaignsBySeller
+     * @param sellerId Supply a generated Id of an existing Seller (required)
+     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSellerCampaignsBySellerCall(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createSellerCampaignMessageMapi;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/seller-campaigns"
+            .replace("{" + "sellerId" + "}", localVarApiClient.escapeString(sellerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createSellerCampaignsBySellerValidateBeforeCall(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sellerId' is set
+        if (sellerId == null) {
+            throw new ApiException("Missing the required parameter 'sellerId' when calling createSellerCampaignsBySeller(Async)");
+        }
+
+        return createSellerCampaignsBySellerCall(sellerId, createSellerCampaignMessageMapi, _callback);
+
+    }
+
+    /**
+     * 
+     * Associate an existing Seller with an existing Campaign allowing for budget creation
+     * @param sellerId Supply a generated Id of an existing Seller (required)
+     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void createSellerCampaignsBySeller(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi) throws ApiException {
+        createSellerCampaignsBySellerWithHttpInfo(sellerId, createSellerCampaignMessageMapi);
+    }
+
+    /**
+     * 
+     * Associate an existing Seller with an existing Campaign allowing for budget creation
+     * @param sellerId Supply a generated Id of an existing Seller (required)
+     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> createSellerCampaignsBySellerWithHttpInfo(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi) throws ApiException {
+        okhttp3.Call localVarCall = createSellerCampaignsBySellerValidateBeforeCall(sellerId, createSellerCampaignMessageMapi, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Associate an existing Seller with an existing Campaign allowing for budget creation
+     * @param sellerId Supply a generated Id of an existing Seller (required)
+     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSellerCampaignsBySellerAsync(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createSellerCampaignsBySellerValidateBeforeCall(sellerId, createSellerCampaignMessageMapi, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createSellers
+     * @param advertiserId Id of the advertiser (required)
+     * @param partnerId Id of the partner (optional)
+     * @param requestBody Names of the sellers to associate with new Ids (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSellersCall(Integer advertiserId, Integer partnerId, List<String> requestBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/sellers"
+            .replace("{" + "advertiserId" + "}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (partnerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("partnerId", partnerId));
+        }
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createSellersValidateBeforeCall(Integer advertiserId, Integer partnerId, List<String> requestBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling createSellers(Async)");
+        }
+
+        return createSellersCall(advertiserId, partnerId, requestBody, _callback);
+
+    }
+
+    /**
+     * 
+     * Create new sellers for an advertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @param partnerId Id of the partner (optional)
+     * @param requestBody Names of the sellers to associate with new Ids (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void createSellers(Integer advertiserId, Integer partnerId, List<String> requestBody) throws ApiException {
+        createSellersWithHttpInfo(advertiserId, partnerId, requestBody);
+    }
+
+    /**
+     * 
+     * Create new sellers for an advertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @param partnerId Id of the partner (optional)
+     * @param requestBody Names of the sellers to associate with new Ids (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> createSellersWithHttpInfo(Integer advertiserId, Integer partnerId, List<String> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = createSellersValidateBeforeCall(advertiserId, partnerId, requestBody, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create new sellers for an advertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @param partnerId Id of the partner (optional)
+     * @param requestBody Names of the sellers to associate with new Ids (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSellersAsync(Integer advertiserId, Integer partnerId, List<String> requestBody, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createSellersValidateBeforeCall(advertiserId, partnerId, requestBody, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAdSet
      * @param adSetId Id of the ad set (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -376,11 +895,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdSetV24Q3Call(String adSetId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdSetCall(String adSetId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -407,9 +924,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -428,13 +943,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAdSetV24Q3ValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAdSetValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adSetId' is set
         if (adSetId == null) {
-            throw new ApiException("Missing the required parameter 'adSetId' when calling getAdSetV24Q3(Async)");
+            throw new ApiException("Missing the required parameter 'adSetId' when calling getAdSet(Async)");
         }
 
-        return getAdSetV24Q3Call(adSetId, _callback);
+        return getAdSetCall(adSetId, _callback);
 
     }
 
@@ -448,12 +963,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponseReadAdSetV24Q3 getAdSetV24Q3(String adSetId) throws ApiException {
-        ApiResponse<ResponseReadAdSetV24Q3> localVarResp = getAdSetV24Q3WithHttpInfo(adSetId);
+    public ResponseReadAdSetV24Q3 getAdSet(String adSetId) throws ApiException {
+        ApiResponse<ResponseReadAdSetV24Q3> localVarResp = getAdSetWithHttpInfo(adSetId);
         return localVarResp.getData();
     }
 
@@ -467,12 +980,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponseReadAdSetV24Q3> getAdSetV24Q3WithHttpInfo(String adSetId) throws ApiException {
-        okhttp3.Call localVarCall = getAdSetV24Q3ValidateBeforeCall(adSetId, null);
+    public ApiResponse<ResponseReadAdSetV24Q3> getAdSetWithHttpInfo(String adSetId) throws ApiException {
+        okhttp3.Call localVarCall = getAdSetValidateBeforeCall(adSetId, null);
         Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q3>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -488,152 +999,17 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdSetV24Q3Async(String adSetId, final ApiCallback<ResponseReadAdSetV24Q3> _callback) throws ApiException {
+    public okhttp3.Call getAdSetAsync(String adSetId, final ApiCallback<ResponseReadAdSetV24Q3> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAdSetV24Q3ValidateBeforeCall(adSetId, _callback);
+        okhttp3.Call localVarCall = getAdSetValidateBeforeCall(adSetId, _callback);
         Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q3>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getCampaignV23Q1
-     * @param campaignId Id of the campaign (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCampaignV23Q1Call(String campaignId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/2025-07/marketing-solutions/campaigns/{campaign-id}"
-            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCampaignV23Q1ValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'campaignId' is set
-        if (campaignId == null) {
-            throw new ApiException("Missing the required parameter 'campaignId' when calling getCampaignV23Q1(Async)");
-        }
-
-        return getCampaignV23Q1Call(campaignId, _callback);
-
-    }
-
-    /**
-     * 
-     * Get the data for the specified campaign
-     * @param campaignId Id of the campaign (required)
-     * @return CampaignV23Q1Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public CampaignV23Q1Response getCampaignV23Q1(String campaignId) throws ApiException {
-        ApiResponse<CampaignV23Q1Response> localVarResp = getCampaignV23Q1WithHttpInfo(campaignId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get the data for the specified campaign
-     * @param campaignId Id of the campaign (required)
-     * @return ApiResponse&lt;CampaignV23Q1Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CampaignV23Q1Response> getCampaignV23Q1WithHttpInfo(String campaignId) throws ApiException {
-        okhttp3.Call localVarCall = getCampaignV23Q1ValidateBeforeCall(campaignId, null);
-        Type localVarReturnType = new TypeToken<CampaignV23Q1Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get the data for the specified campaign
-     * @param campaignId Id of the campaign (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCampaignV23Q1Async(String campaignId, final ApiCallback<CampaignV23Q1Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getCampaignV23Q1ValidateBeforeCall(campaignId, _callback);
-        Type localVarReturnType = new TypeToken<CampaignV23Q1Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getCategoryBidList
+     * Build call for getAdSetCategoryBids
      * @param adSetId Id of the Ad Set (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -642,12 +1018,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoryBidListCall(String adSetId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdSetCategoryBidsCall(String adSetId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -674,9 +1047,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -695,13 +1066,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCategoryBidListValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAdSetCategoryBidsValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adSetId' is set
         if (adSetId == null) {
-            throw new ApiException("Missing the required parameter 'adSetId' when calling getCategoryBidList(Async)");
+            throw new ApiException("Missing the required parameter 'adSetId' when calling getAdSetCategoryBids(Async)");
         }
 
-        return getCategoryBidListCall(adSetId, _callback);
+        return getAdSetCategoryBidsCall(adSetId, _callback);
 
     }
 
@@ -715,13 +1086,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public AdSetCategoryBidListResponse getCategoryBidList(String adSetId) throws ApiException {
-        ApiResponse<AdSetCategoryBidListResponse> localVarResp = getCategoryBidListWithHttpInfo(adSetId);
+    public AdSetCategoryBidListResponse getAdSetCategoryBids(String adSetId) throws ApiException {
+        ApiResponse<AdSetCategoryBidListResponse> localVarResp = getAdSetCategoryBidsWithHttpInfo(adSetId);
         return localVarResp.getData();
     }
 
@@ -735,13 +1103,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdSetCategoryBidListResponse> getCategoryBidListWithHttpInfo(String adSetId) throws ApiException {
-        okhttp3.Call localVarCall = getCategoryBidListValidateBeforeCall(adSetId, null);
+    public ApiResponse<AdSetCategoryBidListResponse> getAdSetCategoryBidsWithHttpInfo(String adSetId) throws ApiException {
+        okhttp3.Call localVarCall = getAdSetCategoryBidsValidateBeforeCall(adSetId, null);
         Type localVarReturnType = new TypeToken<AdSetCategoryBidListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -757,15 +1122,1237 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoryBidListAsync(String adSetId, final ApiCallback<AdSetCategoryBidListResponse> _callback) throws ApiException {
+    public okhttp3.Call getAdSetCategoryBidsAsync(String adSetId, final ApiCallback<AdSetCategoryBidListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCategoryBidListValidateBeforeCall(adSetId, _callback);
+        okhttp3.Call localVarCall = getAdSetCategoryBidsValidateBeforeCall(adSetId, _callback);
         Type localVarReturnType = new TypeToken<AdSetCategoryBidListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAdvertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}"
+            .replace("{" + "advertiserId" + "}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAdvertiserValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getAdvertiser(Async)");
+        }
+
+        return getAdvertiserCall(advertiserId, _callback);
+
+    }
+
+    /**
+     * 
+     * Get an advertiser.
+     * @param advertiserId Id of the advertiser (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void getAdvertiser(Integer advertiserId) throws ApiException {
+        getAdvertiserWithHttpInfo(advertiserId);
+    }
+
+    /**
+     * 
+     * Get an advertiser.
+     * @param advertiserId Id of the advertiser (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> getAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
+        okhttp3.Call localVarCall = getAdvertiserValidateBeforeCall(advertiserId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get an advertiser.
+     * @param advertiserId Id of the advertiser (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserAsync(Integer advertiserId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAdvertiserValidateBeforeCall(advertiserId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAdvertiserAdsets
+     * @param advertiserId Id of the advertiser (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserAdsetsCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/adsets"
+            .replace("{" + "advertiserId" + "}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAdvertiserAdsetsValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getAdvertiserAdsets(Async)");
+        }
+
+        return getAdvertiserAdsetsCall(advertiserId, _callback);
+
+    }
+
+    /**
+     * 
+     * Get the collection of adsets associated with the advertiserId.
+     * @param advertiserId Id of the advertiser (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void getAdvertiserAdsets(Integer advertiserId) throws ApiException {
+        getAdvertiserAdsetsWithHttpInfo(advertiserId);
+    }
+
+    /**
+     * 
+     * Get the collection of adsets associated with the advertiserId.
+     * @param advertiserId Id of the advertiser (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> getAdvertiserAdsetsWithHttpInfo(Integer advertiserId) throws ApiException {
+        okhttp3.Call localVarCall = getAdvertiserAdsetsValidateBeforeCall(advertiserId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the collection of adsets associated with the advertiserId.
+     * @param advertiserId Id of the advertiser (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserAdsetsAsync(Integer advertiserId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAdvertiserAdsetsValidateBeforeCall(advertiserId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAdvertiserCampaigns
+     * @param advertiserId Id of the advertiser (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserCampaignsCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/campaigns"
+            .replace("{" + "advertiserId" + "}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAdvertiserCampaignsValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getAdvertiserCampaigns(Async)");
+        }
+
+        return getAdvertiserCampaignsCall(advertiserId, _callback);
+
+    }
+
+    /**
+     * 
+     * Get the collection of CRP campaigns associated with the advertiserId.
+     * @param advertiserId Id of the advertiser (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void getAdvertiserCampaigns(Integer advertiserId) throws ApiException {
+        getAdvertiserCampaignsWithHttpInfo(advertiserId);
+    }
+
+    /**
+     * 
+     * Get the collection of CRP campaigns associated with the advertiserId.
+     * @param advertiserId Id of the advertiser (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> getAdvertiserCampaignsWithHttpInfo(Integer advertiserId) throws ApiException {
+        okhttp3.Call localVarCall = getAdvertiserCampaignsValidateBeforeCall(advertiserId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the collection of CRP campaigns associated with the advertiserId.
+     * @param advertiserId Id of the advertiser (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserCampaignsAsync(Integer advertiserId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAdvertiserCampaignsValidateBeforeCall(advertiserId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAdvertiserPreviewLimits
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserPreviewLimitsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/preview-limit";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAdvertiserPreviewLimitsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAdvertiserPreviewLimitsCall(_callback);
+
+    }
+
+    /**
+     * 
+     * Get the collection of advertisers preview limits associated with the authorized user.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void getAdvertiserPreviewLimits() throws ApiException {
+        getAdvertiserPreviewLimitsWithHttpInfo();
+    }
+
+    /**
+     * 
+     * Get the collection of advertisers preview limits associated with the authorized user.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> getAdvertiserPreviewLimitsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAdvertiserPreviewLimitsValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the collection of advertisers preview limits associated with the authorized user.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserPreviewLimitsAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAdvertiserPreviewLimitsValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAdvertisers
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertisersCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAdvertisersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAdvertisersCall(_callback);
+
+    }
+
+    /**
+     * 
+     * Get the collection of advertisers associated with the user.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void getAdvertisers() throws ApiException {
+        getAdvertisersWithHttpInfo();
+    }
+
+    /**
+     * 
+     * Get the collection of advertisers associated with the user.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> getAdvertisersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAdvertisersValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the collection of advertisers associated with the user.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertisersAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAdvertisersValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getBudgetsByAdvertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @param budgetId Return only budgets with given Id (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param sellerId Return only budgets belonging to given sellerId (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBudgetsByAdvertiserCall(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/budgets"
+            .replace("{" + "advertiserId" + "}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (budgetId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("budgetId", budgetId));
+        }
+
+        if (endAfterDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endAfterDate", endAfterDate));
+        }
+
+        if (sellerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerId", sellerId));
+        }
+
+        if (startBeforeDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startBeforeDate", startBeforeDate));
+        }
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (type != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
+        }
+
+        if (withBalance != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withBalance", withBalance));
+        }
+
+        if (withSpend != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withSpend", withSpend));
+        }
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBudgetsByAdvertiserValidateBeforeCall(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getBudgetsByAdvertiser(Async)");
+        }
+
+        return getBudgetsByAdvertiserCall(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend, _callback);
+
+    }
+
+    /**
+     * 
+     * Get CRP budgets for a specific advertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @param budgetId Return only budgets with given Id (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param sellerId Return only budgets belonging to given sellerId (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void getBudgetsByAdvertiser(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+        getBudgetsByAdvertiserWithHttpInfo(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend);
+    }
+
+    /**
+     * 
+     * Get CRP budgets for a specific advertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @param budgetId Return only budgets with given Id (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param sellerId Return only budgets belonging to given sellerId (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> getBudgetsByAdvertiserWithHttpInfo(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+        okhttp3.Call localVarCall = getBudgetsByAdvertiserValidateBeforeCall(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get CRP budgets for a specific advertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @param budgetId Return only budgets with given Id (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param sellerId Return only budgets belonging to given sellerId (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBudgetsByAdvertiserAsync(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBudgetsByAdvertiserValidateBeforeCall(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getBudgetsBySeller
+     * @param sellerId Return only budgets belonging to the given seller. (required)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBudgetsBySellerCall(String sellerId, Integer campaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/budgets"
+            .replace("{" + "sellerId" + "}", localVarApiClient.escapeString(sellerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
+        if (endAfterDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endAfterDate", endAfterDate));
+        }
+
+        if (startBeforeDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startBeforeDate", startBeforeDate));
+        }
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (type != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
+        }
+
+        if (withBalance != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withBalance", withBalance));
+        }
+
+        if (withSpend != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withSpend", withSpend));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBudgetsBySellerValidateBeforeCall(String sellerId, Integer campaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sellerId' is set
+        if (sellerId == null) {
+            throw new ApiException("Missing the required parameter 'sellerId' when calling getBudgetsBySeller(Async)");
+        }
+
+        return getBudgetsBySellerCall(sellerId, campaignId, endAfterDate, startBeforeDate, status, type, withBalance, withSpend, _callback);
+
+    }
+
+    /**
+     * 
+     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * @param sellerId Return only budgets belonging to the given seller. (required)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @return List&lt;SellerBudgetMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<SellerBudgetMessage> getBudgetsBySeller(String sellerId, Integer campaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> localVarResp = getBudgetsBySellerWithHttpInfo(sellerId, campaignId, endAfterDate, startBeforeDate, status, type, withBalance, withSpend);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * @param sellerId Return only budgets belonging to the given seller. (required)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<SellerBudgetMessage>> getBudgetsBySellerWithHttpInfo(String sellerId, Integer campaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+        okhttp3.Call localVarCall = getBudgetsBySellerValidateBeforeCall(sellerId, campaignId, endAfterDate, startBeforeDate, status, type, withBalance, withSpend, null);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * @param sellerId Return only budgets belonging to the given seller. (required)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBudgetsBySellerAsync(String sellerId, Integer campaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBudgetsBySellerValidateBeforeCall(sellerId, campaignId, endAfterDate, startBeforeDate, status, type, withBalance, withSpend, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getBudgetsBySellerCampaignId
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with a positive balance. (optional)
+     * @param withSpend Return budgets with a positive spend. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBudgetsBySellerCampaignIdCall(String sellerCampaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}/budgets"
+            .replace("{" + "sellerCampaignId" + "}", localVarApiClient.escapeString(sellerCampaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (endAfterDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endAfterDate", endAfterDate));
+        }
+
+        if (startBeforeDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startBeforeDate", startBeforeDate));
+        }
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (type != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
+        }
+
+        if (withBalance != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withBalance", withBalance));
+        }
+
+        if (withSpend != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withSpend", withSpend));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBudgetsBySellerCampaignIdValidateBeforeCall(String sellerCampaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sellerCampaignId' is set
+        if (sellerCampaignId == null) {
+            throw new ApiException("Missing the required parameter 'sellerCampaignId' when calling getBudgetsBySellerCampaignId(Async)");
+        }
+
+        return getBudgetsBySellerCampaignIdCall(sellerCampaignId, endAfterDate, startBeforeDate, status, type, withBalance, withSpend, _callback);
+
+    }
+
+    /**
+     * 
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with a positive balance. (optional)
+     * @param withSpend Return budgets with a positive spend. (optional)
+     * @return List&lt;SellerBudgetMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<SellerBudgetMessage> getBudgetsBySellerCampaignId(String sellerCampaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> localVarResp = getBudgetsBySellerCampaignIdWithHttpInfo(sellerCampaignId, endAfterDate, startBeforeDate, status, type, withBalance, withSpend);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with a positive balance. (optional)
+     * @param withSpend Return budgets with a positive spend. (optional)
+     * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<SellerBudgetMessage>> getBudgetsBySellerCampaignIdWithHttpInfo(String sellerCampaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+        okhttp3.Call localVarCall = getBudgetsBySellerCampaignIdValidateBeforeCall(sellerCampaignId, endAfterDate, startBeforeDate, status, type, withBalance, withSpend, null);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with a positive balance. (optional)
+     * @param withSpend Return budgets with a positive spend. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBudgetsBySellerCampaignIdAsync(String sellerCampaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBudgetsBySellerCampaignIdValidateBeforeCall(sellerCampaignId, endAfterDate, startBeforeDate, status, type, withBalance, withSpend, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCampaign
+     * @param campaignId Id of the campaign (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCampaignCall(String campaignId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/campaigns/{campaign-id}"
+            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCampaignValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling getCampaign(Async)");
+        }
+
+        return getCampaignCall(campaignId, _callback);
+
+    }
+
+    /**
+     * 
+     * Get the data for the specified campaign
+     * @param campaignId Id of the campaign (required)
+     * @return CampaignV23Q1Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+     </table>
+     */
+    public CampaignV23Q1Response getCampaign(String campaignId) throws ApiException {
+        ApiResponse<CampaignV23Q1Response> localVarResp = getCampaignWithHttpInfo(campaignId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get the data for the specified campaign
+     * @param campaignId Id of the campaign (required)
+     * @return ApiResponse&lt;CampaignV23Q1Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CampaignV23Q1Response> getCampaignWithHttpInfo(String campaignId) throws ApiException {
+        okhttp3.Call localVarCall = getCampaignValidateBeforeCall(campaignId, null);
+        Type localVarReturnType = new TypeToken<CampaignV23Q1Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the data for the specified campaign
+     * @param campaignId Id of the campaign (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCampaignAsync(String campaignId, final ApiCallback<CampaignV23Q1Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCampaignValidateBeforeCall(campaignId, _callback);
+        Type localVarReturnType = new TypeToken<CampaignV23Q1Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -779,9 +2366,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDisplayMultipliersCall(String adSetId, final ApiCallback _callback) throws ApiException {
@@ -811,9 +2395,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -852,9 +2434,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public AdSetDisplayMultiplierListResponse getDisplayMultipliers(String adSetId) throws ApiException {
@@ -872,9 +2451,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<AdSetDisplayMultiplierListResponse> getDisplayMultipliersWithHttpInfo(String adSetId) throws ApiException {
@@ -894,9 +2470,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDisplayMultipliersAsync(String adSetId, final ApiCallback<AdSetDisplayMultiplierListResponse> _callback) throws ApiException {
@@ -907,7 +2480,1428 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for patchAdSetsV24Q3
+     * Build call for getSeller
+     * @param sellerId Id of the seller. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCall(String sellerId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}"
+            .replace("{" + "sellerId" + "}", localVarApiClient.escapeString(sellerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSellerValidateBeforeCall(String sellerId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sellerId' is set
+        if (sellerId == null) {
+            throw new ApiException("Missing the required parameter 'sellerId' when calling getSeller(Async)");
+        }
+
+        return getSellerCall(sellerId, _callback);
+
+    }
+
+    /**
+     * 
+     * Return details for the selected seller. For example,                    {          \&quot;id\&quot; : \&quot;123456\&quot;          \&quot;sellerName\&quot;: \&quot;HBogart\&quot;,      }
+     * @param sellerId Id of the seller. (required)
+     * @return SellerBase
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public SellerBase getSeller(String sellerId) throws ApiException {
+        ApiResponse<SellerBase> localVarResp = getSellerWithHttpInfo(sellerId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Return details for the selected seller. For example,                    {          \&quot;id\&quot; : \&quot;123456\&quot;          \&quot;sellerName\&quot;: \&quot;HBogart\&quot;,      }
+     * @param sellerId Id of the seller. (required)
+     * @return ApiResponse&lt;SellerBase&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SellerBase> getSellerWithHttpInfo(String sellerId) throws ApiException {
+        okhttp3.Call localVarCall = getSellerValidateBeforeCall(sellerId, null);
+        Type localVarReturnType = new TypeToken<SellerBase>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Return details for the selected seller. For example,                    {          \&quot;id\&quot; : \&quot;123456\&quot;          \&quot;sellerName\&quot;: \&quot;HBogart\&quot;,      }
+     * @param sellerId Id of the seller. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerAsync(String sellerId, final ApiCallback<SellerBase> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSellerValidateBeforeCall(sellerId, _callback);
+        Type localVarReturnType = new TypeToken<SellerBase>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSellerAdDemo
+     * @param advertiserId Id of the advertiser (required)
+     * @param sellerId Id of the seller (required)
+     * @param campaignId Seller CampaignId (optional)
+     * @param height Height of the ad to display (optional)
+     * @param width Width of the ad to display (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerAdDemoCall(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/ad-preview"
+            .replace("{" + "advertiserId" + "}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
+        if (height != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("height", height));
+        }
+
+        if (sellerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerId", sellerId));
+        }
+
+        if (width != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("width", width));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSellerAdDemoValidateBeforeCall(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getSellerAdDemo(Async)");
+        }
+
+        // verify the required parameter 'sellerId' is set
+        if (sellerId == null) {
+            throw new ApiException("Missing the required parameter 'sellerId' when calling getSellerAdDemo(Async)");
+        }
+
+        return getSellerAdDemoCall(advertiserId, sellerId, campaignId, height, width, _callback);
+
+    }
+
+    /**
+     * 
+     * Get a preview of an HTML ad with products belonging to the provided seller  • &lt;b&gt;advertiserId&lt;/b&gt;: Valid crp advertiserId, seller belongs to provided advertiser&lt;br /&gt;  • &lt;b&gt;sellerId&lt;/b&gt;: Products from given SellerId will fill the ad preview, must be existing crp sellerId&lt;br /&gt;  • &lt;b&gt;height&lt;/b&gt;: height may be supplied to request a specific ad preview height. Default height: 250&lt;br /&gt;  • &lt;b&gt;width&lt;/b&gt;: width may be supplied to request a specific ad preview width. Default width: 300&lt;br /&gt;                Ad preview api calls are capped to 1000 per day per advertiser by default. Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
+     * @param advertiserId Id of the advertiser (required)
+     * @param sellerId Id of the seller (required)
+     * @param campaignId Seller CampaignId (optional)
+     * @param height Height of the ad to display (optional)
+     * @param width Width of the ad to display (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public String getSellerAdDemo(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width) throws ApiException {
+        ApiResponse<String> localVarResp = getSellerAdDemoWithHttpInfo(advertiserId, sellerId, campaignId, height, width);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get a preview of an HTML ad with products belonging to the provided seller  • &lt;b&gt;advertiserId&lt;/b&gt;: Valid crp advertiserId, seller belongs to provided advertiser&lt;br /&gt;  • &lt;b&gt;sellerId&lt;/b&gt;: Products from given SellerId will fill the ad preview, must be existing crp sellerId&lt;br /&gt;  • &lt;b&gt;height&lt;/b&gt;: height may be supplied to request a specific ad preview height. Default height: 250&lt;br /&gt;  • &lt;b&gt;width&lt;/b&gt;: width may be supplied to request a specific ad preview width. Default width: 300&lt;br /&gt;                Ad preview api calls are capped to 1000 per day per advertiser by default. Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
+     * @param advertiserId Id of the advertiser (required)
+     * @param sellerId Id of the seller (required)
+     * @param campaignId Seller CampaignId (optional)
+     * @param height Height of the ad to display (optional)
+     * @param width Width of the ad to display (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<String> getSellerAdDemoWithHttpInfo(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width) throws ApiException {
+        okhttp3.Call localVarCall = getSellerAdDemoValidateBeforeCall(advertiserId, sellerId, campaignId, height, width, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get a preview of an HTML ad with products belonging to the provided seller  • &lt;b&gt;advertiserId&lt;/b&gt;: Valid crp advertiserId, seller belongs to provided advertiser&lt;br /&gt;  • &lt;b&gt;sellerId&lt;/b&gt;: Products from given SellerId will fill the ad preview, must be existing crp sellerId&lt;br /&gt;  • &lt;b&gt;height&lt;/b&gt;: height may be supplied to request a specific ad preview height. Default height: 250&lt;br /&gt;  • &lt;b&gt;width&lt;/b&gt;: width may be supplied to request a specific ad preview width. Default width: 300&lt;br /&gt;                Ad preview api calls are capped to 1000 per day per advertiser by default. Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
+     * @param advertiserId Id of the advertiser (required)
+     * @param sellerId Id of the seller (required)
+     * @param campaignId Seller CampaignId (optional)
+     * @param height Height of the ad to display (optional)
+     * @param width Width of the ad to display (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerAdDemoAsync(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width, final ApiCallback<String> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSellerAdDemoValidateBeforeCall(advertiserId, sellerId, campaignId, height, width, _callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSellerBudget
+     * @param budgetId Id of the budget. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerBudgetCall(Long budgetId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/budgets/{budgetId}"
+            .replace("{" + "budgetId" + "}", localVarApiClient.escapeString(budgetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSellerBudgetValidateBeforeCall(Long budgetId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'budgetId' is set
+        if (budgetId == null) {
+            throw new ApiException("Missing the required parameter 'budgetId' when calling getSellerBudget(Async)");
+        }
+
+        return getSellerBudgetCall(budgetId, _callback);
+
+    }
+
+    /**
+     * 
+     * Return a budget. For example,                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend. Daily budgets  show spend against the most recent day only.
+     * @param budgetId Id of the budget. (required)
+     * @return SellerBudgetMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public SellerBudgetMessage getSellerBudget(Long budgetId) throws ApiException {
+        ApiResponse<SellerBudgetMessage> localVarResp = getSellerBudgetWithHttpInfo(budgetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Return a budget. For example,                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend. Daily budgets  show spend against the most recent day only.
+     * @param budgetId Id of the budget. (required)
+     * @return ApiResponse&lt;SellerBudgetMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SellerBudgetMessage> getSellerBudgetWithHttpInfo(Long budgetId) throws ApiException {
+        okhttp3.Call localVarCall = getSellerBudgetValidateBeforeCall(budgetId, null);
+        Type localVarReturnType = new TypeToken<SellerBudgetMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Return a budget. For example,                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend. Daily budgets  show spend against the most recent day only.
+     * @param budgetId Id of the budget. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerBudgetAsync(Long budgetId, final ApiCallback<SellerBudgetMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSellerBudgetValidateBeforeCall(budgetId, _callback);
+        Type localVarReturnType = new TypeToken<SellerBudgetMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSellerBudgets
+     * @param advertiserId Return only budgets belonging to the specified advertiser (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param sellerId Return only budgets belonging to the given seller. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerBudgetsCall(Integer advertiserId, Integer campaignId, OffsetDateTime endAfterDate, String sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/budgets";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (advertiserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiserId", advertiserId));
+        }
+
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
+        if (endAfterDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endAfterDate", endAfterDate));
+        }
+
+        if (sellerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerId", sellerId));
+        }
+
+        if (startBeforeDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startBeforeDate", startBeforeDate));
+        }
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (type != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
+        }
+
+        if (withBalance != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withBalance", withBalance));
+        }
+
+        if (withSpend != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withSpend", withSpend));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSellerBudgetsValidateBeforeCall(Integer advertiserId, Integer campaignId, OffsetDateTime endAfterDate, String sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
+        return getSellerBudgetsCall(advertiserId, campaignId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend, _callback);
+
+    }
+
+    /**
+     * 
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off the startBeforeDate  value makes budgets with any startDate qualify, whereas when leaving off the endAfterDate value will only return  budgets whose endDate has not already passed. To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * @param advertiserId Return only budgets belonging to the specified advertiser (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param sellerId Return only budgets belonging to the given seller. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @return List&lt;SellerBudgetMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<SellerBudgetMessage> getSellerBudgets(Integer advertiserId, Integer campaignId, OffsetDateTime endAfterDate, String sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> localVarResp = getSellerBudgetsWithHttpInfo(advertiserId, campaignId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off the startBeforeDate  value makes budgets with any startDate qualify, whereas when leaving off the endAfterDate value will only return  budgets whose endDate has not already passed. To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * @param advertiserId Return only budgets belonging to the specified advertiser (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param sellerId Return only budgets belonging to the given seller. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<SellerBudgetMessage>> getSellerBudgetsWithHttpInfo(Integer advertiserId, Integer campaignId, OffsetDateTime endAfterDate, String sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+        okhttp3.Call localVarCall = getSellerBudgetsValidateBeforeCall(advertiserId, campaignId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend, null);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off the startBeforeDate  value makes budgets with any startDate qualify, whereas when leaving off the endAfterDate value will only return  budgets whose endDate has not already passed. To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * @param advertiserId Return only budgets belonging to the specified advertiser (optional)
+     * @param campaignId Return only budgets that pay for a given campaign. (optional)
+     * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+     * @param sellerId Return only budgets belonging to the given seller. (optional)
+     * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
+     * @param status Return only budgets with the given status. (optional)
+     * @param type Return only budgets with the given budget type. (optional)
+     * @param withBalance Return only budgets with the given status. (optional)
+     * @param withSpend Return budgets with any positive spend. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerBudgetsAsync(Integer advertiserId, Integer campaignId, OffsetDateTime endAfterDate, String sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSellerBudgetsValidateBeforeCall(advertiserId, campaignId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSellerCampaign
+     * @param sellerCampaignId Id of the seller campaign. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignCall(String sellerCampaignId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}"
+            .replace("{" + "sellerCampaignId" + "}", localVarApiClient.escapeString(sellerCampaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSellerCampaignValidateBeforeCall(String sellerCampaignId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sellerCampaignId' is set
+        if (sellerCampaignId == null) {
+            throw new ApiException("Missing the required parameter 'sellerCampaignId' when calling getSellerCampaign(Async)");
+        }
+
+        return getSellerCampaignCall(sellerCampaignId, _callback);
+
+    }
+
+    /**
+     * 
+     * Return details for a seller campaign. For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30T15:15:24.813\&quot;,          \&quot;suspensionReasons\&quot;: [              \&quot;NoMoreBudget\&quot;          ]      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.                Suspension reasons:  - ManuallyStopped: The Seller-Campaign has been manually paused. This is not related to the other suspension reasons.  - NoBudgetDefined: No valid budget has been linked to the Seller-Campaign.  - NoCpcDefined: No CPC has been set for the Seller-Campaign.  - NoMoreBudget: The current budget of the Seller-Campaign has been exhausted.  - RemovedFromCatalog: All the products of the Seller-Campaign have been deleted from the catalog.  - NotYetStarted: The Seller-Campaign has just been created and has not yet been processed.
+     * @param sellerCampaignId Id of the seller campaign. (required)
+     * @return SellerCampaignMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public SellerCampaignMessage getSellerCampaign(String sellerCampaignId) throws ApiException {
+        ApiResponse<SellerCampaignMessage> localVarResp = getSellerCampaignWithHttpInfo(sellerCampaignId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Return details for a seller campaign. For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30T15:15:24.813\&quot;,          \&quot;suspensionReasons\&quot;: [              \&quot;NoMoreBudget\&quot;          ]      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.                Suspension reasons:  - ManuallyStopped: The Seller-Campaign has been manually paused. This is not related to the other suspension reasons.  - NoBudgetDefined: No valid budget has been linked to the Seller-Campaign.  - NoCpcDefined: No CPC has been set for the Seller-Campaign.  - NoMoreBudget: The current budget of the Seller-Campaign has been exhausted.  - RemovedFromCatalog: All the products of the Seller-Campaign have been deleted from the catalog.  - NotYetStarted: The Seller-Campaign has just been created and has not yet been processed.
+     * @param sellerCampaignId Id of the seller campaign. (required)
+     * @return ApiResponse&lt;SellerCampaignMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SellerCampaignMessage> getSellerCampaignWithHttpInfo(String sellerCampaignId) throws ApiException {
+        okhttp3.Call localVarCall = getSellerCampaignValidateBeforeCall(sellerCampaignId, null);
+        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Return details for a seller campaign. For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30T15:15:24.813\&quot;,          \&quot;suspensionReasons\&quot;: [              \&quot;NoMoreBudget\&quot;          ]      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.                Suspension reasons:  - ManuallyStopped: The Seller-Campaign has been manually paused. This is not related to the other suspension reasons.  - NoBudgetDefined: No valid budget has been linked to the Seller-Campaign.  - NoCpcDefined: No CPC has been set for the Seller-Campaign.  - NoMoreBudget: The current budget of the Seller-Campaign has been exhausted.  - RemovedFromCatalog: All the products of the Seller-Campaign have been deleted from the catalog.  - NotYetStarted: The Seller-Campaign has just been created and has not yet been processed.
+     * @param sellerCampaignId Id of the seller campaign. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignAsync(String sellerCampaignId, final ApiCallback<SellerCampaignMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSellerCampaignValidateBeforeCall(sellerCampaignId, _callback);
+        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSellerCampaigns
+     * @param advertiserId Return only seller belonging to the specified advertiser (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignsCall(Integer advertiserId, String budgetStatus, Integer campaignId, String sellerId, String sellerStatus, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (advertiserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiserId", advertiserId));
+        }
+
+        if (budgetStatus != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("budgetStatus", budgetStatus));
+        }
+
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
+        if (sellerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerId", sellerId));
+        }
+
+        if (sellerStatus != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerStatus", sellerStatus));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSellerCampaignsValidateBeforeCall(Integer advertiserId, String budgetStatus, Integer campaignId, String sellerId, String sellerStatus, final ApiCallback _callback) throws ApiException {
+        return getSellerCampaignsCall(advertiserId, budgetStatus, campaignId, sellerId, sellerStatus, _callback);
+
+    }
+
+    /**
+     * 
+     * Return a collection of seller campaigns filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
+     * @param advertiserId Return only seller belonging to the specified advertiser (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @return List&lt;SellerCampaignMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<SellerCampaignMessage> getSellerCampaigns(Integer advertiserId, String budgetStatus, Integer campaignId, String sellerId, String sellerStatus) throws ApiException {
+        ApiResponse<List<SellerCampaignMessage>> localVarResp = getSellerCampaignsWithHttpInfo(advertiserId, budgetStatus, campaignId, sellerId, sellerStatus);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Return a collection of seller campaigns filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
+     * @param advertiserId Return only seller belonging to the specified advertiser (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<SellerCampaignMessage>> getSellerCampaignsWithHttpInfo(Integer advertiserId, String budgetStatus, Integer campaignId, String sellerId, String sellerStatus) throws ApiException {
+        okhttp3.Call localVarCall = getSellerCampaignsValidateBeforeCall(advertiserId, budgetStatus, campaignId, sellerId, sellerStatus, null);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Return a collection of seller campaigns filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
+     * @param advertiserId Return only seller belonging to the specified advertiser (optional)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param sellerId Return only seller campaigns belonging to the given seller. (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignsAsync(Integer advertiserId, String budgetStatus, Integer campaignId, String sellerId, String sellerStatus, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSellerCampaignsValidateBeforeCall(advertiserId, budgetStatus, campaignId, sellerId, sellerStatus, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSellerCampaignsByAdvertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignsByAdvertiserCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/seller-campaigns"
+            .replace("{" + "advertiserId" + "}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSellerCampaignsByAdvertiserValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getSellerCampaignsByAdvertiser(Async)");
+        }
+
+        return getSellerCampaignsByAdvertiserCall(advertiserId, _callback);
+
+    }
+
+    /**
+     * 
+     * Get CRP seller campaigns for a specific advertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void getSellerCampaignsByAdvertiser(Integer advertiserId) throws ApiException {
+        getSellerCampaignsByAdvertiserWithHttpInfo(advertiserId);
+    }
+
+    /**
+     * 
+     * Get CRP seller campaigns for a specific advertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> getSellerCampaignsByAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
+        okhttp3.Call localVarCall = getSellerCampaignsByAdvertiserValidateBeforeCall(advertiserId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get CRP seller campaigns for a specific advertiser
+     * @param advertiserId Id of the advertiser (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignsByAdvertiserAsync(Integer advertiserId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSellerCampaignsByAdvertiserValidateBeforeCall(advertiserId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSellerCampaignsBySeller
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignsBySellerCall(String sellerId, String budgetStatus, Integer campaignId, String sellerStatus, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/seller-campaigns"
+            .replace("{" + "sellerId" + "}", localVarApiClient.escapeString(sellerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (budgetStatus != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("budgetStatus", budgetStatus));
+        }
+
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
+        if (sellerStatus != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerStatus", sellerStatus));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSellerCampaignsBySellerValidateBeforeCall(String sellerId, String budgetStatus, Integer campaignId, String sellerStatus, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sellerId' is set
+        if (sellerId == null) {
+            throw new ApiException("Missing the required parameter 'sellerId' when calling getSellerCampaignsBySeller(Async)");
+        }
+
+        return getSellerCampaignsBySellerCall(sellerId, budgetStatus, campaignId, sellerStatus, _callback);
+
+    }
+
+    /**
+     * 
+     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used. See the seller campaigns endpoint for additional details.
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @return List&lt;SellerCampaignMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<SellerCampaignMessage> getSellerCampaignsBySeller(String sellerId, String budgetStatus, Integer campaignId, String sellerStatus) throws ApiException {
+        ApiResponse<List<SellerCampaignMessage>> localVarResp = getSellerCampaignsBySellerWithHttpInfo(sellerId, budgetStatus, campaignId, sellerStatus);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used. See the seller campaigns endpoint for additional details.
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<SellerCampaignMessage>> getSellerCampaignsBySellerWithHttpInfo(String sellerId, String budgetStatus, Integer campaignId, String sellerStatus) throws ApiException {
+        okhttp3.Call localVarCall = getSellerCampaignsBySellerValidateBeforeCall(sellerId, budgetStatus, campaignId, sellerStatus, null);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used. See the seller campaigns endpoint for additional details.
+     * @param sellerId Return only seller campaigns belonging to the given seller. (required)
+     * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
+     * @param campaignId Return only seller campaigns associated with the given campaign. (optional)
+     * @param sellerStatus Return only seller campaigns for sellers with the given status. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellerCampaignsBySellerAsync(String sellerId, String budgetStatus, Integer campaignId, String sellerStatus, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSellerCampaignsBySellerValidateBeforeCall(sellerId, budgetStatus, campaignId, sellerStatus, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSellers
+     * @param advertiserId Return only sellers belonging to the specified advertiser (optional)
+     * @param campaignId Return only sellers belonging to the specified campaign (optional)
+     * @param sellerName Return only sellers with the matching name. (optional)
+     * @param sellerStatus Return only sellers with specific status. (optional)
+     * @param withBudgetStatus Return only sellers with specific budget status. (optional)
+     * @param withProducts Return only sellers with or without products in catalog. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellersCall(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/sellers";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (advertiserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiserId", advertiserId));
+        }
+
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
+        if (sellerName != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerName", sellerName));
+        }
+
+        if (sellerStatus != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerStatus", sellerStatus));
+        }
+
+        if (withBudgetStatus != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withBudgetStatus", withBudgetStatus));
+        }
+
+        if (withProducts != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withProducts", withProducts));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSellersValidateBeforeCall(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts, final ApiCallback _callback) throws ApiException {
+        return getSellersCall(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts, _callback);
+
+    }
+
+    /**
+     * 
+     * Return a collection of sellers filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
+     * @param advertiserId Return only sellers belonging to the specified advertiser (optional)
+     * @param campaignId Return only sellers belonging to the specified campaign (optional)
+     * @param sellerName Return only sellers with the matching name. (optional)
+     * @param sellerStatus Return only sellers with specific status. (optional)
+     * @param withBudgetStatus Return only sellers with specific budget status. (optional)
+     * @param withProducts Return only sellers with or without products in catalog. (optional)
+     * @return List&lt;SellerBudgetMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<SellerBudgetMessage> getSellers(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> localVarResp = getSellersWithHttpInfo(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Return a collection of sellers filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
+     * @param advertiserId Return only sellers belonging to the specified advertiser (optional)
+     * @param campaignId Return only sellers belonging to the specified campaign (optional)
+     * @param sellerName Return only sellers with the matching name. (optional)
+     * @param sellerStatus Return only sellers with specific status. (optional)
+     * @param withBudgetStatus Return only sellers with specific budget status. (optional)
+     * @param withProducts Return only sellers with or without products in catalog. (optional)
+     * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<SellerBudgetMessage>> getSellersWithHttpInfo(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts) throws ApiException {
+        okhttp3.Call localVarCall = getSellersValidateBeforeCall(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts, null);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Return a collection of sellers filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
+     * @param advertiserId Return only sellers belonging to the specified advertiser (optional)
+     * @param campaignId Return only sellers belonging to the specified campaign (optional)
+     * @param sellerName Return only sellers with the matching name. (optional)
+     * @param sellerStatus Return only sellers with specific status. (optional)
+     * @param withBudgetStatus Return only sellers with specific budget status. (optional)
+     * @param withProducts Return only sellers with or without products in catalog. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSellersAsync(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSellersValidateBeforeCall(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchAdSetCategoryBids
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchAdSetCategoryBidsCall(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = patchAdSetCategoryBidListRequest;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/ad-sets/{ad-set-id}/category-bids"
+            .replace("{" + "ad-set-id" + "}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchAdSetCategoryBidsValidateBeforeCall(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling patchAdSetCategoryBids(Async)");
+        }
+
+        return patchAdSetCategoryBidsCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @return PatchAdSetCategoryBidResultListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+     </table>
+     */
+    public PatchAdSetCategoryBidResultListResponse patchAdSetCategoryBids(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
+        ApiResponse<PatchAdSetCategoryBidResultListResponse> localVarResp = patchAdSetCategoryBidsWithHttpInfo(adSetId, patchAdSetCategoryBidListRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @return ApiResponse&lt;PatchAdSetCategoryBidResultListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PatchAdSetCategoryBidResultListResponse> patchAdSetCategoryBidsWithHttpInfo(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
+        okhttp3.Call localVarCall = patchAdSetCategoryBidsValidateBeforeCall(adSetId, patchAdSetCategoryBidListRequest, null);
+        Type localVarReturnType = new TypeToken<PatchAdSetCategoryBidResultListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchAdSetCategoryBidsAsync(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback<PatchAdSetCategoryBidResultListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchAdSetCategoryBidsValidateBeforeCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
+        Type localVarReturnType = new TypeToken<PatchAdSetCategoryBidResultListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchAdSets
      * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -916,11 +3910,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAdSetsV24Q3Call(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchAdSetsCall(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -946,9 +3938,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -956,10 +3946,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -971,8 +3958,8 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchAdSetsV24Q3ValidateBeforeCall(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3, final ApiCallback _callback) throws ApiException {
-        return patchAdSetsV24Q3Call(requestsPatchAdSetV24Q3, _callback);
+    private okhttp3.Call patchAdSetsValidateBeforeCall(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3, final ApiCallback _callback) throws ApiException {
+        return patchAdSetsCall(requestsPatchAdSetV24Q3, _callback);
 
     }
 
@@ -986,12 +3973,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponsesAdSetIdV24Q3 patchAdSetsV24Q3(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3) throws ApiException {
-        ApiResponse<ResponsesAdSetIdV24Q3> localVarResp = patchAdSetsV24Q3WithHttpInfo(requestsPatchAdSetV24Q3);
+    public ResponsesAdSetIdV24Q3 patchAdSets(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3) throws ApiException {
+        ApiResponse<ResponsesAdSetIdV24Q3> localVarResp = patchAdSetsWithHttpInfo(requestsPatchAdSetV24Q3);
         return localVarResp.getData();
     }
 
@@ -1005,12 +3990,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponsesAdSetIdV24Q3> patchAdSetsV24Q3WithHttpInfo(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3) throws ApiException {
-        okhttp3.Call localVarCall = patchAdSetsV24Q3ValidateBeforeCall(requestsPatchAdSetV24Q3, null);
+    public ApiResponse<ResponsesAdSetIdV24Q3> patchAdSetsWithHttpInfo(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3) throws ApiException {
+        okhttp3.Call localVarCall = patchAdSetsValidateBeforeCall(requestsPatchAdSetV24Q3, null);
         Type localVarReturnType = new TypeToken<ResponsesAdSetIdV24Q3>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1026,13 +4009,11 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAdSetsV24Q3Async(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3, final ApiCallback<ResponsesAdSetIdV24Q3> _callback) throws ApiException {
+    public okhttp3.Call patchAdSetsAsync(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3, final ApiCallback<ResponsesAdSetIdV24Q3> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchAdSetsV24Q3ValidateBeforeCall(requestsPatchAdSetV24Q3, _callback);
+        okhttp3.Call localVarCall = patchAdSetsValidateBeforeCall(requestsPatchAdSetV24Q3, _callback);
         Type localVarReturnType = new TypeToken<ResponsesAdSetIdV24Q3>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1047,8 +4028,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchCampaignsCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
@@ -1077,9 +4056,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1087,10 +4064,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1117,8 +4091,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public PatchResultCampaignListResponse patchCampaigns(PatchCampaignListRequest patchCampaignListRequest) throws ApiException {
@@ -1136,8 +4108,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<PatchResultCampaignListResponse> patchCampaignsWithHttpInfo(PatchCampaignListRequest patchCampaignListRequest) throws ApiException {
@@ -1157,159 +4127,12 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchCampaignsAsync(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback<PatchResultCampaignListResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignListRequest, _callback);
         Type localVarReturnType = new TypeToken<PatchResultCampaignListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for patchCategoryBidList
-     * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchCategoryBidListCall(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = patchAdSetCategoryBidListRequest;
-
-        // create path and map variables
-        String localVarPath = "/2025-07/marketing-solutions/ad-sets/{ad-set-id}/category-bids"
-            .replace("{" + "ad-set-id" + "}", localVarApiClient.escapeString(adSetId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchCategoryBidListValidateBeforeCall(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'adSetId' is set
-        if (adSetId == null) {
-            throw new ApiException("Missing the required parameter 'adSetId' when calling patchCategoryBidList(Async)");
-        }
-
-        return patchCategoryBidListCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
-     * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
-     * @return PatchAdSetCategoryBidResultListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public PatchAdSetCategoryBidResultListResponse patchCategoryBidList(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
-        ApiResponse<PatchAdSetCategoryBidResultListResponse> localVarResp = patchCategoryBidListWithHttpInfo(adSetId, patchAdSetCategoryBidListRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
-     * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
-     * @return ApiResponse&lt;PatchAdSetCategoryBidResultListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PatchAdSetCategoryBidResultListResponse> patchCategoryBidListWithHttpInfo(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
-        okhttp3.Call localVarCall = patchCategoryBidListValidateBeforeCall(adSetId, patchAdSetCategoryBidListRequest, null);
-        Type localVarReturnType = new TypeToken<PatchAdSetCategoryBidResultListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
-     * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchCategoryBidListAsync(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback<PatchAdSetCategoryBidResultListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = patchCategoryBidListValidateBeforeCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
-        Type localVarReturnType = new TypeToken<PatchAdSetCategoryBidResultListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1324,9 +4147,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchDisplayMultipliersCall(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest, final ApiCallback _callback) throws ApiException {
@@ -1356,9 +4176,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1366,10 +4184,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1402,9 +4217,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public PatchAdSetDisplayMultiplierResultListResponse patchDisplayMultipliers(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest) throws ApiException {
@@ -1423,9 +4235,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<PatchAdSetDisplayMultiplierResultListResponse> patchDisplayMultipliersWithHttpInfo(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest) throws ApiException {
@@ -1446,9 +4255,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchDisplayMultipliersAsync(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest, final ApiCallback<PatchAdSetDisplayMultiplierResultListResponse> _callback) throws ApiException {
@@ -1459,7 +4265,7 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for searchAdSetsV24Q3
+     * Build call for searchAdSets
      * @param adSetSearchRequestV24Q3  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1468,12 +4274,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAdSetsV24Q3Call(AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchAdSetsCall(AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1499,9 +4302,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1509,10 +4310,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1524,8 +4322,8 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchAdSetsV24Q3ValidateBeforeCall(AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3, final ApiCallback _callback) throws ApiException {
-        return searchAdSetsV24Q3Call(adSetSearchRequestV24Q3, _callback);
+    private okhttp3.Call searchAdSetsValidateBeforeCall(AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3, final ApiCallback _callback) throws ApiException {
+        return searchAdSetsCall(adSetSearchRequestV24Q3, _callback);
 
     }
 
@@ -1539,13 +4337,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponsesReadAdSetV24Q3 searchAdSetsV24Q3(AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3) throws ApiException {
-        ApiResponse<ResponsesReadAdSetV24Q3> localVarResp = searchAdSetsV24Q3WithHttpInfo(adSetSearchRequestV24Q3);
+    public ResponsesReadAdSetV24Q3 searchAdSets(AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3) throws ApiException {
+        ApiResponse<ResponsesReadAdSetV24Q3> localVarResp = searchAdSetsWithHttpInfo(adSetSearchRequestV24Q3);
         return localVarResp.getData();
     }
 
@@ -1559,13 +4354,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponsesReadAdSetV24Q3> searchAdSetsV24Q3WithHttpInfo(AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3) throws ApiException {
-        okhttp3.Call localVarCall = searchAdSetsV24Q3ValidateBeforeCall(adSetSearchRequestV24Q3, null);
+    public ApiResponse<ResponsesReadAdSetV24Q3> searchAdSetsWithHttpInfo(AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3) throws ApiException {
+        okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(adSetSearchRequestV24Q3, null);
         Type localVarReturnType = new TypeToken<ResponsesReadAdSetV24Q3>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1581,20 +4373,17 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAdSetsV24Q3Async(AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3, final ApiCallback<ResponsesReadAdSetV24Q3> _callback) throws ApiException {
+    public okhttp3.Call searchAdSetsAsync(AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3, final ApiCallback<ResponsesReadAdSetV24Q3> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchAdSetsV24Q3ValidateBeforeCall(adSetSearchRequestV24Q3, _callback);
+        okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(adSetSearchRequestV24Q3, _callback);
         Type localVarReturnType = new TypeToken<ResponsesReadAdSetV24Q3>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for searchCampaignsV23Q1
+     * Build call for searchCampaigns
      * @param campaignSearchRequestV23Q1 filters on campaigns (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1603,12 +4392,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCampaignsV23Q1Call(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchCampaignsCall(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1634,9 +4420,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1644,10 +4428,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1659,8 +4440,8 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchCampaignsV23Q1ValidateBeforeCall(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
-        return searchCampaignsV23Q1Call(campaignSearchRequestV23Q1, _callback);
+    private okhttp3.Call searchCampaignsValidateBeforeCall(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
+        return searchCampaignsCall(campaignSearchRequestV23Q1, _callback);
 
     }
 
@@ -1674,13 +4455,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignV23Q1ListResponse searchCampaignsV23Q1(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
-        ApiResponse<CampaignV23Q1ListResponse> localVarResp = searchCampaignsV23Q1WithHttpInfo(campaignSearchRequestV23Q1);
+    public CampaignV23Q1ListResponse searchCampaigns(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
+        ApiResponse<CampaignV23Q1ListResponse> localVarResp = searchCampaignsWithHttpInfo(campaignSearchRequestV23Q1);
         return localVarResp.getData();
     }
 
@@ -1694,13 +4472,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignV23Q1ListResponse> searchCampaignsV23Q1WithHttpInfo(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
-        okhttp3.Call localVarCall = searchCampaignsV23Q1ValidateBeforeCall(campaignSearchRequestV23Q1, null);
+    public ApiResponse<CampaignV23Q1ListResponse> searchCampaignsWithHttpInfo(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
+        okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequestV23Q1, null);
         Type localVarReturnType = new TypeToken<CampaignV23Q1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1716,15 +4491,358 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCampaignsV23Q1Async(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback<CampaignV23Q1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call searchCampaignsAsync(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback<CampaignV23Q1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchCampaignsV23Q1ValidateBeforeCall(campaignSearchRequestV23Q1, _callback);
+        okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequestV23Q1, _callback);
         Type localVarReturnType = new TypeToken<CampaignV23Q1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for sellerCampaigns
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param sellerId Show only metrics for this seller (default all sellers) (optional)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call sellerCampaignsCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/stats/seller-campaigns";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (advertiserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiserId", advertiserId));
+        }
+
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
+        if (clickAttributionPolicy != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("clickAttributionPolicy", clickAttributionPolicy));
+        }
+
+        if (count != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("count", count));
+        }
+
+        if (endDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endDate", endDate));
+        }
+
+        if (intervalSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("intervalSize", intervalSize));
+        }
+
+        if (sellerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerId", sellerId));
+        }
+
+        if (startDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startDate", startDate));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call sellerCampaignsValidateBeforeCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
+        return sellerCampaignsCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, _callback);
+
+    }
+
+    /**
+     * 
+     * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param sellerId Show only metrics for this seller (default all sellers) (optional)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public byte[] sellerCampaigns(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate) throws ApiException {
+        ApiResponse<byte[]> localVarResp = sellerCampaignsWithHttpInfo(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param sellerId Show only metrics for this seller (default all sellers) (optional)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @return ApiResponse&lt;byte[]&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<byte[]> sellerCampaignsWithHttpInfo(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate) throws ApiException {
+        okhttp3.Call localVarCall = sellerCampaignsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param sellerId Show only metrics for this seller (default all sellers) (optional)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call sellerCampaignsAsync(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback<byte[]> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = sellerCampaignsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, _callback);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for sellers
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param sellerId Show only metrics for this seller (default all sellers) (optional)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call sellersCall(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/stats/sellers";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (advertiserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiserId", advertiserId));
+        }
+
+        if (clickAttributionPolicy != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("clickAttributionPolicy", clickAttributionPolicy));
+        }
+
+        if (count != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("count", count));
+        }
+
+        if (endDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endDate", endDate));
+        }
+
+        if (intervalSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("intervalSize", intervalSize));
+        }
+
+        if (sellerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sellerId", sellerId));
+        }
+
+        if (startDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startDate", startDate));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call sellersValidateBeforeCall(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
+        return sellersCall(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, _callback);
+
+    }
+
+    /**
+     * 
+     * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param sellerId Show only metrics for this seller (default all sellers) (optional)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public byte[] sellers(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate) throws ApiException {
+        ApiResponse<byte[]> localVarResp = sellersWithHttpInfo(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param sellerId Show only metrics for this seller (default all sellers) (optional)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @return ApiResponse&lt;byte[]&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<byte[]> sellersWithHttpInfo(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate) throws ApiException {
+        okhttp3.Call localVarCall = sellersValidateBeforeCall(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
+     * @param count Return up to the first count rows of data (default is all rows) (optional)
+     * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
+     * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
+     * @param sellerId Show only metrics for this seller (default all sellers) (optional)
+     * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call sellersAsync(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback<byte[]> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = sellersValidateBeforeCall(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, _callback);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1738,8 +4856,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been started and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call startAdSetsCall(RequestsAdSetId requestsAdSetId, final ApiCallback _callback) throws ApiException {
@@ -1768,9 +4884,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1778,10 +4892,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1808,8 +4919,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been started and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public ResponsesAdSetId startAdSets(RequestsAdSetId requestsAdSetId) throws ApiException {
@@ -1827,8 +4936,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been started and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResponsesAdSetId> startAdSetsWithHttpInfo(RequestsAdSetId requestsAdSetId) throws ApiException {
@@ -1848,8 +4955,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been started and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call startAdSetsAsync(RequestsAdSetId requestsAdSetId, final ApiCallback<ResponsesAdSetId> _callback) throws ApiException {
@@ -1869,8 +4974,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been stopped and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call stopAdSetsCall(RequestsAdSetId requestsAdSetId, final ApiCallback _callback) throws ApiException {
@@ -1899,9 +5002,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1909,10 +5010,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1939,8 +5037,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been stopped and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public ResponsesAdSetId stopAdSets(RequestsAdSetId requestsAdSetId) throws ApiException {
@@ -1958,8 +5054,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been stopped and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResponsesAdSetId> stopAdSetsWithHttpInfo(RequestsAdSetId requestsAdSetId) throws ApiException {
@@ -1979,8 +5073,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been stopped and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call stopAdSetsAsync(RequestsAdSetId requestsAdSetId, final ApiCallback<ResponsesAdSetId> _callback) throws ApiException {
@@ -2001,9 +5093,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateAdSetAudienceCall(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1, final ApiCallback _callback) throws ApiException {
@@ -2033,9 +5122,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2043,10 +5130,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2084,9 +5168,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public AdSetAudienceLinkEntityV1Response updateAdSetAudience(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1) throws ApiException {
@@ -2105,9 +5186,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<AdSetAudienceLinkEntityV1Response> updateAdSetAudienceWithHttpInfo(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1) throws ApiException {
@@ -2128,15 +5206,497 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateAdSetAudienceAsync(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1, final ApiCallback<AdSetAudienceLinkEntityV1Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAdSetAudienceValidateBeforeCall(adSetId, adSetAudienceLinkInputEntityV1, _callback);
         Type localVarReturnType = new TypeToken<AdSetAudienceLinkEntityV1Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateSellerBudget
+     * @param budgetId Id of the budget (required)
+     * @param updateSellerBudgetMessageBase  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSellerBudgetCall(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateSellerBudgetMessageBase;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/budgets/{budgetId}"
+            .replace("{" + "budgetId" + "}", localVarApiClient.escapeString(budgetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateSellerBudgetValidateBeforeCall(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'budgetId' is set
+        if (budgetId == null) {
+            throw new ApiException("Missing the required parameter 'budgetId' when calling updateSellerBudget(Async)");
+        }
+
+        return updateSellerBudgetCall(budgetId, updateSellerBudgetMessageBase, _callback);
+
+    }
+
+    /**
+     * 
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
+     * @param budgetId Id of the budget (required)
+     * @param updateSellerBudgetMessageBase  (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void updateSellerBudget(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase) throws ApiException {
+        updateSellerBudgetWithHttpInfo(budgetId, updateSellerBudgetMessageBase);
+    }
+
+    /**
+     * 
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
+     * @param budgetId Id of the budget (required)
+     * @param updateSellerBudgetMessageBase  (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> updateSellerBudgetWithHttpInfo(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase) throws ApiException {
+        okhttp3.Call localVarCall = updateSellerBudgetValidateBeforeCall(budgetId, updateSellerBudgetMessageBase, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
+     * @param budgetId Id of the budget (required)
+     * @param updateSellerBudgetMessageBase  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSellerBudgetAsync(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateSellerBudgetValidateBeforeCall(budgetId, updateSellerBudgetMessageBase, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateSellerBudgets
+     * @param updateSellerBudgetMessage  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSellerBudgetsCall(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateSellerBudgetMessage;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/budgets";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateSellerBudgetsValidateBeforeCall(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage, final ApiCallback _callback) throws ApiException {
+        return updateSellerBudgetsCall(updateSellerBudgetMessage, _callback);
+
+    }
+
+    /**
+     * 
+     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
+     * @param updateSellerBudgetMessage  (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void updateSellerBudgets(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage) throws ApiException {
+        updateSellerBudgetsWithHttpInfo(updateSellerBudgetMessage);
+    }
+
+    /**
+     * 
+     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
+     * @param updateSellerBudgetMessage  (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> updateSellerBudgetsWithHttpInfo(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage) throws ApiException {
+        okhttp3.Call localVarCall = updateSellerBudgetsValidateBeforeCall(updateSellerBudgetMessage, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
+     * @param updateSellerBudgetMessage  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSellerBudgetsAsync(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateSellerBudgetsValidateBeforeCall(updateSellerBudgetMessage, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateSellerCampaign
+     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param bid The new bid for the seller campaign. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSellerCampaignCall(String sellerCampaignId, Double bid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}"
+            .replace("{" + "sellerCampaignId" + "}", localVarApiClient.escapeString(sellerCampaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (bid != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("bid", bid));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateSellerCampaignValidateBeforeCall(String sellerCampaignId, Double bid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sellerCampaignId' is set
+        if (sellerCampaignId == null) {
+            throw new ApiException("Missing the required parameter 'sellerCampaignId' when calling updateSellerCampaign(Async)");
+        }
+
+        return updateSellerCampaignCall(sellerCampaignId, bid, _callback);
+
+    }
+
+    /**
+     * 
+     * Patching a seller campaign allows the bid to be modified. The bid must be a non-negative value.  Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
+     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param bid The new bid for the seller campaign. (optional)
+     * @return SellerCampaignMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public SellerCampaignMessage updateSellerCampaign(String sellerCampaignId, Double bid) throws ApiException {
+        ApiResponse<SellerCampaignMessage> localVarResp = updateSellerCampaignWithHttpInfo(sellerCampaignId, bid);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Patching a seller campaign allows the bid to be modified. The bid must be a non-negative value.  Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
+     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param bid The new bid for the seller campaign. (optional)
+     * @return ApiResponse&lt;SellerCampaignMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SellerCampaignMessage> updateSellerCampaignWithHttpInfo(String sellerCampaignId, Double bid) throws ApiException {
+        okhttp3.Call localVarCall = updateSellerCampaignValidateBeforeCall(sellerCampaignId, bid, null);
+        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Patching a seller campaign allows the bid to be modified. The bid must be a non-negative value.  Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
+     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param bid The new bid for the seller campaign. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSellerCampaignAsync(String sellerCampaignId, Double bid, final ApiCallback<SellerCampaignMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateSellerCampaignValidateBeforeCall(sellerCampaignId, bid, _callback);
+        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateSellerCampaigns
+     * @param sellerCampaignUpdate  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSellerCampaignsCall(List<SellerCampaignUpdate> sellerCampaignUpdate, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = sellerCampaignUpdate;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateSellerCampaignsValidateBeforeCall(List<SellerCampaignUpdate> sellerCampaignUpdate, final ApiCallback _callback) throws ApiException {
+        return updateSellerCampaignsCall(sellerCampaignUpdate, _callback);
+
+    }
+
+    /**
+     * 
+     * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
+     * @param sellerCampaignUpdate  (optional)
+     * @return List&lt;SellerCampaignMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<SellerCampaignMessage> updateSellerCampaigns(List<SellerCampaignUpdate> sellerCampaignUpdate) throws ApiException {
+        ApiResponse<List<SellerCampaignMessage>> localVarResp = updateSellerCampaignsWithHttpInfo(sellerCampaignUpdate);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
+     * @param sellerCampaignUpdate  (optional)
+     * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<SellerCampaignMessage>> updateSellerCampaignsWithHttpInfo(List<SellerCampaignUpdate> sellerCampaignUpdate) throws ApiException {
+        okhttp3.Call localVarCall = updateSellerCampaignsValidateBeforeCall(sellerCampaignUpdate, null);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
+     * @param sellerCampaignUpdate  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateSellerCampaignsAsync(List<SellerCampaignUpdate> sellerCampaignUpdate, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateSellerCampaignsValidateBeforeCall(sellerCampaignUpdate, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

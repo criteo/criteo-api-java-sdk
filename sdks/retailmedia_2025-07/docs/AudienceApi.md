@@ -96,17 +96,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## bulkDeleteAudienceSegments
@@ -190,17 +187,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## bulkUpdateAudienceSegments
@@ -284,17 +278,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## deleteContactListIdentifiers
@@ -383,7 +374,6 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | The Contact List identifiers were deleted |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## getAudienceSegmentContactListStatistics
@@ -468,16 +458,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## searchAudienceSegments
@@ -529,7 +516,7 @@ public class Example {
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         String accountId = "accountId_example"; // String | Account Id
         RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1 = new RmAudienceSegmentSearchInputV1(); // RmAudienceSegmentSearchInputV1 | Segment search filters.
-        Integer limit = 50; // Integer | The number of elements to be returned. The default is 50 and the maximum is 100.
+        Integer limit = 50; // Integer | The number of elements to be returned. The default is 50 and the maximum is 500.
         Integer offset = 0; // Integer | The (zero-based) offset into the collection. The default is 0.
         try {
             RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse result = apiInstance.searchAudienceSegments(accountId, rmAudienceSegmentSearchInputV1, limit, offset);
@@ -552,7 +539,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| Account Id | |
 | **rmAudienceSegmentSearchInputV1** | [**RmAudienceSegmentSearchInputV1**](RmAudienceSegmentSearchInputV1.md)| Segment search filters. | |
-| **limit** | **Integer**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] [default to 50] |
+| **limit** | **Integer**| The number of elements to be returned. The default is 50 and the maximum is 500. | [optional] [default to 50] |
 | **offset** | **Integer**| The (zero-based) offset into the collection. The default is 0. | [optional] [default to 0] |
 
 ### Return type
@@ -565,17 +552,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## searchAudiences
@@ -627,7 +611,7 @@ public class Example {
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         String accountId = "accountId_example"; // String | Account Id
         RmAudienceSearchInputV1 rmAudienceSearchInputV1 = new RmAudienceSearchInputV1(); // RmAudienceSearchInputV1 | Audience search filters.
-        Integer limit = 50; // Integer | The number of elements to be returned. The default is 50 and the maximum is 100.
+        Integer limit = 50; // Integer | The number of elements to be returned. The default is 50 and the maximum is 500.
         Integer offset = 0; // Integer | The (zero-based) offset into the collection. The default is 0.
         try {
             RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse result = apiInstance.searchAudiences(accountId, rmAudienceSearchInputV1, limit, offset);
@@ -650,7 +634,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| Account Id | |
 | **rmAudienceSearchInputV1** | [**RmAudienceSearchInputV1**](RmAudienceSearchInputV1.md)| Audience search filters. | |
-| **limit** | **Integer**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] [default to 50] |
+| **limit** | **Integer**| The number of elements to be returned. The default is 50 and the maximum is 500. | [optional] [default to 50] |
 | **offset** | **Integer**| The (zero-based) offset into the collection. The default is 0. | [optional] [default to 0] |
 
 ### Return type
@@ -663,17 +647,14 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-| **400** | Bad request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
 
 
 ## updateContactListIdentifiers
@@ -765,5 +746,4 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Summary of created request |  -  |
-| **403** | Forbidden |  -  |
 

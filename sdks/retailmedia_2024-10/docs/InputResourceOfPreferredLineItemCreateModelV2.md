@@ -8,7 +8,7 @@ Data model for a Resource
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**ExternalPreferredLineItemCreateModelV2**](ExternalPreferredLineItemCreateModelV2.md) |  |  [optional] |
+|**attributes** | [**PreferredLineItemCreateModelV2**](PreferredLineItemCreateModelV2.md) |  |  [optional] |
 |**type** | **String** |  |  [optional] |
 
 

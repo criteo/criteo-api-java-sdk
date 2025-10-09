@@ -8,7 +8,7 @@ Data model for a value type resource
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**ExternalStoreTarget202110**](ExternalStoreTarget202110.md) |  |  [optional] |
+|**attributes** | [**StoreTarget202110**](StoreTarget202110.md) |  |  [optional] |
 |**type** | **String** |  |  [optional] |
 
 

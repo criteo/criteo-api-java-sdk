@@ -8,7 +8,6 @@ build.gradle
 build.sbt
 docs/AccountFeesSearchRequest.md
 docs/AccountFeesUpdateRequest.md
-docs/AccountFeesUpdateResult.md
 docs/AccountsApi.md
 docs/AddRemoveKeywordModel.md
 docs/AddRemoveKeywordsModel.md
@@ -35,6 +34,9 @@ docs/AsyncOffsiteReport.md
 docs/AsyncOffsiteReportRequest.md
 docs/AsyncOffsiteReportResource.md
 docs/AsyncReportResponse.md
+docs/AsyncUnfilledPlacementsReport.md
+docs/AsyncUnfilledPlacementsReportRequest.md
+docs/AsyncUnfilledPlacementsReportResource.md
 docs/AudienceApi.md
 docs/AudienceError.md
 docs/AudienceWarning.md
@@ -52,6 +54,7 @@ docs/BrandIdSearchResult.md
 docs/BrandPreview.md
 docs/BrandPreviewListResponse.md
 docs/CampaignApi.md
+docs/CampaignAvailability.md
 docs/CatalogApi.md
 docs/CatalogStatusV2.md
 docs/CategoriesSearchRequestV1.md
@@ -80,10 +83,12 @@ docs/EntityResourceCollectionOutcomeCategory202204.md
 docs/EntityResourceCollectionOutcomeCategory202204Metadata.md
 docs/EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.md
 docs/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md
+docs/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.md
 docs/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.md
 docs/EntityResourceLineItemKeywordReviewReport.md
 docs/EntityResourceOfCatalogStatusV2.md
 docs/EntityResourceOfRetailMediaChildAccount.md
+docs/EntityResourceOfRetailerResult.md
 docs/EntityResourceOfSponsoredProductsLineItem.md
 docs/EntityResourceOutcomeOfCatalogStatusV2.md
 docs/EntityResourceOutcomeOfSponsoredProductsLineItem.md
@@ -128,6 +133,7 @@ docs/OfferUpdate.md
 docs/OnSiteRecommendationApi.md
 docs/PageMetadata.md
 docs/PageOfBalanceHistoryChangeDataCaptureV1.md
+docs/PageTypeCombination.md
 docs/PageTypeEnvironment2.md
 docs/PagingOffsetLimitMetadata.md
 docs/PartnerBillingReportRequestV1.md
@@ -199,6 +205,8 @@ docs/RetailMediaContactlistOperation.md
 docs/RetailMediaContactlistOperationResponseAttributes.md
 docs/RetailMediaKeywordsReview.md
 docs/RetailMediaKeywordsReviewResult.md
+docs/RetailerResult.md
+docs/RetailerSearchRequest.md
 docs/ReviewSetState.md
 docs/ReviewStateModel.md
 docs/RmAlgebraNodeV1.md
@@ -307,7 +315,6 @@ docs/UpdateBalanceModelV2Request.md
 docs/UpdateOffersRequest.md
 docs/ValueResourceAccountFeesSearchRequest.md
 docs/ValueResourceAccountFeesUpdateRequest.md
-docs/ValueResourceAccountFeesUpdateResult.md
 docs/ValueResourceAsyncJobResponse.md
 docs/ValueResourceBrandIdSearchRequest.md
 docs/ValueResourceCategoriesSearchRequestV1.md
@@ -318,6 +325,7 @@ docs/ValueResourceInputBrandIdSearchRequest.md
 docs/ValueResourceInputCategoriesSearchRequestV1.md
 docs/ValueResourceInputLoadSkuOffersRequest.md
 docs/ValueResourceInputOfBrandCatalogRequestV2.md
+docs/ValueResourceInputOfRetailerSearchRequest.md
 docs/ValueResourceInputOfSellerCatalogRequestV2.md
 docs/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.md
 docs/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md
@@ -329,10 +337,10 @@ docs/ValueResourceInputSetSkuBuyBoxWinnersRequest.md
 docs/ValueResourceInputUpdateOffersRequest.md
 docs/ValueResourceLoadSkuOffersRequest.md
 docs/ValueResourceOfBrandCatalogRequestV2.md
+docs/ValueResourceOfRetailerSearchRequest.md
 docs/ValueResourceOfSellerCatalogRequestV2.md
 docs/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.md
 docs/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.md
-docs/ValueResourceOutcomeAccountFeesUpdateResult.md
 docs/ValueResourceOutcomeAsyncJobResponse.md
 docs/ValueResourceOutcomeRecommendedKeywordsResponseV1.md
 docs/ValueResourceOutcomeRetailMediaKeywordsReviewResult.md
@@ -389,7 +397,6 @@ src/main/java/com/criteo/api/retailmedia/preview/auth/RetryingOAuth.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AbstractOpenApiSchema.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AccountFeesSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AccountFeesUpdateRequest.java
-src/main/java/com/criteo/api/retailmedia/preview/model/AccountFeesUpdateResult.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AddRemoveKeywordModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AddRemoveKeywordsModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AddRemoveKeywordsModelRequest.java
@@ -414,6 +421,9 @@ src/main/java/com/criteo/api/retailmedia/preview/model/AsyncOffsiteReport.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncOffsiteReportRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncOffsiteReportResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncReportResponse.java
+src/main/java/com/criteo/api/retailmedia/preview/model/AsyncUnfilledPlacementsReport.java
+src/main/java/com/criteo/api/retailmedia/preview/model/AsyncUnfilledPlacementsReportRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/AsyncUnfilledPlacementsReportResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AudienceError.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AudienceWarning.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BalanceHistoryChangeDataCaptureV1.java
@@ -427,6 +437,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/BrandIdSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BrandIdSearchResult.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BrandPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BrandPreviewListResponse.java
+src/main/java/com/criteo/api/retailmedia/preview/model/CampaignAvailability.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CatalogStatusV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CategoriesSearchRequestV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Category202204.java
@@ -454,10 +465,12 @@ src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionO
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeCategory202204Metadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.java
+src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceLineItemKeywordReviewReport.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOfCatalogStatusV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOfRetailMediaChildAccount.java
+src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOfRetailerResult.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOfSponsoredProductsLineItem.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOutcomeOfCatalogStatusV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOutcomeOfSponsoredProductsLineItem.java
@@ -500,6 +513,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/OfferLoad.java
 src/main/java/com/criteo/api/retailmedia/preview/model/OfferUpdate.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageOfBalanceHistoryChangeDataCaptureV1.java
+src/main/java/com/criteo/api/retailmedia/preview/model/PageTypeCombination.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageTypeEnvironment2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PagingOffsetLimitMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PartnerBillingReportRequestV1.java
@@ -571,6 +585,8 @@ src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaContactlistOpe
 src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaContactlistOperationResponseAttributes.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaKeywordsReview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaKeywordsReviewResult.java
+src/main/java/com/criteo/api/retailmedia/preview/model/RetailerResult.java
+src/main/java/com/criteo/api/retailmedia/preview/model/RetailerSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ReviewSetState.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ReviewStateModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RmAlgebraNodeV1.java
@@ -679,7 +695,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/UpdateBalanceModelV2Reque
 src/main/java/com/criteo/api/retailmedia/preview/model/UpdateOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceAccountFeesSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceAccountFeesUpdateRequest.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceAccountFeesUpdateResult.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceAsyncJobResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceBrandIdSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceCategoriesSearchRequestV1.java
@@ -690,6 +705,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputBrandId
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputCategoriesSearchRequestV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputLoadSkuOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfBrandCatalogRequestV2.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfRetailerSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfSellerCatalogRequestV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.java
@@ -701,10 +717,10 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputSetSkuB
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputUpdateOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceLoadSkuOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfBrandCatalogRequestV2.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfRetailerSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfSellerCatalogRequestV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeAccountFeesUpdateResult.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeAsyncJobResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeRecommendedKeywordsResponseV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeRetailMediaKeywordsReviewResult.java

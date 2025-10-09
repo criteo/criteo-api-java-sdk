@@ -4,13 +4,13 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**apiV1RecoPost**](OnSiteRecommendationApi.md#apiV1RecoPost) | **POST** /preview/recommendation/search |  |
+| [**searchRecommendedProducts**](OnSiteRecommendationApi.md#searchRecommendedProducts) | **POST** /preview/recommendation/search |  |
 
 
 
-## apiV1RecoPost
+## searchRecommendedProducts
 
-> OnSiteRecoResponse apiV1RecoPost(onSiteRecoRequest)
+> OnSiteRecoResponse searchRecommendedProducts(onSiteRecoRequest)
 
 
 
@@ -57,10 +57,10 @@ public class Example {
         OnSiteRecommendationApi apiInstance = new OnSiteRecommendationApi(defaultClient);
         OnSiteRecoRequest onSiteRecoRequest = new OnSiteRecoRequest(); // OnSiteRecoRequest | 
         try {
-            OnSiteRecoResponse result = apiInstance.apiV1RecoPost(onSiteRecoRequest);
+            OnSiteRecoResponse result = apiInstance.searchRecommendedProducts(onSiteRecoRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OnSiteRecommendationApi#apiV1RecoPost");
+            System.err.println("Exception when calling OnSiteRecommendationApi#searchRecommendedProducts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());

@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.v2025_07.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2025_07.model.CommonProblem;
+import com.criteo.api.retailmedia.v2025_07.model.SdkApiRestCommonProblem;
 import com.criteo.api.retailmedia.v2025_07.model.ValueResourceOfLineItemBudgetOverrides;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -49,7 +49,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2025_07.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for a single value.
+ * A top-level object that encapsulates a Criteo API response for a single value object.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ValueResourceOutcomeOfLineItemBudgetOverrides {
@@ -59,19 +59,19 @@ public class ValueResourceOutcomeOfLineItemBudgetOverrides {
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<CommonProblem> errors = null;
+  private List<SdkApiRestCommonProblem> errors = null;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
+  private List<SdkApiRestCommonProblem> warnings = null;
 
   public ValueResourceOutcomeOfLineItemBudgetOverrides() {
   }
 
   
   public ValueResourceOutcomeOfLineItemBudgetOverrides(
-     List<CommonProblem> errors, 
-     List<CommonProblem> warnings
+     List<SdkApiRestCommonProblem> errors, 
+     List<SdkApiRestCommonProblem> warnings
   ) {
     this();
     this.errors = errors;
@@ -101,12 +101,12 @@ public class ValueResourceOutcomeOfLineItemBudgetOverrides {
 
 
    /**
-   * Get errors
+   * Errors that occured during this call.
    * @return errors
   **/
   @javax.annotation.Nullable
 
-  public List<CommonProblem> getErrors() {
+  public List<SdkApiRestCommonProblem> getErrors() {
     return errors;
   }
 
@@ -114,12 +114,12 @@ public class ValueResourceOutcomeOfLineItemBudgetOverrides {
 
 
    /**
-   * Get warnings
+   * Warnings that occured during this call.
    * @return warnings
   **/
   @javax.annotation.Nullable
 
-  public List<CommonProblem> getWarnings() {
+  public List<SdkApiRestCommonProblem> getWarnings() {
     return warnings;
   }
 
@@ -228,7 +228,7 @@ public class ValueResourceOutcomeOfLineItemBudgetOverrides {
 
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+            SdkApiRestCommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
           };
         }
       }
@@ -242,7 +242,7 @@ public class ValueResourceOutcomeOfLineItemBudgetOverrides {
 
           // validate the optional field `warnings` (array)
           for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
+            SdkApiRestCommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

@@ -23,6 +23,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -71,7 +72,7 @@ public class PrivateMarketFees {
    * Get demandManaged
    * @return demandManaged
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public DemandManagedFee getDemandManaged() {
     return demandManaged;
@@ -93,7 +94,7 @@ public class PrivateMarketFees {
    * Get managedService
    * @return managedService
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public ManagedServiceFee getManagedService() {
     return managedService;
@@ -119,9 +120,20 @@ public class PrivateMarketFees {
         Objects.equals(this.managedService, privateMarketFees.managedService);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(demandManaged, managedService);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -157,8 +169,6 @@ public class PrivateMarketFees {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("demandManaged");
-    openapiRequiredFields.add("managedService");
   }
 
  /**
@@ -181,17 +191,14 @@ public class PrivateMarketFees {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PrivateMarketFees` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PrivateMarketFees.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
+      // validate the optional field `demandManaged`
+      if (jsonObj.get("demandManaged") != null && !jsonObj.get("demandManaged").isJsonNull()) {
+        DemandManagedFee.validateJsonObject(jsonObj.getAsJsonObject("demandManaged"));
       }
-      // validate the required field `demandManaged`
-      DemandManagedFee.validateJsonObject(jsonObj.getAsJsonObject("demandManaged"));
-      // validate the required field `managedService`
-      ManagedServiceFee.validateJsonObject(jsonObj.getAsJsonObject("managedService"));
+      // validate the optional field `managedService`
+      if (jsonObj.get("managedService") != null && !jsonObj.get("managedService").isJsonNull()) {
+        ManagedServiceFee.validateJsonObject(jsonObj.getAsJsonObject("managedService"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

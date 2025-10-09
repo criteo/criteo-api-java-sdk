@@ -28,6 +28,7 @@ docs/AdSetTargetingV24Q3FrequencyCapping.md
 docs/AdWrite.md
 docs/AdaptiveAttributes.md
 docs/AdaptiveColors.md
+docs/AdaptiveReadAttributes.md
 docs/AdaptiveWriteAttributes.md
 docs/AdvertiserApi.md
 docs/AlgebraNodeV1.md
@@ -140,6 +141,7 @@ docs/CreateCoupon.md
 docs/CreateImageSlide.md
 docs/Creative.md
 docs/CreativeApi.md
+docs/CreativeRead.md
 docs/CreativeWrite.md
 docs/CriteoApiError.md
 docs/CriteoApiWarning.md
@@ -147,7 +149,6 @@ docs/DeleteAudienceContactListResponse.md
 docs/DynamicAttributes.md
 docs/DynamicWriteAttributes.md
 docs/EntityOfPortfolioMessage.md
-docs/ErrorCodeResponse.md
 docs/GatewayApi.md
 docs/GetPortfolioResponse.md
 docs/HtmlTagAttributes.md
@@ -183,7 +184,6 @@ docs/NillableDecimal.md
 docs/NillableGenderV1.md
 docs/NillableInt32.md
 docs/NillableString.md
-docs/Outcome.md
 docs/PatchAdSetAttributionConfigurationV24Q3.md
 docs/PatchAdSetBiddingV24Q3.md
 docs/PatchAdSetBudgetV24Q3.md
@@ -226,7 +226,7 @@ docs/RequestsAdSetId.md
 docs/RequestsPatchAdSetV24Q3.md
 docs/ResourceCollectionOutcomeOfAd.md
 docs/ResourceCollectionOutcomeOfCoupon.md
-docs/ResourceCollectionOutcomeOfCreative.md
+docs/ResourceCollectionOutcomeOfCreativeRead.md
 docs/ResourceInputOfAdWrite.md
 docs/ResourceInputOfCreateCoupon.md
 docs/ResourceInputOfCreativeWrite.md
@@ -237,6 +237,7 @@ docs/ResourceOfCoupon.md
 docs/ResourceOfCouponSupportedSizes.md
 docs/ResourceOfCreateCoupon.md
 docs/ResourceOfCreative.md
+docs/ResourceOfCreativeRead.md
 docs/ResourceOfCreativeWrite.md
 docs/ResourceOfUpdateCoupon.md
 docs/ResourceOutcomeOfAd.md
@@ -325,6 +326,7 @@ src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/AdSetTargetingV24
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/AdWrite.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/AdaptiveAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/AdaptiveColors.java
+src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/AdaptiveReadAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/AdaptiveWriteAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/AlgebraNodeV1.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ApplicationSummaryModel.java
@@ -432,6 +434,7 @@ src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/CreateCampaignSpe
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/CreateCoupon.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/CreateImageSlide.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/Creative.java
+src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/CreativeRead.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/CreativeWrite.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/CriteoApiError.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/CriteoApiWarning.java
@@ -439,7 +442,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/DeleteAudienceCon
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/DynamicAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/DynamicWriteAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/EntityOfPortfolioMessage.java
-src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ErrorCodeResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/GetPortfolioResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/HtmlTagAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/HtmlTagWriteAttributes.java
@@ -474,7 +476,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/NillableDecimal.j
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/NillableGenderV1.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/NillableInt32.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/NillableString.java
-src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/Outcome.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/PatchAdSetAttributionConfigurationV24Q3.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/PatchAdSetBiddingV24Q3.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/PatchAdSetBudgetV24Q3.java
@@ -517,7 +518,7 @@ src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/RequestsAdSetId.j
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/RequestsPatchAdSetV24Q3.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceCollectionOutcomeOfAd.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceCollectionOutcomeOfCoupon.java
-src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceCollectionOutcomeOfCreative.java
+src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceCollectionOutcomeOfCreativeRead.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceInputOfAdWrite.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceInputOfCreateCoupon.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceInputOfCreativeWrite.java
@@ -528,6 +529,7 @@ src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceOfCoupon.
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceOfCouponSupportedSizes.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceOfCreateCoupon.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceOfCreative.java
+src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceOfCreativeRead.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceOfCreativeWrite.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceOfUpdateCoupon.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_04/model/ResourceOutcomeOfAd.java

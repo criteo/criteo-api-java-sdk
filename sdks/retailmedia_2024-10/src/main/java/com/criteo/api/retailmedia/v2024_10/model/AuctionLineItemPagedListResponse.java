@@ -15,8 +15,8 @@ package com.criteo.api.retailmedia.v2024_10.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.retailmedia.v2024_10.model.CommonProblem;
 import com.criteo.api.retailmedia.v2024_10.model.PageMetadata;
-import com.criteo.api.retailmedia.v2024_10.model.ProblemDetails;
 import com.criteo.api.retailmedia.v2024_10.model.ResourceOfAuctionLineItem;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -59,7 +59,7 @@ public class AuctionLineItemPagedListResponse {
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<ProblemDetails> errors = null;
+  private List<CommonProblem> errors = null;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
@@ -67,15 +67,15 @@ public class AuctionLineItemPagedListResponse {
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<ProblemDetails> warnings = null;
+  private List<CommonProblem> warnings = null;
 
   public AuctionLineItemPagedListResponse() {
   }
 
   
   public AuctionLineItemPagedListResponse(
-     List<ProblemDetails> errors, 
-     List<ProblemDetails> warnings
+     List<CommonProblem> errors, 
+     List<CommonProblem> warnings
   ) {
     this();
     this.errors = errors;
@@ -118,7 +118,7 @@ public class AuctionLineItemPagedListResponse {
   **/
   @javax.annotation.Nullable
 
-  public List<ProblemDetails> getErrors() {
+  public List<CommonProblem> getErrors() {
     return errors;
   }
 
@@ -153,7 +153,7 @@ public class AuctionLineItemPagedListResponse {
   **/
   @javax.annotation.Nullable
 
-  public List<ProblemDetails> getWarnings() {
+  public List<CommonProblem> getWarnings() {
     return warnings;
   }
 
@@ -302,7 +302,7 @@ public class AuctionLineItemPagedListResponse {
 
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+            CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
           };
         }
       }
@@ -320,7 +320,7 @@ public class AuctionLineItemPagedListResponse {
 
           // validate the optional field `warnings` (array)
           for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

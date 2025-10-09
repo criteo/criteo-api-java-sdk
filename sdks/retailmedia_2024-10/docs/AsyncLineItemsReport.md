@@ -15,6 +15,7 @@ Async Line Items report body request
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
 |**id** | **String** | Line Item id to report on |  [optional] |
 |**ids** | **List&lt;String&gt;** | Line Item ids to report on |  [optional] |
+|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Filter on the type of media: unknown, display, video |  [optional] |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
 |**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions and metrics are provided, falls back to summary reportType |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
@@ -69,6 +70,7 @@ Async Line Items report body request
 | ADVPRODUCTID | &quot;advProductId&quot; |
 | ADVPRODUCTNAME | &quot;advProductName&quot; |
 | SALESCHANNEL | &quot;salesChannel&quot; |
+| MEDIATYPE | &quot;mediaType&quot; |
 | ENVIRONMENT | &quot;environment&quot; |
 | PAGETYPENAME | &quot;pageTypeName&quot; |
 | PAGECATEGORY | &quot;pageCategory&quot; |
@@ -96,6 +98,17 @@ Async Line Items report body request
 | JSON_COMPACT | &quot;json-compact&quot; |
 | JSON_NEWLINE | &quot;json-newline&quot; |
 | CSV | &quot;csv&quot; |
+
+
+
+## Enum: MediaTypeEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| VIDEO | &quot;video&quot; |
+| DISPLAY | &quot;display&quot; |
+| ALL | &quot;all&quot; |
 
 
 
@@ -140,6 +153,9 @@ Async Line Items report body request
 | NEWTOBRANDATTRIBUTEDUNITSRATE | &quot;newToBrandAttributedUnitsRate&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
+| WINRATE | &quot;winRate&quot; |
+| SAMPLEDBIDSWON | &quot;sampledBidsWon&quot; |
+| SAMPLEDBIDSPARTICIPATED | &quot;sampledBidsParticipated&quot; |
 
 
 

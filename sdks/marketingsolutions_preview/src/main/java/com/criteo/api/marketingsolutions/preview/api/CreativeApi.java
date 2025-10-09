@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfAd;
 import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfCoupon;
-import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfCreative;
+import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfCreativeRead;
 import com.criteo.api.marketingsolutions.preview.model.ResourceInputOfAdWrite;
 import com.criteo.api.marketingsolutions.preview.model.ResourceInputOfCreateCoupon;
 import com.criteo.api.marketingsolutions.preview.model.ResourceInputOfCreativeWrite;
@@ -2088,7 +2088,7 @@ public class CreativeApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCreativesCall(String advertiserId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
@@ -2161,16 +2161,16 @@ public class CreativeApi {
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)
-     * @return ResourceCollectionOutcomeOfCreative
+     * @return ResourceCollectionOutcomeOfCreativeRead
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
      </table>
      */
-    public ResourceCollectionOutcomeOfCreative getAdvertiserCreatives(String advertiserId, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<ResourceCollectionOutcomeOfCreative> localVarResp = getAdvertiserCreativesWithHttpInfo(advertiserId, limit, offset);
+    public ResourceCollectionOutcomeOfCreativeRead getAdvertiserCreatives(String advertiserId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<ResourceCollectionOutcomeOfCreativeRead> localVarResp = getAdvertiserCreativesWithHttpInfo(advertiserId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -2180,17 +2180,17 @@ public class CreativeApi {
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)
-     * @return ApiResponse&lt;ResourceCollectionOutcomeOfCreative&gt;
+     * @return ApiResponse&lt;ResourceCollectionOutcomeOfCreativeRead&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResourceCollectionOutcomeOfCreative> getAdvertiserCreativesWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<ResourceCollectionOutcomeOfCreativeRead> getAdvertiserCreativesWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getAdvertiserCreativesValidateBeforeCall(advertiserId, limit, offset, null);
-        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCreative>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCreativeRead>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2206,13 +2206,13 @@ public class CreativeApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdvertiserCreativesAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<ResourceCollectionOutcomeOfCreative> _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserCreativesAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<ResourceCollectionOutcomeOfCreativeRead> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdvertiserCreativesValidateBeforeCall(advertiserId, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCreative>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCreativeRead>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

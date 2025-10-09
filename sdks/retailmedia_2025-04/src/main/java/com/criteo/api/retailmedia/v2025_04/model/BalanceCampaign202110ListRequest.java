@@ -47,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2025_04.JSON;
 
 /**
- * A class implementing the request of the Criteo API with a collection of entities as body
+ * A top-level object that encapsulates a Criteo API request for several entities
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BalanceCampaign202110ListRequest {

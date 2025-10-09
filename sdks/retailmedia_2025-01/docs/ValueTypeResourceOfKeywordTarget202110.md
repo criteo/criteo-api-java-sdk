@@ -8,7 +8,7 @@ Data model for a value type resource
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**ExternalKeywordTarget202110**](ExternalKeywordTarget202110.md) |  |  [optional] |
+|**attributes** | [**KeywordTarget202110**](KeywordTarget202110.md) |  |  [optional] |
 |**type** | **String** |  |  [optional] |
 
 

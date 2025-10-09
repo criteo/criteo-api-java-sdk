@@ -95,7 +95,7 @@ public class CampaignApi {
     }
 
     /**
-     * Build call for createAdSetV24Q1
+     * Build call for createAdSet
      * @param createAdSetV24Q1Request the ad sets to create (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -104,11 +104,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdSetV24Q1Call(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAdSetCall(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,9 +132,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -144,10 +140,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -159,13 +152,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAdSetV24Q1ValidateBeforeCall(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAdSetValidateBeforeCall(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createAdSetV24Q1Request' is set
         if (createAdSetV24Q1Request == null) {
-            throw new ApiException("Missing the required parameter 'createAdSetV24Q1Request' when calling createAdSetV24Q1(Async)");
+            throw new ApiException("Missing the required parameter 'createAdSetV24Q1Request' when calling createAdSet(Async)");
         }
 
-        return createAdSetV24Q1Call(createAdSetV24Q1Request, _callback);
+        return createAdSetCall(createAdSetV24Q1Request, _callback);
 
     }
 
@@ -179,12 +172,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponseReadAdSetV24Q1 createAdSetV24Q1(CreateAdSetV24Q1Request createAdSetV24Q1Request) throws ApiException {
-        ApiResponse<ResponseReadAdSetV24Q1> localVarResp = createAdSetV24Q1WithHttpInfo(createAdSetV24Q1Request);
+    public ResponseReadAdSetV24Q1 createAdSet(CreateAdSetV24Q1Request createAdSetV24Q1Request) throws ApiException {
+        ApiResponse<ResponseReadAdSetV24Q1> localVarResp = createAdSetWithHttpInfo(createAdSetV24Q1Request);
         return localVarResp.getData();
     }
 
@@ -198,12 +189,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponseReadAdSetV24Q1> createAdSetV24Q1WithHttpInfo(CreateAdSetV24Q1Request createAdSetV24Q1Request) throws ApiException {
-        okhttp3.Call localVarCall = createAdSetV24Q1ValidateBeforeCall(createAdSetV24Q1Request, null);
+    public ApiResponse<ResponseReadAdSetV24Q1> createAdSetWithHttpInfo(CreateAdSetV24Q1Request createAdSetV24Q1Request) throws ApiException {
+        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetV24Q1Request, null);
         Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -219,13 +208,11 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdSetV24Q1Async(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback<ResponseReadAdSetV24Q1> _callback) throws ApiException {
+    public okhttp3.Call createAdSetAsync(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback<ResponseReadAdSetV24Q1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAdSetV24Q1ValidateBeforeCall(createAdSetV24Q1Request, _callback);
+        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetV24Q1Request, _callback);
         Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -240,8 +227,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createCampaignCall(CreateCampaignRequest createCampaignRequest, final ApiCallback _callback) throws ApiException {
@@ -270,9 +255,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -280,10 +263,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -315,8 +295,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public CampaignV23Q1Response createCampaign(CreateCampaignRequest createCampaignRequest) throws ApiException {
@@ -334,8 +312,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CampaignV23Q1Response> createCampaignWithHttpInfo(CreateCampaignRequest createCampaignRequest) throws ApiException {
@@ -355,8 +331,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createCampaignAsync(CreateCampaignRequest createCampaignRequest, final ApiCallback<CampaignV23Q1Response> _callback) throws ApiException {
@@ -367,7 +341,7 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for getAdSetV24Q1
+     * Build call for getAdSet
      * @param adSetId Id of the ad set (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -376,11 +350,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdSetV24Q1Call(String adSetId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdSetCall(String adSetId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -407,9 +379,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -428,13 +398,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAdSetV24Q1ValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAdSetValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adSetId' is set
         if (adSetId == null) {
-            throw new ApiException("Missing the required parameter 'adSetId' when calling getAdSetV24Q1(Async)");
+            throw new ApiException("Missing the required parameter 'adSetId' when calling getAdSet(Async)");
         }
 
-        return getAdSetV24Q1Call(adSetId, _callback);
+        return getAdSetCall(adSetId, _callback);
 
     }
 
@@ -448,12 +418,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponseReadAdSetV24Q1 getAdSetV24Q1(String adSetId) throws ApiException {
-        ApiResponse<ResponseReadAdSetV24Q1> localVarResp = getAdSetV24Q1WithHttpInfo(adSetId);
+    public ResponseReadAdSetV24Q1 getAdSet(String adSetId) throws ApiException {
+        ApiResponse<ResponseReadAdSetV24Q1> localVarResp = getAdSetWithHttpInfo(adSetId);
         return localVarResp.getData();
     }
 
@@ -467,12 +435,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponseReadAdSetV24Q1> getAdSetV24Q1WithHttpInfo(String adSetId) throws ApiException {
-        okhttp3.Call localVarCall = getAdSetV24Q1ValidateBeforeCall(adSetId, null);
+    public ApiResponse<ResponseReadAdSetV24Q1> getAdSetWithHttpInfo(String adSetId) throws ApiException {
+        okhttp3.Call localVarCall = getAdSetValidateBeforeCall(adSetId, null);
         Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -488,152 +454,17 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdSetV24Q1Async(String adSetId, final ApiCallback<ResponseReadAdSetV24Q1> _callback) throws ApiException {
+    public okhttp3.Call getAdSetAsync(String adSetId, final ApiCallback<ResponseReadAdSetV24Q1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAdSetV24Q1ValidateBeforeCall(adSetId, _callback);
+        okhttp3.Call localVarCall = getAdSetValidateBeforeCall(adSetId, _callback);
         Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getCampaignV23Q1
-     * @param campaignId Id of the campaign (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCampaignV23Q1Call(String campaignId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/2024-07/marketing-solutions/campaigns/{campaign-id}"
-            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCampaignV23Q1ValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'campaignId' is set
-        if (campaignId == null) {
-            throw new ApiException("Missing the required parameter 'campaignId' when calling getCampaignV23Q1(Async)");
-        }
-
-        return getCampaignV23Q1Call(campaignId, _callback);
-
-    }
-
-    /**
-     * 
-     * Get the data for the specified campaign
-     * @param campaignId Id of the campaign (required)
-     * @return CampaignV23Q1Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public CampaignV23Q1Response getCampaignV23Q1(String campaignId) throws ApiException {
-        ApiResponse<CampaignV23Q1Response> localVarResp = getCampaignV23Q1WithHttpInfo(campaignId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get the data for the specified campaign
-     * @param campaignId Id of the campaign (required)
-     * @return ApiResponse&lt;CampaignV23Q1Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CampaignV23Q1Response> getCampaignV23Q1WithHttpInfo(String campaignId) throws ApiException {
-        okhttp3.Call localVarCall = getCampaignV23Q1ValidateBeforeCall(campaignId, null);
-        Type localVarReturnType = new TypeToken<CampaignV23Q1Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get the data for the specified campaign
-     * @param campaignId Id of the campaign (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCampaignV23Q1Async(String campaignId, final ApiCallback<CampaignV23Q1Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getCampaignV23Q1ValidateBeforeCall(campaignId, _callback);
-        Type localVarReturnType = new TypeToken<CampaignV23Q1Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getCategoryBidList
+     * Build call for getAdSetCategoryBids
      * @param adSetId Id of the Ad Set (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -642,12 +473,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoryBidListCall(String adSetId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdSetCategoryBidsCall(String adSetId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -674,9 +502,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -695,13 +521,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCategoryBidListValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAdSetCategoryBidsValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adSetId' is set
         if (adSetId == null) {
-            throw new ApiException("Missing the required parameter 'adSetId' when calling getCategoryBidList(Async)");
+            throw new ApiException("Missing the required parameter 'adSetId' when calling getAdSetCategoryBids(Async)");
         }
 
-        return getCategoryBidListCall(adSetId, _callback);
+        return getAdSetCategoryBidsCall(adSetId, _callback);
 
     }
 
@@ -715,13 +541,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public AdSetCategoryBidListResponse getCategoryBidList(String adSetId) throws ApiException {
-        ApiResponse<AdSetCategoryBidListResponse> localVarResp = getCategoryBidListWithHttpInfo(adSetId);
+    public AdSetCategoryBidListResponse getAdSetCategoryBids(String adSetId) throws ApiException {
+        ApiResponse<AdSetCategoryBidListResponse> localVarResp = getAdSetCategoryBidsWithHttpInfo(adSetId);
         return localVarResp.getData();
     }
 
@@ -735,13 +558,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdSetCategoryBidListResponse> getCategoryBidListWithHttpInfo(String adSetId) throws ApiException {
-        okhttp3.Call localVarCall = getCategoryBidListValidateBeforeCall(adSetId, null);
+    public ApiResponse<AdSetCategoryBidListResponse> getAdSetCategoryBidsWithHttpInfo(String adSetId) throws ApiException {
+        okhttp3.Call localVarCall = getAdSetCategoryBidsValidateBeforeCall(adSetId, null);
         Type localVarReturnType = new TypeToken<AdSetCategoryBidListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -757,15 +577,135 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoryBidListAsync(String adSetId, final ApiCallback<AdSetCategoryBidListResponse> _callback) throws ApiException {
+    public okhttp3.Call getAdSetCategoryBidsAsync(String adSetId, final ApiCallback<AdSetCategoryBidListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCategoryBidListValidateBeforeCall(adSetId, _callback);
+        okhttp3.Call localVarCall = getAdSetCategoryBidsValidateBeforeCall(adSetId, _callback);
         Type localVarReturnType = new TypeToken<AdSetCategoryBidListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCampaign
+     * @param campaignId Id of the campaign (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCampaignCall(String campaignId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2024-07/marketing-solutions/campaigns/{campaign-id}"
+            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCampaignValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling getCampaign(Async)");
+        }
+
+        return getCampaignCall(campaignId, _callback);
+
+    }
+
+    /**
+     * 
+     * Get the data for the specified campaign
+     * @param campaignId Id of the campaign (required)
+     * @return CampaignV23Q1Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+     </table>
+     */
+    public CampaignV23Q1Response getCampaign(String campaignId) throws ApiException {
+        ApiResponse<CampaignV23Q1Response> localVarResp = getCampaignWithHttpInfo(campaignId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get the data for the specified campaign
+     * @param campaignId Id of the campaign (required)
+     * @return ApiResponse&lt;CampaignV23Q1Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CampaignV23Q1Response> getCampaignWithHttpInfo(String campaignId) throws ApiException {
+        okhttp3.Call localVarCall = getCampaignValidateBeforeCall(campaignId, null);
+        Type localVarReturnType = new TypeToken<CampaignV23Q1Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the data for the specified campaign
+     * @param campaignId Id of the campaign (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCampaignAsync(String campaignId, final ApiCallback<CampaignV23Q1Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCampaignValidateBeforeCall(campaignId, _callback);
+        Type localVarReturnType = new TypeToken<CampaignV23Q1Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -779,9 +719,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDisplayMultipliersCall(String adSetId, final ApiCallback _callback) throws ApiException {
@@ -811,9 +748,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -852,9 +787,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public AdSetDisplayMultiplierListResponse getDisplayMultipliers(String adSetId) throws ApiException {
@@ -872,9 +804,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<AdSetDisplayMultiplierListResponse> getDisplayMultipliersWithHttpInfo(String adSetId) throws ApiException {
@@ -894,9 +823,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDisplayMultipliersAsync(String adSetId, final ApiCallback<AdSetDisplayMultiplierListResponse> _callback) throws ApiException {
@@ -907,7 +833,135 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for patchAdSetsV24Q1
+     * Build call for patchAdSetCategoryBids
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchAdSetCategoryBidsCall(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = patchAdSetCategoryBidListRequest;
+
+        // create path and map variables
+        String localVarPath = "/2024-07/marketing-solutions/ad-sets/{ad-set-id}/category-bids"
+            .replace("{" + "ad-set-id" + "}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchAdSetCategoryBidsValidateBeforeCall(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling patchAdSetCategoryBids(Async)");
+        }
+
+        return patchAdSetCategoryBidsCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @return PatchAdSetCategoryBidResultListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+     </table>
+     */
+    public PatchAdSetCategoryBidResultListResponse patchAdSetCategoryBids(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
+        ApiResponse<PatchAdSetCategoryBidResultListResponse> localVarResp = patchAdSetCategoryBidsWithHttpInfo(adSetId, patchAdSetCategoryBidListRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @return ApiResponse&lt;PatchAdSetCategoryBidResultListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PatchAdSetCategoryBidResultListResponse> patchAdSetCategoryBidsWithHttpInfo(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
+        okhttp3.Call localVarCall = patchAdSetCategoryBidsValidateBeforeCall(adSetId, patchAdSetCategoryBidListRequest, null);
+        Type localVarReturnType = new TypeToken<PatchAdSetCategoryBidResultListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchAdSetCategoryBidsAsync(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback<PatchAdSetCategoryBidResultListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchAdSetCategoryBidsValidateBeforeCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
+        Type localVarReturnType = new TypeToken<PatchAdSetCategoryBidResultListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchAdSets
      * @param requestsPatchAdSetV24Q1 List of adsets to patch. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -916,11 +970,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAdSetsV24Q1Call(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchAdSetsCall(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -946,9 +998,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -956,10 +1006,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -971,8 +1018,8 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchAdSetsV24Q1ValidateBeforeCall(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback _callback) throws ApiException {
-        return patchAdSetsV24Q1Call(requestsPatchAdSetV24Q1, _callback);
+    private okhttp3.Call patchAdSetsValidateBeforeCall(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback _callback) throws ApiException {
+        return patchAdSetsCall(requestsPatchAdSetV24Q1, _callback);
 
     }
 
@@ -986,12 +1033,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponsesAdSetIdV24Q1 patchAdSetsV24Q1(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1) throws ApiException {
-        ApiResponse<ResponsesAdSetIdV24Q1> localVarResp = patchAdSetsV24Q1WithHttpInfo(requestsPatchAdSetV24Q1);
+    public ResponsesAdSetIdV24Q1 patchAdSets(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1) throws ApiException {
+        ApiResponse<ResponsesAdSetIdV24Q1> localVarResp = patchAdSetsWithHttpInfo(requestsPatchAdSetV24Q1);
         return localVarResp.getData();
     }
 
@@ -1005,12 +1050,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponsesAdSetIdV24Q1> patchAdSetsV24Q1WithHttpInfo(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1) throws ApiException {
-        okhttp3.Call localVarCall = patchAdSetsV24Q1ValidateBeforeCall(requestsPatchAdSetV24Q1, null);
+    public ApiResponse<ResponsesAdSetIdV24Q1> patchAdSetsWithHttpInfo(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1) throws ApiException {
+        okhttp3.Call localVarCall = patchAdSetsValidateBeforeCall(requestsPatchAdSetV24Q1, null);
         Type localVarReturnType = new TypeToken<ResponsesAdSetIdV24Q1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1026,13 +1069,11 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAdSetsV24Q1Async(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback<ResponsesAdSetIdV24Q1> _callback) throws ApiException {
+    public okhttp3.Call patchAdSetsAsync(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback<ResponsesAdSetIdV24Q1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchAdSetsV24Q1ValidateBeforeCall(requestsPatchAdSetV24Q1, _callback);
+        okhttp3.Call localVarCall = patchAdSetsValidateBeforeCall(requestsPatchAdSetV24Q1, _callback);
         Type localVarReturnType = new TypeToken<ResponsesAdSetIdV24Q1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1047,8 +1088,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchCampaignsCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
@@ -1077,9 +1116,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1087,10 +1124,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1117,8 +1151,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public PatchResultCampaignListResponse patchCampaigns(PatchCampaignListRequest patchCampaignListRequest) throws ApiException {
@@ -1136,8 +1168,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<PatchResultCampaignListResponse> patchCampaignsWithHttpInfo(PatchCampaignListRequest patchCampaignListRequest) throws ApiException {
@@ -1157,159 +1187,12 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchCampaignsAsync(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback<PatchResultCampaignListResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignListRequest, _callback);
         Type localVarReturnType = new TypeToken<PatchResultCampaignListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for patchCategoryBidList
-     * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchCategoryBidListCall(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = patchAdSetCategoryBidListRequest;
-
-        // create path and map variables
-        String localVarPath = "/2024-07/marketing-solutions/ad-sets/{ad-set-id}/category-bids"
-            .replace("{" + "ad-set-id" + "}", localVarApiClient.escapeString(adSetId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchCategoryBidListValidateBeforeCall(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'adSetId' is set
-        if (adSetId == null) {
-            throw new ApiException("Missing the required parameter 'adSetId' when calling patchCategoryBidList(Async)");
-        }
-
-        return patchCategoryBidListCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
-     * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
-     * @return PatchAdSetCategoryBidResultListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public PatchAdSetCategoryBidResultListResponse patchCategoryBidList(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
-        ApiResponse<PatchAdSetCategoryBidResultListResponse> localVarResp = patchCategoryBidListWithHttpInfo(adSetId, patchAdSetCategoryBidListRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
-     * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
-     * @return ApiResponse&lt;PatchAdSetCategoryBidResultListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PatchAdSetCategoryBidResultListResponse> patchCategoryBidListWithHttpInfo(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
-        okhttp3.Call localVarCall = patchCategoryBidListValidateBeforeCall(adSetId, patchAdSetCategoryBidListRequest, null);
-        Type localVarReturnType = new TypeToken<PatchAdSetCategoryBidResultListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
-     * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchCategoryBidListAsync(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback<PatchAdSetCategoryBidResultListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = patchCategoryBidListValidateBeforeCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
-        Type localVarReturnType = new TypeToken<PatchAdSetCategoryBidResultListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1324,9 +1207,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchDisplayMultipliersCall(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest, final ApiCallback _callback) throws ApiException {
@@ -1356,9 +1236,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1366,10 +1244,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1402,9 +1277,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public PatchAdSetDisplayMultiplierResultListResponse patchDisplayMultipliers(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest) throws ApiException {
@@ -1423,9 +1295,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<PatchAdSetDisplayMultiplierResultListResponse> patchDisplayMultipliersWithHttpInfo(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest) throws ApiException {
@@ -1446,9 +1315,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchDisplayMultipliersAsync(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest, final ApiCallback<PatchAdSetDisplayMultiplierResultListResponse> _callback) throws ApiException {
@@ -1459,7 +1325,7 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for searchAdSetsV24Q1
+     * Build call for searchAdSets
      * @param adSetSearchRequestV24Q1  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1468,12 +1334,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAdSetsV24Q1Call(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchAdSetsCall(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1499,9 +1362,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1509,10 +1370,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1524,8 +1382,8 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchAdSetsV24Q1ValidateBeforeCall(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback _callback) throws ApiException {
-        return searchAdSetsV24Q1Call(adSetSearchRequestV24Q1, _callback);
+    private okhttp3.Call searchAdSetsValidateBeforeCall(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback _callback) throws ApiException {
+        return searchAdSetsCall(adSetSearchRequestV24Q1, _callback);
 
     }
 
@@ -1539,13 +1397,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponsesReadAdSetV24Q1 searchAdSetsV24Q1(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1) throws ApiException {
-        ApiResponse<ResponsesReadAdSetV24Q1> localVarResp = searchAdSetsV24Q1WithHttpInfo(adSetSearchRequestV24Q1);
+    public ResponsesReadAdSetV24Q1 searchAdSets(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1) throws ApiException {
+        ApiResponse<ResponsesReadAdSetV24Q1> localVarResp = searchAdSetsWithHttpInfo(adSetSearchRequestV24Q1);
         return localVarResp.getData();
     }
 
@@ -1559,13 +1414,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponsesReadAdSetV24Q1> searchAdSetsV24Q1WithHttpInfo(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1) throws ApiException {
-        okhttp3.Call localVarCall = searchAdSetsV24Q1ValidateBeforeCall(adSetSearchRequestV24Q1, null);
+    public ApiResponse<ResponsesReadAdSetV24Q1> searchAdSetsWithHttpInfo(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1) throws ApiException {
+        okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(adSetSearchRequestV24Q1, null);
         Type localVarReturnType = new TypeToken<ResponsesReadAdSetV24Q1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1581,20 +1433,17 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAdSetsV24Q1Async(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback<ResponsesReadAdSetV24Q1> _callback) throws ApiException {
+    public okhttp3.Call searchAdSetsAsync(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback<ResponsesReadAdSetV24Q1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchAdSetsV24Q1ValidateBeforeCall(adSetSearchRequestV24Q1, _callback);
+        okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(adSetSearchRequestV24Q1, _callback);
         Type localVarReturnType = new TypeToken<ResponsesReadAdSetV24Q1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for searchCampaignsV23Q1
+     * Build call for searchCampaigns
      * @param campaignSearchRequestV23Q1 filters on campaigns (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1603,12 +1452,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCampaignsV23Q1Call(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchCampaignsCall(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1634,9 +1480,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1644,10 +1488,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1659,8 +1500,8 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchCampaignsV23Q1ValidateBeforeCall(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
-        return searchCampaignsV23Q1Call(campaignSearchRequestV23Q1, _callback);
+    private okhttp3.Call searchCampaignsValidateBeforeCall(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
+        return searchCampaignsCall(campaignSearchRequestV23Q1, _callback);
 
     }
 
@@ -1674,13 +1515,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignV23Q1ListResponse searchCampaignsV23Q1(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
-        ApiResponse<CampaignV23Q1ListResponse> localVarResp = searchCampaignsV23Q1WithHttpInfo(campaignSearchRequestV23Q1);
+    public CampaignV23Q1ListResponse searchCampaigns(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
+        ApiResponse<CampaignV23Q1ListResponse> localVarResp = searchCampaignsWithHttpInfo(campaignSearchRequestV23Q1);
         return localVarResp.getData();
     }
 
@@ -1694,13 +1532,10 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignV23Q1ListResponse> searchCampaignsV23Q1WithHttpInfo(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
-        okhttp3.Call localVarCall = searchCampaignsV23Q1ValidateBeforeCall(campaignSearchRequestV23Q1, null);
+    public ApiResponse<CampaignV23Q1ListResponse> searchCampaignsWithHttpInfo(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
+        okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequestV23Q1, null);
         Type localVarReturnType = new TypeToken<CampaignV23Q1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1716,14 +1551,11 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCampaignsV23Q1Async(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback<CampaignV23Q1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call searchCampaignsAsync(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback<CampaignV23Q1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchCampaignsV23Q1ValidateBeforeCall(campaignSearchRequestV23Q1, _callback);
+        okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequestV23Q1, _callback);
         Type localVarReturnType = new TypeToken<CampaignV23Q1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1738,8 +1570,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been started and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call startAdSetsCall(RequestsAdSetId requestsAdSetId, final ApiCallback _callback) throws ApiException {
@@ -1768,9 +1598,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1778,10 +1606,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1808,8 +1633,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been started and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public ResponsesAdSetId startAdSets(RequestsAdSetId requestsAdSetId) throws ApiException {
@@ -1827,8 +1650,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been started and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResponsesAdSetId> startAdSetsWithHttpInfo(RequestsAdSetId requestsAdSetId) throws ApiException {
@@ -1848,8 +1669,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been started and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call startAdSetsAsync(RequestsAdSetId requestsAdSetId, final ApiCallback<ResponsesAdSetId> _callback) throws ApiException {
@@ -1869,8 +1688,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been stopped and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call stopAdSetsCall(RequestsAdSetId requestsAdSetId, final ApiCallback _callback) throws ApiException {
@@ -1899,9 +1716,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1909,10 +1724,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1939,8 +1751,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been stopped and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public ResponsesAdSetId stopAdSets(RequestsAdSetId requestsAdSetId) throws ApiException {
@@ -1958,8 +1768,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been stopped and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResponsesAdSetId> stopAdSetsWithHttpInfo(RequestsAdSetId requestsAdSetId) throws ApiException {
@@ -1979,8 +1787,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of ad sets that have been stopped and errors / warnings by ad set </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call stopAdSetsAsync(RequestsAdSetId requestsAdSetId, final ApiCallback<ResponsesAdSetId> _callback) throws ApiException {
@@ -2001,9 +1807,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateAdSetAudienceCall(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1, final ApiCallback _callback) throws ApiException {
@@ -2033,9 +1836,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2043,10 +1844,7 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2084,9 +1882,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public AdSetAudienceLinkEntityV1Response updateAdSetAudience(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1) throws ApiException {
@@ -2105,9 +1900,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<AdSetAudienceLinkEntityV1Response> updateAdSetAudienceWithHttpInfo(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1) throws ApiException {
@@ -2128,9 +1920,6 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateAdSetAudienceAsync(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1, final ApiCallback<AdSetAudienceLinkEntityV1Response> _callback) throws ApiException {

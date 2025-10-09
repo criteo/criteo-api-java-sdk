@@ -2,14 +2,14 @@
 
 # ValueResourceOfCampaignBudgetOverrides
 
-A top-level object that encapsulates a Criteo API response for a single value.
+A value resource exposed by the API.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**attributes** | [**CampaignBudgetOverrides**](CampaignBudgetOverrides.md) |  |  [optional] |
-|**type** | **String** |  |  [optional] |
+|**type** | **String** | Type of the resource. |  [optional] |
 
 
 

@@ -191,6 +191,57 @@ public class SponsoredProductsLineItemCreateRequestModel {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  /**
+   * Gets or Sets optimizationStrategyEnum
+   */
+  @JsonAdapter(OptimizationStrategyEnumEnum.Adapter.class)
+  public enum OptimizationStrategyEnumEnum {
+    MANUAL("manual"),
+    
+    AUTOMATED("automated");
+
+    private String value;
+
+    OptimizationStrategyEnumEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static OptimizationStrategyEnumEnum fromValue(String value) {
+      for (OptimizationStrategyEnumEnum b : OptimizationStrategyEnumEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<OptimizationStrategyEnumEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final OptimizationStrategyEnumEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public OptimizationStrategyEnumEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return OptimizationStrategyEnumEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_OPTIMIZATION_STRATEGY_ENUM = "optimizationStrategyEnum";
+  @SerializedName(SERIALIZED_NAME_OPTIMIZATION_STRATEGY_ENUM)
+  private OptimizationStrategyEnumEnum optimizationStrategyEnum = OptimizationStrategyEnumEnum.MANUAL;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
@@ -426,6 +477,28 @@ public class SponsoredProductsLineItemCreateRequestModel {
   }
 
 
+  public SponsoredProductsLineItemCreateRequestModel optimizationStrategyEnum(OptimizationStrategyEnumEnum optimizationStrategyEnum) {
+    
+    this.optimizationStrategyEnum = optimizationStrategyEnum;
+    return this;
+  }
+
+   /**
+   * Get optimizationStrategyEnum
+   * @return optimizationStrategyEnum
+  **/
+  @javax.annotation.Nullable
+
+  public OptimizationStrategyEnumEnum getOptimizationStrategyEnum() {
+    return optimizationStrategyEnum;
+  }
+
+
+  public void setOptimizationStrategyEnum(OptimizationStrategyEnumEnum optimizationStrategyEnum) {
+    this.optimizationStrategyEnum = optimizationStrategyEnum;
+  }
+
+
   public SponsoredProductsLineItemCreateRequestModel startDate(OffsetDateTime startDate) {
     
     this.startDate = startDate;
@@ -512,6 +585,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
         Objects.equals(this.maxBid, sponsoredProductsLineItemCreateRequestModel.maxBid) &&
         Objects.equals(this.monthlyPacing, sponsoredProductsLineItemCreateRequestModel.monthlyPacing) &&
         Objects.equals(this.name, sponsoredProductsLineItemCreateRequestModel.name) &&
+        Objects.equals(this.optimizationStrategyEnum, sponsoredProductsLineItemCreateRequestModel.optimizationStrategyEnum) &&
         Objects.equals(this.startDate, sponsoredProductsLineItemCreateRequestModel.startDate) &&
         Objects.equals(this.targetBid, sponsoredProductsLineItemCreateRequestModel.targetBid) &&
         Objects.equals(this.targetRetailerId, sponsoredProductsLineItemCreateRequestModel.targetRetailerId);
@@ -523,7 +597,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidStrategy, budget, dailyPacing, endDate, flightSchedule, isAutoDailyPacing, keywordStrategy, maxBid, monthlyPacing, name, startDate, targetBid, targetRetailerId);
+    return Objects.hash(bidStrategy, budget, dailyPacing, endDate, flightSchedule, isAutoDailyPacing, keywordStrategy, maxBid, monthlyPacing, name, optimizationStrategyEnum, startDate, targetBid, targetRetailerId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -547,6 +621,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
     sb.append("    maxBid: ").append(toIndentedString(maxBid)).append("\n");
     sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    optimizationStrategyEnum: ").append(toIndentedString(optimizationStrategyEnum)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    targetBid: ").append(toIndentedString(targetBid)).append("\n");
     sb.append("    targetRetailerId: ").append(toIndentedString(targetRetailerId)).append("\n");
@@ -582,6 +657,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
     openapiFields.add("maxBid");
     openapiFields.add("monthlyPacing");
     openapiFields.add("name");
+    openapiFields.add("optimizationStrategyEnum");
     openapiFields.add("startDate");
     openapiFields.add("targetBid");
     openapiFields.add("targetRetailerId");
@@ -632,6 +708,9 @@ public class SponsoredProductsLineItemCreateRequestModel {
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("optimizationStrategyEnum") != null && !jsonObj.get("optimizationStrategyEnum").isJsonNull()) && !jsonObj.get("optimizationStrategyEnum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `optimizationStrategyEnum` to be a primitive type in the JSON string but got `%s`", jsonObj.get("optimizationStrategyEnum").toString()));
       }
       if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));

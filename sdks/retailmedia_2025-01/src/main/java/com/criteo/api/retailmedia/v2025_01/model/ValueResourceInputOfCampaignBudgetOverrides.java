@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2025_01.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API request for a single value.
+ * A top-level object that encapsulates a Criteo API request for a single value object.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ValueResourceInputOfCampaignBudgetOverrides {

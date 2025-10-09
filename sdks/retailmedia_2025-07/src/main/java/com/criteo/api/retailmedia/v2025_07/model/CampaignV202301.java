@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,15 +58,15 @@ public class CampaignV202301 {
 
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
-  private BigDecimal budget;
+  private Double budget;
 
   public static final String SERIALIZED_NAME_BUDGET_REMAINING = "budgetRemaining";
   @SerializedName(SERIALIZED_NAME_BUDGET_REMAINING)
-  private BigDecimal budgetRemaining;
+  private Double budgetRemaining;
 
   public static final String SERIALIZED_NAME_BUDGET_SPENT = "budgetSpent";
   @SerializedName(SERIALIZED_NAME_BUDGET_SPENT)
-  private BigDecimal budgetSpent;
+  private Double budgetSpent;
 
   /**
    * Gets or Sets clickAttributionScope
@@ -189,7 +188,7 @@ public class CampaignV202301 {
 
   public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
   @SerializedName(SERIALIZED_NAME_DAILY_PACING)
-  private BigDecimal dailyPacing;
+  private Double dailyPacing;
 
   public static final String SERIALIZED_NAME_DRAWABLE_BALANCE_IDS = "drawableBalanceIds";
   @SerializedName(SERIALIZED_NAME_DRAWABLE_BALANCE_IDS)
@@ -205,7 +204,7 @@ public class CampaignV202301 {
 
   public static final String SERIALIZED_NAME_MONTHLY_PACING = "monthlyPacing";
   @SerializedName(SERIALIZED_NAME_MONTHLY_PACING)
-  private BigDecimal monthlyPacing;
+  private Double monthlyPacing;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -217,7 +216,7 @@ public class CampaignV202301 {
 
   public static final String SERIALIZED_NAME_PROMOTED_BRAND_IDS = "promotedBrandIds";
   @SerializedName(SERIALIZED_NAME_PROMOTED_BRAND_IDS)
-  private List<String> promotedBrandIds = new ArrayList<>();
+  private List<String> promotedBrandIds = null;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -399,15 +398,15 @@ public class CampaignV202301 {
   public enum ViewAttributionWindowEnum {
     NONE("none"),
     
-    UNKNOWN("unknown"),
-    
     _1D("1D"),
     
     _7D("7D"),
     
     _14D("14D"),
     
-    _30D("30D");
+    _30D("30D"),
+    
+    UNKNOWN("unknown");
 
     private String value;
 
@@ -476,7 +475,7 @@ public class CampaignV202301 {
   }
 
 
-  public CampaignV202301 budget(BigDecimal budget) {
+  public CampaignV202301 budget(Double budget) {
     
     this.budget = budget;
     return this;
@@ -488,17 +487,17 @@ public class CampaignV202301 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getBudget() {
+  public Double getBudget() {
     return budget;
   }
 
 
-  public void setBudget(BigDecimal budget) {
+  public void setBudget(Double budget) {
     this.budget = budget;
   }
 
 
-  public CampaignV202301 budgetRemaining(BigDecimal budgetRemaining) {
+  public CampaignV202301 budgetRemaining(Double budgetRemaining) {
     
     this.budgetRemaining = budgetRemaining;
     return this;
@@ -510,17 +509,17 @@ public class CampaignV202301 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getBudgetRemaining() {
+  public Double getBudgetRemaining() {
     return budgetRemaining;
   }
 
 
-  public void setBudgetRemaining(BigDecimal budgetRemaining) {
+  public void setBudgetRemaining(Double budgetRemaining) {
     this.budgetRemaining = budgetRemaining;
   }
 
 
-  public CampaignV202301 budgetSpent(BigDecimal budgetSpent) {
+  public CampaignV202301 budgetSpent(Double budgetSpent) {
     
     this.budgetSpent = budgetSpent;
     return this;
@@ -532,12 +531,12 @@ public class CampaignV202301 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getBudgetSpent() {
+  public Double getBudgetSpent() {
     return budgetSpent;
   }
 
 
-  public void setBudgetSpent(BigDecimal budgetSpent) {
+  public void setBudgetSpent(Double budgetSpent) {
     this.budgetSpent = budgetSpent;
   }
 
@@ -630,7 +629,7 @@ public class CampaignV202301 {
   }
 
 
-  public CampaignV202301 dailyPacing(BigDecimal dailyPacing) {
+  public CampaignV202301 dailyPacing(Double dailyPacing) {
     
     this.dailyPacing = dailyPacing;
     return this;
@@ -642,12 +641,12 @@ public class CampaignV202301 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getDailyPacing() {
+  public Double getDailyPacing() {
     return dailyPacing;
   }
 
 
-  public void setDailyPacing(BigDecimal dailyPacing) {
+  public void setDailyPacing(Double dailyPacing) {
     this.dailyPacing = dailyPacing;
   }
 
@@ -726,7 +725,7 @@ public class CampaignV202301 {
   }
 
 
-  public CampaignV202301 monthlyPacing(BigDecimal monthlyPacing) {
+  public CampaignV202301 monthlyPacing(Double monthlyPacing) {
     
     this.monthlyPacing = monthlyPacing;
     return this;
@@ -738,12 +737,12 @@ public class CampaignV202301 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getMonthlyPacing() {
+  public Double getMonthlyPacing() {
     return monthlyPacing;
   }
 
 
-  public void setMonthlyPacing(BigDecimal monthlyPacing) {
+  public void setMonthlyPacing(Double monthlyPacing) {
     this.monthlyPacing = monthlyPacing;
   }
 
@@ -799,6 +798,9 @@ public class CampaignV202301 {
   }
 
   public CampaignV202301 addPromotedBrandIdsItem(String promotedBrandIdsItem) {
+    if (this.promotedBrandIds == null) {
+      this.promotedBrandIds = new ArrayList<>();
+    }
     this.promotedBrandIds.add(promotedBrandIdsItem);
     return this;
   }
@@ -807,7 +809,7 @@ public class CampaignV202301 {
    * Get promotedBrandIds
    * @return promotedBrandIds
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public List<String> getPromotedBrandIds() {
     return promotedBrandIds;
@@ -1121,14 +1123,9 @@ public class CampaignV202301 {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("accountId");
-    openapiRequiredFields.add("budgetRemaining");
-    openapiRequiredFields.add("budgetSpent");
     openapiRequiredFields.add("createdAt");
-    openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("isAutoDailyPacing");
     openapiRequiredFields.add("name");
-    openapiRequiredFields.add("promotedBrandIds");
-    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("updatedAt");
   }
 
@@ -1173,10 +1170,8 @@ public class CampaignV202301 {
       if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("promotedBrandIds") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("promotedBrandIds").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("promotedBrandIds") != null && !jsonObj.get("promotedBrandIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `promotedBrandIds` to be an array in the JSON string but got `%s`", jsonObj.get("promotedBrandIds").toString()));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {

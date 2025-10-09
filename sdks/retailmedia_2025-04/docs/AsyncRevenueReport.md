@@ -21,6 +21,7 @@ Async Revenue report body request
 |**id** | **String** | Supply account id to report on |  [optional] |
 |**ids** | **List&lt;String&gt;** | Supply account ids to report on |  [optional] |
 |**lineItemIds** | **List&lt;String&gt;** | Line item ids to filter |  [optional] |
+|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Filter on the type of media: unknown, display, video |  [optional] |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
 |**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions and metrics are provided, falls back to advertiser reportType |  [optional] |
 |**retailerIds** | **List&lt;String&gt;** | Retailer ids to filter |  [optional] |
@@ -126,6 +127,7 @@ Async Revenue report body request
 | SOLDBY | &quot;soldBy&quot; |
 | SALECHANNEL | &quot;saleChannel&quot; |
 | SALESCHANNEL | &quot;salesChannel&quot; |
+| MEDIATYPE | &quot;mediaType&quot; |
 | ATTRIBUTIONSETTINGS | &quot;attributionSettings&quot; |
 | ACTIVITYTYPE | &quot;activityType&quot; |
 | KEYWORD | &quot;keyword&quot; |
@@ -159,6 +161,17 @@ Async Revenue report body request
 | JSON_COMPACT | &quot;json-compact&quot; |
 | JSON_NEWLINE | &quot;json-newline&quot; |
 | CSV | &quot;csv&quot; |
+
+
+
+## Enum: MediaTypeEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| VIDEO | &quot;video&quot; |
+| DISPLAY | &quot;display&quot; |
+| ALL | &quot;all&quot; |
 
 
 

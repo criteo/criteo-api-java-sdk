@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.v2024_10.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2024_10.model.ExternalAuctionLineItemUpdateModel;
+import com.criteo.api.retailmedia.v2024_10.model.AuctionLineItemUpdateModel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -45,13 +45,13 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2024_10.JSON;
 
 /**
- * Data model for a Resource
+ * A class that represents a domain entity exposed by an API
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResourceOfAuctionLineItemUpdateModel {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ExternalAuctionLineItemUpdateModel attributes;
+  private AuctionLineItemUpdateModel attributes;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -64,7 +64,7 @@ public class ResourceOfAuctionLineItemUpdateModel {
   public ResourceOfAuctionLineItemUpdateModel() {
   }
 
-  public ResourceOfAuctionLineItemUpdateModel attributes(ExternalAuctionLineItemUpdateModel attributes) {
+  public ResourceOfAuctionLineItemUpdateModel attributes(AuctionLineItemUpdateModel attributes) {
     
     this.attributes = attributes;
     return this;
@@ -76,12 +76,12 @@ public class ResourceOfAuctionLineItemUpdateModel {
   **/
   @javax.annotation.Nullable
 
-  public ExternalAuctionLineItemUpdateModel getAttributes() {
+  public AuctionLineItemUpdateModel getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(ExternalAuctionLineItemUpdateModel attributes) {
+  public void setAttributes(AuctionLineItemUpdateModel attributes) {
     this.attributes = attributes;
   }
 
@@ -247,7 +247,7 @@ public class ResourceOfAuctionLineItemUpdateModel {
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ExternalAuctionLineItemUpdateModel.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        AuctionLineItemUpdateModel.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

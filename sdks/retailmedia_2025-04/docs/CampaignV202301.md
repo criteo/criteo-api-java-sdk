@@ -9,22 +9,22 @@ A Retail Media Campaign used to represent an advertiser's marketing objective
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**accountId** | **String** |  |  |
-|**budget** | **BigDecimal** |  |  [optional] |
-|**budgetRemaining** | **BigDecimal** |  |  |
-|**budgetSpent** | **BigDecimal** |  |  |
+|**budget** | **Double** |  |  [optional] |
+|**budgetRemaining** | **Double** |  |  [optional] |
+|**budgetSpent** | **Double** |  |  [optional] |
 |**clickAttributionScope** | [**ClickAttributionScopeEnum**](#ClickAttributionScopeEnum) |  |  [optional] |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) |  |  [optional] |
 |**companyName** | **String** |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  |
-|**dailyPacing** | **BigDecimal** |  |  [optional] |
+|**dailyPacing** | **Double** |  |  [optional] |
 |**drawableBalanceIds** | **List&lt;String&gt;** |  |  [optional] |
-|**endDate** | **OffsetDateTime** |  |  |
+|**endDate** | **OffsetDateTime** |  |  [optional] |
 |**isAutoDailyPacing** | **Boolean** |  |  |
-|**monthlyPacing** | **BigDecimal** |  |  [optional] |
+|**monthlyPacing** | **Double** |  |  [optional] |
 |**name** | **String** |  |  |
 |**onBehalfCompanyName** | **String** |  |  [optional] |
-|**promotedBrandIds** | **List&lt;String&gt;** |  |  |
-|**startDate** | **OffsetDateTime** |  |  |
+|**promotedBrandIds** | **List&lt;String&gt;** |  |  [optional] |
+|**startDate** | **OffsetDateTime** |  |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
 |**updatedAt** | **OffsetDateTime** |  |  |
@@ -93,11 +93,11 @@ A Retail Media Campaign used to represent an advertiser's marketing objective
 | Name | Value |
 |---- | -----|
 | NONE | &quot;none&quot; |
-| UNKNOWN | &quot;unknown&quot; |
 | _1D | &quot;1D&quot; |
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
+| UNKNOWN | &quot;unknown&quot; |
 
 
 

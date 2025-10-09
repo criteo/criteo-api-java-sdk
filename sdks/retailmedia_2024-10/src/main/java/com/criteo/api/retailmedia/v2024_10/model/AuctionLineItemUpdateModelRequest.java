@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2024_10.JSON;
 
 /**
- * Data model for an input resource
+ * A top-level object that encapsulates a Criteo API request for a single entity
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AuctionLineItemUpdateModelRequest {

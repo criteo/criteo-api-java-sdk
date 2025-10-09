@@ -8,18 +8,18 @@ An object that represents the available options to set when creating a Retail Me
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**budget** | **BigDecimal** |  |  [optional] |
+|**budget** | **Double** |  |  [optional] |
 |**clickAttributionScope** | [**ClickAttributionScopeEnum**](#ClickAttributionScopeEnum) |  |  [optional] |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) |  |  [optional] |
 |**companyName** | **String** |  |  [optional] |
-|**dailyPacing** | **BigDecimal** |  |  [optional] |
+|**dailyPacing** | **Double** |  |  [optional] |
 |**drawableBalanceIds** | **List&lt;String&gt;** |  |  [optional] |
-|**endDate** | **OffsetDateTime** |  |  |
+|**endDate** | **OffsetDateTime** |  |  [optional] |
 |**isAutoDailyPacing** | **Boolean** |  |  |
-|**monthlyPacing** | **BigDecimal** |  |  [optional] |
+|**monthlyPacing** | **Double** |  |  [optional] |
 |**name** | **String** |  |  |
 |**onBehalfCompanyName** | **String** |  |  [optional] |
-|**startDate** | **OffsetDateTime** |  |  |
+|**startDate** | **OffsetDateTime** |  |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
 |**viewAttributionScope** | [**ViewAttributionScopeEnum**](#ViewAttributionScopeEnum) |  |  [optional] |
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) |  |  [optional] |
@@ -74,11 +74,11 @@ An object that represents the available options to set when creating a Retail Me
 | Name | Value |
 |---- | -----|
 | NONE | &quot;none&quot; |
-| UNKNOWN | &quot;unknown&quot; |
 | _1D | &quot;1D&quot; |
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
+| UNKNOWN | &quot;unknown&quot; |
 
 
 

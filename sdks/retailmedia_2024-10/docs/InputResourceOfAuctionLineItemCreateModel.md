@@ -8,7 +8,7 @@ Data model for a Resource
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**ExternalAuctionLineItemCreateModel**](ExternalAuctionLineItemCreateModel.md) |  |  [optional] |
+|**attributes** | [**AuctionLineItemCreateModel**](AuctionLineItemCreateModel.md) |  |  [optional] |
 |**type** | **String** |  |  [optional] |
 
 

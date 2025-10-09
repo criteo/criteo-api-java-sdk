@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -53,7 +52,7 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
 public class EditableCampaignAttributesV202301 {
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
-  private BigDecimal budget;
+  private Double budget;
 
   /**
    * Gets or Sets clickAttributionScope
@@ -171,7 +170,7 @@ public class EditableCampaignAttributesV202301 {
 
   public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
   @SerializedName(SERIALIZED_NAME_DAILY_PACING)
-  private BigDecimal dailyPacing;
+  private Double dailyPacing;
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
@@ -183,7 +182,7 @@ public class EditableCampaignAttributesV202301 {
 
   public static final String SERIALIZED_NAME_MONTHLY_PACING = "monthlyPacing";
   @SerializedName(SERIALIZED_NAME_MONTHLY_PACING)
-  private BigDecimal monthlyPacing;
+  private Double monthlyPacing;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -259,15 +258,15 @@ public class EditableCampaignAttributesV202301 {
   public enum ViewAttributionWindowEnum {
     NONE("none"),
     
-    UNKNOWN("unknown"),
-    
     _1D("1D"),
     
     _7D("7D"),
     
     _14D("14D"),
     
-    _30D("30D");
+    _30D("30D"),
+    
+    UNKNOWN("unknown");
 
     private String value;
 
@@ -314,7 +313,7 @@ public class EditableCampaignAttributesV202301 {
   public EditableCampaignAttributesV202301() {
   }
 
-  public EditableCampaignAttributesV202301 budget(BigDecimal budget) {
+  public EditableCampaignAttributesV202301 budget(Double budget) {
     
     this.budget = budget;
     return this;
@@ -326,12 +325,12 @@ public class EditableCampaignAttributesV202301 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getBudget() {
+  public Double getBudget() {
     return budget;
   }
 
 
-  public void setBudget(BigDecimal budget) {
+  public void setBudget(Double budget) {
     this.budget = budget;
   }
 
@@ -402,7 +401,7 @@ public class EditableCampaignAttributesV202301 {
   }
 
 
-  public EditableCampaignAttributesV202301 dailyPacing(BigDecimal dailyPacing) {
+  public EditableCampaignAttributesV202301 dailyPacing(Double dailyPacing) {
     
     this.dailyPacing = dailyPacing;
     return this;
@@ -414,12 +413,12 @@ public class EditableCampaignAttributesV202301 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getDailyPacing() {
+  public Double getDailyPacing() {
     return dailyPacing;
   }
 
 
-  public void setDailyPacing(BigDecimal dailyPacing) {
+  public void setDailyPacing(Double dailyPacing) {
     this.dailyPacing = dailyPacing;
   }
 
@@ -468,7 +467,7 @@ public class EditableCampaignAttributesV202301 {
   }
 
 
-  public EditableCampaignAttributesV202301 monthlyPacing(BigDecimal monthlyPacing) {
+  public EditableCampaignAttributesV202301 monthlyPacing(Double monthlyPacing) {
     
     this.monthlyPacing = monthlyPacing;
     return this;
@@ -480,12 +479,12 @@ public class EditableCampaignAttributesV202301 {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getMonthlyPacing() {
+  public Double getMonthlyPacing() {
     return monthlyPacing;
   }
 
 
-  public void setMonthlyPacing(BigDecimal monthlyPacing) {
+  public void setMonthlyPacing(Double monthlyPacing) {
     this.monthlyPacing = monthlyPacing;
   }
 
@@ -743,10 +742,8 @@ public class EditableCampaignAttributesV202301 {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("clickAttributionWindow");
-    openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("isAutoDailyPacing");
     openapiRequiredFields.add("name");
-    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("viewAttributionWindow");
   }
 

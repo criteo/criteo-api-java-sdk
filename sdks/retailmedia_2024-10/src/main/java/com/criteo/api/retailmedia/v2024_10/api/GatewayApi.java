@@ -82,7 +82,6 @@ public class GatewayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCurrentApplicationCall(final ApiCallback _callback) throws ApiException {
@@ -144,7 +143,6 @@ public class GatewayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
      </table>
      */
     public ApplicationSummaryModelResponse getCurrentApplication() throws ApiException {
@@ -161,7 +159,6 @@ public class GatewayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ApplicationSummaryModelResponse> getCurrentApplicationWithHttpInfo() throws ApiException {
@@ -180,7 +177,6 @@ public class GatewayApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCurrentApplicationAsync(final ApiCallback<ApplicationSummaryModelResponse> _callback) throws ApiException {

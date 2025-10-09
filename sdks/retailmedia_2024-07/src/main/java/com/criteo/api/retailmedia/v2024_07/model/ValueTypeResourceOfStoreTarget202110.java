@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.v2024_07.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2024_07.model.ExternalStoreTarget202110;
+import com.criteo.api.retailmedia.v2024_07.model.StoreTarget202110;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,7 +51,7 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
 public class ValueTypeResourceOfStoreTarget202110 {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ExternalStoreTarget202110 attributes;
+  private StoreTarget202110 attributes;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -60,7 +60,7 @@ public class ValueTypeResourceOfStoreTarget202110 {
   public ValueTypeResourceOfStoreTarget202110() {
   }
 
-  public ValueTypeResourceOfStoreTarget202110 attributes(ExternalStoreTarget202110 attributes) {
+  public ValueTypeResourceOfStoreTarget202110 attributes(StoreTarget202110 attributes) {
     
     this.attributes = attributes;
     return this;
@@ -72,12 +72,12 @@ public class ValueTypeResourceOfStoreTarget202110 {
   **/
   @javax.annotation.Nullable
 
-  public ExternalStoreTarget202110 getAttributes() {
+  public StoreTarget202110 getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(ExternalStoreTarget202110 attributes) {
+  public void setAttributes(StoreTarget202110 attributes) {
     this.attributes = attributes;
   }
 
@@ -218,7 +218,7 @@ public class ValueTypeResourceOfStoreTarget202110 {
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ExternalStoreTarget202110.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        StoreTarget202110.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

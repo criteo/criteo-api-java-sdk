@@ -8,7 +8,7 @@ Data model for a value type resource
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**ExternalAddToBasketTarget202110**](ExternalAddToBasketTarget202110.md) |  |  [optional] |
+|**attributes** | [**AddToBasketTarget202110**](AddToBasketTarget202110.md) |  |  [optional] |
 |**type** | **String** |  |  [optional] |
 
 

@@ -74,7 +74,7 @@ public class AdvertiserApi {
     }
 
     /**
-     * Build call for apiPortfolioGet
+     * Build call for listAdvertisers
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -82,10 +82,9 @@ public class AdvertiserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call apiPortfolioGetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listAdvertisersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -111,9 +110,7 @@ public class AdvertiserApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json",
-            "text/plain",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -132,8 +129,8 @@ public class AdvertiserApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call apiPortfolioGetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return apiPortfolioGetCall(_callback);
+    private okhttp3.Call listAdvertisersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return listAdvertisersCall(_callback);
 
     }
 
@@ -146,11 +143,10 @@ public class AdvertiserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public GetPortfolioResponse apiPortfolioGet() throws ApiException {
-        ApiResponse<GetPortfolioResponse> localVarResp = apiPortfolioGetWithHttpInfo();
+    public GetPortfolioResponse listAdvertisers() throws ApiException {
+        ApiResponse<GetPortfolioResponse> localVarResp = listAdvertisersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,11 +159,10 @@ public class AdvertiserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetPortfolioResponse> apiPortfolioGetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = apiPortfolioGetValidateBeforeCall(null);
+    public ApiResponse<GetPortfolioResponse> listAdvertisersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listAdvertisersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GetPortfolioResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,12 +177,11 @@ public class AdvertiserApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call apiPortfolioGetAsync(final ApiCallback<GetPortfolioResponse> _callback) throws ApiException {
+    public okhttp3.Call listAdvertisersAsync(final ApiCallback<GetPortfolioResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = apiPortfolioGetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = listAdvertisersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<GetPortfolioResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

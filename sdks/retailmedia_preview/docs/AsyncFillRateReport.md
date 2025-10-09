@@ -81,6 +81,11 @@ Async FillRate report body request
 | REVENUE | &quot;revenue&quot; |
 | WORKINGMEDIA | &quot;workingMedia&quot; |
 | NETREVENUE | &quot;netRevenue&quot; |
+| NONDELIVERABLEPLACEMENTS | &quot;nonDeliverablePlacements&quot; |
+| DELIVERABLEPLACEMENTS | &quot;deliverablePlacements&quot; |
+| PLACEMENTSWITHCANDIDATES | &quot;placementsWithCandidates&quot; |
+| COVEREDPLACEMENTS | &quot;coveredPlacements&quot; |
+| COVERAGERATE | &quot;coverageRate&quot; |
 
 
 

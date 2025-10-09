@@ -8,18 +8,19 @@ A request to update a Sponsored Products Line Item.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) |  |  [optional] |
-|**budget** | **Double** |  |  [optional] |
-|**dailyPacing** | **Double** |  |  [optional] |
-|**endDate** | **OffsetDateTime** |  |  [optional] |
+|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) | The bidding strategy for the line item. |  [optional] |
+|**budget** | **Double** | The total budget allocated for this line item. |  [optional] |
+|**dailyPacing** | **Double** | The daily pacing amount for the line item. |  [optional] |
+|**endDate** | **OffsetDateTime** | The date and time when the line item stops running. |  [optional] |
 |**flightSchedule** | [**FlightSchedule**](FlightSchedule.md) |  |  [optional] |
-|**isAutoDailyPacing** | **Boolean** |  |  |
-|**maxBid** | **Double** |  |  [optional] |
-|**monthlyPacing** | **Double** |  |  [optional] |
-|**name** | **String** |  |  |
-|**startDate** | **OffsetDateTime** |  |  |
-|**status** | [**StatusEnum**](#StatusEnum) | Status of a line item. |  |
-|**targetBid** | **Double** |  |  |
+|**isAutoDailyPacing** | **Boolean** | True if daily pacing is automatic, false if manual. |  |
+|**maxBid** | **Double** | The maximum bid amount for the line item. |  [optional] |
+|**monthlyPacing** | **Double** | The monthly pacing amount for the line item. |  [optional] |
+|**name** | **String** | The name of this line item. |  |
+|**optimizationStrategy** | [**OptimizationStrategyEnum**](#OptimizationStrategyEnum) | The optimization strategy for the line item. |  [optional] |
+|**startDate** | **OffsetDateTime** | The date and time when the line item starts running. |  |
+|**status** | [**StatusEnum**](#StatusEnum) | The current status of the line item. |  |
+|**targetBid** | **Double** | The target bid amount for the line item. |  [optional] |
 
 
 
@@ -31,6 +32,15 @@ A request to update a Sponsored Products Line Item.
 | CONVERSION | &quot;conversion&quot; |
 | CLICKS | &quot;clicks&quot; |
 | REVENUE | &quot;revenue&quot; |
+
+
+
+## Enum: OptimizationStrategyEnum
+
+| Name | Value |
+|---- | -----|
+| MANUAL | &quot;manual&quot; |
+| AUTOMATED | &quot;automated&quot; |
 
 
 

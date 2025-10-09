@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.v2025_01.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2025_01.model.ExternalLineItemBidMultipliersV2;
+import com.criteo.api.retailmedia.v2025_01.model.LineItemBidMultipliersV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,7 +52,7 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
 public class ResourceOfLineItemBidMultipliersV2 {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ExternalLineItemBidMultipliersV2 attributes;
+  private LineItemBidMultipliersV2 attributes;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -65,7 +65,7 @@ public class ResourceOfLineItemBidMultipliersV2 {
   public ResourceOfLineItemBidMultipliersV2() {
   }
 
-  public ResourceOfLineItemBidMultipliersV2 attributes(ExternalLineItemBidMultipliersV2 attributes) {
+  public ResourceOfLineItemBidMultipliersV2 attributes(LineItemBidMultipliersV2 attributes) {
     
     this.attributes = attributes;
     return this;
@@ -77,12 +77,12 @@ public class ResourceOfLineItemBidMultipliersV2 {
   **/
   @javax.annotation.Nullable
 
-  public ExternalLineItemBidMultipliersV2 getAttributes() {
+  public LineItemBidMultipliersV2 getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(ExternalLineItemBidMultipliersV2 attributes) {
+  public void setAttributes(LineItemBidMultipliersV2 attributes) {
     this.attributes = attributes;
   }
 
@@ -259,7 +259,7 @@ public class ResourceOfLineItemBidMultipliersV2 {
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ExternalLineItemBidMultipliersV2.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        LineItemBidMultipliersV2.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

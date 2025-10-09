@@ -21,8 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +50,7 @@ import com.criteo.api.retailmedia.v2025_07.JSON;
 public class AddFundsToBalanceV2 {
   public static final String SERIALIZED_NAME_DELTA_AMOUNT = "deltaAmount";
   @SerializedName(SERIALIZED_NAME_DELTA_AMOUNT)
-  private BigDecimal deltaAmount;
+  private Double deltaAmount;
 
   public static final String SERIALIZED_NAME_MEMO = "memo";
   @SerializedName(SERIALIZED_NAME_MEMO)
@@ -65,7 +63,7 @@ public class AddFundsToBalanceV2 {
   public AddFundsToBalanceV2() {
   }
 
-  public AddFundsToBalanceV2 deltaAmount(BigDecimal deltaAmount) {
+  public AddFundsToBalanceV2 deltaAmount(Double deltaAmount) {
     
     this.deltaAmount = deltaAmount;
     return this;
@@ -77,12 +75,12 @@ public class AddFundsToBalanceV2 {
   **/
   @javax.annotation.Nonnull
 
-  public BigDecimal getDeltaAmount() {
+  public Double getDeltaAmount() {
     return deltaAmount;
   }
 
 
-  public void setDeltaAmount(BigDecimal deltaAmount) {
+  public void setDeltaAmount(Double deltaAmount) {
     this.deltaAmount = deltaAmount;
   }
 
@@ -191,20 +189,9 @@ public class AddFundsToBalanceV2 {
         Objects.equals(this.additionalProperties, addFundsToBalanceV2.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(deltaAmount, memo, poNumber, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -8,8 +8,8 @@ fees for a private market account
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**demandManaged** | [**DemandManagedFee**](DemandManagedFee.md) |  |  |
-|**managedService** | [**ManagedServiceFee**](ManagedServiceFee.md) |  |  |
+|**demandManaged** | [**DemandManagedFee**](DemandManagedFee.md) |  |  [optional] |
+|**managedService** | [**ManagedServiceFee**](ManagedServiceFee.md) |  |  [optional] |
 
 
 

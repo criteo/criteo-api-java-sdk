@@ -240,7 +240,7 @@ public class AdaptiveAttributes {
    * Get colors
    * @return colors
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public AdaptiveColors getColors() {
     return colors;
@@ -262,7 +262,7 @@ public class AdaptiveAttributes {
    * Font of the description  Valid supported font like \&quot;Arial\&quot;
    * @return descriptionFont
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getDescriptionFont() {
     return descriptionFont;
@@ -284,7 +284,7 @@ public class AdaptiveAttributes {
    * The description text of the banner
    * @return descriptionText
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getDescriptionText() {
     return descriptionText;
@@ -306,7 +306,7 @@ public class AdaptiveAttributes {
    * Font of the headline  Valid supported font like \&quot;Arial\&quot;
    * @return headlineFont
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getHeadlineFont() {
     return headlineFont;
@@ -328,7 +328,7 @@ public class AdaptiveAttributes {
    * The headline text of the banner
    * @return headlineText
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getHeadlineText() {
     return headlineText;
