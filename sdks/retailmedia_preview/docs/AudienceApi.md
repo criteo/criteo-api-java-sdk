@@ -12,13 +12,13 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**bulkUpdateAudienceSegments**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /preview/retail-media/accounts/{account-id}/audience-segments |  |
 | [**computeAudienceSegmentsSizes**](AudienceApi.md#computeAudienceSegmentsSizes) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes |  |
 | [**computeAudiencesSizes**](AudienceApi.md#computeAudiencesSizes) | **POST** /preview/retail-media/accounts/{account-id}/audiences/compute-sizes |  |
-| [**deleteContactListIdentifiers**](AudienceApi.md#deleteContactListIdentifiers) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
+| [**deleteContactListByAudienceSegment**](AudienceApi.md#deleteContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
 | [**estimateAudienceSegmentSize**](AudienceApi.md#estimateAudienceSegmentSize) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size |  |
 | [**estimateAudienceSize**](AudienceApi.md#estimateAudienceSize) | **POST** /preview/retail-media/accounts/{account-id}/audiences/estimate-size |  |
 | [**getAudienceSegmentContactListStatistics**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |  |
 | [**searchAudienceSegments**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/search |  |
 | [**searchAudiences**](AudienceApi.md#searchAudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/search |  |
-| [**updateContactListIdentifiers**](AudienceApi.md#updateContactListIdentifiers) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
+| [**updateContactListByAudienceSegment**](AudienceApi.md#updateContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
 
 
 
@@ -751,9 +751,9 @@ public class Example {
 | **200** | Success or partial success |  -  |
 
 
-## deleteContactListIdentifiers
+## deleteContactListByAudienceSegment
 
-> deleteContactListIdentifiers(audienceSegmentId)
+> deleteContactListByAudienceSegment(audienceSegmentId)
 
 
 
@@ -800,9 +800,9 @@ public class Example {
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         Long audienceSegmentId = 56L; // Long | The id of the contact list audience-segment to amend, we only accept external Id here
         try {
-            apiInstance.deleteContactListIdentifiers(audienceSegmentId);
+            apiInstance.deleteContactListByAudienceSegment(audienceSegmentId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#deleteContactListIdentifiers");
+            System.err.println("Exception when calling AudienceApi#deleteContactListByAudienceSegment");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1302,9 +1302,9 @@ public class Example {
 | **200** | Success or partial success |  -  |
 
 
-## updateContactListIdentifiers
+## updateContactListByAudienceSegment
 
-> RetailMediaContactlistOperation updateContactListIdentifiers(audienceSegmentId, retailMediaContactlistAmendmentRequest)
+> RetailMediaContactlistOperation updateContactListByAudienceSegment(audienceSegmentId, retailMediaContactlistAmendmentRequest)
 
 
 
@@ -1352,10 +1352,10 @@ public class Example {
         Long audienceSegmentId = 56L; // Long | The id of the contact list audience-segment to amend, we only accept external Id here
         RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest = new RetailMediaContactlistAmendmentRequest(); // RetailMediaContactlistAmendmentRequest | 
         try {
-            RetailMediaContactlistOperation result = apiInstance.updateContactListIdentifiers(audienceSegmentId, retailMediaContactlistAmendmentRequest);
+            RetailMediaContactlistOperation result = apiInstance.updateContactListByAudienceSegment(audienceSegmentId, retailMediaContactlistAmendmentRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#updateContactListIdentifiers");
+            System.err.println("Exception when calling AudienceApi#updateContactListByAudienceSegment");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());

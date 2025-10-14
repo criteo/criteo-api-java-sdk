@@ -1679,7 +1679,7 @@ paths:
   /preview/marketing-solutions/ad-sets/{ad-set-id}/audience:
     put:
       description: Link or unlink an audience with an ad set
-      operationId: updateAdSetAudience
+      operationId: UpdateAdSetAudience
       parameters:
       - description: The ad set ID.
         explode: false
@@ -2109,7 +2109,7 @@ paths:
       description: "Updates the properties of all segments with a valid configuration,\
         \ and returns their IDs. For those that cannot be updated, one or multiple\
         \ errors are returned."
-      operationId: bulkUpdateAudienceSegments
+      operationId: UpdateAudienceSegments
       requestBody:
         content:
           application/json:
@@ -2253,7 +2253,7 @@ paths:
     post:
       description: Gets the size of all segments. An error is returned for those whose
         size calculation is not supported.
-      operationId: computeAudienceSegmentsSizes
+      operationId: ComputeAudienceSegmentsSizes
       requestBody:
         content:
           application/json:
@@ -2280,7 +2280,7 @@ paths:
     post:
       description: "Creates all segments with a valid configuration, and returns their\
         \ IDs. For those that cannot be created, one or multiple errors are returned."
-      operationId: bulkCreateAudienceSegments
+      operationId: CreateAudienceSegments
       requestBody:
         content:
           application/json:
@@ -2306,7 +2306,7 @@ paths:
   /preview/marketing-solutions/audience-segments/delete:
     post:
       description: Delete the segments associated to the given audience IDs.
-      operationId: bulkDeleteAudienceSegments
+      operationId: DeleteAudienceSegments
       requestBody:
         content:
           application/json:
@@ -2333,7 +2333,7 @@ paths:
     post:
       description: Gets the size estimation of a non existent segment. An error is
         returned when size calculation is not supported.
-      operationId: estimateAudienceSegmentSize
+      operationId: EstimateAudienceSegmentsSizes
       requestBody:
         content:
           application/json:
@@ -2360,7 +2360,7 @@ paths:
     get:
       description: Returns a list with all available in-market brands that can be
         used to define an in-market segment.
-      operationId: getAudienceSegmentsInMarketBrands
+      operationId: GetAudienceSegmentsInMarketBrands
       parameters:
       - description: The advertiser ID.
         explode: true
@@ -2396,7 +2396,7 @@ paths:
       description: Returns a list with all available in-market interests that can
         be used to define an in-market segment. These in-market interests correspond
         to the Google product taxonomy.
-      operationId: getAudienceSegmentsInMarketInterests
+      operationId: GetAudienceSegmentsInMarketInterests
       parameters:
       - description: The advertiser ID.
         explode: true
@@ -2431,7 +2431,7 @@ paths:
     post:
       description: "Returns a list of segments that match the provided filters. If\
         \ present, the filters are AND'ed together when applied."
-      operationId: searchAudienceSegments
+      operationId: SearchAudienceSegments
       parameters:
       - description: The number of elements to be returned. The default is 50 and
           the maximum is 100.
@@ -2483,7 +2483,7 @@ paths:
       description: "Updates the properties of all audiences with a valid configuration,\
         \ and returns their IDs. For those that cannot be updated, one or multiple\
         \ errors are returned."
-      operationId: bulkUpdateAudiences
+      operationId: UpdateAudiences
       requestBody:
         content:
           application/json:
@@ -2510,7 +2510,7 @@ paths:
     post:
       description: Gets the size of all audiences. An error is returned for those
         whose size calculation is not supported.
-      operationId: computeAudiencesSizes
+      operationId: ComputeAudiencesSizes
       requestBody:
         content:
           application/json:
@@ -2538,7 +2538,7 @@ paths:
       description: "Creates all audiences with a valid configuration, and returns\
         \ their IDs. For those that cannot be created, one or multiple errors are\
         \ returned."
-      operationId: bulkCreateAudiences
+      operationId: CreateAudiences
       requestBody:
         content:
           application/json:
@@ -2564,7 +2564,7 @@ paths:
   /preview/marketing-solutions/audiences/delete:
     post:
       description: Deletes the audiences associated to the given audience IDs.
-      operationId: bulkDeleteAudiences
+      operationId: DeleteAudiences
       requestBody:
         content:
           application/json:
@@ -2595,7 +2595,7 @@ paths:
     post:
       description: Gets the size estimation of a non existent audience. An error is
         returned when size calculation is not supported.
-      operationId: estimateAudienceSize
+      operationId: EstimateAudiencesSizes
       requestBody:
         content:
           application/json:
@@ -2622,7 +2622,7 @@ paths:
     post:
       description: "Returns a list of audiences that match the provided filters. If\
         \ present, the filters are AND'ed together when applied."
-      operationId: searchAudiences
+      operationId: SearchAudiences
       parameters:
       - description: The number of elements to be returned. The default is 50 and
           the maximum is 100.
