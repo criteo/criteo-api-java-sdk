@@ -56,8 +56,6 @@ public class SponsoredProductsLineItemCreateRequestModel {
    */
   @JsonAdapter(BidStrategyEnum.Adapter.class)
   public enum BidStrategyEnum {
-    UNKNOWN("unknown"),
-    
     CONVERSION("conversion"),
     
     CLICKS("clicks"),
@@ -192,17 +190,17 @@ public class SponsoredProductsLineItemCreateRequestModel {
   private String name;
 
   /**
-   * Gets or Sets optimizationStrategyEnum
+   * Gets or Sets optimizationStrategy
    */
-  @JsonAdapter(OptimizationStrategyEnumEnum.Adapter.class)
-  public enum OptimizationStrategyEnumEnum {
+  @JsonAdapter(OptimizationStrategyEnum.Adapter.class)
+  public enum OptimizationStrategyEnum {
     MANUAL("manual"),
     
     AUTOMATED("automated");
 
     private String value;
 
-    OptimizationStrategyEnumEnum(String value) {
+    OptimizationStrategyEnum(String value) {
       this.value = value;
     }
 
@@ -215,8 +213,8 @@ public class SponsoredProductsLineItemCreateRequestModel {
       return String.valueOf(value);
     }
 
-    public static OptimizationStrategyEnumEnum fromValue(String value) {
-      for (OptimizationStrategyEnumEnum b : OptimizationStrategyEnumEnum.values()) {
+    public static OptimizationStrategyEnum fromValue(String value) {
+      for (OptimizationStrategyEnum b : OptimizationStrategyEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -224,23 +222,23 @@ public class SponsoredProductsLineItemCreateRequestModel {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<OptimizationStrategyEnumEnum> {
+    public static class Adapter extends TypeAdapter<OptimizationStrategyEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final OptimizationStrategyEnumEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final OptimizationStrategyEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public OptimizationStrategyEnumEnum read(final JsonReader jsonReader) throws IOException {
+      public OptimizationStrategyEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return OptimizationStrategyEnumEnum.fromValue(value);
+        return OptimizationStrategyEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_OPTIMIZATION_STRATEGY_ENUM = "optimizationStrategyEnum";
-  @SerializedName(SERIALIZED_NAME_OPTIMIZATION_STRATEGY_ENUM)
-  private OptimizationStrategyEnumEnum optimizationStrategyEnum = OptimizationStrategyEnumEnum.MANUAL;
+  public static final String SERIALIZED_NAME_OPTIMIZATION_STRATEGY = "optimizationStrategy";
+  @SerializedName(SERIALIZED_NAME_OPTIMIZATION_STRATEGY)
+  private OptimizationStrategyEnum optimizationStrategy = OptimizationStrategyEnum.MANUAL;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -330,7 +328,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
   }
 
    /**
-   * The date and time when the line item should stop running.
+   * The date and time when the line item stops running.
    * @return endDate
   **/
   @javax.annotation.Nullable
@@ -477,25 +475,25 @@ public class SponsoredProductsLineItemCreateRequestModel {
   }
 
 
-  public SponsoredProductsLineItemCreateRequestModel optimizationStrategyEnum(OptimizationStrategyEnumEnum optimizationStrategyEnum) {
+  public SponsoredProductsLineItemCreateRequestModel optimizationStrategy(OptimizationStrategyEnum optimizationStrategy) {
     
-    this.optimizationStrategyEnum = optimizationStrategyEnum;
+    this.optimizationStrategy = optimizationStrategy;
     return this;
   }
 
    /**
-   * Get optimizationStrategyEnum
-   * @return optimizationStrategyEnum
+   * Get optimizationStrategy
+   * @return optimizationStrategy
   **/
   @javax.annotation.Nullable
 
-  public OptimizationStrategyEnumEnum getOptimizationStrategyEnum() {
-    return optimizationStrategyEnum;
+  public OptimizationStrategyEnum getOptimizationStrategy() {
+    return optimizationStrategy;
   }
 
 
-  public void setOptimizationStrategyEnum(OptimizationStrategyEnumEnum optimizationStrategyEnum) {
-    this.optimizationStrategyEnum = optimizationStrategyEnum;
+  public void setOptimizationStrategy(OptimizationStrategyEnum optimizationStrategy) {
+    this.optimizationStrategy = optimizationStrategy;
   }
 
 
@@ -506,7 +504,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
   }
 
    /**
-   * The date and time when the line item should start running.
+   * The date and time when the line item starts running.
    * @return startDate
   **/
   @javax.annotation.Nonnull
@@ -585,7 +583,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
         Objects.equals(this.maxBid, sponsoredProductsLineItemCreateRequestModel.maxBid) &&
         Objects.equals(this.monthlyPacing, sponsoredProductsLineItemCreateRequestModel.monthlyPacing) &&
         Objects.equals(this.name, sponsoredProductsLineItemCreateRequestModel.name) &&
-        Objects.equals(this.optimizationStrategyEnum, sponsoredProductsLineItemCreateRequestModel.optimizationStrategyEnum) &&
+        Objects.equals(this.optimizationStrategy, sponsoredProductsLineItemCreateRequestModel.optimizationStrategy) &&
         Objects.equals(this.startDate, sponsoredProductsLineItemCreateRequestModel.startDate) &&
         Objects.equals(this.targetBid, sponsoredProductsLineItemCreateRequestModel.targetBid) &&
         Objects.equals(this.targetRetailerId, sponsoredProductsLineItemCreateRequestModel.targetRetailerId);
@@ -597,7 +595,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidStrategy, budget, dailyPacing, endDate, flightSchedule, isAutoDailyPacing, keywordStrategy, maxBid, monthlyPacing, name, optimizationStrategyEnum, startDate, targetBid, targetRetailerId);
+    return Objects.hash(bidStrategy, budget, dailyPacing, endDate, flightSchedule, isAutoDailyPacing, keywordStrategy, maxBid, monthlyPacing, name, optimizationStrategy, startDate, targetBid, targetRetailerId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -621,7 +619,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
     sb.append("    maxBid: ").append(toIndentedString(maxBid)).append("\n");
     sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    optimizationStrategyEnum: ").append(toIndentedString(optimizationStrategyEnum)).append("\n");
+    sb.append("    optimizationStrategy: ").append(toIndentedString(optimizationStrategy)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    targetBid: ").append(toIndentedString(targetBid)).append("\n");
     sb.append("    targetRetailerId: ").append(toIndentedString(targetRetailerId)).append("\n");
@@ -657,7 +655,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
     openapiFields.add("maxBid");
     openapiFields.add("monthlyPacing");
     openapiFields.add("name");
-    openapiFields.add("optimizationStrategyEnum");
+    openapiFields.add("optimizationStrategy");
     openapiFields.add("startDate");
     openapiFields.add("targetBid");
     openapiFields.add("targetRetailerId");
@@ -709,8 +707,8 @@ public class SponsoredProductsLineItemCreateRequestModel {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("optimizationStrategyEnum") != null && !jsonObj.get("optimizationStrategyEnum").isJsonNull()) && !jsonObj.get("optimizationStrategyEnum").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `optimizationStrategyEnum` to be a primitive type in the JSON string but got `%s`", jsonObj.get("optimizationStrategyEnum").toString()));
+      if ((jsonObj.get("optimizationStrategy") != null && !jsonObj.get("optimizationStrategy").isJsonNull()) && !jsonObj.get("optimizationStrategy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `optimizationStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("optimizationStrategy").toString()));
       }
       if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));

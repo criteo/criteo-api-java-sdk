@@ -56,8 +56,6 @@ public class SponsoredProductsLineItemUpdateRequestModel {
    */
   @JsonAdapter(BidStrategyEnum.Adapter.class)
   public enum BidStrategyEnum {
-    UNKNOWN("unknown"),
-    
     CONVERSION("conversion"),
     
     CLICKS("clicks"),

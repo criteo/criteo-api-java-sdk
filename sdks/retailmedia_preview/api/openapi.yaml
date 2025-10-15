@@ -997,6 +997,40 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/line-items/cap-out-history:
+    post:
+      description: Get the cap out history for line items
+      operationId: GetCapoutHistory
+      parameters:
+      - description: account id that own the lineitem
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputLineItemBudgetCapOutHistoryRequest'
+        description: lineitem budgetcapout history  object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/accounts/{accountId}/brand-catalog-export:
     post:
       description: Create a request for a Catalog available to the indicated account.
@@ -1638,40 +1672,38 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The ids that you would like to limit your result set to
+      - description: The number of elements to be returned on a page.
         explode: true
         in: query
-        name: limitToId
+        name: limit
+        required: false
+        schema:
+          default: 25
+          format: int32
+          maximum: 500
+          minimum: 1
+          type: integer
+        style: form
+      - description: The ids to limit the auction line item results to
+        explode: true
+        in: query
+        name: limitToIds
         required: false
         schema:
           items:
             type: string
           type: array
         style: form
-      - description: The 0 indexed page index you would like to receive given the
-          page size
+      - description: The (zero-based) starting offset into the collection.
         explode: true
         in: query
-        name: pageIndex
+        name: offset
         required: false
         schema:
           default: 0
           format: int32
           maximum: 2147483647
           minimum: 0
-          type: integer
-        style: form
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 25
-          format: int32
-          maximum: 2147483647
-          minimum: 1
           type: integer
         style: form
       responses:
@@ -5841,7 +5873,7 @@ components:
           enum:
           - unknown
           - auction
-          - preferreddeals
+          - preferredDeals
           - sponsorship
           - offsite
           nullable: true
@@ -5850,8 +5882,8 @@ components:
           description: The type of campaign this object represents availability for
           enum:
           - unknown
-          - sponsoredproducts
-          - onsitedisplay
+          - sponsoredProducts
+          - onsiteDisplay
           - offsite
           nullable: true
           type: string
@@ -7553,7 +7585,7 @@ components:
           limit: 6
         data:
         - attributes:
-            bidStrategy: unknown
+            bidStrategy: conversion
             budgetRemaining: 6.027456183070403
             optimizationStrategy: manual
             endDate: 2000-01-23T04:56:07.000+00:00
@@ -7583,7 +7615,7 @@ components:
           id: id
           type: type
         - attributes:
-            bidStrategy: unknown
+            bidStrategy: conversion
             budgetRemaining: 6.027456183070403
             optimizationStrategy: manual
             endDate: 2000-01-23T04:56:07.000+00:00
@@ -7797,7 +7829,7 @@ components:
       description: "A domain entity exposed by the API, identified by a unique id."
       example:
         attributes:
-          bidStrategy: unknown
+          bidStrategy: conversion
           budgetRemaining: 6.027456183070403
           optimizationStrategy: manual
           endDate: 2000-01-23T04:56:07.000+00:00
@@ -7917,7 +7949,7 @@ components:
       example:
         data:
           attributes:
-            bidStrategy: unknown
+            bidStrategy: conversion
             budgetRemaining: 6.027456183070403
             optimizationStrategy: manual
             endDate: 2000-01-23T04:56:07.000+00:00
@@ -8784,6 +8816,109 @@ components:
           readOnly: true
           type: array
       type: object
+    LineItemBudgetCapOutHistory:
+      additionalProperties: false
+      description: The cap out history for a line item
+      example:
+        lineItemId: lineItemId
+        capoutTimes:
+          total:
+          - 2000-01-23T04:56:07.000+00:00
+          - 2000-01-23T04:56:07.000+00:00
+          daily:
+          - 2000-01-23T04:56:07.000+00:00
+          - 2000-01-23T04:56:07.000+00:00
+          monthly:
+          - 2000-01-23T04:56:07.000+00:00
+          - 2000-01-23T04:56:07.000+00:00
+          hourly:
+          - 2000-01-23T04:56:07.000+00:00
+          - 2000-01-23T04:56:07.000+00:00
+      properties:
+        capoutTimes:
+          $ref: '#/components/schemas/LineItemBudgetCapOutHistory_capoutTimes'
+        lineItemId:
+          description: Line Item Id
+          nullable: true
+          type: string
+      type: object
+    LineItemBudgetCapOutHistoryRequest:
+      additionalProperties: false
+      description: The request body for cap out history of line item
+      example:
+        budgetTypes:
+        - total
+        - total
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+      properties:
+        budgetTypes:
+          description: Budget Types to return cap out history
+          items:
+            description: The budget type enum
+            enum:
+            - total
+            - daily
+            - monthly
+            - hourly
+            type: string
+          type: array
+        lineItemIds:
+          description: Line Item Ids to return cap out history
+          items:
+            type: string
+          maxItems: 50
+          type: array
+      required:
+      - budgetTypes
+      - lineItemIds
+      type: object
+    LineItemBudgetCapOutHistoryResponse:
+      additionalProperties: false
+      description: The response body for cap out history of line item
+      example:
+        lineItemBudgetCapOutHistories:
+        - lineItemId: lineItemId
+          capoutTimes:
+            total:
+            - 2000-01-23T04:56:07.000+00:00
+            - 2000-01-23T04:56:07.000+00:00
+            daily:
+            - 2000-01-23T04:56:07.000+00:00
+            - 2000-01-23T04:56:07.000+00:00
+            monthly:
+            - 2000-01-23T04:56:07.000+00:00
+            - 2000-01-23T04:56:07.000+00:00
+            hourly:
+            - 2000-01-23T04:56:07.000+00:00
+            - 2000-01-23T04:56:07.000+00:00
+        - lineItemId: lineItemId
+          capoutTimes:
+            total:
+            - 2000-01-23T04:56:07.000+00:00
+            - 2000-01-23T04:56:07.000+00:00
+            daily:
+            - 2000-01-23T04:56:07.000+00:00
+            - 2000-01-23T04:56:07.000+00:00
+            monthly:
+            - 2000-01-23T04:56:07.000+00:00
+            - 2000-01-23T04:56:07.000+00:00
+            hourly:
+            - 2000-01-23T04:56:07.000+00:00
+            - 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        lineItemBudgetCapOutHistories:
+          description: The list of line item budget cap out histories
+          items:
+            $ref: '#/components/schemas/LineItemBudgetCapOutHistory'
+          nullable: true
+          type: array
+      type: object
     LineItemCappingV2:
       description: Frequency Capping for a Preferred Line Item
       example:
@@ -9424,13 +9559,13 @@ components:
           - home
           - checkout
           - category
-          - productdetail
+          - productDetail
           - confirmation
           - merchandising
           - deals
           - favorites
           - searchbar
-          - categorymenu
+          - categoryMenu
           nullable: true
           type: string
       type: object
@@ -16604,7 +16739,7 @@ components:
       additionalProperties: false
       description: Model of a retail media auction line item.
       example:
-        bidStrategy: unknown
+        bidStrategy: conversion
         budgetRemaining: 6.027456183070403
         optimizationStrategy: manual
         endDate: 2000-01-23T04:56:07.000+00:00
@@ -16636,10 +16771,10 @@ components:
         bidStrategy:
           description: Optional field.
           enum:
-          - unknown
           - conversion
           - clicks
           - revenue
+          - unknown
           nullable: true
           type: string
         budget:
@@ -16706,9 +16841,11 @@ components:
           minLength: 0
           type: string
         optimizationStrategy:
+          description: Optimization strategy for the line item.
           enum:
           - manual
           - automated
+          - unknown
           nullable: true
           type: string
         startDate:
@@ -16756,10 +16893,10 @@ components:
       description: Model to create a retail media auction line item
       example:
         bidStrategy: conversion
+        optimizationStrategy: manual
         endDate: 2000-01-23T04:56:07.000+00:00
         keywordStrategy: conquesting
         targetBid: 5.637376656633329
-        optimizationStrategyEnum: manual
         maxBid: 1.4658129805029452
         flightSchedule:
           legs:
@@ -16782,7 +16919,6 @@ components:
           description: "The bidding strategy to use for this line item.\r\nDefault\
             \ value is Conversion."
           enum:
-          - unknown
           - conversion
           - clicks
           - revenue
@@ -16798,7 +16934,7 @@ components:
           nullable: true
           type: number
         endDate:
-          description: The date and time when the line item should stop running.
+          description: The date and time when the line item stops running.
           format: date-time
           nullable: true
           type: string
@@ -16832,14 +16968,14 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-        optimizationStrategyEnum:
+        optimizationStrategy:
           default: manual
           enum:
           - manual
           - automated
           type: string
         startDate:
-          description: The date and time when the line item should start running.
+          description: The date and time when the line item starts running.
           format: date-time
           type: string
         targetBid:
@@ -16885,7 +17021,6 @@ components:
           default: conversion
           description: The bidding strategy for the line item.
           enum:
-          - unknown
           - conversion
           - clicks
           - revenue
@@ -18053,6 +18188,27 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceCategoriesSearchRequestV1'
       type: object
+    ValueResourceInputLineItemBudgetCapOutHistoryRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            budgetTypes:
+            - total
+            - total
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceLineItemBudgetCapOutHistoryRequest'
+      type: object
     ValueResourceInputLoadSkuOffersRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -18187,10 +18343,10 @@ components:
         data:
           attributes:
             bidStrategy: conversion
+            optimizationStrategy: manual
             endDate: 2000-01-23T04:56:07.000+00:00
             keywordStrategy: conquesting
             targetBid: 5.637376656633329
-            optimizationStrategyEnum: manual
             maxBid: 1.4658129805029452
             flightSchedule:
               legs:
@@ -18373,6 +18529,73 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceUpdateOffersRequest'
       type: object
+    ValueResourceLineItemBudgetCapOutHistoryRequest:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          budgetTypes:
+          - total
+          - total
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/LineItemBudgetCapOutHistoryRequest'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ValueResourceLineItemBudgetCapOutHistoryResponse:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          lineItemBudgetCapOutHistories:
+          - lineItemId: lineItemId
+            capoutTimes:
+              total:
+              - 2000-01-23T04:56:07.000+00:00
+              - 2000-01-23T04:56:07.000+00:00
+              daily:
+              - 2000-01-23T04:56:07.000+00:00
+              - 2000-01-23T04:56:07.000+00:00
+              monthly:
+              - 2000-01-23T04:56:07.000+00:00
+              - 2000-01-23T04:56:07.000+00:00
+              hourly:
+              - 2000-01-23T04:56:07.000+00:00
+              - 2000-01-23T04:56:07.000+00:00
+          - lineItemId: lineItemId
+            capoutTimes:
+              total:
+              - 2000-01-23T04:56:07.000+00:00
+              - 2000-01-23T04:56:07.000+00:00
+              daily:
+              - 2000-01-23T04:56:07.000+00:00
+              - 2000-01-23T04:56:07.000+00:00
+              monthly:
+              - 2000-01-23T04:56:07.000+00:00
+              - 2000-01-23T04:56:07.000+00:00
+              hourly:
+              - 2000-01-23T04:56:07.000+00:00
+              - 2000-01-23T04:56:07.000+00:00
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/LineItemBudgetCapOutHistoryResponse'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     ValueResourceLoadSkuOffersRequest:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -18511,10 +18734,10 @@ components:
       example:
         attributes:
           bidStrategy: conversion
+          optimizationStrategy: manual
           endDate: 2000-01-23T04:56:07.000+00:00
           keywordStrategy: conquesting
           targetBid: 5.637376656633329
-          optimizationStrategyEnum: manual
           maxBid: 1.4658129805029452
           flightSchedule:
             legs:
@@ -18624,6 +18847,99 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceAsyncJobResponse'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            lineItemBudgetCapOutHistories:
+            - lineItemId: lineItemId
+              capoutTimes:
+                total:
+                - 2000-01-23T04:56:07.000+00:00
+                - 2000-01-23T04:56:07.000+00:00
+                daily:
+                - 2000-01-23T04:56:07.000+00:00
+                - 2000-01-23T04:56:07.000+00:00
+                monthly:
+                - 2000-01-23T04:56:07.000+00:00
+                - 2000-01-23T04:56:07.000+00:00
+                hourly:
+                - 2000-01-23T04:56:07.000+00:00
+                - 2000-01-23T04:56:07.000+00:00
+            - lineItemId: lineItemId
+              capoutTimes:
+                total:
+                - 2000-01-23T04:56:07.000+00:00
+                - 2000-01-23T04:56:07.000+00:00
+                daily:
+                - 2000-01-23T04:56:07.000+00:00
+                - 2000-01-23T04:56:07.000+00:00
+                monthly:
+                - 2000-01-23T04:56:07.000+00:00
+                - 2000-01-23T04:56:07.000+00:00
+                hourly:
+                - 2000-01-23T04:56:07.000+00:00
+                - 2000-01-23T04:56:07.000+00:00
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceLineItemBudgetCapOutHistoryResponse'
         errors:
           description: Errors that occured during this call.
           items:
@@ -19007,6 +19323,50 @@ components:
       - height
       - url
       - width
+      type: object
+    LineItemBudgetCapOutHistory_capoutTimes:
+      additionalProperties: false
+      description: The dictionary of budget type to the list of cap out times up to
+        3 most recent cap out times
+      example:
+        total:
+        - 2000-01-23T04:56:07.000+00:00
+        - 2000-01-23T04:56:07.000+00:00
+        daily:
+        - 2000-01-23T04:56:07.000+00:00
+        - 2000-01-23T04:56:07.000+00:00
+        monthly:
+        - 2000-01-23T04:56:07.000+00:00
+        - 2000-01-23T04:56:07.000+00:00
+        hourly:
+        - 2000-01-23T04:56:07.000+00:00
+        - 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        daily:
+          items:
+            format: date-time
+            type: string
+          nullable: true
+          type: array
+        hourly:
+          items:
+            format: date-time
+            type: string
+          nullable: true
+          type: array
+        monthly:
+          items:
+            format: date-time
+            type: string
+          nullable: true
+          type: array
+        total:
+          items:
+            format: date-time
+            type: string
+          nullable: true
+          type: array
       type: object
     RetailMediaContactlistAmendment_attributes:
       description: Attributes of retail media contact list amendment

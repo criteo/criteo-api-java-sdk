@@ -61,6 +61,7 @@ import com.criteo.api.retailmedia.preview.model.SkuDataPreviewListResponse;
 import com.criteo.api.retailmedia.preview.model.SkuSearchRequestPreviewRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputBrandIdSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputCategoriesSearchRequestV1;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputLineItemBudgetCapOutHistoryRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfBrandCatalogRequestV2;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfRetailerSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSellerCatalogRequestV2;
@@ -69,6 +70,7 @@ import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSponsoredPro
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputRecommendedCategoriesRequestV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputRecommendedKeywordsRequestV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputRetailMediaKeywordsReview;
+import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse;
 import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeRecommendedKeywordsResponseV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeRetailMediaKeywordsReviewResult;
 
@@ -2189,9 +2191,9 @@ public class CampaignApi {
     /**
      * Build call for getAuctionLineItemsByCampaignIdV2
      * @param campaignId The id of the campaign (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param limit The number of elements to be returned on a page. (optional, default to 25)
+     * @param limitToIds The ids to limit the auction line item results to (optional)
+     * @param offset The (zero-based) starting offset into the collection. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2201,7 +2203,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAuctionLineItemsByCampaignIdV2Call(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAuctionLineItemsByCampaignIdV2Call(String campaignId, Integer limit, List<String> limitToIds, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2227,16 +2229,16 @@ public class CampaignApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (limitToId != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToId", limitToId));
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
-        if (pageIndex != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
+        if (limitToIds != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToIds", limitToIds));
         }
 
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
         }
 
         final String[] localVarAccepts = {
@@ -2259,13 +2261,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAuctionLineItemsByCampaignIdV2ValidateBeforeCall(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAuctionLineItemsByCampaignIdV2ValidateBeforeCall(String campaignId, Integer limit, List<String> limitToIds, Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling getAuctionLineItemsByCampaignIdV2(Async)");
         }
 
-        return getAuctionLineItemsByCampaignIdV2Call(campaignId, limitToId, pageIndex, pageSize, _callback);
+        return getAuctionLineItemsByCampaignIdV2Call(campaignId, limit, limitToIds, offset, _callback);
 
     }
 
@@ -2273,9 +2275,9 @@ public class CampaignApi {
      * 
      * Gets a page of sponsored product line items by campaign id.
      * @param campaignId The id of the campaign (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param limit The number of elements to be returned on a page. (optional, default to 25)
+     * @param limitToIds The ids to limit the auction line item results to (optional)
+     * @param offset The (zero-based) starting offset into the collection. (optional, default to 0)
      * @return EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2284,8 +2286,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata getAuctionLineItemsByCampaignIdV2(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata> localVarResp = getAuctionLineItemsByCampaignIdV2WithHttpInfo(campaignId, limitToId, pageIndex, pageSize);
+    public EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata getAuctionLineItemsByCampaignIdV2(String campaignId, Integer limit, List<String> limitToIds, Integer offset) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata> localVarResp = getAuctionLineItemsByCampaignIdV2WithHttpInfo(campaignId, limit, limitToIds, offset);
         return localVarResp.getData();
     }
 
@@ -2293,9 +2295,9 @@ public class CampaignApi {
      * 
      * Gets a page of sponsored product line items by campaign id.
      * @param campaignId The id of the campaign (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param limit The number of elements to be returned on a page. (optional, default to 25)
+     * @param limitToIds The ids to limit the auction line item results to (optional)
+     * @param offset The (zero-based) starting offset into the collection. (optional, default to 0)
      * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2304,8 +2306,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata> getAuctionLineItemsByCampaignIdV2WithHttpInfo(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = getAuctionLineItemsByCampaignIdV2ValidateBeforeCall(campaignId, limitToId, pageIndex, pageSize, null);
+    public ApiResponse<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata> getAuctionLineItemsByCampaignIdV2WithHttpInfo(String campaignId, Integer limit, List<String> limitToIds, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = getAuctionLineItemsByCampaignIdV2ValidateBeforeCall(campaignId, limit, limitToIds, offset, null);
         Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2314,9 +2316,9 @@ public class CampaignApi {
      *  (asynchronously)
      * Gets a page of sponsored product line items by campaign id.
      * @param campaignId The id of the campaign (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param limit The number of elements to be returned on a page. (optional, default to 25)
+     * @param limitToIds The ids to limit the auction line item results to (optional)
+     * @param offset The (zero-based) starting offset into the collection. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2326,10 +2328,143 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAuctionLineItemsByCampaignIdV2Async(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata> _callback) throws ApiException {
+    public okhttp3.Call getAuctionLineItemsByCampaignIdV2Async(String campaignId, Integer limit, List<String> limitToIds, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAuctionLineItemsByCampaignIdV2ValidateBeforeCall(campaignId, limitToId, pageIndex, pageSize, _callback);
+        okhttp3.Call localVarCall = getAuctionLineItemsByCampaignIdV2ValidateBeforeCall(campaignId, limit, limitToIds, offset, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCapoutHistory
+     * @param accountId account id that own the lineitem (required)
+     * @param valueResourceInputLineItemBudgetCapOutHistoryRequest lineitem budgetcapout history  object (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCapoutHistoryCall(String accountId, ValueResourceInputLineItemBudgetCapOutHistoryRequest valueResourceInputLineItemBudgetCapOutHistoryRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputLineItemBudgetCapOutHistoryRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{account-id}/line-items/cap-out-history"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCapoutHistoryValidateBeforeCall(String accountId, ValueResourceInputLineItemBudgetCapOutHistoryRequest valueResourceInputLineItemBudgetCapOutHistoryRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling getCapoutHistory(Async)");
+        }
+
+        // verify the required parameter 'valueResourceInputLineItemBudgetCapOutHistoryRequest' is set
+        if (valueResourceInputLineItemBudgetCapOutHistoryRequest == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputLineItemBudgetCapOutHistoryRequest' when calling getCapoutHistory(Async)");
+        }
+
+        return getCapoutHistoryCall(accountId, valueResourceInputLineItemBudgetCapOutHistoryRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Get the cap out history for line items
+     * @param accountId account id that own the lineitem (required)
+     * @param valueResourceInputLineItemBudgetCapOutHistoryRequest lineitem budgetcapout history  object (required)
+     * @return ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse getCapoutHistory(String accountId, ValueResourceInputLineItemBudgetCapOutHistoryRequest valueResourceInputLineItemBudgetCapOutHistoryRequest) throws ApiException {
+        ApiResponse<ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse> localVarResp = getCapoutHistoryWithHttpInfo(accountId, valueResourceInputLineItemBudgetCapOutHistoryRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get the cap out history for line items
+     * @param accountId account id that own the lineitem (required)
+     * @param valueResourceInputLineItemBudgetCapOutHistoryRequest lineitem budgetcapout history  object (required)
+     * @return ApiResponse&lt;ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse> getCapoutHistoryWithHttpInfo(String accountId, ValueResourceInputLineItemBudgetCapOutHistoryRequest valueResourceInputLineItemBudgetCapOutHistoryRequest) throws ApiException {
+        okhttp3.Call localVarCall = getCapoutHistoryValidateBeforeCall(accountId, valueResourceInputLineItemBudgetCapOutHistoryRequest, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the cap out history for line items
+     * @param accountId account id that own the lineitem (required)
+     * @param valueResourceInputLineItemBudgetCapOutHistoryRequest lineitem budgetcapout history  object (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCapoutHistoryAsync(String accountId, ValueResourceInputLineItemBudgetCapOutHistoryRequest valueResourceInputLineItemBudgetCapOutHistoryRequest, final ApiCallback<ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCapoutHistoryValidateBeforeCall(accountId, valueResourceInputLineItemBudgetCapOutHistoryRequest, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

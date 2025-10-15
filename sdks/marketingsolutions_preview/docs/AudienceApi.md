@@ -12,7 +12,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**deleteAudiences**](AudienceApi.md#deleteAudiences) | **POST** /preview/marketing-solutions/audiences/delete |  |
 | [**estimateAudienceSegmentsSizes**](AudienceApi.md#estimateAudienceSegmentsSizes) | **POST** /preview/marketing-solutions/audience-segments/estimate-size |  |
 | [**estimateAudiencesSizes**](AudienceApi.md#estimateAudiencesSizes) | **POST** /preview/marketing-solutions/audiences/estimate-size |  |
-| [**getAudienceSegmentContactListStatistics**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
+| [**getAudienceSegmentContactListStatistics**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics |  |
 | [**getAudienceSegmentsInMarketBrands**](AudienceApi.md#getAudienceSegmentsInMarketBrands) | **GET** /preview/marketing-solutions/audience-segments/in-market-brands |  |
 | [**getAudienceSegmentsInMarketInterests**](AudienceApi.md#getAudienceSegmentsInMarketInterests) | **GET** /preview/marketing-solutions/audience-segments/in-market-interests |  |
 | [**modifyAudienceUsersWithAttributes**](AudienceApi.md#modifyAudienceUsersWithAttributes) | **PATCH** /preview/audiences/{audience-id}/contactlist-attributes |  |

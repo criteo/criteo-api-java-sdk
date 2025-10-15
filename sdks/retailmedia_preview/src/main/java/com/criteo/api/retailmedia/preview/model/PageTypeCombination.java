@@ -127,7 +127,7 @@ public class PageTypeCombination {
     
     CATEGORY("category"),
     
-    PRODUCTDETAIL("productdetail"),
+    PRODUCTDETAIL("productDetail"),
     
     CONFIRMATION("confirmation"),
     
@@ -139,7 +139,7 @@ public class PageTypeCombination {
     
     SEARCHBAR("searchbar"),
     
-    CATEGORYMENU("categorymenu");
+    CATEGORYMENU("categoryMenu");
 
     private String value;
 

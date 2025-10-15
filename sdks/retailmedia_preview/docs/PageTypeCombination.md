@@ -37,13 +37,13 @@ Represents a combination of page type and page environment type for a specific c
 | HOME | &quot;home&quot; |
 | CHECKOUT | &quot;checkout&quot; |
 | CATEGORY | &quot;category&quot; |
-| PRODUCTDETAIL | &quot;productdetail&quot; |
+| PRODUCTDETAIL | &quot;productDetail&quot; |
 | CONFIRMATION | &quot;confirmation&quot; |
 | MERCHANDISING | &quot;merchandising&quot; |
 | DEALS | &quot;deals&quot; |
 | FAVORITES | &quot;favorites&quot; |
 | SEARCHBAR | &quot;searchbar&quot; |
-| CATEGORYMENU | &quot;categorymenu&quot; |
+| CATEGORYMENU | &quot;categoryMenu&quot; |
 
 
 

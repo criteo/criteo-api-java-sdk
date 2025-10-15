@@ -21,6 +21,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getApiV1ExternalRetailerPlacementsByRetailerId**](CampaignApi.md#getApiV1ExternalRetailerPlacementsByRetailerId) | **GET** /preview/retail-media/retailers/{retailer-id}/placements |  |
 | [**getAuctionLineItemV2**](CampaignApi.md#getAuctionLineItemV2) | **GET** /preview/retail-media/auction-line-items/{lineItemId} |  |
 | [**getAuctionLineItemsByCampaignIdV2**](CampaignApi.md#getAuctionLineItemsByCampaignIdV2) | **GET** /preview/retail-media/campaigns/{campaignId}/auction-line-items |  |
+| [**getCapoutHistory**](CampaignApi.md#getCapoutHistory) | **POST** /preview/retail-media/accounts/{account-id}/line-items/cap-out-history |  |
 | [**getCreative**](CampaignApi.md#getCreative) | **GET** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
 | [**getPreferredLineItemsByCampaignId**](CampaignApi.md#getPreferredLineItemsByCampaignId) | **GET** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
 | [**getPreferredLineItemsByLineItemId**](CampaignApi.md#getPreferredLineItemsByLineItemId) | **GET** /preview/retail-media/preferred-line-items/{line-item-id} |  |
@@ -1504,7 +1505,7 @@ public class Example {
 
 ## getAuctionLineItemsByCampaignIdV2
 
-> EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata getAuctionLineItemsByCampaignIdV2(campaignId, limitToId, pageIndex, pageSize)
+> EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata getAuctionLineItemsByCampaignIdV2(campaignId, limit, limitToIds, offset)
 
 
 
@@ -1550,11 +1551,11 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String campaignId = "campaignId_example"; // String | The id of the campaign
-        List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
-        Integer pageIndex = 0; // Integer | The 0 indexed page index you would like to receive given the page size
-        Integer pageSize = 25; // Integer | The maximum number of items you would like to receive in this request
+        Integer limit = 25; // Integer | The number of elements to be returned on a page.
+        List<String> limitToIds = Arrays.asList(); // List<String> | The ids to limit the auction line item results to
+        Integer offset = 0; // Integer | The (zero-based) starting offset into the collection.
         try {
-            EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata result = apiInstance.getAuctionLineItemsByCampaignIdV2(campaignId, limitToId, pageIndex, pageSize);
+            EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata result = apiInstance.getAuctionLineItemsByCampaignIdV2(campaignId, limit, limitToIds, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getAuctionLineItemsByCampaignIdV2");
@@ -1573,9 +1574,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **campaignId** | **String**| The id of the campaign | |
-| **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
-| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
-| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
+| **limit** | **Integer**| The number of elements to be returned on a page. | [optional] [default to 25] |
+| **limitToIds** | [**List&lt;String&gt;**](String.md)| The ids to limit the auction line item results to | [optional] |
+| **offset** | **Integer**| The (zero-based) starting offset into the collection. | [optional] [default to 0] |
 
 ### Return type
 
@@ -1588,6 +1589,97 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## getCapoutHistory
+
+> ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse getCapoutHistory(accountId, valueResourceInputLineItemBudgetCapOutHistoryRequest)
+
+
+
+Get the cap out history for line items
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String accountId = "accountId_example"; // String | account id that own the lineitem
+        ValueResourceInputLineItemBudgetCapOutHistoryRequest valueResourceInputLineItemBudgetCapOutHistoryRequest = new ValueResourceInputLineItemBudgetCapOutHistoryRequest(); // ValueResourceInputLineItemBudgetCapOutHistoryRequest | lineitem budgetcapout history  object
+        try {
+            ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse result = apiInstance.getCapoutHistory(accountId, valueResourceInputLineItemBudgetCapOutHistoryRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#getCapoutHistory");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| account id that own the lineitem | |
+| **valueResourceInputLineItemBudgetCapOutHistoryRequest** | [**ValueResourceInputLineItemBudgetCapOutHistoryRequest**](ValueResourceInputLineItemBudgetCapOutHistoryRequest.md)| lineitem budgetcapout history  object | |
+
+### Return type
+
+[**ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse**](ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

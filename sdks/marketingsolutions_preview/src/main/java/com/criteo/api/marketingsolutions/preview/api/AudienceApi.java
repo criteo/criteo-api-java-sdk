@@ -1118,7 +1118,7 @@ public class AudienceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list"
+        String localVarPath = "/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics"
             .replace("{" + "audience-segment-id" + "}", localVarApiClient.escapeString(audienceSegmentId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

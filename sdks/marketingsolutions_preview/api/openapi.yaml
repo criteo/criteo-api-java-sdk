@@ -2170,32 +2170,6 @@ paths:
       tags:
       - Audience
       x-accepts: application/json
-    get:
-      description: Returns the statistics of a contact list segment.
-      operationId: getAudienceSegmentContactListStatistics
-      parameters:
-      - description: The segment ID.
-        explode: false
-        in: path
-        name: audience-segment-id
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ContactListStatisticsEntityV1Response'
-          description: Success
-      security:
-      - oauth:
-        - MarketingSolutions_Audience_Read
-      tags:
-      - Audience
-      x-accepts: application/json
     patch:
       description: Add/remove identifiers to or from a contact list audience-segment.
       parameters:
@@ -2248,6 +2222,33 @@ paths:
       tags:
       - Audience
       x-content-type: application/json
+      x-accepts: application/json
+  /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics:
+    get:
+      description: Returns the statistics of a contact list segment.
+      operationId: GetAudienceSegmentContactListStatistics
+      parameters:
+      - description: The segment ID.
+        explode: false
+        in: path
+        name: audience-segment-id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactListStatisticsEntityV1Response'
+          description: Success
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Read
+      tags:
+      - Audience
       x-accepts: application/json
   /preview/marketing-solutions/audience-segments/compute-sizes:
     post:
@@ -8547,31 +8548,39 @@ components:
       properties:
         code:
           description: "A machine-readable error code, expressed as a string value."
+          nullable: true
           type: string
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem
+          nullable: true
           type: string
         instance:
           description: A URI that identifies the specific occurrence of the problem.
+          nullable: true
           type: string
         source:
           additionalProperties:
             type: string
           description: A machine-readable structure to reference to the exact location(s)
             causing the error(s)
+          nullable: true
           type: object
         stackTrace:
+          nullable: true
           type: string
         title:
           description: A short human-readable description of the problem type
+          nullable: true
           type: string
         traceId:
           description: The request correlation ID this problem comes from.
+          nullable: true
           type: string
         traceIdentifier:
           description: "The request correlation ID this problem comes from. (deprecated,\
             \ use traceId instead)"
+          nullable: true
           type: string
         type:
           description: The problem's category.
@@ -8584,6 +8593,7 @@ components:
           - deprecation
           - quota
           - validation
+          nullable: true
           type: string
       type: object
     ContactlistAmendment:

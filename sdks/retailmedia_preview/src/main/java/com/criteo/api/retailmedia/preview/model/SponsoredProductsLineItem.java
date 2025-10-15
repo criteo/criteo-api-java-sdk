@@ -56,13 +56,13 @@ public class SponsoredProductsLineItem {
    */
   @JsonAdapter(BidStrategyEnum.Adapter.class)
   public enum BidStrategyEnum {
-    UNKNOWN("unknown"),
-    
     CONVERSION("conversion"),
     
     CLICKS("clicks"),
     
-    REVENUE("revenue");
+    REVENUE("revenue"),
+    
+    UNKNOWN("unknown");
 
     private String value;
 
@@ -210,13 +210,15 @@ public class SponsoredProductsLineItem {
   private String name;
 
   /**
-   * Gets or Sets optimizationStrategy
+   * Optimization strategy for the line item.
    */
   @JsonAdapter(OptimizationStrategyEnum.Adapter.class)
   public enum OptimizationStrategyEnum {
     MANUAL("manual"),
     
-    AUTOMATED("automated");
+    AUTOMATED("automated"),
+    
+    UNKNOWN("unknown");
 
     private String value;
 
@@ -659,7 +661,7 @@ public class SponsoredProductsLineItem {
   }
 
    /**
-   * Get optimizationStrategy
+   * Optimization strategy for the line item.
    * @return optimizationStrategy
   **/
   @javax.annotation.Nullable

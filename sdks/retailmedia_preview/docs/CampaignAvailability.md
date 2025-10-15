@@ -21,7 +21,7 @@ Information about the availability of a specific campaign type and buy type comb
 |---- | -----|
 | UNKNOWN | &quot;unknown&quot; |
 | AUCTION | &quot;auction&quot; |
-| PREFERREDDEALS | &quot;preferreddeals&quot; |
+| PREFERREDDEALS | &quot;preferredDeals&quot; |
 | SPONSORSHIP | &quot;sponsorship&quot; |
 | OFFSITE | &quot;offsite&quot; |
 
@@ -32,8 +32,8 @@ Information about the availability of a specific campaign type and buy type comb
 | Name | Value |
 |---- | -----|
 | UNKNOWN | &quot;unknown&quot; |
-| SPONSOREDPRODUCTS | &quot;sponsoredproducts&quot; |
-| ONSITEDISPLAY | &quot;onsitedisplay&quot; |
+| SPONSOREDPRODUCTS | &quot;sponsoredProducts&quot; |
+| ONSITEDISPLAY | &quot;onsiteDisplay&quot; |
 | OFFSITE | &quot;offsite&quot; |
 
 

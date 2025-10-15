@@ -112,6 +112,10 @@ docs/KeywordDataModel.md
 docs/KeywordsModel.md
 docs/KeywordsModelResource.md
 docs/KeywordsModelResponse.md
+docs/LineItemBudgetCapOutHistory.md
+docs/LineItemBudgetCapOutHistoryCapoutTimes.md
+docs/LineItemBudgetCapOutHistoryRequest.md
+docs/LineItemBudgetCapOutHistoryResponse.md
 docs/LineItemCappingV2.md
 docs/LineItemKeywordReviewReport.md
 docs/LineItemPageCategoryV2.md
@@ -323,6 +327,7 @@ docs/ValueResourceInputAccountFeesSearchRequest.md
 docs/ValueResourceInputAccountFeesUpdateRequest.md
 docs/ValueResourceInputBrandIdSearchRequest.md
 docs/ValueResourceInputCategoriesSearchRequestV1.md
+docs/ValueResourceInputLineItemBudgetCapOutHistoryRequest.md
 docs/ValueResourceInputLoadSkuOffersRequest.md
 docs/ValueResourceInputOfBrandCatalogRequestV2.md
 docs/ValueResourceInputOfRetailerSearchRequest.md
@@ -335,6 +340,8 @@ docs/ValueResourceInputRecommendedKeywordsRequestV1.md
 docs/ValueResourceInputRetailMediaKeywordsReview.md
 docs/ValueResourceInputSetSkuBuyBoxWinnersRequest.md
 docs/ValueResourceInputUpdateOffersRequest.md
+docs/ValueResourceLineItemBudgetCapOutHistoryRequest.md
+docs/ValueResourceLineItemBudgetCapOutHistoryResponse.md
 docs/ValueResourceLoadSkuOffersRequest.md
 docs/ValueResourceOfBrandCatalogRequestV2.md
 docs/ValueResourceOfRetailerSearchRequest.md
@@ -342,6 +349,7 @@ docs/ValueResourceOfSellerCatalogRequestV2.md
 docs/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.md
 docs/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.md
 docs/ValueResourceOutcomeAsyncJobResponse.md
+docs/ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse.md
 docs/ValueResourceOutcomeRecommendedKeywordsResponseV1.md
 docs/ValueResourceOutcomeRetailMediaKeywordsReviewResult.md
 docs/ValueResourcePartnerBillingReportRequestV1.md
@@ -493,6 +501,10 @@ src/main/java/com/criteo/api/retailmedia/preview/model/KeywordDataModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/KeywordsModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/KeywordsModelResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/KeywordsModelResponse.java
+src/main/java/com/criteo/api/retailmedia/preview/model/LineItemBudgetCapOutHistory.java
+src/main/java/com/criteo/api/retailmedia/preview/model/LineItemBudgetCapOutHistoryCapoutTimes.java
+src/main/java/com/criteo/api/retailmedia/preview/model/LineItemBudgetCapOutHistoryRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/LineItemBudgetCapOutHistoryResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemCappingV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemKeywordReviewReport.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemPageCategoryV2.java
@@ -703,6 +715,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputAccount
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputAccountFeesUpdateRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputBrandIdSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputCategoriesSearchRequestV1.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputLineItemBudgetCapOutHistoryRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputLoadSkuOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfBrandCatalogRequestV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfRetailerSearchRequest.java
@@ -715,6 +728,8 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputRecomme
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputRetailMediaKeywordsReview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputSetSkuBuyBoxWinnersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputUpdateOffersRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceLineItemBudgetCapOutHistoryRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceLineItemBudgetCapOutHistoryResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceLoadSkuOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfBrandCatalogRequestV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfRetailerSearchRequest.java
@@ -722,6 +737,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfSellerCata
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeAsyncJobResponse.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeRecommendedKeywordsResponseV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeRetailMediaKeywordsReviewResult.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourcePartnerBillingReportRequestV1.java

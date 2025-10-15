@@ -61,7 +61,7 @@ public class CampaignAvailability {
     
     AUCTION("auction"),
     
-    PREFERREDDEALS("preferreddeals"),
+    PREFERREDDEALS("preferredDeals"),
     
     SPONSORSHIP("sponsorship"),
     
@@ -116,9 +116,9 @@ public class CampaignAvailability {
   public enum CampaignTypeEnum {
     UNKNOWN("unknown"),
     
-    SPONSOREDPRODUCTS("sponsoredproducts"),
+    SPONSOREDPRODUCTS("sponsoredProducts"),
     
-    ONSITEDISPLAY("onsitedisplay"),
+    ONSITEDISPLAY("onsiteDisplay"),
     
     OFFSITE("offsite");
 

@@ -11,15 +11,15 @@ Model to create a retail media auction line item
 |**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) | The bidding strategy to use for this line item.  Default value is Conversion. |  [optional] |
 |**budget** | **Double** | The total budget allocated for this line item. |  [optional] |
 |**dailyPacing** | **Double** | The daily pacing limit for budget spending. |  [optional] |
-|**endDate** | **OffsetDateTime** | The date and time when the line item should stop running. |  [optional] |
+|**endDate** | **OffsetDateTime** | The date and time when the line item stops running. |  [optional] |
 |**flightSchedule** | [**FlightSchedule**](FlightSchedule.md) |  |  [optional] |
 |**isAutoDailyPacing** | **Boolean** | Indicates whether automatic daily pacing is enabled.  Default value is false. |  [optional] |
 |**keywordStrategy** | [**KeywordStrategyEnum**](#KeywordStrategyEnum) | The keyword targeting strategy for this line item. |  [optional] |
 |**maxBid** | **Double** | The maximum bid amount allowed for this line item. |  [optional] |
 |**monthlyPacing** | **Double** | The monthly pacing limit for budget spending. |  [optional] |
 |**name** | **String** | The name of the line item. |  |
-|**optimizationStrategyEnum** | [**OptimizationStrategyEnumEnum**](#OptimizationStrategyEnumEnum) |  |  [optional] |
-|**startDate** | **OffsetDateTime** | The date and time when the line item should start running. |  |
+|**optimizationStrategy** | [**OptimizationStrategyEnum**](#OptimizationStrategyEnum) |  |  [optional] |
+|**startDate** | **OffsetDateTime** | The date and time when the line item starts running. |  |
 |**targetBid** | **Double** | The target bid amount for the line item. |  [optional] |
 |**targetRetailerId** | **String** | The ID of the retailer to target for this line item. |  |
 
@@ -29,7 +29,6 @@ Model to create a retail media auction line item
 
 | Name | Value |
 |---- | -----|
-| UNKNOWN | &quot;unknown&quot; |
 | CONVERSION | &quot;conversion&quot; |
 | CLICKS | &quot;clicks&quot; |
 | REVENUE | &quot;revenue&quot; |
@@ -46,7 +45,7 @@ Model to create a retail media auction line item
 
 
 
-## Enum: OptimizationStrategyEnumEnum
+## Enum: OptimizationStrategyEnum
 
 | Name | Value |
 |---- | -----|
