@@ -33,6 +33,7 @@ import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfProductS
 import com.criteo.api.marketingsolutions.preview.model.ValueResourceCollectionOutcomeOfProductFilterConfig;
 import com.criteo.api.marketingsolutions.preview.model.ValueResourceInputOfCreateProductFilterRequest;
 import com.criteo.api.marketingsolutions.preview.model.ValueResourceInputOfCreateProductSetRequest;
+import com.criteo.api.marketingsolutions.preview.model.ValueResourceInputOfPatchProductSetRequest;
 import com.criteo.api.marketingsolutions.preview.model.ValueResourceOutcomeOfProductFilterConfig;
 
 import java.lang.reflect.Type;
@@ -937,6 +938,134 @@ public class RecoApi {
 
         okhttp3.Call localVarCall = fetchProductSetsValidateBeforeCall(datasetId, _callback);
         Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfProductSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchProductSet
+     * @param productSetId ID of the product set (required)
+     * @param valueResourceInputOfPatchProductSetRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Product set modified successfully </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchProductSetCall(String productSetId, ValueResourceInputOfPatchProductSetRequest valueResourceInputOfPatchProductSetRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfPatchProductSetRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/product-sets/{product-set-id}"
+            .replace("{" + "product-set-id" + "}", localVarApiClient.escapeString(productSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchProductSetValidateBeforeCall(String productSetId, ValueResourceInputOfPatchProductSetRequest valueResourceInputOfPatchProductSetRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'productSetId' is set
+        if (productSetId == null) {
+            throw new ApiException("Missing the required parameter 'productSetId' when calling patchProductSet(Async)");
+        }
+
+        return patchProductSetCall(productSetId, valueResourceInputOfPatchProductSetRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Patch an existing product set
+     * @param productSetId ID of the product set (required)
+     * @param valueResourceInputOfPatchProductSetRequest  (optional)
+     * @return ResourceOutcomeOfProductSet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Product set modified successfully </td><td>  -  </td></tr>
+     </table>
+     */
+    public ResourceOutcomeOfProductSet patchProductSet(String productSetId, ValueResourceInputOfPatchProductSetRequest valueResourceInputOfPatchProductSetRequest) throws ApiException {
+        ApiResponse<ResourceOutcomeOfProductSet> localVarResp = patchProductSetWithHttpInfo(productSetId, valueResourceInputOfPatchProductSetRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Patch an existing product set
+     * @param productSetId ID of the product set (required)
+     * @param valueResourceInputOfPatchProductSetRequest  (optional)
+     * @return ApiResponse&lt;ResourceOutcomeOfProductSet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Product set modified successfully </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ResourceOutcomeOfProductSet> patchProductSetWithHttpInfo(String productSetId, ValueResourceInputOfPatchProductSetRequest valueResourceInputOfPatchProductSetRequest) throws ApiException {
+        okhttp3.Call localVarCall = patchProductSetValidateBeforeCall(productSetId, valueResourceInputOfPatchProductSetRequest, null);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfProductSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Patch an existing product set
+     * @param productSetId ID of the product set (required)
+     * @param valueResourceInputOfPatchProductSetRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Product set modified successfully </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchProductSetAsync(String productSetId, ValueResourceInputOfPatchProductSetRequest valueResourceInputOfPatchProductSetRequest, final ApiCallback<ResourceOutcomeOfProductSet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchProductSetValidateBeforeCall(productSetId, valueResourceInputOfPatchProductSetRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfProductSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

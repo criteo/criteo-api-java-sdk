@@ -272,6 +272,7 @@ docs/PatchCampaignListRequest.md
 docs/PatchCampaignSpendLimit.md
 docs/PatchCampaignWriteResource.md
 docs/PatchMarketingCampaignBudgetAutomation.md
+docs/PatchProductSetRequest.md
 docs/PatchResultCampaignListResponse.md
 docs/PatchResultCampaignReadResource.md
 docs/PlacementsReportQueryMessage.md
@@ -373,8 +374,10 @@ docs/UserDef.md
 docs/ValueResourceCollectionOutcomeOfProductFilterConfig.md
 docs/ValueResourceInputOfCreateProductFilterRequest.md
 docs/ValueResourceInputOfCreateProductSetRequest.md
+docs/ValueResourceInputOfPatchProductSetRequest.md
 docs/ValueResourceOfCreateProductFilterRequest.md
 docs/ValueResourceOfCreateProductSetRequest.md
+docs/ValueResourceOfPatchProductSetRequest.md
 docs/ValueResourceOfProductFilterConfig.md
 docs/ValueResourceOutcomeOfProductFilterConfig.md
 docs/VideoDetail.md
@@ -679,6 +682,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchCampaignListR
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchCampaignSpendLimit.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchCampaignWriteResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchMarketingCampaignBudgetAutomation.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchProductSetRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchResultCampaignListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchResultCampaignReadResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PlacementsReportQueryMessage.java
@@ -779,8 +783,10 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/UserDef.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceCollectionOutcomeOfProductFilterConfig.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceInputOfCreateProductFilterRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceInputOfCreateProductSetRequest.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceInputOfPatchProductSetRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfCreateProductFilterRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfCreateProductSetRequest.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfPatchProductSetRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfProductFilterConfig.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOutcomeOfProductFilterConfig.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/VideoDetail.java

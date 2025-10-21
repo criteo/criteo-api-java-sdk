@@ -290,7 +290,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Gets page of private market child accounts that are associated with the given account
+     * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
      * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
@@ -309,7 +309,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Gets page of private market child accounts that are associated with the given account
+     * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
      * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
@@ -329,7 +329,7 @@ public class AccountsApi {
 
     /**
      *  (asynchronously)
-     * Gets page of private market child accounts that are associated with the given account
+     * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
      * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)

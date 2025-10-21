@@ -17,11 +17,12 @@ tags:
 - name: Catalog
 - name: Gateway
 - name: OnSiteRecommendation
+- name: ThirdPartyAccounts
 paths:
   /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts:
     get:
-      description: Gets page of private market child accounts that are associated
-        with the given account
+      description: Gets Private Market child accounts that are associated with the
+        given account
       operationId: GetPrivateMarketChildAccountsByAccountId
       parameters:
       - description: Account Id
@@ -2986,6 +2987,42 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/retailers/{retailerId}/compute-display-min-bid:
+    post:
+      description: computes the min bid for relevant page types based on the provided
+        information
+      operationId: ComputeDisplayMinBidByRetailerId
+      parameters:
+      - description: the retailer id
+        explode: false
+        in: path
+        name: retailerId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputDisplayAuctionMinBidRequest'
+        description: the details for what cratives and product ids to use to compute
+          the min bids
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeDisplayAuctionMinBidResult'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/retailers/{retailerId}/offers/load:
     post:
       description: Replace the offers for one or more SKUs with a snapshot of the
@@ -3190,6 +3227,171 @@ paths:
         - RetailMedia_Campaign_Read
       tags:
       - Campaign
+      x-accepts: application/json
+  /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove:
+    post:
+      description: Attempt to remove the provided brand from the account.
+      parameters:
+      - description: account id to remove brand from
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: brand to remove
+        explode: false
+        in: path
+        name: brandId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfRetailMediaBrands'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_ThirdPartyAccounts_Manage
+      tags:
+      - ThirdPartyAccounts
+      x-accepts: application/json
+  /preview/retail-media/third-party-accounts/{accountId}/brands/add:
+    post:
+      description: add the provided brands to an account. This will not remove any
+        existing brands.
+      parameters:
+      - description: account to add brands to
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrands'
+        description: list of bands to add to an account
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfRetailMediaBrands'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_ThirdPartyAccounts_Manage
+      tags:
+      - ThirdPartyAccounts
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/third-party-accounts/{accountId}/create-brand-account:
+    post:
+      description: Create a private market demand brand account under a given parent
+        account.
+      parameters:
+      - description: parent supply account to create account under
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrandAccountCreationV2'
+        description: ""
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceOutcomeOfRetailMediaAccountV2'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_ThirdPartyAccounts_Manage
+      tags:
+      - ThirdPartyAccounts
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/third-party-accounts/{accountId}/create-seller-account:
+    post:
+      description: Create a private market demand seller account under a given parent
+        account.
+      parameters:
+      - description: parent supply account to create account under
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreationV2'
+        description: ""
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceOutcomeOfRetailMediaAccountV2'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_ThirdPartyAccounts_Manage
+      tags:
+      - ThirdPartyAccounts
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/third-party-accounts/{accountId}/sellers:
+    put:
+      description: Update the list of sellers mapped to the account. This will override
+        any existing mappings.
+      parameters:
+      - description: accountId to update sellers for
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
+        description: ""
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfRetailMediaSeller'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_ThirdPartyAccounts_Manage
+      tags:
+      - ThirdPartyAccounts
+      x-content-type: application/json
       x-accepts: application/json
 components:
   schemas:
@@ -6978,6 +7180,75 @@ components:
       required:
       - rate
       type: object
+    DisplayAuctionMinBidRequest:
+      additionalProperties: false
+      description: represents the list of creatives and respective product IDs to
+        compute min bid for.
+      example:
+        productIds:
+        - productIds
+        - productIds
+        - productIds
+        - productIds
+        - productIds
+        creativeIds:
+        - creativeIds
+        - creativeIds
+        - creativeIds
+        - creativeIds
+        - creativeIds
+      properties:
+        creativeIds:
+          description: List of Creatives to use
+          items:
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+        productIds:
+          description: List of potential product ids (SkuIds) to put in creatives
+          items:
+            type: string
+          maxItems: 50
+          type: array
+      type: object
+    DisplayAuctionMinBidResult:
+      additionalProperties: false
+      description: represents the min bid for a pagtype type and creative combination.
+      example:
+        minBid: 0.8008281904610115
+        pageType: unknown
+        creativeId: creativeId
+      nullable: true
+      properties:
+        creativeId:
+          description: The creativeId for the creative
+          nullable: true
+          type: string
+        minBid:
+          description: "The minimum bid for the combination of page type, creative\
+            \ and categories"
+          format: double
+          nullable: true
+          type: number
+        pageType:
+          description: Page type for the creative to display on
+          enum:
+          - unknown
+          - search
+          - home
+          - checkout
+          - category
+          - productDetail
+          - confirmation
+          - merchandising
+          - deals
+          - favorites
+          - searchBar
+          - categoryMenu
+          nullable: true
+          type: string
+      type: object
     EntityResourceBrandIdSearchResult:
       description: "A domain entity exposed by the API, identified by a unique id."
       example:
@@ -7795,6 +8066,37 @@ components:
           nullable: true
           type: string
       type: object
+    EntityResourceOfRetailMediaAccountV2:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          parentAccountLabel: parentAccountLabel
+          countryIds:
+          - countryIds
+          - countryIds
+          name: name
+          onBehalfCompanyName: onBehalfCompanyName
+          timeZone: timeZone
+          subType: unknown
+          currencyId: currencyId
+          payingCompanyName: payingCompanyName
+          type: unknown
+        id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExternalRetailMediaAccountV2'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     EntityResourceOfRetailMediaChildAccount:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
@@ -7927,6 +8229,82 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/EntityResourceOfCatalogStatusV2'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    EntityResourceOutcomeOfRetailMediaAccountV2:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
+      example:
+        data:
+          attributes:
+            parentAccountLabel: parentAccountLabel
+            countryIds:
+            - countryIds
+            - countryIds
+            name: name
+            onBehalfCompanyName: onBehalfCompanyName
+            timeZone: timeZone
+            subType: unknown
+            currencyId: currencyId
+            payingCompanyName: payingCompanyName
+            type: unknown
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/EntityResourceOfRetailMediaAccountV2'
         errors:
           description: Errors that occured during this call.
           items:
@@ -8226,6 +8604,120 @@ components:
           nullable: true
           type: integer
       type: object
+    ExternalRetailMediaAccountV2:
+      additionalProperties: false
+      description: The details for a newly created account
+      example:
+        parentAccountLabel: parentAccountLabel
+        countryIds:
+        - countryIds
+        - countryIds
+        name: name
+        onBehalfCompanyName: onBehalfCompanyName
+        timeZone: timeZone
+        subType: unknown
+        currencyId: currencyId
+        payingCompanyName: payingCompanyName
+        type: unknown
+      nullable: true
+      properties:
+        countryIds:
+          description: list of countries associated with the account
+          items:
+            type: string
+          nullable: true
+          type: array
+        currencyId:
+          description: the currency for the account
+          nullable: true
+          type: string
+        name:
+          description: account name
+          nullable: true
+          type: string
+        onBehalfCompanyName:
+          description: On behalf entity name of ads for the Digital Services Act
+          nullable: true
+          type: string
+        parentAccountLabel:
+          description: parent account label for the account
+          nullable: true
+          type: string
+        payingCompanyName:
+          description: Paying entity name of ads for the Digital Services Act
+          nullable: true
+          type: string
+        subType:
+          description: subtype for the account
+          enum:
+          - unknown
+          - brand
+          - seller
+          nullable: true
+          type: string
+        timeZone:
+          description: the timezone for the account
+          nullable: true
+          type: string
+        type:
+          description: Type for the account
+          enum:
+          - unknown
+          - supply
+          - demand
+          nullable: true
+          type: string
+      type: object
+    ExternalRetailMediaBrandAccountCreationV2:
+      additionalProperties: false
+      description: the initial set up and configuration options for a new private
+        market demand brand account
+      example:
+        brands:
+        - 0
+        - 0
+        name: name
+        onBehalfCompanyName: onBehalfCompanyName
+        payingCompanyName: payingCompanyName
+      properties:
+        brands:
+          description: list of brands to link to the new account
+          items:
+            format: int64
+            type: integer
+          nullable: true
+          type: array
+        name:
+          description: "the name of the account, must be unique across all accounts"
+          nullable: true
+          type: string
+        onBehalfCompanyName:
+          description: On behalf entity name of ads for the Digital Services Act
+          nullable: true
+          type: string
+        payingCompanyName:
+          description: Display name for reporting the owning entity of ads for the
+            Digital Services Act in the European Union
+          nullable: true
+          type: string
+      type: object
+    ExternalRetailMediaBrands:
+      additionalProperties: false
+      description: A collection of brand ids
+      example:
+        brandIds:
+        - 0
+        - 0
+      nullable: true
+      properties:
+        brandIds:
+          items:
+            format: int64
+            type: integer
+          type: array
+      required:
+      - brandIds
+      type: object
     ExternalRetailMediaChildAccount:
       additionalProperties: false
       description: The details for a newly created account
@@ -8284,6 +8776,60 @@ components:
           - Demand
           nullable: true
           type: string
+      type: object
+    ExternalRetailMediaSeller:
+      additionalProperties: false
+      description: used to define the exact seller linked with an account
+      example:
+        sellerId: sellerId
+        retailerId: 0
+      nullable: true
+      properties:
+        retailerId:
+          description: the retailer id
+          format: int32
+          type: integer
+        sellerId:
+          description: the seller id
+          type: string
+      required:
+      - retailerId
+      - sellerId
+      type: object
+    ExternalRetailMediaSellerAccountCreationV2:
+      additionalProperties: false
+      description: the initial set up and configuration options for a new private
+        market demand brand account
+      example:
+        name: name
+        onBehalfCompanyName: onBehalfCompanyName
+        payingCompanyName: payingCompanyName
+        sellers:
+        - sellerId: sellerId
+          retailerId: 0
+        - sellerId: sellerId
+          retailerId: 0
+      properties:
+        name:
+          description: "the name of the account, must be unique across all accounts"
+          nullable: true
+          type: string
+        onBehalfCompanyName:
+          description: On behalf entity name of ads for the Digital Services Act
+          nullable: true
+          type: string
+        payingCompanyName:
+          description: Display name for reporting the owning entity of ads for the
+            Digital Services Act in the European Union
+          nullable: true
+          type: string
+        sellers:
+          description: list of sellers to associate to the new account
+          items:
+            $ref: '#/components/schemas/ExternalRetailMediaSeller'
+          type: array
+      required:
+      - sellers
       type: object
     FilesVariableValue:
       additionalProperties: false
@@ -18026,6 +18572,175 @@ components:
           nullable: true
           type: string
       type: object
+    ValueResourceCollectionInputOfRetailMediaSeller:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for several
+        value objects.
+      example:
+        data:
+        - attributes:
+            sellerId: sellerId
+            retailerId: 0
+          type: type
+        - attributes:
+            sellerId: sellerId
+            retailerId: 0
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ValueResourceOfRetailMediaSeller'
+          nullable: true
+          type: array
+      type: object
+    ValueResourceCollectionOutcomeDisplayAuctionMinBidResult:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several value objects.
+      example:
+        data:
+        - attributes:
+            minBid: 0.8008281904610115
+            pageType: unknown
+            creativeId: creativeId
+          type: type
+        - attributes:
+            minBid: 0.8008281904610115
+            pageType: unknown
+            creativeId: creativeId
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ValueResourceDisplayAuctionMinBidResult'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    ValueResourceCollectionOutcomeOfRetailMediaSeller:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several value objects.
+      example:
+        data:
+        - attributes:
+            sellerId: sellerId
+            retailerId: 0
+          type: type
+        - attributes:
+            sellerId: sellerId
+            retailerId: 0
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ValueResourceOfRetailMediaSeller'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -18117,6 +18832,49 @@ components:
           readOnly: true
           type: array
       type: object
+    ValueResourceDisplayAuctionMinBidRequest:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          productIds:
+          - productIds
+          - productIds
+          - productIds
+          - productIds
+          - productIds
+          creativeIds:
+          - creativeIds
+          - creativeIds
+          - creativeIds
+          - creativeIds
+          - creativeIds
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/DisplayAuctionMinBidRequest'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ValueResourceDisplayAuctionMinBidResult:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          minBid: 0.8008281904610115
+          pageType: unknown
+          creativeId: creativeId
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/DisplayAuctionMinBidResult'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     ValueResourceInputAccountFeesSearchRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -18187,6 +18945,30 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceCategoriesSearchRequestV1'
+      type: object
+    ValueResourceInputDisplayAuctionMinBidRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            productIds:
+            - productIds
+            - productIds
+            - productIds
+            - productIds
+            - productIds
+            creativeIds:
+            - creativeIds
+            - creativeIds
+            - creativeIds
+            - creativeIds
+            - creativeIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceDisplayAuctionMinBidRequest'
       type: object
     ValueResourceInputLineItemBudgetCapOutHistoryRequest:
       additionalProperties: false
@@ -18313,6 +19095,59 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceOfRetailerSearchRequest'
+      type: object
+    ValueResourceInputOfRetailMediaBrandAccountCreationV2:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            brands:
+            - 0
+            - 0
+            name: name
+            onBehalfCompanyName: onBehalfCompanyName
+            payingCompanyName: payingCompanyName
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfRetailMediaBrandAccountCreationV2'
+      type: object
+    ValueResourceInputOfRetailMediaBrands:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            brandIds:
+            - 0
+            - 0
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfRetailMediaBrands'
+      type: object
+    ValueResourceInputOfRetailMediaSellerAccountCreationV2:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            name: name
+            onBehalfCompanyName: onBehalfCompanyName
+            payingCompanyName: payingCompanyName
+            sellers:
+            - sellerId: sellerId
+              retailerId: 0
+            - sellerId: sellerId
+              retailerId: 0
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfRetailMediaSellerAccountCreationV2'
       type: object
     ValueResourceInputOfSellerCatalogRequestV2:
       description: A top-level object that encapsulates a Criteo API request for a
@@ -18706,6 +19541,82 @@ components:
           nullable: true
           type: string
       type: object
+    ValueResourceOfRetailMediaBrandAccountCreationV2:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          brands:
+          - 0
+          - 0
+          name: name
+          onBehalfCompanyName: onBehalfCompanyName
+          payingCompanyName: payingCompanyName
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExternalRetailMediaBrandAccountCreationV2'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ValueResourceOfRetailMediaBrands:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          brandIds:
+          - 0
+          - 0
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExternalRetailMediaBrands'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ValueResourceOfRetailMediaSeller:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          sellerId: sellerId
+          retailerId: 0
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExternalRetailMediaSeller'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ValueResourceOfRetailMediaSellerAccountCreationV2:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          name: name
+          onBehalfCompanyName: onBehalfCompanyName
+          payingCompanyName: payingCompanyName
+          sellers:
+          - sellerId: sellerId
+            retailerId: 0
+          - sellerId: sellerId
+            retailerId: 0
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExternalRetailMediaSellerAccountCreationV2'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     ValueResourceOfSellerCatalogRequestV2:
       description: A value resource exposed by the API.
       example:
@@ -18940,6 +19851,73 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceLineItemBudgetCapOutHistoryResponse'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    ValueResourceOutcomeOfRetailMediaBrands:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            brandIds:
+            - 0
+            - 0
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfRetailMediaBrands'
         errors:
           description: Errors that occured during this call.
           items:

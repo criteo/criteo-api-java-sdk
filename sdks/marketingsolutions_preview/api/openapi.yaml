@@ -2910,6 +2910,38 @@ paths:
       tags:
       - Reco
       x-accepts: application/json
+    patch:
+      description: Patch an existing product set
+      operationId: PatchProductSet
+      parameters:
+      - description: ID of the product set
+        explode: false
+        in: path
+        name: product-set-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfPatchProductSetRequest'
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceOutcomeOfProductSet'
+          description: Product set modified successfully
+      security:
+      - oauth:
+        - MarketingSolutions_Reco_Manage
+      tags:
+      - Reco
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/product-sets/{product-set-id}/product-filters:
     get:
       description: Fetch product filtering usages for a given product set
@@ -14249,6 +14281,47 @@ components:
           description: Budget automation for the marketing campaign enable
           type: boolean
       type: object
+    PatchProductSetRequest:
+      description: Entity to update a product set
+      example:
+        minimumNumberOfProducts: 0
+        isDraft: true
+        name: name
+        rules:
+        - field: OBSOLETE_Extradata
+          values:
+          - values
+          - values
+          operator: IsIn
+        - field: OBSOLETE_Extradata
+          values:
+          - values
+          - values
+          operator: IsIn
+      properties:
+        isDraft:
+          description: "[optional] New value of product set segment status (draft\
+            \ or active)"
+          nullable: true
+          type: boolean
+        minimumNumberOfProducts:
+          description: "[optional] New minimum number of products of the product set\
+            \ to be patched. This is used to determine if the rules are valid!"
+          format: int32
+          nullable: true
+          type: integer
+        name:
+          description: "[optional]  New name that will be associated to the product\
+            \ set"
+          type: string
+        rules:
+          description: "[optional] New rules that will be associated to the product\
+            \ set"
+          items:
+            $ref: '#/components/schemas/ProductSetRule'
+          type: array
+          uniqueItems: false
+      type: object
     PatchResultCampaignListResponse:
       description: List of output resources
       example:
@@ -20306,6 +20379,31 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceOfCreateProductSetRequest'
       type: object
+    ValueResourceInputOfPatchProductSetRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value
+      example:
+        data:
+          attributes:
+            minimumNumberOfProducts: 0
+            isDraft: true
+            name: name
+            rules:
+            - field: OBSOLETE_Extradata
+              values:
+              - values
+              - values
+              operator: IsIn
+            - field: OBSOLETE_Extradata
+              values:
+              - values
+              - values
+              operator: IsIn
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfPatchProductSetRequest'
+      type: object
     ValueResourceOfCreateProductFilterRequest:
       description: A top-level object that encapsulates a Criteo API response for
         a single value.
@@ -20325,6 +20423,32 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/CreateProductSetRequest'
+        type:
+          type: string
+      type: object
+    ValueResourceOfPatchProductSetRequest:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          minimumNumberOfProducts: 0
+          isDraft: true
+          name: name
+          rules:
+          - field: OBSOLETE_Extradata
+            values:
+            - values
+            - values
+            operator: IsIn
+          - field: OBSOLETE_Extradata
+            values:
+            - values
+            - values
+            operator: IsIn
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/PatchProductSetRequest'
         type:
           type: string
       type: object

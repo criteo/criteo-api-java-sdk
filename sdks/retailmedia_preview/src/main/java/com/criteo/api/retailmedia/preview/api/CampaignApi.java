@@ -59,8 +59,10 @@ import com.criteo.api.retailmedia.preview.model.SellerPreviewResponse;
 import com.criteo.api.retailmedia.preview.model.SetBidsModelRequest;
 import com.criteo.api.retailmedia.preview.model.SkuDataPreviewListResponse;
 import com.criteo.api.retailmedia.preview.model.SkuSearchRequestPreviewRequest;
+import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomeDisplayAuctionMinBidResult;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputBrandIdSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputCategoriesSearchRequestV1;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputDisplayAuctionMinBidRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputLineItemBudgetCapOutHistoryRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfBrandCatalogRequestV2;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfRetailerSearchRequest;
@@ -503,6 +505,134 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = appendPromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, _callback);
         Type localVarReturnType = new TypeToken<ProductResourceOutcome>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for computeDisplayMinBidByRetailerId
+     * @param retailerId the retailer id (required)
+     * @param valueResourceInputDisplayAuctionMinBidRequest the details for what cratives and product ids to use to compute the min bids (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call computeDisplayMinBidByRetailerIdCall(Integer retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputDisplayAuctionMinBidRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/retailers/{retailerId}/compute-display-min-bid"
+            .replace("{" + "retailerId" + "}", localVarApiClient.escapeString(retailerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call computeDisplayMinBidByRetailerIdValidateBeforeCall(Integer retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'retailerId' is set
+        if (retailerId == null) {
+            throw new ApiException("Missing the required parameter 'retailerId' when calling computeDisplayMinBidByRetailerId(Async)");
+        }
+
+        return computeDisplayMinBidByRetailerIdCall(retailerId, valueResourceInputDisplayAuctionMinBidRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * computes the min bid for relevant page types based on the provided information
+     * @param retailerId the retailer id (required)
+     * @param valueResourceInputDisplayAuctionMinBidRequest the details for what cratives and product ids to use to compute the min bids (optional)
+     * @return ValueResourceCollectionOutcomeDisplayAuctionMinBidResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceCollectionOutcomeDisplayAuctionMinBidResult computeDisplayMinBidByRetailerId(Integer retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest) throws ApiException {
+        ApiResponse<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult> localVarResp = computeDisplayMinBidByRetailerIdWithHttpInfo(retailerId, valueResourceInputDisplayAuctionMinBidRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * computes the min bid for relevant page types based on the provided information
+     * @param retailerId the retailer id (required)
+     * @param valueResourceInputDisplayAuctionMinBidRequest the details for what cratives and product ids to use to compute the min bids (optional)
+     * @return ApiResponse&lt;ValueResourceCollectionOutcomeDisplayAuctionMinBidResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult> computeDisplayMinBidByRetailerIdWithHttpInfo(Integer retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest) throws ApiException {
+        okhttp3.Call localVarCall = computeDisplayMinBidByRetailerIdValidateBeforeCall(retailerId, valueResourceInputDisplayAuctionMinBidRequest, null);
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * computes the min bid for relevant page types based on the provided information
+     * @param retailerId the retailer id (required)
+     * @param valueResourceInputDisplayAuctionMinBidRequest the details for what cratives and product ids to use to compute the min bids (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call computeDisplayMinBidByRetailerIdAsync(Integer retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest, final ApiCallback<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = computeDisplayMinBidByRetailerIdValidateBeforeCall(retailerId, valueResourceInputDisplayAuctionMinBidRequest, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
