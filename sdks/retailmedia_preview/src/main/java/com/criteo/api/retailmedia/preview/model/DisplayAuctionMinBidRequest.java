@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * represents the list of creatives and respective product IDs to compute min bid for.
+ * Represents the list of creatives and respective product IDs to compute min bid for.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DisplayAuctionMinBidRequest {
@@ -99,7 +100,7 @@ public class DisplayAuctionMinBidRequest {
 
   public DisplayAuctionMinBidRequest addProductIdsItem(String productIdsItem) {
     if (this.productIds == null) {
-      this.productIds = new ArrayList<>();
+      this.productIds = null;
     }
     this.productIds.add(productIdsItem);
     return this;
@@ -135,9 +136,20 @@ public class DisplayAuctionMinBidRequest {
         Objects.equals(this.productIds, displayAuctionMinBidRequest.productIds);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(creativeIds, productIds);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

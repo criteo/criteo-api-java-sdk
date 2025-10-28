@@ -946,58 +946,6 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
-  /preview/retail-media/accounts/{account-id}/keywords/in-review-report:
-    get:
-      description: Generate a list of reports for line items which contain one or
-        more actionable keyword reviews
-      operationId: InReviewReportV1
-      parameters:
-      - description: The account to generate a report for
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: Number of items per page
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 25
-          format: int32
-          maximum: 50
-          minimum: 1
-          type: integer
-        style: form
-      - description: Offset for pagination
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Read
-      tags:
-      - Campaign
-      x-accepts: application/json
   /preview/retail-media/accounts/{account-id}/line-items/cap-out-history:
     post:
       description: Get the cap out history for line items
@@ -1028,39 +976,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/accounts/{accountId}/brand-catalog-export:
-    post:
-      description: Create a request for a Catalog available to the indicated account.
-      operationId: Catalog_PostApiExternalV2AccountBrandCatalogExportByAccountId
-      parameters:
-      - description: The account to request the catalog for.
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfBrandCatalogRequestV2'
-        x-bodyName: body
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EntityResourceOutcomeOfCatalogStatusV2'
-          description: Catalog request successfully created
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -1121,39 +1036,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/accounts/{accountId}/seller-catalog-export:
-    post:
-      description: Create a request for a Catalog available to the indicated account.
-      operationId: Catalog_PostApiExternalV2AccountSellerCatalogExportByAccountId
-      parameters:
-      - description: The account to request the catalog for.
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfSellerCatalogRequestV2'
-        x-bodyName: body
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EntityResourceOutcomeOfCatalogStatusV2'
-          description: Catalog request successfully created
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Manage
       tags:
       - Campaign
       x-content-type: application/json
@@ -1971,133 +1853,6 @@ paths:
         - RetailMedia_OnSiteRecommendation_Read
       tags:
       - OnSiteRecommendation
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/line-items/{id}/keywords:
-    get:
-      description: Fetch keywords associated with the specified line item
-      operationId: FetchKeywords
-      parameters:
-      - description: ID of the line item
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/KeywordsModelResponse'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Read
-      tags:
-      - Campaign
-      x-accepts: application/json
-  /preview/retail-media/line-items/{id}/keywords/add-remove:
-    post:
-      description: Add or Remove keywords from the line item in bulk
-      operationId: AddRemoveKeywords
-      parameters:
-      - description: ID of the line item
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddRemoveKeywordsModelRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcome'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Manage
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/line-items/{id}/keywords/set-bid:
-    post:
-      description: Set bid overrides for associated keywords to the given line item
-        in bulk
-      operationId: SetKeywordBids
-      parameters:
-      - description: ID of the line item
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetBidsModelRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcome'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Manage
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/line-items/{line-item-id}/keywords/review:
-    post:
-      description: Update the status of keyword reviews under a line item
-      operationId: UpdateKeywordReviewsV1
-      parameters:
-      - description: The line item to update keyword review statuses for
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputRetailMediaKeywordsReview'
-        description: Request object containing a list of Phrase-ReviewState pairs
-          to update
-        x-bodyName: keywordReviewSetStateRequest
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeRetailMediaKeywordsReviewResult'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Manage
-      tags:
-      - Campaign
       x-content-type: application/json
       x-accepts: application/json
   /preview/retail-media/line-items/{line-item-id}/product-buttons:
@@ -2989,11 +2744,11 @@ paths:
       x-accepts: application/json
   /preview/retail-media/retailers/{retailerId}/compute-display-min-bid:
     post:
-      description: computes the min bid for relevant page types based on the provided
+      description: Computes the min bid for relevant page types based on the provided
         information
       operationId: ComputeDisplayMinBidByRetailerId
       parameters:
-      - description: the retailer id
+      - description: The retailer id
         explode: false
         in: path
         name: retailerId
@@ -3007,7 +2762,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueResourceInputDisplayAuctionMinBidRequest'
-        description: the details for what cratives and product ids to use to compute
+        description: The details for what creatives and product ids to use to compute
           the min bids
       responses:
         "200":
@@ -3440,87 +3195,6 @@ components:
       required:
       - accountIds
       - fees
-      type: object
-    AddRemoveKeywordModel:
-      additionalProperties: false
-      description: A single keyword to be added or removed
-      example:
-        isDeleted: true
-        phrase: phrase
-        matchType: null
-      properties:
-        isDeleted:
-          type: boolean
-        matchType:
-          $ref: '#/components/schemas/MatchTypeModel'
-        phrase:
-          maxLength: 255
-          minLength: 0
-          nullable: true
-          type: string
-      type: object
-    AddRemoveKeywordsModel:
-      additionalProperties: false
-      description: Data model containing keywords to be added or removed from a line
-        item
-      example:
-        keywords:
-        - isDeleted: true
-          phrase: phrase
-          matchType: null
-        - isDeleted: true
-          phrase: phrase
-          matchType: null
-      properties:
-        keywords:
-          items:
-            $ref: '#/components/schemas/AddRemoveKeywordModel'
-          nullable: true
-          type: array
-      type: object
-    AddRemoveKeywordsModelRequest:
-      additionalProperties: false
-      description: Request object to add or remove keywords from a line item
-      example:
-        data:
-          attributes:
-            keywords:
-            - isDeleted: true
-              phrase: phrase
-              matchType: null
-            - isDeleted: true
-              phrase: phrase
-              matchType: null
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/AddRemoveKeywordsModelResource'
-      type: object
-    AddRemoveKeywordsModelResource:
-      additionalProperties: false
-      description: Resource object containing keywords to be added or removed from
-        a line item
-      example:
-        attributes:
-          keywords:
-          - isDeleted: true
-            phrase: phrase
-            matchType: null
-          - isDeleted: true
-            phrase: phrase
-            matchType: null
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/AddRemoveKeywordsModel'
-        id:
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
       type: object
     ApplicationSummaryModel:
       description: Used for the /me endpoint. Contains information about the currently
@@ -5864,53 +5538,6 @@ components:
           type: array
       title: BotMessage
       type: object
-    BrandCatalogRequestV2:
-      description: A request for a catalog under the specified format.
-      example:
-        modifiedAfter: 2000-01-23T04:56:07.000+00:00
-        brandIdFilter:
-        - brandIdFilter
-        - brandIdFilter
-        includeFields:
-        - Unknown
-        - Unknown
-        retailerIdFilter:
-        - 0
-        - 0
-      nullable: true
-      properties:
-        brandIdFilter:
-          description: The brand ids to filter the catalog by.
-          items:
-            description: The brand ids to filter the catalog by.
-            format: long-id
-            type: string
-          type: array
-        includeFields:
-          description: "Out of the optional fields, only the ones specified will be\
-            \ included in the catalog generated."
-          items:
-            enum:
-            - Unknown
-            - Description
-            - ImageUrl
-            - GoogleCategory
-            - RetailerName
-            - Category
-            - BrandName
-            type: string
-          type: array
-        modifiedAfter:
-          description: Only products modified after this time will be returned.
-          format: date-time
-          type: string
-        retailerIdFilter:
-          description: The retailer ids to filter the catalog by.
-          items:
-            format: int32
-            type: integer
-          type: array
-      type: object
     BrandIdSearchRequest:
       description: An object that represents the request of BrandIdSearch endpoint.
       example:
@@ -7182,7 +6809,7 @@ components:
       type: object
     DisplayAuctionMinBidRequest:
       additionalProperties: false
-      description: represents the list of creatives and respective product IDs to
+      description: Represents the list of creatives and respective product IDs to
         compute min bid for.
       example:
         productIds:
@@ -7210,11 +6837,12 @@ components:
           items:
             type: string
           maxItems: 50
+          nullable: true
           type: array
       type: object
     DisplayAuctionMinBidResult:
       additionalProperties: false
-      description: represents the min bid for a pagtype type and creative combination.
+      description: Represents the min bid for a pageType and creative combination.
       example:
         minBid: 0.8008281904610115
         pageType: unknown
@@ -7531,101 +7159,6 @@ components:
           readOnly: true
           type: array
         metadata:
-          $ref: '#/components/schemas/Metadata'
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        several entities and metadata.
-      example:
-        data:
-        - attributes:
-            accountId: accountId
-            accountName: accountName
-            lineItemId: lineItemId
-            campaignId: campaignId
-            lineItemName: lineItemName
-            retailerName: retailerName
-            countKeywords: 0
-            retailerId: retailerId
-            campaignName: campaignName
-          id: id
-          type: type
-        - attributes:
-            accountId: accountId
-            accountName: accountName
-            lineItemId: lineItemId
-            campaignId: campaignId
-            lineItemName: lineItemName
-            retailerName: retailerName
-            countKeywords: 0
-            retailerId: retailerId
-            campaignName: campaignName
-          id: id
-          type: type
-        meta:
-          offset: 1
-          count: 0
-          limit: 6
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/EntityResourceLineItemKeywordReviewReport'
-          nullable: true
-          type: array
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        meta:
           $ref: '#/components/schemas/Metadata'
         warnings:
           description: Warnings that occured during this call.
@@ -7975,34 +7508,6 @@ components:
           nullable: true
           readOnly: true
           type: array
-      type: object
-    EntityResourceLineItemKeywordReviewReport:
-      additionalProperties: false
-      description: "A domain entity exposed by the API, identified by a unique id."
-      example:
-        attributes:
-          accountId: accountId
-          accountName: accountName
-          lineItemId: lineItemId
-          campaignId: campaignId
-          lineItemName: lineItemName
-          retailerName: retailerName
-          countKeywords: 0
-          retailerId: retailerId
-          campaignName: campaignName
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/LineItemKeywordReviewReport'
-        id:
-          description: Unique id of the entity.
-          nullable: true
-          type: string
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
       type: object
     EntityResourceOfCatalogStatusV2:
       description: "A domain entity exposed by the API, identified by a unique id."
@@ -9087,36 +8592,6 @@ components:
       - attributes
       title: InbotDiscussionDataInstanceModel
       type: object
-    InputKeywordsModel:
-      additionalProperties: false
-      description: The keywords to be added or removed from a line item.
-      example:
-        negativeBroad:
-        - negativeBroad
-        - negativeBroad
-        positiveExact:
-        - positiveExact
-        - positiveExact
-        negativeExact:
-        - negativeExact
-        - negativeExact
-      properties:
-        negativeBroad:
-          items:
-            type: string
-          nullable: true
-          type: array
-        negativeExact:
-          items:
-            type: string
-          nullable: true
-          type: array
-        positiveExact:
-          items:
-            type: string
-          nullable: true
-          type: array
-      type: object
     InputResourceOfPreferredLineItemCreateModelV2:
       description: Data model for a Resource
       example:
@@ -9163,204 +8638,6 @@ components:
           description: The number of installments the buyer has to pay.
           format: int64
           type: integer
-      type: object
-    KeywordDataModel:
-      additionalProperties: false
-      description: A single keyword and associated bid override
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        matchType: null
-        inputKeywords:
-          negativeBroad:
-          - negativeBroad
-          - negativeBroad
-          positiveExact:
-          - positiveExact
-          - positiveExact
-          negativeExact:
-          - negativeExact
-          - negativeExact
-        bid: 0.8008281904610115
-        reviewState: null
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        bid:
-          format: double
-          nullable: true
-          type: number
-        createdAt:
-          format: date-time
-          type: string
-        inputKeywords:
-          $ref: '#/components/schemas/InputKeywordsModel'
-        matchType:
-          $ref: '#/components/schemas/MatchTypeModel'
-        reviewState:
-          $ref: '#/components/schemas/ReviewStateModel'
-        updatedAt:
-          format: date-time
-          type: string
-      type: object
-    KeywordsModel:
-      additionalProperties: false
-      description: The keywords associated with a line item.
-      example:
-        keywords:
-          key:
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            matchType: null
-            inputKeywords:
-              negativeBroad:
-              - negativeBroad
-              - negativeBroad
-              positiveExact:
-              - positiveExact
-              - positiveExact
-              negativeExact:
-              - negativeExact
-              - negativeExact
-            bid: 0.8008281904610115
-            reviewState: null
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-        rank:
-        - rank
-        - rank
-      nullable: true
-      properties:
-        keywords:
-          additionalProperties:
-            $ref: '#/components/schemas/KeywordDataModel'
-          nullable: true
-          type: object
-        rank:
-          items:
-            type: string
-          nullable: true
-          type: array
-      type: object
-    KeywordsModelResource:
-      additionalProperties: false
-      description: Resource object containing keywords associated with a line item.
-      example:
-        attributes:
-          keywords:
-            key:
-              createdAt: 2000-01-23T04:56:07.000+00:00
-              matchType: null
-              inputKeywords:
-                negativeBroad:
-                - negativeBroad
-                - negativeBroad
-                positiveExact:
-                - positiveExact
-                - positiveExact
-                negativeExact:
-                - negativeExact
-                - negativeExact
-              bid: 0.8008281904610115
-              reviewState: null
-              updatedAt: 2000-01-23T04:56:07.000+00:00
-          rank:
-          - rank
-          - rank
-        id: id
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/KeywordsModel'
-        id:
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
-      type: object
-    KeywordsModelResponse:
-      additionalProperties: false
-      description: Response object containing keywords associated with a line item.
-      example:
-        data:
-          attributes:
-            keywords:
-              key:
-                createdAt: 2000-01-23T04:56:07.000+00:00
-                matchType: null
-                inputKeywords:
-                  negativeBroad:
-                  - negativeBroad
-                  - negativeBroad
-                  positiveExact:
-                  - positiveExact
-                  - positiveExact
-                  negativeExact:
-                  - negativeExact
-                  - negativeExact
-                bid: 0.8008281904610115
-                reviewState: null
-                updatedAt: 2000-01-23T04:56:07.000+00:00
-            rank:
-            - rank
-            - rank
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-          status: 6
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-          status: 6
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-          status: 6
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-          status: 6
-      properties:
-        data:
-          $ref: '#/components/schemas/KeywordsModelResource'
-        errors:
-          items:
-            $ref: '#/components/schemas/RmcaCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/RmcaCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
       type: object
     LineItemBudgetCapOutHistory:
       additionalProperties: false
@@ -9485,67 +8762,6 @@ components:
       required:
       - count
       - type
-      type: object
-    LineItemKeywordReviewReport:
-      additionalProperties: false
-      description: Reports on a line item which contains one or more actionable keyword
-        reviews
-      example:
-        accountId: accountId
-        accountName: accountName
-        lineItemId: lineItemId
-        campaignId: campaignId
-        lineItemName: lineItemName
-        retailerName: retailerName
-        countKeywords: 0
-        retailerId: retailerId
-        campaignName: campaignName
-      nullable: true
-      properties:
-        accountId:
-          description: External ID of the account containing the campaign containing
-            the line item this report is for
-          type: string
-        accountName:
-          description: Name of the account containing the campaign containing the
-            line item this report is for
-          type: string
-        campaignId:
-          description: External ID of the campaign containing the line item this report
-            is for
-          type: string
-        campaignName:
-          description: Name of the campaign containing the line item this report is
-            for
-          type: string
-        countKeywords:
-          description: Number of PositiveExactMatch keywords on this line item that
-            are in either "InReview" or "Pending" state
-          format: int32
-          type: integer
-        lineItemId:
-          description: External ID of the line item that this report is for
-          type: string
-        lineItemName:
-          description: Name of the line item that this report is for
-          type: string
-        retailerId:
-          description: Retailer ID connected to the line item this report is for
-          type: string
-        retailerName:
-          description: Name of the retailer connected to the line item this report
-            is for
-          type: string
-      required:
-      - accountId
-      - accountName
-      - campaignId
-      - campaignName
-      - countKeywords
-      - lineItemId
-      - lineItemName
-      - retailerId
-      - retailerName
       type: object
     LineItemPageCategoryV2:
       description: Category information for a preferred line item page
@@ -9731,13 +8947,6 @@ components:
       - onsiteSponsoredProductsEnabled
       - rate
       type: object
-    MatchTypeModel:
-      description: The match type of a keyword.
-      enum:
-      - PositiveExactMatch
-      - NegativeExactMatch
-      - NegativeBroadMatch
-      type: string
     Message:
       description: message of the discussion
       example:
@@ -11723,9 +10932,9 @@ components:
       description: Metadata about the response. Used for pagination.
       example:
         offset: 5
-        count: 6
-        limit: 1
-        responseCount: 5
+        count: 1
+        limit: 5
+        responseCount: 2
       nullable: true
       properties:
         count:
@@ -12634,9 +11843,9 @@ components:
           type: type
         meta:
           offset: 5
-          count: 6
-          limit: 1
-          responseCount: 5
+          count: 1
+          limit: 5
+          responseCount: 2
         warnings:
         - traceId: traceId
           code: code
@@ -13548,66 +12757,6 @@ components:
           description: Canonical type name of the entity
           type: string
       type: object
-    ResourceOutcome:
-      additionalProperties: false
-      description: Outcome object containing errors and warnings.
-      example:
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-          status: 6
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-          status: 6
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-          status: 6
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-          status: 6
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/RmcaCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/RmcaCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     RetailerResult:
       additionalProperties: false
       description: The result of a query for the configuration of a retailer
@@ -13823,84 +12972,6 @@ components:
       - operation
       - requestDate
       type: object
-    RetailMediaKeywordsReview:
-      additionalProperties: false
-      description: "Request object for approval of keyword reviews, containing a list\
-        \ of Phrase-ReviewState pairs"
-      example:
-        keywords:
-        - phrase: phrase
-          reviewState: Unknown
-        - phrase: phrase
-          reviewState: Unknown
-      properties:
-        keywords:
-          description: List of Phrase-ReviewState pairs describing keyword review
-            updates to perform
-          items:
-            $ref: '#/components/schemas/ReviewSetState'
-          minItems: 1
-          type: array
-      required:
-      - keywords
-      type: object
-    RetailMediaKeywordsReviewResult:
-      additionalProperties: false
-      description: "Response object for approval of keyword reviews, containing a\
-        \ list of Phrase-ReviewState pairs"
-      example:
-        keywords:
-        - phrase: phrase
-          reviewState: Unknown
-        - phrase: phrase
-          reviewState: Unknown
-      nullable: true
-      properties:
-        keywords:
-          description: List of Phrase-ReviewState pairs describing keyword review
-            updates which were performed
-          items:
-            $ref: '#/components/schemas/ReviewSetState'
-          minItems: 1
-          type: array
-      required:
-      - keywords
-      type: object
-    ReviewSetState:
-      additionalProperties: false
-      description: A Phrase-ReviewState pair describing an update to a keyword review
-      example:
-        phrase: phrase
-        reviewState: Unknown
-      properties:
-        phrase:
-          description: Normalized key phrase for keyword review to update
-          type: string
-        reviewState:
-          description: Keyword review state to set for a phrase
-          enum:
-          - Unknown
-          - InReview
-          - Recommended
-          - Approved
-          - AutoApproved
-          - Rejected
-          - AutoRejected
-          type: string
-      required:
-      - phrase
-      - reviewState
-      type: object
-    ReviewStateModel:
-      description: The state of a keyword in the context of a line item.
-      enum:
-      - InReview
-      - Recommended
-      - Approved
-      - AutoApproved
-      - Rejected
-      - AutoRejected
-      type: string
     RmAlgebraNodeV1:
       description: Node in the audience algebra definition.
       example:
@@ -16685,60 +15756,6 @@ components:
           nullable: true
           type: string
       type: object
-    SellerCatalogRequestV2:
-      description: Used to request a catalog of seller SKUs
-      example:
-        modifiedAfter: 2000-01-23T04:56:07.000+00:00
-        includeFields:
-        - Unknown
-        - Unknown
-        sellers:
-        - sellerId: sellerId
-          retailerId: retailerId
-        - sellerId: sellerId
-          retailerId: retailerId
-      nullable: true
-      properties:
-        includeFields:
-          description: "Out of the optional fields, only the ones specified will be\
-            \ included in the catalog generated."
-          items:
-            enum:
-            - Unknown
-            - Description
-            - ImageUrl
-            - GlobalCategoryId
-            - RetailerName
-            - Category
-            - BrandName
-            type: string
-          type: array
-        modifiedAfter:
-          description: Only products modified after this time will be returned.
-          format: date-time
-          type: string
-        sellers:
-          description: A list of sellers to restrict the catalog to.
-          items:
-            $ref: '#/components/schemas/SellerIdentifierV2'
-          type: array
-      type: object
-    SellerIdentifierV2:
-      description: Identifies a Unique Seller
-      example:
-        sellerId: sellerId
-        retailerId: retailerId
-      properties:
-        retailerId:
-          description: The retailer Id that the seller operates under
-          type: string
-        sellerId:
-          description: The id for the seller based on the corresponding retailer
-          type: string
-      required:
-      - retailerId
-      - sellerId
-      type: object
     SellerPreview:
       description: Retail media Seller Id and Name
       example:
@@ -16811,79 +15828,6 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-      type: object
-    SetBidModel:
-      additionalProperties: false
-      description: A single keyword and associated bid override
-      example:
-        phrase: phrase
-        bid: 0.8008281904610115
-      properties:
-        bid:
-          format: double
-          nullable: true
-          type: number
-        phrase:
-          maxLength: 255
-          minLength: 0
-          nullable: true
-          type: string
-      type: object
-    SetBidsModel:
-      additionalProperties: false
-      description: Data model containing keywords and their associated bid overrides
-      example:
-        keywords:
-        - phrase: phrase
-          bid: 0.8008281904610115
-        - phrase: phrase
-          bid: 0.8008281904610115
-      properties:
-        keywords:
-          items:
-            $ref: '#/components/schemas/SetBidModel'
-          nullable: true
-          type: array
-      type: object
-    SetBidsModelRequest:
-      additionalProperties: false
-      description: Request object to set bid overrides for keywords associated with
-        a line item
-      example:
-        data:
-          attributes:
-            keywords:
-            - phrase: phrase
-              bid: 0.8008281904610115
-            - phrase: phrase
-              bid: 0.8008281904610115
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/SetBidsModelResource'
-      type: object
-    SetBidsModelResource:
-      additionalProperties: false
-      description: Resource object containing keywords and their associated bid overrides
-      example:
-        attributes:
-          keywords:
-          - phrase: phrase
-            bid: 0.8008281904610115
-          - phrase: phrase
-            bid: 0.8008281904610115
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/SetBidsModel'
-        id:
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
       type: object
     SetSkuBuyBoxWinnersRequest:
       additionalProperties: false
@@ -19059,28 +18003,6 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceLoadSkuOffersRequest'
       type: object
-    ValueResourceInputOfBrandCatalogRequestV2:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
-      example:
-        data:
-          attributes:
-            modifiedAfter: 2000-01-23T04:56:07.000+00:00
-            brandIdFilter:
-            - brandIdFilter
-            - brandIdFilter
-            includeFields:
-            - Unknown
-            - Unknown
-            retailerIdFilter:
-            - 0
-            - 0
-          type: type
-      nullable: true
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfBrandCatalogRequestV2'
-      type: object
     ValueResourceInputOfRetailerSearchRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -19148,27 +18070,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceOfRetailMediaSellerAccountCreationV2'
-      type: object
-    ValueResourceInputOfSellerCatalogRequestV2:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
-      example:
-        data:
-          attributes:
-            modifiedAfter: 2000-01-23T04:56:07.000+00:00
-            includeFields:
-            - Unknown
-            - Unknown
-            sellers:
-            - sellerId: sellerId
-              retailerId: retailerId
-            - sellerId: sellerId
-              retailerId: retailerId
-          type: type
-      nullable: true
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfSellerCatalogRequestV2'
       type: object
     ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel:
       additionalProperties: false
@@ -19290,23 +18191,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceRecommendedKeywordsRequestV1'
-      type: object
-    ValueResourceInputRetailMediaKeywordsReview:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
-      example:
-        data:
-          attributes:
-            keywords:
-            - phrase: phrase
-              reviewState: Unknown
-            - phrase: phrase
-              reviewState: Unknown
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceRetailMediaKeywordsReview'
       type: object
     ValueResourceInputSetSkuBuyBoxWinnersRequest:
       additionalProperties: false
@@ -19501,29 +18385,6 @@ components:
           nullable: true
           type: string
       type: object
-    ValueResourceOfBrandCatalogRequestV2:
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          modifiedAfter: 2000-01-23T04:56:07.000+00:00
-          brandIdFilter:
-          - brandIdFilter
-          - brandIdFilter
-          includeFields:
-          - Unknown
-          - Unknown
-          retailerIdFilter:
-          - 0
-          - 0
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/BrandCatalogRequestV2'
-        type:
-          description: The Type of the resource.
-          type: string
-      type: object
     ValueResourceOfRetailerSearchRequest:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -19615,28 +18476,6 @@ components:
         type:
           description: Type of the resource.
           nullable: true
-          type: string
-      type: object
-    ValueResourceOfSellerCatalogRequestV2:
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          modifiedAfter: 2000-01-23T04:56:07.000+00:00
-          includeFields:
-          - Unknown
-          - Unknown
-          sellers:
-          - sellerId: sellerId
-            retailerId: retailerId
-          - sellerId: sellerId
-            retailerId: retailerId
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/SellerCatalogRequestV2'
-        type:
-          description: The Type of the resource.
           type: string
       type: object
     ValueResourceOfSponsoredProductsLineItemCreateRequestModel:
@@ -20000,75 +18839,6 @@ components:
           readOnly: true
           type: array
       type: object
-    ValueResourceOutcomeRetailMediaKeywordsReviewResult:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value object.
-      example:
-        data:
-          attributes:
-            keywords:
-            - phrase: phrase
-              reviewState: Unknown
-            - phrase: phrase
-              reviewState: Unknown
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceRetailMediaKeywordsReviewResult'
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     ValueResourcePartnerBillingReportRequestV1:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -20166,45 +18936,6 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/RecommendedKeywordsResponseV1'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceRetailMediaKeywordsReview:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          keywords:
-          - phrase: phrase
-            reviewState: Unknown
-          - phrase: phrase
-            reviewState: Unknown
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/RetailMediaKeywordsReview'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceRetailMediaKeywordsReviewResult:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          keywords:
-          - phrase: phrase
-            reviewState: Unknown
-          - phrase: phrase
-            reviewState: Unknown
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/RetailMediaKeywordsReviewResult'
         type:
           description: Type of the resource.
           nullable: true

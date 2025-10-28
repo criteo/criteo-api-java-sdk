@@ -2,7 +2,7 @@
 
 # DisplayAuctionMinBidResult
 
-represents the min bid for a pagtype type and creative combination.
+Represents the min bid for a pageType and creative combination.
 
 ## Properties
 

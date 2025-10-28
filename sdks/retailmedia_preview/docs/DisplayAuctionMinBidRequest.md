@@ -2,7 +2,7 @@
 
 # DisplayAuctionMinBidRequest
 
-represents the list of creatives and respective product IDs to compute min bid for.
+Represents the list of creatives and respective product IDs to compute min bid for.
 
 ## Properties
 

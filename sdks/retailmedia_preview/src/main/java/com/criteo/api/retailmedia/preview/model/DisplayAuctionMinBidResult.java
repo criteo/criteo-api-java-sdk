@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * represents the min bid for a pagtype type and creative combination.
+ * Represents the min bid for a pageType and creative combination.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DisplayAuctionMinBidResult {
