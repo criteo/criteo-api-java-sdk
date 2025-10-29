@@ -101,748 +101,6 @@ public class AudienceApi {
     }
 
     /**
-     * Build call for bulkCreateAudienceSegments
-     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkCreateAudienceSegmentsCall(AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = audienceSegmentBulkCreateInputV1;
-
-        // create path and map variables
-        String localVarPath = "/2025-04/marketing-solutions/audience-segments/create";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkCreateAudienceSegmentsValidateBeforeCall(AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'audienceSegmentBulkCreateInputV1' is set
-        if (audienceSegmentBulkCreateInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'audienceSegmentBulkCreateInputV1' when calling bulkCreateAudienceSegments(Async)");
-        }
-
-        return bulkCreateAudienceSegmentsCall(audienceSegmentBulkCreateInputV1, _callback);
-
-    }
-
-    /**
-     * 
-     * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
-     * @return AudienceSegmentEntityV1ListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public AudienceSegmentEntityV1ListResponse bulkCreateAudienceSegments(AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1) throws ApiException {
-        ApiResponse<AudienceSegmentEntityV1ListResponse> localVarResp = bulkCreateAudienceSegmentsWithHttpInfo(audienceSegmentBulkCreateInputV1);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
-     * @return ApiResponse&lt;AudienceSegmentEntityV1ListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AudienceSegmentEntityV1ListResponse> bulkCreateAudienceSegmentsWithHttpInfo(AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1) throws ApiException {
-        okhttp3.Call localVarCall = bulkCreateAudienceSegmentsValidateBeforeCall(audienceSegmentBulkCreateInputV1, null);
-        Type localVarReturnType = new TypeToken<AudienceSegmentEntityV1ListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkCreateAudienceSegmentsAsync(AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1, final ApiCallback<AudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = bulkCreateAudienceSegmentsValidateBeforeCall(audienceSegmentBulkCreateInputV1, _callback);
-        Type localVarReturnType = new TypeToken<AudienceSegmentEntityV1ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for bulkCreateAudiences
-     * @param audienceBulkCreateInputV1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkCreateAudiencesCall(AudienceBulkCreateInputV1 audienceBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = audienceBulkCreateInputV1;
-
-        // create path and map variables
-        String localVarPath = "/2025-04/marketing-solutions/audiences/create";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkCreateAudiencesValidateBeforeCall(AudienceBulkCreateInputV1 audienceBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'audienceBulkCreateInputV1' is set
-        if (audienceBulkCreateInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'audienceBulkCreateInputV1' when calling bulkCreateAudiences(Async)");
-        }
-
-        return bulkCreateAudiencesCall(audienceBulkCreateInputV1, _callback);
-
-    }
-
-    /**
-     * 
-     * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceBulkCreateInputV1  (required)
-     * @return AudienceEntityV1ListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public AudienceEntityV1ListResponse bulkCreateAudiences(AudienceBulkCreateInputV1 audienceBulkCreateInputV1) throws ApiException {
-        ApiResponse<AudienceEntityV1ListResponse> localVarResp = bulkCreateAudiencesWithHttpInfo(audienceBulkCreateInputV1);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceBulkCreateInputV1  (required)
-     * @return ApiResponse&lt;AudienceEntityV1ListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AudienceEntityV1ListResponse> bulkCreateAudiencesWithHttpInfo(AudienceBulkCreateInputV1 audienceBulkCreateInputV1) throws ApiException {
-        okhttp3.Call localVarCall = bulkCreateAudiencesValidateBeforeCall(audienceBulkCreateInputV1, null);
-        Type localVarReturnType = new TypeToken<AudienceEntityV1ListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceBulkCreateInputV1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkCreateAudiencesAsync(AudienceBulkCreateInputV1 audienceBulkCreateInputV1, final ApiCallback<AudienceEntityV1ListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = bulkCreateAudiencesValidateBeforeCall(audienceBulkCreateInputV1, _callback);
-        Type localVarReturnType = new TypeToken<AudienceEntityV1ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for bulkDeleteAudienceSegments
-     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkDeleteAudienceSegmentsCall(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = audienceSegmentBulkDeleteInputV1;
-
-        // create path and map variables
-        String localVarPath = "/2025-04/marketing-solutions/audience-segments/delete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkDeleteAudienceSegmentsValidateBeforeCall(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'audienceSegmentBulkDeleteInputV1' is set
-        if (audienceSegmentBulkDeleteInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'audienceSegmentBulkDeleteInputV1' when calling bulkDeleteAudienceSegments(Async)");
-        }
-
-        return bulkDeleteAudienceSegmentsCall(audienceSegmentBulkDeleteInputV1, _callback);
-
-    }
-
-    /**
-     * 
-     * Delete the segments associated to the given audience IDs.
-     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
-     * @return AudienceSegmentIdEntityV1ListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public AudienceSegmentIdEntityV1ListResponse bulkDeleteAudienceSegments(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1) throws ApiException {
-        ApiResponse<AudienceSegmentIdEntityV1ListResponse> localVarResp = bulkDeleteAudienceSegmentsWithHttpInfo(audienceSegmentBulkDeleteInputV1);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Delete the segments associated to the given audience IDs.
-     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
-     * @return ApiResponse&lt;AudienceSegmentIdEntityV1ListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AudienceSegmentIdEntityV1ListResponse> bulkDeleteAudienceSegmentsWithHttpInfo(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1) throws ApiException {
-        okhttp3.Call localVarCall = bulkDeleteAudienceSegmentsValidateBeforeCall(audienceSegmentBulkDeleteInputV1, null);
-        Type localVarReturnType = new TypeToken<AudienceSegmentIdEntityV1ListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Delete the segments associated to the given audience IDs.
-     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkDeleteAudienceSegmentsAsync(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback<AudienceSegmentIdEntityV1ListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = bulkDeleteAudienceSegmentsValidateBeforeCall(audienceSegmentBulkDeleteInputV1, _callback);
-        Type localVarReturnType = new TypeToken<AudienceSegmentIdEntityV1ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for bulkDeleteAudiences
-     * @param audienceBulkDeleteInputV1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkDeleteAudiencesCall(AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = audienceBulkDeleteInputV1;
-
-        // create path and map variables
-        String localVarPath = "/2025-04/marketing-solutions/audiences/delete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkDeleteAudiencesValidateBeforeCall(AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'audienceBulkDeleteInputV1' is set
-        if (audienceBulkDeleteInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'audienceBulkDeleteInputV1' when calling bulkDeleteAudiences(Async)");
-        }
-
-        return bulkDeleteAudiencesCall(audienceBulkDeleteInputV1, _callback);
-
-    }
-
-    /**
-     * 
-     * Deletes the audiences associated to the given audience IDs.
-     * @param audienceBulkDeleteInputV1  (required)
-     * @return AudienceIdEntityV1ListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public AudienceIdEntityV1ListResponse bulkDeleteAudiences(AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1) throws ApiException {
-        ApiResponse<AudienceIdEntityV1ListResponse> localVarResp = bulkDeleteAudiencesWithHttpInfo(audienceBulkDeleteInputV1);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Deletes the audiences associated to the given audience IDs.
-     * @param audienceBulkDeleteInputV1  (required)
-     * @return ApiResponse&lt;AudienceIdEntityV1ListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AudienceIdEntityV1ListResponse> bulkDeleteAudiencesWithHttpInfo(AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1) throws ApiException {
-        okhttp3.Call localVarCall = bulkDeleteAudiencesValidateBeforeCall(audienceBulkDeleteInputV1, null);
-        Type localVarReturnType = new TypeToken<AudienceIdEntityV1ListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Deletes the audiences associated to the given audience IDs.
-     * @param audienceBulkDeleteInputV1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkDeleteAudiencesAsync(AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1, final ApiCallback<AudienceIdEntityV1ListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = bulkDeleteAudiencesValidateBeforeCall(audienceBulkDeleteInputV1, _callback);
-        Type localVarReturnType = new TypeToken<AudienceIdEntityV1ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for bulkUpdateAudienceSegments
-     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkUpdateAudienceSegmentsCall(AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = audienceSegmentBulkUpdateInputV1;
-
-        // create path and map variables
-        String localVarPath = "/2025-04/marketing-solutions/audience-segments";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkUpdateAudienceSegmentsValidateBeforeCall(AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'audienceSegmentBulkUpdateInputV1' is set
-        if (audienceSegmentBulkUpdateInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'audienceSegmentBulkUpdateInputV1' when calling bulkUpdateAudienceSegments(Async)");
-        }
-
-        return bulkUpdateAudienceSegmentsCall(audienceSegmentBulkUpdateInputV1, _callback);
-
-    }
-
-    /**
-     * 
-     * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
-     * @return AudienceSegmentEntityV1ListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public AudienceSegmentEntityV1ListResponse bulkUpdateAudienceSegments(AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1) throws ApiException {
-        ApiResponse<AudienceSegmentEntityV1ListResponse> localVarResp = bulkUpdateAudienceSegmentsWithHttpInfo(audienceSegmentBulkUpdateInputV1);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
-     * @return ApiResponse&lt;AudienceSegmentEntityV1ListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AudienceSegmentEntityV1ListResponse> bulkUpdateAudienceSegmentsWithHttpInfo(AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1) throws ApiException {
-        okhttp3.Call localVarCall = bulkUpdateAudienceSegmentsValidateBeforeCall(audienceSegmentBulkUpdateInputV1, null);
-        Type localVarReturnType = new TypeToken<AudienceSegmentEntityV1ListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkUpdateAudienceSegmentsAsync(AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1, final ApiCallback<AudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = bulkUpdateAudienceSegmentsValidateBeforeCall(audienceSegmentBulkUpdateInputV1, _callback);
-        Type localVarReturnType = new TypeToken<AudienceSegmentEntityV1ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for bulkUpdateAudiences
-     * @param audienceBulkUpdateInputV1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkUpdateAudiencesCall(AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = audienceBulkUpdateInputV1;
-
-        // create path and map variables
-        String localVarPath = "/2025-04/marketing-solutions/audiences";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkUpdateAudiencesValidateBeforeCall(AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'audienceBulkUpdateInputV1' is set
-        if (audienceBulkUpdateInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'audienceBulkUpdateInputV1' when calling bulkUpdateAudiences(Async)");
-        }
-
-        return bulkUpdateAudiencesCall(audienceBulkUpdateInputV1, _callback);
-
-    }
-
-    /**
-     * 
-     * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceBulkUpdateInputV1  (required)
-     * @return AudienceEntityV1ListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public AudienceEntityV1ListResponse bulkUpdateAudiences(AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1) throws ApiException {
-        ApiResponse<AudienceEntityV1ListResponse> localVarResp = bulkUpdateAudiencesWithHttpInfo(audienceBulkUpdateInputV1);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceBulkUpdateInputV1  (required)
-     * @return ApiResponse&lt;AudienceEntityV1ListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AudienceEntityV1ListResponse> bulkUpdateAudiencesWithHttpInfo(AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1) throws ApiException {
-        okhttp3.Call localVarCall = bulkUpdateAudiencesValidateBeforeCall(audienceBulkUpdateInputV1, null);
-        Type localVarReturnType = new TypeToken<AudienceEntityV1ListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceBulkUpdateInputV1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call bulkUpdateAudiencesAsync(AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1, final ApiCallback<AudienceEntityV1ListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = bulkUpdateAudiencesValidateBeforeCall(audienceBulkUpdateInputV1, _callback);
-        Type localVarReturnType = new TypeToken<AudienceEntityV1ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for call04audiencesAudienceSegmentIdContactlistDelete
      * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
      * @param _callback Callback for upload/download progress
@@ -1601,7 +859,503 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
-     * Build call for estimateAudienceSegmentSize
+     * Build call for createAudienceSegments
+     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAudienceSegmentsCall(AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = audienceSegmentBulkCreateInputV1;
+
+        // create path and map variables
+        String localVarPath = "/2025-04/marketing-solutions/audience-segments/create";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAudienceSegmentsValidateBeforeCall(AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentBulkCreateInputV1' is set
+        if (audienceSegmentBulkCreateInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentBulkCreateInputV1' when calling createAudienceSegments(Async)");
+        }
+
+        return createAudienceSegmentsCall(audienceSegmentBulkCreateInputV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
+     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
+     * @return AudienceSegmentEntityV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AudienceSegmentEntityV1ListResponse createAudienceSegments(AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1) throws ApiException {
+        ApiResponse<AudienceSegmentEntityV1ListResponse> localVarResp = createAudienceSegmentsWithHttpInfo(audienceSegmentBulkCreateInputV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
+     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
+     * @return ApiResponse&lt;AudienceSegmentEntityV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AudienceSegmentEntityV1ListResponse> createAudienceSegmentsWithHttpInfo(AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1) throws ApiException {
+        okhttp3.Call localVarCall = createAudienceSegmentsValidateBeforeCall(audienceSegmentBulkCreateInputV1, null);
+        Type localVarReturnType = new TypeToken<AudienceSegmentEntityV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
+     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAudienceSegmentsAsync(AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1, final ApiCallback<AudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAudienceSegmentsValidateBeforeCall(audienceSegmentBulkCreateInputV1, _callback);
+        Type localVarReturnType = new TypeToken<AudienceSegmentEntityV1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createAudiences
+     * @param audienceBulkCreateInputV1  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAudiencesCall(AudienceBulkCreateInputV1 audienceBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = audienceBulkCreateInputV1;
+
+        // create path and map variables
+        String localVarPath = "/2025-04/marketing-solutions/audiences/create";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAudiencesValidateBeforeCall(AudienceBulkCreateInputV1 audienceBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceBulkCreateInputV1' is set
+        if (audienceBulkCreateInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceBulkCreateInputV1' when calling createAudiences(Async)");
+        }
+
+        return createAudiencesCall(audienceBulkCreateInputV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
+     * @param audienceBulkCreateInputV1  (required)
+     * @return AudienceEntityV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AudienceEntityV1ListResponse createAudiences(AudienceBulkCreateInputV1 audienceBulkCreateInputV1) throws ApiException {
+        ApiResponse<AudienceEntityV1ListResponse> localVarResp = createAudiencesWithHttpInfo(audienceBulkCreateInputV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
+     * @param audienceBulkCreateInputV1  (required)
+     * @return ApiResponse&lt;AudienceEntityV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AudienceEntityV1ListResponse> createAudiencesWithHttpInfo(AudienceBulkCreateInputV1 audienceBulkCreateInputV1) throws ApiException {
+        okhttp3.Call localVarCall = createAudiencesValidateBeforeCall(audienceBulkCreateInputV1, null);
+        Type localVarReturnType = new TypeToken<AudienceEntityV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
+     * @param audienceBulkCreateInputV1  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAudiencesAsync(AudienceBulkCreateInputV1 audienceBulkCreateInputV1, final ApiCallback<AudienceEntityV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAudiencesValidateBeforeCall(audienceBulkCreateInputV1, _callback);
+        Type localVarReturnType = new TypeToken<AudienceEntityV1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteAudienceSegments
+     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAudienceSegmentsCall(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = audienceSegmentBulkDeleteInputV1;
+
+        // create path and map variables
+        String localVarPath = "/2025-04/marketing-solutions/audience-segments/delete";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteAudienceSegmentsValidateBeforeCall(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentBulkDeleteInputV1' is set
+        if (audienceSegmentBulkDeleteInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentBulkDeleteInputV1' when calling deleteAudienceSegments(Async)");
+        }
+
+        return deleteAudienceSegmentsCall(audienceSegmentBulkDeleteInputV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Delete the segments associated to the given audience IDs.
+     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
+     * @return AudienceSegmentIdEntityV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AudienceSegmentIdEntityV1ListResponse deleteAudienceSegments(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1) throws ApiException {
+        ApiResponse<AudienceSegmentIdEntityV1ListResponse> localVarResp = deleteAudienceSegmentsWithHttpInfo(audienceSegmentBulkDeleteInputV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Delete the segments associated to the given audience IDs.
+     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
+     * @return ApiResponse&lt;AudienceSegmentIdEntityV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AudienceSegmentIdEntityV1ListResponse> deleteAudienceSegmentsWithHttpInfo(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1) throws ApiException {
+        okhttp3.Call localVarCall = deleteAudienceSegmentsValidateBeforeCall(audienceSegmentBulkDeleteInputV1, null);
+        Type localVarReturnType = new TypeToken<AudienceSegmentIdEntityV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete the segments associated to the given audience IDs.
+     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAudienceSegmentsAsync(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback<AudienceSegmentIdEntityV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAudienceSegmentsValidateBeforeCall(audienceSegmentBulkDeleteInputV1, _callback);
+        Type localVarReturnType = new TypeToken<AudienceSegmentIdEntityV1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteAudiences
+     * @param audienceBulkDeleteInputV1  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAudiencesCall(AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = audienceBulkDeleteInputV1;
+
+        // create path and map variables
+        String localVarPath = "/2025-04/marketing-solutions/audiences/delete";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteAudiencesValidateBeforeCall(AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceBulkDeleteInputV1' is set
+        if (audienceBulkDeleteInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceBulkDeleteInputV1' when calling deleteAudiences(Async)");
+        }
+
+        return deleteAudiencesCall(audienceBulkDeleteInputV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Deletes the audiences associated to the given audience IDs.
+     * @param audienceBulkDeleteInputV1  (required)
+     * @return AudienceIdEntityV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AudienceIdEntityV1ListResponse deleteAudiences(AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1) throws ApiException {
+        ApiResponse<AudienceIdEntityV1ListResponse> localVarResp = deleteAudiencesWithHttpInfo(audienceBulkDeleteInputV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Deletes the audiences associated to the given audience IDs.
+     * @param audienceBulkDeleteInputV1  (required)
+     * @return ApiResponse&lt;AudienceIdEntityV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AudienceIdEntityV1ListResponse> deleteAudiencesWithHttpInfo(AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1) throws ApiException {
+        okhttp3.Call localVarCall = deleteAudiencesValidateBeforeCall(audienceBulkDeleteInputV1, null);
+        Type localVarReturnType = new TypeToken<AudienceIdEntityV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Deletes the audiences associated to the given audience IDs.
+     * @param audienceBulkDeleteInputV1  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAudiencesAsync(AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1, final ApiCallback<AudienceIdEntityV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAudiencesValidateBeforeCall(audienceBulkDeleteInputV1, _callback);
+        Type localVarReturnType = new TypeToken<AudienceIdEntityV1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for estimateAudienceSegmentsSizes
      * @param audienceSegmentEstimateSizeInputV1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1612,7 +1366,7 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call estimateAudienceSegmentSizeCall(AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call estimateAudienceSegmentsSizesCall(AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1658,13 +1412,13 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call estimateAudienceSegmentSizeValidateBeforeCall(AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call estimateAudienceSegmentsSizesValidateBeforeCall(AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'audienceSegmentEstimateSizeInputV1' is set
         if (audienceSegmentEstimateSizeInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'audienceSegmentEstimateSizeInputV1' when calling estimateAudienceSegmentSize(Async)");
+            throw new ApiException("Missing the required parameter 'audienceSegmentEstimateSizeInputV1' when calling estimateAudienceSegmentsSizes(Async)");
         }
 
-        return estimateAudienceSegmentSizeCall(audienceSegmentEstimateSizeInputV1, _callback);
+        return estimateAudienceSegmentsSizesCall(audienceSegmentEstimateSizeInputV1, _callback);
 
     }
 
@@ -1680,8 +1434,8 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public AudienceSegmentSizeEstimationV1Response estimateAudienceSegmentSize(AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1) throws ApiException {
-        ApiResponse<AudienceSegmentSizeEstimationV1Response> localVarResp = estimateAudienceSegmentSizeWithHttpInfo(audienceSegmentEstimateSizeInputV1);
+    public AudienceSegmentSizeEstimationV1Response estimateAudienceSegmentsSizes(AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1) throws ApiException {
+        ApiResponse<AudienceSegmentSizeEstimationV1Response> localVarResp = estimateAudienceSegmentsSizesWithHttpInfo(audienceSegmentEstimateSizeInputV1);
         return localVarResp.getData();
     }
 
@@ -1697,8 +1451,8 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AudienceSegmentSizeEstimationV1Response> estimateAudienceSegmentSizeWithHttpInfo(AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1) throws ApiException {
-        okhttp3.Call localVarCall = estimateAudienceSegmentSizeValidateBeforeCall(audienceSegmentEstimateSizeInputV1, null);
+    public ApiResponse<AudienceSegmentSizeEstimationV1Response> estimateAudienceSegmentsSizesWithHttpInfo(AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1) throws ApiException {
+        okhttp3.Call localVarCall = estimateAudienceSegmentsSizesValidateBeforeCall(audienceSegmentEstimateSizeInputV1, null);
         Type localVarReturnType = new TypeToken<AudienceSegmentSizeEstimationV1Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1716,15 +1470,15 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call estimateAudienceSegmentSizeAsync(AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1, final ApiCallback<AudienceSegmentSizeEstimationV1Response> _callback) throws ApiException {
+    public okhttp3.Call estimateAudienceSegmentsSizesAsync(AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1, final ApiCallback<AudienceSegmentSizeEstimationV1Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = estimateAudienceSegmentSizeValidateBeforeCall(audienceSegmentEstimateSizeInputV1, _callback);
+        okhttp3.Call localVarCall = estimateAudienceSegmentsSizesValidateBeforeCall(audienceSegmentEstimateSizeInputV1, _callback);
         Type localVarReturnType = new TypeToken<AudienceSegmentSizeEstimationV1Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for estimateAudienceSize
+     * Build call for estimateAudiencesSizes
      * @param audienceEstimateSizeInputV1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1735,7 +1489,7 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call estimateAudienceSizeCall(AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call estimateAudiencesSizesCall(AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1781,13 +1535,13 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call estimateAudienceSizeValidateBeforeCall(AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call estimateAudiencesSizesValidateBeforeCall(AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'audienceEstimateSizeInputV1' is set
         if (audienceEstimateSizeInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'audienceEstimateSizeInputV1' when calling estimateAudienceSize(Async)");
+            throw new ApiException("Missing the required parameter 'audienceEstimateSizeInputV1' when calling estimateAudiencesSizes(Async)");
         }
 
-        return estimateAudienceSizeCall(audienceEstimateSizeInputV1, _callback);
+        return estimateAudiencesSizesCall(audienceEstimateSizeInputV1, _callback);
 
     }
 
@@ -1803,8 +1557,8 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
      </table>
      */
-    public AudienceSizeEstimationV1Response estimateAudienceSize(AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1) throws ApiException {
-        ApiResponse<AudienceSizeEstimationV1Response> localVarResp = estimateAudienceSizeWithHttpInfo(audienceEstimateSizeInputV1);
+    public AudienceSizeEstimationV1Response estimateAudiencesSizes(AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1) throws ApiException {
+        ApiResponse<AudienceSizeEstimationV1Response> localVarResp = estimateAudiencesSizesWithHttpInfo(audienceEstimateSizeInputV1);
         return localVarResp.getData();
     }
 
@@ -1820,8 +1574,8 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AudienceSizeEstimationV1Response> estimateAudienceSizeWithHttpInfo(AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1) throws ApiException {
-        okhttp3.Call localVarCall = estimateAudienceSizeValidateBeforeCall(audienceEstimateSizeInputV1, null);
+    public ApiResponse<AudienceSizeEstimationV1Response> estimateAudiencesSizesWithHttpInfo(AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1) throws ApiException {
+        okhttp3.Call localVarCall = estimateAudiencesSizesValidateBeforeCall(audienceEstimateSizeInputV1, null);
         Type localVarReturnType = new TypeToken<AudienceSizeEstimationV1Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1839,9 +1593,9 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call estimateAudienceSizeAsync(AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1, final ApiCallback<AudienceSizeEstimationV1Response> _callback) throws ApiException {
+    public okhttp3.Call estimateAudiencesSizesAsync(AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1, final ApiCallback<AudienceSizeEstimationV1Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = estimateAudienceSizeValidateBeforeCall(audienceEstimateSizeInputV1, _callback);
+        okhttp3.Call localVarCall = estimateAudiencesSizesValidateBeforeCall(audienceEstimateSizeInputV1, _callback);
         Type localVarReturnType = new TypeToken<AudienceSizeEstimationV1Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2522,6 +2276,252 @@ public class AudienceApi {
 
         okhttp3.Call localVarCall = searchAudiencesValidateBeforeCall(audienceSearchInputV1, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<AudienceEntityV1AudienceSearchMetadataV1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateAudienceSegments
+     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAudienceSegmentsCall(AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = audienceSegmentBulkUpdateInputV1;
+
+        // create path and map variables
+        String localVarPath = "/2025-04/marketing-solutions/audience-segments";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateAudienceSegmentsValidateBeforeCall(AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentBulkUpdateInputV1' is set
+        if (audienceSegmentBulkUpdateInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentBulkUpdateInputV1' when calling updateAudienceSegments(Async)");
+        }
+
+        return updateAudienceSegmentsCall(audienceSegmentBulkUpdateInputV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
+     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
+     * @return AudienceSegmentEntityV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AudienceSegmentEntityV1ListResponse updateAudienceSegments(AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1) throws ApiException {
+        ApiResponse<AudienceSegmentEntityV1ListResponse> localVarResp = updateAudienceSegmentsWithHttpInfo(audienceSegmentBulkUpdateInputV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
+     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
+     * @return ApiResponse&lt;AudienceSegmentEntityV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AudienceSegmentEntityV1ListResponse> updateAudienceSegmentsWithHttpInfo(AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1) throws ApiException {
+        okhttp3.Call localVarCall = updateAudienceSegmentsValidateBeforeCall(audienceSegmentBulkUpdateInputV1, null);
+        Type localVarReturnType = new TypeToken<AudienceSegmentEntityV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
+     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAudienceSegmentsAsync(AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1, final ApiCallback<AudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateAudienceSegmentsValidateBeforeCall(audienceSegmentBulkUpdateInputV1, _callback);
+        Type localVarReturnType = new TypeToken<AudienceSegmentEntityV1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateAudiences
+     * @param audienceBulkUpdateInputV1  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAudiencesCall(AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = audienceBulkUpdateInputV1;
+
+        // create path and map variables
+        String localVarPath = "/2025-04/marketing-solutions/audiences";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateAudiencesValidateBeforeCall(AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceBulkUpdateInputV1' is set
+        if (audienceBulkUpdateInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceBulkUpdateInputV1' when calling updateAudiences(Async)");
+        }
+
+        return updateAudiencesCall(audienceBulkUpdateInputV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
+     * @param audienceBulkUpdateInputV1  (required)
+     * @return AudienceEntityV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AudienceEntityV1ListResponse updateAudiences(AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1) throws ApiException {
+        ApiResponse<AudienceEntityV1ListResponse> localVarResp = updateAudiencesWithHttpInfo(audienceBulkUpdateInputV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
+     * @param audienceBulkUpdateInputV1  (required)
+     * @return ApiResponse&lt;AudienceEntityV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AudienceEntityV1ListResponse> updateAudiencesWithHttpInfo(AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1) throws ApiException {
+        okhttp3.Call localVarCall = updateAudiencesValidateBeforeCall(audienceBulkUpdateInputV1, null);
+        Type localVarReturnType = new TypeToken<AudienceEntityV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
+     * @param audienceBulkUpdateInputV1  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAudiencesAsync(AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1, final ApiCallback<AudienceEntityV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateAudiencesValidateBeforeCall(audienceBulkUpdateInputV1, _callback);
+        Type localVarReturnType = new TypeToken<AudienceEntityV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

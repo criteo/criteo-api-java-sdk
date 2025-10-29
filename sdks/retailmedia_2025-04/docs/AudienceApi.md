@@ -4,15 +4,106 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**addRemoveContactListByAudienceSegment**](AudienceApi.md#addRemoveContactListByAudienceSegment) | **POST** /2025-04/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
 | [**bulkCreateAudienceSegments**](AudienceApi.md#bulkCreateAudienceSegments) | **POST** /2025-04/retail-media/accounts/{account-id}/audience-segments/create |  |
 | [**bulkDeleteAudienceSegments**](AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /2025-04/retail-media/accounts/{account-id}/audience-segments/delete |  |
 | [**bulkUpdateAudienceSegments**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /2025-04/retail-media/accounts/{account-id}/audience-segments |  |
-| [**deleteContactListIdentifiers**](AudienceApi.md#deleteContactListIdentifiers) | **POST** /2025-04/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
+| [**clearContactListByAudienceSegment**](AudienceApi.md#clearContactListByAudienceSegment) | **POST** /2025-04/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
 | [**getAudienceSegmentContactListStatistics**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /2025-04/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |  |
 | [**searchAudienceSegments**](AudienceApi.md#searchAudienceSegments) | **POST** /2025-04/retail-media/accounts/{account-id}/audience-segments/search |  |
 | [**searchAudiences**](AudienceApi.md#searchAudiences) | **POST** /2025-04/retail-media/accounts/{account-id}/audiences/search |  |
-| [**updateContactListIdentifiers**](AudienceApi.md#updateContactListIdentifiers) | **POST** /2025-04/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
 
+
+
+## addRemoveContactListByAudienceSegment
+
+> RetailMediaContactlistOperation addRemoveContactListByAudienceSegment(audienceSegmentId, retailMediaContactlistAmendmentRequest)
+
+
+
+Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2025_04;
+
+import com.criteo.api.retailmedia.v2025_04.ApiClient;
+import com.criteo.api.retailmedia.v2025_04.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2025_04.ApiException;
+import com.criteo.api.retailmedia.v2025_04.Configuration;
+import com.criteo.api.retailmedia.v2025_04.auth.*;
+import com.criteo.api.retailmedia.v2025_04.model.*;
+import com.criteo.api.retailmedia.v2025_04.api.AudienceApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AudienceApi apiInstance = new AudienceApi(defaultClient);
+        Long audienceSegmentId = 56L; // Long | The id of the contact list audience-segment to amend, we only accept external Id here
+        RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest = new RetailMediaContactlistAmendmentRequest(); // RetailMediaContactlistAmendmentRequest | 
+        try {
+            RetailMediaContactlistOperation result = apiInstance.addRemoveContactListByAudienceSegment(audienceSegmentId, retailMediaContactlistAmendmentRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AudienceApi#addRemoveContactListByAudienceSegment");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **audienceSegmentId** | **Long**| The id of the contact list audience-segment to amend, we only accept external Id here | |
+| **retailMediaContactlistAmendmentRequest** | [**RetailMediaContactlistAmendmentRequest**](RetailMediaContactlistAmendmentRequest.md)|  | |
+
+### Return type
+
+[**RetailMediaContactlistOperation**](RetailMediaContactlistOperation.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Summary of created request |  -  |
 
 
 ## bulkCreateAudienceSegments
@@ -288,9 +379,9 @@ public class Example {
 | **200** | Success or partial success |  -  |
 
 
-## deleteContactListIdentifiers
+## clearContactListByAudienceSegment
 
-> deleteContactListIdentifiers(audienceSegmentId)
+> clearContactListByAudienceSegment(audienceSegmentId)
 
 
 
@@ -337,9 +428,9 @@ public class Example {
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         Long audienceSegmentId = 56L; // Long | The id of the contact list audience-segment to amend, we only accept external Id here
         try {
-            apiInstance.deleteContactListIdentifiers(audienceSegmentId);
+            apiInstance.clearContactListByAudienceSegment(audienceSegmentId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#deleteContactListIdentifiers");
+            System.err.println("Exception when calling AudienceApi#clearContactListByAudienceSegment");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -655,95 +746,4 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success or partial success |  -  |
-
-
-## updateContactListIdentifiers
-
-> RetailMediaContactlistOperation updateContactListIdentifiers(audienceSegmentId, retailMediaContactlistAmendmentRequest)
-
-
-
-Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2025_04;
-
-import com.criteo.api.retailmedia.v2025_04.ApiClient;
-import com.criteo.api.retailmedia.v2025_04.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2025_04.ApiException;
-import com.criteo.api.retailmedia.v2025_04.Configuration;
-import com.criteo.api.retailmedia.v2025_04.auth.*;
-import com.criteo.api.retailmedia.v2025_04.model.*;
-import com.criteo.api.retailmedia.v2025_04.api.AudienceApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        AudienceApi apiInstance = new AudienceApi(defaultClient);
-        Long audienceSegmentId = 56L; // Long | The id of the contact list audience-segment to amend, we only accept external Id here
-        RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest = new RetailMediaContactlistAmendmentRequest(); // RetailMediaContactlistAmendmentRequest | 
-        try {
-            RetailMediaContactlistOperation result = apiInstance.updateContactListIdentifiers(audienceSegmentId, retailMediaContactlistAmendmentRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#updateContactListIdentifiers");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **audienceSegmentId** | **Long**| The id of the contact list audience-segment to amend, we only accept external Id here | |
-| **retailMediaContactlistAmendmentRequest** | [**RetailMediaContactlistAmendmentRequest**](RetailMediaContactlistAmendmentRequest.md)|  | |
-
-### Return type
-
-[**RetailMediaContactlistOperation**](RetailMediaContactlistOperation.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Summary of created request |  -  |
 

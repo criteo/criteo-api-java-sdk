@@ -1173,7 +1173,7 @@ paths:
     post:
       description: "Add/remove identifiers to or from a retail-media contact list\
         \ audience-segment, with external audience segment id."
-      operationId: UpdateContactListByAudienceSegment
+      operationId: AddRemoveContactListByAudienceSegment
       parameters:
       - description: "The id of the contact list audience-segment to amend, we only\
           \ accept external Id here"
@@ -1234,7 +1234,7 @@ paths:
     post:
       description: "Delete all identifiers from a retail-media contact list audience-segment,\
         \ with external audience segment id."
-      operationId: DeleteContactListByAudienceSegment
+      operationId: ClearContactListByAudienceSegment
       parameters:
       - description: "The id of the contact list audience-segment to amend, we only\
           \ accept external Id here"

@@ -152,7 +152,7 @@ public class CommonError {
   }
 
    /**
-   * (REQUIRED) A machine-readable unique error code, expressed as a string value. The format used must be kabab-case.
+   * (REQUIRED) A machine-readable unique error code, expressed as a string value. The format used must be kebab-case.
    * @return code
   **/
   @javax.annotation.Nullable

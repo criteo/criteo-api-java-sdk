@@ -1491,7 +1491,7 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
-     * Build call for modifyAudienceUsersWithAttributes
+     * Build call for previewAudiencesAudienceIdContactlistAttributesPatch
      * @param audienceId The id of the contact list audience-segment to amend (required)
      * @param contactlistWithAttributesAmendmentRequest  (required)
      * @param _callback Callback for upload/download progress
@@ -1503,7 +1503,7 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call modifyAudienceUsersWithAttributesCall(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call previewAudiencesAudienceIdContactlistAttributesPatchCall(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1550,18 +1550,18 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call modifyAudienceUsersWithAttributesValidateBeforeCall(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call previewAudiencesAudienceIdContactlistAttributesPatchValidateBeforeCall(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
-            throw new ApiException("Missing the required parameter 'audienceId' when calling modifyAudienceUsersWithAttributes(Async)");
+            throw new ApiException("Missing the required parameter 'audienceId' when calling previewAudiencesAudienceIdContactlistAttributesPatch(Async)");
         }
 
         // verify the required parameter 'contactlistWithAttributesAmendmentRequest' is set
         if (contactlistWithAttributesAmendmentRequest == null) {
-            throw new ApiException("Missing the required parameter 'contactlistWithAttributesAmendmentRequest' when calling modifyAudienceUsersWithAttributes(Async)");
+            throw new ApiException("Missing the required parameter 'contactlistWithAttributesAmendmentRequest' when calling previewAudiencesAudienceIdContactlistAttributesPatch(Async)");
         }
 
-        return modifyAudienceUsersWithAttributesCall(audienceId, contactlistWithAttributesAmendmentRequest, _callback);
+        return previewAudiencesAudienceIdContactlistAttributesPatchCall(audienceId, contactlistWithAttributesAmendmentRequest, _callback);
 
     }
 
@@ -1578,8 +1578,8 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
      </table>
      */
-    public ModifyAudienceResponse modifyAudienceUsersWithAttributes(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
-        ApiResponse<ModifyAudienceResponse> localVarResp = modifyAudienceUsersWithAttributesWithHttpInfo(audienceId, contactlistWithAttributesAmendmentRequest);
+    public ModifyAudienceResponse previewAudiencesAudienceIdContactlistAttributesPatch(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
+        ApiResponse<ModifyAudienceResponse> localVarResp = previewAudiencesAudienceIdContactlistAttributesPatchWithHttpInfo(audienceId, contactlistWithAttributesAmendmentRequest);
         return localVarResp.getData();
     }
 
@@ -1596,8 +1596,8 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ModifyAudienceResponse> modifyAudienceUsersWithAttributesWithHttpInfo(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
-        okhttp3.Call localVarCall = modifyAudienceUsersWithAttributesValidateBeforeCall(audienceId, contactlistWithAttributesAmendmentRequest, null);
+    public ApiResponse<ModifyAudienceResponse> previewAudiencesAudienceIdContactlistAttributesPatchWithHttpInfo(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
+        okhttp3.Call localVarCall = previewAudiencesAudienceIdContactlistAttributesPatchValidateBeforeCall(audienceId, contactlistWithAttributesAmendmentRequest, null);
         Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1616,9 +1616,9 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call modifyAudienceUsersWithAttributesAsync(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback<ModifyAudienceResponse> _callback) throws ApiException {
+    public okhttp3.Call previewAudiencesAudienceIdContactlistAttributesPatchAsync(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback<ModifyAudienceResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = modifyAudienceUsersWithAttributesValidateBeforeCall(audienceId, contactlistWithAttributesAmendmentRequest, _callback);
+        okhttp3.Call localVarCall = previewAudiencesAudienceIdContactlistAttributesPatchValidateBeforeCall(audienceId, contactlistWithAttributesAmendmentRequest, _callback);
         Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1875,6 +1875,139 @@ public class AudienceApi {
     public okhttp3.Call previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatchAsync(String audienceSegmentId, ContactlistAmendmentRequest contactlistAmendmentRequest, final ApiCallback<ModifyAudienceResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatchValidateBeforeCall(audienceSegmentId, contactlistAmendmentRequest, _callback);
+        Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatch
+     * @param audienceId The id of the contact list audience-segment to amend (required)
+     * @param contactlistWithAttributesAmendmentRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatchCall(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = contactlistWithAttributesAmendmentRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/audiences/{audience-id}/contactlist-attributes"
+            .replace("{" + "audience-id" + "}", localVarApiClient.escapeString(audienceId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatchValidateBeforeCall(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceId' is set
+        if (audienceId == null) {
+            throw new ApiException("Missing the required parameter 'audienceId' when calling previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatch(Async)");
+        }
+
+        // verify the required parameter 'contactlistWithAttributesAmendmentRequest' is set
+        if (contactlistWithAttributesAmendmentRequest == null) {
+            throw new ApiException("Missing the required parameter 'contactlistWithAttributesAmendmentRequest' when calling previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatch(Async)");
+        }
+
+        return previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatchCall(audienceId, contactlistWithAttributesAmendmentRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Add/remove identifiers to or from a contact list.
+     * @param audienceId The id of the contact list audience-segment to amend (required)
+     * @param contactlistWithAttributesAmendmentRequest  (required)
+     * @return ModifyAudienceResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+     </table>
+     */
+    public ModifyAudienceResponse previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatch(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
+        ApiResponse<ModifyAudienceResponse> localVarResp = previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatchWithHttpInfo(audienceId, contactlistWithAttributesAmendmentRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Add/remove identifiers to or from a contact list.
+     * @param audienceId The id of the contact list audience-segment to amend (required)
+     * @param contactlistWithAttributesAmendmentRequest  (required)
+     * @return ApiResponse&lt;ModifyAudienceResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ModifyAudienceResponse> previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatchWithHttpInfo(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
+        okhttp3.Call localVarCall = previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatchValidateBeforeCall(audienceId, contactlistWithAttributesAmendmentRequest, null);
+        Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Add/remove identifiers to or from a contact list.
+     * @param audienceId The id of the contact list audience-segment to amend (required)
+     * @param contactlistWithAttributesAmendmentRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatchAsync(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback<ModifyAudienceResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatchValidateBeforeCall(audienceId, contactlistWithAttributesAmendmentRequest, _callback);
         Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

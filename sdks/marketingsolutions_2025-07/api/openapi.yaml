@@ -288,7 +288,7 @@ paths:
   /2025-07/marketing-solutions/ad-sets/{ad-set-id}/audience:
     put:
       description: Link or unlink an audience with an ad set
-      operationId: updateAdSetAudience
+      operationId: UpdateAdSetAudience
       parameters:
       - description: The ad set ID.
         explode: false
@@ -1010,7 +1010,7 @@ paths:
       description: "Updates the properties of all segments with a valid configuration,\
         \ and returns their IDs. For those that cannot be updated, one or multiple\
         \ errors are returned."
-      operationId: bulkUpdateAudienceSegments
+      operationId: UpdateAudienceSegments
       requestBody:
         content:
           application/json:
@@ -1127,7 +1127,7 @@ paths:
   /2025-07/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics:
     get:
       description: Returns the statistics of a contact list segment.
-      operationId: getAudienceSegmentContactListStatistics
+      operationId: GetAudienceSegmentContactListStatistics
       parameters:
       - description: The segment ID.
         explode: false
@@ -1155,7 +1155,7 @@ paths:
     post:
       description: Gets the size of all segments. An error is returned for those whose
         size calculation is not supported.
-      operationId: computeAudienceSegmentsSizes
+      operationId: ComputeAudienceSegmentsSizes
       requestBody:
         content:
           application/json:
@@ -1182,7 +1182,7 @@ paths:
     post:
       description: "Creates all segments with a valid configuration, and returns their\
         \ IDs. For those that cannot be created, one or multiple errors are returned."
-      operationId: bulkCreateAudienceSegments
+      operationId: CreateAudienceSegments
       requestBody:
         content:
           application/json:
@@ -1208,7 +1208,7 @@ paths:
   /2025-07/marketing-solutions/audience-segments/delete:
     post:
       description: Delete the segments associated to the given audience IDs.
-      operationId: bulkDeleteAudienceSegments
+      operationId: DeleteAudienceSegments
       requestBody:
         content:
           application/json:
@@ -1235,7 +1235,7 @@ paths:
     post:
       description: Gets the size estimation of a non existent segment. An error is
         returned when size calculation is not supported.
-      operationId: estimateAudienceSegmentSize
+      operationId: EstimateAudienceSegmentsSizes
       requestBody:
         content:
           application/json:
@@ -1262,7 +1262,7 @@ paths:
     get:
       description: Returns a list with all available in-market brands that can be
         used to define an in-market segment.
-      operationId: getAudienceSegmentsInMarketBrands
+      operationId: GetAudienceSegmentsInMarketBrands
       parameters:
       - description: The advertiser ID.
         explode: true
@@ -1298,7 +1298,7 @@ paths:
       description: Returns a list with all available in-market interests that can
         be used to define an in-market segment. These in-market interests correspond
         to the Google product taxonomy.
-      operationId: getAudienceSegmentsInMarketInterests
+      operationId: GetAudienceSegmentsInMarketInterests
       parameters:
       - description: The advertiser ID.
         explode: true
@@ -1333,7 +1333,7 @@ paths:
     post:
       description: "Returns a list of segments that match the provided filters. If\
         \ present, the filters are AND'ed together when applied."
-      operationId: searchAudienceSegments
+      operationId: SearchAudienceSegments
       parameters:
       - description: The number of elements to be returned. The default is 50 and
           the maximum is 100.
@@ -1385,7 +1385,7 @@ paths:
       description: "Updates the properties of all audiences with a valid configuration,\
         \ and returns their IDs. For those that cannot be updated, one or multiple\
         \ errors are returned."
-      operationId: bulkUpdateAudiences
+      operationId: UpdateAudiences
       requestBody:
         content:
           application/json:
@@ -1412,7 +1412,7 @@ paths:
     post:
       description: Gets the size of all audiences. An error is returned for those
         whose size calculation is not supported.
-      operationId: computeAudiencesSizes
+      operationId: ComputeAudiencesSizes
       requestBody:
         content:
           application/json:
@@ -1440,7 +1440,7 @@ paths:
       description: "Creates all audiences with a valid configuration, and returns\
         \ their IDs. For those that cannot be created, one or multiple errors are\
         \ returned."
-      operationId: bulkCreateAudiences
+      operationId: CreateAudiences
       requestBody:
         content:
           application/json:
@@ -1466,7 +1466,7 @@ paths:
   /2025-07/marketing-solutions/audiences/delete:
     post:
       description: Deletes the audiences associated to the given audience IDs.
-      operationId: bulkDeleteAudiences
+      operationId: DeleteAudiences
       requestBody:
         content:
           application/json:
@@ -1497,7 +1497,7 @@ paths:
     post:
       description: Gets the size estimation of a non existent audience. An error is
         returned when size calculation is not supported.
-      operationId: estimateAudienceSize
+      operationId: EstimateAudiencesSizes
       requestBody:
         content:
           application/json:
@@ -1524,7 +1524,7 @@ paths:
     post:
       description: "Returns a list of audiences that match the provided filters. If\
         \ present, the filters are AND'ed together when applied."
-      operationId: searchAudiences
+      operationId: SearchAudiences
       parameters:
       - description: The number of elements to be returned. The default is 50 and
           the maximum is 100.
@@ -1802,7 +1802,7 @@ paths:
   /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers:
     get:
       description: Get the collection of advertisers associated with the user.
-      operationId: GetAdvertisers
+      operationId: GetMarketplaceAdvertisers
       responses:
         "200":
           description: OK
@@ -1816,7 +1816,7 @@ paths:
   /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}:
     get:
       description: Get an advertiser.
-      operationId: GetAdvertiser
+      operationId: GetMarketplaceAdvertiser
       parameters:
       - description: Id of the advertiser
         explode: false
@@ -1848,7 +1848,7 @@ paths:
         \ specific ad preview width. Default width: 300<br />\r\n            \r\n\
         Ad preview api calls are capped to 1000 per day per advertiser by default.\
         \ Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit"
-      operationId: GetSellerAdDemo
+      operationId: GetMarketplaceSellerAdPreview
       parameters:
       - description: Id of the advertiser
         explode: false
@@ -1912,7 +1912,7 @@ paths:
   /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/adsets:
     get:
       description: Get the collection of adsets associated with the advertiserId.
-      operationId: GetAdvertiserAdsets
+      operationId: GetMarketplaceAdSetsByAdvertiser
       parameters:
       - description: Id of the advertiser
         explode: false
@@ -1936,7 +1936,7 @@ paths:
   /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/budgets:
     get:
       description: Get CRP budgets for a specific advertiser
-      operationId: GetBudgetsByAdvertiser
+      operationId: GetMarketplaceBudgetsByAdvertiser
       parameters:
       - description: Id of the advertiser
         explode: false
@@ -2035,7 +2035,7 @@ paths:
   /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/campaigns:
     get:
       description: Get the collection of CRP campaigns associated with the advertiserId.
-      operationId: GetAdvertiserCampaigns
+      operationId: GetMarketplaceCampaignsByAdvertiser
       parameters:
       - description: Id of the advertiser
         explode: false
@@ -2059,7 +2059,7 @@ paths:
   /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/seller-campaigns:
     get:
       description: Get CRP seller campaigns for a specific advertiser
-      operationId: GetSellerCampaignsByAdvertiser
+      operationId: GetMarketplaceSellerCampaignsByAdvertiser
       parameters:
       - description: Id of the advertiser
         explode: false
@@ -2083,7 +2083,7 @@ paths:
   /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/sellers:
     post:
       description: Create new sellers for an advertiser
-      operationId: CreateSellers
+      operationId: GetMarketplaceSellersByAdvertiser
       parameters:
       - description: Id of the advertiser
         explode: false
@@ -2127,7 +2127,7 @@ paths:
     get:
       description: Get the collection of advertisers preview limits associated with
         the authorized user.
-      operationId: GetAdvertiserPreviewLimits
+      operationId: GetMarketplaceAdvertiserPreviewLimits
       responses:
         "200":
           description: OK
@@ -2154,7 +2154,7 @@ paths:
         \ spend excludes spend that\r\nhappened after that date. In the case of a\
         \ daily budget, only the spend for\r\nthe final day is displayed.\r\n    \
         \        \r\nSee the budgets endpoint for additional details."
-      operationId: GetSellerBudgets
+      operationId: GetMarketplaceSellerBudgets
       parameters:
       - description: Return only budgets belonging to the specified advertiser
         explode: true
@@ -2269,7 +2269,7 @@ paths:
         \     \r\nAdding new campaigns to a budget is not allowed. In addition, reducing\
         \ the amount for\r\na Capped budget to a value less than the current spend\
         \ not allowed."
-      operationId: UpdateSellerBudgets
+      operationId: UpdateMarketplaceSellerBudgets
       requestBody:
         content:
           application/json:
@@ -2302,7 +2302,7 @@ paths:
         \ MUST be supplied<br />\r\n• <b>endDate</b>: an end date MAY be supplied\
         \ and if supplied MUST be greater than the start date<br />\r\n          \
         \  \r\nOther attributes MUST NOT be supplied."
-      operationId: CreateSellerBudgets
+      operationId: CreateMarketplaceSellerBudgets
       requestBody:
         content:
           application/json:
@@ -2341,7 +2341,7 @@ paths:
         \ approximates the current spend against this budget. There may be a lag\r\
         \nbetween when an ad is clicked and the time it accrues to the spend. Daily\
         \ budgets\r\nshow spend against the most recent day only."
-      operationId: GetSellerBudget
+      operationId: GetMarketplaceSellerBudget
       parameters:
       - description: Id of the budget.
         explode: false
@@ -2370,7 +2370,7 @@ paths:
       description: "Modify an existing active budget to change its limitations or\
         \ status.\r\nAll three types of budgets can be modified.\r\n            \r\
         \nSee the additional restrictions listed in the PATCH budgets endpoint."
-      operationId: UpdateSellerBudget
+      operationId: UpdateMarketplaceSellerBudget
       parameters:
       - description: Id of the budget
         explode: false
@@ -2405,7 +2405,7 @@ paths:
         \ parameters.\r\nIf all parameters are omitted the entire collection to which\
         \ the user has\r\naccess is returned. Returned sellers must satisfy all supplied\
         \ filter\r\ncriteria if multiple parameters are used."
-      operationId: GetSellerCampaigns
+      operationId: GetMarketplaceSellerCampaigns
       parameters:
       - description: Return only seller belonging to the specified advertiser
         explode: true
@@ -2477,7 +2477,7 @@ paths:
         \ be modified.\r\nEach bid must be a non-negative value. Setting the bid to\
         \ zero will make a seller campaign inactive.\r\n            \r\nThe currency\
         \ used for bids will be the default currency of the campaign."
-      operationId: UpdateSellerCampaigns
+      operationId: UpdateMarketplaceSellerCampaigns
       requestBody:
         content:
           application/json:
@@ -2524,7 +2524,7 @@ paths:
         \ has been exhausted.\r\n- RemovedFromCatalog: All the products of the Seller-Campaign\
         \ have been deleted from the catalog.\r\n- NotYetStarted: The Seller-Campaign\
         \ has just been created and has not yet been processed."
-      operationId: GetSellerCampaign
+      operationId: GetMarketplaceSellerCampaign
       parameters:
       - description: Id of the seller campaign.
         explode: false
@@ -2553,7 +2553,7 @@ paths:
         \ bid must be a non-negative value.\r\nSetting the bid to zero will make a\
         \ seller campaign inactive.\r\n            \r\nThe currency used for bids\
         \ will be the default currency of the campaign."
-      operationId: UpdateSellerCampaign
+      operationId: UpdateMarketplaceSellerCampaign
       parameters:
       - description: The new bid for the seller campaign.
         explode: true
@@ -2594,7 +2594,7 @@ paths:
         \ endDate is in the past. Returned budgets must satisfy all supplied filter\r\
         \ncriteria if multiple parameters are used.\r\n            \r\nSee the budgets\
         \ endpoint for additional details."
-      operationId: GetBudgetsBySellerCampaignId
+      operationId: GetMarketplaceBudgetsBySellerCampaign
       parameters:
       - description: "Return budgets that end after the given date using the `yyyy-MM-DD`\
           \ format.\r\n             If param is not provided, default behavior is\
@@ -2683,7 +2683,7 @@ paths:
         \nIf all parameters are omitted the entire collection to which the user has\r\
         \naccess is returned. Returned sellers must satisfy all supplied filter\r\n\
         criteria if multiple parameters are used."
-      operationId: GetSellers
+      operationId: GetMarketplaceSellers
       parameters:
       - description: Return only sellers belonging to the specified advertiser
         explode: true
@@ -2763,7 +2763,7 @@ paths:
       description: "Return details for the selected seller. For example,\r\n     \
         \       \r\n    {\r\n        \"id\" : \"123456\"\r\n        \"sellerName\"\
         : \"HBogart\",\r\n    }"
-      operationId: GetSeller
+      operationId: GetMarketplaceSeller
       parameters:
       - description: Id of the seller.
         explode: false
@@ -2795,7 +2795,7 @@ paths:
         \ is in the past. Returned budgets must satisfy all supplied filter\r\ncriteria\
         \ if multiple parameters are used. See the budgets endpoint for additional\
         \ details."
-      operationId: GetBudgetsBySeller
+      operationId: GetMarketplaceBudgetsBySeller
       parameters:
       - description: Return only budgets that pay for a given campaign.
         explode: true
@@ -2894,7 +2894,7 @@ paths:
         \ collection to which the user has\r\naccess is returned. Returned sellers\
         \ must satisfy all supplied filter\r\ncriteria if multiple parameters are\
         \ used. See the seller campaigns endpoint for additional details."
-      operationId: GetSellerCampaignsBySeller
+      operationId: GetMarketplaceSellerCampaignsBySeller
       parameters:
       - description: Return only seller campaigns whose budget has the given status.
         explode: true
@@ -2955,7 +2955,7 @@ paths:
     post:
       description: Associate an existing Seller with an existing Campaign allowing
         for budget creation
-      operationId: CreateSellerCampaignsBySeller
+      operationId: CreateMarketplaceSellerCampaignsBySeller
       parameters:
       - description: Supply a generated Id of an existing Seller
         explode: false
@@ -3046,7 +3046,7 @@ paths:
         \ information on the campaign or seller (e.g. the seller name) can be\r\n\
         obtained from the existing V1 or V2 endpoints using the campaign and/or seller\r\
         \nID values."
-      operationId: Campaigns
+      operationId: GetMarketplaceCampaignsStats
       parameters:
       - description: Show only metrics for this advertiser.
         explode: true
@@ -3207,7 +3207,7 @@ paths:
         \ the data.\r\n            \r\nFurther information on the campaign or seller\
         \ (e.g. the seller name) can be\r\nobtained from the existing V1 or V2 endpoints\
         \ using the campaign and/or seller\r\nID values."
-      operationId: SellerCampaigns
+      operationId: GetMarketplaceSellerCampaignsStats
       parameters:
       - description: Show only metrics for this advertiser.
         explode: true
@@ -3373,7 +3373,7 @@ paths:
         \ the data.\r\n            \r\nFurther information on the campaign or seller\
         \ (e.g. the seller name) can be\r\nobtained from the existing V1 or V2 endpoints\
         \ using the campaign and/or seller\r\nID values."
-      operationId: Sellers
+      operationId: GetMarketplaceSellersStats
       parameters:
       - description: Show only metrics for this advertiser.
         explode: true

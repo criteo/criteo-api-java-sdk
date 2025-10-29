@@ -81,8 +81,8 @@ paths:
       x-accepts: application/json
   /2025-01/retail-media/account-management/accounts/{accountId}/create-brand-account:
     post:
-      description: Creates a new child Demand Brand Account for the provided parent
-        private market account
+      description: Creates a new child Demand Brand account for the provided parent
+        Private Market account
       operationId: CreatePrivateMarketDemandBrandAccount
       parameters:
       - description: The given account id
@@ -114,8 +114,8 @@ paths:
       x-accepts: application/json
   /2025-01/retail-media/account-management/accounts/{accountId}/create-seller-account:
     post:
-      description: Creates a new child Demand Seller Account for the provided parent
-        private market account
+      description: Creates a new child Demand Seller account for the provided parent
+        Private Market account
       operationId: CreatePrivateMarketDemandSellerAccount
       parameters:
       - description: The given account id
@@ -1494,7 +1494,7 @@ paths:
     post:
       description: "Add/remove identifiers to or from a retail-media contact list\
         \ audience-segment, with external audience segment id."
-      operationId: updateContactListIdentifiers
+      operationId: AddRemoveContactListByAudienceSegment
       parameters:
       - description: "The id of the contact list audience-segment to amend, we only\
           \ accept external Id here"
@@ -1555,7 +1555,7 @@ paths:
     post:
       description: "Delete all identifiers from a retail-media contact list audience-segment,\
         \ with external audience segment id."
-      operationId: DeleteContactListIdentifiers
+      operationId: ClearContactListByAudienceSegment
       parameters:
       - description: "The id of the contact list audience-segment to amend, we only\
           \ accept external Id here"
@@ -6863,7 +6863,7 @@ components:
       properties:
         code:
           description: "(REQUIRED) A machine-readable unique error code, expressed\
-            \ as a string value. The format used must be kabab-case."
+            \ as a string value. The format used must be kebab-case."
           nullable: true
           type: string
         detail:
@@ -7256,7 +7256,7 @@ components:
       properties:
         code:
           description: "(REQUIRED) A machine-readable unique error code, expressed\
-            \ as a string value. The format used must be kabab-case."
+            \ as a string value. The format used must be kebab-case."
           nullable: true
           type: string
         detail:
@@ -16012,7 +16012,7 @@ components:
     ValueResourceInputOfRetailMediaBrandAccountCreation:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -16030,7 +16030,7 @@ components:
     ValueResourceInputOfRetailMediaBrands:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -16045,7 +16045,7 @@ components:
     ValueResourceInputOfRetailMediaSellerAccountCreation:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:

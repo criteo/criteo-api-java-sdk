@@ -280,7 +280,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Creates a new child Demand Brand Account for the provided parent private market account
+     * Creates a new child Demand Brand account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
      * @return EntityResourceOutcomeOfRetailMediaAccount
@@ -298,7 +298,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Creates a new child Demand Brand Account for the provided parent private market account
+     * Creates a new child Demand Brand account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
      * @return ApiResponse&lt;EntityResourceOutcomeOfRetailMediaAccount&gt;
@@ -317,7 +317,7 @@ public class AccountsApi {
 
     /**
      *  (asynchronously)
-     * Creates a new child Demand Brand Account for the provided parent private market account
+     * Creates a new child Demand Brand account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -408,7 +408,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Creates a new child Demand Seller Account for the provided parent private market account
+     * Creates a new child Demand Seller account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreation  (optional)
      * @return EntityResourceOutcomeOfRetailMediaAccount
@@ -426,7 +426,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Creates a new child Demand Seller Account for the provided parent private market account
+     * Creates a new child Demand Seller account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreation  (optional)
      * @return ApiResponse&lt;EntityResourceOutcomeOfRetailMediaAccount&gt;
@@ -445,7 +445,7 @@ public class AccountsApi {
 
     /**
      *  (asynchronously)
-     * Creates a new child Demand Seller Account for the provided parent private market account
+     * Creates a new child Demand Seller account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreation  (optional)
      * @param _callback The callback to be executed when the API call finishes

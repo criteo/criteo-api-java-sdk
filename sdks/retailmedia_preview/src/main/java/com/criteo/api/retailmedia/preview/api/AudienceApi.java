@@ -97,6 +97,139 @@ public class AudienceApi {
     }
 
     /**
+     * Build call for addRemoveContactListByAudienceSegment
+     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param retailMediaContactlistAmendmentRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call addRemoveContactListByAudienceSegmentCall(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = retailMediaContactlistAmendmentRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove"
+            .replace("{" + "audience-segment-id" + "}", localVarApiClient.escapeString(audienceSegmentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call addRemoveContactListByAudienceSegmentValidateBeforeCall(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentId' is set
+        if (audienceSegmentId == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling addRemoveContactListByAudienceSegment(Async)");
+        }
+
+        // verify the required parameter 'retailMediaContactlistAmendmentRequest' is set
+        if (retailMediaContactlistAmendmentRequest == null) {
+            throw new ApiException("Missing the required parameter 'retailMediaContactlistAmendmentRequest' when calling addRemoveContactListByAudienceSegment(Async)");
+        }
+
+        return addRemoveContactListByAudienceSegmentCall(audienceSegmentId, retailMediaContactlistAmendmentRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param retailMediaContactlistAmendmentRequest  (required)
+     * @return RetailMediaContactlistOperation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+     </table>
+     */
+    public RetailMediaContactlistOperation addRemoveContactListByAudienceSegment(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest) throws ApiException {
+        ApiResponse<RetailMediaContactlistOperation> localVarResp = addRemoveContactListByAudienceSegmentWithHttpInfo(audienceSegmentId, retailMediaContactlistAmendmentRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param retailMediaContactlistAmendmentRequest  (required)
+     * @return ApiResponse&lt;RetailMediaContactlistOperation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RetailMediaContactlistOperation> addRemoveContactListByAudienceSegmentWithHttpInfo(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest) throws ApiException {
+        okhttp3.Call localVarCall = addRemoveContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, retailMediaContactlistAmendmentRequest, null);
+        Type localVarReturnType = new TypeToken<RetailMediaContactlistOperation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param retailMediaContactlistAmendmentRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call addRemoveContactListByAudienceSegmentAsync(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback<RetailMediaContactlistOperation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = addRemoveContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, retailMediaContactlistAmendmentRequest, _callback);
+        Type localVarReturnType = new TypeToken<RetailMediaContactlistOperation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for bulkCreateAudience
      * @param accountId Account Id (required)
      * @param rmAudienceBulkCreateInputV1 Audience creation parameter (required)
@@ -899,6 +1032,125 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
+     * Build call for clearContactListByAudienceSegment
+     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call clearContactListByAudienceSegmentCall(Long audienceSegmentId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear"
+            .replace("{" + "audience-segment-id" + "}", localVarApiClient.escapeString(audienceSegmentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call clearContactListByAudienceSegmentValidateBeforeCall(Long audienceSegmentId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentId' is set
+        if (audienceSegmentId == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling clearContactListByAudienceSegment(Async)");
+        }
+
+        return clearContactListByAudienceSegmentCall(audienceSegmentId, _callback);
+
+    }
+
+    /**
+     * 
+     * Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
+     </table>
+     */
+    public void clearContactListByAudienceSegment(Long audienceSegmentId) throws ApiException {
+        clearContactListByAudienceSegmentWithHttpInfo(audienceSegmentId);
+    }
+
+    /**
+     * 
+     * Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> clearContactListByAudienceSegmentWithHttpInfo(Long audienceSegmentId) throws ApiException {
+        okhttp3.Call localVarCall = clearContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call clearContactListByAudienceSegmentAsync(Long audienceSegmentId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = clearContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for computeAudienceSegmentsSizes
      * @param accountId Account id (required)
      * @param rmAudienceSegmentComputeSizesInputV1  (required)
@@ -1162,125 +1414,6 @@ public class AudienceApi {
         okhttp3.Call localVarCall = computeAudiencesSizesValidateBeforeCall(accountId, rmAudienceComputeSizesInputV1, _callback);
         Type localVarReturnType = new TypeToken<RmAudienceSizeEntityV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for deleteContactListByAudienceSegment
-     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteContactListByAudienceSegmentCall(Long audienceSegmentId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear"
-            .replace("{" + "audience-segment-id" + "}", localVarApiClient.escapeString(audienceSegmentId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteContactListByAudienceSegmentValidateBeforeCall(Long audienceSegmentId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'audienceSegmentId' is set
-        if (audienceSegmentId == null) {
-            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling deleteContactListByAudienceSegment(Async)");
-        }
-
-        return deleteContactListByAudienceSegmentCall(audienceSegmentId, _callback);
-
-    }
-
-    /**
-     * 
-     * Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteContactListByAudienceSegment(Long audienceSegmentId) throws ApiException {
-        deleteContactListByAudienceSegmentWithHttpInfo(audienceSegmentId);
-    }
-
-    /**
-     * 
-     * Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteContactListByAudienceSegmentWithHttpInfo(Long audienceSegmentId) throws ApiException {
-        okhttp3.Call localVarCall = deleteContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteContactListByAudienceSegmentAsync(Long audienceSegmentId, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -1977,139 +2110,6 @@ public class AudienceApi {
 
         okhttp3.Call localVarCall = searchAudiencesValidateBeforeCall(accountId, rmAudienceSearchInputV1, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for updateContactListByAudienceSegment
-     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @param retailMediaContactlistAmendmentRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateContactListByAudienceSegmentCall(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = retailMediaContactlistAmendmentRequest;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove"
-            .replace("{" + "audience-segment-id" + "}", localVarApiClient.escapeString(audienceSegmentId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateContactListByAudienceSegmentValidateBeforeCall(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'audienceSegmentId' is set
-        if (audienceSegmentId == null) {
-            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling updateContactListByAudienceSegment(Async)");
-        }
-
-        // verify the required parameter 'retailMediaContactlistAmendmentRequest' is set
-        if (retailMediaContactlistAmendmentRequest == null) {
-            throw new ApiException("Missing the required parameter 'retailMediaContactlistAmendmentRequest' when calling updateContactListByAudienceSegment(Async)");
-        }
-
-        return updateContactListByAudienceSegmentCall(audienceSegmentId, retailMediaContactlistAmendmentRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @param retailMediaContactlistAmendmentRequest  (required)
-     * @return RetailMediaContactlistOperation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-     </table>
-     */
-    public RetailMediaContactlistOperation updateContactListByAudienceSegment(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest) throws ApiException {
-        ApiResponse<RetailMediaContactlistOperation> localVarResp = updateContactListByAudienceSegmentWithHttpInfo(audienceSegmentId, retailMediaContactlistAmendmentRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @param retailMediaContactlistAmendmentRequest  (required)
-     * @return ApiResponse&lt;RetailMediaContactlistOperation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RetailMediaContactlistOperation> updateContactListByAudienceSegmentWithHttpInfo(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, retailMediaContactlistAmendmentRequest, null);
-        Type localVarReturnType = new TypeToken<RetailMediaContactlistOperation>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @param retailMediaContactlistAmendmentRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateContactListByAudienceSegmentAsync(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback<RetailMediaContactlistOperation> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, retailMediaContactlistAmendmentRequest, _callback);
-        Type localVarReturnType = new TypeToken<RetailMediaContactlistOperation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

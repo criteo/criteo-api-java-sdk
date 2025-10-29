@@ -284,7 +284,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Creates a new child Demand Brand Account for the provided parent private market account
+     * Creates a new child Demand Brand account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
      * @return EntityResourceOutcomeOfRetailMediaAccount
@@ -302,7 +302,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Creates a new child Demand Brand Account for the provided parent private market account
+     * Creates a new child Demand Brand account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
      * @return ApiResponse&lt;EntityResourceOutcomeOfRetailMediaAccount&gt;
@@ -321,7 +321,7 @@ public class AccountsApi {
 
     /**
      *  (asynchronously)
-     * Creates a new child Demand Brand Account for the provided parent private market account
+     * Creates a new child Demand Brand account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -412,7 +412,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Creates a new child Demand Seller Account for the provided parent private market account
+     * Creates a new child Demand Seller account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreation  (optional)
      * @return EntityResourceOutcomeOfRetailMediaAccount
@@ -430,7 +430,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Creates a new child Demand Seller Account for the provided parent private market account
+     * Creates a new child Demand Seller account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreation  (optional)
      * @return ApiResponse&lt;EntityResourceOutcomeOfRetailMediaAccount&gt;
@@ -449,7 +449,7 @@ public class AccountsApi {
 
     /**
      *  (asynchronously)
-     * Creates a new child Demand Seller Account for the provided parent private market account
+     * Creates a new child Demand Seller account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreation  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -685,7 +685,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Gets page of private market child accounts that are associated with the given account
+     * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
      * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
@@ -704,7 +704,7 @@ public class AccountsApi {
 
     /**
      * 
-     * Gets page of private market child accounts that are associated with the given account
+     * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
      * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
@@ -724,7 +724,7 @@ public class AccountsApi {
 
     /**
      *  (asynchronously)
-     * Gets page of private market child accounts that are associated with the given account
+     * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
      * @param offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)

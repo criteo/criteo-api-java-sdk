@@ -926,7 +926,6 @@ paths:
   /preview/audiences/{audience-id}/contactlist-attributes:
     patch:
       description: Add/remove identifiers to or from a contact list.
-      operationId: modifyAudienceUsersWithAttributes
       parameters:
       - description: The id of the contact list audience-segment to amend
         explode: false
@@ -2500,6 +2499,54 @@ paths:
               schema:
                 $ref: '#/components/schemas/AudienceEntityV1ListResponse'
           description: Success or partial success
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Manage
+      tags:
+      - Audience
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/marketing-solutions/audiences/{audience-id}/contactlist-attributes:
+    patch:
+      description: Add/remove identifiers to or from a contact list.
+      parameters:
+      - description: The id of the contact list audience-segment to amend
+        explode: false
+        in: path
+        name: audience-id
+        required: true
+        schema:
+          format: int32
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactlistWithAttributesAmendmentRequest'
+        required: true
+        x-bodyName: body
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                data:
+                  type: ContactlistAmendment
+                  attributes:
+                    contactListId: 12
+                    operation: add
+                    requestDate: 2018-12-10T10:00:50.0000000+00:00
+                    identifierType: madid
+                    nbValidIdentifiers: 7343
+                    nbInvalidIdentifiers: 13
+                    sampleInvalidIdentifiers:
+                    - InvalidIdentifier
+                errors: []
+                warnings: []
+              schema:
+                $ref: '#/components/schemas/ModifyAudienceResponse'
+          description: Summary of created request
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage

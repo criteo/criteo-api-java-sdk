@@ -15,9 +15,10 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getAudienceSegmentContactListStatistics**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics |  |
 | [**getAudienceSegmentsInMarketBrands**](AudienceApi.md#getAudienceSegmentsInMarketBrands) | **GET** /preview/marketing-solutions/audience-segments/in-market-brands |  |
 | [**getAudienceSegmentsInMarketInterests**](AudienceApi.md#getAudienceSegmentsInMarketInterests) | **GET** /preview/marketing-solutions/audience-segments/in-market-interests |  |
-| [**modifyAudienceUsersWithAttributes**](AudienceApi.md#modifyAudienceUsersWithAttributes) | **PATCH** /preview/audiences/{audience-id}/contactlist-attributes |  |
+| [**previewAudiencesAudienceIdContactlistAttributesPatch**](AudienceApi.md#previewAudiencesAudienceIdContactlistAttributesPatch) | **PATCH** /preview/audiences/{audience-id}/contactlist-attributes |  |
 | [**previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDelete**](AudienceApi.md#previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDelete) | **DELETE** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
 | [**previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatch**](AudienceApi.md#previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatch) | **PATCH** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
+| [**previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatch**](AudienceApi.md#previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatch) | **PATCH** /preview/marketing-solutions/audiences/{audience-id}/contactlist-attributes |  |
 | [**searchAudienceSegments**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/search |  |
 | [**searchAudiences**](AudienceApi.md#searchAudiences) | **POST** /preview/marketing-solutions/audiences/search |  |
 | [**updateAudienceSegments**](AudienceApi.md#updateAudienceSegments) | **PATCH** /preview/marketing-solutions/audience-segments |  |
@@ -1009,9 +1010,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## modifyAudienceUsersWithAttributes
+## previewAudiencesAudienceIdContactlistAttributesPatch
 
-> ModifyAudienceResponse modifyAudienceUsersWithAttributes(audienceId, contactlistWithAttributesAmendmentRequest)
+> ModifyAudienceResponse previewAudiencesAudienceIdContactlistAttributesPatch(audienceId, contactlistWithAttributesAmendmentRequest)
 
 
 
@@ -1059,10 +1060,10 @@ public class Example {
         String audienceId = "audienceId_example"; // String | The id of the contact list audience-segment to amend
         ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest = new ContactlistWithAttributesAmendmentRequest(); // ContactlistWithAttributesAmendmentRequest | 
         try {
-            ModifyAudienceResponse result = apiInstance.modifyAudienceUsersWithAttributes(audienceId, contactlistWithAttributesAmendmentRequest);
+            ModifyAudienceResponse result = apiInstance.previewAudiencesAudienceIdContactlistAttributesPatch(audienceId, contactlistWithAttributesAmendmentRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#modifyAudienceUsersWithAttributes");
+            System.err.println("Exception when calling AudienceApi#previewAudiencesAudienceIdContactlistAttributesPatch");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1259,6 +1260,97 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **audienceSegmentId** | **String**| The id of the contact list audience-segment to amend | |
 | **contactlistAmendmentRequest** | [**ContactlistAmendmentRequest**](ContactlistAmendmentRequest.md)|  | |
+
+### Return type
+
+[**ModifyAudienceResponse**](ModifyAudienceResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Summary of created request |  -  |
+
+
+## previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatch
+
+> ModifyAudienceResponse previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatch(audienceId, contactlistWithAttributesAmendmentRequest)
+
+
+
+Add/remove identifiers to or from a contact list.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AudienceApi apiInstance = new AudienceApi(defaultClient);
+        String audienceId = "audienceId_example"; // String | The id of the contact list audience-segment to amend
+        ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest = new ContactlistWithAttributesAmendmentRequest(); // ContactlistWithAttributesAmendmentRequest | 
+        try {
+            ModifyAudienceResponse result = apiInstance.previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatch(audienceId, contactlistWithAttributesAmendmentRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AudienceApi#previewMarketingSolutionsAudiencesAudienceIdContactlistAttributesPatch");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **audienceId** | **String**| The id of the contact list audience-segment to amend | |
+| **contactlistWithAttributesAmendmentRequest** | [**ContactlistWithAttributesAmendmentRequest**](ContactlistWithAttributesAmendmentRequest.md)|  | |
 
 ### Return type
 
