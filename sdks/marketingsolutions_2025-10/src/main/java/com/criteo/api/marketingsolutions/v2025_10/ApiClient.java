@@ -213,7 +213,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("OpenAPI-Generator/2025.10.0.251029/java");
+        setUserAgent("OpenAPI-Generator/2025.10.0.251030/java");
 
         authentications = new HashMap<String, Authentication>();
     }

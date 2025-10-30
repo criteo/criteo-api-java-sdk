@@ -229,7 +229,7 @@ public class Example {
 
 ## createMarketplaceSellerBudgets
 
-> createMarketplaceSellerBudgets(createSellerBudgetMapiMessage)
+> List&lt;SellerBudgetMessage&gt; createMarketplaceSellerBudgets(createSellerBudgetMapiMessage)
 
 
 
@@ -276,7 +276,8 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage = Arrays.asList(); // List<CreateSellerBudgetMapiMessage> | 
         try {
-            apiInstance.createMarketplaceSellerBudgets(createSellerBudgetMapiMessage);
+            List<SellerBudgetMessage> result = apiInstance.createMarketplaceSellerBudgets(createSellerBudgetMapiMessage);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#createMarketplaceSellerBudgets");
             System.err.println("Status code: " + e.getCode());
@@ -297,7 +298,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**List&lt;SellerBudgetMessage&gt;**](SellerBudgetMessage.md)
 
 ### Authorization
 
@@ -306,18 +307,18 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## createMarketplaceSellerCampaignsBySeller
 
-> createMarketplaceSellerCampaignsBySeller(sellerId, createSellerCampaignMessageMapi)
+> SellerCampaignMessage createMarketplaceSellerCampaignsBySeller(sellerId, createSellerCampaignMessageMapi)
 
 
 
@@ -365,7 +366,8 @@ public class Example {
         String sellerId = "sellerId_example"; // String | Supply a generated Id of an existing Seller
         CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi = new CreateSellerCampaignMessageMapi(); // CreateSellerCampaignMessageMapi | Supply the campaign Id and bid to create the mapping
         try {
-            apiInstance.createMarketplaceSellerCampaignsBySeller(sellerId, createSellerCampaignMessageMapi);
+            SellerCampaignMessage result = apiInstance.createMarketplaceSellerCampaignsBySeller(sellerId, createSellerCampaignMessageMapi);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#createMarketplaceSellerCampaignsBySeller");
             System.err.println("Status code: " + e.getCode());
@@ -387,7 +389,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SellerCampaignMessage**](SellerCampaignMessage.md)
 
 ### Authorization
 
@@ -396,13 +398,13 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getAdSet
@@ -763,7 +765,7 @@ public class Example {
 
 ## getMarketplaceAdSetsByAdvertiser
 
-> getMarketplaceAdSetsByAdvertiser(advertiserId)
+> List&lt;AdvertiserAdsetMessage&gt; getMarketplaceAdSetsByAdvertiser(advertiserId)
 
 
 
@@ -810,7 +812,8 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | Id of the advertiser
         try {
-            apiInstance.getMarketplaceAdSetsByAdvertiser(advertiserId);
+            List<AdvertiserAdsetMessage> result = apiInstance.getMarketplaceAdSetsByAdvertiser(advertiserId);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceAdSetsByAdvertiser");
             System.err.println("Status code: " + e.getCode());
@@ -831,7 +834,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**List&lt;AdvertiserAdsetMessage&gt;**](AdvertiserAdsetMessage.md)
 
 ### Authorization
 
@@ -840,18 +843,18 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceAdvertiser
 
-> getMarketplaceAdvertiser(advertiserId)
+> AdvertiserInfoMessage getMarketplaceAdvertiser(advertiserId)
 
 
 
@@ -898,7 +901,8 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | Id of the advertiser
         try {
-            apiInstance.getMarketplaceAdvertiser(advertiserId);
+            AdvertiserInfoMessage result = apiInstance.getMarketplaceAdvertiser(advertiserId);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceAdvertiser");
             System.err.println("Status code: " + e.getCode());
@@ -919,7 +923,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**AdvertiserInfoMessage**](AdvertiserInfoMessage.md)
 
 ### Authorization
 
@@ -928,18 +932,18 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceAdvertiserPreviewLimits
 
-> getMarketplaceAdvertiserPreviewLimits()
+> List&lt;AdvertiserQuotaMessage&gt; getMarketplaceAdvertiserPreviewLimits()
 
 
 
@@ -985,7 +989,8 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         try {
-            apiInstance.getMarketplaceAdvertiserPreviewLimits();
+            List<AdvertiserQuotaMessage> result = apiInstance.getMarketplaceAdvertiserPreviewLimits();
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceAdvertiserPreviewLimits");
             System.err.println("Status code: " + e.getCode());
@@ -1003,7 +1008,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**List&lt;AdvertiserQuotaMessage&gt;**](AdvertiserQuotaMessage.md)
 
 ### Authorization
 
@@ -1012,18 +1017,18 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceAdvertisers
 
-> getMarketplaceAdvertisers()
+> List&lt;AdvertiserInfoMessage&gt; getMarketplaceAdvertisers()
 
 
 
@@ -1069,7 +1074,8 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         try {
-            apiInstance.getMarketplaceAdvertisers();
+            List<AdvertiserInfoMessage> result = apiInstance.getMarketplaceAdvertisers();
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceAdvertisers");
             System.err.println("Status code: " + e.getCode());
@@ -1087,7 +1093,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**List&lt;AdvertiserInfoMessage&gt;**](AdvertiserInfoMessage.md)
 
 ### Authorization
 
@@ -1096,18 +1102,18 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceBudgetsByAdvertiser
 
-> getMarketplaceBudgetsByAdvertiser(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend)
+> List&lt;SellerBudgetMessage&gt; getMarketplaceBudgetsByAdvertiser(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend)
 
 
 
@@ -1162,7 +1168,8 @@ public class Example {
         Boolean withBalance = true; // Boolean | Return only budgets with the given status.
         Boolean withSpend = true; // Boolean | Return budgets with any positive spend.
         try {
-            apiInstance.getMarketplaceBudgetsByAdvertiser(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend);
+            List<SellerBudgetMessage> result = apiInstance.getMarketplaceBudgetsByAdvertiser(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceBudgetsByAdvertiser");
             System.err.println("Status code: " + e.getCode());
@@ -1191,7 +1198,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**List&lt;SellerBudgetMessage&gt;**](SellerBudgetMessage.md)
 
 ### Authorization
 
@@ -1200,13 +1207,13 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceBudgetsBySeller
@@ -1309,7 +1316,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceBudgetsBySellerCampaign
@@ -1410,12 +1417,12 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceCampaignsByAdvertiser
 
-> getMarketplaceCampaignsByAdvertiser(advertiserId)
+> List&lt;AdvertiserCampaignMessage&gt; getMarketplaceCampaignsByAdvertiser(advertiserId)
 
 
 
@@ -1462,7 +1469,8 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | Id of the advertiser
         try {
-            apiInstance.getMarketplaceCampaignsByAdvertiser(advertiserId);
+            List<AdvertiserCampaignMessage> result = apiInstance.getMarketplaceCampaignsByAdvertiser(advertiserId);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceCampaignsByAdvertiser");
             System.err.println("Status code: " + e.getCode());
@@ -1483,7 +1491,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**List&lt;AdvertiserCampaignMessage&gt;**](AdvertiserCampaignMessage.md)
 
 ### Authorization
 
@@ -1492,22 +1500,22 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceCampaignsStats
 
-> byte[] getMarketplaceCampaignsStats(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate)
+> byte[] getMarketplaceCampaignsStats(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, timeZoneId)
 
 
 
-## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time  interval appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
 
 ### Example
 
@@ -1555,8 +1563,9 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.now(); // OffsetDateTime | Filter out all events that occur after date (default is today’s date)
         String intervalSize = "Hour"; // String | Specify the aggregation interval for events used to compute stats (default is \"day\")
         OffsetDateTime startDate = OffsetDateTime.now(); // OffsetDateTime | Filter out all events that occur before date (default is the value of `endDate`)
+        String timeZoneId = "timeZoneId_example"; // String | Specify the timezone used in the aggregations (IANA code).
         try {
-            byte[] result = apiInstance.getMarketplaceCampaignsStats(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate);
+            byte[] result = apiInstance.getMarketplaceCampaignsStats(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, timeZoneId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceCampaignsStats");
@@ -1581,6 +1590,7 @@ public class Example {
 | **endDate** | **OffsetDateTime**| Filter out all events that occur after date (default is today’s date) | [optional] |
 | **intervalSize** | **String**| Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) | [optional] [default to Day] [enum: Hour, Day, Month, Year] |
 | **startDate** | **OffsetDateTime**| Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) | [optional] |
+| **timeZoneId** | **String**| Specify the timezone used in the aggregations (IANA code). | [optional] |
 
 ### Return type
 
@@ -1688,7 +1698,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceSellerAdPreview
@@ -1785,7 +1795,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceSellerBudget
@@ -1874,7 +1884,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceSellerBudgets
@@ -1979,12 +1989,12 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceSellerCampaign
 
-> SellerCampaignMessage getMarketplaceSellerCampaign(sellerCampaignId)
+> List&lt;SellerCampaignMessage&gt; getMarketplaceSellerCampaign(sellerCampaignId)
 
 
 
@@ -2031,7 +2041,7 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String sellerCampaignId = "sellerCampaignId_example"; // String | Id of the seller campaign.
         try {
-            SellerCampaignMessage result = apiInstance.getMarketplaceSellerCampaign(sellerCampaignId);
+            List<SellerCampaignMessage> result = apiInstance.getMarketplaceSellerCampaign(sellerCampaignId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceSellerCampaign");
@@ -2053,7 +2063,7 @@ public class Example {
 
 ### Return type
 
-[**SellerCampaignMessage**](SellerCampaignMessage.md)
+[**List&lt;SellerCampaignMessage&gt;**](SellerCampaignMessage.md)
 
 ### Authorization
 
@@ -2068,7 +2078,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceSellerCampaigns
@@ -2165,12 +2175,12 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceSellerCampaignsByAdvertiser
 
-> getMarketplaceSellerCampaignsByAdvertiser(advertiserId)
+> List&lt;SellerCampaignMessage&gt; getMarketplaceSellerCampaignsByAdvertiser(advertiserId)
 
 
 
@@ -2217,7 +2227,8 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | Id of the advertiser
         try {
-            apiInstance.getMarketplaceSellerCampaignsByAdvertiser(advertiserId);
+            List<SellerCampaignMessage> result = apiInstance.getMarketplaceSellerCampaignsByAdvertiser(advertiserId);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceSellerCampaignsByAdvertiser");
             System.err.println("Status code: " + e.getCode());
@@ -2238,7 +2249,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**List&lt;SellerCampaignMessage&gt;**](SellerCampaignMessage.md)
 
 ### Authorization
 
@@ -2247,13 +2258,13 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceSellerCampaignsBySeller
@@ -2348,16 +2359,16 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceSellerCampaignsStats
 
-> byte[] getMarketplaceSellerCampaignsStats(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate)
+> byte[] getMarketplaceSellerCampaignsStats(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId)
 
 
 
-## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone if  provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns  are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
 
 ### Example
 
@@ -2406,8 +2417,9 @@ public class Example {
         String intervalSize = "Hour"; // String | Specify the aggregation interval for events used to compute stats (default is \"day\")
         String sellerId = "sellerId_example"; // String | Show only metrics for this seller (default all sellers)
         OffsetDateTime startDate = OffsetDateTime.now(); // OffsetDateTime | Filter out all events that occur before date (default is the value of `endDate`)
+        String timeZoneId = "timeZoneId_example"; // String | Specify the timezone used in the aggregations (IANA code).
         try {
-            byte[] result = apiInstance.getMarketplaceSellerCampaignsStats(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate);
+            byte[] result = apiInstance.getMarketplaceSellerCampaignsStats(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceSellerCampaignsStats");
@@ -2433,6 +2445,7 @@ public class Example {
 | **intervalSize** | **String**| Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) | [optional] [default to Day] [enum: Hour, Day, Month, Year] |
 | **sellerId** | **String**| Show only metrics for this seller (default all sellers) | [optional] |
 | **startDate** | **OffsetDateTime**| Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) | [optional] |
+| **timeZoneId** | **String**| Specify the timezone used in the aggregations (IANA code). | [optional] |
 
 ### Return type
 
@@ -2456,7 +2469,7 @@ public class Example {
 
 ## getMarketplaceSellers
 
-> List&lt;SellerBudgetMessage&gt; getMarketplaceSellers(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts)
+> List&lt;SellerBase&gt; getMarketplaceSellers(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts)
 
 
 
@@ -2508,7 +2521,7 @@ public class Example {
         String withBudgetStatus = "Archived"; // String | Return only sellers with specific budget status.
         Boolean withProducts = true; // Boolean | Return only sellers with or without products in catalog.
         try {
-            List<SellerBudgetMessage> result = apiInstance.getMarketplaceSellers(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts);
+            List<SellerBase> result = apiInstance.getMarketplaceSellers(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceSellers");
@@ -2535,7 +2548,7 @@ public class Example {
 
 ### Return type
 
-[**List&lt;SellerBudgetMessage&gt;**](SellerBudgetMessage.md)
+[**List&lt;SellerBase&gt;**](SellerBase.md)
 
 ### Authorization
 
@@ -2550,12 +2563,12 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceSellersByAdvertiser
 
-> getMarketplaceSellersByAdvertiser(advertiserId, partnerId, requestBody)
+> List&lt;SellerBase&gt; getMarketplaceSellersByAdvertiser(advertiserId, partnerId, requestBody)
 
 
 
@@ -2604,7 +2617,8 @@ public class Example {
         Integer partnerId = 56; // Integer | Id of the partner
         List<String> requestBody = Arrays.asList(); // List<String> | Names of the sellers to associate with new Ids
         try {
-            apiInstance.getMarketplaceSellersByAdvertiser(advertiserId, partnerId, requestBody);
+            List<SellerBase> result = apiInstance.getMarketplaceSellersByAdvertiser(advertiserId, partnerId, requestBody);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceSellersByAdvertiser");
             System.err.println("Status code: " + e.getCode());
@@ -2627,7 +2641,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**List&lt;SellerBase&gt;**](SellerBase.md)
 
 ### Authorization
 
@@ -2636,22 +2650,22 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## getMarketplaceSellersStats
 
-> byte[] getMarketplaceSellersStats(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate)
+> byte[] getMarketplaceSellersStats(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId)
 
 
 
-## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time interval  appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
 
 ### Example
 
@@ -2699,8 +2713,9 @@ public class Example {
         String intervalSize = "Hour"; // String | Specify the aggregation interval for events used to compute stats (default is \"day\")
         String sellerId = "sellerId_example"; // String | Show only metrics for this seller (default all sellers)
         OffsetDateTime startDate = OffsetDateTime.now(); // OffsetDateTime | Filter out all events that occur before date (default is the value of `endDate`)
+        String timeZoneId = "timeZoneId_example"; // String | Specify the timezone used in the aggregations (IANA code).
         try {
-            byte[] result = apiInstance.getMarketplaceSellersStats(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate);
+            byte[] result = apiInstance.getMarketplaceSellersStats(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceSellersStats");
@@ -2725,6 +2740,7 @@ public class Example {
 | **intervalSize** | **String**| Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) | [optional] [default to Day] [enum: Hour, Day, Month, Year] |
 | **sellerId** | **String**| Show only metrics for this seller (default all sellers) | [optional] |
 | **startDate** | **OffsetDateTime**| Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) | [optional] |
+| **timeZoneId** | **String**| Specify the timezone used in the aggregations (IANA code). | [optional] |
 
 ### Return type
 
@@ -3555,7 +3571,7 @@ public class Example {
 
 ## updateMarketplaceSellerBudget
 
-> updateMarketplaceSellerBudget(budgetId, updateSellerBudgetMessageBase)
+> SellerBudgetMessage updateMarketplaceSellerBudget(budgetId, updateSellerBudgetMessageBase)
 
 
 
@@ -3603,7 +3619,8 @@ public class Example {
         Long budgetId = 56L; // Long | Id of the budget
         UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase = new UpdateSellerBudgetMessageBase(); // UpdateSellerBudgetMessageBase | 
         try {
-            apiInstance.updateMarketplaceSellerBudget(budgetId, updateSellerBudgetMessageBase);
+            SellerBudgetMessage result = apiInstance.updateMarketplaceSellerBudget(budgetId, updateSellerBudgetMessageBase);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#updateMarketplaceSellerBudget");
             System.err.println("Status code: " + e.getCode());
@@ -3625,7 +3642,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SellerBudgetMessage**](SellerBudgetMessage.md)
 
 ### Authorization
 
@@ -3634,18 +3651,18 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## updateMarketplaceSellerBudgets
 
-> updateMarketplaceSellerBudgets(updateSellerBudgetMessage)
+> List&lt;SellerBudgetMessage&gt; updateMarketplaceSellerBudgets(updateSellerBudgetMessage)
 
 
 
@@ -3692,7 +3709,8 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         List<UpdateSellerBudgetMessage> updateSellerBudgetMessage = Arrays.asList(); // List<UpdateSellerBudgetMessage> | 
         try {
-            apiInstance.updateMarketplaceSellerBudgets(updateSellerBudgetMessage);
+            List<SellerBudgetMessage> result = apiInstance.updateMarketplaceSellerBudgets(updateSellerBudgetMessage);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#updateMarketplaceSellerBudgets");
             System.err.println("Status code: " + e.getCode());
@@ -3713,7 +3731,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**List&lt;SellerBudgetMessage&gt;**](SellerBudgetMessage.md)
 
 ### Authorization
 
@@ -3722,13 +3740,13 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## updateMarketplaceSellerCampaign
@@ -3819,7 +3837,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 
 
 ## updateMarketplaceSellerCampaigns
@@ -3908,5 +3926,5 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | Success |  -  |
 

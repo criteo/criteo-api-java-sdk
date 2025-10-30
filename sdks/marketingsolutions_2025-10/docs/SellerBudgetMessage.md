@@ -8,14 +8,14 @@ Budget are used to specify budget constraints for one or more Seller-Campaigns o
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**amount** | **BigDecimal** |  |  [optional] |
+|**amount** | **Double** |  |  [optional] |
 |**budgetType** | **String** |  |  [optional] |
 |**campaignIds** | **List&lt;Integer&gt;** |  |  [optional] |
 |**endDate** | **String** |  |  [optional] |
 |**id** | **String** |  |  [optional] |
 |**isSuspended** | **Boolean** |  |  [optional] |
 |**sellerId** | **String** |  |  [optional] |
-|**spend** | **BigDecimal** |  |  [optional] |
+|**spend** | **Double** |  |  [optional] |
 |**startDate** | **OffsetDateTime** |  |  [optional] |
 |**status** | **SellerBudgetStatusV2** |  |  [optional] |
 

@@ -22,7 +22,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +55,7 @@ import com.criteo.api.marketingsolutions.v2025_07.JSON;
 public class SellerCampaignMessage {
   public static final String SERIALIZED_NAME_BID = "bid";
   @SerializedName(SERIALIZED_NAME_BID)
-  private BigDecimal bid;
+  private Double bid;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
@@ -89,7 +88,7 @@ public class SellerCampaignMessage {
     this.id = id;
   }
 
-  public SellerCampaignMessage bid(BigDecimal bid) {
+  public SellerCampaignMessage bid(Double bid) {
     
     this.bid = bid;
     return this;
@@ -101,12 +100,12 @@ public class SellerCampaignMessage {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getBid() {
+  public Double getBid() {
     return bid;
   }
 
 
-  public void setBid(BigDecimal bid) {
+  public void setBid(Double bid) {
     this.bid = bid;
   }
 

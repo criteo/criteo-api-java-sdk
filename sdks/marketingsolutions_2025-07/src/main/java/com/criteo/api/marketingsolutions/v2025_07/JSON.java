@@ -117,6 +117,10 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2025_07.model.AdaptiveColors.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2025_07.model.AdaptiveReadAttributes.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2025_07.model.AdaptiveWriteAttributes.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2025_07.model.AdvertiserAdsetMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2025_07.model.AdvertiserCampaignMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2025_07.model.AdvertiserInfoMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2025_07.model.AdvertiserQuotaMessage.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2025_07.model.AlgebraNodeV1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2025_07.model.ApplicationSummaryModel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2025_07.model.ApplicationSummaryModelResource.CustomTypeAdapterFactory());

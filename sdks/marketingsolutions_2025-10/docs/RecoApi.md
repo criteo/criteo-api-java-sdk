@@ -4,15 +4,15 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createProductSet**](RecoApi.md#createProductSet) | **POST** /2025-10/product-sets |  |
-| [**disableProductFiltering**](RecoApi.md#disableProductFiltering) | **DELETE** /2025-10/ads/{ad-id}/product-filter |  |
-| [**enableProductFiltering**](RecoApi.md#enableProductFiltering) | **POST** /2025-10/ads/{ad-id}/product-filter |  |
-| [**fetchProductFilteringConfig**](RecoApi.md#fetchProductFilteringConfig) | **GET** /2025-10/ads/{ad-id}/product-filter |  |
-| [**fetchProductFilteringUsages**](RecoApi.md#fetchProductFilteringUsages) | **GET** /2025-10/product-sets/{product-set-id}/product-filters |  |
-| [**fetchProductSet**](RecoApi.md#fetchProductSet) | **GET** /2025-10/product-sets/{product-set-id} |  |
-| [**fetchProductSets**](RecoApi.md#fetchProductSets) | **GET** /2025-10/product-sets/dataset/{dataset-id} |  |
-| [**patchProductSet**](RecoApi.md#patchProductSet) | **PATCH** /2025-10/product-sets/{product-set-id} |  |
-| [**removeProductSet**](RecoApi.md#removeProductSet) | **DELETE** /2025-10/product-sets/{product-set-id} |  |
+| [**createProductSet**](RecoApi.md#createProductSet) | **POST** /2025-10/marketing-solutions/product-sets |  |
+| [**disableProductFiltering**](RecoApi.md#disableProductFiltering) | **DELETE** /2025-10/marketing-solutions/ads/{ad-id}/product-filter |  |
+| [**enableProductFiltering**](RecoApi.md#enableProductFiltering) | **POST** /2025-10/marketing-solutions/ads/{ad-id}/product-filter |  |
+| [**fetchProductFilteringConfig**](RecoApi.md#fetchProductFilteringConfig) | **GET** /2025-10/marketing-solutions/ads/{ad-id}/product-filter |  |
+| [**fetchProductFilteringUsages**](RecoApi.md#fetchProductFilteringUsages) | **GET** /2025-10/marketing-solutions/product-sets/{product-set-id}/product-filters |  |
+| [**fetchProductSet**](RecoApi.md#fetchProductSet) | **GET** /2025-10/marketing-solutions/product-sets/{product-set-id} |  |
+| [**fetchProductSets**](RecoApi.md#fetchProductSets) | **GET** /2025-10/marketing-solutions/product-sets/dataset/{dataset-id} |  |
+| [**patchProductSet**](RecoApi.md#patchProductSet) | **PATCH** /2025-10/marketing-solutions/product-sets/{product-set-id} |  |
+| [**removeProductSet**](RecoApi.md#removeProductSet) | **DELETE** /2025-10/marketing-solutions/product-sets/{product-set-id} |  |
 
 
 

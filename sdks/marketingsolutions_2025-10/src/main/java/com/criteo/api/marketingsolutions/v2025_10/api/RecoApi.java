@@ -109,7 +109,7 @@ public class RecoApi {
         Object localVarPostBody = valueResourceInputOfCreateProductSetRequest;
 
         // create path and map variables
-        String localVarPath = "/2025-10/product-sets";
+        String localVarPath = "/2025-10/marketing-solutions/product-sets";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -227,7 +227,7 @@ public class RecoApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2025-10/ads/{ad-id}/product-filter"
+        String localVarPath = "/2025-10/marketing-solutions/ads/{ad-id}/product-filter"
             .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -351,7 +351,7 @@ public class RecoApi {
         Object localVarPostBody = valueResourceInputOfCreateProductFilterRequest;
 
         // create path and map variables
-        String localVarPath = "/2025-10/ads/{ad-id}/product-filter"
+        String localVarPath = "/2025-10/marketing-solutions/ads/{ad-id}/product-filter"
             .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -478,7 +478,7 @@ public class RecoApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2025-10/ads/{ad-id}/product-filter"
+        String localVarPath = "/2025-10/marketing-solutions/ads/{ad-id}/product-filter"
             .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -601,7 +601,7 @@ public class RecoApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2025-10/product-sets/{product-set-id}/product-filters"
+        String localVarPath = "/2025-10/marketing-solutions/product-sets/{product-set-id}/product-filters"
             .replace("{" + "product-set-id" + "}", localVarApiClient.escapeString(productSetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -724,7 +724,7 @@ public class RecoApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2025-10/product-sets/{product-set-id}"
+        String localVarPath = "/2025-10/marketing-solutions/product-sets/{product-set-id}"
             .replace("{" + "product-set-id" + "}", localVarApiClient.escapeString(productSetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -847,7 +847,7 @@ public class RecoApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2025-10/product-sets/dataset/{dataset-id}"
+        String localVarPath = "/2025-10/marketing-solutions/product-sets/dataset/{dataset-id}"
             .replace("{" + "dataset-id" + "}", localVarApiClient.escapeString(datasetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -971,7 +971,7 @@ public class RecoApi {
         Object localVarPostBody = valueResourceInputOfPatchProductSetRequest;
 
         // create path and map variables
-        String localVarPath = "/2025-10/product-sets/{product-set-id}"
+        String localVarPath = "/2025-10/marketing-solutions/product-sets/{product-set-id}"
             .replace("{" + "product-set-id" + "}", localVarApiClient.escapeString(productSetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1098,7 +1098,7 @@ public class RecoApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2025-10/product-sets/{product-set-id}"
+        String localVarPath = "/2025-10/marketing-solutions/product-sets/{product-set-id}"
             .replace("{" + "product-set-id" + "}", localVarApiClient.escapeString(productSetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

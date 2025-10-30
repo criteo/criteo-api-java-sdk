@@ -22,7 +22,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +55,7 @@ import com.criteo.api.marketingsolutions.v2025_07.JSON;
 public class SellerBudgetMessage {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private BigDecimal amount;
+  private Double amount;
 
   public static final String SERIALIZED_NAME_BUDGET_TYPE = "budgetType";
   @SerializedName(SERIALIZED_NAME_BUDGET_TYPE)
@@ -84,7 +83,7 @@ public class SellerBudgetMessage {
 
   public static final String SERIALIZED_NAME_SPEND = "spend";
   @SerializedName(SERIALIZED_NAME_SPEND)
-  private BigDecimal spend;
+  private Double spend;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -97,7 +96,7 @@ public class SellerBudgetMessage {
   public SellerBudgetMessage() {
   }
 
-  public SellerBudgetMessage amount(BigDecimal amount) {
+  public SellerBudgetMessage amount(Double amount) {
     
     this.amount = amount;
     return this;
@@ -109,12 +108,12 @@ public class SellerBudgetMessage {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
@@ -259,7 +258,7 @@ public class SellerBudgetMessage {
   }
 
 
-  public SellerBudgetMessage spend(BigDecimal spend) {
+  public SellerBudgetMessage spend(Double spend) {
     
     this.spend = spend;
     return this;
@@ -271,12 +270,12 @@ public class SellerBudgetMessage {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getSpend() {
+  public Double getSpend() {
     return spend;
   }
 
 
-  public void setSpend(BigDecimal spend) {
+  public void setSpend(Double spend) {
     this.spend = spend;
   }
 

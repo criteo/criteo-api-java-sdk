@@ -15,6 +15,7 @@ docs/AdSetCategoryBid.md
 docs/AdSetCategoryBidListResponse.md
 docs/AdSetCategoryBidResource.md
 docs/AdSetDeliveryLimitationsV24Q3.md
+docs/AdSetDeliveryStatus.md
 docs/AdSetDisplayMultiplier.md
 docs/AdSetDisplayMultiplierListResponse.md
 docs/AdSetDisplayMultiplierResource.md
@@ -30,7 +31,11 @@ docs/AdaptiveAttributes.md
 docs/AdaptiveColors.md
 docs/AdaptiveReadAttributes.md
 docs/AdaptiveWriteAttributes.md
+docs/AdvertiserAdsetMessage.md
 docs/AdvertiserApi.md
+docs/AdvertiserCampaignMessage.md
+docs/AdvertiserInfoMessage.md
+docs/AdvertiserQuotaMessage.md
 docs/AlgebraNodeV1.md
 docs/AnalyticsApi.md
 docs/ApplicationSummaryModel.md
@@ -323,6 +328,7 @@ src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdSetCategoryBid.
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdSetCategoryBidListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdSetCategoryBidResource.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdSetDeliveryLimitationsV24Q3.java
+src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdSetDeliveryStatus.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdSetDisplayMultiplier.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdSetDisplayMultiplierListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdSetDisplayMultiplierResource.java
@@ -338,6 +344,10 @@ src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdaptiveAttribute
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdaptiveColors.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdaptiveReadAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdaptiveWriteAttributes.java
+src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdvertiserAdsetMessage.java
+src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdvertiserCampaignMessage.java
+src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdvertiserInfoMessage.java
+src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AdvertiserQuotaMessage.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/AlgebraNodeV1.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/ApplicationSummaryModel.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/ApplicationSummaryModelResource.java

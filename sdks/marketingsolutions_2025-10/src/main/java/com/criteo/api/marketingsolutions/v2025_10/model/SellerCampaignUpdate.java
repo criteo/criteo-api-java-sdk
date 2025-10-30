@@ -44,7 +44,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2025_10.JSON;
 
 /**
- * Data used to update a seller&#39;s campaign
+ * Date used to update a Seller-Campaign&#39;s Bid.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SellerCampaignUpdate {

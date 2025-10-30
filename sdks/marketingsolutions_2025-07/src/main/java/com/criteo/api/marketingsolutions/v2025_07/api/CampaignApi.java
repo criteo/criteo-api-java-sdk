@@ -32,6 +32,10 @@ import com.criteo.api.marketingsolutions.v2025_07.model.AdSetAudienceLinkInputEn
 import com.criteo.api.marketingsolutions.v2025_07.model.AdSetCategoryBidListResponse;
 import com.criteo.api.marketingsolutions.v2025_07.model.AdSetDisplayMultiplierListResponse;
 import com.criteo.api.marketingsolutions.v2025_07.model.AdSetSearchRequestV24Q3;
+import com.criteo.api.marketingsolutions.v2025_07.model.AdvertiserAdsetMessage;
+import com.criteo.api.marketingsolutions.v2025_07.model.AdvertiserCampaignMessage;
+import com.criteo.api.marketingsolutions.v2025_07.model.AdvertiserInfoMessage;
+import com.criteo.api.marketingsolutions.v2025_07.model.AdvertiserQuotaMessage;
 import com.criteo.api.marketingsolutions.v2025_07.model.CampaignSearchRequestV23Q1;
 import com.criteo.api.marketingsolutions.v2025_07.model.CampaignV23Q1ListResponse;
 import com.criteo.api.marketingsolutions.v2025_07.model.CampaignV23Q1Response;
@@ -358,7 +362,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createMarketplaceSellerBudgetsCall(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage, final ApiCallback _callback) throws ApiException {
@@ -387,6 +391,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -415,32 +420,35 @@ public class CampaignApi {
      * 
      * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
      * @param createSellerBudgetMapiMessage  (optional)
+     * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void createMarketplaceSellerBudgets(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage) throws ApiException {
-        createMarketplaceSellerBudgetsWithHttpInfo(createSellerBudgetMapiMessage);
+    public List<SellerBudgetMessage> createMarketplaceSellerBudgets(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> localVarResp = createMarketplaceSellerBudgetsWithHttpInfo(createSellerBudgetMapiMessage);
+        return localVarResp.getData();
     }
 
     /**
      * 
      * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
      * @param createSellerBudgetMapiMessage  (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> createMarketplaceSellerBudgetsWithHttpInfo(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage) throws ApiException {
+    public ApiResponse<List<SellerBudgetMessage>> createMarketplaceSellerBudgetsWithHttpInfo(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage) throws ApiException {
         okhttp3.Call localVarCall = createMarketplaceSellerBudgetsValidateBeforeCall(createSellerBudgetMapiMessage, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -453,13 +461,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createMarketplaceSellerBudgetsAsync(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call createMarketplaceSellerBudgetsAsync(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createMarketplaceSellerBudgetsValidateBeforeCall(createSellerBudgetMapiMessage, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -472,7 +481,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createMarketplaceSellerCampaignsBySellerCall(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi, final ApiCallback _callback) throws ApiException {
@@ -502,6 +511,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -536,15 +546,17 @@ public class CampaignApi {
      * Associate an existing Seller with an existing Campaign allowing for budget creation
      * @param sellerId Supply a generated Id of an existing Seller (required)
      * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (optional)
+     * @return SellerCampaignMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void createMarketplaceSellerCampaignsBySeller(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi) throws ApiException {
-        createMarketplaceSellerCampaignsBySellerWithHttpInfo(sellerId, createSellerCampaignMessageMapi);
+    public SellerCampaignMessage createMarketplaceSellerCampaignsBySeller(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi) throws ApiException {
+        ApiResponse<SellerCampaignMessage> localVarResp = createMarketplaceSellerCampaignsBySellerWithHttpInfo(sellerId, createSellerCampaignMessageMapi);
+        return localVarResp.getData();
     }
 
     /**
@@ -552,17 +564,18 @@ public class CampaignApi {
      * Associate an existing Seller with an existing Campaign allowing for budget creation
      * @param sellerId Supply a generated Id of an existing Seller (required)
      * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> createMarketplaceSellerCampaignsBySellerWithHttpInfo(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi) throws ApiException {
+    public ApiResponse<SellerCampaignMessage> createMarketplaceSellerCampaignsBySellerWithHttpInfo(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi) throws ApiException {
         okhttp3.Call localVarCall = createMarketplaceSellerCampaignsBySellerValidateBeforeCall(sellerId, createSellerCampaignMessageMapi, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -576,13 +589,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createMarketplaceSellerCampaignsBySellerAsync(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call createMarketplaceSellerCampaignsBySellerAsync(String sellerId, CreateSellerCampaignMessageMapi createSellerCampaignMessageMapi, final ApiCallback<SellerCampaignMessage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createMarketplaceSellerCampaignsBySellerValidateBeforeCall(sellerId, createSellerCampaignMessageMapi, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1086,7 +1100,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceAdSetsByAdvertiserCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
@@ -1116,6 +1130,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1148,32 +1163,35 @@ public class CampaignApi {
      * 
      * Get the collection of adsets associated with the advertiserId.
      * @param advertiserId Id of the advertiser (required)
+     * @return List&lt;AdvertiserAdsetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void getMarketplaceAdSetsByAdvertiser(Integer advertiserId) throws ApiException {
-        getMarketplaceAdSetsByAdvertiserWithHttpInfo(advertiserId);
+    public List<AdvertiserAdsetMessage> getMarketplaceAdSetsByAdvertiser(Integer advertiserId) throws ApiException {
+        ApiResponse<List<AdvertiserAdsetMessage>> localVarResp = getMarketplaceAdSetsByAdvertiserWithHttpInfo(advertiserId);
+        return localVarResp.getData();
     }
 
     /**
      * 
      * Get the collection of adsets associated with the advertiserId.
      * @param advertiserId Id of the advertiser (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;AdvertiserAdsetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> getMarketplaceAdSetsByAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
+    public ApiResponse<List<AdvertiserAdsetMessage>> getMarketplaceAdSetsByAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceAdSetsByAdvertiserValidateBeforeCall(advertiserId, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<AdvertiserAdsetMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1186,13 +1204,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceAdSetsByAdvertiserAsync(Integer advertiserId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceAdSetsByAdvertiserAsync(Integer advertiserId, final ApiCallback<List<AdvertiserAdsetMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceAdSetsByAdvertiserValidateBeforeCall(advertiserId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<AdvertiserAdsetMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1204,7 +1223,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceAdvertiserCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
@@ -1234,6 +1253,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1266,32 +1286,35 @@ public class CampaignApi {
      * 
      * Get an advertiser.
      * @param advertiserId Id of the advertiser (required)
+     * @return AdvertiserInfoMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void getMarketplaceAdvertiser(Integer advertiserId) throws ApiException {
-        getMarketplaceAdvertiserWithHttpInfo(advertiserId);
+    public AdvertiserInfoMessage getMarketplaceAdvertiser(Integer advertiserId) throws ApiException {
+        ApiResponse<AdvertiserInfoMessage> localVarResp = getMarketplaceAdvertiserWithHttpInfo(advertiserId);
+        return localVarResp.getData();
     }
 
     /**
      * 
      * Get an advertiser.
      * @param advertiserId Id of the advertiser (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;AdvertiserInfoMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> getMarketplaceAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
+    public ApiResponse<AdvertiserInfoMessage> getMarketplaceAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceAdvertiserValidateBeforeCall(advertiserId, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<AdvertiserInfoMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1304,13 +1327,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceAdvertiserAsync(Integer advertiserId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceAdvertiserAsync(Integer advertiserId, final ApiCallback<AdvertiserInfoMessage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceAdvertiserValidateBeforeCall(advertiserId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<AdvertiserInfoMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1321,7 +1345,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceAdvertiserPreviewLimitsCall(final ApiCallback _callback) throws ApiException {
@@ -1350,6 +1374,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1376,31 +1401,34 @@ public class CampaignApi {
     /**
      * 
      * Get the collection of advertisers preview limits associated with the authorized user.
+     * @return List&lt;AdvertiserQuotaMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void getMarketplaceAdvertiserPreviewLimits() throws ApiException {
-        getMarketplaceAdvertiserPreviewLimitsWithHttpInfo();
+    public List<AdvertiserQuotaMessage> getMarketplaceAdvertiserPreviewLimits() throws ApiException {
+        ApiResponse<List<AdvertiserQuotaMessage>> localVarResp = getMarketplaceAdvertiserPreviewLimitsWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
      * 
      * Get the collection of advertisers preview limits associated with the authorized user.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;AdvertiserQuotaMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> getMarketplaceAdvertiserPreviewLimitsWithHttpInfo() throws ApiException {
+    public ApiResponse<List<AdvertiserQuotaMessage>> getMarketplaceAdvertiserPreviewLimitsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceAdvertiserPreviewLimitsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<AdvertiserQuotaMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1412,13 +1440,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceAdvertiserPreviewLimitsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceAdvertiserPreviewLimitsAsync(final ApiCallback<List<AdvertiserQuotaMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceAdvertiserPreviewLimitsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<AdvertiserQuotaMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1429,7 +1458,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceAdvertisersCall(final ApiCallback _callback) throws ApiException {
@@ -1458,6 +1487,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1484,31 +1514,34 @@ public class CampaignApi {
     /**
      * 
      * Get the collection of advertisers associated with the user.
+     * @return List&lt;AdvertiserInfoMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void getMarketplaceAdvertisers() throws ApiException {
-        getMarketplaceAdvertisersWithHttpInfo();
+    public List<AdvertiserInfoMessage> getMarketplaceAdvertisers() throws ApiException {
+        ApiResponse<List<AdvertiserInfoMessage>> localVarResp = getMarketplaceAdvertisersWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
      * 
      * Get the collection of advertisers associated with the user.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;AdvertiserInfoMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> getMarketplaceAdvertisersWithHttpInfo() throws ApiException {
+    public ApiResponse<List<AdvertiserInfoMessage>> getMarketplaceAdvertisersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceAdvertisersValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<AdvertiserInfoMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1520,13 +1553,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceAdvertisersAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceAdvertisersAsync(final ApiCallback<List<AdvertiserInfoMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceAdvertisersValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<AdvertiserInfoMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1546,7 +1580,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceBudgetsByAdvertiserCall(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
@@ -1608,6 +1642,7 @@ public class CampaignApi {
         }
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1648,15 +1683,17 @@ public class CampaignApi {
      * @param type Return only budgets with the given budget type. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
+     * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void getMarketplaceBudgetsByAdvertiser(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
-        getMarketplaceBudgetsByAdvertiserWithHttpInfo(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend);
+    public List<SellerBudgetMessage> getMarketplaceBudgetsByAdvertiser(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> localVarResp = getMarketplaceBudgetsByAdvertiserWithHttpInfo(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend);
+        return localVarResp.getData();
     }
 
     /**
@@ -1671,17 +1708,18 @@ public class CampaignApi {
      * @param type Return only budgets with the given budget type. (optional)
      * @param withBalance Return only budgets with the given status. (optional)
      * @param withSpend Return budgets with any positive spend. (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> getMarketplaceBudgetsByAdvertiserWithHttpInfo(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+    public ApiResponse<List<SellerBudgetMessage>> getMarketplaceBudgetsByAdvertiserWithHttpInfo(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceBudgetsByAdvertiserValidateBeforeCall(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1702,13 +1740,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceBudgetsByAdvertiserAsync(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceBudgetsByAdvertiserAsync(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceBudgetsByAdvertiserValidateBeforeCall(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1727,7 +1766,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceBudgetsBySellerCall(String sellerId, Integer campaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
@@ -1830,7 +1869,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public List<SellerBudgetMessage> getMarketplaceBudgetsBySeller(String sellerId, Integer campaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
@@ -1854,7 +1893,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<SellerBudgetMessage>> getMarketplaceBudgetsBySellerWithHttpInfo(String sellerId, Integer campaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
@@ -1880,7 +1919,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceBudgetsBySellerAsync(String sellerId, Integer campaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
@@ -1905,7 +1944,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceBudgetsBySellerCampaignCall(String sellerCampaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
@@ -2003,7 +2042,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public List<SellerBudgetMessage> getMarketplaceBudgetsBySellerCampaign(String sellerCampaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
@@ -2026,7 +2065,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<SellerBudgetMessage>> getMarketplaceBudgetsBySellerCampaignWithHttpInfo(String sellerCampaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
@@ -2051,7 +2090,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceBudgetsBySellerCampaignAsync(String sellerCampaignId, OffsetDateTime endAfterDate, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
@@ -2070,7 +2109,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceCampaignsByAdvertiserCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
@@ -2100,6 +2139,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2132,32 +2172,35 @@ public class CampaignApi {
      * 
      * Get the collection of CRP campaigns associated with the advertiserId.
      * @param advertiserId Id of the advertiser (required)
+     * @return List&lt;AdvertiserCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void getMarketplaceCampaignsByAdvertiser(Integer advertiserId) throws ApiException {
-        getMarketplaceCampaignsByAdvertiserWithHttpInfo(advertiserId);
+    public List<AdvertiserCampaignMessage> getMarketplaceCampaignsByAdvertiser(Integer advertiserId) throws ApiException {
+        ApiResponse<List<AdvertiserCampaignMessage>> localVarResp = getMarketplaceCampaignsByAdvertiserWithHttpInfo(advertiserId);
+        return localVarResp.getData();
     }
 
     /**
      * 
      * Get the collection of CRP campaigns associated with the advertiserId.
      * @param advertiserId Id of the advertiser (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;AdvertiserCampaignMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> getMarketplaceCampaignsByAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
+    public ApiResponse<List<AdvertiserCampaignMessage>> getMarketplaceCampaignsByAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceCampaignsByAdvertiserValidateBeforeCall(advertiserId, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<AdvertiserCampaignMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2170,13 +2213,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceCampaignsByAdvertiserAsync(Integer advertiserId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceCampaignsByAdvertiserAsync(Integer advertiserId, final ApiCallback<List<AdvertiserCampaignMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceCampaignsByAdvertiserValidateBeforeCall(advertiserId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<AdvertiserCampaignMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2188,6 +2232,7 @@ public class CampaignApi {
      * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2197,7 +2242,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceCampaignsStatsCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceCampaignsStatsCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate, String timeZoneId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2250,6 +2295,10 @@ public class CampaignApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("startDate", startDate));
         }
 
+        if (timeZoneId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timeZoneId", timeZoneId));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -2270,14 +2319,14 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceCampaignsStatsValidateBeforeCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
-        return getMarketplaceCampaignsStatsCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, _callback);
+    private okhttp3.Call getMarketplaceCampaignsStatsValidateBeforeCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate, String timeZoneId, final ApiCallback _callback) throws ApiException {
+        return getMarketplaceCampaignsStatsCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, timeZoneId, _callback);
 
     }
 
     /**
      * 
-     * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time  interval appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
      * @param advertiserId Show only metrics for this advertiser. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
@@ -2285,6 +2334,7 @@ public class CampaignApi {
      * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @return byte[]
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2293,14 +2343,14 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public byte[] getMarketplaceCampaignsStats(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate) throws ApiException {
-        ApiResponse<byte[]> localVarResp = getMarketplaceCampaignsStatsWithHttpInfo(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate);
+    public byte[] getMarketplaceCampaignsStats(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate, String timeZoneId) throws ApiException {
+        ApiResponse<byte[]> localVarResp = getMarketplaceCampaignsStatsWithHttpInfo(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, timeZoneId);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time  interval appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
      * @param advertiserId Show only metrics for this advertiser. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
@@ -2308,6 +2358,7 @@ public class CampaignApi {
      * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @return ApiResponse&lt;byte[]&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2316,15 +2367,15 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<byte[]> getMarketplaceCampaignsStatsWithHttpInfo(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate) throws ApiException {
-        okhttp3.Call localVarCall = getMarketplaceCampaignsStatsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, null);
+    public ApiResponse<byte[]> getMarketplaceCampaignsStatsWithHttpInfo(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate, String timeZoneId) throws ApiException {
+        okhttp3.Call localVarCall = getMarketplaceCampaignsStatsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, timeZoneId, null);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time  interval appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
      * @param advertiserId Show only metrics for this advertiser. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
@@ -2332,6 +2383,7 @@ public class CampaignApi {
      * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2341,9 +2393,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceCampaignsStatsAsync(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceCampaignsStatsAsync(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, OffsetDateTime startDate, String timeZoneId, final ApiCallback<byte[]> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMarketplaceCampaignsStatsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, _callback);
+        okhttp3.Call localVarCall = getMarketplaceCampaignsStatsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, startDate, timeZoneId, _callback);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2357,7 +2409,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerCall(String sellerId, final ApiCallback _callback) throws ApiException {
@@ -2425,7 +2477,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public SellerBase getMarketplaceSeller(String sellerId) throws ApiException {
@@ -2442,7 +2494,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<SellerBase> getMarketplaceSellerWithHttpInfo(String sellerId) throws ApiException {
@@ -2461,7 +2513,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerAsync(String sellerId, final ApiCallback<SellerBase> _callback) throws ApiException {
@@ -2484,7 +2536,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerAdPreviewCall(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width, final ApiCallback _callback) throws ApiException {
@@ -2577,7 +2629,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public String getMarketplaceSellerAdPreview(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width) throws ApiException {
@@ -2598,7 +2650,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<String> getMarketplaceSellerAdPreviewWithHttpInfo(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width) throws ApiException {
@@ -2621,7 +2673,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerAdPreviewAsync(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width, final ApiCallback<String> _callback) throws ApiException {
@@ -2640,7 +2692,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerBudgetCall(Long budgetId, final ApiCallback _callback) throws ApiException {
@@ -2708,7 +2760,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public SellerBudgetMessage getMarketplaceSellerBudget(Long budgetId) throws ApiException {
@@ -2725,7 +2777,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<SellerBudgetMessage> getMarketplaceSellerBudgetWithHttpInfo(Long budgetId) throws ApiException {
@@ -2744,7 +2796,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerBudgetAsync(Long budgetId, final ApiCallback<SellerBudgetMessage> _callback) throws ApiException {
@@ -2771,7 +2823,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerBudgetsCall(Integer advertiserId, Integer campaignId, OffsetDateTime endAfterDate, String sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
@@ -2877,7 +2929,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public List<SellerBudgetMessage> getMarketplaceSellerBudgets(Integer advertiserId, Integer campaignId, OffsetDateTime endAfterDate, String sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
@@ -2902,7 +2954,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<SellerBudgetMessage>> getMarketplaceSellerBudgetsWithHttpInfo(Integer advertiserId, Integer campaignId, OffsetDateTime endAfterDate, String sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
@@ -2929,7 +2981,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerBudgetsAsync(Integer advertiserId, Integer campaignId, OffsetDateTime endAfterDate, String sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
@@ -2948,7 +3000,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerCampaignCall(String sellerCampaignId, final ApiCallback _callback) throws ApiException {
@@ -3011,16 +3063,16 @@ public class CampaignApi {
      * 
      * Return details for a seller campaign. For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30T15:15:24.813\&quot;,          \&quot;suspensionReasons\&quot;: [              \&quot;NoMoreBudget\&quot;          ]      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.                Suspension reasons:  - ManuallyStopped: The Seller-Campaign has been manually paused. This is not related to the other suspension reasons.  - NoBudgetDefined: No valid budget has been linked to the Seller-Campaign.  - NoCpcDefined: No CPC has been set for the Seller-Campaign.  - NoMoreBudget: The current budget of the Seller-Campaign has been exhausted.  - RemovedFromCatalog: All the products of the Seller-Campaign have been deleted from the catalog.  - NotYetStarted: The Seller-Campaign has just been created and has not yet been processed.
      * @param sellerCampaignId Id of the seller campaign. (required)
-     * @return SellerCampaignMessage
+     * @return List&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public SellerCampaignMessage getMarketplaceSellerCampaign(String sellerCampaignId) throws ApiException {
-        ApiResponse<SellerCampaignMessage> localVarResp = getMarketplaceSellerCampaignWithHttpInfo(sellerCampaignId);
+    public List<SellerCampaignMessage> getMarketplaceSellerCampaign(String sellerCampaignId) throws ApiException {
+        ApiResponse<List<SellerCampaignMessage>> localVarResp = getMarketplaceSellerCampaignWithHttpInfo(sellerCampaignId);
         return localVarResp.getData();
     }
 
@@ -3028,17 +3080,17 @@ public class CampaignApi {
      * 
      * Return details for a seller campaign. For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30T15:15:24.813\&quot;,          \&quot;suspensionReasons\&quot;: [              \&quot;NoMoreBudget\&quot;          ]      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.                Suspension reasons:  - ManuallyStopped: The Seller-Campaign has been manually paused. This is not related to the other suspension reasons.  - NoBudgetDefined: No valid budget has been linked to the Seller-Campaign.  - NoCpcDefined: No CPC has been set for the Seller-Campaign.  - NoMoreBudget: The current budget of the Seller-Campaign has been exhausted.  - RemovedFromCatalog: All the products of the Seller-Campaign have been deleted from the catalog.  - NotYetStarted: The Seller-Campaign has just been created and has not yet been processed.
      * @param sellerCampaignId Id of the seller campaign. (required)
-     * @return ApiResponse&lt;SellerCampaignMessage&gt;
+     * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SellerCampaignMessage> getMarketplaceSellerCampaignWithHttpInfo(String sellerCampaignId) throws ApiException {
+    public ApiResponse<List<SellerCampaignMessage>> getMarketplaceSellerCampaignWithHttpInfo(String sellerCampaignId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceSellerCampaignValidateBeforeCall(sellerCampaignId, null);
-        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3052,13 +3104,13 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellerCampaignAsync(String sellerCampaignId, final ApiCallback<SellerCampaignMessage> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellerCampaignAsync(String sellerCampaignId, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceSellerCampaignValidateBeforeCall(sellerCampaignId, _callback);
-        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3075,7 +3127,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerCampaignsCall(Integer advertiserId, String budgetStatus, Integer campaignId, String sellerId, String sellerStatus, final ApiCallback _callback) throws ApiException {
@@ -3161,7 +3213,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public List<SellerCampaignMessage> getMarketplaceSellerCampaigns(Integer advertiserId, String budgetStatus, Integer campaignId, String sellerId, String sellerStatus) throws ApiException {
@@ -3182,7 +3234,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<SellerCampaignMessage>> getMarketplaceSellerCampaignsWithHttpInfo(Integer advertiserId, String budgetStatus, Integer campaignId, String sellerId, String sellerStatus) throws ApiException {
@@ -3205,7 +3257,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerCampaignsAsync(Integer advertiserId, String budgetStatus, Integer campaignId, String sellerId, String sellerStatus, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
@@ -3224,7 +3276,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerCampaignsByAdvertiserCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
@@ -3254,6 +3306,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3286,32 +3339,35 @@ public class CampaignApi {
      * 
      * Get CRP seller campaigns for a specific advertiser
      * @param advertiserId Id of the advertiser (required)
+     * @return List&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void getMarketplaceSellerCampaignsByAdvertiser(Integer advertiserId) throws ApiException {
-        getMarketplaceSellerCampaignsByAdvertiserWithHttpInfo(advertiserId);
+    public List<SellerCampaignMessage> getMarketplaceSellerCampaignsByAdvertiser(Integer advertiserId) throws ApiException {
+        ApiResponse<List<SellerCampaignMessage>> localVarResp = getMarketplaceSellerCampaignsByAdvertiserWithHttpInfo(advertiserId);
+        return localVarResp.getData();
     }
 
     /**
      * 
      * Get CRP seller campaigns for a specific advertiser
      * @param advertiserId Id of the advertiser (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> getMarketplaceSellerCampaignsByAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
+    public ApiResponse<List<SellerCampaignMessage>> getMarketplaceSellerCampaignsByAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceSellerCampaignsByAdvertiserValidateBeforeCall(advertiserId, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3324,13 +3380,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellerCampaignsByAdvertiserAsync(Integer advertiserId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellerCampaignsByAdvertiserAsync(Integer advertiserId, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceSellerCampaignsByAdvertiserValidateBeforeCall(advertiserId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -3345,7 +3402,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerCampaignsBySellerCall(String sellerId, String budgetStatus, Integer campaignId, String sellerStatus, final ApiCallback _callback) throws ApiException {
@@ -3428,7 +3485,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public List<SellerCampaignMessage> getMarketplaceSellerCampaignsBySeller(String sellerId, String budgetStatus, Integer campaignId, String sellerStatus) throws ApiException {
@@ -3448,7 +3505,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<SellerCampaignMessage>> getMarketplaceSellerCampaignsBySellerWithHttpInfo(String sellerId, String budgetStatus, Integer campaignId, String sellerStatus) throws ApiException {
@@ -3470,7 +3527,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellerCampaignsBySellerAsync(String sellerId, String budgetStatus, Integer campaignId, String sellerStatus, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
@@ -3490,6 +3547,7 @@ public class CampaignApi {
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param sellerId Show only metrics for this seller (default all sellers) (optional)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3499,7 +3557,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellerCampaignsStatsCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellerCampaignsStatsCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, String timeZoneId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3556,6 +3614,10 @@ public class CampaignApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("startDate", startDate));
         }
 
+        if (timeZoneId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timeZoneId", timeZoneId));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -3576,14 +3638,14 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceSellerCampaignsStatsValidateBeforeCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
-        return getMarketplaceSellerCampaignsStatsCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, _callback);
+    private okhttp3.Call getMarketplaceSellerCampaignsStatsValidateBeforeCall(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, String timeZoneId, final ApiCallback _callback) throws ApiException {
+        return getMarketplaceSellerCampaignsStatsCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId, _callback);
 
     }
 
     /**
      * 
-     * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone if  provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns  are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
      * @param advertiserId Show only metrics for this advertiser. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
@@ -3592,6 +3654,7 @@ public class CampaignApi {
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param sellerId Show only metrics for this seller (default all sellers) (optional)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @return byte[]
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3600,14 +3663,14 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public byte[] getMarketplaceSellerCampaignsStats(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate) throws ApiException {
-        ApiResponse<byte[]> localVarResp = getMarketplaceSellerCampaignsStatsWithHttpInfo(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate);
+    public byte[] getMarketplaceSellerCampaignsStats(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, String timeZoneId) throws ApiException {
+        ApiResponse<byte[]> localVarResp = getMarketplaceSellerCampaignsStatsWithHttpInfo(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone if  provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns  are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
      * @param advertiserId Show only metrics for this advertiser. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
@@ -3616,6 +3679,7 @@ public class CampaignApi {
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param sellerId Show only metrics for this seller (default all sellers) (optional)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @return ApiResponse&lt;byte[]&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3624,15 +3688,15 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<byte[]> getMarketplaceSellerCampaignsStatsWithHttpInfo(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate) throws ApiException {
-        okhttp3.Call localVarCall = getMarketplaceSellerCampaignsStatsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, null);
+    public ApiResponse<byte[]> getMarketplaceSellerCampaignsStatsWithHttpInfo(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, String timeZoneId) throws ApiException {
+        okhttp3.Call localVarCall = getMarketplaceSellerCampaignsStatsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId, null);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone if  provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns  are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
      * @param advertiserId Show only metrics for this advertiser. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
@@ -3641,6 +3705,7 @@ public class CampaignApi {
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param sellerId Show only metrics for this seller (default all sellers) (optional)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3650,9 +3715,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellerCampaignsStatsAsync(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellerCampaignsStatsAsync(Integer advertiserId, String campaignId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, String timeZoneId, final ApiCallback<byte[]> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMarketplaceSellerCampaignsStatsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, _callback);
+        okhttp3.Call localVarCall = getMarketplaceSellerCampaignsStatsValidateBeforeCall(advertiserId, campaignId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId, _callback);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3671,7 +3736,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellersCall(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts, final ApiCallback _callback) throws ApiException {
@@ -3757,16 +3822,16 @@ public class CampaignApi {
      * @param sellerStatus Return only sellers with specific status. (optional)
      * @param withBudgetStatus Return only sellers with specific budget status. (optional)
      * @param withProducts Return only sellers with or without products in catalog. (optional)
-     * @return List&lt;SellerBudgetMessage&gt;
+     * @return List&lt;SellerBase&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public List<SellerBudgetMessage> getMarketplaceSellers(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts) throws ApiException {
-        ApiResponse<List<SellerBudgetMessage>> localVarResp = getMarketplaceSellersWithHttpInfo(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts);
+    public List<SellerBase> getMarketplaceSellers(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts) throws ApiException {
+        ApiResponse<List<SellerBase>> localVarResp = getMarketplaceSellersWithHttpInfo(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts);
         return localVarResp.getData();
     }
 
@@ -3779,17 +3844,17 @@ public class CampaignApi {
      * @param sellerStatus Return only sellers with specific status. (optional)
      * @param withBudgetStatus Return only sellers with specific budget status. (optional)
      * @param withProducts Return only sellers with or without products in catalog. (optional)
-     * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
+     * @return ApiResponse&lt;List&lt;SellerBase&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<SellerBudgetMessage>> getMarketplaceSellersWithHttpInfo(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts) throws ApiException {
+    public ApiResponse<List<SellerBase>> getMarketplaceSellersWithHttpInfo(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceSellersValidateBeforeCall(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts, null);
-        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3808,13 +3873,13 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellersAsync(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellersAsync(Integer advertiserId, Integer campaignId, String sellerName, String sellerStatus, String withBudgetStatus, Boolean withProducts, final ApiCallback<List<SellerBase>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceSellersValidateBeforeCall(advertiserId, campaignId, sellerName, sellerStatus, withBudgetStatus, withProducts, _callback);
-        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3829,7 +3894,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketplaceSellersByAdvertiserCall(Integer advertiserId, Integer partnerId, List<String> requestBody, final ApiCallback _callback) throws ApiException {
@@ -3863,6 +3928,7 @@ public class CampaignApi {
         }
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3898,15 +3964,17 @@ public class CampaignApi {
      * @param advertiserId Id of the advertiser (required)
      * @param partnerId Id of the partner (optional)
      * @param requestBody Names of the sellers to associate with new Ids (optional)
+     * @return List&lt;SellerBase&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void getMarketplaceSellersByAdvertiser(Integer advertiserId, Integer partnerId, List<String> requestBody) throws ApiException {
-        getMarketplaceSellersByAdvertiserWithHttpInfo(advertiserId, partnerId, requestBody);
+    public List<SellerBase> getMarketplaceSellersByAdvertiser(Integer advertiserId, Integer partnerId, List<String> requestBody) throws ApiException {
+        ApiResponse<List<SellerBase>> localVarResp = getMarketplaceSellersByAdvertiserWithHttpInfo(advertiserId, partnerId, requestBody);
+        return localVarResp.getData();
     }
 
     /**
@@ -3915,17 +3983,18 @@ public class CampaignApi {
      * @param advertiserId Id of the advertiser (required)
      * @param partnerId Id of the partner (optional)
      * @param requestBody Names of the sellers to associate with new Ids (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;SellerBase&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> getMarketplaceSellersByAdvertiserWithHttpInfo(Integer advertiserId, Integer partnerId, List<String> requestBody) throws ApiException {
+    public ApiResponse<List<SellerBase>> getMarketplaceSellersByAdvertiserWithHttpInfo(Integer advertiserId, Integer partnerId, List<String> requestBody) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceSellersByAdvertiserValidateBeforeCall(advertiserId, partnerId, requestBody, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3940,13 +4009,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellersByAdvertiserAsync(Integer advertiserId, Integer partnerId, List<String> requestBody, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellersByAdvertiserAsync(Integer advertiserId, Integer partnerId, List<String> requestBody, final ApiCallback<List<SellerBase>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceSellersByAdvertiserValidateBeforeCall(advertiserId, partnerId, requestBody, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -3958,6 +4028,7 @@ public class CampaignApi {
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param sellerId Show only metrics for this seller (default all sellers) (optional)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3967,7 +4038,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellersStatsCall(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellersStatsCall(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, String timeZoneId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4020,6 +4091,10 @@ public class CampaignApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("startDate", startDate));
         }
 
+        if (timeZoneId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timeZoneId", timeZoneId));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -4040,14 +4115,14 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceSellersStatsValidateBeforeCall(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback _callback) throws ApiException {
-        return getMarketplaceSellersStatsCall(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, _callback);
+    private okhttp3.Call getMarketplaceSellersStatsValidateBeforeCall(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, String timeZoneId, final ApiCallback _callback) throws ApiException {
+        return getMarketplaceSellersStatsCall(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId, _callback);
 
     }
 
     /**
      * 
-     * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time interval  appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
      * @param advertiserId Show only metrics for this advertiser. (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
@@ -4055,6 +4130,7 @@ public class CampaignApi {
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param sellerId Show only metrics for this seller (default all sellers) (optional)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @return byte[]
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4063,14 +4139,14 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public byte[] getMarketplaceSellersStats(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate) throws ApiException {
-        ApiResponse<byte[]> localVarResp = getMarketplaceSellersStatsWithHttpInfo(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate);
+    public byte[] getMarketplaceSellersStats(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, String timeZoneId) throws ApiException {
+        ApiResponse<byte[]> localVarResp = getMarketplaceSellersStatsWithHttpInfo(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time interval  appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
      * @param advertiserId Show only metrics for this advertiser. (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
@@ -4078,6 +4154,7 @@ public class CampaignApi {
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param sellerId Show only metrics for this seller (default all sellers) (optional)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @return ApiResponse&lt;byte[]&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4086,15 +4163,15 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<byte[]> getMarketplaceSellersStatsWithHttpInfo(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate) throws ApiException {
-        okhttp3.Call localVarCall = getMarketplaceSellersStatsValidateBeforeCall(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, null);
+    public ApiResponse<byte[]> getMarketplaceSellersStatsWithHttpInfo(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, String timeZoneId) throws ApiException {
+        okhttp3.Call localVarCall = getMarketplaceSellersStatsValidateBeforeCall(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId, null);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60;. The aggregation  interval size is controlled by &#x60;intervalSize&#x60;. The time interval appears in  the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
+     * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time interval  appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
      * @param advertiserId Show only metrics for this advertiser. (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
@@ -4102,6 +4179,7 @@ public class CampaignApi {
      * @param intervalSize Specify the aggregation interval for events used to compute stats (default is \&quot;day\&quot;) (optional, default to Day)
      * @param sellerId Show only metrics for this seller (default all sellers) (optional)
      * @param startDate Filter out all events that occur before date (default is the value of &#x60;endDate&#x60;) (optional)
+     * @param timeZoneId Specify the timezone used in the aggregations (IANA code). (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4111,9 +4189,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellersStatsAsync(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellersStatsAsync(Integer advertiserId, String clickAttributionPolicy, Integer count, OffsetDateTime endDate, String intervalSize, String sellerId, OffsetDateTime startDate, String timeZoneId, final ApiCallback<byte[]> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMarketplaceSellersStatsValidateBeforeCall(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, _callback);
+        okhttp3.Call localVarCall = getMarketplaceSellersStatsValidateBeforeCall(advertiserId, clickAttributionPolicy, count, endDate, intervalSize, sellerId, startDate, timeZoneId, _callback);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5225,7 +5303,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateMarketplaceSellerBudgetCall(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback _callback) throws ApiException {
@@ -5255,6 +5333,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5289,15 +5368,17 @@ public class CampaignApi {
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId Id of the budget (required)
      * @param updateSellerBudgetMessageBase  (optional)
+     * @return SellerBudgetMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void updateMarketplaceSellerBudget(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase) throws ApiException {
-        updateMarketplaceSellerBudgetWithHttpInfo(budgetId, updateSellerBudgetMessageBase);
+    public SellerBudgetMessage updateMarketplaceSellerBudget(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase) throws ApiException {
+        ApiResponse<SellerBudgetMessage> localVarResp = updateMarketplaceSellerBudgetWithHttpInfo(budgetId, updateSellerBudgetMessageBase);
+        return localVarResp.getData();
     }
 
     /**
@@ -5305,17 +5386,18 @@ public class CampaignApi {
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId Id of the budget (required)
      * @param updateSellerBudgetMessageBase  (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateMarketplaceSellerBudgetWithHttpInfo(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase) throws ApiException {
+    public ApiResponse<SellerBudgetMessage> updateMarketplaceSellerBudgetWithHttpInfo(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase) throws ApiException {
         okhttp3.Call localVarCall = updateMarketplaceSellerBudgetValidateBeforeCall(budgetId, updateSellerBudgetMessageBase, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SellerBudgetMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -5329,13 +5411,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateMarketplaceSellerBudgetAsync(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateMarketplaceSellerBudgetAsync(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback<SellerBudgetMessage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateMarketplaceSellerBudgetValidateBeforeCall(budgetId, updateSellerBudgetMessageBase, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SellerBudgetMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -5347,7 +5430,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateMarketplaceSellerBudgetsCall(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage, final ApiCallback _callback) throws ApiException {
@@ -5376,6 +5459,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5404,32 +5488,35 @@ public class CampaignApi {
      * 
      * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
      * @param updateSellerBudgetMessage  (optional)
+     * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void updateMarketplaceSellerBudgets(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage) throws ApiException {
-        updateMarketplaceSellerBudgetsWithHttpInfo(updateSellerBudgetMessage);
+    public List<SellerBudgetMessage> updateMarketplaceSellerBudgets(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage) throws ApiException {
+        ApiResponse<List<SellerBudgetMessage>> localVarResp = updateMarketplaceSellerBudgetsWithHttpInfo(updateSellerBudgetMessage);
+        return localVarResp.getData();
     }
 
     /**
      * 
      * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
      * @param updateSellerBudgetMessage  (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateMarketplaceSellerBudgetsWithHttpInfo(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage) throws ApiException {
+    public ApiResponse<List<SellerBudgetMessage>> updateMarketplaceSellerBudgetsWithHttpInfo(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage) throws ApiException {
         okhttp3.Call localVarCall = updateMarketplaceSellerBudgetsValidateBeforeCall(updateSellerBudgetMessage, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -5442,13 +5529,14 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateMarketplaceSellerBudgetsAsync(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateMarketplaceSellerBudgetsAsync(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateMarketplaceSellerBudgetsValidateBeforeCall(updateSellerBudgetMessage, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -5461,7 +5549,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateMarketplaceSellerCampaignCall(String sellerCampaignId, Double bid, final ApiCallback _callback) throws ApiException {
@@ -5534,7 +5622,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public SellerCampaignMessage updateMarketplaceSellerCampaign(String sellerCampaignId, Double bid) throws ApiException {
@@ -5552,7 +5640,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<SellerCampaignMessage> updateMarketplaceSellerCampaignWithHttpInfo(String sellerCampaignId, Double bid) throws ApiException {
@@ -5572,7 +5660,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateMarketplaceSellerCampaignAsync(String sellerCampaignId, Double bid, final ApiCallback<SellerCampaignMessage> _callback) throws ApiException {
@@ -5591,7 +5679,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateMarketplaceSellerCampaignsCall(List<SellerCampaignUpdate> sellerCampaignUpdate, final ApiCallback _callback) throws ApiException {
@@ -5654,7 +5742,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public List<SellerCampaignMessage> updateMarketplaceSellerCampaigns(List<SellerCampaignUpdate> sellerCampaignUpdate) throws ApiException {
@@ -5671,7 +5759,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<SellerCampaignMessage>> updateMarketplaceSellerCampaignsWithHttpInfo(List<SellerCampaignUpdate> sellerCampaignUpdate) throws ApiException {
@@ -5690,7 +5778,7 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateMarketplaceSellerCampaignsAsync(List<SellerCampaignUpdate> sellerCampaignUpdate, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {

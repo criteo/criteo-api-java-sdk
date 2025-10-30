@@ -8,7 +8,7 @@ A Seller-Campaign contains all the information relative to the advertisement of 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**bid** | **BigDecimal** |  |  [optional] |
+|**bid** | **Double** |  |  [optional] |
 |**campaignId** | **Integer** |  |  [optional] |
 |**id** | **String** |  |  [optional] [readonly] |
 |**sellerId** | **String** |  |  [optional] |

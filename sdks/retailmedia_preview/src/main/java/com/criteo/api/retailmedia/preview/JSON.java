@@ -182,6 +182,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.FilesVariableValue.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.FlightLeg.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.FlightSchedule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.GrantConsentInput.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.GrantConsentModel.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.GrantConsentModelValueResource.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.HyperlinkVariableValue.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.InbotDiscussion.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.InbotDiscussionBodyModel.CustomTypeAdapterFactory());

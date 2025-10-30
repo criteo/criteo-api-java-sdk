@@ -24,7 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Types of budget status
+ * Status of a seller budget
  */
 @JsonAdapter(SellerBudgetStatusV2.Adapter.class)
 public enum SellerBudgetStatusV2 {

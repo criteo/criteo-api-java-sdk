@@ -980,6 +980,38 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/grant-third-party-consent:
+    post:
+      description: Grant third-party consent to a business application on behalf of
+        a Private Market demand account
+      operationId: GrantThirdPartyConsent
+      parameters:
+      - description: The demand account ID on which to grant consent
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GrantConsentInput'
+        description: "The request input containing clientId, callbackURL, and callbackState"
+        x-bodyName: grantConsentInput
+      responses:
+        "204":
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_ThirdPartyAccounts_Manage
+      summary: ""
+      tags:
+      - ThirdPartyAccounts
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/accounts/{accountId}/retailers/search:
     post:
       description: Searches for retailers associated with the specified account based
@@ -8407,6 +8439,53 @@ components:
             $ref: '#/components/schemas/FlightLeg'
           nullable: true
           type: array
+      type: object
+    GrantConsentInput:
+      description: An object that encapsulates GrantConsentModel
+      example:
+        data:
+          attributes:
+            callbackState: callbackState
+            clientId: clientId
+            callbackUrl: callbackUrl
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/GrantConsentModelValueResource'
+      type: object
+    GrantConsentModel:
+      description: An object that represents the required (ClientId and CallbackUrl)
+        and optional (CallbackState) parameters when granting consents on behalf of
+        a Private Market demand account
+      example:
+        callbackState: callbackState
+        clientId: clientId
+        callbackUrl: callbackUrl
+      properties:
+        callbackState:
+          type: string
+        callbackUrl:
+          type: string
+        clientId:
+          type: string
+      required:
+      - callbackUrl
+      - clientId
+      type: object
+    GrantConsentModelValueResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          callbackState: callbackState
+          clientId: clientId
+          callbackUrl: callbackUrl
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/GrantConsentModel'
+        type:
+          type: string
       type: object
     HyperlinkVariableValue:
       additionalProperties: false

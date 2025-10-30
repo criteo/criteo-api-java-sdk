@@ -103,6 +103,9 @@ docs/FilesVariableValue.md
 docs/FlightLeg.md
 docs/FlightSchedule.md
 docs/GatewayApi.md
+docs/GrantConsentInput.md
+docs/GrantConsentModel.md
+docs/GrantConsentModelValueResource.md
 docs/HyperlinkVariableValue.md
 docs/InbotDiscussion.md
 docs/InbotDiscussionBodyModel.md
@@ -484,6 +487,9 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ExternalRetailMediaSeller
 src/main/java/com/criteo/api/retailmedia/preview/model/FilesVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/FlightLeg.java
 src/main/java/com/criteo/api/retailmedia/preview/model/FlightSchedule.java
+src/main/java/com/criteo/api/retailmedia/preview/model/GrantConsentInput.java
+src/main/java/com/criteo/api/retailmedia/preview/model/GrantConsentModel.java
+src/main/java/com/criteo/api/retailmedia/preview/model/GrantConsentModelValueResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/HyperlinkVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/InbotDiscussion.java
 src/main/java/com/criteo/api/retailmedia/preview/model/InbotDiscussionBodyModel.java

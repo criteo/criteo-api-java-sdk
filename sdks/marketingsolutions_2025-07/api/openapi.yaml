@@ -1805,7 +1805,13 @@ paths:
       operationId: GetMarketplaceAdvertisers
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AdvertiserInfoMessage'
+                type: array
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -1829,7 +1835,11 @@ paths:
         style: simple
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdvertiserInfoMessage'
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -1901,7 +1911,7 @@ paths:
             application/json:
               schema:
                 type: string
-          description: OK
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -1925,7 +1935,13 @@ paths:
         style: simple
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AdvertiserAdsetMessage'
+                type: array
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2024,7 +2040,13 @@ paths:
         style: form
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SellerBudgetMessage'
+                type: array
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2048,7 +2070,13 @@ paths:
         style: simple
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AdvertiserCampaignMessage'
+                type: array
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2072,7 +2100,13 @@ paths:
         style: simple
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SellerCampaignMessage'
+                type: array
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2114,7 +2148,13 @@ paths:
         x-bodyName: sellerNames
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SellerBase'
+                type: array
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
@@ -2130,7 +2170,13 @@ paths:
       operationId: GetMarketplaceAdvertiserPreviewLimits
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AdvertiserQuotaMessage'
+                type: array
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2247,7 +2293,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/SellerBudgetMessage'
                 type: array
-          description: OK
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2281,7 +2327,13 @@ paths:
         x-bodyName: updateSellerBudgets
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SellerBudgetMessage'
+                type: array
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
@@ -2314,7 +2366,13 @@ paths:
         x-bodyName: createSellerBudgets
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SellerBudgetMessage'
+                type: array
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
@@ -2358,7 +2416,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SellerBudgetMessage'
-          description: OK
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2390,7 +2448,11 @@ paths:
         x-bodyName: message
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SellerBudgetMessage'
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
@@ -2464,7 +2526,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/SellerCampaignMessage'
                 type: array
-          description: OK
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2495,7 +2557,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/SellerCampaignMessage'
                 type: array
-          description: OK
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
@@ -2539,8 +2601,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SellerCampaignMessage'
-          description: OK
+                items:
+                  $ref: '#/components/schemas/SellerCampaignMessage'
+                type: array
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2578,7 +2642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SellerCampaignMessage'
-          description: OK
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
@@ -2669,7 +2733,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/SellerBudgetMessage'
                 type: array
-          description: OK
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2748,9 +2812,9 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/SellerBudgetMessage'
+                  $ref: '#/components/schemas/SellerBase'
                 type: array
-          description: OK
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2779,7 +2843,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SellerBase'
-          description: OK
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2879,7 +2943,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/SellerBudgetMessage'
                 type: array
-          description: OK
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2944,7 +3008,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/SellerCampaignMessage'
                 type: array
-          description: OK
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2974,7 +3038,11 @@ paths:
         x-bodyName: sellerCampaign
       responses:
         "200":
-          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SellerCampaignMessage'
+          description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
@@ -2987,14 +3055,15 @@ paths:
     get:
       description: "## Dimensions\r\n            \r\nGet performance statistics aggregated\
         \ for _campaigns_. The campaign id appears\r\nin the output as the first column.\r\
-        \n            \r\nAggregation can be done by `hour`, `day`, `month`, or `year`.\
-        \ The aggregation\r\ninterval size is controlled by `intervalSize`. The time\
-        \ interval appears in\r\nthe output as the second column.\r\n            \r\
-        \n## Metrics\r\n            \r\nThe metrics reported by this endpoint are\r\
-        \n            \r\n.  | Metric Group | Description\r\n---|--------------|------------\r\
-        \nA | impressions | Number of times product is shown in a banner\r\nB | clicks\
-        \ | Number of clicks on product\r\nC | cost | Amount spent for clicks on products\r\
-        \nD | saleUnits | Number of products sold attributed to clicks\r\nE | revenue\
+        \n            \r\nAggregation can be done by `hour`, `day`, `month`, or `year`\
+        \ aligned with the user timezone\r\nif provided. The aggregation interval\
+        \ size is controlled by `intervalSize`. The time\r\ninterval appears in the\
+        \ output as the second column.\r\n            \r\n## Metrics\r\n         \
+        \   \r\nThe metrics reported by this endpoint are\r\n            \r\n.  |\
+        \ Metric Group | Description\r\n---|--------------|------------\r\nA | impressions\
+        \ | Number of times product is shown in a banner\r\nB | clicks | Number of\
+        \ clicks on product\r\nC | cost | Amount spent for clicks on products\r\n\
+        D | saleUnits | Number of products sold attributed to clicks\r\nE | revenue\
         \ | Revenue generated by sales\r\nF | CR = Conversion Rate | salesUnits /\
         \ clicks\r\nG | CPO = Cost Per Order | cost / salesUnits\r\nH | COS = Cost\
         \ of Sale | cost / revenue\r\nI | ROAS = Return On Add Spend | revenue / cost\r\
@@ -3123,6 +3192,14 @@ paths:
           format: date-time
           type: string
         style: form
+      - description: Specify the timezone used in the aggregations (IANA code).
+        explode: true
+        in: query
+        name: timeZoneId
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3144,55 +3221,55 @@ paths:
         \ for _seller campaigns_.The campaign id, seller id, and\r\nseller name appear\
         \ in the first three columns of the output. These are followed by the interval\r\
         \nsize column.\r\n            \r\nAggregation can be done by `hour`, `day`,\
-        \ `month`, or `year`. The aggregation\r\ninterval size is controlled by `intervalSize`.\
-        \ The remaining columns are metrics.\r\n            \r\n## Metrics\r\n   \
-        \         \r\nThe metrics reported by this endpoint are\r\n            \r\n\
-        .  | Metric Group | Description\r\n---|--------------|------------\r\nA |\
-        \ impressions | Number of times product is shown in a banner\r\nB | clicks\
-        \ | Number of clicks on product\r\nC | cost | Amount spent for clicks on products\r\
-        \nD | saleUnits | Number of products sold attributed to clicks\r\nE | revenue\
-        \ | Revenue generated by sales\r\nF | CR = Conversion Rate | salesUnits /\
-        \ clicks\r\nG | CPO = Cost Per Order | cost / salesUnits\r\nH | COS = Cost\
-        \ of Sale | cost / revenue\r\nI | ROAS = Return On Add Spend | revenue / cost\r\
-        \n            \r\nThe last six metrics can be computed in two ways depending\
-        \ on the policy to count only\r\nthe sales that result from clicks on the\
-        \ same sellers product in a banner\r\n(same-seller) or not (any-seller). \
-        \ Reporting can be controlled by `clickAttributionPolicy`.\r\n           \
-        \ \r\nThe 9 (or 15) metric values appear in the output as the final 9 (or\
-        \ 15) columns.\r\n            \r\n## Filtering\r\n            \r\nThe results\
-        \ can be filtered by date or count.\r\n            \r\nFiltering the results\
-        \ to events associated with a specific campaign is done by setting\r\nthe\
-        \ `campaignId` filter parameter to the desired value.\r\n            \r\n\
-        Filtering the results to events associated with a specific seller is done\
-        \ by setting\r\nthe `sellerId` filter parameter to the desired value.\r\n\
-        \            \r\nFiltering the results to events\r\nthat happened in a time\
-        \ interval is done by setting the `startDate` and\r\n`endDate` filter parameters\
-        \ using the `yyyy-MM-DD` format. The start date\r\nincludes all events timestamped\
-        \ since the beginning of that day while the end\r\ndate includes events until\
-        \ the end of day. The maximum duration of the date\r\nrange is 1 year. If\
-        \ the aggregation interval is `hour`, then the maximum\r\nduration of the\
-        \ date range is 31 days. Note that month and year aggregate values\r\nmay\
-        \ contain partial data for the interval if filtering by date.\r\n        \
-        \    \r\nFiltering the results to a maximum number of data rows is done by\
-        \ setting the\r\n`count` filter parameter. When combined with startDate this\
-        \ can be used to perform\r\nsimple pagination.\r\n            \r\n## Response\
-        \ Format\r\n            \r\nThe representation format can be specified by\
-        \ MIME values in the Accept header.\r\nFor now the only supported values for\
-        \ the accept header is `application/json` and\r\n`text/csv`.\r\n         \
-        \   \r\n```json\r\n{\r\n    \"columns\": [\r\n        \"campaignId\", \"sellerId\"\
-        , \"sellerName\", \"month\", \"impressions\", \"clicks\", \"cost\", \"saleUnits\"\
-        , \"revenue\", \"cr\", \"cpo\", \"cos\", \"roas\"\r\n    ],\r\n    \"data\"\
-        : [\r\n        [168423, 1110222, \"118883955\", \"2019-05-01\", 14542, 48,\
-        \ 3.36, 0, 0.0, 0.0, null, null, 0.0],\r\n        [168423, 1110222, \"118883955\"\
-        , \"2019-06-01\", 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],\r\n    \
-        \    [168423, 1110225, \"117980027\", \"2019-05-01\", 12502, 48, 3.36, 0,\
-        \ 0.0, 0.0, null, null, 0.0],\r\n        [168423, 1110225, \"117980027\",\
-        \ \"2019-06-01\", 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]\r\n    ],\r\
-        \n    \"rows\": 4\r\n}\r\n```\r\n            \r\nThe JSON result is an object\
-        \ with three fields (`columns`, `data`, and `rows`). The\r\n“columns” array\
-        \ acts as the header for the data rows. The categorical dimension\r\ncolumns\
-        \ come first and include the campaign id, seller id, and seller name.\r\n\
-        The interval column comes next and defines the aggregation period. The interval\
+        \ `month`, or `year` aligned with the user timezone if\r\nprovided. The aggregation\
+        \ interval size is controlled by `intervalSize`. The remaining columns\r\n\
+        are metrics.\r\n            \r\n## Metrics\r\n            \r\nThe metrics\
+        \ reported by this endpoint are\r\n            \r\n.  | Metric Group | Description\r\
+        \n---|--------------|------------\r\nA | impressions | Number of times product\
+        \ is shown in a banner\r\nB | clicks | Number of clicks on product\r\nC |\
+        \ cost | Amount spent for clicks on products\r\nD | saleUnits | Number of\
+        \ products sold attributed to clicks\r\nE | revenue | Revenue generated by\
+        \ sales\r\nF | CR = Conversion Rate | salesUnits / clicks\r\nG | CPO = Cost\
+        \ Per Order | cost / salesUnits\r\nH | COS = Cost of Sale | cost / revenue\r\
+        \nI | ROAS = Return On Add Spend | revenue / cost\r\n            \r\nThe last\
+        \ six metrics can be computed in two ways depending on the policy to count\
+        \ only\r\nthe sales that result from clicks on the same sellers product in\
+        \ a banner\r\n(same-seller) or not (any-seller).  Reporting can be controlled\
+        \ by `clickAttributionPolicy`.\r\n            \r\nThe 9 (or 15) metric values\
+        \ appear in the output as the final 9 (or 15) columns.\r\n            \r\n\
+        ## Filtering\r\n            \r\nThe results can be filtered by date or count.\r\
+        \n            \r\nFiltering the results to events associated with a specific\
+        \ campaign is done by setting\r\nthe `campaignId` filter parameter to the\
+        \ desired value.\r\n            \r\nFiltering the results to events associated\
+        \ with a specific seller is done by setting\r\nthe `sellerId` filter parameter\
+        \ to the desired value.\r\n            \r\nFiltering the results to events\r\
+        \nthat happened in a time interval is done by setting the `startDate` and\r\
+        \n`endDate` filter parameters using the `yyyy-MM-DD` format. The start date\r\
+        \nincludes all events timestamped since the beginning of that day while the\
+        \ end\r\ndate includes events until the end of day. The maximum duration of\
+        \ the date\r\nrange is 1 year. If the aggregation interval is `hour`, then\
+        \ the maximum\r\nduration of the date range is 31 days. Note that month and\
+        \ year aggregate values\r\nmay contain partial data for the interval if filtering\
+        \ by date.\r\n            \r\nFiltering the results to a maximum number of\
+        \ data rows is done by setting the\r\n`count` filter parameter. When combined\
+        \ with startDate this can be used to perform\r\nsimple pagination.\r\n   \
+        \         \r\n## Response Format\r\n            \r\nThe representation format\
+        \ can be specified by MIME values in the Accept header.\r\nFor now the only\
+        \ supported values for the accept header is `application/json` and\r\n`text/csv`.\r\
+        \n            \r\n```json\r\n{\r\n    \"columns\": [\r\n        \"campaignId\"\
+        , \"sellerId\", \"sellerName\", \"month\", \"impressions\", \"clicks\", \"\
+        cost\", \"saleUnits\", \"revenue\", \"cr\", \"cpo\", \"cos\", \"roas\"\r\n\
+        \    ],\r\n    \"data\": [\r\n        [168423, 1110222, \"118883955\", \"\
+        2019-05-01\", 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],\r\n        [168423,\
+        \ 1110222, \"118883955\", \"2019-06-01\", 16619, 53, 3.71, 0, 0.0, 0.0, null,\
+        \ null, 0.0],\r\n        [168423, 1110225, \"117980027\", \"2019-05-01\",\
+        \ 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],\r\n        [168423, 1110225,\
+        \ \"117980027\", \"2019-06-01\", 20266, 53, 3.71, 0, 0.0, 0.0, null, null,\
+        \ 0.0]\r\n    ],\r\n    \"rows\": 4\r\n}\r\n```\r\n            \r\nThe JSON\
+        \ result is an object with three fields (`columns`, `data`, and `rows`). The\r\
+        \n“columns” array acts as the header for the data rows. The categorical dimension\r\
+        \ncolumns come first and include the campaign id, seller id, and seller name.\r\
+        \nThe interval column comes next and defines the aggregation period. The interval\
         \ size is\r\ndetermined by the `intervalSize` parameter. This is followed\
         \ by either nine or\r\nfifteen metrics columns. The first three metrics (impressions,\
         \ clicks, and cost)\r\nalways appear. The remaining depend on the `clickAttributionPolicy`\
@@ -3292,6 +3369,14 @@ paths:
           format: date-time
           type: string
         style: form
+      - description: Specify the timezone used in the aggregations (IANA code).
+        explode: true
+        in: query
+        name: timeZoneId
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3312,14 +3397,14 @@ paths:
       description: "## Dimensions\r\n            \r\nGet performance statistics aggregated\
         \ for _sellers_. The seller id appears\r\nin the output in the first column\
         \ and the seller name appears in the second.\r\n            \r\nAggregation\
-        \ can be done by `hour`, `day`, `month`, or `year`. The aggregation\r\ninterval\
-        \ size is controlled by `intervalSize`. The time interval appears in\r\nthe\
-        \ output as the second column.\r\n            \r\n## Metrics\r\n         \
-        \   \r\nThe metrics reported by this endpoint are\r\n            \r\n.  |\
-        \ Metric Group | Description\r\n---|--------------|------------\r\nA | impressions\
-        \ | Number of times product is shown in a banner\r\nB | clicks | Number of\
-        \ clicks on product\r\nC | cost | Amount spent for clicks on products\r\n\
-        D | saleUnits | Number of products sold attributed to clicks\r\nE | revenue\
+        \ can be done by `hour`, `day`, `month`, or `year` aligned with the user timezone\r\
+        \nif provided. The aggregation interval size is controlled by `intervalSize`.\
+        \ The time interval\r\nappears in the output as the second column.\r\n   \
+        \         \r\n## Metrics\r\n            \r\nThe metrics reported by this endpoint\
+        \ are\r\n            \r\n.  | Metric Group | Description\r\n---|--------------|------------\r\
+        \nA | impressions | Number of times product is shown in a banner\r\nB | clicks\
+        \ | Number of clicks on product\r\nC | cost | Amount spent for clicks on products\r\
+        \nD | saleUnits | Number of products sold attributed to clicks\r\nE | revenue\
         \ | Revenue generated by sales\r\nF | CR = Conversion Rate | salesUnits /\
         \ clicks\r\nG | CPO = Cost Per Order | cost / salesUnits\r\nH | COS = Cost\
         \ of Sale | cost / revenue\r\nI | ROAS = Return On Add Spend | revenue / cost\r\
@@ -3448,6 +3533,14 @@ paths:
         required: false
         schema:
           format: date-time
+          type: string
+        style: form
+      - description: Specify the timezone used in the aggregations (IANA code).
+        explode: true
+        in: query
+        name: timeZoneId
+        required: false
+        schema:
           type: string
         style: form
       responses:
@@ -4381,6 +4474,13 @@ components:
           nullable: true
           type: array
       type: object
+    AdSetDeliveryStatus:
+      description: Status of an ad set's delivery
+      enum:
+      - Running
+      - Archived
+      - NotRunning
+      type: string
     AdSetDisplayMultiplier:
       description: Display Multiplier information about a Category for a given Ad
         Set.
@@ -4637,6 +4737,106 @@ components:
           $ref: '#/components/schemas/AdSetTargetingV24Q3_frequencyCapping'
         geoLocation:
           $ref: '#/components/schemas/AdSetGeoLocationV24Q3'
+      type: object
+    AdvertiserAdsetMessage:
+      description: Data representing an advertiser's adset
+      example:
+        isCoa: true
+        adsetName: adsetName
+        partnerId: 1
+        adsetId: 0
+        advertiserId: 6
+        status: null
+      properties:
+        adsetId:
+          format: int32
+          type: integer
+        adsetName:
+          type: string
+        advertiserId:
+          format: int32
+          type: integer
+        isCoa:
+          type: boolean
+        partnerId:
+          format: int32
+          type: integer
+        status:
+          $ref: '#/components/schemas/AdSetDeliveryStatus'
+      type: object
+    AdvertiserCampaignMessage:
+      description: Data representing an advertiser's adset
+      example:
+        adSetDeliveryStatus: Running
+        id: 0
+        campaignName: campaignName
+        status: 6
+      properties:
+        adSetDeliveryStatus:
+          enum:
+          - Running
+          - Archived
+          - NotRunning
+          readOnly: true
+          type: string
+        campaignName:
+          type: string
+        id:
+          format: int32
+          type: integer
+        status:
+          enum:
+          - 0
+          - 1
+          - 2
+          nullable: true
+          type: integer
+      type: object
+      x-readonly-adSetDeliveryStatus: true
+    AdvertiserInfoMessage:
+      description: Data representing an advertiser
+      example:
+        currencyName: currencyName
+        id: 0
+        advertiserName: advertiserName
+      properties:
+        advertiserName:
+          type: string
+        currencyName:
+          type: string
+        id:
+          format: int32
+          type: integer
+      type: object
+    AdvertiserQuotaMessage:
+      description: Data representing an advertiser's quota
+      example:
+        quotaEndDate: 2000-01-23T04:56:07.000+00:00
+        quotaUsed: 1
+        quotaStartDate: 2000-01-23T04:56:07.000+00:00
+        quotaLimit: 6
+        advertiserId: 0
+      properties:
+        advertiserId:
+          format: int32
+          nullable: true
+          type: integer
+        quotaEndDate:
+          format: date-time
+          nullable: true
+          type: string
+        quotaLimit:
+          format: int32
+          nullable: true
+          type: integer
+        quotaStartDate:
+          format: date-time
+          nullable: true
+          type: string
+        quotaUsed:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     AdWrite:
       description: Entity to create or update an ad
@@ -14194,7 +14394,7 @@ components:
         status: null
       properties:
         amount:
-          format: decimal
+          format: double
           nullable: true
           type: number
         budgetType:
@@ -14213,7 +14413,7 @@ components:
         sellerId:
           type: string
         spend:
-          format: decimal
+          format: double
           nullable: true
           type: number
         startDate:
@@ -14223,12 +14423,11 @@ components:
           $ref: '#/components/schemas/SellerBudgetStatusV2'
       type: object
     SellerBudgetStatusV2:
-      description: Types of budget status
+      description: Status of a seller budget
       enum:
       - Archived
       - Current
       - Scheduled
-      format: string
       type: string
     SellerCampaignMessage:
       description: A Seller-Campaign contains all the information relative to the
@@ -14244,7 +14443,7 @@ components:
         suspendedSince: 2000-01-23T04:56:07.000+00:00
       properties:
         bid:
-          format: decimal
+          format: double
           nullable: true
           type: number
         campaignId:
@@ -14274,10 +14473,9 @@ components:
       - NoCpcDefined
       - RemovedFromCatalog
       - NotYetStarted
-      format: string
       type: string
     SellerCampaignUpdate:
-      description: Data used to update a seller's campaign
+      description: Date used to update a Seller-Campaign's Bid.
       example:
         id: id
         bid: 0.8008281904610115

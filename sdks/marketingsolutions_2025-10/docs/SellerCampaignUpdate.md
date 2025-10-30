@@ -2,7 +2,7 @@
 
 # SellerCampaignUpdate
 
-Data used to update a seller's campaign
+Date used to update a Seller-Campaign's Bid.
 
 ## Properties
 

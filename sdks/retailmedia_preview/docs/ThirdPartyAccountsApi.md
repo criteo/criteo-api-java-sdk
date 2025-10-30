@@ -4,12 +4,103 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**grantThirdPartyConsent**](ThirdPartyAccountsApi.md#grantThirdPartyConsent) | **POST** /preview/retail-media/accounts/{accountId}/grant-third-party-consent |  |
 | [**previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/add |  |
 | [**previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove |  |
 | [**previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-brand-account |  |
 | [**previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-seller-account |  |
 | [**previewRetailMediaThirdPartyAccountsAccountIdSellersPut**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdSellersPut) | **PUT** /preview/retail-media/third-party-accounts/{accountId}/sellers |  |
 
+
+
+## grantThirdPartyConsent
+
+> grantThirdPartyConsent(accountId, grantConsentInput)
+
+
+
+Grant third-party consent to a business application on behalf of a Private Market demand account
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.ThirdPartyAccountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        ThirdPartyAccountsApi apiInstance = new ThirdPartyAccountsApi(defaultClient);
+        String accountId = "accountId_example"; // String | The demand account ID on which to grant consent
+        GrantConsentInput grantConsentInput = new GrantConsentInput(); // GrantConsentInput | The request input containing clientId, callbackURL, and callbackState
+        try {
+            apiInstance.grantThirdPartyConsent(accountId, grantConsentInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThirdPartyAccountsApi#grantThirdPartyConsent");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| The demand account ID on which to grant consent | |
+| **grantConsentInput** | [**GrantConsentInput**](GrantConsentInput.md)| The request input containing clientId, callbackURL, and callbackState | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Success |  -  |
 
 
 ## previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost

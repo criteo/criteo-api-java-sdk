@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfRetailMediaAccountV2;
+import com.criteo.api.retailmedia.preview.model.GrantConsentInput;
 import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionInputOfRetailMediaSeller;
 import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomeOfRetailMediaSeller;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfRetailMediaBrandAccountCreationV2;
@@ -79,6 +80,129 @@ public class ThirdPartyAccountsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for grantThirdPartyConsent
+     * @param accountId The demand account ID on which to grant consent (required)
+     * @param grantConsentInput The request input containing clientId, callbackURL, and callbackState (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call grantThirdPartyConsentCall(String accountId, GrantConsentInput grantConsentInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = grantConsentInput;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{accountId}/grant-third-party-consent"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call grantThirdPartyConsentValidateBeforeCall(String accountId, GrantConsentInput grantConsentInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling grantThirdPartyConsent(Async)");
+        }
+
+        return grantThirdPartyConsentCall(accountId, grantConsentInput, _callback);
+
+    }
+
+    /**
+     * 
+     * Grant third-party consent to a business application on behalf of a Private Market demand account
+     * @param accountId The demand account ID on which to grant consent (required)
+     * @param grantConsentInput The request input containing clientId, callbackURL, and callbackState (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public void grantThirdPartyConsent(String accountId, GrantConsentInput grantConsentInput) throws ApiException {
+        grantThirdPartyConsentWithHttpInfo(accountId, grantConsentInput);
+    }
+
+    /**
+     * 
+     * Grant third-party consent to a business application on behalf of a Private Market demand account
+     * @param accountId The demand account ID on which to grant consent (required)
+     * @param grantConsentInput The request input containing clientId, callbackURL, and callbackState (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> grantThirdPartyConsentWithHttpInfo(String accountId, GrantConsentInput grantConsentInput) throws ApiException {
+        okhttp3.Call localVarCall = grantThirdPartyConsentValidateBeforeCall(accountId, grantConsentInput, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Grant third-party consent to a business application on behalf of a Private Market demand account
+     * @param accountId The demand account ID on which to grant consent (required)
+     * @param grantConsentInput The request input containing clientId, callbackURL, and callbackState (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call grantThirdPartyConsentAsync(String accountId, GrantConsentInput grantConsentInput, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = grantThirdPartyConsentValidateBeforeCall(accountId, grantConsentInput, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost
      * @param accountId account to add brands to (required)
