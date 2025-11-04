@@ -52,15 +52,13 @@ import com.criteo.api.retailmedia.preview.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SponsoredProductsLineItemCreateRequestModel {
   /**
-   * The bidding strategy to use for this line item.  Default value is Conversion.
+   * The bidding strategy for this line item.  Default value is manual.
    */
   @JsonAdapter(BidStrategyEnum.Adapter.class)
   public enum BidStrategyEnum {
-    CONVERSION("conversion"),
+    MANUAL("manual"),
     
-    CLICKS("clicks"),
-    
-    REVENUE("revenue");
+    AUTOMATED("automated");
 
     private String value;
 
@@ -102,7 +100,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
 
   public static final String SERIALIZED_NAME_BID_STRATEGY = "bidStrategy";
   @SerializedName(SERIALIZED_NAME_BID_STRATEGY)
-  private BidStrategyEnum bidStrategy = BidStrategyEnum.CONVERSION;
+  private BidStrategyEnum bidStrategy = BidStrategyEnum.MANUAL;
 
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
@@ -190,13 +188,15 @@ public class SponsoredProductsLineItemCreateRequestModel {
   private String name;
 
   /**
-   * Gets or Sets optimizationStrategy
+   * The optimization strategy to use for this line item.  Default value is Conversion.
    */
   @JsonAdapter(OptimizationStrategyEnum.Adapter.class)
   public enum OptimizationStrategyEnum {
-    MANUAL("manual"),
+    CONVERSION("conversion"),
     
-    AUTOMATED("automated");
+    CLICKS("clicks"),
+    
+    REVENUE("revenue");
 
     private String value;
 
@@ -238,7 +238,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
 
   public static final String SERIALIZED_NAME_OPTIMIZATION_STRATEGY = "optimizationStrategy";
   @SerializedName(SERIALIZED_NAME_OPTIMIZATION_STRATEGY)
-  private OptimizationStrategyEnum optimizationStrategy = OptimizationStrategyEnum.MANUAL;
+  private OptimizationStrategyEnum optimizationStrategy = OptimizationStrategyEnum.CONVERSION;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -262,7 +262,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
   }
 
    /**
-   * The bidding strategy to use for this line item.  Default value is Conversion.
+   * The bidding strategy for this line item.  Default value is manual.
    * @return bidStrategy
   **/
   @javax.annotation.Nullable
@@ -482,7 +482,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
   }
 
    /**
-   * Get optimizationStrategy
+   * The optimization strategy to use for this line item.  Default value is Conversion.
    * @return optimizationStrategy
   **/
   @javax.annotation.Nullable

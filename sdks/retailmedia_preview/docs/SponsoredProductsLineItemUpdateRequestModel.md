@@ -8,7 +8,7 @@ A request to update a Sponsored Products Line Item.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) | The bidding strategy for the line item. |  [optional] |
+|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) | The bid strategy for the line item. |  [optional] |
 |**budget** | **Double** | The total budget allocated for this line item. |  [optional] |
 |**dailyPacing** | **Double** | The daily pacing amount for the line item. |  [optional] |
 |**endDate** | **OffsetDateTime** | The date and time when the line item stops running. |  [optional] |
@@ -28,9 +28,8 @@ A request to update a Sponsored Products Line Item.
 
 | Name | Value |
 |---- | -----|
-| CONVERSION | &quot;conversion&quot; |
-| CLICKS | &quot;clicks&quot; |
-| REVENUE | &quot;revenue&quot; |
+| MANUAL | &quot;manual&quot; |
+| AUTOMATED | &quot;automated&quot; |
 
 
 
@@ -38,8 +37,9 @@ A request to update a Sponsored Products Line Item.
 
 | Name | Value |
 |---- | -----|
-| MANUAL | &quot;manual&quot; |
-| AUTOMATED | &quot;automated&quot; |
+| CONVERSION | &quot;conversion&quot; |
+| CLICKS | &quot;clicks&quot; |
+| REVENUE | &quot;revenue&quot; |
 
 
 

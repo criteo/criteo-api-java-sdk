@@ -8,7 +8,7 @@ Model of a retail media auction line item.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) | Optional field. |  [optional] |
+|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) | Bid strategy for the line item. |  [optional] |
 |**budget** | **Double** | The total budget allocated for this line item. |  [optional] |
 |**budgetRemaining** | **Double** | The amount of the budget that remains available. |  |
 |**budgetSpent** | **Double** | The amount of the budget that has been spent so far. |  [optional] |
@@ -22,7 +22,7 @@ Model of a retail media auction line item.
 |**maxBid** | **Double** | The maximum bid amount allowed for this line item. |  [optional] |
 |**monthlyPacing** | **Double** | The monthly pacing limit for budget spending. |  [optional] |
 |**name** | **String** | The name of the line item. |  |
-|**optimizationStrategy** | [**OptimizationStrategyEnum**](#OptimizationStrategyEnum) | Optimization strategy for the line item. |  [optional] |
+|**optimizationStrategy** | [**OptimizationStrategyEnum**](#OptimizationStrategyEnum) | The optimization strategy for this line item. |  [optional] |
 |**startDate** | **OffsetDateTime** | The date and time when the line item starts running. |  |
 |**status** | [**StatusEnum**](#StatusEnum) | The current status of the line item. |  [optional] |
 |**targetBid** | **Double** | The target bid amount for the line item. |  [optional] |
@@ -35,9 +35,8 @@ Model of a retail media auction line item.
 
 | Name | Value |
 |---- | -----|
-| CONVERSION | &quot;conversion&quot; |
-| CLICKS | &quot;clicks&quot; |
-| REVENUE | &quot;revenue&quot; |
+| MANUAL | &quot;manual&quot; |
+| AUTOMATED | &quot;automated&quot; |
 | UNKNOWN | &quot;unknown&quot; |
 
 
@@ -57,8 +56,9 @@ Model of a retail media auction line item.
 
 | Name | Value |
 |---- | -----|
-| MANUAL | &quot;manual&quot; |
-| AUTOMATED | &quot;automated&quot; |
+| CONVERSION | &quot;conversion&quot; |
+| CLICKS | &quot;clicks&quot; |
+| REVENUE | &quot;revenue&quot; |
 | UNKNOWN | &quot;unknown&quot; |
 
 

@@ -52,15 +52,13 @@ import com.criteo.api.retailmedia.preview.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SponsoredProductsLineItemUpdateRequestModel {
   /**
-   * The bidding strategy for the line item.
+   * The bid strategy for the line item.
    */
   @JsonAdapter(BidStrategyEnum.Adapter.class)
   public enum BidStrategyEnum {
-    CONVERSION("conversion"),
+    MANUAL("manual"),
     
-    CLICKS("clicks"),
-    
-    REVENUE("revenue");
+    AUTOMATED("automated");
 
     private String value;
 
@@ -102,7 +100,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
 
   public static final String SERIALIZED_NAME_BID_STRATEGY = "bidStrategy";
   @SerializedName(SERIALIZED_NAME_BID_STRATEGY)
-  private BidStrategyEnum bidStrategy = BidStrategyEnum.CONVERSION;
+  private BidStrategyEnum bidStrategy = BidStrategyEnum.MANUAL;
 
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
@@ -141,9 +139,11 @@ public class SponsoredProductsLineItemUpdateRequestModel {
    */
   @JsonAdapter(OptimizationStrategyEnum.Adapter.class)
   public enum OptimizationStrategyEnum {
-    MANUAL("manual"),
+    CONVERSION("conversion"),
     
-    AUTOMATED("automated");
+    CLICKS("clicks"),
+    
+    REVENUE("revenue");
 
     private String value;
 
@@ -185,7 +185,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
 
   public static final String SERIALIZED_NAME_OPTIMIZATION_STRATEGY = "optimizationStrategy";
   @SerializedName(SERIALIZED_NAME_OPTIMIZATION_STRATEGY)
-  private OptimizationStrategyEnum optimizationStrategy = OptimizationStrategyEnum.MANUAL;
+  private OptimizationStrategyEnum optimizationStrategy = OptimizationStrategyEnum.CONVERSION;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -258,7 +258,7 @@ public class SponsoredProductsLineItemUpdateRequestModel {
   }
 
    /**
-   * The bidding strategy for the line item.
+   * The bid strategy for the line item.
    * @return bidStrategy
   **/
   @javax.annotation.Nullable

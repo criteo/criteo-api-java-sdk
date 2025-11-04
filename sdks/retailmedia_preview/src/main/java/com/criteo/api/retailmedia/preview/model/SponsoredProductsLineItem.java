@@ -52,15 +52,13 @@ import com.criteo.api.retailmedia.preview.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SponsoredProductsLineItem {
   /**
-   * Optional field.
+   * Bid strategy for the line item.
    */
   @JsonAdapter(BidStrategyEnum.Adapter.class)
   public enum BidStrategyEnum {
-    CONVERSION("conversion"),
+    MANUAL("manual"),
     
-    CLICKS("clicks"),
-    
-    REVENUE("revenue"),
+    AUTOMATED("automated"),
     
     UNKNOWN("unknown");
 
@@ -210,13 +208,15 @@ public class SponsoredProductsLineItem {
   private String name;
 
   /**
-   * Optimization strategy for the line item.
+   * The optimization strategy for this line item.
    */
   @JsonAdapter(OptimizationStrategyEnum.Adapter.class)
   public enum OptimizationStrategyEnum {
-    MANUAL("manual"),
+    CONVERSION("conversion"),
     
-    AUTOMATED("automated"),
+    CLICKS("clicks"),
+    
+    REVENUE("revenue"),
     
     UNKNOWN("unknown");
 
@@ -353,7 +353,7 @@ public class SponsoredProductsLineItem {
   }
 
    /**
-   * Optional field.
+   * Bid strategy for the line item.
    * @return bidStrategy
   **/
   @javax.annotation.Nullable
@@ -661,7 +661,7 @@ public class SponsoredProductsLineItem {
   }
 
    /**
-   * Optimization strategy for the line item.
+   * The optimization strategy for this line item.
    * @return optimizationStrategy
   **/
   @javax.annotation.Nullable

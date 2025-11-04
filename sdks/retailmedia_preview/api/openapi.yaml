@@ -7421,9 +7421,9 @@ components:
           limit: 6
         data:
         - attributes:
-            bidStrategy: conversion
+            bidStrategy: manual
             budgetRemaining: 6.027456183070403
-            optimizationStrategy: manual
+            optimizationStrategy: conversion
             endDate: 2000-01-23T04:56:07.000+00:00
             campaignId: campaignId
             keywordStrategy: unknown
@@ -7451,9 +7451,9 @@ components:
           id: id
           type: type
         - attributes:
-            bidStrategy: conversion
+            bidStrategy: manual
             budgetRemaining: 6.027456183070403
-            optimizationStrategy: manual
+            optimizationStrategy: conversion
             endDate: 2000-01-23T04:56:07.000+00:00
             campaignId: campaignId
             keywordStrategy: unknown
@@ -7668,9 +7668,9 @@ components:
       description: "A domain entity exposed by the API, identified by a unique id."
       example:
         attributes:
-          bidStrategy: conversion
+          bidStrategy: manual
           budgetRemaining: 6.027456183070403
-          optimizationStrategy: manual
+          optimizationStrategy: conversion
           endDate: 2000-01-23T04:56:07.000+00:00
           campaignId: campaignId
           keywordStrategy: unknown
@@ -7864,9 +7864,9 @@ components:
       example:
         data:
           attributes:
-            bidStrategy: conversion
+            bidStrategy: manual
             budgetRemaining: 6.027456183070403
-            optimizationStrategy: manual
+            optimizationStrategy: conversion
             endDate: 2000-01-23T04:56:07.000+00:00
             campaignId: campaignId
             keywordStrategy: unknown
@@ -16308,9 +16308,9 @@ components:
       additionalProperties: false
       description: Model of a retail media auction line item.
       example:
-        bidStrategy: conversion
+        bidStrategy: manual
         budgetRemaining: 6.027456183070403
-        optimizationStrategy: manual
+        optimizationStrategy: conversion
         endDate: 2000-01-23T04:56:07.000+00:00
         campaignId: campaignId
         keywordStrategy: unknown
@@ -16338,11 +16338,10 @@ components:
       nullable: true
       properties:
         bidStrategy:
-          description: Optional field.
+          description: Bid strategy for the line item.
           enum:
-          - conversion
-          - clicks
-          - revenue
+          - manual
+          - automated
           - unknown
           nullable: true
           type: string
@@ -16410,10 +16409,11 @@ components:
           minLength: 0
           type: string
         optimizationStrategy:
-          description: Optimization strategy for the line item.
+          description: The optimization strategy for this line item.
           enum:
-          - manual
-          - automated
+          - conversion
+          - clicks
+          - revenue
           - unknown
           nullable: true
           type: string
@@ -16461,8 +16461,8 @@ components:
       additionalProperties: false
       description: Model to create a retail media auction line item
       example:
-        bidStrategy: conversion
-        optimizationStrategy: manual
+        bidStrategy: manual
+        optimizationStrategy: conversion
         endDate: 2000-01-23T04:56:07.000+00:00
         keywordStrategy: conquesting
         targetBid: 5.637376656633329
@@ -16484,13 +16484,12 @@ components:
         budget: 0.8008281904610115
       properties:
         bidStrategy:
-          default: conversion
-          description: "The bidding strategy to use for this line item.\r\nDefault\
-            \ value is Conversion."
+          default: manual
+          description: "The bidding strategy for this line item.\r\nDefault value\
+            \ is manual."
           enum:
-          - conversion
-          - clicks
-          - revenue
+          - manual
+          - automated
           type: string
         budget:
           description: The total budget allocated for this line item.
@@ -16538,10 +16537,13 @@ components:
           minLength: 0
           type: string
         optimizationStrategy:
-          default: manual
+          default: conversion
+          description: "The optimization strategy to use for this line item.\r\nDefault\
+            \ value is Conversion."
           enum:
-          - manual
-          - automated
+          - conversion
+          - clicks
+          - revenue
           type: string
         startDate:
           description: The date and time when the line item starts running.
@@ -16565,8 +16567,8 @@ components:
       additionalProperties: false
       description: A request to update a Sponsored Products Line Item.
       example:
-        bidStrategy: conversion
-        optimizationStrategy: manual
+        bidStrategy: manual
+        optimizationStrategy: conversion
         endDate: 2000-01-23T04:56:07.000+00:00
         targetBid: 5.637376656633329
         maxBid: 1.4658129805029452
@@ -16587,12 +16589,11 @@ components:
         status: active
       properties:
         bidStrategy:
-          default: conversion
-          description: The bidding strategy for the line item.
+          default: manual
+          description: The bid strategy for the line item.
           enum:
-          - conversion
-          - clicks
-          - revenue
+          - manual
+          - automated
           type: string
         budget:
           description: The total budget allocated for this line item.
@@ -16630,11 +16631,12 @@ components:
           minLength: 0
           type: string
         optimizationStrategy:
-          default: manual
+          default: conversion
           description: The optimization strategy for the line item.
           enum:
-          - manual
-          - automated
+          - conversion
+          - clicks
+          - revenue
           type: string
         startDate:
           description: The date and time when the line item starts running.
@@ -18157,8 +18159,8 @@ components:
       example:
         data:
           attributes:
-            bidStrategy: conversion
-            optimizationStrategy: manual
+            bidStrategy: manual
+            optimizationStrategy: conversion
             endDate: 2000-01-23T04:56:07.000+00:00
             keywordStrategy: conquesting
             targetBid: 5.637376656633329
@@ -18190,8 +18192,8 @@ components:
       example:
         data:
           attributes:
-            bidStrategy: conversion
-            optimizationStrategy: manual
+            bidStrategy: manual
+            optimizationStrategy: conversion
             endDate: 2000-01-23T04:56:07.000+00:00
             targetBid: 5.637376656633329
             maxBid: 1.4658129805029452
@@ -18562,8 +18564,8 @@ components:
       description: A value resource exposed by the API.
       example:
         attributes:
-          bidStrategy: conversion
-          optimizationStrategy: manual
+          bidStrategy: manual
+          optimizationStrategy: conversion
           endDate: 2000-01-23T04:56:07.000+00:00
           keywordStrategy: conquesting
           targetBid: 5.637376656633329
@@ -18597,8 +18599,8 @@ components:
       description: A value resource exposed by the API.
       example:
         attributes:
-          bidStrategy: conversion
-          optimizationStrategy: manual
+          bidStrategy: manual
+          optimizationStrategy: conversion
           endDate: 2000-01-23T04:56:07.000+00:00
           targetBid: 5.637376656633329
           maxBid: 1.4658129805029452
