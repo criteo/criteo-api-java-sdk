@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.criteo.api.marketingsolutions.preview.model.ExamAdAudienceSegmentLinkInput;
 import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfAd;
 import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfCoupon;
 import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfCreativeRead;
@@ -38,6 +39,7 @@ import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfAd;
 import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfCoupon;
 import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfCouponSupportedSizes;
 import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfCreative;
+import com.criteo.api.marketingsolutions.preview.model.ValueResourceOutcomeOfExamAdAudienceSegmentLink;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -597,6 +599,124 @@ public class CreativeApi {
     public okhttp3.Call deleteAdAsync(Integer id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAdValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteAdSegmentLink
+     * @param adId The ad identifier. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The link between the ad and its audience segment has been deleted. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAdSegmentLinkCall(Integer adId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ads/{ad-id}/audience-segment"
+            .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteAdSegmentLinkValidateBeforeCall(Integer adId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adId' is set
+        if (adId == null) {
+            throw new ApiException("Missing the required parameter 'adId' when calling deleteAdSegmentLink(Async)");
+        }
+
+        return deleteAdSegmentLinkCall(adId, _callback);
+
+    }
+
+    /**
+     * 
+     * Delete the link between an Ad and an Audience Segment.
+     * @param adId The ad identifier. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The link between the ad and its audience segment has been deleted. </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteAdSegmentLink(Integer adId) throws ApiException {
+        deleteAdSegmentLinkWithHttpInfo(adId);
+    }
+
+    /**
+     * 
+     * Delete the link between an Ad and an Audience Segment.
+     * @param adId The ad identifier. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The link between the ad and its audience segment has been deleted. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteAdSegmentLinkWithHttpInfo(Integer adId) throws ApiException {
+        okhttp3.Call localVarCall = deleteAdSegmentLinkValidateBeforeCall(adId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete the link between an Ad and an Audience Segment.
+     * @param adId The ad identifier. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The link between the ad and its audience segment has been deleted. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAdSegmentLinkAsync(Integer adId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAdSegmentLinkValidateBeforeCall(adId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -1382,6 +1502,129 @@ public class CreativeApi {
 
         okhttp3.Call localVarCall = getAdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ResourceOutcomeOfAd>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAdSegmentLink
+     * @param adId The ad identifier. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The found ad audience segment link is returned. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdSegmentLinkCall(Integer adId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ads/{ad-id}/audience-segment"
+            .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAdSegmentLinkValidateBeforeCall(Integer adId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adId' is set
+        if (adId == null) {
+            throw new ApiException("Missing the required parameter 'adId' when calling getAdSegmentLink(Async)");
+        }
+
+        return getAdSegmentLinkCall(adId, _callback);
+
+    }
+
+    /**
+     * 
+     * Retrieve the Ad audience segment link.
+     * @param adId The ad identifier. (required)
+     * @return ValueResourceOutcomeOfExamAdAudienceSegmentLink
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The found ad audience segment link is returned. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeOfExamAdAudienceSegmentLink getAdSegmentLink(Integer adId) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfExamAdAudienceSegmentLink> localVarResp = getAdSegmentLinkWithHttpInfo(adId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Retrieve the Ad audience segment link.
+     * @param adId The ad identifier. (required)
+     * @return ApiResponse&lt;ValueResourceOutcomeOfExamAdAudienceSegmentLink&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The found ad audience segment link is returned. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeOfExamAdAudienceSegmentLink> getAdSegmentLinkWithHttpInfo(Integer adId) throws ApiException {
+        okhttp3.Call localVarCall = getAdSegmentLinkValidateBeforeCall(adId, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfExamAdAudienceSegmentLink>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Retrieve the Ad audience segment link.
+     * @param adId The ad identifier. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The found ad audience segment link is returned. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdSegmentLinkAsync(Integer adId, final ApiCallback<ValueResourceOutcomeOfExamAdAudienceSegmentLink> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAdSegmentLinkValidateBeforeCall(adId, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfExamAdAudienceSegmentLink>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2336,6 +2579,139 @@ public class CreativeApi {
 
         okhttp3.Call localVarCall = getCreativeValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ResourceOutcomeOfCreative>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for linkAdSegment
+     * @param adId The ad identifier. (required)
+     * @param examAdAudienceSegmentLinkInput The audience segment link information. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The link between the Ad and the Audience Segment is returned. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call linkAdSegmentCall(Integer adId, ExamAdAudienceSegmentLinkInput examAdAudienceSegmentLinkInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = examAdAudienceSegmentLinkInput;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ads/{ad-id}/audience-segment"
+            .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call linkAdSegmentValidateBeforeCall(Integer adId, ExamAdAudienceSegmentLinkInput examAdAudienceSegmentLinkInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adId' is set
+        if (adId == null) {
+            throw new ApiException("Missing the required parameter 'adId' when calling linkAdSegment(Async)");
+        }
+
+        // verify the required parameter 'examAdAudienceSegmentLinkInput' is set
+        if (examAdAudienceSegmentLinkInput == null) {
+            throw new ApiException("Missing the required parameter 'examAdAudienceSegmentLinkInput' when calling linkAdSegment(Async)");
+        }
+
+        return linkAdSegmentCall(adId, examAdAudienceSegmentLinkInput, _callback);
+
+    }
+
+    /**
+     * 
+     * Link an Ad with an Audience Segment. If a link already exists, its segment ID will be updated.
+     * @param adId The ad identifier. (required)
+     * @param examAdAudienceSegmentLinkInput The audience segment link information. (required)
+     * @return ValueResourceOutcomeOfExamAdAudienceSegmentLink
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The link between the Ad and the Audience Segment is returned. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeOfExamAdAudienceSegmentLink linkAdSegment(Integer adId, ExamAdAudienceSegmentLinkInput examAdAudienceSegmentLinkInput) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfExamAdAudienceSegmentLink> localVarResp = linkAdSegmentWithHttpInfo(adId, examAdAudienceSegmentLinkInput);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Link an Ad with an Audience Segment. If a link already exists, its segment ID will be updated.
+     * @param adId The ad identifier. (required)
+     * @param examAdAudienceSegmentLinkInput The audience segment link information. (required)
+     * @return ApiResponse&lt;ValueResourceOutcomeOfExamAdAudienceSegmentLink&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The link between the Ad and the Audience Segment is returned. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeOfExamAdAudienceSegmentLink> linkAdSegmentWithHttpInfo(Integer adId, ExamAdAudienceSegmentLinkInput examAdAudienceSegmentLinkInput) throws ApiException {
+        okhttp3.Call localVarCall = linkAdSegmentValidateBeforeCall(adId, examAdAudienceSegmentLinkInput, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfExamAdAudienceSegmentLink>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Link an Ad with an Audience Segment. If a link already exists, its segment ID will be updated.
+     * @param adId The ad identifier. (required)
+     * @param examAdAudienceSegmentLinkInput The audience segment link information. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The link between the Ad and the Audience Segment is returned. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call linkAdSegmentAsync(Integer adId, ExamAdAudienceSegmentLinkInput examAdAudienceSegmentLinkInput, final ApiCallback<ValueResourceOutcomeOfExamAdAudienceSegmentLink> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = linkAdSegmentValidateBeforeCall(adId, examAdAudienceSegmentLinkInput, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfExamAdAudienceSegmentLink>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

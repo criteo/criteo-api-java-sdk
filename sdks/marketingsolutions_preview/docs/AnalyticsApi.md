@@ -175,7 +175,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **generateStatisticsReportRequest** | [**GenerateStatisticsReportRequest**](GenerateStatisticsReportRequest.md)|  | [optional] |
+| **generateStatisticsReportRequest** | [**GenerateStatisticsReportRequest**](GenerateStatisticsReportRequest.md)|  | |
 
 ### Return type
 
@@ -620,7 +620,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **generateCreativesReportRequestAttributesRequest** | [**GenerateCreativesReportRequestAttributesRequest**](GenerateCreativesReportRequestAttributesRequest.md)|  | [optional] |
+| **generateCreativesReportRequestAttributesRequest** | [**GenerateCreativesReportRequestAttributesRequest**](GenerateCreativesReportRequestAttributesRequest.md)|  | |
 
 ### Return type
 
@@ -887,7 +887,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **generateTopProductsReportRequestAttributesRequest** | [**GenerateTopProductsReportRequestAttributesRequest**](GenerateTopProductsReportRequestAttributesRequest.md)|  | [optional] |
+| **generateTopProductsReportRequestAttributesRequest** | [**GenerateTopProductsReportRequestAttributesRequest**](GenerateTopProductsReportRequestAttributesRequest.md)|  | |
 
 ### Return type
 

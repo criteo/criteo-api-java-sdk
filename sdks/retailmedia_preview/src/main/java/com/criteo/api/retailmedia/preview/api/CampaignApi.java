@@ -502,7 +502,7 @@ public class CampaignApi {
     /**
      * Build call for createAuctionLineItemV2
      * @param campaignId The given campaign id (required)
-     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -565,6 +565,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling createAuctionLineItemV2(Async)");
         }
 
+        // verify the required parameter 'valueResourceInputOfSponsoredProductsLineItemCreateRequestModel' is set
+        if (valueResourceInputOfSponsoredProductsLineItemCreateRequestModel == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfSponsoredProductsLineItemCreateRequestModel' when calling createAuctionLineItemV2(Async)");
+        }
+
         return createAuctionLineItemV2Call(campaignId, valueResourceInputOfSponsoredProductsLineItemCreateRequestModel, _callback);
 
     }
@@ -573,7 +578,7 @@ public class CampaignApi {
      * 
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
-     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (required)
      * @return EntityResourceOutcomeOfSponsoredProductsLineItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -591,7 +596,7 @@ public class CampaignApi {
      * 
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
-     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (required)
      * @return ApiResponse&lt;EntityResourceOutcomeOfSponsoredProductsLineItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -610,7 +615,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
-     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -630,7 +635,7 @@ public class CampaignApi {
     /**
      * Build call for createCreative
      * @param accountId External account id to create a creative for (required)
-     * @param creativeCreateModel2 The creative to create (optional)
+     * @param creativeCreateModel2 The creative to create (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -693,6 +698,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'accountId' when calling createCreative(Async)");
         }
 
+        // verify the required parameter 'creativeCreateModel2' is set
+        if (creativeCreateModel2 == null) {
+            throw new ApiException("Missing the required parameter 'creativeCreateModel2' when calling createCreative(Async)");
+        }
+
         return createCreativeCall(accountId, creativeCreateModel2, _callback);
 
     }
@@ -701,7 +711,7 @@ public class CampaignApi {
      * 
      * Create a creative for an account
      * @param accountId External account id to create a creative for (required)
-     * @param creativeCreateModel2 The creative to create (optional)
+     * @param creativeCreateModel2 The creative to create (required)
      * @return Creative2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -719,7 +729,7 @@ public class CampaignApi {
      * 
      * Create a creative for an account
      * @param accountId External account id to create a creative for (required)
-     * @param creativeCreateModel2 The creative to create (optional)
+     * @param creativeCreateModel2 The creative to create (required)
      * @return ApiResponse&lt;Creative2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -738,7 +748,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Create a creative for an account
      * @param accountId External account id to create a creative for (required)
-     * @param creativeCreateModel2 The creative to create (optional)
+     * @param creativeCreateModel2 The creative to create (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -758,7 +768,7 @@ public class CampaignApi {
     /**
      * Build call for createPreferredLineItemByCampaignId
      * @param campaignId The given campaign id (required)
-     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
+     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -821,6 +831,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling createPreferredLineItemByCampaignId(Async)");
         }
 
+        // verify the required parameter 'preferredLineItemCreateModelV2Request' is set
+        if (preferredLineItemCreateModelV2Request == null) {
+            throw new ApiException("Missing the required parameter 'preferredLineItemCreateModelV2Request' when calling createPreferredLineItemByCampaignId(Async)");
+        }
+
         return createPreferredLineItemByCampaignIdCall(campaignId, preferredLineItemCreateModelV2Request, _callback);
 
     }
@@ -829,7 +844,7 @@ public class CampaignApi {
      * 
      * Creates a new preferred line item with the specified settings
      * @param campaignId The given campaign id (required)
-     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
+     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (required)
      * @return PreferredLineItemV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -847,7 +862,7 @@ public class CampaignApi {
      * 
      * Creates a new preferred line item with the specified settings
      * @param campaignId The given campaign id (required)
-     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
+     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (required)
      * @return ApiResponse&lt;PreferredLineItemV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -866,7 +881,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Creates a new preferred line item with the specified settings
      * @param campaignId The given campaign id (required)
-     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (optional)
+     * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3000,7 +3015,7 @@ public class CampaignApi {
     /**
      * Build call for getRecommendedCategories
      * @param retailerId Retailer id. (required)
-     * @param valueResourceInputRecommendedCategoriesRequestV1 Request of recommended categories. (optional)
+     * @param valueResourceInputRecommendedCategoriesRequestV1 Request of recommended categories. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3063,6 +3078,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'retailerId' when calling getRecommendedCategories(Async)");
         }
 
+        // verify the required parameter 'valueResourceInputRecommendedCategoriesRequestV1' is set
+        if (valueResourceInputRecommendedCategoriesRequestV1 == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputRecommendedCategoriesRequestV1' when calling getRecommendedCategories(Async)");
+        }
+
         return getRecommendedCategoriesCall(retailerId, valueResourceInputRecommendedCategoriesRequestV1, _callback);
 
     }
@@ -3071,7 +3091,7 @@ public class CampaignApi {
      * 
      * Endpoint to get recommended categories by given retailer id and sku id list.
      * @param retailerId Retailer id. (required)
-     * @param valueResourceInputRecommendedCategoriesRequestV1 Request of recommended categories. (optional)
+     * @param valueResourceInputRecommendedCategoriesRequestV1 Request of recommended categories. (required)
      * @return EntityResourceCollectionOutcomeCategory202204
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3089,7 +3109,7 @@ public class CampaignApi {
      * 
      * Endpoint to get recommended categories by given retailer id and sku id list.
      * @param retailerId Retailer id. (required)
-     * @param valueResourceInputRecommendedCategoriesRequestV1 Request of recommended categories. (optional)
+     * @param valueResourceInputRecommendedCategoriesRequestV1 Request of recommended categories. (required)
      * @return ApiResponse&lt;EntityResourceCollectionOutcomeCategory202204&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3108,7 +3128,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Endpoint to get recommended categories by given retailer id and sku id list.
      * @param retailerId Retailer id. (required)
-     * @param valueResourceInputRecommendedCategoriesRequestV1 Request of recommended categories. (optional)
+     * @param valueResourceInputRecommendedCategoriesRequestV1 Request of recommended categories. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3519,7 +3539,7 @@ public class CampaignApi {
     /**
      * Build call for recommendedKeywords
      * @param retailerId Retailer id. (required)
-     * @param valueResourceInputRecommendedKeywordsRequestV1 Request of recommended keywords. (optional)
+     * @param valueResourceInputRecommendedKeywordsRequestV1 Request of recommended keywords. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3582,6 +3602,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'retailerId' when calling recommendedKeywords(Async)");
         }
 
+        // verify the required parameter 'valueResourceInputRecommendedKeywordsRequestV1' is set
+        if (valueResourceInputRecommendedKeywordsRequestV1 == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputRecommendedKeywordsRequestV1' when calling recommendedKeywords(Async)");
+        }
+
         return recommendedKeywordsCall(retailerId, valueResourceInputRecommendedKeywordsRequestV1, _callback);
 
     }
@@ -3590,7 +3615,7 @@ public class CampaignApi {
      * 
      * Recommend keywords by given retailer id and sku ids.
      * @param retailerId Retailer id. (required)
-     * @param valueResourceInputRecommendedKeywordsRequestV1 Request of recommended keywords. (optional)
+     * @param valueResourceInputRecommendedKeywordsRequestV1 Request of recommended keywords. (required)
      * @return ValueResourceOutcomeRecommendedKeywordsResponseV1
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3608,7 +3633,7 @@ public class CampaignApi {
      * 
      * Recommend keywords by given retailer id and sku ids.
      * @param retailerId Retailer id. (required)
-     * @param valueResourceInputRecommendedKeywordsRequestV1 Request of recommended keywords. (optional)
+     * @param valueResourceInputRecommendedKeywordsRequestV1 Request of recommended keywords. (required)
      * @return ApiResponse&lt;ValueResourceOutcomeRecommendedKeywordsResponseV1&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3627,7 +3652,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Recommend keywords by given retailer id and sku ids.
      * @param retailerId Retailer id. (required)
-     * @param valueResourceInputRecommendedKeywordsRequestV1 Request of recommended keywords. (optional)
+     * @param valueResourceInputRecommendedKeywordsRequestV1 Request of recommended keywords. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4323,7 +4348,7 @@ public class CampaignApi {
     /**
      * Build call for updateAuctionLineItemV2
      * @param lineItemId The external line item ID of the sponsored products line item. (required)
-     * @param valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel An update request containing all details of the requested update. (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel An update request containing all details of the requested update. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4386,6 +4411,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling updateAuctionLineItemV2(Async)");
         }
 
+        // verify the required parameter 'valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel' is set
+        if (valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel' when calling updateAuctionLineItemV2(Async)");
+        }
+
         return updateAuctionLineItemV2Call(lineItemId, valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, _callback);
 
     }
@@ -4394,7 +4424,7 @@ public class CampaignApi {
      * 
      * Updates a Sponsored Products Line Item given a line item id and a request.
      * @param lineItemId The external line item ID of the sponsored products line item. (required)
-     * @param valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel An update request containing all details of the requested update. (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel An update request containing all details of the requested update. (required)
      * @return EntityResourceOutcomeOfSponsoredProductsLineItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4412,7 +4442,7 @@ public class CampaignApi {
      * 
      * Updates a Sponsored Products Line Item given a line item id and a request.
      * @param lineItemId The external line item ID of the sponsored products line item. (required)
-     * @param valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel An update request containing all details of the requested update. (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel An update request containing all details of the requested update. (required)
      * @return ApiResponse&lt;EntityResourceOutcomeOfSponsoredProductsLineItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4431,7 +4461,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Updates a Sponsored Products Line Item given a line item id and a request.
      * @param lineItemId The external line item ID of the sponsored products line item. (required)
-     * @param valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel An update request containing all details of the requested update. (optional)
+     * @param valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel An update request containing all details of the requested update. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4452,7 +4482,7 @@ public class CampaignApi {
      * Build call for updateCreative
      * @param accountId External account id containing the creative (required)
      * @param creativeId Creative to update (required)
-     * @param creativeUpdateModel2 The creative to create (optional)
+     * @param creativeUpdateModel2 The creative to create (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4522,6 +4552,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'creativeId' when calling updateCreative(Async)");
         }
 
+        // verify the required parameter 'creativeUpdateModel2' is set
+        if (creativeUpdateModel2 == null) {
+            throw new ApiException("Missing the required parameter 'creativeUpdateModel2' when calling updateCreative(Async)");
+        }
+
         return updateCreativeCall(accountId, creativeId, creativeUpdateModel2, _callback);
 
     }
@@ -4531,7 +4566,7 @@ public class CampaignApi {
      * Update a creative
      * @param accountId External account id containing the creative (required)
      * @param creativeId Creative to update (required)
-     * @param creativeUpdateModel2 The creative to create (optional)
+     * @param creativeUpdateModel2 The creative to create (required)
      * @return Creative2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4551,7 +4586,7 @@ public class CampaignApi {
      * Update a creative
      * @param accountId External account id containing the creative (required)
      * @param creativeId Creative to update (required)
-     * @param creativeUpdateModel2 The creative to create (optional)
+     * @param creativeUpdateModel2 The creative to create (required)
      * @return ApiResponse&lt;Creative2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4572,7 +4607,7 @@ public class CampaignApi {
      * Update a creative
      * @param accountId External account id containing the creative (required)
      * @param creativeId Creative to update (required)
-     * @param creativeUpdateModel2 The creative to create (optional)
+     * @param creativeUpdateModel2 The creative to create (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4593,7 +4628,7 @@ public class CampaignApi {
     /**
      * Build call for updatePreferredLineItemByLineItemId
      * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
+     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4656,6 +4691,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling updatePreferredLineItemByLineItemId(Async)");
         }
 
+        // verify the required parameter 'preferredLineItemUpdateModelV2Request' is set
+        if (preferredLineItemUpdateModelV2Request == null) {
+            throw new ApiException("Missing the required parameter 'preferredLineItemUpdateModelV2Request' when calling updatePreferredLineItemByLineItemId(Async)");
+        }
+
         return updatePreferredLineItemByLineItemIdCall(lineItemId, preferredLineItemUpdateModelV2Request, _callback);
 
     }
@@ -4664,7 +4704,7 @@ public class CampaignApi {
      * 
      * Updates the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
+     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (required)
      * @return PreferredLineItemV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4682,7 +4722,7 @@ public class CampaignApi {
      * 
      * Updates the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
+     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (required)
      * @return ApiResponse&lt;PreferredLineItemV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4701,7 +4741,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Updates the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (optional)
+     * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4722,7 +4762,7 @@ public class CampaignApi {
      * Build call for updateProductButtonByLineItemAndProductButtonId
      * @param lineItemId LineItemId for productButton update (required)
      * @param productButtonId productButtonId used for update (required)
-     * @param productButtonRequestRequest Specific Product button update info (optional)
+     * @param productButtonRequestRequest Specific Product button update info (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4791,6 +4831,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'productButtonId' when calling updateProductButtonByLineItemAndProductButtonId(Async)");
         }
 
+        // verify the required parameter 'productButtonRequestRequest' is set
+        if (productButtonRequestRequest == null) {
+            throw new ApiException("Missing the required parameter 'productButtonRequestRequest' when calling updateProductButtonByLineItemAndProductButtonId(Async)");
+        }
+
         return updateProductButtonByLineItemAndProductButtonIdCall(lineItemId, productButtonId, productButtonRequestRequest, _callback);
 
     }
@@ -4800,7 +4845,7 @@ public class CampaignApi {
      * Update Specific Product Button
      * @param lineItemId LineItemId for productButton update (required)
      * @param productButtonId productButtonId used for update (required)
-     * @param productButtonRequestRequest Specific Product button update info (optional)
+     * @param productButtonRequestRequest Specific Product button update info (required)
      * @return ProductButtonResponseListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4819,7 +4864,7 @@ public class CampaignApi {
      * Update Specific Product Button
      * @param lineItemId LineItemId for productButton update (required)
      * @param productButtonId productButtonId used for update (required)
-     * @param productButtonRequestRequest Specific Product button update info (optional)
+     * @param productButtonRequestRequest Specific Product button update info (required)
      * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4839,7 +4884,7 @@ public class CampaignApi {
      * Update Specific Product Button
      * @param lineItemId LineItemId for productButton update (required)
      * @param productButtonId productButtonId used for update (required)
-     * @param productButtonRequestRequest Specific Product button update info (optional)
+     * @param productButtonRequestRequest Specific Product button update info (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

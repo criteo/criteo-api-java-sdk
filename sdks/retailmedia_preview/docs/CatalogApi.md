@@ -172,7 +172,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **retailerId** | **Integer**| The retailer for which these buy box winners will be set | |
-| **valueResourceInputSetSkuBuyBoxWinnersRequest** | [**ValueResourceInputSetSkuBuyBoxWinnersRequest**](ValueResourceInputSetSkuBuyBoxWinnersRequest.md)|  | [optional] |
+| **valueResourceInputSetSkuBuyBoxWinnersRequest** | [**ValueResourceInputSetSkuBuyBoxWinnersRequest**](ValueResourceInputSetSkuBuyBoxWinnersRequest.md)|  | |
 
 ### Return type
 

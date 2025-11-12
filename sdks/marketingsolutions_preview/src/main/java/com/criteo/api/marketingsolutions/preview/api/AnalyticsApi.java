@@ -210,7 +210,7 @@ public class AnalyticsApi {
     }
     /**
      * Build call for getAsyncAdsetReport
-     * @param generateStatisticsReportRequest  (optional)
+     * @param generateStatisticsReportRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -272,6 +272,11 @@ public class AnalyticsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAsyncAdsetReportValidateBeforeCall(GenerateStatisticsReportRequest generateStatisticsReportRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'generateStatisticsReportRequest' is set
+        if (generateStatisticsReportRequest == null) {
+            throw new ApiException("Missing the required parameter 'generateStatisticsReportRequest' when calling getAsyncAdsetReport(Async)");
+        }
+
         return getAsyncAdsetReportCall(generateStatisticsReportRequest, _callback);
 
     }
@@ -279,7 +284,7 @@ public class AnalyticsApi {
     /**
      * 
      * This Statistics endpoint provides an export Id that let you retrieve data.
-     * @param generateStatisticsReportRequest  (optional)
+     * @param generateStatisticsReportRequest  (required)
      * @return MarketingSolutionsReportStatusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -296,7 +301,7 @@ public class AnalyticsApi {
     /**
      * 
      * This Statistics endpoint provides an export Id that let you retrieve data.
-     * @param generateStatisticsReportRequest  (optional)
+     * @param generateStatisticsReportRequest  (required)
      * @return ApiResponse&lt;MarketingSolutionsReportStatusResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -314,7 +319,7 @@ public class AnalyticsApi {
     /**
      *  (asynchronously)
      * This Statistics endpoint provides an export Id that let you retrieve data.
-     * @param generateStatisticsReportRequest  (optional)
+     * @param generateStatisticsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -828,7 +833,7 @@ public class AnalyticsApi {
     }
     /**
      * Build call for getCreativesReport
-     * @param generateCreativesReportRequestAttributesRequest  (optional)
+     * @param generateCreativesReportRequestAttributesRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -890,6 +895,11 @@ public class AnalyticsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCreativesReportValidateBeforeCall(GenerateCreativesReportRequestAttributesRequest generateCreativesReportRequestAttributesRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'generateCreativesReportRequestAttributesRequest' is set
+        if (generateCreativesReportRequestAttributesRequest == null) {
+            throw new ApiException("Missing the required parameter 'generateCreativesReportRequestAttributesRequest' when calling getCreativesReport(Async)");
+        }
+
         return getCreativesReportCall(generateCreativesReportRequestAttributesRequest, _callback);
 
     }
@@ -897,7 +907,7 @@ public class AnalyticsApi {
     /**
      * 
      * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
-     * @param generateCreativesReportRequestAttributesRequest  (optional)
+     * @param generateCreativesReportRequestAttributesRequest  (required)
      * @return JsonReportRowsListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -914,7 +924,7 @@ public class AnalyticsApi {
     /**
      * 
      * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
-     * @param generateCreativesReportRequestAttributesRequest  (optional)
+     * @param generateCreativesReportRequestAttributesRequest  (required)
      * @return ApiResponse&lt;JsonReportRowsListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -932,7 +942,7 @@ public class AnalyticsApi {
     /**
      *  (asynchronously)
      * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
-     * @param generateCreativesReportRequestAttributesRequest  (optional)
+     * @param generateCreativesReportRequestAttributesRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1198,7 +1208,7 @@ public class AnalyticsApi {
     }
     /**
      * Build call for getTopProductsReport
-     * @param generateTopProductsReportRequestAttributesRequest  (optional)
+     * @param generateTopProductsReportRequestAttributesRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1260,6 +1270,11 @@ public class AnalyticsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getTopProductsReportValidateBeforeCall(GenerateTopProductsReportRequestAttributesRequest generateTopProductsReportRequestAttributesRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'generateTopProductsReportRequestAttributesRequest' is set
+        if (generateTopProductsReportRequestAttributesRequest == null) {
+            throw new ApiException("Missing the required parameter 'generateTopProductsReportRequestAttributesRequest' when calling getTopProductsReport(Async)");
+        }
+
         return getTopProductsReportCall(generateTopProductsReportRequestAttributesRequest, _callback);
 
     }
@@ -1267,7 +1282,7 @@ public class AnalyticsApi {
     /**
      * 
      * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
-     * @param generateTopProductsReportRequestAttributesRequest  (optional)
+     * @param generateTopProductsReportRequestAttributesRequest  (required)
      * @return JsonReportRowsListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1284,7 +1299,7 @@ public class AnalyticsApi {
     /**
      * 
      * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
-     * @param generateTopProductsReportRequestAttributesRequest  (optional)
+     * @param generateTopProductsReportRequestAttributesRequest  (required)
      * @return ApiResponse&lt;JsonReportRowsListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1302,7 +1317,7 @@ public class AnalyticsApi {
     /**
      *  (asynchronously)
      * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
-     * @param generateTopProductsReportRequestAttributesRequest  (optional)
+     * @param generateTopProductsReportRequestAttributesRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

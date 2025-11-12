@@ -82,7 +82,7 @@ public class RecoApi {
 
     /**
      * Build call for createProductSet
-     * @param valueResourceInputOfCreateProductSetRequest  (optional)
+     * @param valueResourceInputOfCreateProductSetRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -139,6 +139,11 @@ public class RecoApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createProductSetValidateBeforeCall(ValueResourceInputOfCreateProductSetRequest valueResourceInputOfCreateProductSetRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'valueResourceInputOfCreateProductSetRequest' is set
+        if (valueResourceInputOfCreateProductSetRequest == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfCreateProductSetRequest' when calling createProductSet(Async)");
+        }
+
         return createProductSetCall(valueResourceInputOfCreateProductSetRequest, _callback);
 
     }
@@ -146,7 +151,7 @@ public class RecoApi {
     /**
      * 
      * Create a new product set
-     * @param valueResourceInputOfCreateProductSetRequest  (optional)
+     * @param valueResourceInputOfCreateProductSetRequest  (required)
      * @return ResourceOutcomeOfProductSet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -163,7 +168,7 @@ public class RecoApi {
     /**
      * 
      * Create a new product set
-     * @param valueResourceInputOfCreateProductSetRequest  (optional)
+     * @param valueResourceInputOfCreateProductSetRequest  (required)
      * @return ApiResponse&lt;ResourceOutcomeOfProductSet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -181,7 +186,7 @@ public class RecoApi {
     /**
      *  (asynchronously)
      * Create a new product set
-     * @param valueResourceInputOfCreateProductSetRequest  (optional)
+     * @param valueResourceInputOfCreateProductSetRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -944,7 +949,7 @@ public class RecoApi {
     /**
      * Build call for patchProductSet
      * @param productSetId ID of the product set (required)
-     * @param valueResourceInputOfPatchProductSetRequest  (optional)
+     * @param valueResourceInputOfPatchProductSetRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1007,6 +1012,11 @@ public class RecoApi {
             throw new ApiException("Missing the required parameter 'productSetId' when calling patchProductSet(Async)");
         }
 
+        // verify the required parameter 'valueResourceInputOfPatchProductSetRequest' is set
+        if (valueResourceInputOfPatchProductSetRequest == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfPatchProductSetRequest' when calling patchProductSet(Async)");
+        }
+
         return patchProductSetCall(productSetId, valueResourceInputOfPatchProductSetRequest, _callback);
 
     }
@@ -1015,7 +1025,7 @@ public class RecoApi {
      * 
      * Patch an existing product set
      * @param productSetId ID of the product set (required)
-     * @param valueResourceInputOfPatchProductSetRequest  (optional)
+     * @param valueResourceInputOfPatchProductSetRequest  (required)
      * @return ResourceOutcomeOfProductSet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1033,7 +1043,7 @@ public class RecoApi {
      * 
      * Patch an existing product set
      * @param productSetId ID of the product set (required)
-     * @param valueResourceInputOfPatchProductSetRequest  (optional)
+     * @param valueResourceInputOfPatchProductSetRequest  (required)
      * @return ApiResponse&lt;ResourceOutcomeOfProductSet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1052,7 +1062,7 @@ public class RecoApi {
      *  (asynchronously)
      * Patch an existing product set
      * @param productSetId ID of the product set (required)
-     * @param valueResourceInputOfPatchProductSetRequest  (optional)
+     * @param valueResourceInputOfPatchProductSetRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

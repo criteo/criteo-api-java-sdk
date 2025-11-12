@@ -705,6 +705,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiRequestOfTargetingEntity'
         description: Description of the targeting rule to setup
+        required: true
         x-bodyName: apiRequest
       responses:
         "200":
@@ -741,6 +742,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiRequestOfTargetingEntity'
         description: Contains the list of items to add to the existing list
+        required: true
         x-bodyName: apiRequest
       responses:
         "200":
@@ -840,6 +842,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiRequestOfTargetingEntity'
         description: Description of the targeting rule to setup
+        required: true
         x-bodyName: apiRequest
       responses:
         "200":
@@ -876,6 +879,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiRequestOfTargetingEntity'
         description: Contains the list of items to add to the existing list
+        required: true
         x-bodyName: apiRequest
       responses:
         "200":
@@ -922,54 +926,6 @@ paths:
       - oauth: []
       tags:
       - Advertiser
-      x-accepts: application/json
-  /preview/audiences/{audience-id}/contactlist-attributes:
-    patch:
-      description: Add/remove identifiers to or from a contact list.
-      parameters:
-      - description: The id of the contact list audience-segment to amend
-        explode: false
-        in: path
-        name: audience-id
-        required: true
-        schema:
-          format: int32
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ContactlistWithAttributesAmendmentRequest'
-        required: true
-        x-bodyName: body
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                data:
-                  type: ContactlistAmendment
-                  attributes:
-                    contactListId: 12
-                    operation: add
-                    requestDate: 2018-12-10T10:00:50.0000000+00:00
-                    identifierType: madid
-                    nbValidIdentifiers: 7343
-                    nbInvalidIdentifiers: 13
-                    sampleInvalidIdentifiers:
-                    - InvalidIdentifier
-                errors: []
-                warnings: []
-              schema:
-                $ref: '#/components/schemas/ModifyAudienceResponse'
-          description: Summary of created request
-      security:
-      - oauth:
-        - MarketingSolutions_Audience_Manage
-      tags:
-      - Audience
-      x-content-type: application/json
       x-accepts: application/json
   /preview/campaigns/{campaignId}/targeting/bundle-rules:
     delete:
@@ -1055,6 +1011,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiRequestOfTargetingEntity'
         description: Description of the targeting rule to setup
+        required: true
         x-bodyName: apiRequest
       responses:
         "200":
@@ -1091,6 +1048,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiRequestOfTargetingEntity'
         description: Contains the list of items to add to the existing list
+        required: true
         x-bodyName: apiRequest
       responses:
         "200":
@@ -1190,6 +1148,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiRequestOfTargetingEntity'
         description: Description of the targeting rule to setup
+        required: true
         x-bodyName: apiRequest
       responses:
         "200":
@@ -1226,6 +1185,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiRequestOfTargetingEntity'
         description: Contains the list of items to add to the existing list
+        required: true
         x-bodyName: apiRequest
       responses:
         "200":
@@ -1609,6 +1569,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestsPatchAdSetV24Q3'
         description: List of adsets to patch.
+        required: true
         x-bodyName: adSets
       responses:
         "200":
@@ -1756,6 +1717,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PatchAdSetCategoryBidListRequest'
+        required: true
         x-bodyName: categoryBidsToUpdate
       responses:
         "200":
@@ -1818,6 +1780,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PatchAdSetDisplayMultiplierListRequest'
+        required: true
         x-bodyName: displayMultipliersToUpdate
       responses:
         "200":
@@ -1880,6 +1843,7 @@ paths:
             schema:
               $ref: '#/components/schemas/SetAdSetTargetingDealIdsRequest'
         description: the new Deal Id Targeting configuration
+        required: true
         x-bodyName: adSetDealIdTargetings
       responses:
         "200":
@@ -1968,6 +1932,7 @@ paths:
             schema:
               $ref: '#/components/schemas/SetAdSetTargetingVideoPositioningRequest'
         description: the new Video Positioning Targeting configuration
+        required: true
         x-bodyName: adSetTargetingVideoPositioning
       responses:
         "200":
@@ -2103,6 +2068,91 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
+  /preview/marketing-solutions/ads/{ad-id}/audience-segment:
+    delete:
+      description: Delete the link between an Ad and an Audience Segment.
+      operationId: DeleteAdSegmentLink
+      parameters:
+      - description: The ad identifier.
+        explode: false
+        in: path
+        name: ad-id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: The link between the ad and its audience segment has been deleted.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Manage
+      tags:
+      - Creative
+      x-accepts: application/json
+    get:
+      description: Retrieve the Ad audience segment link.
+      operationId: GetAdSegmentLink
+      parameters:
+      - description: The ad identifier.
+        explode: false
+        in: path
+        name: ad-id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfExamAdAudienceSegmentLink'
+          description: The found ad audience segment link is returned.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Read
+      tags:
+      - Creative
+      x-accepts: application/json
+    put:
+      description: "Link an Ad with an Audience Segment. If a link already exists,\
+        \ its segment ID will be updated."
+      operationId: LinkAdSegment
+      parameters:
+      - description: The ad identifier.
+        explode: false
+        in: path
+        name: ad-id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExamAdAudienceSegmentLinkInput'
+        description: The audience segment link information.
+        required: true
+        x-bodyName: input
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfExamAdAudienceSegmentLink'
+          description: The link between the Ad and the Audience Segment is returned.
+      security:
+      - oauth:
+        - MarketingSolutions_Creative_Manage
+      tags:
+      - Creative
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/marketing-solutions/audience-segments:
     patch:
       description: "Updates the properties of all segments with a valid configuration,\
@@ -2134,6 +2184,7 @@ paths:
   /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list:
     delete:
       description: Delete all identifiers from a contact list audience-segment.
+      operationId: DeleteContactListByAudienceSegment
       parameters:
       - description: The id of the contact list audience-segment to amend
         explode: false
@@ -2171,6 +2222,7 @@ paths:
       x-accepts: application/json
     patch:
       description: Add/remove identifiers to or from a contact list audience-segment.
+      operationId: UpdateContactListByAudienceSegment
       parameters:
       - description: The id of the contact list audience-segment to amend
         explode: false
@@ -2509,6 +2561,7 @@ paths:
   /preview/marketing-solutions/audiences/{audience-id}/contactlist-attributes:
     patch:
       description: Add/remove identifiers to or from a contact list.
+      operationId: ModifyAudienceUsersWithAttributes
       parameters:
       - description: The id of the contact list audience-segment to amend
         explode: false
@@ -2727,6 +2780,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PatchCampaignListRequest'
         description: List of campaigns to patch.
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -2891,6 +2945,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfCreateProductSetRequest'
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -2974,6 +3029,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfPatchProductSetRequest'
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -3183,6 +3239,7 @@ paths:
           application/*+xml:
             schema:
               $ref: '#/components/schemas/GenerateStatisticsReportRequest'
+        required: true
       responses:
         "202":
           content:
@@ -3222,6 +3279,7 @@ paths:
           application/*+xml:
             schema:
               $ref: '#/components/schemas/GenerateCreativesReportRequestAttributesRequest'
+        required: true
       responses:
         "200":
           content:
@@ -3300,6 +3358,7 @@ paths:
           application/*+xml:
             schema:
               $ref: '#/components/schemas/GenerateTopProductsReportRequestAttributesRequest'
+        required: true
       responses:
         "200":
           content:
@@ -10638,6 +10697,46 @@ components:
         type:
           nullable: true
           type: string
+      type: object
+    ExamAdAudienceSegmentLink:
+      description: Entity representing the link between an Ad and an Audience Segment.
+      example:
+        adId: adId
+        audienceSegmentId: audienceSegmentId
+      nullable: true
+      properties:
+        adId:
+          description: Unique ID of the Ad.
+          type: string
+        audienceSegmentId:
+          description: Unique ID of the Audience Segment.
+          type: string
+      required:
+      - adId
+      - audienceSegmentId
+      type: object
+    ExamAdAudienceSegmentLinkInput:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            audienceSegmentId: audienceSegmentId
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfExamAdAudienceSegmentLinkWrite'
+      type: object
+    ExamAdAudienceSegmentLinkWrite:
+      description: Link an Ad with an Audience Segment.
+      example:
+        audienceSegmentId: audienceSegmentId
+      properties:
+        audienceSegmentId:
+          description: Unique ID of the Audience Segment.
+          type: string
+      required:
+      - audienceSegmentId
       type: object
     ExportColumn:
       additionalProperties: false
@@ -20473,6 +20572,36 @@ components:
         type:
           type: string
       type: object
+    ValueResourceOfExamAdAudienceSegmentLink:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        attributes:
+          adId: adId
+          audienceSegmentId: audienceSegmentId
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExamAdAudienceSegmentLink'
+        type:
+          nullable: true
+          type: string
+      type: object
+    ValueResourceOfExamAdAudienceSegmentLinkWrite:
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          audienceSegmentId: audienceSegmentId
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExamAdAudienceSegmentLinkWrite'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     ValueResourceOfPatchProductSetRequest:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -20514,6 +20643,73 @@ components:
         type:
           nullable: true
           type: string
+      type: object
+    ValueResourceOutcomeOfExamAdAudienceSegmentLink:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        data:
+          attributes:
+            adId: adId
+            audienceSegmentId: audienceSegmentId
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfExamAdAudienceSegmentLink'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     ValueResourceOutcomeOfProductFilterConfig:
       description: A top-level object that encapsulates a Criteo API response for

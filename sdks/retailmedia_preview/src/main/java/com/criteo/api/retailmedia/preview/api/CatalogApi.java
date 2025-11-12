@@ -210,7 +210,7 @@ public class CatalogApi {
     /**
      * Build call for offerSetBbwV1
      * @param retailerId The retailer for which these buy box winners will be set (required)
-     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (optional)
+     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -273,6 +273,11 @@ public class CatalogApi {
             throw new ApiException("Missing the required parameter 'retailerId' when calling offerSetBbwV1(Async)");
         }
 
+        // verify the required parameter 'valueResourceInputSetSkuBuyBoxWinnersRequest' is set
+        if (valueResourceInputSetSkuBuyBoxWinnersRequest == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputSetSkuBuyBoxWinnersRequest' when calling offerSetBbwV1(Async)");
+        }
+
         return offerSetBbwV1Call(retailerId, valueResourceInputSetSkuBuyBoxWinnersRequest, _callback);
 
     }
@@ -281,7 +286,7 @@ public class CatalogApi {
      * 
      * Update the buy box winner for one or more SKUs
      * @param retailerId The retailer for which these buy box winners will be set (required)
-     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (optional)
+     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (required)
      * @return ValueResourceOutcomeAsyncJobResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -299,7 +304,7 @@ public class CatalogApi {
      * 
      * Update the buy box winner for one or more SKUs
      * @param retailerId The retailer for which these buy box winners will be set (required)
-     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (optional)
+     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (required)
      * @return ApiResponse&lt;ValueResourceOutcomeAsyncJobResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -318,7 +323,7 @@ public class CatalogApi {
      *  (asynchronously)
      * Update the buy box winner for one or more SKUs
      * @param retailerId The retailer for which these buy box winners will be set (required)
-     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (optional)
+     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

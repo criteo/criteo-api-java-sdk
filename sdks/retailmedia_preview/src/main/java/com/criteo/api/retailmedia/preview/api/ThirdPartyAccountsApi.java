@@ -723,7 +723,7 @@ public class ThirdPartyAccountsApi {
     /**
      * Build call for previewRetailMediaThirdPartyAccountsAccountIdSellersPut
      * @param accountId accountId to update sellers for (required)
-     * @param valueResourceCollectionInputOfRetailMediaSeller  (optional)
+     * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -786,6 +786,11 @@ public class ThirdPartyAccountsApi {
             throw new ApiException("Missing the required parameter 'accountId' when calling previewRetailMediaThirdPartyAccountsAccountIdSellersPut(Async)");
         }
 
+        // verify the required parameter 'valueResourceCollectionInputOfRetailMediaSeller' is set
+        if (valueResourceCollectionInputOfRetailMediaSeller == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceCollectionInputOfRetailMediaSeller' when calling previewRetailMediaThirdPartyAccountsAccountIdSellersPut(Async)");
+        }
+
         return previewRetailMediaThirdPartyAccountsAccountIdSellersPutCall(accountId, valueResourceCollectionInputOfRetailMediaSeller, _callback);
 
     }
@@ -794,7 +799,7 @@ public class ThirdPartyAccountsApi {
      * 
      * Update the list of sellers mapped to the account. This will override any existing mappings.
      * @param accountId accountId to update sellers for (required)
-     * @param valueResourceCollectionInputOfRetailMediaSeller  (optional)
+     * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
      * @return ValueResourceCollectionOutcomeOfRetailMediaSeller
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -812,7 +817,7 @@ public class ThirdPartyAccountsApi {
      * 
      * Update the list of sellers mapped to the account. This will override any existing mappings.
      * @param accountId accountId to update sellers for (required)
-     * @param valueResourceCollectionInputOfRetailMediaSeller  (optional)
+     * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
      * @return ApiResponse&lt;ValueResourceCollectionOutcomeOfRetailMediaSeller&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -831,7 +836,7 @@ public class ThirdPartyAccountsApi {
      *  (asynchronously)
      * Update the list of sellers mapped to the account. This will override any existing mappings.
      * @param accountId accountId to update sellers for (required)
-     * @param valueResourceCollectionInputOfRetailMediaSeller  (optional)
+     * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

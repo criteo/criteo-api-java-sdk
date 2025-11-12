@@ -182,6 +182,9 @@ docs/EntityOfPortfolioMessage.md
 docs/EntityV2OfDataset.md
 docs/EntityV2OfObject.md
 docs/EntityWrapperOfTargetingEntity.md
+docs/ExamAdAudienceSegmentLink.md
+docs/ExamAdAudienceSegmentLinkInput.md
+docs/ExamAdAudienceSegmentLinkWrite.md
 docs/ExportColumn.md
 docs/ExportMetaData.md
 docs/ExportResult.md
@@ -377,8 +380,11 @@ docs/ValueResourceInputOfCreateProductSetRequest.md
 docs/ValueResourceInputOfPatchProductSetRequest.md
 docs/ValueResourceOfCreateProductFilterRequest.md
 docs/ValueResourceOfCreateProductSetRequest.md
+docs/ValueResourceOfExamAdAudienceSegmentLink.md
+docs/ValueResourceOfExamAdAudienceSegmentLinkWrite.md
 docs/ValueResourceOfPatchProductSetRequest.md
 docs/ValueResourceOfProductFilterConfig.md
+docs/ValueResourceOutcomeOfExamAdAudienceSegmentLink.md
 docs/ValueResourceOutcomeOfProductFilterConfig.md
 docs/VideoDetail.md
 docs/WriteModelAdSetId.md
@@ -594,6 +600,9 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/EntityOfPortfolioM
 src/main/java/com/criteo/api/marketingsolutions/preview/model/EntityV2OfDataset.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/EntityV2OfObject.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/EntityWrapperOfTargetingEntity.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ExamAdAudienceSegmentLink.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ExamAdAudienceSegmentLinkInput.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ExamAdAudienceSegmentLinkWrite.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportColumn.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportMetaData.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportResult.java
@@ -786,8 +795,11 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceInput
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceInputOfPatchProductSetRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfCreateProductFilterRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfCreateProductSetRequest.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfExamAdAudienceSegmentLink.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfExamAdAudienceSegmentLinkWrite.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfPatchProductSetRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfProductFilterConfig.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOutcomeOfExamAdAudienceSegmentLink.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOutcomeOfProductFilterConfig.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/VideoDetail.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelAdSetId.java

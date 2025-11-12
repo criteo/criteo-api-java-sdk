@@ -8,12 +8,14 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**createAdvertiserCoupon**](CreativeApi.md#createAdvertiserCoupon) | **POST** /preview/advertisers/{advertiser-id}/coupons |  |
 | [**createAdvertiserCreative**](CreativeApi.md#createAdvertiserCreative) | **POST** /preview/advertisers/{advertiser-id}/creatives |  |
 | [**deleteAd**](CreativeApi.md#deleteAd) | **DELETE** /preview/ads/{id} |  |
+| [**deleteAdSegmentLink**](CreativeApi.md#deleteAdSegmentLink) | **DELETE** /preview/marketing-solutions/ads/{ad-id}/audience-segment |  |
 | [**deleteAdvertiserCoupon**](CreativeApi.md#deleteAdvertiserCoupon) | **DELETE** /preview/advertisers/{advertiser-id}/coupons/{id} |  |
 | [**deleteCreative**](CreativeApi.md#deleteCreative) | **DELETE** /preview/creatives/{id} |  |
 | [**editAdvertiserCoupon**](CreativeApi.md#editAdvertiserCoupon) | **PUT** /preview/advertisers/{advertiser-id}/coupons/{id} |  |
 | [**editCreative**](CreativeApi.md#editCreative) | **PUT** /preview/creatives/{id} |  |
 | [**generateCreativePreview**](CreativeApi.md#generateCreativePreview) | **POST** /preview/creatives/{id}/preview |  |
 | [**getAd**](CreativeApi.md#getAd) | **GET** /preview/ads/{id} |  |
+| [**getAdSegmentLink**](CreativeApi.md#getAdSegmentLink) | **GET** /preview/marketing-solutions/ads/{ad-id}/audience-segment |  |
 | [**getAdvertiserAds**](CreativeApi.md#getAdvertiserAds) | **GET** /preview/advertisers/{advertiser-id}/ads |  |
 | [**getAdvertiserCoupon**](CreativeApi.md#getAdvertiserCoupon) | **GET** /preview/advertisers/{advertiser-id}/coupons/{id} |  |
 | [**getAdvertiserCouponPreview**](CreativeApi.md#getAdvertiserCouponPreview) | **GET** /preview/advertisers/{advertiser-id}/coupons/{id}/preview |  |
@@ -21,6 +23,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getAdvertiserCoupons**](CreativeApi.md#getAdvertiserCoupons) | **GET** /preview/advertisers/{advertiser-id}/coupons |  |
 | [**getAdvertiserCreatives**](CreativeApi.md#getAdvertiserCreatives) | **GET** /preview/advertisers/{advertiser-id}/creatives |  |
 | [**getCreative**](CreativeApi.md#getCreative) | **GET** /preview/creatives/{id} |  |
+| [**linkAdSegment**](CreativeApi.md#linkAdSegment) | **PUT** /preview/marketing-solutions/ads/{ad-id}/audience-segment |  |
 
 
 
@@ -383,6 +386,94 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | The ad was deleted. |  -  |
+
+
+## deleteAdSegmentLink
+
+> deleteAdSegmentLink(adId)
+
+
+
+Delete the link between an Ad and an Audience Segment.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.CreativeApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CreativeApi apiInstance = new CreativeApi(defaultClient);
+        Integer adId = 56; // Integer | The ad identifier.
+        try {
+            apiInstance.deleteAdSegmentLink(adId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CreativeApi#deleteAdSegmentLink");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adId** | **Integer**| The ad identifier. | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | The link between the ad and its audience segment has been deleted. |  -  |
 
 
 ## deleteAdvertiserCoupon
@@ -927,6 +1018,95 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The found ad is returned. |  -  |
+
+
+## getAdSegmentLink
+
+> ValueResourceOutcomeOfExamAdAudienceSegmentLink getAdSegmentLink(adId)
+
+
+
+Retrieve the Ad audience segment link.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.CreativeApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CreativeApi apiInstance = new CreativeApi(defaultClient);
+        Integer adId = 56; // Integer | The ad identifier.
+        try {
+            ValueResourceOutcomeOfExamAdAudienceSegmentLink result = apiInstance.getAdSegmentLink(adId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CreativeApi#getAdSegmentLink");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adId** | **Integer**| The ad identifier. | |
+
+### Return type
+
+[**ValueResourceOutcomeOfExamAdAudienceSegmentLink**](ValueResourceOutcomeOfExamAdAudienceSegmentLink.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The found ad audience segment link is returned. |  -  |
 
 
 ## getAdvertiserAds
@@ -1572,4 +1752,95 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The found creative is returned. |  -  |
+
+
+## linkAdSegment
+
+> ValueResourceOutcomeOfExamAdAudienceSegmentLink linkAdSegment(adId, examAdAudienceSegmentLinkInput)
+
+
+
+Link an Ad with an Audience Segment. If a link already exists, its segment ID will be updated.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.CreativeApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CreativeApi apiInstance = new CreativeApi(defaultClient);
+        Integer adId = 56; // Integer | The ad identifier.
+        ExamAdAudienceSegmentLinkInput examAdAudienceSegmentLinkInput = new ExamAdAudienceSegmentLinkInput(); // ExamAdAudienceSegmentLinkInput | The audience segment link information.
+        try {
+            ValueResourceOutcomeOfExamAdAudienceSegmentLink result = apiInstance.linkAdSegment(adId, examAdAudienceSegmentLinkInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CreativeApi#linkAdSegment");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adId** | **Integer**| The ad identifier. | |
+| **examAdAudienceSegmentLinkInput** | [**ExamAdAudienceSegmentLinkInput**](ExamAdAudienceSegmentLinkInput.md)| The audience segment link information. | |
+
+### Return type
+
+[**ValueResourceOutcomeOfExamAdAudienceSegmentLink**](ValueResourceOutcomeOfExamAdAudienceSegmentLink.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The link between the Ad and the Audience Segment is returned. |  -  |
 

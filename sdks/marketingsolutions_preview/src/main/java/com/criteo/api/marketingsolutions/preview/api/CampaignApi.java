@@ -2455,7 +2455,7 @@ public class CampaignApi {
     /**
      * Build call for patchAdSetCategoryBids
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2518,6 +2518,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'adSetId' when calling patchAdSetCategoryBids(Async)");
         }
 
+        // verify the required parameter 'patchAdSetCategoryBidListRequest' is set
+        if (patchAdSetCategoryBidListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchAdSetCategoryBidListRequest' when calling patchAdSetCategoryBids(Async)");
+        }
+
         return patchAdSetCategoryBidsCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
 
     }
@@ -2526,7 +2531,7 @@ public class CampaignApi {
      * 
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @return PatchAdSetCategoryBidResultListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2544,7 +2549,7 @@ public class CampaignApi {
      * 
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @return ApiResponse&lt;PatchAdSetCategoryBidResultListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2563,7 +2568,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2582,7 +2587,7 @@ public class CampaignApi {
     }
     /**
      * Build call for patchAdSets
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2639,6 +2644,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call patchAdSetsValidateBeforeCall(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'requestsPatchAdSetV24Q3' is set
+        if (requestsPatchAdSetV24Q3 == null) {
+            throw new ApiException("Missing the required parameter 'requestsPatchAdSetV24Q3' when calling patchAdSets(Async)");
+        }
+
         return patchAdSetsCall(requestsPatchAdSetV24Q3, _callback);
 
     }
@@ -2646,7 +2656,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @return ResponsesAdSetIdV24Q3
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2663,7 +2673,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @return ApiResponse&lt;ResponsesAdSetIdV24Q3&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2681,7 +2691,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2700,7 +2710,7 @@ public class CampaignApi {
     }
     /**
      * Build call for patchCampaigns
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2757,6 +2767,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call patchCampaignsValidateBeforeCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'patchCampaignListRequest' is set
+        if (patchCampaignListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchCampaignListRequest' when calling patchCampaigns(Async)");
+        }
+
         return patchCampaignsCall(patchCampaignListRequest, _callback);
 
     }
@@ -2764,7 +2779,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return PatchResultCampaignListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2781,7 +2796,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return ApiResponse&lt;PatchResultCampaignListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2799,7 +2814,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2819,7 +2834,7 @@ public class CampaignApi {
     /**
      * Build call for patchDisplayMultipliers
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2882,6 +2897,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'adSetId' when calling patchDisplayMultipliers(Async)");
         }
 
+        // verify the required parameter 'patchAdSetDisplayMultiplierListRequest' is set
+        if (patchAdSetDisplayMultiplierListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchAdSetDisplayMultiplierListRequest' when calling patchDisplayMultipliers(Async)");
+        }
+
         return patchDisplayMultipliersCall(adSetId, patchAdSetDisplayMultiplierListRequest, _callback);
 
     }
@@ -2890,7 +2910,7 @@ public class CampaignApi {
      * 
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @return PatchAdSetDisplayMultiplierResultListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2908,7 +2928,7 @@ public class CampaignApi {
      * 
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @return ApiResponse&lt;PatchAdSetDisplayMultiplierResultListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2927,7 +2947,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2947,7 +2967,7 @@ public class CampaignApi {
     /**
      * Build call for postAdvertiserBundleRules
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3010,6 +3030,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling postAdvertiserBundleRules(Async)");
         }
 
+        // verify the required parameter 'apiRequestOfTargetingEntity' is set
+        if (apiRequestOfTargetingEntity == null) {
+            throw new ApiException("Missing the required parameter 'apiRequestOfTargetingEntity' when calling postAdvertiserBundleRules(Async)");
+        }
+
         return postAdvertiserBundleRulesCall(advertiserId, apiRequestOfTargetingEntity, _callback);
 
     }
@@ -3018,7 +3043,7 @@ public class CampaignApi {
      * 
      * Inserts a list of targeted bundles for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @return ApiResponseOfTargetingEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3036,7 +3061,7 @@ public class CampaignApi {
      * 
      * Inserts a list of targeted bundles for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3055,7 +3080,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Inserts a list of targeted bundles for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3075,7 +3100,7 @@ public class CampaignApi {
     /**
      * Build call for postAdvertiserDomainRules
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3138,6 +3163,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling postAdvertiserDomainRules(Async)");
         }
 
+        // verify the required parameter 'apiRequestOfTargetingEntity' is set
+        if (apiRequestOfTargetingEntity == null) {
+            throw new ApiException("Missing the required parameter 'apiRequestOfTargetingEntity' when calling postAdvertiserDomainRules(Async)");
+        }
+
         return postAdvertiserDomainRulesCall(advertiserId, apiRequestOfTargetingEntity, _callback);
 
     }
@@ -3146,7 +3176,7 @@ public class CampaignApi {
      * 
      * Inserts a list of targeted domains for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @return ApiResponseOfTargetingEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3164,7 +3194,7 @@ public class CampaignApi {
      * 
      * Inserts a list of targeted domains for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3183,7 +3213,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Inserts a list of targeted domains for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3203,7 +3233,7 @@ public class CampaignApi {
     /**
      * Build call for postCampaignBundleRules
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3266,6 +3296,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling postCampaignBundleRules(Async)");
         }
 
+        // verify the required parameter 'apiRequestOfTargetingEntity' is set
+        if (apiRequestOfTargetingEntity == null) {
+            throw new ApiException("Missing the required parameter 'apiRequestOfTargetingEntity' when calling postCampaignBundleRules(Async)");
+        }
+
         return postCampaignBundleRulesCall(campaignId, apiRequestOfTargetingEntity, _callback);
 
     }
@@ -3274,7 +3309,7 @@ public class CampaignApi {
      * 
      * Inserts a list of targeted bundles for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @return ApiResponseOfTargetingEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3292,7 +3327,7 @@ public class CampaignApi {
      * 
      * Inserts a list of targeted bundles for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3311,7 +3346,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Inserts a list of targeted bundles for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3331,7 +3366,7 @@ public class CampaignApi {
     /**
      * Build call for postCampaignDomainRules
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3394,6 +3429,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling postCampaignDomainRules(Async)");
         }
 
+        // verify the required parameter 'apiRequestOfTargetingEntity' is set
+        if (apiRequestOfTargetingEntity == null) {
+            throw new ApiException("Missing the required parameter 'apiRequestOfTargetingEntity' when calling postCampaignDomainRules(Async)");
+        }
+
         return postCampaignDomainRulesCall(campaignId, apiRequestOfTargetingEntity, _callback);
 
     }
@@ -3402,7 +3442,7 @@ public class CampaignApi {
      * 
      * Inserts a list of targeted domains for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @return ApiResponseOfTargetingEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3420,7 +3460,7 @@ public class CampaignApi {
      * 
      * Inserts a list of targeted domains for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3439,7 +3479,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Inserts a list of targeted domains for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3459,7 +3499,7 @@ public class CampaignApi {
     /**
      * Build call for putAdvertiserBundleRules
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3522,6 +3562,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling putAdvertiserBundleRules(Async)");
         }
 
+        // verify the required parameter 'apiRequestOfTargetingEntity' is set
+        if (apiRequestOfTargetingEntity == null) {
+            throw new ApiException("Missing the required parameter 'apiRequestOfTargetingEntity' when calling putAdvertiserBundleRules(Async)");
+        }
+
         return putAdvertiserBundleRulesCall(advertiserId, apiRequestOfTargetingEntity, _callback);
 
     }
@@ -3530,7 +3575,7 @@ public class CampaignApi {
      * 
      * Updates the targeted bundles for an advertiser by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @return ApiResponseOfTargetingEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3548,7 +3593,7 @@ public class CampaignApi {
      * 
      * Updates the targeted bundles for an advertiser by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3567,7 +3612,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Updates the targeted bundles for an advertiser by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3587,7 +3632,7 @@ public class CampaignApi {
     /**
      * Build call for putAdvertiserDomainRules
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3650,6 +3695,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling putAdvertiserDomainRules(Async)");
         }
 
+        // verify the required parameter 'apiRequestOfTargetingEntity' is set
+        if (apiRequestOfTargetingEntity == null) {
+            throw new ApiException("Missing the required parameter 'apiRequestOfTargetingEntity' when calling putAdvertiserDomainRules(Async)");
+        }
+
         return putAdvertiserDomainRulesCall(advertiserId, apiRequestOfTargetingEntity, _callback);
 
     }
@@ -3658,7 +3708,7 @@ public class CampaignApi {
      * 
      * Updates the targeted domains for an advertiser by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @return ApiResponseOfTargetingEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3676,7 +3726,7 @@ public class CampaignApi {
      * 
      * Updates the targeted domains for an advertiser by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3695,7 +3745,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Updates the targeted domains for an advertiser by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3715,7 +3765,7 @@ public class CampaignApi {
     /**
      * Build call for putCampaignBundleRules
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3778,6 +3828,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling putCampaignBundleRules(Async)");
         }
 
+        // verify the required parameter 'apiRequestOfTargetingEntity' is set
+        if (apiRequestOfTargetingEntity == null) {
+            throw new ApiException("Missing the required parameter 'apiRequestOfTargetingEntity' when calling putCampaignBundleRules(Async)");
+        }
+
         return putCampaignBundleRulesCall(campaignId, apiRequestOfTargetingEntity, _callback);
 
     }
@@ -3786,7 +3841,7 @@ public class CampaignApi {
      * 
      * Updates the targeted bundles for a campaign by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @return ApiResponseOfTargetingEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3804,7 +3859,7 @@ public class CampaignApi {
      * 
      * Updates the targeted bundles for a campaign by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3823,7 +3878,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Updates the targeted bundles for a campaign by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3843,7 +3898,7 @@ public class CampaignApi {
     /**
      * Build call for putCampaignDomainRules
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3906,6 +3961,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling putCampaignDomainRules(Async)");
         }
 
+        // verify the required parameter 'apiRequestOfTargetingEntity' is set
+        if (apiRequestOfTargetingEntity == null) {
+            throw new ApiException("Missing the required parameter 'apiRequestOfTargetingEntity' when calling putCampaignDomainRules(Async)");
+        }
+
         return putCampaignDomainRulesCall(campaignId, apiRequestOfTargetingEntity, _callback);
 
     }
@@ -3914,7 +3974,7 @@ public class CampaignApi {
      * 
      * Updates the targeted domains for a campaign by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @return ApiResponseOfTargetingEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3932,7 +3992,7 @@ public class CampaignApi {
      * 
      * Updates the targeted domains for a campaign by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3951,7 +4011,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Updates the targeted domains for a campaign by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
-     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4207,7 +4267,7 @@ public class CampaignApi {
     /**
      * Build call for setAdSetTargetingDealIds
      * @param adSetId Id of the Ad Set (required)
-     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (optional)
+     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4270,6 +4330,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'adSetId' when calling setAdSetTargetingDealIds(Async)");
         }
 
+        // verify the required parameter 'setAdSetTargetingDealIdsRequest' is set
+        if (setAdSetTargetingDealIdsRequest == null) {
+            throw new ApiException("Missing the required parameter 'setAdSetTargetingDealIdsRequest' when calling setAdSetTargetingDealIds(Async)");
+        }
+
         return setAdSetTargetingDealIdsCall(adSetId, setAdSetTargetingDealIdsRequest, _callback);
 
     }
@@ -4278,7 +4343,7 @@ public class CampaignApi {
      * 
      * Set the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
-     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (optional)
+     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (required)
      * @return AdSetTargetingDealIdsSetResultResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4296,7 +4361,7 @@ public class CampaignApi {
      * 
      * Set the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
-     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (optional)
+     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (required)
      * @return ApiResponse&lt;AdSetTargetingDealIdsSetResultResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4315,7 +4380,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Set the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
-     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (optional)
+     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4335,7 +4400,7 @@ public class CampaignApi {
     /**
      * Build call for setAdSetTargetingVideoPositioning
      * @param adSetId Id of the Ad Set (required)
-     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (optional)
+     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4398,6 +4463,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'adSetId' when calling setAdSetTargetingVideoPositioning(Async)");
         }
 
+        // verify the required parameter 'setAdSetTargetingVideoPositioningRequest' is set
+        if (setAdSetTargetingVideoPositioningRequest == null) {
+            throw new ApiException("Missing the required parameter 'setAdSetTargetingVideoPositioningRequest' when calling setAdSetTargetingVideoPositioning(Async)");
+        }
+
         return setAdSetTargetingVideoPositioningCall(adSetId, setAdSetTargetingVideoPositioningRequest, _callback);
 
     }
@@ -4406,7 +4476,7 @@ public class CampaignApi {
      * 
      * Set the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
-     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (optional)
+     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (required)
      * @return AdSetTargetingVideoPositioningSetResultResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4424,7 +4494,7 @@ public class CampaignApi {
      * 
      * Set the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
-     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (optional)
+     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (required)
      * @return ApiResponse&lt;AdSetTargetingVideoPositioningSetResultResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4443,7 +4513,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Set the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
-     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (optional)
+     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

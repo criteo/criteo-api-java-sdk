@@ -666,6 +666,7 @@ paths:
               $ref: '#/components/schemas/CreateBalanceV2Request'
         description: An object that represents the available options to set when creating
           a Retail Media Balance
+        required: true
         x-bodyName: createBalance
       responses:
         "201":
@@ -741,6 +742,7 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateBalanceModelV2Request'
         description: An object that represents the available options to modify a balance.
+        required: true
         x-bodyName: updateBalanceModel
       responses:
         "200":
@@ -784,6 +786,7 @@ paths:
               $ref: '#/components/schemas/ChangeDatesOfBalanceV2Request'
         description: An object that represents the available options to modify schedule
           of a balance.
+        required: true
         x-bodyName: changeDatesOfBalance
       responses:
         "200":
@@ -818,6 +821,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreativeCreateModel2'
         description: The creative to create
+        required: true
         x-bodyName: creative
       responses:
         "201":
@@ -893,6 +897,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreativeUpdateModel2'
         description: The creative to create
+        required: true
         x-bodyName: creative
       responses:
         "200":
@@ -1187,6 +1192,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel'
         description: An update request containing all details of the requested update.
+        required: true
       responses:
         "200":
           content:
@@ -1559,6 +1565,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PreferredLineItemCreateModelV2Request'
         description: The line item settings to create a line item with
+        required: true
         x-bodyName: lineItem
       responses:
         "201":
@@ -1652,6 +1659,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel'
         description: The line item settings to create a line item with
+        required: true
       responses:
         "201":
           content:
@@ -2006,6 +2014,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ProductButtonRequestRequest'
         description: Specific Product button update info
+        required: true
         x-bodyName: productButton
       responses:
         "200":
@@ -2293,6 +2302,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PreferredLineItemUpdateModelV2Request'
         description: The line item settings to create a line item with
+        required: true
         x-bodyName: lineItem
       responses:
         "200":
@@ -2863,6 +2873,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueResourceInputSetSkuBuyBoxWinnersRequest'
+        required: true
       responses:
         "200":
           content:
@@ -2932,6 +2943,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputRecommendedCategoriesRequestV1'
         description: Request of recommended categories.
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -2966,6 +2978,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputRecommendedKeywordsRequestV1'
         description: Request of recommended keywords.
+        required: true
       responses:
         "200":
           content:
@@ -3166,6 +3179,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
         description: ""
+        required: true
       responses:
         "200":
           content:
