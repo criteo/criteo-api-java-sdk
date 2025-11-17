@@ -4081,9 +4081,9 @@ public class CampaignApi {
     /**
      * Build call for searchRetailersV1
      * @param accountId The external account identifier (required)
+     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4093,7 +4093,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchRetailersV1Call(String accountId, Integer limit, Integer offset, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchRetailersV1Call(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4148,13 +4148,18 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchRetailersV1ValidateBeforeCall(String accountId, Integer limit, Integer offset, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchRetailersV1ValidateBeforeCall(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling searchRetailersV1(Async)");
         }
 
-        return searchRetailersV1Call(accountId, limit, offset, valueResourceInputOfRetailerSearchRequest, _callback);
+        // verify the required parameter 'valueResourceInputOfRetailerSearchRequest' is set
+        if (valueResourceInputOfRetailerSearchRequest == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfRetailerSearchRequest' when calling searchRetailersV1(Async)");
+        }
+
+        return searchRetailersV1Call(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset, _callback);
 
     }
 
@@ -4162,9 +4167,9 @@ public class CampaignApi {
      * 
      * Searches for retailers associated with the specified account based on provided search criteria
      * @param accountId The external account identifier (required)
+     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (optional)
      * @return EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4173,8 +4178,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceCollectionOutcomeOfRetailerResultAndMetadata searchRetailersV1(String accountId, Integer limit, Integer offset, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> localVarResp = searchRetailersV1WithHttpInfo(accountId, limit, offset, valueResourceInputOfRetailerSearchRequest);
+    public EntityResourceCollectionOutcomeOfRetailerResultAndMetadata searchRetailersV1(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> localVarResp = searchRetailersV1WithHttpInfo(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset);
         return localVarResp.getData();
     }
 
@@ -4182,9 +4187,9 @@ public class CampaignApi {
      * 
      * Searches for retailers associated with the specified account based on provided search criteria
      * @param accountId The external account identifier (required)
+     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (optional)
      * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfRetailerResultAndMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4193,8 +4198,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> searchRetailersV1WithHttpInfo(String accountId, Integer limit, Integer offset, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest) throws ApiException {
-        okhttp3.Call localVarCall = searchRetailersV1ValidateBeforeCall(accountId, limit, offset, valueResourceInputOfRetailerSearchRequest, null);
+    public ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> searchRetailersV1WithHttpInfo(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = searchRetailersV1ValidateBeforeCall(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset, null);
         Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4203,9 +4208,9 @@ public class CampaignApi {
      *  (asynchronously)
      * Searches for retailers associated with the specified account based on provided search criteria
      * @param accountId The external account identifier (required)
+     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4215,9 +4220,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchRetailersV1Async(String accountId, Integer limit, Integer offset, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, final ApiCallback<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> _callback) throws ApiException {
+    public okhttp3.Call searchRetailersV1Async(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchRetailersV1ValidateBeforeCall(accountId, limit, offset, valueResourceInputOfRetailerSearchRequest, _callback);
+        okhttp3.Call localVarCall = searchRetailersV1ValidateBeforeCall(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

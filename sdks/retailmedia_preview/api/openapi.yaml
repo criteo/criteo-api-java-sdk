@@ -1063,6 +1063,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfRetailerSearchRequest'
         description: The search request containing filtering parameters
+        required: true
       responses:
         "200":
           content:
@@ -16443,7 +16444,10 @@ components:
           - scheduled
           - draft
           - paused
-          - budgetHit
+          - budgetHitDaily
+          - budgetHitHourly
+          - budgetHitMonthly
+          - budgetHitTotal
           - ended
           - archived
           - noFunds

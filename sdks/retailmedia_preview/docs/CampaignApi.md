@@ -2788,7 +2788,7 @@ public class Example {
 
 ## searchRetailersV1
 
-> EntityResourceCollectionOutcomeOfRetailerResultAndMetadata searchRetailersV1(accountId, limit, offset, valueResourceInputOfRetailerSearchRequest)
+> EntityResourceCollectionOutcomeOfRetailerResultAndMetadata searchRetailersV1(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset)
 
 
 
@@ -2834,11 +2834,11 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String accountId = "accountId_example"; // String | The external account identifier
+        ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest = new ValueResourceInputOfRetailerSearchRequest(); // ValueResourceInputOfRetailerSearchRequest | The search request containing filtering parameters
         Integer limit = 5; // Integer | The maximum number of items to return. Must be between 1 and 10. Default is 5.
         Integer offset = 0; // Integer | The number of items to skip before starting to collect the result set. Default is 0.
-        ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest = new ValueResourceInputOfRetailerSearchRequest(); // ValueResourceInputOfRetailerSearchRequest | The search request containing filtering parameters
         try {
-            EntityResourceCollectionOutcomeOfRetailerResultAndMetadata result = apiInstance.searchRetailersV1(accountId, limit, offset, valueResourceInputOfRetailerSearchRequest);
+            EntityResourceCollectionOutcomeOfRetailerResultAndMetadata result = apiInstance.searchRetailersV1(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#searchRetailersV1");
@@ -2857,9 +2857,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The external account identifier | |
+| **valueResourceInputOfRetailerSearchRequest** | [**ValueResourceInputOfRetailerSearchRequest**](ValueResourceInputOfRetailerSearchRequest.md)| The search request containing filtering parameters | |
 | **limit** | **Integer**| The maximum number of items to return. Must be between 1 and 10. Default is 5. | [optional] [default to 5] |
 | **offset** | **Integer**| The number of items to skip before starting to collect the result set. Default is 0. | [optional] [default to 0] |
-| **valueResourceInputOfRetailerSearchRequest** | [**ValueResourceInputOfRetailerSearchRequest**](ValueResourceInputOfRetailerSearchRequest.md)| The search request containing filtering parameters | [optional] |
 
 ### Return type
 

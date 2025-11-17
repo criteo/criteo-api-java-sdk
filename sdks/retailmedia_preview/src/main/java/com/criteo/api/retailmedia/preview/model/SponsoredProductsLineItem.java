@@ -281,7 +281,13 @@ public class SponsoredProductsLineItem {
     
     PAUSED("paused"),
     
-    BUDGETHIT("budgetHit"),
+    BUDGETHITDAILY("budgetHitDaily"),
+    
+    BUDGETHITHOURLY("budgetHitHourly"),
+    
+    BUDGETHITMONTHLY("budgetHitMonthly"),
+    
+    BUDGETHITTOTAL("budgetHitTotal"),
     
     ENDED("ended"),
     
