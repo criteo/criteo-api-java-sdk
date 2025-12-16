@@ -80,6 +80,129 @@ public class CatalogApi {
     }
 
     /**
+     * Build call for getCatalogProductsBatchReport
+     * @param operationToken The token returned by the batch endpoint. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCatalogProductsBatchReportCall(String operationToken, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/catalog/products/batch/report/{operation-token}"
+            .replace("{" + "operation-token" + "}", localVarApiClient.escapeString(operationToken.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCatalogProductsBatchReportValidateBeforeCall(String operationToken, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'operationToken' is set
+        if (operationToken == null) {
+            throw new ApiException("Missing the required parameter 'operationToken' when calling getCatalogProductsBatchReport(Async)");
+        }
+
+        return getCatalogProductsBatchReportCall(operationToken, _callback);
+
+    }
+
+    /**
+     * 
+     * Get the report of an asynchronous batch operation previously requested
+     * @param operationToken The token returned by the batch endpoint. (required)
+     * @return ReportOkResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
+     </table>
+     */
+    public ReportOkResponse getCatalogProductsBatchReport(String operationToken) throws ApiException {
+        ApiResponse<ReportOkResponse> localVarResp = getCatalogProductsBatchReportWithHttpInfo(operationToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get the report of an asynchronous batch operation previously requested
+     * @param operationToken The token returned by the batch endpoint. (required)
+     * @return ApiResponse&lt;ReportOkResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ReportOkResponse> getCatalogProductsBatchReportWithHttpInfo(String operationToken) throws ApiException {
+        okhttp3.Call localVarCall = getCatalogProductsBatchReportValidateBeforeCall(operationToken, null);
+        Type localVarReturnType = new TypeToken<ReportOkResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the report of an asynchronous batch operation previously requested
+     * @param operationToken The token returned by the batch endpoint. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCatalogProductsBatchReportAsync(String operationToken, final ApiCallback<ReportOkResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCatalogProductsBatchReportValidateBeforeCall(operationToken, _callback);
+        Type localVarReturnType = new TypeToken<ReportOkResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for offerLoadV1
      * @param retailerId The retailer for which these offers will be loaded (required)
      * @param valueResourceInputLoadSkuOffersRequest  (optional)
@@ -469,7 +592,7 @@ public class CatalogApi {
         return localVarCall;
     }
     /**
-     * Build call for previewRetailMediaCatalogProductsBatchPost
+     * Build call for submitCatalogProductsBatch
      * @param productsCustomBatchRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -480,7 +603,7 @@ public class CatalogApi {
         <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaCatalogProductsBatchPostCall(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call submitCatalogProductsBatchCall(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -526,13 +649,13 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaCatalogProductsBatchPostValidateBeforeCall(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call submitCatalogProductsBatchValidateBeforeCall(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'productsCustomBatchRequest' is set
         if (productsCustomBatchRequest == null) {
-            throw new ApiException("Missing the required parameter 'productsCustomBatchRequest' when calling previewRetailMediaCatalogProductsBatchPost(Async)");
+            throw new ApiException("Missing the required parameter 'productsCustomBatchRequest' when calling submitCatalogProductsBatch(Async)");
         }
 
-        return previewRetailMediaCatalogProductsBatchPostCall(productsCustomBatchRequest, _callback);
+        return submitCatalogProductsBatchCall(productsCustomBatchRequest, _callback);
 
     }
 
@@ -548,8 +671,8 @@ public class CatalogApi {
         <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
      </table>
      */
-    public BatchAcceptedResponse previewRetailMediaCatalogProductsBatchPost(ProductsCustomBatchRequest productsCustomBatchRequest) throws ApiException {
-        ApiResponse<BatchAcceptedResponse> localVarResp = previewRetailMediaCatalogProductsBatchPostWithHttpInfo(productsCustomBatchRequest);
+    public BatchAcceptedResponse submitCatalogProductsBatch(ProductsCustomBatchRequest productsCustomBatchRequest) throws ApiException {
+        ApiResponse<BatchAcceptedResponse> localVarResp = submitCatalogProductsBatchWithHttpInfo(productsCustomBatchRequest);
         return localVarResp.getData();
     }
 
@@ -565,8 +688,8 @@ public class CatalogApi {
         <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BatchAcceptedResponse> previewRetailMediaCatalogProductsBatchPostWithHttpInfo(ProductsCustomBatchRequest productsCustomBatchRequest) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaCatalogProductsBatchPostValidateBeforeCall(productsCustomBatchRequest, null);
+    public ApiResponse<BatchAcceptedResponse> submitCatalogProductsBatchWithHttpInfo(ProductsCustomBatchRequest productsCustomBatchRequest) throws ApiException {
+        okhttp3.Call localVarCall = submitCatalogProductsBatchValidateBeforeCall(productsCustomBatchRequest, null);
         Type localVarReturnType = new TypeToken<BatchAcceptedResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -584,133 +707,10 @@ public class CatalogApi {
         <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaCatalogProductsBatchPostAsync(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback<BatchAcceptedResponse> _callback) throws ApiException {
+    public okhttp3.Call submitCatalogProductsBatchAsync(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback<BatchAcceptedResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = previewRetailMediaCatalogProductsBatchPostValidateBeforeCall(productsCustomBatchRequest, _callback);
+        okhttp3.Call localVarCall = submitCatalogProductsBatchValidateBeforeCall(productsCustomBatchRequest, _callback);
         Type localVarReturnType = new TypeToken<BatchAcceptedResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for previewRetailMediaCatalogProductsBatchReportOperationTokenGet
-     * @param operationToken The token returned by the batch endpoint. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call previewRetailMediaCatalogProductsBatchReportOperationTokenGetCall(String operationToken, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/catalog/products/batch/report/{operation-token}"
-            .replace("{" + "operation-token" + "}", localVarApiClient.escapeString(operationToken.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaCatalogProductsBatchReportOperationTokenGetValidateBeforeCall(String operationToken, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'operationToken' is set
-        if (operationToken == null) {
-            throw new ApiException("Missing the required parameter 'operationToken' when calling previewRetailMediaCatalogProductsBatchReportOperationTokenGet(Async)");
-        }
-
-        return previewRetailMediaCatalogProductsBatchReportOperationTokenGetCall(operationToken, _callback);
-
-    }
-
-    /**
-     * 
-     * Get the report of an asynchronous batch operation previously requested
-     * @param operationToken The token returned by the batch endpoint. (required)
-     * @return ReportOkResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
-     </table>
-     */
-    public ReportOkResponse previewRetailMediaCatalogProductsBatchReportOperationTokenGet(String operationToken) throws ApiException {
-        ApiResponse<ReportOkResponse> localVarResp = previewRetailMediaCatalogProductsBatchReportOperationTokenGetWithHttpInfo(operationToken);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get the report of an asynchronous batch operation previously requested
-     * @param operationToken The token returned by the batch endpoint. (required)
-     * @return ApiResponse&lt;ReportOkResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ReportOkResponse> previewRetailMediaCatalogProductsBatchReportOperationTokenGetWithHttpInfo(String operationToken) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaCatalogProductsBatchReportOperationTokenGetValidateBeforeCall(operationToken, null);
-        Type localVarReturnType = new TypeToken<ReportOkResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get the report of an asynchronous batch operation previously requested
-     * @param operationToken The token returned by the batch endpoint. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The report object </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call previewRetailMediaCatalogProductsBatchReportOperationTokenGetAsync(String operationToken, final ApiCallback<ReportOkResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = previewRetailMediaCatalogProductsBatchReportOperationTokenGetValidateBeforeCall(operationToken, _callback);
-        Type localVarReturnType = new TypeToken<ReportOkResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

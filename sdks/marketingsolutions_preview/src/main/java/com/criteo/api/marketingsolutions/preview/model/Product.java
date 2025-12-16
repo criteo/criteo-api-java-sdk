@@ -32,7 +32,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -232,6 +234,10 @@ public class Product {
   public static final String SERIALIZED_NAME_EXTERNAL_SELLER_NAME = "externalSellerName";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_SELLER_NAME)
   private String externalSellerName;
+
+  public static final String SERIALIZED_NAME_FILTERS = "filters";
+  @SerializedName(SERIALIZED_NAME_FILTERS)
+  private Map<String, List<String>> filters = null;
 
   public static final String SERIALIZED_NAME_GENDER = "gender";
   @SerializedName(SERIALIZED_NAME_GENDER)
@@ -1177,6 +1183,36 @@ public class Product {
 
   public void setExternalSellerName(String externalSellerName) {
     this.externalSellerName = externalSellerName;
+  }
+
+
+  public Product filters(Map<String, List<String>> filters) {
+    
+    this.filters = filters;
+    return this;
+  }
+
+  public Product putFiltersItem(String key, List<String> filtersItem) {
+    if (this.filters == null) {
+      this.filters = new HashMap<>();
+    }
+    this.filters.put(key, filtersItem);
+    return this;
+  }
+
+   /**
+   * Filter information of the product.
+   * @return filters
+  **/
+  @javax.annotation.Nullable
+
+  public Map<String, List<String>> getFilters() {
+    return filters;
+  }
+
+
+  public void setFilters(Map<String, List<String>> filters) {
+    this.filters = filters;
   }
 
 
@@ -2422,6 +2458,7 @@ public class Product {
         Objects.equals(this.expirationDate, product.expirationDate) &&
         Objects.equals(this.externalSellerId, product.externalSellerId) &&
         Objects.equals(this.externalSellerName, product.externalSellerName) &&
+        Objects.equals(this.filters, product.filters) &&
         Objects.equals(this.gender, product.gender) &&
         Objects.equals(this.googleProductCategory, product.googleProductCategory) &&
         Objects.equals(this.gtin, product.gtin) &&
@@ -2477,7 +2514,7 @@ public class Product {
 
   @Override
   public int hashCode() {
-    return Objects.hash(additionalImageLinks, adsGrouping, adsLabels, adsRedirect, adult, ageGroup, availability, availabilityDate, badge, brand, channel, color, condition, contentLanguage, costOfGoodsSold, customAttributes, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, displayAdsId, displayAdsLink, displayAdsSimilarIds, displayAdsTitle, displayAdsValue, energyEfficiencyClass, excludedDestinations, expirationDate, externalSellerId, externalSellerName, gender, googleProductCategory, gtin, id, identifierExists, imageLink, includedDestinations, installment, isBundle, itemGroupId, kind, link, loyaltyPoints, material, maxEnergyEfficiencyClass, maxHandlingTime, minEnergyEfficiencyClass, minHandlingTime, mobileLink, mpn, multipack, numberOfReviews, offerId, pattern, price, productRating, productTypeKeys, productTypes, promotionIds, salePrice, salePriceEffectiveDate, sellerId, sellOnGoogleQuantity, shipping, shippingHeight, shippingLabel, shippingLength, shippingWeight, shippingWidth, sizes, sizeSystem, sizeType, source, targetCountry, taxCategory, taxes, title, transitTimeLabel, unitPricingBaseMeasure, unitPricingMeasure, additionalProperties);
+    return Objects.hash(additionalImageLinks, adsGrouping, adsLabels, adsRedirect, adult, ageGroup, availability, availabilityDate, badge, brand, channel, color, condition, contentLanguage, costOfGoodsSold, customAttributes, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, displayAdsId, displayAdsLink, displayAdsSimilarIds, displayAdsTitle, displayAdsValue, energyEfficiencyClass, excludedDestinations, expirationDate, externalSellerId, externalSellerName, filters, gender, googleProductCategory, gtin, id, identifierExists, imageLink, includedDestinations, installment, isBundle, itemGroupId, kind, link, loyaltyPoints, material, maxEnergyEfficiencyClass, maxHandlingTime, minEnergyEfficiencyClass, minHandlingTime, mobileLink, mpn, multipack, numberOfReviews, offerId, pattern, price, productRating, productTypeKeys, productTypes, promotionIds, salePrice, salePriceEffectiveDate, sellerId, sellOnGoogleQuantity, shipping, shippingHeight, shippingLabel, shippingLength, shippingWeight, shippingWidth, sizes, sizeSystem, sizeType, source, targetCountry, taxCategory, taxes, title, transitTimeLabel, unitPricingBaseMeasure, unitPricingMeasure, additionalProperties);
   }
 
   @Override
@@ -2516,6 +2553,7 @@ public class Product {
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    externalSellerId: ").append(toIndentedString(externalSellerId)).append("\n");
     sb.append("    externalSellerName: ").append(toIndentedString(externalSellerName)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
     sb.append("    googleProductCategory: ").append(toIndentedString(googleProductCategory)).append("\n");
     sb.append("    gtin: ").append(toIndentedString(gtin)).append("\n");
@@ -2621,6 +2659,7 @@ public class Product {
     openapiFields.add("expirationDate");
     openapiFields.add("externalSellerId");
     openapiFields.add("externalSellerName");
+    openapiFields.add("filters");
     openapiFields.add("gender");
     openapiFields.add("googleProductCategory");
     openapiFields.add("gtin");

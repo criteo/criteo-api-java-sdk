@@ -4,13 +4,286 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**addThirdPartyAccountBrands**](ThirdPartyAccountsApi.md#addThirdPartyAccountBrands) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/add |  |
+| [**createThirdPartyBrandAccount**](ThirdPartyAccountsApi.md#createThirdPartyBrandAccount) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-brand-account |  |
+| [**createThirdPartySellerAccount**](ThirdPartyAccountsApi.md#createThirdPartySellerAccount) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-seller-account |  |
 | [**grantThirdPartyConsent**](ThirdPartyAccountsApi.md#grantThirdPartyConsent) | **POST** /preview/retail-media/accounts/{accountId}/grant-third-party-consent |  |
-| [**previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/add |  |
-| [**previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove |  |
-| [**previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-brand-account |  |
-| [**previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-seller-account |  |
-| [**previewRetailMediaThirdPartyAccountsAccountIdSellersPut**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdSellersPut) | **PUT** /preview/retail-media/third-party-accounts/{accountId}/sellers |  |
+| [**removeThirdPartyAccountBrand**](ThirdPartyAccountsApi.md#removeThirdPartyAccountBrand) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove |  |
+| [**updateThirdPartyAccountSellers**](ThirdPartyAccountsApi.md#updateThirdPartyAccountSellers) | **PUT** /preview/retail-media/third-party-accounts/{accountId}/sellers |  |
 
+
+
+## addThirdPartyAccountBrands
+
+> ValueResourceOutcomeOfRetailMediaBrands addThirdPartyAccountBrands(accountId, valueResourceInputOfRetailMediaBrands)
+
+
+
+add the provided brands to an account. This will not remove any existing brands.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.ThirdPartyAccountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        ThirdPartyAccountsApi apiInstance = new ThirdPartyAccountsApi(defaultClient);
+        String accountId = "accountId_example"; // String | account to add brands to
+        ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands = new ValueResourceInputOfRetailMediaBrands(); // ValueResourceInputOfRetailMediaBrands | list of bands to add to an account
+        try {
+            ValueResourceOutcomeOfRetailMediaBrands result = apiInstance.addThirdPartyAccountBrands(accountId, valueResourceInputOfRetailMediaBrands);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThirdPartyAccountsApi#addThirdPartyAccountBrands");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| account to add brands to | |
+| **valueResourceInputOfRetailMediaBrands** | [**ValueResourceInputOfRetailMediaBrands**](ValueResourceInputOfRetailMediaBrands.md)| list of bands to add to an account | [optional] |
+
+### Return type
+
+[**ValueResourceOutcomeOfRetailMediaBrands**](ValueResourceOutcomeOfRetailMediaBrands.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## createThirdPartyBrandAccount
+
+> EntityResourceOutcomeOfRetailMediaAccountV2 createThirdPartyBrandAccount(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2)
+
+
+
+Create a private market demand brand account under a given parent account.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.ThirdPartyAccountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        ThirdPartyAccountsApi apiInstance = new ThirdPartyAccountsApi(defaultClient);
+        String accountId = "accountId_example"; // String | parent supply account to create account under
+        ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2 = new ValueResourceInputOfRetailMediaBrandAccountCreationV2(); // ValueResourceInputOfRetailMediaBrandAccountCreationV2 | 
+        try {
+            EntityResourceOutcomeOfRetailMediaAccountV2 result = apiInstance.createThirdPartyBrandAccount(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThirdPartyAccountsApi#createThirdPartyBrandAccount");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| parent supply account to create account under | |
+| **valueResourceInputOfRetailMediaBrandAccountCreationV2** | [**ValueResourceInputOfRetailMediaBrandAccountCreationV2**](ValueResourceInputOfRetailMediaBrandAccountCreationV2.md)|  | [optional] |
+
+### Return type
+
+[**EntityResourceOutcomeOfRetailMediaAccountV2**](EntityResourceOutcomeOfRetailMediaAccountV2.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Success |  -  |
+
+
+## createThirdPartySellerAccount
+
+> EntityResourceOutcomeOfRetailMediaAccountV2 createThirdPartySellerAccount(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2)
+
+
+
+Create a private market demand seller account under a given parent account.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.ThirdPartyAccountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        ThirdPartyAccountsApi apiInstance = new ThirdPartyAccountsApi(defaultClient);
+        String accountId = "accountId_example"; // String | parent supply account to create account under
+        ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2 = new ValueResourceInputOfRetailMediaSellerAccountCreationV2(); // ValueResourceInputOfRetailMediaSellerAccountCreationV2 | 
+        try {
+            EntityResourceOutcomeOfRetailMediaAccountV2 result = apiInstance.createThirdPartySellerAccount(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThirdPartyAccountsApi#createThirdPartySellerAccount");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| parent supply account to create account under | |
+| **valueResourceInputOfRetailMediaSellerAccountCreationV2** | [**ValueResourceInputOfRetailMediaSellerAccountCreationV2**](ValueResourceInputOfRetailMediaSellerAccountCreationV2.md)|  | [optional] |
+
+### Return type
+
+[**EntityResourceOutcomeOfRetailMediaAccountV2**](EntityResourceOutcomeOfRetailMediaAccountV2.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Success |  -  |
 
 
 ## grantThirdPartyConsent
@@ -103,100 +376,9 @@ null (empty response body)
 | **204** | Success |  -  |
 
 
-## previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost
+## removeThirdPartyAccountBrand
 
-> ValueResourceOutcomeOfRetailMediaBrands previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost(accountId, valueResourceInputOfRetailMediaBrands)
-
-
-
-add the provided brands to an account. This will not remove any existing brands.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.ThirdPartyAccountsApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        ThirdPartyAccountsApi apiInstance = new ThirdPartyAccountsApi(defaultClient);
-        String accountId = "accountId_example"; // String | account to add brands to
-        ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands = new ValueResourceInputOfRetailMediaBrands(); // ValueResourceInputOfRetailMediaBrands | list of bands to add to an account
-        try {
-            ValueResourceOutcomeOfRetailMediaBrands result = apiInstance.previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost(accountId, valueResourceInputOfRetailMediaBrands);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ThirdPartyAccountsApi#previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| account to add brands to | |
-| **valueResourceInputOfRetailMediaBrands** | [**ValueResourceInputOfRetailMediaBrands**](ValueResourceInputOfRetailMediaBrands.md)| list of bands to add to an account | [optional] |
-
-### Return type
-
-[**ValueResourceOutcomeOfRetailMediaBrands**](ValueResourceOutcomeOfRetailMediaBrands.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost
-
-> ValueResourceOutcomeOfRetailMediaBrands previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost(accountId, brandId)
+> ValueResourceOutcomeOfRetailMediaBrands removeThirdPartyAccountBrand(accountId, brandId)
 
 
 
@@ -244,10 +426,10 @@ public class Example {
         String accountId = "accountId_example"; // String | account id to remove brand from
         String brandId = "brandId_example"; // String | brand to remove
         try {
-            ValueResourceOutcomeOfRetailMediaBrands result = apiInstance.previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost(accountId, brandId);
+            ValueResourceOutcomeOfRetailMediaBrands result = apiInstance.removeThirdPartyAccountBrand(accountId, brandId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ThirdPartyAccountsApi#previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost");
+            System.err.println("Exception when calling ThirdPartyAccountsApi#removeThirdPartyAccountBrand");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -285,191 +467,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost
+## updateThirdPartyAccountSellers
 
-> EntityResourceOutcomeOfRetailMediaAccountV2 previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2)
-
-
-
-Create a private market demand brand account under a given parent account.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.ThirdPartyAccountsApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        ThirdPartyAccountsApi apiInstance = new ThirdPartyAccountsApi(defaultClient);
-        String accountId = "accountId_example"; // String | parent supply account to create account under
-        ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2 = new ValueResourceInputOfRetailMediaBrandAccountCreationV2(); // ValueResourceInputOfRetailMediaBrandAccountCreationV2 | 
-        try {
-            EntityResourceOutcomeOfRetailMediaAccountV2 result = apiInstance.previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ThirdPartyAccountsApi#previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| parent supply account to create account under | |
-| **valueResourceInputOfRetailMediaBrandAccountCreationV2** | [**ValueResourceInputOfRetailMediaBrandAccountCreationV2**](ValueResourceInputOfRetailMediaBrandAccountCreationV2.md)|  | [optional] |
-
-### Return type
-
-[**EntityResourceOutcomeOfRetailMediaAccountV2**](EntityResourceOutcomeOfRetailMediaAccountV2.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Success |  -  |
-
-
-## previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost
-
-> EntityResourceOutcomeOfRetailMediaAccountV2 previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2)
-
-
-
-Create a private market demand seller account under a given parent account.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.ThirdPartyAccountsApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        ThirdPartyAccountsApi apiInstance = new ThirdPartyAccountsApi(defaultClient);
-        String accountId = "accountId_example"; // String | parent supply account to create account under
-        ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2 = new ValueResourceInputOfRetailMediaSellerAccountCreationV2(); // ValueResourceInputOfRetailMediaSellerAccountCreationV2 | 
-        try {
-            EntityResourceOutcomeOfRetailMediaAccountV2 result = apiInstance.previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ThirdPartyAccountsApi#previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| parent supply account to create account under | |
-| **valueResourceInputOfRetailMediaSellerAccountCreationV2** | [**ValueResourceInputOfRetailMediaSellerAccountCreationV2**](ValueResourceInputOfRetailMediaSellerAccountCreationV2.md)|  | [optional] |
-
-### Return type
-
-[**EntityResourceOutcomeOfRetailMediaAccountV2**](EntityResourceOutcomeOfRetailMediaAccountV2.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Success |  -  |
-
-
-## previewRetailMediaThirdPartyAccountsAccountIdSellersPut
-
-> ValueResourceCollectionOutcomeOfRetailMediaSeller previewRetailMediaThirdPartyAccountsAccountIdSellersPut(accountId, valueResourceCollectionInputOfRetailMediaSeller)
+> ValueResourceCollectionOutcomeOfRetailMediaSeller updateThirdPartyAccountSellers(accountId, valueResourceCollectionInputOfRetailMediaSeller)
 
 
 
@@ -517,10 +517,10 @@ public class Example {
         String accountId = "accountId_example"; // String | accountId to update sellers for
         ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller = new ValueResourceCollectionInputOfRetailMediaSeller(); // ValueResourceCollectionInputOfRetailMediaSeller | 
         try {
-            ValueResourceCollectionOutcomeOfRetailMediaSeller result = apiInstance.previewRetailMediaThirdPartyAccountsAccountIdSellersPut(accountId, valueResourceCollectionInputOfRetailMediaSeller);
+            ValueResourceCollectionOutcomeOfRetailMediaSeller result = apiInstance.updateThirdPartyAccountSellers(accountId, valueResourceCollectionInputOfRetailMediaSeller);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ThirdPartyAccountsApi#previewRetailMediaThirdPartyAccountsAccountIdSellersPut");
+            System.err.println("Exception when calling ThirdPartyAccountsApi#updateThirdPartyAccountSellers");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());

@@ -4,12 +4,101 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**getCatalogProductsBatchReport**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /preview/retail-media/catalog/products/batch/report/{operation-token} |  |
 | [**offerLoadV1**](CatalogApi.md#offerLoadV1) | **POST** /preview/retail-media/retailers/{retailerId}/offers/load |  |
 | [**offerSetBbwV1**](CatalogApi.md#offerSetBbwV1) | **POST** /preview/retail-media/retailers/{retailerId}/offers/set-buy-box-winners |  |
 | [**offerUpdateV1**](CatalogApi.md#offerUpdateV1) | **POST** /preview/retail-media/retailers/{retailerId}/offers/update |  |
-| [**previewRetailMediaCatalogProductsBatchPost**](CatalogApi.md#previewRetailMediaCatalogProductsBatchPost) | **POST** /preview/retail-media/catalog/products/batch |  |
-| [**previewRetailMediaCatalogProductsBatchReportOperationTokenGet**](CatalogApi.md#previewRetailMediaCatalogProductsBatchReportOperationTokenGet) | **GET** /preview/retail-media/catalog/products/batch/report/{operation-token} |  |
+| [**submitCatalogProductsBatch**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /preview/retail-media/catalog/products/batch |  |
 
+
+
+## getCatalogProductsBatchReport
+
+> ReportOkResponse getCatalogProductsBatchReport(operationToken)
+
+
+
+Get the report of an asynchronous batch operation previously requested
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CatalogApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CatalogApi apiInstance = new CatalogApi(defaultClient);
+        String operationToken = "operationToken_example"; // String | The token returned by the batch endpoint.
+        try {
+            ReportOkResponse result = apiInstance.getCatalogProductsBatchReport(operationToken);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CatalogApi#getCatalogProductsBatchReport");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **operationToken** | **String**| The token returned by the batch endpoint. | |
+
+### Return type
+
+[**ReportOkResponse**](ReportOkResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The report object |  -  |
 
 
 ## offerLoadV1
@@ -285,9 +374,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## previewRetailMediaCatalogProductsBatchPost
+## submitCatalogProductsBatch
 
-> BatchAcceptedResponse previewRetailMediaCatalogProductsBatchPost(productsCustomBatchRequest)
+> BatchAcceptedResponse submitCatalogProductsBatch(productsCustomBatchRequest)
 
 
 
@@ -334,10 +423,10 @@ public class Example {
         CatalogApi apiInstance = new CatalogApi(defaultClient);
         ProductsCustomBatchRequest productsCustomBatchRequest = new ProductsCustomBatchRequest(); // ProductsCustomBatchRequest | 
         try {
-            BatchAcceptedResponse result = apiInstance.previewRetailMediaCatalogProductsBatchPost(productsCustomBatchRequest);
+            BatchAcceptedResponse result = apiInstance.submitCatalogProductsBatch(productsCustomBatchRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CatalogApi#previewRetailMediaCatalogProductsBatchPost");
+            System.err.println("Exception when calling CatalogApi#submitCatalogProductsBatch");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -372,93 +461,4 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. |  -  |
-
-
-## previewRetailMediaCatalogProductsBatchReportOperationTokenGet
-
-> ReportOkResponse previewRetailMediaCatalogProductsBatchReportOperationTokenGet(operationToken)
-
-
-
-Get the report of an asynchronous batch operation previously requested
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.CatalogApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CatalogApi apiInstance = new CatalogApi(defaultClient);
-        String operationToken = "operationToken_example"; // String | The token returned by the batch endpoint.
-        try {
-            ReportOkResponse result = apiInstance.previewRetailMediaCatalogProductsBatchReportOperationTokenGet(operationToken);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CatalogApi#previewRetailMediaCatalogProductsBatchReportOperationTokenGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **operationToken** | **String**| The token returned by the batch endpoint. | |
-
-### Return type
-
-[**ReportOkResponse**](ReportOkResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | The report object |  -  |
 

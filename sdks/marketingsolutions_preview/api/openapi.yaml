@@ -1207,6 +1207,7 @@ paths:
         Used to publish a batch of operations to insert, update and deletes products.
          The batch is processed asynchronously.The response provides an operationToken which can be used to track
          the status of the report of the operation.
+      operationId: SubmitCatalogProductsBatch
       requestBody:
         content:
           application/json:
@@ -1232,6 +1233,7 @@ paths:
   /preview/catalog/products/batch/report/{operation-token}:
     get:
       description: Get the report of an asynchronous batch operation previously requested
+      operationId: GetCatalogProductsBatchReport
       parameters:
       - description: The token returned by the batch endpoint.
         explode: false
@@ -1257,6 +1259,7 @@ paths:
   /preview/catalog/stats/merchants/{merchant-id}:
     get:
       description: get an stats request
+      operationId: GetCatalogMerchantStats
       parameters:
       - description: the last number of hours
         explode: true
@@ -1507,15 +1510,15 @@ paths:
           application/json:
             example:
               shouldDisplayProductIds: false
-              startDate: 2025-05-31T00:00:00.0000000+00:00
-              endDate: 2025-06-03T00:00:00.0000000+00:00
+              startDate: 2025-08-11T00:00:00.0000000+00:00
+              endDate: 2025-08-14T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
           application/xml:
             example: |-
               <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2025-06-03T00:00:00+00:00</EndDate>
-                <StartDate>2025-05-31T00:00:00+00:00</StartDate>
+                <EndDate>2025-08-14T00:00:00+00:00</EndDate>
+                <StartDate>2025-08-11T00:00:00+00:00</StartDate>
                 <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
               </TransparencyQueryMessage>
             schema:
@@ -1523,8 +1526,8 @@ paths:
           text/xml:
             example: |-
               <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2025-06-03T00:00:00+00:00</EndDate>
-                <StartDate>2025-05-31T00:00:00+00:00</StartDate>
+                <EndDate>2025-08-14T00:00:00+00:00</EndDate>
+                <StartDate>2025-08-11T00:00:00+00:00</StartDate>
                 <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
               </TransparencyQueryMessage>
             schema:
@@ -1532,8 +1535,8 @@ paths:
           application/*+xml:
             example: |-
               <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2025-06-03T00:00:00+00:00</EndDate>
-                <StartDate>2025-05-31T00:00:00+00:00</StartDate>
+                <EndDate>2025-08-14T00:00:00+00:00</EndDate>
+                <StartDate>2025-08-11T00:00:00+00:00</StartDate>
                 <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
               </TransparencyQueryMessage>
             schema:
@@ -3426,8 +3429,8 @@ paths:
               currency: EUR
               format: csv
               timezone: Europe/Paris
-              startDate: 2025-05-31T00:00:00.0000000+00:00
-              endDate: 2025-06-03T00:00:00.0000000+00:00
+              startDate: 2025-08-11T00:00:00.0000000+00:00
+              endDate: 2025-08-14T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/StatisticsReportQueryMessage'
       responses:
@@ -9351,7 +9354,6 @@ components:
           type: string
         datasetId:
           description: Dataset id of this ad set
-          nullable: true
           type: string
         mediaType:
           description: Media type for the ad set
@@ -11197,7 +11199,7 @@ components:
     GenerateCategoriesReportRequestAttributesRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -11396,7 +11398,7 @@ components:
     GenerateCreativesReportRequestAttributesRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -11607,7 +11609,7 @@ components:
     GenerateRealtimeStatisticsReportRequestAttributesRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -12279,7 +12281,7 @@ components:
     GenerateTopProductsReportRequestAttributesRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -14569,8 +14571,8 @@ components:
         currency: currency
         campaignIds: campaignIds
         metrics:
-        - metrics
-        - metrics
+        - Clicks
+        - Clicks
         placement: placement
         startDate: 2000-01-23T04:56:07.000+00:00
         dimensions:
@@ -14635,6 +14637,22 @@ components:
         metrics:
           description: The list of metrics to report.
           items:
+            enum:
+            - Clicks
+            - Displays
+            - Cost
+            - SalesPc30d
+            - RevenuePc30d
+            - CosPc30d
+            - RoasPc30d
+            - CpoPc30d
+            - CvrPc30d
+            - SalesPv1d
+            - RevenuePv1d
+            - CosPv1d
+            - RoasPv1d
+            - CpoPv1d
+            - CvrPv1d
             type: string
           type: array
         placement:
@@ -14677,8 +14695,8 @@ components:
             currency: currency
             campaignIds: campaignIds
             metrics:
-            - metrics
-            - metrics
+            - Clicks
+            - Clicks
             placement: placement
             startDate: 2000-01-23T04:56:07.000+00:00
             dimensions:
@@ -14696,8 +14714,8 @@ components:
             currency: currency
             campaignIds: campaignIds
             metrics:
-            - metrics
-            - metrics
+            - Clicks
+            - Clicks
             placement: placement
             startDate: 2000-01-23T04:56:07.000+00:00
             dimensions:
@@ -14726,8 +14744,8 @@ components:
           currency: currency
           campaignIds: campaignIds
           metrics:
-          - metrics
-          - metrics
+          - Clicks
+          - Clicks
           placement: placement
           startDate: 2000-01-23T04:56:07.000+00:00
           dimensions:
@@ -14946,6 +14964,10 @@ components:
         promotionIds:
         - promotionIds
         - promotionIds
+        filters:
+          key:
+          - filters
+          - filters
         material: material
         displayAdsTitle: displayAdsTitle
         unitPricingMeasure:
@@ -15071,6 +15093,13 @@ components:
           description: The external name of the seller (case sensitive and 50 UTF8
             characters max). This information is required by the Criteo Offsite Ads.
           type: string
+        filters:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          description: Filter information of the product.
+          type: object
         gender:
           description: Target gender of the item.
           type: string
@@ -15522,6 +15551,10 @@ components:
             promotionIds:
             - promotionIds
             - promotionIds
+            filters:
+              key:
+              - filters
+              - filters
             material: material
             displayAdsTitle: displayAdsTitle
             unitPricingMeasure:
@@ -15688,6 +15721,10 @@ components:
             promotionIds:
             - promotionIds
             - promotionIds
+            filters:
+              key:
+              - filters
+              - filters
             material: material
             displayAdsTitle: displayAdsTitle
             unitPricingMeasure:
@@ -15866,6 +15903,10 @@ components:
           promotionIds:
           - promotionIds
           - promotionIds
+          filters:
+            key:
+            - filters
+            - filters
           material: material
           displayAdsTitle: displayAdsTitle
           unitPricingMeasure:
@@ -15915,6 +15956,7 @@ components:
       example:
         minimumNumberOfProducts: 0
         clientType: Unknown
+        isFallbackAllowed: true
         name: name
         datasetId: datasetId
         keepVariantProducts: true
@@ -15953,6 +15995,8 @@ components:
         id:
           nullable: true
           type: string
+        isFallbackAllowed:
+          type: boolean
         keepVariantProducts:
           type: boolean
         minimumNumberOfProducts:
@@ -15964,7 +16008,7 @@ components:
           description: The name of the product set
           type: string
         numberOfProducts:
-          description: "The number of product matching the product set.\r\nCan be\
+          description: "The number of products matching the product set.\r\nCan be\
             \ null for newly created product set."
           format: int32
           nullable: true
@@ -17441,6 +17485,7 @@ components:
         - attributes:
             minimumNumberOfProducts: 0
             clientType: Unknown
+            isFallbackAllowed: true
             name: name
             datasetId: datasetId
             keepVariantProducts: true
@@ -17464,6 +17509,7 @@ components:
         - attributes:
             minimumNumberOfProducts: 0
             clientType: Unknown
+            isFallbackAllowed: true
             name: name
             datasetId: datasetId
             keepVariantProducts: true
@@ -18126,6 +18172,7 @@ components:
         attributes:
           minimumNumberOfProducts: 0
           clientType: Unknown
+          isFallbackAllowed: true
           name: name
           datasetId: datasetId
           keepVariantProducts: true
@@ -18569,6 +18616,7 @@ components:
           attributes:
             minimumNumberOfProducts: 0
             clientType: Unknown
+            isFallbackAllowed: true
             name: name
             datasetId: datasetId
             keepVariantProducts: true
@@ -19708,8 +19756,6 @@ components:
             - SalesAllPc30dPv24h
             - SalesPc7dPv24
             - SalesAllPc7dPv24
-            - SalesPc7dPv24h
-            - SalesAllPc7dPv24h
             - SalesLc
             - SalesAllLc
             - SalesPc7d
@@ -19736,8 +19782,6 @@ components:
             - RevenueGeneratedAllPc30Pv24
             - RevenueGeneratedPc30dPv24h
             - RevenueGeneratedAllPc30dPv24h
-            - RevenueGeneratedPc7dPv24h
-            - RevenueGeneratedAllPc7dPv24h
             - RevenueGeneratedPc7dPv24
             - RevenueGeneratedAllPc7dPv24
             - RevenueGeneratedLc
@@ -19764,8 +19808,6 @@ components:
             - ConversionRateAllPc30dPv24h
             - ConversionRatePc7dPv24
             - ConversionRateAllPc7dPv24
-            - ConversionRatePc7dPv24h
-            - ConversionRateAllPc7dPv24h
             - ConversionRatePc7d
             - ConversionRateAllPc7d
             - ConversionRatePc1d
@@ -19784,8 +19826,6 @@ components:
             - ECosAllPc30Pv24
             - ECosPc30dPv24h
             - ECosAllPc30dPv24h
-            - ECosPc7dPv24h
-            - ECosAllPc7dPv24h
             - ECosPc7dPv24
             - ECosAllPc7dPv24
             - ECosPc7d
@@ -19804,8 +19844,6 @@ components:
             - CostPerOrderAllPc30Pv24
             - CostPerOrderPc30dPv24h
             - CostPerOrderAllPc30dPv24h
-            - CostPerOrderPc7dPv24h
-            - CostPerOrderAllPc7dPv24h
             - CostPerOrderPc7dPv24
             - CostPerOrderAllPc7dPv24
             - CostPerOrderPc7d
@@ -19831,8 +19869,6 @@ components:
             - AverageCartAllPc30Pv24
             - AverageCartPc30dPv24h
             - AverageCartAllPc30dPv24h
-            - AverageCartPc7dPv24h
-            - AverageCartAllPc7dPv24h
             - AverageCartPc7dPv24
             - AverageCartAllPc7dPv24
             - ClickThroughRate
@@ -19893,13 +19929,22 @@ components:
             - RoasAllPc30dPv24h
             - RoasPc7dPv24
             - RoasAllPc7dPv24
-            - RoasPc7dPv24h
-            - RoasAllPc7dPv24h
             - CostOfSalePi
             - CostPerOrderPi
             - PostInstallCostOfSale
             - PostInstallCostPerOrder
             - ReturnOnAdvertiserSpendingPi
+            - CacClientAttribution
+            - CacPc30d
+            - CacPc7d
+            - CacPc1d
+            - CacPv24h
+            - CacPv7d
+            - CacPv14d
+            - CacPv30d
+            - CacPc30Pv24h
+            - CacPc7dPv24h
+            - CacLc30d
             - PostInstallRoas
             - ReturnOnAdvertiserSpendingOfflinePc
             - ReturnOnAdvertiserSpendingOfflinePv

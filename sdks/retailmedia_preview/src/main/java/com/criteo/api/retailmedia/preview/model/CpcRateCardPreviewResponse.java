@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.ProblemDetails;
+import com.criteo.api.retailmedia.preview.model.CommonProblem;
 import com.criteo.api.retailmedia.preview.model.ResourceOfCpcRateCardPreview;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -25,6 +25,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,7 +49,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Data model for response resource
+ * A top-level object that encapsulates a Criteo API response for a single entity.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CpcRateCardPreviewResponse {
@@ -58,19 +59,19 @@ public class CpcRateCardPreviewResponse {
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<ProblemDetails> errors = null;
+  private List<CommonProblem> errors = null;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<ProblemDetails> warnings = null;
+  private List<CommonProblem> warnings = null;
 
   public CpcRateCardPreviewResponse() {
   }
 
   
   public CpcRateCardPreviewResponse(
-     List<ProblemDetails> errors, 
-     List<ProblemDetails> warnings
+     List<CommonProblem> errors, 
+     List<CommonProblem> warnings
   ) {
     this();
     this.errors = errors;
@@ -105,7 +106,7 @@ public class CpcRateCardPreviewResponse {
   **/
   @javax.annotation.Nullable
 
-  public List<ProblemDetails> getErrors() {
+  public List<CommonProblem> getErrors() {
     return errors;
   }
 
@@ -118,56 +119,12 @@ public class CpcRateCardPreviewResponse {
   **/
   @javax.annotation.Nullable
 
-  public List<ProblemDetails> getWarnings() {
+  public List<CommonProblem> getWarnings() {
     return warnings;
   }
 
 
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the CpcRateCardPreviewResponse instance itself
-   */
-  public CpcRateCardPreviewResponse putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -181,13 +138,23 @@ public class CpcRateCardPreviewResponse {
     CpcRateCardPreviewResponse cpcRateCardPreviewResponse = (CpcRateCardPreviewResponse) o;
     return Objects.equals(this.data, cpcRateCardPreviewResponse.data) &&
         Objects.equals(this.errors, cpcRateCardPreviewResponse.errors) &&
-        Objects.equals(this.warnings, cpcRateCardPreviewResponse.warnings)&&
-        Objects.equals(this.additionalProperties, cpcRateCardPreviewResponse.additionalProperties);
+        Objects.equals(this.warnings, cpcRateCardPreviewResponse.warnings);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, errors, warnings, additionalProperties);
+    return Objects.hash(data, errors, warnings);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -197,7 +164,6 @@ public class CpcRateCardPreviewResponse {
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -240,6 +206,14 @@ public class CpcRateCardPreviewResponse {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CpcRateCardPreviewResponse is not found in the empty JSON string", CpcRateCardPreviewResponse.openapiRequiredFields.toString()));
         }
       }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CpcRateCardPreviewResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CpcRateCardPreviewResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         ResourceOfCpcRateCardPreview.validateJsonObject(jsonObj.getAsJsonObject("data"));
@@ -254,7 +228,7 @@ public class CpcRateCardPreviewResponse {
 
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+            CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
           };
         }
       }
@@ -268,7 +242,7 @@ public class CpcRateCardPreviewResponse {
 
           // validate the optional field `warnings` (array)
           for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }
@@ -289,23 +263,6 @@ public class CpcRateCardPreviewResponse {
            @Override
            public void write(JsonWriter out, CpcRateCardPreviewResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
@@ -313,27 +270,7 @@ public class CpcRateCardPreviewResponse {
            public CpcRateCardPreviewResponse read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             CpcRateCardPreviewResponse instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             return thisAdapter.fromJsonTree(jsonObj);
            }
 
        }.nullSafe();

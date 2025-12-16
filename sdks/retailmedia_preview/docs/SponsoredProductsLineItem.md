@@ -72,10 +72,7 @@ Model of a retail media auction line item.
 | SCHEDULED | &quot;scheduled&quot; |
 | DRAFT | &quot;draft&quot; |
 | PAUSED | &quot;paused&quot; |
-| BUDGETHITDAILY | &quot;budgetHitDaily&quot; |
-| BUDGETHITHOURLY | &quot;budgetHitHourly&quot; |
-| BUDGETHITMONTHLY | &quot;budgetHitMonthly&quot; |
-| BUDGETHITTOTAL | &quot;budgetHitTotal&quot; |
+| BUDGETHIT | &quot;budgetHit&quot; |
 | ENDED | &quot;ended&quot; |
 | ARCHIVED | &quot;archived&quot; |
 | NOFUNDS | &quot;noFunds&quot; |

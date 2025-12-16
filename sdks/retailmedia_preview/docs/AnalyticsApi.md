@@ -24,7 +24,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 
 
-Returns an asynchronous Accounts Report This endpoint is subject to specific rate limits.
+Returns an asynchronous Accounts Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -113,7 +113,7 @@ public class Example {
 
 
 
-Return an asynchronous Campaigns Report This endpoint is subject to specific rate limits.
+Return an asynchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -202,7 +202,7 @@ public class Example {
 
 
 
-Returns an asynchronous Fill Rate Report This endpoint is subject to specific rate limits.
+Returns an asynchronous Fill Rate Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -291,7 +291,7 @@ public class Example {
 
 
 
-Returns an asynchronous Line Items Report This endpoint is subject to specific rate limits.
+Returns an asynchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -380,7 +380,7 @@ public class Example {
 
 
 
-Returns an asynchronous Offsite Report This endpoint is subject to specific rate limits.
+Returns an asynchronous Offsite Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -469,7 +469,7 @@ public class Example {
 
 
 
-Returns an asynchronous Unfilled Placements Report This endpoint is subject to specific rate limits.
+Returns an asynchronous Unfilled Placements Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 

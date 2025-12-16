@@ -94,7 +94,7 @@ public class ResourceOfCreative2 {
   }
 
    /**
-   * Id of the entity
+   * Unique identifier of this resource.
    * @return id
   **/
   @javax.annotation.Nullable
@@ -116,7 +116,7 @@ public class ResourceOfCreative2 {
   }
 
    /**
-   * Canonical type name of the entity
+   * Get type
    * @return type
   **/
   @javax.annotation.Nullable

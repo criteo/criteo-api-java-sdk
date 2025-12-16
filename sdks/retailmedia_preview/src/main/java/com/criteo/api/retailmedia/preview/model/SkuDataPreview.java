@@ -74,6 +74,10 @@ public class SkuDataPreview {
   @SerializedName(SERIALIZED_NAME_GTIN)
   private String gtin;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   private String imageUrl;
@@ -114,6 +118,14 @@ public class SkuDataPreview {
   @SerializedName(SERIALIZED_NAME_PRODUCT_PAGE)
   private String productPage;
 
+  public static final String SERIALIZED_NAME_RETAILER_BRAND_ID = "retailerBrandId";
+  @SerializedName(SERIALIZED_NAME_RETAILER_BRAND_ID)
+  private String retailerBrandId;
+
+  public static final String SERIALIZED_NAME_RETAILER_BRAND_NAME = "retailerBrandName";
+  @SerializedName(SERIALIZED_NAME_RETAILER_BRAND_NAME)
+  private String retailerBrandName;
+
   public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
   @SerializedName(SERIALIZED_NAME_RETAILER_ID)
   private String retailerId;
@@ -133,6 +145,10 @@ public class SkuDataPreview {
   public static final String SERIALIZED_NAME_SKU_KEY = "skuKey";
   @SerializedName(SERIALIZED_NAME_SKU_KEY)
   private String skuKey;
+
+  public static final String SERIALIZED_NAME_UC_GOLBAL_CATEGORY_ID = "ucGolbalCategoryId";
+  @SerializedName(SERIALIZED_NAME_UC_GOLBAL_CATEGORY_ID)
+  private String ucGolbalCategoryId;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -217,7 +233,7 @@ public class SkuDataPreview {
    * The category Id.
    * @return categoryId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getCategoryId() {
     return categoryId;
@@ -273,6 +289,28 @@ public class SkuDataPreview {
   }
 
 
+  public SkuDataPreview id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * The product identifier.
+   * @return id
+  **/
+  @javax.annotation.Nonnull
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
   public SkuDataPreview imageUrl(String imageUrl) {
     
     this.imageUrl = imageUrl;
@@ -302,7 +340,7 @@ public class SkuDataPreview {
   }
 
    /**
-   * Whether the Sku is a Buybox Winner.
+   * whether the Sku is a Buybox Winner
    * @return isBuybox
   **/
   @javax.annotation.Nullable
@@ -493,6 +531,50 @@ public class SkuDataPreview {
   }
 
 
+  public SkuDataPreview retailerBrandId(String retailerBrandId) {
+    
+    this.retailerBrandId = retailerBrandId;
+    return this;
+  }
+
+   /**
+   * The retailer brand id associated to the product.
+   * @return retailerBrandId
+  **/
+  @javax.annotation.Nullable
+
+  public String getRetailerBrandId() {
+    return retailerBrandId;
+  }
+
+
+  public void setRetailerBrandId(String retailerBrandId) {
+    this.retailerBrandId = retailerBrandId;
+  }
+
+
+  public SkuDataPreview retailerBrandName(String retailerBrandName) {
+    
+    this.retailerBrandName = retailerBrandName;
+    return this;
+  }
+
+   /**
+   * The name of the retailer brand.
+   * @return retailerBrandName
+  **/
+  @javax.annotation.Nullable
+
+  public String getRetailerBrandName() {
+    return retailerBrandName;
+  }
+
+
+  public void setRetailerBrandName(String retailerBrandName) {
+    this.retailerBrandName = retailerBrandName;
+  }
+
+
   public SkuDataPreview retailerId(String retailerId) {
     
     this.retailerId = retailerId;
@@ -603,6 +685,28 @@ public class SkuDataPreview {
   }
 
 
+  public SkuDataPreview ucGolbalCategoryId(String ucGolbalCategoryId) {
+    
+    this.ucGolbalCategoryId = ucGolbalCategoryId;
+    return this;
+  }
+
+   /**
+   * The global category Id.
+   * @return ucGolbalCategoryId
+  **/
+  @javax.annotation.Nullable
+
+  public String getUcGolbalCategoryId() {
+    return ucGolbalCategoryId;
+  }
+
+
+  public void setUcGolbalCategoryId(String ucGolbalCategoryId) {
+    this.ucGolbalCategoryId = ucGolbalCategoryId;
+  }
+
+
   public SkuDataPreview updatedAt(OffsetDateTime updatedAt) {
     
     this.updatedAt = updatedAt;
@@ -624,50 +728,6 @@ public class SkuDataPreview {
     this.updatedAt = updatedAt;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the SkuDataPreview instance itself
-   */
-  public SkuDataPreview putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -685,6 +745,7 @@ public class SkuDataPreview {
         Objects.equals(this.categoryId, skuDataPreview.categoryId) &&
         Objects.equals(this.description, skuDataPreview.description) &&
         Objects.equals(this.gtin, skuDataPreview.gtin) &&
+        Objects.equals(this.id, skuDataPreview.id) &&
         Objects.equals(this.imageUrl, skuDataPreview.imageUrl) &&
         Objects.equals(this.isBuybox, skuDataPreview.isBuybox) &&
         Objects.equals(this.isInStock, skuDataPreview.isInStock) &&
@@ -695,13 +756,15 @@ public class SkuDataPreview {
         Objects.equals(this.parentId, skuDataPreview.parentId) &&
         Objects.equals(this.price, skuDataPreview.price) &&
         Objects.equals(this.productPage, skuDataPreview.productPage) &&
+        Objects.equals(this.retailerBrandId, skuDataPreview.retailerBrandId) &&
+        Objects.equals(this.retailerBrandName, skuDataPreview.retailerBrandName) &&
         Objects.equals(this.retailerId, skuDataPreview.retailerId) &&
         Objects.equals(this.retailerName, skuDataPreview.retailerName) &&
         Objects.equals(this.sellerId, skuDataPreview.sellerId) &&
         Objects.equals(this.sellerName, skuDataPreview.sellerName) &&
         Objects.equals(this.skuKey, skuDataPreview.skuKey) &&
-        Objects.equals(this.updatedAt, skuDataPreview.updatedAt)&&
-        Objects.equals(this.additionalProperties, skuDataPreview.additionalProperties);
+        Objects.equals(this.ucGolbalCategoryId, skuDataPreview.ucGolbalCategoryId) &&
+        Objects.equals(this.updatedAt, skuDataPreview.updatedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -710,7 +773,7 @@ public class SkuDataPreview {
 
   @Override
   public int hashCode() {
-    return Objects.hash(brandId, brandName, category, categoryId, description, gtin, imageUrl, isBuybox, isInStock, isSellerSku, modelNumber, mpn, name, parentId, price, productPage, retailerId, retailerName, sellerId, sellerName, skuKey, updatedAt, additionalProperties);
+    return Objects.hash(brandId, brandName, category, categoryId, description, gtin, id, imageUrl, isBuybox, isInStock, isSellerSku, modelNumber, mpn, name, parentId, price, productPage, retailerBrandId, retailerBrandName, retailerId, retailerName, sellerId, sellerName, skuKey, ucGolbalCategoryId, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -730,6 +793,7 @@ public class SkuDataPreview {
     sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    gtin: ").append(toIndentedString(gtin)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    isBuybox: ").append(toIndentedString(isBuybox)).append("\n");
     sb.append("    isInStock: ").append(toIndentedString(isInStock)).append("\n");
@@ -740,13 +804,15 @@ public class SkuDataPreview {
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    productPage: ").append(toIndentedString(productPage)).append("\n");
+    sb.append("    retailerBrandId: ").append(toIndentedString(retailerBrandId)).append("\n");
+    sb.append("    retailerBrandName: ").append(toIndentedString(retailerBrandName)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    retailerName: ").append(toIndentedString(retailerName)).append("\n");
     sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("    sellerName: ").append(toIndentedString(sellerName)).append("\n");
     sb.append("    skuKey: ").append(toIndentedString(skuKey)).append("\n");
+    sb.append("    ucGolbalCategoryId: ").append(toIndentedString(ucGolbalCategoryId)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -775,6 +841,7 @@ public class SkuDataPreview {
     openapiFields.add("categoryId");
     openapiFields.add("description");
     openapiFields.add("gtin");
+    openapiFields.add("id");
     openapiFields.add("imageUrl");
     openapiFields.add("isBuybox");
     openapiFields.add("isInStock");
@@ -785,18 +852,21 @@ public class SkuDataPreview {
     openapiFields.add("parentId");
     openapiFields.add("price");
     openapiFields.add("productPage");
+    openapiFields.add("retailerBrandId");
+    openapiFields.add("retailerBrandName");
     openapiFields.add("retailerId");
     openapiFields.add("retailerName");
     openapiFields.add("sellerId");
     openapiFields.add("sellerName");
     openapiFields.add("skuKey");
+    openapiFields.add("ucGolbalCategoryId");
     openapiFields.add("updatedAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("brandId");
     openapiRequiredFields.add("brandName");
-    openapiRequiredFields.add("categoryId");
+    openapiRequiredFields.add("id");
     openapiRequiredFields.add("isInStock");
     openapiRequiredFields.add("price");
     openapiRequiredFields.add("retailerId");
@@ -818,6 +888,14 @@ public class SkuDataPreview {
         }
       }
 
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!SkuDataPreview.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SkuDataPreview` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : SkuDataPreview.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
@@ -833,7 +911,7 @@ public class SkuDataPreview {
       if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
       }
-      if (!jsonObj.get("categoryId").isJsonPrimitive()) {
+      if ((jsonObj.get("categoryId") != null && !jsonObj.get("categoryId").isJsonNull()) && !jsonObj.get("categoryId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `categoryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("categoryId").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
@@ -841,6 +919,9 @@ public class SkuDataPreview {
       }
       if ((jsonObj.get("gtin") != null && !jsonObj.get("gtin").isJsonNull()) && !jsonObj.get("gtin").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `gtin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gtin").toString()));
+      }
+      if (!jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("imageUrl") != null && !jsonObj.get("imageUrl").isJsonNull()) && !jsonObj.get("imageUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageUrl").toString()));
@@ -860,6 +941,12 @@ public class SkuDataPreview {
       if ((jsonObj.get("productPage") != null && !jsonObj.get("productPage").isJsonNull()) && !jsonObj.get("productPage").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `productPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productPage").toString()));
       }
+      if ((jsonObj.get("retailerBrandId") != null && !jsonObj.get("retailerBrandId").isJsonNull()) && !jsonObj.get("retailerBrandId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerBrandId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerBrandId").toString()));
+      }
+      if ((jsonObj.get("retailerBrandName") != null && !jsonObj.get("retailerBrandName").isJsonNull()) && !jsonObj.get("retailerBrandName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerBrandName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerBrandName").toString()));
+      }
       if (!jsonObj.get("retailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
       }
@@ -874,6 +961,9 @@ public class SkuDataPreview {
       }
       if (!jsonObj.get("skuKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `skuKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("skuKey").toString()));
+      }
+      if ((jsonObj.get("ucGolbalCategoryId") != null && !jsonObj.get("ucGolbalCategoryId").isJsonNull()) && !jsonObj.get("ucGolbalCategoryId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ucGolbalCategoryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ucGolbalCategoryId").toString()));
       }
   }
 
@@ -892,23 +982,6 @@ public class SkuDataPreview {
            @Override
            public void write(JsonWriter out, SkuDataPreview value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
@@ -916,27 +989,7 @@ public class SkuDataPreview {
            public SkuDataPreview read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             SkuDataPreview instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             return thisAdapter.fromJsonTree(jsonObj);
            }
 
        }.nullSafe();

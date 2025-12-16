@@ -17,7 +17,7 @@ This is the message defining the query for Placements report
 |**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
 |**environment** | **String** | Type of environment: Web, Android or iOS. |  [optional] |
 |**format** | [**FormatEnum**](#FormatEnum) | The file format of the generated report |  [optional] |
-|**metrics** | **List&lt;String&gt;** | The list of metrics to report. |  |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | The list of metrics to report. |  |
 |**placement** | **String** | Filter the value of the placement |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
 |**timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional] |
@@ -51,6 +51,28 @@ This is the message defining the query for Placements report
 | EXCEL | &quot;excel&quot; |
 | XML | &quot;xml&quot; |
 | JSON | &quot;json&quot; |
+
+
+
+## Enum: List&lt;MetricsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| CLICKS | &quot;Clicks&quot; |
+| DISPLAYS | &quot;Displays&quot; |
+| COST | &quot;Cost&quot; |
+| SALESPC30D | &quot;SalesPc30d&quot; |
+| REVENUEPC30D | &quot;RevenuePc30d&quot; |
+| COSPC30D | &quot;CosPc30d&quot; |
+| ROASPC30D | &quot;RoasPc30d&quot; |
+| CPOPC30D | &quot;CpoPc30d&quot; |
+| CVRPC30D | &quot;CvrPc30d&quot; |
+| SALESPV1D | &quot;SalesPv1d&quot; |
+| REVENUEPV1D | &quot;RevenuePv1d&quot; |
+| COSPV1D | &quot;CosPv1d&quot; |
+| ROASPV1D | &quot;RoasPv1d&quot; |
+| CPOPV1D | &quot;CpoPv1d&quot; |
+| CVRPV1D | &quot;CvrPv1d&quot; |
 
 
 

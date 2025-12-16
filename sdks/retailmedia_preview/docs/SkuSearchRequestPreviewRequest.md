@@ -2,7 +2,7 @@
 
 # SkuSearchRequestPreviewRequest
 
-Data model for an input resource
+A top-level object that encapsulates a Criteo API request for a single entity.
 
 ## Properties
 

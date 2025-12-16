@@ -10,7 +10,7 @@ A domain entity exposed by the API, identified by a unique id.
 |------------ | ------------- | ------------- | -------------|
 |**attributes** | [**CatalogStatusV2**](CatalogStatusV2.md) |  |  [optional] |
 |**id** | **String** | Unique id of the entity. |  [optional] |
-|**type** | **String** | The Type of the resource. |  [optional] |
+|**type** | **String** | Type of the resource. |  [optional] |
 
 
 

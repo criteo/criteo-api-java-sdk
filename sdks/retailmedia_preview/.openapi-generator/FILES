@@ -65,9 +65,10 @@ docs/CpcRateCardPreviewResponse.md
 docs/CreateBalanceV2.md
 docs/CreateBalanceV2Request.md
 docs/Creative2.md
-docs/Creative2ListResponse.md
 docs/Creative2Response.md
 docs/CreativeCreateModel2.md
+docs/CreativeSearchRequest.md
+docs/CreativeSearchResponse.md
 docs/CreativeUpdateModel2.md
 docs/CustomAttribute.md
 docs/DemandManagedFee.md
@@ -78,9 +79,13 @@ docs/EntityResourceCategory202204.md
 docs/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md
 docs/EntityResourceCollectionOutcomeCategory202204.md
 docs/EntityResourceCollectionOutcomeCategory202204Metadata.md
+docs/EntityResourceCollectionOutcomeCreativeSearchResponse.md
 docs/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md
 docs/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.md
 docs/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.md
+docs/EntityResourceCreativeSearchRequest.md
+docs/EntityResourceCreativeSearchResponse.md
+docs/EntityResourceInputCreativeSearchRequest.md
 docs/EntityResourceOfCatalogStatusV2.md
 docs/EntityResourceOfRetailMediaAccountV2.md
 docs/EntityResourceOfRetailMediaChildAccount.md
@@ -152,7 +157,6 @@ docs/PreferredLineItemV2Response.md
 docs/Price.md
 docs/PrivateMarketAccountFees.md
 docs/PrivateMarketFees.md
-docs/ProblemDetails.md
 docs/Product.md
 docs/ProductButtonRequest.md
 docs/ProductButtonRequestListRequest.md
@@ -450,9 +454,10 @@ src/main/java/com/criteo/api/retailmedia/preview/model/CpcRateCardPreviewRespons
 src/main/java/com/criteo/api/retailmedia/preview/model/CreateBalanceV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CreateBalanceV2Request.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Creative2.java
-src/main/java/com/criteo/api/retailmedia/preview/model/Creative2ListResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Creative2Response.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CreativeCreateModel2.java
+src/main/java/com/criteo/api/retailmedia/preview/model/CreativeSearchRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/CreativeSearchResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CreativeUpdateModel2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CustomAttribute.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DemandManagedFee.java
@@ -463,9 +468,13 @@ src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCategory202
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeCategory202204.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeCategory202204Metadata.java
+src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeCreativeSearchResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.java
+src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCreativeSearchRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCreativeSearchResponse.java
+src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceInputCreativeSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOfCatalogStatusV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOfRetailMediaAccountV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOfRetailMediaChildAccount.java
@@ -535,7 +544,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/PreferredLineItemV2Respon
 src/main/java/com/criteo/api/retailmedia/preview/model/Price.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PrivateMarketAccountFees.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PrivateMarketFees.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ProblemDetails.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Product.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ProductButtonRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ProductButtonRequestListRequest.java

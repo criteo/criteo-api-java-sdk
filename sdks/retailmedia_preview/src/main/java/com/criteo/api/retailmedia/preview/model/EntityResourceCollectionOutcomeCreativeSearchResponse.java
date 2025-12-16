@@ -15,8 +15,8 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.CommonProblem;
-import com.criteo.api.retailmedia.preview.model.ResourceOfCreative2;
+import com.criteo.api.retailmedia.preview.model.EntityResourceCreativeSearchResponse;
+import com.criteo.api.retailmedia.preview.model.SdkApiRestCommonProblem;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,39 +52,39 @@ import com.criteo.api.retailmedia.preview.JSON;
  * A top-level object that encapsulates a Criteo API response for several entities.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class Creative2ListResponse {
+public class EntityResourceCollectionOutcomeCreativeSearchResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ResourceOfCreative2> data = null;
+  private List<EntityResourceCreativeSearchResponse> data = null;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<CommonProblem> errors = null;
+  private List<SdkApiRestCommonProblem> errors = null;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
+  private List<SdkApiRestCommonProblem> warnings = null;
 
-  public Creative2ListResponse() {
+  public EntityResourceCollectionOutcomeCreativeSearchResponse() {
   }
 
   
-  public Creative2ListResponse(
-     List<CommonProblem> errors, 
-     List<CommonProblem> warnings
+  public EntityResourceCollectionOutcomeCreativeSearchResponse(
+     List<SdkApiRestCommonProblem> errors, 
+     List<SdkApiRestCommonProblem> warnings
   ) {
     this();
     this.errors = errors;
     this.warnings = warnings;
   }
 
-  public Creative2ListResponse data(List<ResourceOfCreative2> data) {
+  public EntityResourceCollectionOutcomeCreativeSearchResponse data(List<EntityResourceCreativeSearchResponse> data) {
     
     this.data = data;
     return this;
   }
 
-  public Creative2ListResponse addDataItem(ResourceOfCreative2 dataItem) {
+  public EntityResourceCollectionOutcomeCreativeSearchResponse addDataItem(EntityResourceCreativeSearchResponse dataItem) {
     if (this.data == null) {
       this.data = null;
     }
@@ -98,23 +98,23 @@ public class Creative2ListResponse {
   **/
   @javax.annotation.Nullable
 
-  public List<ResourceOfCreative2> getData() {
+  public List<EntityResourceCreativeSearchResponse> getData() {
     return data;
   }
 
 
-  public void setData(List<ResourceOfCreative2> data) {
+  public void setData(List<EntityResourceCreativeSearchResponse> data) {
     this.data = data;
   }
 
 
    /**
-   * Get errors
+   * Errors that occured during this call.
    * @return errors
   **/
   @javax.annotation.Nullable
 
-  public List<CommonProblem> getErrors() {
+  public List<SdkApiRestCommonProblem> getErrors() {
     return errors;
   }
 
@@ -122,12 +122,12 @@ public class Creative2ListResponse {
 
 
    /**
-   * Get warnings
+   * Warnings that occured during this call.
    * @return warnings
   **/
   @javax.annotation.Nullable
 
-  public List<CommonProblem> getWarnings() {
+  public List<SdkApiRestCommonProblem> getWarnings() {
     return warnings;
   }
 
@@ -143,10 +143,10 @@ public class Creative2ListResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Creative2ListResponse creative2ListResponse = (Creative2ListResponse) o;
-    return Objects.equals(this.data, creative2ListResponse.data) &&
-        Objects.equals(this.errors, creative2ListResponse.errors) &&
-        Objects.equals(this.warnings, creative2ListResponse.warnings);
+    EntityResourceCollectionOutcomeCreativeSearchResponse entityResourceCollectionOutcomeCreativeSearchResponse = (EntityResourceCollectionOutcomeCreativeSearchResponse) o;
+    return Objects.equals(this.data, entityResourceCollectionOutcomeCreativeSearchResponse.data) &&
+        Objects.equals(this.errors, entityResourceCollectionOutcomeCreativeSearchResponse.errors) &&
+        Objects.equals(this.warnings, entityResourceCollectionOutcomeCreativeSearchResponse.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -168,7 +168,7 @@ public class Creative2ListResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Creative2ListResponse {\n");
+    sb.append("class EntityResourceCollectionOutcomeCreativeSearchResponse {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
@@ -206,20 +206,20 @@ public class Creative2ListResponse {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Creative2ListResponse
+  * @throws IOException if the JSON Object is invalid with respect to EntityResourceCollectionOutcomeCreativeSearchResponse
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!Creative2ListResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Creative2ListResponse is not found in the empty JSON string", Creative2ListResponse.openapiRequiredFields.toString()));
+        if (!EntityResourceCollectionOutcomeCreativeSearchResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in EntityResourceCollectionOutcomeCreativeSearchResponse is not found in the empty JSON string", EntityResourceCollectionOutcomeCreativeSearchResponse.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!Creative2ListResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Creative2ListResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!EntityResourceCollectionOutcomeCreativeSearchResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EntityResourceCollectionOutcomeCreativeSearchResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
@@ -232,7 +232,7 @@ public class Creative2ListResponse {
 
           // validate the optional field `data` (array)
           for (int i = 0; i < jsonArraydata.size(); i++) {
-            ResourceOfCreative2.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+            EntityResourceCreativeSearchResponse.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
           };
         }
       }
@@ -246,7 +246,7 @@ public class Creative2ListResponse {
 
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+            SdkApiRestCommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
           };
         }
       }
@@ -260,7 +260,7 @@ public class Creative2ListResponse {
 
           // validate the optional field `warnings` (array)
           for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
+            SdkApiRestCommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }
@@ -270,22 +270,22 @@ public class Creative2ListResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Creative2ListResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Creative2ListResponse' and its subtypes
+       if (!EntityResourceCollectionOutcomeCreativeSearchResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'EntityResourceCollectionOutcomeCreativeSearchResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Creative2ListResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Creative2ListResponse.class));
+       final TypeAdapter<EntityResourceCollectionOutcomeCreativeSearchResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(EntityResourceCollectionOutcomeCreativeSearchResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Creative2ListResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<EntityResourceCollectionOutcomeCreativeSearchResponse>() {
            @Override
-           public void write(JsonWriter out, Creative2ListResponse value) throws IOException {
+           public void write(JsonWriter out, EntityResourceCollectionOutcomeCreativeSearchResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Creative2ListResponse read(JsonReader in) throws IOException {
+           public EntityResourceCollectionOutcomeCreativeSearchResponse read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -296,18 +296,18 @@ public class Creative2ListResponse {
   }
 
  /**
-  * Create an instance of Creative2ListResponse given an JSON string
+  * Create an instance of EntityResourceCollectionOutcomeCreativeSearchResponse given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of Creative2ListResponse
-  * @throws IOException if the JSON string is invalid with respect to Creative2ListResponse
+  * @return An instance of EntityResourceCollectionOutcomeCreativeSearchResponse
+  * @throws IOException if the JSON string is invalid with respect to EntityResourceCollectionOutcomeCreativeSearchResponse
   */
-  public static Creative2ListResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Creative2ListResponse.class);
+  public static EntityResourceCollectionOutcomeCreativeSearchResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, EntityResourceCollectionOutcomeCreativeSearchResponse.class);
   }
 
  /**
-  * Convert an instance of Creative2ListResponse to an JSON string
+  * Convert an instance of EntityResourceCollectionOutcomeCreativeSearchResponse to an JSON string
   *
   * @return JSON string
   */

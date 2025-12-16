@@ -8,6 +8,7 @@ Ad Placement information on a page
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**id** | **String** |  |  [optional] |
 |**name** | **String** | Name of the placement |  |
 |**pageEnvironmentType** | [**PageEnvironmentTypeEnum**](#PageEnvironmentTypeEnum) | Page Environment |  |
 |**pageType** | [**PageTypeEnum**](#PageTypeEnum) | Page Type |  |

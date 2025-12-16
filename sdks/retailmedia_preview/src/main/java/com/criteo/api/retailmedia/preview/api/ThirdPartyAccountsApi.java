@@ -81,6 +81,390 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
+     * Build call for addThirdPartyAccountBrands
+     * @param accountId account to add brands to (required)
+     * @param valueResourceInputOfRetailMediaBrands list of bands to add to an account (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call addThirdPartyAccountBrandsCall(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfRetailMediaBrands;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/third-party-accounts/{accountId}/brands/add"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call addThirdPartyAccountBrandsValidateBeforeCall(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling addThirdPartyAccountBrands(Async)");
+        }
+
+        return addThirdPartyAccountBrandsCall(accountId, valueResourceInputOfRetailMediaBrands, _callback);
+
+    }
+
+    /**
+     * 
+     * add the provided brands to an account. This will not remove any existing brands.
+     * @param accountId account to add brands to (required)
+     * @param valueResourceInputOfRetailMediaBrands list of bands to add to an account (optional)
+     * @return ValueResourceOutcomeOfRetailMediaBrands
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeOfRetailMediaBrands addThirdPartyAccountBrands(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> localVarResp = addThirdPartyAccountBrandsWithHttpInfo(accountId, valueResourceInputOfRetailMediaBrands);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * add the provided brands to an account. This will not remove any existing brands.
+     * @param accountId account to add brands to (required)
+     * @param valueResourceInputOfRetailMediaBrands list of bands to add to an account (optional)
+     * @return ApiResponse&lt;ValueResourceOutcomeOfRetailMediaBrands&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> addThirdPartyAccountBrandsWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
+        okhttp3.Call localVarCall = addThirdPartyAccountBrandsValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrands, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRetailMediaBrands>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * add the provided brands to an account. This will not remove any existing brands.
+     * @param accountId account to add brands to (required)
+     * @param valueResourceInputOfRetailMediaBrands list of bands to add to an account (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call addThirdPartyAccountBrandsAsync(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands, final ApiCallback<ValueResourceOutcomeOfRetailMediaBrands> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = addThirdPartyAccountBrandsValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrands, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRetailMediaBrands>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createThirdPartyBrandAccount
+     * @param accountId parent supply account to create account under (required)
+     * @param valueResourceInputOfRetailMediaBrandAccountCreationV2  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createThirdPartyBrandAccountCall(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfRetailMediaBrandAccountCreationV2;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/third-party-accounts/{accountId}/create-brand-account"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createThirdPartyBrandAccountValidateBeforeCall(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling createThirdPartyBrandAccount(Async)");
+        }
+
+        return createThirdPartyBrandAccountCall(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2, _callback);
+
+    }
+
+    /**
+     * 
+     * Create a private market demand brand account under a given parent account.
+     * @param accountId parent supply account to create account under (required)
+     * @param valueResourceInputOfRetailMediaBrandAccountCreationV2  (optional)
+     * @return EntityResourceOutcomeOfRetailMediaAccountV2
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceOutcomeOfRetailMediaAccountV2 createThirdPartyBrandAccount(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2) throws ApiException {
+        ApiResponse<EntityResourceOutcomeOfRetailMediaAccountV2> localVarResp = createThirdPartyBrandAccountWithHttpInfo(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Create a private market demand brand account under a given parent account.
+     * @param accountId parent supply account to create account under (required)
+     * @param valueResourceInputOfRetailMediaBrandAccountCreationV2  (optional)
+     * @return ApiResponse&lt;EntityResourceOutcomeOfRetailMediaAccountV2&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceOutcomeOfRetailMediaAccountV2> createThirdPartyBrandAccountWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2) throws ApiException {
+        okhttp3.Call localVarCall = createThirdPartyBrandAccountValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2, null);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfRetailMediaAccountV2>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create a private market demand brand account under a given parent account.
+     * @param accountId parent supply account to create account under (required)
+     * @param valueResourceInputOfRetailMediaBrandAccountCreationV2  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createThirdPartyBrandAccountAsync(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2, final ApiCallback<EntityResourceOutcomeOfRetailMediaAccountV2> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createThirdPartyBrandAccountValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfRetailMediaAccountV2>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createThirdPartySellerAccount
+     * @param accountId parent supply account to create account under (required)
+     * @param valueResourceInputOfRetailMediaSellerAccountCreationV2  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createThirdPartySellerAccountCall(String accountId, ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfRetailMediaSellerAccountCreationV2;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/third-party-accounts/{accountId}/create-seller-account"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createThirdPartySellerAccountValidateBeforeCall(String accountId, ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling createThirdPartySellerAccount(Async)");
+        }
+
+        return createThirdPartySellerAccountCall(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2, _callback);
+
+    }
+
+    /**
+     * 
+     * Create a private market demand seller account under a given parent account.
+     * @param accountId parent supply account to create account under (required)
+     * @param valueResourceInputOfRetailMediaSellerAccountCreationV2  (optional)
+     * @return EntityResourceOutcomeOfRetailMediaAccountV2
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceOutcomeOfRetailMediaAccountV2 createThirdPartySellerAccount(String accountId, ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2) throws ApiException {
+        ApiResponse<EntityResourceOutcomeOfRetailMediaAccountV2> localVarResp = createThirdPartySellerAccountWithHttpInfo(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Create a private market demand seller account under a given parent account.
+     * @param accountId parent supply account to create account under (required)
+     * @param valueResourceInputOfRetailMediaSellerAccountCreationV2  (optional)
+     * @return ApiResponse&lt;EntityResourceOutcomeOfRetailMediaAccountV2&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceOutcomeOfRetailMediaAccountV2> createThirdPartySellerAccountWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2) throws ApiException {
+        okhttp3.Call localVarCall = createThirdPartySellerAccountValidateBeforeCall(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2, null);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfRetailMediaAccountV2>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create a private market demand seller account under a given parent account.
+     * @param accountId parent supply account to create account under (required)
+     * @param valueResourceInputOfRetailMediaSellerAccountCreationV2  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createThirdPartySellerAccountAsync(String accountId, ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2, final ApiCallback<EntityResourceOutcomeOfRetailMediaAccountV2> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createThirdPartySellerAccountValidateBeforeCall(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfRetailMediaAccountV2>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for grantThirdPartyConsent
      * @param accountId The demand account ID on which to grant consent (required)
      * @param grantConsentInput The request input containing clientId, callbackURL, and callbackState (optional)
@@ -204,135 +588,7 @@ public class ThirdPartyAccountsApi {
         return localVarCall;
     }
     /**
-     * Build call for previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost
-     * @param accountId account to add brands to (required)
-     * @param valueResourceInputOfRetailMediaBrands list of bands to add to an account (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPostCall(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = valueResourceInputOfRetailMediaBrands;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/third-party-accounts/{accountId}/brands/add"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPostValidateBeforeCall(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'accountId' is set
-        if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost(Async)");
-        }
-
-        return previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPostCall(accountId, valueResourceInputOfRetailMediaBrands, _callback);
-
-    }
-
-    /**
-     * 
-     * add the provided brands to an account. This will not remove any existing brands.
-     * @param accountId account to add brands to (required)
-     * @param valueResourceInputOfRetailMediaBrands list of bands to add to an account (optional)
-     * @return ValueResourceOutcomeOfRetailMediaBrands
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ValueResourceOutcomeOfRetailMediaBrands previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
-        ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> localVarResp = previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPostWithHttpInfo(accountId, valueResourceInputOfRetailMediaBrands);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * add the provided brands to an account. This will not remove any existing brands.
-     * @param accountId account to add brands to (required)
-     * @param valueResourceInputOfRetailMediaBrands list of bands to add to an account (optional)
-     * @return ApiResponse&lt;ValueResourceOutcomeOfRetailMediaBrands&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPostWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPostValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrands, null);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRetailMediaBrands>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * add the provided brands to an account. This will not remove any existing brands.
-     * @param accountId account to add brands to (required)
-     * @param valueResourceInputOfRetailMediaBrands list of bands to add to an account (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPostAsync(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands, final ApiCallback<ValueResourceOutcomeOfRetailMediaBrands> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPostValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrands, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRetailMediaBrands>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost
+     * Build call for removeThirdPartyAccountBrand
      * @param accountId account id to remove brand from (required)
      * @param brandId brand to remove (required)
      * @param _callback Callback for upload/download progress
@@ -344,7 +600,7 @@ public class ThirdPartyAccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePostCall(String accountId, String brandId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call removeThirdPartyAccountBrandCall(String accountId, String brandId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -391,18 +647,18 @@ public class ThirdPartyAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePostValidateBeforeCall(String accountId, String brandId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call removeThirdPartyAccountBrandValidateBeforeCall(String accountId, String brandId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling removeThirdPartyAccountBrand(Async)");
         }
 
         // verify the required parameter 'brandId' is set
         if (brandId == null) {
-            throw new ApiException("Missing the required parameter 'brandId' when calling previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost(Async)");
+            throw new ApiException("Missing the required parameter 'brandId' when calling removeThirdPartyAccountBrand(Async)");
         }
 
-        return previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePostCall(accountId, brandId, _callback);
+        return removeThirdPartyAccountBrandCall(accountId, brandId, _callback);
 
     }
 
@@ -419,8 +675,8 @@ public class ThirdPartyAccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceOutcomeOfRetailMediaBrands previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost(String accountId, String brandId) throws ApiException {
-        ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> localVarResp = previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePostWithHttpInfo(accountId, brandId);
+    public ValueResourceOutcomeOfRetailMediaBrands removeThirdPartyAccountBrand(String accountId, String brandId) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> localVarResp = removeThirdPartyAccountBrandWithHttpInfo(accountId, brandId);
         return localVarResp.getData();
     }
 
@@ -437,8 +693,8 @@ public class ThirdPartyAccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePostWithHttpInfo(String accountId, String brandId) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePostValidateBeforeCall(accountId, brandId, null);
+    public ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> removeThirdPartyAccountBrandWithHttpInfo(String accountId, String brandId) throws ApiException {
+        okhttp3.Call localVarCall = removeThirdPartyAccountBrandValidateBeforeCall(accountId, brandId, null);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRetailMediaBrands>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -457,271 +713,15 @@ public class ThirdPartyAccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePostAsync(String accountId, String brandId, final ApiCallback<ValueResourceOutcomeOfRetailMediaBrands> _callback) throws ApiException {
+    public okhttp3.Call removeThirdPartyAccountBrandAsync(String accountId, String brandId, final ApiCallback<ValueResourceOutcomeOfRetailMediaBrands> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePostValidateBeforeCall(accountId, brandId, _callback);
+        okhttp3.Call localVarCall = removeThirdPartyAccountBrandValidateBeforeCall(accountId, brandId, _callback);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRetailMediaBrands>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost
-     * @param accountId parent supply account to create account under (required)
-     * @param valueResourceInputOfRetailMediaBrandAccountCreationV2  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPostCall(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = valueResourceInputOfRetailMediaBrandAccountCreationV2;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/third-party-accounts/{accountId}/create-brand-account"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPostValidateBeforeCall(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'accountId' is set
-        if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost(Async)");
-        }
-
-        return previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPostCall(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2, _callback);
-
-    }
-
-    /**
-     * 
-     * Create a private market demand brand account under a given parent account.
-     * @param accountId parent supply account to create account under (required)
-     * @param valueResourceInputOfRetailMediaBrandAccountCreationV2  (optional)
-     * @return EntityResourceOutcomeOfRetailMediaAccountV2
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public EntityResourceOutcomeOfRetailMediaAccountV2 previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2) throws ApiException {
-        ApiResponse<EntityResourceOutcomeOfRetailMediaAccountV2> localVarResp = previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPostWithHttpInfo(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Create a private market demand brand account under a given parent account.
-     * @param accountId parent supply account to create account under (required)
-     * @param valueResourceInputOfRetailMediaBrandAccountCreationV2  (optional)
-     * @return ApiResponse&lt;EntityResourceOutcomeOfRetailMediaAccountV2&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<EntityResourceOutcomeOfRetailMediaAccountV2> previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPostWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPostValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2, null);
-        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfRetailMediaAccountV2>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Create a private market demand brand account under a given parent account.
-     * @param accountId parent supply account to create account under (required)
-     * @param valueResourceInputOfRetailMediaBrandAccountCreationV2  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPostAsync(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreationV2 valueResourceInputOfRetailMediaBrandAccountCreationV2, final ApiCallback<EntityResourceOutcomeOfRetailMediaAccountV2> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPostValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2, _callback);
-        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfRetailMediaAccountV2>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost
-     * @param accountId parent supply account to create account under (required)
-     * @param valueResourceInputOfRetailMediaSellerAccountCreationV2  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPostCall(String accountId, ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = valueResourceInputOfRetailMediaSellerAccountCreationV2;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/third-party-accounts/{accountId}/create-seller-account"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPostValidateBeforeCall(String accountId, ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'accountId' is set
-        if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost(Async)");
-        }
-
-        return previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPostCall(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2, _callback);
-
-    }
-
-    /**
-     * 
-     * Create a private market demand seller account under a given parent account.
-     * @param accountId parent supply account to create account under (required)
-     * @param valueResourceInputOfRetailMediaSellerAccountCreationV2  (optional)
-     * @return EntityResourceOutcomeOfRetailMediaAccountV2
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public EntityResourceOutcomeOfRetailMediaAccountV2 previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost(String accountId, ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2) throws ApiException {
-        ApiResponse<EntityResourceOutcomeOfRetailMediaAccountV2> localVarResp = previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPostWithHttpInfo(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Create a private market demand seller account under a given parent account.
-     * @param accountId parent supply account to create account under (required)
-     * @param valueResourceInputOfRetailMediaSellerAccountCreationV2  (optional)
-     * @return ApiResponse&lt;EntityResourceOutcomeOfRetailMediaAccountV2&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<EntityResourceOutcomeOfRetailMediaAccountV2> previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPostWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPostValidateBeforeCall(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2, null);
-        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfRetailMediaAccountV2>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Create a private market demand seller account under a given parent account.
-     * @param accountId parent supply account to create account under (required)
-     * @param valueResourceInputOfRetailMediaSellerAccountCreationV2  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPostAsync(String accountId, ValueResourceInputOfRetailMediaSellerAccountCreationV2 valueResourceInputOfRetailMediaSellerAccountCreationV2, final ApiCallback<EntityResourceOutcomeOfRetailMediaAccountV2> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPostValidateBeforeCall(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2, _callback);
-        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfRetailMediaAccountV2>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for previewRetailMediaThirdPartyAccountsAccountIdSellersPut
+     * Build call for updateThirdPartyAccountSellers
      * @param accountId accountId to update sellers for (required)
      * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
      * @param _callback Callback for upload/download progress
@@ -733,7 +733,7 @@ public class ThirdPartyAccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdSellersPutCall(String accountId, ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateThirdPartyAccountSellersCall(String accountId, ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -780,18 +780,18 @@ public class ThirdPartyAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdSellersPutValidateBeforeCall(String accountId, ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateThirdPartyAccountSellersValidateBeforeCall(String accountId, ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling previewRetailMediaThirdPartyAccountsAccountIdSellersPut(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling updateThirdPartyAccountSellers(Async)");
         }
 
         // verify the required parameter 'valueResourceCollectionInputOfRetailMediaSeller' is set
         if (valueResourceCollectionInputOfRetailMediaSeller == null) {
-            throw new ApiException("Missing the required parameter 'valueResourceCollectionInputOfRetailMediaSeller' when calling previewRetailMediaThirdPartyAccountsAccountIdSellersPut(Async)");
+            throw new ApiException("Missing the required parameter 'valueResourceCollectionInputOfRetailMediaSeller' when calling updateThirdPartyAccountSellers(Async)");
         }
 
-        return previewRetailMediaThirdPartyAccountsAccountIdSellersPutCall(accountId, valueResourceCollectionInputOfRetailMediaSeller, _callback);
+        return updateThirdPartyAccountSellersCall(accountId, valueResourceCollectionInputOfRetailMediaSeller, _callback);
 
     }
 
@@ -808,8 +808,8 @@ public class ThirdPartyAccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceCollectionOutcomeOfRetailMediaSeller previewRetailMediaThirdPartyAccountsAccountIdSellersPut(String accountId, ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller) throws ApiException {
-        ApiResponse<ValueResourceCollectionOutcomeOfRetailMediaSeller> localVarResp = previewRetailMediaThirdPartyAccountsAccountIdSellersPutWithHttpInfo(accountId, valueResourceCollectionInputOfRetailMediaSeller);
+    public ValueResourceCollectionOutcomeOfRetailMediaSeller updateThirdPartyAccountSellers(String accountId, ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller) throws ApiException {
+        ApiResponse<ValueResourceCollectionOutcomeOfRetailMediaSeller> localVarResp = updateThirdPartyAccountSellersWithHttpInfo(accountId, valueResourceCollectionInputOfRetailMediaSeller);
         return localVarResp.getData();
     }
 
@@ -826,8 +826,8 @@ public class ThirdPartyAccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceCollectionOutcomeOfRetailMediaSeller> previewRetailMediaThirdPartyAccountsAccountIdSellersPutWithHttpInfo(String accountId, ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller) throws ApiException {
-        okhttp3.Call localVarCall = previewRetailMediaThirdPartyAccountsAccountIdSellersPutValidateBeforeCall(accountId, valueResourceCollectionInputOfRetailMediaSeller, null);
+    public ApiResponse<ValueResourceCollectionOutcomeOfRetailMediaSeller> updateThirdPartyAccountSellersWithHttpInfo(String accountId, ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller) throws ApiException {
+        okhttp3.Call localVarCall = updateThirdPartyAccountSellersValidateBeforeCall(accountId, valueResourceCollectionInputOfRetailMediaSeller, null);
         Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfRetailMediaSeller>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -846,9 +846,9 @@ public class ThirdPartyAccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaThirdPartyAccountsAccountIdSellersPutAsync(String accountId, ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller, final ApiCallback<ValueResourceCollectionOutcomeOfRetailMediaSeller> _callback) throws ApiException {
+    public okhttp3.Call updateThirdPartyAccountSellersAsync(String accountId, ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller, final ApiCallback<ValueResourceCollectionOutcomeOfRetailMediaSeller> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = previewRetailMediaThirdPartyAccountsAccountIdSellersPutValidateBeforeCall(accountId, valueResourceCollectionInputOfRetailMediaSeller, _callback);
+        okhttp3.Call localVarCall = updateThirdPartyAccountSellersValidateBeforeCall(accountId, valueResourceCollectionInputOfRetailMediaSeller, _callback);
         Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfRetailMediaSeller>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
