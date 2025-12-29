@@ -605,7 +605,8 @@ paths:
         required: false
         schema:
           items:
-            type: string
+            format: int64
+            type: integer
           type: array
         style: form
       - description: The 0 indexed page index you would like to receive given the
@@ -639,7 +640,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BalanceResponseV2PagedListResponse'
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfBalanceResponseV1AndPageMeta'
           description: Success
       security:
       - oauth:
@@ -663,137 +664,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateBalanceV2Request'
+              $ref: '#/components/schemas/ValueResourceInputOfCreateBalanceV1'
         description: An object that represents the available options to set when creating
           a Retail Media Balance
         required: true
-        x-bodyName: createBalance
       responses:
         "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponseV2Response'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Balance_Manage
-      tags:
-      - Balance
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/accounts/{account-id}/balances/{balance-id}:
-    get:
-      description: Get a balance for the given account id and balance id
-      operationId: GetBalanceByAccountAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The balance id
-        explode: false
-        in: path
-        name: balance-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponseV2Response'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Balance_Read
-      tags:
-      - Balance
-      x-accepts: application/json
-    patch:
-      description: Modify a balance for the given account id
-      operationId: ModifyBalanceByAccountAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The balance to change the dates
-        explode: false
-        in: path
-        name: balance-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateBalanceModelV2Request'
-        description: An object that represents the available options to modify a balance.
-        required: true
-        x-bodyName: updateBalanceModel
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponseV2Response'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Balance_Manage
-      tags:
-      - Balance
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates:
-    post:
-      description: Change dates of a balance for the given account id
-      operationId: ChangeDatesByAccountAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The balance to change the dates
-        explode: false
-        in: path
-        name: balance-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ChangeDatesOfBalanceV2Request'
-        description: An object that represents the available options to modify schedule
-          of a balance.
-        required: true
-        x-bodyName: changeDatesOfBalance
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponseV2Response'
           description: Success
       security:
       - oauth:
@@ -1315,6 +1191,103 @@ paths:
         - RetailMedia_Audience_Manage
       tags:
       - Audience
+      x-accepts: application/json
+  /preview/retail-media/balances/{balance-id}/campaigns:
+    get:
+      description: Gets page of campaigns for the given balanceId
+      operationId: GetCampaignsByBalanceId
+      parameters:
+      - description: The balance to get campaigns from
+        explode: false
+        in: path
+        name: balance-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            format: int64
+            type: integer
+          type: array
+        style: form
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        style: form
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 25
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfBalanceCampaignV1AndPageMeta'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Balance_Read
+      tags:
+      - Balance
+      x-accepts: application/json
+  /preview/retail-media/balances/{balance-id}/campaigns/append:
+    post:
+      description: appends one or more campaigns to the specified balance
+      operationId: AppendCampaignsByBalanceId
+      parameters:
+      - description: The balance to add campaigns from
+        explode: false
+        in: path
+        name: balance-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityResourceCollectionInputOfBalanceCampaignV1'
+        description: The campaigns to append
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfBalanceCampaignV1'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      tags:
+      - Campaign
+      x-content-type: application/json
       x-accepts: application/json
   /preview/retail-media/balances/{balanceId}/history:
     get:
@@ -5215,6 +5188,11 @@ components:
       - instance
       - type
       type: object
+    BalanceCampaignV1:
+      additionalProperties: false
+      description: Campaigns related to the balance
+      nullable: true
+      type: object
     BalanceHistoryChangeDataCaptureV1:
       additionalProperties: false
       description: Data model represents the data change capture of balance history.
@@ -5262,7 +5240,8 @@ components:
       - dateOfModification
       - modifiedByUser
       type: object
-    BalanceResponseV2:
+    BalanceResponseV1:
+      additionalProperties: false
       description: A Retail Media Balance used to determine the funds available for
         any or all campaigns in an account
       example:
@@ -5271,7 +5250,7 @@ components:
         deposited: 0.8008281904610115
         spent: 1.4658129805029452
         memo: memo
-        spendType: Onsite
+        spendType: unknown
         remaining: 6.027456183070403
         createdAt: 2000-01-23T04:56:07.000+00:00
         balanceType: unknown
@@ -5329,9 +5308,10 @@ components:
         spendType:
           description: Spend Type of the balance.
           enum:
-          - Onsite
-          - Offsite
-          - OffsiteAwareness
+          - unknown
+          - onsite
+          - offsite
+          - offsiteAwareness
           type: string
         spent:
           description: Amount of spent funds of the balance.
@@ -5355,194 +5335,19 @@ components:
           type: string
       required:
       - balanceType
+      - createdAt
+      - deposited
+      - endDate
+      - memo
       - name
+      - poNumber
       - privateMarketBillingType
+      - remaining
       - spendType
+      - spent
       - startDate
-      type: object
-    BalanceResponseV2PagedListResponse:
-      description: Data model for a paged list of response resources
-      example:
-        metadata:
-          currentPageSize: 5
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 7
-          totalItemsAcrossAllPages: 2
-          currentPageIndex: 5
-        data:
-        - attributes:
-            privateMarketBillingType: notApplicable
-            endDate: endDate
-            deposited: 0.8008281904610115
-            spent: 1.4658129805029452
-            memo: memo
-            spendType: Onsite
-            remaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            poNumber: poNumber
-            startDate: startDate
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        - attributes:
-            privateMarketBillingType: notApplicable
-            endDate: endDate
-            deposited: 0.8008281904610115
-            spent: 1.4658129805029452
-            memo: memo
-            spendType: Onsite
-            remaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            poNumber: poNumber
-            startDate: startDate
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfBalanceResponseV2'
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-      type: object
-    BalanceResponseV2Response:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single entity
-      example:
-        data:
-          attributes:
-            privateMarketBillingType: notApplicable
-            endDate: endDate
-            deposited: 0.8008281904610115
-            spent: 1.4658129805029452
-            memo: memo
-            spendType: Onsite
-            remaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            poNumber: poNumber
-            startDate: startDate
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      nullable: true
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfBalanceResponseV2'
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
+      - status
+      - updatedAt
       type: object
     BatchAcceptedResponse:
       description: A batch was accepted. The report can be accessed using the reporting
@@ -5905,39 +5710,6 @@ components:
       - parentId
       - text
       type: object
-    ChangeDatesOfBalanceV2:
-      description: An object that represents the available options to modify schedule
-        of a balance.
-      example:
-        endDate: endDate
-        memo: memo
-        startDate: startDate
-      properties:
-        endDate:
-          description: End date of the balance in the format YYYY-MM-DD.
-          type: string
-        memo:
-          description: Memo.
-          type: string
-        startDate:
-          description: Start date of the balance in the format YYYY-MM-DD.
-          type: string
-      type: object
-    ChangeDatesOfBalanceV2Request:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single entity
-      example:
-        data:
-          attributes:
-            endDate: endDate
-            memo: memo
-            startDate: startDate
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfChangeDatesOfBalanceV2'
-      type: object
     ChangeDetailsV1:
       additionalProperties: false
       description: Change details of a property of the balance.
@@ -6165,7 +5937,8 @@ components:
           readOnly: true
           type: array
       type: object
-    CreateBalanceV2:
+    CreateBalanceV1:
+      additionalProperties: false
       description: An object that represents the available options to set when creating
         a Retail Media Balance
       example:
@@ -6174,12 +5947,13 @@ components:
         name: name
         memo: memo
         poNumber: poNumber
-        spendType: Onsite
+        spendType: unknown
         startDate: startDate
       properties:
         deposited:
           description: Amount of billable funds allotted to the balance.
           format: double
+          nullable: true
           type: number
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
@@ -6199,36 +5973,21 @@ components:
         spendType:
           description: Type of the balance spend.
           enum:
-          - Onsite
-          - Offsite
-          - OffsiteAwareness
+          - unknown
+          - onsite
+          - offsite
+          - offsiteAwareness
           type: string
         startDate:
           description: Start date of the balance in the format YYYY-MM-DD.
           type: string
       required:
+      - deposited
+      - endDate
+      - memo
       - name
       - spendType
       - startDate
-      type: object
-    CreateBalanceV2Request:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single entity
-      example:
-        data:
-          attributes:
-            endDate: endDate
-            deposited: 0.8008281904610115
-            name: name
-            memo: memo
-            poNumber: poNumber
-            spendType: Onsite
-            startDate: startDate
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfCreateBalanceV2'
       type: object
     Creative2:
       additionalProperties: false
@@ -7014,6 +6773,25 @@ components:
           nullable: true
           type: string
       type: object
+    EntityResourceCollectionInputOfBalanceCampaignV1:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for several
+        entities.
+      example:
+        data:
+        - attributes: "{}"
+          id: id
+          type: type
+        - attributes: "{}"
+          id: id
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceOfBalanceCampaignV1'
+          nullable: true
+          type: array
+      type: object
     EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata:
       description: A top-level object that encapsulates a Criteo API response for
         several entities and metadata.
@@ -7353,6 +7131,261 @@ components:
           nullable: true
           readOnly: true
           type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    EntityResourceCollectionOutcomeOfBalanceCampaignV1:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities.
+      example:
+        data:
+        - attributes: "{}"
+          id: id
+          type: type
+        - attributes: "{}"
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceOfBalanceCampaignV1'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    EntityResourceCollectionOutcomeOfBalanceCampaignV1AndPageMeta:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata.
+      example:
+        metadata:
+          currentPageSize: 1210617418
+          totalPages: 7
+          totalItemsAcrossAllPages: 2
+          currentPageIndex: 1280358508
+        data:
+        - attributes: "{}"
+          id: id
+          type: type
+        - attributes: "{}"
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceOfBalanceCampaignV1'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/PageMeta'
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    EntityResourceCollectionOutcomeOfBalanceResponseV1AndPageMeta:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata.
+      example:
+        metadata:
+          currentPageSize: 1210617418
+          totalPages: 7
+          totalItemsAcrossAllPages: 2
+          currentPageIndex: 1280358508
+        data:
+        - attributes:
+            privateMarketBillingType: notApplicable
+            endDate: endDate
+            deposited: 0.8008281904610115
+            spent: 1.4658129805029452
+            memo: memo
+            spendType: unknown
+            remaining: 6.027456183070403
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            poNumber: poNumber
+            startDate: startDate
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            privateMarketBillingType: notApplicable
+            endDate: endDate
+            deposited: 0.8008281904610115
+            spent: 1.4658129805029452
+            memo: memo
+            spendType: unknown
+            remaining: 6.027456183070403
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            poNumber: poNumber
+            startDate: startDate
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceOfBalanceResponseV1'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/PageMeta'
         warnings:
           description: Warnings that occured during this call.
           items:
@@ -7829,6 +7862,61 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/EntityResourceCreativeSearchRequest'
+      type: object
+    EntityResourceOfBalanceCampaignV1:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes: "{}"
+        id: id
+        type: type
+      properties:
+        attributes:
+          additionalProperties: false
+          description: Campaigns related to the balance
+          nullable: true
+          type: object
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    EntityResourceOfBalanceResponseV1:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          privateMarketBillingType: notApplicable
+          endDate: endDate
+          deposited: 0.8008281904610115
+          spent: 1.4658129805029452
+          memo: memo
+          spendType: unknown
+          remaining: 6.027456183070403
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          balanceType: unknown
+          name: name
+          poNumber: poNumber
+          startDate: startDate
+          status: unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/BalanceResponseV1'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
       type: object
     EntityResourceOfCatalogStatusV2:
       additionalProperties: false
@@ -9582,14 +9670,55 @@ components:
       - sellerId
       - skuId
       type: object
+    PageMeta:
+      additionalProperties: false
+      description: "Represents metadata for paginated data, including information\
+        \ about the current page, page size,  total items, and\r\ntotal pages in a\
+        \ search result."
+      example:
+        currentPageSize: 1210617418
+        totalPages: 7
+        totalItemsAcrossAllPages: 2
+        currentPageIndex: 1280358508
+      nullable: true
+      properties:
+        currentPageIndex:
+          default: 0
+          description: The 0 indexed page index you would like to receive given the
+            page size
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          type: integer
+        currentPageSize:
+          default: 25
+          description: The maximum number of items you would like to receive in this
+            request
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          nullable: true
+          type: integer
+        totalItemsAcrossAllPages:
+          description: Total Items in search result across all pages
+          format: int64
+          nullable: true
+          type: integer
+        totalPages:
+          description: total pages in search result
+          format: int64
+          nullable: true
+          type: integer
+      type: object
     PageMetadata:
       description: Metadata related to the current request
       example:
-        currentPageSize: 5
+        currentPageSize: 2
         previousPage: previousPage
         nextPage: nextPage
-        totalPages: 7
-        totalItemsAcrossAllPages: 2
+        totalPages: 9
+        totalItemsAcrossAllPages: 7
         currentPageIndex: 5
       properties:
         currentPageIndex:
@@ -10305,11 +10434,11 @@ components:
       description: Data model for a paged list of response resources
       example:
         metadata:
-          currentPageSize: 5
+          currentPageSize: 2
           previousPage: previousPage
           nextPage: nextPage
-          totalPages: 7
-          totalItemsAcrossAllPages: 2
+          totalPages: 9
+          totalItemsAcrossAllPages: 7
           currentPageIndex: 5
         data:
         - attributes:
@@ -12638,39 +12767,6 @@ components:
           readOnly: true
           type: array
       type: object
-    ResourceOfBalanceResponseV2:
-      description: A class that represents a domain entity exposed by an API
-      example:
-        attributes:
-          privateMarketBillingType: notApplicable
-          endDate: endDate
-          deposited: 0.8008281904610115
-          spent: 1.4658129805029452
-          memo: memo
-          spendType: Onsite
-          remaining: 6.027456183070403
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          balanceType: unknown
-          name: name
-          poNumber: poNumber
-          startDate: startDate
-          status: unknown
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/BalanceResponseV2'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-      type: object
     ResourceOfBrandPreview:
       additionalProperties: false
       description: A class that represents a domain entity exposed by an API.
@@ -12690,25 +12786,6 @@ components:
           type: string
         type:
           nullable: true
-          type: string
-      type: object
-    ResourceOfChangeDatesOfBalanceV2:
-      description: A class that represents a domain entity exposed by an API
-      example:
-        attributes:
-          endDate: endDate
-          memo: memo
-          startDate: startDate
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ChangeDatesOfBalanceV2'
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
           type: string
       type: object
     ResourceOfCpcRateCardPreview:
@@ -12736,29 +12813,6 @@ components:
           type: string
         type:
           nullable: true
-          type: string
-      type: object
-    ResourceOfCreateBalanceV2:
-      description: A class that represents a domain entity exposed by an API
-      example:
-        attributes:
-          endDate: endDate
-          deposited: 0.8008281904610115
-          name: name
-          memo: memo
-          poNumber: poNumber
-          spendType: Onsite
-          startDate: startDate
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/CreateBalanceV2'
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
           type: string
       type: object
     ResourceOfCreative2:
@@ -13092,27 +13146,6 @@ components:
           type: string
         type:
           nullable: true
-          type: string
-      type: object
-    ResourceOfUpdateBalanceModelV2:
-      description: A class that represents a domain entity exposed by an API
-      example:
-        attributes:
-          endDate: endDate
-          name: name
-          memo: memo
-          poNumber: poNumber
-          startDate: startDate
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/UpdateBalanceModelV2'
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
           type: string
       type: object
     RetailerResult:
@@ -17770,54 +17803,6 @@ components:
       required:
       - text
       type: object
-    UpdateBalanceModelV2:
-      description: An object that represents the available options to set when updating
-        a Retail Media Balance.
-      example:
-        endDate: endDate
-        name: name
-        memo: memo
-        poNumber: poNumber
-        startDate: startDate
-      properties:
-        endDate:
-          description: End date of the balance in the format YYYY-MM-DD.
-          nullable: true
-          type: string
-        memo:
-          description: Memo.
-          nullable: true
-          type: string
-        name:
-          description: Name of the balance.
-          nullable: true
-          type: string
-        poNumber:
-          description: Purchase Order number.
-          nullable: true
-          type: string
-        startDate:
-          description: Start date of the balance in the format YYYY-MM-DD.
-          nullable: true
-          type: string
-      type: object
-    UpdateBalanceModelV2Request:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single entity
-      example:
-        data:
-          attributes:
-            endDate: endDate
-            name: name
-            memo: memo
-            poNumber: poNumber
-            startDate: startDate
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfUpdateBalanceModelV2'
-      type: object
     UpdateOffersRequest:
       additionalProperties: false
       description: The request passed by the caller of the Update endpoint
@@ -18435,6 +18420,25 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceLoadSkuOffersRequest'
       type: object
+    ValueResourceInputOfCreateBalanceV1:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            endDate: endDate
+            deposited: 0.8008281904610115
+            name: name
+            memo: memo
+            poNumber: poNumber
+            spendType: unknown
+            startDate: startDate
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfCreateBalanceV1'
+      type: object
     ValueResourceInputOfRetailerSearchRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -18812,6 +18816,27 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/LoadSkuOffersRequest'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ValueResourceOfCreateBalanceV1:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          endDate: endDate
+          deposited: 0.8008281904610115
+          name: name
+          memo: memo
+          poNumber: poNumber
+          spendType: unknown
+          startDate: startDate
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CreateBalanceV1'
         type:
           description: Type of the resource.
           nullable: true

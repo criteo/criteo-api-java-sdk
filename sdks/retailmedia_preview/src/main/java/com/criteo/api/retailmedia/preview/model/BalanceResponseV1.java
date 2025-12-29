@@ -22,7 +22,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,7 +48,7 @@ import com.criteo.api.retailmedia.preview.JSON;
  * A Retail Media Balance used to determine the funds available for any or all campaigns in an account
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class BalanceResponseV2 {
+public class BalanceResponseV1 {
   /**
    * Type of the balance.
    */
@@ -191,11 +190,13 @@ public class BalanceResponseV2 {
    */
   @JsonAdapter(SpendTypeEnum.Adapter.class)
   public enum SpendTypeEnum {
-    ONSITE("Onsite"),
+    UNKNOWN("unknown"),
     
-    OFFSITE("Offsite"),
+    ONSITE("onsite"),
     
-    OFFSITEAWARENESS("OffsiteAwareness");
+    OFFSITE("offsite"),
+    
+    OFFSITEAWARENESS("offsiteAwareness");
 
     private String value;
 
@@ -306,10 +307,10 @@ public class BalanceResponseV2 {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
-  public BalanceResponseV2() {
+  public BalanceResponseV1() {
   }
 
-  public BalanceResponseV2 balanceType(BalanceTypeEnum balanceType) {
+  public BalanceResponseV1 balanceType(BalanceTypeEnum balanceType) {
     
     this.balanceType = balanceType;
     return this;
@@ -331,7 +332,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 createdAt(OffsetDateTime createdAt) {
+  public BalanceResponseV1 createdAt(OffsetDateTime createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -341,7 +342,7 @@ public class BalanceResponseV2 {
    * Creation time of the balance.
    * @return createdAt
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -353,7 +354,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 deposited(Double deposited) {
+  public BalanceResponseV1 deposited(Double deposited) {
     
     this.deposited = deposited;
     return this;
@@ -375,7 +376,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 endDate(String endDate) {
+  public BalanceResponseV1 endDate(String endDate) {
     
     this.endDate = endDate;
     return this;
@@ -397,7 +398,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 memo(String memo) {
+  public BalanceResponseV1 memo(String memo) {
     
     this.memo = memo;
     return this;
@@ -419,7 +420,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 name(String name) {
+  public BalanceResponseV1 name(String name) {
     
     this.name = name;
     return this;
@@ -441,7 +442,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 poNumber(String poNumber) {
+  public BalanceResponseV1 poNumber(String poNumber) {
     
     this.poNumber = poNumber;
     return this;
@@ -463,7 +464,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 privateMarketBillingType(PrivateMarketBillingTypeEnum privateMarketBillingType) {
+  public BalanceResponseV1 privateMarketBillingType(PrivateMarketBillingTypeEnum privateMarketBillingType) {
     
     this.privateMarketBillingType = privateMarketBillingType;
     return this;
@@ -485,7 +486,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 remaining(Double remaining) {
+  public BalanceResponseV1 remaining(Double remaining) {
     
     this.remaining = remaining;
     return this;
@@ -507,7 +508,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 spendType(SpendTypeEnum spendType) {
+  public BalanceResponseV1 spendType(SpendTypeEnum spendType) {
     
     this.spendType = spendType;
     return this;
@@ -529,7 +530,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 spent(Double spent) {
+  public BalanceResponseV1 spent(Double spent) {
     
     this.spent = spent;
     return this;
@@ -551,7 +552,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 startDate(String startDate) {
+  public BalanceResponseV1 startDate(String startDate) {
     
     this.startDate = startDate;
     return this;
@@ -573,7 +574,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 status(StatusEnum status) {
+  public BalanceResponseV1 status(StatusEnum status) {
     
     this.status = status;
     return this;
@@ -583,7 +584,7 @@ public class BalanceResponseV2 {
    * Status of the balance.
    * @return status
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public StatusEnum getStatus() {
     return status;
@@ -595,7 +596,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 updatedAt(OffsetDateTime updatedAt) {
+  public BalanceResponseV1 updatedAt(OffsetDateTime updatedAt) {
     
     this.updatedAt = updatedAt;
     return this;
@@ -605,7 +606,7 @@ public class BalanceResponseV2 {
    * Update time of the balance.
    * @return updatedAt
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -616,50 +617,6 @@ public class BalanceResponseV2 {
     this.updatedAt = updatedAt;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the BalanceResponseV2 instance itself
-   */
-  public BalanceResponseV2 putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -670,44 +627,32 @@ public class BalanceResponseV2 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BalanceResponseV2 balanceResponseV2 = (BalanceResponseV2) o;
-    return Objects.equals(this.balanceType, balanceResponseV2.balanceType) &&
-        Objects.equals(this.createdAt, balanceResponseV2.createdAt) &&
-        Objects.equals(this.deposited, balanceResponseV2.deposited) &&
-        Objects.equals(this.endDate, balanceResponseV2.endDate) &&
-        Objects.equals(this.memo, balanceResponseV2.memo) &&
-        Objects.equals(this.name, balanceResponseV2.name) &&
-        Objects.equals(this.poNumber, balanceResponseV2.poNumber) &&
-        Objects.equals(this.privateMarketBillingType, balanceResponseV2.privateMarketBillingType) &&
-        Objects.equals(this.remaining, balanceResponseV2.remaining) &&
-        Objects.equals(this.spendType, balanceResponseV2.spendType) &&
-        Objects.equals(this.spent, balanceResponseV2.spent) &&
-        Objects.equals(this.startDate, balanceResponseV2.startDate) &&
-        Objects.equals(this.status, balanceResponseV2.status) &&
-        Objects.equals(this.updatedAt, balanceResponseV2.updatedAt)&&
-        Objects.equals(this.additionalProperties, balanceResponseV2.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    BalanceResponseV1 balanceResponseV1 = (BalanceResponseV1) o;
+    return Objects.equals(this.balanceType, balanceResponseV1.balanceType) &&
+        Objects.equals(this.createdAt, balanceResponseV1.createdAt) &&
+        Objects.equals(this.deposited, balanceResponseV1.deposited) &&
+        Objects.equals(this.endDate, balanceResponseV1.endDate) &&
+        Objects.equals(this.memo, balanceResponseV1.memo) &&
+        Objects.equals(this.name, balanceResponseV1.name) &&
+        Objects.equals(this.poNumber, balanceResponseV1.poNumber) &&
+        Objects.equals(this.privateMarketBillingType, balanceResponseV1.privateMarketBillingType) &&
+        Objects.equals(this.remaining, balanceResponseV1.remaining) &&
+        Objects.equals(this.spendType, balanceResponseV1.spendType) &&
+        Objects.equals(this.spent, balanceResponseV1.spent) &&
+        Objects.equals(this.startDate, balanceResponseV1.startDate) &&
+        Objects.equals(this.status, balanceResponseV1.status) &&
+        Objects.equals(this.updatedAt, balanceResponseV1.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(balanceType, createdAt, deposited, endDate, memo, name, poNumber, privateMarketBillingType, remaining, spendType, spent, startDate, status, updatedAt, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(balanceType, createdAt, deposited, endDate, memo, name, poNumber, privateMarketBillingType, remaining, spendType, spent, startDate, status, updatedAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BalanceResponseV2 {\n");
+    sb.append("class BalanceResponseV1 {\n");
     sb.append("    balanceType: ").append(toIndentedString(balanceType)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    deposited: ").append(toIndentedString(deposited)).append("\n");
@@ -722,7 +667,6 @@ public class BalanceResponseV2 {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -763,27 +707,44 @@ public class BalanceResponseV2 {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("balanceType");
+    openapiRequiredFields.add("createdAt");
+    openapiRequiredFields.add("deposited");
+    openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("memo");
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("poNumber");
     openapiRequiredFields.add("privateMarketBillingType");
+    openapiRequiredFields.add("remaining");
     openapiRequiredFields.add("spendType");
+    openapiRequiredFields.add("spent");
     openapiRequiredFields.add("startDate");
+    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("updatedAt");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to BalanceResponseV2
+  * @throws IOException if the JSON Object is invalid with respect to BalanceResponseV1
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!BalanceResponseV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in BalanceResponseV2 is not found in the empty JSON string", BalanceResponseV2.openapiRequiredFields.toString()));
+        if (!BalanceResponseV1.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in BalanceResponseV1 is not found in the empty JSON string", BalanceResponseV1.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!BalanceResponseV1.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BalanceResponseV1` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : BalanceResponseV2.openapiRequiredFields) {
+      for (String requiredField : BalanceResponseV1.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -791,16 +752,16 @@ public class BalanceResponseV2 {
       if (!jsonObj.get("balanceType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `balanceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("balanceType").toString()));
       }
-      if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
+      if (!jsonObj.get("endDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
       }
-      if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
+      if (!jsonObj.get("memo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("poNumber") != null && !jsonObj.get("poNumber").isJsonNull()) && !jsonObj.get("poNumber").isJsonPrimitive()) {
+      if (!jsonObj.get("poNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `poNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("poNumber").toString()));
       }
       if (!jsonObj.get("privateMarketBillingType").isJsonPrimitive()) {
@@ -812,7 +773,7 @@ public class BalanceResponseV2 {
       if (!jsonObj.get("startDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
       }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+      if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
@@ -821,62 +782,25 @@ public class BalanceResponseV2 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!BalanceResponseV2.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'BalanceResponseV2' and its subtypes
+       if (!BalanceResponseV1.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BalanceResponseV1' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<BalanceResponseV2> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(BalanceResponseV2.class));
+       final TypeAdapter<BalanceResponseV1> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BalanceResponseV1.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<BalanceResponseV2>() {
+       return (TypeAdapter<T>) new TypeAdapter<BalanceResponseV1>() {
            @Override
-           public void write(JsonWriter out, BalanceResponseV2 value) throws IOException {
+           public void write(JsonWriter out, BalanceResponseV1 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public BalanceResponseV2 read(JsonReader in) throws IOException {
+           public BalanceResponseV1 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             BalanceResponseV2 instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             return thisAdapter.fromJsonTree(jsonObj);
            }
 
        }.nullSafe();
@@ -884,18 +808,18 @@ public class BalanceResponseV2 {
   }
 
  /**
-  * Create an instance of BalanceResponseV2 given an JSON string
+  * Create an instance of BalanceResponseV1 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of BalanceResponseV2
-  * @throws IOException if the JSON string is invalid with respect to BalanceResponseV2
+  * @return An instance of BalanceResponseV1
+  * @throws IOException if the JSON string is invalid with respect to BalanceResponseV1
   */
-  public static BalanceResponseV2 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, BalanceResponseV2.class);
+  public static BalanceResponseV1 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BalanceResponseV1.class);
   }
 
  /**
-  * Convert an instance of BalanceResponseV2 to an JSON string
+  * Convert an instance of BalanceResponseV1 to an JSON string
   *
   * @return JSON string
   */

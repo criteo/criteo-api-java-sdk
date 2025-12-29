@@ -1,6 +1,6 @@
 
 
-# BalanceResponseV2
+# BalanceResponseV1
 
 A Retail Media Balance used to determine the funds available for any or all campaigns in an account
 
@@ -9,19 +9,19 @@ A Retail Media Balance used to determine the funds available for any or all camp
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**balanceType** | [**BalanceTypeEnum**](#BalanceTypeEnum) | Type of the balance. |  |
-|**createdAt** | **OffsetDateTime** | Creation time of the balance. |  [optional] |
-|**deposited** | **Double** | Amount of billable funds allotted to the balance. |  [optional] |
-|**endDate** | **String** | End date of the balance in the format YYYY-MM-DD. |  [optional] |
-|**memo** | **String** | Memo. |  [optional] |
+|**createdAt** | **OffsetDateTime** | Creation time of the balance. |  |
+|**deposited** | **Double** | Amount of billable funds allotted to the balance. |  |
+|**endDate** | **String** | End date of the balance in the format YYYY-MM-DD. |  |
+|**memo** | **String** | Memo. |  |
 |**name** | **String** | Name of the balance. |  |
-|**poNumber** | **String** | Purchase Order number. |  [optional] |
+|**poNumber** | **String** | Purchase Order number. |  |
 |**privateMarketBillingType** | [**PrivateMarketBillingTypeEnum**](#PrivateMarketBillingTypeEnum) | Billing type for Private Market of the balance. |  |
-|**remaining** | **Double** | Amount of remaining funds of the balance. |  [optional] |
+|**remaining** | **Double** | Amount of remaining funds of the balance. |  |
 |**spendType** | [**SpendTypeEnum**](#SpendTypeEnum) | Spend Type of the balance. |  |
-|**spent** | **Double** | Amount of spent funds of the balance. |  [optional] |
+|**spent** | **Double** | Amount of spent funds of the balance. |  |
 |**startDate** | **String** | Start date of the balance in the format YYYY-MM-DD. |  |
-|**status** | [**StatusEnum**](#StatusEnum) | Status of the balance. |  [optional] |
-|**updatedAt** | **OffsetDateTime** | Update time of the balance. |  [optional] |
+|**status** | [**StatusEnum**](#StatusEnum) | Status of the balance. |  |
+|**updatedAt** | **OffsetDateTime** | Update time of the balance. |  |
 
 
 
@@ -50,9 +50,10 @@ A Retail Media Balance used to determine the funds available for any or all camp
 
 | Name | Value |
 |---- | -----|
-| ONSITE | &quot;Onsite&quot; |
-| OFFSITE | &quot;Offsite&quot; |
-| OFFSITEAWARENESS | &quot;OffsiteAwareness&quot; |
+| UNKNOWN | &quot;unknown&quot; |
+| ONSITE | &quot;onsite&quot; |
+| OFFSITE | &quot;offsite&quot; |
+| OFFSITEAWARENESS | &quot;offsiteAwareness&quot; |
 
 
 
