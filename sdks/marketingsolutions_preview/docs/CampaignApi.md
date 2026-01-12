@@ -47,7 +47,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 ## createAdSet
 
-> ResponseReadAdSetV24Q3 createAdSet(createAdSetV24Q3Request)
+> ResponseReadAdSetV26Q1 createAdSet(createAdSetV26Q1Request)
 
 
 
@@ -92,9 +92,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        CreateAdSetV24Q3Request createAdSetV24Q3Request = new CreateAdSetV24Q3Request(); // CreateAdSetV24Q3Request | the ad sets to create
+        CreateAdSetV26Q1Request createAdSetV26Q1Request = new CreateAdSetV26Q1Request(); // CreateAdSetV26Q1Request | the ad sets to create
         try {
-            ResponseReadAdSetV24Q3 result = apiInstance.createAdSet(createAdSetV24Q3Request);
+            ResponseReadAdSetV26Q1 result = apiInstance.createAdSet(createAdSetV26Q1Request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#createAdSet");
@@ -112,11 +112,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createAdSetV24Q3Request** | [**CreateAdSetV24Q3Request**](CreateAdSetV24Q3Request.md)| the ad sets to create | |
+| **createAdSetV26Q1Request** | [**CreateAdSetV26Q1Request**](CreateAdSetV26Q1Request.md)| the ad sets to create | |
 
 ### Return type
 
-[**ResponseReadAdSetV24Q3**](ResponseReadAdSetV24Q3.md)
+[**ResponseReadAdSetV26Q1**](ResponseReadAdSetV26Q1.md)
 
 ### Authorization
 
@@ -767,7 +767,7 @@ public class Example {
 
 ## getAdSet
 
-> ResponseReadAdSetV24Q3 getAdSet(adSetId)
+> ResponseReadAdSetV26Q1 getAdSet(adSetId)
 
 
 
@@ -814,7 +814,7 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the ad set
         try {
-            ResponseReadAdSetV24Q3 result = apiInstance.getAdSet(adSetId);
+            ResponseReadAdSetV26Q1 result = apiInstance.getAdSet(adSetId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getAdSet");
@@ -836,7 +836,7 @@ public class Example {
 
 ### Return type
 
-[**ResponseReadAdSetV24Q3**](ResponseReadAdSetV24Q3.md)
+[**ResponseReadAdSetV26Q1**](ResponseReadAdSetV26Q1.md)
 
 ### Authorization
 
@@ -1833,7 +1833,7 @@ public class Example {
 
 ## patchAdSets
 
-> ResponsesAdSetIdV24Q3 patchAdSets(requestsPatchAdSetV24Q3)
+> ResponsesAdSetIdV26Q1 patchAdSets(requestsPatchAdSetV26Q1)
 
 
 
@@ -1878,9 +1878,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3 = new RequestsPatchAdSetV24Q3(); // RequestsPatchAdSetV24Q3 | List of adsets to patch.
+        RequestsPatchAdSetV26Q1 requestsPatchAdSetV26Q1 = new RequestsPatchAdSetV26Q1(); // RequestsPatchAdSetV26Q1 | List of adsets to patch.
         try {
-            ResponsesAdSetIdV24Q3 result = apiInstance.patchAdSets(requestsPatchAdSetV24Q3);
+            ResponsesAdSetIdV26Q1 result = apiInstance.patchAdSets(requestsPatchAdSetV26Q1);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#patchAdSets");
@@ -1898,11 +1898,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestsPatchAdSetV24Q3** | [**RequestsPatchAdSetV24Q3**](RequestsPatchAdSetV24Q3.md)| List of adsets to patch. | |
+| **requestsPatchAdSetV26Q1** | [**RequestsPatchAdSetV26Q1**](RequestsPatchAdSetV26Q1.md)| List of adsets to patch. | |
 
 ### Return type
 
-[**ResponsesAdSetIdV24Q3**](ResponsesAdSetIdV24Q3.md)
+[**ResponsesAdSetIdV26Q1**](ResponsesAdSetIdV26Q1.md)
 
 ### Authorization
 
@@ -2830,7 +2830,7 @@ public class Example {
 
 ## searchAdSets
 
-> ResponsesReadAdSetV24Q3 searchAdSets(adSetSearchRequestV24Q3)
+> ResponsesReadAdSetV26Q1 searchAdSets(adSetSearchRequestV26Q1)
 
 
 
@@ -2875,9 +2875,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3 = new AdSetSearchRequestV24Q3(); // AdSetSearchRequestV24Q3 | 
+        AdSetSearchRequestV26Q1 adSetSearchRequestV26Q1 = new AdSetSearchRequestV26Q1(); // AdSetSearchRequestV26Q1 | 
         try {
-            ResponsesReadAdSetV24Q3 result = apiInstance.searchAdSets(adSetSearchRequestV24Q3);
+            ResponsesReadAdSetV26Q1 result = apiInstance.searchAdSets(adSetSearchRequestV26Q1);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#searchAdSets");
@@ -2895,11 +2895,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adSetSearchRequestV24Q3** | [**AdSetSearchRequestV24Q3**](AdSetSearchRequestV24Q3.md)|  | [optional] |
+| **adSetSearchRequestV26Q1** | [**AdSetSearchRequestV26Q1**](AdSetSearchRequestV26Q1.md)|  | [optional] |
 
 ### Return type
 
-[**ResponsesReadAdSetV24Q3**](ResponsesReadAdSetV24Q3.md)
+[**ResponsesReadAdSetV26Q1**](ResponsesReadAdSetV26Q1.md)
 
 ### Authorization
 

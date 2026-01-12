@@ -1570,7 +1570,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RequestsPatchAdSetV24Q3'
+              $ref: '#/components/schemas/RequestsPatchAdSetV26Q1'
         description: List of adsets to patch.
         required: true
         x-bodyName: adSets
@@ -1579,7 +1579,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponsesAdSetIdV24Q3'
+                $ref: '#/components/schemas/ResponsesAdSetIdV26Q1'
           description: List of patched adSets.
       security:
       - oauth:
@@ -1595,7 +1595,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateAdSetV24Q3Request'
+              $ref: '#/components/schemas/CreateAdSetV26Q1Request'
         description: the ad sets to create
         required: true
         x-bodyName: adSet
@@ -1604,7 +1604,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q3'
+                $ref: '#/components/schemas/ResponseReadAdSetV26Q1'
           description: The ad set that has been created and errors / warnings
       security:
       - oauth:
@@ -1631,7 +1631,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q3'
+                $ref: '#/components/schemas/ResponseReadAdSetV26Q1'
           description: data for the ad set
       security:
       - oauth:
@@ -1986,14 +1986,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV24Q3'
+              $ref: '#/components/schemas/AdSetSearchRequestV26Q1'
         x-bodyName: request
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponsesReadAdSetV24Q3'
+                $ref: '#/components/schemas/ResponsesReadAdSetV26Q1'
           description: data for the ad sets
       security:
       - oauth:
@@ -4192,7 +4192,7 @@ components:
           nullable: true
           type: string
       type: object
-    AdSetDeliveryLimitationsV24Q3:
+    AdSetDeliveryLimitationsV26Q1:
       description: ad set delivery limitations model
       example:
         operatingSystems:
@@ -4350,7 +4350,7 @@ components:
           nullable: true
           type: string
       type: object
-    AdSetFrequencyCappingV24Q3:
+    AdSetFrequencyCappingV26Q1:
       description: ad set frequency capping model
       example:
         maximumImpressions: 1
@@ -4370,7 +4370,7 @@ components:
           nullable: true
           type: integer
       type: object
-    AdSetGeoLocationV24Q3:
+    AdSetGeoLocationV26Q1:
       description: ad set geolocation model
       example:
         zipCodes:
@@ -4382,17 +4382,17 @@ components:
       nullable: true
       properties:
         countries:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q3'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV26Q1'
         subdivisions:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q3'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV26Q1'
         zipCodes:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q3'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV26Q1'
       type: object
-    AdSetIdV24Q3:
+    AdSetIdV26Q1:
       description: ad set id model
       nullable: true
       type: object
-    AdSetSearchFilterV24Q3:
+    AdSetSearchFilterV26Q1:
       description: filter on ad set ids
       example:
         adSetIds:
@@ -4421,7 +4421,7 @@ components:
           nullable: true
           type: array
       type: object
-    AdSetSearchRequestV24Q3:
+    AdSetSearchRequestV26Q1:
       description: request payload of the search endpoint
       example:
         filters:
@@ -4436,7 +4436,7 @@ components:
           - campaignIds
       properties:
         filters:
-          $ref: '#/components/schemas/AdSetSearchFilterV24Q3'
+          $ref: '#/components/schemas/AdSetSearchFilterV26Q1'
       type: object
     AdSetTargetingDealIds:
       description: Ad set Deal Id targeting model
@@ -4730,7 +4730,7 @@ components:
           type: array
           uniqueItems: false
       type: object
-    AdSetTargetingRuleV24Q3:
+    AdSetTargetingRuleV26Q1:
       description: ad set targeting rule model
       example:
         values:
@@ -4750,7 +4750,7 @@ components:
           nullable: true
           type: array
       type: object
-    AdSetTargetingV24Q3:
+    AdSetTargetingV26Q1:
       description: ad set targeting model
       example:
         geoLocation:
@@ -4777,11 +4777,11 @@ components:
       nullable: true
       properties:
         deliveryLimitations:
-          $ref: '#/components/schemas/AdSetDeliveryLimitationsV24Q3'
+          $ref: '#/components/schemas/AdSetDeliveryLimitationsV26Q1'
         frequencyCapping:
-          $ref: '#/components/schemas/AdSetTargetingV24Q3_frequencyCapping'
+          $ref: '#/components/schemas/AdSetTargetingV26Q1_frequencyCapping'
         geoLocation:
-          $ref: '#/components/schemas/AdSetGeoLocationV24Q3'
+          $ref: '#/components/schemas/AdSetGeoLocationV26Q1'
       type: object
     AdSetTargetingVideoPositioning:
       description: Video positioning targeting model
@@ -9101,7 +9101,7 @@ components:
           nullable: true
           type: array
       type: object
-    CreateAdSetAttributionConfigurationV24Q3:
+    CreateAdSetAttributionConfigurationV26Q1:
       description: Create model for an ad set's attribution configuration.
       example:
         attributionMethod: unknown
@@ -9116,6 +9116,8 @@ components:
           - googleAnalyticsDataDriven
           - lastClick
           - postClick
+          - sftp
+          - googleAnalytics
           type: string
         lookbackWindow:
           description: "The lookback window. Optional, should be specified only for\
@@ -9129,7 +9131,7 @@ components:
           nullable: true
           type: string
       type: object
-    CreateAdSetBiddingV24Q3:
+    CreateAdSetBiddingV26Q1:
       description: ad set bidding create model
       example:
         bidAmount: 0.8008281904610115
@@ -9158,7 +9160,7 @@ components:
       required:
       - costController
       type: object
-    CreateAdSetBudgetV24Q3:
+    CreateAdSetBudgetV26Q1:
       description: ad set budget create model
       example:
         budgetDeliverySmoothing: accelerated
@@ -9203,7 +9205,7 @@ components:
       required:
       - budgetStrategy
       type: object
-    CreateAdSetGeoLocationV24Q3:
+    CreateAdSetGeoLocationV26Q1:
       description: Geolocation configuration of the ad set
       example:
         zipCodes:
@@ -9223,13 +9225,13 @@ components:
           operand: undefined
       properties:
         countries:
-          $ref: '#/components/schemas/AdSetTargetingRuleV24Q3'
+          $ref: '#/components/schemas/AdSetTargetingRuleV26Q1'
         subdivisions:
-          $ref: '#/components/schemas/AdSetTargetingRuleV24Q3'
+          $ref: '#/components/schemas/AdSetTargetingRuleV26Q1'
         zipCodes:
-          $ref: '#/components/schemas/AdSetTargetingRuleV24Q3'
+          $ref: '#/components/schemas/AdSetTargetingRuleV26Q1'
       type: object
-    CreateAdSetScheduleV24Q3:
+    CreateAdSetScheduleV26Q1:
       description: ad set schedule create model
       example:
         endDate: 2000-01-23T04:56:07.000+00:00
@@ -9245,7 +9247,7 @@ components:
       required:
       - startDate
       type: object
-    CreateAdSetTargetingV24Q3:
+    CreateAdSetTargetingV26Q1:
       description: Targeting configuration of the ad set
       example:
         geoLocation:
@@ -9279,15 +9281,15 @@ components:
           - web
       properties:
         deliveryLimitations:
-          $ref: '#/components/schemas/AdSetDeliveryLimitationsV24Q3'
+          $ref: '#/components/schemas/AdSetDeliveryLimitationsV26Q1'
         frequencyCapping:
-          $ref: '#/components/schemas/AdSetFrequencyCappingV24Q3'
+          $ref: '#/components/schemas/AdSetFrequencyCappingV26Q1'
         geoLocation:
-          $ref: '#/components/schemas/CreateAdSetGeoLocationV24Q3'
+          $ref: '#/components/schemas/CreateAdSetGeoLocationV26Q1'
       required:
       - frequencyCapping
       type: object
-    CreateAdSetV24Q3:
+    CreateAdSetV26Q1:
       description: ad set create model
       example:
         schedule:
@@ -9343,11 +9345,11 @@ components:
         objective: customAction
       properties:
         attributionConfiguration:
-          $ref: '#/components/schemas/CreateAdSetAttributionConfigurationV24Q3'
+          $ref: '#/components/schemas/CreateAdSetAttributionConfigurationV26Q1'
         bidding:
-          $ref: '#/components/schemas/CreateAdSetBiddingV24Q3'
+          $ref: '#/components/schemas/CreateAdSetBiddingV26Q1'
         budget:
-          $ref: '#/components/schemas/CreateAdSetBudgetV24Q3'
+          $ref: '#/components/schemas/CreateAdSetBudgetV26Q1'
         campaignId:
           description: Campaign id this ad set belongs to
           nullable: true
@@ -9381,9 +9383,9 @@ components:
           - videoViews
           type: string
         schedule:
-          $ref: '#/components/schemas/CreateAdSetScheduleV24Q3'
+          $ref: '#/components/schemas/CreateAdSetScheduleV26Q1'
         targeting:
-          $ref: '#/components/schemas/CreateAdSetTargetingV24Q3'
+          $ref: '#/components/schemas/CreateAdSetTargetingV26Q1'
         trackingCode:
           description: The click tracking code associated to this Ad Set.
           nullable: true
@@ -9399,7 +9401,7 @@ components:
       - targeting
       - trackingCode
       type: object
-    CreateAdSetV24Q3Request:
+    CreateAdSetV26Q1Request:
       description: Data model for an input resources
       example:
         data:
@@ -9458,9 +9460,9 @@ components:
           type: AdSet
       properties:
         data:
-          $ref: '#/components/schemas/CreateAdSetV24Q3Resource'
+          $ref: '#/components/schemas/CreateAdSetV26Q1Resource'
       type: object
-    CreateAdSetV24Q3Resource:
+    CreateAdSetV26Q1Resource:
       description: Data model for a Resource
       example:
         attributes:
@@ -9518,7 +9520,7 @@ components:
         type: AdSet
       properties:
         attributes:
-          $ref: '#/components/schemas/CreateAdSetV24Q3'
+          $ref: '#/components/schemas/CreateAdSetV26Q1'
         type:
           description: Canonical type name of the entity
           example: AdSet
@@ -13663,7 +13665,7 @@ components:
       - errors
       - warnings
       type: object
-    NillableAdSetTargetingRuleV24Q3:
+    NillableAdSetTargetingRuleV26Q1:
       description: "structure that encapsulates an object that have valid business\
         \ null values. If the structure is provided (i.e. not null), then the value\
         \ in it, even null, is provided."
@@ -13672,7 +13674,7 @@ components:
       nullable: true
       properties:
         value:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q3_value'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV26Q1_value'
       type: object
     NillableDateTime:
       description: "structure that encapsulates an object that have valid business\
@@ -13886,7 +13888,7 @@ components:
           type: array
           uniqueItems: false
       type: object
-    PatchAdSetAttributionConfigurationV24Q3:
+    PatchAdSetAttributionConfigurationV26Q1:
       description: Patch model for an ad set's attribution configuration.
       example:
         attributionMethod: unknown
@@ -13901,6 +13903,8 @@ components:
           - googleAnalyticsDataDriven
           - lastClick
           - postClick
+          - sftp
+          - googleAnalytics
           nullable: true
           type: string
         lookbackWindow:
@@ -13915,7 +13919,7 @@ components:
           nullable: true
           type: string
       type: object
-    PatchAdSetBiddingV24Q3:
+    PatchAdSetBiddingV26Q1:
       description: ad set bidding patch model
       example:
         bidAmount:
@@ -13924,7 +13928,7 @@ components:
         bidAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
-    PatchAdSetBudgetV24Q3:
+    PatchAdSetBudgetV26Q1:
       description: ad set budget patch model
       example:
         budgetDeliverySmoothing: accelerated
@@ -14238,7 +14242,7 @@ components:
           nullable: true
           type: string
       type: object
-    PatchAdSetSchedulingV24Q3:
+    PatchAdSetSchedulingV26Q1:
       description: ad set schedule patch model
       example:
         endDate:
@@ -14251,7 +14255,7 @@ components:
         startDate:
           $ref: '#/components/schemas/NillableDateTime'
       type: object
-    PatchAdSetV24Q3:
+    PatchAdSetV26Q1:
       description: ad set patch model
       example:
         targeting:
@@ -14297,18 +14301,18 @@ components:
           budgetStrategy: capped
       properties:
         attributionConfiguration:
-          $ref: '#/components/schemas/PatchAdSetAttributionConfigurationV24Q3'
+          $ref: '#/components/schemas/PatchAdSetAttributionConfigurationV26Q1'
         bidding:
-          $ref: '#/components/schemas/PatchAdSetBiddingV24Q3'
+          $ref: '#/components/schemas/PatchAdSetBiddingV26Q1'
         budget:
-          $ref: '#/components/schemas/PatchAdSetBudgetV24Q3'
+          $ref: '#/components/schemas/PatchAdSetBudgetV26Q1'
         name:
           nullable: true
           type: string
         scheduling:
-          $ref: '#/components/schemas/PatchAdSetSchedulingV24Q3'
+          $ref: '#/components/schemas/PatchAdSetSchedulingV26Q1'
         targeting:
-          $ref: '#/components/schemas/AdSetTargetingV24Q3'
+          $ref: '#/components/schemas/AdSetTargetingV26Q1'
       type: object
     PatchCampaign:
       description: campaign patch model
@@ -16293,7 +16297,7 @@ components:
           nullable: true
           type: string
       type: object
-    ReadAdSetAttributionConfigurationV24Q3:
+    ReadAdSetAttributionConfigurationV26Q1:
       description: Read model for an ad set's attribution configuration.
       example:
         attributionMethod: unknown
@@ -16309,6 +16313,8 @@ components:
           - googleAnalyticsDataDriven
           - lastClick
           - postClick
+          - sftp
+          - googleAnalytics
           nullable: true
           type: string
         lookbackWindow:
@@ -16323,7 +16329,7 @@ components:
           nullable: true
           type: string
       type: object
-    ReadAdSetBiddingV24Q3:
+    ReadAdSetBiddingV26Q1:
       description: ad set bidding read model
       example:
         bidAmount: 0.8008281904610115
@@ -16352,7 +16358,7 @@ components:
           nullable: true
           type: string
       type: object
-    ReadAdSetBudgetV24Q3:
+    ReadAdSetBudgetV26Q1:
       description: ad set budget read model
       example:
         budgetDeliverySmoothing: accelerated
@@ -16400,7 +16406,7 @@ components:
           nullable: true
           type: string
       type: object
-    ReadAdSetScheduleV24Q3:
+    ReadAdSetScheduleV26Q1:
       description: ad set schedule read model
       example:
         endDate:
@@ -16436,7 +16442,7 @@ components:
         startDate:
           $ref: '#/components/schemas/NillableDateTime'
       type: object
-    ReadAdSetV24Q3:
+    ReadAdSetV26Q1:
       description: ad set read model
       example:
         bidding:
@@ -16494,11 +16500,11 @@ components:
           nullable: true
           type: string
         attributionConfiguration:
-          $ref: '#/components/schemas/ReadAdSetAttributionConfigurationV24Q3'
+          $ref: '#/components/schemas/ReadAdSetAttributionConfigurationV26Q1'
         bidding:
-          $ref: '#/components/schemas/ReadAdSetBiddingV24Q3'
+          $ref: '#/components/schemas/ReadAdSetBiddingV26Q1'
         budget:
-          $ref: '#/components/schemas/ReadAdSetBudgetV24Q3'
+          $ref: '#/components/schemas/ReadAdSetBudgetV26Q1'
         campaignId:
           nullable: true
           type: string
@@ -16537,9 +16543,9 @@ components:
           nullable: true
           type: string
         schedule:
-          $ref: '#/components/schemas/ReadAdSetScheduleV24Q3'
+          $ref: '#/components/schemas/ReadAdSetScheduleV26Q1'
         targeting:
-          $ref: '#/components/schemas/AdSetTargetingV24Q3'
+          $ref: '#/components/schemas/AdSetTargetingV26Q1'
         videoChannel:
           enum:
           - olv
@@ -16564,12 +16570,12 @@ components:
           readOnly: true
           type: string
       type: object
-    ReadModelAdSetIdV24Q3:
+    ReadModelAdSetIdV26Q1:
       description: read model data for resources
       example:
         attributes: "{}"
         id: id
-        type: AdSetIdV24Q3
+        type: AdSetIdV26Q1
       properties:
         attributes:
           description: ad set id model
@@ -16581,12 +16587,12 @@ components:
           readOnly: true
           type: string
         type:
-          example: AdSetIdV24Q3
+          example: AdSetIdV26Q1
           nullable: true
           readOnly: true
           type: string
       type: object
-    ReadModelReadAdSetV24Q3:
+    ReadModelReadAdSetV26Q1:
       description: read model data for resources
       example:
         attributes:
@@ -16640,18 +16646,18 @@ components:
             budgetRenewal: undefined
             budgetStrategy: capped
         id: id
-        type: ReadAdSetV24Q3
+        type: ReadAdSetV26Q1
       nullable: true
       properties:
         attributes:
-          $ref: '#/components/schemas/ReadAdSetV24Q3'
+          $ref: '#/components/schemas/ReadAdSetV26Q1'
         id:
           description: Id of the entity
           nullable: true
           readOnly: true
           type: string
         type:
-          example: ReadAdSetV24Q3
+          example: ReadAdSetV26Q1
           nullable: true
           readOnly: true
           type: string
@@ -16934,7 +16940,7 @@ components:
           nullable: true
           type: array
       type: object
-    RequestsPatchAdSetV24Q3:
+    RequestsPatchAdSetV26Q1:
       description: List of input resources
       example:
         data:
@@ -16981,7 +16987,7 @@ components:
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: PatchAdSetV24Q3
+          type: PatchAdSetV26Q1
         - attributes:
             targeting:
               geoLocation:
@@ -17025,11 +17031,11 @@ components:
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: PatchAdSetV24Q3
+          type: PatchAdSetV26Q1
       properties:
         data:
           items:
-            $ref: '#/components/schemas/WriteModelPatchAdSetV24Q3'
+            $ref: '#/components/schemas/WriteModelPatchAdSetV26Q1'
           nullable: true
           type: array
       type: object
@@ -18697,7 +18703,7 @@ components:
           type: array
           uniqueItems: false
       type: object
-    ResponseReadAdSetV24Q3:
+    ResponseReadAdSetV26Q1:
       description: output resource
       example:
         data:
@@ -18752,7 +18758,7 @@ components:
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: ReadAdSetV24Q3
+          type: ReadAdSetV26Q1
         warnings:
         - traceId: traceId
           code: code
@@ -18797,7 +18803,7 @@ components:
           type: unknown
       properties:
         data:
-          $ref: '#/components/schemas/ReadModelReadAdSetV24Q3'
+          $ref: '#/components/schemas/ReadModelReadAdSetV26Q1'
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
@@ -18881,16 +18887,16 @@ components:
           readOnly: true
           type: array
       type: object
-    ResponsesAdSetIdV24Q3:
+    ResponsesAdSetIdV26Q1:
       description: List of output resources
       example:
         data:
         - attributes: "{}"
           id: id
-          type: AdSetIdV24Q3
+          type: AdSetIdV26Q1
         - attributes: "{}"
           id: id
-          type: AdSetIdV24Q3
+          type: AdSetIdV26Q1
         warnings:
         - traceId: traceId
           code: code
@@ -18936,7 +18942,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/ReadModelAdSetIdV24Q3'
+            $ref: '#/components/schemas/ReadModelAdSetIdV26Q1'
           nullable: true
           readOnly: true
           type: array
@@ -18953,7 +18959,7 @@ components:
           readOnly: true
           type: array
       type: object
-    ResponsesReadAdSetV24Q3:
+    ResponsesReadAdSetV26Q1:
       description: List of output resources
       example:
         data:
@@ -19008,7 +19014,7 @@ components:
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: ReadAdSetV24Q3
+          type: ReadAdSetV26Q1
         - attributes:
             bidding:
               bidAmount: 0.8008281904610115
@@ -19060,7 +19066,7 @@ components:
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: ReadAdSetV24Q3
+          type: ReadAdSetV26Q1
         warnings:
         - traceId: traceId
           code: code
@@ -19106,7 +19112,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/ReadModelReadAdSetV24Q3'
+            $ref: '#/components/schemas/ReadModelReadAdSetV26Q1'
           nullable: true
           readOnly: true
           type: array
@@ -20869,7 +20875,7 @@ components:
           nullable: true
           type: string
       type: object
-    WriteModelPatchAdSetV24Q3:
+    WriteModelPatchAdSetV26Q1:
       description: write model data for resources
       example:
         attributes:
@@ -20915,21 +20921,21 @@ components:
             budgetRenewal: undefined
             budgetStrategy: capped
         id: id
-        type: PatchAdSetV24Q3
+        type: PatchAdSetV26Q1
       properties:
         attributes:
-          $ref: '#/components/schemas/PatchAdSetV24Q3'
+          $ref: '#/components/schemas/PatchAdSetV26Q1'
         id:
           description: Id of the entity
           nullable: true
           type: string
         type:
           description: Canonical type name of the entity
-          example: PatchAdSetV24Q3
+          example: PatchAdSetV26Q1
           nullable: true
           type: string
       type: object
-    AdSetTargetingV24Q3_frequencyCapping:
+    AdSetTargetingV26Q1_frequencyCapping:
       example:
         value:
           maximumImpressions: 1
@@ -20937,7 +20943,7 @@ components:
       nullable: true
       properties:
         value:
-          $ref: '#/components/schemas/AdSetFrequencyCappingV24Q3'
+          $ref: '#/components/schemas/AdSetFrequencyCappingV26Q1'
       type: object
     ContactlistAmendment_attributes:
       description: the name of the entity type
@@ -21058,9 +21064,9 @@ components:
       - identifiers
       - operation
       type: object
-    NillableAdSetTargetingRuleV24Q3_value:
+    NillableAdSetTargetingRuleV26Q1_value:
       allOf:
-      - $ref: '#/components/schemas/AdSetTargetingRuleV24Q3'
+      - $ref: '#/components/schemas/AdSetTargetingRuleV26Q1'
       nullable: true
       type: object
   securitySchemes:
