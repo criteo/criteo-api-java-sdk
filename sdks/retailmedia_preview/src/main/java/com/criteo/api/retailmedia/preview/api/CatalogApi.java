@@ -28,12 +28,11 @@ import java.io.IOException;
 
 
 import com.criteo.api.retailmedia.preview.model.BatchAcceptedResponse;
+import com.criteo.api.retailmedia.preview.model.Outcome;
 import com.criteo.api.retailmedia.preview.model.ProductsCustomBatchRequest;
 import com.criteo.api.retailmedia.preview.model.ReportOkResponse;
-import com.criteo.api.retailmedia.preview.model.ValueResourceInputLoadSkuOffersRequest;
-import com.criteo.api.retailmedia.preview.model.ValueResourceInputSetSkuBuyBoxWinnersRequest;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputSetProductBuyBoxWinnersRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputUpdateOffersRequest;
-import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeAsyncJobResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -203,137 +202,9 @@ public class CatalogApi {
         return localVarCall;
     }
     /**
-     * Build call for offerLoadV1
-     * @param retailerId The retailer for which these offers will be loaded (required)
-     * @param valueResourceInputLoadSkuOffersRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call offerLoadV1Call(Integer retailerId, ValueResourceInputLoadSkuOffersRequest valueResourceInputLoadSkuOffersRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = valueResourceInputLoadSkuOffersRequest;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/retailers/{retailerId}/offers/load"
-            .replace("{" + "retailerId" + "}", localVarApiClient.escapeString(retailerId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call offerLoadV1ValidateBeforeCall(Integer retailerId, ValueResourceInputLoadSkuOffersRequest valueResourceInputLoadSkuOffersRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'retailerId' is set
-        if (retailerId == null) {
-            throw new ApiException("Missing the required parameter 'retailerId' when calling offerLoadV1(Async)");
-        }
-
-        return offerLoadV1Call(retailerId, valueResourceInputLoadSkuOffersRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * Replace the offers for one or more SKUs with a snapshot of the new offers for each respective SKU
-     * @param retailerId The retailer for which these offers will be loaded (required)
-     * @param valueResourceInputLoadSkuOffersRequest  (optional)
-     * @return ValueResourceOutcomeAsyncJobResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ValueResourceOutcomeAsyncJobResponse offerLoadV1(Integer retailerId, ValueResourceInputLoadSkuOffersRequest valueResourceInputLoadSkuOffersRequest) throws ApiException {
-        ApiResponse<ValueResourceOutcomeAsyncJobResponse> localVarResp = offerLoadV1WithHttpInfo(retailerId, valueResourceInputLoadSkuOffersRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Replace the offers for one or more SKUs with a snapshot of the new offers for each respective SKU
-     * @param retailerId The retailer for which these offers will be loaded (required)
-     * @param valueResourceInputLoadSkuOffersRequest  (optional)
-     * @return ApiResponse&lt;ValueResourceOutcomeAsyncJobResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ValueResourceOutcomeAsyncJobResponse> offerLoadV1WithHttpInfo(Integer retailerId, ValueResourceInputLoadSkuOffersRequest valueResourceInputLoadSkuOffersRequest) throws ApiException {
-        okhttp3.Call localVarCall = offerLoadV1ValidateBeforeCall(retailerId, valueResourceInputLoadSkuOffersRequest, null);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeAsyncJobResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Replace the offers for one or more SKUs with a snapshot of the new offers for each respective SKU
-     * @param retailerId The retailer for which these offers will be loaded (required)
-     * @param valueResourceInputLoadSkuOffersRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call offerLoadV1Async(Integer retailerId, ValueResourceInputLoadSkuOffersRequest valueResourceInputLoadSkuOffersRequest, final ApiCallback<ValueResourceOutcomeAsyncJobResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = offerLoadV1ValidateBeforeCall(retailerId, valueResourceInputLoadSkuOffersRequest, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeAsyncJobResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for offerSetBbwV1
      * @param retailerId The retailer for which these buy box winners will be set (required)
-     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (required)
+     * @param valueResourceInputSetProductBuyBoxWinnersRequest Updated buy box winners for one or more products (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -343,7 +214,7 @@ public class CatalogApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call offerSetBbwV1Call(Integer retailerId, ValueResourceInputSetSkuBuyBoxWinnersRequest valueResourceInputSetSkuBuyBoxWinnersRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call offerSetBbwV1Call(String retailerId, ValueResourceInputSetProductBuyBoxWinnersRequest valueResourceInputSetProductBuyBoxWinnersRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -357,11 +228,11 @@ public class CatalogApi {
             basePath = null;
         }
 
-        Object localVarPostBody = valueResourceInputSetSkuBuyBoxWinnersRequest;
+        Object localVarPostBody = valueResourceInputSetProductBuyBoxWinnersRequest;
 
         // create path and map variables
-        String localVarPath = "/preview/retail-media/retailers/{retailerId}/offers/set-buy-box-winners"
-            .replace("{" + "retailerId" + "}", localVarApiClient.escapeString(retailerId.toString()));
+        String localVarPath = "/preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners"
+            .replace("{" + "retailer-id" + "}", localVarApiClient.escapeString(retailerId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -390,27 +261,27 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call offerSetBbwV1ValidateBeforeCall(Integer retailerId, ValueResourceInputSetSkuBuyBoxWinnersRequest valueResourceInputSetSkuBuyBoxWinnersRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call offerSetBbwV1ValidateBeforeCall(String retailerId, ValueResourceInputSetProductBuyBoxWinnersRequest valueResourceInputSetProductBuyBoxWinnersRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling offerSetBbwV1(Async)");
         }
 
-        // verify the required parameter 'valueResourceInputSetSkuBuyBoxWinnersRequest' is set
-        if (valueResourceInputSetSkuBuyBoxWinnersRequest == null) {
-            throw new ApiException("Missing the required parameter 'valueResourceInputSetSkuBuyBoxWinnersRequest' when calling offerSetBbwV1(Async)");
+        // verify the required parameter 'valueResourceInputSetProductBuyBoxWinnersRequest' is set
+        if (valueResourceInputSetProductBuyBoxWinnersRequest == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputSetProductBuyBoxWinnersRequest' when calling offerSetBbwV1(Async)");
         }
 
-        return offerSetBbwV1Call(retailerId, valueResourceInputSetSkuBuyBoxWinnersRequest, _callback);
+        return offerSetBbwV1Call(retailerId, valueResourceInputSetProductBuyBoxWinnersRequest, _callback);
 
     }
 
     /**
      * 
-     * Update the buy box winner for one or more SKUs
+     * Update the buy box winner for one or more products
      * @param retailerId The retailer for which these buy box winners will be set (required)
-     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (required)
-     * @return ValueResourceOutcomeAsyncJobResponse
+     * @param valueResourceInputSetProductBuyBoxWinnersRequest Updated buy box winners for one or more products (required)
+     * @return Outcome
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -418,17 +289,17 @@ public class CatalogApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceOutcomeAsyncJobResponse offerSetBbwV1(Integer retailerId, ValueResourceInputSetSkuBuyBoxWinnersRequest valueResourceInputSetSkuBuyBoxWinnersRequest) throws ApiException {
-        ApiResponse<ValueResourceOutcomeAsyncJobResponse> localVarResp = offerSetBbwV1WithHttpInfo(retailerId, valueResourceInputSetSkuBuyBoxWinnersRequest);
+    public Outcome offerSetBbwV1(String retailerId, ValueResourceInputSetProductBuyBoxWinnersRequest valueResourceInputSetProductBuyBoxWinnersRequest) throws ApiException {
+        ApiResponse<Outcome> localVarResp = offerSetBbwV1WithHttpInfo(retailerId, valueResourceInputSetProductBuyBoxWinnersRequest);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Update the buy box winner for one or more SKUs
+     * Update the buy box winner for one or more products
      * @param retailerId The retailer for which these buy box winners will be set (required)
-     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (required)
-     * @return ApiResponse&lt;ValueResourceOutcomeAsyncJobResponse&gt;
+     * @param valueResourceInputSetProductBuyBoxWinnersRequest Updated buy box winners for one or more products (required)
+     * @return ApiResponse&lt;Outcome&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -436,17 +307,17 @@ public class CatalogApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceOutcomeAsyncJobResponse> offerSetBbwV1WithHttpInfo(Integer retailerId, ValueResourceInputSetSkuBuyBoxWinnersRequest valueResourceInputSetSkuBuyBoxWinnersRequest) throws ApiException {
-        okhttp3.Call localVarCall = offerSetBbwV1ValidateBeforeCall(retailerId, valueResourceInputSetSkuBuyBoxWinnersRequest, null);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeAsyncJobResponse>(){}.getType();
+    public ApiResponse<Outcome> offerSetBbwV1WithHttpInfo(String retailerId, ValueResourceInputSetProductBuyBoxWinnersRequest valueResourceInputSetProductBuyBoxWinnersRequest) throws ApiException {
+        okhttp3.Call localVarCall = offerSetBbwV1ValidateBeforeCall(retailerId, valueResourceInputSetProductBuyBoxWinnersRequest, null);
+        Type localVarReturnType = new TypeToken<Outcome>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Update the buy box winner for one or more SKUs
+     * Update the buy box winner for one or more products
      * @param retailerId The retailer for which these buy box winners will be set (required)
-     * @param valueResourceInputSetSkuBuyBoxWinnersRequest  (required)
+     * @param valueResourceInputSetProductBuyBoxWinnersRequest Updated buy box winners for one or more products (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -456,17 +327,17 @@ public class CatalogApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call offerSetBbwV1Async(Integer retailerId, ValueResourceInputSetSkuBuyBoxWinnersRequest valueResourceInputSetSkuBuyBoxWinnersRequest, final ApiCallback<ValueResourceOutcomeAsyncJobResponse> _callback) throws ApiException {
+    public okhttp3.Call offerSetBbwV1Async(String retailerId, ValueResourceInputSetProductBuyBoxWinnersRequest valueResourceInputSetProductBuyBoxWinnersRequest, final ApiCallback<Outcome> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = offerSetBbwV1ValidateBeforeCall(retailerId, valueResourceInputSetSkuBuyBoxWinnersRequest, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeAsyncJobResponse>(){}.getType();
+        okhttp3.Call localVarCall = offerSetBbwV1ValidateBeforeCall(retailerId, valueResourceInputSetProductBuyBoxWinnersRequest, _callback);
+        Type localVarReturnType = new TypeToken<Outcome>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for offerUpdateV1
      * @param retailerId The retailer for which these offers will be updated (required)
-     * @param valueResourceInputUpdateOffersRequest  (optional)
+     * @param valueResourceInputUpdateOffersRequest Collection of offer price and availability updates to be applied. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -476,7 +347,7 @@ public class CatalogApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call offerUpdateV1Call(Integer retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call offerUpdateV1Call(String retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -493,8 +364,8 @@ public class CatalogApi {
         Object localVarPostBody = valueResourceInputUpdateOffersRequest;
 
         // create path and map variables
-        String localVarPath = "/preview/retail-media/retailers/{retailerId}/offers/update"
-            .replace("{" + "retailerId" + "}", localVarApiClient.escapeString(retailerId.toString()));
+        String localVarPath = "/preview/retail-media/retailers/{retailer-id}/offers/update"
+            .replace("{" + "retailer-id" + "}", localVarApiClient.escapeString(retailerId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -523,10 +394,15 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call offerUpdateV1ValidateBeforeCall(Integer retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call offerUpdateV1ValidateBeforeCall(String retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling offerUpdateV1(Async)");
+        }
+
+        // verify the required parameter 'valueResourceInputUpdateOffersRequest' is set
+        if (valueResourceInputUpdateOffersRequest == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputUpdateOffersRequest' when calling offerUpdateV1(Async)");
         }
 
         return offerUpdateV1Call(retailerId, valueResourceInputUpdateOffersRequest, _callback);
@@ -537,8 +413,8 @@ public class CatalogApi {
      * 
      * Update one or more offers by replacing each offer&#39;s price and availability with the given values
      * @param retailerId The retailer for which these offers will be updated (required)
-     * @param valueResourceInputUpdateOffersRequest  (optional)
-     * @return ValueResourceOutcomeAsyncJobResponse
+     * @param valueResourceInputUpdateOffersRequest Collection of offer price and availability updates to be applied. (required)
+     * @return Outcome
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -546,8 +422,8 @@ public class CatalogApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceOutcomeAsyncJobResponse offerUpdateV1(Integer retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest) throws ApiException {
-        ApiResponse<ValueResourceOutcomeAsyncJobResponse> localVarResp = offerUpdateV1WithHttpInfo(retailerId, valueResourceInputUpdateOffersRequest);
+    public Outcome offerUpdateV1(String retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest) throws ApiException {
+        ApiResponse<Outcome> localVarResp = offerUpdateV1WithHttpInfo(retailerId, valueResourceInputUpdateOffersRequest);
         return localVarResp.getData();
     }
 
@@ -555,8 +431,8 @@ public class CatalogApi {
      * 
      * Update one or more offers by replacing each offer&#39;s price and availability with the given values
      * @param retailerId The retailer for which these offers will be updated (required)
-     * @param valueResourceInputUpdateOffersRequest  (optional)
-     * @return ApiResponse&lt;ValueResourceOutcomeAsyncJobResponse&gt;
+     * @param valueResourceInputUpdateOffersRequest Collection of offer price and availability updates to be applied. (required)
+     * @return ApiResponse&lt;Outcome&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -564,9 +440,9 @@ public class CatalogApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceOutcomeAsyncJobResponse> offerUpdateV1WithHttpInfo(Integer retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest) throws ApiException {
+    public ApiResponse<Outcome> offerUpdateV1WithHttpInfo(String retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest) throws ApiException {
         okhttp3.Call localVarCall = offerUpdateV1ValidateBeforeCall(retailerId, valueResourceInputUpdateOffersRequest, null);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeAsyncJobResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<Outcome>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -574,7 +450,7 @@ public class CatalogApi {
      *  (asynchronously)
      * Update one or more offers by replacing each offer&#39;s price and availability with the given values
      * @param retailerId The retailer for which these offers will be updated (required)
-     * @param valueResourceInputUpdateOffersRequest  (optional)
+     * @param valueResourceInputUpdateOffersRequest Collection of offer price and availability updates to be applied. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -584,10 +460,10 @@ public class CatalogApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call offerUpdateV1Async(Integer retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest, final ApiCallback<ValueResourceOutcomeAsyncJobResponse> _callback) throws ApiException {
+    public okhttp3.Call offerUpdateV1Async(String retailerId, ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest, final ApiCallback<Outcome> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = offerUpdateV1ValidateBeforeCall(retailerId, valueResourceInputUpdateOffersRequest, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeAsyncJobResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<Outcome>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

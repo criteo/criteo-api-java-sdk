@@ -1,6 +1,6 @@
 
 
-# ValueResourceAccountFeesUpdateRequest
+# ValueResourceSetProductBuyBoxWinnersRequest
 
 A value resource exposed by the API.
 
@@ -8,7 +8,7 @@ A value resource exposed by the API.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**AccountFeesUpdateRequest**](AccountFeesUpdateRequest.md) |  |  [optional] |
+|**attributes** | [**SetProductBuyBoxWinnersRequest**](SetProductBuyBoxWinnersRequest.md) |  |  [optional] |
 |**type** | **String** | Type of the resource. |  [optional] |
 
 

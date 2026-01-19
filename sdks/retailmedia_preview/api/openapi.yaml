@@ -12,7 +12,6 @@ tags:
 - name: Analytics
 - name: Audience
 - name: Balance
-- name: Billing
 - name: Campaign
 - name: Catalog
 - name: Gateway
@@ -974,74 +973,6 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /preview/retail-media/accounts/fees/search:
-    post:
-      description: Get fees for provided accounts
-      operationId: AccountFeesSearch
-      parameters:
-      - description: "used for paging, number of results returned per request, Maximum\
-          \ of 500"
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 50
-          format: int32
-          maximum: 500
-          minimum: 1
-          type: integer
-        style: form
-      - description: "used for paging, number of records to skip"
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputAccountFeesSearchRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Accounts_Read
-      tags:
-      - Accounts
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/accounts/fees/update:
-    post:
-      description: Set fees for provided accounts
-      operationId: UpdateAccountFees
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputAccountFeesUpdateRequest'
-      responses:
-        "204":
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Accounts_Manage
-      tags:
-      - Accounts
-      x-content-type: application/json
-      x-accepts: application/json
   /preview/retail-media/auction-line-items/{lineItemId}:
     get:
       description: Gets a sponsored product line item by its id.
@@ -1346,87 +1277,6 @@ paths:
         - RetailMedia_Balance_Read
       tags:
       - Balance
-      x-accepts: application/json
-  /preview/retail-media/billing/partner-report:
-    post:
-      description: Create a Partner Billing Report request.
-      operationId: CreatePartnerBillingReportRequestV1
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputPartnerBillingReportRequestV1'
-        description: Partner Billing Report request object.
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EntityResourceOutcomePartnerBillingReportStatusV1'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Billing_Read
-      tags:
-      - Billing
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/billing/partner-report/{requestId}/output:
-    get:
-      description: Get the output of an existing Partner Billing Report.
-      operationId: GetPartnerBillingReportOutputV1
-      parameters:
-      - description: The id of a Partner Billing Report request.
-        explode: false
-        in: path
-        name: requestId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/csv:
-              schema:
-                format: binary
-                type: string
-            application/json:
-              schema:
-                format: binary
-                type: string
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Billing_Read
-      tags:
-      - Billing
-      x-accepts: application/json
-  /preview/retail-media/billing/partner-report/{requestId}/status:
-    get:
-      description: Get the status of an existing Partner Billing Report.
-      operationId: GetPartnerBillingReportStatusV1
-      parameters:
-      - description: The id of a Partner Billing Report request.
-        explode: false
-        in: path
-        name: requestId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EntityResourceOutcomePartnerBillingReportStatusV1'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Billing_Read
-      tags:
-      - Billing
       x-accepts: application/json
   /preview/retail-media/brands/search:
     post:
@@ -2634,6 +2484,41 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
+  /preview/retail-media/retailers/{retailer-id}/offers/update:
+    post:
+      description: Update one or more offers by replacing each offer's price and availability
+        with the given values
+      operationId: OfferUpdateV1
+      parameters:
+      - description: The retailer for which these offers will be updated
+        explode: false
+        in: path
+        name: retailer-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputUpdateOffersRequest'
+        description: Collection of offer price and availability updates to be applied.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Catalog_Manage
+      tags:
+      - Catalog
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/retailers/{retailer-id}/placements:
     get:
       description: Gets all placement information for the given retailer
@@ -2659,6 +2544,40 @@ paths:
         - RetailMedia_Campaign_Read
       tags:
       - Campaign
+      x-accepts: application/json
+  /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners:
+    post:
+      description: Update the buy box winner for one or more products
+      operationId: OfferSetBbwV1
+      parameters:
+      - description: The retailer for which these buy box winners will be set
+        explode: false
+        in: path
+        name: retailer-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputSetProductBuyBoxWinnersRequest'
+        description: Updated buy box winners for one or more products
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Catalog_Manage
+      tags:
+      - Catalog
+      x-content-type: application/json
       x-accepts: application/json
   /preview/retail-media/retailers/{retailerId}/brands:
     get:
@@ -2707,66 +2626,6 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
-  /preview/retail-media/retailers/{retailerId}/categories/search:
-    post:
-      description: Search a retailer categories by given text substring and category
-        ids.
-      operationId: SearchCategory
-      parameters:
-      - description: Limit of the search result.
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 50
-          format: int32
-          maximum: 500
-          minimum: 1
-          type: integer
-        style: form
-      - description: Offset of the search result.
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-        style: form
-      - description: Retailer id.
-        explode: false
-        in: path
-        name: retailerId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputCategoriesSearchRequestV1'
-        description: Request of categories search.
-        x-bodyName: request
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EntityResourceCollectionOutcomeCategory202204Metadata'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Read
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
   /preview/retail-media/retailers/{retailerId}/compute-display-min-bid:
     post:
       description: Computes the min bid for relevant page types based on the provided
@@ -2795,179 +2654,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValueResourceCollectionOutcomeDisplayAuctionMinBidResult'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Read
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/retailers/{retailerId}/offers/load:
-    post:
-      description: Replace the offers for one or more SKUs with a snapshot of the
-        new offers for each respective SKU
-      operationId: OfferLoadV1
-      parameters:
-      - description: The retailer for which these offers will be loaded
-        explode: false
-        in: path
-        name: retailerId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputLoadSkuOffersRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeAsyncJobResponse'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Catalog_Manage
-      tags:
-      - Catalog
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/retailers/{retailerId}/offers/set-buy-box-winners:
-    post:
-      description: Update the buy box winner for one or more SKUs
-      operationId: OfferSetBbwV1
-      parameters:
-      - description: The retailer for which these buy box winners will be set
-        explode: false
-        in: path
-        name: retailerId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputSetSkuBuyBoxWinnersRequest'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeAsyncJobResponse'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Catalog_Manage
-      tags:
-      - Catalog
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/retailers/{retailerId}/offers/update:
-    post:
-      description: Update one or more offers by replacing each offer's price and availability
-        with the given values
-      operationId: OfferUpdateV1
-      parameters:
-      - description: The retailer for which these offers will be updated
-        explode: false
-        in: path
-        name: retailerId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputUpdateOffersRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeAsyncJobResponse'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Catalog_Manage
-      tags:
-      - Catalog
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/retailers/{retailerId}/recommend-categories:
-    post:
-      description: Endpoint to get recommended categories by given retailer id and
-        sku id list.
-      operationId: GetRecommendedCategories
-      parameters:
-      - description: Retailer id.
-        explode: false
-        in: path
-        name: retailerId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputRecommendedCategoriesRequestV1'
-        description: Request of recommended categories.
-        required: true
-        x-bodyName: request
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EntityResourceCollectionOutcomeCategory202204'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Read
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/retailers/{retailerId}/recommend-keywords:
-    post:
-      description: Recommend keywords by given retailer id and sku ids.
-      operationId: RecommendedKeywords
-      parameters:
-      - description: Retailer id.
-        explode: false
-        in: path
-        name: retailerId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputRecommendedKeywordsRequestV1'
-        description: Request of recommended keywords.
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeRecommendedKeywordsResponseV1'
           description: Success
       security:
       - oauth:
@@ -3184,52 +2870,6 @@ paths:
       x-accepts: application/json
 components:
   schemas:
-    AccountFeesSearchRequest:
-      additionalProperties: false
-      description: the request body for account fees search
-      example:
-        accountIds:
-        - accountIds
-        - accountIds
-      properties:
-        accountIds:
-          description: Account Ids to return fees
-          items:
-            type: string
-          nullable: true
-          type: array
-      type: object
-    AccountFeesUpdateRequest:
-      additionalProperties: false
-      description: request body to set provided fees for the provided accounts
-      example:
-        fees:
-          demandManaged:
-            rate: 0.08008281904610115
-          managedService:
-            onsiteSponsoredProductsEnabled: true
-            rate: 0.6027456183070403
-            onsiteDisplayEnabled: true
-        accountIds:
-        - accountIds
-        - accountIds
-        - accountIds
-        - accountIds
-        - accountIds
-      properties:
-        accountIds:
-          description: accounts to update
-          items:
-            type: string
-          maxItems: 25
-          minItems: 1
-          type: array
-        fees:
-          $ref: '#/components/schemas/PrivateMarketFees'
-      required:
-      - accountIds
-      - fees
-      type: object
     ApplicationSummaryModel:
       description: Used for the /me endpoint. Contains information about the currently
         authenticated application that we accept to give to our clients
@@ -4162,18 +3802,6 @@ components:
         attributes:
           $ref: '#/components/schemas/AsyncFillRateReport'
         type:
-          type: string
-      type: object
-    AsyncJobResponse:
-      additionalProperties: false
-      description: "Indicates the successful receipt of an async request, containing\
-        \ the job ID"
-      example:
-        jobId: jobId
-      nullable: true
-      properties:
-        jobId:
-          nullable: true
           type: string
       type: object
     AsyncLineItemsReport:
@@ -5667,26 +5295,6 @@ components:
       - createdAt
       - status
       type: object
-    CategoriesSearchRequestV1:
-      description: An object that represents the request of CategoriesSearch endpoint.
-      example:
-        categoryIds:
-        - categoryIds
-        - categoryIds
-        textSubstring: textSubstring
-      properties:
-        categoryIds:
-          description: Categories search category ids criteria.
-          items:
-            type: string
-          minItems: 1
-          nullable: true
-          type: array
-        textSubstring:
-          description: Categories search text substring criteria.
-          nullable: true
-          type: string
-      type: object
     Category202204:
       additionalProperties: false
       description: "List of retailer's categories, including the full hierarchy of\
@@ -6642,22 +6250,6 @@ components:
       - name
       - value
       type: object
-    DemandManagedFee:
-      additionalProperties: false
-      description: settings for DSP fees
-      example:
-        rate: 0.08008281904610115
-      nullable: true
-      properties:
-        rate:
-          description: decimal fee rate between 0 and 1
-          format: double
-          maximum: 1
-          minimum: 0
-          type: number
-      required:
-      - rate
-      type: object
     DisplayAuctionMinBidRequest:
       additionalProperties: false
       description: Represents the list of creatives and respective product IDs to
@@ -6743,27 +6335,6 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/BrandIdSearchResult'
-        id:
-          description: Unique id of the entity.
-          nullable: true
-          type: string
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    EntityResourceCategory202204:
-      description: "A domain entity exposed by the API, identified by a unique id."
-      example:
-        attributes:
-          name: name
-          text: text
-          parentId: parentId
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/Category202204'
         id:
           description: Unique id of the entity.
           nullable: true
@@ -6872,164 +6443,6 @@ components:
           type: array
         metadata:
           $ref: '#/components/schemas/PagingOffsetLimitMetadata'
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    EntityResourceCollectionOutcomeCategory202204:
-      description: A top-level object that encapsulates a Criteo API response for
-        several entities.
-      example:
-        data:
-        - attributes:
-            name: name
-            text: text
-            parentId: parentId
-          id: id
-          type: type
-        - attributes:
-            name: name
-            text: text
-            parentId: parentId
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/EntityResourceCategory202204'
-          nullable: true
-          type: array
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    EntityResourceCollectionOutcomeCategory202204Metadata:
-      description: A top-level object that encapsulates a Criteo API response for
-        several entities and metadata.
-      example:
-        metadata:
-          offset: 1
-          count: 0
-          limit: 6
-        data:
-        - attributes:
-            name: name
-            text: text
-            parentId: parentId
-          id: id
-          type: type
-        - attributes:
-            name: name
-            text: text
-            parentId: parentId
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/EntityResourceCategory202204'
-          nullable: true
-          type: array
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        metadata:
-          $ref: '#/components/schemas/Metadata'
         warnings:
           description: Warnings that occured during this call.
           items:
@@ -8327,97 +7740,6 @@ components:
           readOnly: true
           type: array
       type: object
-    EntityResourceOutcomePartnerBillingReportStatusV1:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single entity.
-      example:
-        data:
-          attributes:
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            errorMessage: errorMessage
-            status: pending
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/EntityResourcePartnerBillingReportStatusV1'
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    EntityResourcePartnerBillingReportStatusV1:
-      additionalProperties: false
-      description: "A domain entity exposed by the API, identified by a unique id."
-      example:
-        attributes:
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          errorMessage: errorMessage
-          status: pending
-        id: id
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/PartnerBillingReportStatusV1'
-        id:
-          description: Unique id of the entity.
-          nullable: true
-          type: string
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
     ExportReportColumn:
       description: Description of a column from an async report request
       example:
@@ -9288,76 +8610,6 @@ components:
       - paused
       nullable: true
       type: string
-    LoadSkuOffersRequest:
-      additionalProperties: false
-      description: The request passed by the caller of the Load endpoint
-      example:
-        skuOfferLoads:
-        - offers:
-          - offerType: Seller
-            sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-          - offerType: Seller
-            sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-          buyBoxWinner: buyBoxWinner
-          skuId: skuId
-        - offers:
-          - offerType: Seller
-            sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-          - offerType: Seller
-            sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-          buyBoxWinner: buyBoxWinner
-          skuId: skuId
-        - offers:
-          - offerType: Seller
-            sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-          - offerType: Seller
-            sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-          buyBoxWinner: buyBoxWinner
-          skuId: skuId
-        - offers:
-          - offerType: Seller
-            sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-          - offerType: Seller
-            sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-          buyBoxWinner: buyBoxWinner
-          skuId: skuId
-        - offers:
-          - offerType: Seller
-            sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-          - offerType: Seller
-            sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-          buyBoxWinner: buyBoxWinner
-          skuId: skuId
-      properties:
-        skuOfferLoads:
-          items:
-            $ref: '#/components/schemas/SkuOfferLoad'
-          maxItems: 5000
-          minItems: 1
-          type: array
-      required:
-      - skuOfferLoads
-      type: object
     LoyaltyPoints:
       description: Defines how a client earns loyalty points after buying this product.
       example:
@@ -9379,32 +8631,6 @@ components:
             \ defaults to 1.0."
           format: double
           type: number
-      type: object
-    ManagedServiceFee:
-      additionalProperties: false
-      description: settings for managed service fees
-      example:
-        onsiteSponsoredProductsEnabled: true
-        rate: 0.6027456183070403
-        onsiteDisplayEnabled: true
-      nullable: true
-      properties:
-        onsiteDisplayEnabled:
-          description: whether fee is enabled for display campaigns
-          type: boolean
-        onsiteSponsoredProductsEnabled:
-          description: whether fee is enabled for sponsored product campaigns
-          type: boolean
-        rate:
-          description: decimal fee rate between 0 and 1
-          format: double
-          maximum: 1
-          minimum: 0
-          type: number
-      required:
-      - onsiteDisplayEnabled
-      - onsiteSponsoredProductsEnabled
-      - rate
       type: object
     Message:
       description: message of the discussion
@@ -9607,68 +8833,89 @@ components:
           nullable: true
           type: string
       type: object
-    OfferLoad:
-      additionalProperties: false
-      description: The state of a single offer which is being added for a SKU as part
-        of a load operation
-      example:
-        offerType: Seller
-        sellerId: sellerId
-        price: 0.8008281904610115
-        availability: OutOfStock
-      properties:
-        availability:
-          enum:
-          - OutOfStock
-          - PreOrder
-          - InStock
-          - BackOrder
-          type: string
-        offerType:
-          default: Seller
-          enum:
-          - Seller
-          - Retailer
-          type: string
-        price:
-          format: double
-          type: number
-        sellerId:
-          type: string
-      required:
-      - availability
-      - price
-      - sellerId
-      type: object
     OfferUpdate:
       additionalProperties: false
       description: The state of a single offer after it is replaced as part of an
         Update operation
       example:
-        sellerId: sellerId
         price: 0.8008281904610115
-        availability: OutOfStock
-        skuId: skuId
+        offerId: offerId
+        availability: outOfStock
       properties:
         availability:
           enum:
-          - OutOfStock
-          - PreOrder
-          - InStock
-          - BackOrder
+          - outOfStock
+          - preOrder
+          - inStock
+          - backOrder
+          type: string
+        offerId:
           type: string
         price:
           format: double
           type: number
-        sellerId:
-          type: string
-        skuId:
-          type: string
       required:
       - availability
+      - offerId
       - price
-      - sellerId
-      - skuId
+      type: object
+    Outcome:
+      additionalProperties: false
+      description: The outcome of an API call.
+      example:
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     PageMeta:
       additionalProperties: false
@@ -9889,83 +9136,6 @@ components:
       required:
       - limit
       - offset
-      type: object
-    PartnerBillingReportRequestV1:
-      additionalProperties: false
-      description: The request object of a Partner Billing Report.
-      example:
-        endDate: 2000-01-23
-        accountIds:
-        - accountIds
-        - accountIds
-        format: json
-        retailerIds:
-        - 0
-        - 0
-        startDate: 2000-01-23
-      properties:
-        accountIds:
-          description: On which accounts the report is created.
-          items:
-            type: string
-          minItems: 1
-          nullable: true
-          type: array
-        endDate:
-          description: "End date of the report (ISO 8601 format, e.g. YYYY-MM-DD)."
-          format: date
-          type: string
-        format:
-          default: json
-          description: Format type of the report.
-          enum:
-          - json
-          - csv
-          type: string
-        retailerIds:
-          description: On which retailers the report is created.
-          items:
-            format: int32
-            type: integer
-          minItems: 1
-          nullable: true
-          type: array
-        startDate:
-          description: "Start date of the report (ISO 8601 format, e.g. YYYY-MM-DD)."
-          format: date
-          type: string
-      required:
-      - endDate
-      - startDate
-      type: object
-    PartnerBillingReportStatusV1:
-      additionalProperties: false
-      description: Status info of a Partner Billing Report.
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        errorMessage: errorMessage
-        status: pending
-      nullable: true
-      properties:
-        createdAt:
-          description: The date when the report request is created.
-          format: date-time
-          type: string
-        errorMessage:
-          description: Possible error message along with the status.
-          nullable: true
-          type: string
-        status:
-          description: Status of the report.
-          enum:
-          - pending
-          - success
-          - failed
-          - expired
-          type: string
-      required:
-      - createdAt
-      - status
       type: object
     PlacementPreview:
       additionalProperties: false
@@ -10380,6 +9550,7 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
+          nullable: true
           type: string
         id:
           nullable: true
@@ -10424,7 +9595,6 @@ components:
       required:
       - budget
       - campaignId
-      - endDate
       - name
       - startDate
       - status
@@ -10665,44 +9835,6 @@ components:
           description: The price represented as a number. See JSON's number specification
             for more details.
           type: string
-      type: object
-    PrivateMarketAccountFees:
-      additionalProperties: false
-      description: The Fees for a Specific private market account
-      example:
-        accountId: accountId
-        fees:
-          demandManaged:
-            rate: 0.08008281904610115
-          managedService:
-            onsiteSponsoredProductsEnabled: true
-            rate: 0.6027456183070403
-            onsiteDisplayEnabled: true
-      nullable: true
-      properties:
-        accountId:
-          description: The account Id
-          nullable: true
-          type: string
-        fees:
-          $ref: '#/components/schemas/PrivateMarketFees'
-      type: object
-    PrivateMarketFees:
-      additionalProperties: false
-      description: fees for a private market account
-      example:
-        demandManaged:
-          rate: 0.08008281904610115
-        managedService:
-          onsiteSponsoredProductsEnabled: true
-          rate: 0.6027456183070403
-          onsiteDisplayEnabled: true
-      nullable: true
-      properties:
-        demandManaged:
-          $ref: '#/components/schemas/DemandManagedFee'
-        managedService:
-          $ref: '#/components/schemas/ManagedServiceFee'
       type: object
     Product:
       description: Defines a product to be inserted or updated.
@@ -11389,6 +10521,18 @@ components:
           nullable: true
           readOnly: true
           type: array
+      type: object
+    ProductBuyBoxWinner:
+      additionalProperties: false
+      description: The new buy box winner for a product after it is updated as part
+        of a SetBuyBoxWinner operation
+      example:
+        offerId: offerId
+      properties:
+        offerId:
+          type: string
+      required:
+      - offerId
       type: object
     ProductMetadata:
       additionalProperties: false
@@ -12383,65 +11527,6 @@ components:
           nullable: true
           readOnly: true
           type: array
-      type: object
-    RecommendedCategoriesRequestV1:
-      description: An object that represents the request of RecommendCategories endpoint.
-      example:
-        productIds:
-        - productIds
-        - productIds
-        - productIds
-        - productIds
-        - productIds
-      properties:
-        productIds:
-          description: Sku id list.
-          items:
-            type: string
-          maxItems: 1000
-          minItems: 1
-          type: array
-      required:
-      - productIds
-      type: object
-    RecommendedKeywordsRequestV1:
-      additionalProperties: false
-      description: Request model of RecommendedKeywords
-      example:
-        productIds:
-        - productIds
-        - productIds
-        - productIds
-        - productIds
-        - productIds
-      properties:
-        productIds:
-          description: Product Id list that the recommended keywords generated on.
-          items:
-            type: string
-          maxItems: 1000
-          minItems: 1
-          type: array
-      required:
-      - productIds
-      type: object
-    RecommendedKeywordsResponseV1:
-      additionalProperties: false
-      description: Response model of Recommended Keywords
-      example:
-        recommendedKeywords:
-        - recommendedKeywords
-        - recommendedKeywords
-      nullable: true
-      properties:
-        recommendedKeywords:
-          description: Recommended keywords generated by given retailer Id and sku
-            Ids.
-          items:
-            type: string
-          type: array
-      required:
-      - recommendedKeywords
       type: object
     ReportDataResponseResource:
       description: A top-level object that encapsulates a Criteo API response for
@@ -16227,46 +15312,25 @@ components:
           readOnly: true
           type: array
       type: object
-    SetSkuBuyBoxWinnersRequest:
+    SetProductBuyBoxWinnersRequest:
       additionalProperties: false
       description: The request passed by the caller of the SetBuyBoxWinners endpoint
       example:
-        skuBuyBoxWinners:
-        - sellerId: sellerId
-          skuId: skuId
-        - sellerId: sellerId
-          skuId: skuId
-        - sellerId: sellerId
-          skuId: skuId
-        - sellerId: sellerId
-          skuId: skuId
-        - sellerId: sellerId
-          skuId: skuId
+        productBuyBoxWinners:
+        - offerId: offerId
+        - offerId: offerId
+        - offerId: offerId
+        - offerId: offerId
+        - offerId: offerId
       properties:
-        skuBuyBoxWinners:
+        productBuyBoxWinners:
           items:
-            $ref: '#/components/schemas/SkuBuyBoxWinner'
+            $ref: '#/components/schemas/ProductBuyBoxWinner'
           maxItems: 5000
           minItems: 1
           type: array
       required:
-      - skuBuyBoxWinners
-      type: object
-    SkuBuyBoxWinner:
-      additionalProperties: false
-      description: The new buy box winner for a SKU after it is updated as part of
-        a SetBuyBoxWinner operation
-      example:
-        sellerId: sellerId
-        skuId: skuId
-      properties:
-        sellerId:
-          type: string
-        skuId:
-          type: string
-      required:
-      - sellerId
-      - skuId
+      - productBuyBoxWinners
       type: object
     SkuDataPreview:
       additionalProperties: false
@@ -16547,34 +15611,6 @@ components:
           nullable: true
           readOnly: true
           type: array
-      type: object
-    SkuOfferLoad:
-      additionalProperties: false
-      description: The new state of the offers for a SKU after a load operation
-      example:
-        offers:
-        - offerType: Seller
-          sellerId: sellerId
-          price: 0.8008281904610115
-          availability: OutOfStock
-        - offerType: Seller
-          sellerId: sellerId
-          price: 0.8008281904610115
-          availability: OutOfStock
-        buyBoxWinner: buyBoxWinner
-        skuId: skuId
-      properties:
-        buyBoxWinner:
-          type: string
-        offers:
-          items:
-            $ref: '#/components/schemas/OfferLoad'
-          type: array
-        skuId:
-          type: string
-      required:
-      - offers
-      - skuId
       type: object
     SkuSearchRequestPreview:
       additionalProperties: false
@@ -17808,26 +16844,21 @@ components:
       description: The request passed by the caller of the Update endpoint
       example:
         offerUpdates:
-        - sellerId: sellerId
-          price: 0.8008281904610115
-          availability: OutOfStock
-          skuId: skuId
-        - sellerId: sellerId
-          price: 0.8008281904610115
-          availability: OutOfStock
-          skuId: skuId
-        - sellerId: sellerId
-          price: 0.8008281904610115
-          availability: OutOfStock
-          skuId: skuId
-        - sellerId: sellerId
-          price: 0.8008281904610115
-          availability: OutOfStock
-          skuId: skuId
-        - sellerId: sellerId
-          price: 0.8008281904610115
-          availability: OutOfStock
-          skuId: skuId
+        - price: 0.8008281904610115
+          offerId: offerId
+          availability: outOfStock
+        - price: 0.8008281904610115
+          offerId: offerId
+          availability: outOfStock
+        - price: 0.8008281904610115
+          offerId: offerId
+          availability: outOfStock
+        - price: 0.8008281904610115
+          offerId: offerId
+          availability: outOfStock
+        - price: 0.8008281904610115
+          offerId: offerId
+          availability: outOfStock
       properties:
         offerUpdates:
           items:
@@ -17837,66 +16868,6 @@ components:
           type: array
       required:
       - offerUpdates
-      type: object
-    ValueResourceAccountFeesSearchRequest:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          accountIds:
-          - accountIds
-          - accountIds
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/AccountFeesSearchRequest'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceAccountFeesUpdateRequest:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          fees:
-            demandManaged:
-              rate: 0.08008281904610115
-            managedService:
-              onsiteSponsoredProductsEnabled: true
-              rate: 0.6027456183070403
-              onsiteDisplayEnabled: true
-          accountIds:
-          - accountIds
-          - accountIds
-          - accountIds
-          - accountIds
-          - accountIds
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/AccountFeesUpdateRequest'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceAsyncJobResponse:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          jobId: jobId
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/AsyncJobResponse'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
       type: object
     ValueResourceBrandIdSearchRequest:
       description: A value resource exposed by the API.
@@ -17911,23 +16882,6 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/BrandIdSearchRequest'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceCategoriesSearchRequestV1:
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          categoryIds:
-          - categoryIds
-          - categoryIds
-          textSubstring: textSubstring
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/CategoriesSearchRequestV1'
         type:
           description: Type of the resource.
           nullable: true
@@ -18102,97 +17056,6 @@ components:
           readOnly: true
           type: array
       type: object
-    ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        several value objects and metadata.
-      example:
-        metadata:
-          offset: 1
-          count: 0
-          limit: 6
-        data:
-        - attributes:
-            accountId: accountId
-            fees:
-              demandManaged:
-                rate: 0.08008281904610115
-              managedService:
-                onsiteSponsoredProductsEnabled: true
-                rate: 0.6027456183070403
-                onsiteDisplayEnabled: true
-          type: type
-        - attributes:
-            accountId: accountId
-            fees:
-              demandManaged:
-                rate: 0.08008281904610115
-              managedService:
-                onsiteSponsoredProductsEnabled: true
-                rate: 0.6027456183070403
-                onsiteDisplayEnabled: true
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ValueResourcePrivateMarketAccountFees'
-          nullable: true
-          type: array
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     ValueResourceDisplayAuctionMinBidRequest:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -18236,46 +17099,6 @@ components:
           nullable: true
           type: string
       type: object
-    ValueResourceInputAccountFeesSearchRequest:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value object.
-      example:
-        data:
-          attributes:
-            accountIds:
-            - accountIds
-            - accountIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceAccountFeesSearchRequest'
-      type: object
-    ValueResourceInputAccountFeesUpdateRequest:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value object.
-      example:
-        data:
-          attributes:
-            fees:
-              demandManaged:
-                rate: 0.08008281904610115
-              managedService:
-                onsiteSponsoredProductsEnabled: true
-                rate: 0.6027456183070403
-                onsiteDisplayEnabled: true
-            accountIds:
-            - accountIds
-            - accountIds
-            - accountIds
-            - accountIds
-            - accountIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceAccountFeesUpdateRequest'
-      type: object
     ValueResourceInputBrandIdSearchRequest:
       description: A top-level object that encapsulates a Criteo API request for a
         single value objects.
@@ -18291,21 +17114,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceBrandIdSearchRequest'
-      type: object
-    ValueResourceInputCategoriesSearchRequestV1:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
-      example:
-        data:
-          attributes:
-            categoryIds:
-            - categoryIds
-            - categoryIds
-            textSubstring: textSubstring
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceCategoriesSearchRequestV1'
       type: object
     ValueResourceInputDisplayAuctionMinBidRequest:
       additionalProperties: false
@@ -18351,74 +17159,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceLineItemBudgetCapOutHistoryRequest'
-      type: object
-    ValueResourceInputLoadSkuOffersRequest:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
-      example:
-        data:
-          attributes:
-            skuOfferLoads:
-            - offers:
-              - offerType: Seller
-                sellerId: sellerId
-                price: 0.8008281904610115
-                availability: OutOfStock
-              - offerType: Seller
-                sellerId: sellerId
-                price: 0.8008281904610115
-                availability: OutOfStock
-              buyBoxWinner: buyBoxWinner
-              skuId: skuId
-            - offers:
-              - offerType: Seller
-                sellerId: sellerId
-                price: 0.8008281904610115
-                availability: OutOfStock
-              - offerType: Seller
-                sellerId: sellerId
-                price: 0.8008281904610115
-                availability: OutOfStock
-              buyBoxWinner: buyBoxWinner
-              skuId: skuId
-            - offers:
-              - offerType: Seller
-                sellerId: sellerId
-                price: 0.8008281904610115
-                availability: OutOfStock
-              - offerType: Seller
-                sellerId: sellerId
-                price: 0.8008281904610115
-                availability: OutOfStock
-              buyBoxWinner: buyBoxWinner
-              skuId: skuId
-            - offers:
-              - offerType: Seller
-                sellerId: sellerId
-                price: 0.8008281904610115
-                availability: OutOfStock
-              - offerType: Seller
-                sellerId: sellerId
-                price: 0.8008281904610115
-                availability: OutOfStock
-              buyBoxWinner: buyBoxWinner
-              skuId: skuId
-            - offers:
-              - offerType: Seller
-                sellerId: sellerId
-                price: 0.8008281904610115
-                availability: OutOfStock
-              - offerType: Seller
-                sellerId: sellerId
-                price: 0.8008281904610115
-                availability: OutOfStock
-              buyBoxWinner: buyBoxWinner
-              skuId: skuId
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceLoadSkuOffersRequest'
       type: object
     ValueResourceInputOfCreateBalanceV1:
       additionalProperties: false
@@ -18572,113 +17312,47 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel'
       type: object
-    ValueResourceInputPartnerBillingReportRequestV1:
+    ValueResourceInputSetProductBuyBoxWinnersRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
         single value object.
       example:
         data:
           attributes:
-            endDate: 2000-01-23
-            accountIds:
-            - accountIds
-            - accountIds
-            format: json
-            retailerIds:
-            - 0
-            - 0
-            startDate: 2000-01-23
+            productBuyBoxWinners:
+            - offerId: offerId
+            - offerId: offerId
+            - offerId: offerId
+            - offerId: offerId
+            - offerId: offerId
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/ValueResourcePartnerBillingReportRequestV1'
-      type: object
-    ValueResourceInputRecommendedCategoriesRequestV1:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
-      example:
-        data:
-          attributes:
-            productIds:
-            - productIds
-            - productIds
-            - productIds
-            - productIds
-            - productIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceRecommendedCategoriesRequestV1'
-      type: object
-    ValueResourceInputRecommendedKeywordsRequestV1:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
-      example:
-        data:
-          attributes:
-            productIds:
-            - productIds
-            - productIds
-            - productIds
-            - productIds
-            - productIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceRecommendedKeywordsRequestV1'
-      type: object
-    ValueResourceInputSetSkuBuyBoxWinnersRequest:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
-      example:
-        data:
-          attributes:
-            skuBuyBoxWinners:
-            - sellerId: sellerId
-              skuId: skuId
-            - sellerId: sellerId
-              skuId: skuId
-            - sellerId: sellerId
-              skuId: skuId
-            - sellerId: sellerId
-              skuId: skuId
-            - sellerId: sellerId
-              skuId: skuId
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceSetSkuBuyBoxWinnersRequest'
+          $ref: '#/components/schemas/ValueResourceSetProductBuyBoxWinnersRequest'
       type: object
     ValueResourceInputUpdateOffersRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
             offerUpdates:
-            - sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-              skuId: skuId
-            - sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-              skuId: skuId
-            - sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-              skuId: skuId
-            - sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-              skuId: skuId
-            - sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-              skuId: skuId
+            - price: 0.8008281904610115
+              offerId: offerId
+              availability: outOfStock
+            - price: 0.8008281904610115
+              offerId: offerId
+              availability: outOfStock
+            - price: 0.8008281904610115
+              offerId: offerId
+              availability: outOfStock
+            - price: 0.8008281904610115
+              offerId: offerId
+              availability: outOfStock
+            - price: 0.8008281904610115
+              offerId: offerId
+              availability: outOfStock
           type: type
       properties:
         data:
@@ -18746,76 +17420,6 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/LineItemBudgetCapOutHistoryResponse'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceLoadSkuOffersRequest:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          skuOfferLoads:
-          - offers:
-            - offerType: Seller
-              sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-            - offerType: Seller
-              sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-            buyBoxWinner: buyBoxWinner
-            skuId: skuId
-          - offers:
-            - offerType: Seller
-              sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-            - offerType: Seller
-              sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-            buyBoxWinner: buyBoxWinner
-            skuId: skuId
-          - offers:
-            - offerType: Seller
-              sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-            - offerType: Seller
-              sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-            buyBoxWinner: buyBoxWinner
-            skuId: skuId
-          - offers:
-            - offerType: Seller
-              sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-            - offerType: Seller
-              sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-            buyBoxWinner: buyBoxWinner
-            skuId: skuId
-          - offers:
-            - offerType: Seller
-              sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-            - offerType: Seller
-              sellerId: sellerId
-              price: 0.8008281904610115
-              availability: OutOfStock
-            buyBoxWinner: buyBoxWinner
-            skuId: skuId
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/LoadSkuOffersRequest'
         type:
           description: Type of the resource.
           nullable: true
@@ -19004,71 +17608,6 @@ components:
           nullable: true
           type: string
       type: object
-    ValueResourceOutcomeAsyncJobResponse:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value object.
-      example:
-        data:
-          attributes:
-            jobId: jobId
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceAsyncJobResponse'
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -19229,195 +17768,21 @@ components:
           readOnly: true
           type: array
       type: object
-    ValueResourceOutcomeRecommendedKeywordsResponseV1:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value object.
-      example:
-        data:
-          attributes:
-            recommendedKeywords:
-            - recommendedKeywords
-            - recommendedKeywords
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceRecommendedKeywordsResponseV1'
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    ValueResourcePartnerBillingReportRequestV1:
+    ValueResourceSetProductBuyBoxWinnersRequest:
       additionalProperties: false
       description: A value resource exposed by the API.
       example:
         attributes:
-          endDate: 2000-01-23
-          accountIds:
-          - accountIds
-          - accountIds
-          format: json
-          retailerIds:
-          - 0
-          - 0
-          startDate: 2000-01-23
+          productBuyBoxWinners:
+          - offerId: offerId
+          - offerId: offerId
+          - offerId: offerId
+          - offerId: offerId
+          - offerId: offerId
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/PartnerBillingReportRequestV1'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourcePrivateMarketAccountFees:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          accountId: accountId
-          fees:
-            demandManaged:
-              rate: 0.08008281904610115
-            managedService:
-              onsiteSponsoredProductsEnabled: true
-              rate: 0.6027456183070403
-              onsiteDisplayEnabled: true
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/PrivateMarketAccountFees'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceRecommendedCategoriesRequestV1:
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          productIds:
-          - productIds
-          - productIds
-          - productIds
-          - productIds
-          - productIds
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/RecommendedCategoriesRequestV1'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceRecommendedKeywordsRequestV1:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          productIds:
-          - productIds
-          - productIds
-          - productIds
-          - productIds
-          - productIds
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/RecommendedKeywordsRequestV1'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceRecommendedKeywordsResponseV1:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          recommendedKeywords:
-          - recommendedKeywords
-          - recommendedKeywords
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/RecommendedKeywordsResponseV1'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceSetSkuBuyBoxWinnersRequest:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          skuBuyBoxWinners:
-          - sellerId: sellerId
-            skuId: skuId
-          - sellerId: sellerId
-            skuId: skuId
-          - sellerId: sellerId
-            skuId: skuId
-          - sellerId: sellerId
-            skuId: skuId
-          - sellerId: sellerId
-            skuId: skuId
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/SetSkuBuyBoxWinnersRequest'
+          $ref: '#/components/schemas/SetProductBuyBoxWinnersRequest'
         type:
           description: Type of the resource.
           nullable: true
@@ -19429,26 +17794,21 @@ components:
       example:
         attributes:
           offerUpdates:
-          - sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-            skuId: skuId
-          - sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-            skuId: skuId
-          - sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-            skuId: skuId
-          - sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-            skuId: skuId
-          - sellerId: sellerId
-            price: 0.8008281904610115
-            availability: OutOfStock
-            skuId: skuId
+          - price: 0.8008281904610115
+            offerId: offerId
+            availability: outOfStock
+          - price: 0.8008281904610115
+            offerId: offerId
+            availability: outOfStock
+          - price: 0.8008281904610115
+            offerId: offerId
+            availability: outOfStock
+          - price: 0.8008281904610115
+            offerId: offerId
+            availability: outOfStock
+          - price: 0.8008281904610115
+            offerId: offerId
+            availability: outOfStock
         type: type
       properties:
         attributes:

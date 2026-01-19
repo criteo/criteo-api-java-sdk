@@ -1,6 +1,6 @@
 
 
-# SetSkuBuyBoxWinnersRequest
+# SetProductBuyBoxWinnersRequest
 
 The request passed by the caller of the SetBuyBoxWinners endpoint
 
@@ -8,7 +8,7 @@ The request passed by the caller of the SetBuyBoxWinners endpoint
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**skuBuyBoxWinners** | [**List&lt;SkuBuyBoxWinner&gt;**](SkuBuyBoxWinner.md) |  |  |
+|**productBuyBoxWinners** | [**List&lt;ProductBuyBoxWinner&gt;**](ProductBuyBoxWinner.md) |  |  |
 
 
 

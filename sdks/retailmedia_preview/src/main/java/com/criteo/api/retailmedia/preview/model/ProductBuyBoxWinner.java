@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,36 +44,36 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Indicates the successful receipt of an async request, containing the job ID
+ * The new buy box winner for a product after it is updated as part of a SetBuyBoxWinner operation
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class AsyncJobResponse {
-  public static final String SERIALIZED_NAME_JOB_ID = "jobId";
-  @SerializedName(SERIALIZED_NAME_JOB_ID)
-  private String jobId;
+public class ProductBuyBoxWinner {
+  public static final String SERIALIZED_NAME_OFFER_ID = "offerId";
+  @SerializedName(SERIALIZED_NAME_OFFER_ID)
+  private String offerId;
 
-  public AsyncJobResponse() {
+  public ProductBuyBoxWinner() {
   }
 
-  public AsyncJobResponse jobId(String jobId) {
+  public ProductBuyBoxWinner offerId(String offerId) {
     
-    this.jobId = jobId;
+    this.offerId = offerId;
     return this;
   }
 
    /**
-   * Get jobId
-   * @return jobId
+   * Get offerId
+   * @return offerId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getJobId() {
-    return jobId;
+  public String getOfferId() {
+    return offerId;
   }
 
 
-  public void setJobId(String jobId) {
-    this.jobId = jobId;
+  public void setOfferId(String offerId) {
+    this.offerId = offerId;
   }
 
 
@@ -87,31 +86,20 @@ public class AsyncJobResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AsyncJobResponse asyncJobResponse = (AsyncJobResponse) o;
-    return Objects.equals(this.jobId, asyncJobResponse.jobId);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    ProductBuyBoxWinner productBuyBoxWinner = (ProductBuyBoxWinner) o;
+    return Objects.equals(this.offerId, productBuyBoxWinner.offerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(jobId);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(offerId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AsyncJobResponse {\n");
-    sb.append("    jobId: ").append(toIndentedString(jobId)).append("\n");
+    sb.append("class ProductBuyBoxWinner {\n");
+    sb.append("    offerId: ").append(toIndentedString(offerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -134,34 +122,42 @@ public class AsyncJobResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("jobId");
+    openapiFields.add("offerId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("offerId");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to AsyncJobResponse
+  * @throws IOException if the JSON Object is invalid with respect to ProductBuyBoxWinner
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!AsyncJobResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AsyncJobResponse is not found in the empty JSON string", AsyncJobResponse.openapiRequiredFields.toString()));
+        if (!ProductBuyBoxWinner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductBuyBoxWinner is not found in the empty JSON string", ProductBuyBoxWinner.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!AsyncJobResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AsyncJobResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!ProductBuyBoxWinner.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ProductBuyBoxWinner` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("jobId") != null && !jsonObj.get("jobId").isJsonNull()) && !jsonObj.get("jobId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `jobId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("jobId").toString()));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ProductBuyBoxWinner.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("offerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `offerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("offerId").toString()));
       }
   }
 
@@ -169,22 +165,22 @@ public class AsyncJobResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!AsyncJobResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'AsyncJobResponse' and its subtypes
+       if (!ProductBuyBoxWinner.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ProductBuyBoxWinner' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<AsyncJobResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(AsyncJobResponse.class));
+       final TypeAdapter<ProductBuyBoxWinner> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ProductBuyBoxWinner.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<AsyncJobResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<ProductBuyBoxWinner>() {
            @Override
-           public void write(JsonWriter out, AsyncJobResponse value) throws IOException {
+           public void write(JsonWriter out, ProductBuyBoxWinner value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public AsyncJobResponse read(JsonReader in) throws IOException {
+           public ProductBuyBoxWinner read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -195,18 +191,18 @@ public class AsyncJobResponse {
   }
 
  /**
-  * Create an instance of AsyncJobResponse given an JSON string
+  * Create an instance of ProductBuyBoxWinner given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of AsyncJobResponse
-  * @throws IOException if the JSON string is invalid with respect to AsyncJobResponse
+  * @return An instance of ProductBuyBoxWinner
+  * @throws IOException if the JSON string is invalid with respect to ProductBuyBoxWinner
   */
-  public static AsyncJobResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, AsyncJobResponse.class);
+  public static ProductBuyBoxWinner fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ProductBuyBoxWinner.class);
   }
 
  /**
-  * Convert an instance of AsyncJobResponse to an JSON string
+  * Convert an instance of ProductBuyBoxWinner to an JSON string
   *
   * @return JSON string
   */

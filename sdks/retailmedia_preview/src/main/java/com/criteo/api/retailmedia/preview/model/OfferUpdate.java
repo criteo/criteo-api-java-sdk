@@ -53,13 +53,13 @@ public class OfferUpdate {
    */
   @JsonAdapter(AvailabilityEnum.Adapter.class)
   public enum AvailabilityEnum {
-    OUTOFSTOCK("OutOfStock"),
+    OUTOFSTOCK("outOfStock"),
     
-    PREORDER("PreOrder"),
+    PREORDER("preOrder"),
     
-    INSTOCK("InStock"),
+    INSTOCK("inStock"),
     
-    BACKORDER("BackOrder");
+    BACKORDER("backOrder");
 
     private String value;
 
@@ -103,17 +103,13 @@ public class OfferUpdate {
   @SerializedName(SERIALIZED_NAME_AVAILABILITY)
   private AvailabilityEnum availability;
 
+  public static final String SERIALIZED_NAME_OFFER_ID = "offerId";
+  @SerializedName(SERIALIZED_NAME_OFFER_ID)
+  private String offerId;
+
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
   private Double price;
-
-  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
-  @SerializedName(SERIALIZED_NAME_SELLER_ID)
-  private String sellerId;
-
-  public static final String SERIALIZED_NAME_SKU_ID = "skuId";
-  @SerializedName(SERIALIZED_NAME_SKU_ID)
-  private String skuId;
 
   public OfferUpdate() {
   }
@@ -140,6 +136,28 @@ public class OfferUpdate {
   }
 
 
+  public OfferUpdate offerId(String offerId) {
+    
+    this.offerId = offerId;
+    return this;
+  }
+
+   /**
+   * Get offerId
+   * @return offerId
+  **/
+  @javax.annotation.Nonnull
+
+  public String getOfferId() {
+    return offerId;
+  }
+
+
+  public void setOfferId(String offerId) {
+    this.offerId = offerId;
+  }
+
+
   public OfferUpdate price(Double price) {
     
     this.price = price;
@@ -162,50 +180,6 @@ public class OfferUpdate {
   }
 
 
-  public OfferUpdate sellerId(String sellerId) {
-    
-    this.sellerId = sellerId;
-    return this;
-  }
-
-   /**
-   * Get sellerId
-   * @return sellerId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getSellerId() {
-    return sellerId;
-  }
-
-
-  public void setSellerId(String sellerId) {
-    this.sellerId = sellerId;
-  }
-
-
-  public OfferUpdate skuId(String skuId) {
-    
-    this.skuId = skuId;
-    return this;
-  }
-
-   /**
-   * Get skuId
-   * @return skuId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getSkuId() {
-    return skuId;
-  }
-
-
-  public void setSkuId(String skuId) {
-    this.skuId = skuId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -217,14 +191,13 @@ public class OfferUpdate {
     }
     OfferUpdate offerUpdate = (OfferUpdate) o;
     return Objects.equals(this.availability, offerUpdate.availability) &&
-        Objects.equals(this.price, offerUpdate.price) &&
-        Objects.equals(this.sellerId, offerUpdate.sellerId) &&
-        Objects.equals(this.skuId, offerUpdate.skuId);
+        Objects.equals(this.offerId, offerUpdate.offerId) &&
+        Objects.equals(this.price, offerUpdate.price);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(availability, price, sellerId, skuId);
+    return Objects.hash(availability, offerId, price);
   }
 
   @Override
@@ -232,9 +205,8 @@ public class OfferUpdate {
     StringBuilder sb = new StringBuilder();
     sb.append("class OfferUpdate {\n");
     sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
+    sb.append("    offerId: ").append(toIndentedString(offerId)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
-    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
-    sb.append("    skuId: ").append(toIndentedString(skuId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -258,16 +230,14 @@ public class OfferUpdate {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("availability");
+    openapiFields.add("offerId");
     openapiFields.add("price");
-    openapiFields.add("sellerId");
-    openapiFields.add("skuId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("availability");
+    openapiRequiredFields.add("offerId");
     openapiRequiredFields.add("price");
-    openapiRequiredFields.add("sellerId");
-    openapiRequiredFields.add("skuId");
   }
 
  /**
@@ -300,11 +270,8 @@ public class OfferUpdate {
       if (!jsonObj.get("availability").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `availability` to be a primitive type in the JSON string but got `%s`", jsonObj.get("availability").toString()));
       }
-      if (!jsonObj.get("sellerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sellerId").toString()));
-      }
-      if (!jsonObj.get("skuId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `skuId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("skuId").toString()));
+      if (!jsonObj.get("offerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `offerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("offerId").toString()));
       }
   }
 

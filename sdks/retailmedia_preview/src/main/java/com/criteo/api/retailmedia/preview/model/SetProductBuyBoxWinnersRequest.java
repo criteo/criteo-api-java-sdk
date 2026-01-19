@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.SkuBuyBoxWinner;
+import com.criteo.api.retailmedia.preview.model.ProductBuyBoxWinner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,38 +50,38 @@ import com.criteo.api.retailmedia.preview.JSON;
  * The request passed by the caller of the SetBuyBoxWinners endpoint
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SetSkuBuyBoxWinnersRequest {
-  public static final String SERIALIZED_NAME_SKU_BUY_BOX_WINNERS = "skuBuyBoxWinners";
-  @SerializedName(SERIALIZED_NAME_SKU_BUY_BOX_WINNERS)
-  private List<SkuBuyBoxWinner> skuBuyBoxWinners = new ArrayList<>();
+public class SetProductBuyBoxWinnersRequest {
+  public static final String SERIALIZED_NAME_PRODUCT_BUY_BOX_WINNERS = "productBuyBoxWinners";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_BUY_BOX_WINNERS)
+  private List<ProductBuyBoxWinner> productBuyBoxWinners = new ArrayList<>();
 
-  public SetSkuBuyBoxWinnersRequest() {
+  public SetProductBuyBoxWinnersRequest() {
   }
 
-  public SetSkuBuyBoxWinnersRequest skuBuyBoxWinners(List<SkuBuyBoxWinner> skuBuyBoxWinners) {
+  public SetProductBuyBoxWinnersRequest productBuyBoxWinners(List<ProductBuyBoxWinner> productBuyBoxWinners) {
     
-    this.skuBuyBoxWinners = skuBuyBoxWinners;
+    this.productBuyBoxWinners = productBuyBoxWinners;
     return this;
   }
 
-  public SetSkuBuyBoxWinnersRequest addSkuBuyBoxWinnersItem(SkuBuyBoxWinner skuBuyBoxWinnersItem) {
-    this.skuBuyBoxWinners.add(skuBuyBoxWinnersItem);
+  public SetProductBuyBoxWinnersRequest addProductBuyBoxWinnersItem(ProductBuyBoxWinner productBuyBoxWinnersItem) {
+    this.productBuyBoxWinners.add(productBuyBoxWinnersItem);
     return this;
   }
 
    /**
-   * Get skuBuyBoxWinners
-   * @return skuBuyBoxWinners
+   * Get productBuyBoxWinners
+   * @return productBuyBoxWinners
   **/
   @javax.annotation.Nonnull
 
-  public List<SkuBuyBoxWinner> getSkuBuyBoxWinners() {
-    return skuBuyBoxWinners;
+  public List<ProductBuyBoxWinner> getProductBuyBoxWinners() {
+    return productBuyBoxWinners;
   }
 
 
-  public void setSkuBuyBoxWinners(List<SkuBuyBoxWinner> skuBuyBoxWinners) {
-    this.skuBuyBoxWinners = skuBuyBoxWinners;
+  public void setProductBuyBoxWinners(List<ProductBuyBoxWinner> productBuyBoxWinners) {
+    this.productBuyBoxWinners = productBuyBoxWinners;
   }
 
 
@@ -94,20 +94,20 @@ public class SetSkuBuyBoxWinnersRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SetSkuBuyBoxWinnersRequest setSkuBuyBoxWinnersRequest = (SetSkuBuyBoxWinnersRequest) o;
-    return Objects.equals(this.skuBuyBoxWinners, setSkuBuyBoxWinnersRequest.skuBuyBoxWinners);
+    SetProductBuyBoxWinnersRequest setProductBuyBoxWinnersRequest = (SetProductBuyBoxWinnersRequest) o;
+    return Objects.equals(this.productBuyBoxWinners, setProductBuyBoxWinnersRequest.productBuyBoxWinners);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(skuBuyBoxWinners);
+    return Objects.hash(productBuyBoxWinners);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SetSkuBuyBoxWinnersRequest {\n");
-    sb.append("    skuBuyBoxWinners: ").append(toIndentedString(skuBuyBoxWinners)).append("\n");
+    sb.append("class SetProductBuyBoxWinnersRequest {\n");
+    sb.append("    productBuyBoxWinners: ").append(toIndentedString(productBuyBoxWinners)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -130,49 +130,49 @@ public class SetSkuBuyBoxWinnersRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("skuBuyBoxWinners");
+    openapiFields.add("productBuyBoxWinners");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("skuBuyBoxWinners");
+    openapiRequiredFields.add("productBuyBoxWinners");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SetSkuBuyBoxWinnersRequest
+  * @throws IOException if the JSON Object is invalid with respect to SetProductBuyBoxWinnersRequest
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!SetSkuBuyBoxWinnersRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SetSkuBuyBoxWinnersRequest is not found in the empty JSON string", SetSkuBuyBoxWinnersRequest.openapiRequiredFields.toString()));
+        if (!SetProductBuyBoxWinnersRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SetProductBuyBoxWinnersRequest is not found in the empty JSON string", SetProductBuyBoxWinnersRequest.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!SetSkuBuyBoxWinnersRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SetSkuBuyBoxWinnersRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!SetProductBuyBoxWinnersRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SetProductBuyBoxWinnersRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SetSkuBuyBoxWinnersRequest.openapiRequiredFields) {
+      for (String requiredField : SetProductBuyBoxWinnersRequest.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
       // ensure the json data is an array
-      if (!jsonObj.get("skuBuyBoxWinners").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `skuBuyBoxWinners` to be an array in the JSON string but got `%s`", jsonObj.get("skuBuyBoxWinners").toString()));
+      if (!jsonObj.get("productBuyBoxWinners").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productBuyBoxWinners` to be an array in the JSON string but got `%s`", jsonObj.get("productBuyBoxWinners").toString()));
       }
 
-      JsonArray jsonArrayskuBuyBoxWinners = jsonObj.getAsJsonArray("skuBuyBoxWinners");
-      // validate the required field `skuBuyBoxWinners` (array)
-      for (int i = 0; i < jsonArrayskuBuyBoxWinners.size(); i++) {
-        SkuBuyBoxWinner.validateJsonObject(jsonArrayskuBuyBoxWinners.get(i).getAsJsonObject());
+      JsonArray jsonArrayproductBuyBoxWinners = jsonObj.getAsJsonArray("productBuyBoxWinners");
+      // validate the required field `productBuyBoxWinners` (array)
+      for (int i = 0; i < jsonArrayproductBuyBoxWinners.size(); i++) {
+        ProductBuyBoxWinner.validateJsonObject(jsonArrayproductBuyBoxWinners.get(i).getAsJsonObject());
       };
   }
 
@@ -180,22 +180,22 @@ public class SetSkuBuyBoxWinnersRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SetSkuBuyBoxWinnersRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SetSkuBuyBoxWinnersRequest' and its subtypes
+       if (!SetProductBuyBoxWinnersRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SetProductBuyBoxWinnersRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SetSkuBuyBoxWinnersRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SetSkuBuyBoxWinnersRequest.class));
+       final TypeAdapter<SetProductBuyBoxWinnersRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SetProductBuyBoxWinnersRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SetSkuBuyBoxWinnersRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<SetProductBuyBoxWinnersRequest>() {
            @Override
-           public void write(JsonWriter out, SetSkuBuyBoxWinnersRequest value) throws IOException {
+           public void write(JsonWriter out, SetProductBuyBoxWinnersRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public SetSkuBuyBoxWinnersRequest read(JsonReader in) throws IOException {
+           public SetProductBuyBoxWinnersRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -206,18 +206,18 @@ public class SetSkuBuyBoxWinnersRequest {
   }
 
  /**
-  * Create an instance of SetSkuBuyBoxWinnersRequest given an JSON string
+  * Create an instance of SetProductBuyBoxWinnersRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of SetSkuBuyBoxWinnersRequest
-  * @throws IOException if the JSON string is invalid with respect to SetSkuBuyBoxWinnersRequest
+  * @return An instance of SetProductBuyBoxWinnersRequest
+  * @throws IOException if the JSON string is invalid with respect to SetProductBuyBoxWinnersRequest
   */
-  public static SetSkuBuyBoxWinnersRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SetSkuBuyBoxWinnersRequest.class);
+  public static SetProductBuyBoxWinnersRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SetProductBuyBoxWinnersRequest.class);
   }
 
  /**
-  * Convert an instance of SetSkuBuyBoxWinnersRequest to an JSON string
+  * Convert an instance of SetProductBuyBoxWinnersRequest to an JSON string
   *
   * @return JSON string
   */

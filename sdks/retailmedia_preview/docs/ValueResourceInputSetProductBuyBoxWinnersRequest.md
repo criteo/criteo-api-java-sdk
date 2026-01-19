@@ -1,6 +1,6 @@
 
 
-# ValueResourceInputAccountFeesSearchRequest
+# ValueResourceInputSetProductBuyBoxWinnersRequest
 
 A top-level object that encapsulates a Criteo API request for a single value object.
 
@@ -8,7 +8,7 @@ A top-level object that encapsulates a Criteo API request for a single value obj
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**ValueResourceAccountFeesSearchRequest**](ValueResourceAccountFeesSearchRequest.md) |  |  [optional] |
+|**data** | [**ValueResourceSetProductBuyBoxWinnersRequest**](ValueResourceSetProductBuyBoxWinnersRequest.md) |  |  [optional] |
 
 
 

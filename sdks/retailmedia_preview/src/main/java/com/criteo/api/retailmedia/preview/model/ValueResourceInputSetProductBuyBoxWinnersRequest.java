@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.ValueResourceAccountFeesUpdateRequest;
+import com.criteo.api.retailmedia.preview.model.ValueResourceSetProductBuyBoxWinnersRequest;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -48,15 +48,15 @@ import com.criteo.api.retailmedia.preview.JSON;
  * A top-level object that encapsulates a Criteo API request for a single value object.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ValueResourceInputAccountFeesUpdateRequest {
+public class ValueResourceInputSetProductBuyBoxWinnersRequest {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private ValueResourceAccountFeesUpdateRequest data;
+  private ValueResourceSetProductBuyBoxWinnersRequest data;
 
-  public ValueResourceInputAccountFeesUpdateRequest() {
+  public ValueResourceInputSetProductBuyBoxWinnersRequest() {
   }
 
-  public ValueResourceInputAccountFeesUpdateRequest data(ValueResourceAccountFeesUpdateRequest data) {
+  public ValueResourceInputSetProductBuyBoxWinnersRequest data(ValueResourceSetProductBuyBoxWinnersRequest data) {
     
     this.data = data;
     return this;
@@ -68,12 +68,12 @@ public class ValueResourceInputAccountFeesUpdateRequest {
   **/
   @javax.annotation.Nullable
 
-  public ValueResourceAccountFeesUpdateRequest getData() {
+  public ValueResourceSetProductBuyBoxWinnersRequest getData() {
     return data;
   }
 
 
-  public void setData(ValueResourceAccountFeesUpdateRequest data) {
+  public void setData(ValueResourceSetProductBuyBoxWinnersRequest data) {
     this.data = data;
   }
 
@@ -87,8 +87,8 @@ public class ValueResourceInputAccountFeesUpdateRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest = (ValueResourceInputAccountFeesUpdateRequest) o;
-    return Objects.equals(this.data, valueResourceInputAccountFeesUpdateRequest.data);
+    ValueResourceInputSetProductBuyBoxWinnersRequest valueResourceInputSetProductBuyBoxWinnersRequest = (ValueResourceInputSetProductBuyBoxWinnersRequest) o;
+    return Objects.equals(this.data, valueResourceInputSetProductBuyBoxWinnersRequest.data);
   }
 
   @Override
@@ -99,7 +99,7 @@ public class ValueResourceInputAccountFeesUpdateRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ValueResourceInputAccountFeesUpdateRequest {\n");
+    sb.append("class ValueResourceInputSetProductBuyBoxWinnersRequest {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -133,25 +133,25 @@ public class ValueResourceInputAccountFeesUpdateRequest {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ValueResourceInputAccountFeesUpdateRequest
+  * @throws IOException if the JSON Object is invalid with respect to ValueResourceInputSetProductBuyBoxWinnersRequest
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ValueResourceInputAccountFeesUpdateRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceInputAccountFeesUpdateRequest is not found in the empty JSON string", ValueResourceInputAccountFeesUpdateRequest.openapiRequiredFields.toString()));
+        if (!ValueResourceInputSetProductBuyBoxWinnersRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceInputSetProductBuyBoxWinnersRequest is not found in the empty JSON string", ValueResourceInputSetProductBuyBoxWinnersRequest.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!ValueResourceInputAccountFeesUpdateRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceInputAccountFeesUpdateRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!ValueResourceInputSetProductBuyBoxWinnersRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceInputSetProductBuyBoxWinnersRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        ValueResourceAccountFeesUpdateRequest.validateJsonObject(jsonObj.getAsJsonObject("data"));
+        ValueResourceSetProductBuyBoxWinnersRequest.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 
@@ -159,22 +159,22 @@ public class ValueResourceInputAccountFeesUpdateRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ValueResourceInputAccountFeesUpdateRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ValueResourceInputAccountFeesUpdateRequest' and its subtypes
+       if (!ValueResourceInputSetProductBuyBoxWinnersRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ValueResourceInputSetProductBuyBoxWinnersRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ValueResourceInputAccountFeesUpdateRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceInputAccountFeesUpdateRequest.class));
+       final TypeAdapter<ValueResourceInputSetProductBuyBoxWinnersRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceInputSetProductBuyBoxWinnersRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ValueResourceInputAccountFeesUpdateRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<ValueResourceInputSetProductBuyBoxWinnersRequest>() {
            @Override
-           public void write(JsonWriter out, ValueResourceInputAccountFeesUpdateRequest value) throws IOException {
+           public void write(JsonWriter out, ValueResourceInputSetProductBuyBoxWinnersRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ValueResourceInputAccountFeesUpdateRequest read(JsonReader in) throws IOException {
+           public ValueResourceInputSetProductBuyBoxWinnersRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -185,18 +185,18 @@ public class ValueResourceInputAccountFeesUpdateRequest {
   }
 
  /**
-  * Create an instance of ValueResourceInputAccountFeesUpdateRequest given an JSON string
+  * Create an instance of ValueResourceInputSetProductBuyBoxWinnersRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ValueResourceInputAccountFeesUpdateRequest
-  * @throws IOException if the JSON string is invalid with respect to ValueResourceInputAccountFeesUpdateRequest
+  * @return An instance of ValueResourceInputSetProductBuyBoxWinnersRequest
+  * @throws IOException if the JSON string is invalid with respect to ValueResourceInputSetProductBuyBoxWinnersRequest
   */
-  public static ValueResourceInputAccountFeesUpdateRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ValueResourceInputAccountFeesUpdateRequest.class);
+  public static ValueResourceInputSetProductBuyBoxWinnersRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ValueResourceInputSetProductBuyBoxWinnersRequest.class);
   }
 
  /**
-  * Convert an instance of ValueResourceInputAccountFeesUpdateRequest to an JSON string
+  * Convert an instance of ValueResourceInputSetProductBuyBoxWinnersRequest to an JSON string
   *
   * @return JSON string
   */

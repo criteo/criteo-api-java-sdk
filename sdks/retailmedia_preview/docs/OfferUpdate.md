@@ -9,9 +9,8 @@ The state of a single offer after it is replaced as part of an Update operation
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**availability** | [**AvailabilityEnum**](#AvailabilityEnum) |  |  |
+|**offerId** | **String** |  |  |
 |**price** | **Double** |  |  |
-|**sellerId** | **String** |  |  |
-|**skuId** | **String** |  |  |
 
 
 
@@ -19,10 +18,10 @@ The state of a single offer after it is replaced as part of an Update operation
 
 | Name | Value |
 |---- | -----|
-| OUTOFSTOCK | &quot;OutOfStock&quot; |
-| PREORDER | &quot;PreOrder&quot; |
-| INSTOCK | &quot;InStock&quot; |
-| BACKORDER | &quot;BackOrder&quot; |
+| OUTOFSTOCK | &quot;outOfStock&quot; |
+| PREORDER | &quot;preOrder&quot; |
+| INSTOCK | &quot;inStock&quot; |
+| BACKORDER | &quot;backOrder&quot; |
 
 
 

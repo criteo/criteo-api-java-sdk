@@ -5,9 +5,8 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**getCatalogProductsBatchReport**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /preview/retail-media/catalog/products/batch/report/{operation-token} |  |
-| [**offerLoadV1**](CatalogApi.md#offerLoadV1) | **POST** /preview/retail-media/retailers/{retailerId}/offers/load |  |
-| [**offerSetBbwV1**](CatalogApi.md#offerSetBbwV1) | **POST** /preview/retail-media/retailers/{retailerId}/offers/set-buy-box-winners |  |
-| [**offerUpdateV1**](CatalogApi.md#offerUpdateV1) | **POST** /preview/retail-media/retailers/{retailerId}/offers/update |  |
+| [**offerSetBbwV1**](CatalogApi.md#offerSetBbwV1) | **POST** /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners |  |
+| [**offerUpdateV1**](CatalogApi.md#offerUpdateV1) | **POST** /preview/retail-media/retailers/{retailer-id}/offers/update |  |
 | [**submitCatalogProductsBatch**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /preview/retail-media/catalog/products/batch |  |
 
 
@@ -101,104 +100,13 @@ public class Example {
 | **200** | The report object |  -  |
 
 
-## offerLoadV1
-
-> ValueResourceOutcomeAsyncJobResponse offerLoadV1(retailerId, valueResourceInputLoadSkuOffersRequest)
-
-
-
-Replace the offers for one or more SKUs with a snapshot of the new offers for each respective SKU
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.CatalogApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CatalogApi apiInstance = new CatalogApi(defaultClient);
-        Integer retailerId = 56; // Integer | The retailer for which these offers will be loaded
-        ValueResourceInputLoadSkuOffersRequest valueResourceInputLoadSkuOffersRequest = new ValueResourceInputLoadSkuOffersRequest(); // ValueResourceInputLoadSkuOffersRequest | 
-        try {
-            ValueResourceOutcomeAsyncJobResponse result = apiInstance.offerLoadV1(retailerId, valueResourceInputLoadSkuOffersRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CatalogApi#offerLoadV1");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| The retailer for which these offers will be loaded | |
-| **valueResourceInputLoadSkuOffersRequest** | [**ValueResourceInputLoadSkuOffersRequest**](ValueResourceInputLoadSkuOffersRequest.md)|  | [optional] |
-
-### Return type
-
-[**ValueResourceOutcomeAsyncJobResponse**](ValueResourceOutcomeAsyncJobResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
 ## offerSetBbwV1
 
-> ValueResourceOutcomeAsyncJobResponse offerSetBbwV1(retailerId, valueResourceInputSetSkuBuyBoxWinnersRequest)
+> Outcome offerSetBbwV1(retailerId, valueResourceInputSetProductBuyBoxWinnersRequest)
 
 
 
-Update the buy box winner for one or more SKUs
+Update the buy box winner for one or more products
 
 ### Example
 
@@ -239,10 +147,10 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CatalogApi apiInstance = new CatalogApi(defaultClient);
-        Integer retailerId = 56; // Integer | The retailer for which these buy box winners will be set
-        ValueResourceInputSetSkuBuyBoxWinnersRequest valueResourceInputSetSkuBuyBoxWinnersRequest = new ValueResourceInputSetSkuBuyBoxWinnersRequest(); // ValueResourceInputSetSkuBuyBoxWinnersRequest | 
+        String retailerId = "retailerId_example"; // String | The retailer for which these buy box winners will be set
+        ValueResourceInputSetProductBuyBoxWinnersRequest valueResourceInputSetProductBuyBoxWinnersRequest = new ValueResourceInputSetProductBuyBoxWinnersRequest(); // ValueResourceInputSetProductBuyBoxWinnersRequest | Updated buy box winners for one or more products
         try {
-            ValueResourceOutcomeAsyncJobResponse result = apiInstance.offerSetBbwV1(retailerId, valueResourceInputSetSkuBuyBoxWinnersRequest);
+            Outcome result = apiInstance.offerSetBbwV1(retailerId, valueResourceInputSetProductBuyBoxWinnersRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CatalogApi#offerSetBbwV1");
@@ -260,12 +168,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| The retailer for which these buy box winners will be set | |
-| **valueResourceInputSetSkuBuyBoxWinnersRequest** | [**ValueResourceInputSetSkuBuyBoxWinnersRequest**](ValueResourceInputSetSkuBuyBoxWinnersRequest.md)|  | |
+| **retailerId** | **String**| The retailer for which these buy box winners will be set | |
+| **valueResourceInputSetProductBuyBoxWinnersRequest** | [**ValueResourceInputSetProductBuyBoxWinnersRequest**](ValueResourceInputSetProductBuyBoxWinnersRequest.md)| Updated buy box winners for one or more products | |
 
 ### Return type
 
-[**ValueResourceOutcomeAsyncJobResponse**](ValueResourceOutcomeAsyncJobResponse.md)
+[**Outcome**](Outcome.md)
 
 ### Authorization
 
@@ -285,7 +193,7 @@ public class Example {
 
 ## offerUpdateV1
 
-> ValueResourceOutcomeAsyncJobResponse offerUpdateV1(retailerId, valueResourceInputUpdateOffersRequest)
+> Outcome offerUpdateV1(retailerId, valueResourceInputUpdateOffersRequest)
 
 
 
@@ -330,10 +238,10 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CatalogApi apiInstance = new CatalogApi(defaultClient);
-        Integer retailerId = 56; // Integer | The retailer for which these offers will be updated
-        ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest = new ValueResourceInputUpdateOffersRequest(); // ValueResourceInputUpdateOffersRequest | 
+        String retailerId = "retailerId_example"; // String | The retailer for which these offers will be updated
+        ValueResourceInputUpdateOffersRequest valueResourceInputUpdateOffersRequest = new ValueResourceInputUpdateOffersRequest(); // ValueResourceInputUpdateOffersRequest | Collection of offer price and availability updates to be applied.
         try {
-            ValueResourceOutcomeAsyncJobResponse result = apiInstance.offerUpdateV1(retailerId, valueResourceInputUpdateOffersRequest);
+            Outcome result = apiInstance.offerUpdateV1(retailerId, valueResourceInputUpdateOffersRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CatalogApi#offerUpdateV1");
@@ -351,12 +259,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| The retailer for which these offers will be updated | |
-| **valueResourceInputUpdateOffersRequest** | [**ValueResourceInputUpdateOffersRequest**](ValueResourceInputUpdateOffersRequest.md)|  | [optional] |
+| **retailerId** | **String**| The retailer for which these offers will be updated | |
+| **valueResourceInputUpdateOffersRequest** | [**ValueResourceInputUpdateOffersRequest**](ValueResourceInputUpdateOffersRequest.md)| Collection of offer price and availability updates to be applied. | |
 
 ### Return type
 
-[**ValueResourceOutcomeAsyncJobResponse**](ValueResourceOutcomeAsyncJobResponse.md)
+[**Outcome**](Outcome.md)
 
 ### Authorization
 

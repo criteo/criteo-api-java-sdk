@@ -16,7 +16,6 @@ package com.criteo.api.retailmedia.preview.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.preview.model.SdkApiRestCommonProblem;
-import com.criteo.api.retailmedia.preview.model.ValueResourceAsyncJobResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,14 +48,10 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for a single value object.
+ * The outcome of an API call.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ValueResourceOutcomeAsyncJobResponse {
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private ValueResourceAsyncJobResponse data;
-
+public class Outcome {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<SdkApiRestCommonProblem> errors = null;
@@ -65,11 +60,11 @@ public class ValueResourceOutcomeAsyncJobResponse {
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   private List<SdkApiRestCommonProblem> warnings = null;
 
-  public ValueResourceOutcomeAsyncJobResponse() {
+  public Outcome() {
   }
 
   
-  public ValueResourceOutcomeAsyncJobResponse(
+  public Outcome(
      List<SdkApiRestCommonProblem> errors, 
      List<SdkApiRestCommonProblem> warnings
   ) {
@@ -77,28 +72,6 @@ public class ValueResourceOutcomeAsyncJobResponse {
     this.errors = errors;
     this.warnings = warnings;
   }
-
-  public ValueResourceOutcomeAsyncJobResponse data(ValueResourceAsyncJobResponse data) {
-    
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @javax.annotation.Nullable
-
-  public ValueResourceAsyncJobResponse getData() {
-    return data;
-  }
-
-
-  public void setData(ValueResourceAsyncJobResponse data) {
-    this.data = data;
-  }
-
 
    /**
    * Errors that occured during this call.
@@ -135,10 +108,9 @@ public class ValueResourceOutcomeAsyncJobResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ValueResourceOutcomeAsyncJobResponse valueResourceOutcomeAsyncJobResponse = (ValueResourceOutcomeAsyncJobResponse) o;
-    return Objects.equals(this.data, valueResourceOutcomeAsyncJobResponse.data) &&
-        Objects.equals(this.errors, valueResourceOutcomeAsyncJobResponse.errors) &&
-        Objects.equals(this.warnings, valueResourceOutcomeAsyncJobResponse.warnings);
+    Outcome outcome = (Outcome) o;
+    return Objects.equals(this.errors, outcome.errors) &&
+        Objects.equals(this.warnings, outcome.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -147,7 +119,7 @@ public class ValueResourceOutcomeAsyncJobResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, errors, warnings);
+    return Objects.hash(errors, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -160,8 +132,7 @@ public class ValueResourceOutcomeAsyncJobResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ValueResourceOutcomeAsyncJobResponse {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("class Outcome {\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
@@ -186,7 +157,6 @@ public class ValueResourceOutcomeAsyncJobResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("data");
     openapiFields.add("errors");
     openapiFields.add("warnings");
 
@@ -198,25 +168,21 @@ public class ValueResourceOutcomeAsyncJobResponse {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ValueResourceOutcomeAsyncJobResponse
+  * @throws IOException if the JSON Object is invalid with respect to Outcome
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ValueResourceOutcomeAsyncJobResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceOutcomeAsyncJobResponse is not found in the empty JSON string", ValueResourceOutcomeAsyncJobResponse.openapiRequiredFields.toString()));
+        if (!Outcome.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Outcome is not found in the empty JSON string", Outcome.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!ValueResourceOutcomeAsyncJobResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceOutcomeAsyncJobResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!Outcome.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Outcome` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
-      }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        ValueResourceAsyncJobResponse.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
@@ -252,22 +218,22 @@ public class ValueResourceOutcomeAsyncJobResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ValueResourceOutcomeAsyncJobResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ValueResourceOutcomeAsyncJobResponse' and its subtypes
+       if (!Outcome.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Outcome' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ValueResourceOutcomeAsyncJobResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceOutcomeAsyncJobResponse.class));
+       final TypeAdapter<Outcome> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Outcome.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ValueResourceOutcomeAsyncJobResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<Outcome>() {
            @Override
-           public void write(JsonWriter out, ValueResourceOutcomeAsyncJobResponse value) throws IOException {
+           public void write(JsonWriter out, Outcome value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ValueResourceOutcomeAsyncJobResponse read(JsonReader in) throws IOException {
+           public Outcome read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -278,18 +244,18 @@ public class ValueResourceOutcomeAsyncJobResponse {
   }
 
  /**
-  * Create an instance of ValueResourceOutcomeAsyncJobResponse given an JSON string
+  * Create an instance of Outcome given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ValueResourceOutcomeAsyncJobResponse
-  * @throws IOException if the JSON string is invalid with respect to ValueResourceOutcomeAsyncJobResponse
+  * @return An instance of Outcome
+  * @throws IOException if the JSON string is invalid with respect to Outcome
   */
-  public static ValueResourceOutcomeAsyncJobResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ValueResourceOutcomeAsyncJobResponse.class);
+  public static Outcome fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Outcome.class);
   }
 
  /**
-  * Convert an instance of ValueResourceOutcomeAsyncJobResponse to an JSON string
+  * Convert an instance of Outcome to an JSON string
   *
   * @return JSON string
   */

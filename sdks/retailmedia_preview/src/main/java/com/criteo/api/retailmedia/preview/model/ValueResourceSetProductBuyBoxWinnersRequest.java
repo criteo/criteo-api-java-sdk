@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.LoadSkuOffersRequest;
+import com.criteo.api.retailmedia.preview.model.SetProductBuyBoxWinnersRequest;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,19 +49,19 @@ import com.criteo.api.retailmedia.preview.JSON;
  * A value resource exposed by the API.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ValueResourceLoadSkuOffersRequest {
+public class ValueResourceSetProductBuyBoxWinnersRequest {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private LoadSkuOffersRequest attributes;
+  private SetProductBuyBoxWinnersRequest attributes;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public ValueResourceLoadSkuOffersRequest() {
+  public ValueResourceSetProductBuyBoxWinnersRequest() {
   }
 
-  public ValueResourceLoadSkuOffersRequest attributes(LoadSkuOffersRequest attributes) {
+  public ValueResourceSetProductBuyBoxWinnersRequest attributes(SetProductBuyBoxWinnersRequest attributes) {
     
     this.attributes = attributes;
     return this;
@@ -73,17 +73,17 @@ public class ValueResourceLoadSkuOffersRequest {
   **/
   @javax.annotation.Nullable
 
-  public LoadSkuOffersRequest getAttributes() {
+  public SetProductBuyBoxWinnersRequest getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(LoadSkuOffersRequest attributes) {
+  public void setAttributes(SetProductBuyBoxWinnersRequest attributes) {
     this.attributes = attributes;
   }
 
 
-  public ValueResourceLoadSkuOffersRequest type(String type) {
+  public ValueResourceSetProductBuyBoxWinnersRequest type(String type) {
     
     this.type = type;
     return this;
@@ -114,9 +114,9 @@ public class ValueResourceLoadSkuOffersRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ValueResourceLoadSkuOffersRequest valueResourceLoadSkuOffersRequest = (ValueResourceLoadSkuOffersRequest) o;
-    return Objects.equals(this.attributes, valueResourceLoadSkuOffersRequest.attributes) &&
-        Objects.equals(this.type, valueResourceLoadSkuOffersRequest.type);
+    ValueResourceSetProductBuyBoxWinnersRequest valueResourceSetProductBuyBoxWinnersRequest = (ValueResourceSetProductBuyBoxWinnersRequest) o;
+    return Objects.equals(this.attributes, valueResourceSetProductBuyBoxWinnersRequest.attributes) &&
+        Objects.equals(this.type, valueResourceSetProductBuyBoxWinnersRequest.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -138,7 +138,7 @@ public class ValueResourceLoadSkuOffersRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ValueResourceLoadSkuOffersRequest {\n");
+    sb.append("class ValueResourceSetProductBuyBoxWinnersRequest {\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
@@ -174,25 +174,25 @@ public class ValueResourceLoadSkuOffersRequest {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ValueResourceLoadSkuOffersRequest
+  * @throws IOException if the JSON Object is invalid with respect to ValueResourceSetProductBuyBoxWinnersRequest
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ValueResourceLoadSkuOffersRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceLoadSkuOffersRequest is not found in the empty JSON string", ValueResourceLoadSkuOffersRequest.openapiRequiredFields.toString()));
+        if (!ValueResourceSetProductBuyBoxWinnersRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceSetProductBuyBoxWinnersRequest is not found in the empty JSON string", ValueResourceSetProductBuyBoxWinnersRequest.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!ValueResourceLoadSkuOffersRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceLoadSkuOffersRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!ValueResourceSetProductBuyBoxWinnersRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceSetProductBuyBoxWinnersRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        LoadSkuOffersRequest.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        SetProductBuyBoxWinnersRequest.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
@@ -203,22 +203,22 @@ public class ValueResourceLoadSkuOffersRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ValueResourceLoadSkuOffersRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ValueResourceLoadSkuOffersRequest' and its subtypes
+       if (!ValueResourceSetProductBuyBoxWinnersRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ValueResourceSetProductBuyBoxWinnersRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ValueResourceLoadSkuOffersRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceLoadSkuOffersRequest.class));
+       final TypeAdapter<ValueResourceSetProductBuyBoxWinnersRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceSetProductBuyBoxWinnersRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ValueResourceLoadSkuOffersRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<ValueResourceSetProductBuyBoxWinnersRequest>() {
            @Override
-           public void write(JsonWriter out, ValueResourceLoadSkuOffersRequest value) throws IOException {
+           public void write(JsonWriter out, ValueResourceSetProductBuyBoxWinnersRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ValueResourceLoadSkuOffersRequest read(JsonReader in) throws IOException {
+           public ValueResourceSetProductBuyBoxWinnersRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -229,18 +229,18 @@ public class ValueResourceLoadSkuOffersRequest {
   }
 
  /**
-  * Create an instance of ValueResourceLoadSkuOffersRequest given an JSON string
+  * Create an instance of ValueResourceSetProductBuyBoxWinnersRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ValueResourceLoadSkuOffersRequest
-  * @throws IOException if the JSON string is invalid with respect to ValueResourceLoadSkuOffersRequest
+  * @return An instance of ValueResourceSetProductBuyBoxWinnersRequest
+  * @throws IOException if the JSON string is invalid with respect to ValueResourceSetProductBuyBoxWinnersRequest
   */
-  public static ValueResourceLoadSkuOffersRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ValueResourceLoadSkuOffersRequest.class);
+  public static ValueResourceSetProductBuyBoxWinnersRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ValueResourceSetProductBuyBoxWinnersRequest.class);
   }
 
  /**
-  * Convert an instance of ValueResourceLoadSkuOffersRequest to an JSON string
+  * Convert an instance of ValueResourceSetProductBuyBoxWinnersRequest to an JSON string
   *
   * @return JSON string
   */
