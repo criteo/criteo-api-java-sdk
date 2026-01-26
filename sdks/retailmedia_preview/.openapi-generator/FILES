@@ -122,6 +122,7 @@ docs/MessageDataInstanceModel.md
 docs/MessageError.md
 docs/Metadata.md
 docs/NillableDecimal.md
+docs/NillableOfNullableOfDateOnly.md
 docs/NillableString.md
 docs/OfferUpdate.md
 docs/OnSiteRecommendationApi.md
@@ -283,6 +284,7 @@ docs/SyncLineItemsReportResource.md
 docs/TemplateVariableValue.md
 docs/TextVariableValue.md
 docs/ThirdPartyAccountsApi.md
+docs/UpdateBalanceModelV1.md
 docs/UpdateOffersRequest.md
 docs/ValueResourceBrandIdSearchRequest.md
 docs/ValueResourceCollectionInputOfRetailMediaSeller.md
@@ -300,6 +302,7 @@ docs/ValueResourceInputOfRetailMediaSellerAccountCreationV2.md
 docs/ValueResourceInputOfRetailerSearchRequest.md
 docs/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.md
 docs/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md
+docs/ValueResourceInputOfUpdateBalanceModelV1.md
 docs/ValueResourceInputSetProductBuyBoxWinnersRequest.md
 docs/ValueResourceInputUpdateOffersRequest.md
 docs/ValueResourceLineItemBudgetCapOutHistoryRequest.md
@@ -312,6 +315,7 @@ docs/ValueResourceOfRetailMediaSellerAccountCreationV2.md
 docs/ValueResourceOfRetailerSearchRequest.md
 docs/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.md
 docs/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.md
+docs/ValueResourceOfUpdateBalanceModelV1.md
 docs/ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse.md
 docs/ValueResourceOutcomeOfRetailMediaBrands.md
 docs/ValueResourceSetProductBuyBoxWinnersRequest.md
@@ -467,6 +471,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/MessageDataInstanceModel.
 src/main/java/com/criteo/api/retailmedia/preview/model/MessageError.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Metadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/NillableDecimal.java
+src/main/java/com/criteo/api/retailmedia/preview/model/NillableOfNullableOfDateOnly.java
 src/main/java/com/criteo/api/retailmedia/preview/model/NillableString.java
 src/main/java/com/criteo/api/retailmedia/preview/model/OfferUpdate.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Outcome.java
@@ -626,6 +631,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/SyncLineItemsReportReques
 src/main/java/com/criteo/api/retailmedia/preview/model/SyncLineItemsReportResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/TemplateVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/TextVariableValue.java
+src/main/java/com/criteo/api/retailmedia/preview/model/UpdateBalanceModelV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/UpdateOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceBrandIdSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceCollectionInputOfRetailMediaSeller.java
@@ -643,6 +649,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfRetai
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfRetailerSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfUpdateBalanceModelV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputSetProductBuyBoxWinnersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputUpdateOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceLineItemBudgetCapOutHistoryRequest.java
@@ -655,6 +662,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfRetailMedi
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfRetailerSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfUpdateBalanceModelV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOutcomeOfRetailMediaBrands.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceSetProductBuyBoxWinnersRequest.java

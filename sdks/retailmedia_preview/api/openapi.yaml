@@ -677,6 +677,44 @@ paths:
       - Balance
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/balances/{balance-id}:
+    patch:
+      description: Modify a balance for the given account id
+      operationId: UpdateBalanceV2
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The balance to change the dates
+        explode: false
+        in: path
+        name: balance-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfUpdateBalanceModelV1'
+        description: An object that represents the available options to modify a balance.
+        required: true
+      responses:
+        "200":
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Balance_Manage
+      tags:
+      - Balance
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/accounts/{account-id}/creatives:
     post:
       description: Create a creative for an account
@@ -8820,6 +8858,18 @@ components:
           nullable: true
           type: number
       type: object
+    NillableOfNullableOfDateOnly:
+      additionalProperties: false
+      description: represents a value that can be set to null explicitly
+      example:
+        value: value
+      nullable: true
+      properties:
+        value:
+          description: Underlying actual value
+          nullable: true
+          type: string
+      type: object
     NillableString:
       description: Placeholder object for string value  for which "null" is a valid
         business value
@@ -16839,6 +16889,37 @@ components:
       required:
       - text
       type: object
+    UpdateBalanceModelV1:
+      additionalProperties: false
+      description: An object that represents the available options to set when updating
+        a Retail Media Balance.
+      example:
+        endDate:
+          value: value
+        name: name
+        memo: memo
+        poNumber: poNumber
+        startDate: startDate
+      properties:
+        endDate:
+          $ref: '#/components/schemas/NillableOfNullableOfDateOnly'
+        memo:
+          description: Memo.
+          nullable: true
+          type: string
+        name:
+          description: Name of the balance.
+          nullable: true
+          type: string
+        poNumber:
+          description: Purchase Order number.
+          nullable: true
+          type: string
+        startDate:
+          description: Start date of the balance in the format YYYY-MM-DD.
+          nullable: true
+          type: string
+      type: object
     UpdateOffersRequest:
       additionalProperties: false
       description: The request passed by the caller of the Update endpoint
@@ -17312,6 +17393,24 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel'
       type: object
+    ValueResourceInputOfUpdateBalanceModelV1:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            endDate:
+              value: value
+            name: name
+            memo: memo
+            poNumber: poNumber
+            startDate: startDate
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfUpdateBalanceModelV1'
+      type: object
     ValueResourceInputSetProductBuyBoxWinnersRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -17603,6 +17702,26 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/SponsoredProductsLineItemUpdateRequestModel'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ValueResourceOfUpdateBalanceModelV1:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          endDate:
+            value: value
+          name: name
+          memo: memo
+          poNumber: poNumber
+          startDate: startDate
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/UpdateBalanceModelV1'
         type:
           description: Type of the resource.
           nullable: true
