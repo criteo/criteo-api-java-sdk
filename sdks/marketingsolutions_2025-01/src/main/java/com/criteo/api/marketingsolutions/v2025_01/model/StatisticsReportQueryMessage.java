@@ -269,10 +269,6 @@ public class StatisticsReportQueryMessage {
     
     SALESALLPC7DPV24("SalesAllPc7dPv24"),
     
-    SALESPC7DPV24H("SalesPc7dPv24h"),
-    
-    SALESALLPC7DPV24H("SalesAllPc7dPv24h"),
-    
     SALESLC("SalesLc"),
     
     SALESALLLC("SalesAllLc"),
@@ -324,10 +320,6 @@ public class StatisticsReportQueryMessage {
     REVENUEGENERATEDPC30DPV24H("RevenueGeneratedPc30dPv24h"),
     
     REVENUEGENERATEDALLPC30DPV24H("RevenueGeneratedAllPc30dPv24h"),
-    
-    REVENUEGENERATEDPC7DPV24H("RevenueGeneratedPc7dPv24h"),
-    
-    REVENUEGENERATEDALLPC7DPV24H("RevenueGeneratedAllPc7dPv24h"),
     
     REVENUEGENERATEDPC7DPV24("RevenueGeneratedPc7dPv24"),
     
@@ -381,10 +373,6 @@ public class StatisticsReportQueryMessage {
     
     CONVERSIONRATEALLPC7DPV24("ConversionRateAllPc7dPv24"),
     
-    CONVERSIONRATEPC7DPV24H("ConversionRatePc7dPv24h"),
-    
-    CONVERSIONRATEALLPC7DPV24H("ConversionRateAllPc7dPv24h"),
-    
     CONVERSIONRATEPC7D("ConversionRatePc7d"),
     
     CONVERSIONRATEALLPC7D("ConversionRateAllPc7d"),
@@ -421,10 +409,6 @@ public class StatisticsReportQueryMessage {
     
     ECOSALLPC30DPV24H("ECosAllPc30dPv24h"),
     
-    ECOSPC7DPV24H("ECosPc7dPv24h"),
-    
-    ECOSALLPC7DPV24H("ECosAllPc7dPv24h"),
-    
     ECOSPC7DPV24("ECosPc7dPv24"),
     
     ECOSALLPC7DPV24("ECosAllPc7dPv24"),
@@ -460,10 +444,6 @@ public class StatisticsReportQueryMessage {
     COSTPERORDERPC30DPV24H("CostPerOrderPc30dPv24h"),
     
     COSTPERORDERALLPC30DPV24H("CostPerOrderAllPc30dPv24h"),
-    
-    COSTPERORDERPC7DPV24H("CostPerOrderPc7dPv24h"),
-    
-    COSTPERORDERALLPC7DPV24H("CostPerOrderAllPc7dPv24h"),
     
     COSTPERORDERPC7DPV24("CostPerOrderPc7dPv24"),
     
@@ -514,10 +494,6 @@ public class StatisticsReportQueryMessage {
     AVERAGECARTPC30DPV24H("AverageCartPc30dPv24h"),
     
     AVERAGECARTALLPC30DPV24H("AverageCartAllPc30dPv24h"),
-    
-    AVERAGECARTPC7DPV24H("AverageCartPc7dPv24h"),
-    
-    AVERAGECARTALLPC7DPV24H("AverageCartAllPc7dPv24h"),
     
     AVERAGECARTPC7DPV24("AverageCartPc7dPv24"),
     
@@ -639,10 +615,6 @@ public class StatisticsReportQueryMessage {
     
     ROASALLPC7DPV24("RoasAllPc7dPv24"),
     
-    ROASPC7DPV24H("RoasPc7dPv24h"),
-    
-    ROASALLPC7DPV24H("RoasAllPc7dPv24h"),
-    
     COSTOFSALEPI("CostOfSalePi"),
     
     COSTPERORDERPI("CostPerOrderPi"),
@@ -652,6 +624,28 @@ public class StatisticsReportQueryMessage {
     POSTINSTALLCOSTPERORDER("PostInstallCostPerOrder"),
     
     RETURNONADVERTISERSPENDINGPI("ReturnOnAdvertiserSpendingPi"),
+    
+    CACCLIENTATTRIBUTION("CacClientAttribution"),
+    
+    CACPC30D("CacPc30d"),
+    
+    CACPC7D("CacPc7d"),
+    
+    CACPC1D("CacPc1d"),
+    
+    CACPV24H("CacPv24h"),
+    
+    CACPV7D("CacPv7d"),
+    
+    CACPV14D("CacPv14d"),
+    
+    CACPV30D("CacPv30d"),
+    
+    CACPC30PV24H("CacPc30Pv24h"),
+    
+    CACPC7DPV24H("CacPc7dPv24h"),
+    
+    CACLC30D("CacLc30d"),
     
     POSTINSTALLROAS("PostInstallRoas"),
     

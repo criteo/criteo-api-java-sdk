@@ -90,7 +90,7 @@ public class ValueResourceOfSellerCatalogRequestV2 {
   }
 
    /**
-   * The Type of the resource.
+   * Type of the resource.
    * @return type
   **/
   @javax.annotation.Nullable
@@ -104,50 +104,6 @@ public class ValueResourceOfSellerCatalogRequestV2 {
     this.type = type;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the ValueResourceOfSellerCatalogRequestV2 instance itself
-   */
-  public ValueResourceOfSellerCatalogRequestV2 putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -160,8 +116,7 @@ public class ValueResourceOfSellerCatalogRequestV2 {
     }
     ValueResourceOfSellerCatalogRequestV2 valueResourceOfSellerCatalogRequestV2 = (ValueResourceOfSellerCatalogRequestV2) o;
     return Objects.equals(this.attributes, valueResourceOfSellerCatalogRequestV2.attributes) &&
-        Objects.equals(this.type, valueResourceOfSellerCatalogRequestV2.type)&&
-        Objects.equals(this.additionalProperties, valueResourceOfSellerCatalogRequestV2.additionalProperties);
+        Objects.equals(this.type, valueResourceOfSellerCatalogRequestV2.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -170,7 +125,7 @@ public class ValueResourceOfSellerCatalogRequestV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, type, additionalProperties);
+    return Objects.hash(attributes, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -186,7 +141,6 @@ public class ValueResourceOfSellerCatalogRequestV2 {
     sb.append("class ValueResourceOfSellerCatalogRequestV2 {\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -228,6 +182,14 @@ public class ValueResourceOfSellerCatalogRequestV2 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceOfSellerCatalogRequestV2 is not found in the empty JSON string", ValueResourceOfSellerCatalogRequestV2.openapiRequiredFields.toString()));
         }
       }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ValueResourceOfSellerCatalogRequestV2.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceOfSellerCatalogRequestV2` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
         SellerCatalogRequestV2.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
@@ -252,23 +214,6 @@ public class ValueResourceOfSellerCatalogRequestV2 {
            @Override
            public void write(JsonWriter out, ValueResourceOfSellerCatalogRequestV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
@@ -276,27 +221,7 @@ public class ValueResourceOfSellerCatalogRequestV2 {
            public ValueResourceOfSellerCatalogRequestV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             ValueResourceOfSellerCatalogRequestV2 instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             return thisAdapter.fromJsonTree(jsonObj);
            }
 
        }.nullSafe();

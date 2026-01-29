@@ -47,97 +47,6 @@ paths:
       tags:
       - Advertiser
       x-accepts: application/json
-  /2025-07/audiences/{audience-segment-id}/contactlist:
-    delete:
-      description: Delete all identifiers from a contact list audience-segment.
-      parameters:
-      - description: The id of the contact list audience-segment to amend
-        explode: false
-        in: path
-        name: audience-segment-id
-        required: true
-        schema:
-          format: int32
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                data:
-                  id: "1"
-                  type: AudienceContactlist
-                errors: []
-                warnings:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: deprecation
-                  code: deprecated-field
-                  instance: /audiences/314195
-                  title: '''nbValidIds'' is deprecated'
-                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
-              schema:
-                $ref: '#/components/schemas/DeleteAudienceContactListResponse'
-          description: The Contact List was emptied
-      security:
-      - oauth:
-        - MarketingSolutions_Audience_Manage
-      tags:
-      - Audience
-      x-accepts: application/json
-    patch:
-      description: Add/remove identifiers to or from a contact list audience-segment.
-      parameters:
-      - description: The id of the contact list audience-segment to amend
-        explode: false
-        in: path
-        name: audience-segment-id
-        required: true
-        schema:
-          format: int32
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ContactlistAmendmentRequest'
-        required: true
-        x-bodyName: body
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                data:
-                  type: ContactlistAmendment
-                  attributes:
-                    contactListId: 12
-                    operation: add
-                    requestDate: 2018-12-10T10:00:50.0000000+00:00
-                    identifierType: madid
-                    nbValidIdentifiers: 7343
-                    nbInvalidIdentifiers: 13
-                    sampleInvalidIdentifiers:
-                    - InvalidIdentifier
-                errors: []
-                warnings:
-                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-                  type: deprecation
-                  code: deprecated-field
-                  instance: /audiences/314195
-                  title: '''nbValidIds'' is deprecated'
-                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
-              schema:
-                $ref: '#/components/schemas/ModifyAudienceResponse'
-          description: Summary of created request
-      security:
-      - oauth:
-        - MarketingSolutions_Audience_Manage
-      tags:
-      - Audience
-      x-content-type: application/json
-      x-accepts: application/json
   /2025-07/log-level/advertisers/{advertiser-id}/report:
     post:
       description: This Statistics endpoint provides publisher data.
@@ -157,15 +66,15 @@ paths:
           application/json:
             example:
               shouldDisplayProductIds: false
-              startDate: 2025-05-31T00:00:00.0000000+00:00
-              endDate: 2025-06-03T00:00:00.0000000+00:00
+              startDate: 2025-08-11T00:00:00.0000000+00:00
+              endDate: 2025-08-14T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
           application/xml:
             example: |-
               <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2025-06-03T00:00:00+00:00</EndDate>
-                <StartDate>2025-05-31T00:00:00+00:00</StartDate>
+                <EndDate>2025-08-14T00:00:00+00:00</EndDate>
+                <StartDate>2025-08-11T00:00:00+00:00</StartDate>
                 <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
               </TransparencyQueryMessage>
             schema:
@@ -173,8 +82,8 @@ paths:
           text/xml:
             example: |-
               <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2025-06-03T00:00:00+00:00</EndDate>
-                <StartDate>2025-05-31T00:00:00+00:00</StartDate>
+                <EndDate>2025-08-14T00:00:00+00:00</EndDate>
+                <StartDate>2025-08-11T00:00:00+00:00</StartDate>
                 <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
               </TransparencyQueryMessage>
             schema:
@@ -182,8 +91,8 @@ paths:
           application/*+xml:
             example: |-
               <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2025-06-03T00:00:00+00:00</EndDate>
-                <StartDate>2025-05-31T00:00:00+00:00</StartDate>
+                <EndDate>2025-08-14T00:00:00+00:00</EndDate>
+                <StartDate>2025-08-11T00:00:00+00:00</StartDate>
                 <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
               </TransparencyQueryMessage>
             schema:
@@ -219,6 +128,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestsPatchAdSetV24Q3'
         description: List of adsets to patch.
+        required: true
         x-bodyName: adSets
       responses:
         "200":
@@ -366,6 +276,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PatchAdSetCategoryBidListRequest'
+        required: true
         x-bodyName: categoryBidsToUpdate
       responses:
         "200":
@@ -428,6 +339,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PatchAdSetDisplayMultiplierListRequest'
+        required: true
         x-bodyName: displayMultipliersToUpdate
       responses:
         "200":
@@ -1036,6 +948,7 @@ paths:
   /2025-07/marketing-solutions/audience-segments/{audience-segment-id}/contact-list:
     delete:
       description: Delete all identifiers from a contact list audience-segment.
+      operationId: DeleteContactListByAudienceSegment
       parameters:
       - description: The id of the contact list audience-segment to amend
         explode: false
@@ -1073,6 +986,7 @@ paths:
       x-accepts: application/json
     patch:
       description: Add/remove identifiers to or from a contact list audience-segment.
+      operationId: UpdateContactListByAudienceSegment
       parameters:
       - description: The id of the contact list audience-segment to amend
         explode: false
@@ -1581,6 +1495,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PatchCampaignListRequest'
         description: List of campaigns to patch.
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -2145,6 +2060,7 @@ paths:
                 type: string
               type: array
         description: Names of the sellers to associate with new Ids
+        required: true
         x-bodyName: sellerNames
       responses:
         "200":
@@ -2324,6 +2240,7 @@ paths:
                 $ref: '#/components/schemas/UpdateSellerBudgetMessage'
               type: array
         description: ""
+        required: true
         x-bodyName: updateSellerBudgets
       responses:
         "200":
@@ -2363,6 +2280,7 @@ paths:
                 $ref: '#/components/schemas/CreateSellerBudgetMapiMessage'
               type: array
         description: ""
+        required: true
         x-bodyName: createSellerBudgets
       responses:
         "200":
@@ -2445,6 +2363,7 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateSellerBudgetMessageBase'
         description: ""
+        required: true
         x-bodyName: message
       responses:
         "200":
@@ -2548,6 +2467,7 @@ paths:
                 $ref: '#/components/schemas/SellerCampaignUpdate'
               type: array
         description: ""
+        required: true
         x-bodyName: campaignMessages
       responses:
         "200":
@@ -3035,6 +2955,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateSellerCampaignMessageMapi'
         description: Supply the campaign Id and bid to create the mapping
+        required: true
         x-bodyName: sellerCampaign
       responses:
         "200":
@@ -3669,8 +3590,8 @@ paths:
               currency: EUR
               format: csv
               timezone: Europe/Paris
-              startDate: 2025-05-31T00:00:00.0000000+00:00
-              endDate: 2025-06-03T00:00:00.0000000+00:00
+              startDate: 2025-08-11T00:00:00.0000000+00:00
+              endDate: 2025-08-14T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/StatisticsReportQueryMessage'
       responses:
@@ -8853,7 +8774,6 @@ components:
           type: string
         datasetId:
           description: Dataset id of this ad set
-          nullable: true
           type: string
         mediaType:
           description: Media type for the ad set
@@ -11679,8 +11599,8 @@ components:
         currency: currency
         campaignIds: campaignIds
         metrics:
-        - metrics
-        - metrics
+        - Clicks
+        - Clicks
         placement: placement
         startDate: 2000-01-23T04:56:07.000+00:00
         dimensions:
@@ -11745,6 +11665,22 @@ components:
         metrics:
           description: The list of metrics to report.
           items:
+            enum:
+            - Clicks
+            - Displays
+            - Cost
+            - SalesPc30d
+            - RevenuePc30d
+            - CosPc30d
+            - RoasPc30d
+            - CpoPc30d
+            - CvrPc30d
+            - SalesPv1d
+            - RevenuePv1d
+            - CosPv1d
+            - RoasPv1d
+            - CpoPv1d
+            - CvrPv1d
             type: string
           type: array
         placement:
@@ -11787,8 +11723,8 @@ components:
             currency: currency
             campaignIds: campaignIds
             metrics:
-            - metrics
-            - metrics
+            - Clicks
+            - Clicks
             placement: placement
             startDate: 2000-01-23T04:56:07.000+00:00
             dimensions:
@@ -11806,8 +11742,8 @@ components:
             currency: currency
             campaignIds: campaignIds
             metrics:
-            - metrics
-            - metrics
+            - Clicks
+            - Clicks
             placement: placement
             startDate: 2000-01-23T04:56:07.000+00:00
             dimensions:
@@ -11836,8 +11772,8 @@ components:
           currency: currency
           campaignIds: campaignIds
           metrics:
-          - metrics
-          - metrics
+          - Clicks
+          - Clicks
           placement: placement
           startDate: 2000-01-23T04:56:07.000+00:00
           dimensions:
@@ -14622,8 +14558,6 @@ components:
             - SalesAllPc30dPv24h
             - SalesPc7dPv24
             - SalesAllPc7dPv24
-            - SalesPc7dPv24h
-            - SalesAllPc7dPv24h
             - SalesLc
             - SalesAllLc
             - SalesPc7d
@@ -14650,8 +14584,6 @@ components:
             - RevenueGeneratedAllPc30Pv24
             - RevenueGeneratedPc30dPv24h
             - RevenueGeneratedAllPc30dPv24h
-            - RevenueGeneratedPc7dPv24h
-            - RevenueGeneratedAllPc7dPv24h
             - RevenueGeneratedPc7dPv24
             - RevenueGeneratedAllPc7dPv24
             - RevenueGeneratedLc
@@ -14678,8 +14610,6 @@ components:
             - ConversionRateAllPc30dPv24h
             - ConversionRatePc7dPv24
             - ConversionRateAllPc7dPv24
-            - ConversionRatePc7dPv24h
-            - ConversionRateAllPc7dPv24h
             - ConversionRatePc7d
             - ConversionRateAllPc7d
             - ConversionRatePc1d
@@ -14698,8 +14628,6 @@ components:
             - ECosAllPc30Pv24
             - ECosPc30dPv24h
             - ECosAllPc30dPv24h
-            - ECosPc7dPv24h
-            - ECosAllPc7dPv24h
             - ECosPc7dPv24
             - ECosAllPc7dPv24
             - ECosPc7d
@@ -14718,8 +14646,6 @@ components:
             - CostPerOrderAllPc30Pv24
             - CostPerOrderPc30dPv24h
             - CostPerOrderAllPc30dPv24h
-            - CostPerOrderPc7dPv24h
-            - CostPerOrderAllPc7dPv24h
             - CostPerOrderPc7dPv24
             - CostPerOrderAllPc7dPv24
             - CostPerOrderPc7d
@@ -14745,8 +14671,6 @@ components:
             - AverageCartAllPc30Pv24
             - AverageCartPc30dPv24h
             - AverageCartAllPc30dPv24h
-            - AverageCartPc7dPv24h
-            - AverageCartAllPc7dPv24h
             - AverageCartPc7dPv24
             - AverageCartAllPc7dPv24
             - ClickThroughRate
@@ -14807,13 +14731,22 @@ components:
             - RoasAllPc30dPv24h
             - RoasPc7dPv24
             - RoasAllPc7dPv24
-            - RoasPc7dPv24h
-            - RoasAllPc7dPv24h
             - CostOfSalePi
             - CostPerOrderPi
             - PostInstallCostOfSale
             - PostInstallCostPerOrder
             - ReturnOnAdvertiserSpendingPi
+            - CacClientAttribution
+            - CacPc30d
+            - CacPc7d
+            - CacPc1d
+            - CacPv24h
+            - CacPv7d
+            - CacPv14d
+            - CacPv30d
+            - CacPc30Pv24h
+            - CacPc7dPv24h
+            - CacLc30d
             - PostInstallRoas
             - ReturnOnAdvertiserSpendingOfflinePc
             - ReturnOnAdvertiserSpendingOfflinePv

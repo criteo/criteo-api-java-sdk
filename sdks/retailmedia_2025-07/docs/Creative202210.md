@@ -13,7 +13,7 @@ A creative entity
 |**creativeFormatType** | [**CreativeFormatTypeEnum**](#CreativeFormatTypeEnum) | Creative format type |  |
 |**environments** | [**List&lt;PageTypeEnvironment202210&gt;**](PageTypeEnvironment202210.md) | Environment type (e.g. mobile, web, app) |  |
 |**formatId** | **Integer** | Format Id |  |
-|**id** | **String** | Id of the entity |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**name** | **String** | Name |  |
 |**retailerId** | **Integer** | Retailer Id |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Creative Status |  |

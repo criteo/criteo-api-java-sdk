@@ -193,7 +193,7 @@ public class Creative202110 {
   }
 
    /**
-   * Id of the entity
+   * Get id
    * @return id
   **/
   @javax.annotation.Nullable

@@ -85,7 +85,9 @@ public class TemplateVariable {
     
     FILES("Files"),
     
-    HYPERLINK("Hyperlink");
+    HYPERLINK("Hyperlink"),
+    
+    VIDEO("Video");
 
     private String value;
 

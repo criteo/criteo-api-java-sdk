@@ -24,9 +24,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getAccountCreatives**](CampaignApi.md#getAccountCreatives) | **GET** /2025-04/retail-media/accounts/{account-id}/creatives |  |
 | [**getAddToBasketTargetsByLineItemId**](CampaignApi.md#getAddToBasketTargetsByLineItemId) | **GET** /2025-04/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |  |
 | [**getApi202110ExternalRetailerPagesByRetailerId**](CampaignApi.md#getApi202110ExternalRetailerPagesByRetailerId) | **GET** /2025-04/retail-media/retailers/{retailerId}/pages |  |
-| [**getApi202204ExternalCategories**](CampaignApi.md#getApi202204ExternalCategories) | **GET** /2025-04/retail-media/categories |  |
-| [**getApiV1ExternalCatalogOutputByCatalogId**](CampaignApi.md#getApiV1ExternalCatalogOutputByCatalogId) | **GET** /2025-04/retail-media/catalogs/{catalogId}/output |  |
-| [**getApiV1ExternalCatalogStatusByCatalogId**](CampaignApi.md#getApiV1ExternalCatalogStatusByCatalogId) | **GET** /2025-04/retail-media/catalogs/{catalogId}/status |  |
+| [**getApiExternalV1Categories**](CampaignApi.md#getApiExternalV1Categories) | **GET** /2025-04/retail-media/categories |  |
 | [**getAuctionLineItemsByCampaignId**](CampaignApi.md#getAuctionLineItemsByCampaignId) | **GET** /2025-04/retail-media/campaigns/{campaign-id}/auction-line-items |  |
 | [**getAuctionLineItemsByLineItemId**](CampaignApi.md#getAuctionLineItemsByLineItemId) | **GET** /2025-04/retail-media/auction-line-items/{line-item-id} |  |
 | [**getAudienceTargetsByLineItemId**](CampaignApi.md#getAudienceTargetsByLineItemId) | **GET** /2025-04/retail-media/preferred-line-items/{line-item-id}/targeting/audiences |  |
@@ -35,6 +33,8 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getCampaignBudgetOverrides**](CampaignApi.md#getCampaignBudgetOverrides) | **GET** /2025-04/retail-media/campaigns/{campaignId}/campaign-budget-overrides |  |
 | [**getCampaignByCampaignId**](CampaignApi.md#getCampaignByCampaignId) | **GET** /2025-04/retail-media/campaigns/{campaignId} |  |
 | [**getCampaignsByAccountId**](CampaignApi.md#getCampaignsByAccountId) | **GET** /2025-04/retail-media/accounts/{account-id}/campaigns |  |
+| [**getCatalogOutput**](CampaignApi.md#getCatalogOutput) | **GET** /2025-04/retail-media/catalogs/{catalogId}/output |  |
+| [**getCatalogStatus**](CampaignApi.md#getCatalogStatus) | **GET** /2025-04/retail-media/catalogs/{catalogId}/status |  |
 | [**getCategory**](CampaignApi.md#getCategory) | **GET** /2025-04/retail-media/categories/{categoryId} |  |
 | [**getCpcMinBidsBySkuIdsV1**](CampaignApi.md#getCpcMinBidsBySkuIdsV1) | **POST** /2025-04/retail-media/retailers/{retailerId}/cpc-min-bids |  |
 | [**getCreative**](CampaignApi.md#getCreative) | **GET** /2025-04/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
@@ -50,8 +50,8 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getStoreTargetsByLineItemId**](CampaignApi.md#getStoreTargetsByLineItemId) | **GET** /2025-04/retail-media/preferred-line-items/{line-item-id}/targeting/stores |  |
 | [**modifyAuctionLineItemsByCampaignId**](CampaignApi.md#modifyAuctionLineItemsByCampaignId) | **POST** /2025-04/retail-media/campaigns/{campaign-id}/auction-line-items |  |
 | [**pausePromotedProducts**](CampaignApi.md#pausePromotedProducts) | **POST** /2025-04/retail-media/line-items/{line-item-id}/products/pause |  |
+| [**postApiExternalV1AccountCatalogsSellersByAccountId**](CampaignApi.md#postApiExternalV1AccountCatalogsSellersByAccountId) | **POST** /2025-04/retail-media/accounts/{accountId}/catalogs/sellers |  |
 | [**postApiV1ExternalAccountCatalogsByAccountId**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2025-04/retail-media/accounts/{accountId}/catalogs |  |
-| [**postApiV1ExternalAccountCatalogsSellersByAccountId**](CampaignApi.md#postApiV1ExternalAccountCatalogsSellersByAccountId) | **POST** /2025-04/retail-media/accounts/{accountId}/catalogs/sellers |  |
 | [**putAddToBasketTargetByLineItemId**](CampaignApi.md#putAddToBasketTargetByLineItemId) | **PUT** /2025-04/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |  |
 | [**putAudienceTargetsByLineItemId**](CampaignApi.md#putAudienceTargetsByLineItemId) | **PUT** /2025-04/retail-media/preferred-line-items/{line-item-id}/targeting/audiences |  |
 | [**putStoreTargetByLineItemId**](CampaignApi.md#putStoreTargetByLineItemId) | **PUT** /2025-04/retail-media/preferred-line-items/{line-item-id}/targeting/stores |  |
@@ -773,7 +773,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The given account id | |
-| **postCampaignV202301** | [**PostCampaignV202301**](PostCampaignV202301.md)| The campaign settings to create a campaign with | [optional] |
+| **postCampaignV202301** | [**PostCampaignV202301**](PostCampaignV202301.md)| The campaign settings to create a campaign with | |
 
 ### Return type
 
@@ -864,7 +864,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| External account id to create a creative for | |
-| **creativeCreateModel202207** | [**CreativeCreateModel202207**](CreativeCreateModel202207.md)| The creative to create | [optional] |
+| **creativeCreateModel202207** | [**CreativeCreateModel202207**](CreativeCreateModel202207.md)| The creative to create | |
 
 ### Return type
 
@@ -955,7 +955,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **campaignId** | **String**| The given campaign id | |
-| **preferredLineItemCreateModelV2Request** | [**PreferredLineItemCreateModelV2Request**](PreferredLineItemCreateModelV2Request.md)| The line item settings to create a line item with | [optional] |
+| **preferredLineItemCreateModelV2Request** | [**PreferredLineItemCreateModelV2Request**](PreferredLineItemCreateModelV2Request.md)| The line item settings to create a line item with | |
 
 ### Return type
 
@@ -1795,7 +1795,7 @@ public class Example {
 
 ## getApi202110ExternalRetailerPagesByRetailerId
 
-> ExternalRetailerPages202110 getApi202110ExternalRetailerPagesByRetailerId(retailerId)
+> RetailerPages202110 getApi202110ExternalRetailerPagesByRetailerId(retailerId)
 
 
 
@@ -1842,7 +1842,7 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer retailerId = 56; // Integer | The retailers to fetch pages for
         try {
-            ExternalRetailerPages202110 result = apiInstance.getApi202110ExternalRetailerPagesByRetailerId(retailerId);
+            RetailerPages202110 result = apiInstance.getApi202110ExternalRetailerPagesByRetailerId(retailerId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getApi202110ExternalRetailerPagesByRetailerId");
@@ -1864,7 +1864,7 @@ public class Example {
 
 ### Return type
 
-[**ExternalRetailerPages202110**](ExternalRetailerPages202110.md)
+[**RetailerPages202110**](RetailerPages202110.md)
 
 ### Authorization
 
@@ -1882,9 +1882,9 @@ public class Example {
 | **200** | Pages fetched successfully |  -  |
 
 
-## getApi202204ExternalCategories
+## getApiExternalV1Categories
 
-> Category202204ListResponse getApi202204ExternalCategories(pageIndex, pageSize, retailerId, textSubstring)
+> Category202204ListResponse getApiExternalV1Categories(pageIndex, pageSize, retailerId, textSubstring)
 
 
 
@@ -1934,10 +1934,10 @@ public class Example {
         Integer retailerId = 56; // Integer | The retailer id for which Categories fetched
         String textSubstring = "textSubstring_example"; // String | Query string to search across Categories
         try {
-            Category202204ListResponse result = apiInstance.getApi202204ExternalCategories(pageIndex, pageSize, retailerId, textSubstring);
+            Category202204ListResponse result = apiInstance.getApiExternalV1Categories(pageIndex, pageSize, retailerId, textSubstring);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApi202204ExternalCategories");
+            System.err.println("Exception when calling CampaignApi#getApiExternalV1Categories");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1975,185 +1975,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Categories found. |  -  |
-
-
-## getApiV1ExternalCatalogOutputByCatalogId
-
-> File getApiV1ExternalCatalogOutputByCatalogId(catalogId)
-
-
-
-Output the indicated catalog. Catalogs are only available for retrieval when their associated status request  is at a Success status.  Produces application/x-json-stream of v2021_07 CatalogProduct json objects.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2025_04;
-
-import com.criteo.api.retailmedia.v2025_04.ApiClient;
-import com.criteo.api.retailmedia.v2025_04.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2025_04.ApiException;
-import com.criteo.api.retailmedia.v2025_04.Configuration;
-import com.criteo.api.retailmedia.v2025_04.auth.*;
-import com.criteo.api.retailmedia.v2025_04.model.*;
-import com.criteo.api.retailmedia.v2025_04.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String catalogId = "catalogId_example"; // String | A catalog ID returned from an account catalog request.
-        try {
-            File result = apiInstance.getApiV1ExternalCatalogOutputByCatalogId(catalogId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApiV1ExternalCatalogOutputByCatalogId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **catalogId** | **String**| A catalog ID returned from an account catalog request. | |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/x-json-stream, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Catalog download initiated. |  -  |
-| **204** | Catalog has expired. |  -  |
-
-
-## getApiV1ExternalCatalogStatusByCatalogId
-
-> JsonApiSingleResponseOfCatalogStatus getApiV1ExternalCatalogStatusByCatalogId(catalogId)
-
-
-
-Check the status of a catalog request.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2025_04;
-
-import com.criteo.api.retailmedia.v2025_04.ApiClient;
-import com.criteo.api.retailmedia.v2025_04.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2025_04.ApiException;
-import com.criteo.api.retailmedia.v2025_04.Configuration;
-import com.criteo.api.retailmedia.v2025_04.auth.*;
-import com.criteo.api.retailmedia.v2025_04.model.*;
-import com.criteo.api.retailmedia.v2025_04.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String catalogId = "catalogId_example"; // String | A catalog ID returned from an account catalog request.
-        try {
-            JsonApiSingleResponseOfCatalogStatus result = apiInstance.getApiV1ExternalCatalogStatusByCatalogId(catalogId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApiV1ExternalCatalogStatusByCatalogId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **catalogId** | **String**| A catalog ID returned from an account catalog request. | |
-
-### Return type
-
-[**JsonApiSingleResponseOfCatalogStatus**](JsonApiSingleResponseOfCatalogStatus.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Catalog request found. |  -  |
 
 
 ## getAuctionLineItemsByCampaignId
@@ -2886,6 +2707,185 @@ public class Example {
 | **200** | Success |  -  |
 
 
+## getCatalogOutput
+
+> File getCatalogOutput(catalogId)
+
+
+
+Output the indicated catalog. Catalogs are only available for retrieval when their associated status request  is at a Success status.  Produces application/x-json-stream CatalogProduct json objects (first introduced in the 2021-07 version).
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2025_04;
+
+import com.criteo.api.retailmedia.v2025_04.ApiClient;
+import com.criteo.api.retailmedia.v2025_04.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2025_04.ApiException;
+import com.criteo.api.retailmedia.v2025_04.Configuration;
+import com.criteo.api.retailmedia.v2025_04.auth.*;
+import com.criteo.api.retailmedia.v2025_04.model.*;
+import com.criteo.api.retailmedia.v2025_04.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String catalogId = "catalogId_example"; // String | A catalog ID returned from an account catalog request.
+        try {
+            File result = apiInstance.getCatalogOutput(catalogId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#getCatalogOutput");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **catalogId** | **String**| A catalog ID returned from an account catalog request. | |
+
+### Return type
+
+[**File**](File.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/x-json-stream
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Catalog download initiated. |  -  |
+| **204** | Catalog has expired. |  -  |
+
+
+## getCatalogStatus
+
+> JsonApiSingleResponseOfCatalogStatus getCatalogStatus(catalogId)
+
+
+
+Check the status of a catalog request.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2025_04;
+
+import com.criteo.api.retailmedia.v2025_04.ApiClient;
+import com.criteo.api.retailmedia.v2025_04.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2025_04.ApiException;
+import com.criteo.api.retailmedia.v2025_04.Configuration;
+import com.criteo.api.retailmedia.v2025_04.auth.*;
+import com.criteo.api.retailmedia.v2025_04.model.*;
+import com.criteo.api.retailmedia.v2025_04.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String catalogId = "catalogId_example"; // String | A catalog ID returned from an account catalog request.
+        try {
+            JsonApiSingleResponseOfCatalogStatus result = apiInstance.getCatalogStatus(catalogId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#getCatalogStatus");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **catalogId** | **String**| A catalog ID returned from an account catalog request. | |
+
+### Return type
+
+[**JsonApiSingleResponseOfCatalogStatus**](JsonApiSingleResponseOfCatalogStatus.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Catalog request found. |  -  |
+
+
 ## getCategory
 
 > Category202204 getCategory(categoryId)
@@ -3044,7 +3044,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **retailerId** | **Integer**| Retailer Id. | |
-| **valueResourceInputCpcMinBidsRequest** | [**ValueResourceInputCpcMinBidsRequest**](ValueResourceInputCpcMinBidsRequest.md)| Cpc minimum bid amount request object. | [optional] |
+| **valueResourceInputCpcMinBidsRequest** | [**ValueResourceInputCpcMinBidsRequest**](ValueResourceInputCpcMinBidsRequest.md)| Cpc minimum bid amount request object. | |
 
 ### Return type
 
@@ -4140,7 +4140,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **campaignId** | **String**| The given campaign id | |
-| **auctionLineItemCreateModelRequest** | [**AuctionLineItemCreateModelRequest**](AuctionLineItemCreateModelRequest.md)| The line item settings to create a line item with | [optional] |
+| **auctionLineItemCreateModelRequest** | [**AuctionLineItemCreateModelRequest**](AuctionLineItemCreateModelRequest.md)| The line item settings to create a line item with | |
 
 ### Return type
 
@@ -4252,6 +4252,97 @@ null (empty response body)
 | **204** | Promoted products paused |  -  |
 
 
+## postApiExternalV1AccountCatalogsSellersByAccountId
+
+> JsonApiSingleResponseOfCatalogStatus postApiExternalV1AccountCatalogsSellersByAccountId(accountId, jsonApiRequestOfSellerCatalogRequest)
+
+
+
+Create a request for a Catalog available to the indicated account.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2025_04;
+
+import com.criteo.api.retailmedia.v2025_04.ApiClient;
+import com.criteo.api.retailmedia.v2025_04.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2025_04.ApiException;
+import com.criteo.api.retailmedia.v2025_04.Configuration;
+import com.criteo.api.retailmedia.v2025_04.auth.*;
+import com.criteo.api.retailmedia.v2025_04.model.*;
+import com.criteo.api.retailmedia.v2025_04.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String accountId = "accountId_example"; // String | The account to request the catalog for.
+        JsonApiRequestOfSellerCatalogRequest jsonApiRequestOfSellerCatalogRequest = new JsonApiRequestOfSellerCatalogRequest(); // JsonApiRequestOfSellerCatalogRequest | 
+        try {
+            JsonApiSingleResponseOfCatalogStatus result = apiInstance.postApiExternalV1AccountCatalogsSellersByAccountId(accountId, jsonApiRequestOfSellerCatalogRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#postApiExternalV1AccountCatalogsSellersByAccountId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| The account to request the catalog for. | |
+| **jsonApiRequestOfSellerCatalogRequest** | [**JsonApiRequestOfSellerCatalogRequest**](JsonApiRequestOfSellerCatalogRequest.md)|  | |
+
+### Return type
+
+[**JsonApiSingleResponseOfCatalogStatus**](JsonApiSingleResponseOfCatalogStatus.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Catalog request successfully created |  -  |
+
+
 ## postApiV1ExternalAccountCatalogsByAccountId
 
 > JsonApiSingleResponseOfCatalogStatus postApiV1ExternalAccountCatalogsByAccountId(accountId, jsonApiRequestOfCatalogRequest)
@@ -4321,98 +4412,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The account to request the catalog for. | |
-| **jsonApiRequestOfCatalogRequest** | [**JsonApiRequestOfCatalogRequest**](JsonApiRequestOfCatalogRequest.md)|  | [optional] |
-
-### Return type
-
-[**JsonApiSingleResponseOfCatalogStatus**](JsonApiSingleResponseOfCatalogStatus.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Catalog request successfully created |  -  |
-
-
-## postApiV1ExternalAccountCatalogsSellersByAccountId
-
-> JsonApiSingleResponseOfCatalogStatus postApiV1ExternalAccountCatalogsSellersByAccountId(accountId, jsonApiRequestOfSellerCatalogRequest)
-
-
-
-Create a request for a Catalog available to the indicated account.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2025_04;
-
-import com.criteo.api.retailmedia.v2025_04.ApiClient;
-import com.criteo.api.retailmedia.v2025_04.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2025_04.ApiException;
-import com.criteo.api.retailmedia.v2025_04.Configuration;
-import com.criteo.api.retailmedia.v2025_04.auth.*;
-import com.criteo.api.retailmedia.v2025_04.model.*;
-import com.criteo.api.retailmedia.v2025_04.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account to request the catalog for.
-        JsonApiRequestOfSellerCatalogRequest jsonApiRequestOfSellerCatalogRequest = new JsonApiRequestOfSellerCatalogRequest(); // JsonApiRequestOfSellerCatalogRequest | 
-        try {
-            JsonApiSingleResponseOfCatalogStatus result = apiInstance.postApiV1ExternalAccountCatalogsSellersByAccountId(accountId, jsonApiRequestOfSellerCatalogRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#postApiV1ExternalAccountCatalogsSellersByAccountId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account to request the catalog for. | |
-| **jsonApiRequestOfSellerCatalogRequest** | [**JsonApiRequestOfSellerCatalogRequest**](JsonApiRequestOfSellerCatalogRequest.md)|  | [optional] |
+| **jsonApiRequestOfCatalogRequest** | [**JsonApiRequestOfCatalogRequest**](JsonApiRequestOfCatalogRequest.md)|  | |
 
 ### Return type
 
@@ -4503,7 +4503,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| The line item to interact with | |
-| **addToBasketTarget202110Request** | [**AddToBasketTarget202110Request**](AddToBasketTarget202110Request.md)| The add to basket target to set the scope for | [optional] |
+| **addToBasketTarget202110Request** | [**AddToBasketTarget202110Request**](AddToBasketTarget202110Request.md)| The add to basket target to set the scope for | |
 
 ### Return type
 
@@ -4594,7 +4594,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| The line item to interact with | |
-| **audienceTarget202110Request** | [**AudienceTarget202110Request**](AudienceTarget202110Request.md)| The audience target to set the scope for | [optional] |
+| **audienceTarget202110Request** | [**AudienceTarget202110Request**](AudienceTarget202110Request.md)| The audience target to set the scope for | |
 
 ### Return type
 
@@ -4685,7 +4685,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| The line item to interact with | |
-| **storeTarget202110Request** | [**StoreTarget202110Request**](StoreTarget202110Request.md)| The store target to set the scope for | [optional] |
+| **storeTarget202110Request** | [**StoreTarget202110Request**](StoreTarget202110Request.md)| The store target to set the scope for | |
 
 ### Return type
 
@@ -5048,7 +5048,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| The given line item id | |
-| **auctionLineItemUpdateModelRequest** | [**AuctionLineItemUpdateModelRequest**](AuctionLineItemUpdateModelRequest.md)| The line item settings to create a line item with | [optional] |
+| **auctionLineItemUpdateModelRequest** | [**AuctionLineItemUpdateModelRequest**](AuctionLineItemUpdateModelRequest.md)| The line item settings to create a line item with | |
 
 ### Return type
 
@@ -5139,7 +5139,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| LineItemId for bid multiplier retrieval | |
-| **lineItemBidMultipliersV2Request** | [**LineItemBidMultipliersV2Request**](LineItemBidMultipliersV2Request.md)| New Bid Multipliers to be set | [optional] |
+| **lineItemBidMultipliersV2Request** | [**LineItemBidMultipliersV2Request**](LineItemBidMultipliersV2Request.md)| New Bid Multipliers to be set | |
 
 ### Return type
 
@@ -5230,7 +5230,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **campaignId** | **Long**| Campaign id. | |
-| **valueResourceInputOfCampaignBudgetOverrides** | [**ValueResourceInputOfCampaignBudgetOverrides**](ValueResourceInputOfCampaignBudgetOverrides.md)| New campaign budget overrides settings value resource input. | [optional] |
+| **valueResourceInputOfCampaignBudgetOverrides** | [**ValueResourceInputOfCampaignBudgetOverrides**](ValueResourceInputOfCampaignBudgetOverrides.md)| New campaign budget overrides settings value resource input. | |
 
 ### Return type
 
@@ -5321,7 +5321,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **campaignId** | **String**| The given campaign id | |
-| **putCampaignV202301** | [**PutCampaignV202301**](PutCampaignV202301.md)| The campaign settings to update that campaign with | [optional] |
+| **putCampaignV202301** | [**PutCampaignV202301**](PutCampaignV202301.md)| The campaign settings to update that campaign with | |
 
 ### Return type
 
@@ -5414,7 +5414,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| External account id containing the creative | |
 | **creativeId** | **String**| Creative to update | |
-| **creativeUpdateModel202207** | [**CreativeUpdateModel202207**](CreativeUpdateModel202207.md)| The creative to create | [optional] |
+| **creativeUpdateModel202207** | [**CreativeUpdateModel202207**](CreativeUpdateModel202207.md)| The creative to create | |
 
 ### Return type
 
@@ -5505,7 +5505,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| Line item external id. | |
-| **valueResourceInputOfLineItemBudgetOverrides** | [**ValueResourceInputOfLineItemBudgetOverrides**](ValueResourceInputOfLineItemBudgetOverrides.md)| New line item budget overrides settings value resource input. | [optional] |
+| **valueResourceInputOfLineItemBudgetOverrides** | [**ValueResourceInputOfLineItemBudgetOverrides**](ValueResourceInputOfLineItemBudgetOverrides.md)| New line item budget overrides settings value resource input. | |
 
 ### Return type
 
@@ -5596,7 +5596,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| The given line item id | |
-| **preferredLineItemUpdateModelV2Request** | [**PreferredLineItemUpdateModelV2Request**](PreferredLineItemUpdateModelV2Request.md)| The line item settings to create a line item with | [optional] |
+| **preferredLineItemUpdateModelV2Request** | [**PreferredLineItemUpdateModelV2Request**](PreferredLineItemUpdateModelV2Request.md)| The line item settings to create a line item with | |
 
 ### Return type
 

@@ -24,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,6 +55,10 @@ public class CreativeUpdateModel202207 {
   public static final String SERIALIZED_NAME_BRAND_ID = "brandId";
   @SerializedName(SERIALIZED_NAME_BRAND_ID)
   private Long brandId;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -93,6 +98,28 @@ public class CreativeUpdateModel202207 {
 
   public void setBrandId(Long brandId) {
     this.brandId = brandId;
+  }
+
+
+  public CreativeUpdateModel202207 id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -200,15 +227,27 @@ public class CreativeUpdateModel202207 {
     }
     CreativeUpdateModel202207 creativeUpdateModel202207 = (CreativeUpdateModel202207) o;
     return Objects.equals(this.brandId, creativeUpdateModel202207.brandId) &&
+        Objects.equals(this.id, creativeUpdateModel202207.id) &&
         Objects.equals(this.name, creativeUpdateModel202207.name) &&
         Objects.equals(this.retailerId, creativeUpdateModel202207.retailerId) &&
         Objects.equals(this.templateId, creativeUpdateModel202207.templateId) &&
         Objects.equals(this.templateVariableValues, creativeUpdateModel202207.templateVariableValues);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(brandId, name, retailerId, templateId, templateVariableValues);
+    return Objects.hash(brandId, id, name, retailerId, templateId, templateVariableValues);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -216,6 +255,7 @@ public class CreativeUpdateModel202207 {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreativeUpdateModel202207 {\n");
     sb.append("    brandId: ").append(toIndentedString(brandId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
@@ -243,6 +283,7 @@ public class CreativeUpdateModel202207 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("brandId");
+    openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("retailerId");
     openapiFields.add("templateId");
@@ -282,6 +323,9 @@ public class CreativeUpdateModel202207 {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

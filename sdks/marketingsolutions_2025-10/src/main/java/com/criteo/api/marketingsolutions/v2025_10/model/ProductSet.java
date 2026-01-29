@@ -117,6 +117,10 @@ public class ProductSet {
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public static final String SERIALIZED_NAME_IS_FALLBACK_ALLOWED = "isFallbackAllowed";
+  @SerializedName(SERIALIZED_NAME_IS_FALLBACK_ALLOWED)
+  private Boolean isFallbackAllowed;
+
   public static final String SERIALIZED_NAME_KEEP_VARIANT_PRODUCTS = "keepVariantProducts";
   @SerializedName(SERIALIZED_NAME_KEEP_VARIANT_PRODUCTS)
   private Boolean keepVariantProducts;
@@ -287,6 +291,28 @@ public class ProductSet {
   }
 
 
+  public ProductSet isFallbackAllowed(Boolean isFallbackAllowed) {
+    
+    this.isFallbackAllowed = isFallbackAllowed;
+    return this;
+  }
+
+   /**
+   * Get isFallbackAllowed
+   * @return isFallbackAllowed
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getIsFallbackAllowed() {
+    return isFallbackAllowed;
+  }
+
+
+  public void setIsFallbackAllowed(Boolean isFallbackAllowed) {
+    this.isFallbackAllowed = isFallbackAllowed;
+  }
+
+
   public ProductSet keepVariantProducts(Boolean keepVariantProducts) {
     
     this.keepVariantProducts = keepVariantProducts;
@@ -360,7 +386,7 @@ public class ProductSet {
   }
 
    /**
-   * The number of product matching the product set.  Can be null for newly created product set.
+   * The number of products matching the product set.  Can be null for newly created product set.
    * @return numberOfProducts
   **/
   @javax.annotation.Nullable
@@ -482,6 +508,7 @@ public class ProductSet {
         Objects.equals(this.creationDate, productSet.creationDate) &&
         Objects.equals(this.datasetId, productSet.datasetId) &&
         Objects.equals(this.id, productSet.id) &&
+        Objects.equals(this.isFallbackAllowed, productSet.isFallbackAllowed) &&
         Objects.equals(this.keepVariantProducts, productSet.keepVariantProducts) &&
         Objects.equals(this.minimumNumberOfProducts, productSet.minimumNumberOfProducts) &&
         Objects.equals(this.name, productSet.name) &&
@@ -497,7 +524,7 @@ public class ProductSet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(clientType, creationDate, datasetId, id, keepVariantProducts, minimumNumberOfProducts, name, numberOfProducts, rules, status, additionalProperties);
+    return Objects.hash(clientType, creationDate, datasetId, id, isFallbackAllowed, keepVariantProducts, minimumNumberOfProducts, name, numberOfProducts, rules, status, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -515,6 +542,7 @@ public class ProductSet {
     sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
     sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isFallbackAllowed: ").append(toIndentedString(isFallbackAllowed)).append("\n");
     sb.append("    keepVariantProducts: ").append(toIndentedString(keepVariantProducts)).append("\n");
     sb.append("    minimumNumberOfProducts: ").append(toIndentedString(minimumNumberOfProducts)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -548,6 +576,7 @@ public class ProductSet {
     openapiFields.add("creationDate");
     openapiFields.add("datasetId");
     openapiFields.add("id");
+    openapiFields.add("isFallbackAllowed");
     openapiFields.add("keepVariantProducts");
     openapiFields.add("minimumNumberOfProducts");
     openapiFields.add("name");

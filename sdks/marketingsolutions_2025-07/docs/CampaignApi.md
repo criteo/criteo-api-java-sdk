@@ -294,7 +294,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createSellerBudgetMapiMessage** | [**List&lt;CreateSellerBudgetMapiMessage&gt;**](CreateSellerBudgetMapiMessage.md)|  | [optional] |
+| **createSellerBudgetMapiMessage** | [**List&lt;CreateSellerBudgetMapiMessage&gt;**](CreateSellerBudgetMapiMessage.md)|  | |
 
 ### Return type
 
@@ -385,7 +385,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **sellerId** | **String**| Supply a generated Id of an existing Seller | |
-| **createSellerCampaignMessageMapi** | [**CreateSellerCampaignMessageMapi**](CreateSellerCampaignMessageMapi.md)| Supply the campaign Id and bid to create the mapping | [optional] |
+| **createSellerCampaignMessageMapi** | [**CreateSellerCampaignMessageMapi**](CreateSellerCampaignMessageMapi.md)| Supply the campaign Id and bid to create the mapping | |
 
 ### Return type
 
@@ -2568,7 +2568,7 @@ public class Example {
 
 ## getMarketplaceSellersByAdvertiser
 
-> List&lt;SellerBase&gt; getMarketplaceSellersByAdvertiser(advertiserId, partnerId, requestBody)
+> List&lt;SellerBase&gt; getMarketplaceSellersByAdvertiser(advertiserId, requestBody, partnerId)
 
 
 
@@ -2614,10 +2614,10 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | Id of the advertiser
-        Integer partnerId = 56; // Integer | Id of the partner
         List<String> requestBody = Arrays.asList(); // List<String> | Names of the sellers to associate with new Ids
+        Integer partnerId = 56; // Integer | Id of the partner
         try {
-            List<SellerBase> result = apiInstance.getMarketplaceSellersByAdvertiser(advertiserId, partnerId, requestBody);
+            List<SellerBase> result = apiInstance.getMarketplaceSellersByAdvertiser(advertiserId, requestBody, partnerId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getMarketplaceSellersByAdvertiser");
@@ -2636,8 +2636,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **advertiserId** | **Integer**| Id of the advertiser | |
+| **requestBody** | [**List&lt;String&gt;**](String.md)| Names of the sellers to associate with new Ids | |
 | **partnerId** | **Integer**| Id of the partner | [optional] |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| Names of the sellers to associate with new Ids | [optional] |
 
 ### Return type
 
@@ -2831,7 +2831,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adSetId** | **String**| Id of the Ad Set | |
-| **patchAdSetCategoryBidListRequest** | [**PatchAdSetCategoryBidListRequest**](PatchAdSetCategoryBidListRequest.md)|  | [optional] |
+| **patchAdSetCategoryBidListRequest** | [**PatchAdSetCategoryBidListRequest**](PatchAdSetCategoryBidListRequest.md)|  | |
 
 ### Return type
 
@@ -2920,7 +2920,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestsPatchAdSetV24Q3** | [**RequestsPatchAdSetV24Q3**](RequestsPatchAdSetV24Q3.md)| List of adsets to patch. | [optional] |
+| **requestsPatchAdSetV24Q3** | [**RequestsPatchAdSetV24Q3**](RequestsPatchAdSetV24Q3.md)| List of adsets to patch. | |
 
 ### Return type
 
@@ -3009,7 +3009,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **patchCampaignListRequest** | [**PatchCampaignListRequest**](PatchCampaignListRequest.md)| List of campaigns to patch. | [optional] |
+| **patchCampaignListRequest** | [**PatchCampaignListRequest**](PatchCampaignListRequest.md)| List of campaigns to patch. | |
 
 ### Return type
 
@@ -3100,7 +3100,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adSetId** | **String**| Id of the Ad Set | |
-| **patchAdSetDisplayMultiplierListRequest** | [**PatchAdSetDisplayMultiplierListRequest**](PatchAdSetDisplayMultiplierListRequest.md)|  | [optional] |
+| **patchAdSetDisplayMultiplierListRequest** | [**PatchAdSetDisplayMultiplierListRequest**](PatchAdSetDisplayMultiplierListRequest.md)|  | |
 
 ### Return type
 
@@ -3638,7 +3638,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **budgetId** | **Long**| Id of the budget | |
-| **updateSellerBudgetMessageBase** | [**UpdateSellerBudgetMessageBase**](UpdateSellerBudgetMessageBase.md)|  | [optional] |
+| **updateSellerBudgetMessageBase** | [**UpdateSellerBudgetMessageBase**](UpdateSellerBudgetMessageBase.md)|  | |
 
 ### Return type
 
@@ -3727,7 +3727,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **updateSellerBudgetMessage** | [**List&lt;UpdateSellerBudgetMessage&gt;**](UpdateSellerBudgetMessage.md)|  | [optional] |
+| **updateSellerBudgetMessage** | [**List&lt;UpdateSellerBudgetMessage&gt;**](UpdateSellerBudgetMessage.md)|  | |
 
 ### Return type
 
@@ -3907,7 +3907,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **sellerCampaignUpdate** | [**List&lt;SellerCampaignUpdate&gt;**](SellerCampaignUpdate.md)|  | [optional] |
+| **sellerCampaignUpdate** | [**List&lt;SellerCampaignUpdate&gt;**](SellerCampaignUpdate.md)|  | |
 
 ### Return type
 

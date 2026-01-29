@@ -84,7 +84,7 @@ public class BalanceApi {
      * Build call for addFundsByAccountAndBalanceId
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to add funds to (required)
-     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (optional)
+     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -153,6 +153,11 @@ public class BalanceApi {
             throw new ApiException("Missing the required parameter 'balanceId' when calling addFundsByAccountAndBalanceId(Async)");
         }
 
+        // verify the required parameter 'addFundsToBalanceV2Request' is set
+        if (addFundsToBalanceV2Request == null) {
+            throw new ApiException("Missing the required parameter 'addFundsToBalanceV2Request' when calling addFundsByAccountAndBalanceId(Async)");
+        }
+
         return addFundsByAccountAndBalanceIdCall(accountId, balanceId, addFundsToBalanceV2Request, _callback);
 
     }
@@ -162,7 +167,7 @@ public class BalanceApi {
      * Add funds to a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to add funds to (required)
-     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (optional)
+     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (required)
      * @return BalanceResponseV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -181,7 +186,7 @@ public class BalanceApi {
      * Add funds to a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to add funds to (required)
-     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (optional)
+     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (required)
      * @return ApiResponse&lt;BalanceResponseV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -201,7 +206,7 @@ public class BalanceApi {
      * Add funds to a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to add funds to (required)
-     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (optional)
+     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -222,7 +227,7 @@ public class BalanceApi {
      * Build call for changeDatesByAccountAndBalanceId
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -291,6 +296,11 @@ public class BalanceApi {
             throw new ApiException("Missing the required parameter 'balanceId' when calling changeDatesByAccountAndBalanceId(Async)");
         }
 
+        // verify the required parameter 'changeDatesOfBalanceV2Request' is set
+        if (changeDatesOfBalanceV2Request == null) {
+            throw new ApiException("Missing the required parameter 'changeDatesOfBalanceV2Request' when calling changeDatesByAccountAndBalanceId(Async)");
+        }
+
         return changeDatesByAccountAndBalanceIdCall(accountId, balanceId, changeDatesOfBalanceV2Request, _callback);
 
     }
@@ -300,7 +310,7 @@ public class BalanceApi {
      * Change dates of a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (required)
      * @return BalanceResponseV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -319,7 +329,7 @@ public class BalanceApi {
      * Change dates of a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (required)
      * @return ApiResponse&lt;BalanceResponseV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -339,7 +349,7 @@ public class BalanceApi {
      * Change dates of a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -359,7 +369,7 @@ public class BalanceApi {
     /**
      * Build call for createBalanceByAccountId
      * @param accountId The account to create balances for (required)
-     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -422,6 +432,11 @@ public class BalanceApi {
             throw new ApiException("Missing the required parameter 'accountId' when calling createBalanceByAccountId(Async)");
         }
 
+        // verify the required parameter 'createBalanceV2Request' is set
+        if (createBalanceV2Request == null) {
+            throw new ApiException("Missing the required parameter 'createBalanceV2Request' when calling createBalanceByAccountId(Async)");
+        }
+
         return createBalanceByAccountIdCall(accountId, createBalanceV2Request, _callback);
 
     }
@@ -430,7 +445,7 @@ public class BalanceApi {
      * 
      * Create balance for the given account id
      * @param accountId The account to create balances for (required)
-     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @return BalanceResponseV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -448,7 +463,7 @@ public class BalanceApi {
      * 
      * Create balance for the given account id
      * @param accountId The account to create balances for (required)
-     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @return ApiResponse&lt;BalanceResponseV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -467,7 +482,7 @@ public class BalanceApi {
      *  (asynchronously)
      * Create balance for the given account id
      * @param accountId The account to create balances for (required)
-     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1062,7 +1077,7 @@ public class BalanceApi {
      * Build call for modifyBalanceByAccountAndBalanceId
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (optional)
+     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1131,6 +1146,11 @@ public class BalanceApi {
             throw new ApiException("Missing the required parameter 'balanceId' when calling modifyBalanceByAccountAndBalanceId(Async)");
         }
 
+        // verify the required parameter 'updateBalanceModelV2Request' is set
+        if (updateBalanceModelV2Request == null) {
+            throw new ApiException("Missing the required parameter 'updateBalanceModelV2Request' when calling modifyBalanceByAccountAndBalanceId(Async)");
+        }
+
         return modifyBalanceByAccountAndBalanceIdCall(accountId, balanceId, updateBalanceModelV2Request, _callback);
 
     }
@@ -1140,7 +1160,7 @@ public class BalanceApi {
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (optional)
+     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (required)
      * @return BalanceResponseV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1159,7 +1179,7 @@ public class BalanceApi {
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (optional)
+     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (required)
      * @return ApiResponse&lt;BalanceResponseV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1179,7 +1199,7 @@ public class BalanceApi {
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (optional)
+     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

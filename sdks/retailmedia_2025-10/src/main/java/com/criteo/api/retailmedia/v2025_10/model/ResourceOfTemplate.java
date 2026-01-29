@@ -94,7 +94,7 @@ public class ResourceOfTemplate {
   }
 
    /**
-   * Id of the entity
+   * Unique identifier of this resource.
    * @return id
   **/
   @javax.annotation.Nullable
@@ -116,7 +116,7 @@ public class ResourceOfTemplate {
   }
 
    /**
-   * Canonical type name of the entity
+   * Get type
    * @return type
   **/
   @javax.annotation.Nullable

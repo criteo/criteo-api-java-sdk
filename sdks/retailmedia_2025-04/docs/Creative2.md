@@ -8,19 +8,19 @@ A creative entity
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**associatedLineItemIds** | **List&lt;String&gt;** | Associated Line Item Ids |  |
-|**brandId** | **Long** | Brand Id |  |
+|**associatedLineItemIds** | **List&lt;String&gt;** | Associated Line Item Ids |  [optional] |
+|**brandId** | **Long** | Brand Id |  [optional] |
 |**creativeFormatV2Type** | [**CreativeFormatV2TypeEnum**](#CreativeFormatV2TypeEnum) | Creative format type |  |
 |**environments** | [**List&lt;PageTypeEnvironment2&gt;**](PageTypeEnvironment2.md) | Environment type (e.g. mobile, web, app) |  |
 |**formatId** | **Integer** | Format Id |  |
-|**id** | **String** | Id of the entity |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**name** | **String** | Name |  |
 |**retailerId** | **Integer** | Retailer Id |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Creative Status |  |
 |**templateId** | **Integer** | Template Id |  |
 |**templateName** | **String** | Template Name |  |
 |**templateVariableValues** | [**List&lt;TemplateVariableValue&gt;**](TemplateVariableValue.md) | The template chosen values |  |
-|**updatedAt** | **OffsetDateTime** | Updated at time |  |
+|**updatedAt** | **OffsetDateTime** | Updated at time |  [optional] |
 
 
 

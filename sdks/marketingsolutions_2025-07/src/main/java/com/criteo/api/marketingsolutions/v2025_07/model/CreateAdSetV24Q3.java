@@ -310,7 +310,7 @@ public class CreateAdSetV24Q3 {
    * Dataset id of this ad set
    * @return datasetId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getDatasetId() {
     return datasetId;

@@ -64,7 +64,9 @@ public class FilesVariablesSpecification {
     
     GIF("Gif"),
     
-    PDF("Pdf");
+    PDF("Pdf"),
+    
+    MP4("Mp4");
 
     private String value;
 

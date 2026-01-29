@@ -835,7 +835,7 @@ public class CampaignApi {
     /**
      * Build call for patchAdSetCategoryBids
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -898,6 +898,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'adSetId' when calling patchAdSetCategoryBids(Async)");
         }
 
+        // verify the required parameter 'patchAdSetCategoryBidListRequest' is set
+        if (patchAdSetCategoryBidListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchAdSetCategoryBidListRequest' when calling patchAdSetCategoryBids(Async)");
+        }
+
         return patchAdSetCategoryBidsCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
 
     }
@@ -906,7 +911,7 @@ public class CampaignApi {
      * 
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @return PatchAdSetCategoryBidResultListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -924,7 +929,7 @@ public class CampaignApi {
      * 
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @return ApiResponse&lt;PatchAdSetCategoryBidResultListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -943,7 +948,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -962,7 +967,7 @@ public class CampaignApi {
     }
     /**
      * Build call for patchAdSets
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1019,6 +1024,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call patchAdSetsValidateBeforeCall(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'requestsPatchAdSetV24Q3' is set
+        if (requestsPatchAdSetV24Q3 == null) {
+            throw new ApiException("Missing the required parameter 'requestsPatchAdSetV24Q3' when calling patchAdSets(Async)");
+        }
+
         return patchAdSetsCall(requestsPatchAdSetV24Q3, _callback);
 
     }
@@ -1026,7 +1036,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @return ResponsesAdSetIdV24Q3
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1043,7 +1053,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @return ApiResponse&lt;ResponsesAdSetIdV24Q3&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1061,7 +1071,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1080,7 +1090,7 @@ public class CampaignApi {
     }
     /**
      * Build call for patchCampaigns
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1137,6 +1147,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call patchCampaignsValidateBeforeCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'patchCampaignListRequest' is set
+        if (patchCampaignListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchCampaignListRequest' when calling patchCampaigns(Async)");
+        }
+
         return patchCampaignsCall(patchCampaignListRequest, _callback);
 
     }
@@ -1144,7 +1159,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return PatchResultCampaignListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1161,7 +1176,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return ApiResponse&lt;PatchResultCampaignListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1179,7 +1194,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1199,7 +1214,7 @@ public class CampaignApi {
     /**
      * Build call for patchDisplayMultipliers
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1262,6 +1277,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'adSetId' when calling patchDisplayMultipliers(Async)");
         }
 
+        // verify the required parameter 'patchAdSetDisplayMultiplierListRequest' is set
+        if (patchAdSetDisplayMultiplierListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchAdSetDisplayMultiplierListRequest' when calling patchDisplayMultipliers(Async)");
+        }
+
         return patchDisplayMultipliersCall(adSetId, patchAdSetDisplayMultiplierListRequest, _callback);
 
     }
@@ -1270,7 +1290,7 @@ public class CampaignApi {
      * 
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @return PatchAdSetDisplayMultiplierResultListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1288,7 +1308,7 @@ public class CampaignApi {
      * 
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @return ApiResponse&lt;PatchAdSetDisplayMultiplierResultListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1307,7 +1327,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

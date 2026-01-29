@@ -26,6 +26,7 @@ A variable in a creative template
 | COLOR | &quot;Color&quot; |
 | FILES | &quot;Files&quot; |
 | HYPERLINK | &quot;Hyperlink&quot; |
+| VIDEO | &quot;Video&quot; |
 
 
 

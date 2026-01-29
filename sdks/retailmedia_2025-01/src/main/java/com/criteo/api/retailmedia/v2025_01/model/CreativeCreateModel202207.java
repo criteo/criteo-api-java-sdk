@@ -56,6 +56,10 @@ public class CreativeCreateModel202207 {
   @SerializedName(SERIALIZED_NAME_BRAND_ID)
   private Long brandId;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -94,6 +98,28 @@ public class CreativeCreateModel202207 {
 
   public void setBrandId(Long brandId) {
     this.brandId = brandId;
+  }
+
+
+  public CreativeCreateModel202207 id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -201,6 +227,7 @@ public class CreativeCreateModel202207 {
     }
     CreativeCreateModel202207 creativeCreateModel202207 = (CreativeCreateModel202207) o;
     return Objects.equals(this.brandId, creativeCreateModel202207.brandId) &&
+        Objects.equals(this.id, creativeCreateModel202207.id) &&
         Objects.equals(this.name, creativeCreateModel202207.name) &&
         Objects.equals(this.retailerId, creativeCreateModel202207.retailerId) &&
         Objects.equals(this.templateId, creativeCreateModel202207.templateId) &&
@@ -213,7 +240,7 @@ public class CreativeCreateModel202207 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(brandId, name, retailerId, templateId, templateVariableValues);
+    return Objects.hash(brandId, id, name, retailerId, templateId, templateVariableValues);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -228,6 +255,7 @@ public class CreativeCreateModel202207 {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreativeCreateModel202207 {\n");
     sb.append("    brandId: ").append(toIndentedString(brandId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
@@ -255,6 +283,7 @@ public class CreativeCreateModel202207 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("brandId");
+    openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("retailerId");
     openapiFields.add("templateId");
@@ -294,6 +323,9 @@ public class CreativeCreateModel202207 {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

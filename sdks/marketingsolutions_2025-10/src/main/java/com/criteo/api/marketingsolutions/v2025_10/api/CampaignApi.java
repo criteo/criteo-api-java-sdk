@@ -355,7 +355,7 @@ public class CampaignApi {
     }
     /**
      * Build call for createMarketplaceSellerBudgets
-     * @param createSellerBudgetMapiMessage  (optional)
+     * @param createSellerBudgetMapiMessage  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -412,6 +412,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createMarketplaceSellerBudgetsValidateBeforeCall(List<CreateSellerBudgetMapiMessage> createSellerBudgetMapiMessage, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'createSellerBudgetMapiMessage' is set
+        if (createSellerBudgetMapiMessage == null) {
+            throw new ApiException("Missing the required parameter 'createSellerBudgetMapiMessage' when calling createMarketplaceSellerBudgets(Async)");
+        }
+
         return createMarketplaceSellerBudgetsCall(createSellerBudgetMapiMessage, _callback);
 
     }
@@ -419,7 +424,7 @@ public class CampaignApi {
     /**
      * 
      * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
-     * @param createSellerBudgetMapiMessage  (optional)
+     * @param createSellerBudgetMapiMessage  (required)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -436,7 +441,7 @@ public class CampaignApi {
     /**
      * 
      * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
-     * @param createSellerBudgetMapiMessage  (optional)
+     * @param createSellerBudgetMapiMessage  (required)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -454,7 +459,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
-     * @param createSellerBudgetMapiMessage  (optional)
+     * @param createSellerBudgetMapiMessage  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -474,7 +479,7 @@ public class CampaignApi {
     /**
      * Build call for createMarketplaceSellerCampaignsBySeller
      * @param sellerId Supply a generated Id of an existing Seller (required)
-     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (optional)
+     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -537,6 +542,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'sellerId' when calling createMarketplaceSellerCampaignsBySeller(Async)");
         }
 
+        // verify the required parameter 'createSellerCampaignMessageMapi' is set
+        if (createSellerCampaignMessageMapi == null) {
+            throw new ApiException("Missing the required parameter 'createSellerCampaignMessageMapi' when calling createMarketplaceSellerCampaignsBySeller(Async)");
+        }
+
         return createMarketplaceSellerCampaignsBySellerCall(sellerId, createSellerCampaignMessageMapi, _callback);
 
     }
@@ -545,7 +555,7 @@ public class CampaignApi {
      * 
      * Associate an existing Seller with an existing Campaign allowing for budget creation
      * @param sellerId Supply a generated Id of an existing Seller (required)
-     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (optional)
+     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (required)
      * @return SellerCampaignMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -563,7 +573,7 @@ public class CampaignApi {
      * 
      * Associate an existing Seller with an existing Campaign allowing for budget creation
      * @param sellerId Supply a generated Id of an existing Seller (required)
-     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (optional)
+     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (required)
      * @return ApiResponse&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -582,7 +592,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Associate an existing Seller with an existing Campaign allowing for budget creation
      * @param sellerId Supply a generated Id of an existing Seller (required)
-     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (optional)
+     * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3886,8 +3896,8 @@ public class CampaignApi {
     /**
      * Build call for getMarketplaceSellersByAdvertiser
      * @param advertiserId Id of the advertiser (required)
+     * @param requestBody Names of the sellers to associate with new Ids (required)
      * @param partnerId Id of the partner (optional)
-     * @param requestBody Names of the sellers to associate with new Ids (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3897,7 +3907,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellersByAdvertiserCall(Integer advertiserId, Integer partnerId, List<String> requestBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellersByAdvertiserCall(Integer advertiserId, List<String> requestBody, Integer partnerId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3948,13 +3958,18 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceSellersByAdvertiserValidateBeforeCall(Integer advertiserId, Integer partnerId, List<String> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketplaceSellersByAdvertiserValidateBeforeCall(Integer advertiserId, List<String> requestBody, Integer partnerId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getMarketplaceSellersByAdvertiser(Async)");
         }
 
-        return getMarketplaceSellersByAdvertiserCall(advertiserId, partnerId, requestBody, _callback);
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling getMarketplaceSellersByAdvertiser(Async)");
+        }
+
+        return getMarketplaceSellersByAdvertiserCall(advertiserId, requestBody, partnerId, _callback);
 
     }
 
@@ -3962,8 +3977,8 @@ public class CampaignApi {
      * 
      * Create new sellers for an advertiser
      * @param advertiserId Id of the advertiser (required)
+     * @param requestBody Names of the sellers to associate with new Ids (required)
      * @param partnerId Id of the partner (optional)
-     * @param requestBody Names of the sellers to associate with new Ids (optional)
      * @return List&lt;SellerBase&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3972,8 +3987,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public List<SellerBase> getMarketplaceSellersByAdvertiser(Integer advertiserId, Integer partnerId, List<String> requestBody) throws ApiException {
-        ApiResponse<List<SellerBase>> localVarResp = getMarketplaceSellersByAdvertiserWithHttpInfo(advertiserId, partnerId, requestBody);
+    public List<SellerBase> getMarketplaceSellersByAdvertiser(Integer advertiserId, List<String> requestBody, Integer partnerId) throws ApiException {
+        ApiResponse<List<SellerBase>> localVarResp = getMarketplaceSellersByAdvertiserWithHttpInfo(advertiserId, requestBody, partnerId);
         return localVarResp.getData();
     }
 
@@ -3981,8 +3996,8 @@ public class CampaignApi {
      * 
      * Create new sellers for an advertiser
      * @param advertiserId Id of the advertiser (required)
+     * @param requestBody Names of the sellers to associate with new Ids (required)
      * @param partnerId Id of the partner (optional)
-     * @param requestBody Names of the sellers to associate with new Ids (optional)
      * @return ApiResponse&lt;List&lt;SellerBase&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3991,8 +4006,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<SellerBase>> getMarketplaceSellersByAdvertiserWithHttpInfo(Integer advertiserId, Integer partnerId, List<String> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = getMarketplaceSellersByAdvertiserValidateBeforeCall(advertiserId, partnerId, requestBody, null);
+    public ApiResponse<List<SellerBase>> getMarketplaceSellersByAdvertiserWithHttpInfo(Integer advertiserId, List<String> requestBody, Integer partnerId) throws ApiException {
+        okhttp3.Call localVarCall = getMarketplaceSellersByAdvertiserValidateBeforeCall(advertiserId, requestBody, partnerId, null);
         Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4001,8 +4016,8 @@ public class CampaignApi {
      *  (asynchronously)
      * Create new sellers for an advertiser
      * @param advertiserId Id of the advertiser (required)
+     * @param requestBody Names of the sellers to associate with new Ids (required)
      * @param partnerId Id of the partner (optional)
-     * @param requestBody Names of the sellers to associate with new Ids (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4012,9 +4027,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellersByAdvertiserAsync(Integer advertiserId, Integer partnerId, List<String> requestBody, final ApiCallback<List<SellerBase>> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellersByAdvertiserAsync(Integer advertiserId, List<String> requestBody, Integer partnerId, final ApiCallback<List<SellerBase>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMarketplaceSellersByAdvertiserValidateBeforeCall(advertiserId, partnerId, requestBody, _callback);
+        okhttp3.Call localVarCall = getMarketplaceSellersByAdvertiserValidateBeforeCall(advertiserId, requestBody, partnerId, _callback);
         Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4199,7 +4214,7 @@ public class CampaignApi {
     /**
      * Build call for patchAdSetCategoryBids
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4262,6 +4277,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'adSetId' when calling patchAdSetCategoryBids(Async)");
         }
 
+        // verify the required parameter 'patchAdSetCategoryBidListRequest' is set
+        if (patchAdSetCategoryBidListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchAdSetCategoryBidListRequest' when calling patchAdSetCategoryBids(Async)");
+        }
+
         return patchAdSetCategoryBidsCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
 
     }
@@ -4270,7 +4290,7 @@ public class CampaignApi {
      * 
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @return PatchAdSetCategoryBidResultListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4288,7 +4308,7 @@ public class CampaignApi {
      * 
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @return ApiResponse&lt;PatchAdSetCategoryBidResultListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4307,7 +4327,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4326,7 +4346,7 @@ public class CampaignApi {
     }
     /**
      * Build call for patchAdSets
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4383,6 +4403,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call patchAdSetsValidateBeforeCall(RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'requestsPatchAdSetV24Q3' is set
+        if (requestsPatchAdSetV24Q3 == null) {
+            throw new ApiException("Missing the required parameter 'requestsPatchAdSetV24Q3' when calling patchAdSets(Async)");
+        }
+
         return patchAdSetsCall(requestsPatchAdSetV24Q3, _callback);
 
     }
@@ -4390,7 +4415,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @return ResponsesAdSetIdV24Q3
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4407,7 +4432,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @return ApiResponse&lt;ResponsesAdSetIdV24Q3&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4425,7 +4450,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4444,7 +4469,7 @@ public class CampaignApi {
     }
     /**
      * Build call for patchCampaigns
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4501,6 +4526,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call patchCampaignsValidateBeforeCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'patchCampaignListRequest' is set
+        if (patchCampaignListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchCampaignListRequest' when calling patchCampaigns(Async)");
+        }
+
         return patchCampaignsCall(patchCampaignListRequest, _callback);
 
     }
@@ -4508,7 +4538,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return PatchResultCampaignListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4525,7 +4555,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return ApiResponse&lt;PatchResultCampaignListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4543,7 +4573,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4563,7 +4593,7 @@ public class CampaignApi {
     /**
      * Build call for patchDisplayMultipliers
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4626,6 +4656,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'adSetId' when calling patchDisplayMultipliers(Async)");
         }
 
+        // verify the required parameter 'patchAdSetDisplayMultiplierListRequest' is set
+        if (patchAdSetDisplayMultiplierListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchAdSetDisplayMultiplierListRequest' when calling patchDisplayMultipliers(Async)");
+        }
+
         return patchDisplayMultipliersCall(adSetId, patchAdSetDisplayMultiplierListRequest, _callback);
 
     }
@@ -4634,7 +4669,7 @@ public class CampaignApi {
      * 
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @return PatchAdSetDisplayMultiplierResultListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4652,7 +4687,7 @@ public class CampaignApi {
      * 
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @return ApiResponse&lt;PatchAdSetDisplayMultiplierResultListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4671,7 +4706,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5296,7 +5331,7 @@ public class CampaignApi {
     /**
      * Build call for updateMarketplaceSellerBudget
      * @param budgetId Id of the budget (required)
-     * @param updateSellerBudgetMessageBase  (optional)
+     * @param updateSellerBudgetMessageBase  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5359,6 +5394,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'budgetId' when calling updateMarketplaceSellerBudget(Async)");
         }
 
+        // verify the required parameter 'updateSellerBudgetMessageBase' is set
+        if (updateSellerBudgetMessageBase == null) {
+            throw new ApiException("Missing the required parameter 'updateSellerBudgetMessageBase' when calling updateMarketplaceSellerBudget(Async)");
+        }
+
         return updateMarketplaceSellerBudgetCall(budgetId, updateSellerBudgetMessageBase, _callback);
 
     }
@@ -5367,7 +5407,7 @@ public class CampaignApi {
      * 
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId Id of the budget (required)
-     * @param updateSellerBudgetMessageBase  (optional)
+     * @param updateSellerBudgetMessageBase  (required)
      * @return SellerBudgetMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5385,7 +5425,7 @@ public class CampaignApi {
      * 
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId Id of the budget (required)
-     * @param updateSellerBudgetMessageBase  (optional)
+     * @param updateSellerBudgetMessageBase  (required)
      * @return ApiResponse&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5404,7 +5444,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId Id of the budget (required)
-     * @param updateSellerBudgetMessageBase  (optional)
+     * @param updateSellerBudgetMessageBase  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5423,7 +5463,7 @@ public class CampaignApi {
     }
     /**
      * Build call for updateMarketplaceSellerBudgets
-     * @param updateSellerBudgetMessage  (optional)
+     * @param updateSellerBudgetMessage  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5480,6 +5520,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateMarketplaceSellerBudgetsValidateBeforeCall(List<UpdateSellerBudgetMessage> updateSellerBudgetMessage, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'updateSellerBudgetMessage' is set
+        if (updateSellerBudgetMessage == null) {
+            throw new ApiException("Missing the required parameter 'updateSellerBudgetMessage' when calling updateMarketplaceSellerBudgets(Async)");
+        }
+
         return updateMarketplaceSellerBudgetsCall(updateSellerBudgetMessage, _callback);
 
     }
@@ -5487,7 +5532,7 @@ public class CampaignApi {
     /**
      * 
      * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
-     * @param updateSellerBudgetMessage  (optional)
+     * @param updateSellerBudgetMessage  (required)
      * @return List&lt;SellerBudgetMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5504,7 +5549,7 @@ public class CampaignApi {
     /**
      * 
      * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
-     * @param updateSellerBudgetMessage  (optional)
+     * @param updateSellerBudgetMessage  (required)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5522,7 +5567,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
-     * @param updateSellerBudgetMessage  (optional)
+     * @param updateSellerBudgetMessage  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5672,7 +5717,7 @@ public class CampaignApi {
     }
     /**
      * Build call for updateMarketplaceSellerCampaigns
-     * @param sellerCampaignUpdate  (optional)
+     * @param sellerCampaignUpdate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5729,6 +5774,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateMarketplaceSellerCampaignsValidateBeforeCall(List<SellerCampaignUpdate> sellerCampaignUpdate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sellerCampaignUpdate' is set
+        if (sellerCampaignUpdate == null) {
+            throw new ApiException("Missing the required parameter 'sellerCampaignUpdate' when calling updateMarketplaceSellerCampaigns(Async)");
+        }
+
         return updateMarketplaceSellerCampaignsCall(sellerCampaignUpdate, _callback);
 
     }
@@ -5736,7 +5786,7 @@ public class CampaignApi {
     /**
      * 
      * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
-     * @param sellerCampaignUpdate  (optional)
+     * @param sellerCampaignUpdate  (required)
      * @return List&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5753,7 +5803,7 @@ public class CampaignApi {
     /**
      * 
      * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
-     * @param sellerCampaignUpdate  (optional)
+     * @param sellerCampaignUpdate  (required)
      * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5771,7 +5821,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
-     * @param sellerCampaignUpdate  (optional)
+     * @param sellerCampaignUpdate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

@@ -121,7 +121,6 @@ docs/ExternalRetailMediaChildAccount.md
 docs/ExternalRetailMediaSeller.md
 docs/ExternalRetailMediaSellerAccountCreation.md
 docs/ExternalRetailer.md
-docs/ExternalRetailerPages202110.md
 docs/FilesVariableValue.md
 docs/FilesVariablesSpecification.md
 docs/GatewayApi.md
@@ -186,7 +185,6 @@ docs/PreferredLineItemUpdateModelV2Request.md
 docs/PreferredLineItemV2.md
 docs/PreferredLineItemV2PagedListResponse.md
 docs/PreferredLineItemV2Response.md
-docs/ProblemDetails.md
 docs/ProductMetadata.md
 docs/ProductResourceOutcome.md
 docs/PromotedProduct.md
@@ -221,6 +219,7 @@ docs/RetailMediaContactlistOperationResponseAttributes.md
 docs/RetailMediaKeywordsReview.md
 docs/RetailMediaKeywordsReviewResult.md
 docs/RetailMediaSeller.md
+docs/RetailerPages202110.md
 docs/ReviewSetState.md
 docs/ReviewStateModel.md
 docs/RmAlgebraNodeV1.md
@@ -480,7 +479,6 @@ src/main/java/com/criteo/api/retailmedia/v2025_07/model/ExternalRetailMediaChild
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/ExternalRetailMediaSeller.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/ExternalRetailMediaSellerAccountCreation.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/ExternalRetailer.java
-src/main/java/com/criteo/api/retailmedia/v2025_07/model/ExternalRetailerPages202110.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/FilesVariableValue.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/FilesVariablesSpecification.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/GrantConsentInput.java
@@ -544,7 +542,6 @@ src/main/java/com/criteo/api/retailmedia/v2025_07/model/PreferredLineItemUpdateM
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/PreferredLineItemV2.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/PreferredLineItemV2PagedListResponse.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/PreferredLineItemV2Response.java
-src/main/java/com/criteo/api/retailmedia/v2025_07/model/ProblemDetails.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/ProductMetadata.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/ProductResourceOutcome.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/PromotedProduct.java
@@ -579,6 +576,7 @@ src/main/java/com/criteo/api/retailmedia/v2025_07/model/RetailMediaContactlistOp
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/RetailMediaKeywordsReview.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/RetailMediaKeywordsReviewResult.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/RetailMediaSeller.java
+src/main/java/com/criteo/api/retailmedia/v2025_07/model/RetailerPages202110.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/ReviewSetState.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/ReviewStateModel.java
 src/main/java/com/criteo/api/retailmedia/v2025_07/model/RmAlgebraNodeV1.java

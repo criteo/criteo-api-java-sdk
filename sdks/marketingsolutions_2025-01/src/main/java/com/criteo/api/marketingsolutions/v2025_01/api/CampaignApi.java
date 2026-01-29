@@ -31,11 +31,9 @@ import com.criteo.api.marketingsolutions.v2025_01.model.AdSetAudienceLinkEntityV
 import com.criteo.api.marketingsolutions.v2025_01.model.AdSetAudienceLinkInputEntityV1;
 import com.criteo.api.marketingsolutions.v2025_01.model.AdSetCategoryBidListResponse;
 import com.criteo.api.marketingsolutions.v2025_01.model.AdSetDisplayMultiplierListResponse;
-import com.criteo.api.marketingsolutions.v2025_01.model.AdSetSearchRequestV24Q1;
 import com.criteo.api.marketingsolutions.v2025_01.model.CampaignSearchRequestV23Q1;
 import com.criteo.api.marketingsolutions.v2025_01.model.CampaignV23Q1ListResponse;
 import com.criteo.api.marketingsolutions.v2025_01.model.CampaignV23Q1Response;
-import com.criteo.api.marketingsolutions.v2025_01.model.CreateAdSetV24Q1Request;
 import com.criteo.api.marketingsolutions.v2025_01.model.CreateCampaignRequest;
 import com.criteo.api.marketingsolutions.v2025_01.model.PatchAdSetCategoryBidListRequest;
 import com.criteo.api.marketingsolutions.v2025_01.model.PatchAdSetCategoryBidResultListResponse;
@@ -44,11 +42,7 @@ import com.criteo.api.marketingsolutions.v2025_01.model.PatchAdSetDisplayMultipl
 import com.criteo.api.marketingsolutions.v2025_01.model.PatchCampaignListRequest;
 import com.criteo.api.marketingsolutions.v2025_01.model.PatchResultCampaignListResponse;
 import com.criteo.api.marketingsolutions.v2025_01.model.RequestsAdSetId;
-import com.criteo.api.marketingsolutions.v2025_01.model.RequestsPatchAdSetV24Q1;
-import com.criteo.api.marketingsolutions.v2025_01.model.ResponseReadAdSetV24Q1;
 import com.criteo.api.marketingsolutions.v2025_01.model.ResponsesAdSetId;
-import com.criteo.api.marketingsolutions.v2025_01.model.ResponsesAdSetIdV24Q1;
-import com.criteo.api.marketingsolutions.v2025_01.model.ResponsesReadAdSetV24Q1;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -94,129 +88,6 @@ public class CampaignApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createAdSet
-     * @param createAdSetV24Q1Request the ad sets to create (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createAdSetCall(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = createAdSetV24Q1Request;
-
-        // create path and map variables
-        String localVarPath = "/2025-01/marketing-solutions/ad-sets";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAdSetValidateBeforeCall(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createAdSetV24Q1Request' is set
-        if (createAdSetV24Q1Request == null) {
-            throw new ApiException("Missing the required parameter 'createAdSetV24Q1Request' when calling createAdSet(Async)");
-        }
-
-        return createAdSetCall(createAdSetV24Q1Request, _callback);
-
-    }
-
-    /**
-     * 
-     * Create the specified ad set
-     * @param createAdSetV24Q1Request the ad sets to create (required)
-     * @return ResponseReadAdSetV24Q1
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResponseReadAdSetV24Q1 createAdSet(CreateAdSetV24Q1Request createAdSetV24Q1Request) throws ApiException {
-        ApiResponse<ResponseReadAdSetV24Q1> localVarResp = createAdSetWithHttpInfo(createAdSetV24Q1Request);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Create the specified ad set
-     * @param createAdSetV24Q1Request the ad sets to create (required)
-     * @return ApiResponse&lt;ResponseReadAdSetV24Q1&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResponseReadAdSetV24Q1> createAdSetWithHttpInfo(CreateAdSetV24Q1Request createAdSetV24Q1Request) throws ApiException {
-        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetV24Q1Request, null);
-        Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Create the specified ad set
-     * @param createAdSetV24Q1Request the ad sets to create (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createAdSetAsync(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback<ResponseReadAdSetV24Q1> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetV24Q1Request, _callback);
-        Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
     /**
      * Build call for createCampaign
      * @param createCampaignRequest the campaigns to create (required)
@@ -337,129 +208,6 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = createCampaignValidateBeforeCall(createCampaignRequest, _callback);
         Type localVarReturnType = new TypeToken<CampaignV23Q1Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getAdSet
-     * @param adSetId Id of the ad set (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAdSetCall(String adSetId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/2025-01/marketing-solutions/ad-sets/{ad-set-id}"
-            .replace("{" + "ad-set-id" + "}", localVarApiClient.escapeString(adSetId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAdSetValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'adSetId' is set
-        if (adSetId == null) {
-            throw new ApiException("Missing the required parameter 'adSetId' when calling getAdSet(Async)");
-        }
-
-        return getAdSetCall(adSetId, _callback);
-
-    }
-
-    /**
-     * 
-     * Get the data for the specified ad set
-     * @param adSetId Id of the ad set (required)
-     * @return ResponseReadAdSetV24Q1
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResponseReadAdSetV24Q1 getAdSet(String adSetId) throws ApiException {
-        ApiResponse<ResponseReadAdSetV24Q1> localVarResp = getAdSetWithHttpInfo(adSetId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get the data for the specified ad set
-     * @param adSetId Id of the ad set (required)
-     * @return ApiResponse&lt;ResponseReadAdSetV24Q1&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResponseReadAdSetV24Q1> getAdSetWithHttpInfo(String adSetId) throws ApiException {
-        okhttp3.Call localVarCall = getAdSetValidateBeforeCall(adSetId, null);
-        Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get the data for the specified ad set
-     * @param adSetId Id of the ad set (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the ad set </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAdSetAsync(String adSetId, final ApiCallback<ResponseReadAdSetV24Q1> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getAdSetValidateBeforeCall(adSetId, _callback);
-        Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -835,7 +583,7 @@ public class CampaignApi {
     /**
      * Build call for patchAdSetCategoryBids
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -898,6 +646,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'adSetId' when calling patchAdSetCategoryBids(Async)");
         }
 
+        // verify the required parameter 'patchAdSetCategoryBidListRequest' is set
+        if (patchAdSetCategoryBidListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchAdSetCategoryBidListRequest' when calling patchAdSetCategoryBids(Async)");
+        }
+
         return patchAdSetCategoryBidsCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
 
     }
@@ -906,7 +659,7 @@ public class CampaignApi {
      * 
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @return PatchAdSetCategoryBidResultListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -924,7 +677,7 @@ public class CampaignApi {
      * 
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @return ApiResponse&lt;PatchAdSetCategoryBidResultListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -943,7 +696,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param patchAdSetCategoryBidListRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -961,126 +714,8 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for patchAdSets
-     * @param requestsPatchAdSetV24Q1 List of adsets to patch. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchAdSetsCall(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = requestsPatchAdSetV24Q1;
-
-        // create path and map variables
-        String localVarPath = "/2025-01/marketing-solutions/ad-sets";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchAdSetsValidateBeforeCall(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback _callback) throws ApiException {
-        return patchAdSetsCall(requestsPatchAdSetV24Q1, _callback);
-
-    }
-
-    /**
-     * 
-     * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q1 List of adsets to patch. (optional)
-     * @return ResponsesAdSetIdV24Q1
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResponsesAdSetIdV24Q1 patchAdSets(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1) throws ApiException {
-        ApiResponse<ResponsesAdSetIdV24Q1> localVarResp = patchAdSetsWithHttpInfo(requestsPatchAdSetV24Q1);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q1 List of adsets to patch. (optional)
-     * @return ApiResponse&lt;ResponsesAdSetIdV24Q1&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResponsesAdSetIdV24Q1> patchAdSetsWithHttpInfo(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1) throws ApiException {
-        okhttp3.Call localVarCall = patchAdSetsValidateBeforeCall(requestsPatchAdSetV24Q1, null);
-        Type localVarReturnType = new TypeToken<ResponsesAdSetIdV24Q1>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Patch a list of AdSets.
-     * @param requestsPatchAdSetV24Q1 List of adsets to patch. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of patched adSets. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchAdSetsAsync(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback<ResponsesAdSetIdV24Q1> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = patchAdSetsValidateBeforeCall(requestsPatchAdSetV24Q1, _callback);
-        Type localVarReturnType = new TypeToken<ResponsesAdSetIdV24Q1>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for patchCampaigns
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1137,6 +772,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call patchCampaignsValidateBeforeCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'patchCampaignListRequest' is set
+        if (patchCampaignListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchCampaignListRequest' when calling patchCampaigns(Async)");
+        }
+
         return patchCampaignsCall(patchCampaignListRequest, _callback);
 
     }
@@ -1144,7 +784,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return PatchResultCampaignListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1161,7 +801,7 @@ public class CampaignApi {
     /**
      * 
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return ApiResponse&lt;PatchResultCampaignListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1179,7 +819,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Patch a list of Campaigns.
-     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1199,7 +839,7 @@ public class CampaignApi {
     /**
      * Build call for patchDisplayMultipliers
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1262,6 +902,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'adSetId' when calling patchDisplayMultipliers(Async)");
         }
 
+        // verify the required parameter 'patchAdSetDisplayMultiplierListRequest' is set
+        if (patchAdSetDisplayMultiplierListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchAdSetDisplayMultiplierListRequest' when calling patchDisplayMultipliers(Async)");
+        }
+
         return patchDisplayMultipliersCall(adSetId, patchAdSetDisplayMultiplierListRequest, _callback);
 
     }
@@ -1270,7 +915,7 @@ public class CampaignApi {
      * 
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @return PatchAdSetDisplayMultiplierResultListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1288,7 +933,7 @@ public class CampaignApi {
      * 
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @return ApiResponse&lt;PatchAdSetDisplayMultiplierResultListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1307,7 +952,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param patchAdSetDisplayMultiplierListRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1321,124 +966,6 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = patchDisplayMultipliersValidateBeforeCall(adSetId, patchAdSetDisplayMultiplierListRequest, _callback);
         Type localVarReturnType = new TypeToken<PatchAdSetDisplayMultiplierResultListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for searchAdSets
-     * @param adSetSearchRequestV24Q1  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call searchAdSetsCall(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = adSetSearchRequestV24Q1;
-
-        // create path and map variables
-        String localVarPath = "/2025-01/marketing-solutions/ad-sets/search";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchAdSetsValidateBeforeCall(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback _callback) throws ApiException {
-        return searchAdSetsCall(adSetSearchRequestV24Q1, _callback);
-
-    }
-
-    /**
-     * 
-     * Search for ad sets
-     * @param adSetSearchRequestV24Q1  (optional)
-     * @return ResponsesReadAdSetV24Q1
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResponsesReadAdSetV24Q1 searchAdSets(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1) throws ApiException {
-        ApiResponse<ResponsesReadAdSetV24Q1> localVarResp = searchAdSetsWithHttpInfo(adSetSearchRequestV24Q1);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Search for ad sets
-     * @param adSetSearchRequestV24Q1  (optional)
-     * @return ApiResponse&lt;ResponsesReadAdSetV24Q1&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResponsesReadAdSetV24Q1> searchAdSetsWithHttpInfo(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1) throws ApiException {
-        okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(adSetSearchRequestV24Q1, null);
-        Type localVarReturnType = new TypeToken<ResponsesReadAdSetV24Q1>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Search for ad sets
-     * @param adSetSearchRequestV24Q1  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call searchAdSetsAsync(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback<ResponsesReadAdSetV24Q1> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(adSetSearchRequestV24Q1, _callback);
-        Type localVarReturnType = new TypeToken<ResponsesReadAdSetV24Q1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

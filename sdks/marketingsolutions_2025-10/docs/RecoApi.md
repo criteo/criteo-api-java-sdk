@@ -83,7 +83,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **valueResourceInputOfCreateProductSetRequest** | [**ValueResourceInputOfCreateProductSetRequest**](ValueResourceInputOfCreateProductSetRequest.md)|  | [optional] |
+| **valueResourceInputOfCreateProductSetRequest** | [**ValueResourceInputOfCreateProductSetRequest**](ValueResourceInputOfCreateProductSetRequest.md)|  | |
 
 ### Return type
 
@@ -710,7 +710,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **productSetId** | **String**| ID of the product set | |
-| **valueResourceInputOfPatchProductSetRequest** | [**ValueResourceInputOfPatchProductSetRequest**](ValueResourceInputOfPatchProductSetRequest.md)|  | [optional] |
+| **valueResourceInputOfPatchProductSetRequest** | [**ValueResourceInputOfPatchProductSetRequest**](ValueResourceInputOfPatchProductSetRequest.md)|  | |
 
 ### Return type
 

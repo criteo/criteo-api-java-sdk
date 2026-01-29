@@ -12,6 +12,7 @@ A template for creating creatives.
 |**createdAt** | **OffsetDateTime** | The time at which the template was created |  |
 |**creativeFormat** | [**CreativeFormatEnum**](#CreativeFormatEnum) | The kind of creative this template can be used to build. |  |
 |**displayableSkusMax** | **Integer** | Maximum number of displayable skus |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**name** | **String** | The name of the template |  |
 |**sections** | [**List&lt;Section&gt;**](Section.md) | The sections holding various template variables |  |
 |**skuCollectionMax** | **Integer** | Maximum number of skus in the collection |  [optional] |

@@ -10,7 +10,7 @@ Metadata and usage info of a preferred deals creative
 |------------ | ------------- | ------------- | -------------|
 |**associatedLineItemIds** | **List&lt;String&gt;** |  |  [optional] |
 |**brandId** | **Long** |  |  [optional] |
-|**id** | **String** | Id of the entity |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**name** | **String** |  |  |
 |**retailerId** | **Integer** |  |  |
 |**status** | [**StatusEnum**](#StatusEnum) |  |  |

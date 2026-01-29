@@ -24,6 +24,7 @@ Specification of a file variable
 | PNG | &quot;Png&quot; |
 | GIF | &quot;Gif&quot; |
 | PDF | &quot;Pdf&quot; |
+| MP4 | &quot;Mp4&quot; |
 
 
 

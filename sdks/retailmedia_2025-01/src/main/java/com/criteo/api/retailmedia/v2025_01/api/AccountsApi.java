@@ -856,7 +856,7 @@ public class AccountsApi {
     /**
      * Build call for updateSellers
      * @param accountId The given account id (required)
-     * @param valueResourceCollectionInputOfRetailMediaSeller  (optional)
+     * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -919,6 +919,11 @@ public class AccountsApi {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateSellers(Async)");
         }
 
+        // verify the required parameter 'valueResourceCollectionInputOfRetailMediaSeller' is set
+        if (valueResourceCollectionInputOfRetailMediaSeller == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceCollectionInputOfRetailMediaSeller' when calling updateSellers(Async)");
+        }
+
         return updateSellersCall(accountId, valueResourceCollectionInputOfRetailMediaSeller, _callback);
 
     }
@@ -927,7 +932,7 @@ public class AccountsApi {
      * 
      * Replace the sellers associated with an account
      * @param accountId The given account id (required)
-     * @param valueResourceCollectionInputOfRetailMediaSeller  (optional)
+     * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
      * @return ValueResourceCollectionOutcomeOfRetailMediaSeller
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -945,7 +950,7 @@ public class AccountsApi {
      * 
      * Replace the sellers associated with an account
      * @param accountId The given account id (required)
-     * @param valueResourceCollectionInputOfRetailMediaSeller  (optional)
+     * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
      * @return ApiResponse&lt;ValueResourceCollectionOutcomeOfRetailMediaSeller&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -964,7 +969,7 @@ public class AccountsApi {
      *  (asynchronously)
      * Replace the sellers associated with an account
      * @param accountId The given account id (required)
-     * @param valueResourceCollectionInputOfRetailMediaSeller  (optional)
+     * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

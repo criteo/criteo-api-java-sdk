@@ -8,7 +8,7 @@ A value of a template color variable
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**color** | **String** | The displayed color (HEX format) |  [optional] |
+|**color** | **String** | The displayed color (HEX format) |  |
 
 
 

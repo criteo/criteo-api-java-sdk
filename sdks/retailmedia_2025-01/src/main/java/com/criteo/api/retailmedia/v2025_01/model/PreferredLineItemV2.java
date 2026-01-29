@@ -394,7 +394,7 @@ public class PreferredLineItemV2 {
    * Represents the Date as a year, month, and day in the format YYYY-MM-DD
    * @return endDate
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public LocalDate getEndDate() {
     return endDate;
@@ -735,7 +735,6 @@ public class PreferredLineItemV2 {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("budget");
     openapiRequiredFields.add("campaignId");
-    openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("status");

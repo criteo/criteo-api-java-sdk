@@ -103,7 +103,6 @@ docs/ExternalRetailMediaBrands.md
 docs/ExternalRetailMediaSeller.md
 docs/ExternalRetailMediaSellerAccountCreation.md
 docs/ExternalRetailer.md
-docs/ExternalRetailerPages202110.md
 docs/FilesVariableValue.md
 docs/FilesVariablesSpecification.md
 docs/GatewayApi.md
@@ -135,9 +134,6 @@ docs/JsonApiSingleResponseOfCampaignV202301.md
 docs/JsonApiSingleResponseOfCatalogStatus.md
 docs/JsonApiSingleResponseOfLineItemBidMultipliersV2.md
 docs/KeywordDataModel.md
-docs/KeywordTarget202110.md
-docs/KeywordTarget202110Request.md
-docs/KeywordTarget202110Response.md
 docs/Keywords.md
 docs/KeywordsModel.md
 docs/KeywordsModelResource.md
@@ -167,7 +163,6 @@ docs/PreferredLineItemUpdateModelV2Request.md
 docs/PreferredLineItemV2.md
 docs/PreferredLineItemV2PagedListResponse.md
 docs/PreferredLineItemV2Response.md
-docs/ProblemDetails.md
 docs/ProductMetadata.md
 docs/ProductResourceOutcome.md
 docs/PromotedProduct.md
@@ -199,6 +194,7 @@ docs/RetailMediaContactlistAmendmentAttributes.md
 docs/RetailMediaContactlistAmendmentRequest.md
 docs/RetailMediaContactlistOperation.md
 docs/RetailMediaContactlistOperationResponseAttributes.md
+docs/RetailerPages202110.md
 docs/ReviewStateModel.md
 docs/RmAlgebraNodeV1.md
 docs/RmAudienceEntityV1.md
@@ -281,7 +277,6 @@ docs/ValueTypeResourceOfAddToBasketIdsUpdateModel202110.md
 docs/ValueTypeResourceOfAddToBasketTarget202110.md
 docs/ValueTypeResourceOfAudienceIdsUpdateModel202110.md
 docs/ValueTypeResourceOfAudienceTarget202110.md
-docs/ValueTypeResourceOfKeywordTarget202110.md
 docs/ValueTypeResourceOfStoreIdsUpdateModel202110.md
 docs/ValueTypeResourceOfStoreTarget202110.md
 docs/VideoVariableValue.md
@@ -415,7 +410,6 @@ src/main/java/com/criteo/api/retailmedia/v2025_01/model/ExternalRetailMediaBrand
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ExternalRetailMediaSeller.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ExternalRetailMediaSellerAccountCreation.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ExternalRetailer.java
-src/main/java/com/criteo/api/retailmedia/v2025_01/model/ExternalRetailerPages202110.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/FilesVariableValue.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/FilesVariablesSpecification.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/GrantConsentInput.java
@@ -446,9 +440,6 @@ src/main/java/com/criteo/api/retailmedia/v2025_01/model/JsonApiSingleResponseOfC
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/JsonApiSingleResponseOfCatalogStatus.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/JsonApiSingleResponseOfLineItemBidMultipliersV2.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/KeywordDataModel.java
-src/main/java/com/criteo/api/retailmedia/v2025_01/model/KeywordTarget202110.java
-src/main/java/com/criteo/api/retailmedia/v2025_01/model/KeywordTarget202110Request.java
-src/main/java/com/criteo/api/retailmedia/v2025_01/model/KeywordTarget202110Response.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/Keywords.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/KeywordsModel.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/KeywordsModelResource.java
@@ -478,7 +469,6 @@ src/main/java/com/criteo/api/retailmedia/v2025_01/model/PreferredLineItemUpdateM
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/PreferredLineItemV2.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/PreferredLineItemV2PagedListResponse.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/PreferredLineItemV2Response.java
-src/main/java/com/criteo/api/retailmedia/v2025_01/model/ProblemDetails.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ProductMetadata.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ProductResourceOutcome.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/PromotedProduct.java
@@ -510,6 +500,7 @@ src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistAm
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistAmendmentRequest.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistOperation.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistOperationResponseAttributes.java
+src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailerPages202110.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ReviewStateModel.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RmAlgebraNodeV1.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RmAudienceEntityV1.java
@@ -592,7 +583,6 @@ src/main/java/com/criteo/api/retailmedia/v2025_01/model/ValueTypeResourceOfAddTo
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ValueTypeResourceOfAddToBasketTarget202110.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ValueTypeResourceOfAudienceIdsUpdateModel202110.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ValueTypeResourceOfAudienceTarget202110.java
-src/main/java/com/criteo/api/retailmedia/v2025_01/model/ValueTypeResourceOfKeywordTarget202110.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ValueTypeResourceOfStoreIdsUpdateModel202110.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ValueTypeResourceOfStoreTarget202110.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/VideoVariableValue.java

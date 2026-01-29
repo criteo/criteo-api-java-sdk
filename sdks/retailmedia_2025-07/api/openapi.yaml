@@ -212,6 +212,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
+        required: true
       responses:
         "200":
           content:
@@ -618,6 +619,7 @@ paths:
               $ref: '#/components/schemas/CreateBalanceV2Request'
         description: An object that represents the available options to set when creating
           a Retail Media Balance
+        required: true
         x-bodyName: createBalance
       responses:
         "201":
@@ -693,6 +695,7 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateBalanceModelV2Request'
         description: An object that represents the available options to modify a balance.
+        required: true
         x-bodyName: updateBalanceModel
       responses:
         "200":
@@ -736,6 +739,7 @@ paths:
               $ref: '#/components/schemas/AddFundsToBalanceV2Request'
         description: An object that represents the available options of adding funds
           to a balance.
+        required: true
         x-bodyName: addFundsToBalance
       responses:
         "200":
@@ -779,6 +783,7 @@ paths:
               $ref: '#/components/schemas/ChangeDatesOfBalanceV2Request'
         description: An object that represents the available options to modify schedule
           of a balance.
+        required: true
         x-bodyName: changeDatesOfBalance
       responses:
         "200":
@@ -874,6 +879,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PostCampaignV202301'
         description: The campaign settings to create a campaign with
+        required: true
         x-bodyName: campaign
       responses:
         "201":
@@ -933,7 +939,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreativeCreateModel202207'
         description: The creative to create
-        x-bodyName: creative
+        required: true
       responses:
         "201":
           content:
@@ -1008,7 +1014,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreativeUpdateModel202207'
         description: The creative to create
-        x-bodyName: creative
+        required: true
       responses:
         "201":
           content:
@@ -1063,7 +1069,7 @@ paths:
     get:
       description: Generate a list of reports for line items which contain one or
         more actionable keyword reviews
-      operationId: InReviewReportV1
+      operationId: GetKeywordInReviewReport
       parameters:
       - description: The account to generate a report for
         explode: false
@@ -1201,7 +1207,7 @@ paths:
   /2025-07/retail-media/accounts/{accountId}/brand-catalog-export:
     post:
       description: Create a request for a Catalog available to the indicated account.
-      operationId: Catalog_PostApiExternalV2AccountBrandCatalogExportByAccountId
+      operationId: CreateBrandCatalogExport
       parameters:
       - description: The account to request the catalog for.
         explode: false
@@ -1216,7 +1222,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfBrandCatalogRequestV2'
-        x-bodyName: body
+        required: true
       responses:
         "200":
           content:
@@ -1308,7 +1314,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/JsonApiRequestOfCatalogRequest'
-        x-bodyName: request
+        required: true
       responses:
         "200":
           content:
@@ -1326,7 +1332,7 @@ paths:
   /2025-07/retail-media/accounts/{accountId}/catalogs/sellers:
     post:
       description: Create a request for a Catalog available to the indicated account.
-      operationId: Catalog_PostApiV1ExternalAccountCatalogsSellersByAccountId
+      operationId: Catalog_PostApiExternalV1AccountCatalogsSellersByAccountId
       parameters:
       - description: The account to request the catalog for.
         explode: false
@@ -1341,7 +1347,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/JsonApiRequestOfSellerCatalogRequest'
-        x-bodyName: body
+        required: true
       responses:
         "200":
           content:
@@ -1449,7 +1455,7 @@ paths:
   /2025-07/retail-media/accounts/{accountId}/seller-catalog-export:
     post:
       description: Create a request for a Catalog available to the indicated account.
-      operationId: Catalog_PostApiExternalV2AccountSellerCatalogExportByAccountId
+      operationId: CreateSellerCatalogExport
       parameters:
       - description: The account to request the catalog for.
         explode: false
@@ -1464,7 +1470,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfSellerCatalogRequestV2'
-        x-bodyName: body
+        required: true
       responses:
         "200":
           content:
@@ -1489,6 +1495,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfSellerSearch'
         description: ""
+        required: true
       responses:
         "200":
           content:
@@ -1570,6 +1577,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AuctionLineItemUpdateModelRequest'
         description: The line item settings to create a line item with
+        required: true
         x-bodyName: lineItem
       responses:
         "200":
@@ -2072,6 +2080,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AuctionLineItemCreateModelRequest'
         description: The line item settings to create a line item with
+        required: true
         x-bodyName: lineItem
       responses:
         "201":
@@ -2168,6 +2177,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PreferredLineItemCreateModelV2Request'
         description: The line item settings to create a line item with
+        required: true
         x-bodyName: lineItem
       responses:
         "201":
@@ -2227,6 +2237,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PutCampaignV202301'
         description: The campaign settings to update that campaign with
+        required: true
         x-bodyName: campaign
       responses:
         "200":
@@ -2289,6 +2300,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfCampaignBudgetOverrides'
         description: New campaign budget overrides settings value resource input.
+        required: true
       responses:
         "201":
           content:
@@ -2307,8 +2319,9 @@ paths:
     get:
       description: "Output the indicated catalog. Catalogs are only available for\
         \ retrieval when their associated status request\r\nis at a Success status.\r\
-        \nProduces application/x-json-stream of v2021_07 CatalogProduct json objects."
-      operationId: CatalogApi_GetApiV1ExternalCatalogOutputByCatalogId
+        \nProduces application/x-json-stream CatalogProduct json objects (first introduced\
+        \ in the 2021-07 version)."
+      operationId: GetCatalogOutput
       parameters:
       - description: A catalog ID returned from an account catalog request.
         explode: false
@@ -2325,29 +2338,19 @@ paths:
               schema:
                 format: binary
                 type: string
-            application/json:
-              schema:
-                format: binary
-                type: string
           description: Catalog download initiated.
         "204":
-          content:
-            application/x-json-stream:
-              schema:
-                format: binary
-                type: string
-            application/json: {}
           description: Catalog has expired.
       security:
       - oauth:
         - RetailMedia_Campaign_Read
       tags:
       - Campaign
-      x-accepts: application/json
+      x-accepts: application/x-json-stream
   /2025-07/retail-media/catalogs/{catalogId}/status:
     get:
       description: Check the status of a catalog request.
-      operationId: CatalogApi_GetApiV1ExternalCatalogStatusByCatalogId
+      operationId: GetCatalogStatus
       parameters:
       - description: A catalog ID returned from an account catalog request.
         explode: false
@@ -2373,7 +2376,7 @@ paths:
   /2025-07/retail-media/categories:
     get:
       description: Endpoint to search categories by text and retailer.
-      operationId: CategorySearchApi_GetApi202204ExternalCategories
+      operationId: CategorySearch_GetApiExternalV1Categories
       parameters:
       - description: The start position in the overall list of matches. Must be zero
           or greater.
@@ -2384,8 +2387,8 @@ paths:
         schema:
           default: 0
           format: int32
-          maximum: 500.0
-          minimum: 0.0
+          maximum: 500
+          minimum: 0
           type: integer
         style: form
       - description: The maximum number of results to return with each call. Must
@@ -2397,8 +2400,8 @@ paths:
         schema:
           default: 100
           format: int32
-          maximum: 100.0
-          minimum: 1.0
+          maximum: 100
+          minimum: 1
           type: integer
         style: form
       - description: The retailer id for which Categories fetched
@@ -2645,6 +2648,7 @@ paths:
             schema:
               $ref: '#/components/schemas/LineItemBidMultipliersV2Request'
         description: New Bid Multipliers to be set
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -2663,7 +2667,7 @@ paths:
   /2025-07/retail-media/line-items/{line-item-id}/keywords/review:
     post:
       description: Update the status of keyword reviews under a line item
-      operationId: UpdateKeywordReviewsV1
+      operationId: UpdateKeywordReviews
       parameters:
       - description: The line item to update keyword review statuses for
         explode: false
@@ -2920,6 +2924,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfLineItemBudgetOverrides'
         description: New line item budget overrides settings value resource input.
+        required: true
       responses:
         "201":
           content:
@@ -2994,6 +2999,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PreferredLineItemUpdateModelV2Request'
         description: The line item settings to create a line item with
+        required: true
         x-bodyName: lineItem
       responses:
         "200":
@@ -3055,6 +3061,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AddToBasketTarget202110Request'
         description: The add to basket target to set the scope for
+        required: true
         x-bodyName: addToBasketTarget
       responses:
         "200":
@@ -3187,6 +3194,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceTarget202110Request'
         description: The audience target to set the scope for
+        required: true
         x-bodyName: audienceTarget
       responses:
         "200":
@@ -3318,6 +3326,7 @@ paths:
             schema:
               $ref: '#/components/schemas/StoreTarget202110Request'
         description: The store target to set the scope for
+        required: true
         x-bodyName: storeTarget
       responses:
         "200":
@@ -3458,9 +3467,8 @@ paths:
       x-accepts: application/json
   /2025-07/retail-media/reports/campaigns:
     post:
-      description: |-
-        Return an asynchronous Campaigns Report
-        This endpoint is subject to specific rate limits.
+      description: "Return an asynchronous Campaigns Report\r\n<br />\r\nThis endpoint\
+        \ is subject to specific rate limits."
       operationId: GenerateAsyncCampaignsReport
       requestBody:
         content:
@@ -3485,9 +3493,8 @@ paths:
       x-accepts: application/json
   /2025-07/retail-media/reports/line-items:
     post:
-      description: |-
-        Returns an asynchronous Line Items Report
-        This endpoint is subject to specific rate limits.
+      description: "Returns an asynchronous Line Items Report\r\n<br />\r\nThis endpoint\
+        \ is subject to specific rate limits."
       operationId: GenerateAsyncLineItemsReport
       requestBody:
         content:
@@ -3512,9 +3519,8 @@ paths:
       x-accepts: application/json
   /2025-07/retail-media/reports/revenue:
     post:
-      description: |-
-        Returns an asynchronous Revenue Report
-        This endpoint is subject to specific rate limits.
+      description: "Returns an asynchronous Revenue Report\r\n<br />\r\nThis endpoint\
+        \ is subject to specific rate limits."
       operationId: GenerateAsyncRevenueReport
       requestBody:
         content:
@@ -3621,6 +3627,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputCpcMinBidsRequest'
         description: Cpc minimum bid amount request object.
+        required: true
         x-bodyName: cpcMinBidsRequest
       responses:
         "200":
@@ -3655,7 +3662,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExternalRetailerPages202110'
+                $ref: '#/components/schemas/RetailerPages202110'
           description: Pages fetched successfully
       security:
       - oauth:
@@ -6548,6 +6555,7 @@ components:
           type: array
       type: object
     BrandCatalogRequestV2:
+      additionalProperties: false
       description: A request for a catalog under the specified format.
       example:
         modifiedAfter: 2000-01-23T04:56:07.000+00:00
@@ -6560,7 +6568,6 @@ components:
         retailerIdFilter:
         - 0
         - 0
-      nullable: true
       properties:
         brandIdFilter:
           description: The brand ids to filter the catalog by.
@@ -6568,6 +6575,7 @@ components:
             description: The brand ids to filter the catalog by.
             format: long-id
             type: string
+          nullable: true
           type: array
         includeFields:
           description: "Out of the optional fields, only the ones specified will be\
@@ -6582,16 +6590,19 @@ components:
             - Category
             - BrandName
             type: string
+          nullable: true
           type: array
         modifiedAfter:
           description: Only products modified after this time will be returned.
           format: date-time
+          nullable: true
           type: string
         retailerIdFilter:
           description: The retailer ids to filter the catalog by.
           items:
             format: int32
             type: integer
+          nullable: true
           type: array
       type: object
     BrandIdSearchRequest:
@@ -7019,6 +7030,7 @@ components:
       - updatedAt
       type: object
     CatalogStatusV2:
+      additionalProperties: false
       description: The status of an asynchronous request to generate a catalog
       example:
         fileSizeBytes: 0
@@ -7027,6 +7039,7 @@ components:
         rowCount: 6
         message: message
         status: unknown
+      nullable: true
       properties:
         createdAt:
           description: The time this catalog was created. Represented as a UTC ISO8601
@@ -7069,12 +7082,14 @@ components:
       - status
       type: object
     Category202204:
+      additionalProperties: false
       description: "List of retailer's categories, including the full hierarchy of\
         \ categories and their parent category ID"
       example:
         name: name
         text: text
         parentId: parentId
+      nullable: true
       properties:
         name:
           description: Category Name
@@ -7091,7 +7106,9 @@ components:
       - text
       type: object
     Category202204ListResponse:
-      description: Data model for a list of response resources
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities.
       example:
         data:
         - attributes:
@@ -7152,15 +7169,18 @@ components:
         data:
           items:
             $ref: '#/components/schemas/ResourceOfCategory202204'
+          nullable: true
           type: array
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
           readOnly: true
           type: array
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
           readOnly: true
           type: array
       type: object
@@ -7304,6 +7324,8 @@ components:
           nullable: true
           pattern: "^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$"
           type: string
+      required:
+      - color
       type: object
     CommonError:
       additionalProperties: false
@@ -7942,10 +7964,12 @@ components:
           description: Associated Line Item Ids
           items:
             type: string
+          nullable: true
           type: array
         brandId:
           description: Brand Id
           format: int64
+          nullable: true
           type: integer
         creativeFormatV2Type:
           description: Creative format type
@@ -7960,7 +7984,6 @@ components:
           - Custom
           - DisplayPanel
           - DigitalShelfTalker
-          format: string
           type: string
         environments:
           description: "Environment type (e.g. mobile, web, app)"
@@ -7972,7 +7995,6 @@ components:
           format: int32
           type: integer
         id:
-          description: Id of the entity
           nullable: true
           type: string
         name:
@@ -7989,7 +8011,6 @@ components:
           - InUse
           - Archived
           - Deleted
-          format: string
           type: string
         templateId:
           description: Template Id
@@ -8006,10 +8027,9 @@ components:
         updatedAt:
           description: Updated at time
           format: date-time
+          nullable: true
           type: string
       required:
-      - associatedLineItemIds
-      - brandId
       - creativeFormatV2Type
       - environments
       - formatId
@@ -8019,7 +8039,6 @@ components:
       - templateId
       - templateName
       - templateVariableValues
-      - updatedAt
       type: object
     Creative202110:
       additionalProperties: false
@@ -8046,7 +8065,6 @@ components:
           nullable: true
           type: integer
         id:
-          description: Id of the entity
           nullable: true
           type: string
         name:
@@ -8060,7 +8078,6 @@ components:
           - In_Use
           - Archived
           - Deleted
-          format: string
           type: string
         updatedAt:
           format: date-time
@@ -8143,7 +8160,6 @@ components:
           stackTrace: stackTrace
           title: title
           type: unknown
-      nullable: true
       properties:
         data:
           items:
@@ -8256,7 +8272,6 @@ components:
           - CUSTOM
           - DisplayPanel
           - DigitalShelfTalker
-          format: string
           type: string
         environments:
           description: "Environment type (e.g. mobile, web, app)"
@@ -8268,7 +8283,6 @@ components:
           format: int32
           type: integer
         id:
-          description: Id of the entity
           nullable: true
           type: string
         name:
@@ -8285,7 +8299,6 @@ components:
           - In_Use
           - Archived
           - Deleted
-          format: string
           type: string
         templateId:
           description: Template Id
@@ -8429,7 +8442,6 @@ components:
           stackTrace: stackTrace
           title: title
           type: unknown
-      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfCreative202210'
@@ -8626,7 +8638,6 @@ components:
           stackTrace: stackTrace
           title: title
           type: unknown
-      nullable: true
       properties:
         data:
           items:
@@ -8760,7 +8771,6 @@ components:
           stackTrace: stackTrace
           title: title
           type: unknown
-      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfCreative2'
@@ -8824,6 +8834,7 @@ components:
           id: id
         brandId: 0
         name: name
+        id: id
         retailerId: 6
         templateId: 1
       properties:
@@ -8832,6 +8843,9 @@ components:
           format: int64
           nullable: true
           type: integer
+        id:
+          nullable: true
+          type: string
         name:
           description: The name of the creative
           type: string
@@ -8901,6 +8915,7 @@ components:
           id: id
         brandId: 0
         name: name
+        id: id
         retailerId: 6
         templateId: 1
       properties:
@@ -8908,6 +8923,9 @@ components:
           description: The brand associated to the creative
           format: int64
           type: integer
+        id:
+          nullable: true
+          type: string
         name:
           description: The name of the creative
           type: string
@@ -9387,6 +9405,7 @@ components:
           type: string
       type: object
     EntityResourceOfCatalogStatusV2:
+      additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
       example:
         attributes:
@@ -9407,7 +9426,7 @@ components:
           nullable: true
           type: string
         type:
-          description: The Type of the resource.
+          description: Type of the resource.
           nullable: true
           type: string
       type: object
@@ -9472,6 +9491,7 @@ components:
           type: string
       type: object
     EntityResourceOutcomeOfCatalogStatusV2:
+      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
         a single entity.
       example:
@@ -9523,7 +9543,6 @@ components:
           stackTrace: stackTrace
           title: title
           type: unknown
-      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/EntityResourceOfCatalogStatusV2'
@@ -9785,6 +9804,7 @@ components:
       - name
       type: object
     ExternalCatalogRequest:
+      additionalProperties: false
       description: A request for a catalog under the specified format. Currently "json-newline"
         is supported.
       example:
@@ -9797,14 +9817,18 @@ components:
           items:
             format: long-id
             type: string
+          nullable: true
           type: array
         format:
           default: json-newline
+          description: An enumeration of Catalog formats
           enum:
+          - unknown
           - json-newline
           type: string
       type: object
     ExternalCatalogStatus:
+      additionalProperties: false
       description: The status of an asynchronous request to generate a catalog
       example:
         fileSizeBytes: 0
@@ -9814,6 +9838,7 @@ components:
         rowCount: 6
         message: message
         status: unknown
+      nullable: true
       properties:
         createdAt:
           description: The time this catalog was created. Represented as a UTC ISO8601
@@ -9892,19 +9917,6 @@ components:
           type: string
       required:
       - name
-      type: object
-    ExternalRetailerPages202110:
-      description: Wraps a list of valid pages for a retailer
-      example:
-        pageTypes:
-        - pageTypes
-        - pageTypes
-      properties:
-        pageTypes:
-          description: List of valid pages for a retailer
-          items:
-            type: string
-          type: array
       type: object
     ExternalRetailMediaAccount:
       additionalProperties: false
@@ -10155,7 +10167,7 @@ components:
             - Png
             - Gif
             - Pdf
-            format: string
+            - Mp4
             type: string
           type: array
         maxBytes:
@@ -10252,6 +10264,8 @@ components:
           description: The url to redirect to
           nullable: true
           type: string
+      required:
+      - url
       type: object
     InputKeywords:
       additionalProperties: false
@@ -10502,6 +10516,7 @@ components:
       - type
       type: object
     JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus:
+      additionalProperties: false
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with external Id, Type, and\r\nAttributes properties"
       example:
@@ -10609,6 +10624,7 @@ components:
       - type
       type: object
     JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest:
+      additionalProperties: false
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and\r\nAttributes properties"
       example:
@@ -10627,6 +10643,7 @@ components:
       - type
       type: object
     JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest:
+      additionalProperties: false
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and\r\nAttributes properties"
       example:
@@ -11039,6 +11056,7 @@ components:
       - metadata
       type: object
     JsonApiRequestOfCatalogRequest:
+      additionalProperties: false
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and Attributes properties"
       example:
@@ -11054,6 +11072,7 @@ components:
           $ref: '#/components/schemas/JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest'
       type: object
     JsonApiRequestOfSellerCatalogRequest:
+      additionalProperties: false
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and Attributes properties"
       example:
@@ -11065,7 +11084,6 @@ components:
             - sellerId: sellerId
               retailerId: retailerId
           type: type
-      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest'
@@ -11157,6 +11175,7 @@ components:
       - data
       type: object
     JsonApiSingleResponseOfCatalogStatus:
+      additionalProperties: false
       description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
         /> within a data property
       example:
@@ -11215,10 +11234,12 @@ components:
         errors:
           items:
             $ref: '#/components/schemas/CommonError'
+          nullable: true
           type: array
         warnings:
           items:
             $ref: '#/components/schemas/CommonWarning'
+          nullable: true
           type: array
       required:
       - data
@@ -12106,7 +12127,6 @@ components:
             - Mixed
             - iOS
             - Android
-            format: string
             type: string
           nullable: true
           type: array
@@ -12126,7 +12146,6 @@ components:
           - Favorites
           - SearchBar
           - CategoryMenu
-          format: string
           nullable: true
           type: string
       type: object
@@ -12151,7 +12170,6 @@ components:
             - Mixed
             - iOS
             - Android
-            format: string
             type: string
           nullable: true
           type: array
@@ -12167,7 +12185,6 @@ components:
           - Confirmation
           - Merchandising
           - Deals
-          format: string
           nullable: true
           type: string
       type: object
@@ -12578,6 +12595,7 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
+          nullable: true
           type: string
         id:
           nullable: true
@@ -12622,7 +12640,6 @@ components:
       required:
       - budget
       - campaignId
-      - endDate
       - name
       - startDate
       - status
@@ -12849,64 +12866,6 @@ components:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-      type: object
-    ProblemDetails:
-      description: Data model for common error or warning
-      example:
-        traceId: traceId
-        code: code
-        instance: instance
-        traceIdentifier: traceIdentifier
-        detail: detail
-        source:
-          key: source
-        stackTrace: stackTrace
-        title: title
-        type: unknown
-      properties:
-        code:
-          description: "A machine-readable  error code, expressed as a string value."
-          type: string
-        detail:
-          description: A human-readable explanation specific to this occurrence of
-            the problem
-          type: string
-        instance:
-          description: A URI that identifies the specific occurrence of the problem.
-          type: string
-        source:
-          additionalProperties:
-            type: string
-          description: A machine-readable structure to reference to the exact location(s)
-            causing the error(s)
-          type: object
-        stackTrace:
-          description: "Technical information, only used in non-prod environments"
-          type: string
-        title:
-          description: A short human-readable description of the problem type
-          type: string
-        traceId:
-          description: The request correlation ID this problem comes from.
-          nullable: true
-          type: string
-        traceIdentifier:
-          description: "The request correlation ID this problem comes from. (deprecated,\
-            \ use traceId instead)"
-          nullable: true
-          type: string
-        type:
-          description: The problem's category.
-          enum:
-          - unknown
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          type: string
       type: object
     ProductMetadata:
       additionalProperties: false
@@ -13347,7 +13306,8 @@ components:
           type: string
       type: object
     ResourceOfCategory202204:
-      description: Data model for a Resource
+      additionalProperties: false
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           name: name
@@ -13359,11 +13319,10 @@ components:
         attributes:
           $ref: '#/components/schemas/Category202204'
         id:
-          description: Id of the entity
+          description: Unique identifier of this resource.
           nullable: true
           type: string
         type:
-          description: Canonical type name of the entity
           nullable: true
           type: string
       type: object
@@ -13515,11 +13474,10 @@ components:
         attributes:
           $ref: '#/components/schemas/Creative2'
         id:
-          description: Id of the entity
+          description: Unique identifier of this resource.
           nullable: true
           type: string
         type:
-          description: Canonical type name of the entity
           nullable: true
           type: string
       type: object
@@ -13539,16 +13497,14 @@ components:
           updatedAt: 2000-01-23T04:56:07.000+00:00
         id: id
         type: type
-      nullable: true
       properties:
         attributes:
           $ref: '#/components/schemas/Creative202110'
         id:
-          description: Id of the entity
+          description: Unique identifier of this resource.
           nullable: true
           type: string
         type:
-          description: Canonical type name of the entity
           nullable: true
           type: string
       type: object
@@ -13627,11 +13583,10 @@ components:
         attributes:
           $ref: '#/components/schemas/Creative202210'
         id:
-          description: Id of the entity
+          description: Unique identifier of this resource.
           nullable: true
           type: string
         type:
-          description: Canonical type name of the entity
           nullable: true
           type: string
       type: object
@@ -13758,6 +13713,7 @@ components:
           allCollectionsMandatory: true
           displayableSkusMax: 0
           name: name
+          id: id
           skuCollectionMax: 9
           skuPerCollectionMax: 2
           sections:
@@ -13873,11 +13829,10 @@ components:
         attributes:
           $ref: '#/components/schemas/Template'
         id:
-          description: Id of the entity
+          description: Unique identifier of this resource.
           nullable: true
           type: string
         type:
-          description: Canonical type name of the entity
           nullable: true
           type: string
       type: object
@@ -13961,6 +13916,22 @@ components:
           nullable: true
           readOnly: true
           type: array
+      type: object
+    RetailerPages202110:
+      additionalProperties: false
+      description: Wraps a list of valid pages for a retailer
+      example:
+        pageTypes:
+        - pageTypes
+        - pageTypes
+      properties:
+        pageTypes:
+          description: List of valid pages for a retailer
+          items:
+            type: string
+          type: array
+      required:
+      - pageTypes
       type: object
     RetailMediaContactlistAmendment:
       description: Request data of retail media contact list amendment
@@ -15957,7 +15928,6 @@ components:
             minFiles: 2
             maxBytes: 5
           required: true
-      nullable: true
       properties:
         description:
           nullable: true
@@ -15973,22 +15943,25 @@ components:
       - templateVariables
       type: object
     SellerCatalogRequest:
-      description: Used to requst a catalog of seller SKUs
+      additionalProperties: false
+      description: Used to request a catalog of seller SKUs
       example:
         sellers:
         - sellerId: sellerId
           retailerId: retailerId
         - sellerId: sellerId
           retailerId: retailerId
-      nullable: true
       properties:
         sellers:
-          description: A list of sellers to restict the catalog to.
+          description: A list of sellers to restrict the catalog to.
           items:
             $ref: '#/components/schemas/SellerIdentifier'
           type: array
+      required:
+      - sellers
       type: object
     SellerCatalogRequestV2:
+      additionalProperties: false
       description: Used to request a catalog of seller SKUs
       example:
         modifiedAfter: 2000-01-23T04:56:07.000+00:00
@@ -16000,7 +15973,6 @@ components:
           retailerId: retailerId
         - sellerId: sellerId
           retailerId: retailerId
-      nullable: true
       properties:
         includeFields:
           description: "Out of the optional fields, only the ones specified will be\
@@ -16010,23 +15982,27 @@ components:
             - Unknown
             - Description
             - ImageUrl
-            - GlobalCategoryId
+            - GoogleCategory
             - RetailerName
             - Category
             - BrandName
             type: string
+          nullable: true
           type: array
         modifiedAfter:
           description: Only products modified after this time will be returned.
           format: date-time
+          nullable: true
           type: string
         sellers:
           description: A list of sellers to restrict the catalog to.
           items:
             $ref: '#/components/schemas/SellerIdentifierV2'
+          nullable: true
           type: array
       type: object
     SellerIdentifier:
+      additionalProperties: false
       description: Identifies a Unique Seller
       example:
         sellerId: sellerId
@@ -16043,6 +16019,7 @@ components:
       - sellerId
       type: object
     SellerIdentifierV2:
+      additionalProperties: false
       description: Identifies a Unique Seller
       example:
         sellerId: sellerId
@@ -16414,6 +16391,7 @@ components:
         allCollectionsMandatory: true
         displayableSkusMax: 0
         name: name
+        id: id
         skuCollectionMax: 9
         skuPerCollectionMax: 2
         sections:
@@ -16544,13 +16522,15 @@ components:
           - CUSTOM
           - DisplayPanel
           - DigitalShelfTalker
-          format: string
           type: string
         displayableSkusMax:
           description: Maximum number of displayable skus
           format: int32
           nullable: true
           type: integer
+        id:
+          nullable: true
+          type: string
         name:
           description: The name of the template
           type: string
@@ -16603,6 +16583,7 @@ components:
             allCollectionsMandatory: true
             displayableSkusMax: 0
             name: name
+            id: id
             skuCollectionMax: 9
             skuPerCollectionMax: 2
             sections:
@@ -16719,6 +16700,7 @@ components:
             allCollectionsMandatory: true
             displayableSkusMax: 0
             name: name
+            id: id
             skuCollectionMax: 9
             skuPerCollectionMax: 2
             sections:
@@ -16871,7 +16853,6 @@ components:
           stackTrace: stackTrace
           title: title
           type: unknown
-      nullable: true
       properties:
         data:
           items:
@@ -16903,6 +16884,7 @@ components:
             allCollectionsMandatory: true
             displayableSkusMax: 0
             name: name
+            id: id
             skuCollectionMax: 9
             skuPerCollectionMax: 2
             sections:
@@ -17055,7 +17037,6 @@ components:
           stackTrace: stackTrace
           title: title
           type: unknown
-      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfTemplate'
@@ -17121,7 +17102,7 @@ components:
           - Color
           - Files
           - Hyperlink
-          format: string
+          - Video
           type: string
       required:
       - id
@@ -17195,6 +17176,8 @@ components:
           description: The displayed text
           nullable: true
           type: string
+      required:
+      - text
       type: object
     UpdateBalanceModelV2:
       description: An object that represents the available options to set when updating
@@ -17511,8 +17494,9 @@ components:
           $ref: '#/components/schemas/ValueResourceCpcMinBidsRequest'
       type: object
     ValueResourceInputOfBrandCatalogRequestV2:
+      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -17527,7 +17511,6 @@ components:
             - 0
             - 0
           type: type
-      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceOfBrandCatalogRequestV2'
@@ -17646,8 +17629,9 @@ components:
           $ref: '#/components/schemas/ValueResourceOfRetailMediaSellerAccountCreation'
       type: object
     ValueResourceInputOfSellerCatalogRequestV2:
+      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
+        single value object.
       example:
         data:
           attributes:
@@ -17661,7 +17645,6 @@ components:
             - sellerId: sellerId
               retailerId: retailerId
           type: type
-      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceOfSellerCatalogRequestV2'
@@ -17724,6 +17707,7 @@ components:
           $ref: '#/components/schemas/ValueResourceRetailMediaKeywordsReview'
       type: object
     ValueResourceOfBrandCatalogRequestV2:
+      additionalProperties: false
       description: A value resource exposed by the API.
       example:
         attributes:
@@ -17738,12 +17722,12 @@ components:
           - 0
           - 0
         type: type
-      nullable: true
       properties:
         attributes:
           $ref: '#/components/schemas/BrandCatalogRequestV2'
         type:
-          description: The Type of the resource.
+          description: Type of the resource.
+          nullable: true
           type: string
       type: object
     ValueResourceOfCampaignBudgetOverrides:
@@ -17924,6 +17908,7 @@ components:
           type: string
       type: object
     ValueResourceOfSellerCatalogRequestV2:
+      additionalProperties: false
       description: A value resource exposed by the API.
       example:
         attributes:
@@ -17937,12 +17922,12 @@ components:
           - sellerId: sellerId
             retailerId: retailerId
         type: type
-      nullable: true
       properties:
         attributes:
           $ref: '#/components/schemas/SellerCatalogRequestV2'
         type:
-          description: The Type of the resource.
+          description: Type of the resource.
+          nullable: true
           type: string
       type: object
     ValueResourceOfSellerSearch:

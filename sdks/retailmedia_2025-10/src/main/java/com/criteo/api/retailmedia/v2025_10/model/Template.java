@@ -132,6 +132,10 @@ public class Template {
   @SerializedName(SERIALIZED_NAME_DISPLAYABLE_SKUS_MAX)
   private Integer displayableSkusMax;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -248,6 +252,28 @@ public class Template {
 
   public void setDisplayableSkusMax(Integer displayableSkusMax) {
     this.displayableSkusMax = displayableSkusMax;
+  }
+
+
+  public Template id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -424,6 +450,7 @@ public class Template {
         Objects.equals(this.createdAt, template.createdAt) &&
         Objects.equals(this.creativeFormat, template.creativeFormat) &&
         Objects.equals(this.displayableSkusMax, template.displayableSkusMax) &&
+        Objects.equals(this.id, template.id) &&
         Objects.equals(this.name, template.name) &&
         Objects.equals(this.sections, template.sections) &&
         Objects.equals(this.skuCollectionMax, template.skuCollectionMax) &&
@@ -439,7 +466,7 @@ public class Template {
 
   @Override
   public int hashCode() {
-    return Objects.hash(allCollectionsMandatory, createdAt, creativeFormat, displayableSkusMax, name, sections, skuCollectionMax, skuCollectionMin, skuPerCollectionMax, skuPerCollectionMin, updatedAt);
+    return Objects.hash(allCollectionsMandatory, createdAt, creativeFormat, displayableSkusMax, id, name, sections, skuCollectionMax, skuCollectionMin, skuPerCollectionMax, skuPerCollectionMin, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -457,6 +484,7 @@ public class Template {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    creativeFormat: ").append(toIndentedString(creativeFormat)).append("\n");
     sb.append("    displayableSkusMax: ").append(toIndentedString(displayableSkusMax)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    sections: ").append(toIndentedString(sections)).append("\n");
     sb.append("    skuCollectionMax: ").append(toIndentedString(skuCollectionMax)).append("\n");
@@ -490,6 +518,7 @@ public class Template {
     openapiFields.add("createdAt");
     openapiFields.add("creativeFormat");
     openapiFields.add("displayableSkusMax");
+    openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("sections");
     openapiFields.add("skuCollectionMax");
@@ -539,6 +568,9 @@ public class Template {
       }
       if (!jsonObj.get("creativeFormat").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creativeFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeFormat").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

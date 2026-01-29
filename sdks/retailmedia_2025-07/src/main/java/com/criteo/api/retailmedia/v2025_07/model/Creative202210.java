@@ -353,7 +353,7 @@ public class Creative202210 {
   }
 
    /**
-   * Id of the entity
+   * Get id
    * @return id
   **/
   @javax.annotation.Nullable

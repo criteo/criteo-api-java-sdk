@@ -56,7 +56,7 @@ import com.criteo.api.retailmedia.v2025_10.JSON;
 public class Creative2 {
   public static final String SERIALIZED_NAME_ASSOCIATED_LINE_ITEM_IDS = "associatedLineItemIds";
   @SerializedName(SERIALIZED_NAME_ASSOCIATED_LINE_ITEM_IDS)
-  private List<String> associatedLineItemIds = new ArrayList<>();
+  private List<String> associatedLineItemIds = null;
 
   public static final String SERIALIZED_NAME_BRAND_ID = "brandId";
   @SerializedName(SERIALIZED_NAME_BRAND_ID)
@@ -230,6 +230,9 @@ public class Creative2 {
   }
 
   public Creative2 addAssociatedLineItemIdsItem(String associatedLineItemIdsItem) {
+    if (this.associatedLineItemIds == null) {
+      this.associatedLineItemIds = null;
+    }
     this.associatedLineItemIds.add(associatedLineItemIdsItem);
     return this;
   }
@@ -238,7 +241,7 @@ public class Creative2 {
    * Associated Line Item Ids
    * @return associatedLineItemIds
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public List<String> getAssociatedLineItemIds() {
     return associatedLineItemIds;
@@ -260,7 +263,7 @@ public class Creative2 {
    * Brand Id
    * @return brandId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Long getBrandId() {
     return brandId;
@@ -350,7 +353,7 @@ public class Creative2 {
   }
 
    /**
-   * Id of the entity
+   * Get id
    * @return id
   **/
   @javax.annotation.Nullable
@@ -512,7 +515,7 @@ public class Creative2 {
    * Updated at time
    * @return updatedAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -620,8 +623,6 @@ public class Creative2 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("associatedLineItemIds");
-    openapiRequiredFields.add("brandId");
     openapiRequiredFields.add("creativeFormatV2Type");
     openapiRequiredFields.add("environments");
     openapiRequiredFields.add("formatId");
@@ -631,7 +632,6 @@ public class Creative2 {
     openapiRequiredFields.add("templateId");
     openapiRequiredFields.add("templateName");
     openapiRequiredFields.add("templateVariableValues");
-    openapiRequiredFields.add("updatedAt");
   }
 
  /**
@@ -661,10 +661,8 @@ public class Creative2 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // ensure the required json array is present
-      if (jsonObj.get("associatedLineItemIds") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("associatedLineItemIds").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("associatedLineItemIds") != null && !jsonObj.get("associatedLineItemIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `associatedLineItemIds` to be an array in the JSON string but got `%s`", jsonObj.get("associatedLineItemIds").toString()));
       }
       if (!jsonObj.get("creativeFormatV2Type").isJsonPrimitive()) {

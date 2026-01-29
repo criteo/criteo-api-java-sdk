@@ -21,7 +21,7 @@ Used to request a catalog of seller SKUs
 | UNKNOWN | &quot;Unknown&quot; |
 | DESCRIPTION | &quot;Description&quot; |
 | IMAGEURL | &quot;ImageUrl&quot; |
-| GLOBALCATEGORYID | &quot;GlobalCategoryId&quot; |
+| GOOGLECATEGORY | &quot;GoogleCategory&quot; |
 | RETAILERNAME | &quot;RetailerName&quot; |
 | CATEGORY | &quot;Category&quot; |
 | BRANDNAME | &quot;BrandName&quot; |

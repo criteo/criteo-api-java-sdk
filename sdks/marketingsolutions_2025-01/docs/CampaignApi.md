@@ -4,111 +4,18 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAdSet**](CampaignApi.md#createAdSet) | **POST** /2025-01/marketing-solutions/ad-sets |  |
 | [**createCampaign**](CampaignApi.md#createCampaign) | **POST** /2025-01/marketing-solutions/campaigns |  |
-| [**getAdSet**](CampaignApi.md#getAdSet) | **GET** /2025-01/marketing-solutions/ad-sets/{ad-set-id} |  |
 | [**getAdSetCategoryBids**](CampaignApi.md#getAdSetCategoryBids) | **GET** /2025-01/marketing-solutions/ad-sets/{ad-set-id}/category-bids |  |
 | [**getCampaign**](CampaignApi.md#getCampaign) | **GET** /2025-01/marketing-solutions/campaigns/{campaign-id} |  |
 | [**getDisplayMultipliers**](CampaignApi.md#getDisplayMultipliers) | **GET** /2025-01/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers |  |
 | [**patchAdSetCategoryBids**](CampaignApi.md#patchAdSetCategoryBids) | **PATCH** /2025-01/marketing-solutions/ad-sets/{ad-set-id}/category-bids |  |
-| [**patchAdSets**](CampaignApi.md#patchAdSets) | **PATCH** /2025-01/marketing-solutions/ad-sets |  |
 | [**patchCampaigns**](CampaignApi.md#patchCampaigns) | **PATCH** /2025-01/marketing-solutions/campaigns |  |
 | [**patchDisplayMultipliers**](CampaignApi.md#patchDisplayMultipliers) | **PATCH** /2025-01/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers |  |
-| [**searchAdSets**](CampaignApi.md#searchAdSets) | **POST** /2025-01/marketing-solutions/ad-sets/search |  |
 | [**searchCampaigns**](CampaignApi.md#searchCampaigns) | **POST** /2025-01/marketing-solutions/campaigns/search |  |
 | [**startAdSets**](CampaignApi.md#startAdSets) | **POST** /2025-01/marketing-solutions/ad-sets/start |  |
 | [**stopAdSets**](CampaignApi.md#stopAdSets) | **POST** /2025-01/marketing-solutions/ad-sets/stop |  |
 | [**updateAdSetAudience**](CampaignApi.md#updateAdSetAudience) | **PUT** /2025-01/marketing-solutions/ad-sets/{ad-set-id}/audience |  |
 
-
-
-## createAdSet
-
-> ResponseReadAdSetV24Q1 createAdSet(createAdSetV24Q1Request)
-
-
-
-Create the specified ad set
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.v2025_01;
-
-import com.criteo.api.marketingsolutions.v2025_01.ApiClient;
-import com.criteo.api.marketingsolutions.v2025_01.ApiClientBuilder;
-import com.criteo.api.marketingsolutions.v2025_01.ApiException;
-import com.criteo.api.marketingsolutions.v2025_01.Configuration;
-import com.criteo.api.marketingsolutions.v2025_01.auth.*;
-import com.criteo.api.marketingsolutions.v2025_01.model.*;
-import com.criteo.api.marketingsolutions.v2025_01.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        CreateAdSetV24Q1Request createAdSetV24Q1Request = new CreateAdSetV24Q1Request(); // CreateAdSetV24Q1Request | the ad sets to create
-        try {
-            ResponseReadAdSetV24Q1 result = apiInstance.createAdSet(createAdSetV24Q1Request);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#createAdSet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **createAdSetV24Q1Request** | [**CreateAdSetV24Q1Request**](CreateAdSetV24Q1Request.md)| the ad sets to create | |
-
-### Return type
-
-[**ResponseReadAdSetV24Q1**](ResponseReadAdSetV24Q1.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | The ad set that has been created and errors / warnings |  -  |
 
 
 ## createCampaign
@@ -198,95 +105,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The campaign that has been created and errors / warnings |  -  |
-
-
-## getAdSet
-
-> ResponseReadAdSetV24Q1 getAdSet(adSetId)
-
-
-
-Get the data for the specified ad set
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.v2025_01;
-
-import com.criteo.api.marketingsolutions.v2025_01.ApiClient;
-import com.criteo.api.marketingsolutions.v2025_01.ApiClientBuilder;
-import com.criteo.api.marketingsolutions.v2025_01.ApiException;
-import com.criteo.api.marketingsolutions.v2025_01.Configuration;
-import com.criteo.api.marketingsolutions.v2025_01.auth.*;
-import com.criteo.api.marketingsolutions.v2025_01.model.*;
-import com.criteo.api.marketingsolutions.v2025_01.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String adSetId = "adSetId_example"; // String | Id of the ad set
-        try {
-            ResponseReadAdSetV24Q1 result = apiInstance.getAdSet(adSetId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getAdSet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **adSetId** | **String**| Id of the ad set | |
-
-### Return type
-
-[**ResponseReadAdSetV24Q1**](ResponseReadAdSetV24Q1.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | data for the ad set |  -  |
 
 
 ## getAdSetCategoryBids
@@ -625,7 +443,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adSetId** | **String**| Id of the Ad Set | |
-| **patchAdSetCategoryBidListRequest** | [**PatchAdSetCategoryBidListRequest**](PatchAdSetCategoryBidListRequest.md)|  | [optional] |
+| **patchAdSetCategoryBidListRequest** | [**PatchAdSetCategoryBidListRequest**](PatchAdSetCategoryBidListRequest.md)|  | |
 
 ### Return type
 
@@ -645,95 +463,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of updated Category Bids for given Categories associated to an Ad Set. |  -  |
-
-
-## patchAdSets
-
-> ResponsesAdSetIdV24Q1 patchAdSets(requestsPatchAdSetV24Q1)
-
-
-
-Patch a list of AdSets.
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.v2025_01;
-
-import com.criteo.api.marketingsolutions.v2025_01.ApiClient;
-import com.criteo.api.marketingsolutions.v2025_01.ApiClientBuilder;
-import com.criteo.api.marketingsolutions.v2025_01.ApiException;
-import com.criteo.api.marketingsolutions.v2025_01.Configuration;
-import com.criteo.api.marketingsolutions.v2025_01.auth.*;
-import com.criteo.api.marketingsolutions.v2025_01.model.*;
-import com.criteo.api.marketingsolutions.v2025_01.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1 = new RequestsPatchAdSetV24Q1(); // RequestsPatchAdSetV24Q1 | List of adsets to patch.
-        try {
-            ResponsesAdSetIdV24Q1 result = apiInstance.patchAdSets(requestsPatchAdSetV24Q1);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#patchAdSets");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **requestsPatchAdSetV24Q1** | [**RequestsPatchAdSetV24Q1**](RequestsPatchAdSetV24Q1.md)| List of adsets to patch. | [optional] |
-
-### Return type
-
-[**ResponsesAdSetIdV24Q1**](ResponsesAdSetIdV24Q1.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | List of patched adSets. |  -  |
 
 
 ## patchCampaigns
@@ -803,7 +532,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **patchCampaignListRequest** | [**PatchCampaignListRequest**](PatchCampaignListRequest.md)| List of campaigns to patch. | [optional] |
+| **patchCampaignListRequest** | [**PatchCampaignListRequest**](PatchCampaignListRequest.md)| List of campaigns to patch. | |
 
 ### Return type
 
@@ -894,7 +623,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adSetId** | **String**| Id of the Ad Set | |
-| **patchAdSetDisplayMultiplierListRequest** | [**PatchAdSetDisplayMultiplierListRequest**](PatchAdSetDisplayMultiplierListRequest.md)|  | [optional] |
+| **patchAdSetDisplayMultiplierListRequest** | [**PatchAdSetDisplayMultiplierListRequest**](PatchAdSetDisplayMultiplierListRequest.md)|  | |
 
 ### Return type
 
@@ -914,95 +643,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of updated Display Multipliers for given Categories associated to an Ad Set. |  -  |
-
-
-## searchAdSets
-
-> ResponsesReadAdSetV24Q1 searchAdSets(adSetSearchRequestV24Q1)
-
-
-
-Search for ad sets
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.v2025_01;
-
-import com.criteo.api.marketingsolutions.v2025_01.ApiClient;
-import com.criteo.api.marketingsolutions.v2025_01.ApiClientBuilder;
-import com.criteo.api.marketingsolutions.v2025_01.ApiException;
-import com.criteo.api.marketingsolutions.v2025_01.Configuration;
-import com.criteo.api.marketingsolutions.v2025_01.auth.*;
-import com.criteo.api.marketingsolutions.v2025_01.model.*;
-import com.criteo.api.marketingsolutions.v2025_01.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1 = new AdSetSearchRequestV24Q1(); // AdSetSearchRequestV24Q1 | 
-        try {
-            ResponsesReadAdSetV24Q1 result = apiInstance.searchAdSets(adSetSearchRequestV24Q1);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#searchAdSets");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **adSetSearchRequestV24Q1** | [**AdSetSearchRequestV24Q1**](AdSetSearchRequestV24Q1.md)|  | [optional] |
-
-### Return type
-
-[**ResponsesReadAdSetV24Q1**](ResponsesReadAdSetV24Q1.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | data for the ad sets |  -  |
 
 
 ## searchCampaigns

@@ -206,9 +206,82 @@ public class PlacementsReportQueryMessage {
   @SerializedName(SERIALIZED_NAME_FORMAT)
   private FormatEnum format = FormatEnum.JSON;
 
+  /**
+   * Gets or Sets metrics
+   */
+  @JsonAdapter(MetricsEnum.Adapter.class)
+  public enum MetricsEnum {
+    CLICKS("Clicks"),
+    
+    DISPLAYS("Displays"),
+    
+    COST("Cost"),
+    
+    SALESPC30D("SalesPc30d"),
+    
+    REVENUEPC30D("RevenuePc30d"),
+    
+    COSPC30D("CosPc30d"),
+    
+    ROASPC30D("RoasPc30d"),
+    
+    CPOPC30D("CpoPc30d"),
+    
+    CVRPC30D("CvrPc30d"),
+    
+    SALESPV1D("SalesPv1d"),
+    
+    REVENUEPV1D("RevenuePv1d"),
+    
+    COSPV1D("CosPv1d"),
+    
+    ROASPV1D("RoasPv1d"),
+    
+    CPOPV1D("CpoPv1d"),
+    
+    CVRPV1D("CvrPv1d");
+
+    private String value;
+
+    MetricsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MetricsEnum fromValue(String value) {
+      for (MetricsEnum b : MetricsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MetricsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MetricsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MetricsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MetricsEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_METRICS = "metrics";
   @SerializedName(SERIALIZED_NAME_METRICS)
-  private List<String> metrics = new ArrayList<>();
+  private List<MetricsEnum> metrics = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PLACEMENT = "placement";
   @SerializedName(SERIALIZED_NAME_PLACEMENT)
@@ -428,13 +501,13 @@ public class PlacementsReportQueryMessage {
   }
 
 
-  public PlacementsReportQueryMessage metrics(List<String> metrics) {
+  public PlacementsReportQueryMessage metrics(List<MetricsEnum> metrics) {
     
     this.metrics = metrics;
     return this;
   }
 
-  public PlacementsReportQueryMessage addMetricsItem(String metricsItem) {
+  public PlacementsReportQueryMessage addMetricsItem(MetricsEnum metricsItem) {
     this.metrics.add(metricsItem);
     return this;
   }
@@ -445,12 +518,12 @@ public class PlacementsReportQueryMessage {
   **/
   @javax.annotation.Nonnull
 
-  public List<String> getMetrics() {
+  public List<MetricsEnum> getMetrics() {
     return metrics;
   }
 
 
-  public void setMetrics(List<String> metrics) {
+  public void setMetrics(List<MetricsEnum> metrics) {
     this.metrics = metrics;
   }
 
