@@ -55,7 +55,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         OnSiteRecommendationApi apiInstance = new OnSiteRecommendationApi(defaultClient);
-        Integer catalogid = 56; // Integer | the identifier of the catalog to query
+        String catalogid = "catalogid_example"; // String | the identifier of the catalog to query
         InbotDiscussionBodyModel inbotDiscussionBodyModel = new InbotDiscussionBodyModel(); // InbotDiscussionBodyModel | 
         try {
             MessageBodyModel result = apiInstance.chatbotProductRecommendations(catalogid, inbotDiscussionBodyModel);
@@ -76,7 +76,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **catalogid** | **Integer**| the identifier of the catalog to query | |
+| **catalogid** | **String**| the identifier of the catalog to query | |
 | **inbotDiscussionBodyModel** | [**InbotDiscussionBodyModel**](InbotDiscussionBodyModel.md)|  | |
 
 ### Return type

@@ -514,7 +514,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call computeDisplayMinBidByRetailerIdCall(Integer retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call computeDisplayMinBidByRetailerIdCall(String retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -561,7 +561,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call computeDisplayMinBidByRetailerIdValidateBeforeCall(Integer retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call computeDisplayMinBidByRetailerIdValidateBeforeCall(String retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling computeDisplayMinBidByRetailerId(Async)");
@@ -584,7 +584,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceCollectionOutcomeDisplayAuctionMinBidResult computeDisplayMinBidByRetailerId(Integer retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest) throws ApiException {
+    public ValueResourceCollectionOutcomeDisplayAuctionMinBidResult computeDisplayMinBidByRetailerId(String retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest) throws ApiException {
         ApiResponse<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult> localVarResp = computeDisplayMinBidByRetailerIdWithHttpInfo(retailerId, valueResourceInputDisplayAuctionMinBidRequest);
         return localVarResp.getData();
     }
@@ -602,7 +602,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult> computeDisplayMinBidByRetailerIdWithHttpInfo(Integer retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest) throws ApiException {
+    public ApiResponse<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult> computeDisplayMinBidByRetailerIdWithHttpInfo(String retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest) throws ApiException {
         okhttp3.Call localVarCall = computeDisplayMinBidByRetailerIdValidateBeforeCall(retailerId, valueResourceInputDisplayAuctionMinBidRequest, null);
         Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -622,7 +622,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call computeDisplayMinBidByRetailerIdAsync(Integer retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest, final ApiCallback<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult> _callback) throws ApiException {
+    public okhttp3.Call computeDisplayMinBidByRetailerIdAsync(String retailerId, ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest, final ApiCallback<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = computeDisplayMinBidByRetailerIdValidateBeforeCall(retailerId, valueResourceInputDisplayAuctionMinBidRequest, _callback);
         Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeDisplayAuctionMinBidResult>(){}.getType();
@@ -1445,7 +1445,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiExternalV1RetailerBrandsByRetailerIdCall(Integer retailerId, String brandType, String skuStockTypeFilter, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getApiExternalV1RetailerBrandsByRetailerIdCall(String retailerId, String brandType, String skuStockTypeFilter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1499,7 +1499,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiExternalV1RetailerBrandsByRetailerIdValidateBeforeCall(Integer retailerId, String brandType, String skuStockTypeFilter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getApiExternalV1RetailerBrandsByRetailerIdValidateBeforeCall(String retailerId, String brandType, String skuStockTypeFilter, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling getApiExternalV1RetailerBrandsByRetailerId(Async)");
@@ -1523,7 +1523,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
      </table>
      */
-    public BrandPreviewListResponse getApiExternalV1RetailerBrandsByRetailerId(Integer retailerId, String brandType, String skuStockTypeFilter) throws ApiException {
+    public BrandPreviewListResponse getApiExternalV1RetailerBrandsByRetailerId(String retailerId, String brandType, String skuStockTypeFilter) throws ApiException {
         ApiResponse<BrandPreviewListResponse> localVarResp = getApiExternalV1RetailerBrandsByRetailerIdWithHttpInfo(retailerId, brandType, skuStockTypeFilter);
         return localVarResp.getData();
     }
@@ -1542,7 +1542,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BrandPreviewListResponse> getApiExternalV1RetailerBrandsByRetailerIdWithHttpInfo(Integer retailerId, String brandType, String skuStockTypeFilter) throws ApiException {
+    public ApiResponse<BrandPreviewListResponse> getApiExternalV1RetailerBrandsByRetailerIdWithHttpInfo(String retailerId, String brandType, String skuStockTypeFilter) throws ApiException {
         okhttp3.Call localVarCall = getApiExternalV1RetailerBrandsByRetailerIdValidateBeforeCall(retailerId, brandType, skuStockTypeFilter, null);
         Type localVarReturnType = new TypeToken<BrandPreviewListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1563,7 +1563,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiExternalV1RetailerBrandsByRetailerIdAsync(Integer retailerId, String brandType, String skuStockTypeFilter, final ApiCallback<BrandPreviewListResponse> _callback) throws ApiException {
+    public okhttp3.Call getApiExternalV1RetailerBrandsByRetailerIdAsync(String retailerId, String brandType, String skuStockTypeFilter, final ApiCallback<BrandPreviewListResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getApiExternalV1RetailerBrandsByRetailerIdValidateBeforeCall(retailerId, brandType, skuStockTypeFilter, _callback);
         Type localVarReturnType = new TypeToken<BrandPreviewListResponse>(){}.getType();
@@ -1583,7 +1583,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Seller found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiExternalV1RetailerByRetailerIdSellerssellerCall(Integer retailerId, String seller, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getApiExternalV1RetailerByRetailerIdSellerssellerCall(String retailerId, String seller, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1630,7 +1630,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiExternalV1RetailerByRetailerIdSellerssellerValidateBeforeCall(Integer retailerId, String seller, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getApiExternalV1RetailerByRetailerIdSellerssellerValidateBeforeCall(String retailerId, String seller, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling getApiExternalV1RetailerByRetailerIdSellersseller(Async)");
@@ -1658,7 +1658,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Seller found. </td><td>  -  </td></tr>
      </table>
      */
-    public SellerPreviewResponse getApiExternalV1RetailerByRetailerIdSellersseller(Integer retailerId, String seller) throws ApiException {
+    public SellerPreviewResponse getApiExternalV1RetailerByRetailerIdSellersseller(String retailerId, String seller) throws ApiException {
         ApiResponse<SellerPreviewResponse> localVarResp = getApiExternalV1RetailerByRetailerIdSellerssellerWithHttpInfo(retailerId, seller);
         return localVarResp.getData();
     }
@@ -1676,7 +1676,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Seller found. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SellerPreviewResponse> getApiExternalV1RetailerByRetailerIdSellerssellerWithHttpInfo(Integer retailerId, String seller) throws ApiException {
+    public ApiResponse<SellerPreviewResponse> getApiExternalV1RetailerByRetailerIdSellerssellerWithHttpInfo(String retailerId, String seller) throws ApiException {
         okhttp3.Call localVarCall = getApiExternalV1RetailerByRetailerIdSellerssellerValidateBeforeCall(retailerId, seller, null);
         Type localVarReturnType = new TypeToken<SellerPreviewResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1696,7 +1696,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Seller found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiExternalV1RetailerByRetailerIdSellerssellerAsync(Integer retailerId, String seller, final ApiCallback<SellerPreviewResponse> _callback) throws ApiException {
+    public okhttp3.Call getApiExternalV1RetailerByRetailerIdSellerssellerAsync(String retailerId, String seller, final ApiCallback<SellerPreviewResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getApiExternalV1RetailerByRetailerIdSellerssellerValidateBeforeCall(retailerId, seller, _callback);
         Type localVarReturnType = new TypeToken<SellerPreviewResponse>(){}.getType();
@@ -1969,7 +1969,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAuctionLineItemCall(Long lineItemId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAuctionLineItemCall(String lineItemId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2015,7 +2015,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAuctionLineItemValidateBeforeCall(Long lineItemId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAuctionLineItemValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling getAuctionLineItem(Async)");
@@ -2037,7 +2037,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceOutcomeOfSponsoredProductsLineItem getAuctionLineItem(Long lineItemId) throws ApiException {
+    public EntityResourceOutcomeOfSponsoredProductsLineItem getAuctionLineItem(String lineItemId) throws ApiException {
         ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> localVarResp = getAuctionLineItemWithHttpInfo(lineItemId);
         return localVarResp.getData();
     }
@@ -2054,7 +2054,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> getAuctionLineItemWithHttpInfo(Long lineItemId) throws ApiException {
+    public ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> getAuctionLineItemWithHttpInfo(String lineItemId) throws ApiException {
         okhttp3.Call localVarCall = getAuctionLineItemValidateBeforeCall(lineItemId, null);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfSponsoredProductsLineItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2073,7 +2073,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAuctionLineItemAsync(Long lineItemId, final ApiCallback<EntityResourceOutcomeOfSponsoredProductsLineItem> _callback) throws ApiException {
+    public okhttp3.Call getAuctionLineItemAsync(String lineItemId, final ApiCallback<EntityResourceOutcomeOfSponsoredProductsLineItem> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAuctionLineItemValidateBeforeCall(lineItemId, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfSponsoredProductsLineItem>(){}.getType();
@@ -4111,7 +4111,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAuctionLineItemCall(Long lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAuctionLineItemCall(String lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4158,7 +4158,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAuctionLineItemValidateBeforeCall(Long lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAuctionLineItemValidateBeforeCall(String lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling updateAuctionLineItem(Async)");
@@ -4186,7 +4186,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceOutcomeOfSponsoredProductsLineItem updateAuctionLineItem(Long lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel) throws ApiException {
+    public EntityResourceOutcomeOfSponsoredProductsLineItem updateAuctionLineItem(String lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel) throws ApiException {
         ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> localVarResp = updateAuctionLineItemWithHttpInfo(lineItemId, valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel);
         return localVarResp.getData();
     }
@@ -4204,7 +4204,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> updateAuctionLineItemWithHttpInfo(Long lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel) throws ApiException {
+    public ApiResponse<EntityResourceOutcomeOfSponsoredProductsLineItem> updateAuctionLineItemWithHttpInfo(String lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel) throws ApiException {
         okhttp3.Call localVarCall = updateAuctionLineItemValidateBeforeCall(lineItemId, valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, null);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfSponsoredProductsLineItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -4224,7 +4224,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAuctionLineItemAsync(Long lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback<EntityResourceOutcomeOfSponsoredProductsLineItem> _callback) throws ApiException {
+    public okhttp3.Call updateAuctionLineItemAsync(String lineItemId, ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, final ApiCallback<EntityResourceOutcomeOfSponsoredProductsLineItem> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAuctionLineItemValidateBeforeCall(lineItemId, valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfSponsoredProductsLineItem>(){}.getType();

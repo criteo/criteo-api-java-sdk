@@ -30,12 +30,14 @@ import java.io.IOException;
 import com.criteo.api.retailmedia.preview.model.AsyncAccountsReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncCampaignsReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncFillRateReportRequest;
+import com.criteo.api.retailmedia.preview.model.AsyncInsightResponse;
 import com.criteo.api.retailmedia.preview.model.AsyncLineItemsReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncOffsiteReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncReportResponse;
 import com.criteo.api.retailmedia.preview.model.AsyncUnfilledPlacementsReportRequest;
 import java.io.File;
 import com.criteo.api.retailmedia.preview.model.ReportResponse;
+import com.criteo.api.retailmedia.preview.model.ShareOfVoiceInsightRequest;
 import com.criteo.api.retailmedia.preview.model.SyncAttributedTransactionsReportRequest;
 import com.criteo.api.retailmedia.preview.model.SyncCampaignsReportRequest;
 import com.criteo.api.retailmedia.preview.model.SyncLineItemsReportRequest;
@@ -819,6 +821,124 @@ public class AnalyticsApi {
 
         okhttp3.Call localVarCall = generateAsyncUnfilledPlacementsReportValidateBeforeCall(asyncUnfilledPlacementsReportRequest, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for generateShareOfVoiceInsight
+     * @param shareOfVoiceInsightRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateShareOfVoiceInsightCall(ShareOfVoiceInsightRequest shareOfVoiceInsightRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = shareOfVoiceInsightRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/insights/share-of-voice";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call generateShareOfVoiceInsightValidateBeforeCall(ShareOfVoiceInsightRequest shareOfVoiceInsightRequest, final ApiCallback _callback) throws ApiException {
+        return generateShareOfVoiceInsightCall(shareOfVoiceInsightRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Generate a share of voice by category insight
+     * @param shareOfVoiceInsightRequest  (optional)
+     * @return AsyncInsightResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AsyncInsightResponse generateShareOfVoiceInsight(ShareOfVoiceInsightRequest shareOfVoiceInsightRequest) throws ApiException {
+        ApiResponse<AsyncInsightResponse> localVarResp = generateShareOfVoiceInsightWithHttpInfo(shareOfVoiceInsightRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Generate a share of voice by category insight
+     * @param shareOfVoiceInsightRequest  (optional)
+     * @return ApiResponse&lt;AsyncInsightResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AsyncInsightResponse> generateShareOfVoiceInsightWithHttpInfo(ShareOfVoiceInsightRequest shareOfVoiceInsightRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateShareOfVoiceInsightValidateBeforeCall(shareOfVoiceInsightRequest, null);
+        Type localVarReturnType = new TypeToken<AsyncInsightResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Generate a share of voice by category insight
+     * @param shareOfVoiceInsightRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateShareOfVoiceInsightAsync(ShareOfVoiceInsightRequest shareOfVoiceInsightRequest, final ApiCallback<AsyncInsightResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = generateShareOfVoiceInsightValidateBeforeCall(shareOfVoiceInsightRequest, _callback);
+        Type localVarReturnType = new TypeToken<AsyncInsightResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

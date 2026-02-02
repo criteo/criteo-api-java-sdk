@@ -364,7 +364,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAdvertiserBundleRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAdvertiserBundleRulesCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -411,7 +411,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAdvertiserBundleRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAdvertiserBundleRulesValidateBeforeCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling deleteAdvertiserBundleRules(Async)");
@@ -434,7 +434,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity deleteAdvertiserBundleRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity deleteAdvertiserBundleRules(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = deleteAdvertiserBundleRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -452,7 +452,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> deleteAdvertiserBundleRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> deleteAdvertiserBundleRulesWithHttpInfo(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = deleteAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -472,7 +472,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAdvertiserBundleRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call deleteAdvertiserBundleRulesAsync(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -492,7 +492,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAdvertiserDomainRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAdvertiserDomainRulesCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -539,7 +539,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAdvertiserDomainRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAdvertiserDomainRulesValidateBeforeCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling deleteAdvertiserDomainRules(Async)");
@@ -562,7 +562,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity deleteAdvertiserDomainRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity deleteAdvertiserDomainRules(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = deleteAdvertiserDomainRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -580,7 +580,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> deleteAdvertiserDomainRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> deleteAdvertiserDomainRulesWithHttpInfo(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = deleteAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -600,7 +600,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAdvertiserDomainRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call deleteAdvertiserDomainRulesAsync(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -620,7 +620,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCampaignBundleRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCampaignBundleRulesCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -667,7 +667,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCampaignBundleRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCampaignBundleRulesValidateBeforeCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling deleteCampaignBundleRules(Async)");
@@ -690,7 +690,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity deleteCampaignBundleRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity deleteCampaignBundleRules(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = deleteCampaignBundleRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -708,7 +708,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> deleteCampaignBundleRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> deleteCampaignBundleRulesWithHttpInfo(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = deleteCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -728,7 +728,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCampaignBundleRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call deleteCampaignBundleRulesAsync(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -748,7 +748,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCampaignDomainRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCampaignDomainRulesCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -795,7 +795,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCampaignDomainRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCampaignDomainRulesValidateBeforeCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling deleteCampaignDomainRules(Async)");
@@ -818,7 +818,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity deleteCampaignDomainRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity deleteCampaignDomainRules(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = deleteCampaignDomainRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -836,7 +836,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> deleteCampaignDomainRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> deleteCampaignDomainRulesWithHttpInfo(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = deleteCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -856,7 +856,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCampaignDomainRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call deleteCampaignDomainRulesAsync(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -1613,7 +1613,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdvertiserBundleRulesCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserBundleRulesCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1659,7 +1659,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAdvertiserBundleRulesValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAdvertiserBundleRulesValidateBeforeCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getAdvertiserBundleRules(Async)");
@@ -1681,7 +1681,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity getAdvertiserBundleRules(Integer advertiserId) throws ApiException {
+    public ApiResponseOfTargetingEntity getAdvertiserBundleRules(String advertiserId) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = getAdvertiserBundleRulesWithHttpInfo(advertiserId);
         return localVarResp.getData();
     }
@@ -1698,7 +1698,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> getAdvertiserBundleRulesWithHttpInfo(Integer advertiserId) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> getAdvertiserBundleRulesWithHttpInfo(String advertiserId) throws ApiException {
         okhttp3.Call localVarCall = getAdvertiserBundleRulesValidateBeforeCall(advertiserId, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1717,7 +1717,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdvertiserBundleRulesAsync(Integer advertiserId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserBundleRulesAsync(String advertiserId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdvertiserBundleRulesValidateBeforeCall(advertiserId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -1736,7 +1736,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdvertiserDomainRulesCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserDomainRulesCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1782,7 +1782,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAdvertiserDomainRulesValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAdvertiserDomainRulesValidateBeforeCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getAdvertiserDomainRules(Async)");
@@ -1804,7 +1804,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity getAdvertiserDomainRules(Integer advertiserId) throws ApiException {
+    public ApiResponseOfTargetingEntity getAdvertiserDomainRules(String advertiserId) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = getAdvertiserDomainRulesWithHttpInfo(advertiserId);
         return localVarResp.getData();
     }
@@ -1821,7 +1821,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> getAdvertiserDomainRulesWithHttpInfo(Integer advertiserId) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> getAdvertiserDomainRulesWithHttpInfo(String advertiserId) throws ApiException {
         okhttp3.Call localVarCall = getAdvertiserDomainRulesValidateBeforeCall(advertiserId, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1840,7 +1840,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdvertiserDomainRulesAsync(Integer advertiserId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserDomainRulesAsync(String advertiserId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdvertiserDomainRulesValidateBeforeCall(advertiserId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -1982,7 +1982,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignBundleRulesCall(Integer campaignId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCampaignBundleRulesCall(String campaignId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2028,7 +2028,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCampaignBundleRulesValidateBeforeCall(Integer campaignId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCampaignBundleRulesValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling getCampaignBundleRules(Async)");
@@ -2050,7 +2050,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity getCampaignBundleRules(Integer campaignId) throws ApiException {
+    public ApiResponseOfTargetingEntity getCampaignBundleRules(String campaignId) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = getCampaignBundleRulesWithHttpInfo(campaignId);
         return localVarResp.getData();
     }
@@ -2067,7 +2067,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> getCampaignBundleRulesWithHttpInfo(Integer campaignId) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> getCampaignBundleRulesWithHttpInfo(String campaignId) throws ApiException {
         okhttp3.Call localVarCall = getCampaignBundleRulesValidateBeforeCall(campaignId, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2086,7 +2086,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignBundleRulesAsync(Integer campaignId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call getCampaignBundleRulesAsync(String campaignId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCampaignBundleRulesValidateBeforeCall(campaignId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -2105,7 +2105,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignDomainRulesCall(Integer campaignId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCampaignDomainRulesCall(String campaignId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2151,7 +2151,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCampaignDomainRulesValidateBeforeCall(Integer campaignId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCampaignDomainRulesValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling getCampaignDomainRules(Async)");
@@ -2173,7 +2173,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity getCampaignDomainRules(Integer campaignId) throws ApiException {
+    public ApiResponseOfTargetingEntity getCampaignDomainRules(String campaignId) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = getCampaignDomainRulesWithHttpInfo(campaignId);
         return localVarResp.getData();
     }
@@ -2190,7 +2190,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> getCampaignDomainRulesWithHttpInfo(Integer campaignId) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> getCampaignDomainRulesWithHttpInfo(String campaignId) throws ApiException {
         okhttp3.Call localVarCall = getCampaignDomainRulesValidateBeforeCall(campaignId, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2209,7 +2209,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignDomainRulesAsync(Integer campaignId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call getCampaignDomainRulesAsync(String campaignId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCampaignDomainRulesValidateBeforeCall(campaignId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -2977,7 +2977,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAdvertiserBundleRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdvertiserBundleRulesCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3024,7 +3024,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAdvertiserBundleRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdvertiserBundleRulesValidateBeforeCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling postAdvertiserBundleRules(Async)");
@@ -3052,7 +3052,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity postAdvertiserBundleRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity postAdvertiserBundleRules(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = postAdvertiserBundleRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -3070,7 +3070,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> postAdvertiserBundleRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> postAdvertiserBundleRulesWithHttpInfo(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = postAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3090,7 +3090,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAdvertiserBundleRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call postAdvertiserBundleRulesAsync(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -3110,7 +3110,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAdvertiserDomainRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdvertiserDomainRulesCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3157,7 +3157,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAdvertiserDomainRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAdvertiserDomainRulesValidateBeforeCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling postAdvertiserDomainRules(Async)");
@@ -3185,7 +3185,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity postAdvertiserDomainRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity postAdvertiserDomainRules(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = postAdvertiserDomainRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -3203,7 +3203,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> postAdvertiserDomainRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> postAdvertiserDomainRulesWithHttpInfo(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = postAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3223,7 +3223,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAdvertiserDomainRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call postAdvertiserDomainRulesAsync(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -3243,7 +3243,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCampaignBundleRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCampaignBundleRulesCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3290,7 +3290,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCampaignBundleRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCampaignBundleRulesValidateBeforeCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling postCampaignBundleRules(Async)");
@@ -3318,7 +3318,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity postCampaignBundleRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity postCampaignBundleRules(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = postCampaignBundleRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -3336,7 +3336,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> postCampaignBundleRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> postCampaignBundleRulesWithHttpInfo(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = postCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3356,7 +3356,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCampaignBundleRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call postCampaignBundleRulesAsync(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -3376,7 +3376,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCampaignDomainRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCampaignDomainRulesCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3423,7 +3423,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCampaignDomainRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCampaignDomainRulesValidateBeforeCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling postCampaignDomainRules(Async)");
@@ -3451,7 +3451,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity postCampaignDomainRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity postCampaignDomainRules(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = postCampaignDomainRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -3469,7 +3469,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> postCampaignDomainRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> postCampaignDomainRulesWithHttpInfo(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = postCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3489,7 +3489,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCampaignDomainRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call postCampaignDomainRulesAsync(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -3509,7 +3509,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putAdvertiserBundleRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putAdvertiserBundleRulesCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3556,7 +3556,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putAdvertiserBundleRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putAdvertiserBundleRulesValidateBeforeCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling putAdvertiserBundleRules(Async)");
@@ -3584,7 +3584,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity putAdvertiserBundleRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity putAdvertiserBundleRules(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = putAdvertiserBundleRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -3602,7 +3602,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> putAdvertiserBundleRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> putAdvertiserBundleRulesWithHttpInfo(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = putAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3622,7 +3622,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putAdvertiserBundleRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call putAdvertiserBundleRulesAsync(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = putAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -3642,7 +3642,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putAdvertiserDomainRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putAdvertiserDomainRulesCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3689,7 +3689,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putAdvertiserDomainRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putAdvertiserDomainRulesValidateBeforeCall(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling putAdvertiserDomainRules(Async)");
@@ -3717,7 +3717,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity putAdvertiserDomainRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity putAdvertiserDomainRules(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = putAdvertiserDomainRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -3735,7 +3735,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> putAdvertiserDomainRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> putAdvertiserDomainRulesWithHttpInfo(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = putAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3755,7 +3755,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putAdvertiserDomainRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call putAdvertiserDomainRulesAsync(String advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = putAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -3775,7 +3775,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCampaignBundleRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCampaignBundleRulesCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3822,7 +3822,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putCampaignBundleRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCampaignBundleRulesValidateBeforeCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling putCampaignBundleRules(Async)");
@@ -3850,7 +3850,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity putCampaignBundleRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity putCampaignBundleRules(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = putCampaignBundleRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -3868,7 +3868,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> putCampaignBundleRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> putCampaignBundleRulesWithHttpInfo(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = putCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3888,7 +3888,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCampaignBundleRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call putCampaignBundleRulesAsync(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = putCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
@@ -3908,7 +3908,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCampaignDomainRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCampaignDomainRulesCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3955,7 +3955,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putCampaignDomainRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCampaignDomainRulesValidateBeforeCall(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling putCampaignDomainRules(Async)");
@@ -3983,7 +3983,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseOfTargetingEntity putCampaignDomainRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponseOfTargetingEntity putCampaignDomainRules(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         ApiResponse<ApiResponseOfTargetingEntity> localVarResp = putCampaignDomainRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
         return localVarResp.getData();
     }
@@ -4001,7 +4001,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseOfTargetingEntity> putCampaignDomainRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+    public ApiResponse<ApiResponseOfTargetingEntity> putCampaignDomainRulesWithHttpInfo(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
         okhttp3.Call localVarCall = putCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -4021,7 +4021,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCampaignDomainRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+    public okhttp3.Call putCampaignDomainRulesAsync(String campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = putCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();

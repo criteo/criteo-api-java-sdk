@@ -362,7 +362,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | The retailer id
+        String retailerId = "retailerId_example"; // String | The retailer id
         ValueResourceInputDisplayAuctionMinBidRequest valueResourceInputDisplayAuctionMinBidRequest = new ValueResourceInputDisplayAuctionMinBidRequest(); // ValueResourceInputDisplayAuctionMinBidRequest | The details for what creatives and product ids to use to compute the min bids
         try {
             ValueResourceCollectionOutcomeDisplayAuctionMinBidResult result = apiInstance.computeDisplayMinBidByRetailerId(retailerId, valueResourceInputDisplayAuctionMinBidRequest);
@@ -383,7 +383,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| The retailer id | |
+| **retailerId** | **String**| The retailer id | |
 | **valueResourceInputDisplayAuctionMinBidRequest** | [**ValueResourceInputDisplayAuctionMinBidRequest**](ValueResourceInputDisplayAuctionMinBidRequest.md)| The details for what creatives and product ids to use to compute the min bids | [optional] |
 
 ### Return type
@@ -1002,7 +1002,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | The retailer id for which brands should be fetched.
+        String retailerId = "retailerId_example"; // String | The retailer id for which brands should be fetched.
         String brandType = "uc"; // String | Filter to narrow down brands [all|uc|retailer]. Defaults to uc
         String skuStockTypeFilter = "first-and-third-party"; // String | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
         try {
@@ -1024,7 +1024,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| The retailer id for which brands should be fetched. | |
+| **retailerId** | **String**| The retailer id for which brands should be fetched. | |
 | **brandType** | **String**| Filter to narrow down brands [all|uc|retailer]. Defaults to uc | [optional] [default to uc] |
 | **skuStockTypeFilter** | **String**| Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party | [optional] [default to first-and-third-party] |
 
@@ -1095,7 +1095,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | The retailer id for which seller should be fetched.
+        String retailerId = "retailerId_example"; // String | The retailer id for which seller should be fetched.
         String seller = "seller_example"; // String | The seller id or seller name which should be validated.
         try {
             SellerPreviewResponse result = apiInstance.getApiExternalV1RetailerByRetailerIdSellersseller(retailerId, seller);
@@ -1116,7 +1116,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| The retailer id for which seller should be fetched. | |
+| **retailerId** | **String**| The retailer id for which seller should be fetched. | |
 | **seller** | **String**| The seller id or seller name which should be validated. | |
 
 ### Return type
@@ -1366,7 +1366,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long lineItemId = 56L; // Long | The id of the line item
+        String lineItemId = "lineItemId_example"; // String | The id of the line item
         try {
             EntityResourceOutcomeOfSponsoredProductsLineItem result = apiInstance.getAuctionLineItem(lineItemId);
             System.out.println(result);
@@ -1386,7 +1386,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **Long**| The id of the line item | |
+| **lineItemId** | **String**| The id of the line item | |
 
 ### Return type
 
@@ -2834,7 +2834,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long lineItemId = 56L; // Long | The external line item ID of the sponsored products line item.
+        String lineItemId = "lineItemId_example"; // String | The external line item ID of the sponsored products line item.
         ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel = new ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel(); // ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel | An update request containing all details of the requested update.
         try {
             EntityResourceOutcomeOfSponsoredProductsLineItem result = apiInstance.updateAuctionLineItem(lineItemId, valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel);
@@ -2855,7 +2855,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **Long**| The external line item ID of the sponsored products line item. | |
+| **lineItemId** | **String**| The external line item ID of the sponsored products line item. | |
 | **valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel** | [**ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel**](ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md)| An update request containing all details of the requested update. | |
 
 ### Return type

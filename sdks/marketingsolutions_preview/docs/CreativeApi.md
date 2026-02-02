@@ -347,7 +347,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
-        Integer id = 56; // Integer | The ad identifier to delete.
+        String id = "id_example"; // String | The ad identifier to delete.
         try {
             apiInstance.deleteAd(id);
         } catch (ApiException e) {
@@ -366,7 +366,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **Integer**| The ad identifier to delete. | |
+| **id** | **String**| The ad identifier to delete. | |
 
 ### Return type
 
@@ -435,7 +435,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
-        Integer adId = 56; // Integer | The ad identifier.
+        String adId = "adId_example"; // String | The ad identifier.
         try {
             apiInstance.deleteAdSegmentLink(adId);
         } catch (ApiException e) {
@@ -454,7 +454,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adId** | **Integer**| The ad identifier. | |
+| **adId** | **String**| The ad identifier. | |
 
 ### Return type
 
@@ -978,7 +978,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
-        Integer id = 56; // Integer | The ad identifier to retrieve.
+        String id = "id_example"; // String | The ad identifier to retrieve.
         try {
             ResourceOutcomeOfAd result = apiInstance.getAd(id);
             System.out.println(result);
@@ -998,7 +998,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **Integer**| The ad identifier to retrieve. | |
+| **id** | **String**| The ad identifier to retrieve. | |
 
 ### Return type
 
@@ -1067,7 +1067,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
-        Integer adId = 56; // Integer | The ad identifier.
+        String adId = "adId_example"; // String | The ad identifier.
         try {
             ValueResourceOutcomeOfExamAdAudienceSegmentLink result = apiInstance.getAdSegmentLink(adId);
             System.out.println(result);
@@ -1087,7 +1087,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adId** | **Integer**| The ad identifier. | |
+| **adId** | **String**| The ad identifier. | |
 
 ### Return type
 
@@ -1801,7 +1801,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
-        Integer adId = 56; // Integer | The ad identifier.
+        String adId = "adId_example"; // String | The ad identifier.
         ExamAdAudienceSegmentLinkInput examAdAudienceSegmentLinkInput = new ExamAdAudienceSegmentLinkInput(); // ExamAdAudienceSegmentLinkInput | The audience segment link information.
         try {
             ValueResourceOutcomeOfExamAdAudienceSegmentLink result = apiInstance.linkAdSegment(adId, examAdAudienceSegmentLinkInput);
@@ -1822,7 +1822,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adId** | **Integer**| The ad identifier. | |
+| **adId** | **String**| The ad identifier. | |
 | **examAdAudienceSegmentLinkInput** | [**ExamAdAudienceSegmentLinkInput**](ExamAdAudienceSegmentLinkInput.md)| The audience segment link information. | |
 
 ### Return type

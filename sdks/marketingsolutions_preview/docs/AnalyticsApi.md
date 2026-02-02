@@ -1045,7 +1045,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        Integer advertiserId = 56; // Integer | The advertiser id to fetch the transparency data.
+        String advertiserId = "advertiserId_example"; // String | The advertiser id to fetch the transparency data.
         TransparencyQueryMessage transparencyQueryMessage = new TransparencyQueryMessage(); // TransparencyQueryMessage | The query message.
         try {
             TransparencyReportListResponse result = apiInstance.getTransparencyReport(advertiserId, transparencyQueryMessage);
@@ -1066,7 +1066,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| The advertiser id to fetch the transparency data. | |
+| **advertiserId** | **String**| The advertiser id to fetch the transparency data. | |
 | **transparencyQueryMessage** | [**TransparencyQueryMessage**](TransparencyQueryMessage.md)| The query message. | [optional] |
 
 ### Return type

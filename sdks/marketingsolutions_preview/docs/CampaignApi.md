@@ -270,7 +270,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | The advertiser id
+        String advertiserId = "advertiserId_example"; // String | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
         try {
             ApiResponseOfTargetingEntity result = apiInstance.deleteAdvertiserBundleRules(advertiserId, apiRequestOfTargetingEntity);
@@ -291,7 +291,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| The advertiser id | |
+| **advertiserId** | **String**| The advertiser id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to delete from the list | [optional] |
 
 ### Return type
@@ -361,7 +361,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | The advertiser id
+        String advertiserId = "advertiserId_example"; // String | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
         try {
             ApiResponseOfTargetingEntity result = apiInstance.deleteAdvertiserDomainRules(advertiserId, apiRequestOfTargetingEntity);
@@ -382,7 +382,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| The advertiser id | |
+| **advertiserId** | **String**| The advertiser id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to delete from the list | [optional] |
 
 ### Return type
@@ -452,7 +452,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer campaignId = 56; // Integer | The campaign id
+        String campaignId = "campaignId_example"; // String | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
         try {
             ApiResponseOfTargetingEntity result = apiInstance.deleteCampaignBundleRules(campaignId, apiRequestOfTargetingEntity);
@@ -473,7 +473,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Integer**| The campaign id | |
+| **campaignId** | **String**| The campaign id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to delete from the list | [optional] |
 
 ### Return type
@@ -543,7 +543,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer campaignId = 56; // Integer | The campaign id
+        String campaignId = "campaignId_example"; // String | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
         try {
             ApiResponseOfTargetingEntity result = apiInstance.deleteCampaignDomainRules(campaignId, apiRequestOfTargetingEntity);
@@ -564,7 +564,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Integer**| The campaign id | |
+| **campaignId** | **String**| The campaign id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to delete from the list | [optional] |
 
 ### Return type
@@ -1168,7 +1168,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | The advertiser id
+        String advertiserId = "advertiserId_example"; // String | The advertiser id
         try {
             ApiResponseOfTargetingEntity result = apiInstance.getAdvertiserBundleRules(advertiserId);
             System.out.println(result);
@@ -1188,7 +1188,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| The advertiser id | |
+| **advertiserId** | **String**| The advertiser id | |
 
 ### Return type
 
@@ -1257,7 +1257,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | The advertiser id
+        String advertiserId = "advertiserId_example"; // String | The advertiser id
         try {
             ApiResponseOfTargetingEntity result = apiInstance.getAdvertiserDomainRules(advertiserId);
             System.out.println(result);
@@ -1277,7 +1277,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| The advertiser id | |
+| **advertiserId** | **String**| The advertiser id | |
 
 ### Return type
 
@@ -1435,7 +1435,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer campaignId = 56; // Integer | The campaign id
+        String campaignId = "campaignId_example"; // String | The campaign id
         try {
             ApiResponseOfTargetingEntity result = apiInstance.getCampaignBundleRules(campaignId);
             System.out.println(result);
@@ -1455,7 +1455,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Integer**| The campaign id | |
+| **campaignId** | **String**| The campaign id | |
 
 ### Return type
 
@@ -1524,7 +1524,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer campaignId = 56; // Integer | The campaign id
+        String campaignId = "campaignId_example"; // String | The campaign id
         try {
             ApiResponseOfTargetingEntity result = apiInstance.getCampaignDomainRules(campaignId);
             System.out.println(result);
@@ -1544,7 +1544,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Integer**| The campaign id | |
+| **campaignId** | **String**| The campaign id | |
 
 ### Return type
 
@@ -2147,7 +2147,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | The advertiser id
+        String advertiserId = "advertiserId_example"; // String | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
         try {
             ApiResponseOfTargetingEntity result = apiInstance.postAdvertiserBundleRules(advertiserId, apiRequestOfTargetingEntity);
@@ -2168,7 +2168,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| The advertiser id | |
+| **advertiserId** | **String**| The advertiser id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Description of the targeting rule to setup | |
 
 ### Return type
@@ -2238,7 +2238,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | The advertiser id
+        String advertiserId = "advertiserId_example"; // String | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
         try {
             ApiResponseOfTargetingEntity result = apiInstance.postAdvertiserDomainRules(advertiserId, apiRequestOfTargetingEntity);
@@ -2259,7 +2259,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| The advertiser id | |
+| **advertiserId** | **String**| The advertiser id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Description of the targeting rule to setup | |
 
 ### Return type
@@ -2329,7 +2329,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer campaignId = 56; // Integer | The campaign id
+        String campaignId = "campaignId_example"; // String | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
         try {
             ApiResponseOfTargetingEntity result = apiInstance.postCampaignBundleRules(campaignId, apiRequestOfTargetingEntity);
@@ -2350,7 +2350,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Integer**| The campaign id | |
+| **campaignId** | **String**| The campaign id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Description of the targeting rule to setup | |
 
 ### Return type
@@ -2420,7 +2420,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer campaignId = 56; // Integer | The campaign id
+        String campaignId = "campaignId_example"; // String | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
         try {
             ApiResponseOfTargetingEntity result = apiInstance.postCampaignDomainRules(campaignId, apiRequestOfTargetingEntity);
@@ -2441,7 +2441,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Integer**| The campaign id | |
+| **campaignId** | **String**| The campaign id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Description of the targeting rule to setup | |
 
 ### Return type
@@ -2511,7 +2511,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | The advertiser id
+        String advertiserId = "advertiserId_example"; // String | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
         try {
             ApiResponseOfTargetingEntity result = apiInstance.putAdvertiserBundleRules(advertiserId, apiRequestOfTargetingEntity);
@@ -2532,7 +2532,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| The advertiser id | |
+| **advertiserId** | **String**| The advertiser id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to add to the existing list | |
 
 ### Return type
@@ -2602,7 +2602,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | The advertiser id
+        String advertiserId = "advertiserId_example"; // String | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
         try {
             ApiResponseOfTargetingEntity result = apiInstance.putAdvertiserDomainRules(advertiserId, apiRequestOfTargetingEntity);
@@ -2623,7 +2623,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| The advertiser id | |
+| **advertiserId** | **String**| The advertiser id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to add to the existing list | |
 
 ### Return type
@@ -2693,7 +2693,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer campaignId = 56; // Integer | The campaign id
+        String campaignId = "campaignId_example"; // String | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
         try {
             ApiResponseOfTargetingEntity result = apiInstance.putCampaignBundleRules(campaignId, apiRequestOfTargetingEntity);
@@ -2714,7 +2714,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Integer**| The campaign id | |
+| **campaignId** | **String**| The campaign id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to add to the existing list | |
 
 ### Return type
@@ -2784,7 +2784,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer campaignId = 56; // Integer | The campaign id
+        String campaignId = "campaignId_example"; // String | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
         try {
             ApiResponseOfTargetingEntity result = apiInstance.putCampaignDomainRules(campaignId, apiRequestOfTargetingEntity);
@@ -2805,7 +2805,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Integer**| The campaign id | |
+| **campaignId** | **String**| The campaign id | |
 | **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to add to the existing list | |
 
 ### Return type

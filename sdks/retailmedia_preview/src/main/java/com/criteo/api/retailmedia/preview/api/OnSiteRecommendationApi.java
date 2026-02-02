@@ -87,7 +87,7 @@ public class OnSiteRecommendationApi {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call chatbotProductRecommendationsCall(Integer catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call chatbotProductRecommendationsCall(String catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,7 +134,7 @@ public class OnSiteRecommendationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call chatbotProductRecommendationsValidateBeforeCall(Integer catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call chatbotProductRecommendationsValidateBeforeCall(String catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'catalogid' is set
         if (catalogid == null) {
             throw new ApiException("Missing the required parameter 'catalogid' when calling chatbotProductRecommendations(Async)");
@@ -162,7 +162,7 @@ public class OnSiteRecommendationApi {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public MessageBodyModel chatbotProductRecommendations(Integer catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel) throws ApiException {
+    public MessageBodyModel chatbotProductRecommendations(String catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel) throws ApiException {
         ApiResponse<MessageBodyModel> localVarResp = chatbotProductRecommendationsWithHttpInfo(catalogid, inbotDiscussionBodyModel);
         return localVarResp.getData();
     }
@@ -180,7 +180,7 @@ public class OnSiteRecommendationApi {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MessageBodyModel> chatbotProductRecommendationsWithHttpInfo(Integer catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel) throws ApiException {
+    public ApiResponse<MessageBodyModel> chatbotProductRecommendationsWithHttpInfo(String catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel) throws ApiException {
         okhttp3.Call localVarCall = chatbotProductRecommendationsValidateBeforeCall(catalogid, inbotDiscussionBodyModel, null);
         Type localVarReturnType = new TypeToken<MessageBodyModel>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -200,7 +200,7 @@ public class OnSiteRecommendationApi {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call chatbotProductRecommendationsAsync(Integer catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel, final ApiCallback<MessageBodyModel> _callback) throws ApiException {
+    public okhttp3.Call chatbotProductRecommendationsAsync(String catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel, final ApiCallback<MessageBodyModel> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = chatbotProductRecommendationsValidateBeforeCall(catalogid, inbotDiscussionBodyModel, _callback);
         Type localVarReturnType = new TypeToken<MessageBodyModel>(){}.getType();

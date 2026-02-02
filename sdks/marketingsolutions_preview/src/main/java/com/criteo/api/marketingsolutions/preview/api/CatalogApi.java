@@ -89,7 +89,7 @@ public class CatalogApi {
         <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCatalogMerchantStatsCall(Integer merchantId, Integer lastNumHours, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCatalogMerchantStatsCall(String merchantId, Integer lastNumHours, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -139,7 +139,7 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCatalogMerchantStatsValidateBeforeCall(Integer merchantId, Integer lastNumHours, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCatalogMerchantStatsValidateBeforeCall(String merchantId, Integer lastNumHours, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'merchantId' is set
         if (merchantId == null) {
             throw new ApiException("Missing the required parameter 'merchantId' when calling getCatalogMerchantStats(Async)");
@@ -162,7 +162,7 @@ public class CatalogApi {
         <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
      </table>
      */
-    public StatisticsOkResponse getCatalogMerchantStats(Integer merchantId, Integer lastNumHours) throws ApiException {
+    public StatisticsOkResponse getCatalogMerchantStats(String merchantId, Integer lastNumHours) throws ApiException {
         ApiResponse<StatisticsOkResponse> localVarResp = getCatalogMerchantStatsWithHttpInfo(merchantId, lastNumHours);
         return localVarResp.getData();
     }
@@ -180,7 +180,7 @@ public class CatalogApi {
         <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StatisticsOkResponse> getCatalogMerchantStatsWithHttpInfo(Integer merchantId, Integer lastNumHours) throws ApiException {
+    public ApiResponse<StatisticsOkResponse> getCatalogMerchantStatsWithHttpInfo(String merchantId, Integer lastNumHours) throws ApiException {
         okhttp3.Call localVarCall = getCatalogMerchantStatsValidateBeforeCall(merchantId, lastNumHours, null);
         Type localVarReturnType = new TypeToken<StatisticsOkResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -200,7 +200,7 @@ public class CatalogApi {
         <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCatalogMerchantStatsAsync(Integer merchantId, Integer lastNumHours, final ApiCallback<StatisticsOkResponse> _callback) throws ApiException {
+    public okhttp3.Call getCatalogMerchantStatsAsync(String merchantId, Integer lastNumHours, final ApiCallback<StatisticsOkResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCatalogMerchantStatsValidateBeforeCall(merchantId, lastNumHours, _callback);
         Type localVarReturnType = new TypeToken<StatisticsOkResponse>(){}.getType();

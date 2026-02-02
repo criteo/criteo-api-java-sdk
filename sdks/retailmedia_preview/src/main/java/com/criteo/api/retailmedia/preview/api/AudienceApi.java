@@ -109,7 +109,7 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addRemoveContactListByAudienceSegmentCall(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call addRemoveContactListByAudienceSegmentCall(String audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -156,7 +156,7 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addRemoveContactListByAudienceSegmentValidateBeforeCall(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addRemoveContactListByAudienceSegmentValidateBeforeCall(String audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'audienceSegmentId' is set
         if (audienceSegmentId == null) {
             throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling addRemoveContactListByAudienceSegment(Async)");
@@ -184,7 +184,7 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
      </table>
      */
-    public RetailMediaContactlistOperation addRemoveContactListByAudienceSegment(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest) throws ApiException {
+    public RetailMediaContactlistOperation addRemoveContactListByAudienceSegment(String audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest) throws ApiException {
         ApiResponse<RetailMediaContactlistOperation> localVarResp = addRemoveContactListByAudienceSegmentWithHttpInfo(audienceSegmentId, retailMediaContactlistAmendmentRequest);
         return localVarResp.getData();
     }
@@ -202,7 +202,7 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RetailMediaContactlistOperation> addRemoveContactListByAudienceSegmentWithHttpInfo(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest) throws ApiException {
+    public ApiResponse<RetailMediaContactlistOperation> addRemoveContactListByAudienceSegmentWithHttpInfo(String audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest) throws ApiException {
         okhttp3.Call localVarCall = addRemoveContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, retailMediaContactlistAmendmentRequest, null);
         Type localVarReturnType = new TypeToken<RetailMediaContactlistOperation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -222,7 +222,7 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addRemoveContactListByAudienceSegmentAsync(Long audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback<RetailMediaContactlistOperation> _callback) throws ApiException {
+    public okhttp3.Call addRemoveContactListByAudienceSegmentAsync(String audienceSegmentId, RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest, final ApiCallback<RetailMediaContactlistOperation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addRemoveContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, retailMediaContactlistAmendmentRequest, _callback);
         Type localVarReturnType = new TypeToken<RetailMediaContactlistOperation>(){}.getType();
@@ -1043,7 +1043,7 @@ public class AudienceApi {
         <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call clearContactListByAudienceSegmentCall(Long audienceSegmentId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call clearContactListByAudienceSegmentCall(String audienceSegmentId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1089,7 +1089,7 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call clearContactListByAudienceSegmentValidateBeforeCall(Long audienceSegmentId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call clearContactListByAudienceSegmentValidateBeforeCall(String audienceSegmentId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'audienceSegmentId' is set
         if (audienceSegmentId == null) {
             throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling clearContactListByAudienceSegment(Async)");
@@ -1110,7 +1110,7 @@ public class AudienceApi {
         <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
      </table>
      */
-    public void clearContactListByAudienceSegment(Long audienceSegmentId) throws ApiException {
+    public void clearContactListByAudienceSegment(String audienceSegmentId) throws ApiException {
         clearContactListByAudienceSegmentWithHttpInfo(audienceSegmentId);
     }
 
@@ -1126,7 +1126,7 @@ public class AudienceApi {
         <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> clearContactListByAudienceSegmentWithHttpInfo(Long audienceSegmentId) throws ApiException {
+    public ApiResponse<Void> clearContactListByAudienceSegmentWithHttpInfo(String audienceSegmentId) throws ApiException {
         okhttp3.Call localVarCall = clearContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -1144,7 +1144,7 @@ public class AudienceApi {
         <tr><td> 204 </td><td> The Contact List identifiers were deleted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call clearContactListByAudienceSegmentAsync(Long audienceSegmentId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call clearContactListByAudienceSegmentAsync(String audienceSegmentId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = clearContactListByAudienceSegmentValidateBeforeCall(audienceSegmentId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);

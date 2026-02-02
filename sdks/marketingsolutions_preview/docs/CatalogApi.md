@@ -57,7 +57,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CatalogApi apiInstance = new CatalogApi(defaultClient);
-        Integer merchantId = 56; // Integer | merchant-id to get
+        String merchantId = "merchantId_example"; // String | merchant-id to get
         Integer lastNumHours = 56; // Integer | the last number of hours
         try {
             StatisticsOkResponse result = apiInstance.getCatalogMerchantStats(merchantId, lastNumHours);
@@ -78,7 +78,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **merchantId** | **Integer**| merchant-id to get | |
+| **merchantId** | **String**| merchant-id to get | |
 | **lastNumHours** | **Integer**| the last number of hours | [optional] |
 
 ### Return type

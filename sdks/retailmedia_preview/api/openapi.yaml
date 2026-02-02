@@ -1023,7 +1023,7 @@ paths:
         required: true
         schema:
           format: int64
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -1050,7 +1050,7 @@ paths:
         required: true
         schema:
           format: int64
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -1087,7 +1087,7 @@ paths:
         required: true
         schema:
           format: int64
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -1148,7 +1148,7 @@ paths:
         required: true
         schema:
           format: int64
-          type: integer
+          type: string
         style: simple
       responses:
         "204":
@@ -1756,7 +1756,7 @@ paths:
         schema:
           description: the identifier of the catalog to query
           title: catalogid
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -1776,6 +1776,29 @@ paths:
         - RetailMedia_OnSiteRecommendation_Read
       tags:
       - OnSiteRecommendation
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/insights/share-of-voice:
+    post:
+      description: Generate a share of voice by category insight
+      operationId: GenerateShareOfVoiceInsight
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShareOfVoiceInsightRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncInsightResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
+      tags:
+      - Analytics
       x-content-type: application/json
       x-accepts: application/json
   /preview/retail-media/line-items/{line-item-id}/product-buttons:
@@ -2639,7 +2662,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       - description: "Filter to narrow down brands [first-party|third-party|first-and-third-party].\
           \ Defaults to first-and-third-party"
@@ -2677,7 +2700,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -2712,7 +2735,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       - description: The seller id or seller name which should be validated.
         explode: false
@@ -3841,6 +3864,82 @@ components:
           $ref: '#/components/schemas/AsyncFillRateReport'
         type:
           type: string
+      type: object
+    AsyncInsightResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
+      example:
+        data:
+          attributes:
+            fileSizeBytes: 0
+            createdAt: createdAt
+            md5CheckSum: md5CheckSum
+            rowCount: 6
+            message: message
+            expiresAt: expiresAt
+            status: Unknown
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/InsightStatusResponseResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     AsyncLineItemsReport:
       description: Async Line Items report body request
@@ -8441,6 +8540,78 @@ components:
         attributes:
           $ref: '#/components/schemas/PreferredLineItemCreateModelV2'
         type:
+          type: string
+      type: object
+    InsightStatusResponse:
+      additionalProperties: false
+      description: Status of an async report request
+      example:
+        fileSizeBytes: 0
+        createdAt: createdAt
+        md5CheckSum: md5CheckSum
+        rowCount: 6
+        message: message
+        expiresAt: expiresAt
+        status: Unknown
+      nullable: true
+      properties:
+        createdAt:
+          nullable: true
+          type: string
+        expiresAt:
+          nullable: true
+          type: string
+        fileSizeBytes:
+          format: int64
+          nullable: true
+          type: integer
+        md5CheckSum:
+          nullable: true
+          type: string
+        message:
+          nullable: true
+          type: string
+        rowCount:
+          format: int32
+          nullable: true
+          type: integer
+        status:
+          description: Status of an async report request
+          enum:
+          - Unknown
+          - Pending
+          - Success
+          - Failure
+          - Expired
+          - Invalidated
+          nullable: true
+          type: string
+      type: object
+    InsightStatusResponseResource:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          fileSizeBytes: 0
+          createdAt: createdAt
+          md5CheckSum: md5CheckSum
+          rowCount: 6
+          message: message
+          expiresAt: expiresAt
+          status: Unknown
+        id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/InsightStatusResponse'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
           type: string
       type: object
     Installment:
@@ -15362,6 +15533,26 @@ components:
           readOnly: true
           type: array
       type: object
+    ServedCategoryFilter:
+      additionalProperties: false
+      description: The filters to apply
+      example:
+        servedCategories:
+        - servedCategories
+        - servedCategories
+        retailerId: retailerId
+      properties:
+        retailerId:
+          type: string
+        servedCategories:
+          items:
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - retailerId
+      - servedCategories
+      type: object
     SetProductBuyBoxWinnersRequest:
       additionalProperties: false
       description: The request passed by the caller of the SetBuyBoxWinners endpoint
@@ -15381,6 +15572,211 @@ components:
           type: array
       required:
       - productBuyBoxWinners
+      type: object
+    ShareOfVoiceInsight:
+      additionalProperties: false
+      description: Description of a Share of voice insight
+      example:
+        accountId: accountId
+        campaignType: all
+        servedCategories:
+        - servedCategories:
+          - servedCategories
+          - servedCategories
+          retailerId: retailerId
+        - servedCategories:
+          - servedCategories
+          - servedCategories
+          retailerId: retailerId
+        endDate: 2000-01-23T04:56:07.000+00:00
+        format: json-compact
+        metrics:
+        - impressions
+        - impressions
+        retailerIds:
+        - retailerIds
+        - retailerIds
+        brandIds:
+        - brandIds
+        - brandIds
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
+      properties:
+        accountId:
+          type: string
+        brandIds:
+          items:
+            type: string
+          nullable: true
+          type: array
+        campaignType:
+          default: all
+          enum:
+          - all
+          - onsiteSponsoredProducts
+          - onsiteDisplay
+          type: string
+        dimensions:
+          items:
+            enum:
+            - date
+            - accountId
+            - accountName
+            - retailerId
+            - retailerName
+            - brandId
+            - brandName
+            - campaignId
+            - campaignName
+            - buyType
+            - skuId
+            - skuName
+            - lineItemId
+            - lineItemName
+            - pageTypeId
+            - pageTypeName
+            - productGtin
+            - productMpn
+            - productCategory
+            - servedCategory
+            - campaignType
+            - creativeType
+            - adFormat
+            - creativeName
+            - environment
+            type: string
+          minItems: 1
+          type: array
+        endDate:
+          format: date-time
+          type: string
+        format:
+          default: json-compact
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        metrics:
+          items:
+            enum:
+            - impressions
+            - clicks
+            - grossClicks
+            - spend
+            - cpc
+            - ctr
+            - cpm
+            - roas
+            - attributedSales
+            - attributedUnits
+            - assistedUnits
+            - assistedSales
+            - exposedUsers
+            - impressionShare
+            - clickShare
+            - invalidClicks
+            type: string
+          minItems: 1
+          type: array
+        retailerIds:
+          items:
+            type: string
+          nullable: true
+          type: array
+        servedCategories:
+          items:
+            $ref: '#/components/schemas/ServedCategoryFilter'
+          nullable: true
+          type: array
+        startDate:
+          format: date-time
+          type: string
+      required:
+      - accountId
+      - dimensions
+      - metrics
+      type: object
+    ShareOfVoiceInsightRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            accountId: accountId
+            campaignType: all
+            servedCategories:
+            - servedCategories:
+              - servedCategories
+              - servedCategories
+              retailerId: retailerId
+            - servedCategories:
+              - servedCategories
+              - servedCategories
+              retailerId: retailerId
+            endDate: 2000-01-23T04:56:07.000+00:00
+            format: json-compact
+            metrics:
+            - impressions
+            - impressions
+            retailerIds:
+            - retailerIds
+            - retailerIds
+            brandIds:
+            - brandIds
+            - brandIds
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - date
+            - date
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ShareOfVoiceInsightResource'
+      type: object
+    ShareOfVoiceInsightResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          accountId: accountId
+          campaignType: all
+          servedCategories:
+          - servedCategories:
+            - servedCategories
+            - servedCategories
+            retailerId: retailerId
+          - servedCategories:
+            - servedCategories
+            - servedCategories
+            retailerId: retailerId
+          endDate: 2000-01-23T04:56:07.000+00:00
+          format: json-compact
+          metrics:
+          - impressions
+          - impressions
+          retailerIds:
+          - retailerIds
+          - retailerIds
+          brandIds:
+          - brandIds
+          - brandIds
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - date
+          - date
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ShareOfVoiceInsight'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
       type: object
     SkuDataPreview:
       additionalProperties: false

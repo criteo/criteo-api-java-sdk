@@ -20,6 +20,7 @@ docs/AsyncCampaignsReportResource.md
 docs/AsyncFillRateReport.md
 docs/AsyncFillRateReportRequest.md
 docs/AsyncFillRateReportResource.md
+docs/AsyncInsightResponse.md
 docs/AsyncLineItemsReport.md
 docs/AsyncLineItemsReportRequest.md
 docs/AsyncLineItemsReportResource.md
@@ -106,6 +107,8 @@ docs/InbotDiscussion.md
 docs/InbotDiscussionBodyModel.md
 docs/InbotDiscussionDataInstanceModel.md
 docs/InputResourceOfPreferredLineItemCreateModelV2.md
+docs/InsightStatusResponse.md
+docs/InsightStatusResponseResource.md
 docs/Installment.md
 docs/LineItemBudgetCapOutHistory.md
 docs/LineItemBudgetCapOutHistoryCapoutTimes.md
@@ -262,7 +265,11 @@ docs/RmcaCommonProblem.md
 docs/SdkApiRestCommonProblem.md
 docs/SellerPreview.md
 docs/SellerPreviewResponse.md
+docs/ServedCategoryFilter.md
 docs/SetProductBuyBoxWinnersRequest.md
+docs/ShareOfVoiceInsight.md
+docs/ShareOfVoiceInsightRequest.md
+docs/ShareOfVoiceInsightResource.md
 docs/SkuDataPreview.md
 docs/SkuDataPreviewListResponse.md
 docs/SkuSearchRequestPreview.md
@@ -374,6 +381,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/AsyncCampaignsReportResou
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncFillRateReport.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncFillRateReportRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncFillRateReportResource.java
+src/main/java/com/criteo/api/retailmedia/preview/model/AsyncInsightResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncLineItemsReport.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncLineItemsReportRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncLineItemsReportResource.java
@@ -455,6 +463,8 @@ src/main/java/com/criteo/api/retailmedia/preview/model/InbotDiscussion.java
 src/main/java/com/criteo/api/retailmedia/preview/model/InbotDiscussionBodyModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/InbotDiscussionDataInstanceModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/InputResourceOfPreferredLineItemCreateModelV2.java
+src/main/java/com/criteo/api/retailmedia/preview/model/InsightStatusResponse.java
+src/main/java/com/criteo/api/retailmedia/preview/model/InsightStatusResponseResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Installment.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemBudgetCapOutHistory.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemBudgetCapOutHistoryCapoutTimes.java
@@ -610,7 +620,11 @@ src/main/java/com/criteo/api/retailmedia/preview/model/RmcaCommonProblem.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SdkApiRestCommonProblem.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SellerPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SellerPreviewResponse.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ServedCategoryFilter.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SetProductBuyBoxWinnersRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceInsight.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceInsightRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceInsightResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuDataPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuDataPreviewListResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuSearchRequestPreview.java
