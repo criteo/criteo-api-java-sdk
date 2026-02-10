@@ -32,10 +32,8 @@ import com.criteo.api.retailmedia.preview.model.CpcRateCardPreviewResponse;
 import com.criteo.api.retailmedia.preview.model.Creative2Response;
 import com.criteo.api.retailmedia.preview.model.CreativeCreateModel2;
 import com.criteo.api.retailmedia.preview.model.CreativeUpdateModel2;
-import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionInputOfBalanceCampaignV1;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeCreativeSearchResponse;
-import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfBalanceCampaignV1;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfRetailerResultAndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceInputCreativeSearchRequest;
@@ -108,139 +106,6 @@ public class CampaignApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for appendCampaignsByBalanceId
-     * @param balanceId The balance to add campaigns from (required)
-     * @param entityResourceCollectionInputOfBalanceCampaignV1 The campaigns to append (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call appendCampaignsByBalanceIdCall(String balanceId, EntityResourceCollectionInputOfBalanceCampaignV1 entityResourceCollectionInputOfBalanceCampaignV1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = entityResourceCollectionInputOfBalanceCampaignV1;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/balances/{balance-id}/campaigns/append"
-            .replace("{" + "balance-id" + "}", localVarApiClient.escapeString(balanceId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call appendCampaignsByBalanceIdValidateBeforeCall(String balanceId, EntityResourceCollectionInputOfBalanceCampaignV1 entityResourceCollectionInputOfBalanceCampaignV1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'balanceId' is set
-        if (balanceId == null) {
-            throw new ApiException("Missing the required parameter 'balanceId' when calling appendCampaignsByBalanceId(Async)");
-        }
-
-        // verify the required parameter 'entityResourceCollectionInputOfBalanceCampaignV1' is set
-        if (entityResourceCollectionInputOfBalanceCampaignV1 == null) {
-            throw new ApiException("Missing the required parameter 'entityResourceCollectionInputOfBalanceCampaignV1' when calling appendCampaignsByBalanceId(Async)");
-        }
-
-        return appendCampaignsByBalanceIdCall(balanceId, entityResourceCollectionInputOfBalanceCampaignV1, _callback);
-
-    }
-
-    /**
-     * 
-     * appends one or more campaigns to the specified balance
-     * @param balanceId The balance to add campaigns from (required)
-     * @param entityResourceCollectionInputOfBalanceCampaignV1 The campaigns to append (required)
-     * @return EntityResourceCollectionOutcomeOfBalanceCampaignV1
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public EntityResourceCollectionOutcomeOfBalanceCampaignV1 appendCampaignsByBalanceId(String balanceId, EntityResourceCollectionInputOfBalanceCampaignV1 entityResourceCollectionInputOfBalanceCampaignV1) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeOfBalanceCampaignV1> localVarResp = appendCampaignsByBalanceIdWithHttpInfo(balanceId, entityResourceCollectionInputOfBalanceCampaignV1);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * appends one or more campaigns to the specified balance
-     * @param balanceId The balance to add campaigns from (required)
-     * @param entityResourceCollectionInputOfBalanceCampaignV1 The campaigns to append (required)
-     * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfBalanceCampaignV1&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<EntityResourceCollectionOutcomeOfBalanceCampaignV1> appendCampaignsByBalanceIdWithHttpInfo(String balanceId, EntityResourceCollectionInputOfBalanceCampaignV1 entityResourceCollectionInputOfBalanceCampaignV1) throws ApiException {
-        okhttp3.Call localVarCall = appendCampaignsByBalanceIdValidateBeforeCall(balanceId, entityResourceCollectionInputOfBalanceCampaignV1, null);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfBalanceCampaignV1>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * appends one or more campaigns to the specified balance
-     * @param balanceId The balance to add campaigns from (required)
-     * @param entityResourceCollectionInputOfBalanceCampaignV1 The campaigns to append (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call appendCampaignsByBalanceIdAsync(String balanceId, EntityResourceCollectionInputOfBalanceCampaignV1 entityResourceCollectionInputOfBalanceCampaignV1, final ApiCallback<EntityResourceCollectionOutcomeOfBalanceCampaignV1> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = appendCampaignsByBalanceIdValidateBeforeCall(balanceId, entityResourceCollectionInputOfBalanceCampaignV1, _callback);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfBalanceCampaignV1>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
     /**
      * Build call for appendProductButtonByLineItemId
      * @param lineItemId LineItemId for productButton retrieval (required)
