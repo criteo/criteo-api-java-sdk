@@ -7,9 +7,10 @@ These libraries can reduce the amount of code you need to write in order to star
 API clients are generated for each support API version and service. You can find each currently up-to-date SDKs in the **/sdks** folders. You will find specific instructions on how to build each SDKs if you wish to do so yourself.
 
 ## MavenCentral artefacts
-Each of the generated SDKs is also published on MavenCentral
-* https://search.maven.org/artifact/com.criteo/criteo-api-retailmedia-sdk
-* https://search.maven.org/artifact/com.criteo/criteo-api-marketingsolutions-sdk
+Each of the generated SDKs is also published on Maven Central
+* https://central.sonatype.com/artifact/com.criteo/criteo-api-retailmedia-sdk
+* https://central.sonatype.com/artifact/com.criteo/criteo-api-marketingsolutions-sdk
+* https://central.sonatype.com/artifact/com.criteo/criteo-api-commercegrid-sdk
 
 The version number contains the API version in its first two digits: 
 * the API version **2021-10** translates to version 2021.10.\*.\* of the artefact
