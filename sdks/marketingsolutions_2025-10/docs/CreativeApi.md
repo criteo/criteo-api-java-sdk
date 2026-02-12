@@ -344,7 +344,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
-        Integer id = 56; // Integer | The ad identifier to delete.
+        String id = "id_example"; // String | The ad identifier to delete.
         try {
             apiInstance.deleteAd(id);
         } catch (ApiException e) {
@@ -363,7 +363,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **Integer**| The ad identifier to delete. | |
+| **id** | **String**| The ad identifier to delete. | |
 
 ### Return type
 
@@ -887,7 +887,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
-        Integer id = 56; // Integer | The ad identifier to retrieve.
+        String id = "id_example"; // String | The ad identifier to retrieve.
         try {
             ResourceOutcomeOfAd result = apiInstance.getAd(id);
             System.out.println(result);
@@ -907,7 +907,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **Integer**| The ad identifier to retrieve. | |
+| **id** | **String**| The ad identifier to retrieve. | |
 
 ### Return type
 

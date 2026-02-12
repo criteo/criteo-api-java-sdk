@@ -1840,7 +1840,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | The retailers to fetch pages for
+        String retailerId = "retailerId_example"; // String | The retailers to fetch pages for
         try {
             RetailerPages202110 result = apiInstance.getApi202110ExternalRetailerPagesByRetailerId(retailerId);
             System.out.println(result);
@@ -1860,7 +1860,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| The retailers to fetch pages for | |
+| **retailerId** | **String**| The retailers to fetch pages for | |
 
 ### Return type
 
@@ -2481,7 +2481,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long campaignId = 56L; // Long | Campaign id.
+        String campaignId = "campaignId_example"; // String | Campaign id.
         try {
             ValueResourceOutcomeOfCampaignBudgetOverrides result = apiInstance.getCampaignBudgetOverrides(campaignId);
             System.out.println(result);
@@ -2501,7 +2501,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Long**| Campaign id. | |
+| **campaignId** | **String**| Campaign id. | |
 
 ### Return type
 
@@ -2933,7 +2933,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer categoryId = 56; // Integer | ID of the desired category
+        String categoryId = "categoryId_example"; // String | ID of the desired category
         try {
             Category202204 result = apiInstance.getCategory(categoryId);
             System.out.println(result);
@@ -2953,7 +2953,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **Integer**| ID of the desired category | |
+| **categoryId** | **String**| ID of the desired category | |
 
 ### Return type
 
@@ -3022,7 +3022,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | Retailer Id.
+        String retailerId = "retailerId_example"; // String | Retailer Id.
         ValueResourceInputCpcMinBidsRequest valueResourceInputCpcMinBidsRequest = new ValueResourceInputCpcMinBidsRequest(); // ValueResourceInputCpcMinBidsRequest | Cpc minimum bid amount request object.
         try {
             ValueResourceOutcomeCpcMinBidsResponse result = apiInstance.getCpcMinBidsBySkuIdsV1(retailerId, valueResourceInputCpcMinBidsRequest);
@@ -3043,7 +3043,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| Retailer Id. | |
+| **retailerId** | **String**| Retailer Id. | |
 | **valueResourceInputCpcMinBidsRequest** | [**ValueResourceInputCpcMinBidsRequest**](ValueResourceInputCpcMinBidsRequest.md)| Cpc minimum bid amount request object. | |
 
 ### Return type
@@ -3204,8 +3204,8 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | Retailer Id
-        Integer templateId = 56; // Integer | Template Id
+        String retailerId = "retailerId_example"; // String | Retailer Id
+        String templateId = "templateId_example"; // String | Template Id
         try {
             TemplateResponse result = apiInstance.getCreativeTemplate(retailerId, templateId);
             System.out.println(result);
@@ -3225,8 +3225,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| Retailer Id | |
-| **templateId** | **Integer**| Template Id | |
+| **retailerId** | **String**| Retailer Id | |
+| **templateId** | **String**| Template Id | |
 
 ### Return type
 
@@ -3845,7 +3845,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | External retailer id to retrieve creative templates for
+        String retailerId = "retailerId_example"; // String | External retailer id to retrieve creative templates for
         try {
             TemplateListResponse result = apiInstance.getRetailerCreativeTemplates(retailerId);
             System.out.println(result);
@@ -3865,7 +3865,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| External retailer id to retrieve creative templates for | |
+| **retailerId** | **String**| External retailer id to retrieve creative templates for | |
 
 ### Return type
 
@@ -5208,7 +5208,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long campaignId = 56L; // Long | Campaign id.
+        String campaignId = "campaignId_example"; // String | Campaign id.
         ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides = new ValueResourceInputOfCampaignBudgetOverrides(); // ValueResourceInputOfCampaignBudgetOverrides | New campaign budget overrides settings value resource input.
         try {
             ValueResourceOutcomeOfCampaignBudgetOverrides result = apiInstance.updateCampaignBudgetOverrides(campaignId, valueResourceInputOfCampaignBudgetOverrides);
@@ -5229,7 +5229,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Long**| Campaign id. | |
+| **campaignId** | **String**| Campaign id. | |
 | **valueResourceInputOfCampaignBudgetOverrides** | [**ValueResourceInputOfCampaignBudgetOverrides**](ValueResourceInputOfCampaignBudgetOverrides.md)| New campaign budget overrides settings value resource input. | |
 
 ### Return type

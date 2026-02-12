@@ -2030,7 +2030,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | The retailers to fetch pages for
+        String retailerId = "retailerId_example"; // String | The retailers to fetch pages for
         try {
             RetailerPages202110 result = apiInstance.getApi202110ExternalRetailerPagesByRetailerId(retailerId);
             System.out.println(result);
@@ -2050,7 +2050,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| The retailers to fetch pages for | |
+| **retailerId** | **String**| The retailers to fetch pages for | |
 
 ### Return type
 
@@ -2671,7 +2671,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long campaignId = 56L; // Long | Campaign id.
+        String campaignId = "campaignId_example"; // String | Campaign id.
         try {
             ValueResourceOutcomeOfCampaignBudgetOverrides result = apiInstance.getCampaignBudgetOverrides(campaignId);
             System.out.println(result);
@@ -2691,7 +2691,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Long**| Campaign id. | |
+| **campaignId** | **String**| Campaign id. | |
 
 ### Return type
 
@@ -3123,7 +3123,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer categoryId = 56; // Integer | ID of the desired category
+        String categoryId = "categoryId_example"; // String | ID of the desired category
         try {
             Category202204 result = apiInstance.getCategory(categoryId);
             System.out.println(result);
@@ -3143,7 +3143,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **Integer**| ID of the desired category | |
+| **categoryId** | **String**| ID of the desired category | |
 
 ### Return type
 
@@ -3212,7 +3212,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | Retailer Id.
+        String retailerId = "retailerId_example"; // String | Retailer Id.
         ValueResourceInputCpcMinBidsRequest valueResourceInputCpcMinBidsRequest = new ValueResourceInputCpcMinBidsRequest(); // ValueResourceInputCpcMinBidsRequest | Cpc minimum bid amount request object.
         try {
             ValueResourceOutcomeCpcMinBidsResponse result = apiInstance.getCpcMinBidsBySkuIdsV1(retailerId, valueResourceInputCpcMinBidsRequest);
@@ -3233,7 +3233,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| Retailer Id. | |
+| **retailerId** | **String**| Retailer Id. | |
 | **valueResourceInputCpcMinBidsRequest** | [**ValueResourceInputCpcMinBidsRequest**](ValueResourceInputCpcMinBidsRequest.md)| Cpc minimum bid amount request object. | |
 
 ### Return type
@@ -3394,8 +3394,8 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | Retailer Id
-        Integer templateId = 56; // Integer | Template Id
+        String retailerId = "retailerId_example"; // String | Retailer Id
+        String templateId = "templateId_example"; // String | Template Id
         try {
             TemplateResponse result = apiInstance.getCreativeTemplate(retailerId, templateId);
             System.out.println(result);
@@ -3415,8 +3415,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| Retailer Id | |
-| **templateId** | **Integer**| Template Id | |
+| **retailerId** | **String**| Retailer Id | |
+| **templateId** | **String**| Template Id | |
 
 ### Return type
 
@@ -3485,7 +3485,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long accountId = 56L; // Long | The account to generate a report for
+        String accountId = "accountId_example"; // String | The account to generate a report for
         Integer limit = 25; // Integer | Number of items per page
         Integer offset = 0; // Integer | Offset for pagination
         try {
@@ -3507,7 +3507,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **Long**| The account to generate a report for | |
+| **accountId** | **String**| The account to generate a report for | |
 | **limit** | **Integer**| Number of items per page | [optional] [default to 25] |
 | **offset** | **Integer**| Offset for pagination | [optional] [default to 0] |
 
@@ -4039,7 +4039,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | Retailer id.
+        String retailerId = "retailerId_example"; // String | Retailer id.
         ValueResourceInputRecommendedCategoriesRequestV1 valueResourceInputRecommendedCategoriesRequestV1 = new ValueResourceInputRecommendedCategoriesRequestV1(); // ValueResourceInputRecommendedCategoriesRequestV1 | Request of recommended categories.
         try {
             EntityResourceCollectionOutcomeCategory202204 result = apiInstance.getRecommendedCategories(retailerId, valueResourceInputRecommendedCategoriesRequestV1);
@@ -4060,7 +4060,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| Retailer id. | |
+| **retailerId** | **String**| Retailer id. | |
 | **valueResourceInputRecommendedCategoriesRequestV1** | [**ValueResourceInputRecommendedCategoriesRequestV1**](ValueResourceInputRecommendedCategoriesRequestV1.md)| Request of recommended categories. | |
 
 ### Return type
@@ -4219,7 +4219,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | External retailer id to retrieve creative templates for
+        String retailerId = "retailerId_example"; // String | External retailer id to retrieve creative templates for
         try {
             TemplateListResponse result = apiInstance.getRetailerCreativeTemplates(retailerId);
             System.out.println(result);
@@ -4239,7 +4239,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| External retailer id to retrieve creative templates for | |
+| **retailerId** | **String**| External retailer id to retrieve creative templates for | |
 
 ### Return type
 
@@ -5403,7 +5403,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | Retailer id.
+        String retailerId = "retailerId_example"; // String | Retailer id.
         Integer limit = 50; // Integer | Limit of the search result.
         Integer offset = 0; // Integer | Offset of the search result.
         ValueResourceInputCategoriesSearchRequestV1 valueResourceInputCategoriesSearchRequestV1 = new ValueResourceInputCategoriesSearchRequestV1(); // ValueResourceInputCategoriesSearchRequestV1 | Request of categories search.
@@ -5426,7 +5426,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| Retailer id. | |
+| **retailerId** | **String**| Retailer id. | |
 | **limit** | **Integer**| Limit of the search result. | [optional] [default to 50] |
 | **offset** | **Integer**| Offset of the search result. | [optional] [default to 0] |
 | **valueResourceInputCategoriesSearchRequestV1** | [**ValueResourceInputCategoriesSearchRequestV1**](ValueResourceInputCategoriesSearchRequestV1.md)| Request of categories search. | [optional] |
@@ -5861,7 +5861,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long campaignId = 56L; // Long | Campaign id.
+        String campaignId = "campaignId_example"; // String | Campaign id.
         ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides = new ValueResourceInputOfCampaignBudgetOverrides(); // ValueResourceInputOfCampaignBudgetOverrides | New campaign budget overrides settings value resource input.
         try {
             ValueResourceOutcomeOfCampaignBudgetOverrides result = apiInstance.updateCampaignBudgetOverrides(campaignId, valueResourceInputOfCampaignBudgetOverrides);
@@ -5882,7 +5882,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **Long**| Campaign id. | |
+| **campaignId** | **String**| Campaign id. | |
 | **valueResourceInputOfCampaignBudgetOverrides** | [**ValueResourceInputOfCampaignBudgetOverrides**](ValueResourceInputOfCampaignBudgetOverrides.md)| New campaign budget overrides settings value resource input. | |
 
 ### Return type
@@ -6136,7 +6136,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long lineItemId = 56L; // Long | The line item to update keyword review statuses for
+        String lineItemId = "lineItemId_example"; // String | The line item to update keyword review statuses for
         ValueResourceInputRetailMediaKeywordsReview valueResourceInputRetailMediaKeywordsReview = new ValueResourceInputRetailMediaKeywordsReview(); // ValueResourceInputRetailMediaKeywordsReview | Request object containing a list of Phrase-ReviewState pairs to update
         try {
             ValueResourceOutcomeRetailMediaKeywordsReviewResult result = apiInstance.updateKeywordReviews(lineItemId, valueResourceInputRetailMediaKeywordsReview);
@@ -6157,7 +6157,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **Long**| The line item to update keyword review statuses for | |
+| **lineItemId** | **String**| The line item to update keyword review statuses for | |
 | **valueResourceInputRetailMediaKeywordsReview** | [**ValueResourceInputRetailMediaKeywordsReview**](ValueResourceInputRetailMediaKeywordsReview.md)| Request object containing a list of Phrase-ReviewState pairs to update | [optional] |
 
 ### Return type

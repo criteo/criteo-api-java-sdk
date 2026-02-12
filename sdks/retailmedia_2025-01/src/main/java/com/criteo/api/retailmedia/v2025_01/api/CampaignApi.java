@@ -2590,7 +2590,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Pages fetched successfully </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApi202110ExternalRetailerPagesByRetailerIdCall(Integer retailerId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getApi202110ExternalRetailerPagesByRetailerIdCall(String retailerId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2636,7 +2636,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApi202110ExternalRetailerPagesByRetailerIdValidateBeforeCall(Integer retailerId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getApi202110ExternalRetailerPagesByRetailerIdValidateBeforeCall(String retailerId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling getApi202110ExternalRetailerPagesByRetailerId(Async)");
@@ -2658,7 +2658,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Pages fetched successfully </td><td>  -  </td></tr>
      </table>
      */
-    public RetailerPages202110 getApi202110ExternalRetailerPagesByRetailerId(Integer retailerId) throws ApiException {
+    public RetailerPages202110 getApi202110ExternalRetailerPagesByRetailerId(String retailerId) throws ApiException {
         ApiResponse<RetailerPages202110> localVarResp = getApi202110ExternalRetailerPagesByRetailerIdWithHttpInfo(retailerId);
         return localVarResp.getData();
     }
@@ -2675,7 +2675,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Pages fetched successfully </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RetailerPages202110> getApi202110ExternalRetailerPagesByRetailerIdWithHttpInfo(Integer retailerId) throws ApiException {
+    public ApiResponse<RetailerPages202110> getApi202110ExternalRetailerPagesByRetailerIdWithHttpInfo(String retailerId) throws ApiException {
         okhttp3.Call localVarCall = getApi202110ExternalRetailerPagesByRetailerIdValidateBeforeCall(retailerId, null);
         Type localVarReturnType = new TypeToken<RetailerPages202110>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2694,7 +2694,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Pages fetched successfully </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApi202110ExternalRetailerPagesByRetailerIdAsync(Integer retailerId, final ApiCallback<RetailerPages202110> _callback) throws ApiException {
+    public okhttp3.Call getApi202110ExternalRetailerPagesByRetailerIdAsync(String retailerId, final ApiCallback<RetailerPages202110> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getApi202110ExternalRetailerPagesByRetailerIdValidateBeforeCall(retailerId, _callback);
         Type localVarReturnType = new TypeToken<RetailerPages202110>(){}.getType();
@@ -3521,7 +3521,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignBudgetOverridesCall(Long campaignId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCampaignBudgetOverridesCall(String campaignId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3567,7 +3567,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCampaignBudgetOverridesValidateBeforeCall(Long campaignId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCampaignBudgetOverridesValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling getCampaignBudgetOverrides(Async)");
@@ -3589,7 +3589,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceOutcomeOfCampaignBudgetOverrides getCampaignBudgetOverrides(Long campaignId) throws ApiException {
+    public ValueResourceOutcomeOfCampaignBudgetOverrides getCampaignBudgetOverrides(String campaignId) throws ApiException {
         ApiResponse<ValueResourceOutcomeOfCampaignBudgetOverrides> localVarResp = getCampaignBudgetOverridesWithHttpInfo(campaignId);
         return localVarResp.getData();
     }
@@ -3606,7 +3606,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceOutcomeOfCampaignBudgetOverrides> getCampaignBudgetOverridesWithHttpInfo(Long campaignId) throws ApiException {
+    public ApiResponse<ValueResourceOutcomeOfCampaignBudgetOverrides> getCampaignBudgetOverridesWithHttpInfo(String campaignId) throws ApiException {
         okhttp3.Call localVarCall = getCampaignBudgetOverridesValidateBeforeCall(campaignId, null);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfCampaignBudgetOverrides>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3625,7 +3625,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignBudgetOverridesAsync(Long campaignId, final ApiCallback<ValueResourceOutcomeOfCampaignBudgetOverrides> _callback) throws ApiException {
+    public okhttp3.Call getCampaignBudgetOverridesAsync(String campaignId, final ApiCallback<ValueResourceOutcomeOfCampaignBudgetOverrides> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCampaignBudgetOverridesValidateBeforeCall(campaignId, _callback);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfCampaignBudgetOverrides>(){}.getType();
@@ -4298,7 +4298,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Template found for the retailer </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCreativeTemplateCall(Integer retailerId, Integer templateId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCreativeTemplateCall(String retailerId, String templateId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4345,7 +4345,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCreativeTemplateValidateBeforeCall(Integer retailerId, Integer templateId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCreativeTemplateValidateBeforeCall(String retailerId, String templateId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling getCreativeTemplate(Async)");
@@ -4373,7 +4373,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Template found for the retailer </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateResponse getCreativeTemplate(Integer retailerId, Integer templateId) throws ApiException {
+    public TemplateResponse getCreativeTemplate(String retailerId, String templateId) throws ApiException {
         ApiResponse<TemplateResponse> localVarResp = getCreativeTemplateWithHttpInfo(retailerId, templateId);
         return localVarResp.getData();
     }
@@ -4391,7 +4391,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Template found for the retailer </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateResponse> getCreativeTemplateWithHttpInfo(Integer retailerId, Integer templateId) throws ApiException {
+    public ApiResponse<TemplateResponse> getCreativeTemplateWithHttpInfo(String retailerId, String templateId) throws ApiException {
         okhttp3.Call localVarCall = getCreativeTemplateValidateBeforeCall(retailerId, templateId, null);
         Type localVarReturnType = new TypeToken<TemplateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -4411,7 +4411,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Template found for the retailer </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCreativeTemplateAsync(Integer retailerId, Integer templateId, final ApiCallback<TemplateResponse> _callback) throws ApiException {
+    public okhttp3.Call getCreativeTemplateAsync(String retailerId, String templateId, final ApiCallback<TemplateResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCreativeTemplateValidateBeforeCall(retailerId, templateId, _callback);
         Type localVarReturnType = new TypeToken<TemplateResponse>(){}.getType();
@@ -5232,7 +5232,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Templates found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRetailerCreativeTemplatesCall(Integer retailerId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRetailerCreativeTemplatesCall(String retailerId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5278,7 +5278,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRetailerCreativeTemplatesValidateBeforeCall(Integer retailerId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRetailerCreativeTemplatesValidateBeforeCall(String retailerId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling getRetailerCreativeTemplates(Async)");
@@ -5300,7 +5300,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Templates found </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateListResponse getRetailerCreativeTemplates(Integer retailerId) throws ApiException {
+    public TemplateListResponse getRetailerCreativeTemplates(String retailerId) throws ApiException {
         ApiResponse<TemplateListResponse> localVarResp = getRetailerCreativeTemplatesWithHttpInfo(retailerId);
         return localVarResp.getData();
     }
@@ -5317,7 +5317,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Templates found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateListResponse> getRetailerCreativeTemplatesWithHttpInfo(Integer retailerId) throws ApiException {
+    public ApiResponse<TemplateListResponse> getRetailerCreativeTemplatesWithHttpInfo(String retailerId) throws ApiException {
         okhttp3.Call localVarCall = getRetailerCreativeTemplatesValidateBeforeCall(retailerId, null);
         Type localVarReturnType = new TypeToken<TemplateListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -5336,7 +5336,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Templates found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRetailerCreativeTemplatesAsync(Integer retailerId, final ApiCallback<TemplateListResponse> _callback) throws ApiException {
+    public okhttp3.Call getRetailerCreativeTemplatesAsync(String retailerId, final ApiCallback<TemplateListResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRetailerCreativeTemplatesValidateBeforeCall(retailerId, _callback);
         Type localVarReturnType = new TypeToken<TemplateListResponse>(){}.getType();
@@ -7195,7 +7195,7 @@ public class CampaignApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCampaignBudgetOverridesCall(Long campaignId, ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCampaignBudgetOverridesCall(String campaignId, ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7242,7 +7242,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCampaignBudgetOverridesValidateBeforeCall(Long campaignId, ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateCampaignBudgetOverridesValidateBeforeCall(String campaignId, ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling updateCampaignBudgetOverrides(Async)");
@@ -7270,7 +7270,7 @@ public class CampaignApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceOutcomeOfCampaignBudgetOverrides updateCampaignBudgetOverrides(Long campaignId, ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides) throws ApiException {
+    public ValueResourceOutcomeOfCampaignBudgetOverrides updateCampaignBudgetOverrides(String campaignId, ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides) throws ApiException {
         ApiResponse<ValueResourceOutcomeOfCampaignBudgetOverrides> localVarResp = updateCampaignBudgetOverridesWithHttpInfo(campaignId, valueResourceInputOfCampaignBudgetOverrides);
         return localVarResp.getData();
     }
@@ -7288,7 +7288,7 @@ public class CampaignApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceOutcomeOfCampaignBudgetOverrides> updateCampaignBudgetOverridesWithHttpInfo(Long campaignId, ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides) throws ApiException {
+    public ApiResponse<ValueResourceOutcomeOfCampaignBudgetOverrides> updateCampaignBudgetOverridesWithHttpInfo(String campaignId, ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides) throws ApiException {
         okhttp3.Call localVarCall = updateCampaignBudgetOverridesValidateBeforeCall(campaignId, valueResourceInputOfCampaignBudgetOverrides, null);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfCampaignBudgetOverrides>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -7308,7 +7308,7 @@ public class CampaignApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCampaignBudgetOverridesAsync(Long campaignId, ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides, final ApiCallback<ValueResourceOutcomeOfCampaignBudgetOverrides> _callback) throws ApiException {
+    public okhttp3.Call updateCampaignBudgetOverridesAsync(String campaignId, ValueResourceInputOfCampaignBudgetOverrides valueResourceInputOfCampaignBudgetOverrides, final ApiCallback<ValueResourceOutcomeOfCampaignBudgetOverrides> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateCampaignBudgetOverridesValidateBeforeCall(campaignId, valueResourceInputOfCampaignBudgetOverrides, _callback);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfCampaignBudgetOverrides>(){}.getType();

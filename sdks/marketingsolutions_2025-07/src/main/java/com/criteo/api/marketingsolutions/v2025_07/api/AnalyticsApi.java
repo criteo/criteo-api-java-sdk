@@ -460,7 +460,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTransparencyReportCall(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTransparencyReportCall(String advertiserId, TransparencyQueryMessage transparencyQueryMessage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -512,7 +512,7 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransparencyReportValidateBeforeCall(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransparencyReportValidateBeforeCall(String advertiserId, TransparencyQueryMessage transparencyQueryMessage, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getTransparencyReport(Async)");
@@ -535,7 +535,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public TransparencyReportListResponse getTransparencyReport(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage) throws ApiException {
+    public TransparencyReportListResponse getTransparencyReport(String advertiserId, TransparencyQueryMessage transparencyQueryMessage) throws ApiException {
         ApiResponse<TransparencyReportListResponse> localVarResp = getTransparencyReportWithHttpInfo(advertiserId, transparencyQueryMessage);
         return localVarResp.getData();
     }
@@ -553,7 +553,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TransparencyReportListResponse> getTransparencyReportWithHttpInfo(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage) throws ApiException {
+    public ApiResponse<TransparencyReportListResponse> getTransparencyReportWithHttpInfo(String advertiserId, TransparencyQueryMessage transparencyQueryMessage) throws ApiException {
         okhttp3.Call localVarCall = getTransparencyReportValidateBeforeCall(advertiserId, transparencyQueryMessage, null);
         Type localVarReturnType = new TypeToken<TransparencyReportListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -573,7 +573,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTransparencyReportAsync(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage, final ApiCallback<TransparencyReportListResponse> _callback) throws ApiException {
+    public okhttp3.Call getTransparencyReportAsync(String advertiserId, TransparencyQueryMessage transparencyQueryMessage, final ApiCallback<TransparencyReportListResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTransparencyReportValidateBeforeCall(advertiserId, transparencyQueryMessage, _callback);
         Type localVarReturnType = new TypeToken<TransparencyReportListResponse>(){}.getType();

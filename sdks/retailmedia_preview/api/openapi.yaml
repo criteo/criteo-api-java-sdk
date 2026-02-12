@@ -584,37 +584,6 @@ paths:
       - Audience
       x-content-type: application/json
       x-accepts: application/json
-  /preview/retail-media/accounts/{account-id}/balances:
-    post:
-      description: Create balance for the given account id
-      operationId: CreateBalanceByAccountId
-      parameters:
-      - description: The account to create balances for
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfCreateBalanceV1'
-        description: An object that represents the available options to set when creating
-          a Retail Media Balance
-        required: true
-      responses:
-        "201":
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Balance_Manage
-      tags:
-      - Balance
-      x-content-type: application/json
-      x-accepts: application/json
   /preview/retail-media/accounts/{account-id}/balances/{balance-id}:
     patch:
       description: Modify a balance for the given account id
@@ -5406,58 +5375,6 @@ components:
           nullable: true
           readOnly: true
           type: array
-      type: object
-    CreateBalanceV1:
-      additionalProperties: false
-      description: An object that represents the available options to set when creating
-        a Retail Media Balance
-      example:
-        endDate: endDate
-        deposited: 0.8008281904610115
-        name: name
-        memo: memo
-        poNumber: poNumber
-        spendType: unknown
-        startDate: startDate
-      properties:
-        deposited:
-          description: Amount of billable funds allotted to the balance.
-          format: double
-          nullable: true
-          type: number
-        endDate:
-          description: End date of the balance in the format YYYY-MM-DD.
-          nullable: true
-          type: string
-        memo:
-          description: Memo
-          nullable: true
-          type: string
-        name:
-          description: Name of the balance.
-          type: string
-        poNumber:
-          description: Purchase Order number.
-          nullable: true
-          type: string
-        spendType:
-          description: Type of the balance spend.
-          enum:
-          - unknown
-          - onsite
-          - offsite
-          - offsiteAwareness
-          type: string
-        startDate:
-          description: Start date of the balance in the format YYYY-MM-DD.
-          type: string
-      required:
-      - deposited
-      - endDate
-      - memo
-      - name
-      - spendType
-      - startDate
       type: object
     Creative2:
       additionalProperties: false
@@ -16992,25 +16909,6 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceLineItemBudgetCapOutHistoryRequest'
       type: object
-    ValueResourceInputOfCreateBalanceV1:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value object.
-      example:
-        data:
-          attributes:
-            endDate: endDate
-            deposited: 0.8008281904610115
-            name: name
-            memo: memo
-            poNumber: poNumber
-            spendType: unknown
-            startDate: startDate
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfCreateBalanceV1'
-      type: object
     ValueResourceInputOfRetailerSearchRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -17270,27 +17168,6 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/LineItemBudgetCapOutHistoryResponse'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceOfCreateBalanceV1:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          endDate: endDate
-          deposited: 0.8008281904610115
-          name: name
-          memo: memo
-          poNumber: poNumber
-          spendType: unknown
-          startDate: startDate
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/CreateBalanceV1'
         type:
           description: Type of the resource.
           nullable: true

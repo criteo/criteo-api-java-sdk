@@ -1223,7 +1223,7 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAudienceSegmentContactListStatisticsCall(Integer audienceSegmentId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAudienceSegmentContactListStatisticsCall(String audienceSegmentId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1269,7 +1269,7 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAudienceSegmentContactListStatisticsValidateBeforeCall(Integer audienceSegmentId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAudienceSegmentContactListStatisticsValidateBeforeCall(String audienceSegmentId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'audienceSegmentId' is set
         if (audienceSegmentId == null) {
             throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling getAudienceSegmentContactListStatistics(Async)");
@@ -1291,7 +1291,7 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ContactListStatisticsEntityV1Response getAudienceSegmentContactListStatistics(Integer audienceSegmentId) throws ApiException {
+    public ContactListStatisticsEntityV1Response getAudienceSegmentContactListStatistics(String audienceSegmentId) throws ApiException {
         ApiResponse<ContactListStatisticsEntityV1Response> localVarResp = getAudienceSegmentContactListStatisticsWithHttpInfo(audienceSegmentId);
         return localVarResp.getData();
     }
@@ -1308,7 +1308,7 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ContactListStatisticsEntityV1Response> getAudienceSegmentContactListStatisticsWithHttpInfo(Integer audienceSegmentId) throws ApiException {
+    public ApiResponse<ContactListStatisticsEntityV1Response> getAudienceSegmentContactListStatisticsWithHttpInfo(String audienceSegmentId) throws ApiException {
         okhttp3.Call localVarCall = getAudienceSegmentContactListStatisticsValidateBeforeCall(audienceSegmentId, null);
         Type localVarReturnType = new TypeToken<ContactListStatisticsEntityV1Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1327,7 +1327,7 @@ public class AudienceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAudienceSegmentContactListStatisticsAsync(Integer audienceSegmentId, final ApiCallback<ContactListStatisticsEntityV1Response> _callback) throws ApiException {
+    public okhttp3.Call getAudienceSegmentContactListStatisticsAsync(String audienceSegmentId, final ApiCallback<ContactListStatisticsEntityV1Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAudienceSegmentContactListStatisticsValidateBeforeCall(audienceSegmentId, _callback);
         Type localVarReturnType = new TypeToken<ContactListStatisticsEntityV1Response>(){}.getType();

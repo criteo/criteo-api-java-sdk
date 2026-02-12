@@ -62,7 +62,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        Long audienceSegmentId = 56L; // Long | The id of the contact list audience-segment to amend, we only accept external Id here
+        String audienceSegmentId = "audienceSegmentId_example"; // String | The id of the contact list audience-segment to amend, we only accept external Id here
         RetailMediaContactlistAmendmentRequest retailMediaContactlistAmendmentRequest = new RetailMediaContactlistAmendmentRequest(); // RetailMediaContactlistAmendmentRequest | 
         try {
             RetailMediaContactlistOperation result = apiInstance.addRemoveContactListByAudienceSegment(audienceSegmentId, retailMediaContactlistAmendmentRequest);
@@ -83,7 +83,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceSegmentId** | **Long**| The id of the contact list audience-segment to amend, we only accept external Id here | |
+| **audienceSegmentId** | **String**| The id of the contact list audience-segment to amend, we only accept external Id here | |
 | **retailMediaContactlistAmendmentRequest** | [**RetailMediaContactlistAmendmentRequest**](RetailMediaContactlistAmendmentRequest.md)|  | |
 
 ### Return type
@@ -426,7 +426,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        Long audienceSegmentId = 56L; // Long | The id of the contact list audience-segment to amend, we only accept external Id here
+        String audienceSegmentId = "audienceSegmentId_example"; // String | The id of the contact list audience-segment to amend, we only accept external Id here
         try {
             apiInstance.clearContactListByAudienceSegment(audienceSegmentId);
         } catch (ApiException e) {
@@ -445,7 +445,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceSegmentId** | **Long**| The id of the contact list audience-segment to amend, we only accept external Id here | |
+| **audienceSegmentId** | **String**| The id of the contact list audience-segment to amend, we only accept external Id here | |
 
 ### Return type
 

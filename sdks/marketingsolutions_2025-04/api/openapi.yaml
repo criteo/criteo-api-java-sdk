@@ -59,7 +59,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -444,7 +444,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "204":
@@ -466,7 +466,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -1050,7 +1050,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":

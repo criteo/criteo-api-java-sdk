@@ -60,7 +60,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -529,7 +529,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "204":
@@ -551,7 +551,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -1135,7 +1135,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -1831,7 +1831,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -1867,7 +1867,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       - description: Seller CampaignId
         explode: true
@@ -1931,7 +1931,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -1961,7 +1961,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       - description: Return only budgets with given Id
         explode: true
@@ -2066,7 +2066,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -2096,7 +2096,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -2126,7 +2126,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       - description: Id of the partner
         explode: true
@@ -2411,7 +2411,7 @@ paths:
         required: true
         schema:
           format: int64
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -2440,7 +2440,7 @@ paths:
         required: true
         schema:
           format: int64
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:

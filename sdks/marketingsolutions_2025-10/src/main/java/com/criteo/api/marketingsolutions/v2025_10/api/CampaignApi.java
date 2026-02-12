@@ -1113,7 +1113,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceAdSetsByAdvertiserCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceAdSetsByAdvertiserCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1159,7 +1159,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceAdSetsByAdvertiserValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketplaceAdSetsByAdvertiserValidateBeforeCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getMarketplaceAdSetsByAdvertiser(Async)");
@@ -1181,7 +1181,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public List<AdvertiserAdsetMessage> getMarketplaceAdSetsByAdvertiser(Integer advertiserId) throws ApiException {
+    public List<AdvertiserAdsetMessage> getMarketplaceAdSetsByAdvertiser(String advertiserId) throws ApiException {
         ApiResponse<List<AdvertiserAdsetMessage>> localVarResp = getMarketplaceAdSetsByAdvertiserWithHttpInfo(advertiserId);
         return localVarResp.getData();
     }
@@ -1198,7 +1198,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<AdvertiserAdsetMessage>> getMarketplaceAdSetsByAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
+    public ApiResponse<List<AdvertiserAdsetMessage>> getMarketplaceAdSetsByAdvertiserWithHttpInfo(String advertiserId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceAdSetsByAdvertiserValidateBeforeCall(advertiserId, null);
         Type localVarReturnType = new TypeToken<List<AdvertiserAdsetMessage>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1217,7 +1217,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceAdSetsByAdvertiserAsync(Integer advertiserId, final ApiCallback<List<AdvertiserAdsetMessage>> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceAdSetsByAdvertiserAsync(String advertiserId, final ApiCallback<List<AdvertiserAdsetMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceAdSetsByAdvertiserValidateBeforeCall(advertiserId, _callback);
         Type localVarReturnType = new TypeToken<List<AdvertiserAdsetMessage>>(){}.getType();
@@ -1236,7 +1236,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceAdvertiserCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceAdvertiserCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1282,7 +1282,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceAdvertiserValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketplaceAdvertiserValidateBeforeCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getMarketplaceAdvertiser(Async)");
@@ -1304,7 +1304,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public AdvertiserInfoMessage getMarketplaceAdvertiser(Integer advertiserId) throws ApiException {
+    public AdvertiserInfoMessage getMarketplaceAdvertiser(String advertiserId) throws ApiException {
         ApiResponse<AdvertiserInfoMessage> localVarResp = getMarketplaceAdvertiserWithHttpInfo(advertiserId);
         return localVarResp.getData();
     }
@@ -1321,7 +1321,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdvertiserInfoMessage> getMarketplaceAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
+    public ApiResponse<AdvertiserInfoMessage> getMarketplaceAdvertiserWithHttpInfo(String advertiserId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceAdvertiserValidateBeforeCall(advertiserId, null);
         Type localVarReturnType = new TypeToken<AdvertiserInfoMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1340,7 +1340,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceAdvertiserAsync(Integer advertiserId, final ApiCallback<AdvertiserInfoMessage> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceAdvertiserAsync(String advertiserId, final ApiCallback<AdvertiserInfoMessage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceAdvertiserValidateBeforeCall(advertiserId, _callback);
         Type localVarReturnType = new TypeToken<AdvertiserInfoMessage>(){}.getType();
@@ -1593,7 +1593,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceBudgetsByAdvertiserCall(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceBudgetsByAdvertiserCall(String advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1671,7 +1671,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceBudgetsByAdvertiserValidateBeforeCall(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketplaceBudgetsByAdvertiserValidateBeforeCall(String advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getMarketplaceBudgetsByAdvertiser(Async)");
@@ -1701,7 +1701,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public List<SellerBudgetMessage> getMarketplaceBudgetsByAdvertiser(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+    public List<SellerBudgetMessage> getMarketplaceBudgetsByAdvertiser(String advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
         ApiResponse<List<SellerBudgetMessage>> localVarResp = getMarketplaceBudgetsByAdvertiserWithHttpInfo(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend);
         return localVarResp.getData();
     }
@@ -1726,7 +1726,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<SellerBudgetMessage>> getMarketplaceBudgetsByAdvertiserWithHttpInfo(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
+    public ApiResponse<List<SellerBudgetMessage>> getMarketplaceBudgetsByAdvertiserWithHttpInfo(String advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceBudgetsByAdvertiserValidateBeforeCall(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend, null);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1753,7 +1753,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceBudgetsByAdvertiserAsync(Integer advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceBudgetsByAdvertiserAsync(String advertiserId, Long budgetId, OffsetDateTime endAfterDate, Long sellerId, OffsetDateTime startBeforeDate, String status, String type, Boolean withBalance, Boolean withSpend, final ApiCallback<List<SellerBudgetMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceBudgetsByAdvertiserValidateBeforeCall(advertiserId, budgetId, endAfterDate, sellerId, startBeforeDate, status, type, withBalance, withSpend, _callback);
         Type localVarReturnType = new TypeToken<List<SellerBudgetMessage>>(){}.getType();
@@ -2122,7 +2122,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceCampaignsByAdvertiserCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceCampaignsByAdvertiserCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2168,7 +2168,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceCampaignsByAdvertiserValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketplaceCampaignsByAdvertiserValidateBeforeCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getMarketplaceCampaignsByAdvertiser(Async)");
@@ -2190,7 +2190,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public List<AdvertiserCampaignMessage> getMarketplaceCampaignsByAdvertiser(Integer advertiserId) throws ApiException {
+    public List<AdvertiserCampaignMessage> getMarketplaceCampaignsByAdvertiser(String advertiserId) throws ApiException {
         ApiResponse<List<AdvertiserCampaignMessage>> localVarResp = getMarketplaceCampaignsByAdvertiserWithHttpInfo(advertiserId);
         return localVarResp.getData();
     }
@@ -2207,7 +2207,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<AdvertiserCampaignMessage>> getMarketplaceCampaignsByAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
+    public ApiResponse<List<AdvertiserCampaignMessage>> getMarketplaceCampaignsByAdvertiserWithHttpInfo(String advertiserId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceCampaignsByAdvertiserValidateBeforeCall(advertiserId, null);
         Type localVarReturnType = new TypeToken<List<AdvertiserCampaignMessage>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2226,7 +2226,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceCampaignsByAdvertiserAsync(Integer advertiserId, final ApiCallback<List<AdvertiserCampaignMessage>> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceCampaignsByAdvertiserAsync(String advertiserId, final ApiCallback<List<AdvertiserCampaignMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceCampaignsByAdvertiserValidateBeforeCall(advertiserId, _callback);
         Type localVarReturnType = new TypeToken<List<AdvertiserCampaignMessage>>(){}.getType();
@@ -2549,7 +2549,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellerAdPreviewCall(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellerAdPreviewCall(String advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2611,7 +2611,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceSellerAdPreviewValidateBeforeCall(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketplaceSellerAdPreviewValidateBeforeCall(String advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getMarketplaceSellerAdPreview(Async)");
@@ -2642,7 +2642,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public String getMarketplaceSellerAdPreview(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width) throws ApiException {
+    public String getMarketplaceSellerAdPreview(String advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width) throws ApiException {
         ApiResponse<String> localVarResp = getMarketplaceSellerAdPreviewWithHttpInfo(advertiserId, sellerId, campaignId, height, width);
         return localVarResp.getData();
     }
@@ -2663,7 +2663,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<String> getMarketplaceSellerAdPreviewWithHttpInfo(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width) throws ApiException {
+    public ApiResponse<String> getMarketplaceSellerAdPreviewWithHttpInfo(String advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceSellerAdPreviewValidateBeforeCall(advertiserId, sellerId, campaignId, height, width, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2686,7 +2686,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellerAdPreviewAsync(Integer advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width, final ApiCallback<String> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellerAdPreviewAsync(String advertiserId, Long sellerId, Integer campaignId, Integer height, Integer width, final ApiCallback<String> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceSellerAdPreviewValidateBeforeCall(advertiserId, sellerId, campaignId, height, width, _callback);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
@@ -2705,7 +2705,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellerBudgetCall(Long budgetId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellerBudgetCall(String budgetId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2751,7 +2751,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceSellerBudgetValidateBeforeCall(Long budgetId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketplaceSellerBudgetValidateBeforeCall(String budgetId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'budgetId' is set
         if (budgetId == null) {
             throw new ApiException("Missing the required parameter 'budgetId' when calling getMarketplaceSellerBudget(Async)");
@@ -2773,7 +2773,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public SellerBudgetMessage getMarketplaceSellerBudget(Long budgetId) throws ApiException {
+    public SellerBudgetMessage getMarketplaceSellerBudget(String budgetId) throws ApiException {
         ApiResponse<SellerBudgetMessage> localVarResp = getMarketplaceSellerBudgetWithHttpInfo(budgetId);
         return localVarResp.getData();
     }
@@ -2790,7 +2790,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SellerBudgetMessage> getMarketplaceSellerBudgetWithHttpInfo(Long budgetId) throws ApiException {
+    public ApiResponse<SellerBudgetMessage> getMarketplaceSellerBudgetWithHttpInfo(String budgetId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceSellerBudgetValidateBeforeCall(budgetId, null);
         Type localVarReturnType = new TypeToken<SellerBudgetMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2809,7 +2809,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellerBudgetAsync(Long budgetId, final ApiCallback<SellerBudgetMessage> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellerBudgetAsync(String budgetId, final ApiCallback<SellerBudgetMessage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceSellerBudgetValidateBeforeCall(budgetId, _callback);
         Type localVarReturnType = new TypeToken<SellerBudgetMessage>(){}.getType();
@@ -3289,7 +3289,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellerCampaignsByAdvertiserCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellerCampaignsByAdvertiserCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3335,7 +3335,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceSellerCampaignsByAdvertiserValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketplaceSellerCampaignsByAdvertiserValidateBeforeCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getMarketplaceSellerCampaignsByAdvertiser(Async)");
@@ -3357,7 +3357,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public List<SellerCampaignMessage> getMarketplaceSellerCampaignsByAdvertiser(Integer advertiserId) throws ApiException {
+    public List<SellerCampaignMessage> getMarketplaceSellerCampaignsByAdvertiser(String advertiserId) throws ApiException {
         ApiResponse<List<SellerCampaignMessage>> localVarResp = getMarketplaceSellerCampaignsByAdvertiserWithHttpInfo(advertiserId);
         return localVarResp.getData();
     }
@@ -3374,7 +3374,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<SellerCampaignMessage>> getMarketplaceSellerCampaignsByAdvertiserWithHttpInfo(Integer advertiserId) throws ApiException {
+    public ApiResponse<List<SellerCampaignMessage>> getMarketplaceSellerCampaignsByAdvertiserWithHttpInfo(String advertiserId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceSellerCampaignsByAdvertiserValidateBeforeCall(advertiserId, null);
         Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3393,7 +3393,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellerCampaignsByAdvertiserAsync(Integer advertiserId, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellerCampaignsByAdvertiserAsync(String advertiserId, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceSellerCampaignsByAdvertiserValidateBeforeCall(advertiserId, _callback);
         Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
@@ -3907,7 +3907,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellersByAdvertiserCall(Integer advertiserId, List<String> requestBody, Integer partnerId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellersByAdvertiserCall(String advertiserId, List<String> requestBody, Integer partnerId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3958,7 +3958,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketplaceSellersByAdvertiserValidateBeforeCall(Integer advertiserId, List<String> requestBody, Integer partnerId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketplaceSellersByAdvertiserValidateBeforeCall(String advertiserId, List<String> requestBody, Integer partnerId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getMarketplaceSellersByAdvertiser(Async)");
@@ -3987,7 +3987,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public List<SellerBase> getMarketplaceSellersByAdvertiser(Integer advertiserId, List<String> requestBody, Integer partnerId) throws ApiException {
+    public List<SellerBase> getMarketplaceSellersByAdvertiser(String advertiserId, List<String> requestBody, Integer partnerId) throws ApiException {
         ApiResponse<List<SellerBase>> localVarResp = getMarketplaceSellersByAdvertiserWithHttpInfo(advertiserId, requestBody, partnerId);
         return localVarResp.getData();
     }
@@ -4006,7 +4006,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<SellerBase>> getMarketplaceSellersByAdvertiserWithHttpInfo(Integer advertiserId, List<String> requestBody, Integer partnerId) throws ApiException {
+    public ApiResponse<List<SellerBase>> getMarketplaceSellersByAdvertiserWithHttpInfo(String advertiserId, List<String> requestBody, Integer partnerId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceSellersByAdvertiserValidateBeforeCall(advertiserId, requestBody, partnerId, null);
         Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -4027,7 +4027,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellersByAdvertiserAsync(Integer advertiserId, List<String> requestBody, Integer partnerId, final ApiCallback<List<SellerBase>> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellersByAdvertiserAsync(String advertiserId, List<String> requestBody, Integer partnerId, final ApiCallback<List<SellerBase>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceSellersByAdvertiserValidateBeforeCall(advertiserId, requestBody, partnerId, _callback);
         Type localVarReturnType = new TypeToken<List<SellerBase>>(){}.getType();
@@ -5341,7 +5341,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateMarketplaceSellerBudgetCall(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateMarketplaceSellerBudgetCall(String budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5388,7 +5388,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateMarketplaceSellerBudgetValidateBeforeCall(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateMarketplaceSellerBudgetValidateBeforeCall(String budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'budgetId' is set
         if (budgetId == null) {
             throw new ApiException("Missing the required parameter 'budgetId' when calling updateMarketplaceSellerBudget(Async)");
@@ -5416,7 +5416,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public SellerBudgetMessage updateMarketplaceSellerBudget(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase) throws ApiException {
+    public SellerBudgetMessage updateMarketplaceSellerBudget(String budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase) throws ApiException {
         ApiResponse<SellerBudgetMessage> localVarResp = updateMarketplaceSellerBudgetWithHttpInfo(budgetId, updateSellerBudgetMessageBase);
         return localVarResp.getData();
     }
@@ -5434,7 +5434,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SellerBudgetMessage> updateMarketplaceSellerBudgetWithHttpInfo(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase) throws ApiException {
+    public ApiResponse<SellerBudgetMessage> updateMarketplaceSellerBudgetWithHttpInfo(String budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase) throws ApiException {
         okhttp3.Call localVarCall = updateMarketplaceSellerBudgetValidateBeforeCall(budgetId, updateSellerBudgetMessageBase, null);
         Type localVarReturnType = new TypeToken<SellerBudgetMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -5454,7 +5454,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateMarketplaceSellerBudgetAsync(Long budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback<SellerBudgetMessage> _callback) throws ApiException {
+    public okhttp3.Call updateMarketplaceSellerBudgetAsync(String budgetId, UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase, final ApiCallback<SellerBudgetMessage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateMarketplaceSellerBudgetValidateBeforeCall(budgetId, updateSellerBudgetMessageBase, _callback);
         Type localVarReturnType = new TypeToken<SellerBudgetMessage>(){}.getType();

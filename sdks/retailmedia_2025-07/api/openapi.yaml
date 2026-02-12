@@ -1078,7 +1078,7 @@ paths:
         required: true
         schema:
           format: int64
-          type: integer
+          type: string
         style: simple
       - description: Number of items per page
         explode: true
@@ -1607,7 +1607,7 @@ paths:
         required: true
         schema:
           format: int64
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -1668,7 +1668,7 @@ paths:
         required: true
         schema:
           format: int64
-          type: integer
+          type: string
         style: simple
       responses:
         "204":
@@ -2264,8 +2264,7 @@ paths:
         name: campaignId
         required: true
         schema:
-          format: int64
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -2291,8 +2290,7 @@ paths:
         name: campaignId
         required: true
         schema:
-          format: int64
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -2446,7 +2444,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -2676,7 +2674,7 @@ paths:
         required: true
         schema:
           format: int64
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -3555,7 +3553,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -3582,7 +3580,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       - description: Template Id
         explode: false
@@ -3591,7 +3589,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":
@@ -3619,7 +3617,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -3655,7 +3653,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       responses:
         "200":

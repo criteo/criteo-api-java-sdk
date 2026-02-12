@@ -53,7 +53,6 @@ docs/ColorVariableValue.md
 docs/CommonProblem.md
 docs/CpcRateCardPreview.md
 docs/CpcRateCardPreviewResponse.md
-docs/CreateBalanceV1.md
 docs/Creative2.md
 docs/Creative2Response.md
 docs/CreativeCreateModel2.md
@@ -294,7 +293,6 @@ docs/ValueResourceDisplayAuctionMinBidResult.md
 docs/ValueResourceInputBrandIdSearchRequest.md
 docs/ValueResourceInputDisplayAuctionMinBidRequest.md
 docs/ValueResourceInputLineItemBudgetCapOutHistoryRequest.md
-docs/ValueResourceInputOfCreateBalanceV1.md
 docs/ValueResourceInputOfRetailMediaBrandAccountCreationV2.md
 docs/ValueResourceInputOfRetailMediaBrands.md
 docs/ValueResourceInputOfRetailMediaSellerAccountCreationV2.md
@@ -306,7 +304,6 @@ docs/ValueResourceInputSetProductBuyBoxWinnersRequest.md
 docs/ValueResourceInputUpdateOffersRequest.md
 docs/ValueResourceLineItemBudgetCapOutHistoryRequest.md
 docs/ValueResourceLineItemBudgetCapOutHistoryResponse.md
-docs/ValueResourceOfCreateBalanceV1.md
 docs/ValueResourceOfRetailMediaBrandAccountCreationV2.md
 docs/ValueResourceOfRetailMediaBrands.md
 docs/ValueResourceOfRetailMediaSeller.md
@@ -402,7 +399,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ColorVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CommonProblem.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CpcRateCardPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CpcRateCardPreviewResponse.java
-src/main/java/com/criteo/api/retailmedia/preview/model/CreateBalanceV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Creative2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Creative2Response.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CreativeCreateModel2.java
@@ -640,7 +636,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceDisplayAucti
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputBrandIdSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputDisplayAuctionMinBidRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputLineItemBudgetCapOutHistoryRequest.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfCreateBalanceV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfRetailMediaBrandAccountCreationV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfRetailMediaBrands.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputOfRetailMediaSellerAccountCreationV2.java
@@ -652,7 +647,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputSetProd
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceInputUpdateOffersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceLineItemBudgetCapOutHistoryRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceLineItemBudgetCapOutHistoryResponse.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfCreateBalanceV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfRetailMediaBrandAccountCreationV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfRetailMediaBrands.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceOfRetailMediaSeller.java

@@ -810,7 +810,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | Id of the advertiser
+        String advertiserId = "advertiserId_example"; // String | Id of the advertiser
         try {
             List<AdvertiserAdsetMessage> result = apiInstance.getMarketplaceAdSetsByAdvertiser(advertiserId);
             System.out.println(result);
@@ -830,7 +830,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| Id of the advertiser | |
+| **advertiserId** | **String**| Id of the advertiser | |
 
 ### Return type
 
@@ -899,7 +899,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | Id of the advertiser
+        String advertiserId = "advertiserId_example"; // String | Id of the advertiser
         try {
             AdvertiserInfoMessage result = apiInstance.getMarketplaceAdvertiser(advertiserId);
             System.out.println(result);
@@ -919,7 +919,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| Id of the advertiser | |
+| **advertiserId** | **String**| Id of the advertiser | |
 
 ### Return type
 
@@ -1158,7 +1158,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | Id of the advertiser
+        String advertiserId = "advertiserId_example"; // String | Id of the advertiser
         Long budgetId = 56L; // Long | Return only budgets with given Id
         OffsetDateTime endAfterDate = OffsetDateTime.now(); // OffsetDateTime | Return budgets that end after the given date using the `yyyy-MM-DD` format.              If param is not provided, default behavior is to only return budgets that have not yet ended.
         Long sellerId = 56L; // Long | Return only budgets belonging to given sellerId
@@ -1186,7 +1186,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| Id of the advertiser | |
+| **advertiserId** | **String**| Id of the advertiser | |
 | **budgetId** | **Long**| Return only budgets with given Id | [optional] |
 | **endAfterDate** | **OffsetDateTime**| Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional] |
 | **sellerId** | **Long**| Return only budgets belonging to given sellerId | [optional] |
@@ -1467,7 +1467,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | Id of the advertiser
+        String advertiserId = "advertiserId_example"; // String | Id of the advertiser
         try {
             List<AdvertiserCampaignMessage> result = apiInstance.getMarketplaceCampaignsByAdvertiser(advertiserId);
             System.out.println(result);
@@ -1487,7 +1487,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| Id of the advertiser | |
+| **advertiserId** | **String**| Id of the advertiser | |
 
 ### Return type
 
@@ -1748,7 +1748,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | Id of the advertiser
+        String advertiserId = "advertiserId_example"; // String | Id of the advertiser
         Long sellerId = 56L; // Long | Id of the seller
         Integer campaignId = 56; // Integer | Seller CampaignId
         Integer height = 56; // Integer | Height of the ad to display
@@ -1772,7 +1772,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| Id of the advertiser | |
+| **advertiserId** | **String**| Id of the advertiser | |
 | **sellerId** | **Long**| Id of the seller | |
 | **campaignId** | **Integer**| Seller CampaignId | [optional] |
 | **height** | **Integer**| Height of the ad to display | [optional] |
@@ -1845,7 +1845,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long budgetId = 56L; // Long | Id of the budget.
+        String budgetId = "budgetId_example"; // String | Id of the budget.
         try {
             SellerBudgetMessage result = apiInstance.getMarketplaceSellerBudget(budgetId);
             System.out.println(result);
@@ -1865,7 +1865,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **budgetId** | **Long**| Id of the budget. | |
+| **budgetId** | **String**| Id of the budget. | |
 
 ### Return type
 
@@ -2225,7 +2225,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | Id of the advertiser
+        String advertiserId = "advertiserId_example"; // String | Id of the advertiser
         try {
             List<SellerCampaignMessage> result = apiInstance.getMarketplaceSellerCampaignsByAdvertiser(advertiserId);
             System.out.println(result);
@@ -2245,7 +2245,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| Id of the advertiser | |
+| **advertiserId** | **String**| Id of the advertiser | |
 
 ### Return type
 
@@ -2613,7 +2613,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer advertiserId = 56; // Integer | Id of the advertiser
+        String advertiserId = "advertiserId_example"; // String | Id of the advertiser
         List<String> requestBody = Arrays.asList(); // List<String> | Names of the sellers to associate with new Ids
         Integer partnerId = 56; // Integer | Id of the partner
         try {
@@ -2635,7 +2635,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **Integer**| Id of the advertiser | |
+| **advertiserId** | **String**| Id of the advertiser | |
 | **requestBody** | [**List&lt;String&gt;**](String.md)| Names of the sellers to associate with new Ids | |
 | **partnerId** | **Integer**| Id of the partner | [optional] |
 
@@ -3616,7 +3616,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Long budgetId = 56L; // Long | Id of the budget
+        String budgetId = "budgetId_example"; // String | Id of the budget
         UpdateSellerBudgetMessageBase updateSellerBudgetMessageBase = new UpdateSellerBudgetMessageBase(); // UpdateSellerBudgetMessageBase | 
         try {
             SellerBudgetMessage result = apiInstance.updateMarketplaceSellerBudget(budgetId, updateSellerBudgetMessageBase);
@@ -3637,7 +3637,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **budgetId** | **Long**| Id of the budget | |
+| **budgetId** | **String**| Id of the budget | |
 | **updateSellerBudgetMessageBase** | [**UpdateSellerBudgetMessageBase**](UpdateSellerBudgetMessageBase.md)|  | |
 
 ### Return type

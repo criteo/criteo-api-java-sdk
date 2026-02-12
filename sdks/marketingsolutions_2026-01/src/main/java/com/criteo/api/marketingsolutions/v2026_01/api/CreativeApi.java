@@ -494,7 +494,7 @@ public class CreativeApi {
         <tr><td> 204 </td><td> The ad was deleted. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAdCall(Integer id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAdCall(String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -539,7 +539,7 @@ public class CreativeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAdValidateBeforeCall(Integer id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAdValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteAd(Async)");
@@ -560,7 +560,7 @@ public class CreativeApi {
         <tr><td> 204 </td><td> The ad was deleted. </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteAd(Integer id) throws ApiException {
+    public void deleteAd(String id) throws ApiException {
         deleteAdWithHttpInfo(id);
     }
 
@@ -576,7 +576,7 @@ public class CreativeApi {
         <tr><td> 204 </td><td> The ad was deleted. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteAdWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<Void> deleteAdWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = deleteAdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -594,7 +594,7 @@ public class CreativeApi {
         <tr><td> 204 </td><td> The ad was deleted. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAdAsync(Integer id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteAdAsync(String id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -1274,7 +1274,7 @@ public class CreativeApi {
         <tr><td> 200 </td><td> The found ad is returned. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdCall(Integer id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdCall(String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1320,7 +1320,7 @@ public class CreativeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAdValidateBeforeCall(Integer id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAdValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getAd(Async)");
@@ -1342,7 +1342,7 @@ public class CreativeApi {
         <tr><td> 200 </td><td> The found ad is returned. </td><td>  -  </td></tr>
      </table>
      */
-    public ResourceOutcomeOfAd getAd(Integer id) throws ApiException {
+    public ResourceOutcomeOfAd getAd(String id) throws ApiException {
         ApiResponse<ResourceOutcomeOfAd> localVarResp = getAdWithHttpInfo(id);
         return localVarResp.getData();
     }
@@ -1359,7 +1359,7 @@ public class CreativeApi {
         <tr><td> 200 </td><td> The found ad is returned. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResourceOutcomeOfAd> getAdWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<ResourceOutcomeOfAd> getAdWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = getAdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<ResourceOutcomeOfAd>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1378,7 +1378,7 @@ public class CreativeApi {
         <tr><td> 200 </td><td> The found ad is returned. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdAsync(Integer id, final ApiCallback<ResourceOutcomeOfAd> _callback) throws ApiException {
+    public okhttp3.Call getAdAsync(String id, final ApiCallback<ResourceOutcomeOfAd> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ResourceOutcomeOfAd>(){}.getType();

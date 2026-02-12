@@ -873,7 +873,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        Integer audienceSegmentId = 56; // Integer | The segment ID.
+        String audienceSegmentId = "audienceSegmentId_example"; // String | The segment ID.
         try {
             ContactListStatisticsEntityV1Response result = apiInstance.getAudienceSegmentContactListStatistics(audienceSegmentId);
             System.out.println(result);
@@ -893,7 +893,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceSegmentId** | **Integer**| The segment ID. | |
+| **audienceSegmentId** | **String**| The segment ID. | |
 
 ### Return type
 
