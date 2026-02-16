@@ -15,16 +15,12 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.RecommendedProduct;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,78 +44,62 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * Recommendation response
+ * Price information
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class OnSiteRecoResponse {
-  public static final String SERIALIZED_NAME_EXTRA_INFOS = "extraInfos";
-  @SerializedName(SERIALIZED_NAME_EXTRA_INFOS)
-  private List<Integer> extraInfos = null;
+public class OnSiteRecoPrice {
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private Float amount;
 
-  public static final String SERIALIZED_NAME_PRODUCTS = "products";
-  @SerializedName(SERIALIZED_NAME_PRODUCTS)
-  private List<RecommendedProduct> products = null;
+  public static final String SERIALIZED_NAME_CURRENCY = "currency";
+  @SerializedName(SERIALIZED_NAME_CURRENCY)
+  private String currency;
 
-  public OnSiteRecoResponse() {
+  public OnSiteRecoPrice() {
   }
 
-  public OnSiteRecoResponse extraInfos(List<Integer> extraInfos) {
+  public OnSiteRecoPrice amount(Float amount) {
     
-    this.extraInfos = extraInfos;
-    return this;
-  }
-
-  public OnSiteRecoResponse addExtraInfosItem(Integer extraInfosItem) {
-    if (this.extraInfos == null) {
-      this.extraInfos = null;
-    }
-    this.extraInfos.add(extraInfosItem);
+    this.amount = amount;
     return this;
   }
 
    /**
-   * Additional information in case of warnings, errors...
-   * @return extraInfos
+   * Price amount.
+   * @return amount
   **/
   @javax.annotation.Nullable
 
-  public List<Integer> getExtraInfos() {
-    return extraInfos;
+  public Float getAmount() {
+    return amount;
   }
 
 
-  public void setExtraInfos(List<Integer> extraInfos) {
-    this.extraInfos = extraInfos;
+  public void setAmount(Float amount) {
+    this.amount = amount;
   }
 
 
-  public OnSiteRecoResponse products(List<RecommendedProduct> products) {
+  public OnSiteRecoPrice currency(String currency) {
     
-    this.products = products;
-    return this;
-  }
-
-  public OnSiteRecoResponse addProductsItem(RecommendedProduct productsItem) {
-    if (this.products == null) {
-      this.products = null;
-    }
-    this.products.add(productsItem);
+    this.currency = currency;
     return this;
   }
 
    /**
-   * Recommended products
-   * @return products
+   * Price currency in ISO 4217 format.
+   * @return currency
   **/
   @javax.annotation.Nullable
 
-  public List<RecommendedProduct> getProducts() {
-    return products;
+  public String getCurrency() {
+    return currency;
   }
 
 
-  public void setProducts(List<RecommendedProduct> products) {
-    this.products = products;
+  public void setCurrency(String currency) {
+    this.currency = currency;
   }
 
   /**
@@ -135,9 +115,9 @@ public class OnSiteRecoResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the OnSiteRecoResponse instance itself
+   * @return the OnSiteRecoPrice instance itself
    */
-  public OnSiteRecoResponse putAdditionalProperty(String key, Object value) {
+  public OnSiteRecoPrice putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -176,34 +156,23 @@ public class OnSiteRecoResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OnSiteRecoResponse onSiteRecoResponse = (OnSiteRecoResponse) o;
-    return Objects.equals(this.extraInfos, onSiteRecoResponse.extraInfos) &&
-        Objects.equals(this.products, onSiteRecoResponse.products)&&
-        Objects.equals(this.additionalProperties, onSiteRecoResponse.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    OnSiteRecoPrice onSiteRecoPrice = (OnSiteRecoPrice) o;
+    return Objects.equals(this.amount, onSiteRecoPrice.amount) &&
+        Objects.equals(this.currency, onSiteRecoPrice.currency)&&
+        Objects.equals(this.additionalProperties, onSiteRecoPrice.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(extraInfos, products, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(amount, currency, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OnSiteRecoResponse {\n");
-    sb.append("    extraInfos: ").append(toIndentedString(extraInfos)).append("\n");
-    sb.append("    products: ").append(toIndentedString(products)).append("\n");
+    sb.append("class OnSiteRecoPrice {\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -227,8 +196,8 @@ public class OnSiteRecoResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("extraInfos");
-    openapiFields.add("products");
+    openapiFields.add("amount");
+    openapiFields.add("currency");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -238,31 +207,16 @@ public class OnSiteRecoResponse {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to OnSiteRecoResponse
+  * @throws IOException if the JSON Object is invalid with respect to OnSiteRecoPrice
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!OnSiteRecoResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OnSiteRecoResponse is not found in the empty JSON string", OnSiteRecoResponse.openapiRequiredFields.toString()));
+        if (!OnSiteRecoPrice.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in OnSiteRecoPrice is not found in the empty JSON string", OnSiteRecoPrice.openapiRequiredFields.toString()));
         }
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("extraInfos") != null && !jsonObj.get("extraInfos").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `extraInfos` to be an array in the JSON string but got `%s`", jsonObj.get("extraInfos").toString()));
-      }
-      if (jsonObj.get("products") != null && !jsonObj.get("products").isJsonNull()) {
-        JsonArray jsonArrayproducts = jsonObj.getAsJsonArray("products");
-        if (jsonArrayproducts != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("products").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `products` to be an array in the JSON string but got `%s`", jsonObj.get("products").toString()));
-          }
-
-          // validate the optional field `products` (array)
-          for (int i = 0; i < jsonArrayproducts.size(); i++) {
-            RecommendedProduct.validateJsonObject(jsonArrayproducts.get(i).getAsJsonObject());
-          };
-        }
+      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
   }
 
@@ -270,16 +224,16 @@ public class OnSiteRecoResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!OnSiteRecoResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'OnSiteRecoResponse' and its subtypes
+       if (!OnSiteRecoPrice.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OnSiteRecoPrice' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<OnSiteRecoResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(OnSiteRecoResponse.class));
+       final TypeAdapter<OnSiteRecoPrice> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OnSiteRecoPrice.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<OnSiteRecoResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<OnSiteRecoPrice>() {
            @Override
-           public void write(JsonWriter out, OnSiteRecoResponse value) throws IOException {
+           public void write(JsonWriter out, OnSiteRecoPrice value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -302,11 +256,11 @@ public class OnSiteRecoResponse {
            }
 
            @Override
-           public OnSiteRecoResponse read(JsonReader in) throws IOException {
+           public OnSiteRecoPrice read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             OnSiteRecoResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             OnSiteRecoPrice instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -333,18 +287,18 @@ public class OnSiteRecoResponse {
   }
 
  /**
-  * Create an instance of OnSiteRecoResponse given an JSON string
+  * Create an instance of OnSiteRecoPrice given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of OnSiteRecoResponse
-  * @throws IOException if the JSON string is invalid with respect to OnSiteRecoResponse
+  * @return An instance of OnSiteRecoPrice
+  * @throws IOException if the JSON string is invalid with respect to OnSiteRecoPrice
   */
-  public static OnSiteRecoResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, OnSiteRecoResponse.class);
+  public static OnSiteRecoPrice fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OnSiteRecoPrice.class);
   }
 
  /**
-  * Convert an instance of OnSiteRecoResponse to an JSON string
+  * Convert an instance of OnSiteRecoPrice to an JSON string
   *
   * @return JSON string
   */

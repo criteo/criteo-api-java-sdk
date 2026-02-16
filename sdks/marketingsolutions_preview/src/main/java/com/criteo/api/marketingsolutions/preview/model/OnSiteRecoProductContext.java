@@ -15,13 +15,13 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.preview.model.OnSiteRecoPrice;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,29 +45,25 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * Represents a recommended product.
+ * Information about a product used as context for conversational recommendation
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class RecommendedProduct {
-  public static final String SERIALIZED_NAME_ALTERNATIVE_CLICK_URL = "alternativeClickUrl";
-  @SerializedName(SERIALIZED_NAME_ALTERNATIVE_CLICK_URL)
-  private String alternativeClickUrl;
+public class OnSiteRecoProductContext {
+  public static final String SERIALIZED_NAME_BRAND = "brand";
+  @SerializedName(SERIALIZED_NAME_BRAND)
+  private String brand;
 
-  public static final String SERIALIZED_NAME_CLICK_URL = "clickUrl";
-  @SerializedName(SERIALIZED_NAME_CLICK_URL)
-  private String clickUrl;
+  public static final String SERIALIZED_NAME_CATEGORY = "category";
+  @SerializedName(SERIALIZED_NAME_CATEGORY)
+  private String category;
+
+  public static final String SERIALIZED_NAME_COLOR = "color";
+  @SerializedName(SERIALIZED_NAME_COLOR)
+  private String color;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
-
-  public static final String SERIALIZED_NAME_GOOGLE_CATEGORY = "googleCategory";
-  @SerializedName(SERIALIZED_NAME_GOOGLE_CATEGORY)
-  private String googleCategory;
-
-  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
-  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
-  private String imageUrl;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -75,64 +71,86 @@ public class RecommendedProduct {
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
-  private Double price;
+  private OnSiteRecoPrice price;
 
-  public static final String SERIALIZED_NAME_PRODUCT_EXTERNAL_ID = "productExternalId";
-  @SerializedName(SERIALIZED_NAME_PRODUCT_EXTERNAL_ID)
-  private String productExternalId;
+  public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
+  private String productId;
 
-  public static final String SERIALIZED_NAME_RETAIL_PRICE = "retailPrice";
-  @SerializedName(SERIALIZED_NAME_RETAIL_PRICE)
-  private Double retailPrice;
+  public static final String SERIALIZED_NAME_SIZE = "size";
+  @SerializedName(SERIALIZED_NAME_SIZE)
+  private String size;
 
-  public RecommendedProduct() {
+  public OnSiteRecoProductContext() {
   }
 
-  public RecommendedProduct alternativeClickUrl(String alternativeClickUrl) {
+  public OnSiteRecoProductContext brand(String brand) {
     
-    this.alternativeClickUrl = alternativeClickUrl;
+    this.brand = brand;
     return this;
   }
 
    /**
-   * Url leading to product details page and also used to track user click. It&#39;s relying on a custom product URL field in the catalog.
-   * @return alternativeClickUrl
+   * Product brand.
+   * @return brand
   **/
   @javax.annotation.Nullable
 
-  public String getAlternativeClickUrl() {
-    return alternativeClickUrl;
+  public String getBrand() {
+    return brand;
   }
 
 
-  public void setAlternativeClickUrl(String alternativeClickUrl) {
-    this.alternativeClickUrl = alternativeClickUrl;
+  public void setBrand(String brand) {
+    this.brand = brand;
   }
 
 
-  public RecommendedProduct clickUrl(String clickUrl) {
+  public OnSiteRecoProductContext category(String category) {
     
-    this.clickUrl = clickUrl;
+    this.category = category;
     return this;
   }
 
    /**
-   * Url leading to product details page and also used to track user click
-   * @return clickUrl
+   * Google product category.
+   * @return category
   **/
   @javax.annotation.Nullable
 
-  public String getClickUrl() {
-    return clickUrl;
+  public String getCategory() {
+    return category;
   }
 
 
-  public void setClickUrl(String clickUrl) {
-    this.clickUrl = clickUrl;
+  public void setCategory(String category) {
+    this.category = category;
   }
 
 
-  public RecommendedProduct description(String description) {
+  public OnSiteRecoProductContext color(String color) {
+    
+    this.color = color;
+    return this;
+  }
+
+   /**
+   * Product color.
+   * @return color
+  **/
+  @javax.annotation.Nullable
+
+  public String getColor() {
+    return color;
+  }
+
+
+  public void setColor(String color) {
+    this.color = color;
+  }
+
+
+  public OnSiteRecoProductContext description(String description) {
     
     this.description = description;
     return this;
@@ -154,58 +172,14 @@ public class RecommendedProduct {
   }
 
 
-  public RecommendedProduct googleCategory(String googleCategory) {
-    
-    this.googleCategory = googleCategory;
-    return this;
-  }
-
-   /**
-   * Product google category.
-   * @return googleCategory
-  **/
-  @javax.annotation.Nullable
-
-  public String getGoogleCategory() {
-    return googleCategory;
-  }
-
-
-  public void setGoogleCategory(String googleCategory) {
-    this.googleCategory = googleCategory;
-  }
-
-
-  public RecommendedProduct imageUrl(String imageUrl) {
-    
-    this.imageUrl = imageUrl;
-    return this;
-  }
-
-   /**
-   * Product image.
-   * @return imageUrl
-  **/
-  @javax.annotation.Nullable
-
-  public String getImageUrl() {
-    return imageUrl;
-  }
-
-
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
-  }
-
-
-  public RecommendedProduct name(String name) {
+  public OnSiteRecoProductContext name(String name) {
     
     this.name = name;
     return this;
   }
 
    /**
-   * Product name
+   * Product name.
    * @return name
   **/
   @javax.annotation.Nullable
@@ -220,69 +194,69 @@ public class RecommendedProduct {
   }
 
 
-  public RecommendedProduct price(Double price) {
+  public OnSiteRecoProductContext price(OnSiteRecoPrice price) {
     
     this.price = price;
     return this;
   }
 
    /**
-   * Product price.
+   * Get price
    * @return price
   **/
   @javax.annotation.Nullable
 
-  public Double getPrice() {
+  public OnSiteRecoPrice getPrice() {
     return price;
   }
 
 
-  public void setPrice(Double price) {
+  public void setPrice(OnSiteRecoPrice price) {
     this.price = price;
   }
 
 
-  public RecommendedProduct productExternalId(String productExternalId) {
+  public OnSiteRecoProductContext productId(String productId) {
     
-    this.productExternalId = productExternalId;
+    this.productId = productId;
     return this;
   }
 
    /**
-   * Product external id. Same id than what is used in user events
-   * @return productExternalId
+   * Unique identifier of the product matching Criteo Catalog Integration
+   * @return productId
   **/
   @javax.annotation.Nullable
 
-  public String getProductExternalId() {
-    return productExternalId;
+  public String getProductId() {
+    return productId;
   }
 
 
-  public void setProductExternalId(String productExternalId) {
-    this.productExternalId = productExternalId;
+  public void setProductId(String productId) {
+    this.productId = productId;
   }
 
 
-  public RecommendedProduct retailPrice(Double retailPrice) {
+  public OnSiteRecoProductContext size(String size) {
     
-    this.retailPrice = retailPrice;
+    this.size = size;
     return this;
   }
 
    /**
-   * Product retail price.
-   * @return retailPrice
+   * Product size (e.g., M, 42, 500ml).
+   * @return size
   **/
   @javax.annotation.Nullable
 
-  public Double getRetailPrice() {
-    return retailPrice;
+  public String getSize() {
+    return size;
   }
 
 
-  public void setRetailPrice(Double retailPrice) {
-    this.retailPrice = retailPrice;
+  public void setSize(String size) {
+    this.size = size;
   }
 
   /**
@@ -298,9 +272,9 @@ public class RecommendedProduct {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the RecommendedProduct instance itself
+   * @return the OnSiteRecoProductContext instance itself
    */
-  public RecommendedProduct putAdditionalProperty(String key, Object value) {
+  public OnSiteRecoProductContext putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -339,48 +313,35 @@ public class RecommendedProduct {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RecommendedProduct recommendedProduct = (RecommendedProduct) o;
-    return Objects.equals(this.alternativeClickUrl, recommendedProduct.alternativeClickUrl) &&
-        Objects.equals(this.clickUrl, recommendedProduct.clickUrl) &&
-        Objects.equals(this.description, recommendedProduct.description) &&
-        Objects.equals(this.googleCategory, recommendedProduct.googleCategory) &&
-        Objects.equals(this.imageUrl, recommendedProduct.imageUrl) &&
-        Objects.equals(this.name, recommendedProduct.name) &&
-        Objects.equals(this.price, recommendedProduct.price) &&
-        Objects.equals(this.productExternalId, recommendedProduct.productExternalId) &&
-        Objects.equals(this.retailPrice, recommendedProduct.retailPrice)&&
-        Objects.equals(this.additionalProperties, recommendedProduct.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    OnSiteRecoProductContext onSiteRecoProductContext = (OnSiteRecoProductContext) o;
+    return Objects.equals(this.brand, onSiteRecoProductContext.brand) &&
+        Objects.equals(this.category, onSiteRecoProductContext.category) &&
+        Objects.equals(this.color, onSiteRecoProductContext.color) &&
+        Objects.equals(this.description, onSiteRecoProductContext.description) &&
+        Objects.equals(this.name, onSiteRecoProductContext.name) &&
+        Objects.equals(this.price, onSiteRecoProductContext.price) &&
+        Objects.equals(this.productId, onSiteRecoProductContext.productId) &&
+        Objects.equals(this.size, onSiteRecoProductContext.size)&&
+        Objects.equals(this.additionalProperties, onSiteRecoProductContext.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(alternativeClickUrl, clickUrl, description, googleCategory, imageUrl, name, price, productExternalId, retailPrice, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(brand, category, color, description, name, price, productId, size, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RecommendedProduct {\n");
-    sb.append("    alternativeClickUrl: ").append(toIndentedString(alternativeClickUrl)).append("\n");
-    sb.append("    clickUrl: ").append(toIndentedString(clickUrl)).append("\n");
+    sb.append("class OnSiteRecoProductContext {\n");
+    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    googleCategory: ").append(toIndentedString(googleCategory)).append("\n");
-    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
-    sb.append("    productExternalId: ").append(toIndentedString(productExternalId)).append("\n");
-    sb.append("    retailPrice: ").append(toIndentedString(retailPrice)).append("\n");
+    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -404,15 +365,14 @@ public class RecommendedProduct {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("alternativeClickUrl");
-    openapiFields.add("clickUrl");
+    openapiFields.add("brand");
+    openapiFields.add("category");
+    openapiFields.add("color");
     openapiFields.add("description");
-    openapiFields.add("googleCategory");
-    openapiFields.add("imageUrl");
     openapiFields.add("name");
     openapiFields.add("price");
-    openapiFields.add("productExternalId");
-    openapiFields.add("retailPrice");
+    openapiFields.add("productId");
+    openapiFields.add("size");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -422,34 +382,38 @@ public class RecommendedProduct {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to RecommendedProduct
+  * @throws IOException if the JSON Object is invalid with respect to OnSiteRecoProductContext
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!RecommendedProduct.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RecommendedProduct is not found in the empty JSON string", RecommendedProduct.openapiRequiredFields.toString()));
+        if (!OnSiteRecoProductContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in OnSiteRecoProductContext is not found in the empty JSON string", OnSiteRecoProductContext.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("alternativeClickUrl") != null && !jsonObj.get("alternativeClickUrl").isJsonNull()) && !jsonObj.get("alternativeClickUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `alternativeClickUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("alternativeClickUrl").toString()));
+      if ((jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonNull()) && !jsonObj.get("brand").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brand").toString()));
       }
-      if ((jsonObj.get("clickUrl") != null && !jsonObj.get("clickUrl").isJsonNull()) && !jsonObj.get("clickUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clickUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickUrl").toString()));
+      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
+      }
+      if ((jsonObj.get("color") != null && !jsonObj.get("color").isJsonNull()) && !jsonObj.get("color").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `color` to be a primitive type in the JSON string but got `%s`", jsonObj.get("color").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("googleCategory") != null && !jsonObj.get("googleCategory").isJsonNull()) && !jsonObj.get("googleCategory").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `googleCategory` to be a primitive type in the JSON string but got `%s`", jsonObj.get("googleCategory").toString()));
-      }
-      if ((jsonObj.get("imageUrl") != null && !jsonObj.get("imageUrl").isJsonNull()) && !jsonObj.get("imageUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageUrl").toString()));
-      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("productExternalId") != null && !jsonObj.get("productExternalId").isJsonNull()) && !jsonObj.get("productExternalId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `productExternalId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productExternalId").toString()));
+      // validate the optional field `price`
+      if (jsonObj.get("price") != null && !jsonObj.get("price").isJsonNull()) {
+        OnSiteRecoPrice.validateJsonObject(jsonObj.getAsJsonObject("price"));
+      }
+      if ((jsonObj.get("productId") != null && !jsonObj.get("productId").isJsonNull()) && !jsonObj.get("productId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productId").toString()));
+      }
+      if ((jsonObj.get("size") != null && !jsonObj.get("size").isJsonNull()) && !jsonObj.get("size").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `size` to be a primitive type in the JSON string but got `%s`", jsonObj.get("size").toString()));
       }
   }
 
@@ -457,16 +421,16 @@ public class RecommendedProduct {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RecommendedProduct.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RecommendedProduct' and its subtypes
+       if (!OnSiteRecoProductContext.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OnSiteRecoProductContext' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RecommendedProduct> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RecommendedProduct.class));
+       final TypeAdapter<OnSiteRecoProductContext> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OnSiteRecoProductContext.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RecommendedProduct>() {
+       return (TypeAdapter<T>) new TypeAdapter<OnSiteRecoProductContext>() {
            @Override
-           public void write(JsonWriter out, RecommendedProduct value) throws IOException {
+           public void write(JsonWriter out, OnSiteRecoProductContext value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -489,11 +453,11 @@ public class RecommendedProduct {
            }
 
            @Override
-           public RecommendedProduct read(JsonReader in) throws IOException {
+           public OnSiteRecoProductContext read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             RecommendedProduct instance = thisAdapter.fromJsonTree(jsonObj);
+             OnSiteRecoProductContext instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -520,18 +484,18 @@ public class RecommendedProduct {
   }
 
  /**
-  * Create an instance of RecommendedProduct given an JSON string
+  * Create an instance of OnSiteRecoProductContext given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of RecommendedProduct
-  * @throws IOException if the JSON string is invalid with respect to RecommendedProduct
+  * @return An instance of OnSiteRecoProductContext
+  * @throws IOException if the JSON string is invalid with respect to OnSiteRecoProductContext
   */
-  public static RecommendedProduct fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RecommendedProduct.class);
+  public static OnSiteRecoProductContext fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OnSiteRecoProductContext.class);
   }
 
  /**
-  * Convert an instance of RecommendedProduct to an JSON string
+  * Convert an instance of OnSiteRecoProductContext to an JSON string
   *
   * @return JSON string
   */

@@ -2,7 +2,7 @@
 
 # OnSiteRecoResponse
 
-Recommendation response.
+Recommendation response
 
 ## Properties
 

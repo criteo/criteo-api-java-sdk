@@ -3104,13 +3104,38 @@ paths:
     post:
       description: "Retrieves a list of products recommended for the given user. This\
         \ end point can either rely on a Criteo UserId, or a list of user events to\
-        \ perform the recommendation."
+        \ perform the recommendation"
       operationId: SearchRecommendedProducts
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/OnSiteRecoRequest'
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnSiteRecoResponse'
+          description: Success
+      security:
+      - oauth:
+        - MarketingSolutions_OnSiteRecommendation_Read
+      tags:
+      - OnSiteRecommendation
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/recommendation/search-conversational:
+    post:
+      description: Retrieves a list of products recommended for the given user based
+        on a conversation between a user and a partner's agent
+      operationId: SearchRecommendedProductsConversational
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OnSiteRecoRequestConversational'
         x-bodyName: request
       responses:
         "200":
@@ -4421,9 +4446,40 @@ components:
           nullable: true
           type: array
       type: object
+    AdSetSearchRequestMetadataV26Q1:
+      description: Optional metadata for searching ad sets
+      example:
+        fields:
+        - Name
+        - Name
+      properties:
+        fields:
+          items:
+            enum:
+            - Name
+            - AdvertiserId
+            - DatasetId
+            - CampaignId
+            - DestinationEnvironment
+            - Objective
+            - Schedule
+            - Bidding
+            - Targeting
+            - Budget
+            - MediaType
+            - VideoChannel
+            - AttributionConfiguration
+            type: string
+          nullable: true
+          type: array
+      type: object
     AdSetSearchRequestV26Q1:
       description: request payload of the search endpoint
       example:
+        meta:
+          fields:
+          - Name
+          - Name
         filters:
           adSetIds:
           - adSetIds
@@ -4437,6 +4493,8 @@ components:
       properties:
         filters:
           $ref: '#/components/schemas/AdSetSearchFilterV26Q1'
+        meta:
+          $ref: '#/components/schemas/AdSetSearchRequestMetadataV26Q1'
       type: object
     AdSetTargetingDealIds:
       description: Ad set Deal Id targeting model
@@ -13743,8 +13801,72 @@ components:
           nullable: true
           type: string
       type: object
+    OnSiteRecoChatMessage:
+      description: Chat message of conversation
+      example:
+        role: role
+        content: content
+      properties:
+        content:
+          type: string
+        role:
+          type: string
+      type: object
+    OnSiteRecoPrice:
+      description: Price information
+      example:
+        amount: 5.637377
+        currency: currency
+      properties:
+        amount:
+          description: Price amount.
+          format: float
+          type: number
+        currency:
+          description: Price currency in ISO 4217 format.
+          type: string
+      type: object
+    OnSiteRecoProductContext:
+      description: Information about a product used as context for conversational
+        recommendation
+      example:
+        color: color
+        productId: productId
+        size: size
+        price:
+          amount: 5.637377
+          currency: currency
+        name: name
+        description: description
+        category: category
+        brand: brand
+      properties:
+        brand:
+          description: Product brand.
+          type: string
+        category:
+          description: Google product category.
+          type: string
+        color:
+          description: Product color.
+          type: string
+        description:
+          description: Product description.
+          type: string
+        name:
+          description: Product name.
+          type: string
+        price:
+          $ref: '#/components/schemas/OnSiteRecoPrice'
+        productId:
+          description: Unique identifier of the product matching Criteo Catalog Integration
+          type: string
+        size:
+          description: "Product size (e.g., M, 42, 500ml)."
+          type: string
+      type: object
     OnSiteRecoRequest:
-      description: Recommendation request parameters.
+      description: Recommendation request parameters
       example:
         adId: 0
         identityType: CtoBundle
@@ -13764,12 +13886,13 @@ components:
           format: int32
           type: integer
         identityType:
-          description: "Type of the user identifier (CtoBundle, Idfa, Gaid...)\r\n\
-            Optional if its type is CtoBundle"
+          description: "Type of the user identifier (CtoBundle, Idfa, Gaid...) Optional\
+            \ if its type is CtoBundle"
           enum:
           - CtoBundle
           - Idfa
           - Gaid
+          - InternalUserId
           type: string
         nbRequestedProducts:
           description: Amount of products to recommend.
@@ -13786,8 +13909,68 @@ components:
       - nbRequestedProducts
       - partnerId
       type: object
+    OnSiteRecoRequestConversational:
+      description: Conversational recommendation request parameters
+      example:
+        product:
+          color: color
+          productId: productId
+          size: size
+          price:
+            amount: 5.637377
+            currency: currency
+          name: name
+          description: description
+          category: category
+          brand: brand
+        adId: 0
+        adSetId: 6
+        nbRequestedProducts: 1
+        partnerId: 5
+        userId: userId
+        conversation:
+        - role: role
+          content: content
+        - role: role
+          content: content
+      properties:
+        adId:
+          description: "Id of the Ad. This field is optional, it allows to setup Reco\
+            \ controls at Ad level."
+          format: int32
+          type: integer
+        adSetId:
+          description: Id of the AdSet. This field is optional and is resolved automatically
+            for adsets previously configured.
+          format: int32
+          type: integer
+        conversation:
+          description: Conversation between the user and the agent.
+          items:
+            $ref: '#/components/schemas/OnSiteRecoChatMessage'
+          type: array
+        nbRequestedProducts:
+          description: Amount of products to recommend.
+          format: int32
+          type: integer
+        partnerId:
+          description: Id of the partner.
+          format: int32
+          type: integer
+        product:
+          $ref: '#/components/schemas/OnSiteRecoProductContext'
+        userId:
+          description: Used to retrieve user events from Criteo trackers.
+          type: string
+      required:
+      - adSetId
+      - conversation
+      - nbRequestedProducts
+      - partnerId
+      - userId
+      type: object
     OnSiteRecoResponse:
-      description: Recommendation response.
+      description: Recommendation response
       example:
         extraInfos:
         - 0
@@ -13799,18 +13982,18 @@ components:
           imageUrl: imageUrl
           googleCategory: googleCategory
           name: name
-          retailprice: 1.4658129805029452
           description: description
           alternativeClickUrl: alternativeClickUrl
+          retailPrice: 1.4658129805029452
         - clickUrl: clickUrl
           price: 6.027456183070403
           productExternalId: productExternalId
           imageUrl: imageUrl
           googleCategory: googleCategory
           name: name
-          retailprice: 1.4658129805029452
           description: description
           alternativeClickUrl: alternativeClickUrl
+          retailPrice: 1.4658129805029452
       properties:
         extraInfos:
           description: "Additional information in case of warnings, errors..."
@@ -16671,9 +16854,9 @@ components:
         imageUrl: imageUrl
         googleCategory: googleCategory
         name: name
-        retailprice: 1.4658129805029452
         description: description
         alternativeClickUrl: alternativeClickUrl
+        retailPrice: 1.4658129805029452
       properties:
         alternativeClickUrl:
           description: Url leading to product details page and also used to track
@@ -16682,7 +16865,7 @@ components:
           type: string
         clickUrl:
           description: Url leading to product details page and also used to track
-            user click. It's relying on the default product URL field in the catalog.
+            user click
           nullable: true
           type: string
         description:
@@ -16698,7 +16881,7 @@ components:
           nullable: true
           type: string
         name:
-          description: Product name.
+          description: Product name
           nullable: true
           type: string
         price:
@@ -16707,10 +16890,10 @@ components:
           nullable: true
           type: number
         productExternalId:
-          description: Product external id. Same id than what is used in user events.
+          description: Product external id. Same id than what is used in user events
           nullable: true
           type: string
-        retailprice:
+        retailPrice:
           description: Product retail price.
           format: double
           nullable: true

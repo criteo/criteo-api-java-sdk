@@ -21,6 +21,7 @@ docs/AdSetDisplayMultiplierResource.md
 docs/AdSetFrequencyCappingV26Q1.md
 docs/AdSetGeoLocationV26Q1.md
 docs/AdSetSearchFilterV26Q1.md
+docs/AdSetSearchRequestMetadataV26Q1.md
 docs/AdSetSearchRequestV26Q1.md
 docs/AdSetTargetingDealIds.md
 docs/AdSetTargetingDealIdsDisableResultResource.md
@@ -251,7 +252,11 @@ docs/NillableDecimal.md
 docs/NillableGenderV1.md
 docs/NillableInt32.md
 docs/NillableString.md
+docs/OnSiteRecoChatMessage.md
+docs/OnSiteRecoPrice.md
+docs/OnSiteRecoProductContext.md
 docs/OnSiteRecoRequest.md
+docs/OnSiteRecoRequestConversational.md
 docs/OnSiteRecoResponse.md
 docs/OnSiteRecommendationApi.md
 docs/Outcome.md
@@ -445,6 +450,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetDisplayMultip
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetFrequencyCappingV26Q1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetGeoLocationV26Q1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetSearchFilterV26Q1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetSearchRequestMetadataV26Q1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetSearchRequestV26Q1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingDealIds.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingDealIdsDisableResultResource.java
@@ -668,7 +674,11 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDecimal.ja
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableGenderV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableInt32.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableString.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoChatMessage.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoPrice.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoProductContext.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoRequest.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoRequestConversational.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Outcome.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchAdSetAttributionConfigurationV26Q1.java

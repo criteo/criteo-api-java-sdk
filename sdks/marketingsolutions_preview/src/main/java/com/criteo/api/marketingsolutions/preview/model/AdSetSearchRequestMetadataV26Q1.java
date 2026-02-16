@@ -15,7 +15,6 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.RecommendedProduct;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -48,78 +47,113 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * Recommendation response
+ * Optional metadata for searching ad sets
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class OnSiteRecoResponse {
-  public static final String SERIALIZED_NAME_EXTRA_INFOS = "extraInfos";
-  @SerializedName(SERIALIZED_NAME_EXTRA_INFOS)
-  private List<Integer> extraInfos = null;
+public class AdSetSearchRequestMetadataV26Q1 {
+  /**
+   * Gets or Sets fields
+   */
+  @JsonAdapter(FieldsEnum.Adapter.class)
+  public enum FieldsEnum {
+    NAME("Name"),
+    
+    ADVERTISERID("AdvertiserId"),
+    
+    DATASETID("DatasetId"),
+    
+    CAMPAIGNID("CampaignId"),
+    
+    DESTINATIONENVIRONMENT("DestinationEnvironment"),
+    
+    OBJECTIVE("Objective"),
+    
+    SCHEDULE("Schedule"),
+    
+    BIDDING("Bidding"),
+    
+    TARGETING("Targeting"),
+    
+    BUDGET("Budget"),
+    
+    MEDIATYPE("MediaType"),
+    
+    VIDEOCHANNEL("VideoChannel"),
+    
+    ATTRIBUTIONCONFIGURATION("AttributionConfiguration");
 
-  public static final String SERIALIZED_NAME_PRODUCTS = "products";
-  @SerializedName(SERIALIZED_NAME_PRODUCTS)
-  private List<RecommendedProduct> products = null;
+    private String value;
 
-  public OnSiteRecoResponse() {
+    FieldsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FieldsEnum fromValue(String value) {
+      for (FieldsEnum b : FieldsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FieldsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FieldsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FieldsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FieldsEnum.fromValue(value);
+      }
+    }
   }
 
-  public OnSiteRecoResponse extraInfos(List<Integer> extraInfos) {
+  public static final String SERIALIZED_NAME_FIELDS = "fields";
+  @SerializedName(SERIALIZED_NAME_FIELDS)
+  private List<FieldsEnum> fields = null;
+
+  public AdSetSearchRequestMetadataV26Q1() {
+  }
+
+  public AdSetSearchRequestMetadataV26Q1 fields(List<FieldsEnum> fields) {
     
-    this.extraInfos = extraInfos;
+    this.fields = fields;
     return this;
   }
 
-  public OnSiteRecoResponse addExtraInfosItem(Integer extraInfosItem) {
-    if (this.extraInfos == null) {
-      this.extraInfos = null;
+  public AdSetSearchRequestMetadataV26Q1 addFieldsItem(FieldsEnum fieldsItem) {
+    if (this.fields == null) {
+      this.fields = null;
     }
-    this.extraInfos.add(extraInfosItem);
+    this.fields.add(fieldsItem);
     return this;
   }
 
    /**
-   * Additional information in case of warnings, errors...
-   * @return extraInfos
+   * Get fields
+   * @return fields
   **/
   @javax.annotation.Nullable
 
-  public List<Integer> getExtraInfos() {
-    return extraInfos;
+  public List<FieldsEnum> getFields() {
+    return fields;
   }
 
 
-  public void setExtraInfos(List<Integer> extraInfos) {
-    this.extraInfos = extraInfos;
-  }
-
-
-  public OnSiteRecoResponse products(List<RecommendedProduct> products) {
-    
-    this.products = products;
-    return this;
-  }
-
-  public OnSiteRecoResponse addProductsItem(RecommendedProduct productsItem) {
-    if (this.products == null) {
-      this.products = null;
-    }
-    this.products.add(productsItem);
-    return this;
-  }
-
-   /**
-   * Recommended products
-   * @return products
-  **/
-  @javax.annotation.Nullable
-
-  public List<RecommendedProduct> getProducts() {
-    return products;
-  }
-
-
-  public void setProducts(List<RecommendedProduct> products) {
-    this.products = products;
+  public void setFields(List<FieldsEnum> fields) {
+    this.fields = fields;
   }
 
   /**
@@ -135,9 +169,9 @@ public class OnSiteRecoResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the OnSiteRecoResponse instance itself
+   * @return the AdSetSearchRequestMetadataV26Q1 instance itself
    */
-  public OnSiteRecoResponse putAdditionalProperty(String key, Object value) {
+  public AdSetSearchRequestMetadataV26Q1 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -176,10 +210,9 @@ public class OnSiteRecoResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OnSiteRecoResponse onSiteRecoResponse = (OnSiteRecoResponse) o;
-    return Objects.equals(this.extraInfos, onSiteRecoResponse.extraInfos) &&
-        Objects.equals(this.products, onSiteRecoResponse.products)&&
-        Objects.equals(this.additionalProperties, onSiteRecoResponse.additionalProperties);
+    AdSetSearchRequestMetadataV26Q1 adSetSearchRequestMetadataV26Q1 = (AdSetSearchRequestMetadataV26Q1) o;
+    return Objects.equals(this.fields, adSetSearchRequestMetadataV26Q1.fields)&&
+        Objects.equals(this.additionalProperties, adSetSearchRequestMetadataV26Q1.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -188,7 +221,7 @@ public class OnSiteRecoResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(extraInfos, products, additionalProperties);
+    return Objects.hash(fields, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -201,9 +234,8 @@ public class OnSiteRecoResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OnSiteRecoResponse {\n");
-    sb.append("    extraInfos: ").append(toIndentedString(extraInfos)).append("\n");
-    sb.append("    products: ").append(toIndentedString(products)).append("\n");
+    sb.append("class AdSetSearchRequestMetadataV26Q1 {\n");
+    sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -227,8 +259,7 @@ public class OnSiteRecoResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("extraInfos");
-    openapiFields.add("products");
+    openapiFields.add("fields");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -238,31 +269,17 @@ public class OnSiteRecoResponse {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to OnSiteRecoResponse
+  * @throws IOException if the JSON Object is invalid with respect to AdSetSearchRequestMetadataV26Q1
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!OnSiteRecoResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OnSiteRecoResponse is not found in the empty JSON string", OnSiteRecoResponse.openapiRequiredFields.toString()));
+        if (!AdSetSearchRequestMetadataV26Q1.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AdSetSearchRequestMetadataV26Q1 is not found in the empty JSON string", AdSetSearchRequestMetadataV26Q1.openapiRequiredFields.toString()));
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("extraInfos") != null && !jsonObj.get("extraInfos").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `extraInfos` to be an array in the JSON string but got `%s`", jsonObj.get("extraInfos").toString()));
-      }
-      if (jsonObj.get("products") != null && !jsonObj.get("products").isJsonNull()) {
-        JsonArray jsonArrayproducts = jsonObj.getAsJsonArray("products");
-        if (jsonArrayproducts != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("products").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `products` to be an array in the JSON string but got `%s`", jsonObj.get("products").toString()));
-          }
-
-          // validate the optional field `products` (array)
-          for (int i = 0; i < jsonArrayproducts.size(); i++) {
-            RecommendedProduct.validateJsonObject(jsonArrayproducts.get(i).getAsJsonObject());
-          };
-        }
+      if (jsonObj.get("fields") != null && !jsonObj.get("fields").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fields` to be an array in the JSON string but got `%s`", jsonObj.get("fields").toString()));
       }
   }
 
@@ -270,16 +287,16 @@ public class OnSiteRecoResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!OnSiteRecoResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'OnSiteRecoResponse' and its subtypes
+       if (!AdSetSearchRequestMetadataV26Q1.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AdSetSearchRequestMetadataV26Q1' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<OnSiteRecoResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(OnSiteRecoResponse.class));
+       final TypeAdapter<AdSetSearchRequestMetadataV26Q1> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AdSetSearchRequestMetadataV26Q1.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<OnSiteRecoResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<AdSetSearchRequestMetadataV26Q1>() {
            @Override
-           public void write(JsonWriter out, OnSiteRecoResponse value) throws IOException {
+           public void write(JsonWriter out, AdSetSearchRequestMetadataV26Q1 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -302,11 +319,11 @@ public class OnSiteRecoResponse {
            }
 
            @Override
-           public OnSiteRecoResponse read(JsonReader in) throws IOException {
+           public AdSetSearchRequestMetadataV26Q1 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             OnSiteRecoResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             AdSetSearchRequestMetadataV26Q1 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -333,18 +350,18 @@ public class OnSiteRecoResponse {
   }
 
  /**
-  * Create an instance of OnSiteRecoResponse given an JSON string
+  * Create an instance of AdSetSearchRequestMetadataV26Q1 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of OnSiteRecoResponse
-  * @throws IOException if the JSON string is invalid with respect to OnSiteRecoResponse
+  * @return An instance of AdSetSearchRequestMetadataV26Q1
+  * @throws IOException if the JSON string is invalid with respect to AdSetSearchRequestMetadataV26Q1
   */
-  public static OnSiteRecoResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, OnSiteRecoResponse.class);
+  public static AdSetSearchRequestMetadataV26Q1 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AdSetSearchRequestMetadataV26Q1.class);
   }
 
  /**
-  * Convert an instance of OnSiteRecoResponse to an JSON string
+  * Convert an instance of AdSetSearchRequestMetadataV26Q1 to an JSON string
   *
   * @return JSON string
   */

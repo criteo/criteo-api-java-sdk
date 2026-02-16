@@ -15,12 +15,16 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.preview.model.OnSiteRecoChatMessage;
+import com.criteo.api.marketingsolutions.preview.model.OnSiteRecoProductContext;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -44,10 +48,10 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * Recommendation request parameters
+ * Conversational recommendation request parameters
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class OnSiteRecoRequest {
+public class OnSiteRecoRequestConversational {
   public static final String SERIALIZED_NAME_AD_ID = "adId";
   @SerializedName(SERIALIZED_NAME_AD_ID)
   private Integer adId;
@@ -56,60 +60,9 @@ public class OnSiteRecoRequest {
   @SerializedName(SERIALIZED_NAME_AD_SET_ID)
   private Integer adSetId;
 
-  /**
-   * Type of the user identifier (CtoBundle, Idfa, Gaid...) Optional if its type is CtoBundle
-   */
-  @JsonAdapter(IdentityTypeEnum.Adapter.class)
-  public enum IdentityTypeEnum {
-    CTOBUNDLE("CtoBundle"),
-    
-    IDFA("Idfa"),
-    
-    GAID("Gaid"),
-    
-    INTERNALUSERID("InternalUserId");
-
-    private String value;
-
-    IdentityTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static IdentityTypeEnum fromValue(String value) {
-      for (IdentityTypeEnum b : IdentityTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<IdentityTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final IdentityTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public IdentityTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return IdentityTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_IDENTITY_TYPE = "identityType";
-  @SerializedName(SERIALIZED_NAME_IDENTITY_TYPE)
-  private IdentityTypeEnum identityType;
+  public static final String SERIALIZED_NAME_CONVERSATION = "conversation";
+  @SerializedName(SERIALIZED_NAME_CONVERSATION)
+  private List<OnSiteRecoChatMessage> conversation = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NB_REQUESTED_PRODUCTS = "nbRequestedProducts";
   @SerializedName(SERIALIZED_NAME_NB_REQUESTED_PRODUCTS)
@@ -119,14 +72,18 @@ public class OnSiteRecoRequest {
   @SerializedName(SERIALIZED_NAME_PARTNER_ID)
   private Integer partnerId;
 
+  public static final String SERIALIZED_NAME_PRODUCT = "product";
+  @SerializedName(SERIALIZED_NAME_PRODUCT)
+  private OnSiteRecoProductContext product;
+
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
-  public OnSiteRecoRequest() {
+  public OnSiteRecoRequestConversational() {
   }
 
-  public OnSiteRecoRequest adId(Integer adId) {
+  public OnSiteRecoRequestConversational adId(Integer adId) {
     
     this.adId = adId;
     return this;
@@ -148,7 +105,7 @@ public class OnSiteRecoRequest {
   }
 
 
-  public OnSiteRecoRequest adSetId(Integer adSetId) {
+  public OnSiteRecoRequestConversational adSetId(Integer adSetId) {
     
     this.adSetId = adSetId;
     return this;
@@ -158,7 +115,7 @@ public class OnSiteRecoRequest {
    * Id of the AdSet. This field is optional and is resolved automatically for adsets previously configured.
    * @return adSetId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public Integer getAdSetId() {
     return adSetId;
@@ -170,29 +127,34 @@ public class OnSiteRecoRequest {
   }
 
 
-  public OnSiteRecoRequest identityType(IdentityTypeEnum identityType) {
+  public OnSiteRecoRequestConversational conversation(List<OnSiteRecoChatMessage> conversation) {
     
-    this.identityType = identityType;
+    this.conversation = conversation;
+    return this;
+  }
+
+  public OnSiteRecoRequestConversational addConversationItem(OnSiteRecoChatMessage conversationItem) {
+    this.conversation.add(conversationItem);
     return this;
   }
 
    /**
-   * Type of the user identifier (CtoBundle, Idfa, Gaid...) Optional if its type is CtoBundle
-   * @return identityType
+   * Conversation between the user and the agent.
+   * @return conversation
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public IdentityTypeEnum getIdentityType() {
-    return identityType;
+  public List<OnSiteRecoChatMessage> getConversation() {
+    return conversation;
   }
 
 
-  public void setIdentityType(IdentityTypeEnum identityType) {
-    this.identityType = identityType;
+  public void setConversation(List<OnSiteRecoChatMessage> conversation) {
+    this.conversation = conversation;
   }
 
 
-  public OnSiteRecoRequest nbRequestedProducts(Integer nbRequestedProducts) {
+  public OnSiteRecoRequestConversational nbRequestedProducts(Integer nbRequestedProducts) {
     
     this.nbRequestedProducts = nbRequestedProducts;
     return this;
@@ -214,7 +176,7 @@ public class OnSiteRecoRequest {
   }
 
 
-  public OnSiteRecoRequest partnerId(Integer partnerId) {
+  public OnSiteRecoRequestConversational partnerId(Integer partnerId) {
     
     this.partnerId = partnerId;
     return this;
@@ -236,7 +198,29 @@ public class OnSiteRecoRequest {
   }
 
 
-  public OnSiteRecoRequest userId(String userId) {
+  public OnSiteRecoRequestConversational product(OnSiteRecoProductContext product) {
+    
+    this.product = product;
+    return this;
+  }
+
+   /**
+   * Get product
+   * @return product
+  **/
+  @javax.annotation.Nullable
+
+  public OnSiteRecoProductContext getProduct() {
+    return product;
+  }
+
+
+  public void setProduct(OnSiteRecoProductContext product) {
+    this.product = product;
+  }
+
+
+  public OnSiteRecoRequestConversational userId(String userId) {
     
     this.userId = userId;
     return this;
@@ -246,7 +230,7 @@ public class OnSiteRecoRequest {
    * Used to retrieve user events from Criteo trackers.
    * @return userId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getUserId() {
     return userId;
@@ -270,9 +254,9 @@ public class OnSiteRecoRequest {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the OnSiteRecoRequest instance itself
+   * @return the OnSiteRecoRequestConversational instance itself
    */
-  public OnSiteRecoRequest putAdditionalProperty(String key, Object value) {
+  public OnSiteRecoRequestConversational putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -311,30 +295,32 @@ public class OnSiteRecoRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OnSiteRecoRequest onSiteRecoRequest = (OnSiteRecoRequest) o;
-    return Objects.equals(this.adId, onSiteRecoRequest.adId) &&
-        Objects.equals(this.adSetId, onSiteRecoRequest.adSetId) &&
-        Objects.equals(this.identityType, onSiteRecoRequest.identityType) &&
-        Objects.equals(this.nbRequestedProducts, onSiteRecoRequest.nbRequestedProducts) &&
-        Objects.equals(this.partnerId, onSiteRecoRequest.partnerId) &&
-        Objects.equals(this.userId, onSiteRecoRequest.userId)&&
-        Objects.equals(this.additionalProperties, onSiteRecoRequest.additionalProperties);
+    OnSiteRecoRequestConversational onSiteRecoRequestConversational = (OnSiteRecoRequestConversational) o;
+    return Objects.equals(this.adId, onSiteRecoRequestConversational.adId) &&
+        Objects.equals(this.adSetId, onSiteRecoRequestConversational.adSetId) &&
+        Objects.equals(this.conversation, onSiteRecoRequestConversational.conversation) &&
+        Objects.equals(this.nbRequestedProducts, onSiteRecoRequestConversational.nbRequestedProducts) &&
+        Objects.equals(this.partnerId, onSiteRecoRequestConversational.partnerId) &&
+        Objects.equals(this.product, onSiteRecoRequestConversational.product) &&
+        Objects.equals(this.userId, onSiteRecoRequestConversational.userId)&&
+        Objects.equals(this.additionalProperties, onSiteRecoRequestConversational.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adId, adSetId, identityType, nbRequestedProducts, partnerId, userId, additionalProperties);
+    return Objects.hash(adId, adSetId, conversation, nbRequestedProducts, partnerId, product, userId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OnSiteRecoRequest {\n");
+    sb.append("class OnSiteRecoRequestConversational {\n");
     sb.append("    adId: ").append(toIndentedString(adId)).append("\n");
     sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
-    sb.append("    identityType: ").append(toIndentedString(identityType)).append("\n");
+    sb.append("    conversation: ").append(toIndentedString(conversation)).append("\n");
     sb.append("    nbRequestedProducts: ").append(toIndentedString(nbRequestedProducts)).append("\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -361,40 +347,55 @@ public class OnSiteRecoRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("adId");
     openapiFields.add("adSetId");
-    openapiFields.add("identityType");
+    openapiFields.add("conversation");
     openapiFields.add("nbRequestedProducts");
     openapiFields.add("partnerId");
+    openapiFields.add("product");
     openapiFields.add("userId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("adSetId");
+    openapiRequiredFields.add("conversation");
     openapiRequiredFields.add("nbRequestedProducts");
     openapiRequiredFields.add("partnerId");
+    openapiRequiredFields.add("userId");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to OnSiteRecoRequest
+  * @throws IOException if the JSON Object is invalid with respect to OnSiteRecoRequestConversational
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!OnSiteRecoRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OnSiteRecoRequest is not found in the empty JSON string", OnSiteRecoRequest.openapiRequiredFields.toString()));
+        if (!OnSiteRecoRequestConversational.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in OnSiteRecoRequestConversational is not found in the empty JSON string", OnSiteRecoRequestConversational.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : OnSiteRecoRequest.openapiRequiredFields) {
+      for (String requiredField : OnSiteRecoRequestConversational.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("identityType") != null && !jsonObj.get("identityType").isJsonNull()) && !jsonObj.get("identityType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identityType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identityType").toString()));
+      // ensure the json data is an array
+      if (!jsonObj.get("conversation").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `conversation` to be an array in the JSON string but got `%s`", jsonObj.get("conversation").toString()));
       }
-      if ((jsonObj.get("userId") != null && !jsonObj.get("userId").isJsonNull()) && !jsonObj.get("userId").isJsonPrimitive()) {
+
+      JsonArray jsonArrayconversation = jsonObj.getAsJsonArray("conversation");
+      // validate the required field `conversation` (array)
+      for (int i = 0; i < jsonArrayconversation.size(); i++) {
+        OnSiteRecoChatMessage.validateJsonObject(jsonArrayconversation.get(i).getAsJsonObject());
+      };
+      // validate the optional field `product`
+      if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
+        OnSiteRecoProductContext.validateJsonObject(jsonObj.getAsJsonObject("product"));
+      }
+      if (!jsonObj.get("userId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `userId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userId").toString()));
       }
   }
@@ -403,16 +404,16 @@ public class OnSiteRecoRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!OnSiteRecoRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'OnSiteRecoRequest' and its subtypes
+       if (!OnSiteRecoRequestConversational.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OnSiteRecoRequestConversational' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<OnSiteRecoRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(OnSiteRecoRequest.class));
+       final TypeAdapter<OnSiteRecoRequestConversational> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OnSiteRecoRequestConversational.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<OnSiteRecoRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<OnSiteRecoRequestConversational>() {
            @Override
-           public void write(JsonWriter out, OnSiteRecoRequest value) throws IOException {
+           public void write(JsonWriter out, OnSiteRecoRequestConversational value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -435,11 +436,11 @@ public class OnSiteRecoRequest {
            }
 
            @Override
-           public OnSiteRecoRequest read(JsonReader in) throws IOException {
+           public OnSiteRecoRequestConversational read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             OnSiteRecoRequest instance = thisAdapter.fromJsonTree(jsonObj);
+             OnSiteRecoRequestConversational instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -466,18 +467,18 @@ public class OnSiteRecoRequest {
   }
 
  /**
-  * Create an instance of OnSiteRecoRequest given an JSON string
+  * Create an instance of OnSiteRecoRequestConversational given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of OnSiteRecoRequest
-  * @throws IOException if the JSON string is invalid with respect to OnSiteRecoRequest
+  * @return An instance of OnSiteRecoRequestConversational
+  * @throws IOException if the JSON string is invalid with respect to OnSiteRecoRequestConversational
   */
-  public static OnSiteRecoRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, OnSiteRecoRequest.class);
+  public static OnSiteRecoRequestConversational fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OnSiteRecoRequestConversational.class);
   }
 
  /**
-  * Convert an instance of OnSiteRecoRequest to an JSON string
+  * Convert an instance of OnSiteRecoRequestConversational to an JSON string
   *
   * @return JSON string
   */

@@ -16,6 +16,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.marketingsolutions.preview.model.AdSetSearchFilterV26Q1;
+import com.criteo.api.marketingsolutions.preview.model.AdSetSearchRequestMetadataV26Q1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -53,6 +54,10 @@ public class AdSetSearchRequestV26Q1 {
   @SerializedName(SERIALIZED_NAME_FILTERS)
   private AdSetSearchFilterV26Q1 filters;
 
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private AdSetSearchRequestMetadataV26Q1 meta;
+
   public AdSetSearchRequestV26Q1() {
   }
 
@@ -75,6 +80,28 @@ public class AdSetSearchRequestV26Q1 {
 
   public void setFilters(AdSetSearchFilterV26Q1 filters) {
     this.filters = filters;
+  }
+
+
+  public AdSetSearchRequestV26Q1 meta(AdSetSearchRequestMetadataV26Q1 meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+
+  public AdSetSearchRequestMetadataV26Q1 getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(AdSetSearchRequestMetadataV26Q1 meta) {
+    this.meta = meta;
   }
 
   /**
@@ -132,13 +159,14 @@ public class AdSetSearchRequestV26Q1 {
       return false;
     }
     AdSetSearchRequestV26Q1 adSetSearchRequestV26Q1 = (AdSetSearchRequestV26Q1) o;
-    return Objects.equals(this.filters, adSetSearchRequestV26Q1.filters)&&
+    return Objects.equals(this.filters, adSetSearchRequestV26Q1.filters) &&
+        Objects.equals(this.meta, adSetSearchRequestV26Q1.meta)&&
         Objects.equals(this.additionalProperties, adSetSearchRequestV26Q1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(filters, additionalProperties);
+    return Objects.hash(filters, meta, additionalProperties);
   }
 
   @Override
@@ -146,6 +174,7 @@ public class AdSetSearchRequestV26Q1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdSetSearchRequestV26Q1 {\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -170,6 +199,7 @@ public class AdSetSearchRequestV26Q1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("filters");
+    openapiFields.add("meta");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -190,6 +220,10 @@ public class AdSetSearchRequestV26Q1 {
       // validate the optional field `filters`
       if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
         AdSetSearchFilterV26Q1.validateJsonObject(jsonObj.getAsJsonObject("filters"));
+      }
+      // validate the optional field `meta`
+      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
+        AdSetSearchRequestMetadataV26Q1.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       }
   }
 
