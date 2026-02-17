@@ -8,6 +8,7 @@ servers:
 security:
 - oauth: []
 tags:
+- name: Gateway
 - name: Segment
 paths:
   /2026-01/commerce-grid/audience-segments:
@@ -256,8 +257,142 @@ paths:
       - Segment
       x-content-type: application/json
       x-accepts: application/json
+  /2026-01/commerce-grid/me:
+    get:
+      description: Get information about the currently logged application
+      operationId: GetCurrentApplication
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationSummaryModelResponse'
+          description: Success
+      security:
+      - oauth: []
+      tags:
+      - Gateway
+      x-accepts: application/json
 components:
   schemas:
+    ApplicationSummaryModel:
+      description: Used for the /me endpoint. Contains information about the currently
+        authenticated application that we accept to give to our clients
+      example:
+        organizationId: 6
+        name: name
+        description: description
+        criteoService: criteoService
+        applicationId: 0
+      nullable: true
+      properties:
+        applicationId:
+          format: int32
+          nullable: true
+          type: integer
+        criteoService:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    ApplicationSummaryModelResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          organizationId: 6
+          name: name
+          description: description
+          criteoService: criteoService
+          applicationId: 0
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ApplicationSummaryModel'
+        type:
+          nullable: true
+          type: string
+      type: object
+    ApplicationSummaryModelResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        data:
+          attributes:
+            organizationId: 6
+            name: name
+            description: description
+            criteoService: criteoService
+            applicationId: 0
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/ApplicationSummaryModelResource'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     AudienceError:
       description: Definition of an audience error
       example:

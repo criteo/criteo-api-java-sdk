@@ -6,6 +6,9 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
+docs/ApplicationSummaryModel.md
+docs/ApplicationSummaryModelResource.md
+docs/ApplicationSummaryModelResponse.md
 docs/AudienceError.md
 docs/AudienceWarning.md
 docs/CgAudienceSegmentBulkCreateInputV1.md
@@ -37,6 +40,7 @@ docs/CommerceGridContactlistOperation.md
 docs/CommerceGridContactlistOperationResponseAttributes.md
 docs/CommerceGridContactlistOperationResponseAttributesAttributes.md
 docs/CommonProblem.md
+docs/GatewayApi.md
 docs/NillableString.md
 docs/SegmentApi.md
 git_push.sh
@@ -62,6 +66,7 @@ src/main/java/com/criteo/api/commercegrid/v2026_01/ProgressResponseBody.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/ServerConfiguration.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/ServerVariable.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/StringUtil.java
+src/main/java/com/criteo/api/commercegrid/v2026_01/api/GatewayApi.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/api/SegmentApi.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/auth/ApiKeyAuth.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/auth/Authentication.java
@@ -72,6 +77,9 @@ src/main/java/com/criteo/api/commercegrid/v2026_01/auth/OAuthFlow.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/auth/OAuthOkHttpClient.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/auth/RetryingOAuth.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/model/AbstractOpenApiSchema.java
+src/main/java/com/criteo/api/commercegrid/v2026_01/model/ApplicationSummaryModel.java
+src/main/java/com/criteo/api/commercegrid/v2026_01/model/ApplicationSummaryModelResource.java
+src/main/java/com/criteo/api/commercegrid/v2026_01/model/ApplicationSummaryModelResponse.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/model/AudienceError.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/model/AudienceWarning.java
 src/main/java/com/criteo/api/commercegrid/v2026_01/model/CgAudienceSegmentBulkCreateInputV1.java

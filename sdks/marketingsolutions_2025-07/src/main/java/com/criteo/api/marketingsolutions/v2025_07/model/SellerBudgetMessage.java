@@ -22,7 +22,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -87,7 +87,7 @@ public class SellerBudgetMessage {
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
-  private OffsetDateTime startDate;
+  private LocalDate startDate;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -280,7 +280,7 @@ public class SellerBudgetMessage {
   }
 
 
-  public SellerBudgetMessage startDate(OffsetDateTime startDate) {
+  public SellerBudgetMessage startDate(LocalDate startDate) {
     
     this.startDate = startDate;
     return this;
@@ -292,12 +292,12 @@ public class SellerBudgetMessage {
   **/
   @javax.annotation.Nullable
 
-  public OffsetDateTime getStartDate() {
+  public LocalDate getStartDate() {
     return startDate;
   }
 
 
-  public void setStartDate(OffsetDateTime startDate) {
+  public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
   }
 

@@ -16,7 +16,7 @@ Budget are used to specify budget constraints for one or more Seller-Campaigns o
 |**isSuspended** | **Boolean** |  |  [optional] |
 |**sellerId** | **String** |  |  [optional] |
 |**spend** | **Double** |  |  [optional] |
-|**startDate** | **OffsetDateTime** |  |  [optional] |
+|**startDate** | **LocalDate** |  |  [optional] |
 |**status** | **SellerBudgetStatusV2** |  |  [optional] |
 
 

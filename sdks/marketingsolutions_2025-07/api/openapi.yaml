@@ -14326,7 +14326,7 @@ components:
         - 6
         - 6
         id: id
-        startDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2000-01-23
         status: null
       properties:
         amount:
@@ -14353,7 +14353,7 @@ components:
           nullable: true
           type: number
         startDate:
-          format: date-time
+          format: date
           type: string
         status:
           $ref: '#/components/schemas/SellerBudgetStatusV2'
