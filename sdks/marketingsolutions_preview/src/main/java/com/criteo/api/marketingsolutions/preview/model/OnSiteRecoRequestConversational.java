@@ -16,7 +16,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.marketingsolutions.preview.model.OnSiteRecoChatMessage;
-import com.criteo.api.marketingsolutions.preview.model.OnSiteRecoProductContext;
+import com.criteo.api.marketingsolutions.preview.model.ProductContext;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -74,7 +74,7 @@ public class OnSiteRecoRequestConversational {
 
   public static final String SERIALIZED_NAME_PRODUCT = "product";
   @SerializedName(SERIALIZED_NAME_PRODUCT)
-  private OnSiteRecoProductContext product;
+  private ProductContext product;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
@@ -198,7 +198,7 @@ public class OnSiteRecoRequestConversational {
   }
 
 
-  public OnSiteRecoRequestConversational product(OnSiteRecoProductContext product) {
+  public OnSiteRecoRequestConversational product(ProductContext product) {
     
     this.product = product;
     return this;
@@ -210,12 +210,12 @@ public class OnSiteRecoRequestConversational {
   **/
   @javax.annotation.Nullable
 
-  public OnSiteRecoProductContext getProduct() {
+  public ProductContext getProduct() {
     return product;
   }
 
 
-  public void setProduct(OnSiteRecoProductContext product) {
+  public void setProduct(ProductContext product) {
     this.product = product;
   }
 
@@ -393,7 +393,7 @@ public class OnSiteRecoRequestConversational {
       };
       // validate the optional field `product`
       if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
-        OnSiteRecoProductContext.validateJsonObject(jsonObj.getAsJsonObject("product"));
+        ProductContext.validateJsonObject(jsonObj.getAsJsonObject("product"));
       }
       if (!jsonObj.get("userId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `userId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userId").toString()));

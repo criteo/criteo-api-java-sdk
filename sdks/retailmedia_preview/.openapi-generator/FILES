@@ -37,6 +37,8 @@ docs/AudienceWarning.md
 docs/BalanceApi.md
 docs/BalanceHistoryChangeDataCaptureV1.md
 docs/BatchAcceptedResponse.md
+docs/BatchStoreInventoryDeleteRequest.md
+docs/BatchStoreInventoryRequest.md
 docs/BotMessage.md
 docs/BrandIdSearchRequest.md
 docs/BrandIdSearchResult.md
@@ -60,6 +62,7 @@ docs/CreativeSearchRequest.md
 docs/CreativeSearchResponse.md
 docs/CreativeUpdateModel2.md
 docs/CustomAttribute.md
+docs/DeleteEntry.md
 docs/DisplayAuctionMinBidRequest.md
 docs/DisplayAuctionMinBidResult.md
 docs/EntityResourceBrandIdSearchResult.md
@@ -79,6 +82,7 @@ docs/EntityResourceOfSponsoredProductsLineItem.md
 docs/EntityResourceOutcomeOfCatalogStatusV2.md
 docs/EntityResourceOutcomeOfRetailMediaAccountV2.md
 docs/EntityResourceOutcomeOfSponsoredProductsLineItem.md
+docs/Entry.md
 docs/ExportReportColumn.md
 docs/ExportReportMetaData.md
 docs/ExternalRetailMediaAccountV2.md
@@ -270,6 +274,8 @@ docs/SponsoredProductsLineItemCreateRequestModel.md
 docs/SponsoredProductsLineItemUpdateRequestModel.md
 docs/StatusResponse.md
 docs/StatusResponseResource.md
+docs/StoreInventoryDelete.md
+docs/StoreInventoryUpsert.md
 docs/SyncAttributedTransactionsReport.md
 docs/SyncAttributedTransactionsReportRequest.md
 docs/SyncAttributedTransactionsReportResource.md
@@ -385,6 +391,8 @@ src/main/java/com/criteo/api/retailmedia/preview/model/AudienceError.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AudienceWarning.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BalanceHistoryChangeDataCaptureV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BatchAcceptedResponse.java
+src/main/java/com/criteo/api/retailmedia/preview/model/BatchStoreInventoryDeleteRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/BatchStoreInventoryRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BotMessage.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BrandIdSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BrandIdSearchResult.java
@@ -406,6 +414,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/CreativeSearchRequest.jav
 src/main/java/com/criteo/api/retailmedia/preview/model/CreativeSearchResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CreativeUpdateModel2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CustomAttribute.java
+src/main/java/com/criteo/api/retailmedia/preview/model/DeleteEntry.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DisplayAuctionMinBidRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DisplayAuctionMinBidResult.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceBrandIdSearchResult.java
@@ -425,6 +434,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOfSponsored
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOutcomeOfCatalogStatusV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOutcomeOfRetailMediaAccountV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOutcomeOfSponsoredProductsLineItem.java
+src/main/java/com/criteo/api/retailmedia/preview/model/Entry.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ExportReportColumn.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ExportReportMetaData.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ExternalRetailMediaAccountV2.java
@@ -614,6 +624,8 @@ src/main/java/com/criteo/api/retailmedia/preview/model/SponsoredProductsLineItem
 src/main/java/com/criteo/api/retailmedia/preview/model/SponsoredProductsLineItemUpdateRequestModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/StatusResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/StatusResponseResource.java
+src/main/java/com/criteo/api/retailmedia/preview/model/StoreInventoryDelete.java
+src/main/java/com/criteo/api/retailmedia/preview/model/StoreInventoryUpsert.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SyncAttributedTransactionsReport.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SyncAttributedTransactionsReportRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SyncAttributedTransactionsReportResource.java

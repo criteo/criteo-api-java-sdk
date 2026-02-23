@@ -15,7 +15,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.OnSiteRecoPrice;
+import com.criteo.api.marketingsolutions.preview.model.ProductPrice;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -48,7 +48,7 @@ import com.criteo.api.marketingsolutions.preview.JSON;
  * Information about a product used as context for conversational recommendation
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class OnSiteRecoProductContext {
+public class ProductContext {
   public static final String SERIALIZED_NAME_BRAND = "brand";
   @SerializedName(SERIALIZED_NAME_BRAND)
   private String brand;
@@ -71,7 +71,7 @@ public class OnSiteRecoProductContext {
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
-  private OnSiteRecoPrice price;
+  private ProductPrice price;
 
   public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
   @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
@@ -81,10 +81,10 @@ public class OnSiteRecoProductContext {
   @SerializedName(SERIALIZED_NAME_SIZE)
   private String size;
 
-  public OnSiteRecoProductContext() {
+  public ProductContext() {
   }
 
-  public OnSiteRecoProductContext brand(String brand) {
+  public ProductContext brand(String brand) {
     
     this.brand = brand;
     return this;
@@ -106,7 +106,7 @@ public class OnSiteRecoProductContext {
   }
 
 
-  public OnSiteRecoProductContext category(String category) {
+  public ProductContext category(String category) {
     
     this.category = category;
     return this;
@@ -128,7 +128,7 @@ public class OnSiteRecoProductContext {
   }
 
 
-  public OnSiteRecoProductContext color(String color) {
+  public ProductContext color(String color) {
     
     this.color = color;
     return this;
@@ -150,7 +150,7 @@ public class OnSiteRecoProductContext {
   }
 
 
-  public OnSiteRecoProductContext description(String description) {
+  public ProductContext description(String description) {
     
     this.description = description;
     return this;
@@ -172,7 +172,7 @@ public class OnSiteRecoProductContext {
   }
 
 
-  public OnSiteRecoProductContext name(String name) {
+  public ProductContext name(String name) {
     
     this.name = name;
     return this;
@@ -194,7 +194,7 @@ public class OnSiteRecoProductContext {
   }
 
 
-  public OnSiteRecoProductContext price(OnSiteRecoPrice price) {
+  public ProductContext price(ProductPrice price) {
     
     this.price = price;
     return this;
@@ -206,17 +206,17 @@ public class OnSiteRecoProductContext {
   **/
   @javax.annotation.Nullable
 
-  public OnSiteRecoPrice getPrice() {
+  public ProductPrice getPrice() {
     return price;
   }
 
 
-  public void setPrice(OnSiteRecoPrice price) {
+  public void setPrice(ProductPrice price) {
     this.price = price;
   }
 
 
-  public OnSiteRecoProductContext productId(String productId) {
+  public ProductContext productId(String productId) {
     
     this.productId = productId;
     return this;
@@ -238,7 +238,7 @@ public class OnSiteRecoProductContext {
   }
 
 
-  public OnSiteRecoProductContext size(String size) {
+  public ProductContext size(String size) {
     
     this.size = size;
     return this;
@@ -272,9 +272,9 @@ public class OnSiteRecoProductContext {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the OnSiteRecoProductContext instance itself
+   * @return the ProductContext instance itself
    */
-  public OnSiteRecoProductContext putAdditionalProperty(String key, Object value) {
+  public ProductContext putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -313,16 +313,16 @@ public class OnSiteRecoProductContext {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OnSiteRecoProductContext onSiteRecoProductContext = (OnSiteRecoProductContext) o;
-    return Objects.equals(this.brand, onSiteRecoProductContext.brand) &&
-        Objects.equals(this.category, onSiteRecoProductContext.category) &&
-        Objects.equals(this.color, onSiteRecoProductContext.color) &&
-        Objects.equals(this.description, onSiteRecoProductContext.description) &&
-        Objects.equals(this.name, onSiteRecoProductContext.name) &&
-        Objects.equals(this.price, onSiteRecoProductContext.price) &&
-        Objects.equals(this.productId, onSiteRecoProductContext.productId) &&
-        Objects.equals(this.size, onSiteRecoProductContext.size)&&
-        Objects.equals(this.additionalProperties, onSiteRecoProductContext.additionalProperties);
+    ProductContext productContext = (ProductContext) o;
+    return Objects.equals(this.brand, productContext.brand) &&
+        Objects.equals(this.category, productContext.category) &&
+        Objects.equals(this.color, productContext.color) &&
+        Objects.equals(this.description, productContext.description) &&
+        Objects.equals(this.name, productContext.name) &&
+        Objects.equals(this.price, productContext.price) &&
+        Objects.equals(this.productId, productContext.productId) &&
+        Objects.equals(this.size, productContext.size)&&
+        Objects.equals(this.additionalProperties, productContext.additionalProperties);
   }
 
   @Override
@@ -333,7 +333,7 @@ public class OnSiteRecoProductContext {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OnSiteRecoProductContext {\n");
+    sb.append("class ProductContext {\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    color: ").append(toIndentedString(color)).append("\n");
@@ -382,12 +382,12 @@ public class OnSiteRecoProductContext {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to OnSiteRecoProductContext
+  * @throws IOException if the JSON Object is invalid with respect to ProductContext
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!OnSiteRecoProductContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OnSiteRecoProductContext is not found in the empty JSON string", OnSiteRecoProductContext.openapiRequiredFields.toString()));
+        if (!ProductContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductContext is not found in the empty JSON string", ProductContext.openapiRequiredFields.toString()));
         }
       }
       if ((jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonNull()) && !jsonObj.get("brand").isJsonPrimitive()) {
@@ -407,7 +407,7 @@ public class OnSiteRecoProductContext {
       }
       // validate the optional field `price`
       if (jsonObj.get("price") != null && !jsonObj.get("price").isJsonNull()) {
-        OnSiteRecoPrice.validateJsonObject(jsonObj.getAsJsonObject("price"));
+        ProductPrice.validateJsonObject(jsonObj.getAsJsonObject("price"));
       }
       if ((jsonObj.get("productId") != null && !jsonObj.get("productId").isJsonNull()) && !jsonObj.get("productId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `productId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productId").toString()));
@@ -421,16 +421,16 @@ public class OnSiteRecoProductContext {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!OnSiteRecoProductContext.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'OnSiteRecoProductContext' and its subtypes
+       if (!ProductContext.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ProductContext' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<OnSiteRecoProductContext> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(OnSiteRecoProductContext.class));
+       final TypeAdapter<ProductContext> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ProductContext.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<OnSiteRecoProductContext>() {
+       return (TypeAdapter<T>) new TypeAdapter<ProductContext>() {
            @Override
-           public void write(JsonWriter out, OnSiteRecoProductContext value) throws IOException {
+           public void write(JsonWriter out, ProductContext value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -453,11 +453,11 @@ public class OnSiteRecoProductContext {
            }
 
            @Override
-           public OnSiteRecoProductContext read(JsonReader in) throws IOException {
+           public ProductContext read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             OnSiteRecoProductContext instance = thisAdapter.fromJsonTree(jsonObj);
+             ProductContext instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -484,18 +484,18 @@ public class OnSiteRecoProductContext {
   }
 
  /**
-  * Create an instance of OnSiteRecoProductContext given an JSON string
+  * Create an instance of ProductContext given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of OnSiteRecoProductContext
-  * @throws IOException if the JSON string is invalid with respect to OnSiteRecoProductContext
+  * @return An instance of ProductContext
+  * @throws IOException if the JSON string is invalid with respect to ProductContext
   */
-  public static OnSiteRecoProductContext fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, OnSiteRecoProductContext.class);
+  public static ProductContext fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ProductContext.class);
   }
 
  /**
-  * Convert an instance of OnSiteRecoProductContext to an JSON string
+  * Convert an instance of ProductContext to an JSON string
   *
   * @return JSON string
   */

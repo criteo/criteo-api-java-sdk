@@ -13812,59 +13812,6 @@ components:
         role:
           type: string
       type: object
-    OnSiteRecoPrice:
-      description: Price information
-      example:
-        amount: 5.637377
-        currency: currency
-      properties:
-        amount:
-          description: Price amount.
-          format: float
-          type: number
-        currency:
-          description: Price currency in ISO 4217 format.
-          type: string
-      type: object
-    OnSiteRecoProductContext:
-      description: Information about a product used as context for conversational
-        recommendation
-      example:
-        color: color
-        productId: productId
-        size: size
-        price:
-          amount: 5.637377
-          currency: currency
-        name: name
-        description: description
-        category: category
-        brand: brand
-      properties:
-        brand:
-          description: Product brand.
-          type: string
-        category:
-          description: Google product category.
-          type: string
-        color:
-          description: Product color.
-          type: string
-        description:
-          description: Product description.
-          type: string
-        name:
-          description: Product name.
-          type: string
-        price:
-          $ref: '#/components/schemas/OnSiteRecoPrice'
-        productId:
-          description: Unique identifier of the product matching Criteo Catalog Integration
-          type: string
-        size:
-          description: "Product size (e.g., M, 42, 500ml)."
-          type: string
-      type: object
     OnSiteRecoRequest:
       description: Recommendation request parameters
       example:
@@ -13958,7 +13905,7 @@ components:
           format: int32
           type: integer
         product:
-          $ref: '#/components/schemas/OnSiteRecoProductContext'
+          $ref: '#/components/schemas/ProductContext'
         userId:
           description: Used to retrieve user events from Criteo trackers.
           type: string
@@ -15476,6 +15423,45 @@ components:
       - link
       - title
       type: object
+    ProductContext:
+      description: Information about a product used as context for conversational
+        recommendation
+      example:
+        color: color
+        productId: productId
+        size: size
+        price:
+          amount: 5.637377
+          currency: currency
+        name: name
+        description: description
+        category: category
+        brand: brand
+      properties:
+        brand:
+          description: Product brand.
+          type: string
+        category:
+          description: Google product category.
+          type: string
+        color:
+          description: Product color.
+          type: string
+        description:
+          description: Product description.
+          type: string
+        name:
+          description: Product name.
+          type: string
+        price:
+          $ref: '#/components/schemas/ProductPrice'
+        productId:
+          description: Unique identifier of the product matching Criteo Catalog Integration
+          type: string
+        size:
+          description: "Product size (e.g., M, 42, 500ml)."
+          type: string
+      type: object
     ProductFilterConfig:
       description: Entity to create a product filter configuration
       example:
@@ -15578,6 +15564,20 @@ components:
       - title
       - traceId
       - type
+      type: object
+    ProductPrice:
+      description: Price information
+      example:
+        amount: 5.637377
+        currency: currency
+      properties:
+        amount:
+          description: Price amount.
+          format: float
+          type: number
+        currency:
+          description: Price currency in ISO 4217 format.
+          type: string
       type: object
     ProductsCustomBatchRequest:
       description: Defines a batch of operations.

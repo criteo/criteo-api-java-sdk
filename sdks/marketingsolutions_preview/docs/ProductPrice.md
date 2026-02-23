@@ -1,6 +1,6 @@
 
 
-# OnSiteRecoPrice
+# ProductPrice
 
 Price information
 

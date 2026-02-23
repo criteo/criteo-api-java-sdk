@@ -13,7 +13,7 @@ Conversational recommendation request parameters
 |**conversation** | [**List&lt;OnSiteRecoChatMessage&gt;**](OnSiteRecoChatMessage.md) | Conversation between the user and the agent. |  |
 |**nbRequestedProducts** | **Integer** | Amount of products to recommend. |  |
 |**partnerId** | **Integer** | Id of the partner. |  |
-|**product** | [**OnSiteRecoProductContext**](OnSiteRecoProductContext.md) |  |  [optional] |
+|**product** | [**ProductContext**](ProductContext.md) |  |  [optional] |
 |**userId** | **String** | Used to retrieve user events from Criteo trackers. |  |
 
 

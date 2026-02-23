@@ -4,11 +4,103 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**deleteStoreInventoryPerMerchantId**](CatalogApi.md#deleteStoreInventoryPerMerchantId) | **POST** /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete |  |
 | [**getCatalogProductsBatchReport**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /preview/retail-media/catalog/products/batch/report/{operation-token} |  |
 | [**offerSetBbwV1**](CatalogApi.md#offerSetBbwV1) | **POST** /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners |  |
 | [**offerUpdateV1**](CatalogApi.md#offerUpdateV1) | **POST** /preview/retail-media/retailers/{retailer-id}/offers/update |  |
 | [**submitCatalogProductsBatch**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /preview/retail-media/catalog/products/batch |  |
+| [**upsertStoreInventoryPerMerchantId**](CatalogApi.md#upsertStoreInventoryPerMerchantId) | **POST** /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert |  |
 
+
+
+## deleteStoreInventoryPerMerchantId
+
+> deleteStoreInventoryPerMerchantId(merchantId, batchStoreInventoryDeleteRequest)
+
+
+
+Used to publish a batch of store inventories to delete. The batch is processed asynchronously.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CatalogApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CatalogApi apiInstance = new CatalogApi(defaultClient);
+        String merchantId = "merchantId_example"; // String | Identifies the merchant, can also be called partnerId
+        BatchStoreInventoryDeleteRequest batchStoreInventoryDeleteRequest = new BatchStoreInventoryDeleteRequest(); // BatchStoreInventoryDeleteRequest | 
+        try {
+            apiInstance.deleteStoreInventoryPerMerchantId(merchantId, batchStoreInventoryDeleteRequest);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CatalogApi#deleteStoreInventoryPerMerchantId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **merchantId** | **String**| Identifies the merchant, can also be called partnerId | |
+| **batchStoreInventoryDeleteRequest** | [**BatchStoreInventoryDeleteRequest**](BatchStoreInventoryDeleteRequest.md)|  | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Batch accepted. |  -  |
 
 
 ## getCatalogProductsBatchReport
@@ -369,4 +461,94 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. |  -  |
+
+
+## upsertStoreInventoryPerMerchantId
+
+> upsertStoreInventoryPerMerchantId(merchantId, batchStoreInventoryRequest)
+
+
+
+Used to publish a batch of store inventories to upsert. The batch is processed asynchronously.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CatalogApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CatalogApi apiInstance = new CatalogApi(defaultClient);
+        String merchantId = "merchantId_example"; // String | Identifies the merchant, can also be called partnerId
+        BatchStoreInventoryRequest batchStoreInventoryRequest = new BatchStoreInventoryRequest(); // BatchStoreInventoryRequest | 
+        try {
+            apiInstance.upsertStoreInventoryPerMerchantId(merchantId, batchStoreInventoryRequest);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CatalogApi#upsertStoreInventoryPerMerchantId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **merchantId** | **String**| Identifies the merchant, can also be called partnerId | |
+| **batchStoreInventoryRequest** | [**BatchStoreInventoryRequest**](BatchStoreInventoryRequest.md)|  | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Batch accepted. |  -  |
 

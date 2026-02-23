@@ -1364,6 +1364,74 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete:
+    post:
+      description: Used to publish a batch of store inventories to delete. The batch
+        is processed asynchronously.
+      operationId: DeleteStoreInventoryPerMerchantId
+      parameters:
+      - description: "Identifies the merchant, can also be called partnerId"
+        explode: false
+        in: path
+        name: merchantId
+        required: true
+        schema:
+          format: int32
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchStoreInventoryDeleteRequest'
+        required: true
+        x-bodyName: body
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: Batch accepted.
+      security:
+      - oauth:
+        - RetailMedia_Catalog_Manage
+      tags:
+      - Catalog
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert:
+    post:
+      description: Used to publish a batch of store inventories to upsert. The batch
+        is processed asynchronously.
+      operationId: UpsertStoreInventoryPerMerchantId
+      parameters:
+      - description: "Identifies the merchant, can also be called partnerId"
+        explode: false
+        in: path
+        name: merchantId
+        required: true
+        schema:
+          format: int32
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchStoreInventoryRequest'
+        required: true
+        x-bodyName: body
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: Batch accepted.
+      security:
+      - oauth:
+        - RetailMedia_Catalog_Manage
+      tags:
+      - Catalog
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/catalog/products/batch:
     post:
       description: |-
@@ -4819,6 +4887,56 @@ components:
       required:
       - operationToken
       type: object
+    BatchStoreInventoryDeleteRequest:
+      description: Batch to plan removals in Store inventory
+      example:
+        data:
+        - attributes:
+            productId: productId
+            batchId: batchId
+            storeId: storeId
+          type: Delete
+        - attributes:
+            productId: productId
+            batchId: batchId
+            storeId: storeId
+          type: Delete
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/DeleteEntry'
+          type: array
+      required:
+      - data
+      type: object
+    BatchStoreInventoryRequest:
+      description: Batch to be stored in Store inventories
+      example:
+        data:
+        - attributes:
+            productId: productId
+            salePrice: salePrice
+            price: price
+            availability: backorder
+            batchId: batchId
+            storeId: storeId
+          type: Upsert
+        - attributes:
+            productId: productId
+            salePrice: salePrice
+            price: price
+            availability: backorder
+            batchId: batchId
+            storeId: storeId
+          type: Upsert
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Entry'
+          type: array
+      required:
+      - data
+      type: object
     BotMessage:
       description: bot structured answer to the user prompt
       example:
@@ -6029,6 +6147,25 @@ components:
       - name
       - value
       type: object
+    DeleteEntry:
+      description: Defines a reference to inventory
+      example:
+        attributes:
+          productId: productId
+          batchId: batchId
+          storeId: storeId
+        type: Delete
+      properties:
+        attributes:
+          $ref: '#/components/schemas/StoreInventoryDelete'
+        type:
+          enum:
+          - Delete
+          type: string
+      required:
+      - attributes
+      - type
+      type: object
     DisplayAuctionMinBidRequest:
       additionalProperties: false
       description: Represents the list of creatives and respective product IDs to
@@ -7189,6 +7326,28 @@ components:
           nullable: true
           readOnly: true
           type: array
+      type: object
+    Entry:
+      description: Defines a pack of inventories
+      example:
+        attributes:
+          productId: productId
+          salePrice: salePrice
+          price: price
+          availability: backorder
+          batchId: batchId
+          storeId: storeId
+        type: Upsert
+      properties:
+        attributes:
+          $ref: '#/components/schemas/StoreInventoryUpsert'
+        type:
+          enum:
+          - Upsert
+          type: string
+      required:
+      - attributes
+      - type
       type: object
     ExportReportColumn:
       description: Description of a column from an async report request
@@ -15867,6 +16026,68 @@ components:
         type:
           nullable: true
           type: string
+      type: object
+    StoreInventoryDelete:
+      description: References a store inventory to be deleted. See StoreInventoryUpsert
+      example:
+        productId: productId
+        batchId: batchId
+        storeId: storeId
+      properties:
+        batchId:
+          description: Identifies this array entry
+          type: string
+        productId:
+          description: ' Identifies a product'
+          type: string
+        storeId:
+          description: "Identifies the store, for the customer"
+          type: string
+      required:
+      - batchId
+      - productId
+      - storeId
+      type: object
+    StoreInventoryUpsert:
+      description: Defines a store inventory to be upserted. Inspired from google
+        spec.See https://developers.google.com/shopping-content/reference/rest/v2.1/localinventory/custombatch#LocalinventoryCustomBatchRequestEntry
+      example:
+        productId: productId
+        salePrice: salePrice
+        price: price
+        availability: backorder
+        batchId: batchId
+        storeId: storeId
+      properties:
+        availability:
+          description: "Might be: In stock, Out of stock, Preorder, Backorder"
+          enum:
+          - backorder
+          - in_stock
+          - out_of_stock
+          - preorder
+          type: string
+        batchId:
+          description: Identifies this array entry
+          type: string
+        price:
+          description: Product's price at this store
+          type: string
+        productId:
+          description: ' Identifies a product'
+          type: string
+        salePrice:
+          description: The sale price of the product.
+          type: string
+        storeId:
+          description: "Identifies the store, for the customer"
+          type: string
+      required:
+      - availability
+      - batchId
+      - price
+      - productId
+      - storeId
       type: object
     SyncAttributedTransactionsReport:
       description: Attributed Transactions report body request

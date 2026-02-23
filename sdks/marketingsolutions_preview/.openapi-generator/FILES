@@ -253,8 +253,6 @@ docs/NillableGenderV1.md
 docs/NillableInt32.md
 docs/NillableString.md
 docs/OnSiteRecoChatMessage.md
-docs/OnSiteRecoPrice.md
-docs/OnSiteRecoProductContext.md
 docs/OnSiteRecoRequest.md
 docs/OnSiteRecoRequestConversational.md
 docs/OnSiteRecoResponse.md
@@ -290,9 +288,11 @@ docs/PointOfInterestV1.md
 docs/PortfolioMessage.md
 docs/Price.md
 docs/Product.md
+docs/ProductContext.md
 docs/ProductFilterConfig.md
 docs/ProductImporterError.md
 docs/ProductImporterWarning.md
+docs/ProductPrice.md
 docs/ProductSet.md
 docs/ProductSetRule.md
 docs/ProductShipping.md
@@ -675,8 +675,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableGenderV1.j
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableInt32.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableString.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoChatMessage.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoPrice.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoProductContext.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoRequestConversational.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoResponse.java
@@ -711,9 +709,11 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/PointOfInterestV1.
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PortfolioMessage.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Price.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Product.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductContext.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductFilterConfig.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductImporterError.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductImporterWarning.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductPrice.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductSet.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductSetRule.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductShipping.java
