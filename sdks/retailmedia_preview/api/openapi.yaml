@@ -1376,7 +1376,6 @@ paths:
         name: merchantId
         required: true
         schema:
-          format: int32
           type: string
         style: simple
       requestBody:
@@ -1410,7 +1409,6 @@ paths:
         name: merchantId
         required: true
         schema:
-          format: int32
           type: string
         style: simple
       requestBody:
@@ -15008,8 +15006,19 @@ components:
       additionalProperties: false
       description: Description of a Share of voice insight
       example:
-        accountId: accountId
         campaignType: all
+        keywords:
+        - keywords
+        - keywords
+        endDate: 2000-01-23T04:56:07.000+00:00
+        format: json-compact
+        retailerIds:
+        - retailerIds
+        - retailerIds
+        brandIds:
+        - brandIds
+        - brandIds
+        accountId: accountId
         servedCategories:
         - servedCategories:
           - servedCategories
@@ -15019,23 +15028,25 @@ components:
           - servedCategories
           - servedCategories
           retailerId: retailerId
-        endDate: 2000-01-23T04:56:07.000+00:00
-        format: json-compact
+        keywordTypes:
+        - unknown
+        - unknown
+        aggregationLevel: category
         metrics:
         - impressions
         - impressions
-        retailerIds:
-        - retailerIds
-        - retailerIds
-        brandIds:
-        - brandIds
-        - brandIds
         startDate: 2000-01-23T04:56:07.000+00:00
         dimensions:
         - date
         - date
       properties:
         accountId:
+          type: string
+        aggregationLevel:
+          default: category
+          enum:
+          - category
+          - keyword
           type: string
         brandIds:
           items:
@@ -15072,6 +15083,8 @@ components:
             - productMpn
             - productCategory
             - servedCategory
+            - keyword
+            - keywordType
             - campaignType
             - creativeType
             - adFormat
@@ -15091,6 +15104,21 @@ components:
           - json-newline
           - csv
           type: string
+        keywords:
+          items:
+            type: string
+          nullable: true
+          type: array
+        keywordTypes:
+          items:
+            enum:
+            - unknown
+            - generic
+            - branded
+            - conquesting
+            type: string
+          nullable: true
+          type: array
         metrics:
           items:
             enum:
@@ -15129,7 +15157,9 @@ components:
       required:
       - accountId
       - dimensions
+      - endDate
       - metrics
+      - startDate
       type: object
     ShareOfVoiceInsightRequest:
       additionalProperties: false
@@ -15138,8 +15168,19 @@ components:
       example:
         data:
           attributes:
-            accountId: accountId
             campaignType: all
+            keywords:
+            - keywords
+            - keywords
+            endDate: 2000-01-23T04:56:07.000+00:00
+            format: json-compact
+            retailerIds:
+            - retailerIds
+            - retailerIds
+            brandIds:
+            - brandIds
+            - brandIds
+            accountId: accountId
             servedCategories:
             - servedCategories:
               - servedCategories
@@ -15149,17 +15190,13 @@ components:
               - servedCategories
               - servedCategories
               retailerId: retailerId
-            endDate: 2000-01-23T04:56:07.000+00:00
-            format: json-compact
+            keywordTypes:
+            - unknown
+            - unknown
+            aggregationLevel: category
             metrics:
             - impressions
             - impressions
-            retailerIds:
-            - retailerIds
-            - retailerIds
-            brandIds:
-            - brandIds
-            - brandIds
             startDate: 2000-01-23T04:56:07.000+00:00
             dimensions:
             - date
@@ -15174,8 +15211,19 @@ components:
       description: A value resource exposed by the API.
       example:
         attributes:
-          accountId: accountId
           campaignType: all
+          keywords:
+          - keywords
+          - keywords
+          endDate: 2000-01-23T04:56:07.000+00:00
+          format: json-compact
+          retailerIds:
+          - retailerIds
+          - retailerIds
+          brandIds:
+          - brandIds
+          - brandIds
+          accountId: accountId
           servedCategories:
           - servedCategories:
             - servedCategories
@@ -15185,17 +15233,13 @@ components:
             - servedCategories
             - servedCategories
             retailerId: retailerId
-          endDate: 2000-01-23T04:56:07.000+00:00
-          format: json-compact
+          keywordTypes:
+          - unknown
+          - unknown
+          aggregationLevel: category
           metrics:
           - impressions
           - impressions
-          retailerIds:
-          - retailerIds
-          - retailerIds
-          brandIds:
-          - brandIds
-          - brandIds
           startDate: 2000-01-23T04:56:07.000+00:00
           dimensions:
           - date

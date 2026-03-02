@@ -9,15 +9,27 @@ Description of a Share of voice insight
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**accountId** | **String** |  |  |
+|**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) |  |  [optional] |
 |**brandIds** | **List&lt;String&gt;** |  |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) |  |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) |  |  |
-|**endDate** | **OffsetDateTime** |  |  [optional] |
+|**endDate** | **OffsetDateTime** |  |  |
 |**format** | [**FormatEnum**](#FormatEnum) |  |  [optional] |
+|**keywords** | **List&lt;String&gt;** |  |  [optional] |
+|**keywordTypes** | [**List&lt;KeywordTypesEnum&gt;**](#List&lt;KeywordTypesEnum&gt;) |  |  [optional] |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) |  |  |
 |**retailerIds** | **List&lt;String&gt;** |  |  [optional] |
 |**servedCategories** | [**List&lt;ServedCategoryFilter&gt;**](ServedCategoryFilter.md) |  |  [optional] |
-|**startDate** | **OffsetDateTime** |  |  [optional] |
+|**startDate** | **OffsetDateTime** |  |  |
+
+
+
+## Enum: AggregationLevelEnum
+
+| Name | Value |
+|---- | -----|
+| CATEGORY | &quot;category&quot; |
+| KEYWORD | &quot;keyword&quot; |
 
 
 
@@ -55,6 +67,8 @@ Description of a Share of voice insight
 | PRODUCTMPN | &quot;productMpn&quot; |
 | PRODUCTCATEGORY | &quot;productCategory&quot; |
 | SERVEDCATEGORY | &quot;servedCategory&quot; |
+| KEYWORD | &quot;keyword&quot; |
+| KEYWORDTYPE | &quot;keywordType&quot; |
 | CAMPAIGNTYPE | &quot;campaignType&quot; |
 | CREATIVETYPE | &quot;creativeType&quot; |
 | ADFORMAT | &quot;adFormat&quot; |
@@ -71,6 +85,17 @@ Description of a Share of voice insight
 | JSON_COMPACT | &quot;json-compact&quot; |
 | JSON_NEWLINE | &quot;json-newline&quot; |
 | CSV | &quot;csv&quot; |
+
+
+
+## Enum: List&lt;KeywordTypesEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| GENERIC | &quot;generic&quot; |
+| BRANDED | &quot;branded&quot; |
+| CONQUESTING | &quot;conquesting&quot; |
 
 
 

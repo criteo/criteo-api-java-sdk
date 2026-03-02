@@ -57,6 +57,57 @@ public class ShareOfVoiceInsight {
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
   private String accountId;
 
+  /**
+   * Gets or Sets aggregationLevel
+   */
+  @JsonAdapter(AggregationLevelEnum.Adapter.class)
+  public enum AggregationLevelEnum {
+    CATEGORY("category"),
+    
+    KEYWORD("keyword");
+
+    private String value;
+
+    AggregationLevelEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AggregationLevelEnum fromValue(String value) {
+      for (AggregationLevelEnum b : AggregationLevelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AggregationLevelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AggregationLevelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AggregationLevelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AggregationLevelEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_AGGREGATION_LEVEL = "aggregationLevel";
+  @SerializedName(SERIALIZED_NAME_AGGREGATION_LEVEL)
+  private AggregationLevelEnum aggregationLevel = AggregationLevelEnum.CATEGORY;
+
   public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
   @SerializedName(SERIALIZED_NAME_BRAND_IDS)
   private List<String> brandIds = null;
@@ -158,6 +209,10 @@ public class ShareOfVoiceInsight {
     PRODUCTCATEGORY("productCategory"),
     
     SERVEDCATEGORY("servedCategory"),
+    
+    KEYWORD("keyword"),
+    
+    KEYWORDTYPE("keywordType"),
     
     CAMPAIGNTYPE("campaignType"),
     
@@ -269,6 +324,65 @@ public class ShareOfVoiceInsight {
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
   private FormatEnum format = FormatEnum.JSON_COMPACT;
+
+  public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
+  @SerializedName(SERIALIZED_NAME_KEYWORDS)
+  private List<String> keywords = null;
+
+  /**
+   * Gets or Sets keywordTypes
+   */
+  @JsonAdapter(KeywordTypesEnum.Adapter.class)
+  public enum KeywordTypesEnum {
+    UNKNOWN("unknown"),
+    
+    GENERIC("generic"),
+    
+    BRANDED("branded"),
+    
+    CONQUESTING("conquesting");
+
+    private String value;
+
+    KeywordTypesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static KeywordTypesEnum fromValue(String value) {
+      for (KeywordTypesEnum b : KeywordTypesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<KeywordTypesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final KeywordTypesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public KeywordTypesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return KeywordTypesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_KEYWORD_TYPES = "keywordTypes";
+  @SerializedName(SERIALIZED_NAME_KEYWORD_TYPES)
+  private List<KeywordTypesEnum> keywordTypes = null;
 
   /**
    * Gets or Sets metrics
@@ -386,6 +500,28 @@ public class ShareOfVoiceInsight {
   }
 
 
+  public ShareOfVoiceInsight aggregationLevel(AggregationLevelEnum aggregationLevel) {
+    
+    this.aggregationLevel = aggregationLevel;
+    return this;
+  }
+
+   /**
+   * Get aggregationLevel
+   * @return aggregationLevel
+  **/
+  @javax.annotation.Nullable
+
+  public AggregationLevelEnum getAggregationLevel() {
+    return aggregationLevel;
+  }
+
+
+  public void setAggregationLevel(AggregationLevelEnum aggregationLevel) {
+    this.aggregationLevel = aggregationLevel;
+  }
+
+
   public ShareOfVoiceInsight brandIds(List<String> brandIds) {
     
     this.brandIds = brandIds;
@@ -475,7 +611,7 @@ public class ShareOfVoiceInsight {
    * Get endDate
    * @return endDate
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public OffsetDateTime getEndDate() {
     return endDate;
@@ -506,6 +642,66 @@ public class ShareOfVoiceInsight {
 
   public void setFormat(FormatEnum format) {
     this.format = format;
+  }
+
+
+  public ShareOfVoiceInsight keywords(List<String> keywords) {
+    
+    this.keywords = keywords;
+    return this;
+  }
+
+  public ShareOfVoiceInsight addKeywordsItem(String keywordsItem) {
+    if (this.keywords == null) {
+      this.keywords = null;
+    }
+    this.keywords.add(keywordsItem);
+    return this;
+  }
+
+   /**
+   * Get keywords
+   * @return keywords
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getKeywords() {
+    return keywords;
+  }
+
+
+  public void setKeywords(List<String> keywords) {
+    this.keywords = keywords;
+  }
+
+
+  public ShareOfVoiceInsight keywordTypes(List<KeywordTypesEnum> keywordTypes) {
+    
+    this.keywordTypes = keywordTypes;
+    return this;
+  }
+
+  public ShareOfVoiceInsight addKeywordTypesItem(KeywordTypesEnum keywordTypesItem) {
+    if (this.keywordTypes == null) {
+      this.keywordTypes = null;
+    }
+    this.keywordTypes.add(keywordTypesItem);
+    return this;
+  }
+
+   /**
+   * Get keywordTypes
+   * @return keywordTypes
+  **/
+  @javax.annotation.Nullable
+
+  public List<KeywordTypesEnum> getKeywordTypes() {
+    return keywordTypes;
+  }
+
+
+  public void setKeywordTypes(List<KeywordTypesEnum> keywordTypes) {
+    this.keywordTypes = keywordTypes;
   }
 
 
@@ -606,7 +802,7 @@ public class ShareOfVoiceInsight {
    * Get startDate
    * @return startDate
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -629,11 +825,14 @@ public class ShareOfVoiceInsight {
     }
     ShareOfVoiceInsight shareOfVoiceInsight = (ShareOfVoiceInsight) o;
     return Objects.equals(this.accountId, shareOfVoiceInsight.accountId) &&
+        Objects.equals(this.aggregationLevel, shareOfVoiceInsight.aggregationLevel) &&
         Objects.equals(this.brandIds, shareOfVoiceInsight.brandIds) &&
         Objects.equals(this.campaignType, shareOfVoiceInsight.campaignType) &&
         Objects.equals(this.dimensions, shareOfVoiceInsight.dimensions) &&
         Objects.equals(this.endDate, shareOfVoiceInsight.endDate) &&
         Objects.equals(this.format, shareOfVoiceInsight.format) &&
+        Objects.equals(this.keywords, shareOfVoiceInsight.keywords) &&
+        Objects.equals(this.keywordTypes, shareOfVoiceInsight.keywordTypes) &&
         Objects.equals(this.metrics, shareOfVoiceInsight.metrics) &&
         Objects.equals(this.retailerIds, shareOfVoiceInsight.retailerIds) &&
         Objects.equals(this.servedCategories, shareOfVoiceInsight.servedCategories) &&
@@ -646,7 +845,7 @@ public class ShareOfVoiceInsight {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, brandIds, campaignType, dimensions, endDate, format, metrics, retailerIds, servedCategories, startDate);
+    return Objects.hash(accountId, aggregationLevel, brandIds, campaignType, dimensions, endDate, format, keywords, keywordTypes, metrics, retailerIds, servedCategories, startDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -661,11 +860,14 @@ public class ShareOfVoiceInsight {
     StringBuilder sb = new StringBuilder();
     sb.append("class ShareOfVoiceInsight {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
+    sb.append("    aggregationLevel: ").append(toIndentedString(aggregationLevel)).append("\n");
     sb.append("    brandIds: ").append(toIndentedString(brandIds)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    keywordTypes: ").append(toIndentedString(keywordTypes)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
     sb.append("    servedCategories: ").append(toIndentedString(servedCategories)).append("\n");
@@ -693,11 +895,14 @@ public class ShareOfVoiceInsight {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("accountId");
+    openapiFields.add("aggregationLevel");
     openapiFields.add("brandIds");
     openapiFields.add("campaignType");
     openapiFields.add("dimensions");
     openapiFields.add("endDate");
     openapiFields.add("format");
+    openapiFields.add("keywords");
+    openapiFields.add("keywordTypes");
     openapiFields.add("metrics");
     openapiFields.add("retailerIds");
     openapiFields.add("servedCategories");
@@ -707,7 +912,9 @@ public class ShareOfVoiceInsight {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("accountId");
     openapiRequiredFields.add("dimensions");
+    openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("metrics");
+    openapiRequiredFields.add("startDate");
   }
 
  /**
@@ -740,6 +947,9 @@ public class ShareOfVoiceInsight {
       if (!jsonObj.get("accountId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
       }
+      if ((jsonObj.get("aggregationLevel") != null && !jsonObj.get("aggregationLevel").isJsonNull()) && !jsonObj.get("aggregationLevel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `aggregationLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aggregationLevel").toString()));
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
@@ -755,6 +965,14 @@ public class ShareOfVoiceInsight {
       }
       if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("keywords") != null && !jsonObj.get("keywords").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `keywords` to be an array in the JSON string but got `%s`", jsonObj.get("keywords").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("keywordTypes") != null && !jsonObj.get("keywordTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `keywordTypes` to be an array in the JSON string but got `%s`", jsonObj.get("keywordTypes").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("metrics") == null) {
