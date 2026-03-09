@@ -8,7 +8,7 @@ Batch to be stored in Store inventories
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**List&lt;Entry&gt;**](Entry.md) |  |  |
+|**data** | [**List&lt;InsertEntry&gt;**](InsertEntry.md) |  |  |
 
 
 

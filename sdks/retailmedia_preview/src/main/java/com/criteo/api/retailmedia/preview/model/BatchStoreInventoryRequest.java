@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.Entry;
+import com.criteo.api.retailmedia.preview.model.InsertEntry;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -53,18 +53,18 @@ import com.criteo.api.retailmedia.preview.JSON;
 public class BatchStoreInventoryRequest {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Entry> data = new ArrayList<>();
+  private List<InsertEntry> data = new ArrayList<>();
 
   public BatchStoreInventoryRequest() {
   }
 
-  public BatchStoreInventoryRequest data(List<Entry> data) {
+  public BatchStoreInventoryRequest data(List<InsertEntry> data) {
     
     this.data = data;
     return this;
   }
 
-  public BatchStoreInventoryRequest addDataItem(Entry dataItem) {
+  public BatchStoreInventoryRequest addDataItem(InsertEntry dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -75,12 +75,12 @@ public class BatchStoreInventoryRequest {
   **/
   @javax.annotation.Nonnull
 
-  public List<Entry> getData() {
+  public List<InsertEntry> getData() {
     return data;
   }
 
 
-  public void setData(List<Entry> data) {
+  public void setData(List<InsertEntry> data) {
     this.data = data;
   }
 
@@ -210,7 +210,7 @@ public class BatchStoreInventoryRequest {
       JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
       // validate the required field `data` (array)
       for (int i = 0; i < jsonArraydata.size(); i++) {
-        Entry.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+        InsertEntry.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
       };
   }
 

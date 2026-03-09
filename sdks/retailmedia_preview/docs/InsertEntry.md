@@ -1,6 +1,6 @@
 
 
-# Entry
+# InsertEntry
 
 Defines a pack of inventories
 

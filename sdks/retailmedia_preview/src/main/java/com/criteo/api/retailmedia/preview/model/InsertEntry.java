@@ -48,7 +48,7 @@ import com.criteo.api.retailmedia.preview.JSON;
  * Defines a pack of inventories
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class Entry {
+public class InsertEntry {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private StoreInventoryUpsert attributes;
@@ -102,10 +102,10 @@ public class Entry {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  public Entry() {
+  public InsertEntry() {
   }
 
-  public Entry attributes(StoreInventoryUpsert attributes) {
+  public InsertEntry attributes(StoreInventoryUpsert attributes) {
     
     this.attributes = attributes;
     return this;
@@ -127,7 +127,7 @@ public class Entry {
   }
 
 
-  public Entry type(TypeEnum type) {
+  public InsertEntry type(TypeEnum type) {
     
     this.type = type;
     return this;
@@ -161,9 +161,9 @@ public class Entry {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the Entry instance itself
+   * @return the InsertEntry instance itself
    */
-  public Entry putAdditionalProperty(String key, Object value) {
+  public InsertEntry putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -202,10 +202,10 @@ public class Entry {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Entry entry = (Entry) o;
-    return Objects.equals(this.attributes, entry.attributes) &&
-        Objects.equals(this.type, entry.type)&&
-        Objects.equals(this.additionalProperties, entry.additionalProperties);
+    InsertEntry insertEntry = (InsertEntry) o;
+    return Objects.equals(this.attributes, insertEntry.attributes) &&
+        Objects.equals(this.type, insertEntry.type)&&
+        Objects.equals(this.additionalProperties, insertEntry.additionalProperties);
   }
 
   @Override
@@ -216,7 +216,7 @@ public class Entry {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Entry {\n");
+    sb.append("class InsertEntry {\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -255,17 +255,17 @@ public class Entry {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Entry
+  * @throws IOException if the JSON Object is invalid with respect to InsertEntry
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!Entry.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Entry is not found in the empty JSON string", Entry.openapiRequiredFields.toString()));
+        if (!InsertEntry.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in InsertEntry is not found in the empty JSON string", InsertEntry.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Entry.openapiRequiredFields) {
+      for (String requiredField : InsertEntry.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -281,16 +281,16 @@ public class Entry {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Entry.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Entry' and its subtypes
+       if (!InsertEntry.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'InsertEntry' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Entry> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Entry.class));
+       final TypeAdapter<InsertEntry> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(InsertEntry.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Entry>() {
+       return (TypeAdapter<T>) new TypeAdapter<InsertEntry>() {
            @Override
-           public void write(JsonWriter out, Entry value) throws IOException {
+           public void write(JsonWriter out, InsertEntry value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -313,11 +313,11 @@ public class Entry {
            }
 
            @Override
-           public Entry read(JsonReader in) throws IOException {
+           public InsertEntry read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             Entry instance = thisAdapter.fromJsonTree(jsonObj);
+             InsertEntry instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -344,18 +344,18 @@ public class Entry {
   }
 
  /**
-  * Create an instance of Entry given an JSON string
+  * Create an instance of InsertEntry given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of Entry
-  * @throws IOException if the JSON string is invalid with respect to Entry
+  * @return An instance of InsertEntry
+  * @throws IOException if the JSON string is invalid with respect to InsertEntry
   */
-  public static Entry fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Entry.class);
+  public static InsertEntry fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, InsertEntry.class);
   }
 
  /**
-  * Convert an instance of Entry to an JSON string
+  * Convert an instance of InsertEntry to an JSON string
   *
   * @return JSON string
   */
