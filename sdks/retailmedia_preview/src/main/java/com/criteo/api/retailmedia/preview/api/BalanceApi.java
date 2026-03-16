@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeBalanceV1;
 import com.criteo.api.retailmedia.preview.model.PageOfBalanceHistoryChangeDataCaptureV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfUpdateBalanceModelV1;
 
@@ -218,6 +219,129 @@ public class BalanceApi {
 
         okhttp3.Call localVarCall = getBalanceHistoryValidateBeforeCall(balanceId, limit, limitToChangeTypes, offset, _callback);
         Type localVarReturnType = new TypeToken<PageOfBalanceHistoryChangeDataCaptureV1>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getBalanceV1
+     * @param balanceId The balance id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBalanceV1Call(String balanceId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/balances/{balanceId}"
+            .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBalanceV1ValidateBeforeCall(String balanceId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'balanceId' is set
+        if (balanceId == null) {
+            throw new ApiException("Missing the required parameter 'balanceId' when calling getBalanceV1(Async)");
+        }
+
+        return getBalanceV1Call(balanceId, _callback);
+
+    }
+
+    /**
+     * 
+     * Get a balance for the given balance id.
+     * @param balanceId The balance id. (required)
+     * @return EntityResourceOutcomeBalanceV1
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceOutcomeBalanceV1 getBalanceV1(String balanceId) throws ApiException {
+        ApiResponse<EntityResourceOutcomeBalanceV1> localVarResp = getBalanceV1WithHttpInfo(balanceId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get a balance for the given balance id.
+     * @param balanceId The balance id. (required)
+     * @return ApiResponse&lt;EntityResourceOutcomeBalanceV1&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceOutcomeBalanceV1> getBalanceV1WithHttpInfo(String balanceId) throws ApiException {
+        okhttp3.Call localVarCall = getBalanceV1ValidateBeforeCall(balanceId, null);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeBalanceV1>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get a balance for the given balance id.
+     * @param balanceId The balance id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBalanceV1Async(String balanceId, final ApiCallback<EntityResourceOutcomeBalanceV1> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBalanceV1ValidateBeforeCall(balanceId, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeBalanceV1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

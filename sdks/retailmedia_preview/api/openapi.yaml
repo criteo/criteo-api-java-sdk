@@ -1066,6 +1066,32 @@ paths:
       tags:
       - Audience
       x-accepts: application/json
+  /preview/retail-media/balances/{balanceId}:
+    get:
+      description: Get a balance for the given balance id.
+      operationId: GetBalanceV1
+      parameters:
+      - description: The balance id.
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceOutcomeBalanceV1'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Balance_Read
+      tags:
+      - Balance
+      x-accepts: application/json
   /preview/retail-media/balances/{balanceId}/history:
     get:
       description: Gets the balance's historical change data.
@@ -4623,6 +4649,120 @@ components:
       - dateOfModification
       - modifiedByUser
       type: object
+    BalanceV1:
+      additionalProperties: false
+      description: A Retail Media Balance used to determine the funds available for
+        any or all campaigns in an account.
+      example:
+        privateMarketBillingType: notApplicable
+        endDate: endDate
+        deposited: 0.8008281904610115
+        spent: 1.4658129805029452
+        memo: memo
+        retailerId: retailerId
+        spendType: onsite
+        remaining: 6.027456183070403
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        balanceType: unknown
+        name: name
+        criteoPoNumber: criteoPoNumber
+        retailerPoNumber: retailerPoNumber
+        startDate: startDate
+        status: unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        balanceType:
+          description: Type of the balance.
+          enum:
+          - unknown
+          - capped
+          - uncapped
+          type: string
+        createdAt:
+          description: Creation time of the balance.
+          format: date-time
+          type: string
+        criteoPoNumber:
+          description: Criteo purchase order number.
+          nullable: true
+          type: string
+        deposited:
+          description: Amount of billable funds allotted to the balance.
+          format: double
+          type: number
+        endDate:
+          description: End date of the balance in the format YYYY-MM-DD.
+          nullable: true
+          type: string
+        memo:
+          description: Memo.
+          nullable: true
+          type: string
+        name:
+          description: Name of the balance.
+          type: string
+        privateMarketBillingType:
+          description: Billing type for Private Market of the balance.
+          enum:
+          - notApplicable
+          - billByRetailer
+          - billByCriteo
+          - unknown
+          type: string
+        remaining:
+          description: Amount of remaining funds of the balance.
+          format: double
+          type: number
+        retailerId:
+          description: The billing retailer id.
+          nullable: true
+          type: string
+        retailerPoNumber:
+          description: Retailer purchase order number.
+          nullable: true
+          type: string
+        spendType:
+          description: Spend Type of the balance.
+          enum:
+          - onsite
+          - offsite
+          - offsiteAwareness
+          - lockout
+          - unknown
+          type: string
+        spent:
+          description: Amount of spent funds of the balance.
+          format: double
+          type: number
+        startDate:
+          description: Start date of the balance in the format YYYY-MM-DD.
+          type: string
+        status:
+          description: Status of the balance.
+          enum:
+          - unknown
+          - scheduled
+          - active
+          - ended
+          type: string
+        updatedAt:
+          description: Update time of the balance.
+          format: date-time
+          type: string
+      required:
+      - balanceType
+      - createdAt
+      - deposited
+      - name
+      - privateMarketBillingType
+      - remaining
+      - spendType
+      - spent
+      - startDate
+      - status
+      - updatedAt
+      type: object
     BatchAcceptedResponse:
       description: A batch was accepted. The report can be accessed using the reporting
         endpoint.
@@ -5750,6 +5890,42 @@ components:
           nullable: true
           type: string
       type: object
+    EntityResourceBalanceV1:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          privateMarketBillingType: notApplicable
+          endDate: endDate
+          deposited: 0.8008281904610115
+          spent: 1.4658129805029452
+          memo: memo
+          retailerId: retailerId
+          spendType: onsite
+          remaining: 6.027456183070403
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          balanceType: unknown
+          name: name
+          criteoPoNumber: criteoPoNumber
+          retailerPoNumber: retailerPoNumber
+          startDate: startDate
+          status: unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/BalanceV1'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     EntityResourceBrandIdSearchResult:
       description: "A domain entity exposed by the API, identified by a unique id."
       example:
@@ -6601,6 +6777,87 @@ components:
           description: Type of the resource.
           nullable: true
           type: string
+      type: object
+    EntityResourceOutcomeBalanceV1:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
+      example:
+        data:
+          attributes:
+            privateMarketBillingType: notApplicable
+            endDate: endDate
+            deposited: 0.8008281904610115
+            spent: 1.4658129805029452
+            memo: memo
+            retailerId: retailerId
+            spendType: onsite
+            remaining: 6.027456183070403
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            criteoPoNumber: criteoPoNumber
+            retailerPoNumber: retailerPoNumber
+            startDate: startDate
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/EntityResourceBalanceV1'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     EntityResourceOutcomeOfCatalogStatusV2:
       additionalProperties: false
