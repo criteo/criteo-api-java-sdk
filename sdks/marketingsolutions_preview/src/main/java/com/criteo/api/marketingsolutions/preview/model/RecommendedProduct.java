@@ -81,6 +81,10 @@ public class RecommendedProduct {
   @SerializedName(SERIALIZED_NAME_PRODUCT_EXTERNAL_ID)
   private String productExternalId;
 
+  public static final String SERIALIZED_NAME_RELEVANCY_SCORE = "relevancyScore";
+  @SerializedName(SERIALIZED_NAME_RELEVANCY_SCORE)
+  private Double relevancyScore;
+
   public static final String SERIALIZED_NAME_RETAIL_PRICE = "retailPrice";
   @SerializedName(SERIALIZED_NAME_RETAIL_PRICE)
   private Double retailPrice;
@@ -264,6 +268,28 @@ public class RecommendedProduct {
   }
 
 
+  public RecommendedProduct relevancyScore(Double relevancyScore) {
+    
+    this.relevancyScore = relevancyScore;
+    return this;
+  }
+
+   /**
+   * Product Relevancy score
+   * @return relevancyScore
+  **/
+  @javax.annotation.Nullable
+
+  public Double getRelevancyScore() {
+    return relevancyScore;
+  }
+
+
+  public void setRelevancyScore(Double relevancyScore) {
+    this.relevancyScore = relevancyScore;
+  }
+
+
   public RecommendedProduct retailPrice(Double retailPrice) {
     
     this.retailPrice = retailPrice;
@@ -348,6 +374,7 @@ public class RecommendedProduct {
         Objects.equals(this.name, recommendedProduct.name) &&
         Objects.equals(this.price, recommendedProduct.price) &&
         Objects.equals(this.productExternalId, recommendedProduct.productExternalId) &&
+        Objects.equals(this.relevancyScore, recommendedProduct.relevancyScore) &&
         Objects.equals(this.retailPrice, recommendedProduct.retailPrice)&&
         Objects.equals(this.additionalProperties, recommendedProduct.additionalProperties);
   }
@@ -358,7 +385,7 @@ public class RecommendedProduct {
 
   @Override
   public int hashCode() {
-    return Objects.hash(alternativeClickUrl, clickUrl, description, googleCategory, imageUrl, name, price, productExternalId, retailPrice, additionalProperties);
+    return Objects.hash(alternativeClickUrl, clickUrl, description, googleCategory, imageUrl, name, price, productExternalId, relevancyScore, retailPrice, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -380,6 +407,7 @@ public class RecommendedProduct {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    productExternalId: ").append(toIndentedString(productExternalId)).append("\n");
+    sb.append("    relevancyScore: ").append(toIndentedString(relevancyScore)).append("\n");
     sb.append("    retailPrice: ").append(toIndentedString(retailPrice)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -412,6 +440,7 @@ public class RecommendedProduct {
     openapiFields.add("name");
     openapiFields.add("price");
     openapiFields.add("productExternalId");
+    openapiFields.add("relevancyScore");
     openapiFields.add("retailPrice");
 
     // a set of required properties/fields (JSON key names)

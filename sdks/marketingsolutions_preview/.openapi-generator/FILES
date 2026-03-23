@@ -190,6 +190,8 @@ docs/ExportColumn.md
 docs/ExportMetaData.md
 docs/ExportResult.md
 docs/ExportResultData.md
+docs/FileStreamResultResource.md
+docs/FileStreamResultResponse.md
 docs/GatewayApi.md
 docs/GenerateAudiencePerformanceReport.md
 docs/GenerateAudiencePerformanceReportRequest.md
@@ -314,6 +316,12 @@ docs/ReadAdSetV26Q1.md
 docs/ReadModelAdSetId.md
 docs/ReadModelAdSetIdV26Q1.md
 docs/ReadModelReadAdSetV26Q1.md
+docs/RealTimeProductReportJob.md
+docs/RealTimeProductReportJobRequest.md
+docs/RealTimeProductReportJobResource.md
+docs/RealTimeProductReportJobStatus.md
+docs/RealTimeProductReportJobStatusResource.md
+docs/RealTimeProductReportJobStatusResponse.md
 docs/RecoApi.md
 docs/RecommendedProduct.md
 docs/ReportDetailError.md
@@ -613,6 +621,8 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportColumn.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportMetaData.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportResult.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportResultData.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/FileStreamResultResource.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/FileStreamResultResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateAudiencePerformanceReport.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateAudiencePerformanceReportRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateAudiencePerformanceReportResource.java
@@ -735,6 +745,12 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/ReadAdSetV26Q1.jav
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReadModelAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReadModelAdSetIdV26Q1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReadModelReadAdSetV26Q1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/RealTimeProductReportJob.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/RealTimeProductReportJobRequest.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/RealTimeProductReportJobResource.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/RealTimeProductReportJobStatus.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/RealTimeProductReportJobStatusResource.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/RealTimeProductReportJobStatusResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/RecommendedProduct.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReportDetailError.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReportDetailErrors.java

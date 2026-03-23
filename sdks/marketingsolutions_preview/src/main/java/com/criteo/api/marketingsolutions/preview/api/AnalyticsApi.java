@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import com.criteo.api.marketingsolutions.preview.model.ExportResult;
 import java.io.File;
+import com.criteo.api.marketingsolutions.preview.model.FileStreamResultResponse;
 import com.criteo.api.marketingsolutions.preview.model.GenerateAudiencePerformanceReportRequest;
 import com.criteo.api.marketingsolutions.preview.model.GenerateCategoriesReportRequestAttributesRequest;
 import com.criteo.api.marketingsolutions.preview.model.GenerateCreativesReportRequestAttributesRequest;
@@ -38,6 +39,8 @@ import com.criteo.api.marketingsolutions.preview.model.GenerateTopProductsReport
 import com.criteo.api.marketingsolutions.preview.model.JsonReportRowsListResponse;
 import com.criteo.api.marketingsolutions.preview.model.MarketingSolutionsReportStatusResponse;
 import com.criteo.api.marketingsolutions.preview.model.PlacementsReportQueryMessageListRequest;
+import com.criteo.api.marketingsolutions.preview.model.RealTimeProductReportJobRequest;
+import com.criteo.api.marketingsolutions.preview.model.RealTimeProductReportJobStatusResponse;
 import com.criteo.api.marketingsolutions.preview.model.StatisticsReportQueryMessage;
 import com.criteo.api.marketingsolutions.preview.model.TransactionsReportQueryMessageListRequest;
 import com.criteo.api.marketingsolutions.preview.model.TransparencyQueryMessage;
@@ -87,6 +90,129 @@ public class AnalyticsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for createRealtimeProductReport
+     * @param realTimeProductReportJobRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createRealtimeProductReportCall(RealTimeProductReportJobRequest realTimeProductReportJobRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = realTimeProductReportJobRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/xml",
+            "text/xml"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json",
+            "application/xml",
+            "text/xml",
+            "application/*+xml"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createRealtimeProductReportValidateBeforeCall(RealTimeProductReportJobRequest realTimeProductReportJobRequest, final ApiCallback _callback) throws ApiException {
+        return createRealtimeProductReportCall(realTimeProductReportJobRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * This endpoint is subject to specific rate limits.
+     * @param realTimeProductReportJobRequest  (optional)
+     * @return RealTimeProductReportJobStatusResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public RealTimeProductReportJobStatusResponse createRealtimeProductReport(RealTimeProductReportJobRequest realTimeProductReportJobRequest) throws ApiException {
+        ApiResponse<RealTimeProductReportJobStatusResponse> localVarResp = createRealtimeProductReportWithHttpInfo(realTimeProductReportJobRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * This endpoint is subject to specific rate limits.
+     * @param realTimeProductReportJobRequest  (optional)
+     * @return ApiResponse&lt;RealTimeProductReportJobStatusResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RealTimeProductReportJobStatusResponse> createRealtimeProductReportWithHttpInfo(RealTimeProductReportJobRequest realTimeProductReportJobRequest) throws ApiException {
+        okhttp3.Call localVarCall = createRealtimeProductReportValidateBeforeCall(realTimeProductReportJobRequest, null);
+        Type localVarReturnType = new TypeToken<RealTimeProductReportJobStatusResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * This endpoint is subject to specific rate limits.
+     * @param realTimeProductReportJobRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createRealtimeProductReportAsync(RealTimeProductReportJobRequest realTimeProductReportJobRequest, final ApiCallback<RealTimeProductReportJobStatusResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createRealtimeProductReportValidateBeforeCall(realTimeProductReportJobRequest, _callback);
+        Type localVarReturnType = new TypeToken<RealTimeProductReportJobStatusResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getAdsetReport
      * @param statisticsReportQueryMessage  (optional)
@@ -1080,6 +1206,256 @@ public class AnalyticsApi {
 
         okhttp3.Call localVarCall = getPlacementsReportValidateBeforeCall(placementsReportQueryMessageListRequest, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getRealtimeProduct
+     * @param reportId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getRealtimeProductCall(String reportId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}"
+            .replace("{" + "reportId" + "}", localVarApiClient.escapeString(reportId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/xml",
+            "text/xml"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getRealtimeProductValidateBeforeCall(String reportId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'reportId' is set
+        if (reportId == null) {
+            throw new ApiException("Missing the required parameter 'reportId' when calling getRealtimeProduct(Async)");
+        }
+
+        return getRealtimeProductCall(reportId, _callback);
+
+    }
+
+    /**
+     * 
+     * This endpoint is subject to specific rate limits.
+     * @param reportId  (required)
+     * @return FileStreamResultResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public FileStreamResultResponse getRealtimeProduct(String reportId) throws ApiException {
+        ApiResponse<FileStreamResultResponse> localVarResp = getRealtimeProductWithHttpInfo(reportId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * This endpoint is subject to specific rate limits.
+     * @param reportId  (required)
+     * @return ApiResponse&lt;FileStreamResultResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<FileStreamResultResponse> getRealtimeProductWithHttpInfo(String reportId) throws ApiException {
+        okhttp3.Call localVarCall = getRealtimeProductValidateBeforeCall(reportId, null);
+        Type localVarReturnType = new TypeToken<FileStreamResultResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * This endpoint is subject to specific rate limits.
+     * @param reportId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getRealtimeProductAsync(String reportId, final ApiCallback<FileStreamResultResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getRealtimeProductValidateBeforeCall(reportId, _callback);
+        Type localVarReturnType = new TypeToken<FileStreamResultResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getRealtimeProductJob
+     * @param reportId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getRealtimeProductJobCall(String reportId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}"
+            .replace("{" + "reportId" + "}", localVarApiClient.escapeString(reportId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/xml",
+            "text/xml"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getRealtimeProductJobValidateBeforeCall(String reportId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'reportId' is set
+        if (reportId == null) {
+            throw new ApiException("Missing the required parameter 'reportId' when calling getRealtimeProductJob(Async)");
+        }
+
+        return getRealtimeProductJobCall(reportId, _callback);
+
+    }
+
+    /**
+     * 
+     * This endpoint is subject to specific rate limits.
+     * @param reportId  (required)
+     * @return RealTimeProductReportJobStatusResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public RealTimeProductReportJobStatusResponse getRealtimeProductJob(String reportId) throws ApiException {
+        ApiResponse<RealTimeProductReportJobStatusResponse> localVarResp = getRealtimeProductJobWithHttpInfo(reportId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * This endpoint is subject to specific rate limits.
+     * @param reportId  (required)
+     * @return ApiResponse&lt;RealTimeProductReportJobStatusResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RealTimeProductReportJobStatusResponse> getRealtimeProductJobWithHttpInfo(String reportId) throws ApiException {
+        okhttp3.Call localVarCall = getRealtimeProductJobValidateBeforeCall(reportId, null);
+        Type localVarReturnType = new TypeToken<RealTimeProductReportJobStatusResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * This endpoint is subject to specific rate limits.
+     * @param reportId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getRealtimeProductJobAsync(String reportId, final ApiCallback<RealTimeProductReportJobStatusResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getRealtimeProductJobValidateBeforeCall(reportId, _callback);
+        Type localVarReturnType = new TypeToken<RealTimeProductReportJobStatusResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

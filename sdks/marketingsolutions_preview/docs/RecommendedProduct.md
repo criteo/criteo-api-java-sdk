@@ -16,6 +16,7 @@ Represents a recommended product.
 |**name** | **String** | Product name |  [optional] |
 |**price** | **Double** | Product price. |  [optional] |
 |**productExternalId** | **String** | Product external id. Same id than what is used in user events |  [optional] |
+|**relevancyScore** | **Double** | Product Relevancy score |  [optional] |
 |**retailPrice** | **Double** | Product retail price. |  [optional] |
 
 

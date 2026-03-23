@@ -2875,6 +2875,106 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
+  /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}:
+    get:
+      description: This endpoint is subject to specific rate limits.
+      operationId: GetRealtimeProduct
+      parameters:
+      - explode: false
+        in: path
+        name: reportId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileStreamResultResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/FileStreamResultResponse'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/FileStreamResultResponse'
+          description: Success
+      security:
+      - oauth:
+        - MarketingSolutions_Analytics_Read
+      tags:
+      - Analytics
+      x-accepts: application/json
+  /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export:
+    post:
+      description: This endpoint is subject to specific rate limits.
+      operationId: CreateRealtimeProductReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RealTimeProductReportJobRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/RealTimeProductReportJobRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/RealTimeProductReportJobRequest'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/RealTimeProductReportJobRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RealTimeProductReportJobStatusResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RealTimeProductReportJobStatusResponse'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/RealTimeProductReportJobStatusResponse'
+          description: Success
+      security:
+      - oauth:
+        - MarketingSolutions_Analytics_Read
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}:
+    get:
+      description: This endpoint is subject to specific rate limits.
+      operationId: GetRealtimeProductJob
+      parameters:
+      - explode: false
+        in: path
+        name: reportId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RealTimeProductReportJobStatusResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RealTimeProductReportJobStatusResponse'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/RealTimeProductReportJobStatusResponse'
+          description: Success
+      security:
+      - oauth:
+        - MarketingSolutions_Analytics_Read
+      tags:
+      - Analytics
+      x-accepts: application/json
   /preview/marketing-solutions/me:
     get:
       description: Get information about the currently logged application
@@ -11026,6 +11126,92 @@ components:
         metadata:
           $ref: '#/components/schemas/ExportMetaData'
       type: object
+    FileStreamResultResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes: ""
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          description: Attributes of the resource.
+          format: binary
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    FileStreamResultResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes: ""
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/FileStreamResultResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     GenerateAudiencePerformanceReport:
       additionalProperties: false
       description: Request attributes for async audience performance report
@@ -13931,7 +14117,8 @@ components:
           name: name
           description: description
           alternativeClickUrl: alternativeClickUrl
-          retailPrice: 1.4658129805029452
+          relevancyScore: 1.4658129805029452
+          retailPrice: 5.962133916683182
         - clickUrl: clickUrl
           price: 6.027456183070403
           productExternalId: productExternalId
@@ -13940,7 +14127,8 @@ components:
           name: name
           description: description
           alternativeClickUrl: alternativeClickUrl
-          retailPrice: 1.4658129805029452
+          relevancyScore: 1.4658129805029452
+          retailPrice: 5.962133916683182
       properties:
         extraInfos:
           description: "Additional information in case of warnings, errors..."
@@ -16845,6 +17033,314 @@ components:
           readOnly: true
           type: string
       type: object
+    RealTimeProductReportJob:
+      additionalProperties: false
+      description: Represents a request to create a real-time product export.
+      example:
+        partnerIds:
+        - partnerIds
+        - partnerIds
+        advertiserIds:
+        - advertiserIds
+        - advertiserIds
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: timezone
+        currency: currency
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        metrics:
+        - Clicks
+        - Clicks
+        sellerIds:
+        - sellerIds
+        - sellerIds
+        fileFormat: Csv
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - AdvertiserId
+        - AdvertiserId
+        lookbackWindow: 0
+      properties:
+        advertiserIds:
+          description: List of advertiser IDs to include in the export. Required.
+          items:
+            type: string
+          nullable: true
+          type: array
+        campaignIds:
+          description: Optional list of campaign IDs to filter the export.
+          items:
+            type: string
+          nullable: true
+          type: array
+        currency:
+          description: Currency for the export. Default is "EUR".
+          nullable: true
+          type: string
+        dimensions:
+          description: "List of dimensions to include in the export. Default: [\"\
+            advertiserId\", \"campaignId\", \"sellerId\", \"productId\", \"day\"]."
+          items:
+            enum:
+            - AdvertiserId
+            - PartnerId
+            - CampaignId
+            - SellerId
+            - ProductId
+            - Year
+            - Month
+            - Week
+            - Day
+            - Hour
+            - Minute
+            type: string
+          nullable: true
+          type: array
+        endDate:
+          description: "End of the reporting interval, in ISOâ€‘8601 dateâ€‘time format\
+            \ (UTC). Mutually exclusive with lookbackWindow.\r\nIf omitted while startDate\
+            \ is provided, defaults to the current time."
+          format: date-time
+          nullable: true
+          type: string
+        fileFormat:
+          description: "The file format for the export. Allowed values: \"csv\", \"\
+            json\". Default is \"csv\"."
+          enum:
+          - Csv
+          - Json
+          type: string
+        lookbackWindow:
+          description: Lookback window in days. Default is 60.
+          format: int32
+          nullable: true
+          type: integer
+        metrics:
+          description: "List of metrics to include in the export. Default: [\"clicks\"\
+            , \"displays\", \"cost\"]."
+          items:
+            enum:
+            - Clicks
+            - Displays
+            - Cost
+            type: string
+          nullable: true
+          type: array
+        partnerIds:
+          description: Optional list of partner IDs to filter the export.
+          items:
+            type: string
+          nullable: true
+          type: array
+        sellerIds:
+          description: Optional list of seller IDs to filter the export.
+          items:
+            type: string
+          nullable: true
+          type: array
+        startDate:
+          description: "Start of the reporting interval, in ISOâ€‘8601 dateâ€‘time\
+            \ format (UTC). Mutually exclusive with lookbackWindow."
+          format: date-time
+          nullable: true
+          type: string
+        timezone:
+          description: Timezone for the export. Default is "UTC".
+          nullable: true
+          type: string
+      type: object
+    RealTimeProductReportJobRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            partnerIds:
+            - partnerIds
+            - partnerIds
+            advertiserIds:
+            - advertiserIds
+            - advertiserIds
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: timezone
+            currency: currency
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            metrics:
+            - Clicks
+            - Clicks
+            sellerIds:
+            - sellerIds
+            - sellerIds
+            fileFormat: Csv
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - AdvertiserId
+            - AdvertiserId
+            lookbackWindow: 0
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/RealTimeProductReportJobResource'
+      type: object
+    RealTimeProductReportJobResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          partnerIds:
+          - partnerIds
+          - partnerIds
+          advertiserIds:
+          - advertiserIds
+          - advertiserIds
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: timezone
+          currency: currency
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          metrics:
+          - Clicks
+          - Clicks
+          sellerIds:
+          - sellerIds
+          - sellerIds
+          fileFormat: Csv
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - AdvertiserId
+          - AdvertiserId
+          lookbackWindow: 0
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RealTimeProductReportJob'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    RealTimeProductReportJobStatus:
+      additionalProperties: false
+      description: Represents the status of a real-time product report export job.
+      example:
+        message: message
+        exportId: exportId
+        status: Unknown
+      nullable: true
+      properties:
+        exportId:
+          description: Unique ID (UUID) of the export job.
+          nullable: true
+          type: string
+        message:
+          description: Optional informational message (e.g. rows_count=1232).
+          nullable: true
+          type: string
+        status:
+          description: "Export job status: PENDING, DONE, FAILURE, EXPIRED."
+          enum:
+          - Unknown
+          - Pending
+          - Done
+          - Failure
+          - Expired
+          nullable: true
+          type: string
+      type: object
+    RealTimeProductReportJobStatusResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          message: message
+          exportId: exportId
+          status: Unknown
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RealTimeProductReportJobStatus'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    RealTimeProductReportJobStatusResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            message: message
+            exportId: exportId
+            status: Unknown
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/RealTimeProductReportJobStatusResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     RecommendedProduct:
       description: Represents a recommended product.
       example:
@@ -16856,7 +17352,8 @@ components:
         name: name
         description: description
         alternativeClickUrl: alternativeClickUrl
-        retailPrice: 1.4658129805029452
+        relevancyScore: 1.4658129805029452
+        retailPrice: 5.962133916683182
       properties:
         alternativeClickUrl:
           description: Url leading to product details page and also used to track
@@ -16893,6 +17390,11 @@ components:
           description: Product external id. Same id than what is used in user events
           nullable: true
           type: string
+        relevancyScore:
+          description: Product Relevancy score
+          format: double
+          nullable: true
+          type: number
         retailPrice:
           description: Product retail price.
           format: double
