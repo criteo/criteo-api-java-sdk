@@ -2156,6 +2156,145 @@ paths:
       - Creative
       x-content-type: application/json
       x-accepts: application/json
+  /preview/marketing-solutions/ads/{ad-id}/product-boost:
+    get:
+      description: Fetch all boosting associations and configurations
+      operationId: FetchBoostedAdAssociations
+      parameters:
+      - description: ID of the ad
+        explode: false
+        in: path
+        name: ad-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfBoostedAdProductSet'
+          description: successful operation
+      security:
+      - oauth:
+        - MarketingSolutions_Reco_Read
+      tags:
+      - Reco
+      x-accepts: application/json
+  /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id}:
+    delete:
+      description: Delete association and configuration.
+      operationId: DeleteBoostedAdAssociation
+      parameters:
+      - description: ID of the ad
+        explode: false
+        in: path
+        name: ad-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ID of the product set
+        explode: false
+        in: path
+        name: product-set-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfBoostedAdProductSet'
+          description: successful operation
+      security:
+      - oauth:
+        - MarketingSolutions_Reco_Manage
+      tags:
+      - Reco
+      x-accepts: application/json
+    get:
+      description: Fetch boosting association and configuration
+      operationId: FetchBoostedAdAssociation
+      parameters:
+      - description: ID of the ad
+        explode: false
+        in: path
+        name: ad-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ID of the product set
+        explode: false
+        in: path
+        name: product-set-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfBoostedAdProductSet'
+          description: successful operation
+      security:
+      - oauth:
+        - MarketingSolutions_Reco_Read
+      tags:
+      - Reco
+      x-accepts: application/json
+    post:
+      description: Create or update product boosting configuration
+      operationId: CreateBoostedAdAssociation
+      parameters:
+      - description: ID of the ad
+        explode: false
+        in: path
+        name: ad-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ID of the product set
+        explode: false
+        in: path
+        name: product-set-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfBoostingConfigurationRequest'
+        x-bodyName: boostedAdProductSetAssociationRequest
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfBoostedAdProductSet'
+          description: successful operation
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfBoostedAdProductSet'
+          description: successful operation
+      security:
+      - oauth:
+        - MarketingSolutions_Reco_Manage
+      tags:
+      - Reco
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/marketing-solutions/audience-segments:
     patch:
       description: "Updates the properties of all segments with a valid configuration,\
@@ -2874,6 +3013,45 @@ paths:
       tags:
       - Campaign
       x-content-type: application/json
+      x-accepts: application/json
+  /preview/marketing-solutions/dataset/{dataset-id}/product-boost:
+    get:
+      description: Fetch boosting association and configuration for a given partner
+      operationId: FetchBoostedAdAssociationByPartnerId
+      parameters:
+      - description: Client type filter
+        explode: true
+        in: query
+        name: client-type
+        required: false
+        schema:
+          enum:
+          - Unknown
+          - CGrowth
+          - CMax
+          nullable: true
+          type: string
+        style: form
+      - description: ID of the dataset
+        explode: false
+        in: path
+        name: dataset-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfBoostedAdProductSet'
+          description: successful operation
+      security:
+      - oauth:
+        - MarketingSolutions_Reco_Read
+      tags:
+      - Reco
       x-accepts: application/json
   /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}:
     get:
@@ -8482,6 +8660,42 @@ components:
       required:
       - category
       type: object
+    BoostedAdProductSet:
+      description: Encapsulate a boosted ad product set association and its configuration
+      example:
+        boostingFactor: 0.8008281904610115
+        modificationDate: modificationDate
+        adId: adId
+        productSetId: productSetId
+      nullable: true
+      properties:
+        adId:
+          type: string
+        boostingFactor:
+          format: double
+          type: number
+        modificationDate:
+          type: string
+        productSetId:
+          type: string
+      required:
+      - adId
+      - boostingFactor
+      - modificationDate
+      - productSetId
+      type: object
+    BoostingConfigurationRequest:
+      description: Encapsulate the parameters needed to create or update a boosting
+        configuration
+      example:
+        boostingFactor: 0.8008281904610115
+      properties:
+        boostingFactor:
+          format: double
+          type: number
+      required:
+      - boostingFactor
+      type: object
     BudgetAutomation:
       description: The campaign budget automation model
       example:
@@ -8569,6 +8783,10 @@ components:
         spendLimitAmount:
           $ref: '#/components/schemas/NillableDecimal'
         spendLimitRenewal:
+          description: "The period over which the campaign spend limit is applied.\r\
+            \nWhen spendLimitType is \"capped\", this is \"daily\", \"monthly\", or\
+            \ \"lifetime\".\r\nWhen spendLimitType is \"uncapped\", this is \"undefined\"\
+            ."
           enum:
           - undefined
           - daily
@@ -8577,6 +8795,10 @@ components:
           nullable: true
           type: string
         spendLimitType:
+          description: "Controls whether the campaign has a spend limit.\r\n\"capped\"\
+            \ returns a non-null spendLimitAmount.value and a spendLimitRenewal of\
+            \ \"daily\", \"monthly\", or \"lifetime\".\r\n\"uncapped\" returns spendLimitAmount.value\
+            \ as null and spendLimitRenewal as \"undefined\"."
           enum:
           - capped
           - uncapped
@@ -9332,11 +9554,26 @@ components:
           nullable: true
           type: number
         budgetDeliverySmoothing:
+          description: "Pacing strategy for spending the budget within a renewal period.\
+            \ Only applicable when budgetStrategy is \"capped\".\r\n- \"accelerated\"\
+            : spend pacing is based on delivery efficiency rather than the full budget\
+            \ period.\r\n- \"standard\": spread spending evenly over the renewal period.\r\
+            \nWhen budgetStrategy is \"uncapped\", this field is not set (null in\
+            \ read responses, omit in create/patch requests)."
           enum:
           - accelerated
           - standard
           type: string
         budgetDeliveryWeek:
+          description: "Defines which day-of-week boundaries are used for weekly budget\
+            \ renewal. Only applicable when budgetStrategy is \"capped\", budgetRenewal\
+            \ is \"weekly\", and budgetDeliverySmoothing is \"standard\".\r\n- \"\
+            mondayToSunday\", \"tuesdayToMonday\", etc.: the day range over which\
+            \ the weekly budget is paced. Changing this value on the active budget\
+            \ also propagates to all scheduled budgets of the same ad set.\r\n- \"\
+            undefined\": used when budgetStrategy is \"uncapped\", when budgetRenewal\
+            \ is not \"weekly\", or when budgetDeliverySmoothing is \"accelerated\"\
+            ."
           enum:
           - undefined
           - mondayToSunday
@@ -9348,6 +9585,11 @@ components:
           - sundayToSaturday
           type: string
         budgetRenewal:
+          description: "The period over which the budget is spent.\r\n- \"daily\"\
+            , \"monthly\", \"weekly\": budget resets at the start of each period.\r\
+            \n- \"lifetime\": budget covers the entire ad set duration without resetting.\r\
+            \n- \"undefined\": only used when budgetStrategy is \"uncapped\" (no renewal\
+            \ applies). Required for capped budgets (must not be \"undefined\")."
           enum:
           - undefined
           - daily
@@ -9356,6 +9598,11 @@ components:
           - weekly
           type: string
         budgetStrategy:
+          description: "Controls whether the ad set has a spending limit.\r\n- \"\
+            capped\": spending is limited to budgetAmount. Requires budgetAmount (non-null),\
+            \ budgetRenewal (not \"undefined\"), and budgetDeliverySmoothing (not\
+            \ null).\r\n- \"uncapped\": no spending limit. budgetAmount is null, budgetRenewal\
+            \ is \"undefined\", and budgetDeliverySmoothing is null."
           enum:
           - capped
           - uncapped
@@ -9550,6 +9797,7 @@ components:
           type: string
       required:
       - bidding
+      - budget
       - campaignId
       - datasetId
       - mediaType
@@ -9777,12 +10025,17 @@ components:
         spendLimitType: capped
       properties:
         spendLimitAmount:
-          description: The amount of the spend limit. null if spendLimitType is uncapped.
+          description: Maximum spend amount in the advertiser's currency per renewal
+            period. Non-null when capped. null when uncapped.
           format: double
           nullable: true
           type: number
         spendLimitRenewal:
-          description: The pace of the spend limit renewal
+          description: "The period over which the spend limit is consumed.\r\n- \"\
+            daily\", \"monthly\": spend limit resets at the start of each period.\r\
+            \n- \"lifetime\": spend limit covers the entire campaign duration without\
+            \ resetting.\r\n- \"undefined\": only used when spendLimitType is \"uncapped\"\
+            \ (no renewal applies)."
           enum:
           - undefined
           - daily
@@ -9790,7 +10043,11 @@ components:
           - lifetime
           type: string
         spendLimitType:
-          description: Whether your spend limit is capped or not
+          description: "Controls whether the campaign has a spending limit.\r\n- \"\
+            capped\": spending is limited to spendLimitAmount. Requires spendLimitAmount\
+            \ (non-null) and spendLimitRenewal (not \"undefined\").\r\n- \"uncapped\"\
+            : no spending limit. spendLimitAmount is null and spendLimitRenewal is\
+            \ \"undefined\"."
           enum:
           - capped
           - uncapped
@@ -14247,7 +14504,13 @@ components:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
     PatchAdSetBudgetV26Q1:
-      description: ad set budget patch model
+      description: "Budget patch model for an ad set. Only provided fields are updated;\
+        \ omitted fields are left unchanged.\r\nSwitching to \"uncapped\": set budgetStrategy\
+        \ to \"uncapped\" and budgetAmount.value to null. Other budget fields (budgetRenewal,\
+        \ budgetDeliverySmoothing, budgetDeliveryWeek) are automatically cleared.\r\
+        \nSwitching to \"capped\": set budgetStrategy to \"capped\", budgetAmount.value\
+        \ to a positive number, budgetRenewal to a period, and budgetDeliverySmoothing\
+        \ to a pacing strategy."
       example:
         budgetDeliverySmoothing: accelerated
         budgetDeliveryWeek: undefined
@@ -14259,12 +14522,27 @@ components:
         budgetAmount:
           $ref: '#/components/schemas/NillableDecimal'
         budgetDeliverySmoothing:
+          description: "Pacing strategy for spending the budget within a renewal period.\
+            \ Only applicable when budgetStrategy is \"capped\".\r\n- \"accelerated\"\
+            : spend pacing is based on delivery efficiency rather than the full budget\
+            \ period.\r\n- \"standard\": spread spending evenly over the renewal period.\r\
+            \nWhen budgetStrategy is \"uncapped\", this field is not set (null in\
+            \ read responses, omit in create/patch requests)."
           enum:
           - accelerated
           - standard
           nullable: true
           type: string
         budgetDeliveryWeek:
+          description: "Defines which day-of-week boundaries are used for weekly budget\
+            \ renewal. Only applicable when budgetStrategy is \"capped\", budgetRenewal\
+            \ is \"weekly\", and budgetDeliverySmoothing is \"standard\".\r\n- \"\
+            mondayToSunday\", \"tuesdayToMonday\", etc.: the day range over which\
+            \ the weekly budget is paced. Changing this value on the active budget\
+            \ also propagates to all scheduled budgets of the same ad set.\r\n- \"\
+            undefined\": used when budgetStrategy is \"uncapped\", when budgetRenewal\
+            \ is not \"weekly\", or when budgetDeliverySmoothing is \"accelerated\"\
+            ."
           enum:
           - undefined
           - mondayToSunday
@@ -14277,6 +14555,11 @@ components:
           nullable: true
           type: string
         budgetRenewal:
+          description: "The period over which the budget is spent.\r\n- \"daily\"\
+            , \"monthly\", \"weekly\": budget resets at the start of each period.\r\
+            \n- \"lifetime\": budget covers the entire ad set duration without resetting.\r\
+            \n- \"undefined\": only used when budgetStrategy is \"uncapped\" (no renewal\
+            \ applies). Required for capped budgets (must not be \"undefined\")."
           enum:
           - undefined
           - daily
@@ -14286,6 +14569,11 @@ components:
           nullable: true
           type: string
         budgetStrategy:
+          description: "Controls whether the ad set has a spending limit.\r\n- \"\
+            capped\": spending is limited to budgetAmount. Requires budgetAmount (non-null),\
+            \ budgetRenewal (not \"undefined\"), and budgetDeliverySmoothing (not\
+            \ null).\r\n- \"uncapped\": no spending limit. budgetAmount is null, budgetRenewal\
+            \ is \"undefined\", and budgetDeliverySmoothing is null."
           enum:
           - capped
           - uncapped
@@ -16744,12 +17032,27 @@ components:
           nullable: true
           type: number
         budgetDeliverySmoothing:
+          description: "Pacing strategy for spending the budget within a renewal period.\
+            \ Only applicable when budgetStrategy is \"capped\".\r\n- \"accelerated\"\
+            : spend pacing is based on delivery efficiency rather than the full budget\
+            \ period.\r\n- \"standard\": spread spending evenly over the renewal period.\r\
+            \nWhen budgetStrategy is \"uncapped\", this field is not set (null in\
+            \ read responses, omit in create/patch requests)."
           enum:
           - accelerated
           - standard
           nullable: true
           type: string
         budgetDeliveryWeek:
+          description: "Defines which day-of-week boundaries are used for weekly budget\
+            \ renewal. Only applicable when budgetStrategy is \"capped\", budgetRenewal\
+            \ is \"weekly\", and budgetDeliverySmoothing is \"standard\".\r\n- \"\
+            mondayToSunday\", \"tuesdayToMonday\", etc.: the day range over which\
+            \ the weekly budget is paced. Changing this value on the active budget\
+            \ also propagates to all scheduled budgets of the same ad set.\r\n- \"\
+            undefined\": used when budgetStrategy is \"uncapped\", when budgetRenewal\
+            \ is not \"weekly\", or when budgetDeliverySmoothing is \"accelerated\"\
+            ."
           enum:
           - undefined
           - mondayToSunday
@@ -16762,6 +17065,11 @@ components:
           nullable: true
           type: string
         budgetRenewal:
+          description: "The period over which the budget is spent.\r\n- \"daily\"\
+            , \"monthly\", \"weekly\": budget resets at the start of each period.\r\
+            \n- \"lifetime\": budget covers the entire ad set duration without resetting.\r\
+            \n- \"undefined\": only used when budgetStrategy is \"uncapped\" (no renewal\
+            \ applies). Required for capped budgets (must not be \"undefined\")."
           enum:
           - undefined
           - daily
@@ -16771,6 +17079,11 @@ components:
           nullable: true
           type: string
         budgetStrategy:
+          description: "Controls whether the ad set has a spending limit.\r\n- \"\
+            capped\": spending is limited to budgetAmount. Requires budgetAmount (non-null),\
+            \ budgetRenewal (not \"undefined\"), and budgetDeliverySmoothing (not\
+            \ null).\r\n- \"uncapped\": no spending limit. budgetAmount is null, budgetRenewal\
+            \ is \"undefined\", and budgetDeliverySmoothing is null."
           enum:
           - capped
           - uncapped
@@ -21155,6 +21468,84 @@ components:
       - attributes
       - identifier
       type: object
+    ValueResourceCollectionOutcomeOfBoostedAdProductSet:
+      description: A top-level object that encapsulates a Criteo API response for
+        several values.
+      example:
+        data:
+        - attributes:
+            boostingFactor: 0.8008281904610115
+            modificationDate: modificationDate
+            adId: adId
+            productSetId: productSetId
+          type: type
+        - attributes:
+            boostingFactor: 0.8008281904610115
+            modificationDate: modificationDate
+            adId: adId
+            productSetId: productSetId
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ValueResourceOfBoostedAdProductSet'
+          nullable: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     ValueResourceCollectionOutcomeOfProductFilterConfig:
       description: A top-level object that encapsulates a Criteo API response for
         several values.
@@ -21229,6 +21620,18 @@ components:
           readOnly: true
           type: array
       type: object
+    ValueResourceInputOfBoostingConfigurationRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        data:
+          attributes:
+            boostingFactor: 0.8008281904610115
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfBoostingConfigurationRequest'
+      type: object
     ValueResourceInputOfCreateProductFilterRequest:
       description: A top-level object that encapsulates a Criteo API request for a
         single value.
@@ -21285,6 +21688,38 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceOfPatchProductSetRequest'
+      type: object
+    ValueResourceOfBoostedAdProductSet:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        attributes:
+          boostingFactor: 0.8008281904610115
+          modificationDate: modificationDate
+          adId: adId
+          productSetId: productSetId
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/BoostedAdProductSet'
+        type:
+          nullable: true
+          type: string
+      type: object
+    ValueResourceOfBoostingConfigurationRequest:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        attributes:
+          boostingFactor: 0.8008281904610115
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/BoostingConfigurationRequest'
+        type:
+          nullable: true
+          type: string
       type: object
     ValueResourceOfCreateProductFilterRequest:
       description: A top-level object that encapsulates a Criteo API response for
@@ -21379,6 +21814,75 @@ components:
         type:
           nullable: true
           type: string
+      type: object
+    ValueResourceOutcomeOfBoostedAdProductSet:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        data:
+          attributes:
+            boostingFactor: 0.8008281904610115
+            modificationDate: modificationDate
+            adId: adId
+            productSetId: productSetId
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfBoostedAdProductSet'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     ValueResourceOutcomeOfExamAdAudienceSegmentLink:
       description: A top-level object that encapsulates a Criteo API response for

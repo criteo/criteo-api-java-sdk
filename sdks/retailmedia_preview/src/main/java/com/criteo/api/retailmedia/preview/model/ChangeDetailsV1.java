@@ -71,7 +71,7 @@ public class ChangeDetailsV1 {
   }
 
    /**
-   * Change detail of a property of the insertion order.
+   * Change amount of a property of the insertion order.
    * @return changeValue
   **/
   @javax.annotation.Nullable

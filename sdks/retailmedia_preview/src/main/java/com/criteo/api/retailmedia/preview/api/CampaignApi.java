@@ -48,12 +48,15 @@ import com.criteo.api.retailmedia.preview.model.ProductResourceOutcome;
 import com.criteo.api.retailmedia.preview.model.PromotedProductResourceCollectionInput;
 import com.criteo.api.retailmedia.preview.model.PromotedProductResourceCollectionOutcome;
 import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomeDisplayAuctionMinBidResult;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputAppendCampaignsRequestV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputBrandIdSearchRequest;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputDeleteCampaignsRequestV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputDisplayAuctionMinBidRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputLineItemBudgetCapOutHistoryRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfRetailerSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel;
+import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeBalanceCampaignsV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse;
 
 import java.lang.reflect.Type;
@@ -100,6 +103,139 @@ public class CampaignApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for appendCampaignsToBalanceV1
+     * @param balanceId The balance to add campaigns from (required)
+     * @param valueResourceInputAppendCampaignsRequestV1 The balance campaign appending request. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call appendCampaignsToBalanceV1Call(String balanceId, ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputAppendCampaignsRequestV1;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/balances/{balanceId}/campaigns/append"
+            .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call appendCampaignsToBalanceV1ValidateBeforeCall(String balanceId, ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'balanceId' is set
+        if (balanceId == null) {
+            throw new ApiException("Missing the required parameter 'balanceId' when calling appendCampaignsToBalanceV1(Async)");
+        }
+
+        // verify the required parameter 'valueResourceInputAppendCampaignsRequestV1' is set
+        if (valueResourceInputAppendCampaignsRequestV1 == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputAppendCampaignsRequestV1' when calling appendCampaignsToBalanceV1(Async)");
+        }
+
+        return appendCampaignsToBalanceV1Call(balanceId, valueResourceInputAppendCampaignsRequestV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Appends one or more campaigns to the specified balance
+     * @param balanceId The balance to add campaigns from (required)
+     * @param valueResourceInputAppendCampaignsRequestV1 The balance campaign appending request. (required)
+     * @return ValueResourceOutcomeBalanceCampaignsV1
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeBalanceCampaignsV1 appendCampaignsToBalanceV1(String balanceId, ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1) throws ApiException {
+        ApiResponse<ValueResourceOutcomeBalanceCampaignsV1> localVarResp = appendCampaignsToBalanceV1WithHttpInfo(balanceId, valueResourceInputAppendCampaignsRequestV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Appends one or more campaigns to the specified balance
+     * @param balanceId The balance to add campaigns from (required)
+     * @param valueResourceInputAppendCampaignsRequestV1 The balance campaign appending request. (required)
+     * @return ApiResponse&lt;ValueResourceOutcomeBalanceCampaignsV1&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeBalanceCampaignsV1> appendCampaignsToBalanceV1WithHttpInfo(String balanceId, ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1) throws ApiException {
+        okhttp3.Call localVarCall = appendCampaignsToBalanceV1ValidateBeforeCall(balanceId, valueResourceInputAppendCampaignsRequestV1, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeBalanceCampaignsV1>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Appends one or more campaigns to the specified balance
+     * @param balanceId The balance to add campaigns from (required)
+     * @param valueResourceInputAppendCampaignsRequestV1 The balance campaign appending request. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call appendCampaignsToBalanceV1Async(String balanceId, ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1, final ApiCallback<ValueResourceOutcomeBalanceCampaignsV1> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = appendCampaignsToBalanceV1ValidateBeforeCall(balanceId, valueResourceInputAppendCampaignsRequestV1, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeBalanceCampaignsV1>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for appendProductButtonByLineItemId
      * @param lineItemId LineItemId for productButton retrieval (required)
@@ -884,6 +1020,139 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = createPreferredLineItemByCampaignIdValidateBeforeCall(campaignId, preferredLineItemCreateModelV2Request, _callback);
         Type localVarReturnType = new TypeToken<PreferredLineItemV2Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteCampaignsFromBalanceV1
+     * @param balanceId The balance to remove campaigns from (required)
+     * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCampaignsFromBalanceV1Call(String balanceId, ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputDeleteCampaignsRequestV1;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/balances/{balanceId}/campaigns/delete"
+            .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteCampaignsFromBalanceV1ValidateBeforeCall(String balanceId, ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'balanceId' is set
+        if (balanceId == null) {
+            throw new ApiException("Missing the required parameter 'balanceId' when calling deleteCampaignsFromBalanceV1(Async)");
+        }
+
+        // verify the required parameter 'valueResourceInputDeleteCampaignsRequestV1' is set
+        if (valueResourceInputDeleteCampaignsRequestV1 == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputDeleteCampaignsRequestV1' when calling deleteCampaignsFromBalanceV1(Async)");
+        }
+
+        return deleteCampaignsFromBalanceV1Call(balanceId, valueResourceInputDeleteCampaignsRequestV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Deletes one or more campaigns on the specified balance
+     * @param balanceId The balance to remove campaigns from (required)
+     * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
+     * @return ValueResourceOutcomeBalanceCampaignsV1
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeBalanceCampaignsV1 deleteCampaignsFromBalanceV1(String balanceId, ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1) throws ApiException {
+        ApiResponse<ValueResourceOutcomeBalanceCampaignsV1> localVarResp = deleteCampaignsFromBalanceV1WithHttpInfo(balanceId, valueResourceInputDeleteCampaignsRequestV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Deletes one or more campaigns on the specified balance
+     * @param balanceId The balance to remove campaigns from (required)
+     * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
+     * @return ApiResponse&lt;ValueResourceOutcomeBalanceCampaignsV1&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeBalanceCampaignsV1> deleteCampaignsFromBalanceV1WithHttpInfo(String balanceId, ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1) throws ApiException {
+        okhttp3.Call localVarCall = deleteCampaignsFromBalanceV1ValidateBeforeCall(balanceId, valueResourceInputDeleteCampaignsRequestV1, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeBalanceCampaignsV1>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Deletes one or more campaigns on the specified balance
+     * @param balanceId The balance to remove campaigns from (required)
+     * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCampaignsFromBalanceV1Async(String balanceId, ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1, final ApiCallback<ValueResourceOutcomeBalanceCampaignsV1> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCampaignsFromBalanceV1ValidateBeforeCall(balanceId, valueResourceInputDeleteCampaignsRequestV1, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeBalanceCampaignsV1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

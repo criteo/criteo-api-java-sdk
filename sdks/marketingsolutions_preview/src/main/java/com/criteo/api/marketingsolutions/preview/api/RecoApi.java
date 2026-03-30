@@ -30,10 +30,13 @@ import java.io.IOException;
 import com.criteo.api.marketingsolutions.preview.model.Outcome;
 import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfProductSet;
 import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfProductSet;
+import com.criteo.api.marketingsolutions.preview.model.ValueResourceCollectionOutcomeOfBoostedAdProductSet;
 import com.criteo.api.marketingsolutions.preview.model.ValueResourceCollectionOutcomeOfProductFilterConfig;
+import com.criteo.api.marketingsolutions.preview.model.ValueResourceInputOfBoostingConfigurationRequest;
 import com.criteo.api.marketingsolutions.preview.model.ValueResourceInputOfCreateProductFilterRequest;
 import com.criteo.api.marketingsolutions.preview.model.ValueResourceInputOfCreateProductSetRequest;
 import com.criteo.api.marketingsolutions.preview.model.ValueResourceInputOfPatchProductSetRequest;
+import com.criteo.api.marketingsolutions.preview.model.ValueResourceOutcomeOfBoostedAdProductSet;
 import com.criteo.api.marketingsolutions.preview.model.ValueResourceOutcomeOfProductFilterConfig;
 
 import java.lang.reflect.Type;
@@ -80,6 +83,148 @@ public class RecoApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for createBoostedAdAssociation
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @param valueResourceInputOfBoostingConfigurationRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createBoostedAdAssociationCall(String adId, String productSetId, ValueResourceInputOfBoostingConfigurationRequest valueResourceInputOfBoostingConfigurationRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfBoostingConfigurationRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id}"
+            .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()))
+            .replace("{" + "product-set-id" + "}", localVarApiClient.escapeString(productSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createBoostedAdAssociationValidateBeforeCall(String adId, String productSetId, ValueResourceInputOfBoostingConfigurationRequest valueResourceInputOfBoostingConfigurationRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adId' is set
+        if (adId == null) {
+            throw new ApiException("Missing the required parameter 'adId' when calling createBoostedAdAssociation(Async)");
+        }
+
+        // verify the required parameter 'productSetId' is set
+        if (productSetId == null) {
+            throw new ApiException("Missing the required parameter 'productSetId' when calling createBoostedAdAssociation(Async)");
+        }
+
+        return createBoostedAdAssociationCall(adId, productSetId, valueResourceInputOfBoostingConfigurationRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Create or update product boosting configuration
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @param valueResourceInputOfBoostingConfigurationRequest  (optional)
+     * @return ValueResourceOutcomeOfBoostedAdProductSet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeOfBoostedAdProductSet createBoostedAdAssociation(String adId, String productSetId, ValueResourceInputOfBoostingConfigurationRequest valueResourceInputOfBoostingConfigurationRequest) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfBoostedAdProductSet> localVarResp = createBoostedAdAssociationWithHttpInfo(adId, productSetId, valueResourceInputOfBoostingConfigurationRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Create or update product boosting configuration
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @param valueResourceInputOfBoostingConfigurationRequest  (optional)
+     * @return ApiResponse&lt;ValueResourceOutcomeOfBoostedAdProductSet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeOfBoostedAdProductSet> createBoostedAdAssociationWithHttpInfo(String adId, String productSetId, ValueResourceInputOfBoostingConfigurationRequest valueResourceInputOfBoostingConfigurationRequest) throws ApiException {
+        okhttp3.Call localVarCall = createBoostedAdAssociationValidateBeforeCall(adId, productSetId, valueResourceInputOfBoostingConfigurationRequest, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfBoostedAdProductSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create or update product boosting configuration
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @param valueResourceInputOfBoostingConfigurationRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createBoostedAdAssociationAsync(String adId, String productSetId, ValueResourceInputOfBoostingConfigurationRequest valueResourceInputOfBoostingConfigurationRequest, final ApiCallback<ValueResourceOutcomeOfBoostedAdProductSet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createBoostedAdAssociationValidateBeforeCall(adId, productSetId, valueResourceInputOfBoostingConfigurationRequest, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfBoostedAdProductSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for createProductSet
      * @param valueResourceInputOfCreateProductSetRequest  (required)
@@ -200,6 +345,139 @@ public class RecoApi {
 
         okhttp3.Call localVarCall = createProductSetValidateBeforeCall(valueResourceInputOfCreateProductSetRequest, _callback);
         Type localVarReturnType = new TypeToken<ResourceOutcomeOfProductSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteBoostedAdAssociation
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteBoostedAdAssociationCall(String adId, String productSetId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id}"
+            .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()))
+            .replace("{" + "product-set-id" + "}", localVarApiClient.escapeString(productSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteBoostedAdAssociationValidateBeforeCall(String adId, String productSetId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adId' is set
+        if (adId == null) {
+            throw new ApiException("Missing the required parameter 'adId' when calling deleteBoostedAdAssociation(Async)");
+        }
+
+        // verify the required parameter 'productSetId' is set
+        if (productSetId == null) {
+            throw new ApiException("Missing the required parameter 'productSetId' when calling deleteBoostedAdAssociation(Async)");
+        }
+
+        return deleteBoostedAdAssociationCall(adId, productSetId, _callback);
+
+    }
+
+    /**
+     * 
+     * Delete association and configuration.
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @return ValueResourceOutcomeOfBoostedAdProductSet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeOfBoostedAdProductSet deleteBoostedAdAssociation(String adId, String productSetId) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfBoostedAdProductSet> localVarResp = deleteBoostedAdAssociationWithHttpInfo(adId, productSetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Delete association and configuration.
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @return ApiResponse&lt;ValueResourceOutcomeOfBoostedAdProductSet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeOfBoostedAdProductSet> deleteBoostedAdAssociationWithHttpInfo(String adId, String productSetId) throws ApiException {
+        okhttp3.Call localVarCall = deleteBoostedAdAssociationValidateBeforeCall(adId, productSetId, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfBoostedAdProductSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete association and configuration.
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteBoostedAdAssociationAsync(String adId, String productSetId, final ApiCallback<ValueResourceOutcomeOfBoostedAdProductSet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteBoostedAdAssociationValidateBeforeCall(adId, productSetId, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfBoostedAdProductSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -451,6 +729,393 @@ public class RecoApi {
 
         okhttp3.Call localVarCall = enableProductFilteringValidateBeforeCall(adId, valueResourceInputOfCreateProductFilterRequest, _callback);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfProductFilterConfig>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for fetchBoostedAdAssociation
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchBoostedAdAssociationCall(String adId, String productSetId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id}"
+            .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()))
+            .replace("{" + "product-set-id" + "}", localVarApiClient.escapeString(productSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call fetchBoostedAdAssociationValidateBeforeCall(String adId, String productSetId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adId' is set
+        if (adId == null) {
+            throw new ApiException("Missing the required parameter 'adId' when calling fetchBoostedAdAssociation(Async)");
+        }
+
+        // verify the required parameter 'productSetId' is set
+        if (productSetId == null) {
+            throw new ApiException("Missing the required parameter 'productSetId' when calling fetchBoostedAdAssociation(Async)");
+        }
+
+        return fetchBoostedAdAssociationCall(adId, productSetId, _callback);
+
+    }
+
+    /**
+     * 
+     * Fetch boosting association and configuration
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @return ValueResourceOutcomeOfBoostedAdProductSet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeOfBoostedAdProductSet fetchBoostedAdAssociation(String adId, String productSetId) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfBoostedAdProductSet> localVarResp = fetchBoostedAdAssociationWithHttpInfo(adId, productSetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Fetch boosting association and configuration
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @return ApiResponse&lt;ValueResourceOutcomeOfBoostedAdProductSet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeOfBoostedAdProductSet> fetchBoostedAdAssociationWithHttpInfo(String adId, String productSetId) throws ApiException {
+        okhttp3.Call localVarCall = fetchBoostedAdAssociationValidateBeforeCall(adId, productSetId, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfBoostedAdProductSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Fetch boosting association and configuration
+     * @param adId ID of the ad (required)
+     * @param productSetId ID of the product set (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchBoostedAdAssociationAsync(String adId, String productSetId, final ApiCallback<ValueResourceOutcomeOfBoostedAdProductSet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = fetchBoostedAdAssociationValidateBeforeCall(adId, productSetId, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfBoostedAdProductSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for fetchBoostedAdAssociationByPartnerId
+     * @param datasetId ID of the dataset (required)
+     * @param clientType Client type filter (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchBoostedAdAssociationByPartnerIdCall(String datasetId, String clientType, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/dataset/{dataset-id}/product-boost"
+            .replace("{" + "dataset-id" + "}", localVarApiClient.escapeString(datasetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (clientType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("client-type", clientType));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call fetchBoostedAdAssociationByPartnerIdValidateBeforeCall(String datasetId, String clientType, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'datasetId' is set
+        if (datasetId == null) {
+            throw new ApiException("Missing the required parameter 'datasetId' when calling fetchBoostedAdAssociationByPartnerId(Async)");
+        }
+
+        return fetchBoostedAdAssociationByPartnerIdCall(datasetId, clientType, _callback);
+
+    }
+
+    /**
+     * 
+     * Fetch boosting association and configuration for a given partner
+     * @param datasetId ID of the dataset (required)
+     * @param clientType Client type filter (optional)
+     * @return ValueResourceCollectionOutcomeOfBoostedAdProductSet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceCollectionOutcomeOfBoostedAdProductSet fetchBoostedAdAssociationByPartnerId(String datasetId, String clientType) throws ApiException {
+        ApiResponse<ValueResourceCollectionOutcomeOfBoostedAdProductSet> localVarResp = fetchBoostedAdAssociationByPartnerIdWithHttpInfo(datasetId, clientType);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Fetch boosting association and configuration for a given partner
+     * @param datasetId ID of the dataset (required)
+     * @param clientType Client type filter (optional)
+     * @return ApiResponse&lt;ValueResourceCollectionOutcomeOfBoostedAdProductSet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceCollectionOutcomeOfBoostedAdProductSet> fetchBoostedAdAssociationByPartnerIdWithHttpInfo(String datasetId, String clientType) throws ApiException {
+        okhttp3.Call localVarCall = fetchBoostedAdAssociationByPartnerIdValidateBeforeCall(datasetId, clientType, null);
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfBoostedAdProductSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Fetch boosting association and configuration for a given partner
+     * @param datasetId ID of the dataset (required)
+     * @param clientType Client type filter (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchBoostedAdAssociationByPartnerIdAsync(String datasetId, String clientType, final ApiCallback<ValueResourceCollectionOutcomeOfBoostedAdProductSet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = fetchBoostedAdAssociationByPartnerIdValidateBeforeCall(datasetId, clientType, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfBoostedAdProductSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for fetchBoostedAdAssociations
+     * @param adId ID of the ad (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchBoostedAdAssociationsCall(String adId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ads/{ad-id}/product-boost"
+            .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call fetchBoostedAdAssociationsValidateBeforeCall(String adId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adId' is set
+        if (adId == null) {
+            throw new ApiException("Missing the required parameter 'adId' when calling fetchBoostedAdAssociations(Async)");
+        }
+
+        return fetchBoostedAdAssociationsCall(adId, _callback);
+
+    }
+
+    /**
+     * 
+     * Fetch all boosting associations and configurations
+     * @param adId ID of the ad (required)
+     * @return ValueResourceCollectionOutcomeOfBoostedAdProductSet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceCollectionOutcomeOfBoostedAdProductSet fetchBoostedAdAssociations(String adId) throws ApiException {
+        ApiResponse<ValueResourceCollectionOutcomeOfBoostedAdProductSet> localVarResp = fetchBoostedAdAssociationsWithHttpInfo(adId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Fetch all boosting associations and configurations
+     * @param adId ID of the ad (required)
+     * @return ApiResponse&lt;ValueResourceCollectionOutcomeOfBoostedAdProductSet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceCollectionOutcomeOfBoostedAdProductSet> fetchBoostedAdAssociationsWithHttpInfo(String adId) throws ApiException {
+        okhttp3.Call localVarCall = fetchBoostedAdAssociationsValidateBeforeCall(adId, null);
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfBoostedAdProductSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Fetch all boosting associations and configurations
+     * @param adId ID of the ad (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchBoostedAdAssociationsAsync(String adId, final ApiCallback<ValueResourceCollectionOutcomeOfBoostedAdProductSet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = fetchBoostedAdAssociationsValidateBeforeCall(adId, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfBoostedAdProductSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

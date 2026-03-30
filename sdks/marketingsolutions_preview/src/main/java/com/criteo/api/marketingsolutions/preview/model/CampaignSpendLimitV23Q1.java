@@ -55,7 +55,7 @@ public class CampaignSpendLimitV23Q1 {
   private NillableDecimal spendLimitAmount;
 
   /**
-   * Gets or Sets spendLimitRenewal
+   * The period over which the campaign spend limit is applied.  When spendLimitType is \&quot;capped\&quot;, this is \&quot;daily\&quot;, \&quot;monthly\&quot;, or \&quot;lifetime\&quot;.  When spendLimitType is \&quot;uncapped\&quot;, this is \&quot;undefined\&quot;.
    */
   @JsonAdapter(SpendLimitRenewalEnum.Adapter.class)
   public enum SpendLimitRenewalEnum {
@@ -110,7 +110,7 @@ public class CampaignSpendLimitV23Q1 {
   private SpendLimitRenewalEnum spendLimitRenewal;
 
   /**
-   * Gets or Sets spendLimitType
+   * Controls whether the campaign has a spend limit.  \&quot;capped\&quot; returns a non-null spendLimitAmount.value and a spendLimitRenewal of \&quot;daily\&quot;, \&quot;monthly\&quot;, or \&quot;lifetime\&quot;.  \&quot;uncapped\&quot; returns spendLimitAmount.value as null and spendLimitRenewal as \&quot;undefined\&quot;.
    */
   @JsonAdapter(SpendLimitTypeEnum.Adapter.class)
   public enum SpendLimitTypeEnum {
@@ -192,7 +192,7 @@ public class CampaignSpendLimitV23Q1 {
   }
 
    /**
-   * Get spendLimitRenewal
+   * The period over which the campaign spend limit is applied.  When spendLimitType is \&quot;capped\&quot;, this is \&quot;daily\&quot;, \&quot;monthly\&quot;, or \&quot;lifetime\&quot;.  When spendLimitType is \&quot;uncapped\&quot;, this is \&quot;undefined\&quot;.
    * @return spendLimitRenewal
   **/
   @javax.annotation.Nullable
@@ -214,7 +214,7 @@ public class CampaignSpendLimitV23Q1 {
   }
 
    /**
-   * Get spendLimitType
+   * Controls whether the campaign has a spend limit.  \&quot;capped\&quot; returns a non-null spendLimitAmount.value and a spendLimitRenewal of \&quot;daily\&quot;, \&quot;monthly\&quot;, or \&quot;lifetime\&quot;.  \&quot;uncapped\&quot; returns spendLimitAmount.value as null and spendLimitRenewal as \&quot;undefined\&quot;.
    * @return spendLimitType
   **/
   @javax.annotation.Nullable

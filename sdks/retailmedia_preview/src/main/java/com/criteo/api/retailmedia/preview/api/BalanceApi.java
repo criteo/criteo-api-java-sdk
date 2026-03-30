@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBalanceV1AndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeBalanceV1;
-import com.criteo.api.retailmedia.preview.model.PageOfBalanceHistoryChangeDataCaptureV1;
+import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfUpdateBalanceModelV1;
 
 import java.lang.reflect.Type;
@@ -76,7 +77,7 @@ public class BalanceApi {
     }
 
     /**
-     * Build call for getBalanceHistory
+     * Build call for getBalanceHistoryV1
      * @param balanceId Balance id. (required)
      * @param limit The number of elements to be returned. (optional, default to 25)
      * @param limitToChangeTypes Comma separated change types string that will be queried. (optional)
@@ -90,7 +91,7 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBalanceHistoryCall(String balanceId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBalanceHistoryV1Call(String balanceId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -148,13 +149,13 @@ public class BalanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBalanceHistoryValidateBeforeCall(String balanceId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBalanceHistoryV1ValidateBeforeCall(String balanceId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'balanceId' is set
         if (balanceId == null) {
-            throw new ApiException("Missing the required parameter 'balanceId' when calling getBalanceHistory(Async)");
+            throw new ApiException("Missing the required parameter 'balanceId' when calling getBalanceHistoryV1(Async)");
         }
 
-        return getBalanceHistoryCall(balanceId, limit, limitToChangeTypes, offset, _callback);
+        return getBalanceHistoryV1Call(balanceId, limit, limitToChangeTypes, offset, _callback);
 
     }
 
@@ -165,7 +166,7 @@ public class BalanceApi {
      * @param limit The number of elements to be returned. (optional, default to 25)
      * @param limitToChangeTypes Comma separated change types string that will be queried. (optional)
      * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
-     * @return PageOfBalanceHistoryChangeDataCaptureV1
+     * @return ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -173,8 +174,8 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public PageOfBalanceHistoryChangeDataCaptureV1 getBalanceHistory(String balanceId, Integer limit, String limitToChangeTypes, Integer offset) throws ApiException {
-        ApiResponse<PageOfBalanceHistoryChangeDataCaptureV1> localVarResp = getBalanceHistoryWithHttpInfo(balanceId, limit, limitToChangeTypes, offset);
+    public ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata getBalanceHistoryV1(String balanceId, Integer limit, String limitToChangeTypes, Integer offset) throws ApiException {
+        ApiResponse<ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata> localVarResp = getBalanceHistoryV1WithHttpInfo(balanceId, limit, limitToChangeTypes, offset);
         return localVarResp.getData();
     }
 
@@ -185,7 +186,7 @@ public class BalanceApi {
      * @param limit The number of elements to be returned. (optional, default to 25)
      * @param limitToChangeTypes Comma separated change types string that will be queried. (optional)
      * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
-     * @return ApiResponse&lt;PageOfBalanceHistoryChangeDataCaptureV1&gt;
+     * @return ApiResponse&lt;ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -193,9 +194,9 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PageOfBalanceHistoryChangeDataCaptureV1> getBalanceHistoryWithHttpInfo(String balanceId, Integer limit, String limitToChangeTypes, Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = getBalanceHistoryValidateBeforeCall(balanceId, limit, limitToChangeTypes, offset, null);
-        Type localVarReturnType = new TypeToken<PageOfBalanceHistoryChangeDataCaptureV1>(){}.getType();
+    public ApiResponse<ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata> getBalanceHistoryV1WithHttpInfo(String balanceId, Integer limit, String limitToChangeTypes, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = getBalanceHistoryV1ValidateBeforeCall(balanceId, limit, limitToChangeTypes, offset, null);
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -215,10 +216,10 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBalanceHistoryAsync(String balanceId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback<PageOfBalanceHistoryChangeDataCaptureV1> _callback) throws ApiException {
+    public okhttp3.Call getBalanceHistoryV1Async(String balanceId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback<ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBalanceHistoryValidateBeforeCall(balanceId, limit, limitToChangeTypes, offset, _callback);
-        Type localVarReturnType = new TypeToken<PageOfBalanceHistoryChangeDataCaptureV1>(){}.getType();
+        okhttp3.Call localVarCall = getBalanceHistoryV1ValidateBeforeCall(balanceId, limit, limitToChangeTypes, offset, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -342,6 +343,153 @@ public class BalanceApi {
 
         okhttp3.Call localVarCall = getBalanceV1ValidateBeforeCall(balanceId, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceOutcomeBalanceV1>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getPageOfBalancesV1
+     * @param accountId The account to get balances for. (required)
+     * @param limit The number of elements to be returned. (optional, default to 25)
+     * @param limitToId The balance ids which the result is limited to. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPageOfBalancesV1Call(String accountId, Integer limit, List<String> limitToId, Integer offset, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{accountId}/balances"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (limitToId != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limit-to-id", limitToId));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPageOfBalancesV1ValidateBeforeCall(String accountId, Integer limit, List<String> limitToId, Integer offset, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling getPageOfBalancesV1(Async)");
+        }
+
+        return getPageOfBalancesV1Call(accountId, limit, limitToId, offset, _callback);
+
+    }
+
+    /**
+     * 
+     * Gets page of balance objects for the given account id.
+     * @param accountId The account to get balances for. (required)
+     * @param limit The number of elements to be returned. (optional, default to 25)
+     * @param limitToId The balance ids which the result is limited to. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
+     * @return EntityResourceCollectionOutcomeBalanceV1AndMetadata
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceCollectionOutcomeBalanceV1AndMetadata getPageOfBalancesV1(String accountId, Integer limit, List<String> limitToId, Integer offset) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeBalanceV1AndMetadata> localVarResp = getPageOfBalancesV1WithHttpInfo(accountId, limit, limitToId, offset);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Gets page of balance objects for the given account id.
+     * @param accountId The account to get balances for. (required)
+     * @param limit The number of elements to be returned. (optional, default to 25)
+     * @param limitToId The balance ids which the result is limited to. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeBalanceV1AndMetadata&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceCollectionOutcomeBalanceV1AndMetadata> getPageOfBalancesV1WithHttpInfo(String accountId, Integer limit, List<String> limitToId, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = getPageOfBalancesV1ValidateBeforeCall(accountId, limit, limitToId, offset, null);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBalanceV1AndMetadata>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Gets page of balance objects for the given account id.
+     * @param accountId The account to get balances for. (required)
+     * @param limit The number of elements to be returned. (optional, default to 25)
+     * @param limitToId The balance ids which the result is limited to. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPageOfBalancesV1Async(String accountId, Integer limit, List<String> limitToId, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeBalanceV1AndMetadata> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPageOfBalancesV1ValidateBeforeCall(accountId, limit, limitToId, offset, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBalanceV1AndMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

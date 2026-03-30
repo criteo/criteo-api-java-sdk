@@ -60,27 +60,31 @@ public class BalanceHistoryChangeDataCaptureV1 {
    */
   @JsonAdapter(ChangeTypeEnum.Adapter.class)
   public enum ChangeTypeEnum {
-    BALANCECREATED("BalanceCreated"),
+    BALANCECREATED("balanceCreated"),
     
-    BALANCEADDED("BalanceAdded"),
+    BALANCEADDED("balanceAdded"),
     
-    BALANCEREMOVED("BalanceRemoved"),
+    BALANCEREMOVED("balanceRemoved"),
     
-    BALANCEUNCAPPED("BalanceUncapped"),
+    BALANCEUNCAPPED("balanceUncapped"),
     
-    BALANCECAPPED("BalanceCapped"),
+    BALANCECAPPED("balanceCapped"),
     
-    ENDDATE("EndDate"),
+    ENDDATE("endDate"),
     
-    STARTDATE("StartDate"),
+    STARTDATE("startDate"),
     
-    BALANCENAME("BalanceName"),
+    BALANCENAME("balanceName"),
     
-    PONUMBER("PoNumber"),
+    RETAILERPONUMBER("retailerPoNumber"),
     
-    VALUEADD("ValueAdd"),
+    CRITEOPONUMBER("criteoPoNumber"),
     
-    UNKNOWN("Unknown");
+    RETAILERID("retailerId"),
+    
+    VALUEADD("valueAdd"),
+    
+    UNKNOWN("unknown");
 
     private String value;
 

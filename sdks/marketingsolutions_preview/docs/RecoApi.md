@@ -4,9 +4,14 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**createBoostedAdAssociation**](RecoApi.md#createBoostedAdAssociation) | **POST** /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} |  |
 | [**createProductSet**](RecoApi.md#createProductSet) | **POST** /preview/product-sets |  |
+| [**deleteBoostedAdAssociation**](RecoApi.md#deleteBoostedAdAssociation) | **DELETE** /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} |  |
 | [**disableProductFiltering**](RecoApi.md#disableProductFiltering) | **DELETE** /preview/ads/{ad-id}/product-filter |  |
 | [**enableProductFiltering**](RecoApi.md#enableProductFiltering) | **POST** /preview/ads/{ad-id}/product-filter |  |
+| [**fetchBoostedAdAssociation**](RecoApi.md#fetchBoostedAdAssociation) | **GET** /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} |  |
+| [**fetchBoostedAdAssociationByPartnerId**](RecoApi.md#fetchBoostedAdAssociationByPartnerId) | **GET** /preview/marketing-solutions/dataset/{dataset-id}/product-boost |  |
+| [**fetchBoostedAdAssociations**](RecoApi.md#fetchBoostedAdAssociations) | **GET** /preview/marketing-solutions/ads/{ad-id}/product-boost |  |
 | [**fetchProductFilteringConfig**](RecoApi.md#fetchProductFilteringConfig) | **GET** /preview/ads/{ad-id}/product-filter |  |
 | [**fetchProductFilteringUsages**](RecoApi.md#fetchProductFilteringUsages) | **GET** /preview/product-sets/{product-set-id}/product-filters |  |
 | [**fetchProductSet**](RecoApi.md#fetchProductSet) | **GET** /preview/product-sets/{product-set-id} |  |
@@ -14,6 +19,100 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**patchProductSet**](RecoApi.md#patchProductSet) | **PATCH** /preview/product-sets/{product-set-id} |  |
 | [**removeProductSet**](RecoApi.md#removeProductSet) | **DELETE** /preview/product-sets/{product-set-id} |  |
 
+
+
+## createBoostedAdAssociation
+
+> ValueResourceOutcomeOfBoostedAdProductSet createBoostedAdAssociation(adId, productSetId, valueResourceInputOfBoostingConfigurationRequest)
+
+
+
+Create or update product boosting configuration
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.RecoApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        RecoApi apiInstance = new RecoApi(defaultClient);
+        String adId = "adId_example"; // String | ID of the ad
+        String productSetId = "productSetId_example"; // String | ID of the product set
+        ValueResourceInputOfBoostingConfigurationRequest valueResourceInputOfBoostingConfigurationRequest = new ValueResourceInputOfBoostingConfigurationRequest(); // ValueResourceInputOfBoostingConfigurationRequest | 
+        try {
+            ValueResourceOutcomeOfBoostedAdProductSet result = apiInstance.createBoostedAdAssociation(adId, productSetId, valueResourceInputOfBoostingConfigurationRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecoApi#createBoostedAdAssociation");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adId** | **String**| ID of the ad | |
+| **productSetId** | **String**| ID of the product set | |
+| **valueResourceInputOfBoostingConfigurationRequest** | [**ValueResourceInputOfBoostingConfigurationRequest**](ValueResourceInputOfBoostingConfigurationRequest.md)|  | [optional] |
+
+### Return type
+
+[**ValueResourceOutcomeOfBoostedAdProductSet**](ValueResourceOutcomeOfBoostedAdProductSet.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | successful operation |  -  |
+| **201** | successful operation |  -  |
 
 
 ## createProductSet
@@ -103,6 +202,97 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Product set created successfully |  -  |
+
+
+## deleteBoostedAdAssociation
+
+> ValueResourceOutcomeOfBoostedAdProductSet deleteBoostedAdAssociation(adId, productSetId)
+
+
+
+Delete association and configuration.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.RecoApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        RecoApi apiInstance = new RecoApi(defaultClient);
+        String adId = "adId_example"; // String | ID of the ad
+        String productSetId = "productSetId_example"; // String | ID of the product set
+        try {
+            ValueResourceOutcomeOfBoostedAdProductSet result = apiInstance.deleteBoostedAdAssociation(adId, productSetId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecoApi#deleteBoostedAdAssociation");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adId** | **String**| ID of the ad | |
+| **productSetId** | **String**| ID of the product set | |
+
+### Return type
+
+[**ValueResourceOutcomeOfBoostedAdProductSet**](ValueResourceOutcomeOfBoostedAdProductSet.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | successful operation |  -  |
 
 
 ## disableProductFiltering
@@ -276,6 +466,277 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | successful operation |  -  |
+
+
+## fetchBoostedAdAssociation
+
+> ValueResourceOutcomeOfBoostedAdProductSet fetchBoostedAdAssociation(adId, productSetId)
+
+
+
+Fetch boosting association and configuration
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.RecoApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        RecoApi apiInstance = new RecoApi(defaultClient);
+        String adId = "adId_example"; // String | ID of the ad
+        String productSetId = "productSetId_example"; // String | ID of the product set
+        try {
+            ValueResourceOutcomeOfBoostedAdProductSet result = apiInstance.fetchBoostedAdAssociation(adId, productSetId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecoApi#fetchBoostedAdAssociation");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adId** | **String**| ID of the ad | |
+| **productSetId** | **String**| ID of the product set | |
+
+### Return type
+
+[**ValueResourceOutcomeOfBoostedAdProductSet**](ValueResourceOutcomeOfBoostedAdProductSet.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | successful operation |  -  |
+
+
+## fetchBoostedAdAssociationByPartnerId
+
+> ValueResourceCollectionOutcomeOfBoostedAdProductSet fetchBoostedAdAssociationByPartnerId(datasetId, clientType)
+
+
+
+Fetch boosting association and configuration for a given partner
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.RecoApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        RecoApi apiInstance = new RecoApi(defaultClient);
+        String datasetId = "datasetId_example"; // String | ID of the dataset
+        String clientType = "Unknown"; // String | Client type filter
+        try {
+            ValueResourceCollectionOutcomeOfBoostedAdProductSet result = apiInstance.fetchBoostedAdAssociationByPartnerId(datasetId, clientType);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecoApi#fetchBoostedAdAssociationByPartnerId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **datasetId** | **String**| ID of the dataset | |
+| **clientType** | **String**| Client type filter | [optional] [enum: Unknown, CGrowth, CMax] |
+
+### Return type
+
+[**ValueResourceCollectionOutcomeOfBoostedAdProductSet**](ValueResourceCollectionOutcomeOfBoostedAdProductSet.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | successful operation |  -  |
+
+
+## fetchBoostedAdAssociations
+
+> ValueResourceCollectionOutcomeOfBoostedAdProductSet fetchBoostedAdAssociations(adId)
+
+
+
+Fetch all boosting associations and configurations
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.RecoApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        RecoApi apiInstance = new RecoApi(defaultClient);
+        String adId = "adId_example"; // String | ID of the ad
+        try {
+            ValueResourceCollectionOutcomeOfBoostedAdProductSet result = apiInstance.fetchBoostedAdAssociations(adId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecoApi#fetchBoostedAdAssociations");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adId** | **String**| ID of the ad | |
+
+### Return type
+
+[**ValueResourceCollectionOutcomeOfBoostedAdProductSet**](ValueResourceCollectionOutcomeOfBoostedAdProductSet.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

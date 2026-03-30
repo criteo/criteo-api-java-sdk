@@ -825,6 +825,67 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/balances:
+    get:
+      description: Gets page of balance objects for the given account id.
+      operationId: GetPageOfBalancesV1
+      parameters:
+      - description: The account to get balances for.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The number of elements to be returned.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          format: int32
+          maximum: 500
+          minimum: 1
+          type: integer
+        style: form
+      - description: The balance ids which the result is limited to.
+        explode: true
+        in: query
+        name: limit-to-id
+        required: false
+        schema:
+          items:
+            type: string
+          maxItems: 50
+          type: array
+        style: form
+      - description: The (zero-based) starting offset in the collection.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeBalanceV1AndMetadata'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Balance_Read
+      tags:
+      - Balance
+      x-accepts: application/json
   /preview/retail-media/accounts/{accountId}/grant-third-party-consent:
     post:
       description: Grant third-party consent to a business application on behalf of
@@ -1092,10 +1153,78 @@ paths:
       tags:
       - Balance
       x-accepts: application/json
+  /preview/retail-media/balances/{balanceId}/campaigns/append:
+    post:
+      description: Appends one or more campaigns to the specified balance
+      operationId: AppendCampaignsToBalanceV1
+      parameters:
+      - description: The balance to add campaigns from
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputAppendCampaignsRequestV1'
+        description: The balance campaign appending request.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeBalanceCampaignsV1'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/balances/{balanceId}/campaigns/delete:
+    post:
+      description: Deletes one or more campaigns on the specified balance
+      operationId: DeleteCampaignsFromBalanceV1
+      parameters:
+      - description: The balance to remove campaigns from
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputDeleteCampaignsRequestV1'
+        description: The balance campaign deleting request.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeBalanceCampaignsV1'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/balances/{balanceId}/history:
     get:
       description: Gets the balance's historical change data.
-      operationId: GetBalanceHistory
+      operationId: GetBalanceHistoryV1
       parameters:
       - description: Balance id.
         explode: false
@@ -1113,7 +1242,7 @@ paths:
         schema:
           default: 25
           format: int32
-          maximum: 100
+          maximum: 500
           minimum: 1
           type: integer
         style: form
@@ -1142,7 +1271,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PageOfBalanceHistoryChangeDataCaptureV1'
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata'
           description: Success
       security:
       - oauth:
@@ -2580,6 +2709,23 @@ paths:
       x-accepts: application/json
 components:
   schemas:
+    AppendCampaignsRequestV1:
+      additionalProperties: false
+      description: Request object for appending campaigns to balance campaigns mapping.
+      example:
+        ids:
+        - ids
+        - ids
+      properties:
+        ids:
+          description: The ids of the campaigns that are going to be appended to balance
+            campaigns mapping.
+          items:
+            type: string
+          type: array
+      required:
+      - ids
+      type: object
     ApplicationSummaryModel:
       description: Used for the /me endpoint. Contains information about the currently
         authenticated application that we accept to give to our clients
@@ -4602,35 +4748,55 @@ components:
       - instance
       - type
       type: object
+    BalanceCampaignsV1:
+      additionalProperties: false
+      description: Balance campaigns mapping object.
+      example:
+        ids:
+        - ids
+        - ids
+      nullable: true
+      properties:
+        ids:
+          description: The ids of the campaigns that are mapped to the balance.
+          items:
+            type: string
+          type: array
+      required:
+      - ids
+      type: object
     BalanceHistoryChangeDataCaptureV1:
       additionalProperties: false
       description: Data model represents the data change capture of balance history.
       example:
         dateOfModification: 2000-01-23T04:56:07.000+00:00
-        changeType: BalanceCreated
+        changeType: balanceCreated
         modifiedByUser: modifiedByUser
         memo: memo
         changeDetails:
           changeValue: changeValue
           previousValue: previousValue
           currentValue: currentValue
+      nullable: true
       properties:
         changeDetails:
           $ref: '#/components/schemas/ChangeDetailsV1'
         changeType:
           description: Represent the type of change states of the history.
           enum:
-          - BalanceCreated
-          - BalanceAdded
-          - BalanceRemoved
-          - BalanceUncapped
-          - BalanceCapped
-          - EndDate
-          - StartDate
-          - BalanceName
-          - PoNumber
-          - ValueAdd
-          - Unknown
+          - balanceCreated
+          - balanceAdded
+          - balanceRemoved
+          - balanceUncapped
+          - balanceCapped
+          - endDate
+          - startDate
+          - balanceName
+          - retailerPoNumber
+          - criteoPoNumber
+          - retailerId
+          - valueAdd
+          - unknown
           type: string
         dateOfModification:
           description: Date when data change has occured.
@@ -5039,7 +5205,7 @@ components:
         currentValue: currentValue
       properties:
         changeValue:
-          description: Change detail of a property of the insertion order.
+          description: Change amount of a property of the insertion order.
           nullable: true
           type: string
         currentValue:
@@ -5801,6 +5967,23 @@ components:
       - name
       - value
       type: object
+    DeleteCampaignsRequestV1:
+      additionalProperties: false
+      description: Request object for deleting campaigns from balance campaigns mapping.
+      example:
+        ids:
+        - ids
+        - ids
+      properties:
+        ids:
+          description: The ids of the campaigns that are going to be deleted from
+            balance campaigns mapping.
+          items:
+            type: string
+          type: array
+      required:
+      - ids
+      type: object
     DeleteEntry:
       description: Defines a reference to inventory
       example:
@@ -5949,6 +6132,115 @@ components:
           description: Type of the resource.
           nullable: true
           type: string
+      type: object
+    EntityResourceCollectionOutcomeBalanceV1AndMetadata:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata.
+      example:
+        metadata:
+          offset: 1
+          count: 0
+          limit: 6
+        data:
+        - attributes:
+            privateMarketBillingType: notApplicable
+            endDate: endDate
+            deposited: 0.8008281904610115
+            spent: 1.4658129805029452
+            memo: memo
+            retailerId: retailerId
+            spendType: onsite
+            remaining: 6.027456183070403
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            criteoPoNumber: criteoPoNumber
+            retailerPoNumber: retailerPoNumber
+            startDate: startDate
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            privateMarketBillingType: notApplicable
+            endDate: endDate
+            deposited: 0.8008281904610115
+            spent: 1.4658129805029452
+            memo: memo
+            retailerId: retailerId
+            spendType: onsite
+            remaining: 6.027456183070403
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            criteoPoNumber: criteoPoNumber
+            retailerPoNumber: retailerPoNumber
+            startDate: startDate
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceBalanceV1'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata:
       description: A top-level object that encapsulates a Criteo API response for
@@ -8414,43 +8706,6 @@ components:
       required:
       - currentPageIndex
       - currentPageSize
-      type: object
-    PageOfBalanceHistoryChangeDataCaptureV1:
-      additionalProperties: false
-      description: A wrapper class to return a single page of items with metadata
-        for offset and limit based paging.
-      example:
-        data:
-        - dateOfModification: 2000-01-23T04:56:07.000+00:00
-          changeType: BalanceCreated
-          modifiedByUser: modifiedByUser
-          memo: memo
-          changeDetails:
-            changeValue: changeValue
-            previousValue: previousValue
-            currentValue: currentValue
-        - dateOfModification: 2000-01-23T04:56:07.000+00:00
-          changeType: BalanceCreated
-          modifiedByUser: modifiedByUser
-          memo: memo
-          changeDetails:
-            changeValue: changeValue
-            previousValue: previousValue
-            currentValue: currentValue
-        meta:
-          offset: 1
-          count: 0
-          limit: 6
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/BalanceHistoryChangeDataCaptureV1'
-          type: array
-        meta:
-          $ref: '#/components/schemas/Metadata'
-      required:
-      - data
-      - meta
       type: object
     PageTypeCombination:
       additionalProperties: false
@@ -15883,6 +16138,63 @@ components:
       required:
       - offerUpdates
       type: object
+    ValueResourceAppendCampaignsRequestV1:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          ids:
+          - ids
+          - ids
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AppendCampaignsRequestV1'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ValueResourceBalanceCampaignsV1:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          ids:
+          - ids
+          - ids
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/BalanceCampaignsV1'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ValueResourceBalanceHistoryChangeDataCaptureV1:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          dateOfModification: 2000-01-23T04:56:07.000+00:00
+          changeType: balanceCreated
+          modifiedByUser: modifiedByUser
+          memo: memo
+          changeDetails:
+            changeValue: changeValue
+            previousValue: previousValue
+            currentValue: currentValue
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/BalanceHistoryChangeDataCaptureV1'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     ValueResourceBrandIdSearchRequest:
       description: A value resource exposed by the API.
       example:
@@ -15920,6 +16232,97 @@ components:
           items:
             $ref: '#/components/schemas/ValueResourceOfRetailMediaSeller'
           nullable: true
+          type: array
+      type: object
+    ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several value objects and metadata.
+      example:
+        metadata:
+          offset: 1
+          count: 0
+          limit: 6
+        data:
+        - attributes:
+            dateOfModification: 2000-01-23T04:56:07.000+00:00
+            changeType: balanceCreated
+            modifiedByUser: modifiedByUser
+            memo: memo
+            changeDetails:
+              changeValue: changeValue
+              previousValue: previousValue
+              currentValue: currentValue
+          type: type
+        - attributes:
+            dateOfModification: 2000-01-23T04:56:07.000+00:00
+            changeType: balanceCreated
+            modifiedByUser: modifiedByUser
+            memo: memo
+            changeDetails:
+              changeValue: changeValue
+              previousValue: previousValue
+              currentValue: currentValue
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ValueResourceBalanceHistoryChangeDataCaptureV1'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
           type: array
       type: object
     ValueResourceCollectionOutcomeDisplayAuctionMinBidResult:
@@ -16070,6 +16473,23 @@ components:
           readOnly: true
           type: array
       type: object
+    ValueResourceDeleteCampaignsRequestV1:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          ids:
+          - ids
+          - ids
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/DeleteCampaignsRequestV1'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     ValueResourceDisplayAuctionMinBidRequest:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -16113,6 +16533,21 @@ components:
           nullable: true
           type: string
       type: object
+    ValueResourceInputAppendCampaignsRequestV1:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            ids:
+            - ids
+            - ids
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceAppendCampaignsRequestV1'
+      type: object
     ValueResourceInputBrandIdSearchRequest:
       description: A top-level object that encapsulates a Criteo API request for a
         single value objects.
@@ -16128,6 +16563,21 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceBrandIdSearchRequest'
+      type: object
+    ValueResourceInputDeleteCampaignsRequestV1:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            ids:
+            - ids
+            - ids
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceDeleteCampaignsRequestV1'
       type: object
     ValueResourceInputDisplayAuctionMinBidRequest:
       additionalProperties: false
@@ -16619,6 +17069,73 @@ components:
           description: Type of the resource.
           nullable: true
           type: string
+      type: object
+    ValueResourceOutcomeBalanceCampaignsV1:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            ids:
+            - ids
+            - ids
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceBalanceCampaignsV1'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse:
       additionalProperties: false
