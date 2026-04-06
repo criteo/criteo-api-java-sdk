@@ -15,16 +15,12 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.DataCompleteThrough;
-import com.criteo.api.retailmedia.preview.model.ExportReportColumn;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -49,96 +45,62 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Metadata for a report response: data freshness, column descriptions, and row count.
+ * Data freshness: the instant through which report data is complete, expressed in the report&#39;s request timezone.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExportReportMetaData {
-  public static final String SERIALIZED_NAME_COLUMNS = "columns";
-  @SerializedName(SERIALIZED_NAME_COLUMNS)
-  private List<ExportReportColumn> columns = null;
+public class DataCompleteThrough {
+  public static final String SERIALIZED_NAME_DATE_TIME = "dateTime";
+  @SerializedName(SERIALIZED_NAME_DATE_TIME)
+  private String dateTime;
 
-  public static final String SERIALIZED_NAME_DATA_COMPLETE_THROUGH = "dataCompleteThrough";
-  @SerializedName(SERIALIZED_NAME_DATA_COMPLETE_THROUGH)
-  private DataCompleteThrough dataCompleteThrough;
+  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
+  @SerializedName(SERIALIZED_NAME_TIMEZONE)
+  private String timezone;
 
-  public static final String SERIALIZED_NAME_ROWS = "rows";
-  @SerializedName(SERIALIZED_NAME_ROWS)
-  private Integer rows;
-
-  public ExportReportMetaData() {
+  public DataCompleteThrough() {
   }
 
-  public ExportReportMetaData columns(List<ExportReportColumn> columns) {
+  public DataCompleteThrough dateTime(String dateTime) {
     
-    this.columns = columns;
-    return this;
-  }
-
-  public ExportReportMetaData addColumnsItem(ExportReportColumn columnsItem) {
-    if (this.columns == null) {
-      this.columns = null;
-    }
-    this.columns.add(columnsItem);
+    this.dateTime = dateTime;
     return this;
   }
 
    /**
-   * Get columns
-   * @return columns
+   * The instant through which data is complete, in the format \&quot;yyyy-MM-dd HH:mm:ss\&quot; in Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.Timezone.
+   * @return dateTime
   **/
   @javax.annotation.Nullable
 
-  public List<ExportReportColumn> getColumns() {
-    return columns;
+  public String getDateTime() {
+    return dateTime;
   }
 
 
-  public void setColumns(List<ExportReportColumn> columns) {
-    this.columns = columns;
+  public void setDateTime(String dateTime) {
+    this.dateTime = dateTime;
   }
 
 
-  public ExportReportMetaData dataCompleteThrough(DataCompleteThrough dataCompleteThrough) {
+  public DataCompleteThrough timezone(String timezone) {
     
-    this.dataCompleteThrough = dataCompleteThrough;
+    this.timezone = timezone;
     return this;
   }
 
    /**
-   * Get dataCompleteThrough
-   * @return dataCompleteThrough
+   * IANA timezone for Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.DateTime (e.g. \&quot;UTC\&quot;, \&quot;America/New_York\&quot;). Matches the query timezone.
+   * @return timezone
   **/
   @javax.annotation.Nullable
 
-  public DataCompleteThrough getDataCompleteThrough() {
-    return dataCompleteThrough;
+  public String getTimezone() {
+    return timezone;
   }
 
 
-  public void setDataCompleteThrough(DataCompleteThrough dataCompleteThrough) {
-    this.dataCompleteThrough = dataCompleteThrough;
-  }
-
-
-  public ExportReportMetaData rows(Integer rows) {
-    
-    this.rows = rows;
-    return this;
-  }
-
-   /**
-   * Get rows
-   * @return rows
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getRows() {
-    return rows;
-  }
-
-
-  public void setRows(Integer rows) {
-    this.rows = rows;
+  public void setTimezone(String timezone) {
+    this.timezone = timezone;
   }
 
   /**
@@ -154,9 +116,9 @@ public class ExportReportMetaData {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ExportReportMetaData instance itself
+   * @return the DataCompleteThrough instance itself
    */
-  public ExportReportMetaData putAdditionalProperty(String key, Object value) {
+  public DataCompleteThrough putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -195,11 +157,10 @@ public class ExportReportMetaData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExportReportMetaData exportReportMetaData = (ExportReportMetaData) o;
-    return Objects.equals(this.columns, exportReportMetaData.columns) &&
-        Objects.equals(this.dataCompleteThrough, exportReportMetaData.dataCompleteThrough) &&
-        Objects.equals(this.rows, exportReportMetaData.rows)&&
-        Objects.equals(this.additionalProperties, exportReportMetaData.additionalProperties);
+    DataCompleteThrough dataCompleteThrough = (DataCompleteThrough) o;
+    return Objects.equals(this.dateTime, dataCompleteThrough.dateTime) &&
+        Objects.equals(this.timezone, dataCompleteThrough.timezone)&&
+        Objects.equals(this.additionalProperties, dataCompleteThrough.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -208,7 +169,7 @@ public class ExportReportMetaData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(columns, dataCompleteThrough, rows, additionalProperties);
+    return Objects.hash(dateTime, timezone, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -221,10 +182,9 @@ public class ExportReportMetaData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExportReportMetaData {\n");
-    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
-    sb.append("    dataCompleteThrough: ").append(toIndentedString(dataCompleteThrough)).append("\n");
-    sb.append("    rows: ").append(toIndentedString(rows)).append("\n");
+    sb.append("class DataCompleteThrough {\n");
+    sb.append("    dateTime: ").append(toIndentedString(dateTime)).append("\n");
+    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -248,9 +208,8 @@ public class ExportReportMetaData {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("columns");
-    openapiFields.add("dataCompleteThrough");
-    openapiFields.add("rows");
+    openapiFields.add("dateTime");
+    openapiFields.add("timezone");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -260,31 +219,19 @@ public class ExportReportMetaData {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExportReportMetaData
+  * @throws IOException if the JSON Object is invalid with respect to DataCompleteThrough
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ExportReportMetaData.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExportReportMetaData is not found in the empty JSON string", ExportReportMetaData.openapiRequiredFields.toString()));
+        if (!DataCompleteThrough.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DataCompleteThrough is not found in the empty JSON string", DataCompleteThrough.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("columns") != null && !jsonObj.get("columns").isJsonNull()) {
-        JsonArray jsonArraycolumns = jsonObj.getAsJsonArray("columns");
-        if (jsonArraycolumns != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("columns").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `columns` to be an array in the JSON string but got `%s`", jsonObj.get("columns").toString()));
-          }
-
-          // validate the optional field `columns` (array)
-          for (int i = 0; i < jsonArraycolumns.size(); i++) {
-            ExportReportColumn.validateJsonObject(jsonArraycolumns.get(i).getAsJsonObject());
-          };
-        }
+      if ((jsonObj.get("dateTime") != null && !jsonObj.get("dateTime").isJsonNull()) && !jsonObj.get("dateTime").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dateTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dateTime").toString()));
       }
-      // validate the optional field `dataCompleteThrough`
-      if (jsonObj.get("dataCompleteThrough") != null && !jsonObj.get("dataCompleteThrough").isJsonNull()) {
-        DataCompleteThrough.validateJsonObject(jsonObj.getAsJsonObject("dataCompleteThrough"));
+      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
       }
   }
 
@@ -292,16 +239,16 @@ public class ExportReportMetaData {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExportReportMetaData.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExportReportMetaData' and its subtypes
+       if (!DataCompleteThrough.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DataCompleteThrough' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExportReportMetaData> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExportReportMetaData.class));
+       final TypeAdapter<DataCompleteThrough> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DataCompleteThrough.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExportReportMetaData>() {
+       return (TypeAdapter<T>) new TypeAdapter<DataCompleteThrough>() {
            @Override
-           public void write(JsonWriter out, ExportReportMetaData value) throws IOException {
+           public void write(JsonWriter out, DataCompleteThrough value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -324,11 +271,11 @@ public class ExportReportMetaData {
            }
 
            @Override
-           public ExportReportMetaData read(JsonReader in) throws IOException {
+           public DataCompleteThrough read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ExportReportMetaData instance = thisAdapter.fromJsonTree(jsonObj);
+             DataCompleteThrough instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -355,18 +302,18 @@ public class ExportReportMetaData {
   }
 
  /**
-  * Create an instance of ExportReportMetaData given an JSON string
+  * Create an instance of DataCompleteThrough given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExportReportMetaData
-  * @throws IOException if the JSON string is invalid with respect to ExportReportMetaData
+  * @return An instance of DataCompleteThrough
+  * @throws IOException if the JSON string is invalid with respect to DataCompleteThrough
   */
-  public static ExportReportMetaData fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExportReportMetaData.class);
+  public static DataCompleteThrough fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DataCompleteThrough.class);
   }
 
  /**
-  * Convert an instance of ExportReportMetaData to an JSON string
+  * Convert an instance of DataCompleteThrough to an JSON string
   *
   * @return JSON string
   */

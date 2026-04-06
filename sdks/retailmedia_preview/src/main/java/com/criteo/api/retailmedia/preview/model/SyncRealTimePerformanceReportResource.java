@@ -15,17 +15,13 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.DataCompleteThrough;
-import com.criteo.api.retailmedia.preview.model.ExportReportColumn;
+import com.criteo.api.retailmedia.preview.model.SyncRealTimePerformanceReport;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,96 +45,62 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Metadata for a report response: data freshness, column descriptions, and row count.
+ * A top-level object that encapsulates a Criteo API response for a single value
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExportReportMetaData {
-  public static final String SERIALIZED_NAME_COLUMNS = "columns";
-  @SerializedName(SERIALIZED_NAME_COLUMNS)
-  private List<ExportReportColumn> columns = null;
+public class SyncRealTimePerformanceReportResource {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private SyncRealTimePerformanceReport attributes;
 
-  public static final String SERIALIZED_NAME_DATA_COMPLETE_THROUGH = "dataCompleteThrough";
-  @SerializedName(SERIALIZED_NAME_DATA_COMPLETE_THROUGH)
-  private DataCompleteThrough dataCompleteThrough;
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
-  public static final String SERIALIZED_NAME_ROWS = "rows";
-  @SerializedName(SERIALIZED_NAME_ROWS)
-  private Integer rows;
-
-  public ExportReportMetaData() {
+  public SyncRealTimePerformanceReportResource() {
   }
 
-  public ExportReportMetaData columns(List<ExportReportColumn> columns) {
+  public SyncRealTimePerformanceReportResource attributes(SyncRealTimePerformanceReport attributes) {
     
-    this.columns = columns;
-    return this;
-  }
-
-  public ExportReportMetaData addColumnsItem(ExportReportColumn columnsItem) {
-    if (this.columns == null) {
-      this.columns = null;
-    }
-    this.columns.add(columnsItem);
+    this.attributes = attributes;
     return this;
   }
 
    /**
-   * Get columns
-   * @return columns
+   * Get attributes
+   * @return attributes
   **/
   @javax.annotation.Nullable
 
-  public List<ExportReportColumn> getColumns() {
-    return columns;
+  public SyncRealTimePerformanceReport getAttributes() {
+    return attributes;
   }
 
 
-  public void setColumns(List<ExportReportColumn> columns) {
-    this.columns = columns;
+  public void setAttributes(SyncRealTimePerformanceReport attributes) {
+    this.attributes = attributes;
   }
 
 
-  public ExportReportMetaData dataCompleteThrough(DataCompleteThrough dataCompleteThrough) {
+  public SyncRealTimePerformanceReportResource type(String type) {
     
-    this.dataCompleteThrough = dataCompleteThrough;
+    this.type = type;
     return this;
   }
 
    /**
-   * Get dataCompleteThrough
-   * @return dataCompleteThrough
+   * Get type
+   * @return type
   **/
   @javax.annotation.Nullable
 
-  public DataCompleteThrough getDataCompleteThrough() {
-    return dataCompleteThrough;
+  public String getType() {
+    return type;
   }
 
 
-  public void setDataCompleteThrough(DataCompleteThrough dataCompleteThrough) {
-    this.dataCompleteThrough = dataCompleteThrough;
-  }
-
-
-  public ExportReportMetaData rows(Integer rows) {
-    
-    this.rows = rows;
-    return this;
-  }
-
-   /**
-   * Get rows
-   * @return rows
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getRows() {
-    return rows;
-  }
-
-
-  public void setRows(Integer rows) {
-    this.rows = rows;
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -154,9 +116,9 @@ public class ExportReportMetaData {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ExportReportMetaData instance itself
+   * @return the SyncRealTimePerformanceReportResource instance itself
    */
-  public ExportReportMetaData putAdditionalProperty(String key, Object value) {
+  public SyncRealTimePerformanceReportResource putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -195,36 +157,23 @@ public class ExportReportMetaData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExportReportMetaData exportReportMetaData = (ExportReportMetaData) o;
-    return Objects.equals(this.columns, exportReportMetaData.columns) &&
-        Objects.equals(this.dataCompleteThrough, exportReportMetaData.dataCompleteThrough) &&
-        Objects.equals(this.rows, exportReportMetaData.rows)&&
-        Objects.equals(this.additionalProperties, exportReportMetaData.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    SyncRealTimePerformanceReportResource syncRealTimePerformanceReportResource = (SyncRealTimePerformanceReportResource) o;
+    return Objects.equals(this.attributes, syncRealTimePerformanceReportResource.attributes) &&
+        Objects.equals(this.type, syncRealTimePerformanceReportResource.type)&&
+        Objects.equals(this.additionalProperties, syncRealTimePerformanceReportResource.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(columns, dataCompleteThrough, rows, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExportReportMetaData {\n");
-    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
-    sb.append("    dataCompleteThrough: ").append(toIndentedString(dataCompleteThrough)).append("\n");
-    sb.append("    rows: ").append(toIndentedString(rows)).append("\n");
+    sb.append("class SyncRealTimePerformanceReportResource {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -248,9 +197,8 @@ public class ExportReportMetaData {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("columns");
-    openapiFields.add("dataCompleteThrough");
-    openapiFields.add("rows");
+    openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -260,31 +208,20 @@ public class ExportReportMetaData {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExportReportMetaData
+  * @throws IOException if the JSON Object is invalid with respect to SyncRealTimePerformanceReportResource
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ExportReportMetaData.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExportReportMetaData is not found in the empty JSON string", ExportReportMetaData.openapiRequiredFields.toString()));
+        if (!SyncRealTimePerformanceReportResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SyncRealTimePerformanceReportResource is not found in the empty JSON string", SyncRealTimePerformanceReportResource.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("columns") != null && !jsonObj.get("columns").isJsonNull()) {
-        JsonArray jsonArraycolumns = jsonObj.getAsJsonArray("columns");
-        if (jsonArraycolumns != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("columns").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `columns` to be an array in the JSON string but got `%s`", jsonObj.get("columns").toString()));
-          }
-
-          // validate the optional field `columns` (array)
-          for (int i = 0; i < jsonArraycolumns.size(); i++) {
-            ExportReportColumn.validateJsonObject(jsonArraycolumns.get(i).getAsJsonObject());
-          };
-        }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        SyncRealTimePerformanceReport.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
-      // validate the optional field `dataCompleteThrough`
-      if (jsonObj.get("dataCompleteThrough") != null && !jsonObj.get("dataCompleteThrough").isJsonNull()) {
-        DataCompleteThrough.validateJsonObject(jsonObj.getAsJsonObject("dataCompleteThrough"));
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 
@@ -292,16 +229,16 @@ public class ExportReportMetaData {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExportReportMetaData.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExportReportMetaData' and its subtypes
+       if (!SyncRealTimePerformanceReportResource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SyncRealTimePerformanceReportResource' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExportReportMetaData> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExportReportMetaData.class));
+       final TypeAdapter<SyncRealTimePerformanceReportResource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SyncRealTimePerformanceReportResource.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExportReportMetaData>() {
+       return (TypeAdapter<T>) new TypeAdapter<SyncRealTimePerformanceReportResource>() {
            @Override
-           public void write(JsonWriter out, ExportReportMetaData value) throws IOException {
+           public void write(JsonWriter out, SyncRealTimePerformanceReportResource value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -324,11 +261,11 @@ public class ExportReportMetaData {
            }
 
            @Override
-           public ExportReportMetaData read(JsonReader in) throws IOException {
+           public SyncRealTimePerformanceReportResource read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ExportReportMetaData instance = thisAdapter.fromJsonTree(jsonObj);
+             SyncRealTimePerformanceReportResource instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -355,18 +292,18 @@ public class ExportReportMetaData {
   }
 
  /**
-  * Create an instance of ExportReportMetaData given an JSON string
+  * Create an instance of SyncRealTimePerformanceReportResource given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExportReportMetaData
-  * @throws IOException if the JSON string is invalid with respect to ExportReportMetaData
+  * @return An instance of SyncRealTimePerformanceReportResource
+  * @throws IOException if the JSON string is invalid with respect to SyncRealTimePerformanceReportResource
   */
-  public static ExportReportMetaData fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExportReportMetaData.class);
+  public static SyncRealTimePerformanceReportResource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SyncRealTimePerformanceReportResource.class);
   }
 
  /**
-  * Convert an instance of ExportReportMetaData to an JSON string
+  * Convert an instance of SyncRealTimePerformanceReportResource to an JSON string
   *
   * @return JSON string
   */

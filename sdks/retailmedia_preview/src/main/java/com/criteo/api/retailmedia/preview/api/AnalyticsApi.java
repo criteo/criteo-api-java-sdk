@@ -41,6 +41,7 @@ import com.criteo.api.retailmedia.preview.model.ShareOfVoiceInsightRequest;
 import com.criteo.api.retailmedia.preview.model.SyncAttributedTransactionsReportRequest;
 import com.criteo.api.retailmedia.preview.model.SyncCampaignsReportRequest;
 import com.criteo.api.retailmedia.preview.model.SyncLineItemsReportRequest;
+import com.criteo.api.retailmedia.preview.model.SyncRealTimePerformanceReportRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1307,6 +1308,129 @@ public class AnalyticsApi {
     public okhttp3.Call generateSyncLineItemsReportAsync(SyncLineItemsReportRequest syncLineItemsReportRequest, final ApiCallback<ReportResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = generateSyncLineItemsReportValidateBeforeCall(syncLineItemsReportRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for generateSyncRealTimePerformanceReport
+     * @param syncRealTimePerformanceReportRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateSyncRealTimePerformanceReportCall(SyncRealTimePerformanceReportRequest syncRealTimePerformanceReportRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = syncRealTimePerformanceReportRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/reports/sync/real-time-performance";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call generateSyncRealTimePerformanceReportValidateBeforeCall(SyncRealTimePerformanceReportRequest syncRealTimePerformanceReportRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'syncRealTimePerformanceReportRequest' is set
+        if (syncRealTimePerformanceReportRequest == null) {
+            throw new ApiException("Missing the required parameter 'syncRealTimePerformanceReportRequest' when calling generateSyncRealTimePerformanceReport(Async)");
+        }
+
+        return generateSyncRealTimePerformanceReportCall(syncRealTimePerformanceReportRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone).  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param syncRealTimePerformanceReportRequest  (required)
+     * @return ReportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ReportResponse generateSyncRealTimePerformanceReport(SyncRealTimePerformanceReportRequest syncRealTimePerformanceReportRequest) throws ApiException {
+        ApiResponse<ReportResponse> localVarResp = generateSyncRealTimePerformanceReportWithHttpInfo(syncRealTimePerformanceReportRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone).  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param syncRealTimePerformanceReportRequest  (required)
+     * @return ApiResponse&lt;ReportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ReportResponse> generateSyncRealTimePerformanceReportWithHttpInfo(SyncRealTimePerformanceReportRequest syncRealTimePerformanceReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateSyncRealTimePerformanceReportValidateBeforeCall(syncRealTimePerformanceReportRequest, null);
+        Type localVarReturnType = new TypeToken<ReportResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone).  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param syncRealTimePerformanceReportRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateSyncRealTimePerformanceReportAsync(SyncRealTimePerformanceReportRequest syncRealTimePerformanceReportRequest, final ApiCallback<ReportResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = generateSyncRealTimePerformanceReportValidateBeforeCall(syncRealTimePerformanceReportRequest, _callback);
         Type localVarReturnType = new TypeToken<ReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

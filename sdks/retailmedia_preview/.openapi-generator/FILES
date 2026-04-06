@@ -60,6 +60,7 @@ docs/CreativeSearchRequest.md
 docs/CreativeSearchResponse.md
 docs/CreativeUpdateModel2.md
 docs/CustomAttribute.md
+docs/DataCompleteThrough.md
 docs/DeleteCampaignsRequestV1.md
 docs/DeleteEntry.md
 docs/DisplayAuctionMinBidRequest.md
@@ -272,6 +273,9 @@ docs/SyncCampaignsReportResource.md
 docs/SyncLineItemsReport.md
 docs/SyncLineItemsReportRequest.md
 docs/SyncLineItemsReportResource.md
+docs/SyncRealTimePerformanceReport.md
+docs/SyncRealTimePerformanceReportRequest.md
+docs/SyncRealTimePerformanceReportResource.md
 docs/TemplateVariableValue.md
 docs/TextVariableValue.md
 docs/ThirdPartyAccountsApi.md
@@ -407,6 +411,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/CreativeSearchRequest.jav
 src/main/java/com/criteo/api/retailmedia/preview/model/CreativeSearchResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CreativeUpdateModel2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CustomAttribute.java
+src/main/java/com/criteo/api/retailmedia/preview/model/DataCompleteThrough.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DeleteCampaignsRequestV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DeleteEntry.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DisplayAuctionMinBidRequest.java
@@ -617,6 +622,9 @@ src/main/java/com/criteo/api/retailmedia/preview/model/SyncCampaignsReportResour
 src/main/java/com/criteo/api/retailmedia/preview/model/SyncLineItemsReport.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SyncLineItemsReportRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SyncLineItemsReportResource.java
+src/main/java/com/criteo/api/retailmedia/preview/model/SyncRealTimePerformanceReport.java
+src/main/java/com/criteo/api/retailmedia/preview/model/SyncRealTimePerformanceReportRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/SyncRealTimePerformanceReportResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/TemplateVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/TextVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/UpdateBalanceModelV1.java
