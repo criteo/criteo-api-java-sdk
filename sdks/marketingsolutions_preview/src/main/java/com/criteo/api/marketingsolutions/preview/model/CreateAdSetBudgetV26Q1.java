@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * ad set budget create model
+ * Budget create model for an ad set.  For \&quot;capped\&quot;: budgetAmount (required, non-null), budgetRenewal (required, not \&quot;undefined\&quot;), and budgetDeliverySmoothing (required) must all be provided.  For \&quot;uncapped\&quot;: budgetAmount must be null, budgetRenewal must be \&quot;undefined\&quot;, budgetDeliverySmoothing and budgetDeliveryWeek must be omitted or \&quot;undefined\&quot;.  For marketing campaigns with budget automation enabled, omit this object.  In that case, the ad set budget is initialized from the marketing campaign spend limit amount and renewal period.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateAdSetBudgetV26Q1 {
@@ -285,7 +285,7 @@ public class CreateAdSetBudgetV26Q1 {
   }
 
    /**
-   * Get budgetAmount
+   * Maximum budget amount in the advertiser&#39;s currency per renewal period. Required non-null when capped. Must be null when uncapped.
    * @return budgetAmount
   **/
   @javax.annotation.Nullable

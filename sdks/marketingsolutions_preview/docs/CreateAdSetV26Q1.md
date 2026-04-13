@@ -10,7 +10,7 @@ ad set create model
 |------------ | ------------- | ------------- | -------------|
 |**attributionConfiguration** | [**CreateAdSetAttributionConfigurationV26Q1**](CreateAdSetAttributionConfigurationV26Q1.md) |  |  [optional] |
 |**bidding** | [**CreateAdSetBiddingV26Q1**](CreateAdSetBiddingV26Q1.md) |  |  |
-|**budget** | [**CreateAdSetBudgetV26Q1**](CreateAdSetBudgetV26Q1.md) |  |  |
+|**budget** | [**CreateAdSetBudgetV26Q1**](CreateAdSetBudgetV26Q1.md) |  |  [optional] |
 |**campaignId** | **String** | Campaign id this ad set belongs to |  |
 |**datasetId** | **String** | Dataset id of this ad set |  |
 |**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Media type for the ad set |  |

@@ -53,6 +53,10 @@ public class RecommendedProduct {
   @SerializedName(SERIALIZED_NAME_ALTERNATIVE_CLICK_URL)
   private String alternativeClickUrl;
 
+  public static final String SERIALIZED_NAME_BRAND = "brand";
+  @SerializedName(SERIALIZED_NAME_BRAND)
+  private String brand;
+
   public static final String SERIALIZED_NAME_CLICK_URL = "clickUrl";
   @SerializedName(SERIALIZED_NAME_CLICK_URL)
   private String clickUrl;
@@ -111,6 +115,28 @@ public class RecommendedProduct {
 
   public void setAlternativeClickUrl(String alternativeClickUrl) {
     this.alternativeClickUrl = alternativeClickUrl;
+  }
+
+
+  public RecommendedProduct brand(String brand) {
+    
+    this.brand = brand;
+    return this;
+  }
+
+   /**
+   * Product brand.
+   * @return brand
+  **/
+  @javax.annotation.Nullable
+
+  public String getBrand() {
+    return brand;
+  }
+
+
+  public void setBrand(String brand) {
+    this.brand = brand;
   }
 
 
@@ -367,6 +393,7 @@ public class RecommendedProduct {
     }
     RecommendedProduct recommendedProduct = (RecommendedProduct) o;
     return Objects.equals(this.alternativeClickUrl, recommendedProduct.alternativeClickUrl) &&
+        Objects.equals(this.brand, recommendedProduct.brand) &&
         Objects.equals(this.clickUrl, recommendedProduct.clickUrl) &&
         Objects.equals(this.description, recommendedProduct.description) &&
         Objects.equals(this.googleCategory, recommendedProduct.googleCategory) &&
@@ -385,7 +412,7 @@ public class RecommendedProduct {
 
   @Override
   public int hashCode() {
-    return Objects.hash(alternativeClickUrl, clickUrl, description, googleCategory, imageUrl, name, price, productExternalId, relevancyScore, retailPrice, additionalProperties);
+    return Objects.hash(alternativeClickUrl, brand, clickUrl, description, googleCategory, imageUrl, name, price, productExternalId, relevancyScore, retailPrice, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -400,6 +427,7 @@ public class RecommendedProduct {
     StringBuilder sb = new StringBuilder();
     sb.append("class RecommendedProduct {\n");
     sb.append("    alternativeClickUrl: ").append(toIndentedString(alternativeClickUrl)).append("\n");
+    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    clickUrl: ").append(toIndentedString(clickUrl)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    googleCategory: ").append(toIndentedString(googleCategory)).append("\n");
@@ -433,6 +461,7 @@ public class RecommendedProduct {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("alternativeClickUrl");
+    openapiFields.add("brand");
     openapiFields.add("clickUrl");
     openapiFields.add("description");
     openapiFields.add("googleCategory");
@@ -461,6 +490,9 @@ public class RecommendedProduct {
       }
       if ((jsonObj.get("alternativeClickUrl") != null && !jsonObj.get("alternativeClickUrl").isJsonNull()) && !jsonObj.get("alternativeClickUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `alternativeClickUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("alternativeClickUrl").toString()));
+      }
+      if ((jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonNull()) && !jsonObj.get("brand").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brand").toString()));
       }
       if ((jsonObj.get("clickUrl") != null && !jsonObj.get("clickUrl").isJsonNull()) && !jsonObj.get("clickUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clickUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickUrl").toString()));

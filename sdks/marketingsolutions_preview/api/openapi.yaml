@@ -8579,12 +8579,17 @@ components:
       - type
       type: object
     AutomatedBudgetConfigurationV23Q1:
-      description: The automated budget configuration model
+      description: Detailed configuration used when campaign budget automation is
+        enabled.
       example:
         adSetOptimizationObjective: conversions
       nullable: true
       properties:
         adSetOptimizationObjective:
+          description: "Optimization objective used to automate budget allocation\
+            \ across ad sets.\r\nExpected when budgetAutomation.enabled is true.\r\
+            \nPossible values are \"conversions\", \"revenue\", \"visits\", and \"\
+            videoViews\"."
           enum:
           - conversions
           - revenue
@@ -8697,7 +8702,14 @@ components:
       - boostingFactor
       type: object
     BudgetAutomation:
-      description: The campaign budget automation model
+      description: "Budget automation, lets users configure budgets once at the campaign\
+        \ level while Criteo dynamically routes spend toward the best-performing ad\
+        \ sets.\r\nIf \"enabled\" is omitted and only \"budgetConfiguration\" is provided,\
+        \ \"enabled\" defaults to false — budget automation will not be activated.\r\
+        \nTo activate budget automation at creation, \"enabled\" must be explicitly\
+        \ set to true along with a valid \"budgetConfiguration\".\r\nIf the entire\
+        \ \"budgetAutomation\" object is omitted from the create request, the campaign\
+        \ is created with budget automation disabled."
       example:
         budgetConfiguration:
           adSetObjectives: conversions
@@ -8709,12 +8721,18 @@ components:
           type: boolean
       type: object
     BudgetAutomationConfiguration:
-      description: The budget automation configuration model
+      description: "Configuration for budget automation. Only meaningful when \"enabled\"\
+        \ is true.\r\nWhen \"enabled\" is false or omitted, this field is ignored."
       example:
         adSetObjectives: conversions
       nullable: true
       properties:
         adSetObjectives:
+          description: "The ad set optimization objective for budget automation. Determines\
+            \ how the automated budget allocates spend across ad sets in the campaign.\r\
+            \n- \"conversions\": optimize for conversion events.\r\n- \"revenue\"\
+            : optimize for revenue.\r\n- \"visits\": optimize for site visits.\r\n\
+            - \"videoViews\": optimize for completed video views."
           enum:
           - conversions
           - revenue
@@ -8723,7 +8741,11 @@ components:
           type: string
       type: object
     CampaignBudgetAutomationV23Q1:
-      description: The campaign budget automation model
+      description: "Budget automation, also known as automated budget or budget pacing,\
+        \ lets users configure KPIs and budgets once at the campaign level while Criteo\
+        \ dynamically routes spend toward the best-performing ad sets.\r\nWhen enabled\
+        \ is false, automatedBudgetConfiguration is null.\r\nWhen enabled is true,\
+        \ automatedBudgetConfiguration.adSetOptimizationObjective is expected."
       example:
         automatedBudgetConfiguration:
           adSetOptimizationObjective: conversions
@@ -8733,6 +8755,8 @@ components:
         automatedBudgetConfiguration:
           $ref: '#/components/schemas/AutomatedBudgetConfigurationV23Q1'
         enabled:
+          description: Whether budget automation is enabled for this campaign. This
+            field is always present in the response.
           nullable: true
           type: boolean
       type: object
@@ -8772,7 +8796,9 @@ components:
           $ref: '#/components/schemas/CampaignSearchFiltersV23Q1'
       type: object
     CampaignSpendLimitV23Q1:
-      description: campaign spend limit model
+      description: Campaign spend-limit configuration. A capped spend limit restricts
+        campaign spending per renewal period. An uncapped spend limit does not impose
+        a spending ceiling.
       example:
         spendLimitRenewal: undefined
         spendLimitAmount:
@@ -9541,7 +9567,14 @@ components:
       - costController
       type: object
     CreateAdSetBudgetV26Q1:
-      description: ad set budget create model
+      description: "Budget create model for an ad set.\r\nFor \"capped\": budgetAmount\
+        \ (required, non-null), budgetRenewal (required, not \"undefined\"), and budgetDeliverySmoothing\
+        \ (required) must all be provided.\r\nFor \"uncapped\": budgetAmount must\
+        \ be null, budgetRenewal must be \"undefined\", budgetDeliverySmoothing and\
+        \ budgetDeliveryWeek must be omitted or \"undefined\".\r\nFor marketing campaigns\
+        \ with budget automation enabled, omit this object.\r\nIn that case, the ad\
+        \ set budget is initialized from the marketing campaign spend limit amount\
+        \ and renewal period."
       example:
         budgetDeliverySmoothing: accelerated
         budgetDeliveryWeek: undefined
@@ -9550,6 +9583,8 @@ components:
         budgetStrategy: capped
       properties:
         budgetAmount:
+          description: Maximum budget amount in the advertiser's currency per renewal
+            period. Required non-null when capped. Must be null when uncapped.
           format: double
           nullable: true
           type: number
@@ -9797,7 +9832,6 @@ components:
           type: string
       required:
       - bidding
-      - budget
       - campaignId
       - datasetId
       - mediaType
@@ -10018,7 +10052,11 @@ components:
           type: string
       type: object
     CreateCampaignSpendLimit:
-      description: campaign spend limit create model
+      description: "Spend limit configuration for a marketing campaign. Controls how\
+        \ much can be spent and the renewal cadence.\r\nWhen spendLimitType is \"\
+        capped\": spendLimitAmount and spendLimitRenewal are required.\r\nWhen spendLimitType\
+        \ is \"uncapped\": spendLimitAmount is null and spendLimitRenewal is \"undefined\"\
+        ."
       example:
         spendLimitRenewal: undefined
         spendLimitAmount: 0.8008281904610115
@@ -14375,6 +14413,7 @@ components:
           description: description
           alternativeClickUrl: alternativeClickUrl
           relevancyScore: 1.4658129805029452
+          brand: brand
           retailPrice: 5.962133916683182
         - clickUrl: clickUrl
           price: 6.027456183070403
@@ -14385,6 +14424,7 @@ components:
           description: description
           alternativeClickUrl: alternativeClickUrl
           relevancyScore: 1.4658129805029452
+          brand: brand
           retailPrice: 5.962133916683182
       properties:
         extraInfos:
@@ -14510,7 +14550,8 @@ components:
         \ budgetDeliverySmoothing, budgetDeliveryWeek) are automatically cleared.\r\
         \nSwitching to \"capped\": set budgetStrategy to \"capped\", budgetAmount.value\
         \ to a positive number, budgetRenewal to a period, and budgetDeliverySmoothing\
-        \ to a pacing strategy."
+        \ to a pacing strategy.\r\nManual budget updates are not supported when the\
+        \ linked marketing campaign has budget automation enabled."
       example:
         budgetDeliverySmoothing: accelerated
         budgetDeliveryWeek: undefined
@@ -14974,7 +15015,11 @@ components:
           type: array
       type: object
     PatchCampaignSpendLimit:
-      description: campaign spend limit model
+      description: "Spend limit configuration for a marketing campaign (patch).\r\n\
+        Only provided fields are updated; omitted fields are left unchanged.\r\nWhen\
+        \ spendLimitType is \"capped\": spendLimitAmount and spendLimitRenewal are\
+        \ required.\r\nWhen spendLimitType is \"uncapped\": spendLimitAmount is null\
+        \ and spendLimitRenewal is \"undefined\"."
       example:
         spendLimitRenewal: undefined
         spendLimitAmount:
@@ -14984,6 +15029,10 @@ components:
         spendLimitAmount:
           $ref: '#/components/schemas/NillableDecimal'
         spendLimitRenewal:
+          description: "The period over which the campaign spend limit is applied.\r\
+            \nWhen spendLimitType is \"capped\", this is \"daily\", \"monthly\", or\
+            \ \"lifetime\".\r\nWhen spendLimitType is \"uncapped\", this is \"undefined\"\
+            ."
           enum:
           - undefined
           - daily
@@ -14992,6 +15041,10 @@ components:
           nullable: true
           type: string
         spendLimitType:
+          description: "Controls whether the campaign has a spend limit.\r\n\"capped\"\
+            \ returns a non-null spendLimitAmount.value and a spendLimitRenewal of\
+            \ \"daily\", \"monthly\", or \"lifetime\".\r\n\"uncapped\" returns spendLimitAmount.value\
+            \ as null and spendLimitRenewal as \"undefined\"."
           enum:
           - capped
           - uncapped
@@ -15027,7 +15080,14 @@ components:
           type: string
       type: object
     PatchMarketingCampaignBudgetAutomation:
-      description: patch marketing campaign budget automation model
+      description: "Budget automation, lets users configure budgets once at the campaign\
+        \ level while Criteo dynamically routes spend toward the best-performing ad\
+        \ sets.\r\nOnly provided fields are updated; omitted fields are left unchanged.\r\
+        \nIf \"enabled\" is omitted and only \"budgetConfiguration\" is provided,\
+        \ \"enabled\" defaults to false — budget automation will not be activated.\r\
+        \nTo activate budget automation, \"enabled\" must be explicitly set to true\
+        \ along with a valid \"budgetConfiguration\".\r\nTo deactivate, set \"enabled\"\
+        \ to false; \"budgetConfiguration\" can be omitted."
       example:
         budgetConfiguration:
           adSetObjectives: conversions
@@ -15036,7 +15096,8 @@ components:
         budgetConfiguration:
           $ref: '#/components/schemas/BudgetAutomationConfiguration'
         enabled:
-          description: Budget automation for the marketing campaign enable
+          description: Whether budget automation is enabled for this campaign. This
+            field is always present in the response.
           type: boolean
       type: object
     PatchProductSetRequest:
@@ -17018,7 +17079,14 @@ components:
           type: string
       type: object
     ReadAdSetBudgetV26Q1:
-      description: ad set budget read model
+      description: "Budget create model for an ad set.\r\nFor \"capped\": budgetAmount\
+        \ (required, non-null), budgetRenewal (required, not \"undefined\"), and budgetDeliverySmoothing\
+        \ (required) must all be provided.\r\nFor \"uncapped\": budgetAmount must\
+        \ be null, budgetRenewal must be \"undefined\", budgetDeliverySmoothing and\
+        \ budgetDeliveryWeek must be omitted or \"undefined\".\r\nFor marketing campaigns\
+        \ with budget automation enabled, omit this object.\r\nIn that case, the ad\
+        \ set budget is initialized from the marketing campaign spend limit amount\
+        \ and renewal period."
       example:
         budgetDeliverySmoothing: accelerated
         budgetDeliveryWeek: undefined
@@ -17028,6 +17096,8 @@ components:
       nullable: true
       properties:
         budgetAmount:
+          description: Maximum budget amount in the advertiser's currency per renewal
+            period. Required non-null when capped. Must be null when uncapped.
           format: double
           nullable: true
           type: number
@@ -17666,11 +17736,16 @@ components:
         description: description
         alternativeClickUrl: alternativeClickUrl
         relevancyScore: 1.4658129805029452
+        brand: brand
         retailPrice: 5.962133916683182
       properties:
         alternativeClickUrl:
           description: Url leading to product details page and also used to track
             user click. It's relying on a custom product URL field in the catalog.
+          nullable: true
+          type: string
+        brand:
+          description: Product brand.
           nullable: true
           type: string
         clickUrl:

@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * campaign spend limit model
+ * Campaign spend-limit configuration. A capped spend limit restricts campaign spending per renewal period. An uncapped spend limit does not impose a spending ceiling.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignSpendLimitV23Q1 {
