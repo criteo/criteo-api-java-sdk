@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * ad set bidding read model
+ * Ad set bidding read configuration.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadAdSetBiddingV26Q1 {
@@ -54,7 +54,7 @@ public class ReadAdSetBiddingV26Q1 {
   private Double bidAmount;
 
   /**
-   * How spend is controlled
+   * Cost controller for the ad set.                Possible values:  - COS  - maxCPC  - CPI  - CPM  - CPO  - CPSV  - CPV  - dailyBudget  - targetCPM
    */
   @JsonAdapter(CostControllerEnum.Adapter.class)
   public enum CostControllerEnum {
@@ -128,7 +128,7 @@ public class ReadAdSetBiddingV26Q1 {
   }
 
    /**
-   * Decimal value target relating to the &#x60;adSetObjective&#x60; specified. May be &#x60;null&#x60; for objectives that do not require a target value. At most 4 decimals are supported. Additional decimals are rounded.
+   * Decimal value target relating to the &#x60;adSetObjective&#x60; specified.  May be &#x60;null&#x60; for objectives that do not require a target value.  At most 4 decimals are supported. Additional decimals are rounded.
    * @return bidAmount
   **/
   @javax.annotation.Nullable
@@ -150,7 +150,7 @@ public class ReadAdSetBiddingV26Q1 {
   }
 
    /**
-   * How spend is controlled
+   * Cost controller for the ad set.                Possible values:  - COS  - maxCPC  - CPI  - CPM  - CPO  - CPSV  - CPV  - dailyBudget  - targetCPM
    * @return costController
   **/
   @javax.annotation.Nullable

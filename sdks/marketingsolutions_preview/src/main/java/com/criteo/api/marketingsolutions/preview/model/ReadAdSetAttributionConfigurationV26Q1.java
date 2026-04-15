@@ -45,12 +45,12 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * Read model for an ad set&#39;s attribution configuration.
+ * Read model for an ad set&#39;s attribution configuration.                The lookback window is only set for ad sets with an attribution method that is postClick or googleAnalyticsLastClick.  It will be null with any other attribution method.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadAdSetAttributionConfigurationV26Q1 {
   /**
-   * The attribution method.
+   * Ad set attribution method.  This defines how certain events (visits, clicks, sales...) are attributed to the ad set.                Possible values:  - unknown  - criteoAttribution (default attribution method)  - googleAnalyticsLastClick (requires Google Analytics integration)  - postClick  - sftp  - googleAnalytics (requires Google Analytics integration)
    */
   @JsonAdapter(AttributionMethodEnum.Adapter.class)
   public enum AttributionMethodEnum {
@@ -179,7 +179,7 @@ public class ReadAdSetAttributionConfigurationV26Q1 {
   }
 
    /**
-   * The attribution method.
+   * Ad set attribution method.  This defines how certain events (visits, clicks, sales...) are attributed to the ad set.                Possible values:  - unknown  - criteoAttribution (default attribution method)  - googleAnalyticsLastClick (requires Google Analytics integration)  - postClick  - sftp  - googleAnalytics (requires Google Analytics integration)
    * @return attributionMethod
   **/
   @javax.annotation.Nullable

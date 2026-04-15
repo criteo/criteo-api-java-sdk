@@ -2,14 +2,14 @@
 
 # ReadAdSetScheduleV26Q1
 
-ad set schedule read model
+Ad set schedule read model
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**activationStatus** | [**ActivationStatusEnum**](#ActivationStatusEnum) |  |  [optional] |
-|**deliveryStatus** | [**DeliveryStatusEnum**](#DeliveryStatusEnum) |  |  [optional] |
+|**activationStatus** | [**ActivationStatusEnum**](#ActivationStatusEnum) | Activation status of the ad set, i.e. whether the consumer wants it to deliver |  [optional] |
+|**deliveryStatus** | [**DeliveryStatusEnum**](#DeliveryStatusEnum) | Delivery status of the ad set, i.e. whether the ad set is delivering.                Possible values:  - draft  - inactive  - live  - notLive  - pausing  - paused  - scheduled  - ended  - notDelivering  - archived |  [optional] |
 |**endDate** | [**NillableDateTime**](NillableDateTime.md) |  |  [optional] |
 |**startDate** | [**NillableDateTime**](NillableDateTime.md) |  |  [optional] |
 

@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * ad set schedule patch model
+ * Model for patching ad set scheduling.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PatchAdSetSchedulingV26Q1 {

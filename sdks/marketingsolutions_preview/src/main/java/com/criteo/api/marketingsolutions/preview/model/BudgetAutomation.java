@@ -90,7 +90,7 @@ public class BudgetAutomation {
   }
 
    /**
-   * Get enabled
+   * Whether budget automation is active for this marketing campaign.  - true: budget automation is enabled and \&quot;budgetConfiguration\&quot; must be provided with a valid objective.  - false (default when omitted): budget automation is disabled; \&quot;budgetConfiguration\&quot; is ignored if provided.
    * @return enabled
   **/
   @javax.annotation.Nullable

@@ -2,15 +2,15 @@
 
 # AdSetDeliveryLimitationsV26Q1
 
-ad set delivery limitations model
+Delivery limitations for an ad set.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**devices** | [**List&lt;DevicesEnum&gt;**](#List&lt;DevicesEnum&gt;) |  |  [optional] |
-|**environments** | [**List&lt;EnvironmentsEnum&gt;**](#List&lt;EnvironmentsEnum&gt;) |  |  [optional] |
-|**operatingSystems** | [**List&lt;OperatingSystemsEnum&gt;**](#List&lt;OperatingSystemsEnum&gt;) |  |  [optional] |
+|**devices** | [**List&lt;DevicesEnum&gt;**](#List&lt;DevicesEnum&gt;) | List of devices which the ad set should target.                No limitation if the list is empty. |  [optional] |
+|**environments** | [**List&lt;EnvironmentsEnum&gt;**](#List&lt;EnvironmentsEnum&gt;) | List of environments which the ad set should target.                No limitation if the list is empty. |  [optional] |
+|**operatingSystems** | [**List&lt;OperatingSystemsEnum&gt;**](#List&lt;OperatingSystemsEnum&gt;) | List of operating systems which the ad set should target.                No limitation if the list is empty. |  [optional] |
 
 
 

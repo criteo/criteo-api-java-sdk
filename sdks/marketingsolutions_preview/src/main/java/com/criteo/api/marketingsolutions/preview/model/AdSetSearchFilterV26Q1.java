@@ -47,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * filter on ad set ids
+ * Filter on ad set ids.                Multiple filters are combined with an implicit AND operation.  Identifiers are string-encoded integers; invalid values are ignored.  If no filter is provided (both arrays are null or empty), the search returns all accessible campaigns.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdSetSearchFilterV26Q1 {
@@ -81,7 +81,7 @@ public class AdSetSearchFilterV26Q1 {
   }
 
    /**
-   * Get adSetIds
+   * Ad set ids to filter on. Ids are string-encoded integers.
    * @return adSetIds
   **/
   @javax.annotation.Nullable
@@ -111,7 +111,7 @@ public class AdSetSearchFilterV26Q1 {
   }
 
    /**
-   * Get advertiserIds
+   * Advertiser ids which ad sets belongs to (indirectly via their marketing campaign).  Ids are string-encoded integers.
    * @return advertiserIds
   **/
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class AdSetSearchFilterV26Q1 {
   }
 
    /**
-   * Get campaignIds
+   * Campaign ids to filter on. Ids are string-encoded integers.
    * @return campaignIds
   **/
   @javax.annotation.Nullable

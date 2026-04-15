@@ -47,12 +47,12 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * ad set delivery limitations model
+ * Delivery limitations for an ad set.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdSetDeliveryLimitationsV26Q1 {
   /**
-   * Gets or Sets devices
+   * Targeted device type.                Possible values:  - other  - desktop  - mobile  - tablet
    */
   @JsonAdapter(DevicesEnum.Adapter.class)
   public enum DevicesEnum {
@@ -107,7 +107,7 @@ public class AdSetDeliveryLimitationsV26Q1 {
   private List<DevicesEnum> devices = null;
 
   /**
-   * Gets or Sets environments
+   * Targeted environment type.                Note: this is very different from AdSetDestinationEnvironment: this parameter defines a delivery limitation,  not an impression&#39;s destination.                Possible values:  - web  - inApp
    */
   @JsonAdapter(EnvironmentsEnum.Adapter.class)
   public enum EnvironmentsEnum {
@@ -158,7 +158,7 @@ public class AdSetDeliveryLimitationsV26Q1 {
   private List<EnvironmentsEnum> environments = null;
 
   /**
-   * Gets or Sets operatingSystems
+   * Targeted operating system.                Possible values:  - android  - ios  - unknown
    */
   @JsonAdapter(OperatingSystemsEnum.Adapter.class)
   public enum OperatingSystemsEnum {
@@ -228,7 +228,7 @@ public class AdSetDeliveryLimitationsV26Q1 {
   }
 
    /**
-   * Get devices
+   * List of devices which the ad set should target.                No limitation if the list is empty.
    * @return devices
   **/
   @javax.annotation.Nullable
@@ -258,7 +258,7 @@ public class AdSetDeliveryLimitationsV26Q1 {
   }
 
    /**
-   * Get environments
+   * List of environments which the ad set should target.                No limitation if the list is empty.
    * @return environments
   **/
   @javax.annotation.Nullable
@@ -288,7 +288,7 @@ public class AdSetDeliveryLimitationsV26Q1 {
   }
 
    /**
-   * Get operatingSystems
+   * List of operating systems which the ad set should target.                No limitation if the list is empty.
    * @return operatingSystems
   **/
   @javax.annotation.Nullable

@@ -9,7 +9,7 @@ Budget automation, lets users configure budgets once at the campaign level while
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**budgetConfiguration** | [**BudgetAutomationConfiguration**](BudgetAutomationConfiguration.md) |  |  [optional] |
-|**enabled** | **Boolean** |  |  [optional] |
+|**enabled** | **Boolean** | Whether budget automation is active for this marketing campaign.  - true: budget automation is enabled and \&quot;budgetConfiguration\&quot; must be provided with a valid objective.  - false (default when omitted): budget automation is disabled; \&quot;budgetConfiguration\&quot; is ignored if provided. |  [optional] |
 
 
 

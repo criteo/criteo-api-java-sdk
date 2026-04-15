@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * request payload of the search endpoint
+ * Request payload for the campaign search endpoint.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignSearchRequestV23Q1 {

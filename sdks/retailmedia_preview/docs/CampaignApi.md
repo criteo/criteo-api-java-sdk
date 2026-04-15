@@ -8,8 +8,10 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**appendProductButtonByLineItemId**](CampaignApi.md#appendProductButtonByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create |  |
 | [**appendPromotedProducts**](CampaignApi.md#appendPromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/append |  |
 | [**computeDisplayMinBidByRetailerId**](CampaignApi.md#computeDisplayMinBidByRetailerId) | **POST** /preview/retail-media/retailers/{retailerId}/compute-display-min-bid |  |
+| [**createAuctionDisplayLineItem**](CampaignApi.md#createAuctionDisplayLineItem) | **POST** /preview/retail-media/campaigns/{campaignId}/auction-display-line-items |  |
 | [**createAuctionLineItem**](CampaignApi.md#createAuctionLineItem) | **POST** /preview/retail-media/campaigns/{campaignId}/auction-line-items |  |
 | [**createCreative**](CampaignApi.md#createCreative) | **POST** /preview/retail-media/accounts/{account-id}/creatives |  |
+| [**createDisplayCampaign**](CampaignApi.md#createDisplayCampaign) | **POST** /preview/retail-media/accounts/{accountId}/display-campaigns |  |
 | [**createPreferredLineItemByCampaignId**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
 | [**deleteCampaignsFromBalanceV1**](CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /preview/retail-media/balances/{balanceId}/campaigns/delete |  |
 | [**deleteProductButtonByLineItemAndProductButtonId**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
@@ -25,12 +27,18 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getProductButtonByLineItemAndProductButtonId**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 | [**getProductButtonsByLineItemId**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons |  |
 | [**pausePromotedProducts**](CampaignApi.md#pausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/pause |  |
+| [**recallProposal**](CampaignApi.md#recallProposal) | **POST** /preview/retail-media/auction-display-line-items/{lineItemId}/recall-proposal |  |
 | [**searchAccountCreatives**](CampaignApi.md#searchAccountCreatives) | **POST** /preview/retail-media/accounts/{account-id}/creatives/search |  |
 | [**searchAccountRetailers**](CampaignApi.md#searchAccountRetailers) | **POST** /preview/retail-media/accounts/{accountId}/retailers/search |  |
+| [**searchAuctionDisplayLineItems**](CampaignApi.md#searchAuctionDisplayLineItems) | **POST** /preview/retail-media/accounts/{accountId}/auction-display-line-items/search |  |
 | [**searchBrands**](CampaignApi.md#searchBrands) | **POST** /preview/retail-media/brands/search |  |
+| [**searchDisplayCampaigns**](CampaignApi.md#searchDisplayCampaigns) | **POST** /preview/retail-media/accounts/{accountId}/display-campaigns/search |  |
+| [**submitProposal**](CampaignApi.md#submitProposal) | **POST** /preview/retail-media/auction-display-line-items/{lineItemId}/submit-proposal |  |
 | [**unpausePromotedProducts**](CampaignApi.md#unpausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/unpause |  |
+| [**updateAuctionDisplayLineItem**](CampaignApi.md#updateAuctionDisplayLineItem) | **PATCH** /preview/retail-media/auction-display-line-items/{lineItemId} |  |
 | [**updateAuctionLineItem**](CampaignApi.md#updateAuctionLineItem) | **PUT** /preview/retail-media/auction-line-items/{lineItemId} |  |
 | [**updateCreative**](CampaignApi.md#updateCreative) | **PUT** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
+| [**updateDisplayCampaign**](CampaignApi.md#updateDisplayCampaign) | **PATCH** /preview/retail-media/display-campaigns/{campaignId} |  |
 | [**updatePreferredLineItemByLineItemId**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /preview/retail-media/preferred-line-items/{line-item-id} |  |
 | [**updateProductButtonByLineItemAndProductButtonId**](CampaignApi.md#updateProductButtonByLineItemAndProductButtonId) | **PUT** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 
@@ -401,6 +409,97 @@ public class Example {
 | **200** | Success |  -  |
 
 
+## createAuctionDisplayLineItem
+
+> EntityResourceOutcomeOfAuctionDisplayLineItem createAuctionDisplayLineItem(campaignId, valueResourceInputOfAuctionDisplayLineItemCreateModel)
+
+
+
+Creates a new auction display line item with the specified settings.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String campaignId = "campaignId_example"; // String | The id of the campaign to which the line item belongs
+        ValueResourceInputOfAuctionDisplayLineItemCreateModel valueResourceInputOfAuctionDisplayLineItemCreateModel = new ValueResourceInputOfAuctionDisplayLineItemCreateModel(); // ValueResourceInputOfAuctionDisplayLineItemCreateModel | The line item settings to create a line item with
+        try {
+            EntityResourceOutcomeOfAuctionDisplayLineItem result = apiInstance.createAuctionDisplayLineItem(campaignId, valueResourceInputOfAuctionDisplayLineItemCreateModel);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#createAuctionDisplayLineItem");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **campaignId** | **String**| The id of the campaign to which the line item belongs | |
+| **valueResourceInputOfAuctionDisplayLineItemCreateModel** | [**ValueResourceInputOfAuctionDisplayLineItemCreateModel**](ValueResourceInputOfAuctionDisplayLineItemCreateModel.md)| The line item settings to create a line item with | |
+
+### Return type
+
+[**EntityResourceOutcomeOfAuctionDisplayLineItem**](EntityResourceOutcomeOfAuctionDisplayLineItem.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Success |  -  |
+
+
 ## createAuctionLineItem
 
 > EntityResourceOutcomeOfSponsoredProductsLineItem createAuctionLineItem(campaignId, valueResourceInputOfSponsoredProductsLineItemCreateRequestModel)
@@ -581,6 +680,97 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Creatives created |  -  |
+
+
+## createDisplayCampaign
+
+> EntityResourceOutcomeOfDisplayCampaign createDisplayCampaign(accountId, valueResourceInputOfDisplayCampaignCreateModel)
+
+
+
+Creates a new display campaign with the specified settings.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String accountId = "accountId_example"; // String | The id of the account to which the campaign belongs
+        ValueResourceInputOfDisplayCampaignCreateModel valueResourceInputOfDisplayCampaignCreateModel = new ValueResourceInputOfDisplayCampaignCreateModel(); // ValueResourceInputOfDisplayCampaignCreateModel | The campaign settings to create a campaign with
+        try {
+            EntityResourceOutcomeOfDisplayCampaign result = apiInstance.createDisplayCampaign(accountId, valueResourceInputOfDisplayCampaignCreateModel);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#createDisplayCampaign");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| The id of the account to which the campaign belongs | |
+| **valueResourceInputOfDisplayCampaignCreateModel** | [**ValueResourceInputOfDisplayCampaignCreateModel**](ValueResourceInputOfDisplayCampaignCreateModel.md)| The campaign settings to create a campaign with | |
+
+### Return type
+
+[**EntityResourceOutcomeOfDisplayCampaign**](EntityResourceOutcomeOfDisplayCampaign.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Success |  -  |
 
 
 ## createPreferredLineItemByCampaignId
@@ -1950,6 +2140,96 @@ null (empty response body)
 | **204** | Promoted products paused |  -  |
 
 
+## recallProposal
+
+> recallProposal(lineItemId, entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest)
+
+
+
+Recalls an auction display line item from approval.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | The id of the line item to recall from approval
+        EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest = new EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest(); // EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest | Additional optional recall information
+        try {
+            apiInstance.recallProposal(lineItemId, entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#recallProposal");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| The id of the line item to recall from approval | |
+| **entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest** | [**EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest**](EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest.md)| Additional optional recall information | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Success |  -  |
+
+
 ## searchAccountCreatives
 
 > EntityResourceCollectionOutcomeCreativeSearchResponse searchAccountCreatives(accountId, entityResourceInputCreativeSearchRequest, limit, offset)
@@ -2140,6 +2420,103 @@ public class Example {
 | **200** | Success |  -  |
 
 
+## searchAuctionDisplayLineItems
+
+> EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata searchAuctionDisplayLineItems(accountId, valueResourceInputOfAuctionDisplayLineItemSearchModel, fields, limit, offset)
+
+
+
+Searches for auction display line items based on various filters.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String accountId = "accountId_example"; // String | The id of the account to search line items for.
+        ValueResourceInputOfAuctionDisplayLineItemSearchModel valueResourceInputOfAuctionDisplayLineItemSearchModel = new ValueResourceInputOfAuctionDisplayLineItemSearchModel(); // ValueResourceInputOfAuctionDisplayLineItemSearchModel | The search filters to apply, including line item IDs and proposal filter.
+        List<String> fields = Arrays.asList(); // List<String> | Optional list of field names to include in the response (e.g. \"proposalStatus\").
+        Integer limit = 2; // Integer | The maximum number of items to return. Must be between 1 and 5. Default is 2.
+        Integer offset = 0; // Integer | The number of items to skip before starting to collect the result set. Default is 0.
+        try {
+            EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata result = apiInstance.searchAuctionDisplayLineItems(accountId, valueResourceInputOfAuctionDisplayLineItemSearchModel, fields, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#searchAuctionDisplayLineItems");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| The id of the account to search line items for. | |
+| **valueResourceInputOfAuctionDisplayLineItemSearchModel** | [**ValueResourceInputOfAuctionDisplayLineItemSearchModel**](ValueResourceInputOfAuctionDisplayLineItemSearchModel.md)| The search filters to apply, including line item IDs and proposal filter. | |
+| **fields** | [**List&lt;String&gt;**](String.md)| Optional list of field names to include in the response (e.g. \&quot;proposalStatus\&quot;). | [optional] |
+| **limit** | **Integer**| The maximum number of items to return. Must be between 1 and 5. Default is 2. | [optional] [default to 2] |
+| **offset** | **Integer**| The number of items to skip before starting to collect the result set. Default is 0. | [optional] [default to 0] |
+
+### Return type
+
+[**EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata**](EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
 ## searchBrands
 
 > EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrands(limit, offset, valueResourceInputBrandIdSearchRequest)
@@ -2233,6 +2610,191 @@ public class Example {
 | **200** | Success |  -  |
 
 
+## searchDisplayCampaigns
+
+> EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata searchDisplayCampaigns(accountId, valueResourceInputOfDisplayCampaignSearchModel, limit, offset)
+
+
+
+Searches for display campaigns based on various filters.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String accountId = "accountId_example"; // String | The id of the account to search campaigns for.
+        ValueResourceInputOfDisplayCampaignSearchModel valueResourceInputOfDisplayCampaignSearchModel = new ValueResourceInputOfDisplayCampaignSearchModel(); // ValueResourceInputOfDisplayCampaignSearchModel | The search filters to apply, including campaign IDs and other criteria.
+        Integer limit = 25; // Integer | The maximum number of items to return. Must be between 1 and 1000. Default is 100.
+        Integer offset = 0; // Integer | The number of items to skip before starting to collect the result set. Default is 0.
+        try {
+            EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata result = apiInstance.searchDisplayCampaigns(accountId, valueResourceInputOfDisplayCampaignSearchModel, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#searchDisplayCampaigns");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| The id of the account to search campaigns for. | |
+| **valueResourceInputOfDisplayCampaignSearchModel** | [**ValueResourceInputOfDisplayCampaignSearchModel**](ValueResourceInputOfDisplayCampaignSearchModel.md)| The search filters to apply, including campaign IDs and other criteria. | |
+| **limit** | **Integer**| The maximum number of items to return. Must be between 1 and 1000. Default is 100. | [optional] [default to 25] |
+| **offset** | **Integer**| The number of items to skip before starting to collect the result set. Default is 0. | [optional] [default to 0] |
+
+### Return type
+
+[**EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata**](EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## submitProposal
+
+> submitProposal(lineItemId, entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest)
+
+
+
+Submits an auction display line item for approval.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | The id of the line item to submit for approval
+        EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest = new EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest(); // EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest | Additional optional submission information
+        try {
+            apiInstance.submitProposal(lineItemId, entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#submitProposal");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| The id of the line item to submit for approval | |
+| **entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest** | [**EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest**](EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest.md)| Additional optional submission information | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Success |  -  |
+
+
 ## unpausePromotedProducts
 
 > unpausePromotedProducts(lineItemId, promotedProductResourceCollectionInput)
@@ -2321,6 +2883,97 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Promoted products un-paused |  -  |
+
+
+## updateAuctionDisplayLineItem
+
+> EntityResourceOutcomeOfAuctionDisplayLineItem updateAuctionDisplayLineItem(lineItemId, valueResourceInputOfAuctionDisplayLineItemPatchModel)
+
+
+
+Updates an auction display line item with the specified settings.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | The id of the line item to update
+        ValueResourceInputOfAuctionDisplayLineItemPatchModel valueResourceInputOfAuctionDisplayLineItemPatchModel = new ValueResourceInputOfAuctionDisplayLineItemPatchModel(); // ValueResourceInputOfAuctionDisplayLineItemPatchModel | The line item settings to update
+        try {
+            EntityResourceOutcomeOfAuctionDisplayLineItem result = apiInstance.updateAuctionDisplayLineItem(lineItemId, valueResourceInputOfAuctionDisplayLineItemPatchModel);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#updateAuctionDisplayLineItem");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| The id of the line item to update | |
+| **valueResourceInputOfAuctionDisplayLineItemPatchModel** | [**ValueResourceInputOfAuctionDisplayLineItemPatchModel**](ValueResourceInputOfAuctionDisplayLineItemPatchModel.md)| The line item settings to update | |
+
+### Return type
+
+[**EntityResourceOutcomeOfAuctionDisplayLineItem**](EntityResourceOutcomeOfAuctionDisplayLineItem.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
 
 
 ## updateAuctionLineItem
@@ -2506,6 +3159,97 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **204** | Creative updated |  -  |
+
+
+## updateDisplayCampaign
+
+> EntityResourceOutcomeOfDisplayCampaign updateDisplayCampaign(campaignId, valueResourceInputOfDisplayCampaignPatchModel)
+
+
+
+Updates a display campaign with the specified settings.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String campaignId = "campaignId_example"; // String | The id of the campaign to update
+        ValueResourceInputOfDisplayCampaignPatchModel valueResourceInputOfDisplayCampaignPatchModel = new ValueResourceInputOfDisplayCampaignPatchModel(); // ValueResourceInputOfDisplayCampaignPatchModel | The campaign settings to update
+        try {
+            EntityResourceOutcomeOfDisplayCampaign result = apiInstance.updateDisplayCampaign(campaignId, valueResourceInputOfDisplayCampaignPatchModel);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#updateDisplayCampaign");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **campaignId** | **String**| The id of the campaign to update | |
+| **valueResourceInputOfDisplayCampaignPatchModel** | [**ValueResourceInputOfDisplayCampaignPatchModel**](ValueResourceInputOfDisplayCampaignPatchModel.md)| The campaign settings to update | |
+
+### Return type
+
+[**EntityResourceOutcomeOfDisplayCampaign**](EntityResourceOutcomeOfDisplayCampaign.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
 
 
 ## updatePreferredLineItemByLineItemId

@@ -32,10 +32,16 @@ import com.criteo.api.retailmedia.preview.model.CreativeCreateModel2;
 import com.criteo.api.retailmedia.preview.model.CreativeUpdateModel2;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeCreativeSearchResponse;
+import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata;
+import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfRetailerResultAndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceInputCreativeSearchRequest;
+import com.criteo.api.retailmedia.preview.model.EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest;
+import com.criteo.api.retailmedia.preview.model.EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest;
+import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfAuctionDisplayLineItem;
 import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfCatalogStatusV2;
+import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfDisplayCampaign;
 import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfSponsoredProductsLineItem;
 import com.criteo.api.retailmedia.preview.model.PreferredLineItemCreateModelV2Request;
 import com.criteo.api.retailmedia.preview.model.PreferredLineItemUpdateModelV2Request;
@@ -53,6 +59,12 @@ import com.criteo.api.retailmedia.preview.model.ValueResourceInputBrandIdSearchR
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputDeleteCampaignsRequestV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputDisplayAuctionMinBidRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputLineItemBudgetCapOutHistoryRequest;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfAuctionDisplayLineItemCreateModel;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfAuctionDisplayLineItemPatchModel;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfAuctionDisplayLineItemSearchModel;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfDisplayCampaignCreateModel;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfDisplayCampaignPatchModel;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfDisplayCampaignSearchModel;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfRetailerSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel;
@@ -625,6 +637,139 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for createAuctionDisplayLineItem
+     * @param campaignId The id of the campaign to which the line item belongs (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemCreateModel The line item settings to create a line item with (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAuctionDisplayLineItemCall(String campaignId, ValueResourceInputOfAuctionDisplayLineItemCreateModel valueResourceInputOfAuctionDisplayLineItemCreateModel, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfAuctionDisplayLineItemCreateModel;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/campaigns/{campaignId}/auction-display-line-items"
+            .replace("{" + "campaignId" + "}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAuctionDisplayLineItemValidateBeforeCall(String campaignId, ValueResourceInputOfAuctionDisplayLineItemCreateModel valueResourceInputOfAuctionDisplayLineItemCreateModel, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling createAuctionDisplayLineItem(Async)");
+        }
+
+        // verify the required parameter 'valueResourceInputOfAuctionDisplayLineItemCreateModel' is set
+        if (valueResourceInputOfAuctionDisplayLineItemCreateModel == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfAuctionDisplayLineItemCreateModel' when calling createAuctionDisplayLineItem(Async)");
+        }
+
+        return createAuctionDisplayLineItemCall(campaignId, valueResourceInputOfAuctionDisplayLineItemCreateModel, _callback);
+
+    }
+
+    /**
+     * 
+     * Creates a new auction display line item with the specified settings.
+     * @param campaignId The id of the campaign to which the line item belongs (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemCreateModel The line item settings to create a line item with (required)
+     * @return EntityResourceOutcomeOfAuctionDisplayLineItem
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceOutcomeOfAuctionDisplayLineItem createAuctionDisplayLineItem(String campaignId, ValueResourceInputOfAuctionDisplayLineItemCreateModel valueResourceInputOfAuctionDisplayLineItemCreateModel) throws ApiException {
+        ApiResponse<EntityResourceOutcomeOfAuctionDisplayLineItem> localVarResp = createAuctionDisplayLineItemWithHttpInfo(campaignId, valueResourceInputOfAuctionDisplayLineItemCreateModel);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Creates a new auction display line item with the specified settings.
+     * @param campaignId The id of the campaign to which the line item belongs (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemCreateModel The line item settings to create a line item with (required)
+     * @return ApiResponse&lt;EntityResourceOutcomeOfAuctionDisplayLineItem&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceOutcomeOfAuctionDisplayLineItem> createAuctionDisplayLineItemWithHttpInfo(String campaignId, ValueResourceInputOfAuctionDisplayLineItemCreateModel valueResourceInputOfAuctionDisplayLineItemCreateModel) throws ApiException {
+        okhttp3.Call localVarCall = createAuctionDisplayLineItemValidateBeforeCall(campaignId, valueResourceInputOfAuctionDisplayLineItemCreateModel, null);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfAuctionDisplayLineItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Creates a new auction display line item with the specified settings.
+     * @param campaignId The id of the campaign to which the line item belongs (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemCreateModel The line item settings to create a line item with (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAuctionDisplayLineItemAsync(String campaignId, ValueResourceInputOfAuctionDisplayLineItemCreateModel valueResourceInputOfAuctionDisplayLineItemCreateModel, final ApiCallback<EntityResourceOutcomeOfAuctionDisplayLineItem> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAuctionDisplayLineItemValidateBeforeCall(campaignId, valueResourceInputOfAuctionDisplayLineItemCreateModel, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfAuctionDisplayLineItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for createAuctionLineItem
      * @param campaignId The given campaign id (required)
      * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (required)
@@ -887,6 +1032,139 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = createCreativeValidateBeforeCall(accountId, creativeCreateModel2, _callback);
         Type localVarReturnType = new TypeToken<Creative2Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDisplayCampaign
+     * @param accountId The id of the account to which the campaign belongs (required)
+     * @param valueResourceInputOfDisplayCampaignCreateModel The campaign settings to create a campaign with (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDisplayCampaignCall(String accountId, ValueResourceInputOfDisplayCampaignCreateModel valueResourceInputOfDisplayCampaignCreateModel, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfDisplayCampaignCreateModel;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{accountId}/display-campaigns"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDisplayCampaignValidateBeforeCall(String accountId, ValueResourceInputOfDisplayCampaignCreateModel valueResourceInputOfDisplayCampaignCreateModel, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling createDisplayCampaign(Async)");
+        }
+
+        // verify the required parameter 'valueResourceInputOfDisplayCampaignCreateModel' is set
+        if (valueResourceInputOfDisplayCampaignCreateModel == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfDisplayCampaignCreateModel' when calling createDisplayCampaign(Async)");
+        }
+
+        return createDisplayCampaignCall(accountId, valueResourceInputOfDisplayCampaignCreateModel, _callback);
+
+    }
+
+    /**
+     * 
+     * Creates a new display campaign with the specified settings.
+     * @param accountId The id of the account to which the campaign belongs (required)
+     * @param valueResourceInputOfDisplayCampaignCreateModel The campaign settings to create a campaign with (required)
+     * @return EntityResourceOutcomeOfDisplayCampaign
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceOutcomeOfDisplayCampaign createDisplayCampaign(String accountId, ValueResourceInputOfDisplayCampaignCreateModel valueResourceInputOfDisplayCampaignCreateModel) throws ApiException {
+        ApiResponse<EntityResourceOutcomeOfDisplayCampaign> localVarResp = createDisplayCampaignWithHttpInfo(accountId, valueResourceInputOfDisplayCampaignCreateModel);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Creates a new display campaign with the specified settings.
+     * @param accountId The id of the account to which the campaign belongs (required)
+     * @param valueResourceInputOfDisplayCampaignCreateModel The campaign settings to create a campaign with (required)
+     * @return ApiResponse&lt;EntityResourceOutcomeOfDisplayCampaign&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceOutcomeOfDisplayCampaign> createDisplayCampaignWithHttpInfo(String accountId, ValueResourceInputOfDisplayCampaignCreateModel valueResourceInputOfDisplayCampaignCreateModel) throws ApiException {
+        okhttp3.Call localVarCall = createDisplayCampaignValidateBeforeCall(accountId, valueResourceInputOfDisplayCampaignCreateModel, null);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfDisplayCampaign>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Creates a new display campaign with the specified settings.
+     * @param accountId The id of the account to which the campaign belongs (required)
+     * @param valueResourceInputOfDisplayCampaignCreateModel The campaign settings to create a campaign with (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDisplayCampaignAsync(String accountId, ValueResourceInputOfDisplayCampaignCreateModel valueResourceInputOfDisplayCampaignCreateModel, final ApiCallback<EntityResourceOutcomeOfDisplayCampaign> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDisplayCampaignValidateBeforeCall(accountId, valueResourceInputOfDisplayCampaignCreateModel, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfDisplayCampaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2868,6 +3146,134 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for recallProposal
+     * @param lineItemId The id of the line item to recall from approval (required)
+     * @param entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest Additional optional recall information (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call recallProposalCall(String lineItemId, EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/auction-display-line-items/{lineItemId}/recall-proposal"
+            .replace("{" + "lineItemId" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call recallProposalValidateBeforeCall(String lineItemId, EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling recallProposal(Async)");
+        }
+
+        // verify the required parameter 'entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest' is set
+        if (entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest == null) {
+            throw new ApiException("Missing the required parameter 'entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest' when calling recallProposal(Async)");
+        }
+
+        return recallProposalCall(lineItemId, entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Recalls an auction display line item from approval.
+     * @param lineItemId The id of the line item to recall from approval (required)
+     * @param entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest Additional optional recall information (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public void recallProposal(String lineItemId, EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest) throws ApiException {
+        recallProposalWithHttpInfo(lineItemId, entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest);
+    }
+
+    /**
+     * 
+     * Recalls an auction display line item from approval.
+     * @param lineItemId The id of the line item to recall from approval (required)
+     * @param entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest Additional optional recall information (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> recallProposalWithHttpInfo(String lineItemId, EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest) throws ApiException {
+        okhttp3.Call localVarCall = recallProposalValidateBeforeCall(lineItemId, entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Recalls an auction display line item from approval.
+     * @param lineItemId The id of the line item to recall from approval (required)
+     * @param entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest Additional optional recall information (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call recallProposalAsync(String lineItemId, EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = recallProposalValidateBeforeCall(lineItemId, entityResourceInputOfAuctionDisplayLineItemRecallProposalRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for searchAccountCreatives
      * @param accountId External account id to retrieve creatives for (required)
      * @param entityResourceInputCreativeSearchRequest search request filter (required)
@@ -3166,6 +3572,163 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for searchAuctionDisplayLineItems
+     * @param accountId The id of the account to search line items for. (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemSearchModel The search filters to apply, including line item IDs and proposal filter. (required)
+     * @param fields Optional list of field names to include in the response (e.g. \&quot;proposalStatus\&quot;). (optional)
+     * @param limit The maximum number of items to return. Must be between 1 and 5. Default is 2. (optional, default to 2)
+     * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchAuctionDisplayLineItemsCall(String accountId, ValueResourceInputOfAuctionDisplayLineItemSearchModel valueResourceInputOfAuctionDisplayLineItemSearchModel, List<String> fields, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfAuctionDisplayLineItemSearchModel;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{accountId}/auction-display-line-items/search"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (fields != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "fields", fields));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call searchAuctionDisplayLineItemsValidateBeforeCall(String accountId, ValueResourceInputOfAuctionDisplayLineItemSearchModel valueResourceInputOfAuctionDisplayLineItemSearchModel, List<String> fields, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling searchAuctionDisplayLineItems(Async)");
+        }
+
+        // verify the required parameter 'valueResourceInputOfAuctionDisplayLineItemSearchModel' is set
+        if (valueResourceInputOfAuctionDisplayLineItemSearchModel == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfAuctionDisplayLineItemSearchModel' when calling searchAuctionDisplayLineItems(Async)");
+        }
+
+        return searchAuctionDisplayLineItemsCall(accountId, valueResourceInputOfAuctionDisplayLineItemSearchModel, fields, limit, offset, _callback);
+
+    }
+
+    /**
+     * 
+     * Searches for auction display line items based on various filters.
+     * @param accountId The id of the account to search line items for. (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemSearchModel The search filters to apply, including line item IDs and proposal filter. (required)
+     * @param fields Optional list of field names to include in the response (e.g. \&quot;proposalStatus\&quot;). (optional)
+     * @param limit The maximum number of items to return. Must be between 1 and 5. Default is 2. (optional, default to 2)
+     * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @return EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata searchAuctionDisplayLineItems(String accountId, ValueResourceInputOfAuctionDisplayLineItemSearchModel valueResourceInputOfAuctionDisplayLineItemSearchModel, List<String> fields, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata> localVarResp = searchAuctionDisplayLineItemsWithHttpInfo(accountId, valueResourceInputOfAuctionDisplayLineItemSearchModel, fields, limit, offset);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Searches for auction display line items based on various filters.
+     * @param accountId The id of the account to search line items for. (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemSearchModel The search filters to apply, including line item IDs and proposal filter. (required)
+     * @param fields Optional list of field names to include in the response (e.g. \&quot;proposalStatus\&quot;). (optional)
+     * @param limit The maximum number of items to return. Must be between 1 and 5. Default is 2. (optional, default to 2)
+     * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata> searchAuctionDisplayLineItemsWithHttpInfo(String accountId, ValueResourceInputOfAuctionDisplayLineItemSearchModel valueResourceInputOfAuctionDisplayLineItemSearchModel, List<String> fields, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = searchAuctionDisplayLineItemsValidateBeforeCall(accountId, valueResourceInputOfAuctionDisplayLineItemSearchModel, fields, limit, offset, null);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Searches for auction display line items based on various filters.
+     * @param accountId The id of the account to search line items for. (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemSearchModel The search filters to apply, including line item IDs and proposal filter. (required)
+     * @param fields Optional list of field names to include in the response (e.g. \&quot;proposalStatus\&quot;). (optional)
+     * @param limit The maximum number of items to return. Must be between 1 and 5. Default is 2. (optional, default to 2)
+     * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchAuctionDisplayLineItemsAsync(String accountId, ValueResourceInputOfAuctionDisplayLineItemSearchModel valueResourceInputOfAuctionDisplayLineItemSearchModel, List<String> fields, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = searchAuctionDisplayLineItemsValidateBeforeCall(accountId, valueResourceInputOfAuctionDisplayLineItemSearchModel, fields, limit, offset, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for searchBrands
      * @param limit the number of brands to return (optional, default to 25)
      * @param offset offset of paginated results (optional, default to 0)
@@ -3300,6 +3863,283 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for searchDisplayCampaigns
+     * @param accountId The id of the account to search campaigns for. (required)
+     * @param valueResourceInputOfDisplayCampaignSearchModel The search filters to apply, including campaign IDs and other criteria. (required)
+     * @param limit The maximum number of items to return. Must be between 1 and 1000. Default is 100. (optional, default to 25)
+     * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchDisplayCampaignsCall(String accountId, ValueResourceInputOfDisplayCampaignSearchModel valueResourceInputOfDisplayCampaignSearchModel, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfDisplayCampaignSearchModel;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{accountId}/display-campaigns/search"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call searchDisplayCampaignsValidateBeforeCall(String accountId, ValueResourceInputOfDisplayCampaignSearchModel valueResourceInputOfDisplayCampaignSearchModel, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling searchDisplayCampaigns(Async)");
+        }
+
+        // verify the required parameter 'valueResourceInputOfDisplayCampaignSearchModel' is set
+        if (valueResourceInputOfDisplayCampaignSearchModel == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfDisplayCampaignSearchModel' when calling searchDisplayCampaigns(Async)");
+        }
+
+        return searchDisplayCampaignsCall(accountId, valueResourceInputOfDisplayCampaignSearchModel, limit, offset, _callback);
+
+    }
+
+    /**
+     * 
+     * Searches for display campaigns based on various filters.
+     * @param accountId The id of the account to search campaigns for. (required)
+     * @param valueResourceInputOfDisplayCampaignSearchModel The search filters to apply, including campaign IDs and other criteria. (required)
+     * @param limit The maximum number of items to return. Must be between 1 and 1000. Default is 100. (optional, default to 25)
+     * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @return EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata searchDisplayCampaigns(String accountId, ValueResourceInputOfDisplayCampaignSearchModel valueResourceInputOfDisplayCampaignSearchModel, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata> localVarResp = searchDisplayCampaignsWithHttpInfo(accountId, valueResourceInputOfDisplayCampaignSearchModel, limit, offset);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Searches for display campaigns based on various filters.
+     * @param accountId The id of the account to search campaigns for. (required)
+     * @param valueResourceInputOfDisplayCampaignSearchModel The search filters to apply, including campaign IDs and other criteria. (required)
+     * @param limit The maximum number of items to return. Must be between 1 and 1000. Default is 100. (optional, default to 25)
+     * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata> searchDisplayCampaignsWithHttpInfo(String accountId, ValueResourceInputOfDisplayCampaignSearchModel valueResourceInputOfDisplayCampaignSearchModel, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = searchDisplayCampaignsValidateBeforeCall(accountId, valueResourceInputOfDisplayCampaignSearchModel, limit, offset, null);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Searches for display campaigns based on various filters.
+     * @param accountId The id of the account to search campaigns for. (required)
+     * @param valueResourceInputOfDisplayCampaignSearchModel The search filters to apply, including campaign IDs and other criteria. (required)
+     * @param limit The maximum number of items to return. Must be between 1 and 1000. Default is 100. (optional, default to 25)
+     * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchDisplayCampaignsAsync(String accountId, ValueResourceInputOfDisplayCampaignSearchModel valueResourceInputOfDisplayCampaignSearchModel, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = searchDisplayCampaignsValidateBeforeCall(accountId, valueResourceInputOfDisplayCampaignSearchModel, limit, offset, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for submitProposal
+     * @param lineItemId The id of the line item to submit for approval (required)
+     * @param entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest Additional optional submission information (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call submitProposalCall(String lineItemId, EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/auction-display-line-items/{lineItemId}/submit-proposal"
+            .replace("{" + "lineItemId" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call submitProposalValidateBeforeCall(String lineItemId, EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling submitProposal(Async)");
+        }
+
+        // verify the required parameter 'entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest' is set
+        if (entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest == null) {
+            throw new ApiException("Missing the required parameter 'entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest' when calling submitProposal(Async)");
+        }
+
+        return submitProposalCall(lineItemId, entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Submits an auction display line item for approval.
+     * @param lineItemId The id of the line item to submit for approval (required)
+     * @param entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest Additional optional submission information (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public void submitProposal(String lineItemId, EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest) throws ApiException {
+        submitProposalWithHttpInfo(lineItemId, entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest);
+    }
+
+    /**
+     * 
+     * Submits an auction display line item for approval.
+     * @param lineItemId The id of the line item to submit for approval (required)
+     * @param entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest Additional optional submission information (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> submitProposalWithHttpInfo(String lineItemId, EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest) throws ApiException {
+        okhttp3.Call localVarCall = submitProposalValidateBeforeCall(lineItemId, entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Submits an auction display line item for approval.
+     * @param lineItemId The id of the line item to submit for approval (required)
+     * @param entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest Additional optional submission information (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call submitProposalAsync(String lineItemId, EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = submitProposalValidateBeforeCall(lineItemId, entityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for unpausePromotedProducts
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -3420,6 +4260,139 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = unpausePromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateAuctionDisplayLineItem
+     * @param lineItemId The id of the line item to update (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemPatchModel The line item settings to update (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAuctionDisplayLineItemCall(String lineItemId, ValueResourceInputOfAuctionDisplayLineItemPatchModel valueResourceInputOfAuctionDisplayLineItemPatchModel, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfAuctionDisplayLineItemPatchModel;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/auction-display-line-items/{lineItemId}"
+            .replace("{" + "lineItemId" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateAuctionDisplayLineItemValidateBeforeCall(String lineItemId, ValueResourceInputOfAuctionDisplayLineItemPatchModel valueResourceInputOfAuctionDisplayLineItemPatchModel, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling updateAuctionDisplayLineItem(Async)");
+        }
+
+        // verify the required parameter 'valueResourceInputOfAuctionDisplayLineItemPatchModel' is set
+        if (valueResourceInputOfAuctionDisplayLineItemPatchModel == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfAuctionDisplayLineItemPatchModel' when calling updateAuctionDisplayLineItem(Async)");
+        }
+
+        return updateAuctionDisplayLineItemCall(lineItemId, valueResourceInputOfAuctionDisplayLineItemPatchModel, _callback);
+
+    }
+
+    /**
+     * 
+     * Updates an auction display line item with the specified settings.
+     * @param lineItemId The id of the line item to update (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemPatchModel The line item settings to update (required)
+     * @return EntityResourceOutcomeOfAuctionDisplayLineItem
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceOutcomeOfAuctionDisplayLineItem updateAuctionDisplayLineItem(String lineItemId, ValueResourceInputOfAuctionDisplayLineItemPatchModel valueResourceInputOfAuctionDisplayLineItemPatchModel) throws ApiException {
+        ApiResponse<EntityResourceOutcomeOfAuctionDisplayLineItem> localVarResp = updateAuctionDisplayLineItemWithHttpInfo(lineItemId, valueResourceInputOfAuctionDisplayLineItemPatchModel);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Updates an auction display line item with the specified settings.
+     * @param lineItemId The id of the line item to update (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemPatchModel The line item settings to update (required)
+     * @return ApiResponse&lt;EntityResourceOutcomeOfAuctionDisplayLineItem&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceOutcomeOfAuctionDisplayLineItem> updateAuctionDisplayLineItemWithHttpInfo(String lineItemId, ValueResourceInputOfAuctionDisplayLineItemPatchModel valueResourceInputOfAuctionDisplayLineItemPatchModel) throws ApiException {
+        okhttp3.Call localVarCall = updateAuctionDisplayLineItemValidateBeforeCall(lineItemId, valueResourceInputOfAuctionDisplayLineItemPatchModel, null);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfAuctionDisplayLineItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Updates an auction display line item with the specified settings.
+     * @param lineItemId The id of the line item to update (required)
+     * @param valueResourceInputOfAuctionDisplayLineItemPatchModel The line item settings to update (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAuctionDisplayLineItemAsync(String lineItemId, ValueResourceInputOfAuctionDisplayLineItemPatchModel valueResourceInputOfAuctionDisplayLineItemPatchModel, final ApiCallback<EntityResourceOutcomeOfAuctionDisplayLineItem> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateAuctionDisplayLineItemValidateBeforeCall(lineItemId, valueResourceInputOfAuctionDisplayLineItemPatchModel, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfAuctionDisplayLineItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -3699,6 +4672,139 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = updateCreativeValidateBeforeCall(accountId, creativeId, creativeUpdateModel2, _callback);
         Type localVarReturnType = new TypeToken<Creative2Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateDisplayCampaign
+     * @param campaignId The id of the campaign to update (required)
+     * @param valueResourceInputOfDisplayCampaignPatchModel The campaign settings to update (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDisplayCampaignCall(String campaignId, ValueResourceInputOfDisplayCampaignPatchModel valueResourceInputOfDisplayCampaignPatchModel, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfDisplayCampaignPatchModel;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/display-campaigns/{campaignId}"
+            .replace("{" + "campaignId" + "}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateDisplayCampaignValidateBeforeCall(String campaignId, ValueResourceInputOfDisplayCampaignPatchModel valueResourceInputOfDisplayCampaignPatchModel, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling updateDisplayCampaign(Async)");
+        }
+
+        // verify the required parameter 'valueResourceInputOfDisplayCampaignPatchModel' is set
+        if (valueResourceInputOfDisplayCampaignPatchModel == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfDisplayCampaignPatchModel' when calling updateDisplayCampaign(Async)");
+        }
+
+        return updateDisplayCampaignCall(campaignId, valueResourceInputOfDisplayCampaignPatchModel, _callback);
+
+    }
+
+    /**
+     * 
+     * Updates a display campaign with the specified settings.
+     * @param campaignId The id of the campaign to update (required)
+     * @param valueResourceInputOfDisplayCampaignPatchModel The campaign settings to update (required)
+     * @return EntityResourceOutcomeOfDisplayCampaign
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceOutcomeOfDisplayCampaign updateDisplayCampaign(String campaignId, ValueResourceInputOfDisplayCampaignPatchModel valueResourceInputOfDisplayCampaignPatchModel) throws ApiException {
+        ApiResponse<EntityResourceOutcomeOfDisplayCampaign> localVarResp = updateDisplayCampaignWithHttpInfo(campaignId, valueResourceInputOfDisplayCampaignPatchModel);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Updates a display campaign with the specified settings.
+     * @param campaignId The id of the campaign to update (required)
+     * @param valueResourceInputOfDisplayCampaignPatchModel The campaign settings to update (required)
+     * @return ApiResponse&lt;EntityResourceOutcomeOfDisplayCampaign&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceOutcomeOfDisplayCampaign> updateDisplayCampaignWithHttpInfo(String campaignId, ValueResourceInputOfDisplayCampaignPatchModel valueResourceInputOfDisplayCampaignPatchModel) throws ApiException {
+        okhttp3.Call localVarCall = updateDisplayCampaignValidateBeforeCall(campaignId, valueResourceInputOfDisplayCampaignPatchModel, null);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfDisplayCampaign>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Updates a display campaign with the specified settings.
+     * @param campaignId The id of the campaign to update (required)
+     * @param valueResourceInputOfDisplayCampaignPatchModel The campaign settings to update (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateDisplayCampaignAsync(String campaignId, ValueResourceInputOfDisplayCampaignPatchModel valueResourceInputOfDisplayCampaignPatchModel, final ApiCallback<EntityResourceOutcomeOfDisplayCampaign> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateDisplayCampaignValidateBeforeCall(campaignId, valueResourceInputOfDisplayCampaignPatchModel, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfDisplayCampaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

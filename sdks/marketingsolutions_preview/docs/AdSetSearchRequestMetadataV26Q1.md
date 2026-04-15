@@ -8,7 +8,7 @@ Optional metadata for searching ad sets
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**fields** | [**List&lt;FieldsEnum&gt;**](#List&lt;FieldsEnum&gt;) |  |  [optional] |
+|**fields** | [**List&lt;FieldsEnum&gt;**](#List&lt;FieldsEnum&gt;) | List of fields to include in the response. If null or omitted, all fields are returned.  When only a subset of fields is projected, non-projected fields will have default values (e.g. null, 0, or enum defaults) which may not reflect the actual ad set state. Do not interpret non-projected fields as meaningful data. |  [optional] |
 
 
 

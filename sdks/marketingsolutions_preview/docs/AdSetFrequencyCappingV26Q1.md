@@ -2,14 +2,14 @@
 
 # AdSetFrequencyCappingV26Q1
 
-ad set frequency capping model
+Ad set frequency capping.                Settings that can limit the number of impression by viewer and by period.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**frequency** | [**FrequencyEnum**](#FrequencyEnum) |  |  [optional] |
-|**maximumImpressions** | **Integer** |  |  [optional] |
+|**frequency** | [**FrequencyEnum**](#FrequencyEnum) | Period on which impression limitation is calculated.                Possible values:  - hourly  - daily  - lifetime  - advanced |  [optional] |
+|**maximumImpressions** | **Integer** | Maximum impressions for the specified period. |  [optional] |
 
 
 

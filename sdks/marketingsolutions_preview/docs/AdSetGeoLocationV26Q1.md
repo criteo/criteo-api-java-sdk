@@ -2,7 +2,7 @@
 
 # AdSetGeoLocationV26Q1
 
-ad set geolocation model
+Ad set geolocation options.
 
 ## Properties
 

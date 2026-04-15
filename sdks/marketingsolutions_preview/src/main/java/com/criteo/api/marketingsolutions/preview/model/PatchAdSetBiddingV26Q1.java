@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * ad set bidding patch model
+ * Ad set bidding patch model
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PatchAdSetBiddingV26Q1 {

@@ -45,12 +45,12 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * ad set frequency capping model
+ * Ad set frequency capping.                Settings that can limit the number of impression by viewer and by period.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdSetFrequencyCappingV26Q1 {
   /**
-   * Gets or Sets frequency
+   * Period on which impression limitation is calculated.                Possible values:  - hourly  - daily  - lifetime  - advanced
    */
   @JsonAdapter(FrequencyEnum.Adapter.class)
   public enum FrequencyEnum {
@@ -118,7 +118,7 @@ public class AdSetFrequencyCappingV26Q1 {
   }
 
    /**
-   * Get frequency
+   * Period on which impression limitation is calculated.                Possible values:  - hourly  - daily  - lifetime  - advanced
    * @return frequency
   **/
   @javax.annotation.Nullable
@@ -140,7 +140,7 @@ public class AdSetFrequencyCappingV26Q1 {
   }
 
    /**
-   * Get maximumImpressions
+   * Maximum impressions for the specified period.
    * @return maximumImpressions
   **/
   @javax.annotation.Nullable

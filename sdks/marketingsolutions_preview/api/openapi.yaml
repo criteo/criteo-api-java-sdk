@@ -1580,7 +1580,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponsesAdSetIdV26Q1'
-          description: List of patched adSets.
+          description: Patched attributes for adSets specified in the request.
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
@@ -1589,7 +1589,7 @@ paths:
       x-content-type: application/json
       x-accepts: application/json
     post:
-      description: Create the specified ad set
+      description: Create an ad set with the provided parameters
       operationId: CreateAdSet
       requestBody:
         content:
@@ -1703,8 +1703,9 @@ paths:
       - Campaign
       x-accepts: application/json
     patch:
-      description: Patch Category Bids for one or more Categories in a single request.
-        Partial success policy is followed.
+      description: "Update the Category Bids for given Categories associated to an\
+        \ Ad Set\r\nPatch Category Bids for one or more Categories in a single request.\
+        \ Partial success policy is followed."
       operationId: PatchAdSetCategoryBids
       parameters:
       - description: Id of the Ad Set
@@ -1720,6 +1721,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PatchAdSetCategoryBidListRequest'
+        description: Collection of category bids to update
         required: true
         x-bodyName: categoryBidsToUpdate
       responses:
@@ -1728,8 +1730,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PatchAdSetCategoryBidResultListResponse'
-          description: List of updated Category Bids for given Categories associated
-            to an Ad Set.
+          description: "List of updated Category Bids for given Categories associated\
+            \ to an Ad Set, used for partial successes as well."
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
@@ -1766,8 +1768,9 @@ paths:
       - Campaign
       x-accepts: application/json
     patch:
-      description: Patch Display Multipliers for one or more Categories in a single
-        request. Partial success policy is followed.
+      description: "Update the Display Multipliers for given Categories associated\
+        \ to an Ad Set\r\nPatch Display Multipliers for one or more Categories in\
+        \ a single request. Partial success policy is followed."
       operationId: PatchDisplayMultipliers
       parameters:
       - description: Id of the Ad Set
@@ -1783,6 +1786,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PatchAdSetDisplayMultiplierListRequest'
+        description: List of display multiplier values to change
         required: true
         x-bodyName: displayMultipliersToUpdate
       responses:
@@ -1792,7 +1796,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/PatchAdSetDisplayMultiplierResultListResponse'
           description: List of updated Display Multipliers for given Categories associated
-            to an Ad Set.
+            to an Ad Set. Make sure to check the error field in the response since
+            a partial success will result in a 200 response code.
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
@@ -1980,7 +1985,12 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/ad-sets/search:
     post:
-      description: Search for ad sets
+      description: "Search for ad sets based on provided criteria.\r\nThis returns\
+        \ the full configuration of ad sets matching those criteria.\r\nField projection\
+        \ can be used if only a subset of fields is required, instead of the full\
+        \ configuration.\r\n            \r\nIf specific fields are precised in the\
+        \ user prompt, use meta.fields field projection in order to query only the\
+        \ value of these fields, else, provide every field."
       operationId: SearchAdSets
       requestBody:
         content:
@@ -2914,7 +2924,9 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/campaigns:
     patch:
-      description: Patch a list of Campaigns.
+      description: "Patch a list of Campaigns.\r\n            \r\nA campaign, or in\
+        \ other words a marketing campaign, is an entity that defines advertising\
+        \ objectives and success criteria."
       operationId: PatchCampaigns
       requestBody:
         content:
@@ -2939,7 +2951,9 @@ paths:
       x-content-type: application/json
       x-accepts: application/json
     post:
-      description: Create the specified campaign
+      description: "Create the specified campaign\r\n            \r\nA campaign, or\
+        \ in other words a marketing campaign, is an entity that defines advertising\
+        \ objectives and success criteria."
       operationId: CreateCampaign
       requestBody:
         content:
@@ -2965,10 +2979,12 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/campaigns/{campaign-id}:
     get:
-      description: Get the data for the specified campaign
+      description: "Get the data for the specified campaign.\r\n            \r\nA\
+        \ campaign, or in other words a marketing campaign, is an entity that defines\
+        \ advertising objectives and success criteria."
       operationId: GetCampaign
       parameters:
-      - description: Id of the campaign
+      - description: ID of the marketing campaign; This field is required.
         explode: false
         in: path
         name: campaign-id
@@ -2982,7 +2998,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CampaignV23Q1Response'
-          description: data for the campaign
+          description: Returns the data of the specified marketing campaign.
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -2991,14 +3007,16 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/campaigns/search:
     post:
-      description: Search for campaigns
+      description: "Search endpoint for campaigns\r\n            \r\nA campaign, or\
+        \ in other words a marketing campaign, is an entity that defines advertising\
+        \ objectives and success criteria."
       operationId: SearchCampaigns
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CampaignSearchRequestV23Q1'
-        description: filters on campaigns
+        description: Filters for searching for campaigns
         x-bodyName: request
       responses:
         "200":
@@ -3006,7 +3024,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CampaignV23Q1ListResponse'
-          description: data for the campaigns
+          description: Returns a list of marketing campaigns' data.
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
@@ -4496,7 +4514,7 @@ components:
           type: string
       type: object
     AdSetDeliveryLimitationsV26Q1:
-      description: ad set delivery limitations model
+      description: Delivery limitations for an ad set.
       example:
         operatingSystems:
         - android
@@ -4510,7 +4528,11 @@ components:
       nullable: true
       properties:
         devices:
+          description: "List of devices which the ad set should target.\r\n      \
+            \      \r\nNo limitation if the list is empty."
           items:
+            description: "Targeted device type.\r\n            \r\nPossible values:\r\
+              \n- other\r\n- desktop\r\n- mobile\r\n- tablet"
             enum:
             - other
             - desktop
@@ -4520,7 +4542,13 @@ components:
           nullable: true
           type: array
         environments:
+          description: "List of environments which the ad set should target.\r\n \
+            \           \r\nNo limitation if the list is empty."
           items:
+            description: "Targeted environment type.\r\n            \r\nNote: this\
+              \ is very different from AdSetDestinationEnvironment: this parameter\
+              \ defines a delivery limitation,\r\nnot an impression's destination.\r\
+              \n            \r\nPossible values:\r\n- web\r\n- inApp"
             enum:
             - web
             - inApp
@@ -4528,7 +4556,11 @@ components:
           nullable: true
           type: array
         operatingSystems:
+          description: "List of operating systems which the ad set should target.\r\
+            \n            \r\nNo limitation if the list is empty."
           items:
+            description: "Targeted operating system.\r\n            \r\nPossible values:\r\
+              \n- android\r\n- ios\r\n- unknown"
             enum:
             - android
             - ios
@@ -4654,13 +4686,17 @@ components:
           type: string
       type: object
     AdSetFrequencyCappingV26Q1:
-      description: ad set frequency capping model
+      description: "Ad set frequency capping.\r\n            \r\nSettings that can\
+        \ limit the number of impression by viewer and by period."
       example:
         maximumImpressions: 1
         frequency: hourly
       nullable: true
       properties:
         frequency:
+          description: "Period on which impression limitation is calculated.\r\n \
+            \           \r\nPossible values:\r\n- hourly\r\n- daily\r\n- lifetime\r\
+            \n- advanced"
           enum:
           - hourly
           - daily
@@ -4669,12 +4705,13 @@ components:
           nullable: true
           type: string
         maximumImpressions:
+          description: Maximum impressions for the specified period.
           format: int32
           nullable: true
           type: integer
       type: object
     AdSetGeoLocationV26Q1:
-      description: ad set geolocation model
+      description: Ad set geolocation options.
       example:
         zipCodes:
           value: null
@@ -4696,29 +4733,26 @@ components:
       nullable: true
       type: object
     AdSetSearchFilterV26Q1:
-      description: filter on ad set ids
-      example:
-        adSetIds:
-        - adSetIds
-        - adSetIds
-        advertiserIds:
-        - advertiserIds
-        - advertiserIds
-        campaignIds:
-        - campaignIds
-        - campaignIds
+      description: "Filter on ad set ids.\r\n            \r\nMultiple filters are\
+        \ combined with an implicit AND operation.\r\nIdentifiers are string-encoded\
+        \ integers; invalid values are ignored.\r\nIf no filter is provided (both\
+        \ arrays are null or empty), the search returns all accessible campaigns."
       properties:
         adSetIds:
+          description: Ad set ids to filter on. Ids are string-encoded integers.
           items:
             type: string
           nullable: true
           type: array
         advertiserIds:
+          description: "Advertiser ids which ad sets belongs to (indirectly via their\
+            \ marketing campaign).\r\nIds are string-encoded integers."
           items:
             type: string
           nullable: true
           type: array
         campaignIds:
+          description: Campaign ids to filter on. Ids are string-encoded integers.
           items:
             type: string
           nullable: true
@@ -4726,13 +4760,19 @@ components:
       type: object
     AdSetSearchRequestMetadataV26Q1:
       description: Optional metadata for searching ad sets
-      example:
-        fields:
-        - Name
-        - Name
       properties:
         fields:
+          description: "List of fields to include in the response. If null or omitted,\
+            \ all fields are returned.\r\nWhen only a subset of fields is projected,\
+            \ non-projected fields will have default values (e.g. null, 0, or enum\
+            \ defaults) which may not reflect the actual ad set state. Do not interpret\
+            \ non-projected fields as meaningful data."
           items:
+            description: "Fields that can be projected when searching ad sets.\r\n\
+              \            \r\nPossible values:\r\n- Name\r\n- AdvertiserId\r\n- DatasetId\r\
+              \n- CampaignId\r\n- DestinationEnvironment\r\n- Objective\r\n- Schedule\r\
+              \n- Bidding\r\n- Targeting\r\n- Budget\r\n- MediaType\r\n- VideoChannel\r\
+              \n- AttributionConfiguration"
             enum:
             - Name
             - AdvertiserId
@@ -4754,20 +4794,9 @@ components:
     AdSetSearchRequestV26Q1:
       description: request payload of the search endpoint
       example:
-        meta:
-          fields:
-          - Name
-          - Name
         filters:
-          adSetIds:
-          - adSetIds
-          - adSetIds
           advertiserIds:
-          - advertiserIds
-          - advertiserIds
-          campaignIds:
-          - campaignIds
-          - campaignIds
+          - "12345"
       properties:
         filters:
           $ref: '#/components/schemas/AdSetSearchFilterV26Q1'
@@ -5068,11 +5097,6 @@ components:
       type: object
     AdSetTargetingRuleV26Q1:
       description: ad set targeting rule model
-      example:
-        values:
-        - values
-        - values
-        operand: undefined
       properties:
         operand:
           enum:
@@ -8718,6 +8742,11 @@ components:
         budgetConfiguration:
           $ref: '#/components/schemas/BudgetAutomationConfiguration'
         enabled:
+          description: "Whether budget automation is active for this marketing campaign.\r\
+            \n- true: budget automation is enabled and \"budgetConfiguration\" must\
+            \ be provided with a valid objective.\r\n- false (default when omitted):\
+            \ budget automation is disabled; \"budgetConfiguration\" is ignored if\
+            \ provided."
           type: boolean
       type: object
     BudgetAutomationConfiguration:
@@ -8761,7 +8790,10 @@ components:
           type: boolean
       type: object
     CampaignSearchFiltersV23Q1:
-      description: filters on campaign
+      description: "Filters for searching campaigns.\r\n            \r\nMultiple filters\
+        \ are combined with an implicit AND operation.\r\nIdentifiers are string-encoded\
+        \ integers; invalid values are ignored.\r\nIf no filter is provided (both\
+        \ arrays are null or empty), the search returns all accessible campaigns."
       example:
         advertiserIds:
         - advertiserIds
@@ -8771,18 +8803,20 @@ components:
         - campaignIds
       properties:
         advertiserIds:
+          description: Advertiser IDs to filter on (string-encoded integers).
           items:
             type: string
           nullable: true
           type: array
         campaignIds:
+          description: Campaign IDs to filter on (string-encoded integers).
           items:
             type: string
           nullable: true
           type: array
       type: object
     CampaignSearchRequestV23Q1:
-      description: request payload of the search endpoint
+      description: Request payload for the campaign search endpoint.
       example:
         filters:
           advertiserIds:
@@ -8832,7 +8866,8 @@ components:
           type: string
       type: object
     CampaignV23Q1:
-      description: campaign read model
+      description: "Campaign read model\r\n            \r\nThe {id} field is the campaign\
+        \ identifier (string-encoded integer)."
       example:
         goal: unspecified
         name: name
@@ -8850,11 +8885,20 @@ components:
       nullable: true
       properties:
         advertiserId:
+          description: Advertiser id of the campaign (string-encoded integer)
           nullable: true
           type: string
         budgetAutomation:
           $ref: '#/components/schemas/CampaignBudgetAutomationV23Q1'
         goal:
+          description: "Goal of the campaign\r\n            \r\nSerialized values\
+            \ are {unspecified}, {acquisition} and {retention}.\r\n            \r\n\
+            Acquisition and retention are defined as follows:\r\n- Acquisition: campaign\
+            \ with the goal of acquiring new customers. The success of an acquisition\
+            \ campaign is measured by the number of new customers it brings.\r\n-\
+            \ Retention: campaign with the goal of retaining existing customers. The\
+            \ success of a retention campaign is measured by the number of existing\
+            \ customers it retains."
           enum:
           - unspecified
           - acquisition
@@ -8866,6 +8910,7 @@ components:
           nullable: true
           type: string
         name:
+          description: Name of the campaign
           nullable: true
           type: string
         spendLimit:
@@ -9509,9 +9554,6 @@ components:
       type: object
     CreateAdSetAttributionConfigurationV26Q1:
       description: Create model for an ad set's attribution configuration.
-      example:
-        attributionMethod: unknown
-        lookbackWindow: unknown
       properties:
         attributionMethod:
           description: The attribution method.
@@ -9539,9 +9581,6 @@ components:
       type: object
     CreateAdSetBiddingV26Q1:
       description: ad set bidding create model
-      example:
-        bidAmount: 0.8008281904610115
-        costController: COS
       properties:
         bidAmount:
           description: Decimal value target relating to the `bidStrategy` specified.
@@ -9575,12 +9614,6 @@ components:
         \ with budget automation enabled, omit this object.\r\nIn that case, the ad\
         \ set budget is initialized from the marketing campaign spend limit amount\
         \ and renewal period."
-      example:
-        budgetDeliverySmoothing: accelerated
-        budgetDeliveryWeek: undefined
-        budgetAmount: 6.027456183070403
-        budgetRenewal: undefined
-        budgetStrategy: capped
       properties:
         budgetAmount:
           description: Maximum budget amount in the advertiser's currency per renewal
@@ -9647,22 +9680,6 @@ components:
       type: object
     CreateAdSetGeoLocationV26Q1:
       description: Geolocation configuration of the ad set
-      example:
-        zipCodes:
-          values:
-          - values
-          - values
-          operand: undefined
-        countries:
-          values:
-          - values
-          - values
-          operand: undefined
-        subdivisions:
-          values:
-          - values
-          - values
-          operand: undefined
       properties:
         countries:
           $ref: '#/components/schemas/AdSetTargetingRuleV26Q1'
@@ -9673,9 +9690,6 @@ components:
       type: object
     CreateAdSetScheduleV26Q1:
       description: ad set schedule create model
-      example:
-        endDate: 2000-01-23T04:56:07.000+00:00
-        startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         endDate:
           format: date-time
@@ -9689,36 +9703,6 @@ components:
       type: object
     CreateAdSetTargetingV26Q1:
       description: Targeting configuration of the ad set
-      example:
-        geoLocation:
-          zipCodes:
-            values:
-            - values
-            - values
-            operand: undefined
-          countries:
-            values:
-            - values
-            - values
-            operand: undefined
-          subdivisions:
-            values:
-            - values
-            - values
-            operand: undefined
-        frequencyCapping:
-          maximumImpressions: 1
-          frequency: hourly
-        deliveryLimitations:
-          operatingSystems:
-          - android
-          - android
-          devices:
-          - other
-          - other
-          environments:
-          - web
-          - web
       properties:
         deliveryLimitations:
           $ref: '#/components/schemas/AdSetDeliveryLimitationsV26Q1'
@@ -9732,57 +9716,42 @@ components:
     CreateAdSetV26Q1:
       description: ad set create model
       example:
+        name: test adset
+        datasetId: "108002"
+        campaignId: "358313"
+        objective: conversions
         schedule:
-          endDate: 2000-01-23T04:56:07.000+00:00
-          startDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2026-04-04T16:21:06.3537890+02:00
+          endDate: 2026-04-13T16:21:06.3537917+02:00
+        bidding:
+          costController: dailyBudget
         targeting:
-          geoLocation:
-            zipCodes:
-              values:
-              - values
-              - values
-              operand: undefined
-            countries:
-              values:
-              - values
-              - values
-              operand: undefined
-            subdivisions:
-              values:
-              - values
-              - values
-              operand: undefined
-          frequencyCapping:
-            maximumImpressions: 1
-            frequency: hourly
           deliveryLimitations:
-            operatingSystems:
-            - android
-            - android
-            devices:
-            - other
-            - other
             environments:
             - web
-            - web
-        bidding:
-          bidAmount: 0.8008281904610115
-          costController: COS
-        campaignId: campaignId
-        name: name
-        datasetId: datasetId
-        mediaType: display
-        trackingCode: trackingCode
-        attributionConfiguration:
-          attributionMethod: unknown
-          lookbackWindow: unknown
+            devices:
+            - desktop
+            operatingSystems:
+            - android
+          geoLocation:
+            countries:
+              operand: in
+              values:
+              - FR
+              - IT
+          frequencyCapping:
+            frequency: daily
+            maximumImpressions: 1000
         budget:
-          budgetDeliverySmoothing: accelerated
-          budgetDeliveryWeek: undefined
-          budgetAmount: 6.027456183070403
-          budgetRenewal: undefined
           budgetStrategy: capped
-        objective: customAction
+          budgetRenewal: weekly
+          budgetDeliverySmoothing: standard
+          budgetDeliveryWeek: mondayToSunday
+          budgetAmount: 1000
+        trackingCode: Test123
+        mediaType: display
+        attributionConfiguration:
+          attributionMethod: criteoAttribution
       properties:
         attributionConfiguration:
           $ref: '#/components/schemas/CreateAdSetAttributionConfigurationV26Q1'
@@ -9846,57 +9815,42 @@ components:
       example:
         data:
           attributes:
+            name: test adset
+            datasetId: "108002"
+            campaignId: "358313"
+            objective: conversions
             schedule:
-              endDate: 2000-01-23T04:56:07.000+00:00
-              startDate: 2000-01-23T04:56:07.000+00:00
+              startDate: 2026-04-04T16:21:06.3537890+02:00
+              endDate: 2026-04-13T16:21:06.3537917+02:00
+            bidding:
+              costController: dailyBudget
             targeting:
-              geoLocation:
-                zipCodes:
-                  values:
-                  - values
-                  - values
-                  operand: undefined
-                countries:
-                  values:
-                  - values
-                  - values
-                  operand: undefined
-                subdivisions:
-                  values:
-                  - values
-                  - values
-                  operand: undefined
-              frequencyCapping:
-                maximumImpressions: 1
-                frequency: hourly
               deliveryLimitations:
-                operatingSystems:
-                - android
-                - android
-                devices:
-                - other
-                - other
                 environments:
                 - web
-                - web
-            bidding:
-              bidAmount: 0.8008281904610115
-              costController: COS
-            campaignId: campaignId
-            name: name
-            datasetId: datasetId
-            mediaType: display
-            trackingCode: trackingCode
-            attributionConfiguration:
-              attributionMethod: unknown
-              lookbackWindow: unknown
+                devices:
+                - desktop
+                operatingSystems:
+                - android
+              geoLocation:
+                countries:
+                  operand: in
+                  values:
+                  - FR
+                  - IT
+              frequencyCapping:
+                frequency: daily
+                maximumImpressions: 1000
             budget:
-              budgetDeliverySmoothing: accelerated
-              budgetDeliveryWeek: undefined
-              budgetAmount: 6.027456183070403
-              budgetRenewal: undefined
               budgetStrategy: capped
-            objective: customAction
+              budgetRenewal: weekly
+              budgetDeliverySmoothing: standard
+              budgetDeliveryWeek: mondayToSunday
+              budgetAmount: 1000
+            trackingCode: Test123
+            mediaType: display
+            attributionConfiguration:
+              attributionMethod: criteoAttribution
           type: AdSet
       properties:
         data:
@@ -9906,57 +9860,42 @@ components:
       description: Data model for a Resource
       example:
         attributes:
+          name: test adset
+          datasetId: "108002"
+          campaignId: "358313"
+          objective: conversions
           schedule:
-            endDate: 2000-01-23T04:56:07.000+00:00
-            startDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2026-04-04T16:21:06.3537890+02:00
+            endDate: 2026-04-13T16:21:06.3537917+02:00
+          bidding:
+            costController: dailyBudget
           targeting:
-            geoLocation:
-              zipCodes:
-                values:
-                - values
-                - values
-                operand: undefined
-              countries:
-                values:
-                - values
-                - values
-                operand: undefined
-              subdivisions:
-                values:
-                - values
-                - values
-                operand: undefined
-            frequencyCapping:
-              maximumImpressions: 1
-              frequency: hourly
             deliveryLimitations:
-              operatingSystems:
-              - android
-              - android
-              devices:
-              - other
-              - other
               environments:
               - web
-              - web
-          bidding:
-            bidAmount: 0.8008281904610115
-            costController: COS
-          campaignId: campaignId
-          name: name
-          datasetId: datasetId
-          mediaType: display
-          trackingCode: trackingCode
-          attributionConfiguration:
-            attributionMethod: unknown
-            lookbackWindow: unknown
+              devices:
+              - desktop
+              operatingSystems:
+              - android
+            geoLocation:
+              countries:
+                operand: in
+                values:
+                - FR
+                - IT
+            frequencyCapping:
+              frequency: daily
+              maximumImpressions: 1000
           budget:
-            budgetDeliverySmoothing: accelerated
-            budgetDeliveryWeek: undefined
-            budgetAmount: 6.027456183070403
-            budgetRenewal: undefined
             budgetStrategy: capped
-          objective: customAction
+            budgetRenewal: weekly
+            budgetDeliverySmoothing: standard
+            budgetDeliveryWeek: mondayToSunday
+            budgetAmount: 1000
+          trackingCode: Test123
+          mediaType: display
+          attributionConfiguration:
+            attributionMethod: criteoAttribution
         type: AdSet
       properties:
         attributes:
@@ -9967,7 +9906,7 @@ components:
           type: string
       type: object
     CreateCampaign:
-      description: Campaign create model
+      description: Campaign create model.
       example:
         goal: Unspecified
         name: name
@@ -9982,13 +9921,20 @@ components:
         advertiserId: advertiserId
       properties:
         advertiserId:
-          description: Advertiser id this campaign belongs to
+          description: Advertiser ID this campaign belongs to (string-encoded integer).
           nullable: true
           type: string
         budgetAutomation:
           $ref: '#/components/schemas/BudgetAutomation'
         goal:
-          description: Goal for the marketing campaign
+          description: "Goal of the campaign\r\n            \r\nSerialized values\
+            \ are {Unspecified}, {Acquisition} and {Retention}.\r\n            \r\n\
+            Acquisition and retention are defined as follows:\r\n- Acquisition: campaign\
+            \ with the goal of acquiring new customers. The success of an acquisition\
+            \ campaign is measured by the number of new customers it brings.\r\n-\
+            \ Retention: campaign with the goal of retaining existing customers. The\
+            \ success of a retention campaign is measured by the number of existing\
+            \ customers it retains."
           enum:
           - Unspecified
           - Acquisition
@@ -14535,7 +14481,7 @@ components:
           type: string
       type: object
     PatchAdSetBiddingV26Q1:
-      description: ad set bidding patch model
+      description: Ad set bidding patch model
       example:
         bidAmount:
           value: 0.8008281904610115
@@ -14890,7 +14836,7 @@ components:
           type: string
       type: object
     PatchAdSetSchedulingV26Q1:
-      description: ad set schedule patch model
+      description: Model for patching ad set scheduling.
       example:
         endDate:
           value: 2000-01-23T04:56:07.000+00:00
@@ -14903,7 +14849,7 @@ components:
           $ref: '#/components/schemas/NillableDateTime'
       type: object
     PatchAdSetV26Q1:
-      description: ad set patch model
+      description: Model for patching an ad set.
       example:
         targeting:
           geoLocation:
@@ -14954,6 +14900,7 @@ components:
         budget:
           $ref: '#/components/schemas/PatchAdSetBudgetV26Q1'
         name:
+          description: Name of the ad set.
           nullable: true
           type: string
         scheduling:
@@ -14962,7 +14909,8 @@ components:
           $ref: '#/components/schemas/AdSetTargetingV26Q1'
       type: object
     PatchCampaign:
-      description: campaign patch model
+      description: "Campaign patch model.\r\nThe campaign identifier is provided in\
+        \ the resource {id} field (string-encoded integer) and is required."
       example:
         budgetAutomation:
           budgetConfiguration:
@@ -17018,14 +16966,22 @@ components:
           type: string
       type: object
     ReadAdSetAttributionConfigurationV26Q1:
-      description: Read model for an ad set's attribution configuration.
+      description: "Read model for an ad set's attribution configuration.\r\n    \
+        \        \r\nThe lookback window is only set for ad sets with an attribution\
+        \ method that is postClick or googleAnalyticsLastClick.\r\nIt will be null\
+        \ with any other attribution method."
       example:
         attributionMethod: unknown
         lookbackWindow: unknown
       nullable: true
       properties:
         attributionMethod:
-          description: The attribution method.
+          description: "Ad set attribution method.\r\nThis defines how certain events\
+            \ (visits, clicks, sales...) are attributed to the ad set.\r\n       \
+            \     \r\nPossible values:\r\n- unknown\r\n- criteoAttribution (default\
+            \ attribution method)\r\n- googleAnalyticsLastClick (requires Google Analytics\
+            \ integration)\r\n- postClick\r\n- sftp\r\n- googleAnalytics (requires\
+            \ Google Analytics integration)"
           enum:
           - unknown
           - criteoAttribution
@@ -17050,21 +17006,23 @@ components:
           type: string
       type: object
     ReadAdSetBiddingV26Q1:
-      description: ad set bidding read model
+      description: Ad set bidding read configuration.
       example:
         bidAmount: 0.8008281904610115
         costController: COS
       nullable: true
       properties:
         bidAmount:
-          description: Decimal value target relating to the `adSetObjective` specified.
-            May be `null` for objectives that do not require a target value. At most
-            4 decimals are supported. Additional decimals are rounded.
+          description: "Decimal value target relating to the `adSetObjective` specified.\r\
+            \nMay be `null` for objectives that do not require a target value.\r\n\
+            At most 4 decimals are supported. Additional decimals are rounded."
           format: double
           nullable: true
           type: number
         costController:
-          description: How spend is controlled
+          description: "Cost controller for the ad set.\r\n            \r\nPossible\
+            \ values:\r\n- COS\r\n- maxCPC\r\n- CPI\r\n- CPM\r\n- CPO\r\n- CPSV\r\n\
+            - CPV\r\n- dailyBudget\r\n- targetCPM"
           enum:
           - COS
           - maxCPC
@@ -17161,7 +17119,7 @@ components:
           type: string
       type: object
     ReadAdSetScheduleV26Q1:
-      description: ad set schedule read model
+      description: Ad set schedule read model
       example:
         endDate:
           value: 2000-01-23T04:56:07.000+00:00
@@ -17172,12 +17130,18 @@ components:
       nullable: true
       properties:
         activationStatus:
+          description: "Activation status of the ad set, i.e. whether the consumer\
+            \ wants it to deliver"
           enum:
           - "on"
           - "off"
           nullable: true
           type: string
         deliveryStatus:
+          description: "Delivery status of the ad set, i.e. whether the ad set is\
+            \ delivering.\r\n            \r\nPossible values:\r\n- draft\r\n- inactive\r\
+            \n- live\r\n- notLive\r\n- pausing\r\n- paused\r\n- scheduled\r\n- ended\r\
+            \n- notDelivering\r\n- archived"
           enum:
           - draft
           - inactive
@@ -17197,7 +17161,9 @@ components:
           $ref: '#/components/schemas/NillableDateTime'
       type: object
     ReadAdSetV26Q1:
-      description: ad set read model
+      description: "Ad set read model.\r\n            \r\nThe ad set is the configuration\
+        \ unit that defines ads delivery. Its binds together the objective, budget,\r\
+        \nscheduling, targeting options and ads."
       example:
         bidding:
           bidAmount: 0.8008281904610115
@@ -17251,6 +17217,8 @@ components:
       nullable: true
       properties:
         advertiserId:
+          description: "Advertiser id of the campaign this ad set belongs to\r\nThis\
+            \ value is a string-encoded integer."
           nullable: true
           type: string
         attributionConfiguration:
@@ -17260,12 +17228,22 @@ components:
         budget:
           $ref: '#/components/schemas/ReadAdSetBudgetV26Q1'
         campaignId:
+          description: "Campaign id this ad set belongs to.\r\n            \r\nThis\
+            \ is a key to a MarketingCampaign entity, which can be retrieved using\
+            \ the MarketingCampaigns endpoints.\r\nThis value is a string-encoded\
+            \ integer."
           nullable: true
           type: string
         datasetId:
+          description: "Dataset id of this ad set\r\nThis value is a string-encoded\
+            \ integer."
           nullable: true
           type: string
         destinationEnvironment:
+          description: "The environment that an ad click will lead a user to.\r\n\
+            \            \r\nPossible values:\r\n- undefined: the ad set does not\
+            \ specify its destination environment\r\n- web: the ad set lead users\
+            \ to a web page\r\n- app: the ad set lead users to an app"
           enum:
           - undefined
           - web
@@ -17279,9 +17257,15 @@ components:
           nullable: true
           type: string
         name:
+          description: Name of the ad set
           nullable: true
           type: string
         objective:
+          description: "Ad set objective.\r\n            \r\nPossible values:\r\n\
+            - customAction (previously \"Actions\")\r\n- clicks\r\n- conversions\r\
+            \n- displays\r\n- appPromotion (previously \"Installs\")\r\n- revenue\r\
+            \n- storeConversions\r\n- value\r\n- reach (previously \"ViewedImpressions\"\
+            )\r\n- visits\r\n- videoViews (previously \"CompletedVideoViews\")"
           enum:
           - customAction
           - clicks

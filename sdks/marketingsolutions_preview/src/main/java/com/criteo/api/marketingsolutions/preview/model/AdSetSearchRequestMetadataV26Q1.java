@@ -52,7 +52,7 @@ import com.criteo.api.marketingsolutions.preview.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdSetSearchRequestMetadataV26Q1 {
   /**
-   * Gets or Sets fields
+   * Fields that can be projected when searching ad sets.                Possible values:  - Name  - AdvertiserId  - DatasetId  - CampaignId  - DestinationEnvironment  - Objective  - Schedule  - Bidding  - Targeting  - Budget  - MediaType  - VideoChannel  - AttributionConfiguration
    */
   @JsonAdapter(FieldsEnum.Adapter.class)
   public enum FieldsEnum {
@@ -142,7 +142,7 @@ public class AdSetSearchRequestMetadataV26Q1 {
   }
 
    /**
-   * Get fields
+   * List of fields to include in the response. If null or omitted, all fields are returned.  When only a subset of fields is projected, non-projected fields will have default values (e.g. null, 0, or enum defaults) which may not reflect the actual ad set state. Do not interpret non-projected fields as meaningful data.
    * @return fields
   **/
   @javax.annotation.Nullable

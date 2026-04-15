@@ -50,7 +50,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * ad set read model
+ * Ad set read model.                The ad set is the configuration unit that defines ads delivery. Its binds together the objective, budget,  scheduling, targeting options and ads.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadAdSetV26Q1 {
@@ -79,7 +79,7 @@ public class ReadAdSetV26Q1 {
   private String datasetId;
 
   /**
-   * Gets or Sets destinationEnvironment
+   * The environment that an ad click will lead a user to.                Possible values:  - undefined: the ad set does not specify its destination environment  - web: the ad set lead users to a web page  - app: the ad set lead users to an app
    */
   @JsonAdapter(DestinationEnvironmentEnum.Adapter.class)
   public enum DestinationEnvironmentEnum {
@@ -187,7 +187,7 @@ public class ReadAdSetV26Q1 {
   private String name;
 
   /**
-   * Gets or Sets objective
+   * Ad set objective.                Possible values:  - customAction (previously \&quot;Actions\&quot;)  - clicks  - conversions  - displays  - appPromotion (previously \&quot;Installs\&quot;)  - revenue  - storeConversions  - value  - reach (previously \&quot;ViewedImpressions\&quot;)  - visits  - videoViews (previously \&quot;CompletedVideoViews\&quot;)
    */
   @JsonAdapter(ObjectiveEnum.Adapter.class)
   public enum ObjectiveEnum {
@@ -324,7 +324,7 @@ public class ReadAdSetV26Q1 {
   }
 
    /**
-   * Get advertiserId
+   * Advertiser id of the campaign this ad set belongs to  This value is a string-encoded integer.
    * @return advertiserId
   **/
   @javax.annotation.Nullable
@@ -412,7 +412,7 @@ public class ReadAdSetV26Q1 {
   }
 
    /**
-   * Get campaignId
+   * Campaign id this ad set belongs to.                This is a key to a MarketingCampaign entity, which can be retrieved using the MarketingCampaigns endpoints.  This value is a string-encoded integer.
    * @return campaignId
   **/
   @javax.annotation.Nullable
@@ -434,7 +434,7 @@ public class ReadAdSetV26Q1 {
   }
 
    /**
-   * Get datasetId
+   * Dataset id of this ad set  This value is a string-encoded integer.
    * @return datasetId
   **/
   @javax.annotation.Nullable
@@ -456,7 +456,7 @@ public class ReadAdSetV26Q1 {
   }
 
    /**
-   * Get destinationEnvironment
+   * The environment that an ad click will lead a user to.                Possible values:  - undefined: the ad set does not specify its destination environment  - web: the ad set lead users to a web page  - app: the ad set lead users to an app
    * @return destinationEnvironment
   **/
   @javax.annotation.Nullable
@@ -500,7 +500,7 @@ public class ReadAdSetV26Q1 {
   }
 
    /**
-   * Get name
+   * Name of the ad set
    * @return name
   **/
   @javax.annotation.Nullable
@@ -522,7 +522,7 @@ public class ReadAdSetV26Q1 {
   }
 
    /**
-   * Get objective
+   * Ad set objective.                Possible values:  - customAction (previously \&quot;Actions\&quot;)  - clicks  - conversions  - displays  - appPromotion (previously \&quot;Installs\&quot;)  - revenue  - storeConversions  - value  - reach (previously \&quot;ViewedImpressions\&quot;)  - visits  - videoViews (previously \&quot;CompletedVideoViews\&quot;)
    * @return objective
   **/
   @javax.annotation.Nullable

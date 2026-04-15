@@ -47,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * campaign read model
+ * Campaign read model                The {id} field is the campaign identifier (string-encoded integer).
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignV23Q1 {
@@ -60,7 +60,7 @@ public class CampaignV23Q1 {
   private CampaignBudgetAutomationV23Q1 budgetAutomation;
 
   /**
-   * Gets or Sets goal
+   * Goal of the campaign                Serialized values are {unspecified}, {acquisition} and {retention}.                Acquisition and retention are defined as follows:  - Acquisition: campaign with the goal of acquiring new customers. The success of an acquisition campaign is measured by the number of new customers it brings.  - Retention: campaign with the goal of retaining existing customers. The success of a retention campaign is measured by the number of existing customers it retains.
    */
   @JsonAdapter(GoalEnum.Adapter.class)
   public enum GoalEnum {
@@ -134,7 +134,7 @@ public class CampaignV23Q1 {
   }
 
    /**
-   * Get advertiserId
+   * Advertiser id of the campaign (string-encoded integer)
    * @return advertiserId
   **/
   @javax.annotation.Nullable
@@ -178,7 +178,7 @@ public class CampaignV23Q1 {
   }
 
    /**
-   * Get goal
+   * Goal of the campaign                Serialized values are {unspecified}, {acquisition} and {retention}.                Acquisition and retention are defined as follows:  - Acquisition: campaign with the goal of acquiring new customers. The success of an acquisition campaign is measured by the number of new customers it brings.  - Retention: campaign with the goal of retaining existing customers. The success of a retention campaign is measured by the number of existing customers it retains.
    * @return goal
   **/
   @javax.annotation.Nullable
@@ -222,7 +222,7 @@ public class CampaignV23Q1 {
   }
 
    /**
-   * Get name
+   * Name of the campaign
    * @return name
   **/
   @javax.annotation.Nullable

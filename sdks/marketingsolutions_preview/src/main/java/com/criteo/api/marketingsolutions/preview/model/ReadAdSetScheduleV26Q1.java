@@ -46,12 +46,12 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * ad set schedule read model
+ * Ad set schedule read model
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadAdSetScheduleV26Q1 {
   /**
-   * Gets or Sets activationStatus
+   * Activation status of the ad set, i.e. whether the consumer wants it to deliver
    */
   @JsonAdapter(ActivationStatusEnum.Adapter.class)
   public enum ActivationStatusEnum {
@@ -102,7 +102,7 @@ public class ReadAdSetScheduleV26Q1 {
   private ActivationStatusEnum activationStatus;
 
   /**
-   * Gets or Sets deliveryStatus
+   * Delivery status of the ad set, i.e. whether the ad set is delivering.                Possible values:  - draft  - inactive  - live  - notLive  - pausing  - paused  - scheduled  - ended  - notDelivering  - archived
    */
   @JsonAdapter(DeliveryStatusEnum.Adapter.class)
   public enum DeliveryStatusEnum {
@@ -186,7 +186,7 @@ public class ReadAdSetScheduleV26Q1 {
   }
 
    /**
-   * Get activationStatus
+   * Activation status of the ad set, i.e. whether the consumer wants it to deliver
    * @return activationStatus
   **/
   @javax.annotation.Nullable
@@ -208,7 +208,7 @@ public class ReadAdSetScheduleV26Q1 {
   }
 
    /**
-   * Get deliveryStatus
+   * Delivery status of the ad set, i.e. whether the ad set is delivering.                Possible values:  - draft  - inactive  - live  - notLive  - pausing  - paused  - scheduled  - ended  - notDelivering  - archived
    * @return deliveryStatus
   **/
   @javax.annotation.Nullable

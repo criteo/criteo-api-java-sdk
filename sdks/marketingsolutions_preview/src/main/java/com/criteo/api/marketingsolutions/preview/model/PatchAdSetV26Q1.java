@@ -50,7 +50,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * ad set patch model
+ * Model for patching an ad set.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PatchAdSetV26Q1 {
@@ -154,7 +154,7 @@ public class PatchAdSetV26Q1 {
   }
 
    /**
-   * Get name
+   * Name of the ad set.
    * @return name
   **/
   @javax.annotation.Nullable

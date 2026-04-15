@@ -2,7 +2,7 @@
 
 # PatchAdSetBiddingV26Q1
 
-ad set bidding patch model
+Ad set bidding patch model
 
 ## Properties
 

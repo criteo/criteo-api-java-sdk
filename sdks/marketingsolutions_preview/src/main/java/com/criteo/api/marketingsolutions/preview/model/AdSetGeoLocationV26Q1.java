@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * ad set geolocation model
+ * Ad set geolocation options.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdSetGeoLocationV26Q1 {
