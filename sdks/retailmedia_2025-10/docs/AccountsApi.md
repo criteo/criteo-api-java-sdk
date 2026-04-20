@@ -20,7 +20,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 ## accountFeesSearch
 
-> ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata accountFeesSearch(limit, offset, valueResourceInputAccountFeesSearchRequest)
+> ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata accountFeesSearch(valueResourceInputAccountFeesSearchRequest, limit, offset)
 
 
 
@@ -65,11 +65,11 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AccountsApi apiInstance = new AccountsApi(defaultClient);
+        ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest = new ValueResourceInputAccountFeesSearchRequest(); // ValueResourceInputAccountFeesSearchRequest | 
         Integer limit = 50; // Integer | used for paging, number of results returned per request, Maximum of 500
         Integer offset = 0; // Integer | used for paging, number of records to skip
-        ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest = new ValueResourceInputAccountFeesSearchRequest(); // ValueResourceInputAccountFeesSearchRequest | 
         try {
-            ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata result = apiInstance.accountFeesSearch(limit, offset, valueResourceInputAccountFeesSearchRequest);
+            ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata result = apiInstance.accountFeesSearch(valueResourceInputAccountFeesSearchRequest, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountsApi#accountFeesSearch");
@@ -87,9 +87,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **valueResourceInputAccountFeesSearchRequest** | [**ValueResourceInputAccountFeesSearchRequest**](ValueResourceInputAccountFeesSearchRequest.md)|  | |
 | **limit** | **Integer**| used for paging, number of results returned per request, Maximum of 500 | [optional] [default to 50] |
 | **offset** | **Integer**| used for paging, number of records to skip | [optional] [default to 0] |
-| **valueResourceInputAccountFeesSearchRequest** | [**ValueResourceInputAccountFeesSearchRequest**](ValueResourceInputAccountFeesSearchRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -906,7 +906,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **valueResourceInputAccountFeesUpdateRequest** | [**ValueResourceInputAccountFeesUpdateRequest**](ValueResourceInputAccountFeesUpdateRequest.md)|  | [optional] |
+| **valueResourceInputAccountFeesUpdateRequest** | [**ValueResourceInputAccountFeesUpdateRequest**](ValueResourceInputAccountFeesUpdateRequest.md)|  | |
 
 ### Return type
 

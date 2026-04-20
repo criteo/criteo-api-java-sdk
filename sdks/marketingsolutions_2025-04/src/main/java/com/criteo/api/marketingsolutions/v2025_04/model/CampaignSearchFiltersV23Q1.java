@@ -47,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2025_04.JSON;
 
 /**
- * filters on campaign
+ * Filters for searching campaigns.                Multiple filters are combined with an implicit AND operation.  Identifiers are string-encoded integers; invalid values are ignored.  If no filter is provided (both arrays are null or empty), the search returns all accessible campaigns.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignSearchFiltersV23Q1 {
@@ -77,7 +77,7 @@ public class CampaignSearchFiltersV23Q1 {
   }
 
    /**
-   * Get advertiserIds
+   * Advertiser IDs to filter on (string-encoded integers).
    * @return advertiserIds
   **/
   @javax.annotation.Nullable
@@ -107,7 +107,7 @@ public class CampaignSearchFiltersV23Q1 {
   }
 
    /**
-   * Get campaignIds
+   * Campaign IDs to filter on (string-encoded integers).
    * @return campaignIds
   **/
   @javax.annotation.Nullable

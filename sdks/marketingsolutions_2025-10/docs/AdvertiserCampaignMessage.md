@@ -2,16 +2,16 @@
 
 # AdvertiserCampaignMessage
 
-Data representing an advertiser's adset
+Data representing a campaign for an advertiser. A campaign groups seller-campaigns and defines delivery settings.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**adSetDeliveryStatus** | [**AdSetDeliveryStatusEnum**](#AdSetDeliveryStatusEnum) |  |  [optional] [readonly] |
-|**campaignName** | **String** |  |  [optional] |
-|**id** | **Integer** |  |  [optional] |
-|**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
+|**adSetDeliveryStatus** | [**AdSetDeliveryStatusEnum**](#AdSetDeliveryStatusEnum) | Human-readable delivery status of the campaign&#39;s ad set |  [optional] [readonly] |
+|**campaignName** | **String** | Display name of the campaign |  [optional] |
+|**id** | **Integer** | Unique campaign identifier |  [optional] |
+|**status** | [**StatusEnum**](#StatusEnum) | Numeric delivery status: 0 &#x3D; Running, 1 &#x3D; Archived, 2 &#x3D; NotRunning |  [optional] |
 
 
 

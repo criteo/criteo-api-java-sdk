@@ -117,7 +117,7 @@ public class Example {
 
 
 
-Create the specified campaign
+Create the specified campaign                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
 
 ### Example
 
@@ -384,7 +384,7 @@ public class Example {
 
 
 
-Get the data for the specified campaign
+Get the data for the specified campaign.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
 
 ### Example
 
@@ -425,7 +425,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String campaignId = "campaignId_example"; // String | Id of the campaign
+        String campaignId = "campaignId_example"; // String | ID of the marketing campaign; This field is required.
         try {
             CampaignV23Q1Response result = apiInstance.getCampaign(campaignId);
             System.out.println(result);
@@ -445,7 +445,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| Id of the campaign | |
+| **campaignId** | **String**| ID of the marketing campaign; This field is required. | |
 
 ### Return type
 
@@ -464,7 +464,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | data for the campaign |  -  |
+| **200** | Returns the data of the specified marketing campaign. |  -  |
 
 
 ## getDisplayMultipliers
@@ -562,7 +562,7 @@ public class Example {
 
 
 
-Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+Update the Category Bids for given Categories associated to an Ad Set  Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
 
 ### Example
 
@@ -604,7 +604,7 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
-        PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest = new PatchAdSetCategoryBidListRequest(); // PatchAdSetCategoryBidListRequest | 
+        PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest = new PatchAdSetCategoryBidListRequest(); // PatchAdSetCategoryBidListRequest | Collection of category bids to update
         try {
             PatchAdSetCategoryBidResultListResponse result = apiInstance.patchAdSetCategoryBids(adSetId, patchAdSetCategoryBidListRequest);
             System.out.println(result);
@@ -625,7 +625,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adSetId** | **String**| Id of the Ad Set | |
-| **patchAdSetCategoryBidListRequest** | [**PatchAdSetCategoryBidListRequest**](PatchAdSetCategoryBidListRequest.md)|  | |
+| **patchAdSetCategoryBidListRequest** | [**PatchAdSetCategoryBidListRequest**](PatchAdSetCategoryBidListRequest.md)| Collection of category bids to update | |
 
 ### Return type
 
@@ -644,7 +644,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | List of updated Category Bids for given Categories associated to an Ad Set. |  -  |
+| **200** | List of updated Category Bids for given Categories associated to an Ad Set, used for partial successes as well. |  -  |
 
 
 ## patchAdSets
@@ -742,7 +742,7 @@ public class Example {
 
 
 
-Patch a list of Campaigns.
+Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
 
 ### Example
 
@@ -831,7 +831,7 @@ public class Example {
 
 
 
-Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
+Update the Display Multipliers for given Categories associated to an Ad Set  Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
 
 ### Example
 
@@ -873,7 +873,7 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
-        PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest = new PatchAdSetDisplayMultiplierListRequest(); // PatchAdSetDisplayMultiplierListRequest | 
+        PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest = new PatchAdSetDisplayMultiplierListRequest(); // PatchAdSetDisplayMultiplierListRequest | List of display multiplier values to change
         try {
             PatchAdSetDisplayMultiplierResultListResponse result = apiInstance.patchDisplayMultipliers(adSetId, patchAdSetDisplayMultiplierListRequest);
             System.out.println(result);
@@ -894,7 +894,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adSetId** | **String**| Id of the Ad Set | |
-| **patchAdSetDisplayMultiplierListRequest** | [**PatchAdSetDisplayMultiplierListRequest**](PatchAdSetDisplayMultiplierListRequest.md)|  | |
+| **patchAdSetDisplayMultiplierListRequest** | [**PatchAdSetDisplayMultiplierListRequest**](PatchAdSetDisplayMultiplierListRequest.md)| List of display multiplier values to change | |
 
 ### Return type
 
@@ -913,7 +913,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | List of updated Display Multipliers for given Categories associated to an Ad Set. |  -  |
+| **200** | List of updated Display Multipliers for given Categories associated to an Ad Set. Make sure to check the error field in the response since a partial success will result in a 200 response code. |  -  |
 
 
 ## searchAdSets
@@ -1011,7 +1011,7 @@ public class Example {
 
 
 
-Search for campaigns
+Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
 
 ### Example
 
@@ -1052,7 +1052,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1 = new CampaignSearchRequestV23Q1(); // CampaignSearchRequestV23Q1 | filters on campaigns
+        CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1 = new CampaignSearchRequestV23Q1(); // CampaignSearchRequestV23Q1 | Filters for searching for campaigns
         try {
             CampaignV23Q1ListResponse result = apiInstance.searchCampaigns(campaignSearchRequestV23Q1);
             System.out.println(result);
@@ -1072,7 +1072,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignSearchRequestV23Q1** | [**CampaignSearchRequestV23Q1**](CampaignSearchRequestV23Q1.md)| filters on campaigns | [optional] |
+| **campaignSearchRequestV23Q1** | [**CampaignSearchRequestV23Q1**](CampaignSearchRequestV23Q1.md)| Filters for searching for campaigns | [optional] |
 
 ### Return type
 
@@ -1091,7 +1091,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | data for the campaigns |  -  |
+| **200** | Returns a list of marketing campaigns&#39; data. |  -  |
 
 
 ## startAdSets

@@ -287,7 +287,7 @@ public class CampaignApi {
 
     /**
      * 
-     * Create the specified campaign
+     * Create the specified campaign                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param createCampaignRequest the campaigns to create (required)
      * @return CampaignV23Q1Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -304,7 +304,7 @@ public class CampaignApi {
 
     /**
      * 
-     * Create the specified campaign
+     * Create the specified campaign                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param createCampaignRequest the campaigns to create (required)
      * @return ApiResponse&lt;CampaignV23Q1Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -322,7 +322,7 @@ public class CampaignApi {
 
     /**
      *  (asynchronously)
-     * Create the specified campaign
+     * Create the specified campaign                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param createCampaignRequest the campaigns to create (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -588,14 +588,14 @@ public class CampaignApi {
     }
     /**
      * Build call for getCampaign
-     * @param campaignId Id of the campaign (required)
+     * @param campaignId ID of the marketing campaign; This field is required. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the data of the specified marketing campaign. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCampaignCall(String campaignId, final ApiCallback _callback) throws ApiException {
@@ -656,14 +656,14 @@ public class CampaignApi {
 
     /**
      * 
-     * Get the data for the specified campaign
-     * @param campaignId Id of the campaign (required)
+     * Get the data for the specified campaign.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param campaignId ID of the marketing campaign; This field is required. (required)
      * @return CampaignV23Q1Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the data of the specified marketing campaign. </td><td>  -  </td></tr>
      </table>
      */
     public CampaignV23Q1Response getCampaign(String campaignId) throws ApiException {
@@ -673,14 +673,14 @@ public class CampaignApi {
 
     /**
      * 
-     * Get the data for the specified campaign
-     * @param campaignId Id of the campaign (required)
+     * Get the data for the specified campaign.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param campaignId ID of the marketing campaign; This field is required. (required)
      * @return ApiResponse&lt;CampaignV23Q1Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the data of the specified marketing campaign. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CampaignV23Q1Response> getCampaignWithHttpInfo(String campaignId) throws ApiException {
@@ -691,15 +691,15 @@ public class CampaignApi {
 
     /**
      *  (asynchronously)
-     * Get the data for the specified campaign
-     * @param campaignId Id of the campaign (required)
+     * Get the data for the specified campaign.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param campaignId ID of the marketing campaign; This field is required. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the data of the specified marketing campaign. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCampaignAsync(String campaignId, final ApiCallback<CampaignV23Q1Response> _callback) throws ApiException {
@@ -835,14 +835,14 @@ public class CampaignApi {
     /**
      * Build call for patchAdSetCategoryBids
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (required)
+     * @param patchAdSetCategoryBidListRequest Collection of category bids to update (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set, used for partial successes as well. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchAdSetCategoryBidsCall(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback _callback) throws ApiException {
@@ -909,15 +909,15 @@ public class CampaignApi {
 
     /**
      * 
-     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * Update the Category Bids for given Categories associated to an Ad Set  Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (required)
+     * @param patchAdSetCategoryBidListRequest Collection of category bids to update (required)
      * @return PatchAdSetCategoryBidResultListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set, used for partial successes as well. </td><td>  -  </td></tr>
      </table>
      */
     public PatchAdSetCategoryBidResultListResponse patchAdSetCategoryBids(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
@@ -927,15 +927,15 @@ public class CampaignApi {
 
     /**
      * 
-     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * Update the Category Bids for given Categories associated to an Ad Set  Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (required)
+     * @param patchAdSetCategoryBidListRequest Collection of category bids to update (required)
      * @return ApiResponse&lt;PatchAdSetCategoryBidResultListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set, used for partial successes as well. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<PatchAdSetCategoryBidResultListResponse> patchAdSetCategoryBidsWithHttpInfo(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
@@ -946,16 +946,16 @@ public class CampaignApi {
 
     /**
      *  (asynchronously)
-     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * Update the Category Bids for given Categories associated to an Ad Set  Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetCategoryBidListRequest  (required)
+     * @param patchAdSetCategoryBidListRequest Collection of category bids to update (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set, used for partial successes as well. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchAdSetCategoryBidsAsync(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback<PatchAdSetCategoryBidResultListResponse> _callback) throws ApiException {
@@ -1158,7 +1158,7 @@ public class CampaignApi {
 
     /**
      * 
-     * Patch a list of Campaigns.
+     * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return PatchResultCampaignListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1175,7 +1175,7 @@ public class CampaignApi {
 
     /**
      * 
-     * Patch a list of Campaigns.
+     * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return ApiResponse&lt;PatchResultCampaignListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1193,7 +1193,7 @@ public class CampaignApi {
 
     /**
      *  (asynchronously)
-     * Patch a list of Campaigns.
+     * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1214,14 +1214,14 @@ public class CampaignApi {
     /**
      * Build call for patchDisplayMultipliers
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (required)
+     * @param patchAdSetDisplayMultiplierListRequest List of display multiplier values to change (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. Make sure to check the error field in the response since a partial success will result in a 200 response code. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchDisplayMultipliersCall(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest, final ApiCallback _callback) throws ApiException {
@@ -1288,15 +1288,15 @@ public class CampaignApi {
 
     /**
      * 
-     * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
+     * Update the Display Multipliers for given Categories associated to an Ad Set  Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (required)
+     * @param patchAdSetDisplayMultiplierListRequest List of display multiplier values to change (required)
      * @return PatchAdSetDisplayMultiplierResultListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. Make sure to check the error field in the response since a partial success will result in a 200 response code. </td><td>  -  </td></tr>
      </table>
      */
     public PatchAdSetDisplayMultiplierResultListResponse patchDisplayMultipliers(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest) throws ApiException {
@@ -1306,15 +1306,15 @@ public class CampaignApi {
 
     /**
      * 
-     * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
+     * Update the Display Multipliers for given Categories associated to an Ad Set  Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (required)
+     * @param patchAdSetDisplayMultiplierListRequest List of display multiplier values to change (required)
      * @return ApiResponse&lt;PatchAdSetDisplayMultiplierResultListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. Make sure to check the error field in the response since a partial success will result in a 200 response code. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<PatchAdSetDisplayMultiplierResultListResponse> patchDisplayMultipliersWithHttpInfo(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest) throws ApiException {
@@ -1325,16 +1325,16 @@ public class CampaignApi {
 
     /**
      *  (asynchronously)
-     * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
+     * Update the Display Multipliers for given Categories associated to an Ad Set  Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
-     * @param patchAdSetDisplayMultiplierListRequest  (required)
+     * @param patchAdSetDisplayMultiplierListRequest List of display multiplier values to change (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. Make sure to check the error field in the response since a partial success will result in a 200 response code. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call patchDisplayMultipliersAsync(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest, final ApiCallback<PatchAdSetDisplayMultiplierResultListResponse> _callback) throws ApiException {
@@ -1464,14 +1464,14 @@ public class CampaignApi {
     }
     /**
      * Build call for searchCampaigns
-     * @param campaignSearchRequestV23Q1 filters on campaigns (optional)
+     * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a list of marketing campaigns&#39; data. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call searchCampaignsCall(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
@@ -1527,14 +1527,14 @@ public class CampaignApi {
 
     /**
      * 
-     * Search for campaigns
-     * @param campaignSearchRequestV23Q1 filters on campaigns (optional)
+     * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
      * @return CampaignV23Q1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a list of marketing campaigns&#39; data. </td><td>  -  </td></tr>
      </table>
      */
     public CampaignV23Q1ListResponse searchCampaigns(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
@@ -1544,14 +1544,14 @@ public class CampaignApi {
 
     /**
      * 
-     * Search for campaigns
-     * @param campaignSearchRequestV23Q1 filters on campaigns (optional)
+     * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
      * @return ApiResponse&lt;CampaignV23Q1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a list of marketing campaigns&#39; data. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CampaignV23Q1ListResponse> searchCampaignsWithHttpInfo(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
@@ -1562,15 +1562,15 @@ public class CampaignApi {
 
     /**
      *  (asynchronously)
-     * Search for campaigns
-     * @param campaignSearchRequestV23Q1 filters on campaigns (optional)
+     * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a list of marketing campaigns&#39; data. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call searchCampaignsAsync(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback<CampaignV23Q1ListResponse> _callback) throws ApiException {

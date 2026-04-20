@@ -89,9 +89,9 @@ public class AccountsApi {
 
     /**
      * Build call for accountFeesSearch
+     * @param valueResourceInputAccountFeesSearchRequest  (required)
      * @param limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param offset used for paging, number of records to skip (optional, default to 0)
-     * @param valueResourceInputAccountFeesSearchRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -101,7 +101,7 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call accountFeesSearchCall(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call accountFeesSearchCall(ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -155,17 +155,22 @@ public class AccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call accountFeesSearchValidateBeforeCall(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback _callback) throws ApiException {
-        return accountFeesSearchCall(limit, offset, valueResourceInputAccountFeesSearchRequest, _callback);
+    private okhttp3.Call accountFeesSearchValidateBeforeCall(ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'valueResourceInputAccountFeesSearchRequest' is set
+        if (valueResourceInputAccountFeesSearchRequest == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputAccountFeesSearchRequest' when calling accountFeesSearch(Async)");
+        }
+
+        return accountFeesSearchCall(valueResourceInputAccountFeesSearchRequest, limit, offset, _callback);
 
     }
 
     /**
      * 
      * Get fees for provided accounts
+     * @param valueResourceInputAccountFeesSearchRequest  (required)
      * @param limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param offset used for paging, number of records to skip (optional, default to 0)
-     * @param valueResourceInputAccountFeesSearchRequest  (optional)
      * @return ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -174,17 +179,17 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata accountFeesSearch(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
-        ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> localVarResp = accountFeesSearchWithHttpInfo(limit, offset, valueResourceInputAccountFeesSearchRequest);
+    public ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata accountFeesSearch(ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> localVarResp = accountFeesSearchWithHttpInfo(valueResourceInputAccountFeesSearchRequest, limit, offset);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Get fees for provided accounts
+     * @param valueResourceInputAccountFeesSearchRequest  (required)
      * @param limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param offset used for paging, number of records to skip (optional, default to 0)
-     * @param valueResourceInputAccountFeesSearchRequest  (optional)
      * @return ApiResponse&lt;ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -193,8 +198,8 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> accountFeesSearchWithHttpInfo(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
-        okhttp3.Call localVarCall = accountFeesSearchValidateBeforeCall(limit, offset, valueResourceInputAccountFeesSearchRequest, null);
+    public ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> accountFeesSearchWithHttpInfo(ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = accountFeesSearchValidateBeforeCall(valueResourceInputAccountFeesSearchRequest, limit, offset, null);
         Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -202,9 +207,9 @@ public class AccountsApi {
     /**
      *  (asynchronously)
      * Get fees for provided accounts
+     * @param valueResourceInputAccountFeesSearchRequest  (required)
      * @param limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param offset used for paging, number of records to skip (optional, default to 0)
-     * @param valueResourceInputAccountFeesSearchRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -214,9 +219,9 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call accountFeesSearchAsync(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> _callback) throws ApiException {
+    public okhttp3.Call accountFeesSearchAsync(ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, Integer limit, Integer offset, final ApiCallback<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = accountFeesSearchValidateBeforeCall(limit, offset, valueResourceInputAccountFeesSearchRequest, _callback);
+        okhttp3.Call localVarCall = accountFeesSearchValidateBeforeCall(valueResourceInputAccountFeesSearchRequest, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1257,7 +1262,7 @@ public class AccountsApi {
     }
     /**
      * Build call for updateAccountFees
-     * @param valueResourceInputAccountFeesUpdateRequest  (optional)
+     * @param valueResourceInputAccountFeesUpdateRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1313,6 +1318,11 @@ public class AccountsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateAccountFeesValidateBeforeCall(ValueResourceInputAccountFeesUpdateRequest valueResourceInputAccountFeesUpdateRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'valueResourceInputAccountFeesUpdateRequest' is set
+        if (valueResourceInputAccountFeesUpdateRequest == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputAccountFeesUpdateRequest' when calling updateAccountFees(Async)");
+        }
+
         return updateAccountFeesCall(valueResourceInputAccountFeesUpdateRequest, _callback);
 
     }
@@ -1320,7 +1330,7 @@ public class AccountsApi {
     /**
      * 
      * Set fees for provided accounts
-     * @param valueResourceInputAccountFeesUpdateRequest  (optional)
+     * @param valueResourceInputAccountFeesUpdateRequest  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1335,7 +1345,7 @@ public class AccountsApi {
     /**
      * 
      * Set fees for provided accounts
-     * @param valueResourceInputAccountFeesUpdateRequest  (optional)
+     * @param valueResourceInputAccountFeesUpdateRequest  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1352,7 +1362,7 @@ public class AccountsApi {
     /**
      *  (asynchronously)
      * Set fees for provided accounts
-     * @param valueResourceInputAccountFeesUpdateRequest  (optional)
+     * @param valueResourceInputAccountFeesUpdateRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

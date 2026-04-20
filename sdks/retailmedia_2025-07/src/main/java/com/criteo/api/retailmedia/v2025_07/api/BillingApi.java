@@ -77,7 +77,7 @@ public class BillingApi {
 
     /**
      * Build call for createPartnerBillingReportRequestV1
-     * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (optional)
+     * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -134,6 +134,11 @@ public class BillingApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createPartnerBillingReportRequestV1ValidateBeforeCall(ValueResourceInputPartnerBillingReportRequestV1 valueResourceInputPartnerBillingReportRequestV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'valueResourceInputPartnerBillingReportRequestV1' is set
+        if (valueResourceInputPartnerBillingReportRequestV1 == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputPartnerBillingReportRequestV1' when calling createPartnerBillingReportRequestV1(Async)");
+        }
+
         return createPartnerBillingReportRequestV1Call(valueResourceInputPartnerBillingReportRequestV1, _callback);
 
     }
@@ -141,7 +146,7 @@ public class BillingApi {
     /**
      * 
      * Create a Partner Billing Report request.
-     * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (optional)
+     * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (required)
      * @return EntityResourceOutcomePartnerBillingReportStatusV1
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -158,7 +163,7 @@ public class BillingApi {
     /**
      * 
      * Create a Partner Billing Report request.
-     * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (optional)
+     * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (required)
      * @return ApiResponse&lt;EntityResourceOutcomePartnerBillingReportStatusV1&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -176,7 +181,7 @@ public class BillingApi {
     /**
      *  (asynchronously)
      * Create a Partner Billing Report request.
-     * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (optional)
+     * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

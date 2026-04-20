@@ -66,7 +66,7 @@ public class CreateSellerCampaignMessageMapi {
   }
 
    /**
-   * Get bid
+   * Initial cost-per-click bid in the advertiser&#39;s currency
    * @return bid
   **/
   @javax.annotation.Nullable
@@ -88,7 +88,7 @@ public class CreateSellerCampaignMessageMapi {
   }
 
    /**
-   * Get campaignId
+   * ID of the campaign to associate the seller with. Must be an existing campaign.
    * @return campaignId
   **/
   @javax.annotation.Nullable

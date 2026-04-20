@@ -1520,6 +1520,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueResourceInputAccountFeesSearchRequest'
+        required: true
       responses:
         "200":
           content:
@@ -1543,6 +1544,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueResourceInputAccountFeesUpdateRequest'
+        required: true
       responses:
         "204":
           description: Success
@@ -1947,6 +1949,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputPartnerBillingReportRequestV1'
         description: Partner Billing Report request object.
+        required: true
       responses:
         "201":
           content:

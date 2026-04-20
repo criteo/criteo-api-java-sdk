@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -44,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2026_01.JSON;
 
 /**
- * Data representing an advertiser
+ * Data representing an advertiser. An advertiser is the top-level entity that owns campaigns, sellers, and budgets.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdvertiserInfoMessage {
@@ -60,6 +61,10 @@ public class AdvertiserInfoMessage {
   @SerializedName(SERIALIZED_NAME_ID)
   private Integer id;
 
+  public static final String SERIALIZED_NAME_TIME_ZONE_ID = "timeZoneId";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_ID)
+  private String timeZoneId;
+
   public AdvertiserInfoMessage() {
   }
 
@@ -70,7 +75,7 @@ public class AdvertiserInfoMessage {
   }
 
    /**
-   * Get advertiserName
+   * Display name of the advertiser
    * @return advertiserName
   **/
   @javax.annotation.Nullable
@@ -92,7 +97,7 @@ public class AdvertiserInfoMessage {
   }
 
    /**
-   * Get currencyName
+   * Currency used by the advertiser for bids and budgets (e.g. USD, EUR)
    * @return currencyName
   **/
   @javax.annotation.Nullable
@@ -114,7 +119,7 @@ public class AdvertiserInfoMessage {
   }
 
    /**
-   * Get id
+   * Unique advertiser identifier
    * @return id
   **/
   @javax.annotation.Nullable
@@ -126,6 +131,28 @@ public class AdvertiserInfoMessage {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+
+  public AdvertiserInfoMessage timeZoneId(String timeZoneId) {
+    
+    this.timeZoneId = timeZoneId;
+    return this;
+  }
+
+   /**
+   * IANA timezone identifier for the advertiser (e.g. UTC, Asia/Tokyo)
+   * @return timeZoneId
+  **/
+  @javax.annotation.Nullable
+
+  public String getTimeZoneId() {
+    return timeZoneId;
+  }
+
+
+  public void setTimeZoneId(String timeZoneId) {
+    this.timeZoneId = timeZoneId;
   }
 
   /**
@@ -185,13 +212,25 @@ public class AdvertiserInfoMessage {
     AdvertiserInfoMessage advertiserInfoMessage = (AdvertiserInfoMessage) o;
     return Objects.equals(this.advertiserName, advertiserInfoMessage.advertiserName) &&
         Objects.equals(this.currencyName, advertiserInfoMessage.currencyName) &&
-        Objects.equals(this.id, advertiserInfoMessage.id)&&
+        Objects.equals(this.id, advertiserInfoMessage.id) &&
+        Objects.equals(this.timeZoneId, advertiserInfoMessage.timeZoneId)&&
         Objects.equals(this.additionalProperties, advertiserInfoMessage.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserName, currencyName, id, additionalProperties);
+    return Objects.hash(advertiserName, currencyName, id, timeZoneId, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -201,6 +240,7 @@ public class AdvertiserInfoMessage {
     sb.append("    advertiserName: ").append(toIndentedString(advertiserName)).append("\n");
     sb.append("    currencyName: ").append(toIndentedString(currencyName)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    timeZoneId: ").append(toIndentedString(timeZoneId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -227,6 +267,7 @@ public class AdvertiserInfoMessage {
     openapiFields.add("advertiserName");
     openapiFields.add("currencyName");
     openapiFields.add("id");
+    openapiFields.add("timeZoneId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -249,6 +290,9 @@ public class AdvertiserInfoMessage {
       }
       if ((jsonObj.get("currencyName") != null && !jsonObj.get("currencyName").isJsonNull()) && !jsonObj.get("currencyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currencyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currencyName").toString()));
+      }
+      if ((jsonObj.get("timeZoneId") != null && !jsonObj.get("timeZoneId").isJsonNull()) && !jsonObj.get("timeZoneId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timeZoneId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timeZoneId").toString()));
       }
   }
 

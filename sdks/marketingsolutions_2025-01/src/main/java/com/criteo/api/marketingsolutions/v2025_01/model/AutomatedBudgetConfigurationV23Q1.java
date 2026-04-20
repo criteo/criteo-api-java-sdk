@@ -45,12 +45,12 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2025_01.JSON;
 
 /**
- * The automated budget configuration model
+ * Detailed configuration used when campaign budget automation is enabled.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AutomatedBudgetConfigurationV23Q1 {
   /**
-   * Gets or Sets adSetOptimizationObjective
+   * Optimization objective used to automate budget allocation across ad sets.  Expected when budgetAutomation.enabled is true.  Possible values are \&quot;conversions\&quot;, \&quot;revenue\&quot;, \&quot;visits\&quot;, and \&quot;videoViews\&quot;.
    */
   @JsonAdapter(AdSetOptimizationObjectiveEnum.Adapter.class)
   public enum AdSetOptimizationObjectiveEnum {
@@ -114,7 +114,7 @@ public class AutomatedBudgetConfigurationV23Q1 {
   }
 
    /**
-   * Get adSetOptimizationObjective
+   * Optimization objective used to automate budget allocation across ad sets.  Expected when budgetAutomation.enabled is true.  Possible values are \&quot;conversions\&quot;, \&quot;revenue\&quot;, \&quot;visits\&quot;, and \&quot;videoViews\&quot;.
    * @return adSetOptimizationObjective
   **/
   @javax.annotation.Nullable

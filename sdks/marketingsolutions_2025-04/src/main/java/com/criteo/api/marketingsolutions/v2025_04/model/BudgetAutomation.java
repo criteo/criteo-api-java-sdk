@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2025_04.JSON;
 
 /**
- * The campaign budget automation model
+ * Budget automation, lets users configure budgets once at the campaign level while Criteo dynamically routes spend toward the best-performing ad sets.  If \&quot;enabled\&quot; is omitted and only \&quot;budgetConfiguration\&quot; is provided, \&quot;enabled\&quot; defaults to false — budget automation will not be activated.  To activate budget automation at creation, \&quot;enabled\&quot; must be explicitly set to true along with a valid \&quot;budgetConfiguration\&quot;.  If the entire \&quot;budgetAutomation\&quot; object is omitted from the create request, the campaign is created with budget automation disabled.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BudgetAutomation {
@@ -90,7 +90,7 @@ public class BudgetAutomation {
   }
 
    /**
-   * Get enabled
+   * Whether budget automation is active for this marketing campaign.  - true: budget automation is enabled and \&quot;budgetConfiguration\&quot; must be provided with a valid objective.  - false (default when omitted): budget automation is disabled; \&quot;budgetConfiguration\&quot; is ignored if provided.
    * @return enabled
   **/
   @javax.annotation.Nullable

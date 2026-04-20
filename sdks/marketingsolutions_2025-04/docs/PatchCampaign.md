@@ -2,7 +2,7 @@
 
 # PatchCampaign
 
-campaign patch model
+Campaign patch model.  The campaign identifier is provided in the resource {id} field (string-encoded integer) and is required.
 
 ## Properties
 

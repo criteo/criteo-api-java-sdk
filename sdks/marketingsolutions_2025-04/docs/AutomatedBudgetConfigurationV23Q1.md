@@ -2,13 +2,13 @@
 
 # AutomatedBudgetConfigurationV23Q1
 
-The automated budget configuration model
+Detailed configuration used when campaign budget automation is enabled.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**adSetOptimizationObjective** | [**AdSetOptimizationObjectiveEnum**](#AdSetOptimizationObjectiveEnum) |  |  [optional] |
+|**adSetOptimizationObjective** | [**AdSetOptimizationObjectiveEnum**](#AdSetOptimizationObjectiveEnum) | Optimization objective used to automate budget allocation across ad sets.  Expected when budgetAutomation.enabled is true.  Possible values are \&quot;conversions\&quot;, \&quot;revenue\&quot;, \&quot;visits\&quot;, and \&quot;videoViews\&quot;. |  [optional] |
 
 
 

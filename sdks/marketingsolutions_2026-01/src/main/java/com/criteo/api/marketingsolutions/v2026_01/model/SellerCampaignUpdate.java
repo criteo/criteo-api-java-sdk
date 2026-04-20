@@ -44,7 +44,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2026_01.JSON;
 
 /**
- * Date used to update a Seller-Campaign&#39;s Bid.
+ * Data used to update a Seller-Campaign&#39;s Bid.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SellerCampaignUpdate {
@@ -66,7 +66,7 @@ public class SellerCampaignUpdate {
   }
 
    /**
-   * Get bid
+   * New cost-per-click bid. Set to 0 to stop delivery.
    * @return bid
   **/
   @javax.annotation.Nullable
@@ -88,7 +88,7 @@ public class SellerCampaignUpdate {
   }
 
    /**
-   * Get id
+   * Seller-campaign identifier in format {sellerId}.{campaignId}
    * @return id
   **/
   @javax.annotation.Nullable

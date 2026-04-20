@@ -85,7 +85,7 @@ public class CreateSellerBudgetMapiMessage {
   }
 
    /**
-   * Get amount
+   * Budget amount as a string (e.g. &#39;100.50&#39;)
    * @return amount
   **/
   @javax.annotation.Nullable
@@ -107,7 +107,7 @@ public class CreateSellerBudgetMapiMessage {
   }
 
    /**
-   * Get budgetType
+   * Type of budget: &#39;Daily&#39; (daily cap), &#39;Capped&#39; (lifetime with fixed amount), or &#39;Uncapped&#39; (lifetime with no limit)
    * @return budgetType
   **/
   @javax.annotation.Nullable
@@ -137,7 +137,7 @@ public class CreateSellerBudgetMapiMessage {
   }
 
    /**
-   * Get campaignIds
+   * List of campaign IDs this budget applies to
    * @return campaignIds
   **/
   @javax.annotation.Nullable
@@ -159,7 +159,7 @@ public class CreateSellerBudgetMapiMessage {
   }
 
    /**
-   * Get endDate
+   * Budget end date as a string (format: YYYY-MM-DD), or empty string for open-ended
    * @return endDate
   **/
   @javax.annotation.Nullable
@@ -181,7 +181,7 @@ public class CreateSellerBudgetMapiMessage {
   }
 
    /**
-   * Get sellerId
+   * Identifier of the seller this budget is for
    * @return sellerId
   **/
   @javax.annotation.Nullable
@@ -203,7 +203,7 @@ public class CreateSellerBudgetMapiMessage {
   }
 
    /**
-   * Get startDate
+   * Budget start date. Time component is ignored.
    * @return startDate
   **/
   @javax.annotation.Nullable

@@ -15,6 +15,7 @@ package com.criteo.api.marketingsolutions.v2026_01.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.v2026_01.model.SellerCampaignProductSet;
 import com.criteo.api.marketingsolutions.v2026_01.model.SellerCampaignSuspensionReason;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -49,7 +50,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2026_01.JSON;
 
 /**
- * A Seller-Campaign contains all the information relative to the advertisement of the products of a Seller in a Campaign
+ * A seller-campaign links a seller to a campaign, defining the CPC bid. A seller can participate in multiple campaigns, and a campaign can have multiple sellers.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SellerCampaignMessage {
@@ -64,6 +65,10 @@ public class SellerCampaignMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+  public static final String SERIALIZED_NAME_PRODUCT_SET = "productSet";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_SET)
+  private SellerCampaignProductSet productSet;
 
   public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
   @SerializedName(SERIALIZED_NAME_SELLER_ID)
@@ -95,7 +100,7 @@ public class SellerCampaignMessage {
   }
 
    /**
-   * Get bid
+   * Cost-per-click bid in the advertiser&#39;s currency. Null means no CPC is defined (seller-campaign will be suspended with NoCpcDefined). Set to 0 to stop delivery.
    * @return bid
   **/
   @javax.annotation.Nullable
@@ -117,7 +122,7 @@ public class SellerCampaignMessage {
   }
 
    /**
-   * Get campaignId
+   * Identifier of the campaign this seller participates in
    * @return campaignId
   **/
   @javax.annotation.Nullable
@@ -133,7 +138,7 @@ public class SellerCampaignMessage {
 
 
    /**
-   * Get id
+   * Composite identifier in format {sellerId}.{campaignId}
    * @return id
   **/
   @javax.annotation.Nullable
@@ -145,6 +150,28 @@ public class SellerCampaignMessage {
 
 
 
+  public SellerCampaignMessage productSet(SellerCampaignProductSet productSet) {
+    
+    this.productSet = productSet;
+    return this;
+  }
+
+   /**
+   * Get productSet
+   * @return productSet
+  **/
+  @javax.annotation.Nullable
+
+  public SellerCampaignProductSet getProductSet() {
+    return productSet;
+  }
+
+
+  public void setProductSet(SellerCampaignProductSet productSet) {
+    this.productSet = productSet;
+  }
+
+
   public SellerCampaignMessage sellerId(String sellerId) {
     
     this.sellerId = sellerId;
@@ -152,7 +179,7 @@ public class SellerCampaignMessage {
   }
 
    /**
-   * Get sellerId
+   * Unique identifier of the seller (merchant)
    * @return sellerId
   **/
   @javax.annotation.Nullable
@@ -174,7 +201,7 @@ public class SellerCampaignMessage {
   }
 
    /**
-   * Get suspendedSince
+   * Timestamp when the seller-campaign was suspended. Null means the seller-campaign is active.
    * @return suspendedSince
   **/
   @javax.annotation.Nullable
@@ -197,14 +224,14 @@ public class SellerCampaignMessage {
 
   public SellerCampaignMessage addSuspensionReasonsItem(SellerCampaignSuspensionReason suspensionReasonsItem) {
     if (this.suspensionReasons == null) {
-      this.suspensionReasons = new ArrayList<>();
+      this.suspensionReasons = null;
     }
     this.suspensionReasons.add(suspensionReasonsItem);
     return this;
   }
 
    /**
-   * Get suspensionReasons
+   * List of reasons why the seller-campaign is suspended. Null means the seller-campaign is active.
    * @return suspensionReasons
   **/
   @javax.annotation.Nullable
@@ -276,6 +303,7 @@ public class SellerCampaignMessage {
     return Objects.equals(this.bid, sellerCampaignMessage.bid) &&
         Objects.equals(this.campaignId, sellerCampaignMessage.campaignId) &&
         Objects.equals(this.id, sellerCampaignMessage.id) &&
+        Objects.equals(this.productSet, sellerCampaignMessage.productSet) &&
         Objects.equals(this.sellerId, sellerCampaignMessage.sellerId) &&
         Objects.equals(this.suspendedSince, sellerCampaignMessage.suspendedSince) &&
         Objects.equals(this.suspensionReasons, sellerCampaignMessage.suspensionReasons)&&
@@ -288,7 +316,7 @@ public class SellerCampaignMessage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bid, campaignId, id, sellerId, suspendedSince, suspensionReasons, additionalProperties);
+    return Objects.hash(bid, campaignId, id, productSet, sellerId, suspendedSince, suspensionReasons, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -305,6 +333,7 @@ public class SellerCampaignMessage {
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    productSet: ").append(toIndentedString(productSet)).append("\n");
     sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("    suspendedSince: ").append(toIndentedString(suspendedSince)).append("\n");
     sb.append("    suspensionReasons: ").append(toIndentedString(suspensionReasons)).append("\n");
@@ -334,6 +363,7 @@ public class SellerCampaignMessage {
     openapiFields.add("bid");
     openapiFields.add("campaignId");
     openapiFields.add("id");
+    openapiFields.add("productSet");
     openapiFields.add("sellerId");
     openapiFields.add("suspendedSince");
     openapiFields.add("suspensionReasons");
@@ -356,6 +386,10 @@ public class SellerCampaignMessage {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // validate the optional field `productSet`
+      if (jsonObj.get("productSet") != null && !jsonObj.get("productSet").isJsonNull()) {
+        SellerCampaignProductSet.validateJsonObject(jsonObj.getAsJsonObject("productSet"));
       }
       if ((jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull()) && !jsonObj.get("sellerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sellerId").toString()));

@@ -2,14 +2,14 @@
 
 # SellerBase
 
-The seller represents the legal person selling products on your platform. 
+The seller represents the merchant selling products on the advertiser's marketplace platform.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** |  |  [optional] |
-|**sellerName** | **String** |  |  [optional] |
+|**id** | **String** | Unique seller identifier |  [optional] |
+|**sellerName** | **String** | Display name of the seller (merchant) |  [optional] |
 
 
 

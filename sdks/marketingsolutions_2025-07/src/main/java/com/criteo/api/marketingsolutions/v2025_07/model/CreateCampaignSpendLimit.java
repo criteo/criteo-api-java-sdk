@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2025_07.JSON;
 
 /**
- * campaign spend limit create model
+ * Spend limit configuration for a marketing campaign. Controls how much can be spent and the renewal cadence.  When spendLimitType is \&quot;capped\&quot;: spendLimitAmount and spendLimitRenewal are required.  When spendLimitType is \&quot;uncapped\&quot;: spendLimitAmount is null and spendLimitRenewal is \&quot;undefined\&quot;.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateCampaignSpendLimit {
@@ -54,7 +54,7 @@ public class CreateCampaignSpendLimit {
   private Double spendLimitAmount;
 
   /**
-   * The pace of the spend limit renewal
+   * The period over which the spend limit is consumed.  - \&quot;daily\&quot;, \&quot;monthly\&quot;: spend limit resets at the start of each period.  - \&quot;lifetime\&quot;: spend limit covers the entire campaign duration without resetting.  - \&quot;undefined\&quot;: only used when spendLimitType is \&quot;uncapped\&quot; (no renewal applies).
    */
   @JsonAdapter(SpendLimitRenewalEnum.Adapter.class)
   public enum SpendLimitRenewalEnum {
@@ -109,7 +109,7 @@ public class CreateCampaignSpendLimit {
   private SpendLimitRenewalEnum spendLimitRenewal;
 
   /**
-   * Whether your spend limit is capped or not
+   * Controls whether the campaign has a spending limit.  - \&quot;capped\&quot;: spending is limited to spendLimitAmount. Requires spendLimitAmount (non-null) and spendLimitRenewal (not \&quot;undefined\&quot;).  - \&quot;uncapped\&quot;: no spending limit. spendLimitAmount is null and spendLimitRenewal is \&quot;undefined\&quot;.
    */
   @JsonAdapter(SpendLimitTypeEnum.Adapter.class)
   public enum SpendLimitTypeEnum {
@@ -169,7 +169,7 @@ public class CreateCampaignSpendLimit {
   }
 
    /**
-   * The amount of the spend limit. null if spendLimitType is uncapped.
+   * Maximum spend amount in the advertiser&#39;s currency per renewal period. Non-null when capped. null when uncapped.
    * @return spendLimitAmount
   **/
   @javax.annotation.Nullable
@@ -191,7 +191,7 @@ public class CreateCampaignSpendLimit {
   }
 
    /**
-   * The pace of the spend limit renewal
+   * The period over which the spend limit is consumed.  - \&quot;daily\&quot;, \&quot;monthly\&quot;: spend limit resets at the start of each period.  - \&quot;lifetime\&quot;: spend limit covers the entire campaign duration without resetting.  - \&quot;undefined\&quot;: only used when spendLimitType is \&quot;uncapped\&quot; (no renewal applies).
    * @return spendLimitRenewal
   **/
   @javax.annotation.Nullable
@@ -213,7 +213,7 @@ public class CreateCampaignSpendLimit {
   }
 
    /**
-   * Whether your spend limit is capped or not
+   * Controls whether the campaign has a spending limit.  - \&quot;capped\&quot;: spending is limited to spendLimitAmount. Requires spendLimitAmount (non-null) and spendLimitRenewal (not \&quot;undefined\&quot;).  - \&quot;uncapped\&quot;: no spending limit. spendLimitAmount is null and spendLimitRenewal is \&quot;undefined\&quot;.
    * @return spendLimitType
   **/
   @javax.annotation.Nonnull

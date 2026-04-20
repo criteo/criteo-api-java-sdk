@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2025_04.JSON;
 
 /**
- * campaign spend limit model
+ * Spend limit configuration for a marketing campaign (patch).  Only provided fields are updated; omitted fields are left unchanged.  When spendLimitType is \&quot;capped\&quot;: spendLimitAmount and spendLimitRenewal are required.  When spendLimitType is \&quot;uncapped\&quot;: spendLimitAmount is null and spendLimitRenewal is \&quot;undefined\&quot;.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PatchCampaignSpendLimit {
@@ -55,7 +55,7 @@ public class PatchCampaignSpendLimit {
   private NillableDecimal spendLimitAmount;
 
   /**
-   * Gets or Sets spendLimitRenewal
+   * The period over which the campaign spend limit is applied.  When spendLimitType is \&quot;capped\&quot;, this is \&quot;daily\&quot;, \&quot;monthly\&quot;, or \&quot;lifetime\&quot;.  When spendLimitType is \&quot;uncapped\&quot;, this is \&quot;undefined\&quot;.
    */
   @JsonAdapter(SpendLimitRenewalEnum.Adapter.class)
   public enum SpendLimitRenewalEnum {
@@ -110,7 +110,7 @@ public class PatchCampaignSpendLimit {
   private SpendLimitRenewalEnum spendLimitRenewal;
 
   /**
-   * Gets or Sets spendLimitType
+   * Controls whether the campaign has a spend limit.  \&quot;capped\&quot; returns a non-null spendLimitAmount.value and a spendLimitRenewal of \&quot;daily\&quot;, \&quot;monthly\&quot;, or \&quot;lifetime\&quot;.  \&quot;uncapped\&quot; returns spendLimitAmount.value as null and spendLimitRenewal as \&quot;undefined\&quot;.
    */
   @JsonAdapter(SpendLimitTypeEnum.Adapter.class)
   public enum SpendLimitTypeEnum {
@@ -192,7 +192,7 @@ public class PatchCampaignSpendLimit {
   }
 
    /**
-   * Get spendLimitRenewal
+   * The period over which the campaign spend limit is applied.  When spendLimitType is \&quot;capped\&quot;, this is \&quot;daily\&quot;, \&quot;monthly\&quot;, or \&quot;lifetime\&quot;.  When spendLimitType is \&quot;uncapped\&quot;, this is \&quot;undefined\&quot;.
    * @return spendLimitRenewal
   **/
   @javax.annotation.Nullable
@@ -214,7 +214,7 @@ public class PatchCampaignSpendLimit {
   }
 
    /**
-   * Get spendLimitType
+   * Controls whether the campaign has a spend limit.  \&quot;capped\&quot; returns a non-null spendLimitAmount.value and a spendLimitRenewal of \&quot;daily\&quot;, \&quot;monthly\&quot;, or \&quot;lifetime\&quot;.  \&quot;uncapped\&quot; returns spendLimitAmount.value as null and spendLimitRenewal as \&quot;undefined\&quot;.
    * @return spendLimitType
   **/
   @javax.annotation.Nullable

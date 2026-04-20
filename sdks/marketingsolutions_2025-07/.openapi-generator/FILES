@@ -262,10 +262,12 @@ docs/SellerBase.md
 docs/SellerBudgetMessage.md
 docs/SellerBudgetStatusV2.md
 docs/SellerCampaignMessage.md
+docs/SellerCampaignProductSet.md
 docs/SellerCampaignSuspensionReason.md
 docs/SellerCampaignUpdate.md
 docs/Size.md
 docs/StatisticsReportQueryMessage.md
+docs/StatsReportMessage.md
 docs/Tag.md
 docs/TransactionsReportQueryMessage.md
 docs/TransactionsReportQueryMessageListRequest.md
@@ -569,10 +571,12 @@ src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/SellerBase.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/SellerBudgetMessage.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/SellerBudgetStatusV2.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/SellerCampaignMessage.java
+src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/SellerCampaignProductSet.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/SellerCampaignSuspensionReason.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/SellerCampaignUpdate.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/Size.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/StatisticsReportQueryMessage.java
+src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/StatsReportMessage.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/Tag.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/TransactionsReportQueryMessage.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_07/model/TransactionsReportQueryMessageListRequest.java

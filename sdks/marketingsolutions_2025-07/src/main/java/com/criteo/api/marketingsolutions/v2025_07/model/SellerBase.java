@@ -44,7 +44,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2025_07.JSON;
 
 /**
- * The seller represents the legal person selling products on your platform. 
+ * The seller represents the merchant selling products on the advertiser&#39;s marketplace platform.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SellerBase {
@@ -66,7 +66,7 @@ public class SellerBase {
   }
 
    /**
-   * Get id
+   * Unique seller identifier
    * @return id
   **/
   @javax.annotation.Nullable
@@ -88,7 +88,7 @@ public class SellerBase {
   }
 
    /**
-   * Get sellerName
+   * Display name of the seller (merchant)
    * @return sellerName
   **/
   @javax.annotation.Nullable

@@ -24,7 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Public seller-campaign suspension reasons
+ * Reason why a seller-campaign is suspended. Values: ManuallyStopped (manually paused by the partner), NoBudgetDefined (no valid budget linked), NoCpcDefined (no CPC bid set), NoMoreBudget (lifetime budget fully spent), NoMoreDailyBudget (daily budget limit reached), RemovedFromCatalog (all products removed from catalog), NotYetStarted (newly created, not yet processed), Other (internal issue preventing delivery).
  */
 @JsonAdapter(SellerCampaignSuspensionReason.Adapter.class)
 public enum SellerCampaignSuspensionReason {
@@ -39,7 +39,11 @@ public enum SellerCampaignSuspensionReason {
   
   REMOVEDFROMCATALOG("RemovedFromCatalog"),
   
-  NOTYETSTARTED("NotYetStarted");
+  NOTYETSTARTED("NotYetStarted"),
+  
+  NOMOREDAILYBUDGET("NoMoreDailyBudget"),
+  
+  OTHER("Other");
 
   private String value;
 

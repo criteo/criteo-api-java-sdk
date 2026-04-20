@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2026_01.JSON;
 
 /**
- * The campaign budget automation model
+ * Budget automation, also known as automated budget or budget pacing, lets users configure KPIs and budgets once at the campaign level while Criteo dynamically routes spend toward the best-performing ad sets.  When enabled is false, automatedBudgetConfiguration is null.  When enabled is true, automatedBudgetConfiguration.adSetOptimizationObjective is expected.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignBudgetAutomationV23Q1 {
@@ -90,7 +90,7 @@ public class CampaignBudgetAutomationV23Q1 {
   }
 
    /**
-   * Get enabled
+   * Whether budget automation is enabled for this campaign. This field is always present in the response.
    * @return enabled
   **/
   @javax.annotation.Nullable

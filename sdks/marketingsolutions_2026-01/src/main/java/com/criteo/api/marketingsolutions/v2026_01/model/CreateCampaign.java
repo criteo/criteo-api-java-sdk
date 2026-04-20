@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2026_01.JSON;
 
 /**
- * Campaign create model
+ * Campaign create model.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateCampaign {
@@ -59,7 +59,7 @@ public class CreateCampaign {
   private BudgetAutomation budgetAutomation;
 
   /**
-   * Goal for the marketing campaign
+   * Goal of the campaign                Serialized values are {Unspecified}, {Acquisition} and {Retention}.                Acquisition and retention are defined as follows:  - Acquisition: campaign with the goal of acquiring new customers. The success of an acquisition campaign is measured by the number of new customers it brings.  - Retention: campaign with the goal of retaining existing customers. The success of a retention campaign is measured by the number of existing customers it retains.
    */
   @JsonAdapter(GoalEnum.Adapter.class)
   public enum GoalEnum {
@@ -129,7 +129,7 @@ public class CreateCampaign {
   }
 
    /**
-   * Advertiser id this campaign belongs to
+   * Advertiser ID this campaign belongs to (string-encoded integer).
    * @return advertiserId
   **/
   @javax.annotation.Nullable
@@ -173,7 +173,7 @@ public class CreateCampaign {
   }
 
    /**
-   * Goal for the marketing campaign
+   * Goal of the campaign                Serialized values are {Unspecified}, {Acquisition} and {Retention}.                Acquisition and retention are defined as follows:  - Acquisition: campaign with the goal of acquiring new customers. The success of an acquisition campaign is measured by the number of new customers it brings.  - Retention: campaign with the goal of retaining existing customers. The success of a retention campaign is measured by the number of existing customers it retains.
    * @return goal
   **/
   @javax.annotation.Nonnull

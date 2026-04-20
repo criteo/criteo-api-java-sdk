@@ -45,12 +45,12 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2026_01.JSON;
 
 /**
- * Data representing an advertiser&#39;s adset
+ * Data representing a campaign for an advertiser. A campaign groups seller-campaigns and defines delivery settings.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdvertiserCampaignMessage {
   /**
-   * Gets or Sets adSetDeliveryStatus
+   * Human-readable delivery status of the campaign&#39;s ad set
    */
   @JsonAdapter(AdSetDeliveryStatusEnum.Adapter.class)
   public enum AdSetDeliveryStatusEnum {
@@ -111,7 +111,7 @@ public class AdvertiserCampaignMessage {
   private Integer id;
 
   /**
-   * Gets or Sets status
+   * Numeric delivery status: 0 &#x3D; Running, 1 &#x3D; Archived, 2 &#x3D; NotRunning
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -175,7 +175,7 @@ public class AdvertiserCampaignMessage {
   }
 
    /**
-   * Get adSetDeliveryStatus
+   * Human-readable delivery status of the campaign&#39;s ad set
    * @return adSetDeliveryStatus
   **/
   @javax.annotation.Nullable
@@ -194,7 +194,7 @@ public class AdvertiserCampaignMessage {
   }
 
    /**
-   * Get campaignName
+   * Display name of the campaign
    * @return campaignName
   **/
   @javax.annotation.Nullable
@@ -216,7 +216,7 @@ public class AdvertiserCampaignMessage {
   }
 
    /**
-   * Get id
+   * Unique campaign identifier
    * @return id
   **/
   @javax.annotation.Nullable
@@ -238,7 +238,7 @@ public class AdvertiserCampaignMessage {
   }
 
    /**
-   * Get status
+   * Numeric delivery status: 0 &#x3D; Running, 1 &#x3D; Archived, 2 &#x3D; NotRunning
    * @return status
   **/
   @javax.annotation.Nullable

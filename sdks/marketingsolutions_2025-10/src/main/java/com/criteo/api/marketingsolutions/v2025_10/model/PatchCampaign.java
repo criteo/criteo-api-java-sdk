@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2025_10.JSON;
 
 /**
- * campaign patch model
+ * Campaign patch model.  The campaign identifier is provided in the resource {id} field (string-encoded integer) and is required.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PatchCampaign {

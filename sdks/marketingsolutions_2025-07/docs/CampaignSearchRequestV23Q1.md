@@ -2,7 +2,7 @@
 
 # CampaignSearchRequestV23Q1
 
-request payload of the search endpoint
+Request payload for the campaign search endpoint.
 
 ## Properties
 

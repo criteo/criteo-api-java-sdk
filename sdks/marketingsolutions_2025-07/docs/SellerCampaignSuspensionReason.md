@@ -17,5 +17,9 @@
 
 * `NOTYETSTARTED` (value: `"NotYetStarted"`)
 
+* `NOMOREDAILYBUDGET` (value: `"NoMoreDailyBudget"`)
+
+* `OTHER` (value: `"Other"`)
+
 
 

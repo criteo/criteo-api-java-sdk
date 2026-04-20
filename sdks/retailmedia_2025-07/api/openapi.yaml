@@ -1879,6 +1879,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputPartnerBillingReportRequestV1'
         description: Partner Billing Report request object.
+        required: true
       responses:
         "201":
           content:
