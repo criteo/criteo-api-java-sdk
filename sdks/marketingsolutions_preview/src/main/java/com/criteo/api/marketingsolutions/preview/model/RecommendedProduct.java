@@ -85,6 +85,57 @@ public class RecommendedProduct {
   @SerializedName(SERIALIZED_NAME_PRODUCT_EXTERNAL_ID)
   private String productExternalId;
 
+  /**
+   * Product Relevance label
+   */
+  @JsonAdapter(RelevanceLabelEnum.Adapter.class)
+  public enum RelevanceLabelEnum {
+    SIMILAR("Similar"),
+    
+    RELEVANT("Relevant");
+
+    private String value;
+
+    RelevanceLabelEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static RelevanceLabelEnum fromValue(String value) {
+      for (RelevanceLabelEnum b : RelevanceLabelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<RelevanceLabelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final RelevanceLabelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public RelevanceLabelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return RelevanceLabelEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_RELEVANCE_LABEL = "relevanceLabel";
+  @SerializedName(SERIALIZED_NAME_RELEVANCE_LABEL)
+  private RelevanceLabelEnum relevanceLabel;
+
   public static final String SERIALIZED_NAME_RELEVANCY_SCORE = "relevancyScore";
   @SerializedName(SERIALIZED_NAME_RELEVANCY_SCORE)
   private Double relevancyScore;
@@ -294,6 +345,28 @@ public class RecommendedProduct {
   }
 
 
+  public RecommendedProduct relevanceLabel(RelevanceLabelEnum relevanceLabel) {
+    
+    this.relevanceLabel = relevanceLabel;
+    return this;
+  }
+
+   /**
+   * Product Relevance label
+   * @return relevanceLabel
+  **/
+  @javax.annotation.Nullable
+
+  public RelevanceLabelEnum getRelevanceLabel() {
+    return relevanceLabel;
+  }
+
+
+  public void setRelevanceLabel(RelevanceLabelEnum relevanceLabel) {
+    this.relevanceLabel = relevanceLabel;
+  }
+
+
   public RecommendedProduct relevancyScore(Double relevancyScore) {
     
     this.relevancyScore = relevancyScore;
@@ -401,6 +474,7 @@ public class RecommendedProduct {
         Objects.equals(this.name, recommendedProduct.name) &&
         Objects.equals(this.price, recommendedProduct.price) &&
         Objects.equals(this.productExternalId, recommendedProduct.productExternalId) &&
+        Objects.equals(this.relevanceLabel, recommendedProduct.relevanceLabel) &&
         Objects.equals(this.relevancyScore, recommendedProduct.relevancyScore) &&
         Objects.equals(this.retailPrice, recommendedProduct.retailPrice)&&
         Objects.equals(this.additionalProperties, recommendedProduct.additionalProperties);
@@ -412,7 +486,7 @@ public class RecommendedProduct {
 
   @Override
   public int hashCode() {
-    return Objects.hash(alternativeClickUrl, brand, clickUrl, description, googleCategory, imageUrl, name, price, productExternalId, relevancyScore, retailPrice, additionalProperties);
+    return Objects.hash(alternativeClickUrl, brand, clickUrl, description, googleCategory, imageUrl, name, price, productExternalId, relevanceLabel, relevancyScore, retailPrice, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -435,6 +509,7 @@ public class RecommendedProduct {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    productExternalId: ").append(toIndentedString(productExternalId)).append("\n");
+    sb.append("    relevanceLabel: ").append(toIndentedString(relevanceLabel)).append("\n");
     sb.append("    relevancyScore: ").append(toIndentedString(relevancyScore)).append("\n");
     sb.append("    retailPrice: ").append(toIndentedString(retailPrice)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -469,6 +544,7 @@ public class RecommendedProduct {
     openapiFields.add("name");
     openapiFields.add("price");
     openapiFields.add("productExternalId");
+    openapiFields.add("relevanceLabel");
     openapiFields.add("relevancyScore");
     openapiFields.add("retailPrice");
 
@@ -511,6 +587,9 @@ public class RecommendedProduct {
       }
       if ((jsonObj.get("productExternalId") != null && !jsonObj.get("productExternalId").isJsonNull()) && !jsonObj.get("productExternalId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `productExternalId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productExternalId").toString()));
+      }
+      if ((jsonObj.get("relevanceLabel") != null && !jsonObj.get("relevanceLabel").isJsonNull()) && !jsonObj.get("relevanceLabel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `relevanceLabel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("relevanceLabel").toString()));
       }
   }
 

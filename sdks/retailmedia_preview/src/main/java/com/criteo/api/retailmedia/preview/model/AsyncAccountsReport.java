@@ -56,6 +56,57 @@ public class AsyncAccountsReport {
   private List<String> accountIds = new ArrayList<>();
 
   /**
+   * Gets or Sets activationPlatforms
+   */
+  @JsonAdapter(ActivationPlatformsEnum.Adapter.class)
+  public enum ActivationPlatformsEnum {
+    COMMERCEMAX("CommerceMax"),
+    
+    PRIVATEMARKET("PrivateMarket");
+
+    private String value;
+
+    ActivationPlatformsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ActivationPlatformsEnum fromValue(String value) {
+      for (ActivationPlatformsEnum b : ActivationPlatformsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ActivationPlatformsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ActivationPlatformsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ActivationPlatformsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ActivationPlatformsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ACTIVATION_PLATFORMS = "activationPlatforms";
+  @SerializedName(SERIALIZED_NAME_ACTIVATION_PLATFORMS)
+  private List<ActivationPlatformsEnum> activationPlatforms = null;
+
+  /**
    * Level of aggregation, if no dimensions and metrics are provided, falls back to campaign aggregationLevel
    */
   @JsonAdapter(AggregationLevelEnum.Adapter.class)
@@ -105,6 +156,110 @@ public class AsyncAccountsReport {
   public static final String SERIALIZED_NAME_AGGREGATION_LEVEL = "aggregationLevel";
   @SerializedName(SERIALIZED_NAME_AGGREGATION_LEVEL)
   private AggregationLevelEnum aggregationLevel = AggregationLevelEnum.CAMPAIGN;
+
+  /**
+   * Gets or Sets budgetModels
+   */
+  @JsonAdapter(BudgetModelsEnum.Adapter.class)
+  public enum BudgetModelsEnum {
+    CRITEOBUDGET("CriteoBudget"),
+    
+    RETAILERBUDGET("RetailerBudget");
+
+    private String value;
+
+    BudgetModelsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BudgetModelsEnum fromValue(String value) {
+      for (BudgetModelsEnum b : BudgetModelsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BudgetModelsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BudgetModelsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BudgetModelsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BudgetModelsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BUDGET_MODELS = "budgetModels";
+  @SerializedName(SERIALIZED_NAME_BUDGET_MODELS)
+  private List<BudgetModelsEnum> budgetModels = null;
+
+  /**
+   * Gets or Sets buyTypes
+   */
+  @JsonAdapter(BuyTypesEnum.Adapter.class)
+  public enum BuyTypesEnum {
+    AUCTION("auction"),
+    
+    PREFERREDDEALS("preferredDeals"),
+    
+    SPONSORSHIP("sponsorship");
+
+    private String value;
+
+    BuyTypesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BuyTypesEnum fromValue(String value) {
+      for (BuyTypesEnum b : BuyTypesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BuyTypesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BuyTypesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BuyTypesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BuyTypesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BUY_TYPES = "buyTypes";
+  @SerializedName(SERIALIZED_NAME_BUY_TYPES)
+  private List<BuyTypesEnum> buyTypes = null;
 
   /**
    * Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays
@@ -254,6 +409,12 @@ public class AsyncAccountsReport {
     SALESCHANNEL("salesChannel"),
     
     MEDIATYPE("mediaType"),
+    
+    BUYTYPE("buyType"),
+    
+    BUDGETMODEL("budgetModel"),
+    
+    ACTIVATIONPLATFORM("activationPlatform"),
     
     ENVIRONMENT("environment"),
     
@@ -944,6 +1105,36 @@ public class AsyncAccountsReport {
   }
 
 
+  public AsyncAccountsReport activationPlatforms(List<ActivationPlatformsEnum> activationPlatforms) {
+    
+    this.activationPlatforms = activationPlatforms;
+    return this;
+  }
+
+  public AsyncAccountsReport addActivationPlatformsItem(ActivationPlatformsEnum activationPlatformsItem) {
+    if (this.activationPlatforms == null) {
+      this.activationPlatforms = new ArrayList<>();
+    }
+    this.activationPlatforms.add(activationPlatformsItem);
+    return this;
+  }
+
+   /**
+   * Filter on the activation platform: CommerceMax, PrivateMarket
+   * @return activationPlatforms
+  **/
+  @javax.annotation.Nullable
+
+  public List<ActivationPlatformsEnum> getActivationPlatforms() {
+    return activationPlatforms;
+  }
+
+
+  public void setActivationPlatforms(List<ActivationPlatformsEnum> activationPlatforms) {
+    this.activationPlatforms = activationPlatforms;
+  }
+
+
   public AsyncAccountsReport aggregationLevel(AggregationLevelEnum aggregationLevel) {
     
     this.aggregationLevel = aggregationLevel;
@@ -963,6 +1154,66 @@ public class AsyncAccountsReport {
 
   public void setAggregationLevel(AggregationLevelEnum aggregationLevel) {
     this.aggregationLevel = aggregationLevel;
+  }
+
+
+  public AsyncAccountsReport budgetModels(List<BudgetModelsEnum> budgetModels) {
+    
+    this.budgetModels = budgetModels;
+    return this;
+  }
+
+  public AsyncAccountsReport addBudgetModelsItem(BudgetModelsEnum budgetModelsItem) {
+    if (this.budgetModels == null) {
+      this.budgetModels = new ArrayList<>();
+    }
+    this.budgetModels.add(budgetModelsItem);
+    return this;
+  }
+
+   /**
+   * Filter on the budget model: CriteoBudget, RetailerBudget
+   * @return budgetModels
+  **/
+  @javax.annotation.Nullable
+
+  public List<BudgetModelsEnum> getBudgetModels() {
+    return budgetModels;
+  }
+
+
+  public void setBudgetModels(List<BudgetModelsEnum> budgetModels) {
+    this.budgetModels = budgetModels;
+  }
+
+
+  public AsyncAccountsReport buyTypes(List<BuyTypesEnum> buyTypes) {
+    
+    this.buyTypes = buyTypes;
+    return this;
+  }
+
+  public AsyncAccountsReport addBuyTypesItem(BuyTypesEnum buyTypesItem) {
+    if (this.buyTypes == null) {
+      this.buyTypes = new ArrayList<>();
+    }
+    this.buyTypes.add(buyTypesItem);
+    return this;
+  }
+
+   /**
+   * Filter on the buy type: auction, preferredDeals, sponsorship
+   * @return buyTypes
+  **/
+  @javax.annotation.Nullable
+
+  public List<BuyTypesEnum> getBuyTypes() {
+    return buyTypes;
+  }
+
+
+  public void setBuyTypes(List<BuyTypesEnum> buyTypes) {
+    this.buyTypes = buyTypes;
   }
 
 
@@ -1391,7 +1642,10 @@ public class AsyncAccountsReport {
     }
     AsyncAccountsReport asyncAccountsReport = (AsyncAccountsReport) o;
     return Objects.equals(this.accountIds, asyncAccountsReport.accountIds) &&
+        Objects.equals(this.activationPlatforms, asyncAccountsReport.activationPlatforms) &&
         Objects.equals(this.aggregationLevel, asyncAccountsReport.aggregationLevel) &&
+        Objects.equals(this.budgetModels, asyncAccountsReport.budgetModels) &&
+        Objects.equals(this.buyTypes, asyncAccountsReport.buyTypes) &&
         Objects.equals(this.campaignType, asyncAccountsReport.campaignType) &&
         Objects.equals(this.clickAttributionWindow, asyncAccountsReport.clickAttributionWindow) &&
         Objects.equals(this.dimensions, asyncAccountsReport.dimensions) &&
@@ -1412,7 +1666,7 @@ public class AsyncAccountsReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIds, aggregationLevel, campaignType, clickAttributionWindow, dimensions, endDate, format, mediaType, metrics, reportType, salesChannel, searchTermTargetings, searchTermTypes, startDate, targetedKeywordTypes, timezone, viewAttributionWindow, additionalProperties);
+    return Objects.hash(accountIds, activationPlatforms, aggregationLevel, budgetModels, buyTypes, campaignType, clickAttributionWindow, dimensions, endDate, format, mediaType, metrics, reportType, salesChannel, searchTermTargetings, searchTermTypes, startDate, targetedKeywordTypes, timezone, viewAttributionWindow, additionalProperties);
   }
 
   @Override
@@ -1420,7 +1674,10 @@ public class AsyncAccountsReport {
     StringBuilder sb = new StringBuilder();
     sb.append("class AsyncAccountsReport {\n");
     sb.append("    accountIds: ").append(toIndentedString(accountIds)).append("\n");
+    sb.append("    activationPlatforms: ").append(toIndentedString(activationPlatforms)).append("\n");
     sb.append("    aggregationLevel: ").append(toIndentedString(aggregationLevel)).append("\n");
+    sb.append("    budgetModels: ").append(toIndentedString(budgetModels)).append("\n");
+    sb.append("    buyTypes: ").append(toIndentedString(buyTypes)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
@@ -1460,7 +1717,10 @@ public class AsyncAccountsReport {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("accountIds");
+    openapiFields.add("activationPlatforms");
     openapiFields.add("aggregationLevel");
+    openapiFields.add("budgetModels");
+    openapiFields.add("buyTypes");
     openapiFields.add("campaignType");
     openapiFields.add("clickAttributionWindow");
     openapiFields.add("dimensions");
@@ -1509,8 +1769,20 @@ public class AsyncAccountsReport {
       } else if (!jsonObj.get("accountIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountIds` to be an array in the JSON string but got `%s`", jsonObj.get("accountIds").toString()));
       }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("activationPlatforms") != null && !jsonObj.get("activationPlatforms").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `activationPlatforms` to be an array in the JSON string but got `%s`", jsonObj.get("activationPlatforms").toString()));
+      }
       if ((jsonObj.get("aggregationLevel") != null && !jsonObj.get("aggregationLevel").isJsonNull()) && !jsonObj.get("aggregationLevel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `aggregationLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aggregationLevel").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("budgetModels") != null && !jsonObj.get("budgetModels").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `budgetModels` to be an array in the JSON string but got `%s`", jsonObj.get("budgetModels").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("buyTypes") != null && !jsonObj.get("buyTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `buyTypes` to be an array in the JSON string but got `%s`", jsonObj.get("buyTypes").toString()));
       }
       if ((jsonObj.get("campaignType") != null && !jsonObj.get("campaignType").isJsonNull()) && !jsonObj.get("campaignType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignType").toString()));

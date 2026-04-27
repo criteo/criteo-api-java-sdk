@@ -14519,6 +14519,7 @@ components:
         - 0
         products:
         - clickUrl: clickUrl
+          relevanceLabel: Similar
           price: 6.027456183070403
           productExternalId: productExternalId
           imageUrl: imageUrl
@@ -14530,6 +14531,7 @@ components:
           brand: brand
           retailPrice: 5.962133916683182
         - clickUrl: clickUrl
+          relevanceLabel: Similar
           price: 6.027456183070403
           productExternalId: productExternalId
           imageUrl: imageUrl
@@ -17880,6 +17882,7 @@ components:
       description: Represents a recommended product.
       example:
         clickUrl: clickUrl
+        relevanceLabel: Similar
         price: 6.027456183070403
         productExternalId: productExternalId
         imageUrl: imageUrl
@@ -17928,6 +17931,13 @@ components:
           type: number
         productExternalId:
           description: Product external id. Same id than what is used in user events
+          nullable: true
+          type: string
+        relevanceLabel:
+          description: Product Relevance label
+          enum:
+          - Similar
+          - Relevant
           nullable: true
           type: string
         relevancyScore:
