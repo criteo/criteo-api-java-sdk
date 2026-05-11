@@ -779,23 +779,23 @@ public class GenerateCreativesReportRequestAttributes {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adFormats") != null && !jsonObj.get("adFormats").isJsonArray()) {
+      if (jsonObj.get("adFormats") != null && !jsonObj.get("adFormats").isJsonNull() && !jsonObj.get("adFormats").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adFormats` to be an array in the JSON string but got `%s`", jsonObj.get("adFormats").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adIds") != null && !jsonObj.get("adIds").isJsonArray()) {
+      if (jsonObj.get("adIds") != null && !jsonObj.get("adIds").isJsonNull() && !jsonObj.get("adIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adIds` to be an array in the JSON string but got `%s`", jsonObj.get("adIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adNames") != null && !jsonObj.get("adNames").isJsonArray()) {
+      if (jsonObj.get("adNames") != null && !jsonObj.get("adNames").isJsonNull() && !jsonObj.get("adNames").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adNames` to be an array in the JSON string but got `%s`", jsonObj.get("adNames").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adSetIds") != null && !jsonObj.get("adSetIds").isJsonArray()) {
+      if (jsonObj.get("adSetIds") != null && !jsonObj.get("adSetIds").isJsonNull() && !jsonObj.get("adSetIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adSetIds` to be an array in the JSON string but got `%s`", jsonObj.get("adSetIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adSetStatus") != null && !jsonObj.get("adSetStatus").isJsonArray()) {
+      if (jsonObj.get("adSetStatus") != null && !jsonObj.get("adSetStatus").isJsonNull() && !jsonObj.get("adSetStatus").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adSetStatus` to be an array in the JSON string but got `%s`", jsonObj.get("adSetStatus").toString()));
       }
       // ensure the required json array is present
@@ -805,15 +805,15 @@ public class GenerateCreativesReportRequestAttributes {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonArray()) {
+      if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonNull() && !jsonObj.get("campaignIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignIds` to be an array in the JSON string but got `%s`", jsonObj.get("campaignIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("couponIds") != null && !jsonObj.get("couponIds").isJsonArray()) {
+      if (jsonObj.get("couponIds") != null && !jsonObj.get("couponIds").isJsonNull() && !jsonObj.get("couponIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `couponIds` to be an array in the JSON string but got `%s`", jsonObj.get("couponIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("couponNames") != null && !jsonObj.get("couponNames").isJsonArray()) {
+      if (jsonObj.get("couponNames") != null && !jsonObj.get("couponNames").isJsonNull() && !jsonObj.get("couponNames").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `couponNames` to be an array in the JSON string but got `%s`", jsonObj.get("couponNames").toString()));
       }
       // ensure the required json array is present
@@ -823,7 +823,7 @@ public class GenerateCreativesReportRequestAttributes {
         throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("displaySizes") != null && !jsonObj.get("displaySizes").isJsonArray()) {
+      if (jsonObj.get("displaySizes") != null && !jsonObj.get("displaySizes").isJsonNull() && !jsonObj.get("displaySizes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `displaySizes` to be an array in the JSON string but got `%s`", jsonObj.get("displaySizes").toString()));
       }
       // ensure the required json array is present

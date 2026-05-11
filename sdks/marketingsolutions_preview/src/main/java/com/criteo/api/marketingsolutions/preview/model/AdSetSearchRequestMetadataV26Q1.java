@@ -278,7 +278,7 @@ public class AdSetSearchRequestMetadataV26Q1 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("fields") != null && !jsonObj.get("fields").isJsonArray()) {
+      if (jsonObj.get("fields") != null && !jsonObj.get("fields").isJsonNull() && !jsonObj.get("fields").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fields` to be an array in the JSON string but got `%s`", jsonObj.get("fields").toString()));
       }
   }

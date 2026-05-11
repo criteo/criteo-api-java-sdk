@@ -211,7 +211,7 @@ public class KeywordsModel {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("rank") != null && !jsonObj.get("rank").isJsonArray()) {
+      if (jsonObj.get("rank") != null && !jsonObj.get("rank").isJsonNull() && !jsonObj.get("rank").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `rank` to be an array in the JSON string but got `%s`", jsonObj.get("rank").toString()));
       }
   }

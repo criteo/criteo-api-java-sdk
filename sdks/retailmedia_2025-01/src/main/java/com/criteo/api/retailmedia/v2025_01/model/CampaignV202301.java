@@ -1161,7 +1161,7 @@ public class CampaignV202301 {
         throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("drawableBalanceIds") != null && !jsonObj.get("drawableBalanceIds").isJsonArray()) {
+      if (jsonObj.get("drawableBalanceIds") != null && !jsonObj.get("drawableBalanceIds").isJsonNull() && !jsonObj.get("drawableBalanceIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `drawableBalanceIds` to be an array in the JSON string but got `%s`", jsonObj.get("drawableBalanceIds").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
@@ -1171,7 +1171,7 @@ public class CampaignV202301 {
         throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("promotedBrandIds") != null && !jsonObj.get("promotedBrandIds").isJsonArray()) {
+      if (jsonObj.get("promotedBrandIds") != null && !jsonObj.get("promotedBrandIds").isJsonNull() && !jsonObj.get("promotedBrandIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `promotedBrandIds` to be an array in the JSON string but got `%s`", jsonObj.get("promotedBrandIds").toString()));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {

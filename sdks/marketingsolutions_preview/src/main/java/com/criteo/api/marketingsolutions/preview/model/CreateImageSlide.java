@@ -267,7 +267,7 @@ public class CreateImageSlide {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("slideBase64Strings") != null && !jsonObj.get("slideBase64Strings").isJsonArray()) {
+      if (jsonObj.get("slideBase64Strings") != null && !jsonObj.get("slideBase64Strings").isJsonNull() && !jsonObj.get("slideBase64Strings").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `slideBase64Strings` to be an array in the JSON string but got `%s`", jsonObj.get("slideBase64Strings").toString()));
       }
   }

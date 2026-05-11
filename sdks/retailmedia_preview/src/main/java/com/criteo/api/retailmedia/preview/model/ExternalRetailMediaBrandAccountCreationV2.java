@@ -258,7 +258,7 @@ public class ExternalRetailMediaBrandAccountCreationV2 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("brands") != null && !jsonObj.get("brands").isJsonArray()) {
+      if (jsonObj.get("brands") != null && !jsonObj.get("brands").isJsonNull() && !jsonObj.get("brands").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brands` to be an array in the JSON string but got `%s`", jsonObj.get("brands").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {

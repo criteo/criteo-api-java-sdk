@@ -354,7 +354,7 @@ public class CommerceGridContactlistOperationResponseAttributesAttributes {
         throw new IllegalArgumentException(String.format("Expected the field `operation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("sampleInvalidIdentifiers") != null && !jsonObj.get("sampleInvalidIdentifiers").isJsonArray()) {
+      if (jsonObj.get("sampleInvalidIdentifiers") != null && !jsonObj.get("sampleInvalidIdentifiers").isJsonNull() && !jsonObj.get("sampleInvalidIdentifiers").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `sampleInvalidIdentifiers` to be an array in the JSON string but got `%s`", jsonObj.get("sampleInvalidIdentifiers").toString()));
       }
   }

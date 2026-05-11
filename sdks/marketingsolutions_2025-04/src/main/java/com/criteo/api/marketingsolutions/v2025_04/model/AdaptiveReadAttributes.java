@@ -661,7 +661,7 @@ public class AdaptiveReadAttributes {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("callsToAction") != null && !jsonObj.get("callsToAction").isJsonArray()) {
+      if (jsonObj.get("callsToAction") != null && !jsonObj.get("callsToAction").isJsonNull() && !jsonObj.get("callsToAction").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `callsToAction` to be an array in the JSON string but got `%s`", jsonObj.get("callsToAction").toString()));
       }
       // validate the optional field `colors`
@@ -701,7 +701,7 @@ public class AdaptiveReadAttributes {
         throw new IllegalArgumentException(String.format("Expected the field `landingPageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("landingPageUrl").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("layouts") != null && !jsonObj.get("layouts").isJsonArray()) {
+      if (jsonObj.get("layouts") != null && !jsonObj.get("layouts").isJsonNull() && !jsonObj.get("layouts").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `layouts` to be an array in the JSON string but got `%s`", jsonObj.get("layouts").toString()));
       }
       if (jsonObj.get("logos") != null && !jsonObj.get("logos").isJsonNull()) {

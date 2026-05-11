@@ -710,7 +710,7 @@ public class AdaptiveWriteAttributes {
         throw new IllegalArgumentException(String.format("Expected the field `logoBase64String` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logoBase64String").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("videoBase64Strings") != null && !jsonObj.get("videoBase64Strings").isJsonArray()) {
+      if (jsonObj.get("videoBase64Strings") != null && !jsonObj.get("videoBase64Strings").isJsonNull() && !jsonObj.get("videoBase64Strings").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `videoBase64Strings` to be an array in the JSON string but got `%s`", jsonObj.get("videoBase64Strings").toString()));
       }
   }

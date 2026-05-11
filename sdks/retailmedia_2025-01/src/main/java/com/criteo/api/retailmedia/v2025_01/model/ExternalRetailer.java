@@ -261,7 +261,7 @@ public class ExternalRetailer {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("campaignEligibilities") != null && !jsonObj.get("campaignEligibilities").isJsonArray()) {
+      if (jsonObj.get("campaignEligibilities") != null && !jsonObj.get("campaignEligibilities").isJsonNull() && !jsonObj.get("campaignEligibilities").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignEligibilities` to be an array in the JSON string but got `%s`", jsonObj.get("campaignEligibilities").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {

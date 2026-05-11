@@ -647,14 +647,14 @@ public class CreativeSearchResponse {
         throw new IllegalArgumentException(String.format("Expected the field `creativeType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeType").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("lineItems") != null && !jsonObj.get("lineItems").isJsonArray()) {
+      if (jsonObj.get("lineItems") != null && !jsonObj.get("lineItems").isJsonNull() && !jsonObj.get("lineItems").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineItems` to be an array in the JSON string but got `%s`", jsonObj.get("lineItems").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("pageType") != null && !jsonObj.get("pageType").isJsonArray()) {
+      if (jsonObj.get("pageType") != null && !jsonObj.get("pageType").isJsonNull() && !jsonObj.get("pageType").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `pageType` to be an array in the JSON string but got `%s`", jsonObj.get("pageType").toString()));
       }
       if ((jsonObj.get("preview") != null && !jsonObj.get("preview").isJsonNull()) && !jsonObj.get("preview").isJsonPrimitive()) {

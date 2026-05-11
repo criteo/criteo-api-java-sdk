@@ -2740,14 +2740,14 @@ public class Product {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("additionalImageLinks") != null && !jsonObj.get("additionalImageLinks").isJsonArray()) {
+      if (jsonObj.get("additionalImageLinks") != null && !jsonObj.get("additionalImageLinks").isJsonNull() && !jsonObj.get("additionalImageLinks").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `additionalImageLinks` to be an array in the JSON string but got `%s`", jsonObj.get("additionalImageLinks").toString()));
       }
       if ((jsonObj.get("adsGrouping") != null && !jsonObj.get("adsGrouping").isJsonNull()) && !jsonObj.get("adsGrouping").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `adsGrouping` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adsGrouping").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adsLabels") != null && !jsonObj.get("adsLabels").isJsonArray()) {
+      if (jsonObj.get("adsLabels") != null && !jsonObj.get("adsLabels").isJsonNull() && !jsonObj.get("adsLabels").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adsLabels` to be an array in the JSON string but got `%s`", jsonObj.get("adsLabels").toString()));
       }
       if ((jsonObj.get("adsRedirect") != null && !jsonObj.get("adsRedirect").isJsonNull()) && !jsonObj.get("adsRedirect").isJsonPrimitive()) {
@@ -2823,7 +2823,7 @@ public class Product {
         throw new IllegalArgumentException(String.format("Expected the field `displayAdsLink` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayAdsLink").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("displayAdsSimilarIds") != null && !jsonObj.get("displayAdsSimilarIds").isJsonArray()) {
+      if (jsonObj.get("displayAdsSimilarIds") != null && !jsonObj.get("displayAdsSimilarIds").isJsonNull() && !jsonObj.get("displayAdsSimilarIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayAdsSimilarIds` to be an array in the JSON string but got `%s`", jsonObj.get("displayAdsSimilarIds").toString()));
       }
       if ((jsonObj.get("displayAdsTitle") != null && !jsonObj.get("displayAdsTitle").isJsonNull()) && !jsonObj.get("displayAdsTitle").isJsonPrimitive()) {
@@ -2833,7 +2833,7 @@ public class Product {
         throw new IllegalArgumentException(String.format("Expected the field `energyEfficiencyClass` to be a primitive type in the JSON string but got `%s`", jsonObj.get("energyEfficiencyClass").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("excludedDestinations") != null && !jsonObj.get("excludedDestinations").isJsonArray()) {
+      if (jsonObj.get("excludedDestinations") != null && !jsonObj.get("excludedDestinations").isJsonNull() && !jsonObj.get("excludedDestinations").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `excludedDestinations` to be an array in the JSON string but got `%s`", jsonObj.get("excludedDestinations").toString()));
       }
       if ((jsonObj.get("expirationDate") != null && !jsonObj.get("expirationDate").isJsonNull()) && !jsonObj.get("expirationDate").isJsonPrimitive()) {
@@ -2861,7 +2861,7 @@ public class Product {
         throw new IllegalArgumentException(String.format("Expected the field `imageLink` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageLink").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("includedDestinations") != null && !jsonObj.get("includedDestinations").isJsonArray()) {
+      if (jsonObj.get("includedDestinations") != null && !jsonObj.get("includedDestinations").isJsonNull() && !jsonObj.get("includedDestinations").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `includedDestinations` to be an array in the JSON string but got `%s`", jsonObj.get("includedDestinations").toString()));
       }
       // validate the optional field `installment`
@@ -2910,15 +2910,15 @@ public class Product {
         throw new IllegalArgumentException(String.format("Expected the field `productRating` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productRating").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("productTypeKeys") != null && !jsonObj.get("productTypeKeys").isJsonArray()) {
+      if (jsonObj.get("productTypeKeys") != null && !jsonObj.get("productTypeKeys").isJsonNull() && !jsonObj.get("productTypeKeys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `productTypeKeys` to be an array in the JSON string but got `%s`", jsonObj.get("productTypeKeys").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("productTypes") != null && !jsonObj.get("productTypes").isJsonArray()) {
+      if (jsonObj.get("productTypes") != null && !jsonObj.get("productTypes").isJsonNull() && !jsonObj.get("productTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `productTypes` to be an array in the JSON string but got `%s`", jsonObj.get("productTypes").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("promotionIds") != null && !jsonObj.get("promotionIds").isJsonArray()) {
+      if (jsonObj.get("promotionIds") != null && !jsonObj.get("promotionIds").isJsonNull() && !jsonObj.get("promotionIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `promotionIds` to be an array in the JSON string but got `%s`", jsonObj.get("promotionIds").toString()));
       }
       // validate the optional field `salePrice`
@@ -2965,7 +2965,7 @@ public class Product {
         ProductShippingDimension.validateJsonObject(jsonObj.getAsJsonObject("shippingWidth"));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("sizes") != null && !jsonObj.get("sizes").isJsonArray()) {
+      if (jsonObj.get("sizes") != null && !jsonObj.get("sizes").isJsonNull() && !jsonObj.get("sizes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `sizes` to be an array in the JSON string but got `%s`", jsonObj.get("sizes").toString()));
       }
       if ((jsonObj.get("sizeSystem") != null && !jsonObj.get("sizeSystem").isJsonNull()) && !jsonObj.get("sizeSystem").isJsonPrimitive()) {

@@ -1151,15 +1151,15 @@ public class StatisticsReportQueryMessage {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adSetIds") != null && !jsonObj.get("adSetIds").isJsonArray()) {
+      if (jsonObj.get("adSetIds") != null && !jsonObj.get("adSetIds").isJsonNull() && !jsonObj.get("adSetIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adSetIds` to be an array in the JSON string but got `%s`", jsonObj.get("adSetIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adSetNames") != null && !jsonObj.get("adSetNames").isJsonArray()) {
+      if (jsonObj.get("adSetNames") != null && !jsonObj.get("adSetNames").isJsonNull() && !jsonObj.get("adSetNames").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adSetNames` to be an array in the JSON string but got `%s`", jsonObj.get("adSetNames").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adSetStatus") != null && !jsonObj.get("adSetStatus").isJsonArray()) {
+      if (jsonObj.get("adSetStatus") != null && !jsonObj.get("adSetStatus").isJsonNull() && !jsonObj.get("adSetStatus").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adSetStatus` to be an array in the JSON string but got `%s`", jsonObj.get("adSetStatus").toString()));
       }
       if ((jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonNull()) && !jsonObj.get("advertiserIds").isJsonPrimitive()) {

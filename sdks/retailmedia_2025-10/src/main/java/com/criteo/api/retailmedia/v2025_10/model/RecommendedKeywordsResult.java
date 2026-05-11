@@ -211,7 +211,7 @@ public class RecommendedKeywordsResult {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("recommendedKeywords") != null && !jsonObj.get("recommendedKeywords").isJsonArray()) {
+      if (jsonObj.get("recommendedKeywords") != null && !jsonObj.get("recommendedKeywords").isJsonNull() && !jsonObj.get("recommendedKeywords").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `recommendedKeywords` to be an array in the JSON string but got `%s`", jsonObj.get("recommendedKeywords").toString()));
       }
   }

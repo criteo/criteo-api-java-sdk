@@ -370,7 +370,7 @@ public class LineItemPageV2 {
         throw new IllegalArgumentException(String.format("Expected the field `pageType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pageType").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("searchKeywords") != null && !jsonObj.get("searchKeywords").isJsonArray()) {
+      if (jsonObj.get("searchKeywords") != null && !jsonObj.get("searchKeywords").isJsonNull() && !jsonObj.get("searchKeywords").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `searchKeywords` to be an array in the JSON string but got `%s`", jsonObj.get("searchKeywords").toString()));
       }
   }

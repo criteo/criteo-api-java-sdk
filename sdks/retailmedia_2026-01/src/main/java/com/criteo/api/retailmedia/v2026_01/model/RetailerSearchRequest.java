@@ -171,7 +171,7 @@ public class RetailerSearchRequest {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("retailerIdFilter") != null && !jsonObj.get("retailerIdFilter").isJsonArray()) {
+      if (jsonObj.get("retailerIdFilter") != null && !jsonObj.get("retailerIdFilter").isJsonNull() && !jsonObj.get("retailerIdFilter").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerIdFilter` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIdFilter").toString()));
       }
   }

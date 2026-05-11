@@ -241,7 +241,7 @@ public class ImageAttributes {
         throw new IllegalArgumentException(String.format("Expected the field `landingPageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("landingPageUrl").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("urls") != null && !jsonObj.get("urls").isJsonArray()) {
+      if (jsonObj.get("urls") != null && !jsonObj.get("urls").isJsonNull() && !jsonObj.get("urls").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `urls` to be an array in the JSON string but got `%s`", jsonObj.get("urls").toString()));
       }
   }

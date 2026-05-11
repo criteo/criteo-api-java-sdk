@@ -172,7 +172,7 @@ public class JsonReportRows {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("rows") != null && !jsonObj.get("rows").isJsonArray()) {
+      if (jsonObj.get("rows") != null && !jsonObj.get("rows").isJsonNull() && !jsonObj.get("rows").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `rows` to be an array in the JSON string but got `%s`", jsonObj.get("rows").toString()));
       }
   }

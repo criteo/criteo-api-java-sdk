@@ -505,30 +505,30 @@ public class CreativeSearchRequest {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
+      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonNull() && !jsonObj.get("brandIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("creativeIds") != null && !jsonObj.get("creativeIds").isJsonArray()) {
+      if (jsonObj.get("creativeIds") != null && !jsonObj.get("creativeIds").isJsonNull() && !jsonObj.get("creativeIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `creativeIds` to be an array in the JSON string but got `%s`", jsonObj.get("creativeIds").toString()));
       }
       if ((jsonObj.get("creativeName") != null && !jsonObj.get("creativeName").isJsonNull()) && !jsonObj.get("creativeName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creativeName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeName").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("creativeTypes") != null && !jsonObj.get("creativeTypes").isJsonArray()) {
+      if (jsonObj.get("creativeTypes") != null && !jsonObj.get("creativeTypes").isJsonNull() && !jsonObj.get("creativeTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `creativeTypes` to be an array in the JSON string but got `%s`", jsonObj.get("creativeTypes").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("pageTypes") != null && !jsonObj.get("pageTypes").isJsonArray()) {
+      if (jsonObj.get("pageTypes") != null && !jsonObj.get("pageTypes").isJsonNull() && !jsonObj.get("pageTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `pageTypes` to be an array in the JSON string but got `%s`", jsonObj.get("pageTypes").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonArray()) {
+      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonNull() && !jsonObj.get("retailerIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("templateIds") != null && !jsonObj.get("templateIds").isJsonArray()) {
+      if (jsonObj.get("templateIds") != null && !jsonObj.get("templateIds").isJsonNull() && !jsonObj.get("templateIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `templateIds` to be an array in the JSON string but got `%s`", jsonObj.get("templateIds").toString()));
       }
   }

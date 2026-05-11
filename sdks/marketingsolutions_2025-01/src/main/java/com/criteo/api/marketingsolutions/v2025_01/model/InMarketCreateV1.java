@@ -521,11 +521,11 @@ public class InMarketCreateV1 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
+      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonNull() && !jsonObj.get("brandIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("buyingPower") != null && !jsonObj.get("buyingPower").isJsonArray()) {
+      if (jsonObj.get("buyingPower") != null && !jsonObj.get("buyingPower").isJsonNull() && !jsonObj.get("buyingPower").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `buyingPower` to be an array in the JSON string but got `%s`", jsonObj.get("buyingPower").toString()));
       }
       if (!jsonObj.get("country").isJsonPrimitive()) {
@@ -535,11 +535,11 @@ public class InMarketCreateV1 {
         throw new IllegalArgumentException(String.format("Expected the field `gender` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gender").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("interestIds") != null && !jsonObj.get("interestIds").isJsonArray()) {
+      if (jsonObj.get("interestIds") != null && !jsonObj.get("interestIds").isJsonNull() && !jsonObj.get("interestIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `interestIds` to be an array in the JSON string but got `%s`", jsonObj.get("interestIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("priceRange") != null && !jsonObj.get("priceRange").isJsonArray()) {
+      if (jsonObj.get("priceRange") != null && !jsonObj.get("priceRange").isJsonNull() && !jsonObj.get("priceRange").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `priceRange` to be an array in the JSON string but got `%s`", jsonObj.get("priceRange").toString()));
       }
   }

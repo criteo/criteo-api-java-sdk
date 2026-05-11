@@ -430,15 +430,15 @@ public class AdSetDeliveryLimitationsV24Q3 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("devices") != null && !jsonObj.get("devices").isJsonArray()) {
+      if (jsonObj.get("devices") != null && !jsonObj.get("devices").isJsonNull() && !jsonObj.get("devices").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `devices` to be an array in the JSON string but got `%s`", jsonObj.get("devices").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("environments") != null && !jsonObj.get("environments").isJsonArray()) {
+      if (jsonObj.get("environments") != null && !jsonObj.get("environments").isJsonNull() && !jsonObj.get("environments").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `environments` to be an array in the JSON string but got `%s`", jsonObj.get("environments").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("operatingSystems") != null && !jsonObj.get("operatingSystems").isJsonArray()) {
+      if (jsonObj.get("operatingSystems") != null && !jsonObj.get("operatingSystems").isJsonNull() && !jsonObj.get("operatingSystems").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `operatingSystems` to be an array in the JSON string but got `%s`", jsonObj.get("operatingSystems").toString()));
       }
   }

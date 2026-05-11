@@ -499,7 +499,7 @@ public class RmAudienceEntityV1 {
         RmAlgebraNodeV1.validateJsonObject(jsonObj.getAsJsonObject("algebra"));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("channels") != null && !jsonObj.get("channels").isJsonArray()) {
+      if (jsonObj.get("channels") != null && !jsonObj.get("channels").isJsonNull() && !jsonObj.get("channels").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `channels` to be an array in the JSON string but got `%s`", jsonObj.get("channels").toString()));
       }
       if ((jsonObj.get("createdById") != null && !jsonObj.get("createdById").isJsonNull()) && !jsonObj.get("createdById").isJsonPrimitive()) {

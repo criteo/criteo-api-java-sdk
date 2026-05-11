@@ -296,7 +296,7 @@ public class SellerCatalogRequestV2 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("includeFields") != null && !jsonObj.get("includeFields").isJsonArray()) {
+      if (jsonObj.get("includeFields") != null && !jsonObj.get("includeFields").isJsonNull() && !jsonObj.get("includeFields").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `includeFields` to be an array in the JSON string but got `%s`", jsonObj.get("includeFields").toString()));
       }
       if (jsonObj.get("sellers") != null && !jsonObj.get("sellers").isJsonNull()) {

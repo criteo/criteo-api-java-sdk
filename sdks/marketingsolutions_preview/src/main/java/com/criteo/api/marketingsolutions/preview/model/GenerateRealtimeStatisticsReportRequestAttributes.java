@@ -527,7 +527,7 @@ public class GenerateRealtimeStatisticsReportRequestAttributes {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adsetIds") != null && !jsonObj.get("adsetIds").isJsonArray()) {
+      if (jsonObj.get("adsetIds") != null && !jsonObj.get("adsetIds").isJsonNull() && !jsonObj.get("adsetIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adsetIds` to be an array in the JSON string but got `%s`", jsonObj.get("adsetIds").toString()));
       }
       // ensure the required json array is present
@@ -537,18 +537,18 @@ public class GenerateRealtimeStatisticsReportRequestAttributes {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonArray()) {
+      if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonNull() && !jsonObj.get("campaignIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignIds` to be an array in the JSON string but got `%s`", jsonObj.get("campaignIds").toString()));
       }
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {
+      if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonNull() && !jsonObj.get("dimensions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonArray()) {
+      if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonNull() && !jsonObj.get("metrics").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {

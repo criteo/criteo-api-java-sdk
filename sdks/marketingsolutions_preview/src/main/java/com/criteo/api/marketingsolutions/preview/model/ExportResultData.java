@@ -201,7 +201,7 @@ public class ExportResultData {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonArray()) {
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull() && !jsonObj.get("data").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
       }
       // validate the optional field `metadata`

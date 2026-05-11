@@ -578,14 +578,14 @@ public class GenerateAudiencePerformanceReport {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adSetIds") != null && !jsonObj.get("adSetIds").isJsonArray()) {
+      if (jsonObj.get("adSetIds") != null && !jsonObj.get("adSetIds").isJsonNull() && !jsonObj.get("adSetIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adSetIds` to be an array in the JSON string but got `%s`", jsonObj.get("adSetIds").toString()));
       }
       if (!jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("audienceIds") != null && !jsonObj.get("audienceIds").isJsonArray()) {
+      if (jsonObj.get("audienceIds") != null && !jsonObj.get("audienceIds").isJsonNull() && !jsonObj.get("audienceIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `audienceIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceIds").toString()));
       }
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
@@ -601,7 +601,7 @@ public class GenerateAudiencePerformanceReport {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("segmentsIds") != null && !jsonObj.get("segmentsIds").isJsonArray()) {
+      if (jsonObj.get("segmentsIds") != null && !jsonObj.get("segmentsIds").isJsonNull() && !jsonObj.get("segmentsIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `segmentsIds` to be an array in the JSON string but got `%s`", jsonObj.get("segmentsIds").toString()));
       }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {

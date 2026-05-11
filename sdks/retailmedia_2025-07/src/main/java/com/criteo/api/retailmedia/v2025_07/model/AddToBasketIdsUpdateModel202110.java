@@ -234,11 +234,11 @@ public class AddToBasketIdsUpdateModel202110 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonArray()) {
+      if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonNull() && !jsonObj.get("categoryIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `categoryIds` to be an array in the JSON string but got `%s`", jsonObj.get("categoryIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("productIds") != null && !jsonObj.get("productIds").isJsonArray()) {
+      if (jsonObj.get("productIds") != null && !jsonObj.get("productIds").isJsonNull() && !jsonObj.get("productIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `productIds` to be an array in the JSON string but got `%s`", jsonObj.get("productIds").toString()));
       }
   }

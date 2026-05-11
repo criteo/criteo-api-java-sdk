@@ -330,15 +330,15 @@ public class AudienceSegmentSearchEntityV1 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonArray()) {
+      if (jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonNull() && !jsonObj.get("advertiserIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("audienceSegmentIds") != null && !jsonObj.get("audienceSegmentIds").isJsonArray()) {
+      if (jsonObj.get("audienceSegmentIds") != null && !jsonObj.get("audienceSegmentIds").isJsonNull() && !jsonObj.get("audienceSegmentIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceSegmentIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("audienceSegmentTypes") != null && !jsonObj.get("audienceSegmentTypes").isJsonArray()) {
+      if (jsonObj.get("audienceSegmentTypes") != null && !jsonObj.get("audienceSegmentTypes").isJsonNull() && !jsonObj.get("audienceSegmentTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentTypes` to be an array in the JSON string but got `%s`", jsonObj.get("audienceSegmentTypes").toString()));
       }
   }

@@ -270,7 +270,7 @@ public class SellerCampaignProductSet {
         throw new IllegalArgumentException(String.format("Expected the field `productSetStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productSetStatus").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("rules") != null && !jsonObj.get("rules").isJsonArray()) {
+      if (jsonObj.get("rules") != null && !jsonObj.get("rules").isJsonNull() && !jsonObj.get("rules").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `rules` to be an array in the JSON string but got `%s`", jsonObj.get("rules").toString()));
       }
   }

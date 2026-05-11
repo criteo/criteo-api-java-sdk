@@ -489,7 +489,7 @@ public class AudienceWarning {
         throw new IllegalArgumentException(String.format("Expected the field `instance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instance").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("stackTrace") != null && !jsonObj.get("stackTrace").isJsonArray()) {
+      if (jsonObj.get("stackTrace") != null && !jsonObj.get("stackTrace").isJsonNull() && !jsonObj.get("stackTrace").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `stackTrace` to be an array in the JSON string but got `%s`", jsonObj.get("stackTrace").toString()));
       }
       if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {

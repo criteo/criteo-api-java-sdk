@@ -247,7 +247,7 @@ public class ExternalCatalogRequest {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("brandIdFilter") != null && !jsonObj.get("brandIdFilter").isJsonArray()) {
+      if (jsonObj.get("brandIdFilter") != null && !jsonObj.get("brandIdFilter").isJsonNull() && !jsonObj.get("brandIdFilter").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brandIdFilter` to be an array in the JSON string but got `%s`", jsonObj.get("brandIdFilter").toString()));
       }
       if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {

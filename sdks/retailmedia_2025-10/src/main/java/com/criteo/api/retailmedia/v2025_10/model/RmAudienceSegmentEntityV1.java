@@ -603,7 +603,7 @@ public class RmAudienceSegmentEntityV1 {
         throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("channels") != null && !jsonObj.get("channels").isJsonArray()) {
+      if (jsonObj.get("channels") != null && !jsonObj.get("channels").isJsonNull() && !jsonObj.get("channels").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `channels` to be an array in the JSON string but got `%s`", jsonObj.get("channels").toString()));
       }
       // validate the optional field `contactList`

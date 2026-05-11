@@ -891,7 +891,7 @@ public class CampaignAttributesV202301 {
         throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("drawableBalanceIds") != null && !jsonObj.get("drawableBalanceIds").isJsonArray()) {
+      if (jsonObj.get("drawableBalanceIds") != null && !jsonObj.get("drawableBalanceIds").isJsonNull() && !jsonObj.get("drawableBalanceIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `drawableBalanceIds` to be an array in the JSON string but got `%s`", jsonObj.get("drawableBalanceIds").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {

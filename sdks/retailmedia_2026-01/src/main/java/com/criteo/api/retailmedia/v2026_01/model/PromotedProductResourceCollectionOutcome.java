@@ -267,7 +267,7 @@ public class PromotedProductResourceCollectionOutcome {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonArray()) {
+      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull() && !jsonObj.get("errors").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
       }
       // validate the optional field `meta`
@@ -275,7 +275,7 @@ public class PromotedProductResourceCollectionOutcome {
         ProductMetadata.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonArray()) {
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull() && !jsonObj.get("warnings").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
       }
   }

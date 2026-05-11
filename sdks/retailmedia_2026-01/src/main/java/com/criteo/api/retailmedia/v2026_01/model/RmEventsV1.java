@@ -476,11 +476,11 @@ public class RmEventsV1 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
+      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonNull() && !jsonObj.get("brandIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonArray()) {
+      if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonNull() && !jsonObj.get("categoryIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `categoryIds` to be an array in the JSON string but got `%s`", jsonObj.get("categoryIds").toString()));
       }
       if ((jsonObj.get("lookbackDays") != null && !jsonObj.get("lookbackDays").isJsonNull()) && !jsonObj.get("lookbackDays").isJsonPrimitive()) {

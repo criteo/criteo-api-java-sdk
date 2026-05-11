@@ -676,26 +676,26 @@ public class SetAdSetTargetingVideoPositioning {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("playbackMethod") != null && !jsonObj.get("playbackMethod").isJsonArray()) {
+      if (jsonObj.get("playbackMethod") != null && !jsonObj.get("playbackMethod").isJsonNull() && !jsonObj.get("playbackMethod").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `playbackMethod` to be an array in the JSON string but got `%s`", jsonObj.get("playbackMethod").toString()));
       }
       if ((jsonObj.get("skippable") != null && !jsonObj.get("skippable").isJsonNull()) && !jsonObj.get("skippable").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `skippable` to be a primitive type in the JSON string but got `%s`", jsonObj.get("skippable").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("videoAspectRatio") != null && !jsonObj.get("videoAspectRatio").isJsonArray()) {
+      if (jsonObj.get("videoAspectRatio") != null && !jsonObj.get("videoAspectRatio").isJsonNull() && !jsonObj.get("videoAspectRatio").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `videoAspectRatio` to be an array in the JSON string but got `%s`", jsonObj.get("videoAspectRatio").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("videoInStreamPosition") != null && !jsonObj.get("videoInStreamPosition").isJsonArray()) {
+      if (jsonObj.get("videoInStreamPosition") != null && !jsonObj.get("videoInStreamPosition").isJsonNull() && !jsonObj.get("videoInStreamPosition").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `videoInStreamPosition` to be an array in the JSON string but got `%s`", jsonObj.get("videoInStreamPosition").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("videoPlayerSize") != null && !jsonObj.get("videoPlayerSize").isJsonArray()) {
+      if (jsonObj.get("videoPlayerSize") != null && !jsonObj.get("videoPlayerSize").isJsonNull() && !jsonObj.get("videoPlayerSize").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `videoPlayerSize` to be an array in the JSON string but got `%s`", jsonObj.get("videoPlayerSize").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("videoPlcmt") != null && !jsonObj.get("videoPlcmt").isJsonArray()) {
+      if (jsonObj.get("videoPlcmt") != null && !jsonObj.get("videoPlcmt").isJsonNull() && !jsonObj.get("videoPlcmt").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `videoPlcmt` to be an array in the JSON string but got `%s`", jsonObj.get("videoPlcmt").toString()));
       }
   }

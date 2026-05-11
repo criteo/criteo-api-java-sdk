@@ -246,11 +246,11 @@ public class CouponSupportedSizes {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("fullFrame") != null && !jsonObj.get("fullFrame").isJsonArray()) {
+      if (jsonObj.get("fullFrame") != null && !jsonObj.get("fullFrame").isJsonNull() && !jsonObj.get("fullFrame").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fullFrame` to be an array in the JSON string but got `%s`", jsonObj.get("fullFrame").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("logoZone") != null && !jsonObj.get("logoZone").isJsonArray()) {
+      if (jsonObj.get("logoZone") != null && !jsonObj.get("logoZone").isJsonNull() && !jsonObj.get("logoZone").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `logoZone` to be an array in the JSON string but got `%s`", jsonObj.get("logoZone").toString()));
       }
   }

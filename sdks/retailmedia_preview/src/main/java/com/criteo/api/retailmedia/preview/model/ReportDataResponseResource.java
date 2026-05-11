@@ -238,7 +238,7 @@ public class ReportDataResponseResource {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonArray()) {
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull() && !jsonObj.get("attributes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `attributes` to be an array in the JSON string but got `%s`", jsonObj.get("attributes").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {

@@ -245,15 +245,15 @@ public class InputKeywordsModel {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("negativeBroad") != null && !jsonObj.get("negativeBroad").isJsonArray()) {
+      if (jsonObj.get("negativeBroad") != null && !jsonObj.get("negativeBroad").isJsonNull() && !jsonObj.get("negativeBroad").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `negativeBroad` to be an array in the JSON string but got `%s`", jsonObj.get("negativeBroad").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("negativeExact") != null && !jsonObj.get("negativeExact").isJsonArray()) {
+      if (jsonObj.get("negativeExact") != null && !jsonObj.get("negativeExact").isJsonNull() && !jsonObj.get("negativeExact").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `negativeExact` to be an array in the JSON string but got `%s`", jsonObj.get("negativeExact").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("positiveExact") != null && !jsonObj.get("positiveExact").isJsonArray()) {
+      if (jsonObj.get("positiveExact") != null && !jsonObj.get("positiveExact").isJsonNull() && !jsonObj.get("positiveExact").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `positiveExact` to be an array in the JSON string but got `%s`", jsonObj.get("positiveExact").toString()));
       }
   }

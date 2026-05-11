@@ -247,7 +247,7 @@ public class OnSiteRecoResponse {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("extraInfos") != null && !jsonObj.get("extraInfos").isJsonArray()) {
+      if (jsonObj.get("extraInfos") != null && !jsonObj.get("extraInfos").isJsonNull() && !jsonObj.get("extraInfos").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `extraInfos` to be an array in the JSON string but got `%s`", jsonObj.get("extraInfos").toString()));
       }
       if (jsonObj.get("products") != null && !jsonObj.get("products").isJsonNull()) {

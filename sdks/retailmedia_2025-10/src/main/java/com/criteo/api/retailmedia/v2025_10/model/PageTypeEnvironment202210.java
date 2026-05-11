@@ -318,7 +318,7 @@ public class PageTypeEnvironment202210 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("environments") != null && !jsonObj.get("environments").isJsonArray()) {
+      if (jsonObj.get("environments") != null && !jsonObj.get("environments").isJsonNull() && !jsonObj.get("environments").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `environments` to be an array in the JSON string but got `%s`", jsonObj.get("environments").toString()));
       }
       if ((jsonObj.get("pageType") != null && !jsonObj.get("pageType").isJsonNull()) && !jsonObj.get("pageType").isJsonPrimitive()) {

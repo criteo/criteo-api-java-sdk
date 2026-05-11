@@ -951,7 +951,7 @@ public class ShareOfVoiceInsight {
         throw new IllegalArgumentException(String.format("Expected the field `aggregationLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aggregationLevel").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
+      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonNull() && !jsonObj.get("brandIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
       }
       if ((jsonObj.get("campaignType") != null && !jsonObj.get("campaignType").isJsonNull()) && !jsonObj.get("campaignType").isJsonPrimitive()) {
@@ -967,11 +967,11 @@ public class ShareOfVoiceInsight {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("keywords") != null && !jsonObj.get("keywords").isJsonArray()) {
+      if (jsonObj.get("keywords") != null && !jsonObj.get("keywords").isJsonNull() && !jsonObj.get("keywords").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `keywords` to be an array in the JSON string but got `%s`", jsonObj.get("keywords").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("keywordTypes") != null && !jsonObj.get("keywordTypes").isJsonArray()) {
+      if (jsonObj.get("keywordTypes") != null && !jsonObj.get("keywordTypes").isJsonNull() && !jsonObj.get("keywordTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `keywordTypes` to be an array in the JSON string but got `%s`", jsonObj.get("keywordTypes").toString()));
       }
       // ensure the required json array is present
@@ -981,7 +981,7 @@ public class ShareOfVoiceInsight {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonArray()) {
+      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonNull() && !jsonObj.get("retailerIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
       }
       if (jsonObj.get("servedCategories") != null && !jsonObj.get("servedCategories").isJsonNull()) {

@@ -442,7 +442,7 @@ public class DynamicAttributes {
         throw new IllegalArgumentException(String.format("Expected the field `bodyTextColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bodyTextColor").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("callsToAction") != null && !jsonObj.get("callsToAction").isJsonArray()) {
+      if (jsonObj.get("callsToAction") != null && !jsonObj.get("callsToAction").isJsonNull() && !jsonObj.get("callsToAction").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `callsToAction` to be an array in the JSON string but got `%s`", jsonObj.get("callsToAction").toString()));
       }
       if ((jsonObj.get("creativeBackgroundColor") != null && !jsonObj.get("creativeBackgroundColor").isJsonNull()) && !jsonObj.get("creativeBackgroundColor").isJsonPrimitive()) {

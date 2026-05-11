@@ -1519,7 +1519,7 @@ public class AsyncAccountsReport {
         throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {
+      if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonNull() && !jsonObj.get("dimensions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
       }
       if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
@@ -1529,7 +1529,7 @@ public class AsyncAccountsReport {
         throw new IllegalArgumentException(String.format("Expected the field `mediaType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaType").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonArray()) {
+      if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonNull() && !jsonObj.get("metrics").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
       if ((jsonObj.get("reportType") != null && !jsonObj.get("reportType").isJsonNull()) && !jsonObj.get("reportType").isJsonPrimitive()) {
@@ -1539,15 +1539,15 @@ public class AsyncAccountsReport {
         throw new IllegalArgumentException(String.format("Expected the field `salesChannel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salesChannel").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("searchTermTargetings") != null && !jsonObj.get("searchTermTargetings").isJsonArray()) {
+      if (jsonObj.get("searchTermTargetings") != null && !jsonObj.get("searchTermTargetings").isJsonNull() && !jsonObj.get("searchTermTargetings").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `searchTermTargetings` to be an array in the JSON string but got `%s`", jsonObj.get("searchTermTargetings").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("searchTermTypes") != null && !jsonObj.get("searchTermTypes").isJsonArray()) {
+      if (jsonObj.get("searchTermTypes") != null && !jsonObj.get("searchTermTypes").isJsonNull() && !jsonObj.get("searchTermTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `searchTermTypes` to be an array in the JSON string but got `%s`", jsonObj.get("searchTermTypes").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("targetedKeywordTypes") != null && !jsonObj.get("targetedKeywordTypes").isJsonArray()) {
+      if (jsonObj.get("targetedKeywordTypes") != null && !jsonObj.get("targetedKeywordTypes").isJsonNull() && !jsonObj.get("targetedKeywordTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `targetedKeywordTypes` to be an array in the JSON string but got `%s`", jsonObj.get("targetedKeywordTypes").toString()));
       }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {

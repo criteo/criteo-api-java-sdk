@@ -332,15 +332,15 @@ public class BrandCatalogRequestV2 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("brandIdFilter") != null && !jsonObj.get("brandIdFilter").isJsonArray()) {
+      if (jsonObj.get("brandIdFilter") != null && !jsonObj.get("brandIdFilter").isJsonNull() && !jsonObj.get("brandIdFilter").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brandIdFilter` to be an array in the JSON string but got `%s`", jsonObj.get("brandIdFilter").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("includeFields") != null && !jsonObj.get("includeFields").isJsonArray()) {
+      if (jsonObj.get("includeFields") != null && !jsonObj.get("includeFields").isJsonNull() && !jsonObj.get("includeFields").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `includeFields` to be an array in the JSON string but got `%s`", jsonObj.get("includeFields").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("retailerIdFilter") != null && !jsonObj.get("retailerIdFilter").isJsonArray()) {
+      if (jsonObj.get("retailerIdFilter") != null && !jsonObj.get("retailerIdFilter").isJsonNull() && !jsonObj.get("retailerIdFilter").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerIdFilter` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIdFilter").toString()));
       }
   }

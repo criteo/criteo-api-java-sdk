@@ -504,7 +504,7 @@ public class ExternalRetailMediaAccount {
         throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("countryIds") != null && !jsonObj.get("countryIds").isJsonArray()) {
+      if (jsonObj.get("countryIds") != null && !jsonObj.get("countryIds").isJsonNull() && !jsonObj.get("countryIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `countryIds` to be an array in the JSON string but got `%s`", jsonObj.get("countryIds").toString()));
       }
       if ((jsonObj.get("currencyId") != null && !jsonObj.get("currencyId").isJsonNull()) && !jsonObj.get("currencyId").isJsonPrimitive()) {

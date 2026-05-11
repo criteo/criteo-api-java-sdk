@@ -208,11 +208,11 @@ public class DisplayAuctionMinBidRequest {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("creativeIds") != null && !jsonObj.get("creativeIds").isJsonArray()) {
+      if (jsonObj.get("creativeIds") != null && !jsonObj.get("creativeIds").isJsonNull() && !jsonObj.get("creativeIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `creativeIds` to be an array in the JSON string but got `%s`", jsonObj.get("creativeIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("productIds") != null && !jsonObj.get("productIds").isJsonArray()) {
+      if (jsonObj.get("productIds") != null && !jsonObj.get("productIds").isJsonNull() && !jsonObj.get("productIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `productIds` to be an array in the JSON string but got `%s`", jsonObj.get("productIds").toString()));
       }
   }

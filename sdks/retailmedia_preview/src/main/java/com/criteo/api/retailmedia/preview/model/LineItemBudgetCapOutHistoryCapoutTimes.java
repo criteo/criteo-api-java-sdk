@@ -283,19 +283,19 @@ public class LineItemBudgetCapOutHistoryCapoutTimes {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("daily") != null && !jsonObj.get("daily").isJsonArray()) {
+      if (jsonObj.get("daily") != null && !jsonObj.get("daily").isJsonNull() && !jsonObj.get("daily").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `daily` to be an array in the JSON string but got `%s`", jsonObj.get("daily").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("hourly") != null && !jsonObj.get("hourly").isJsonArray()) {
+      if (jsonObj.get("hourly") != null && !jsonObj.get("hourly").isJsonNull() && !jsonObj.get("hourly").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `hourly` to be an array in the JSON string but got `%s`", jsonObj.get("hourly").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("monthly") != null && !jsonObj.get("monthly").isJsonArray()) {
+      if (jsonObj.get("monthly") != null && !jsonObj.get("monthly").isJsonNull() && !jsonObj.get("monthly").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `monthly` to be an array in the JSON string but got `%s`", jsonObj.get("monthly").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("total") != null && !jsonObj.get("total").isJsonArray()) {
+      if (jsonObj.get("total") != null && !jsonObj.get("total").isJsonNull() && !jsonObj.get("total").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `total` to be an array in the JSON string but got `%s`", jsonObj.get("total").toString()));
       }
   }

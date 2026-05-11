@@ -355,19 +355,19 @@ public class CgAudienceSegmentSearchEntityV1 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("audienceSegmentIds") != null && !jsonObj.get("audienceSegmentIds").isJsonArray()) {
+      if (jsonObj.get("audienceSegmentIds") != null && !jsonObj.get("audienceSegmentIds").isJsonNull() && !jsonObj.get("audienceSegmentIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceSegmentIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("audienceSegmentTypes") != null && !jsonObj.get("audienceSegmentTypes").isJsonArray()) {
+      if (jsonObj.get("audienceSegmentTypes") != null && !jsonObj.get("audienceSegmentTypes").isJsonNull() && !jsonObj.get("audienceSegmentTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentTypes` to be an array in the JSON string but got `%s`", jsonObj.get("audienceSegmentTypes").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("dataProviderIds") != null && !jsonObj.get("dataProviderIds").isJsonArray()) {
+      if (jsonObj.get("dataProviderIds") != null && !jsonObj.get("dataProviderIds").isJsonNull() && !jsonObj.get("dataProviderIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `dataProviderIds` to be an array in the JSON string but got `%s`", jsonObj.get("dataProviderIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("remoteIds") != null && !jsonObj.get("remoteIds").isJsonArray()) {
+      if (jsonObj.get("remoteIds") != null && !jsonObj.get("remoteIds").isJsonNull() && !jsonObj.get("remoteIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `remoteIds` to be an array in the JSON string but got `%s`", jsonObj.get("remoteIds").toString()));
       }
   }

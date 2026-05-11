@@ -692,33 +692,33 @@ public class RealTimeProductReportJob {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonArray()) {
+      if (jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonNull() && !jsonObj.get("advertiserIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonArray()) {
+      if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonNull() && !jsonObj.get("campaignIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignIds` to be an array in the JSON string but got `%s`", jsonObj.get("campaignIds").toString()));
       }
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {
+      if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonNull() && !jsonObj.get("dimensions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
       }
       if ((jsonObj.get("fileFormat") != null && !jsonObj.get("fileFormat").isJsonNull()) && !jsonObj.get("fileFormat").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fileFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fileFormat").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonArray()) {
+      if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonNull() && !jsonObj.get("metrics").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("partnerIds") != null && !jsonObj.get("partnerIds").isJsonArray()) {
+      if (jsonObj.get("partnerIds") != null && !jsonObj.get("partnerIds").isJsonNull() && !jsonObj.get("partnerIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `partnerIds` to be an array in the JSON string but got `%s`", jsonObj.get("partnerIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("sellerIds") != null && !jsonObj.get("sellerIds").isJsonArray()) {
+      if (jsonObj.get("sellerIds") != null && !jsonObj.get("sellerIds").isJsonNull() && !jsonObj.get("sellerIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `sellerIds` to be an array in the JSON string but got `%s`", jsonObj.get("sellerIds").toString()));
       }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
