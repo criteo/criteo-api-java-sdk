@@ -1406,7 +1406,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * This endpoint is subject to specific rate limits.
+     * 
      * @param reportId  (required)
      * @return RealTimeProductReportJobStatusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1423,7 +1423,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * This endpoint is subject to specific rate limits.
+     * 
      * @param reportId  (required)
      * @return ApiResponse&lt;RealTimeProductReportJobStatusResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1441,7 +1441,7 @@ public class AnalyticsApi {
 
     /**
      *  (asynchronously)
-     * This endpoint is subject to specific rate limits.
+     * 
      * @param reportId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

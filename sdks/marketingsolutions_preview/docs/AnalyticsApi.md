@@ -918,8 +918,6 @@ public class Example {
 
 
 
-This endpoint is subject to specific rate limits.
-
 ### Example
 
 ```java

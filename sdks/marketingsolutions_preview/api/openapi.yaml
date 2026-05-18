@@ -3159,7 +3159,6 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}:
     get:
-      description: This endpoint is subject to specific rate limits.
       operationId: GetRealtimeProductJob
       parameters:
       - explode: false
