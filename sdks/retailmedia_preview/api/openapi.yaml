@@ -1703,7 +1703,7 @@ paths:
       x-accepts: application/json
   /preview/retail-media/insights/share-of-voice:
     post:
-      description: Generate a share of voice by category insight
+      description: Generate a share of voice insight
       operationId: GenerateShareOfVoiceInsight
       requestBody:
         content:
@@ -14893,6 +14893,9 @@ components:
           - servedCategories
           - servedCategories
           retailerId: retailerId
+        accountIds:
+        - accountIds
+        - accountIds
         keywordTypes:
         - unknown
         - unknown
@@ -14907,6 +14910,11 @@ components:
       properties:
         accountId:
           type: string
+        accountIds:
+          items:
+            type: string
+          nullable: true
+          type: array
         aggregationLevel:
           default: category
           enum:
@@ -15055,6 +15063,9 @@ components:
               - servedCategories
               - servedCategories
               retailerId: retailerId
+            accountIds:
+            - accountIds
+            - accountIds
             keywordTypes:
             - unknown
             - unknown
@@ -15098,6 +15109,9 @@ components:
             - servedCategories
             - servedCategories
             retailerId: retailerId
+          accountIds:
+          - accountIds
+          - accountIds
           keywordTypes:
           - unknown
           - unknown

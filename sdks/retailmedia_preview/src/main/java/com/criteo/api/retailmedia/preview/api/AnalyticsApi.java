@@ -890,7 +890,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * Generate a share of voice by category insight
+     * Generate a share of voice insight
      * @param shareOfVoiceInsightRequest  (optional)
      * @return AsyncInsightResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -907,7 +907,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * Generate a share of voice by category insight
+     * Generate a share of voice insight
      * @param shareOfVoiceInsightRequest  (optional)
      * @return ApiResponse&lt;AsyncInsightResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -925,7 +925,7 @@ public class AnalyticsApi {
 
     /**
      *  (asynchronously)
-     * Generate a share of voice by category insight
+     * Generate a share of voice insight
      * @param shareOfVoiceInsightRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

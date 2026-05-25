@@ -57,6 +57,10 @@ public class ShareOfVoiceInsight {
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
   private String accountId;
 
+  public static final String SERIALIZED_NAME_ACCOUNT_IDS = "accountIds";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_IDS)
+  private List<String> accountIds = null;
+
   /**
    * Gets or Sets aggregationLevel
    */
@@ -500,6 +504,36 @@ public class ShareOfVoiceInsight {
   }
 
 
+  public ShareOfVoiceInsight accountIds(List<String> accountIds) {
+    
+    this.accountIds = accountIds;
+    return this;
+  }
+
+  public ShareOfVoiceInsight addAccountIdsItem(String accountIdsItem) {
+    if (this.accountIds == null) {
+      this.accountIds = null;
+    }
+    this.accountIds.add(accountIdsItem);
+    return this;
+  }
+
+   /**
+   * Get accountIds
+   * @return accountIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getAccountIds() {
+    return accountIds;
+  }
+
+
+  public void setAccountIds(List<String> accountIds) {
+    this.accountIds = accountIds;
+  }
+
+
   public ShareOfVoiceInsight aggregationLevel(AggregationLevelEnum aggregationLevel) {
     
     this.aggregationLevel = aggregationLevel;
@@ -825,6 +859,7 @@ public class ShareOfVoiceInsight {
     }
     ShareOfVoiceInsight shareOfVoiceInsight = (ShareOfVoiceInsight) o;
     return Objects.equals(this.accountId, shareOfVoiceInsight.accountId) &&
+        Objects.equals(this.accountIds, shareOfVoiceInsight.accountIds) &&
         Objects.equals(this.aggregationLevel, shareOfVoiceInsight.aggregationLevel) &&
         Objects.equals(this.brandIds, shareOfVoiceInsight.brandIds) &&
         Objects.equals(this.campaignType, shareOfVoiceInsight.campaignType) &&
@@ -845,7 +880,7 @@ public class ShareOfVoiceInsight {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, aggregationLevel, brandIds, campaignType, dimensions, endDate, format, keywords, keywordTypes, metrics, retailerIds, servedCategories, startDate);
+    return Objects.hash(accountId, accountIds, aggregationLevel, brandIds, campaignType, dimensions, endDate, format, keywords, keywordTypes, metrics, retailerIds, servedCategories, startDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -860,6 +895,7 @@ public class ShareOfVoiceInsight {
     StringBuilder sb = new StringBuilder();
     sb.append("class ShareOfVoiceInsight {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
+    sb.append("    accountIds: ").append(toIndentedString(accountIds)).append("\n");
     sb.append("    aggregationLevel: ").append(toIndentedString(aggregationLevel)).append("\n");
     sb.append("    brandIds: ").append(toIndentedString(brandIds)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
@@ -895,6 +931,7 @@ public class ShareOfVoiceInsight {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("accountId");
+    openapiFields.add("accountIds");
     openapiFields.add("aggregationLevel");
     openapiFields.add("brandIds");
     openapiFields.add("campaignType");
@@ -946,6 +983,10 @@ public class ShareOfVoiceInsight {
       }
       if (!jsonObj.get("accountId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("accountIds") != null && !jsonObj.get("accountIds").isJsonNull() && !jsonObj.get("accountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `accountIds` to be an array in the JSON string but got `%s`", jsonObj.get("accountIds").toString()));
       }
       if ((jsonObj.get("aggregationLevel") != null && !jsonObj.get("aggregationLevel").isJsonNull()) && !jsonObj.get("aggregationLevel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `aggregationLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aggregationLevel").toString()));

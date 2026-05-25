@@ -560,7 +560,7 @@ public class Example {
 
 
 
-Generate a share of voice by category insight
+Generate a share of voice insight
 
 ### Example
 

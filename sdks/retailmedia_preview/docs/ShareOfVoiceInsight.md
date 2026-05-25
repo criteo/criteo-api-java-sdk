@@ -9,6 +9,7 @@ Description of a Share of voice insight
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**accountId** | **String** |  |  |
+|**accountIds** | **List&lt;String&gt;** |  |  [optional] |
 |**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) |  |  [optional] |
 |**brandIds** | **List&lt;String&gt;** |  |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) |  |  [optional] |
