@@ -41,6 +41,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: "/preview/ads/{ad-id}/product-filter"
       tags:
       - Reco
       x-accepts: application/json
@@ -67,6 +68,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Read
+      summary: "/preview/ads/{ad-id}/product-filter"
       tags:
       - Reco
       x-accepts: application/json
@@ -98,6 +100,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: "/preview/ads/{ad-id}/product-filter"
       tags:
       - Reco
       x-content-type: application/json
@@ -122,6 +125,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/preview/ads/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -148,6 +152,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/preview/ads/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -195,6 +200,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/preview/advertisers/{advertiser-id}/ads"
       tags:
       - Creative
       x-accepts: application/json
@@ -227,6 +233,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/preview/advertisers/{advertiser-id}/ads"
       tags:
       - Creative
       x-content-type: application/json
@@ -275,6 +282,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/preview/advertisers/{advertiser-id}/coupons"
       tags:
       - Creative
       x-accepts: application/json
@@ -307,6 +315,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/preview/advertisers/{advertiser-id}/coupons"
       tags:
       - Creative
       x-content-type: application/json
@@ -343,6 +352,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/preview/advertisers/{advertiser-id}/coupons-supported-sizes"
       tags:
       - Creative
       x-accepts: application/json
@@ -373,6 +383,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/preview/advertisers/{advertiser-id}/coupons/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -406,6 +417,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/preview/advertisers/{advertiser-id}/coupons/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -446,6 +458,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/preview/advertisers/{advertiser-id}/coupons/{id}"
       tags:
       - Creative
       x-content-type: application/json
@@ -502,6 +515,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/preview/advertisers/{advertiser-id}/coupons/{id}/preview"
       tags:
       - Creative
       x-accepts: application/json
@@ -551,6 +565,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/preview/advertisers/{advertiser-id}/creatives"
       tags:
       - Creative
       x-accepts: application/json
@@ -583,6 +598,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/preview/advertisers/{advertiser-id}/creatives"
       tags:
       - Creative
       x-content-type: application/json
@@ -618,6 +634,7 @@ paths:
           description: Success
       security:
       - oauth: []
+      summary: "/preview/advertisers/{advertiser-id}/datasets"
       tags:
       - Advertiser
       x-accepts: application/json
@@ -654,6 +671,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/advertisers/{advertiserId}/targeting/bundle-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -681,6 +699,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/preview/advertisers/{advertiserId}/targeting/bundle-rules"
       tags:
       - Campaign
       x-accepts: application/json
@@ -717,6 +736,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/advertisers/{advertiserId}/targeting/bundle-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -754,6 +774,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/advertisers/{advertiserId}/targeting/bundle-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -791,6 +812,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/advertisers/{advertiserId}/targeting/domain-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -818,6 +840,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/preview/advertisers/{advertiserId}/targeting/domain-rules"
       tags:
       - Campaign
       x-accepts: application/json
@@ -854,6 +877,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/advertisers/{advertiserId}/targeting/domain-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -891,6 +915,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/advertisers/{advertiserId}/targeting/domain-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -924,6 +949,7 @@ paths:
           description: Success
       security:
       - oauth: []
+      summary: /preview/advertisers/me
       tags:
       - Advertiser
       x-accepts: application/json
@@ -960,6 +986,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/campaigns/{campaignId}/targeting/bundle-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -987,6 +1014,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/preview/campaigns/{campaignId}/targeting/bundle-rules"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1023,6 +1051,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/campaigns/{campaignId}/targeting/bundle-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1060,6 +1089,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/campaigns/{campaignId}/targeting/bundle-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1097,6 +1127,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/campaigns/{campaignId}/targeting/domain-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1124,6 +1155,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/preview/campaigns/{campaignId}/targeting/domain-rules"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1160,6 +1192,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/campaigns/{campaignId}/targeting/domain-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1197,6 +1230,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/campaigns/{campaignId}/targeting/domain-rules"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1226,6 +1260,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Catalog_Manage
+      summary: /preview/catalog/products/batch
       tags:
       - Catalog
       x-content-type: application/json
@@ -1253,6 +1288,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Catalog_Read
+      summary: "/preview/catalog/products/batch/report/{operation-token}"
       tags:
       - Catalog
       x-accepts: application/json
@@ -1289,6 +1325,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Catalog_Read
+      summary: "/preview/catalog/stats/merchants/{merchant-id}"
       tags:
       - Catalog
       x-accepts: application/json
@@ -1351,6 +1388,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /preview/categories/report
       tags:
       - Analytics
       x-content-type: application/json
@@ -1374,6 +1412,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/preview/creatives/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -1399,6 +1438,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/preview/creatives/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -1431,6 +1471,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/preview/creatives/{id}"
       tags:
       - Creative
       x-content-type: application/json
@@ -1479,6 +1520,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/preview/creatives/{id}/preview"
       tags:
       - Creative
       x-accepts: application/json
@@ -1505,6 +1547,7 @@ paths:
           description: Success
       security:
       - oauth: []
+      summary: /preview/industries
       tags:
       - Advertiser
       x-accepts: application/json
@@ -1575,6 +1618,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: "/preview/log-level/advertisers/{advertiser-id}/report"
       tags:
       - Analytics
       x-content-type: application/json
@@ -1601,6 +1645,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /preview/marketing-solutions/ad-sets
       tags:
       - Campaign
       x-content-type: application/json
@@ -1626,6 +1671,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /preview/marketing-solutions/ad-sets
       tags:
       - Campaign
       x-content-type: application/json
@@ -1653,6 +1699,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1687,6 +1734,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/audience"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1716,6 +1764,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1752,6 +1801,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1781,6 +1831,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1818,6 +1869,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1846,6 +1898,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1880,6 +1933,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1908,6 +1962,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids/disable"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1935,6 +1990,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1969,6 +2025,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1997,6 +2054,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2025,6 +2083,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: /preview/marketing-solutions/ad-sets/search
       tags:
       - Campaign
       x-content-type: application/json
@@ -2051,6 +2110,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /preview/marketing-solutions/ad-sets/start
       tags:
       - Campaign
       x-content-type: application/json
@@ -2077,6 +2137,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /preview/marketing-solutions/ad-sets/stop
       tags:
       - Campaign
       x-content-type: application/json
@@ -2095,6 +2156,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: /preview/marketing-solutions/ad-sets/targeting/supply-vendors
       tags:
       - Campaign
       x-accepts: application/json
@@ -2118,6 +2180,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/preview/marketing-solutions/ads/{ad-id}/audience-segment"
       tags:
       - Creative
       x-accepts: application/json
@@ -2144,6 +2207,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/preview/marketing-solutions/ads/{ad-id}/audience-segment"
       tags:
       - Creative
       x-accepts: application/json
@@ -2179,6 +2243,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/preview/marketing-solutions/ads/{ad-id}/audience-segment"
       tags:
       - Creative
       x-content-type: application/json
@@ -2206,6 +2271,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Read
+      summary: "/preview/marketing-solutions/ads/{ad-id}/product-boost"
       tags:
       - Reco
       x-accepts: application/json
@@ -2240,6 +2306,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: "/preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id}"
       tags:
       - Reco
       x-accepts: application/json
@@ -2273,6 +2340,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Read
+      summary: "/preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id}"
       tags:
       - Reco
       x-accepts: application/json
@@ -2318,6 +2386,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: "/preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id}"
       tags:
       - Reco
       x-content-type: application/json
@@ -2346,6 +2415,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /preview/marketing-solutions/audience-segments
       tags:
       - Audience
       x-content-type: application/json
@@ -2386,6 +2456,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: "/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list"
       tags:
       - Audience
       x-accepts: application/json
@@ -2439,6 +2510,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: "/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list"
       tags:
       - Audience
       x-content-type: application/json
@@ -2467,6 +2539,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Read
+      summary: "/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics"
       tags:
       - Audience
       x-accepts: application/json
@@ -2493,6 +2566,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /preview/marketing-solutions/audience-segments/compute-sizes
       tags:
       - Audience
       x-content-type: application/json
@@ -2520,6 +2594,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /preview/marketing-solutions/audience-segments/create
       tags:
       - Audience
       x-content-type: application/json
@@ -2546,6 +2621,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /preview/marketing-solutions/audience-segments/delete
       tags:
       - Audience
       x-content-type: application/json
@@ -2573,6 +2649,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /preview/marketing-solutions/audience-segments/estimate-size
       tags:
       - Audience
       x-content-type: application/json
@@ -2609,6 +2686,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Read
+      summary: /preview/marketing-solutions/audience-segments/in-market-brands
       tags:
       - Audience
       x-accepts: application/json
@@ -2645,6 +2723,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Read
+      summary: /preview/marketing-solutions/audience-segments/in-market-interests
       tags:
       - Audience
       x-accepts: application/json
@@ -2695,6 +2774,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Read
+      summary: /preview/marketing-solutions/audience-segments/search
       tags:
       - Audience
       x-content-type: application/json
@@ -2723,6 +2803,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /preview/marketing-solutions/audiences
       tags:
       - Audience
       x-content-type: application/json
@@ -2772,6 +2853,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: "/preview/marketing-solutions/audiences/{audience-id}/contactlist-attributes"
       tags:
       - Audience
       x-content-type: application/json
@@ -2799,6 +2881,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /preview/marketing-solutions/audiences/compute-sizes
       tags:
       - Audience
       x-content-type: application/json
@@ -2827,6 +2910,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /preview/marketing-solutions/audiences/create
       tags:
       - Audience
       x-content-type: application/json
@@ -2857,6 +2941,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /preview/marketing-solutions/audiences/delete
       tags:
       - Audience
       x-content-type: application/json
@@ -2884,6 +2969,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /preview/marketing-solutions/audiences/estimate-size
       tags:
       - Audience
       x-content-type: application/json
@@ -2935,6 +3021,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Read
+      summary: /preview/marketing-solutions/audiences/search
       tags:
       - Audience
       x-content-type: application/json
@@ -2963,6 +3050,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /preview/marketing-solutions/campaigns
       tags:
       - Campaign
       x-content-type: application/json
@@ -2990,6 +3078,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /preview/marketing-solutions/campaigns
       tags:
       - Campaign
       x-content-type: application/json
@@ -3019,6 +3108,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/preview/marketing-solutions/campaigns/{campaign-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -3045,6 +3135,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: /preview/marketing-solutions/campaigns/search
       tags:
       - Campaign
       x-content-type: application/json
@@ -3085,6 +3176,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Read
+      summary: "/preview/marketing-solutions/dataset/{dataset-id}/product-boost"
       tags:
       - Reco
       x-accepts: application/json
@@ -3116,6 +3208,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: "/preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}"
       tags:
       - Analytics
       x-accepts: application/json
@@ -3153,6 +3246,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
       tags:
       - Analytics
       x-content-type: application/json
@@ -3184,6 +3278,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: "/preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}"
       tags:
       - Analytics
       x-accepts: application/json
@@ -3200,6 +3295,7 @@ paths:
           description: Success
       security:
       - oauth: []
+      summary: /preview/marketing-solutions/me
       tags:
       - Gateway
       x-accepts: application/json
@@ -3270,6 +3366,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /preview/placements/report
       tags:
       - Analytics
       x-content-type: application/json
@@ -3295,6 +3392,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: /preview/product-sets
       tags:
       - Reco
       x-content-type: application/json
@@ -3322,6 +3420,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: "/preview/product-sets/{product-set-id}"
       tags:
       - Reco
       x-accepts: application/json
@@ -3347,6 +3446,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Read
+      summary: "/preview/product-sets/{product-set-id}"
       tags:
       - Reco
       x-accepts: application/json
@@ -3379,6 +3479,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: "/preview/product-sets/{product-set-id}"
       tags:
       - Reco
       x-content-type: application/json
@@ -3406,6 +3507,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Read
+      summary: "/preview/product-sets/{product-set-id}/product-filters"
       tags:
       - Reco
       x-accepts: application/json
@@ -3432,6 +3534,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Read
+      summary: "/preview/product-sets/dataset/{dataset-id}"
       tags:
       - Reco
       x-accepts: application/json
@@ -3457,6 +3560,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_OnSiteRecommendation_Read
+      summary: /preview/recommendation/search
       tags:
       - OnSiteRecommendation
       x-content-type: application/json
@@ -3482,6 +3586,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_OnSiteRecommendation_Read
+      summary: /preview/recommendation/search-conversational
       tags:
       - OnSiteRecommendation
       x-content-type: application/json
@@ -3509,6 +3614,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: "/preview/reports/{report-id}/output"
       tags:
       - Analytics
       x-accepts: application/json
@@ -3541,6 +3647,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: "/preview/reports/{report-id}/status"
       tags:
       - Analytics
       x-accepts: application/json
@@ -3579,6 +3686,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /preview/reports/async-audience-performance
       tags:
       - Analytics
       x-content-type: application/json
@@ -3619,6 +3727,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /preview/reports/async-statistics
       tags:
       - Analytics
       x-content-type: application/json
@@ -3706,6 +3815,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /preview/reports/creatives
       tags:
       - Analytics
       x-content-type: application/json
@@ -3772,6 +3882,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /preview/reports/realtime
       tags:
       - Analytics
       x-content-type: application/json
@@ -3855,6 +3966,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /preview/reports/top-products
       tags:
       - Analytics
       x-content-type: application/json
@@ -3933,6 +4045,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /preview/statistics/report
       tags:
       - Analytics
       x-content-type: application/json
@@ -3989,6 +4102,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /preview/transactions/report
       tags:
       - Analytics
       x-content-type: application/json

@@ -150,7 +150,7 @@ public class OnSiteRecommendationApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations
      * Ask a chatbot for a product recommendation
      * @param catalogid the identifier of the catalog to query (required)
      * @param inbotDiscussionBodyModel  (required)
@@ -168,7 +168,7 @@ public class OnSiteRecommendationApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations
      * Ask a chatbot for a product recommendation
      * @param catalogid the identifier of the catalog to query (required)
      * @param inbotDiscussionBodyModel  (required)
@@ -187,7 +187,7 @@ public class OnSiteRecommendationApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations (asynchronously)
      * Ask a chatbot for a product recommendation
      * @param catalogid the identifier of the catalog to query (required)
      * @param inbotDiscussionBodyModel  (required)

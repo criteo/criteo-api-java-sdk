@@ -4,9 +4,9 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getCatalogMerchantStats**](CatalogApi.md#getCatalogMerchantStats) | **GET** /preview/catalog/stats/merchants/{merchant-id} |  |
-| [**getCatalogProductsBatchReport**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /preview/catalog/products/batch/report/{operation-token} |  |
-| [**submitCatalogProductsBatch**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /preview/catalog/products/batch |  |
+| [**getCatalogMerchantStats**](CatalogApi.md#getCatalogMerchantStats) | **GET** /preview/catalog/stats/merchants/{merchant-id} | /preview/catalog/stats/merchants/{merchant-id} |
+| [**getCatalogProductsBatchReport**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /preview/catalog/products/batch/report/{operation-token} | /preview/catalog/products/batch/report/{operation-token} |
+| [**submitCatalogProductsBatch**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /preview/catalog/products/batch | /preview/catalog/products/batch |
 
 
 
@@ -14,7 +14,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > StatisticsOkResponse getCatalogMerchantStats(merchantId, lastNumHours)
 
-
+/preview/catalog/stats/merchants/{merchant-id}
 
 get an stats request
 
@@ -105,7 +105,7 @@ public class Example {
 
 > ReportOkResponse getCatalogProductsBatchReport(operationToken)
 
-
+/preview/catalog/products/batch/report/{operation-token}
 
 Get the report of an asynchronous batch operation previously requested
 
@@ -194,7 +194,7 @@ public class Example {
 
 > BatchAcceptedResponse submitCatalogProductsBatch(productsCustomBatchRequest)
 
-
+/preview/catalog/products/batch
 
 Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
 

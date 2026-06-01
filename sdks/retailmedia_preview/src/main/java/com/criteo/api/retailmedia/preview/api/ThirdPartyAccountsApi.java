@@ -151,7 +151,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/add
      * add the provided brands to an account. This will not remove any existing brands.
      * @param accountId account to add brands to (required)
      * @param valueResourceInputOfRetailMediaBrands list of bands to add to an account (optional)
@@ -169,7 +169,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/add
      * add the provided brands to an account. This will not remove any existing brands.
      * @param accountId account to add brands to (required)
      * @param valueResourceInputOfRetailMediaBrands list of bands to add to an account (optional)
@@ -188,7 +188,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/add (asynchronously)
      * add the provided brands to an account. This will not remove any existing brands.
      * @param accountId account to add brands to (required)
      * @param valueResourceInputOfRetailMediaBrands list of bands to add to an account (optional)
@@ -279,7 +279,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/third-party-accounts/{accountId}/create-brand-account
      * Create a private market demand brand account under a given parent account.
      * @param accountId parent supply account to create account under (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreationV2  (optional)
@@ -297,7 +297,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/third-party-accounts/{accountId}/create-brand-account
      * Create a private market demand brand account under a given parent account.
      * @param accountId parent supply account to create account under (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreationV2  (optional)
@@ -316,7 +316,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/third-party-accounts/{accountId}/create-brand-account (asynchronously)
      * Create a private market demand brand account under a given parent account.
      * @param accountId parent supply account to create account under (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreationV2  (optional)
@@ -407,7 +407,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/third-party-accounts/{accountId}/create-seller-account
      * Create a private market demand seller account under a given parent account.
      * @param accountId parent supply account to create account under (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreationV2  (optional)
@@ -425,7 +425,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/third-party-accounts/{accountId}/create-seller-account
      * Create a private market demand seller account under a given parent account.
      * @param accountId parent supply account to create account under (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreationV2  (optional)
@@ -444,7 +444,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/third-party-accounts/{accountId}/create-seller-account (asynchronously)
      * Create a private market demand seller account under a given parent account.
      * @param accountId parent supply account to create account under (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreationV2  (optional)
@@ -534,7 +534,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{accountId}/grant-third-party-consent
      * Grant third-party consent to a business application on behalf of a Private Market demand account
      * @param accountId The demand account ID on which to grant consent (required)
      * @param grantConsentInput The request input containing clientId, callbackURL, and callbackState (optional)
@@ -550,7 +550,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{accountId}/grant-third-party-consent
      * Grant third-party consent to a business application on behalf of a Private Market demand account
      * @param accountId The demand account ID on which to grant consent (required)
      * @param grantConsentInput The request input containing clientId, callbackURL, and callbackState (optional)
@@ -568,7 +568,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/accounts/{accountId}/grant-third-party-consent (asynchronously)
      * Grant third-party consent to a business application on behalf of a Private Market demand account
      * @param accountId The demand account ID on which to grant consent (required)
      * @param grantConsentInput The request input containing clientId, callbackURL, and callbackState (optional)
@@ -663,7 +663,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove
      * Attempt to remove the provided brand from the account.
      * @param accountId account id to remove brand from (required)
      * @param brandId brand to remove (required)
@@ -681,7 +681,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove
      * Attempt to remove the provided brand from the account.
      * @param accountId account id to remove brand from (required)
      * @param brandId brand to remove (required)
@@ -700,7 +700,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove (asynchronously)
      * Attempt to remove the provided brand from the account.
      * @param accountId account id to remove brand from (required)
      * @param brandId brand to remove (required)
@@ -796,7 +796,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/third-party-accounts/{accountId}/sellers
      * Update the list of sellers mapped to the account. This will override any existing mappings.
      * @param accountId accountId to update sellers for (required)
      * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
@@ -814,7 +814,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/third-party-accounts/{accountId}/sellers
      * Update the list of sellers mapped to the account. This will override any existing mappings.
      * @param accountId accountId to update sellers for (required)
      * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
@@ -833,7 +833,7 @@ public class ThirdPartyAccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/third-party-accounts/{accountId}/sellers (asynchronously)
      * Update the list of sellers mapped to the account. This will override any existing mappings.
      * @param accountId accountId to update sellers for (required)
      * @param valueResourceCollectionInputOfRetailMediaSeller  (required)

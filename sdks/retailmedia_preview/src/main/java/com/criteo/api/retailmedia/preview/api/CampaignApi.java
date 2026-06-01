@@ -179,7 +179,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/balances/{balanceId}/campaigns/append
      * Appends one or more campaigns to the specified balance
      * @param balanceId The balance to add campaigns from (required)
      * @param valueResourceInputAppendCampaignsRequestV1 The balance campaign appending request. (required)
@@ -197,7 +197,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/balances/{balanceId}/campaigns/append
      * Appends one or more campaigns to the specified balance
      * @param balanceId The balance to add campaigns from (required)
      * @param valueResourceInputAppendCampaignsRequestV1 The balance campaign appending request. (required)
@@ -216,7 +216,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/balances/{balanceId}/campaigns/append (asynchronously)
      * Appends one or more campaigns to the specified balance
      * @param balanceId The balance to add campaigns from (required)
      * @param valueResourceInputAppendCampaignsRequestV1 The balance campaign appending request. (required)
@@ -307,7 +307,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/create
      * Add Specific Product Buttons
      * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonRequestListRequest List of Product Buttons to append (optional)
@@ -325,7 +325,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/create
      * Add Specific Product Buttons
      * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonRequestListRequest List of Product Buttons to append (optional)
@@ -344,7 +344,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/create (asynchronously)
      * Add Specific Product Buttons
      * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonRequestListRequest List of Product Buttons to append (optional)
@@ -436,7 +436,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/products/append
      * Append a collection of promoted products to a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -455,7 +455,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/products/append
      * Append a collection of promoted products to a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -475,7 +475,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/line-items/{line-item-id}/products/append (asynchronously)
      * Append a collection of promoted products to a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -567,7 +567,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/retailers/{retailerId}/compute-display-min-bid
      * Computes the min bid for relevant page types based on the provided information
      * @param retailerId The retailer id (required)
      * @param valueResourceInputDisplayAuctionMinBidRequest The details for what creatives and product ids to use to compute the min bids (optional)
@@ -585,7 +585,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/retailers/{retailerId}/compute-display-min-bid
      * Computes the min bid for relevant page types based on the provided information
      * @param retailerId The retailer id (required)
      * @param valueResourceInputDisplayAuctionMinBidRequest The details for what creatives and product ids to use to compute the min bids (optional)
@@ -604,7 +604,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/retailers/{retailerId}/compute-display-min-bid (asynchronously)
      * Computes the min bid for relevant page types based on the provided information
      * @param retailerId The retailer id (required)
      * @param valueResourceInputDisplayAuctionMinBidRequest The details for what creatives and product ids to use to compute the min bids (optional)
@@ -700,7 +700,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (required)
@@ -718,7 +718,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (required)
@@ -737,7 +737,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items (asynchronously)
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param valueResourceInputOfSponsoredProductsLineItemCreateRequestModel The line item settings to create a line item with (required)
@@ -833,7 +833,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/creatives
      * Create a creative for an account
      * @param accountId External account id to create a creative for (required)
      * @param creativeCreateModel2 The creative to create (required)
@@ -851,7 +851,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/creatives
      * Create a creative for an account
      * @param accountId External account id to create a creative for (required)
      * @param creativeCreateModel2 The creative to create (required)
@@ -870,7 +870,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/accounts/{account-id}/creatives (asynchronously)
      * Create a creative for an account
      * @param accountId External account id to create a creative for (required)
      * @param creativeCreateModel2 The creative to create (required)
@@ -966,7 +966,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
      * Creates a new preferred line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (required)
@@ -984,7 +984,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
      * Creates a new preferred line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (required)
@@ -1003,7 +1003,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items (asynchronously)
      * Creates a new preferred line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (required)
@@ -1099,7 +1099,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/balances/{balanceId}/campaigns/delete
      * Deletes one or more campaigns on the specified balance
      * @param balanceId The balance to remove campaigns from (required)
      * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
@@ -1117,7 +1117,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/balances/{balanceId}/campaigns/delete
      * Deletes one or more campaigns on the specified balance
      * @param balanceId The balance to remove campaigns from (required)
      * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
@@ -1136,7 +1136,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/balances/{balanceId}/campaigns/delete (asynchronously)
      * Deletes one or more campaigns on the specified balance
      * @param balanceId The balance to remove campaigns from (required)
      * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
@@ -1232,7 +1232,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      * Delete Specific Product Button
      * @param lineItemId LineItemId for productButton delete (required)
      * @param productButtonId productButtonId used for delete (required)
@@ -1250,7 +1250,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      * Delete Specific Product Button
      * @param lineItemId LineItemId for productButton delete (required)
      * @param productButtonId productButtonId used for delete (required)
@@ -1269,7 +1269,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} (asynchronously)
      * Delete Specific Product Button
      * @param lineItemId LineItemId for productButton delete (required)
      * @param productButtonId productButtonId used for delete (required)
@@ -1359,7 +1359,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/products/delete
      * Remove a collection of promoted products from a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -1375,7 +1375,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/products/delete
      * Remove a collection of promoted products from a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -1393,7 +1393,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/line-items/{line-item-id}/products/delete (asynchronously)
      * Remove a collection of promoted products from a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -1496,7 +1496,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/products
      * Retrieve a page of promoted products for a line item
      * @param lineItemId ID of the line item. (required)
      * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
@@ -1516,7 +1516,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/products
      * Retrieve a page of promoted products for a line item
      * @param lineItemId ID of the line item. (required)
      * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
@@ -1537,7 +1537,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/line-items/{line-item-id}/products (asynchronously)
      * Retrieve a page of promoted products for a line item
      * @param lineItemId ID of the line item. (required)
      * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
@@ -1628,7 +1628,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/auction-line-items/{lineItemId}
      * Gets a sponsored product line item by its id.
      * @param lineItemId The id of the line item (required)
      * @return EntityResourceOutcomeOfSponsoredProductsLineItem
@@ -1645,7 +1645,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/auction-line-items/{lineItemId}
      * Gets a sponsored product line item by its id.
      * @param lineItemId The id of the line item (required)
      * @return ApiResponse&lt;EntityResourceOutcomeOfSponsoredProductsLineItem&gt;
@@ -1663,7 +1663,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/auction-line-items/{lineItemId} (asynchronously)
      * Gets a sponsored product line item by its id.
      * @param lineItemId The id of the line item (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1766,7 +1766,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
      * Gets a page of sponsored product line items by campaign id.
      * @param campaignId The id of the campaign (required)
      * @param limit The number of elements to be returned on a page. (optional, default to 25)
@@ -1786,7 +1786,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
      * Gets a page of sponsored product line items by campaign id.
      * @param campaignId The id of the campaign (required)
      * @param limit The number of elements to be returned on a page. (optional, default to 25)
@@ -1807,7 +1807,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items (asynchronously)
      * Gets a page of sponsored product line items by campaign id.
      * @param campaignId The id of the campaign (required)
      * @param limit The number of elements to be returned on a page. (optional, default to 25)
@@ -1905,7 +1905,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/line-items/cap-out-history
      * Get the cap out history for line items
      * @param accountId account id that own the lineitem (required)
      * @param valueResourceInputLineItemBudgetCapOutHistoryRequest lineitem budgetcapout history  object (required)
@@ -1923,7 +1923,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/line-items/cap-out-history
      * Get the cap out history for line items
      * @param accountId account id that own the lineitem (required)
      * @param valueResourceInputLineItemBudgetCapOutHistoryRequest lineitem budgetcapout history  object (required)
@@ -1942,7 +1942,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/accounts/{account-id}/line-items/cap-out-history (asynchronously)
      * Get the cap out history for line items
      * @param accountId account id that own the lineitem (required)
      * @param valueResourceInputLineItemBudgetCapOutHistoryRequest lineitem budgetcapout history  object (required)
@@ -2031,7 +2031,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/catalogs/{catalogId}/status
      * Check the status of a catalog request.
      * @param catalogId A catalog ID returned from an account catalog request. (required)
      * @return EntityResourceOutcomeOfCatalogStatusV2
@@ -2048,7 +2048,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/catalogs/{catalogId}/status
      * Check the status of a catalog request.
      * @param catalogId A catalog ID returned from an account catalog request. (required)
      * @return ApiResponse&lt;EntityResourceOutcomeOfCatalogStatusV2&gt;
@@ -2066,7 +2066,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/catalogs/{catalogId}/status (asynchronously)
      * Check the status of a catalog request.
      * @param catalogId A catalog ID returned from an account catalog request. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2161,7 +2161,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
      * Get the specified creative
      * @param accountId External account id to retrieve creatives for (required)
      * @param creativeId Creative to get (required)
@@ -2179,7 +2179,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
      * Get the specified creative
      * @param accountId External account id to retrieve creatives for (required)
      * @param creativeId Creative to get (required)
@@ -2198,7 +2198,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id} (asynchronously)
      * Get the specified creative
      * @param accountId External account id to retrieve creatives for (required)
      * @param creativeId Creative to get (required)
@@ -2302,7 +2302,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
      * Gets page of preferred line item objects for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -2322,7 +2322,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
      * Gets page of preferred line item objects for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -2343,7 +2343,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items (asynchronously)
      * Gets page of preferred line item objects for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -2434,7 +2434,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/preferred-line-items/{line-item-id}
      * Gets the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @return PreferredLineItemV2Response
@@ -2451,7 +2451,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/preferred-line-items/{line-item-id}
      * Gets the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @return ApiResponse&lt;PreferredLineItemV2Response&gt;
@@ -2469,7 +2469,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/preferred-line-items/{line-item-id} (asynchronously)
      * Gets the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2564,7 +2564,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      * Get Specific Product Button
      * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonId productButtonId used for retrieval (required)
@@ -2582,7 +2582,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      * Get Specific Product Button
      * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonId productButtonId used for retrieval (required)
@@ -2601,7 +2601,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} (asynchronously)
      * Get Specific Product Button
      * @param lineItemId LineItemId for productButton retrieval (required)
      * @param productButtonId productButtonId used for retrieval (required)
@@ -2690,7 +2690,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons
      * Get LineItem Product Buttons
      * @param lineItemId LineItemId for productButton retrieval (required)
      * @return ProductButtonResponseListResponse
@@ -2707,7 +2707,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons
      * Get LineItem Product Buttons
      * @param lineItemId LineItemId for productButton retrieval (required)
      * @return ApiResponse&lt;ProductButtonResponseListResponse&gt;
@@ -2725,7 +2725,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons (asynchronously)
      * Get LineItem Product Buttons
      * @param lineItemId LineItemId for productButton retrieval (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2814,7 +2814,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/products/pause
      * Pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -2830,7 +2830,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/products/pause
      * Pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -2848,7 +2848,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/line-items/{line-item-id}/products/pause (asynchronously)
      * Pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -2953,7 +2953,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/creatives/search
      * Get account creatives
      * @param accountId External account id to retrieve creatives for (required)
      * @param entityResourceInputCreativeSearchRequest search request filter (required)
@@ -2973,7 +2973,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/creatives/search
      * Get account creatives
      * @param accountId External account id to retrieve creatives for (required)
      * @param entityResourceInputCreativeSearchRequest search request filter (required)
@@ -2994,7 +2994,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/accounts/{account-id}/creatives/search (asynchronously)
      * Get account creatives
      * @param accountId External account id to retrieve creatives for (required)
      * @param entityResourceInputCreativeSearchRequest search request filter (required)
@@ -3102,7 +3102,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{accountId}/retailers/search
      * Searches for retailers associated with the specified account based on provided search criteria
      * @param accountId The external account identifier (required)
      * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
@@ -3122,7 +3122,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{accountId}/retailers/search
      * Searches for retailers associated with the specified account based on provided search criteria
      * @param accountId The external account identifier (required)
      * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
@@ -3143,7 +3143,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/accounts/{accountId}/retailers/search (asynchronously)
      * Searches for retailers associated with the specified account based on provided search criteria
      * @param accountId The external account identifier (required)
      * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
@@ -3239,7 +3239,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/brands/search
      * Search for brands given a retailer ID and search term.
      * @param limit the number of brands to return (optional, default to 25)
      * @param offset offset of paginated results (optional, default to 0)
@@ -3258,7 +3258,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/brands/search
      * Search for brands given a retailer ID and search term.
      * @param limit the number of brands to return (optional, default to 25)
      * @param offset offset of paginated results (optional, default to 0)
@@ -3278,7 +3278,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/brands/search (asynchronously)
      * Search for brands given a retailer ID and search term.
      * @param limit the number of brands to return (optional, default to 25)
      * @param offset offset of paginated results (optional, default to 0)
@@ -3369,7 +3369,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/products/unpause
      * Un-pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -3385,7 +3385,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/products/unpause
      * Un-pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -3403,7 +3403,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/line-items/{line-item-id}/products/unpause (asynchronously)
      * Un-pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -3498,7 +3498,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/auction-line-items/{lineItemId}
      * Updates a Sponsored Products Line Item given a line item id and a request.
      * @param lineItemId The external line item ID of the sponsored products line item. (required)
      * @param valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel An update request containing all details of the requested update. (required)
@@ -3516,7 +3516,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/auction-line-items/{lineItemId}
      * Updates a Sponsored Products Line Item given a line item id and a request.
      * @param lineItemId The external line item ID of the sponsored products line item. (required)
      * @param valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel An update request containing all details of the requested update. (required)
@@ -3535,7 +3535,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/auction-line-items/{lineItemId} (asynchronously)
      * Updates a Sponsored Products Line Item given a line item id and a request.
      * @param lineItemId The external line item ID of the sponsored products line item. (required)
      * @param valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel An update request containing all details of the requested update. (required)
@@ -3639,7 +3639,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
      * Update a creative
      * @param accountId External account id containing the creative (required)
      * @param creativeId Creative to update (required)
@@ -3659,7 +3659,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
      * Update a creative
      * @param accountId External account id containing the creative (required)
      * @param creativeId Creative to update (required)
@@ -3680,7 +3680,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id} (asynchronously)
      * Update a creative
      * @param accountId External account id containing the creative (required)
      * @param creativeId Creative to update (required)
@@ -3778,7 +3778,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/preferred-line-items/{line-item-id}
      * Updates the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (required)
@@ -3796,7 +3796,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/preferred-line-items/{line-item-id}
      * Updates the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (required)
@@ -3815,7 +3815,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/preferred-line-items/{line-item-id} (asynchronously)
      * Updates the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (required)
@@ -3918,7 +3918,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      * Update Specific Product Button
      * @param lineItemId LineItemId for productButton update (required)
      * @param productButtonId productButtonId used for update (required)
@@ -3937,7 +3937,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      * Update Specific Product Button
      * @param lineItemId LineItemId for productButton update (required)
      * @param productButtonId productButtonId used for update (required)
@@ -3957,7 +3957,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} (asynchronously)
      * Update Specific Product Button
      * @param lineItemId LineItemId for productButton update (required)
      * @param productButtonId productButtonId used for update (required)

@@ -9,8 +9,8 @@ A leg of a flight schedule outlining which days and times the line item will run
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**dayOfWeek** | [**DayOfWeekEnum**](#DayOfWeekEnum) | Enum for the days of the week. |  |
-|**endTime** | **OffsetDateTime** |  |  |
-|**startTime** | **OffsetDateTime** |  |  |
+|**endTime** | **String** | Wall-clock time of day in HH:mm, 24-hour. No timezone. Example: 23:59. |  |
+|**startTime** | **String** | Wall-clock time of day in HH:mm, 24-hour. No timezone. Example: 08:00. |  |
 
 
 

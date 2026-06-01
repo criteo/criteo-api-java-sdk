@@ -150,7 +150,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/catalog/stats/merchants/{merchant-id}
      * get an stats request
      * @param merchantId merchant-id to get (required)
      * @param lastNumHours the last number of hours (optional)
@@ -168,7 +168,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/catalog/stats/merchants/{merchant-id}
      * get an stats request
      * @param merchantId merchant-id to get (required)
      * @param lastNumHours the last number of hours (optional)
@@ -187,7 +187,7 @@ public class CatalogApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/catalog/stats/merchants/{merchant-id} (asynchronously)
      * get an stats request
      * @param merchantId merchant-id to get (required)
      * @param lastNumHours the last number of hours (optional)
@@ -276,7 +276,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/catalog/products/batch/report/{operation-token}
      * Get the report of an asynchronous batch operation previously requested
      * @param operationToken The token returned by the batch endpoint. (required)
      * @return ReportOkResponse
@@ -293,7 +293,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/catalog/products/batch/report/{operation-token}
      * Get the report of an asynchronous batch operation previously requested
      * @param operationToken The token returned by the batch endpoint. (required)
      * @return ApiResponse&lt;ReportOkResponse&gt;
@@ -311,7 +311,7 @@ public class CatalogApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/catalog/products/batch/report/{operation-token} (asynchronously)
      * Get the report of an asynchronous batch operation previously requested
      * @param operationToken The token returned by the batch endpoint. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -399,7 +399,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/catalog/products/batch
      * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @return BatchAcceptedResponse
@@ -416,7 +416,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/catalog/products/batch
      * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @return ApiResponse&lt;BatchAcceptedResponse&gt;
@@ -434,7 +434,7 @@ public class CatalogApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/catalog/products/batch (asynchronously)
      * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @param _callback The callback to be executed when the API call finishes

@@ -4,12 +4,12 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addThirdPartyAccountBrands**](ThirdPartyAccountsApi.md#addThirdPartyAccountBrands) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/add |  |
-| [**createThirdPartyBrandAccount**](ThirdPartyAccountsApi.md#createThirdPartyBrandAccount) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-brand-account |  |
-| [**createThirdPartySellerAccount**](ThirdPartyAccountsApi.md#createThirdPartySellerAccount) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-seller-account |  |
-| [**grantThirdPartyConsent**](ThirdPartyAccountsApi.md#grantThirdPartyConsent) | **POST** /preview/retail-media/accounts/{accountId}/grant-third-party-consent |  |
-| [**removeThirdPartyAccountBrand**](ThirdPartyAccountsApi.md#removeThirdPartyAccountBrand) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove |  |
-| [**updateThirdPartyAccountSellers**](ThirdPartyAccountsApi.md#updateThirdPartyAccountSellers) | **PUT** /preview/retail-media/third-party-accounts/{accountId}/sellers |  |
+| [**addThirdPartyAccountBrands**](ThirdPartyAccountsApi.md#addThirdPartyAccountBrands) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/add | /preview/retail-media/third-party-accounts/{accountId}/brands/add |
+| [**createThirdPartyBrandAccount**](ThirdPartyAccountsApi.md#createThirdPartyBrandAccount) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-brand-account | /preview/retail-media/third-party-accounts/{accountId}/create-brand-account |
+| [**createThirdPartySellerAccount**](ThirdPartyAccountsApi.md#createThirdPartySellerAccount) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-seller-account | /preview/retail-media/third-party-accounts/{accountId}/create-seller-account |
+| [**grantThirdPartyConsent**](ThirdPartyAccountsApi.md#grantThirdPartyConsent) | **POST** /preview/retail-media/accounts/{accountId}/grant-third-party-consent | /preview/retail-media/accounts/{accountId}/grant-third-party-consent |
+| [**removeThirdPartyAccountBrand**](ThirdPartyAccountsApi.md#removeThirdPartyAccountBrand) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove | /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove |
+| [**updateThirdPartyAccountSellers**](ThirdPartyAccountsApi.md#updateThirdPartyAccountSellers) | **PUT** /preview/retail-media/third-party-accounts/{accountId}/sellers | /preview/retail-media/third-party-accounts/{accountId}/sellers |
 
 
 
@@ -17,7 +17,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > ValueResourceOutcomeOfRetailMediaBrands addThirdPartyAccountBrands(accountId, valueResourceInputOfRetailMediaBrands)
 
-
+/preview/retail-media/third-party-accounts/{accountId}/brands/add
 
 add the provided brands to an account. This will not remove any existing brands.
 
@@ -108,7 +108,7 @@ public class Example {
 
 > EntityResourceOutcomeOfRetailMediaAccountV2 createThirdPartyBrandAccount(accountId, valueResourceInputOfRetailMediaBrandAccountCreationV2)
 
-
+/preview/retail-media/third-party-accounts/{accountId}/create-brand-account
 
 Create a private market demand brand account under a given parent account.
 
@@ -199,7 +199,7 @@ public class Example {
 
 > EntityResourceOutcomeOfRetailMediaAccountV2 createThirdPartySellerAccount(accountId, valueResourceInputOfRetailMediaSellerAccountCreationV2)
 
-
+/preview/retail-media/third-party-accounts/{accountId}/create-seller-account
 
 Create a private market demand seller account under a given parent account.
 
@@ -290,7 +290,7 @@ public class Example {
 
 > grantThirdPartyConsent(accountId, grantConsentInput)
 
-
+/preview/retail-media/accounts/{accountId}/grant-third-party-consent
 
 Grant third-party consent to a business application on behalf of a Private Market demand account
 
@@ -380,7 +380,7 @@ null (empty response body)
 
 > ValueResourceOutcomeOfRetailMediaBrands removeThirdPartyAccountBrand(accountId, brandId)
 
-
+/preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove
 
 Attempt to remove the provided brand from the account.
 
@@ -471,7 +471,7 @@ public class Example {
 
 > ValueResourceCollectionOutcomeOfRetailMediaSeller updateThirdPartyAccountSellers(accountId, valueResourceCollectionInputOfRetailMediaSeller)
 
-
+/preview/retail-media/third-party-accounts/{accountId}/sellers
 
 Update the list of sellers mapped to the account. This will override any existing mappings.
 

@@ -156,7 +156,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
      * Used to publish a batch of store inventories to delete. The batch is processed asynchronously.
      * @param merchantId Identifies the merchant, can also be called partnerId (required)
      * @param batchStoreInventoryDeleteRequest  (required)
@@ -172,7 +172,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
      * Used to publish a batch of store inventories to delete. The batch is processed asynchronously.
      * @param merchantId Identifies the merchant, can also be called partnerId (required)
      * @param batchStoreInventoryDeleteRequest  (required)
@@ -190,7 +190,7 @@ public class CatalogApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete (asynchronously)
      * Used to publish a batch of store inventories to delete. The batch is processed asynchronously.
      * @param merchantId Identifies the merchant, can also be called partnerId (required)
      * @param batchStoreInventoryDeleteRequest  (required)
@@ -278,7 +278,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/catalog/products/batch/report/{operation-token}
      * Get the report of an asynchronous batch operation previously requested
      * @param operationToken The token returned by the batch endpoint. (required)
      * @return ReportOkResponse
@@ -295,7 +295,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/catalog/products/batch/report/{operation-token}
      * Get the report of an asynchronous batch operation previously requested
      * @param operationToken The token returned by the batch endpoint. (required)
      * @return ApiResponse&lt;ReportOkResponse&gt;
@@ -313,7 +313,7 @@ public class CatalogApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/catalog/products/batch/report/{operation-token} (asynchronously)
      * Get the report of an asynchronous batch operation previously requested
      * @param operationToken The token returned by the batch endpoint. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -408,7 +408,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners
      * Update the buy box winner for one or more products
      * @param retailerId The retailer for which these buy box winners will be set (required)
      * @param valueResourceInputSetProductBuyBoxWinnersRequest Updated buy box winners for one or more products (required)
@@ -426,7 +426,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners
      * Update the buy box winner for one or more products
      * @param retailerId The retailer for which these buy box winners will be set (required)
      * @param valueResourceInputSetProductBuyBoxWinnersRequest Updated buy box winners for one or more products (required)
@@ -445,7 +445,7 @@ public class CatalogApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners (asynchronously)
      * Update the buy box winner for one or more products
      * @param retailerId The retailer for which these buy box winners will be set (required)
      * @param valueResourceInputSetProductBuyBoxWinnersRequest Updated buy box winners for one or more products (required)
@@ -541,7 +541,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/retailers/{retailer-id}/offers/update
      * Update one or more offers by replacing each offer&#39;s price and availability with the given values
      * @param retailerId The retailer for which these offers will be updated (required)
      * @param valueResourceInputUpdateOffersRequest Collection of offer price and availability updates to be applied. (required)
@@ -559,7 +559,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/retailers/{retailer-id}/offers/update
      * Update one or more offers by replacing each offer&#39;s price and availability with the given values
      * @param retailerId The retailer for which these offers will be updated (required)
      * @param valueResourceInputUpdateOffersRequest Collection of offer price and availability updates to be applied. (required)
@@ -578,7 +578,7 @@ public class CatalogApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/retailers/{retailer-id}/offers/update (asynchronously)
      * Update one or more offers by replacing each offer&#39;s price and availability with the given values
      * @param retailerId The retailer for which these offers will be updated (required)
      * @param valueResourceInputUpdateOffersRequest Collection of offer price and availability updates to be applied. (required)
@@ -667,7 +667,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/catalog/products/batch
      * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @return BatchAcceptedResponse
@@ -684,7 +684,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/catalog/products/batch
      * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @return ApiResponse&lt;BatchAcceptedResponse&gt;
@@ -702,7 +702,7 @@ public class CatalogApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/catalog/products/batch (asynchronously)
      * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -797,7 +797,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
      * Used to publish a batch of store inventories to upsert. The batch is processed asynchronously.
      * @param merchantId Identifies the merchant, can also be called partnerId (required)
      * @param batchStoreInventoryRequest  (required)
@@ -813,7 +813,7 @@ public class CatalogApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
      * Used to publish a batch of store inventories to upsert. The batch is processed asynchronously.
      * @param merchantId Identifies the merchant, can also be called partnerId (required)
      * @param batchStoreInventoryRequest  (required)
@@ -831,7 +831,7 @@ public class CatalogApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert (asynchronously)
      * Used to publish a batch of store inventories to upsert. The batch is processed asynchronously.
      * @param merchantId Identifies the merchant, can also be called partnerId (required)
      * @param batchStoreInventoryRequest  (required)

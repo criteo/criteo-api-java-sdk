@@ -4,7 +4,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getPrivateMarketChildAccountsByAccountId**](AccountsApi.md#getPrivateMarketChildAccountsByAccountId) | **GET** /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |  |
+| [**getPrivateMarketChildAccountsByAccountId**](AccountsApi.md#getPrivateMarketChildAccountsByAccountId) | **GET** /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts | /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |
 
 
 
@@ -12,7 +12,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata getPrivateMarketChildAccountsByAccountId(accountId, limit, offset)
 
-
+/preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
 
 Gets Private Market child accounts that are associated with the given account
 

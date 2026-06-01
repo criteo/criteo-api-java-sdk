@@ -4,35 +4,35 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**appendCampaignsToBalanceV1**](CampaignApi.md#appendCampaignsToBalanceV1) | **POST** /preview/retail-media/balances/{balanceId}/campaigns/append |  |
-| [**appendProductButtonByLineItemId**](CampaignApi.md#appendProductButtonByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create |  |
-| [**appendPromotedProducts**](CampaignApi.md#appendPromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/append |  |
-| [**computeDisplayMinBidByRetailerId**](CampaignApi.md#computeDisplayMinBidByRetailerId) | **POST** /preview/retail-media/retailers/{retailerId}/compute-display-min-bid |  |
-| [**createAuctionLineItem**](CampaignApi.md#createAuctionLineItem) | **POST** /preview/retail-media/campaigns/{campaignId}/auction-line-items |  |
-| [**createCreative**](CampaignApi.md#createCreative) | **POST** /preview/retail-media/accounts/{account-id}/creatives |  |
-| [**createPreferredLineItemByCampaignId**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
-| [**deleteCampaignsFromBalanceV1**](CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /preview/retail-media/balances/{balanceId}/campaigns/delete |  |
-| [**deleteProductButtonByLineItemAndProductButtonId**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
-| [**deletePromotedProducts**](CampaignApi.md#deletePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/delete |  |
-| [**fetchPromotedProducts**](CampaignApi.md#fetchPromotedProducts) | **GET** /preview/retail-media/line-items/{line-item-id}/products |  |
-| [**getAuctionLineItem**](CampaignApi.md#getAuctionLineItem) | **GET** /preview/retail-media/auction-line-items/{lineItemId} |  |
-| [**getAuctionLineItemsByCampaign**](CampaignApi.md#getAuctionLineItemsByCampaign) | **GET** /preview/retail-media/campaigns/{campaignId}/auction-line-items |  |
-| [**getCapoutHistory**](CampaignApi.md#getCapoutHistory) | **POST** /preview/retail-media/accounts/{account-id}/line-items/cap-out-history |  |
-| [**getCatalogStatus**](CampaignApi.md#getCatalogStatus) | **GET** /preview/retail-media/catalogs/{catalogId}/status |  |
-| [**getCreative**](CampaignApi.md#getCreative) | **GET** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
-| [**getPreferredLineItemsByCampaignId**](CampaignApi.md#getPreferredLineItemsByCampaignId) | **GET** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
-| [**getPreferredLineItemsByLineItemId**](CampaignApi.md#getPreferredLineItemsByLineItemId) | **GET** /preview/retail-media/preferred-line-items/{line-item-id} |  |
-| [**getProductButtonByLineItemAndProductButtonId**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
-| [**getProductButtonsByLineItemId**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons |  |
-| [**pausePromotedProducts**](CampaignApi.md#pausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/pause |  |
-| [**searchAccountCreatives**](CampaignApi.md#searchAccountCreatives) | **POST** /preview/retail-media/accounts/{account-id}/creatives/search |  |
-| [**searchAccountRetailers**](CampaignApi.md#searchAccountRetailers) | **POST** /preview/retail-media/accounts/{accountId}/retailers/search |  |
-| [**searchBrands**](CampaignApi.md#searchBrands) | **POST** /preview/retail-media/brands/search |  |
-| [**unpausePromotedProducts**](CampaignApi.md#unpausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/unpause |  |
-| [**updateAuctionLineItem**](CampaignApi.md#updateAuctionLineItem) | **PUT** /preview/retail-media/auction-line-items/{lineItemId} |  |
-| [**updateCreative**](CampaignApi.md#updateCreative) | **PUT** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
-| [**updatePreferredLineItemByLineItemId**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /preview/retail-media/preferred-line-items/{line-item-id} |  |
-| [**updateProductButtonByLineItemAndProductButtonId**](CampaignApi.md#updateProductButtonByLineItemAndProductButtonId) | **PUT** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
+| [**appendCampaignsToBalanceV1**](CampaignApi.md#appendCampaignsToBalanceV1) | **POST** /preview/retail-media/balances/{balanceId}/campaigns/append | /preview/retail-media/balances/{balanceId}/campaigns/append |
+| [**appendProductButtonByLineItemId**](CampaignApi.md#appendProductButtonByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create | /preview/retail-media/line-items/{line-item-id}/product-buttons/create |
+| [**appendPromotedProducts**](CampaignApi.md#appendPromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/append | /preview/retail-media/line-items/{line-item-id}/products/append |
+| [**computeDisplayMinBidByRetailerId**](CampaignApi.md#computeDisplayMinBidByRetailerId) | **POST** /preview/retail-media/retailers/{retailerId}/compute-display-min-bid | /preview/retail-media/retailers/{retailerId}/compute-display-min-bid |
+| [**createAuctionLineItem**](CampaignApi.md#createAuctionLineItem) | **POST** /preview/retail-media/campaigns/{campaignId}/auction-line-items | /preview/retail-media/campaigns/{campaignId}/auction-line-items |
+| [**createCreative**](CampaignApi.md#createCreative) | **POST** /preview/retail-media/accounts/{account-id}/creatives | /preview/retail-media/accounts/{account-id}/creatives |
+| [**createPreferredLineItemByCampaignId**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items | /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |
+| [**deleteCampaignsFromBalanceV1**](CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /preview/retail-media/balances/{balanceId}/campaigns/delete | /preview/retail-media/balances/{balanceId}/campaigns/delete |
+| [**deleteProductButtonByLineItemAndProductButtonId**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
+| [**deletePromotedProducts**](CampaignApi.md#deletePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/delete | /preview/retail-media/line-items/{line-item-id}/products/delete |
+| [**fetchPromotedProducts**](CampaignApi.md#fetchPromotedProducts) | **GET** /preview/retail-media/line-items/{line-item-id}/products | /preview/retail-media/line-items/{line-item-id}/products |
+| [**getAuctionLineItem**](CampaignApi.md#getAuctionLineItem) | **GET** /preview/retail-media/auction-line-items/{lineItemId} | /preview/retail-media/auction-line-items/{lineItemId} |
+| [**getAuctionLineItemsByCampaign**](CampaignApi.md#getAuctionLineItemsByCampaign) | **GET** /preview/retail-media/campaigns/{campaignId}/auction-line-items | /preview/retail-media/campaigns/{campaignId}/auction-line-items |
+| [**getCapoutHistory**](CampaignApi.md#getCapoutHistory) | **POST** /preview/retail-media/accounts/{account-id}/line-items/cap-out-history | /preview/retail-media/accounts/{account-id}/line-items/cap-out-history |
+| [**getCatalogStatus**](CampaignApi.md#getCatalogStatus) | **GET** /preview/retail-media/catalogs/{catalogId}/status | /preview/retail-media/catalogs/{catalogId}/status |
+| [**getCreative**](CampaignApi.md#getCreative) | **GET** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} | /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |
+| [**getPreferredLineItemsByCampaignId**](CampaignApi.md#getPreferredLineItemsByCampaignId) | **GET** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items | /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |
+| [**getPreferredLineItemsByLineItemId**](CampaignApi.md#getPreferredLineItemsByLineItemId) | **GET** /preview/retail-media/preferred-line-items/{line-item-id} | /preview/retail-media/preferred-line-items/{line-item-id} |
+| [**getProductButtonByLineItemAndProductButtonId**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
+| [**getProductButtonsByLineItemId**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons | /preview/retail-media/line-items/{line-item-id}/product-buttons |
+| [**pausePromotedProducts**](CampaignApi.md#pausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/pause | /preview/retail-media/line-items/{line-item-id}/products/pause |
+| [**searchAccountCreatives**](CampaignApi.md#searchAccountCreatives) | **POST** /preview/retail-media/accounts/{account-id}/creatives/search | /preview/retail-media/accounts/{account-id}/creatives/search |
+| [**searchAccountRetailers**](CampaignApi.md#searchAccountRetailers) | **POST** /preview/retail-media/accounts/{accountId}/retailers/search | /preview/retail-media/accounts/{accountId}/retailers/search |
+| [**searchBrands**](CampaignApi.md#searchBrands) | **POST** /preview/retail-media/brands/search | /preview/retail-media/brands/search |
+| [**unpausePromotedProducts**](CampaignApi.md#unpausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/unpause | /preview/retail-media/line-items/{line-item-id}/products/unpause |
+| [**updateAuctionLineItem**](CampaignApi.md#updateAuctionLineItem) | **PUT** /preview/retail-media/auction-line-items/{lineItemId} | /preview/retail-media/auction-line-items/{lineItemId} |
+| [**updateCreative**](CampaignApi.md#updateCreative) | **PUT** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} | /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |
+| [**updatePreferredLineItemByLineItemId**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /preview/retail-media/preferred-line-items/{line-item-id} | /preview/retail-media/preferred-line-items/{line-item-id} |
+| [**updateProductButtonByLineItemAndProductButtonId**](CampaignApi.md#updateProductButtonByLineItemAndProductButtonId) | **PUT** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 
 
 
@@ -40,7 +40,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > ValueResourceOutcomeBalanceCampaignsV1 appendCampaignsToBalanceV1(balanceId, valueResourceInputAppendCampaignsRequestV1)
 
-
+/preview/retail-media/balances/{balanceId}/campaigns/append
 
 Appends one or more campaigns to the specified balance
 
@@ -131,7 +131,7 @@ public class Example {
 
 > ProductButtonResponseListResponse appendProductButtonByLineItemId(lineItemId, productButtonRequestListRequest)
 
-
+/preview/retail-media/line-items/{line-item-id}/product-buttons/create
 
 Add Specific Product Buttons
 
@@ -222,7 +222,7 @@ public class Example {
 
 > ProductResourceOutcome appendPromotedProducts(lineItemId, promotedProductResourceCollectionInput)
 
-
+/preview/retail-media/line-items/{line-item-id}/products/append
 
 Append a collection of promoted products to a line item
 
@@ -314,7 +314,7 @@ public class Example {
 
 > ValueResourceCollectionOutcomeDisplayAuctionMinBidResult computeDisplayMinBidByRetailerId(retailerId, valueResourceInputDisplayAuctionMinBidRequest)
 
-
+/preview/retail-media/retailers/{retailerId}/compute-display-min-bid
 
 Computes the min bid for relevant page types based on the provided information
 
@@ -405,7 +405,7 @@ public class Example {
 
 > EntityResourceOutcomeOfSponsoredProductsLineItem createAuctionLineItem(campaignId, valueResourceInputOfSponsoredProductsLineItemCreateRequestModel)
 
-
+/preview/retail-media/campaigns/{campaignId}/auction-line-items
 
 Creates new auction line item with the specified settings
 
@@ -496,7 +496,7 @@ public class Example {
 
 > Creative2Response createCreative(accountId, creativeCreateModel2)
 
-
+/preview/retail-media/accounts/{account-id}/creatives
 
 Create a creative for an account
 
@@ -587,7 +587,7 @@ public class Example {
 
 > PreferredLineItemV2Response createPreferredLineItemByCampaignId(campaignId, preferredLineItemCreateModelV2Request)
 
-
+/preview/retail-media/campaigns/{campaign-id}/preferred-line-items
 
 Creates a new preferred line item with the specified settings
 
@@ -678,7 +678,7 @@ public class Example {
 
 > ValueResourceOutcomeBalanceCampaignsV1 deleteCampaignsFromBalanceV1(balanceId, valueResourceInputDeleteCampaignsRequestV1)
 
-
+/preview/retail-media/balances/{balanceId}/campaigns/delete
 
 Deletes one or more campaigns on the specified balance
 
@@ -769,7 +769,7 @@ public class Example {
 
 > ProductButtonResponseListResponse deleteProductButtonByLineItemAndProductButtonId(lineItemId, productButtonId)
 
-
+/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
 
 Delete Specific Product Button
 
@@ -860,7 +860,7 @@ public class Example {
 
 > deletePromotedProducts(lineItemId, promotedProductResourceCollectionInput)
 
-
+/preview/retail-media/line-items/{line-item-id}/products/delete
 
 Remove a collection of promoted products from a line item
 
@@ -950,7 +950,7 @@ null (empty response body)
 
 > PromotedProductResourceCollectionOutcome fetchPromotedProducts(lineItemId, fields, limit, offset)
 
-
+/preview/retail-media/line-items/{line-item-id}/products
 
 Retrieve a page of promoted products for a line item
 
@@ -1045,7 +1045,7 @@ public class Example {
 
 > EntityResourceOutcomeOfSponsoredProductsLineItem getAuctionLineItem(lineItemId)
 
-
+/preview/retail-media/auction-line-items/{lineItemId}
 
 Gets a sponsored product line item by its id.
 
@@ -1134,7 +1134,7 @@ public class Example {
 
 > EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata getAuctionLineItemsByCampaign(campaignId, limit, limitToIds, offset)
 
-
+/preview/retail-media/campaigns/{campaignId}/auction-line-items
 
 Gets a page of sponsored product line items by campaign id.
 
@@ -1229,7 +1229,7 @@ public class Example {
 
 > ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse getCapoutHistory(accountId, valueResourceInputLineItemBudgetCapOutHistoryRequest)
 
-
+/preview/retail-media/accounts/{account-id}/line-items/cap-out-history
 
 Get the cap out history for line items
 
@@ -1320,7 +1320,7 @@ public class Example {
 
 > EntityResourceOutcomeOfCatalogStatusV2 getCatalogStatus(catalogId)
 
-
+/preview/retail-media/catalogs/{catalogId}/status
 
 Check the status of a catalog request.
 
@@ -1409,7 +1409,7 @@ public class Example {
 
 > Creative2Response getCreative(accountId, creativeId)
 
-
+/preview/retail-media/accounts/{account-id}/creatives/{creative-id}
 
 Get the specified creative
 
@@ -1500,7 +1500,7 @@ public class Example {
 
 > PreferredLineItemV2PagedListResponse getPreferredLineItemsByCampaignId(campaignId, limitToId, pageIndex, pageSize)
 
-
+/preview/retail-media/campaigns/{campaign-id}/preferred-line-items
 
 Gets page of preferred line item objects for the given campaign id
 
@@ -1595,7 +1595,7 @@ public class Example {
 
 > PreferredLineItemV2Response getPreferredLineItemsByLineItemId(lineItemId)
 
-
+/preview/retail-media/preferred-line-items/{line-item-id}
 
 Gets the preferred line item for the given line item id
 
@@ -1684,7 +1684,7 @@ public class Example {
 
 > ProductButtonResponseListResponse getProductButtonByLineItemAndProductButtonId(lineItemId, productButtonId)
 
-
+/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
 
 Get Specific Product Button
 
@@ -1775,7 +1775,7 @@ public class Example {
 
 > ProductButtonResponseListResponse getProductButtonsByLineItemId(lineItemId)
 
-
+/preview/retail-media/line-items/{line-item-id}/product-buttons
 
 Get LineItem Product Buttons
 
@@ -1864,7 +1864,7 @@ public class Example {
 
 > pausePromotedProducts(lineItemId, promotedProductResourceCollectionInput)
 
-
+/preview/retail-media/line-items/{line-item-id}/products/pause
 
 Pause a collection of promoted products associated with a line item
 
@@ -1954,7 +1954,7 @@ null (empty response body)
 
 > EntityResourceCollectionOutcomeCreativeSearchResponse searchAccountCreatives(accountId, entityResourceInputCreativeSearchRequest, limit, offset)
 
-
+/preview/retail-media/accounts/{account-id}/creatives/search
 
 Get account creatives
 
@@ -2049,7 +2049,7 @@ public class Example {
 
 > EntityResourceCollectionOutcomeOfRetailerResultAndMetadata searchAccountRetailers(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset)
 
-
+/preview/retail-media/accounts/{accountId}/retailers/search
 
 Searches for retailers associated with the specified account based on provided search criteria
 
@@ -2144,7 +2144,7 @@ public class Example {
 
 > EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrands(limit, offset, valueResourceInputBrandIdSearchRequest)
 
-
+/preview/retail-media/brands/search
 
 Search for brands given a retailer ID and search term.
 
@@ -2237,7 +2237,7 @@ public class Example {
 
 > unpausePromotedProducts(lineItemId, promotedProductResourceCollectionInput)
 
-
+/preview/retail-media/line-items/{line-item-id}/products/unpause
 
 Un-pause a collection of promoted products associated with a line item
 
@@ -2327,7 +2327,7 @@ null (empty response body)
 
 > EntityResourceOutcomeOfSponsoredProductsLineItem updateAuctionLineItem(lineItemId, valueResourceInputOfSponsoredProductsLineItemUpdateRequestModel)
 
-
+/preview/retail-media/auction-line-items/{lineItemId}
 
 Updates a Sponsored Products Line Item given a line item id and a request.
 
@@ -2418,7 +2418,7 @@ public class Example {
 
 > Creative2Response updateCreative(accountId, creativeId, creativeUpdateModel2)
 
-
+/preview/retail-media/accounts/{account-id}/creatives/{creative-id}
 
 Update a creative
 
@@ -2512,7 +2512,7 @@ public class Example {
 
 > PreferredLineItemV2Response updatePreferredLineItemByLineItemId(lineItemId, preferredLineItemUpdateModelV2Request)
 
-
+/preview/retail-media/preferred-line-items/{line-item-id}
 
 Updates the preferred line item for the given line item id
 
@@ -2603,7 +2603,7 @@ public class Example {
 
 > ProductButtonResponseListResponse updateProductButtonByLineItemAndProductButtonId(lineItemId, productButtonId, productButtonRequestRequest)
 
-
+/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
 
 Update Specific Product Button
 

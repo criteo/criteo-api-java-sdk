@@ -158,7 +158,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/add-remove
      * Add/remove identifiers to or from a Commerce Grid audience segment of type Contact List.
      * @param audienceSegmentId The ID of the audience segment of type contact list to amend (required)
      * @param commerceGridContactlistAmendmentRequest  (required)
@@ -176,7 +176,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/add-remove
      * Add/remove identifiers to or from a Commerce Grid audience segment of type Contact List.
      * @param audienceSegmentId The ID of the audience segment of type contact list to amend (required)
      * @param commerceGridContactlistAmendmentRequest  (required)
@@ -195,7 +195,7 @@ public class SegmentApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/add-remove (asynchronously)
      * Add/remove identifiers to or from a Commerce Grid audience segment of type Contact List.
      * @param audienceSegmentId The ID of the audience segment of type contact list to amend (required)
      * @param commerceGridContactlistAmendmentRequest  (required)
@@ -284,7 +284,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/create
      * Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
      * @param cgAudienceSegmentBulkCreateInputV1 Segment creation parameter (required)
      * @return CgAudienceSegmentEntityV1ListResponse
@@ -301,7 +301,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/create
      * Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
      * @param cgAudienceSegmentBulkCreateInputV1 Segment creation parameter (required)
      * @return ApiResponse&lt;CgAudienceSegmentEntityV1ListResponse&gt;
@@ -319,7 +319,7 @@ public class SegmentApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/commerce-grid/audience-segments/create (asynchronously)
      * Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
      * @param cgAudienceSegmentBulkCreateInputV1 Segment creation parameter (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -407,7 +407,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/delete
      * Delete the segments associated to the given IDs.
      * @param cgAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @return CgAudienceSegmentIdEntityV1ListResponse
@@ -424,7 +424,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/delete
      * Delete the segments associated to the given IDs.
      * @param cgAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @return ApiResponse&lt;CgAudienceSegmentIdEntityV1ListResponse&gt;
@@ -442,7 +442,7 @@ public class SegmentApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/commerce-grid/audience-segments/delete (asynchronously)
      * Delete the segments associated to the given IDs.
      * @param cgAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -530,7 +530,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments
      * Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
      * @param cgAudienceSegmentBulkUpdateInputV1 Segment Update request (required)
      * @return CgAudienceSegmentEntityV1ListResponse
@@ -547,7 +547,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments
      * Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
      * @param cgAudienceSegmentBulkUpdateInputV1 Segment Update request (required)
      * @return ApiResponse&lt;CgAudienceSegmentEntityV1ListResponse&gt;
@@ -565,7 +565,7 @@ public class SegmentApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/commerce-grid/audience-segments (asynchronously)
      * Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
      * @param cgAudienceSegmentBulkUpdateInputV1 Segment Update request (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -653,7 +653,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/clear
      * Delete all identifiers from a Commerce Grid audience segment of type Contact List.
      * @param audienceSegmentId The ID of the audience segment of type contact list to amend (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -668,7 +668,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/clear
      * Delete all identifiers from a Commerce Grid audience segment of type Contact List.
      * @param audienceSegmentId The ID of the audience segment of type contact list to amend (required)
      * @return ApiResponse&lt;Void&gt;
@@ -685,7 +685,7 @@ public class SegmentApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/clear (asynchronously)
      * Delete all identifiers from a Commerce Grid audience segment of type Contact List.
      * @param audienceSegmentId The ID of the audience segment of type contact list to amend (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -772,7 +772,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/statistics
      * Returns the statistics of a contact list segment.
      * @param audienceSegmentId The segment ID. (required)
      * @return CgContactListStatisticsEntityV1Response
@@ -789,7 +789,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/statistics
      * Returns the statistics of a contact list segment.
      * @param audienceSegmentId The segment ID. (required)
      * @return ApiResponse&lt;CgContactListStatisticsEntityV1Response&gt;
@@ -807,7 +807,7 @@ public class SegmentApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/statistics (asynchronously)
      * Returns the statistics of a contact list segment.
      * @param audienceSegmentId The segment ID. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -905,7 +905,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/search
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param cgAudienceSegmentSearchInputV1  (required)
      * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
@@ -924,7 +924,7 @@ public class SegmentApi {
     }
 
     /**
-     * 
+     * /preview/commerce-grid/audience-segments/search
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param cgAudienceSegmentSearchInputV1  (required)
      * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
@@ -944,7 +944,7 @@ public class SegmentApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/commerce-grid/audience-segments/search (asynchronously)
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param cgAudienceSegmentSearchInputV1  (required)
      * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)

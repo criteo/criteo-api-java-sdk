@@ -35,6 +35,7 @@ paths:
       security:
       - oauth:
         - CommerceGrid_Segment_Manage
+      summary: /preview/commerce-grid/audience-segments
       tags:
       - Segment
       x-content-type: application/json
@@ -96,6 +97,7 @@ paths:
       security:
       - oauth:
         - CommerceGrid_Segment_Manage
+      summary: "/preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/add-remove"
       tags:
       - Segment
       x-content-type: application/json
@@ -123,6 +125,7 @@ paths:
       security:
       - oauth:
         - CommerceGrid_Segment_Manage
+      summary: "/preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/clear"
       tags:
       - Segment
       x-accepts: application/json
@@ -149,6 +152,7 @@ paths:
       security:
       - oauth:
         - CommerceGrid_Segment_Read
+      summary: "/preview/commerce-grid/audience-segments/{audience-segment-id}/contact-list/statistics"
       tags:
       - Segment
       x-accepts: application/json
@@ -176,6 +180,7 @@ paths:
       security:
       - oauth:
         - CommerceGrid_Segment_Manage
+      summary: /preview/commerce-grid/audience-segments/create
       tags:
       - Segment
       x-content-type: application/json
@@ -202,6 +207,7 @@ paths:
       security:
       - oauth:
         - CommerceGrid_Segment_Manage
+      summary: /preview/commerce-grid/audience-segments/delete
       tags:
       - Segment
       x-content-type: application/json
@@ -253,6 +259,7 @@ paths:
       security:
       - oauth:
         - CommerceGrid_Segment_Read
+      summary: /preview/commerce-grid/audience-segments/search
       tags:
       - Segment
       x-content-type: application/json
@@ -270,6 +277,7 @@ paths:
           description: Success
       security:
       - oauth: []
+      summary: /preview/commerce-grid/me
       tags:
       - Gateway
       x-accepts: application/json

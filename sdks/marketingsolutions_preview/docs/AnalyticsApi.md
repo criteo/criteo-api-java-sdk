@@ -4,21 +4,21 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createRealtimeProductReport**](AnalyticsApi.md#createRealtimeProductReport) | **POST** /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export |  |
-| [**getAdsetReport**](AnalyticsApi.md#getAdsetReport) | **POST** /preview/statistics/report |  |
-| [**getAsyncAdsetReport**](AnalyticsApi.md#getAsyncAdsetReport) | **POST** /preview/reports/async-statistics |  |
-| [**getAsyncAudienceReport**](AnalyticsApi.md#getAsyncAudienceReport) | **POST** /preview/reports/async-audience-performance |  |
-| [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /preview/reports/{report-id}/output |  |
-| [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /preview/reports/{report-id}/status |  |
-| [**getCategoriesReport**](AnalyticsApi.md#getCategoriesReport) | **POST** /preview/categories/report |  |
-| [**getCreativesReport**](AnalyticsApi.md#getCreativesReport) | **POST** /preview/reports/creatives |  |
-| [**getPlacementsReport**](AnalyticsApi.md#getPlacementsReport) | **POST** /preview/placements/report |  |
-| [**getRealtimeProduct**](AnalyticsApi.md#getRealtimeProduct) | **GET** /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId} |  |
-| [**getRealtimeProductJob**](AnalyticsApi.md#getRealtimeProductJob) | **GET** /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} |  |
-| [**getRealtimeStatisticsReport**](AnalyticsApi.md#getRealtimeStatisticsReport) | **POST** /preview/reports/realtime |  |
-| [**getTopProductsReport**](AnalyticsApi.md#getTopProductsReport) | **POST** /preview/reports/top-products |  |
-| [**getTransactionsReport**](AnalyticsApi.md#getTransactionsReport) | **POST** /preview/transactions/report |  |
-| [**getTransparencyReport**](AnalyticsApi.md#getTransparencyReport) | **POST** /preview/log-level/advertisers/{advertiser-id}/report |  |
+| [**createRealtimeProductReport**](AnalyticsApi.md#createRealtimeProductReport) | **POST** /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export | /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export |
+| [**getAdsetReport**](AnalyticsApi.md#getAdsetReport) | **POST** /preview/statistics/report | /preview/statistics/report |
+| [**getAsyncAdsetReport**](AnalyticsApi.md#getAsyncAdsetReport) | **POST** /preview/reports/async-statistics | /preview/reports/async-statistics |
+| [**getAsyncAudienceReport**](AnalyticsApi.md#getAsyncAudienceReport) | **POST** /preview/reports/async-audience-performance | /preview/reports/async-audience-performance |
+| [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /preview/reports/{report-id}/output | /preview/reports/{report-id}/output |
+| [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /preview/reports/{report-id}/status | /preview/reports/{report-id}/status |
+| [**getCategoriesReport**](AnalyticsApi.md#getCategoriesReport) | **POST** /preview/categories/report | /preview/categories/report |
+| [**getCreativesReport**](AnalyticsApi.md#getCreativesReport) | **POST** /preview/reports/creatives | /preview/reports/creatives |
+| [**getPlacementsReport**](AnalyticsApi.md#getPlacementsReport) | **POST** /preview/placements/report | /preview/placements/report |
+| [**getRealtimeProduct**](AnalyticsApi.md#getRealtimeProduct) | **GET** /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId} | /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId} |
+| [**getRealtimeProductJob**](AnalyticsApi.md#getRealtimeProductJob) | **GET** /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} | /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} |
+| [**getRealtimeStatisticsReport**](AnalyticsApi.md#getRealtimeStatisticsReport) | **POST** /preview/reports/realtime | /preview/reports/realtime |
+| [**getTopProductsReport**](AnalyticsApi.md#getTopProductsReport) | **POST** /preview/reports/top-products | /preview/reports/top-products |
+| [**getTransactionsReport**](AnalyticsApi.md#getTransactionsReport) | **POST** /preview/transactions/report | /preview/transactions/report |
+| [**getTransparencyReport**](AnalyticsApi.md#getTransparencyReport) | **POST** /preview/log-level/advertisers/{advertiser-id}/report | /preview/log-level/advertisers/{advertiser-id}/report |
 
 
 
@@ -26,7 +26,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > RealTimeProductReportJobStatusResponse createRealtimeProductReport(realTimeProductReportJobRequest)
 
-
+/preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
 
 This endpoint is subject to specific rate limits.
 
@@ -115,7 +115,7 @@ public class Example {
 
 > File getAdsetReport(statisticsReportQueryMessage)
 
-
+/preview/statistics/report
 
 This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
 
@@ -204,7 +204,7 @@ public class Example {
 
 > MarketingSolutionsReportStatusResponse getAsyncAdsetReport(generateStatisticsReportRequest)
 
-
+/preview/reports/async-statistics
 
 This Statistics endpoint provides an export Id that let you retrieve data.
 
@@ -293,7 +293,7 @@ public class Example {
 
 > MarketingSolutionsReportStatusResponse getAsyncAudienceReport(generateAudiencePerformanceReportRequest)
 
-
+/preview/reports/async-audience-performance
 
 This Statistics endpoint provides an export Id that lets you retrieve data.
 
@@ -382,7 +382,7 @@ public class Example {
 
 > ExportResult getAsyncExportOutput(reportId)
 
-
+/preview/reports/{report-id}/output
 
 This endpoint gives you the output of the report.
 
@@ -471,7 +471,7 @@ public class Example {
 
 > MarketingSolutionsReportStatusResponse getAsyncExportStatus(reportId)
 
-
+/preview/reports/{report-id}/status
 
 This endpoint gives you the status of the report.
 
@@ -560,7 +560,7 @@ public class Example {
 
 > File getCategoriesReport(generateCategoriesReportRequestAttributesRequest)
 
-
+/preview/categories/report
 
 With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
 
@@ -649,7 +649,7 @@ public class Example {
 
 > JsonReportRowsListResponse getCreativesReport(generateCreativesReportRequestAttributesRequest)
 
-
+/preview/reports/creatives
 
 With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
 
@@ -738,7 +738,7 @@ public class Example {
 
 > File getPlacementsReport(placementsReportQueryMessageListRequest)
 
-
+/preview/placements/report
 
 Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
 
@@ -827,7 +827,7 @@ public class Example {
 
 > FileStreamResultResponse getRealtimeProduct(reportId)
 
-
+/preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
 
 This endpoint is subject to specific rate limits.
 
@@ -916,7 +916,7 @@ public class Example {
 
 > RealTimeProductReportJobStatusResponse getRealtimeProductJob(reportId)
 
-
+/preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
 
 ### Example
 
@@ -1003,7 +1003,7 @@ public class Example {
 
 > JsonReportRowsListResponse getRealtimeStatisticsReport(generateRealtimeStatisticsReportRequestAttributesRequest)
 
-
+/preview/reports/realtime
 
 With Realtime endpoint, you can analyse the realtime values of the main metrics: displays, clicks, cost.
 
@@ -1092,7 +1092,7 @@ public class Example {
 
 > JsonReportRowsListResponse getTopProductsReport(generateTopProductsReportRequestAttributesRequest)
 
-
+/preview/reports/top-products
 
 With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
 
@@ -1181,7 +1181,7 @@ public class Example {
 
 > File getTransactionsReport(transactionsReportQueryMessageListRequest)
 
-
+/preview/transactions/report
 
 This Transactions endpoint provides transactions id related data.
 
@@ -1270,7 +1270,7 @@ public class Example {
 
 > TransparencyReportListResponse getTransparencyReport(advertiserId, transparencyQueryMessage)
 
-
+/preview/log-level/advertisers/{advertiser-id}/report
 
 This Statistics endpoint provides publisher data.
 

@@ -4,7 +4,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**chatbotProductRecommendations**](OnSiteRecommendationApi.md#chatbotProductRecommendations) | **POST** /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations |  |
+| [**chatbotProductRecommendations**](OnSiteRecommendationApi.md#chatbotProductRecommendations) | **POST** /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations | /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations |
 
 
 
@@ -12,7 +12,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > MessageBodyModel chatbotProductRecommendations(catalogid, inbotDiscussionBodyModel)
 
-
+/preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations
 
 Ask a chatbot for a product recommendation
 

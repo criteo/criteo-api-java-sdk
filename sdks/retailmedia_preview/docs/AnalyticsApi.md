@@ -4,19 +4,19 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**generateAsyncAccountsReport**](AnalyticsApi.md#generateAsyncAccountsReport) | **POST** /preview/retail-media/reports/accounts |  |
-| [**generateAsyncCampaignsReport**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /preview/retail-media/reports/campaigns |  |
-| [**generateAsyncFillRateReport**](AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /preview/retail-media/reports/fillrate |  |
-| [**generateAsyncLineItemsReport**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /preview/retail-media/reports/line-items |  |
-| [**generateAsyncOffsiteReport**](AnalyticsApi.md#generateAsyncOffsiteReport) | **POST** /preview/retail-media/reports/offsite |  |
-| [**generateAsyncUnfilledPlacementsReport**](AnalyticsApi.md#generateAsyncUnfilledPlacementsReport) | **POST** /preview/retail-media/reports/unfilled-placements |  |
-| [**generateShareOfVoiceInsight**](AnalyticsApi.md#generateShareOfVoiceInsight) | **POST** /preview/retail-media/insights/share-of-voice |  |
-| [**generateSyncAttributedTransactionsReport**](AnalyticsApi.md#generateSyncAttributedTransactionsReport) | **POST** /preview/retail-media/reports/sync/attributed-transactions |  |
-| [**generateSyncCampaignsReport**](AnalyticsApi.md#generateSyncCampaignsReport) | **POST** /preview/retail-media/reports/sync/campaigns |  |
-| [**generateSyncLineItemsReport**](AnalyticsApi.md#generateSyncLineItemsReport) | **POST** /preview/retail-media/reports/sync/line-items |  |
-| [**generateSyncRealTimePerformanceReport**](AnalyticsApi.md#generateSyncRealTimePerformanceReport) | **POST** /preview/retail-media/reports/sync/real-time-performance |  |
-| [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /preview/retail-media/reports/{reportId}/output |  |
-| [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /preview/retail-media/reports/{reportId}/status |  |
+| [**generateAsyncAccountsReport**](AnalyticsApi.md#generateAsyncAccountsReport) | **POST** /preview/retail-media/reports/accounts | /preview/retail-media/reports/accounts |
+| [**generateAsyncCampaignsReport**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /preview/retail-media/reports/campaigns | /preview/retail-media/reports/campaigns |
+| [**generateAsyncFillRateReport**](AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /preview/retail-media/reports/fillrate | /preview/retail-media/reports/fillrate |
+| [**generateAsyncLineItemsReport**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /preview/retail-media/reports/line-items | /preview/retail-media/reports/line-items |
+| [**generateAsyncOffsiteReport**](AnalyticsApi.md#generateAsyncOffsiteReport) | **POST** /preview/retail-media/reports/offsite | /preview/retail-media/reports/offsite |
+| [**generateAsyncUnfilledPlacementsReport**](AnalyticsApi.md#generateAsyncUnfilledPlacementsReport) | **POST** /preview/retail-media/reports/unfilled-placements | /preview/retail-media/reports/unfilled-placements |
+| [**generateShareOfVoiceInsight**](AnalyticsApi.md#generateShareOfVoiceInsight) | **POST** /preview/retail-media/insights/share-of-voice | /preview/retail-media/insights/share-of-voice |
+| [**generateSyncAttributedTransactionsReport**](AnalyticsApi.md#generateSyncAttributedTransactionsReport) | **POST** /preview/retail-media/reports/sync/attributed-transactions | /preview/retail-media/reports/sync/attributed-transactions |
+| [**generateSyncCampaignsReport**](AnalyticsApi.md#generateSyncCampaignsReport) | **POST** /preview/retail-media/reports/sync/campaigns | /preview/retail-media/reports/sync/campaigns |
+| [**generateSyncLineItemsReport**](AnalyticsApi.md#generateSyncLineItemsReport) | **POST** /preview/retail-media/reports/sync/line-items | /preview/retail-media/reports/sync/line-items |
+| [**generateSyncRealTimePerformanceReport**](AnalyticsApi.md#generateSyncRealTimePerformanceReport) | **POST** /preview/retail-media/reports/sync/real-time-performance | /preview/retail-media/reports/sync/real-time-performance |
+| [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /preview/retail-media/reports/{reportId}/output | /preview/retail-media/reports/{reportId}/output |
+| [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /preview/retail-media/reports/{reportId}/status | /preview/retail-media/reports/{reportId}/status |
 
 
 
@@ -24,7 +24,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > AsyncReportResponse generateAsyncAccountsReport(asyncAccountsReportRequest)
 
-
+/preview/retail-media/reports/accounts
 
 Returns an asynchronous Accounts Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -113,7 +113,7 @@ public class Example {
 
 > AsyncReportResponse generateAsyncCampaignsReport(asyncCampaignsReportRequest)
 
-
+/preview/retail-media/reports/campaigns
 
 Return an asynchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -202,7 +202,7 @@ public class Example {
 
 > AsyncReportResponse generateAsyncFillRateReport(asyncFillRateReportRequest)
 
-
+/preview/retail-media/reports/fillrate
 
 Returns an asynchronous Fill Rate Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -291,7 +291,7 @@ public class Example {
 
 > AsyncReportResponse generateAsyncLineItemsReport(asyncLineItemsReportRequest)
 
-
+/preview/retail-media/reports/line-items
 
 Returns an asynchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -380,7 +380,7 @@ public class Example {
 
 > AsyncReportResponse generateAsyncOffsiteReport(asyncOffsiteReportRequest)
 
-
+/preview/retail-media/reports/offsite
 
 Returns an asynchronous Offsite Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -469,7 +469,7 @@ public class Example {
 
 > AsyncReportResponse generateAsyncUnfilledPlacementsReport(asyncUnfilledPlacementsReportRequest)
 
-
+/preview/retail-media/reports/unfilled-placements
 
 Returns an asynchronous Unfilled Placements Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -558,7 +558,7 @@ public class Example {
 
 > AsyncInsightResponse generateShareOfVoiceInsight(shareOfVoiceInsightRequest)
 
-
+/preview/retail-media/insights/share-of-voice
 
 Generate a share of voice insight
 
@@ -647,7 +647,7 @@ public class Example {
 
 > ReportResponse generateSyncAttributedTransactionsReport(syncAttributedTransactionsReportRequest)
 
-
+/preview/retail-media/reports/sync/attributed-transactions
 
 Returns a synchronous Attributed Transactions Report
 
@@ -736,7 +736,7 @@ public class Example {
 
 > ReportResponse generateSyncCampaignsReport(syncCampaignsReportRequest)
 
-
+/preview/retail-media/reports/sync/campaigns
 
 Returns a synchronous Campaigns Report
 
@@ -825,7 +825,7 @@ public class Example {
 
 > ReportResponse generateSyncLineItemsReport(syncLineItemsReportRequest)
 
-
+/preview/retail-media/reports/sync/line-items
 
 Returns a synchronous Line Items Report
 
@@ -914,7 +914,7 @@ public class Example {
 
 > ReportResponse generateSyncRealTimePerformanceReport(syncRealTimePerformanceReportRequest)
 
-
+/preview/retail-media/reports/sync/real-time-performance
 
 Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone).  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -1003,7 +1003,7 @@ public class Example {
 
 > File getAsyncExportOutput(reportId)
 
-
+/preview/retail-media/reports/{reportId}/output
 
 Returns the output of an async report
 
@@ -1092,7 +1092,7 @@ public class Example {
 
 > AsyncReportResponse getAsyncExportStatus(reportId)
 
-
+/preview/retail-media/reports/{reportId}/status
 
 Returns the status of an async report
 

@@ -160,7 +160,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/balances/{balanceId}/history
      * Gets the balance&#39;s historical change data.
      * @param balanceId Balance id. (required)
      * @param limit The number of elements to be returned. (optional, default to 25)
@@ -180,7 +180,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/balances/{balanceId}/history
      * Gets the balance&#39;s historical change data.
      * @param balanceId Balance id. (required)
      * @param limit The number of elements to be returned. (optional, default to 25)
@@ -201,7 +201,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/balances/{balanceId}/history (asynchronously)
      * Gets the balance&#39;s historical change data.
      * @param balanceId Balance id. (required)
      * @param limit The number of elements to be returned. (optional, default to 25)
@@ -292,7 +292,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/balances/{balanceId}
      * Get a balance for the given balance id.
      * @param balanceId The balance id. (required)
      * @return EntityResourceOutcomeBalanceV1
@@ -309,7 +309,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/balances/{balanceId}
      * Get a balance for the given balance id.
      * @param balanceId The balance id. (required)
      * @return ApiResponse&lt;EntityResourceOutcomeBalanceV1&gt;
@@ -327,7 +327,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/balances/{balanceId} (asynchronously)
      * Get a balance for the given balance id.
      * @param balanceId The balance id. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -430,7 +430,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{accountId}/balances
      * Gets page of balance objects for the given account id.
      * @param accountId The account to get balances for. (required)
      * @param limit The number of elements to be returned. (optional, default to 25)
@@ -450,7 +450,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{accountId}/balances
      * Gets page of balance objects for the given account id.
      * @param accountId The account to get balances for. (required)
      * @param limit The number of elements to be returned. (optional, default to 25)
@@ -471,7 +471,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/accounts/{accountId}/balances (asynchronously)
      * Gets page of balance objects for the given account id.
      * @param accountId The account to get balances for. (required)
      * @param limit The number of elements to be returned. (optional, default to 25)
@@ -575,7 +575,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/balances/{balance-id}
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
@@ -592,7 +592,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/accounts/{account-id}/balances/{balance-id}
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
@@ -611,7 +611,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/accounts/{account-id}/balances/{balance-id} (asynchronously)
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)

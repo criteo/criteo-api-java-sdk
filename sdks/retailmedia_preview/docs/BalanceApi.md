@@ -4,10 +4,10 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getBalanceHistoryV1**](BalanceApi.md#getBalanceHistoryV1) | **GET** /preview/retail-media/balances/{balanceId}/history |  |
-| [**getBalanceV1**](BalanceApi.md#getBalanceV1) | **GET** /preview/retail-media/balances/{balanceId} |  |
-| [**getPageOfBalancesV1**](BalanceApi.md#getPageOfBalancesV1) | **GET** /preview/retail-media/accounts/{accountId}/balances |  |
-| [**updateBalanceV1**](BalanceApi.md#updateBalanceV1) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
+| [**getBalanceHistoryV1**](BalanceApi.md#getBalanceHistoryV1) | **GET** /preview/retail-media/balances/{balanceId}/history | /preview/retail-media/balances/{balanceId}/history |
+| [**getBalanceV1**](BalanceApi.md#getBalanceV1) | **GET** /preview/retail-media/balances/{balanceId} | /preview/retail-media/balances/{balanceId} |
+| [**getPageOfBalancesV1**](BalanceApi.md#getPageOfBalancesV1) | **GET** /preview/retail-media/accounts/{accountId}/balances | /preview/retail-media/accounts/{accountId}/balances |
+| [**updateBalanceV1**](BalanceApi.md#updateBalanceV1) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} | /preview/retail-media/accounts/{account-id}/balances/{balance-id} |
 
 
 
@@ -15,7 +15,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata getBalanceHistoryV1(balanceId, limit, limitToChangeTypes, offset)
 
-
+/preview/retail-media/balances/{balanceId}/history
 
 Gets the balance&#39;s historical change data.
 
@@ -110,7 +110,7 @@ public class Example {
 
 > EntityResourceOutcomeBalanceV1 getBalanceV1(balanceId)
 
-
+/preview/retail-media/balances/{balanceId}
 
 Get a balance for the given balance id.
 
@@ -199,7 +199,7 @@ public class Example {
 
 > EntityResourceCollectionOutcomeBalanceV1AndMetadata getPageOfBalancesV1(accountId, limit, limitToId, offset)
 
-
+/preview/retail-media/accounts/{accountId}/balances
 
 Gets page of balance objects for the given account id.
 
@@ -294,7 +294,7 @@ public class Example {
 
 > updateBalanceV1(accountId, balanceId, valueResourceInputOfUpdateBalanceModelV1)
 
-
+/preview/retail-media/accounts/{account-id}/balances/{balance-id}
 
 Modify a balance for the given account id
 

@@ -4,9 +4,9 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**listAdvertisers**](AdvertiserApi.md#listAdvertisers) | **GET** /preview/advertisers/me |  |
-| [**listDatasetsByAdvertiser**](AdvertiserApi.md#listDatasetsByAdvertiser) | **GET** /preview/advertisers/{advertiser-id}/datasets |  |
-| [**listIndustries**](AdvertiserApi.md#listIndustries) | **GET** /preview/industries |  |
+| [**listAdvertisers**](AdvertiserApi.md#listAdvertisers) | **GET** /preview/advertisers/me | /preview/advertisers/me |
+| [**listDatasetsByAdvertiser**](AdvertiserApi.md#listDatasetsByAdvertiser) | **GET** /preview/advertisers/{advertiser-id}/datasets | /preview/advertisers/{advertiser-id}/datasets |
+| [**listIndustries**](AdvertiserApi.md#listIndustries) | **GET** /preview/industries | /preview/industries |
 
 
 
@@ -14,7 +14,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > GetPortfolioResponse listAdvertisers()
 
-
+/preview/advertisers/me
 
 Fetch the portfolio of Advertisers for this account
 
@@ -99,7 +99,7 @@ This endpoint does not need any parameter.
 
 > AdvertiserDatasetListResponse listDatasetsByAdvertiser(advertiserId)
 
-
+/preview/advertisers/{advertiser-id}/datasets
 
 Retrieves corresponding Datasets for a given Advertiser. Only those Datasets are included for which the given Advertiser is marked a primary.
 
@@ -188,7 +188,7 @@ public class Example {
 
 > ListAvailableIndustriesResponse listIndustries()
 
-
+/preview/industries
 
 Returns the list of available industries for new advertisers.
 

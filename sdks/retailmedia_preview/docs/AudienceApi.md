@@ -4,21 +4,21 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addRemoveContactListByAudienceSegment**](AudienceApi.md#addRemoveContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
-| [**bulkCreateAudience**](AudienceApi.md#bulkCreateAudience) | **POST** /preview/retail-media/accounts/{account-id}/audiences/create |  |
-| [**bulkCreateAudienceSegments**](AudienceApi.md#bulkCreateAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/create |  |
-| [**bulkDeleteAudienceSegments**](AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/delete |  |
-| [**bulkDeleteAudiences**](AudienceApi.md#bulkDeleteAudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/delete |  |
-| [**bulkUpdateAudience**](AudienceApi.md#bulkUpdateAudience) | **PATCH** /preview/retail-media/accounts/{account-id}/audiences |  |
-| [**bulkUpdateAudienceSegments**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /preview/retail-media/accounts/{account-id}/audience-segments |  |
-| [**clearContactListByAudienceSegment**](AudienceApi.md#clearContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
-| [**computeAudienceSegmentsSizes**](AudienceApi.md#computeAudienceSegmentsSizes) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes |  |
-| [**computeAudiencesSizes**](AudienceApi.md#computeAudiencesSizes) | **POST** /preview/retail-media/accounts/{account-id}/audiences/compute-sizes |  |
-| [**estimateAudienceSegmentSize**](AudienceApi.md#estimateAudienceSegmentSize) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size |  |
-| [**estimateAudienceSize**](AudienceApi.md#estimateAudienceSize) | **POST** /preview/retail-media/accounts/{account-id}/audiences/estimate-size |  |
-| [**getAudienceSegmentContactListStatistics**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |  |
-| [**searchAudienceSegments**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/search |  |
-| [**searchAudiences**](AudienceApi.md#searchAudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/search |  |
+| [**addRemoveContactListByAudienceSegment**](AudienceApi.md#addRemoveContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove | /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |
+| [**bulkCreateAudience**](AudienceApi.md#bulkCreateAudience) | **POST** /preview/retail-media/accounts/{account-id}/audiences/create | /preview/retail-media/accounts/{account-id}/audiences/create |
+| [**bulkCreateAudienceSegments**](AudienceApi.md#bulkCreateAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/create | /preview/retail-media/accounts/{account-id}/audience-segments/create |
+| [**bulkDeleteAudienceSegments**](AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/delete | /preview/retail-media/accounts/{account-id}/audience-segments/delete |
+| [**bulkDeleteAudiences**](AudienceApi.md#bulkDeleteAudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/delete | /preview/retail-media/accounts/{account-id}/audiences/delete |
+| [**bulkUpdateAudience**](AudienceApi.md#bulkUpdateAudience) | **PATCH** /preview/retail-media/accounts/{account-id}/audiences | /preview/retail-media/accounts/{account-id}/audiences |
+| [**bulkUpdateAudienceSegments**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /preview/retail-media/accounts/{account-id}/audience-segments | /preview/retail-media/accounts/{account-id}/audience-segments |
+| [**clearContactListByAudienceSegment**](AudienceApi.md#clearContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear | /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |
+| [**computeAudienceSegmentsSizes**](AudienceApi.md#computeAudienceSegmentsSizes) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes | /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes |
+| [**computeAudiencesSizes**](AudienceApi.md#computeAudiencesSizes) | **POST** /preview/retail-media/accounts/{account-id}/audiences/compute-sizes | /preview/retail-media/accounts/{account-id}/audiences/compute-sizes |
+| [**estimateAudienceSegmentSize**](AudienceApi.md#estimateAudienceSegmentSize) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size | /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size |
+| [**estimateAudienceSize**](AudienceApi.md#estimateAudienceSize) | **POST** /preview/retail-media/accounts/{account-id}/audiences/estimate-size | /preview/retail-media/accounts/{account-id}/audiences/estimate-size |
+| [**getAudienceSegmentContactListStatistics**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list | /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |
+| [**searchAudienceSegments**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/search | /preview/retail-media/accounts/{account-id}/audience-segments/search |
+| [**searchAudiences**](AudienceApi.md#searchAudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/search | /preview/retail-media/accounts/{account-id}/audiences/search |
 
 
 
@@ -26,7 +26,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > RetailMediaContactlistOperation addRemoveContactListByAudienceSegment(audienceSegmentId, retailMediaContactlistAmendmentRequest)
 
-
+/preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove
 
 Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
 
@@ -117,7 +117,7 @@ public class Example {
 
 > RmAudienceEntityV1ListResponse bulkCreateAudience(accountId, rmAudienceBulkCreateInputV1)
 
-
+/preview/retail-media/accounts/{account-id}/audiences/create
 
 Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
 
@@ -208,7 +208,7 @@ public class Example {
 
 > RmAudienceSegmentEntityV1ListResponse bulkCreateAudienceSegments(accountId, rmAudienceSegmentBulkCreateInputV1)
 
-
+/preview/retail-media/accounts/{account-id}/audience-segments/create
 
 Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
 
@@ -299,7 +299,7 @@ public class Example {
 
 > RmAudienceSegmentIdEntityV1ListResponse bulkDeleteAudienceSegments(accountId, rmAudienceSegmentBulkDeleteInputV1)
 
-
+/preview/retail-media/accounts/{account-id}/audience-segments/delete
 
 Delete the segments associated to the given IDs.
 
@@ -390,7 +390,7 @@ public class Example {
 
 > RmAudienceSegmentIdEntityV1ListResponse bulkDeleteAudiences(accountId, rmAudienceBulkDeleteInputV1)
 
-
+/preview/retail-media/accounts/{account-id}/audiences/delete
 
 Deletes the audiences associated to the given IDs.
 
@@ -482,7 +482,7 @@ public class Example {
 
 > RmAudienceEntityV1ListResponse bulkUpdateAudience(accountId, rmAudienceBulkUpdateInputV1)
 
-
+/preview/retail-media/accounts/{account-id}/audiences
 
 Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
 
@@ -573,7 +573,7 @@ public class Example {
 
 > RmAudienceSegmentEntityV1ListResponse bulkUpdateAudienceSegments(accountId, rmAudienceSegmentBulkUpdateInputV1)
 
-
+/preview/retail-media/accounts/{account-id}/audience-segments
 
 Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
 
@@ -664,7 +664,7 @@ public class Example {
 
 > clearContactListByAudienceSegment(audienceSegmentId)
 
-
+/preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear
 
 Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
 
@@ -752,7 +752,7 @@ null (empty response body)
 
 > RmAudienceSegmentSizeEntityV1ListResponse computeAudienceSegmentsSizes(accountId, rmAudienceSegmentComputeSizesInputV1)
 
-
+/preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes
 
 Gets the size of all segments. An error is returned for those whose size calculation is not supported.
 
@@ -843,7 +843,7 @@ public class Example {
 
 > RmAudienceSizeEntityV1ListResponse computeAudiencesSizes(accountId, rmAudienceComputeSizesInputV1)
 
-
+/preview/retail-media/accounts/{account-id}/audiences/compute-sizes
 
 Gets the size of all audiences. An error is returned for those whose size calculation is not supported.
 
@@ -934,7 +934,7 @@ public class Example {
 
 > RmAudienceSegmentSizeEstimationV1Response estimateAudienceSegmentSize(accountId, rmAudienceSegmentEstimateSizeInputV1)
 
-
+/preview/retail-media/accounts/{account-id}/audience-segments/estimate-size
 
 Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
 
@@ -1025,7 +1025,7 @@ public class Example {
 
 > RmAudienceSizeEstimationV1Response estimateAudienceSize(accountId, rmAudienceEstimateSizeInputV1)
 
-
+/preview/retail-media/accounts/{account-id}/audiences/estimate-size
 
 Gets the size estimation of a non existent audience. An error is returned when size calculation is not supported.
 
@@ -1116,7 +1116,7 @@ public class Example {
 
 > RmContactListStatisticsEntityV1Response getAudienceSegmentContactListStatistics(accountId, audienceSegmentId)
 
-
+/preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list
 
 Returns the statistics of a contact list segment.
 
@@ -1207,7 +1207,7 @@ public class Example {
 
 > RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse searchAudienceSegments(accountId, rmAudienceSegmentSearchInputV1, limit, offset)
 
-
+/preview/retail-media/accounts/{account-id}/audience-segments/search
 
 Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
 
@@ -1302,7 +1302,7 @@ public class Example {
 
 > RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse searchAudiences(accountId, rmAudienceSearchInputV1, limit, offset)
 
-
+/preview/retail-media/accounts/{account-id}/audiences/search
 
 Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
 

@@ -4,20 +4,20 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createBoostedAdAssociation**](RecoApi.md#createBoostedAdAssociation) | **POST** /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} |  |
-| [**createProductSet**](RecoApi.md#createProductSet) | **POST** /preview/product-sets |  |
-| [**deleteBoostedAdAssociation**](RecoApi.md#deleteBoostedAdAssociation) | **DELETE** /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} |  |
-| [**disableProductFiltering**](RecoApi.md#disableProductFiltering) | **DELETE** /preview/ads/{ad-id}/product-filter |  |
-| [**enableProductFiltering**](RecoApi.md#enableProductFiltering) | **POST** /preview/ads/{ad-id}/product-filter |  |
-| [**fetchBoostedAdAssociation**](RecoApi.md#fetchBoostedAdAssociation) | **GET** /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} |  |
-| [**fetchBoostedAdAssociationByPartnerId**](RecoApi.md#fetchBoostedAdAssociationByPartnerId) | **GET** /preview/marketing-solutions/dataset/{dataset-id}/product-boost |  |
-| [**fetchBoostedAdAssociations**](RecoApi.md#fetchBoostedAdAssociations) | **GET** /preview/marketing-solutions/ads/{ad-id}/product-boost |  |
-| [**fetchProductFilteringConfig**](RecoApi.md#fetchProductFilteringConfig) | **GET** /preview/ads/{ad-id}/product-filter |  |
-| [**fetchProductFilteringUsages**](RecoApi.md#fetchProductFilteringUsages) | **GET** /preview/product-sets/{product-set-id}/product-filters |  |
-| [**fetchProductSet**](RecoApi.md#fetchProductSet) | **GET** /preview/product-sets/{product-set-id} |  |
-| [**fetchProductSets**](RecoApi.md#fetchProductSets) | **GET** /preview/product-sets/dataset/{dataset-id} |  |
-| [**patchProductSet**](RecoApi.md#patchProductSet) | **PATCH** /preview/product-sets/{product-set-id} |  |
-| [**removeProductSet**](RecoApi.md#removeProductSet) | **DELETE** /preview/product-sets/{product-set-id} |  |
+| [**createBoostedAdAssociation**](RecoApi.md#createBoostedAdAssociation) | **POST** /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} | /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} |
+| [**createProductSet**](RecoApi.md#createProductSet) | **POST** /preview/product-sets | /preview/product-sets |
+| [**deleteBoostedAdAssociation**](RecoApi.md#deleteBoostedAdAssociation) | **DELETE** /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} | /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} |
+| [**disableProductFiltering**](RecoApi.md#disableProductFiltering) | **DELETE** /preview/ads/{ad-id}/product-filter | /preview/ads/{ad-id}/product-filter |
+| [**enableProductFiltering**](RecoApi.md#enableProductFiltering) | **POST** /preview/ads/{ad-id}/product-filter | /preview/ads/{ad-id}/product-filter |
+| [**fetchBoostedAdAssociation**](RecoApi.md#fetchBoostedAdAssociation) | **GET** /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} | /preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id} |
+| [**fetchBoostedAdAssociationByPartnerId**](RecoApi.md#fetchBoostedAdAssociationByPartnerId) | **GET** /preview/marketing-solutions/dataset/{dataset-id}/product-boost | /preview/marketing-solutions/dataset/{dataset-id}/product-boost |
+| [**fetchBoostedAdAssociations**](RecoApi.md#fetchBoostedAdAssociations) | **GET** /preview/marketing-solutions/ads/{ad-id}/product-boost | /preview/marketing-solutions/ads/{ad-id}/product-boost |
+| [**fetchProductFilteringConfig**](RecoApi.md#fetchProductFilteringConfig) | **GET** /preview/ads/{ad-id}/product-filter | /preview/ads/{ad-id}/product-filter |
+| [**fetchProductFilteringUsages**](RecoApi.md#fetchProductFilteringUsages) | **GET** /preview/product-sets/{product-set-id}/product-filters | /preview/product-sets/{product-set-id}/product-filters |
+| [**fetchProductSet**](RecoApi.md#fetchProductSet) | **GET** /preview/product-sets/{product-set-id} | /preview/product-sets/{product-set-id} |
+| [**fetchProductSets**](RecoApi.md#fetchProductSets) | **GET** /preview/product-sets/dataset/{dataset-id} | /preview/product-sets/dataset/{dataset-id} |
+| [**patchProductSet**](RecoApi.md#patchProductSet) | **PATCH** /preview/product-sets/{product-set-id} | /preview/product-sets/{product-set-id} |
+| [**removeProductSet**](RecoApi.md#removeProductSet) | **DELETE** /preview/product-sets/{product-set-id} | /preview/product-sets/{product-set-id} |
 
 
 
@@ -25,7 +25,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > ValueResourceOutcomeOfBoostedAdProductSet createBoostedAdAssociation(adId, productSetId, valueResourceInputOfBoostingConfigurationRequest)
 
-
+/preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id}
 
 Create or update product boosting configuration
 
@@ -119,7 +119,7 @@ public class Example {
 
 > ResourceOutcomeOfProductSet createProductSet(valueResourceInputOfCreateProductSetRequest)
 
-
+/preview/product-sets
 
 Create a new product set
 
@@ -208,7 +208,7 @@ public class Example {
 
 > ValueResourceOutcomeOfBoostedAdProductSet deleteBoostedAdAssociation(adId, productSetId)
 
-
+/preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id}
 
 Delete association and configuration.
 
@@ -299,7 +299,7 @@ public class Example {
 
 > ValueResourceOutcomeOfProductFilterConfig disableProductFiltering(adId)
 
-
+/preview/ads/{ad-id}/product-filter
 
 Disable product filtering for a given ad
 
@@ -388,7 +388,7 @@ public class Example {
 
 > ValueResourceOutcomeOfProductFilterConfig enableProductFiltering(adId, valueResourceInputOfCreateProductFilterRequest)
 
-
+/preview/ads/{ad-id}/product-filter
 
 Enable product filtering for a given ad
 
@@ -479,7 +479,7 @@ public class Example {
 
 > ValueResourceOutcomeOfBoostedAdProductSet fetchBoostedAdAssociation(adId, productSetId)
 
-
+/preview/marketing-solutions/ads/{ad-id}/product-boost/{product-set-id}
 
 Fetch boosting association and configuration
 
@@ -570,7 +570,7 @@ public class Example {
 
 > ValueResourceCollectionOutcomeOfBoostedAdProductSet fetchBoostedAdAssociationByPartnerId(datasetId, clientType)
 
-
+/preview/marketing-solutions/dataset/{dataset-id}/product-boost
 
 Fetch boosting association and configuration for a given partner
 
@@ -661,7 +661,7 @@ public class Example {
 
 > ValueResourceCollectionOutcomeOfBoostedAdProductSet fetchBoostedAdAssociations(adId)
 
-
+/preview/marketing-solutions/ads/{ad-id}/product-boost
 
 Fetch all boosting associations and configurations
 
@@ -750,7 +750,7 @@ public class Example {
 
 > ValueResourceOutcomeOfProductFilterConfig fetchProductFilteringConfig(adId)
 
-
+/preview/ads/{ad-id}/product-filter
 
 Fetch product filtering configuration for a given ad
 
@@ -839,7 +839,7 @@ public class Example {
 
 > ValueResourceCollectionOutcomeOfProductFilterConfig fetchProductFilteringUsages(productSetId)
 
-
+/preview/product-sets/{product-set-id}/product-filters
 
 Fetch product filtering usages for a given product set
 
@@ -928,7 +928,7 @@ public class Example {
 
 > ResourceOutcomeOfProductSet fetchProductSet(productSetId)
 
-
+/preview/product-sets/{product-set-id}
 
 Fetch an existing product set
 
@@ -1017,7 +1017,7 @@ public class Example {
 
 > ResourceCollectionOutcomeOfProductSet fetchProductSets(datasetId)
 
-
+/preview/product-sets/dataset/{dataset-id}
 
 Fetch product sets of a given dataset
 
@@ -1106,7 +1106,7 @@ public class Example {
 
 > ResourceOutcomeOfProductSet patchProductSet(productSetId, valueResourceInputOfPatchProductSetRequest)
 
-
+/preview/product-sets/{product-set-id}
 
 Patch an existing product set
 
@@ -1197,7 +1197,7 @@ public class Example {
 
 > Outcome removeProductSet(productSetId)
 
-
+/preview/product-sets/{product-set-id}
 
 Remove a product set
 

@@ -63,6 +63,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Read
+      summary: "/preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts"
       tags:
       - Accounts
       x-accepts: application/json
@@ -99,6 +100,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/audience-segments"
       tags:
       - Audience
       x-content-type: application/json
@@ -134,6 +136,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Read
+      summary: "/preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list"
       tags:
       - Audience
       x-accepts: application/json
@@ -169,6 +172,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes"
       tags:
       - Audience
       x-content-type: application/json
@@ -206,6 +210,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/audience-segments/create"
       tags:
       - Audience
       x-content-type: application/json
@@ -241,6 +246,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/audience-segments/delete"
       tags:
       - Audience
       x-content-type: application/json
@@ -277,6 +283,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/audience-segments/estimate-size"
       tags:
       - Audience
       x-content-type: application/json
@@ -336,6 +343,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Read
+      summary: "/preview/retail-media/accounts/{account-id}/audience-segments/search"
       tags:
       - Audience
       x-content-type: application/json
@@ -373,6 +381,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/audiences"
       tags:
       - Audience
       x-content-type: application/json
@@ -409,6 +418,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/audiences/compute-sizes"
       tags:
       - Audience
       x-content-type: application/json
@@ -446,6 +456,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/audiences/create"
       tags:
       - Audience
       x-content-type: application/json
@@ -485,6 +496,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/audiences/delete"
       tags:
       - Audience
       x-content-type: application/json
@@ -521,6 +533,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/audiences/estimate-size"
       tags:
       - Audience
       x-content-type: application/json
@@ -580,6 +593,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Read
+      summary: "/preview/retail-media/accounts/{account-id}/audiences/search"
       tags:
       - Audience
       x-content-type: application/json
@@ -618,6 +632,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/balances/{balance-id}"
       tags:
       - Balance
       x-content-type: application/json
@@ -652,6 +667,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/creatives"
       tags:
       - Campaign
       x-content-type: application/json
@@ -687,6 +703,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/accounts/{account-id}/creatives/{creative-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -729,6 +746,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/accounts/{account-id}/creatives/{creative-id}"
       tags:
       - Campaign
       x-content-type: application/json
@@ -787,6 +805,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/accounts/{account-id}/creatives/search"
       tags:
       - Campaign
       x-content-type: application/json
@@ -821,6 +840,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/accounts/{account-id}/line-items/cap-out-history"
       tags:
       - Campaign
       x-content-type: application/json
@@ -883,6 +903,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Read
+      summary: "/preview/retail-media/accounts/{accountId}/balances"
       tags:
       - Balance
       x-accepts: application/json
@@ -913,7 +934,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_ThirdPartyAccounts_Manage
-      summary: ""
+      summary: "/preview/retail-media/accounts/{accountId}/grant-third-party-consent"
       tags:
       - ThirdPartyAccounts
       x-content-type: application/json
@@ -975,6 +996,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/accounts/{accountId}/retailers/search"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1002,6 +1024,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/auction-line-items/{lineItemId}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1035,6 +1058,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/auction-line-items/{lineItemId}"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1096,6 +1120,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove"
       tags:
       - Audience
       x-content-type: application/json
@@ -1124,6 +1149,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
+      summary: "/preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear"
       tags:
       - Audience
       x-accepts: application/json
@@ -1150,6 +1176,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Read
+      summary: "/preview/retail-media/balances/{balanceId}"
       tags:
       - Balance
       x-accepts: application/json
@@ -1183,6 +1210,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/balances/{balanceId}/campaigns/append"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1217,6 +1245,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/balances/{balanceId}/campaigns/delete"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1276,6 +1305,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Read
+      summary: "/preview/retail-media/balances/{balanceId}/history"
       tags:
       - Balance
       x-accepts: application/json
@@ -1325,6 +1355,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: /preview/retail-media/brands/search
       tags:
       - Campaign
       x-content-type: application/json
@@ -1389,6 +1420,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/campaigns/{campaign-id}/preferred-line-items"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1422,6 +1454,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/campaigns/{campaign-id}/preferred-line-items"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1483,6 +1516,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/campaigns/{campaignId}/auction-line-items"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1515,6 +1549,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/campaigns/{campaignId}/auction-line-items"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1548,6 +1583,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Catalog_Manage
+      summary: "/preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete"
       tags:
       - Catalog
       x-content-type: application/json
@@ -1581,6 +1617,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Catalog_Manage
+      summary: "/preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert"
       tags:
       - Catalog
       x-content-type: application/json
@@ -1610,6 +1647,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Catalog_Manage
+      summary: /preview/retail-media/catalog/products/batch
       tags:
       - Catalog
       x-content-type: application/json
@@ -1637,6 +1675,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Catalog_Read
+      summary: "/preview/retail-media/catalog/products/batch/report/{operation-token}"
       tags:
       - Catalog
       x-accepts: application/json
@@ -1663,6 +1702,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/catalogs/{catalogId}/status"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1697,6 +1737,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_OnSiteRecommendation_Read
+      summary: "/preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations"
       tags:
       - OnSiteRecommendation
       x-content-type: application/json
@@ -1720,6 +1761,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/insights/share-of-voice
       tags:
       - Analytics
       x-content-type: application/json
@@ -1747,6 +1789,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/line-items/{line-item-id}/product-buttons"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1781,6 +1824,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1814,6 +1858,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1855,6 +1900,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1889,6 +1935,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/line-items/{line-item-id}/product-buttons/create"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1944,6 +1991,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/line-items/{line-item-id}/products"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1978,6 +2026,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/line-items/{line-item-id}/products/append"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2007,6 +2056,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/line-items/{line-item-id}/products/delete"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2037,6 +2087,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/line-items/{line-item-id}/products/pause"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2067,6 +2118,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/line-items/{line-item-id}/products/unpause"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2084,6 +2136,7 @@ paths:
           description: Success
       security:
       - oauth: []
+      summary: /preview/retail-media/me
       tags:
       - Gateway
       x-accepts: application/json
@@ -2110,6 +2163,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/preferred-line-items/{line-item-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2143,6 +2197,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
+      summary: "/preview/retail-media/preferred-line-items/{line-item-id}"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2171,6 +2226,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: "/preview/retail-media/reports/{reportId}/output"
       tags:
       - Analytics
       x-accepts: application/json
@@ -2197,6 +2253,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: "/preview/retail-media/reports/{reportId}/status"
       tags:
       - Analytics
       x-accepts: application/json
@@ -2222,6 +2279,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/accounts
       tags:
       - Analytics
       x-content-type: application/json
@@ -2248,6 +2306,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/campaigns
       tags:
       - Analytics
       x-content-type: application/json
@@ -2274,6 +2333,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/fillrate
       tags:
       - Analytics
       x-content-type: application/json
@@ -2300,6 +2360,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/line-items
       tags:
       - Analytics
       x-content-type: application/json
@@ -2326,6 +2387,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/offsite
       tags:
       - Analytics
       x-content-type: application/json
@@ -2351,6 +2413,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/sync/attributed-transactions
       tags:
       - Analytics
       x-content-type: application/json
@@ -2376,6 +2439,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/sync/campaigns
       tags:
       - Analytics
       x-content-type: application/json
@@ -2401,6 +2465,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/sync/line-items
       tags:
       - Analytics
       x-content-type: application/json
@@ -2429,6 +2494,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/sync/real-time-performance
       tags:
       - Analytics
       x-content-type: application/json
@@ -2455,6 +2521,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/unfilled-placements
       tags:
       - Analytics
       x-content-type: application/json
@@ -2490,6 +2557,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Catalog_Manage
+      summary: "/preview/retail-media/retailers/{retailer-id}/offers/update"
       tags:
       - Catalog
       x-content-type: application/json
@@ -2524,6 +2592,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Catalog_Manage
+      summary: "/preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners"
       tags:
       - Catalog
       x-content-type: application/json
@@ -2560,6 +2629,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
+      summary: "/preview/retail-media/retailers/{retailerId}/compute-display-min-bid"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2595,6 +2665,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_ThirdPartyAccounts_Manage
+      summary: "/preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove"
       tags:
       - ThirdPartyAccounts
       x-accepts: application/json
@@ -2628,6 +2699,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_ThirdPartyAccounts_Manage
+      summary: "/preview/retail-media/third-party-accounts/{accountId}/brands/add"
       tags:
       - ThirdPartyAccounts
       x-content-type: application/json
@@ -2662,6 +2734,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_ThirdPartyAccounts_Manage
+      summary: "/preview/retail-media/third-party-accounts/{accountId}/create-brand-account"
       tags:
       - ThirdPartyAccounts
       x-content-type: application/json
@@ -2696,6 +2769,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_ThirdPartyAccounts_Manage
+      summary: "/preview/retail-media/third-party-accounts/{accountId}/create-seller-account"
       tags:
       - ThirdPartyAccounts
       x-content-type: application/json
@@ -2731,6 +2805,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_ThirdPartyAccounts_Manage
+      summary: "/preview/retail-media/third-party-accounts/{accountId}/sellers"
       tags:
       - ThirdPartyAccounts
       x-content-type: application/json
@@ -6877,11 +6952,11 @@ components:
             flightSchedule:
               legs:
               - dayOfWeek: sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+                startTime: startTime
+                endTime: endTime
               - dayOfWeek: sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+                startTime: startTime
+                endTime: endTime
             name: name
             isAutoDailyPacing: true
             targetRetailerId: targetRetailerId
@@ -6907,11 +6982,11 @@ components:
             flightSchedule:
               legs:
               - dayOfWeek: sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+                startTime: startTime
+                endTime: endTime
               - dayOfWeek: sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+                startTime: startTime
+                endTime: endTime
             name: name
             isAutoDailyPacing: true
             targetRetailerId: targetRetailerId
@@ -7253,11 +7328,11 @@ components:
           flightSchedule:
             legs:
             - dayOfWeek: sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
+              startTime: startTime
+              endTime: endTime
             - dayOfWeek: sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
+              startTime: startTime
+              endTime: endTime
           name: name
           isAutoDailyPacing: true
           targetRetailerId: targetRetailerId
@@ -7530,11 +7605,11 @@ components:
             flightSchedule:
               legs:
               - dayOfWeek: sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+                startTime: startTime
+                endTime: endTime
               - dayOfWeek: sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+                startTime: startTime
+                endTime: endTime
             name: name
             isAutoDailyPacing: true
             targetRetailerId: targetRetailerId
@@ -7959,8 +8034,8 @@ components:
         item will run.
       example:
         dayOfWeek: sunday
-        startTime: 2000-01-23T04:56:07.000+00:00
-        endTime: 2000-01-23T04:56:07.000+00:00
+        startTime: startTime
+        endTime: endTime
       properties:
         dayOfWeek:
           description: Enum for the days of the week.
@@ -7977,10 +8052,14 @@ components:
           - weekends
           type: string
         endTime:
-          format: date-time
+          description: "Wall-clock time of day in HH:mm, 24-hour. No timezone. Example:\
+            \ 23:59."
+          pattern: "^([01][0-9]|2[0-3]):[0-5][0-9]$"
           type: string
         startTime:
-          format: date-time
+          description: "Wall-clock time of day in HH:mm, 24-hour. No timezone. Example:\
+            \ 08:00."
+          pattern: "^([01][0-9]|2[0-3]):[0-5][0-9]$"
           type: string
       required:
       - dayOfWeek
@@ -7993,11 +8072,11 @@ components:
       example:
         legs:
         - dayOfWeek: sunday
-          startTime: 2000-01-23T04:56:07.000+00:00
-          endTime: 2000-01-23T04:56:07.000+00:00
+          startTime: startTime
+          endTime: endTime
         - dayOfWeek: sunday
-          startTime: 2000-01-23T04:56:07.000+00:00
-          endTime: 2000-01-23T04:56:07.000+00:00
+          startTime: startTime
+          endTime: endTime
       nullable: true
       properties:
         legs:
@@ -15149,11 +15228,11 @@ components:
         flightSchedule:
           legs:
           - dayOfWeek: sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
+            startTime: startTime
+            endTime: endTime
           - dayOfWeek: sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
+            startTime: startTime
+            endTime: endTime
         name: name
         isAutoDailyPacing: true
         targetRetailerId: targetRetailerId
@@ -15298,11 +15377,11 @@ components:
         flightSchedule:
           legs:
           - dayOfWeek: sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
+            startTime: startTime
+            endTime: endTime
           - dayOfWeek: sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
+            startTime: startTime
+            endTime: endTime
         name: name
         isAutoDailyPacing: false
         targetRetailerId: targetRetailerId
@@ -15403,11 +15482,11 @@ components:
         flightSchedule:
           legs:
           - dayOfWeek: sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
+            startTime: startTime
+            endTime: endTime
           - dayOfWeek: sunday
-            startTime: 2000-01-23T04:56:07.000+00:00
-            endTime: 2000-01-23T04:56:07.000+00:00
+            startTime: startTime
+            endTime: endTime
         name: name
         isAutoDailyPacing: true
         dailyPacing: 6.027456183070403
@@ -17113,11 +17192,11 @@ components:
             flightSchedule:
               legs:
               - dayOfWeek: sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+                startTime: startTime
+                endTime: endTime
               - dayOfWeek: sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+                startTime: startTime
+                endTime: endTime
             name: name
             isAutoDailyPacing: false
             targetRetailerId: targetRetailerId
@@ -17145,11 +17224,11 @@ components:
             flightSchedule:
               legs:
               - dayOfWeek: sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+                startTime: startTime
+                endTime: endTime
               - dayOfWeek: sunday
-                startTime: 2000-01-23T04:56:07.000+00:00
-                endTime: 2000-01-23T04:56:07.000+00:00
+                startTime: startTime
+                endTime: endTime
             name: name
             isAutoDailyPacing: true
             dailyPacing: 6.027456183070403
@@ -17400,11 +17479,11 @@ components:
           flightSchedule:
             legs:
             - dayOfWeek: sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
+              startTime: startTime
+              endTime: endTime
             - dayOfWeek: sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
+              startTime: startTime
+              endTime: endTime
           name: name
           isAutoDailyPacing: false
           targetRetailerId: targetRetailerId
@@ -17434,11 +17513,11 @@ components:
           flightSchedule:
             legs:
             - dayOfWeek: sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
+              startTime: startTime
+              endTime: endTime
             - dayOfWeek: sunday
-              startTime: 2000-01-23T04:56:07.000+00:00
-              endTime: 2000-01-23T04:56:07.000+00:00
+              startTime: startTime
+              endTime: endTime
           name: name
           isAutoDailyPacing: true
           dailyPacing: 6.027456183070403

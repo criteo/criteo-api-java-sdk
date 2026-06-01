@@ -159,7 +159,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
      * This endpoint is subject to specific rate limits.
      * @param realTimeProductReportJobRequest  (optional)
      * @return RealTimeProductReportJobStatusResponse
@@ -176,7 +176,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
      * This endpoint is subject to specific rate limits.
      * @param realTimeProductReportJobRequest  (optional)
      * @return ApiResponse&lt;RealTimeProductReportJobStatusResponse&gt;
@@ -194,7 +194,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export (asynchronously)
      * This endpoint is subject to specific rate limits.
      * @param realTimeProductReportJobRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -280,7 +280,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/statistics/report
      * This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
      * @param statisticsReportQueryMessage  (optional)
      * @return File
@@ -297,7 +297,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/statistics/report
      * This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
      * @param statisticsReportQueryMessage  (optional)
      * @return ApiResponse&lt;File&gt;
@@ -315,7 +315,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/statistics/report (asynchronously)
      * This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
      * @param statisticsReportQueryMessage  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -408,7 +408,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/async-statistics
      * This Statistics endpoint provides an export Id that let you retrieve data.
      * @param generateStatisticsReportRequest  (required)
      * @return MarketingSolutionsReportStatusResponse
@@ -425,7 +425,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/async-statistics
      * This Statistics endpoint provides an export Id that let you retrieve data.
      * @param generateStatisticsReportRequest  (required)
      * @return ApiResponse&lt;MarketingSolutionsReportStatusResponse&gt;
@@ -443,7 +443,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/reports/async-statistics (asynchronously)
      * This Statistics endpoint provides an export Id that let you retrieve data.
      * @param generateStatisticsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -531,7 +531,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/async-audience-performance
      * This Statistics endpoint provides an export Id that lets you retrieve data.
      * @param generateAudiencePerformanceReportRequest  (optional)
      * @return MarketingSolutionsReportStatusResponse
@@ -548,7 +548,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/async-audience-performance
      * This Statistics endpoint provides an export Id that lets you retrieve data.
      * @param generateAudiencePerformanceReportRequest  (optional)
      * @return ApiResponse&lt;MarketingSolutionsReportStatusResponse&gt;
@@ -566,7 +566,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/reports/async-audience-performance (asynchronously)
      * This Statistics endpoint provides an export Id that lets you retrieve data.
      * @param generateAudiencePerformanceReportRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -654,7 +654,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/{report-id}/output
      * This endpoint gives you the output of the report.
      * @param reportId Id of the report (required)
      * @return ExportResult
@@ -671,7 +671,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/{report-id}/output
      * This endpoint gives you the output of the report.
      * @param reportId Id of the report (required)
      * @return ApiResponse&lt;ExportResult&gt;
@@ -689,7 +689,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/reports/{report-id}/output (asynchronously)
      * This endpoint gives you the output of the report.
      * @param reportId Id of the report (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -779,7 +779,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/{report-id}/status
      * This endpoint gives you the status of the report.
      * @param reportId Id of the report (required)
      * @return MarketingSolutionsReportStatusResponse
@@ -796,7 +796,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/{report-id}/status
      * This endpoint gives you the status of the report.
      * @param reportId Id of the report (required)
      * @return ApiResponse&lt;MarketingSolutionsReportStatusResponse&gt;
@@ -814,7 +814,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/reports/{report-id}/status (asynchronously)
      * This endpoint gives you the status of the report.
      * @param reportId Id of the report (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -903,7 +903,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/categories/report
      * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
      * @param generateCategoriesReportRequestAttributesRequest  (optional)
      * @return File
@@ -920,7 +920,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/categories/report
      * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
      * @param generateCategoriesReportRequestAttributesRequest  (optional)
      * @return ApiResponse&lt;File&gt;
@@ -938,7 +938,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/categories/report (asynchronously)
      * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
      * @param generateCategoriesReportRequestAttributesRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1031,7 +1031,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/creatives
      * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
      * @param generateCreativesReportRequestAttributesRequest  (required)
      * @return JsonReportRowsListResponse
@@ -1048,7 +1048,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/creatives
      * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
      * @param generateCreativesReportRequestAttributesRequest  (required)
      * @return ApiResponse&lt;JsonReportRowsListResponse&gt;
@@ -1066,7 +1066,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/reports/creatives (asynchronously)
      * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
      * @param generateCreativesReportRequestAttributesRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1155,7 +1155,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/placements/report
      * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
      * @param placementsReportQueryMessageListRequest  (optional)
      * @return File
@@ -1172,7 +1172,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/placements/report
      * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
      * @param placementsReportQueryMessageListRequest  (optional)
      * @return ApiResponse&lt;File&gt;
@@ -1190,7 +1190,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/placements/report (asynchronously)
      * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
      * @param placementsReportQueryMessageListRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1280,7 +1280,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
      * This endpoint is subject to specific rate limits.
      * @param reportId  (required)
      * @return FileStreamResultResponse
@@ -1297,7 +1297,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
      * This endpoint is subject to specific rate limits.
      * @param reportId  (required)
      * @return ApiResponse&lt;FileStreamResultResponse&gt;
@@ -1315,7 +1315,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId} (asynchronously)
      * This endpoint is subject to specific rate limits.
      * @param reportId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1405,7 +1405,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
      * 
      * @param reportId  (required)
      * @return RealTimeProductReportJobStatusResponse
@@ -1422,7 +1422,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
      * 
      * @param reportId  (required)
      * @return ApiResponse&lt;RealTimeProductReportJobStatusResponse&gt;
@@ -1440,7 +1440,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} (asynchronously)
      * 
      * @param reportId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1528,7 +1528,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/realtime
      * With Realtime endpoint, you can analyse the realtime values of the main metrics: displays, clicks, cost.
      * @param generateRealtimeStatisticsReportRequestAttributesRequest  (optional)
      * @return JsonReportRowsListResponse
@@ -1545,7 +1545,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/realtime
      * With Realtime endpoint, you can analyse the realtime values of the main metrics: displays, clicks, cost.
      * @param generateRealtimeStatisticsReportRequestAttributesRequest  (optional)
      * @return ApiResponse&lt;JsonReportRowsListResponse&gt;
@@ -1563,7 +1563,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/reports/realtime (asynchronously)
      * With Realtime endpoint, you can analyse the realtime values of the main metrics: displays, clicks, cost.
      * @param generateRealtimeStatisticsReportRequestAttributesRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1656,7 +1656,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/top-products
      * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
      * @param generateTopProductsReportRequestAttributesRequest  (required)
      * @return JsonReportRowsListResponse
@@ -1673,7 +1673,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/reports/top-products
      * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
      * @param generateTopProductsReportRequestAttributesRequest  (required)
      * @return ApiResponse&lt;JsonReportRowsListResponse&gt;
@@ -1691,7 +1691,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/reports/top-products (asynchronously)
      * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
      * @param generateTopProductsReportRequestAttributesRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1780,7 +1780,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/transactions/report
      * This Transactions endpoint provides transactions id related data.
      * @param transactionsReportQueryMessageListRequest  (optional)
      * @return File
@@ -1797,7 +1797,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/transactions/report
      * This Transactions endpoint provides transactions id related data.
      * @param transactionsReportQueryMessageListRequest  (optional)
      * @return ApiResponse&lt;File&gt;
@@ -1815,7 +1815,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/transactions/report (asynchronously)
      * This Transactions endpoint provides transactions id related data.
      * @param transactionsReportQueryMessageListRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1910,7 +1910,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/log-level/advertisers/{advertiser-id}/report
      * This Statistics endpoint provides publisher data.
      * @param advertiserId The advertiser id to fetch the transparency data. (required)
      * @param transparencyQueryMessage The query message. (optional)
@@ -1928,7 +1928,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/log-level/advertisers/{advertiser-id}/report
      * This Statistics endpoint provides publisher data.
      * @param advertiserId The advertiser id to fetch the transparency data. (required)
      * @param transparencyQueryMessage The query message. (optional)
@@ -1947,7 +1947,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/log-level/advertisers/{advertiser-id}/report (asynchronously)
      * This Statistics endpoint provides publisher data.
      * @param advertiserId The advertiser id to fetch the transparency data. (required)
      * @param transparencyQueryMessage The query message. (optional)

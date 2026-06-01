@@ -135,7 +135,7 @@ public class GatewayApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/me
      * Get information about the currently logged application
      * @return ApplicationSummaryModelResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -151,7 +151,7 @@ public class GatewayApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/me
      * Get information about the currently logged application
      * @return ApiResponse&lt;ApplicationSummaryModelResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -168,7 +168,7 @@ public class GatewayApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/me (asynchronously)
      * Get information about the currently logged application
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

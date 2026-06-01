@@ -4,8 +4,8 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**searchRecommendedProducts**](OnSiteRecommendationApi.md#searchRecommendedProducts) | **POST** /preview/recommendation/search |  |
-| [**searchRecommendedProductsConversational**](OnSiteRecommendationApi.md#searchRecommendedProductsConversational) | **POST** /preview/recommendation/search-conversational |  |
+| [**searchRecommendedProducts**](OnSiteRecommendationApi.md#searchRecommendedProducts) | **POST** /preview/recommendation/search | /preview/recommendation/search |
+| [**searchRecommendedProductsConversational**](OnSiteRecommendationApi.md#searchRecommendedProductsConversational) | **POST** /preview/recommendation/search-conversational | /preview/recommendation/search-conversational |
 
 
 
@@ -13,7 +13,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > OnSiteRecoResponse searchRecommendedProducts(onSiteRecoRequest)
 
-
+/preview/recommendation/search
 
 Retrieves a list of products recommended for the given user. This end point can either rely on a Criteo UserId, or a list of user events to perform the recommendation
 
@@ -102,7 +102,7 @@ public class Example {
 
 > OnSiteRecoResponse searchRecommendedProductsConversational(onSiteRecoRequestConversational)
 
-
+/preview/recommendation/search-conversational
 
 Retrieves a list of products recommended for the given user based on a conversation between a user and a partner&#39;s agent
 

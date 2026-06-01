@@ -139,7 +139,7 @@ public class OnSiteRecommendationApi {
     }
 
     /**
-     * 
+     * /preview/recommendation/search
      * Retrieves a list of products recommended for the given user. This end point can either rely on a Criteo UserId, or a list of user events to perform the recommendation
      * @param onSiteRecoRequest  (optional)
      * @return OnSiteRecoResponse
@@ -156,7 +156,7 @@ public class OnSiteRecommendationApi {
     }
 
     /**
-     * 
+     * /preview/recommendation/search
      * Retrieves a list of products recommended for the given user. This end point can either rely on a Criteo UserId, or a list of user events to perform the recommendation
      * @param onSiteRecoRequest  (optional)
      * @return ApiResponse&lt;OnSiteRecoResponse&gt;
@@ -174,7 +174,7 @@ public class OnSiteRecommendationApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/recommendation/search (asynchronously)
      * Retrieves a list of products recommended for the given user. This end point can either rely on a Criteo UserId, or a list of user events to perform the recommendation
      * @param onSiteRecoRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -257,7 +257,7 @@ public class OnSiteRecommendationApi {
     }
 
     /**
-     * 
+     * /preview/recommendation/search-conversational
      * Retrieves a list of products recommended for the given user based on a conversation between a user and a partner&#39;s agent
      * @param onSiteRecoRequestConversational  (optional)
      * @return OnSiteRecoResponse
@@ -274,7 +274,7 @@ public class OnSiteRecommendationApi {
     }
 
     /**
-     * 
+     * /preview/recommendation/search-conversational
      * Retrieves a list of products recommended for the given user based on a conversation between a user and a partner&#39;s agent
      * @param onSiteRecoRequestConversational  (optional)
      * @return ApiResponse&lt;OnSiteRecoResponse&gt;
@@ -292,7 +292,7 @@ public class OnSiteRecommendationApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/recommendation/search-conversational (asynchronously)
      * Retrieves a list of products recommended for the given user based on a conversation between a user and a partner&#39;s agent
      * @param onSiteRecoRequestConversational  (optional)
      * @param _callback The callback to be executed when the API call finishes

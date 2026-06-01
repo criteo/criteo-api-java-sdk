@@ -174,7 +174,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets
      * Create an ad set with the provided parameters
      * @param createAdSetV26Q1Request the ad sets to create (required)
      * @return ResponseReadAdSetV26Q1
@@ -191,7 +191,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets
      * Create an ad set with the provided parameters
      * @param createAdSetV26Q1Request the ad sets to create (required)
      * @return ApiResponse&lt;ResponseReadAdSetV26Q1&gt;
@@ -209,7 +209,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets (asynchronously)
      * Create an ad set with the provided parameters
      * @param createAdSetV26Q1Request the ad sets to create (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -297,7 +297,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/campaigns
      * Create the specified campaign                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param createCampaignRequest the campaigns to create (required)
      * @return CampaignV23Q1Response
@@ -314,7 +314,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/campaigns
      * Create the specified campaign                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param createCampaignRequest the campaigns to create (required)
      * @return ApiResponse&lt;CampaignV23Q1Response&gt;
@@ -332,7 +332,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/campaigns (asynchronously)
      * Create the specified campaign                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param createCampaignRequest the campaigns to create (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -422,7 +422,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules
      * Removes some bundles from the current list of targeted bundles for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -440,7 +440,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules
      * Removes some bundles from the current list of targeted bundles for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -459,7 +459,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules (asynchronously)
      * Removes some bundles from the current list of targeted bundles for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -550,7 +550,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules
      * Removes some domains from the current list of targeted domains for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -568,7 +568,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules
      * Removes some domains from the current list of targeted domains for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -587,7 +587,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules (asynchronously)
      * Removes some domains from the current list of targeted domains for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -678,7 +678,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules
      * Removes some bundles from the current list of targeted bundles for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -696,7 +696,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules
      * Removes some bundles from the current list of targeted bundles for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -715,7 +715,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules (asynchronously)
      * Removes some bundles from the current list of targeted bundles for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -806,7 +806,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/domain-rules
      * Removes some domains from the current list of targeted domains for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -824,7 +824,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/domain-rules
      * Removes some domains from the current list of targeted domains for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -843,7 +843,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/campaigns/{campaignId}/targeting/domain-rules (asynchronously)
      * Removes some domains from the current list of targeted domains for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
@@ -932,7 +932,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids/disable
      * Disable the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @return AdSetTargetingDealIdsDisableResultResponse
@@ -949,7 +949,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids/disable
      * Disable the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @return ApiResponse&lt;AdSetTargetingDealIdsDisableResultResponse&gt;
@@ -967,7 +967,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids/disable (asynchronously)
      * Disable the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1055,7 +1055,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable
      * Disable the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @return AdSetTargetingVideoPositioningDisableResultResponse
@@ -1072,7 +1072,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable
      * Disable the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @return ApiResponse&lt;AdSetTargetingVideoPositioningDisableResultResponse&gt;
@@ -1090,7 +1090,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable (asynchronously)
      * Disable the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1178,7 +1178,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}
      * Get the data for the specified ad set
      * @param adSetId Id of the ad set (required)
      * @return ResponseReadAdSetV26Q1
@@ -1195,7 +1195,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}
      * Get the data for the specified ad set
      * @param adSetId Id of the ad set (required)
      * @return ApiResponse&lt;ResponseReadAdSetV26Q1&gt;
@@ -1213,7 +1213,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id} (asynchronously)
      * Get the data for the specified ad set
      * @param adSetId Id of the ad set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1301,7 +1301,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids
      * Get the Category Bids for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @return AdSetCategoryBidListResponse
@@ -1318,7 +1318,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids
      * Get the Category Bids for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @return ApiResponse&lt;AdSetCategoryBidListResponse&gt;
@@ -1336,7 +1336,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids (asynchronously)
      * Get the Category Bids for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1424,7 +1424,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids
      * Get the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @return AdSetTargetingDealIdsResponse
@@ -1441,7 +1441,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids
      * Get the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @return ApiResponse&lt;AdSetTargetingDealIdsResponse&gt;
@@ -1459,7 +1459,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids (asynchronously)
      * Get the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1547,7 +1547,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning
      * Get the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @return AdSetTargetingVideoPositioningResponse
@@ -1564,7 +1564,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning
      * Get the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @return ApiResponse&lt;AdSetTargetingVideoPositioningResponse&gt;
@@ -1582,7 +1582,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning (asynchronously)
      * Get the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1670,7 +1670,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules
      * Returns a list of all targeted bundles for an advertiser.
      * @param advertiserId The advertiser id (required)
      * @return ApiResponseOfTargetingEntity
@@ -1687,7 +1687,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules
      * Returns a list of all targeted bundles for an advertiser.
      * @param advertiserId The advertiser id (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
@@ -1705,7 +1705,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules (asynchronously)
      * Returns a list of all targeted bundles for an advertiser.
      * @param advertiserId The advertiser id (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1793,7 +1793,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules
      * Returns a list of all targeted domains for an advertiser.
      * @param advertiserId The advertiser id (required)
      * @return ApiResponseOfTargetingEntity
@@ -1810,7 +1810,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules
      * Returns a list of all targeted domains for an advertiser.
      * @param advertiserId The advertiser id (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
@@ -1828,7 +1828,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules (asynchronously)
      * Returns a list of all targeted domains for an advertiser.
      * @param advertiserId The advertiser id (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1916,7 +1916,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/campaigns/{campaign-id}
      * Get the data for the specified campaign.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignId ID of the marketing campaign; This field is required. (required)
      * @return CampaignV23Q1Response
@@ -1933,7 +1933,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/campaigns/{campaign-id}
      * Get the data for the specified campaign.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignId ID of the marketing campaign; This field is required. (required)
      * @return ApiResponse&lt;CampaignV23Q1Response&gt;
@@ -1951,7 +1951,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/campaigns/{campaign-id} (asynchronously)
      * Get the data for the specified campaign.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignId ID of the marketing campaign; This field is required. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2039,7 +2039,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules
      * Returns a list of all targeted bundles for a campaign.
      * @param campaignId The campaign id (required)
      * @return ApiResponseOfTargetingEntity
@@ -2056,7 +2056,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules
      * Returns a list of all targeted bundles for a campaign.
      * @param campaignId The campaign id (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
@@ -2074,7 +2074,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules (asynchronously)
      * Returns a list of all targeted bundles for a campaign.
      * @param campaignId The campaign id (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2162,7 +2162,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/domain-rules
      * Returns a list of all targeted domains for a campaign.
      * @param campaignId The campaign id (required)
      * @return ApiResponseOfTargetingEntity
@@ -2179,7 +2179,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/domain-rules
      * Returns a list of all targeted domains for a campaign.
      * @param campaignId The campaign id (required)
      * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
@@ -2197,7 +2197,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/campaigns/{campaignId}/targeting/domain-rules (asynchronously)
      * Returns a list of all targeted domains for a campaign.
      * @param campaignId The campaign id (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2285,7 +2285,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers
      * Get the Display Multipliers for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @return AdSetDisplayMultiplierListResponse
@@ -2302,7 +2302,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers
      * Get the Display Multipliers for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @return ApiResponse&lt;AdSetDisplayMultiplierListResponse&gt;
@@ -2320,7 +2320,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers (asynchronously)
      * Get the Display Multipliers for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2401,7 +2401,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/targeting/supply-vendors
      * Fetch the list of available supply vendors for any Ad Set targetings
      * @return SupplyVendorListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2417,7 +2417,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/targeting/supply-vendors
      * Fetch the list of available supply vendors for any Ad Set targetings
      * @return ApiResponse&lt;SupplyVendorListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2434,7 +2434,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/targeting/supply-vendors (asynchronously)
      * Fetch the list of available supply vendors for any Ad Set targetings
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2528,7 +2528,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids
      * Update the Category Bids for given Categories associated to an Ad Set  Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetCategoryBidListRequest Collection of category bids to update (required)
@@ -2546,7 +2546,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids
      * Update the Category Bids for given Categories associated to an Ad Set  Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetCategoryBidListRequest Collection of category bids to update (required)
@@ -2565,7 +2565,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids (asynchronously)
      * Update the Category Bids for given Categories associated to an Ad Set  Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetCategoryBidListRequest Collection of category bids to update (required)
@@ -2654,7 +2654,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets
      * Patch a list of AdSets.
      * @param requestsPatchAdSetV26Q1 List of adsets to patch. (required)
      * @return ResponsesAdSetIdV26Q1
@@ -2671,7 +2671,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets
      * Patch a list of AdSets.
      * @param requestsPatchAdSetV26Q1 List of adsets to patch. (required)
      * @return ApiResponse&lt;ResponsesAdSetIdV26Q1&gt;
@@ -2689,7 +2689,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets (asynchronously)
      * Patch a list of AdSets.
      * @param requestsPatchAdSetV26Q1 List of adsets to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2777,7 +2777,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/campaigns
      * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return PatchResultCampaignListResponse
@@ -2794,7 +2794,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/campaigns
      * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return ApiResponse&lt;PatchResultCampaignListResponse&gt;
@@ -2812,7 +2812,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/campaigns (asynchronously)
      * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2907,7 +2907,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers
      * Update the Display Multipliers for given Categories associated to an Ad Set  Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetDisplayMultiplierListRequest List of display multiplier values to change (required)
@@ -2925,7 +2925,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers
      * Update the Display Multipliers for given Categories associated to an Ad Set  Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetDisplayMultiplierListRequest List of display multiplier values to change (required)
@@ -2944,7 +2944,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers (asynchronously)
      * Update the Display Multipliers for given Categories associated to an Ad Set  Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetDisplayMultiplierListRequest List of display multiplier values to change (required)
@@ -3040,7 +3040,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules
      * Inserts a list of targeted bundles for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3058,7 +3058,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules
      * Inserts a list of targeted bundles for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3077,7 +3077,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules (asynchronously)
      * Inserts a list of targeted bundles for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3173,7 +3173,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules
      * Inserts a list of targeted domains for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3191,7 +3191,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules
      * Inserts a list of targeted domains for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3210,7 +3210,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules (asynchronously)
      * Inserts a list of targeted domains for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3306,7 +3306,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules
      * Inserts a list of targeted bundles for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3324,7 +3324,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules
      * Inserts a list of targeted bundles for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3343,7 +3343,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules (asynchronously)
      * Inserts a list of targeted bundles for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3439,7 +3439,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/domain-rules
      * Inserts a list of targeted domains for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3457,7 +3457,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/domain-rules
      * Inserts a list of targeted domains for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3476,7 +3476,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/campaigns/{campaignId}/targeting/domain-rules (asynchronously)
      * Inserts a list of targeted domains for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (required)
@@ -3572,7 +3572,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules
      * Updates the targeted bundles for an advertiser by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -3590,7 +3590,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules
      * Updates the targeted bundles for an advertiser by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -3609,7 +3609,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/advertisers/{advertiserId}/targeting/bundle-rules (asynchronously)
      * Updates the targeted bundles for an advertiser by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -3705,7 +3705,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules
      * Updates the targeted domains for an advertiser by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -3723,7 +3723,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules
      * Updates the targeted domains for an advertiser by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -3742,7 +3742,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/advertisers/{advertiserId}/targeting/domain-rules (asynchronously)
      * Updates the targeted domains for an advertiser by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param advertiserId The advertiser id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -3838,7 +3838,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules
      * Updates the targeted bundles for a campaign by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -3856,7 +3856,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules
      * Updates the targeted bundles for a campaign by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -3875,7 +3875,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/campaigns/{campaignId}/targeting/bundle-rules (asynchronously)
      * Updates the targeted bundles for a campaign by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -3971,7 +3971,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/domain-rules
      * Updates the targeted domains for a campaign by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -3989,7 +3989,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/campaigns/{campaignId}/targeting/domain-rules
      * Updates the targeted domains for a campaign by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -4008,7 +4008,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/campaigns/{campaignId}/targeting/domain-rules (asynchronously)
      * Updates the targeted domains for a campaign by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
      * @param campaignId The campaign id (required)
      * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (required)
@@ -4092,7 +4092,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/search
      * Search for ad sets based on provided criteria.  This returns the full configuration of ad sets matching those criteria.  Field projection can be used if only a subset of fields is required, instead of the full configuration.                If specific fields are precised in the user prompt, use meta.fields field projection in order to query only the value of these fields, else, provide every field.
      * @param adSetSearchRequestV26Q1  (optional)
      * @return ResponsesReadAdSetV26Q1
@@ -4109,7 +4109,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/search
      * Search for ad sets based on provided criteria.  This returns the full configuration of ad sets matching those criteria.  Field projection can be used if only a subset of fields is required, instead of the full configuration.                If specific fields are precised in the user prompt, use meta.fields field projection in order to query only the value of these fields, else, provide every field.
      * @param adSetSearchRequestV26Q1  (optional)
      * @return ApiResponse&lt;ResponsesReadAdSetV26Q1&gt;
@@ -4127,7 +4127,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/search (asynchronously)
      * Search for ad sets based on provided criteria.  This returns the full configuration of ad sets matching those criteria.  Field projection can be used if only a subset of fields is required, instead of the full configuration.                If specific fields are precised in the user prompt, use meta.fields field projection in order to query only the value of these fields, else, provide every field.
      * @param adSetSearchRequestV26Q1  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -4210,7 +4210,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/campaigns/search
      * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
      * @return CampaignV23Q1ListResponse
@@ -4227,7 +4227,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/campaigns/search
      * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
      * @return ApiResponse&lt;CampaignV23Q1ListResponse&gt;
@@ -4245,7 +4245,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/campaigns/search (asynchronously)
      * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -4340,7 +4340,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids
      * Set the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (required)
@@ -4358,7 +4358,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids
      * Set the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (required)
@@ -4377,7 +4377,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids (asynchronously)
      * Set the Deal Id Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (required)
@@ -4473,7 +4473,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning
      * Set the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (required)
@@ -4491,7 +4491,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning
      * Set the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (required)
@@ -4510,7 +4510,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning (asynchronously)
      * Set the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (required)
@@ -4594,7 +4594,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/start
      * Start the specified list of ad sets
      * @param requestsAdSetId All the ad sets to start (optional)
      * @return ResponsesAdSetId
@@ -4611,7 +4611,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/start
      * Start the specified list of ad sets
      * @param requestsAdSetId All the ad sets to start (optional)
      * @return ApiResponse&lt;ResponsesAdSetId&gt;
@@ -4629,7 +4629,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/start (asynchronously)
      * Start the specified list of ad sets
      * @param requestsAdSetId All the ad sets to start (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -4712,7 +4712,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/stop
      * Stop the specified list of ad sets
      * @param requestsAdSetId All the ad sets to stop (optional)
      * @return ResponsesAdSetId
@@ -4729,7 +4729,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/stop
      * Stop the specified list of ad sets
      * @param requestsAdSetId All the ad sets to stop (optional)
      * @return ApiResponse&lt;ResponsesAdSetId&gt;
@@ -4747,7 +4747,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/stop (asynchronously)
      * Stop the specified list of ad sets
      * @param requestsAdSetId All the ad sets to stop (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -4842,7 +4842,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/audience
      * Link or unlink an audience with an ad set
      * @param adSetId The ad set ID. (required)
      * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (required)
@@ -4860,7 +4860,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/audience
      * Link or unlink an audience with an ad set
      * @param adSetId The ad set ID. (required)
      * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (required)
@@ -4879,7 +4879,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/marketing-solutions/ad-sets/{ad-set-id}/audience (asynchronously)
      * Link or unlink an audience with an ad set
      * @param adSetId The ad set ID. (required)
      * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (required)

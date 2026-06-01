@@ -137,7 +137,7 @@ public class AdvertiserApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/me
      * Fetch the portfolio of Advertisers for this account
      * @return GetPortfolioResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -153,7 +153,7 @@ public class AdvertiserApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/me
      * Fetch the portfolio of Advertisers for this account
      * @return ApiResponse&lt;GetPortfolioResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -170,7 +170,7 @@ public class AdvertiserApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/advertisers/me (asynchronously)
      * Fetch the portfolio of Advertisers for this account
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -257,7 +257,7 @@ public class AdvertiserApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiser-id}/datasets
      * Retrieves corresponding Datasets for a given Advertiser. Only those Datasets are included for which the given Advertiser is marked a primary.
      * @param advertiserId The id of the Advertiser for which Datasets are being retrieved. (required)
      * @return AdvertiserDatasetListResponse
@@ -274,7 +274,7 @@ public class AdvertiserApi {
     }
 
     /**
-     * 
+     * /preview/advertisers/{advertiser-id}/datasets
      * Retrieves corresponding Datasets for a given Advertiser. Only those Datasets are included for which the given Advertiser is marked a primary.
      * @param advertiserId The id of the Advertiser for which Datasets are being retrieved. (required)
      * @return ApiResponse&lt;AdvertiserDatasetListResponse&gt;
@@ -292,7 +292,7 @@ public class AdvertiserApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/advertisers/{advertiser-id}/datasets (asynchronously)
      * Retrieves corresponding Datasets for a given Advertiser. Only those Datasets are included for which the given Advertiser is marked a primary.
      * @param advertiserId The id of the Advertiser for which Datasets are being retrieved. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -373,7 +373,7 @@ public class AdvertiserApi {
     }
 
     /**
-     * 
+     * /preview/industries
      * Returns the list of available industries for new advertisers.
      * @return ListAvailableIndustriesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -389,7 +389,7 @@ public class AdvertiserApi {
     }
 
     /**
-     * 
+     * /preview/industries
      * Returns the list of available industries for new advertisers.
      * @return ApiResponse&lt;ListAvailableIndustriesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -406,7 +406,7 @@ public class AdvertiserApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/industries (asynchronously)
      * Returns the list of available industries for new advertisers.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

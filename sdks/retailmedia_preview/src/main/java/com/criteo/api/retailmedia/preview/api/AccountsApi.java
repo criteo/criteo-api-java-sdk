@@ -152,7 +152,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
      * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
@@ -171,7 +171,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
      * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
@@ -191,7 +191,7 @@ public class AccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts (asynchronously)
      * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)

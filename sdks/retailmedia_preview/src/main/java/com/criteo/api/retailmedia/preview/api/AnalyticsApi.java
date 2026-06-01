@@ -156,7 +156,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/accounts
      * Returns an asynchronous Accounts Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncAccountsReportRequest  (required)
      * @return AsyncReportResponse
@@ -173,7 +173,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/accounts
      * Returns an asynchronous Accounts Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncAccountsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -191,7 +191,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/accounts (asynchronously)
      * Returns an asynchronous Accounts Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncAccountsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -279,7 +279,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/campaigns
      * Return an asynchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncCampaignsReportRequest  (required)
      * @return AsyncReportResponse
@@ -296,7 +296,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/campaigns
      * Return an asynchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncCampaignsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -314,7 +314,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/campaigns (asynchronously)
      * Return an asynchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncCampaignsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -402,7 +402,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/fillrate
      * Returns an asynchronous Fill Rate Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncFillRateReportRequest  (required)
      * @return AsyncReportResponse
@@ -419,7 +419,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/fillrate
      * Returns an asynchronous Fill Rate Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncFillRateReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -437,7 +437,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/fillrate (asynchronously)
      * Returns an asynchronous Fill Rate Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncFillRateReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -525,7 +525,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/line-items
      * Returns an asynchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncLineItemsReportRequest  (required)
      * @return AsyncReportResponse
@@ -542,7 +542,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/line-items
      * Returns an asynchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncLineItemsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -560,7 +560,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/line-items (asynchronously)
      * Returns an asynchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncLineItemsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -648,7 +648,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/offsite
      * Returns an asynchronous Offsite Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncOffsiteReportRequest  (required)
      * @return AsyncReportResponse
@@ -665,7 +665,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/offsite
      * Returns an asynchronous Offsite Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncOffsiteReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -683,7 +683,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/offsite (asynchronously)
      * Returns an asynchronous Offsite Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncOffsiteReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -771,7 +771,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/unfilled-placements
      * Returns an asynchronous Unfilled Placements Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncUnfilledPlacementsReportRequest  (required)
      * @return AsyncReportResponse
@@ -788,7 +788,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/unfilled-placements
      * Returns an asynchronous Unfilled Placements Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncUnfilledPlacementsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -806,7 +806,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/unfilled-placements (asynchronously)
      * Returns an asynchronous Unfilled Placements Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncUnfilledPlacementsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -889,7 +889,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/insights/share-of-voice
      * Generate a share of voice insight
      * @param shareOfVoiceInsightRequest  (optional)
      * @return AsyncInsightResponse
@@ -906,7 +906,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/insights/share-of-voice
      * Generate a share of voice insight
      * @param shareOfVoiceInsightRequest  (optional)
      * @return ApiResponse&lt;AsyncInsightResponse&gt;
@@ -924,7 +924,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/insights/share-of-voice (asynchronously)
      * Generate a share of voice insight
      * @param shareOfVoiceInsightRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1012,7 +1012,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/sync/attributed-transactions
      * Returns a synchronous Attributed Transactions Report
      * @param syncAttributedTransactionsReportRequest  (required)
      * @return ReportResponse
@@ -1029,7 +1029,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/sync/attributed-transactions
      * Returns a synchronous Attributed Transactions Report
      * @param syncAttributedTransactionsReportRequest  (required)
      * @return ApiResponse&lt;ReportResponse&gt;
@@ -1047,7 +1047,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/sync/attributed-transactions (asynchronously)
      * Returns a synchronous Attributed Transactions Report
      * @param syncAttributedTransactionsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1135,7 +1135,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/sync/campaigns
      * Returns a synchronous Campaigns Report
      * @param syncCampaignsReportRequest  (required)
      * @return ReportResponse
@@ -1152,7 +1152,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/sync/campaigns
      * Returns a synchronous Campaigns Report
      * @param syncCampaignsReportRequest  (required)
      * @return ApiResponse&lt;ReportResponse&gt;
@@ -1170,7 +1170,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/sync/campaigns (asynchronously)
      * Returns a synchronous Campaigns Report
      * @param syncCampaignsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1258,7 +1258,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/sync/line-items
      * Returns a synchronous Line Items Report
      * @param syncLineItemsReportRequest  (required)
      * @return ReportResponse
@@ -1275,7 +1275,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/sync/line-items
      * Returns a synchronous Line Items Report
      * @param syncLineItemsReportRequest  (required)
      * @return ApiResponse&lt;ReportResponse&gt;
@@ -1293,7 +1293,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/sync/line-items (asynchronously)
      * Returns a synchronous Line Items Report
      * @param syncLineItemsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1381,7 +1381,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/sync/real-time-performance
      * Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone).  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncRealTimePerformanceReportRequest  (required)
      * @return ReportResponse
@@ -1398,7 +1398,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/sync/real-time-performance
      * Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone).  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncRealTimePerformanceReportRequest  (required)
      * @return ApiResponse&lt;ReportResponse&gt;
@@ -1416,7 +1416,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/sync/real-time-performance (asynchronously)
      * Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone).  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncRealTimePerformanceReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1504,7 +1504,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/{reportId}/output
      * Returns the output of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @return File
@@ -1521,7 +1521,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/{reportId}/output
      * Returns the output of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @return ApiResponse&lt;File&gt;
@@ -1539,7 +1539,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/{reportId}/output (asynchronously)
      * Returns the output of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1627,7 +1627,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/{reportId}/status
      * Returns the status of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @return AsyncReportResponse
@@ -1644,7 +1644,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * 
+     * /preview/retail-media/reports/{reportId}/status
      * Returns the status of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -1662,7 +1662,7 @@ public class AnalyticsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /preview/retail-media/reports/{reportId}/status (asynchronously)
      * Returns the status of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @param _callback The callback to be executed when the API call finishes

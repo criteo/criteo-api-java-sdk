@@ -4,24 +4,24 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**computeAudienceSegmentsSizes**](AudienceApi.md#computeAudienceSegmentsSizes) | **POST** /preview/marketing-solutions/audience-segments/compute-sizes |  |
-| [**computeAudiencesSizes**](AudienceApi.md#computeAudiencesSizes) | **POST** /preview/marketing-solutions/audiences/compute-sizes |  |
-| [**createAudienceSegments**](AudienceApi.md#createAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/create |  |
-| [**createAudiences**](AudienceApi.md#createAudiences) | **POST** /preview/marketing-solutions/audiences/create |  |
-| [**deleteAudienceSegments**](AudienceApi.md#deleteAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/delete |  |
-| [**deleteAudiences**](AudienceApi.md#deleteAudiences) | **POST** /preview/marketing-solutions/audiences/delete |  |
-| [**deleteContactListByAudienceSegment**](AudienceApi.md#deleteContactListByAudienceSegment) | **DELETE** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
-| [**estimateAudienceSegmentsSizes**](AudienceApi.md#estimateAudienceSegmentsSizes) | **POST** /preview/marketing-solutions/audience-segments/estimate-size |  |
-| [**estimateAudiencesSizes**](AudienceApi.md#estimateAudiencesSizes) | **POST** /preview/marketing-solutions/audiences/estimate-size |  |
-| [**getAudienceSegmentContactListStatistics**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics |  |
-| [**getAudienceSegmentsInMarketBrands**](AudienceApi.md#getAudienceSegmentsInMarketBrands) | **GET** /preview/marketing-solutions/audience-segments/in-market-brands |  |
-| [**getAudienceSegmentsInMarketInterests**](AudienceApi.md#getAudienceSegmentsInMarketInterests) | **GET** /preview/marketing-solutions/audience-segments/in-market-interests |  |
-| [**modifyAudienceUsersWithAttributes**](AudienceApi.md#modifyAudienceUsersWithAttributes) | **PATCH** /preview/marketing-solutions/audiences/{audience-id}/contactlist-attributes |  |
-| [**searchAudienceSegments**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/search |  |
-| [**searchAudiences**](AudienceApi.md#searchAudiences) | **POST** /preview/marketing-solutions/audiences/search |  |
-| [**updateAudienceSegments**](AudienceApi.md#updateAudienceSegments) | **PATCH** /preview/marketing-solutions/audience-segments |  |
-| [**updateAudiences**](AudienceApi.md#updateAudiences) | **PATCH** /preview/marketing-solutions/audiences |  |
-| [**updateContactListByAudienceSegment**](AudienceApi.md#updateContactListByAudienceSegment) | **PATCH** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
+| [**computeAudienceSegmentsSizes**](AudienceApi.md#computeAudienceSegmentsSizes) | **POST** /preview/marketing-solutions/audience-segments/compute-sizes | /preview/marketing-solutions/audience-segments/compute-sizes |
+| [**computeAudiencesSizes**](AudienceApi.md#computeAudiencesSizes) | **POST** /preview/marketing-solutions/audiences/compute-sizes | /preview/marketing-solutions/audiences/compute-sizes |
+| [**createAudienceSegments**](AudienceApi.md#createAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/create | /preview/marketing-solutions/audience-segments/create |
+| [**createAudiences**](AudienceApi.md#createAudiences) | **POST** /preview/marketing-solutions/audiences/create | /preview/marketing-solutions/audiences/create |
+| [**deleteAudienceSegments**](AudienceApi.md#deleteAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/delete | /preview/marketing-solutions/audience-segments/delete |
+| [**deleteAudiences**](AudienceApi.md#deleteAudiences) | **POST** /preview/marketing-solutions/audiences/delete | /preview/marketing-solutions/audiences/delete |
+| [**deleteContactListByAudienceSegment**](AudienceApi.md#deleteContactListByAudienceSegment) | **DELETE** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list | /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |
+| [**estimateAudienceSegmentsSizes**](AudienceApi.md#estimateAudienceSegmentsSizes) | **POST** /preview/marketing-solutions/audience-segments/estimate-size | /preview/marketing-solutions/audience-segments/estimate-size |
+| [**estimateAudiencesSizes**](AudienceApi.md#estimateAudiencesSizes) | **POST** /preview/marketing-solutions/audiences/estimate-size | /preview/marketing-solutions/audiences/estimate-size |
+| [**getAudienceSegmentContactListStatistics**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics | /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics |
+| [**getAudienceSegmentsInMarketBrands**](AudienceApi.md#getAudienceSegmentsInMarketBrands) | **GET** /preview/marketing-solutions/audience-segments/in-market-brands | /preview/marketing-solutions/audience-segments/in-market-brands |
+| [**getAudienceSegmentsInMarketInterests**](AudienceApi.md#getAudienceSegmentsInMarketInterests) | **GET** /preview/marketing-solutions/audience-segments/in-market-interests | /preview/marketing-solutions/audience-segments/in-market-interests |
+| [**modifyAudienceUsersWithAttributes**](AudienceApi.md#modifyAudienceUsersWithAttributes) | **PATCH** /preview/marketing-solutions/audiences/{audience-id}/contactlist-attributes | /preview/marketing-solutions/audiences/{audience-id}/contactlist-attributes |
+| [**searchAudienceSegments**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/search | /preview/marketing-solutions/audience-segments/search |
+| [**searchAudiences**](AudienceApi.md#searchAudiences) | **POST** /preview/marketing-solutions/audiences/search | /preview/marketing-solutions/audiences/search |
+| [**updateAudienceSegments**](AudienceApi.md#updateAudienceSegments) | **PATCH** /preview/marketing-solutions/audience-segments | /preview/marketing-solutions/audience-segments |
+| [**updateAudiences**](AudienceApi.md#updateAudiences) | **PATCH** /preview/marketing-solutions/audiences | /preview/marketing-solutions/audiences |
+| [**updateContactListByAudienceSegment**](AudienceApi.md#updateContactListByAudienceSegment) | **PATCH** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list | /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |
 
 
 
@@ -29,7 +29,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > AudienceSegmentSizeEntityV1ListResponse computeAudienceSegmentsSizes(audienceSegmentComputeSizesInputV1)
 
-
+/preview/marketing-solutions/audience-segments/compute-sizes
 
 Gets the size of all segments. An error is returned for those whose size calculation is not supported.
 
@@ -118,7 +118,7 @@ public class Example {
 
 > AudienceSizeEntityV1ListResponse computeAudiencesSizes(audienceComputeSizesInputV1)
 
-
+/preview/marketing-solutions/audiences/compute-sizes
 
 Gets the size of all audiences. An error is returned for those whose size calculation is not supported.
 
@@ -207,7 +207,7 @@ public class Example {
 
 > AudienceSegmentEntityV1ListResponse createAudienceSegments(audienceSegmentBulkCreateInputV1)
 
-
+/preview/marketing-solutions/audience-segments/create
 
 Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
 
@@ -296,7 +296,7 @@ public class Example {
 
 > AudienceEntityV1ListResponse createAudiences(audienceBulkCreateInputV1)
 
-
+/preview/marketing-solutions/audiences/create
 
 Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
 
@@ -385,7 +385,7 @@ public class Example {
 
 > AudienceSegmentIdEntityV1ListResponse deleteAudienceSegments(audienceSegmentBulkDeleteInputV1)
 
-
+/preview/marketing-solutions/audience-segments/delete
 
 Delete the segments associated to the given audience IDs.
 
@@ -474,7 +474,7 @@ public class Example {
 
 > AudienceIdEntityV1ListResponse deleteAudiences(audienceBulkDeleteInputV1)
 
-
+/preview/marketing-solutions/audiences/delete
 
 Deletes the audiences associated to the given audience IDs.
 
@@ -564,7 +564,7 @@ public class Example {
 
 > DeleteAudienceContactListResponse deleteContactListByAudienceSegment(audienceSegmentId)
 
-
+/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list
 
 Delete all identifiers from a contact list audience-segment.
 
@@ -653,7 +653,7 @@ public class Example {
 
 > AudienceSegmentSizeEstimationV1Response estimateAudienceSegmentsSizes(audienceSegmentEstimateSizeInputV1)
 
-
+/preview/marketing-solutions/audience-segments/estimate-size
 
 Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
 
@@ -742,7 +742,7 @@ public class Example {
 
 > AudienceSizeEstimationV1Response estimateAudiencesSizes(audienceEstimateSizeInputV1)
 
-
+/preview/marketing-solutions/audiences/estimate-size
 
 Gets the size estimation of a non existent audience. An error is returned when size calculation is not supported.
 
@@ -831,7 +831,7 @@ public class Example {
 
 > ContactListStatisticsEntityV1Response getAudienceSegmentContactListStatistics(audienceSegmentId)
 
-
+/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics
 
 Returns the statistics of a contact list segment.
 
@@ -920,7 +920,7 @@ public class Example {
 
 > InMarketAudienceSegmentBrandEntityV1ListResponse getAudienceSegmentsInMarketBrands(advertiserId, country)
 
-
+/preview/marketing-solutions/audience-segments/in-market-brands
 
 Returns a list with all available in-market brands that can be used to define an in-market segment.
 
@@ -1011,7 +1011,7 @@ public class Example {
 
 > InMarketAudienceSegmentInterestEntityV1ListResponse getAudienceSegmentsInMarketInterests(advertiserId, country)
 
-
+/preview/marketing-solutions/audience-segments/in-market-interests
 
 Returns a list with all available in-market interests that can be used to define an in-market segment. These in-market interests correspond to the Google product taxonomy.
 
@@ -1102,7 +1102,7 @@ public class Example {
 
 > ModifyAudienceResponse modifyAudienceUsersWithAttributes(audienceId, contactlistWithAttributesAmendmentRequest)
 
-
+/preview/marketing-solutions/audiences/{audience-id}/contactlist-attributes
 
 Add/remove identifiers to or from a contact list.
 
@@ -1193,7 +1193,7 @@ public class Example {
 
 > AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse searchAudienceSegments(audienceSegmentSearchInputV1, limit, offset)
 
-
+/preview/marketing-solutions/audience-segments/search
 
 Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
 
@@ -1286,7 +1286,7 @@ public class Example {
 
 > AudienceEntityV1AudienceSearchMetadataV1ListResponse searchAudiences(audienceSearchInputV1, limit, offset)
 
-
+/preview/marketing-solutions/audiences/search
 
 Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
 
@@ -1379,7 +1379,7 @@ public class Example {
 
 > AudienceSegmentEntityV1ListResponse updateAudienceSegments(audienceSegmentBulkUpdateInputV1)
 
-
+/preview/marketing-solutions/audience-segments
 
 Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
 
@@ -1468,7 +1468,7 @@ public class Example {
 
 > AudienceEntityV1ListResponse updateAudiences(audienceBulkUpdateInputV1)
 
-
+/preview/marketing-solutions/audiences
 
 Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
 
@@ -1557,7 +1557,7 @@ public class Example {
 
 > ModifyAudienceResponse updateContactListByAudienceSegment(audienceSegmentId, contactlistAmendmentRequest)
 
-
+/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list
 
 Add/remove identifiers to or from a contact list audience-segment.
 

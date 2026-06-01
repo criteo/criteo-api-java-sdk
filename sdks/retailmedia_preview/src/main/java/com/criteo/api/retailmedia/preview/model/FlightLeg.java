@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -118,11 +117,11 @@ public class FlightLeg {
 
   public static final String SERIALIZED_NAME_END_TIME = "endTime";
   @SerializedName(SERIALIZED_NAME_END_TIME)
-  private OffsetDateTime endTime;
+  private String endTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
-  private OffsetDateTime startTime;
+  private String startTime;
 
   public FlightLeg() {
   }
@@ -149,46 +148,46 @@ public class FlightLeg {
   }
 
 
-  public FlightLeg endTime(OffsetDateTime endTime) {
+  public FlightLeg endTime(String endTime) {
     
     this.endTime = endTime;
     return this;
   }
 
    /**
-   * Get endTime
+   * Wall-clock time of day in HH:mm, 24-hour. No timezone. Example: 23:59.
    * @return endTime
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getEndTime() {
+  public String getEndTime() {
     return endTime;
   }
 
 
-  public void setEndTime(OffsetDateTime endTime) {
+  public void setEndTime(String endTime) {
     this.endTime = endTime;
   }
 
 
-  public FlightLeg startTime(OffsetDateTime startTime) {
+  public FlightLeg startTime(String startTime) {
     
     this.startTime = startTime;
     return this;
   }
 
    /**
-   * Get startTime
+   * Wall-clock time of day in HH:mm, 24-hour. No timezone. Example: 08:00.
    * @return startTime
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getStartTime() {
+  public String getStartTime() {
     return startTime;
   }
 
 
-  public void setStartTime(OffsetDateTime startTime) {
+  public void setStartTime(String startTime) {
     this.startTime = startTime;
   }
 
@@ -282,6 +281,12 @@ public class FlightLeg {
       }
       if (!jsonObj.get("dayOfWeek").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dayOfWeek` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dayOfWeek").toString()));
+      }
+      if (!jsonObj.get("endTime").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `endTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endTime").toString()));
+      }
+      if (!jsonObj.get("startTime").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `startTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startTime").toString()));
       }
   }
 
