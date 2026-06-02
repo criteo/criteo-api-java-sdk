@@ -24,9 +24,16 @@ import java.util.Map;
 import java.util.List;
 
 public class RetryingOAuth extends OAuth implements Interceptor {
+    private static final int DEFAULT_TOKEN_REQUEST_MAX_ATTEMPTS = 3;
+    private static final long DEFAULT_TOKEN_REQUEST_RETRY_BACKOFF_MILLIS = 250L;
+
     private OAuthClient oAuthClient;
 
     private TokenRequestBuilder tokenRequestBuilder;
+
+    private int tokenRequestMaxAttempts = DEFAULT_TOKEN_REQUEST_MAX_ATTEMPTS;
+
+    private long tokenRequestRetryBackoffMillis = DEFAULT_TOKEN_REQUEST_RETRY_BACKOFF_MILLIS;
 
     /**
      * @param client An OkHttp client
@@ -171,8 +178,8 @@ public class RetryingOAuth extends OAuth implements Interceptor {
     public synchronized boolean updateAccessToken(String requestAccessToken) throws IOException {
         if (getAccessToken() == null || getAccessToken().equals(requestAccessToken)) {
             try {
-                OAuthJSONAccessTokenResponse accessTokenResponse =
-                        oAuthClient.accessToken(tokenRequestBuilder.buildBodyMessage());
+                OAuthClientRequest tokenRequest = tokenRequestBuilder.buildBodyMessage();
+                OAuthJSONAccessTokenResponse accessTokenResponse = requestAccessTokenWithRetry(tokenRequest);
                 if (accessTokenResponse != null && accessTokenResponse.getAccessToken() != null) {
                     setAccessToken(accessTokenResponse.getAccessToken());
                 }
@@ -181,6 +188,80 @@ public class RetryingOAuth extends OAuth implements Interceptor {
             }
         }
         return getAccessToken() == null || !getAccessToken().equals(requestAccessToken);
+    }
+
+    private OAuthJSONAccessTokenResponse requestAccessTokenWithRetry(OAuthClientRequest tokenRequest)
+            throws OAuthSystemException, OAuthProblemException, IOException {
+        for (int attempt = 1; attempt <= tokenRequestMaxAttempts; attempt++) {
+            try {
+                return oAuthClient.accessToken(tokenRequest);
+            } catch (OAuthSystemException e) {
+                if (attempt == tokenRequestMaxAttempts) {
+                    throw e;
+                }
+                waitBeforeTokenRequestRetry(attempt);
+            }
+        }
+        return null;
+    }
+
+    private void waitBeforeTokenRequestRetry(int attempt) throws IOException {
+        if (tokenRequestRetryBackoffMillis == 0L) {
+            return;
+        }
+
+        try {
+            Thread.sleep(tokenRequestRetryBackoffMillis * attempt);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IOException("Interrupted while retrying OAuth token request", e);
+        }
+    }
+
+    /**
+     * Gets the maximum number of token request attempts.
+     *
+     * @return Maximum token request attempts
+     */
+    public int getTokenRequestMaxAttempts() {
+        return tokenRequestMaxAttempts;
+    }
+
+    /**
+     * Sets the maximum number of token request attempts.
+     *
+     * @param tokenRequestMaxAttempts Maximum token request attempts
+     * @return RetryingOAuth
+     */
+    public RetryingOAuth setTokenRequestMaxAttempts(int tokenRequestMaxAttempts) {
+        if (tokenRequestMaxAttempts < 1) {
+            throw new IllegalArgumentException("tokenRequestMaxAttempts must be at least 1");
+        }
+        this.tokenRequestMaxAttempts = tokenRequestMaxAttempts;
+        return this;
+    }
+
+    /**
+     * Gets the token request retry backoff in milliseconds.
+     *
+     * @return Token request retry backoff in milliseconds
+     */
+    public long getTokenRequestRetryBackoffMillis() {
+        return tokenRequestRetryBackoffMillis;
+    }
+
+    /**
+     * Sets the token request retry backoff in milliseconds.
+     *
+     * @param tokenRequestRetryBackoffMillis Token request retry backoff in milliseconds
+     * @return RetryingOAuth
+     */
+    public RetryingOAuth setTokenRequestRetryBackoffMillis(long tokenRequestRetryBackoffMillis) {
+        if (tokenRequestRetryBackoffMillis < 0L) {
+            throw new IllegalArgumentException("tokenRequestRetryBackoffMillis must be greater than or equal to 0");
+        }
+        this.tokenRequestRetryBackoffMillis = tokenRequestRetryBackoffMillis;
+        return this;
     }
 
     /**

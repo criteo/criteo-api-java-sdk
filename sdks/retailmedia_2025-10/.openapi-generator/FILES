@@ -744,3 +744,4 @@ src/main/java/com/criteo/api/retailmedia/v2025_10/model/ValueTypeResourceOfStore
 src/main/java/com/criteo/api/retailmedia/v2025_10/model/VideoVariableValue.java
 src/test/java/com/criteo/api/retailmedia/v2025_10/ExampleApplication.java
 src/test/java/com/criteo/api/retailmedia/v2025_10/GatewayApiTest.java
+src/test/java/com/criteo/api/retailmedia/v2025_10/OAuthRetryTest.java

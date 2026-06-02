@@ -486,3 +486,4 @@ src/main/java/com/criteo/api/marketingsolutions/v2025_01/model/VideoDetail.java
 src/main/java/com/criteo/api/marketingsolutions/v2025_01/model/WriteModelAdSetId.java
 src/test/java/com/criteo/api/marketingsolutions/v2025_01/ExampleApplication.java
 src/test/java/com/criteo/api/marketingsolutions/v2025_01/GatewayApiTest.java
+src/test/java/com/criteo/api/marketingsolutions/v2025_01/OAuthRetryTest.java

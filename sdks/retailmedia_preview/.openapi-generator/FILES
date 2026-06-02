@@ -672,3 +672,4 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceUpdateOffers
 src/main/java/com/criteo/api/retailmedia/preview/model/VideoVariableValue.java
 src/test/java/com/criteo/api/retailmedia/preview/ExampleApplication.java
 src/test/java/com/criteo/api/retailmedia/preview/GatewayApiTest.java
+src/test/java/com/criteo/api/retailmedia/preview/OAuthRetryTest.java

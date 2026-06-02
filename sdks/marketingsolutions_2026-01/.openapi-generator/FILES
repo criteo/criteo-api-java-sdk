@@ -634,3 +634,4 @@ src/main/java/com/criteo/api/marketingsolutions/v2026_01/model/WriteModelAdSetId
 src/main/java/com/criteo/api/marketingsolutions/v2026_01/model/WriteModelPatchAdSetV24Q3.java
 src/test/java/com/criteo/api/marketingsolutions/v2026_01/ExampleApplication.java
 src/test/java/com/criteo/api/marketingsolutions/v2026_01/GatewayApiTest.java
+src/test/java/com/criteo/api/marketingsolutions/v2026_01/OAuthRetryTest.java

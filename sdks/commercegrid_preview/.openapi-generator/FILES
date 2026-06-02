@@ -114,3 +114,4 @@ src/main/java/com/criteo/api/commercegrid/preview/model/CommonProblem.java
 src/main/java/com/criteo/api/commercegrid/preview/model/NillableString.java
 src/test/java/com/criteo/api/commercegrid/preview/ExampleApplication.java
 src/test/java/com/criteo/api/commercegrid/preview/GatewayApiTest.java
+src/test/java/com/criteo/api/commercegrid/preview/OAuthRetryTest.java
