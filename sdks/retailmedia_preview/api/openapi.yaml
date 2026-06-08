@@ -1354,10 +1354,10 @@ paths:
           description: Success
       security:
       - oauth:
-        - RetailMedia_Campaign_Read
+        - RetailMedia_Accounts_Read
       summary: /preview/retail-media/brands/search
       tags:
-      - Campaign
+      - Accounts
       x-content-type: application/json
       x-accepts: application/json
   /preview/retail-media/campaigns/{campaign-id}/preferred-line-items:
@@ -8052,13 +8052,11 @@ components:
           - weekends
           type: string
         endTime:
-          description: "Wall-clock time of day in HH:mm, 24-hour. No timezone. Example:\
-            \ 23:59."
+          description: "Wall-clock time of day in HH:mm, 24-hour. No timezone."
           pattern: "^([01][0-9]|2[0-3]):[0-5][0-9]$"
           type: string
         startTime:
-          description: "Wall-clock time of day in HH:mm, 24-hour. No timezone. Example:\
-            \ 08:00."
+          description: "Wall-clock time of day in HH:mm, 24-hour. No timezone."
           pattern: "^([01][0-9]|2[0-3]):[0-5][0-9]$"
           type: string
       required:

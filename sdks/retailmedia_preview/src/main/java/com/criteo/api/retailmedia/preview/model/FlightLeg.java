@@ -155,7 +155,7 @@ public class FlightLeg {
   }
 
    /**
-   * Wall-clock time of day in HH:mm, 24-hour. No timezone. Example: 23:59.
+   * Wall-clock time of day in HH:mm, 24-hour. No timezone.
    * @return endTime
   **/
   @javax.annotation.Nonnull
@@ -177,7 +177,7 @@ public class FlightLeg {
   }
 
    /**
-   * Wall-clock time of day in HH:mm, 24-hour. No timezone. Example: 08:00.
+   * Wall-clock time of day in HH:mm, 24-hour. No timezone.
    * @return startTime
   **/
   @javax.annotation.Nonnull
