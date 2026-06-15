@@ -2,7 +2,7 @@
 
 # ShareOfVoiceInsight
 
-Description of a Share of voice insight
+The filters to apply
 
 ## Properties
 
@@ -10,8 +10,10 @@ Description of a Share of voice insight
 |------------ | ------------- | ------------- | -------------|
 |**accountId** | **String** |  |  |
 |**accountIds** | **List&lt;String&gt;** |  |  [optional] |
+|**activationPlatforms** | [**List&lt;ActivationPlatformsEnum&gt;**](#List&lt;ActivationPlatformsEnum&gt;) |  |  [optional] |
 |**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) |  |  [optional] |
 |**brandIds** | **List&lt;String&gt;** |  |  [optional] |
+|**budgetModels** | [**List&lt;BudgetModelsEnum&gt;**](#List&lt;BudgetModelsEnum&gt;) |  |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) |  |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) |  |  |
 |**endDate** | **OffsetDateTime** |  |  |
@@ -20,8 +22,17 @@ Description of a Share of voice insight
 |**keywordTypes** | [**List&lt;KeywordTypesEnum&gt;**](#List&lt;KeywordTypesEnum&gt;) |  |  [optional] |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) |  |  |
 |**retailerIds** | **List&lt;String&gt;** |  |  [optional] |
-|**servedCategories** | [**List&lt;ServedCategoryFilter&gt;**](ServedCategoryFilter.md) |  |  [optional] |
+|**servedCategories** | **List&lt;String&gt;** |  |  [optional] |
 |**startDate** | **OffsetDateTime** |  |  |
+
+
+
+## Enum: List&lt;ActivationPlatformsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| COMMERCEMAX | &quot;commerceMax&quot; |
+| PRIVATEMARKET | &quot;privateMarket&quot; |
 
 
 
@@ -31,6 +42,15 @@ Description of a Share of voice insight
 |---- | -----|
 | CATEGORY | &quot;category&quot; |
 | KEYWORD | &quot;keyword&quot; |
+
+
+
+## Enum: List&lt;BudgetModelsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| CRITEOBUDGET | &quot;criteoBudget&quot; |
+| RETAILERBUDGET | &quot;retailerBudget&quot; |
 
 
 
@@ -75,6 +95,8 @@ Description of a Share of voice insight
 | ADFORMAT | &quot;adFormat&quot; |
 | CREATIVENAME | &quot;creativeName&quot; |
 | ENVIRONMENT | &quot;environment&quot; |
+| BUDGETMODEL | &quot;budgetModel&quot; |
+| ACTIVATIONPLATFORM | &quot;activationPlatform&quot; |
 
 
 

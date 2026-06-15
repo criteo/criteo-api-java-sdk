@@ -252,7 +252,6 @@ docs/RmEventsUpdateV1.md
 docs/RmEventsV1.md
 docs/RmcaCommonProblem.md
 docs/SdkApiRestCommonProblem.md
-docs/ServedCategoryFilter.md
 docs/SetProductBuyBoxWinnersRequest.md
 docs/ShareOfVoiceInsight.md
 docs/ShareOfVoiceInsightRequest.md
@@ -601,7 +600,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/RmEventsUpdateV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RmEventsV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RmcaCommonProblem.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SdkApiRestCommonProblem.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ServedCategoryFilter.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SetProductBuyBoxWinnersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceInsight.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceInsightRequest.java

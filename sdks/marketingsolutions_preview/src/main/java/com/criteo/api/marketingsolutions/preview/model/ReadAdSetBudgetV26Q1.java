@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * Budget create model for an ad set.  For \&quot;capped\&quot;: budgetAmount (required, non-null), budgetRenewal (required, not \&quot;undefined\&quot;), and budgetDeliverySmoothing (required) must all be provided.  For \&quot;uncapped\&quot;: budgetAmount must be null, budgetRenewal must be \&quot;undefined\&quot;, budgetDeliverySmoothing and budgetDeliveryWeek must be omitted or \&quot;undefined\&quot;.  For marketing campaigns with budget automation enabled, omit this object.  In that case, the ad set budget is initialized from the marketing campaign spend limit amount and renewal period.
+ * Budget configuration for an ad set. Controls how much can be spent and how spending is paced.  When budgetStrategy is \&quot;capped\&quot;: budgetAmount, budgetRenewal, and budgetDeliverySmoothing are all set.  When budgetStrategy is \&quot;uncapped\&quot;: budgetAmount is null, budgetRenewal is \&quot;undefined\&quot;, budgetDeliverySmoothing is null, budgetDeliveryWeek is \&quot;undefined\&quot;, and pacingBehavior is \&quot;undefined\&quot;.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadAdSetBudgetV26Q1 {
@@ -275,6 +275,59 @@ public class ReadAdSetBudgetV26Q1 {
   @SerializedName(SERIALIZED_NAME_BUDGET_STRATEGY)
   private BudgetStrategyEnum budgetStrategy;
 
+  /**
+   * Controls how a standard capped budget is paced.  - \&quot;targetFullBudget\&quot;: spend toward the full budget amount within the renewal period.  - \&quot;targetAverageDailyBudget\&quot;: spend toward an average daily amount. Only supported for capped, standard, monthly budgets.  - \&quot;undefined\&quot;: no explicit pacing behavior. Required for uncapped budgets and accelerated budgets.
+   */
+  @JsonAdapter(PacingBehaviorEnum.Adapter.class)
+  public enum PacingBehaviorEnum {
+    UNDEFINED("undefined"),
+    
+    TARGETFULLBUDGET("targetFullBudget"),
+    
+    TARGETAVERAGEDAILYBUDGET("targetAverageDailyBudget");
+
+    private String value;
+
+    PacingBehaviorEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PacingBehaviorEnum fromValue(String value) {
+      for (PacingBehaviorEnum b : PacingBehaviorEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PacingBehaviorEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PacingBehaviorEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PacingBehaviorEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PacingBehaviorEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PACING_BEHAVIOR = "pacingBehavior";
+  @SerializedName(SERIALIZED_NAME_PACING_BEHAVIOR)
+  private PacingBehaviorEnum pacingBehavior;
+
   public ReadAdSetBudgetV26Q1() {
   }
 
@@ -387,6 +440,28 @@ public class ReadAdSetBudgetV26Q1 {
     this.budgetStrategy = budgetStrategy;
   }
 
+
+  public ReadAdSetBudgetV26Q1 pacingBehavior(PacingBehaviorEnum pacingBehavior) {
+    
+    this.pacingBehavior = pacingBehavior;
+    return this;
+  }
+
+   /**
+   * Controls how a standard capped budget is paced.  - \&quot;targetFullBudget\&quot;: spend toward the full budget amount within the renewal period.  - \&quot;targetAverageDailyBudget\&quot;: spend toward an average daily amount. Only supported for capped, standard, monthly budgets.  - \&quot;undefined\&quot;: no explicit pacing behavior. Required for uncapped budgets and accelerated budgets.
+   * @return pacingBehavior
+  **/
+  @javax.annotation.Nullable
+
+  public PacingBehaviorEnum getPacingBehavior() {
+    return pacingBehavior;
+  }
+
+
+  public void setPacingBehavior(PacingBehaviorEnum pacingBehavior) {
+    this.pacingBehavior = pacingBehavior;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -446,7 +521,8 @@ public class ReadAdSetBudgetV26Q1 {
         Objects.equals(this.budgetDeliverySmoothing, readAdSetBudgetV26Q1.budgetDeliverySmoothing) &&
         Objects.equals(this.budgetDeliveryWeek, readAdSetBudgetV26Q1.budgetDeliveryWeek) &&
         Objects.equals(this.budgetRenewal, readAdSetBudgetV26Q1.budgetRenewal) &&
-        Objects.equals(this.budgetStrategy, readAdSetBudgetV26Q1.budgetStrategy)&&
+        Objects.equals(this.budgetStrategy, readAdSetBudgetV26Q1.budgetStrategy) &&
+        Objects.equals(this.pacingBehavior, readAdSetBudgetV26Q1.pacingBehavior)&&
         Objects.equals(this.additionalProperties, readAdSetBudgetV26Q1.additionalProperties);
   }
 
@@ -456,7 +532,7 @@ public class ReadAdSetBudgetV26Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgetAmount, budgetDeliverySmoothing, budgetDeliveryWeek, budgetRenewal, budgetStrategy, additionalProperties);
+    return Objects.hash(budgetAmount, budgetDeliverySmoothing, budgetDeliveryWeek, budgetRenewal, budgetStrategy, pacingBehavior, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -475,6 +551,7 @@ public class ReadAdSetBudgetV26Q1 {
     sb.append("    budgetDeliveryWeek: ").append(toIndentedString(budgetDeliveryWeek)).append("\n");
     sb.append("    budgetRenewal: ").append(toIndentedString(budgetRenewal)).append("\n");
     sb.append("    budgetStrategy: ").append(toIndentedString(budgetStrategy)).append("\n");
+    sb.append("    pacingBehavior: ").append(toIndentedString(pacingBehavior)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -503,6 +580,7 @@ public class ReadAdSetBudgetV26Q1 {
     openapiFields.add("budgetDeliveryWeek");
     openapiFields.add("budgetRenewal");
     openapiFields.add("budgetStrategy");
+    openapiFields.add("pacingBehavior");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -531,6 +609,9 @@ public class ReadAdSetBudgetV26Q1 {
       }
       if ((jsonObj.get("budgetStrategy") != null && !jsonObj.get("budgetStrategy").isJsonNull()) && !jsonObj.get("budgetStrategy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `budgetStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("budgetStrategy").toString()));
+      }
+      if ((jsonObj.get("pacingBehavior") != null && !jsonObj.get("pacingBehavior").isJsonNull()) && !jsonObj.get("pacingBehavior").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pacingBehavior` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pacingBehavior").toString()));
       }
   }
 

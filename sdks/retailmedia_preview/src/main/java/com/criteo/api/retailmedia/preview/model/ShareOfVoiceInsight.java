@@ -15,7 +15,6 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.ServedCategoryFilter;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,7 +48,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Description of a Share of voice insight
+ * The filters to apply
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ShareOfVoiceInsight {
@@ -60,6 +59,57 @@ public class ShareOfVoiceInsight {
   public static final String SERIALIZED_NAME_ACCOUNT_IDS = "accountIds";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_IDS)
   private List<String> accountIds = null;
+
+  /**
+   * Gets or Sets activationPlatforms
+   */
+  @JsonAdapter(ActivationPlatformsEnum.Adapter.class)
+  public enum ActivationPlatformsEnum {
+    COMMERCEMAX("commerceMax"),
+    
+    PRIVATEMARKET("privateMarket");
+
+    private String value;
+
+    ActivationPlatformsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ActivationPlatformsEnum fromValue(String value) {
+      for (ActivationPlatformsEnum b : ActivationPlatformsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ActivationPlatformsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ActivationPlatformsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ActivationPlatformsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ActivationPlatformsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ACTIVATION_PLATFORMS = "activationPlatforms";
+  @SerializedName(SERIALIZED_NAME_ACTIVATION_PLATFORMS)
+  private List<ActivationPlatformsEnum> activationPlatforms = null;
 
   /**
    * Gets or Sets aggregationLevel
@@ -115,6 +165,57 @@ public class ShareOfVoiceInsight {
   public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
   @SerializedName(SERIALIZED_NAME_BRAND_IDS)
   private List<String> brandIds = null;
+
+  /**
+   * Gets or Sets budgetModels
+   */
+  @JsonAdapter(BudgetModelsEnum.Adapter.class)
+  public enum BudgetModelsEnum {
+    CRITEOBUDGET("criteoBudget"),
+    
+    RETAILERBUDGET("retailerBudget");
+
+    private String value;
+
+    BudgetModelsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BudgetModelsEnum fromValue(String value) {
+      for (BudgetModelsEnum b : BudgetModelsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BudgetModelsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BudgetModelsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BudgetModelsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BudgetModelsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BUDGET_MODELS = "budgetModels";
+  @SerializedName(SERIALIZED_NAME_BUDGET_MODELS)
+  private List<BudgetModelsEnum> budgetModels = null;
 
   /**
    * Gets or Sets campaignType
@@ -226,7 +327,11 @@ public class ShareOfVoiceInsight {
     
     CREATIVENAME("creativeName"),
     
-    ENVIRONMENT("environment");
+    ENVIRONMENT("environment"),
+    
+    BUDGETMODEL("budgetModel"),
+    
+    ACTIVATIONPLATFORM("activationPlatform");
 
     private String value;
 
@@ -473,7 +578,7 @@ public class ShareOfVoiceInsight {
 
   public static final String SERIALIZED_NAME_SERVED_CATEGORIES = "servedCategories";
   @SerializedName(SERIALIZED_NAME_SERVED_CATEGORIES)
-  private List<ServedCategoryFilter> servedCategories = null;
+  private List<String> servedCategories = null;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -534,6 +639,36 @@ public class ShareOfVoiceInsight {
   }
 
 
+  public ShareOfVoiceInsight activationPlatforms(List<ActivationPlatformsEnum> activationPlatforms) {
+    
+    this.activationPlatforms = activationPlatforms;
+    return this;
+  }
+
+  public ShareOfVoiceInsight addActivationPlatformsItem(ActivationPlatformsEnum activationPlatformsItem) {
+    if (this.activationPlatforms == null) {
+      this.activationPlatforms = null;
+    }
+    this.activationPlatforms.add(activationPlatformsItem);
+    return this;
+  }
+
+   /**
+   * Get activationPlatforms
+   * @return activationPlatforms
+  **/
+  @javax.annotation.Nullable
+
+  public List<ActivationPlatformsEnum> getActivationPlatforms() {
+    return activationPlatforms;
+  }
+
+
+  public void setActivationPlatforms(List<ActivationPlatformsEnum> activationPlatforms) {
+    this.activationPlatforms = activationPlatforms;
+  }
+
+
   public ShareOfVoiceInsight aggregationLevel(AggregationLevelEnum aggregationLevel) {
     
     this.aggregationLevel = aggregationLevel;
@@ -583,6 +718,36 @@ public class ShareOfVoiceInsight {
 
   public void setBrandIds(List<String> brandIds) {
     this.brandIds = brandIds;
+  }
+
+
+  public ShareOfVoiceInsight budgetModels(List<BudgetModelsEnum> budgetModels) {
+    
+    this.budgetModels = budgetModels;
+    return this;
+  }
+
+  public ShareOfVoiceInsight addBudgetModelsItem(BudgetModelsEnum budgetModelsItem) {
+    if (this.budgetModels == null) {
+      this.budgetModels = null;
+    }
+    this.budgetModels.add(budgetModelsItem);
+    return this;
+  }
+
+   /**
+   * Get budgetModels
+   * @return budgetModels
+  **/
+  @javax.annotation.Nullable
+
+  public List<BudgetModelsEnum> getBudgetModels() {
+    return budgetModels;
+  }
+
+
+  public void setBudgetModels(List<BudgetModelsEnum> budgetModels) {
+    this.budgetModels = budgetModels;
   }
 
 
@@ -796,13 +961,13 @@ public class ShareOfVoiceInsight {
   }
 
 
-  public ShareOfVoiceInsight servedCategories(List<ServedCategoryFilter> servedCategories) {
+  public ShareOfVoiceInsight servedCategories(List<String> servedCategories) {
     
     this.servedCategories = servedCategories;
     return this;
   }
 
-  public ShareOfVoiceInsight addServedCategoriesItem(ServedCategoryFilter servedCategoriesItem) {
+  public ShareOfVoiceInsight addServedCategoriesItem(String servedCategoriesItem) {
     if (this.servedCategories == null) {
       this.servedCategories = null;
     }
@@ -816,12 +981,12 @@ public class ShareOfVoiceInsight {
   **/
   @javax.annotation.Nullable
 
-  public List<ServedCategoryFilter> getServedCategories() {
+  public List<String> getServedCategories() {
     return servedCategories;
   }
 
 
-  public void setServedCategories(List<ServedCategoryFilter> servedCategories) {
+  public void setServedCategories(List<String> servedCategories) {
     this.servedCategories = servedCategories;
   }
 
@@ -860,8 +1025,10 @@ public class ShareOfVoiceInsight {
     ShareOfVoiceInsight shareOfVoiceInsight = (ShareOfVoiceInsight) o;
     return Objects.equals(this.accountId, shareOfVoiceInsight.accountId) &&
         Objects.equals(this.accountIds, shareOfVoiceInsight.accountIds) &&
+        Objects.equals(this.activationPlatforms, shareOfVoiceInsight.activationPlatforms) &&
         Objects.equals(this.aggregationLevel, shareOfVoiceInsight.aggregationLevel) &&
         Objects.equals(this.brandIds, shareOfVoiceInsight.brandIds) &&
+        Objects.equals(this.budgetModels, shareOfVoiceInsight.budgetModels) &&
         Objects.equals(this.campaignType, shareOfVoiceInsight.campaignType) &&
         Objects.equals(this.dimensions, shareOfVoiceInsight.dimensions) &&
         Objects.equals(this.endDate, shareOfVoiceInsight.endDate) &&
@@ -880,7 +1047,7 @@ public class ShareOfVoiceInsight {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, accountIds, aggregationLevel, brandIds, campaignType, dimensions, endDate, format, keywords, keywordTypes, metrics, retailerIds, servedCategories, startDate);
+    return Objects.hash(accountId, accountIds, activationPlatforms, aggregationLevel, brandIds, budgetModels, campaignType, dimensions, endDate, format, keywords, keywordTypes, metrics, retailerIds, servedCategories, startDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -896,8 +1063,10 @@ public class ShareOfVoiceInsight {
     sb.append("class ShareOfVoiceInsight {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    accountIds: ").append(toIndentedString(accountIds)).append("\n");
+    sb.append("    activationPlatforms: ").append(toIndentedString(activationPlatforms)).append("\n");
     sb.append("    aggregationLevel: ").append(toIndentedString(aggregationLevel)).append("\n");
     sb.append("    brandIds: ").append(toIndentedString(brandIds)).append("\n");
+    sb.append("    budgetModels: ").append(toIndentedString(budgetModels)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
@@ -932,8 +1101,10 @@ public class ShareOfVoiceInsight {
     openapiFields = new HashSet<String>();
     openapiFields.add("accountId");
     openapiFields.add("accountIds");
+    openapiFields.add("activationPlatforms");
     openapiFields.add("aggregationLevel");
     openapiFields.add("brandIds");
+    openapiFields.add("budgetModels");
     openapiFields.add("campaignType");
     openapiFields.add("dimensions");
     openapiFields.add("endDate");
@@ -988,12 +1159,20 @@ public class ShareOfVoiceInsight {
       if (jsonObj.get("accountIds") != null && !jsonObj.get("accountIds").isJsonNull() && !jsonObj.get("accountIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountIds` to be an array in the JSON string but got `%s`", jsonObj.get("accountIds").toString()));
       }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("activationPlatforms") != null && !jsonObj.get("activationPlatforms").isJsonNull() && !jsonObj.get("activationPlatforms").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `activationPlatforms` to be an array in the JSON string but got `%s`", jsonObj.get("activationPlatforms").toString()));
+      }
       if ((jsonObj.get("aggregationLevel") != null && !jsonObj.get("aggregationLevel").isJsonNull()) && !jsonObj.get("aggregationLevel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `aggregationLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aggregationLevel").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonNull() && !jsonObj.get("brandIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("budgetModels") != null && !jsonObj.get("budgetModels").isJsonNull() && !jsonObj.get("budgetModels").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `budgetModels` to be an array in the JSON string but got `%s`", jsonObj.get("budgetModels").toString()));
       }
       if ((jsonObj.get("campaignType") != null && !jsonObj.get("campaignType").isJsonNull()) && !jsonObj.get("campaignType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignType").toString()));
@@ -1025,19 +1204,9 @@ public class ShareOfVoiceInsight {
       if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonNull() && !jsonObj.get("retailerIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
       }
-      if (jsonObj.get("servedCategories") != null && !jsonObj.get("servedCategories").isJsonNull()) {
-        JsonArray jsonArrayservedCategories = jsonObj.getAsJsonArray("servedCategories");
-        if (jsonArrayservedCategories != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("servedCategories").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `servedCategories` to be an array in the JSON string but got `%s`", jsonObj.get("servedCategories").toString()));
-          }
-
-          // validate the optional field `servedCategories` (array)
-          for (int i = 0; i < jsonArrayservedCategories.size(); i++) {
-            ServedCategoryFilter.validateJsonObject(jsonArrayservedCategories.get(i).getAsJsonObject());
-          };
-        }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("servedCategories") != null && !jsonObj.get("servedCategories").isJsonNull() && !jsonObj.get("servedCategories").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `servedCategories` to be an array in the JSON string but got `%s`", jsonObj.get("servedCategories").toString()));
       }
   }
 

@@ -69,6 +69,10 @@ public class RecommendedProduct {
   @SerializedName(SERIALIZED_NAME_GOOGLE_CATEGORY)
   private String googleCategory;
 
+  public static final String SERIALIZED_NAME_HAS_VARIANTS = "hasVariants";
+  @SerializedName(SERIALIZED_NAME_HAS_VARIANTS)
+  private Boolean hasVariants;
+
   public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   private String imageUrl;
@@ -254,6 +258,28 @@ public class RecommendedProduct {
 
   public void setGoogleCategory(String googleCategory) {
     this.googleCategory = googleCategory;
+  }
+
+
+  public RecommendedProduct hasVariants(Boolean hasVariants) {
+    
+    this.hasVariants = hasVariants;
+    return this;
+  }
+
+   /**
+   * Whether the product has variants available.
+   * @return hasVariants
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getHasVariants() {
+    return hasVariants;
+  }
+
+
+  public void setHasVariants(Boolean hasVariants) {
+    this.hasVariants = hasVariants;
   }
 
 
@@ -470,6 +496,7 @@ public class RecommendedProduct {
         Objects.equals(this.clickUrl, recommendedProduct.clickUrl) &&
         Objects.equals(this.description, recommendedProduct.description) &&
         Objects.equals(this.googleCategory, recommendedProduct.googleCategory) &&
+        Objects.equals(this.hasVariants, recommendedProduct.hasVariants) &&
         Objects.equals(this.imageUrl, recommendedProduct.imageUrl) &&
         Objects.equals(this.name, recommendedProduct.name) &&
         Objects.equals(this.price, recommendedProduct.price) &&
@@ -486,7 +513,7 @@ public class RecommendedProduct {
 
   @Override
   public int hashCode() {
-    return Objects.hash(alternativeClickUrl, brand, clickUrl, description, googleCategory, imageUrl, name, price, productExternalId, relevanceLabel, relevancyScore, retailPrice, additionalProperties);
+    return Objects.hash(alternativeClickUrl, brand, clickUrl, description, googleCategory, hasVariants, imageUrl, name, price, productExternalId, relevanceLabel, relevancyScore, retailPrice, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -505,6 +532,7 @@ public class RecommendedProduct {
     sb.append("    clickUrl: ").append(toIndentedString(clickUrl)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    googleCategory: ").append(toIndentedString(googleCategory)).append("\n");
+    sb.append("    hasVariants: ").append(toIndentedString(hasVariants)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
@@ -540,6 +568,7 @@ public class RecommendedProduct {
     openapiFields.add("clickUrl");
     openapiFields.add("description");
     openapiFields.add("googleCategory");
+    openapiFields.add("hasVariants");
     openapiFields.add("imageUrl");
     openapiFields.add("name");
     openapiFields.add("price");

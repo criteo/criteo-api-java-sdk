@@ -3182,10 +3182,12 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}:
     get:
-      description: This endpoint is subject to specific rate limits.
+      description: "This endpoint is subject to specific rate limits.\r\n<br />\r\n\
+        This endpoint is subject to specific rate limits."
       operationId: GetRealtimeProduct
       parameters:
-      - explode: false
+      - description: Unique ID (UUID) of the report to retrieve.
+        explode: false
         in: path
         name: reportId
         required: true
@@ -3214,7 +3216,8 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export:
     post:
-      description: This endpoint is subject to specific rate limits.
+      description: "This endpoint is subject to specific rate limits.\r\n<br />\r\n\
+        This endpoint is subject to specific rate limits."
       operationId: CreateRealtimeProductReport
       requestBody:
         content:
@@ -3253,9 +3256,11 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}:
     get:
+      description: This endpoint is subject to specific rate limits.
       operationId: GetRealtimeProductJob
       parameters:
-      - explode: false
+      - description: Unique ID (UUID) of the report job.
+        explode: false
         in: path
         name: reportId
         required: true
@@ -9889,12 +9894,13 @@ components:
     CreateAdSetBudgetV26Q1:
       description: "Budget create model for an ad set.\r\nFor \"capped\": budgetAmount\
         \ (required, non-null), budgetRenewal (required, not \"undefined\"), and budgetDeliverySmoothing\
-        \ (required) must all be provided.\r\nFor \"uncapped\": budgetAmount must\
-        \ be null, budgetRenewal must be \"undefined\", budgetDeliverySmoothing and\
-        \ budgetDeliveryWeek must be omitted or \"undefined\".\r\nFor marketing campaigns\
-        \ with budget automation enabled, omit this object.\r\nIn that case, the ad\
-        \ set budget is initialized from the marketing campaign spend limit amount\
-        \ and renewal period."
+        \ (required) must all be provided.\r\npacingBehavior is optional; \"targetAverageDailyBudget\"\
+        \ is only supported for capped, standard, monthly budgets.\r\nFor \"uncapped\"\
+        : budgetAmount must be null, budgetRenewal must be \"undefined\", budgetDeliverySmoothing,\
+        \ budgetDeliveryWeek, and pacingBehavior must be omitted or \"undefined\"\
+        .\r\nFor marketing campaigns with budget automation enabled, omit this object.\r\
+        \nIn that case, the ad set budget is initialized from the marketing campaign\
+        \ spend limit amount and renewal period."
       properties:
         budgetAmount:
           description: Maximum budget amount in the advertiser's currency per renewal
@@ -9955,6 +9961,18 @@ components:
           enum:
           - capped
           - uncapped
+          type: string
+        pacingBehavior:
+          description: "Controls how a standard capped budget is paced.\r\n- \"targetFullBudget\"\
+            : spend toward the full budget amount within the renewal period.\r\n-\
+            \ \"targetAverageDailyBudget\": spend toward an average daily amount.\
+            \ Only supported for capped, standard, monthly budgets.\r\n- \"undefined\"\
+            : no explicit pacing behavior. Required for uncapped budgets and accelerated\
+            \ budgets."
+          enum:
+          - undefined
+          - targetFullBudget
+          - targetAverageDailyBudget
           type: string
       required:
       - budgetStrategy
@@ -10028,6 +10046,7 @@ components:
           budgetRenewal: weekly
           budgetDeliverySmoothing: standard
           budgetDeliveryWeek: mondayToSunday
+          pacingBehavior: targetFullBudget
           budgetAmount: 1000
         trackingCode: Test123
         mediaType: display
@@ -10127,6 +10146,7 @@ components:
               budgetRenewal: weekly
               budgetDeliverySmoothing: standard
               budgetDeliveryWeek: mondayToSunday
+              pacingBehavior: targetFullBudget
               budgetAmount: 1000
             trackingCode: Test123
             mediaType: display
@@ -10172,6 +10192,7 @@ components:
             budgetRenewal: weekly
             budgetDeliverySmoothing: standard
             budgetDeliveryWeek: mondayToSunday
+            pacingBehavior: targetFullBudget
             budgetAmount: 1000
           trackingCode: Test123
           mediaType: display
@@ -14632,27 +14653,29 @@ components:
         - 0
         products:
         - clickUrl: clickUrl
+          description: description
+          relevancyScore: 1.4658129805029452
+          hasVariants: true
           relevanceLabel: Similar
           price: 6.027456183070403
           productExternalId: productExternalId
           imageUrl: imageUrl
           googleCategory: googleCategory
           name: name
-          description: description
           alternativeClickUrl: alternativeClickUrl
-          relevancyScore: 1.4658129805029452
           brand: brand
           retailPrice: 5.962133916683182
         - clickUrl: clickUrl
+          description: description
+          relevancyScore: 1.4658129805029452
+          hasVariants: true
           relevanceLabel: Similar
           price: 6.027456183070403
           productExternalId: productExternalId
           imageUrl: imageUrl
           googleCategory: googleCategory
           name: name
-          description: description
           alternativeClickUrl: alternativeClickUrl
-          relevancyScore: 1.4658129805029452
           brand: brand
           retailPrice: 5.962133916683182
       properties:
@@ -14776,17 +14799,20 @@ components:
       description: "Budget patch model for an ad set. Only provided fields are updated;\
         \ omitted fields are left unchanged.\r\nSwitching to \"uncapped\": set budgetStrategy\
         \ to \"uncapped\" and budgetAmount.value to null. Other budget fields (budgetRenewal,\
-        \ budgetDeliverySmoothing, budgetDeliveryWeek) are automatically cleared.\r\
-        \nSwitching to \"capped\": set budgetStrategy to \"capped\", budgetAmount.value\
+        \ budgetDeliverySmoothing, budgetDeliveryWeek, and pacingBehavior) are automatically\
+        \ cleared.\r\nSwitching to \"capped\": set budgetStrategy to \"capped\", budgetAmount.value\
         \ to a positive number, budgetRenewal to a period, and budgetDeliverySmoothing\
-        \ to a pacing strategy.\r\nManual budget updates are not supported when the\
-        \ linked marketing campaign has budget automation enabled."
+        \ to a pacing strategy.\r\npacingBehavior can only be set for capped budgets\
+        \ using standard delivery smoothing; \"targetAverageDailyBudget\" also requires\
+        \ monthly renewal.\r\nManual budget updates are not supported when the linked\
+        \ marketing campaign has budget automation enabled."
       example:
         budgetDeliverySmoothing: accelerated
         budgetDeliveryWeek: undefined
         budgetAmount:
           value: 0.8008281904610115
         budgetRenewal: undefined
+        pacingBehavior: undefined
         budgetStrategy: capped
       properties:
         budgetAmount:
@@ -14847,6 +14873,19 @@ components:
           enum:
           - capped
           - uncapped
+          nullable: true
+          type: string
+        pacingBehavior:
+          description: "Controls how a standard capped budget is paced.\r\n- \"targetFullBudget\"\
+            : spend toward the full budget amount within the renewal period.\r\n-\
+            \ \"targetAverageDailyBudget\": spend toward an average daily amount.\
+            \ Only supported for capped, standard, monthly budgets.\r\n- \"undefined\"\
+            : no explicit pacing behavior. Required for uncapped budgets and accelerated\
+            \ budgets."
+          enum:
+          - undefined
+          - targetFullBudget
+          - targetAverageDailyBudget
           nullable: true
           type: string
       type: object
@@ -15174,6 +15213,7 @@ components:
           budgetAmount:
             value: 0.8008281904610115
           budgetRenewal: undefined
+          pacingBehavior: undefined
           budgetStrategy: capped
       properties:
         attributionConfiguration:
@@ -17320,19 +17360,18 @@ components:
           type: string
       type: object
     ReadAdSetBudgetV26Q1:
-      description: "Budget create model for an ad set.\r\nFor \"capped\": budgetAmount\
-        \ (required, non-null), budgetRenewal (required, not \"undefined\"), and budgetDeliverySmoothing\
-        \ (required) must all be provided.\r\nFor \"uncapped\": budgetAmount must\
-        \ be null, budgetRenewal must be \"undefined\", budgetDeliverySmoothing and\
-        \ budgetDeliveryWeek must be omitted or \"undefined\".\r\nFor marketing campaigns\
-        \ with budget automation enabled, omit this object.\r\nIn that case, the ad\
-        \ set budget is initialized from the marketing campaign spend limit amount\
-        \ and renewal period."
+      description: "Budget configuration for an ad set. Controls how much can be spent\
+        \ and how spending is paced.\r\nWhen budgetStrategy is \"capped\": budgetAmount,\
+        \ budgetRenewal, and budgetDeliverySmoothing are all set.\r\nWhen budgetStrategy\
+        \ is \"uncapped\": budgetAmount is null, budgetRenewal is \"undefined\", budgetDeliverySmoothing\
+        \ is null, budgetDeliveryWeek is \"undefined\", and pacingBehavior is \"undefined\"\
+        ."
       example:
         budgetDeliverySmoothing: accelerated
         budgetDeliveryWeek: undefined
         budgetAmount: 6.027456183070403
         budgetRenewal: undefined
+        pacingBehavior: undefined
         budgetStrategy: capped
       nullable: true
       properties:
@@ -17398,6 +17437,19 @@ components:
           enum:
           - capped
           - uncapped
+          nullable: true
+          type: string
+        pacingBehavior:
+          description: "Controls how a standard capped budget is paced.\r\n- \"targetFullBudget\"\
+            : spend toward the full budget amount within the renewal period.\r\n-\
+            \ \"targetAverageDailyBudget\": spend toward an average daily amount.\
+            \ Only supported for capped, standard, monthly budgets.\r\n- \"undefined\"\
+            : no explicit pacing behavior. Required for uncapped budgets and accelerated\
+            \ budgets."
+          enum:
+          - undefined
+          - targetFullBudget
+          - targetAverageDailyBudget
           nullable: true
           type: string
       type: object
@@ -17496,6 +17548,7 @@ components:
           budgetDeliveryWeek: undefined
           budgetAmount: 6.027456183070403
           budgetRenewal: undefined
+          pacingBehavior: undefined
           budgetStrategy: capped
       nullable: true
       properties:
@@ -17665,6 +17718,7 @@ components:
             budgetDeliveryWeek: undefined
             budgetAmount: 6.027456183070403
             budgetRenewal: undefined
+            pacingBehavior: undefined
             budgetStrategy: capped
         id: id
         type: ReadAdSetV26Q1
@@ -17995,15 +18049,16 @@ components:
       description: Represents a recommended product.
       example:
         clickUrl: clickUrl
+        description: description
+        relevancyScore: 1.4658129805029452
+        hasVariants: true
         relevanceLabel: Similar
         price: 6.027456183070403
         productExternalId: productExternalId
         imageUrl: imageUrl
         googleCategory: googleCategory
         name: name
-        description: description
         alternativeClickUrl: alternativeClickUrl
-        relevancyScore: 1.4658129805029452
         brand: brand
         retailPrice: 5.962133916683182
       properties:
@@ -18029,6 +18084,10 @@ components:
           description: Product google category.
           nullable: true
           type: string
+        hasVariants:
+          description: Whether the product has variants available.
+          nullable: true
+          type: boolean
         imageUrl:
           description: Product image.
           nullable: true
@@ -18333,6 +18392,7 @@ components:
               budgetAmount:
                 value: 0.8008281904610115
               budgetRenewal: undefined
+              pacingBehavior: undefined
               budgetStrategy: capped
           id: id
           type: PatchAdSetV26Q1
@@ -18377,6 +18437,7 @@ components:
               budgetAmount:
                 value: 0.8008281904610115
               budgetRenewal: undefined
+              pacingBehavior: undefined
               budgetStrategy: capped
           id: id
           type: PatchAdSetV26Q1
@@ -20104,6 +20165,7 @@ components:
               budgetDeliveryWeek: undefined
               budgetAmount: 6.027456183070403
               budgetRenewal: undefined
+              pacingBehavior: undefined
               budgetStrategy: capped
           id: id
           type: ReadAdSetV26Q1
@@ -20360,6 +20422,7 @@ components:
               budgetDeliveryWeek: undefined
               budgetAmount: 6.027456183070403
               budgetRenewal: undefined
+              pacingBehavior: undefined
               budgetStrategy: capped
           id: id
           type: ReadAdSetV26Q1
@@ -20412,6 +20475,7 @@ components:
               budgetDeliveryWeek: undefined
               budgetAmount: 6.027456183070403
               budgetRenewal: undefined
+              pacingBehavior: undefined
               budgetStrategy: capped
           id: id
           type: ReadAdSetV26Q1
@@ -22458,6 +22522,7 @@ components:
             budgetAmount:
               value: 0.8008281904610115
             budgetRenewal: undefined
+            pacingBehavior: undefined
             budgetStrategy: capped
         id: id
         type: PatchAdSetV26Q1

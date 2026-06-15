@@ -13,6 +13,7 @@ Represents a recommended product.
 |**clickUrl** | **String** | Url leading to product details page and also used to track user click |  [optional] |
 |**description** | **String** | Product description. |  [optional] |
 |**googleCategory** | **String** | Product google category. |  [optional] |
+|**hasVariants** | **Boolean** | Whether the product has variants available. |  [optional] |
 |**imageUrl** | **String** | Product image. |  [optional] |
 |**name** | **String** | Product name |  [optional] |
 |**price** | **Double** | Product price. |  [optional] |

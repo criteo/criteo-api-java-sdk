@@ -14904,26 +14904,6 @@ components:
           nullable: true
           type: string
       type: object
-    ServedCategoryFilter:
-      additionalProperties: false
-      description: The filters to apply
-      example:
-        servedCategories:
-        - servedCategories
-        - servedCategories
-        retailerId: retailerId
-      properties:
-        retailerId:
-          type: string
-        servedCategories:
-          items:
-            type: string
-          minItems: 1
-          type: array
-      required:
-      - retailerId
-      - servedCategories
-      type: object
     SetProductBuyBoxWinnersRequest:
       additionalProperties: false
       description: The request passed by the caller of the SetBuyBoxWinners endpoint
@@ -14946,8 +14926,11 @@ components:
       type: object
     ShareOfVoiceInsight:
       additionalProperties: false
-      description: Description of a Share of voice insight
+      description: The filters to apply
       example:
+        activationPlatforms:
+        - commerceMax
+        - commerceMax
         campaignType: all
         keywords:
         - keywords
@@ -14962,17 +14945,14 @@ components:
         - brandIds
         accountId: accountId
         servedCategories:
-        - servedCategories:
-          - servedCategories
-          - servedCategories
-          retailerId: retailerId
-        - servedCategories:
-          - servedCategories
-          - servedCategories
-          retailerId: retailerId
+        - servedCategories
+        - servedCategories
         accountIds:
         - accountIds
         - accountIds
+        budgetModels:
+        - criteoBudget
+        - criteoBudget
         keywordTypes:
         - unknown
         - unknown
@@ -14992,6 +14972,14 @@ components:
             type: string
           nullable: true
           type: array
+        activationPlatforms:
+          items:
+            enum:
+            - commerceMax
+            - privateMarket
+            type: string
+          nullable: true
+          type: array
         aggregationLevel:
           default: category
           enum:
@@ -15000,6 +14988,14 @@ components:
           type: string
         brandIds:
           items:
+            type: string
+          nullable: true
+          type: array
+        budgetModels:
+          items:
+            enum:
+            - criteoBudget
+            - retailerBudget
             type: string
           nullable: true
           type: array
@@ -15040,6 +15036,8 @@ components:
             - adFormat
             - creativeName
             - environment
+            - budgetModel
+            - activationPlatform
             type: string
           minItems: 1
           type: array
@@ -15098,7 +15096,7 @@ components:
           type: array
         servedCategories:
           items:
-            $ref: '#/components/schemas/ServedCategoryFilter'
+            type: string
           nullable: true
           type: array
         startDate:
@@ -15118,6 +15116,9 @@ components:
       example:
         data:
           attributes:
+            activationPlatforms:
+            - commerceMax
+            - commerceMax
             campaignType: all
             keywords:
             - keywords
@@ -15132,17 +15133,14 @@ components:
             - brandIds
             accountId: accountId
             servedCategories:
-            - servedCategories:
-              - servedCategories
-              - servedCategories
-              retailerId: retailerId
-            - servedCategories:
-              - servedCategories
-              - servedCategories
-              retailerId: retailerId
+            - servedCategories
+            - servedCategories
             accountIds:
             - accountIds
             - accountIds
+            budgetModels:
+            - criteoBudget
+            - criteoBudget
             keywordTypes:
             - unknown
             - unknown
@@ -15164,6 +15162,9 @@ components:
       description: A value resource exposed by the API.
       example:
         attributes:
+          activationPlatforms:
+          - commerceMax
+          - commerceMax
           campaignType: all
           keywords:
           - keywords
@@ -15178,17 +15179,14 @@ components:
           - brandIds
           accountId: accountId
           servedCategories:
-          - servedCategories:
-            - servedCategories
-            - servedCategories
-            retailerId: retailerId
-          - servedCategories:
-            - servedCategories
-            - servedCategories
-            retailerId: retailerId
+          - servedCategories
+          - servedCategories
           accountIds:
           - accountIds
           - accountIds
+          budgetModels:
+          - criteoBudget
+          - criteoBudget
           keywordTypes:
           - unknown
           - unknown

@@ -28,7 +28,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
 
-This endpoint is subject to specific rate limits.
+This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -829,6 +829,95 @@ public class Example {
 
 /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
 
+This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        String reportId = "reportId_example"; // String | Unique ID (UUID) of the report to retrieve.
+        try {
+            FileStreamResultResponse result = apiInstance.getRealtimeProduct(reportId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#getRealtimeProduct");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportId** | **String**| Unique ID (UUID) of the report to retrieve. | |
+
+### Return type
+
+[**FileStreamResultResponse**](FileStreamResultResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, text/xml
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## getRealtimeProductJob
+
+> RealTimeProductReportJobStatusResponse getRealtimeProductJob(reportId)
+
+/preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
+
 This endpoint is subject to specific rate limits.
 
 ### Example
@@ -870,94 +959,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        String reportId = "reportId_example"; // String | 
-        try {
-            FileStreamResultResponse result = apiInstance.getRealtimeProduct(reportId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#getRealtimeProduct");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **reportId** | **String**|  | |
-
-### Return type
-
-[**FileStreamResultResponse**](FileStreamResultResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/xml, text/xml
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## getRealtimeProductJob
-
-> RealTimeProductReportJobStatusResponse getRealtimeProductJob(reportId)
-
-/preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.AnalyticsApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        String reportId = "reportId_example"; // String | 
+        String reportId = "reportId_example"; // String | Unique ID (UUID) of the report job.
         try {
             RealTimeProductReportJobStatusResponse result = apiInstance.getRealtimeProductJob(reportId);
             System.out.println(result);
@@ -977,7 +979,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportId** | **String**|  | |
+| **reportId** | **String**| Unique ID (UUID) of the report job. | |
 
 ### Return type
 

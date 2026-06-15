@@ -160,7 +160,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
-     * This endpoint is subject to specific rate limits.
+     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param realTimeProductReportJobRequest  (optional)
      * @return RealTimeProductReportJobStatusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -177,7 +177,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
-     * This endpoint is subject to specific rate limits.
+     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param realTimeProductReportJobRequest  (optional)
      * @return ApiResponse&lt;RealTimeProductReportJobStatusResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -195,7 +195,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export (asynchronously)
-     * This endpoint is subject to specific rate limits.
+     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param realTimeProductReportJobRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1211,7 +1211,7 @@ public class AnalyticsApi {
     }
     /**
      * Build call for getRealtimeProduct
-     * @param reportId  (required)
+     * @param reportId Unique ID (UUID) of the report to retrieve. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1281,8 +1281,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
-     * This endpoint is subject to specific rate limits.
-     * @param reportId  (required)
+     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param reportId Unique ID (UUID) of the report to retrieve. (required)
      * @return FileStreamResultResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1298,8 +1298,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
-     * This endpoint is subject to specific rate limits.
-     * @param reportId  (required)
+     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param reportId Unique ID (UUID) of the report to retrieve. (required)
      * @return ApiResponse&lt;FileStreamResultResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1316,8 +1316,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId} (asynchronously)
-     * This endpoint is subject to specific rate limits.
-     * @param reportId  (required)
+     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param reportId Unique ID (UUID) of the report to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1336,7 +1336,7 @@ public class AnalyticsApi {
     }
     /**
      * Build call for getRealtimeProductJob
-     * @param reportId  (required)
+     * @param reportId Unique ID (UUID) of the report job. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1406,8 +1406,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
-     * 
-     * @param reportId  (required)
+     * This endpoint is subject to specific rate limits.
+     * @param reportId Unique ID (UUID) of the report job. (required)
      * @return RealTimeProductReportJobStatusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1423,8 +1423,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
-     * 
-     * @param reportId  (required)
+     * This endpoint is subject to specific rate limits.
+     * @param reportId Unique ID (UUID) of the report job. (required)
      * @return ApiResponse&lt;RealTimeProductReportJobStatusResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1441,8 +1441,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} (asynchronously)
-     * 
-     * @param reportId  (required)
+     * This endpoint is subject to specific rate limits.
+     * @param reportId Unique ID (UUID) of the report job. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
