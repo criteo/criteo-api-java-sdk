@@ -8,16 +8,16 @@ This is the message defining the query for Categories report
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**adsetId** | **String** | Report only on the specified AdSet id. |  [optional] |
-|**advertiserIds** | **List&lt;String&gt;** | List of Advertiser ids. |  |
-|**campaignId** | **String** | Report only on the specified Campaign id. |  [optional] |
-|**category** | **String** | Report only on the specified category. |  [optional] |
-|**domain** | **String** | Report only on the specified domain. |  [optional] |
-|**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**format** | [**FormatEnum**](#FormatEnum) | The file format of the generated report |  [optional] |
-|**shouldDisplayDomainDimension** | **Boolean** | Specify if the domain dimension is displayed in the report. |  [optional] |
-|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional] |
+|**adsetId** | **String** | Optional adset id to filter on. The adset must already exist. If empty, all adsets will be fetched. |  [optional] |
+|**advertiserIds** | **List&lt;String&gt;** | List of advertiser IDs to report on. The advertisers must already exist. At least one advertiser ID should be provided. |  |
+|**campaignId** | **String** | Optional campaign id to filter on. The campaign must already exist. If empty, all campaign will be fetched. |  [optional] |
+|**category** | **String** | Optional category to filter on. If empty, all categories will be fetched. |  [optional] |
+|**domain** | **String** | Optional domain to filter on. If empty, all domains will be fetched. |  [optional] |
+|**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. |  |
+|**format** | [**FormatEnum**](#FormatEnum) | Optional file format of the generated report. |  [optional] |
+|**shouldDisplayDomainDimension** | **Boolean** | Optionally specify if the domain dimension is displayed in the report. |  [optional] |
+|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. Must be ≤ endDate. |  |
+|**timezone** | **String** | Optional timezone used for the report. Timezone Database format (Tz). |  [optional] |
 
 
 

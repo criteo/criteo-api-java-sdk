@@ -1742,6 +1742,88 @@ paths:
       - OnSiteRecommendation
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/insights/{insightId}/output:
+    get:
+      description: Returns the output of an async insight
+      operationId: GetInsightReportOutput
+      parameters:
+      - description: The ID of the asynchronous insight report. Must be a valid ID
+          format.
+        explode: false
+        in: path
+        name: insightId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
+      summary: "/preview/retail-media/insights/{insightId}/output"
+      tags:
+      - Analytics
+      x-accepts: application/json
+  /preview/retail-media/insights/{insightId}/status:
+    get:
+      description: Returns the status of an async insight
+      operationId: GetInsightReportStatus
+      parameters:
+      - description: The ID of the asynchronous insight report. Must be a valid ID
+          format.
+        explode: false
+        in: path
+        name: insightId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncInsightResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
+      summary: "/preview/retail-media/insights/{insightId}/status"
+      tags:
+      - Analytics
+      x-accepts: application/json
+  /preview/retail-media/insights/digital-shelf-intelligence:
+    post:
+      description: Generate a Digital Shelf Intelligence insight
+      operationId: GenerateDigitalShelfIntelligenceInsight
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DigitalShelfIntelligenceInsightRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncInsightResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/insights/digital-shelf-intelligence
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/insights/share-of-voice:
     post:
       description: Generate a share of voice insight
@@ -6290,6 +6372,177 @@ components:
       - attributes
       - type
       type: object
+    DigitalShelfIntelligenceInsight:
+      additionalProperties: false
+      description: Description of a Digital Shelf Intelligence insight
+      example:
+        accountId: accountId
+        endDate: 2000-01-23T04:56:07.000+00:00
+        aggregationLevel: brand
+        format: json-compact
+        categories:
+        - categories
+        - categories
+        metrics:
+        - considerationIndex
+        - considerationIndex
+        retailerIds:
+        - retailerIds
+        - retailerIds
+        skuIds:
+        - retailerSkuIds:
+          - retailerSkuIds
+          - retailerSkuIds
+          retailerId: retailerId
+        - retailerSkuIds:
+          - retailerSkuIds
+          - retailerSkuIds
+          retailerId: retailerId
+        brandIds:
+        - brandIds
+        - brandIds
+        startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        accountId:
+          type: string
+        aggregationLevel:
+          enum:
+          - brand
+          - sku
+          type: string
+        brandIds:
+          items:
+            type: string
+          nullable: true
+          type: array
+        categories:
+          items:
+            type: string
+          nullable: true
+          type: array
+        endDate:
+          format: date-time
+          type: string
+        format:
+          default: json-compact
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        metrics:
+          items:
+            enum:
+            - considerationIndex
+            - listingPrice
+            - pdpViewRank
+            - salesIndex
+            - salesRank
+            - totalPdpPageViews
+            - totalSalesOnline
+            - totalSoldUnitsOnline
+            type: string
+          minItems: 1
+          type: array
+        retailerIds:
+          items:
+            type: string
+          nullable: true
+          type: array
+        skuIds:
+          items:
+            $ref: '#/components/schemas/SkuFilter'
+          nullable: true
+          type: array
+        startDate:
+          format: date-time
+          type: string
+      required:
+      - accountId
+      - aggregationLevel
+      - endDate
+      - metrics
+      - startDate
+      type: object
+    DigitalShelfIntelligenceInsightRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            accountId: accountId
+            endDate: 2000-01-23T04:56:07.000+00:00
+            aggregationLevel: brand
+            format: json-compact
+            categories:
+            - categories
+            - categories
+            metrics:
+            - considerationIndex
+            - considerationIndex
+            retailerIds:
+            - retailerIds
+            - retailerIds
+            skuIds:
+            - retailerSkuIds:
+              - retailerSkuIds
+              - retailerSkuIds
+              retailerId: retailerId
+            - retailerSkuIds:
+              - retailerSkuIds
+              - retailerSkuIds
+              retailerId: retailerId
+            brandIds:
+            - brandIds
+            - brandIds
+            startDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/DigitalShelfIntelligenceInsightResource'
+      type: object
+    DigitalShelfIntelligenceInsightResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          accountId: accountId
+          endDate: 2000-01-23T04:56:07.000+00:00
+          aggregationLevel: brand
+          format: json-compact
+          categories:
+          - categories
+          - categories
+          metrics:
+          - considerationIndex
+          - considerationIndex
+          retailerIds:
+          - retailerIds
+          - retailerIds
+          skuIds:
+          - retailerSkuIds:
+            - retailerSkuIds
+            - retailerSkuIds
+            retailerId: retailerId
+          - retailerSkuIds:
+            - retailerSkuIds
+            - retailerSkuIds
+            retailerId: retailerId
+          brandIds:
+          - brandIds
+          - brandIds
+          startDate: 2000-01-23T04:56:07.000+00:00
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/DigitalShelfIntelligenceInsight'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     DisplayAuctionMinBidRequest:
       additionalProperties: false
       description: Represents the list of creatives and respective product IDs to
@@ -8373,7 +8626,7 @@ components:
       type: object
     InsightStatusResponse:
       additionalProperties: false
-      description: Status of an async report request
+      description: Status of an async insight request
       example:
         fileSizeBytes: 0
         createdAt: createdAt
@@ -8405,7 +8658,7 @@ components:
           nullable: true
           type: integer
         status:
-          description: Status of an async report request
+          description: Status of an async insight request
           enum:
           - Unknown
           - Pending
@@ -14926,7 +15179,7 @@ components:
       type: object
     ShareOfVoiceInsight:
       additionalProperties: false
-      description: The filters to apply
+      description: Description of a Share of voice insight
       example:
         activationPlatforms:
         - commerceMax
@@ -15206,6 +15459,26 @@ components:
           description: Type of the resource.
           nullable: true
           type: string
+      type: object
+    SkuFilter:
+      additionalProperties: false
+      description: The filters to apply
+      example:
+        retailerSkuIds:
+        - retailerSkuIds
+        - retailerSkuIds
+        retailerId: retailerId
+      properties:
+        retailerId:
+          type: string
+        retailerSkuIds:
+          items:
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - retailerId
+      - retailerSkuIds
       type: object
     SponsoredProductsLineItem:
       additionalProperties: false
@@ -16566,7 +16839,7 @@ components:
           value: value
         name: name
         memo: memo
-        poNumber: poNumber
+        retailerPoNumber: retailerPoNumber
         startDate: startDate
       properties:
         endDate:
@@ -16579,7 +16852,7 @@ components:
           description: Name of the balance.
           nullable: true
           type: string
-        poNumber:
+        retailerPoNumber:
           description: Purchase Order number.
           nullable: true
           type: string
@@ -17248,7 +17521,7 @@ components:
               value: value
             name: name
             memo: memo
-            poNumber: poNumber
+            retailerPoNumber: retailerPoNumber
             startDate: startDate
           type: type
       properties:
@@ -17539,7 +17812,7 @@ components:
             value: value
           name: name
           memo: memo
-          poNumber: poNumber
+          retailerPoNumber: retailerPoNumber
           startDate: startDate
         type: type
       properties:

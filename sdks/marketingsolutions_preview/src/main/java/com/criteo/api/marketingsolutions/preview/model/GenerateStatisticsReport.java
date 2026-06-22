@@ -66,7 +66,7 @@ public class GenerateStatisticsReport {
 
   public static final String SERIALIZED_NAME_ADVERTISER_IDS = "advertiserIds";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_IDS)
-  private List<String> advertiserIds = null;
+  private List<String> advertiserIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -238,10 +238,6 @@ public class GenerateStatisticsReport {
     
     SALESALLPC7DPV24("SalesAllPc7dPv24"),
     
-    SALESPC7DPV24H("SalesPc7dPv24h"),
-    
-    SALESALLPC7DPV24H("SalesAllPc7dPv24h"),
-    
     SALESPV24H("SalesPv24h"),
     
     SALESALLPV24H("SalesAllPv24h"),
@@ -302,10 +298,6 @@ public class GenerateStatisticsReport {
     
     REVENUEGENERATEDALLPC30DPV24H("RevenueGeneratedAllPc30dPv24h"),
     
-    REVENUEGENERATEDPC7DPV24H("RevenueGeneratedPc7dPv24h"),
-    
-    REVENUEGENERATEDALLPC7DPV24H("RevenueGeneratedAllPc7dPv24h"),
-    
     REVENUEGENERATEDPC7DPV24("RevenueGeneratedPc7dPv24"),
     
     REVENUEGENERATEDALLPC7DPV24("RevenueGeneratedAllPc7dPv24"),
@@ -354,10 +346,6 @@ public class GenerateStatisticsReport {
     
     CONVERSIONRATEALLPC7DPV24("ConversionRateAllPc7dPv24"),
     
-    CONVERSIONRATEPC7DPV24H("ConversionRatePc7dPv24h"),
-    
-    CONVERSIONRATEALLPC7DPV24H("ConversionRateAllPc7dPv24h"),
-    
     CONVERSIONRATEPIPCPV("ConversionRatePiPcPv"),
     
     POSTINSTALLCONVERSIONRATE("PostInstallConversionRate"),
@@ -394,10 +382,6 @@ public class GenerateStatisticsReport {
     
     ECOSALLPC30DPV24H("ECosAllPc30dPv24h"),
     
-    ECOSPC7DPV24H("ECosPc7dPv24h"),
-    
-    ECOSALLPC7DPV24H("ECosAllPc7dPv24h"),
-    
     ECOSPC7DPV24("ECosPc7dPv24"),
     
     ECOSALLPC7DPV24("ECosAllPc7dPv24"),
@@ -433,10 +417,6 @@ public class GenerateStatisticsReport {
     COSTPERORDERPC30DPV24H("CostPerOrderPc30dPv24h"),
     
     COSTPERORDERALLPC30DPV24H("CostPerOrderAllPc30dPv24h"),
-    
-    COSTPERORDERPC7DPV24H("CostPerOrderPc7dPv24h"),
-    
-    COSTPERORDERALLPC7DPV24H("CostPerOrderAllPc7dPv24h"),
     
     COSTPERORDERPC7DPV24("CostPerOrderPc7dPv24"),
     
@@ -479,10 +459,6 @@ public class GenerateStatisticsReport {
     AVERAGECARTPC30DPV24H("AverageCartPc30dPv24h"),
     
     AVERAGECARTALLPC30DPV24H("AverageCartAllPc30dPv24h"),
-    
-    AVERAGECARTPC7DPV24H("AverageCartPc7dPv24h"),
-    
-    AVERAGECARTALLPC7DPV24H("AverageCartAllPc7dPv24h"),
     
     AVERAGECARTPC7DPV24("AverageCartPc7dPv24"),
     
@@ -532,15 +508,15 @@ public class GenerateStatisticsReport {
     
     INSTALLRATE("InstallRate"),
     
-    OMNICHANNELROASPC30D("OmniChannelRoasPc30d"),
+    OMNICHANNELROASPC30D("OmnichannelRoasPc30d"),
     
     OMNICHANNELROASALLPC30D("OmnichannelRoasAllPc30d"),
     
-    OMNICHANNELREVENUEPC30D("OmniChannelRevenuePc30d"),
+    OMNICHANNELREVENUEPC30D("OmnichannelRevenuePc30d"),
     
     OMNICHANNELREVENUEALLPC30D("OmnichannelRevenueAllPc30d"),
     
-    OMNICHANNELSALESPC30D("OmniChannelSalesPc30d"),
+    OMNICHANNELSALESPC30D("OmnichannelSalesPc30d"),
     
     OMNICHANNELSALESALLPC30D("OmnichannelSalesAllPc30d"),
     
@@ -597,10 +573,6 @@ public class GenerateStatisticsReport {
     ROASPC7DPV24("RoasPc7dPv24"),
     
     ROASALLPC7DPV24("RoasAllPc7dPv24"),
-    
-    ROASPC7DPV24H("RoasPc7dPv24h"),
-    
-    ROASALLPC7DPV24H("RoasAllPc7dPv24h"),
     
     COSTOFSALEPI("CostOfSalePi"),
     
@@ -736,7 +708,15 @@ public class GenerateStatisticsReport {
     
     ASSISTSSALESRATIOPIPV("AssistsSalesRatioPiPv"),
     
-    ASSISTSSALESRATIOPIPCPV("AssistsSalesRatioPiPcPv");
+    ASSISTSSALESRATIOPIPCPV("AssistsSalesRatioPiPcPv"),
+    
+    SALESLC("SalesLc"),
+    
+    SALESALLLC("SalesAllLc"),
+    
+    REVENUEGENERATEDLC("RevenueGeneratedLc"),
+    
+    REVENUEGENERATEDALLLC("RevenueGeneratedAllLc");
 
     private String value;
 
@@ -806,7 +786,7 @@ public class GenerateStatisticsReport {
   }
 
    /**
-   * The list of adSets ids. If empty, all the adSets will be fetched
+   * List of advertiser IDs to report on, provided as a single comma-separated string (e.g., \&quot;123,456,789\&quot;). The advertisers must already exist. If empty, all advertisers will be used.
    * @return adSetIds
   **/
   @javax.annotation.Nullable
@@ -836,7 +816,7 @@ public class GenerateStatisticsReport {
   }
 
    /**
-   * The list of adSets names. If empty, all the adSets will be fetched
+   * The list of ad sets names. If empty, all the adSets will be fetched.
    * @return adSetNames
   **/
   @javax.annotation.Nullable
@@ -866,7 +846,7 @@ public class GenerateStatisticsReport {
   }
 
    /**
-   * The list of adSets status. If empty, all the adSets will be fetched
+   * The list of ad sets status. If empty, all the adSets will be fetched.
    * @return adSetStatus
   **/
   @javax.annotation.Nullable
@@ -888,9 +868,6 @@ public class GenerateStatisticsReport {
   }
 
   public GenerateStatisticsReport addAdvertiserIdsItem(String advertiserIdsItem) {
-    if (this.advertiserIds == null) {
-      this.advertiserIds = null;
-    }
     this.advertiserIds.add(advertiserIdsItem);
     return this;
   }
@@ -899,7 +876,7 @@ public class GenerateStatisticsReport {
    * The list of advertiser ids
    * @return advertiserIds
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public List<String> getAdvertiserIds() {
     return advertiserIds;
@@ -1038,10 +1015,10 @@ public class GenerateStatisticsReport {
   }
 
    /**
-   * The timezone used for the report. Timezone Database format (Tz).
+   * Optional timezone used for the report. Timezone Database format (Tz).
    * @return timezone
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getTimezone() {
     return timezone;
@@ -1140,10 +1117,12 @@ public class GenerateStatisticsReport {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("advertiserIds");
     openapiRequiredFields.add("dimensions");
     openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("metrics");
     openapiRequiredFields.add("startDate");
+    openapiRequiredFields.add("timezone");
   }
 
  /**
@@ -1185,8 +1164,10 @@ public class GenerateStatisticsReport {
       if (jsonObj.get("adSetStatus") != null && !jsonObj.get("adSetStatus").isJsonNull() && !jsonObj.get("adSetStatus").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adSetStatus` to be an array in the JSON string but got `%s`", jsonObj.get("adSetStatus").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonNull() && !jsonObj.get("advertiserIds").isJsonArray()) {
+      // ensure the required json array is present
+      if (jsonObj.get("advertiserIds") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("advertiserIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
       }
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
@@ -1204,7 +1185,7 @@ public class GenerateStatisticsReport {
       } else if (!jsonObj.get("metrics").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
-      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
+      if (!jsonObj.get("timezone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
       }
   }

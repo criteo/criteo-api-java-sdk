@@ -63,6 +63,9 @@ docs/CustomAttribute.md
 docs/DataCompleteThrough.md
 docs/DeleteCampaignsRequestV1.md
 docs/DeleteEntry.md
+docs/DigitalShelfIntelligenceInsight.md
+docs/DigitalShelfIntelligenceInsightRequest.md
+docs/DigitalShelfIntelligenceInsightResource.md
 docs/DisplayAuctionMinBidRequest.md
 docs/DisplayAuctionMinBidResult.md
 docs/EntityResourceBalanceV1.md
@@ -256,6 +259,7 @@ docs/SetProductBuyBoxWinnersRequest.md
 docs/ShareOfVoiceInsight.md
 docs/ShareOfVoiceInsightRequest.md
 docs/ShareOfVoiceInsightResource.md
+docs/SkuFilter.md
 docs/SponsoredProductsLineItem.md
 docs/SponsoredProductsLineItemCreateRequestModel.md
 docs/SponsoredProductsLineItemUpdateRequestModel.md
@@ -413,6 +417,9 @@ src/main/java/com/criteo/api/retailmedia/preview/model/CustomAttribute.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DataCompleteThrough.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DeleteCampaignsRequestV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DeleteEntry.java
+src/main/java/com/criteo/api/retailmedia/preview/model/DigitalShelfIntelligenceInsight.java
+src/main/java/com/criteo/api/retailmedia/preview/model/DigitalShelfIntelligenceInsightRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/DigitalShelfIntelligenceInsightResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DisplayAuctionMinBidRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DisplayAuctionMinBidResult.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceBalanceV1.java
@@ -604,6 +611,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/SetProductBuyBoxWinnersRe
 src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceInsight.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceInsightRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceInsightResource.java
+src/main/java/com/criteo/api/retailmedia/preview/model/SkuFilter.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SponsoredProductsLineItem.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SponsoredProductsLineItemCreateRequestModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SponsoredProductsLineItemUpdateRequestModel.java

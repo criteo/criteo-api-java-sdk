@@ -8,17 +8,27 @@ This is the message defining the query for Adset report
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**adSetIds** | **List&lt;String&gt;** | list of adSets ids. If empty, all the adSets will be fetched |  [optional] |
-|**adSetNames** | **List&lt;String&gt;** | list of adSets names. If empty, all the adSets will be fetched |  [optional] |
-|**adSetStatus** | **List&lt;String&gt;** | list of adSets status. If empty, all the adSets will be fetched |  [optional] |
-|**advertiserIds** | **String** | The comma-separated list of advertiser ids. If empty, all the advertisers in the portfolio will be used |  [optional] |
+|**adSetIds** | **List&lt;String&gt;** | Optional list of ad set IDs to filter on. The ad sets must already exist. If empty, all ad sets will be fetched. |  [optional] |
+|**adSetNames** | **List&lt;String&gt;** | Optional list of ad set names to filter on. If empty, all ad sets will be fetched. |  [optional] |
+|**adSetStatus** | [**List&lt;AdSetStatusEnum&gt;**](#List&lt;AdSetStatusEnum&gt;) | Optional list of ad set statuses to filter on. If empty, all ad sets will be fetched. |  [optional] |
+|**advertiserIds** | **String** | List of advertiser IDs to report on, provided as a single comma-separated string (e.g., \&quot;123,456,789\&quot;). The advertisers must already exist. If empty, all advertisers will be used. |  |
 |**currency** | **String** | The currency used for the report. ISO 4217 code (three-letter capitals). |  |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | The dimensions for the report. |  |
-|**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**format** | [**FormatEnum**](#FormatEnum) | The file format of the generated report |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | The list of metrics to report. |  |
-|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional] |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions for the report. At least one dimension should be provided. &lt;br/&gt;&lt;br/&gt; When an ID dimension is requested (e.g., AdsetId), the corresponding name dimension (e.g., Adset) is automatically included, and vice versa. This applies to the following pairs: AdsetId/Adset, AdId/Ad, AdvertiserId/Advertiser, CampaignId/Campaign, CategoryId/Category, CouponId/Coupon, MarketingObjectiveId/MarketingObjective, ChannelId/Channel. |  |
+|**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. |  |
+|**format** | [**FormatEnum**](#FormatEnum) | Optional file format of the generated report. |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics for the report. Provide at least one metric to return performance data; otherwise, the response will include only dimension-related information. |  |
+|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. Must be ≤ endDate. |  |
+|**timezone** | **String** | Optional timezone used for the report. Timezone Database format (Tz). |  [optional] |
+
+
+
+## Enum: List&lt;AdSetStatusEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| ACTIVE | &quot;Active&quot; |
+| NOTRUNNING | &quot;NotRunning&quot; |
+| DEAD | &quot;Dead&quot; |
 
 
 
@@ -217,6 +227,7 @@ This is the message defining the query for Adset report
 | QUALIFIEDVISITS | &quot;QualifiedVisits&quot; |
 | VISITS | &quot;Visits&quot; |
 | VISITSPV1D | &quot;VisitsPV1D&quot; |
+| VISITSALLPV1D | &quot;VisitsAllPv1d&quot; |
 | ORDERVALUEPI | &quot;OrderValuePi&quot; |
 | POSTINSTALLORDERVALUE | &quot;PostInstallOrderValue&quot; |
 | BOUNCERATE | &quot;BounceRate&quot; |
@@ -265,17 +276,6 @@ This is the message defining the query for Adset report
 | POSTINSTALLCOSTOFSALE | &quot;PostInstallCostOfSale&quot; |
 | POSTINSTALLCOSTPERORDER | &quot;PostInstallCostPerOrder&quot; |
 | RETURNONADVERTISERSPENDINGPI | &quot;ReturnOnAdvertiserSpendingPi&quot; |
-| CACCLIENTATTRIBUTION | &quot;CacClientAttribution&quot; |
-| CACPC30D | &quot;CacPc30d&quot; |
-| CACPC7D | &quot;CacPc7d&quot; |
-| CACPC1D | &quot;CacPc1d&quot; |
-| CACPV24H | &quot;CacPv24h&quot; |
-| CACPV7D | &quot;CacPv7d&quot; |
-| CACPV14D | &quot;CacPv14d&quot; |
-| CACPV30D | &quot;CacPv30d&quot; |
-| CACPC30PV24H | &quot;CacPc30Pv24h&quot; |
-| CACPC7DPV24H | &quot;CacPc7dPv24h&quot; |
-| CACLC30D | &quot;CacLc30d&quot; |
 | POSTINSTALLROAS | &quot;PostInstallRoas&quot; |
 | RETURNONADVERTISERSPENDINGOFFLINEPC | &quot;ReturnOnAdvertiserSpendingOfflinePc&quot; |
 | RETURNONADVERTISERSPENDINGOFFLINEPV | &quot;ReturnOnAdvertiserSpendingOfflinePv&quot; |
@@ -301,6 +301,12 @@ This is the message defining the query for Adset report
 | VIDEOAVERAGEVIEWRATE | &quot;VideoAverageViewRate&quot; |
 | VIDEOCPV | &quot;VideoCpv&quot; |
 | VIDEOCPCV | &quot;VideoCpcv&quot; |
+| POTENTIALUSERS | &quot;PotentialUsers&quot; |
+| RETAILERMARGINEURO | &quot;RetailerMarginEuro&quot; |
+| PLATFORMFEEEURO | &quot;PlatformFeeEuro&quot; |
+| ALLINMEDIACOST | &quot;AllInMediaCost&quot; |
+| NETMEDIACOST | &quot;NetMediaCost&quot; |
+| COS | &quot;Cos&quot; |
 
 
 

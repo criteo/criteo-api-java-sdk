@@ -8,14 +8,14 @@ This is the message defining the query for Realtime report
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**adsetIds** | **List&lt;String&gt;** | List of adset ids to filter. |  [optional] |
-|**advertiserIds** | **List&lt;String&gt;** | List of advertiser ids to report on. |  |
-|**campaignIds** | **List&lt;String&gt;** | List of campaign ids to filter. |  [optional] |
+|**adsetIds** | **List&lt;String&gt;** | Optional list of ad set IDs to filter on. The ad sets must already exist. If empty, all ad sets will be included. |  [optional] |
+|**advertiserIds** | **List&lt;String&gt;** | List of advertiser IDs to report on. The advertisers must already exist. Between 1 and 10 advertiser IDs can be provided. |  |
+|**campaignIds** | **List&lt;String&gt;** | Optional list of campaign IDs to filter on. The campaigns must already exist. If empty, all campaigns will be included. |  [optional] |
 |**currency** | **String** | The currency used for the report. ISO 4217 code (three-letter capitals). |  [optional] |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions for the report. |  [optional] |
-|**lookbackWindow** | **Integer** | The number of hours to consider in the past. |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics for the report. |  [optional] |
-|**timezone** | **String** | The timezone used for the report. |  [optional] |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions for the report. If not included, the default list of dimensions will be used. |  [optional] |
+|**lookbackWindow** | **Integer** | Optional number of hours to consider in the past. |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics for the report. If included, at least one metric should be provided. |  [optional] |
+|**timezone** | **String** | Optional timezone used for the report. |  [optional] |
 
 
 

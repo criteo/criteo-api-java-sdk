@@ -8,19 +8,19 @@ This is the message defining the query for Placements report
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**adsetIds** | **String** | The comma-separated list of adSet ids. |  [optional] |
-|**advertiserIds** | **String** | The comma-separated list of advertiser ids. |  |
-|**campaignIds** | **String** | The comma-separated list of campaign ids. |  [optional] |
+|**adsetIds** | **String** | Optional list of ad set IDs to filter on. The ad sets must already exist. If empty, all ad sets will be included. |  [optional] |
+|**advertiserIds** | **String** | List of advertiser IDs to report on, provided as a single comma-separated string (e.g., \&quot;123,456,789\&quot;). The advertisers must already exist. If empty, all advertisers will be used. |  |
+|**campaignIds** | **String** | Optional list of campaign IDs to filter on. The campaigns must already exist. If empty, all campaigns will be included. |  [optional] |
 |**currency** | **String** | The currency used for the report. ISO 4217 code (three-letter capitals). |  |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | The dimensions for the report. |  |
-|**disclosed** | **Boolean** | Returns disclosed or undisclosed placements. |  [optional] |
-|**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**environment** | **String** | Type of environment: Web, Android or iOS. |  [optional] |
-|**format** | [**FormatEnum**](#FormatEnum) | The file format of the generated report |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | The list of metrics to report. |  |
-|**placement** | **String** | Filter the value of the placement |  [optional] |
-|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional] |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions for the report. At least one dimension should be provided. |  |
+|**disclosed** | **Boolean** | Optionally returns disclosed or undisclosed placements. |  [optional] |
+|**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. |  |
+|**environment** | [**EnvironmentEnum**](#EnvironmentEnum) | Optional type of environment to filter on. If empty, all environments will be included. |  [optional] |
+|**format** | [**FormatEnum**](#FormatEnum) | Optional file format of the generated report. |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics for the report. At least one dimension should be provided. |  |
+|**placement** | **String** | Optional filter on a specific placement domain name. If empty, all placements will be included. |  [optional] |
+|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. Must be ≤ endDate. |  |
+|**timezone** | **String** | Optional timezone used for the report. Timezone Database format (Tz). |  [optional] |
 
 
 
@@ -40,6 +40,16 @@ This is the message defining the query for Placements report
 | SOCIALPLATFORM | &quot;SocialPlatform&quot; |
 | CATEGORYID | &quot;CategoryId&quot; |
 | CATEGORYNAME | &quot;CategoryName&quot; |
+
+
+
+## Enum: EnvironmentEnum
+
+| Name | Value |
+|---- | -----|
+| WEB | &quot;Web&quot; |
+| ANDROID | &quot;Android&quot; |
+| IOS | &quot;Ios&quot; |
 
 
 

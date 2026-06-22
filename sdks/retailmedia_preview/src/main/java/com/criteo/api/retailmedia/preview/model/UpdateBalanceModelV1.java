@@ -62,9 +62,9 @@ public class UpdateBalanceModelV1 {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_PO_NUMBER = "poNumber";
-  @SerializedName(SERIALIZED_NAME_PO_NUMBER)
-  private String poNumber;
+  public static final String SERIALIZED_NAME_RETAILER_PO_NUMBER = "retailerPoNumber";
+  @SerializedName(SERIALIZED_NAME_RETAILER_PO_NUMBER)
+  private String retailerPoNumber;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -139,25 +139,25 @@ public class UpdateBalanceModelV1 {
   }
 
 
-  public UpdateBalanceModelV1 poNumber(String poNumber) {
+  public UpdateBalanceModelV1 retailerPoNumber(String retailerPoNumber) {
     
-    this.poNumber = poNumber;
+    this.retailerPoNumber = retailerPoNumber;
     return this;
   }
 
    /**
    * Purchase Order number.
-   * @return poNumber
+   * @return retailerPoNumber
   **/
   @javax.annotation.Nullable
 
-  public String getPoNumber() {
-    return poNumber;
+  public String getRetailerPoNumber() {
+    return retailerPoNumber;
   }
 
 
-  public void setPoNumber(String poNumber) {
-    this.poNumber = poNumber;
+  public void setRetailerPoNumber(String retailerPoNumber) {
+    this.retailerPoNumber = retailerPoNumber;
   }
 
 
@@ -196,7 +196,7 @@ public class UpdateBalanceModelV1 {
     return Objects.equals(this.endDate, updateBalanceModelV1.endDate) &&
         Objects.equals(this.memo, updateBalanceModelV1.memo) &&
         Objects.equals(this.name, updateBalanceModelV1.name) &&
-        Objects.equals(this.poNumber, updateBalanceModelV1.poNumber) &&
+        Objects.equals(this.retailerPoNumber, updateBalanceModelV1.retailerPoNumber) &&
         Objects.equals(this.startDate, updateBalanceModelV1.startDate);
   }
 
@@ -206,7 +206,7 @@ public class UpdateBalanceModelV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(endDate, memo, name, poNumber, startDate);
+    return Objects.hash(endDate, memo, name, retailerPoNumber, startDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -223,7 +223,7 @@ public class UpdateBalanceModelV1 {
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
+    sb.append("    retailerPoNumber: ").append(toIndentedString(retailerPoNumber)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -250,7 +250,7 @@ public class UpdateBalanceModelV1 {
     openapiFields.add("endDate");
     openapiFields.add("memo");
     openapiFields.add("name");
-    openapiFields.add("poNumber");
+    openapiFields.add("retailerPoNumber");
     openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
@@ -287,8 +287,8 @@ public class UpdateBalanceModelV1 {
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("poNumber") != null && !jsonObj.get("poNumber").isJsonNull()) && !jsonObj.get("poNumber").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `poNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("poNumber").toString()));
+      if ((jsonObj.get("retailerPoNumber") != null && !jsonObj.get("retailerPoNumber").isJsonNull()) && !jsonObj.get("retailerPoNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerPoNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerPoNumber").toString()));
       }
       if ((jsonObj.get("startDate") != null && !jsonObj.get("startDate").isJsonNull()) && !jsonObj.get("startDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));

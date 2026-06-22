@@ -8,16 +8,16 @@ Request attributes for async statistics report
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**adSetIds** | **List&lt;String&gt;** | The list of adSets ids. If empty, all the adSets will be fetched |  [optional] |
-|**adSetNames** | **List&lt;String&gt;** | The list of adSets names. If empty, all the adSets will be fetched |  [optional] |
-|**adSetStatus** | **List&lt;String&gt;** | The list of adSets status. If empty, all the adSets will be fetched |  [optional] |
-|**advertiserIds** | **List&lt;String&gt;** | The list of advertiser ids |  [optional] |
+|**adSetIds** | **List&lt;String&gt;** | List of advertiser IDs to report on, provided as a single comma-separated string (e.g., \&quot;123,456,789\&quot;). The advertisers must already exist. If empty, all advertisers will be used. |  [optional] |
+|**adSetNames** | **List&lt;String&gt;** | The list of ad sets names. If empty, all the adSets will be fetched. |  [optional] |
+|**adSetStatus** | **List&lt;String&gt;** | The list of ad sets status. If empty, all the adSets will be fetched. |  [optional] |
+|**advertiserIds** | **List&lt;String&gt;** | The list of advertiser ids |  |
 |**currency** | **String** | The currency used for the report. ISO 4217 code (three-letter capitals). |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | The dimensions for the report. |  |
 |**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | The list of metrics to report. |  |
 |**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional] |
+|**timezone** | **String** | Optional timezone used for the report. Timezone Database format (Tz). |  |
 
 
 
@@ -87,8 +87,6 @@ Request attributes for async statistics report
 | SALESALLPC7D | &quot;SalesAllPc7d&quot; |
 | SALESPC7DPV24 | &quot;SalesPc7dPv24&quot; |
 | SALESALLPC7DPV24 | &quot;SalesAllPc7dPv24&quot; |
-| SALESPC7DPV24H | &quot;SalesPc7dPv24h&quot; |
-| SALESALLPC7DPV24H | &quot;SalesAllPc7dPv24h&quot; |
 | SALESPV24H | &quot;SalesPv24h&quot; |
 | SALESALLPV24H | &quot;SalesAllPv24h&quot; |
 | SALESPC30PV24 | &quot;SalesPc30Pv24&quot; |
@@ -119,8 +117,6 @@ Request attributes for async statistics report
 | REVENUEGENERATEDALLPC30PV24 | &quot;RevenueGeneratedAllPc30Pv24&quot; |
 | REVENUEGENERATEDPC30DPV24H | &quot;RevenueGeneratedPc30dPv24h&quot; |
 | REVENUEGENERATEDALLPC30DPV24H | &quot;RevenueGeneratedAllPc30dPv24h&quot; |
-| REVENUEGENERATEDPC7DPV24H | &quot;RevenueGeneratedPc7dPv24h&quot; |
-| REVENUEGENERATEDALLPC7DPV24H | &quot;RevenueGeneratedAllPc7dPv24h&quot; |
 | REVENUEGENERATEDPC7DPV24 | &quot;RevenueGeneratedPc7dPv24&quot; |
 | REVENUEGENERATEDALLPC7DPV24 | &quot;RevenueGeneratedAllPc7dPv24&quot; |
 | REVENUEGENERATEDOFFLINEPC | &quot;RevenueGeneratedOfflinePc&quot; |
@@ -145,8 +141,6 @@ Request attributes for async statistics report
 | CONVERSIONRATEALLPC30DPV24H | &quot;ConversionRateAllPc30dPv24h&quot; |
 | CONVERSIONRATEPC7DPV24 | &quot;ConversionRatePc7dPv24&quot; |
 | CONVERSIONRATEALLPC7DPV24 | &quot;ConversionRateAllPc7dPv24&quot; |
-| CONVERSIONRATEPC7DPV24H | &quot;ConversionRatePc7dPv24h&quot; |
-| CONVERSIONRATEALLPC7DPV24H | &quot;ConversionRateAllPc7dPv24h&quot; |
 | CONVERSIONRATEPIPCPV | &quot;ConversionRatePiPcPv&quot; |
 | POSTINSTALLCONVERSIONRATE | &quot;PostInstallConversionRate&quot; |
 | ECOSPC30DCLIENTATTRIBUTION | &quot;ECosPc30dClientAttribution&quot; |
@@ -165,8 +159,6 @@ Request attributes for async statistics report
 | ECOSALLPC30PV24 | &quot;ECosAllPc30Pv24&quot; |
 | ECOSPC30DPV24H | &quot;ECosPc30dPv24h&quot; |
 | ECOSALLPC30DPV24H | &quot;ECosAllPc30dPv24h&quot; |
-| ECOSPC7DPV24H | &quot;ECosPc7dPv24h&quot; |
-| ECOSALLPC7DPV24H | &quot;ECosAllPc7dPv24h&quot; |
 | ECOSPC7DPV24 | &quot;ECosPc7dPv24&quot; |
 | ECOSALLPC7DPV24 | &quot;ECosAllPc7dPv24&quot; |
 | COSTPERORDERPC30DCLIENTATTRIBUTION | &quot;CostPerOrderPc30dClientAttribution&quot; |
@@ -185,8 +177,6 @@ Request attributes for async statistics report
 | COSTPERORDERALLPC30PV24 | &quot;CostPerOrderAllPc30Pv24&quot; |
 | COSTPERORDERPC30DPV24H | &quot;CostPerOrderPc30dPv24h&quot; |
 | COSTPERORDERALLPC30DPV24H | &quot;CostPerOrderAllPc30dPv24h&quot; |
-| COSTPERORDERPC7DPV24H | &quot;CostPerOrderPc7dPv24h&quot; |
-| COSTPERORDERALLPC7DPV24H | &quot;CostPerOrderAllPc7dPv24h&quot; |
 | COSTPERORDERPC7DPV24 | &quot;CostPerOrderPc7dPv24&quot; |
 | COSTPERORDERALLPC7DPV24 | &quot;CostPerOrderAllPc7dPv24&quot; |
 | EXPOSEDUSERS | &quot;ExposedUsers&quot; |
@@ -208,8 +198,6 @@ Request attributes for async statistics report
 | AVERAGECARTALLPC30PV24 | &quot;AverageCartAllPc30Pv24&quot; |
 | AVERAGECARTPC30DPV24H | &quot;AverageCartPc30dPv24h&quot; |
 | AVERAGECARTALLPC30DPV24H | &quot;AverageCartAllPc30dPv24h&quot; |
-| AVERAGECARTPC7DPV24H | &quot;AverageCartPc7dPv24h&quot; |
-| AVERAGECARTALLPC7DPV24H | &quot;AverageCartAllPc7dPv24h&quot; |
 | AVERAGECARTPC7DPV24 | &quot;AverageCartPc7dPv24&quot; |
 | AVERAGECARTALLPC7DPV24 | &quot;AverageCartAllPc7dPv24&quot; |
 | CLICKTHROUGHRATE | &quot;ClickThroughRate&quot; |
@@ -234,11 +222,11 @@ Request attributes for async statistics report
 | COSTPERVISIT | &quot;CostPerVisit&quot; |
 | INSTALLRATEPCPV | &quot;InstallRatePcPv&quot; |
 | INSTALLRATE | &quot;InstallRate&quot; |
-| OMNICHANNELROASPC30D | &quot;OmniChannelRoasPc30d&quot; |
+| OMNICHANNELROASPC30D | &quot;OmnichannelRoasPc30d&quot; |
 | OMNICHANNELROASALLPC30D | &quot;OmnichannelRoasAllPc30d&quot; |
-| OMNICHANNELREVENUEPC30D | &quot;OmniChannelRevenuePc30d&quot; |
+| OMNICHANNELREVENUEPC30D | &quot;OmnichannelRevenuePc30d&quot; |
 | OMNICHANNELREVENUEALLPC30D | &quot;OmnichannelRevenueAllPc30d&quot; |
-| OMNICHANNELSALESPC30D | &quot;OmniChannelSalesPc30d&quot; |
+| OMNICHANNELSALESPC30D | &quot;OmnichannelSalesPc30d&quot; |
 | OMNICHANNELSALESALLPC30D | &quot;OmnichannelSalesAllPc30d&quot; |
 | OMNICHANNELROASALLPV24H | &quot;OmnichannelRoasAllPv24h&quot; |
 | OMNICHANNELROASPV24H | &quot;OmnichannelRoasPv24h&quot; |
@@ -267,8 +255,6 @@ Request attributes for async statistics report
 | ROASALLPC30DPV24H | &quot;RoasAllPc30dPv24h&quot; |
 | ROASPC7DPV24 | &quot;RoasPc7dPv24&quot; |
 | ROASALLPC7DPV24 | &quot;RoasAllPc7dPv24&quot; |
-| ROASPC7DPV24H | &quot;RoasPc7dPv24h&quot; |
-| ROASALLPC7DPV24H | &quot;RoasAllPc7dPv24h&quot; |
 | COSTOFSALEPI | &quot;CostOfSalePi&quot; |
 | COSTPERORDERPI | &quot;CostPerOrderPi&quot; |
 | POSTINSTALLCOSTOFSALE | &quot;PostInstallCostOfSale&quot; |
@@ -337,6 +323,10 @@ Request attributes for async statistics report
 | ASSISTSSALESRATIOPIPC | &quot;AssistsSalesRatioPiPc&quot; |
 | ASSISTSSALESRATIOPIPV | &quot;AssistsSalesRatioPiPv&quot; |
 | ASSISTSSALESRATIOPIPCPV | &quot;AssistsSalesRatioPiPcPv&quot; |
+| SALESLC | &quot;SalesLc&quot; |
+| SALESALLLC | &quot;SalesAllLc&quot; |
+| REVENUEGENERATEDLC | &quot;RevenueGeneratedLc&quot; |
+| REVENUEGENERATEDALLLC | &quot;RevenueGeneratedAllLc&quot; |
 
 
 

@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Status of an async report request
+ * Status of an async insight request
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InsightStatusResponse {
@@ -74,7 +74,7 @@ public class InsightStatusResponse {
   private Integer rowCount;
 
   /**
-   * Status of an async report request
+   * Status of an async insight request
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -274,7 +274,7 @@ public class InsightStatusResponse {
   }
 
    /**
-   * Status of an async report request
+   * Status of an async insight request
    * @return status
   **/
   @javax.annotation.Nullable

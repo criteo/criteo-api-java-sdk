@@ -2,7 +2,7 @@
 
 # InsightStatusResponse
 
-Status of an async report request
+Status of an async insight request
 
 ## Properties
 
@@ -14,7 +14,7 @@ Status of an async report request
 |**md5CheckSum** | **String** |  |  [optional] |
 |**message** | **String** |  |  [optional] |
 |**rowCount** | **Integer** |  |  [optional] |
-|**status** | [**StatusEnum**](#StatusEnum) | Status of an async report request |  [optional] |
+|**status** | [**StatusEnum**](#StatusEnum) | Status of an async insight request |  [optional] |
 
 
 

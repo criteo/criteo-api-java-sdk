@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.criteo.api.marketingsolutions.preview.model.ExportResult;
+import com.criteo.api.marketingsolutions.preview.model.ExportStatusModelResponse;
 import java.io.File;
 import com.criteo.api.marketingsolutions.preview.model.FileStreamResultResponse;
 import com.criteo.api.marketingsolutions.preview.model.GenerateAudiencePerformanceReportRequest;
@@ -92,7 +93,7 @@ public class AnalyticsApi {
 
     /**
      * Build call for createRealtimeProductReport
-     * @param realTimeProductReportJobRequest  (optional)
+     * @param realTimeProductReportJobRequest The realtime report export request. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -160,8 +161,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
-     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
-     * @param realTimeProductReportJobRequest  (optional)
+     * Creates a marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param realTimeProductReportJobRequest The realtime report export request. (optional)
      * @return RealTimeProductReportJobStatusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -177,8 +178,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
-     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
-     * @param realTimeProductReportJobRequest  (optional)
+     * Creates a marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param realTimeProductReportJobRequest The realtime report export request. (optional)
      * @return ApiResponse&lt;RealTimeProductReportJobStatusResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -195,8 +196,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export (asynchronously)
-     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
-     * @param realTimeProductReportJobRequest  (optional)
+     * Creates a marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param realTimeProductReportJobRequest The realtime report export request. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -281,7 +282,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/statistics/report
-     * This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
+     * This Statistics endpoint provides ad set related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
      * @param statisticsReportQueryMessage  (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -298,7 +299,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/statistics/report
-     * This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
+     * This Statistics endpoint provides ad set related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
      * @param statisticsReportQueryMessage  (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -316,7 +317,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/statistics/report (asynchronously)
-     * This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
+     * This Statistics endpoint provides ad set related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
      * @param statisticsReportQueryMessage  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -624,7 +625,9 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/xml",
+            "text/xml"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -904,7 +907,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/categories/report
-     * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
+     * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
      * @param generateCategoriesReportRequestAttributesRequest  (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -921,7 +924,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/categories/report
-     * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
+     * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
      * @param generateCategoriesReportRequestAttributesRequest  (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -939,7 +942,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/categories/report (asynchronously)
-     * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
+     * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
      * @param generateCategoriesReportRequestAttributesRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1032,7 +1035,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/reports/creatives
-     * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
+     * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
      * @param generateCreativesReportRequestAttributesRequest  (required)
      * @return JsonReportRowsListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1049,7 +1052,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/reports/creatives
-     * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
+     * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
      * @param generateCreativesReportRequestAttributesRequest  (required)
      * @return ApiResponse&lt;JsonReportRowsListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1067,7 +1070,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/reports/creatives (asynchronously)
-     * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
+     * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
      * @param generateCreativesReportRequestAttributesRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1082,6 +1085,131 @@ public class AnalyticsApi {
 
         okhttp3.Call localVarCall = getCreativesReportValidateBeforeCall(generateCreativesReportRequestAttributesRequest, _callback);
         Type localVarReturnType = new TypeToken<JsonReportRowsListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getExportStatus
+     * @param reportId The identifier of the report export job. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getExportStatusCall(String reportId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}"
+            .replace("{" + "reportId" + "}", localVarApiClient.escapeString(reportId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/xml",
+            "text/xml"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getExportStatusValidateBeforeCall(String reportId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'reportId' is set
+        if (reportId == null) {
+            throw new ApiException("Missing the required parameter 'reportId' when calling getExportStatus(Async)");
+        }
+
+        return getExportStatusCall(reportId, _callback);
+
+    }
+
+    /**
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
+     * Gets the status of a marketplace performance outcomes report export job.
+     * @param reportId The identifier of the report export job. (required)
+     * @return ExportStatusModelResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ExportStatusModelResponse getExportStatus(String reportId) throws ApiException {
+        ApiResponse<ExportStatusModelResponse> localVarResp = getExportStatusWithHttpInfo(reportId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
+     * Gets the status of a marketplace performance outcomes report export job.
+     * @param reportId The identifier of the report export job. (required)
+     * @return ApiResponse&lt;ExportStatusModelResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ExportStatusModelResponse> getExportStatusWithHttpInfo(String reportId) throws ApiException {
+        okhttp3.Call localVarCall = getExportStatusValidateBeforeCall(reportId, null);
+        Type localVarReturnType = new TypeToken<ExportStatusModelResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} (asynchronously)
+     * Gets the status of a marketplace performance outcomes report export job.
+     * @param reportId The identifier of the report export job. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getExportStatusAsync(String reportId, final ApiCallback<ExportStatusModelResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getExportStatusValidateBeforeCall(reportId, _callback);
+        Type localVarReturnType = new TypeToken<ExportStatusModelResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1156,7 +1284,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/placements/report
-     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
+     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
      * @param placementsReportQueryMessageListRequest  (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1173,7 +1301,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/placements/report
-     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
+     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
      * @param placementsReportQueryMessageListRequest  (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1191,7 +1319,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/placements/report (asynchronously)
-     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
+     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
      * @param placementsReportQueryMessageListRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1211,7 +1339,7 @@ public class AnalyticsApi {
     }
     /**
      * Build call for getRealtimeProduct
-     * @param reportId Unique ID (UUID) of the report to retrieve. (required)
+     * @param reportId The identifier of the realtime report export. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1281,8 +1409,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
-     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
-     * @param reportId Unique ID (UUID) of the report to retrieve. (required)
+     * Downloads the generated marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param reportId The identifier of the realtime report export. (required)
      * @return FileStreamResultResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1298,8 +1426,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
-     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
-     * @param reportId Unique ID (UUID) of the report to retrieve. (required)
+     * Downloads the generated marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param reportId The identifier of the realtime report export. (required)
      * @return ApiResponse&lt;FileStreamResultResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1316,8 +1444,8 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId} (asynchronously)
-     * This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
-     * @param reportId Unique ID (UUID) of the report to retrieve. (required)
+     * Downloads the generated marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param reportId The identifier of the realtime report export. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1331,131 +1459,6 @@ public class AnalyticsApi {
 
         okhttp3.Call localVarCall = getRealtimeProductValidateBeforeCall(reportId, _callback);
         Type localVarReturnType = new TypeToken<FileStreamResultResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getRealtimeProductJob
-     * @param reportId Unique ID (UUID) of the report job. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getRealtimeProductJobCall(String reportId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}"
-            .replace("{" + "reportId" + "}", localVarApiClient.escapeString(reportId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/xml",
-            "text/xml"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRealtimeProductJobValidateBeforeCall(String reportId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'reportId' is set
-        if (reportId == null) {
-            throw new ApiException("Missing the required parameter 'reportId' when calling getRealtimeProductJob(Async)");
-        }
-
-        return getRealtimeProductJobCall(reportId, _callback);
-
-    }
-
-    /**
-     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
-     * This endpoint is subject to specific rate limits.
-     * @param reportId Unique ID (UUID) of the report job. (required)
-     * @return RealTimeProductReportJobStatusResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public RealTimeProductReportJobStatusResponse getRealtimeProductJob(String reportId) throws ApiException {
-        ApiResponse<RealTimeProductReportJobStatusResponse> localVarResp = getRealtimeProductJobWithHttpInfo(reportId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
-     * This endpoint is subject to specific rate limits.
-     * @param reportId Unique ID (UUID) of the report job. (required)
-     * @return ApiResponse&lt;RealTimeProductReportJobStatusResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RealTimeProductReportJobStatusResponse> getRealtimeProductJobWithHttpInfo(String reportId) throws ApiException {
-        okhttp3.Call localVarCall = getRealtimeProductJobValidateBeforeCall(reportId, null);
-        Type localVarReturnType = new TypeToken<RealTimeProductReportJobStatusResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} (asynchronously)
-     * This endpoint is subject to specific rate limits.
-     * @param reportId Unique ID (UUID) of the report job. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getRealtimeProductJobAsync(String reportId, final ApiCallback<RealTimeProductReportJobStatusResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getRealtimeProductJobValidateBeforeCall(reportId, _callback);
-        Type localVarReturnType = new TypeToken<RealTimeProductReportJobStatusResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1657,7 +1660,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/reports/top-products
-     * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
+     * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to one year in the past.
      * @param generateTopProductsReportRequestAttributesRequest  (required)
      * @return JsonReportRowsListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1674,7 +1677,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/reports/top-products
-     * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
+     * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to one year in the past.
      * @param generateTopProductsReportRequestAttributesRequest  (required)
      * @return ApiResponse&lt;JsonReportRowsListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1692,7 +1695,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/reports/top-products (asynchronously)
-     * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
+     * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to one year in the past.
      * @param generateTopProductsReportRequestAttributesRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1781,7 +1784,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/transactions/report
-     * This Transactions endpoint provides transactions id related data.
+     * This Transactions endpoint provides transactions id related data.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
      * @param transactionsReportQueryMessageListRequest  (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1798,7 +1801,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/transactions/report
-     * This Transactions endpoint provides transactions id related data.
+     * This Transactions endpoint provides transactions id related data.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
      * @param transactionsReportQueryMessageListRequest  (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1816,7 +1819,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/transactions/report (asynchronously)
-     * This Transactions endpoint provides transactions id related data.
+     * This Transactions endpoint provides transactions id related data.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
      * @param transactionsReportQueryMessageListRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1836,7 +1839,7 @@ public class AnalyticsApi {
     }
     /**
      * Build call for getTransparencyReport
-     * @param advertiserId The advertiser id to fetch the transparency data. (required)
+     * @param advertiserId The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0. (required)
      * @param transparencyQueryMessage The query message. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1912,7 +1915,7 @@ public class AnalyticsApi {
     /**
      * /preview/log-level/advertisers/{advertiser-id}/report
      * This Statistics endpoint provides publisher data.
-     * @param advertiserId The advertiser id to fetch the transparency data. (required)
+     * @param advertiserId The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0. (required)
      * @param transparencyQueryMessage The query message. (optional)
      * @return TransparencyReportListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1930,7 +1933,7 @@ public class AnalyticsApi {
     /**
      * /preview/log-level/advertisers/{advertiser-id}/report
      * This Statistics endpoint provides publisher data.
-     * @param advertiserId The advertiser id to fetch the transparency data. (required)
+     * @param advertiserId The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0. (required)
      * @param transparencyQueryMessage The query message. (optional)
      * @return ApiResponse&lt;TransparencyReportListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1949,7 +1952,7 @@ public class AnalyticsApi {
     /**
      * /preview/log-level/advertisers/{advertiser-id}/report (asynchronously)
      * This Statistics endpoint provides publisher data.
-     * @param advertiserId The advertiser id to fetch the transparency data. (required)
+     * @param advertiserId The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0. (required)
      * @param transparencyQueryMessage The query message. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

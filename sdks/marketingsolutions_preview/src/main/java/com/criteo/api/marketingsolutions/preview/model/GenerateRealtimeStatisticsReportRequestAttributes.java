@@ -215,7 +215,7 @@ public class GenerateRealtimeStatisticsReportRequestAttributes {
   }
 
    /**
-   * List of adset ids to filter.
+   * Optional list of ad set IDs to filter on. The ad sets must already exist. If empty, all ad sets will be included.
    * @return adsetIds
   **/
   @javax.annotation.Nullable
@@ -242,7 +242,7 @@ public class GenerateRealtimeStatisticsReportRequestAttributes {
   }
 
    /**
-   * List of advertiser ids to report on.
+   * List of advertiser IDs to report on. The advertisers must already exist. Between 1 and 10 advertiser IDs can be provided.
    * @return advertiserIds
   **/
   @javax.annotation.Nonnull
@@ -272,7 +272,7 @@ public class GenerateRealtimeStatisticsReportRequestAttributes {
   }
 
    /**
-   * List of campaign ids to filter.
+   * Optional list of campaign IDs to filter on. The campaigns must already exist. If empty, all campaigns will be included.
    * @return campaignIds
   **/
   @javax.annotation.Nullable
@@ -324,7 +324,7 @@ public class GenerateRealtimeStatisticsReportRequestAttributes {
   }
 
    /**
-   * List of dimensions for the report.
+   * List of dimensions for the report. If not included, the default list of dimensions will be used.
    * @return dimensions
   **/
   @javax.annotation.Nullable
@@ -346,7 +346,7 @@ public class GenerateRealtimeStatisticsReportRequestAttributes {
   }
 
    /**
-   * The number of hours to consider in the past.
+   * Optional number of hours to consider in the past.
    * minimum: 1
    * maximum: 24
    * @return lookbackWindow
@@ -378,7 +378,7 @@ public class GenerateRealtimeStatisticsReportRequestAttributes {
   }
 
    /**
-   * List of metrics for the report.
+   * List of metrics for the report. If included, at least one metric should be provided.
    * @return metrics
   **/
   @javax.annotation.Nullable
@@ -400,7 +400,7 @@ public class GenerateRealtimeStatisticsReportRequestAttributes {
   }
 
    /**
-   * The timezone used for the report.
+   * Optional timezone used for the report.
    * @return timezone
   **/
   @javax.annotation.Nullable

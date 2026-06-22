@@ -48,7 +48,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * The filters to apply
+ * Description of a Share of voice insight
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ShareOfVoiceInsight {

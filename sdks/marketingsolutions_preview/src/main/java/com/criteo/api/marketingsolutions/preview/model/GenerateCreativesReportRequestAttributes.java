@@ -52,9 +52,72 @@ import com.criteo.api.marketingsolutions.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GenerateCreativesReportRequestAttributes {
+  /**
+   * Gets or Sets adFormats
+   */
+  @JsonAdapter(AdFormatsEnum.Adapter.class)
+  public enum AdFormatsEnum {
+    DYNAMIC("Dynamic"),
+    
+    ADAPTIVE("Adaptive"),
+    
+    RICHMEDIA("RichMedia"),
+    
+    SHOWCASE("Showcase"),
+    
+    VIDEO("Video"),
+    
+    IMAGE("Image"),
+    
+    HTML5("HTML5"),
+    
+    HTML_AD_TAGS("Html Ad Tags"),
+    
+    VAST_VPAID_TAGS("VAST/VPAID Tags"),
+    
+    OTHER_FORMATS("Other formats");
+
+    private String value;
+
+    AdFormatsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AdFormatsEnum fromValue(String value) {
+      for (AdFormatsEnum b : AdFormatsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AdFormatsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AdFormatsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AdFormatsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AdFormatsEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_AD_FORMATS = "adFormats";
   @SerializedName(SERIALIZED_NAME_AD_FORMATS)
-  private List<String> adFormats = null;
+  private List<AdFormatsEnum> adFormats = null;
 
   public static final String SERIALIZED_NAME_AD_IDS = "adIds";
   @SerializedName(SERIALIZED_NAME_AD_IDS)
@@ -68,9 +131,58 @@ public class GenerateCreativesReportRequestAttributes {
   @SerializedName(SERIALIZED_NAME_AD_SET_IDS)
   private List<String> adSetIds = null;
 
+  /**
+   * Gets or Sets adSetStatus
+   */
+  @JsonAdapter(AdSetStatusEnum.Adapter.class)
+  public enum AdSetStatusEnum {
+    ACTIVE("Active"),
+    
+    NOTRUNNING("NotRunning"),
+    
+    DEAD("Dead");
+
+    private String value;
+
+    AdSetStatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AdSetStatusEnum fromValue(String value) {
+      for (AdSetStatusEnum b : AdSetStatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AdSetStatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AdSetStatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AdSetStatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AdSetStatusEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_AD_SET_STATUS = "adSetStatus";
   @SerializedName(SERIALIZED_NAME_AD_SET_STATUS)
-  private List<String> adSetStatus = null;
+  private List<AdSetStatusEnum> adSetStatus = null;
 
   public static final String SERIALIZED_NAME_ADVERTISER_IDS = "advertiserIds";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_IDS)
@@ -220,18 +332,18 @@ public class GenerateCreativesReportRequestAttributes {
 
   public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
   @SerializedName(SERIALIZED_NAME_TIMEZONE)
-  private String timezone;
+  private String timezone = "UTC";
 
   public GenerateCreativesReportRequestAttributes() {
   }
 
-  public GenerateCreativesReportRequestAttributes adFormats(List<String> adFormats) {
+  public GenerateCreativesReportRequestAttributes adFormats(List<AdFormatsEnum> adFormats) {
     
     this.adFormats = adFormats;
     return this;
   }
 
-  public GenerateCreativesReportRequestAttributes addAdFormatsItem(String adFormatsItem) {
+  public GenerateCreativesReportRequestAttributes addAdFormatsItem(AdFormatsEnum adFormatsItem) {
     if (this.adFormats == null) {
       this.adFormats = null;
     }
@@ -240,17 +352,17 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of adFormats.
+   * Optional list of ad formats to filter on. If empty, all ad formats will be included.
    * @return adFormats
   **/
   @javax.annotation.Nullable
 
-  public List<String> getAdFormats() {
+  public List<AdFormatsEnum> getAdFormats() {
     return adFormats;
   }
 
 
-  public void setAdFormats(List<String> adFormats) {
+  public void setAdFormats(List<AdFormatsEnum> adFormats) {
     this.adFormats = adFormats;
   }
 
@@ -270,7 +382,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of ad ids.
+   * Optional list of ad IDs to filter on. If empty, all ads will be included.
    * @return adIds
   **/
   @javax.annotation.Nullable
@@ -300,7 +412,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of ad names.
+   * Optional list of ad names to filter on. If empty, all ads will be included.
    * @return adNames
   **/
   @javax.annotation.Nullable
@@ -330,7 +442,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of adSet ids (campaign ids).
+   * Optional list of ad set IDs to filter on. If empty, all ad sets will be included.
    * @return adSetIds
   **/
   @javax.annotation.Nullable
@@ -345,13 +457,13 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
 
-  public GenerateCreativesReportRequestAttributes adSetStatus(List<String> adSetStatus) {
+  public GenerateCreativesReportRequestAttributes adSetStatus(List<AdSetStatusEnum> adSetStatus) {
     
     this.adSetStatus = adSetStatus;
     return this;
   }
 
-  public GenerateCreativesReportRequestAttributes addAdSetStatusItem(String adSetStatusItem) {
+  public GenerateCreativesReportRequestAttributes addAdSetStatusItem(AdSetStatusEnum adSetStatusItem) {
     if (this.adSetStatus == null) {
       this.adSetStatus = null;
     }
@@ -360,17 +472,17 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of adSet status (ex: &#39;Active&#39;,&#39;NotRunning&#39;).
+   * Optional list of ad set statuses to filter on. If empty, all ad sets will be included.
    * @return adSetStatus
   **/
   @javax.annotation.Nullable
 
-  public List<String> getAdSetStatus() {
+  public List<AdSetStatusEnum> getAdSetStatus() {
     return adSetStatus;
   }
 
 
-  public void setAdSetStatus(List<String> adSetStatus) {
+  public void setAdSetStatus(List<AdSetStatusEnum> adSetStatus) {
     this.adSetStatus = adSetStatus;
   }
 
@@ -387,7 +499,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of client ids.
+   * List of advertiser IDs to report on. The advertisers must already exist. At least one advertiser ID should be provided.
    * @return advertiserIds
   **/
   @javax.annotation.Nonnull
@@ -417,7 +529,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of campaign ids (marketing campaign ids).
+   * Optional list of marketing campaign IDs to filter on. If empty, all campaigns will be included.
    * @return campaignIds
   **/
   @javax.annotation.Nullable
@@ -447,7 +559,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of coupon ids.
+   * Optional list of coupon IDs to filter on. If empty, all coupons will be included.
    * @return couponIds
   **/
   @javax.annotation.Nullable
@@ -477,7 +589,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of coupon names.
+   * Optional list of coupon names to filter on. If empty, all coupons will be included.
    * @return couponNames
   **/
   @javax.annotation.Nullable
@@ -504,7 +616,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of dimensions to report.
+   * List of dimensions for the report. At least one dimension should be provided.
    * @return dimensions
   **/
   @javax.annotation.Nonnull
@@ -534,7 +646,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of displaySizes.
+   * Optional list of display sizes to filter on. If empty, all display sizes will be included. &lt;br /&gt;&lt;br /&gt; Most common values: &#39;Native&#39;, &#39;Skyscraper&#39;, &#39;HalfPage&#39;, &#39;MediumBanner&#39;, &#39;LargeBanner&#39;, &#39;LeaderBoard&#39;, &#39;WideLeaderBoard&#39;, &#39;Other placements&#39;, &#39;Others&#39;.
    * @return displaySizes
   **/
   @javax.annotation.Nullable
@@ -556,7 +668,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * End date of the report. Date component of ISO 8601 format, any time or timezone component is ignored.
    * @return endDate
   **/
   @javax.annotation.Nonnull
@@ -583,7 +695,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The list of metrics to report.
+   * List of metrics for the report. At least one metric should be provided.
    * @return metrics
   **/
   @javax.annotation.Nonnull
@@ -605,7 +717,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * Start date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. Must be ≤ endDate.
    * @return startDate
   **/
   @javax.annotation.Nonnull
@@ -627,7 +739,7 @@ public class GenerateCreativesReportRequestAttributes {
   }
 
    /**
-   * The timezone used for the report. Timezone Database format (Tz).
+   * Optional timezone used for the report. Timezone Database format (Tz).
    * @return timezone
   **/
   @javax.annotation.Nullable

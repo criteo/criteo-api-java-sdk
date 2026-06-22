@@ -12,9 +12,9 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /preview/reports/{report-id}/status | /preview/reports/{report-id}/status |
 | [**getCategoriesReport**](AnalyticsApi.md#getCategoriesReport) | **POST** /preview/categories/report | /preview/categories/report |
 | [**getCreativesReport**](AnalyticsApi.md#getCreativesReport) | **POST** /preview/reports/creatives | /preview/reports/creatives |
+| [**getExportStatus**](AnalyticsApi.md#getExportStatus) | **GET** /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} | /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} |
 | [**getPlacementsReport**](AnalyticsApi.md#getPlacementsReport) | **POST** /preview/placements/report | /preview/placements/report |
 | [**getRealtimeProduct**](AnalyticsApi.md#getRealtimeProduct) | **GET** /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId} | /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId} |
-| [**getRealtimeProductJob**](AnalyticsApi.md#getRealtimeProductJob) | **GET** /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} | /preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} |
 | [**getRealtimeStatisticsReport**](AnalyticsApi.md#getRealtimeStatisticsReport) | **POST** /preview/reports/realtime | /preview/reports/realtime |
 | [**getTopProductsReport**](AnalyticsApi.md#getTopProductsReport) | **POST** /preview/reports/top-products | /preview/reports/top-products |
 | [**getTransactionsReport**](AnalyticsApi.md#getTransactionsReport) | **POST** /preview/transactions/report | /preview/transactions/report |
@@ -28,7 +28,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
 
-This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+Creates a marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -69,7 +69,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        RealTimeProductReportJobRequest realTimeProductReportJobRequest = new RealTimeProductReportJobRequest(); // RealTimeProductReportJobRequest | 
+        RealTimeProductReportJobRequest realTimeProductReportJobRequest = new RealTimeProductReportJobRequest(); // RealTimeProductReportJobRequest | The realtime report export request.
         try {
             RealTimeProductReportJobStatusResponse result = apiInstance.createRealtimeProductReport(realTimeProductReportJobRequest);
             System.out.println(result);
@@ -89,7 +89,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **realTimeProductReportJobRequest** | [**RealTimeProductReportJobRequest**](RealTimeProductReportJobRequest.md)|  | [optional] |
+| **realTimeProductReportJobRequest** | [**RealTimeProductReportJobRequest**](RealTimeProductReportJobRequest.md)| The realtime report export request. | [optional] |
 
 ### Return type
 
@@ -117,7 +117,7 @@ public class Example {
 
 /preview/statistics/report
 
-This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
+This Statistics endpoint provides ad set related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
 
 ### Example
 
@@ -458,7 +458,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, application/xml, text/xml
 
 
 ### HTTP response details
@@ -562,7 +562,7 @@ public class Example {
 
 /preview/categories/report
 
-With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
+With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
 
 ### Example
 
@@ -651,7 +651,7 @@ public class Example {
 
 /preview/reports/creatives
 
-With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
+With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
 
 ### Example
 
@@ -734,13 +734,102 @@ public class Example {
 | **200** | Success |  -  |
 
 
+## getExportStatus
+
+> ExportStatusModelResponse getExportStatus(reportId)
+
+/preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
+
+Gets the status of a marketplace performance outcomes report export job.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        String reportId = "reportId_example"; // String | The identifier of the report export job.
+        try {
+            ExportStatusModelResponse result = apiInstance.getExportStatus(reportId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#getExportStatus");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportId** | **String**| The identifier of the report export job. | |
+
+### Return type
+
+[**ExportStatusModelResponse**](ExportStatusModelResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml, text/xml
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
 ## getPlacementsReport
 
 > File getPlacementsReport(placementsReportQueryMessageListRequest)
 
 /preview/placements/report
 
-Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
+Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
 
 ### Example
 
@@ -829,7 +918,7 @@ public class Example {
 
 /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
 
-This endpoint is subject to specific rate limits.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+Downloads the generated marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -870,7 +959,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        String reportId = "reportId_example"; // String | Unique ID (UUID) of the report to retrieve.
+        String reportId = "reportId_example"; // String | The identifier of the realtime report export.
         try {
             FileStreamResultResponse result = apiInstance.getRealtimeProduct(reportId);
             System.out.println(result);
@@ -890,100 +979,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportId** | **String**| Unique ID (UUID) of the report to retrieve. | |
+| **reportId** | **String**| The identifier of the realtime report export. | |
 
 ### Return type
 
 [**FileStreamResultResponse**](FileStreamResultResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/xml, text/xml
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## getRealtimeProductJob
-
-> RealTimeProductReportJobStatusResponse getRealtimeProductJob(reportId)
-
-/preview/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
-
-This endpoint is subject to specific rate limits.
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.AnalyticsApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        String reportId = "reportId_example"; // String | Unique ID (UUID) of the report job.
-        try {
-            RealTimeProductReportJobStatusResponse result = apiInstance.getRealtimeProductJob(reportId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#getRealtimeProductJob");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **reportId** | **String**| Unique ID (UUID) of the report job. | |
-
-### Return type
-
-[**RealTimeProductReportJobStatusResponse**](RealTimeProductReportJobStatusResponse.md)
 
 ### Authorization
 
@@ -1096,7 +1096,7 @@ public class Example {
 
 /preview/reports/top-products
 
-With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
+With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to one year in the past.
 
 ### Example
 
@@ -1185,7 +1185,7 @@ public class Example {
 
 /preview/transactions/report
 
-This Transactions endpoint provides transactions id related data.
+This Transactions endpoint provides transactions id related data.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
 
 ### Example
 
@@ -1315,7 +1315,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        String advertiserId = "advertiserId_example"; // String | The advertiser id to fetch the transparency data.
+        String advertiserId = "advertiserId_example"; // String | The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0.
         TransparencyQueryMessage transparencyQueryMessage = new TransparencyQueryMessage(); // TransparencyQueryMessage | The query message.
         try {
             TransparencyReportListResponse result = apiInstance.getTransparencyReport(advertiserId, transparencyQueryMessage);
@@ -1336,7 +1336,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **String**| The advertiser id to fetch the transparency data. | |
+| **advertiserId** | **String**| The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0. | |
 | **transparencyQueryMessage** | [**TransparencyQueryMessage**](TransparencyQueryMessage.md)| The query message. | [optional] |
 
 ### Return type

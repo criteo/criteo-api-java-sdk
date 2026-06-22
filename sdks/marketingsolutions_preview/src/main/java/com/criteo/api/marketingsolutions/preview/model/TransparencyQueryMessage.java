@@ -71,7 +71,7 @@ public class TransparencyQueryMessage {
   }
 
    /**
-   * End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * End date of the report. Date component of ISO 8601 format, any time or timezone component is ignored.
    * @return endDate
   **/
   @javax.annotation.Nonnull
@@ -115,7 +115,7 @@ public class TransparencyQueryMessage {
   }
 
    /**
-   * Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * Start date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. Must be ≤ endDate.
    * @return startDate
   **/
   @javax.annotation.Nonnull

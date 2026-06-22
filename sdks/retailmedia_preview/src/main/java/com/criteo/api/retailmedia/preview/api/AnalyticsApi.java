@@ -35,6 +35,7 @@ import com.criteo.api.retailmedia.preview.model.AsyncLineItemsReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncOffsiteReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncReportResponse;
 import com.criteo.api.retailmedia.preview.model.AsyncUnfilledPlacementsReportRequest;
+import com.criteo.api.retailmedia.preview.model.DigitalShelfIntelligenceInsightRequest;
 import java.io.File;
 import com.criteo.api.retailmedia.preview.model.ReportResponse;
 import com.criteo.api.retailmedia.preview.model.ShareOfVoiceInsightRequest;
@@ -822,6 +823,129 @@ public class AnalyticsApi {
 
         okhttp3.Call localVarCall = generateAsyncUnfilledPlacementsReportValidateBeforeCall(asyncUnfilledPlacementsReportRequest, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for generateDigitalShelfIntelligenceInsight
+     * @param digitalShelfIntelligenceInsightRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateDigitalShelfIntelligenceInsightCall(DigitalShelfIntelligenceInsightRequest digitalShelfIntelligenceInsightRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = digitalShelfIntelligenceInsightRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/insights/digital-shelf-intelligence";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call generateDigitalShelfIntelligenceInsightValidateBeforeCall(DigitalShelfIntelligenceInsightRequest digitalShelfIntelligenceInsightRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'digitalShelfIntelligenceInsightRequest' is set
+        if (digitalShelfIntelligenceInsightRequest == null) {
+            throw new ApiException("Missing the required parameter 'digitalShelfIntelligenceInsightRequest' when calling generateDigitalShelfIntelligenceInsight(Async)");
+        }
+
+        return generateDigitalShelfIntelligenceInsightCall(digitalShelfIntelligenceInsightRequest, _callback);
+
+    }
+
+    /**
+     * /preview/retail-media/insights/digital-shelf-intelligence
+     * Generate a Digital Shelf Intelligence insight
+     * @param digitalShelfIntelligenceInsightRequest  (required)
+     * @return AsyncInsightResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AsyncInsightResponse generateDigitalShelfIntelligenceInsight(DigitalShelfIntelligenceInsightRequest digitalShelfIntelligenceInsightRequest) throws ApiException {
+        ApiResponse<AsyncInsightResponse> localVarResp = generateDigitalShelfIntelligenceInsightWithHttpInfo(digitalShelfIntelligenceInsightRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /preview/retail-media/insights/digital-shelf-intelligence
+     * Generate a Digital Shelf Intelligence insight
+     * @param digitalShelfIntelligenceInsightRequest  (required)
+     * @return ApiResponse&lt;AsyncInsightResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AsyncInsightResponse> generateDigitalShelfIntelligenceInsightWithHttpInfo(DigitalShelfIntelligenceInsightRequest digitalShelfIntelligenceInsightRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateDigitalShelfIntelligenceInsightValidateBeforeCall(digitalShelfIntelligenceInsightRequest, null);
+        Type localVarReturnType = new TypeToken<AsyncInsightResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /preview/retail-media/insights/digital-shelf-intelligence (asynchronously)
+     * Generate a Digital Shelf Intelligence insight
+     * @param digitalShelfIntelligenceInsightRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateDigitalShelfIntelligenceInsightAsync(DigitalShelfIntelligenceInsightRequest digitalShelfIntelligenceInsightRequest, final ApiCallback<AsyncInsightResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = generateDigitalShelfIntelligenceInsightValidateBeforeCall(digitalShelfIntelligenceInsightRequest, _callback);
+        Type localVarReturnType = new TypeToken<AsyncInsightResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1678,6 +1802,252 @@ public class AnalyticsApi {
 
         okhttp3.Call localVarCall = getAsyncExportStatusValidateBeforeCall(reportId, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getInsightReportOutput
+     * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getInsightReportOutputCall(String insightId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/insights/{insightId}/output"
+            .replace("{" + "insightId" + "}", localVarApiClient.escapeString(insightId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getInsightReportOutputValidateBeforeCall(String insightId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'insightId' is set
+        if (insightId == null) {
+            throw new ApiException("Missing the required parameter 'insightId' when calling getInsightReportOutput(Async)");
+        }
+
+        return getInsightReportOutputCall(insightId, _callback);
+
+    }
+
+    /**
+     * /preview/retail-media/insights/{insightId}/output
+     * Returns the output of an async insight
+     * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public File getInsightReportOutput(String insightId) throws ApiException {
+        ApiResponse<File> localVarResp = getInsightReportOutputWithHttpInfo(insightId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /preview/retail-media/insights/{insightId}/output
+     * Returns the output of an async insight
+     * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<File> getInsightReportOutputWithHttpInfo(String insightId) throws ApiException {
+        okhttp3.Call localVarCall = getInsightReportOutputValidateBeforeCall(insightId, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /preview/retail-media/insights/{insightId}/output (asynchronously)
+     * Returns the output of an async insight
+     * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getInsightReportOutputAsync(String insightId, final ApiCallback<File> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getInsightReportOutputValidateBeforeCall(insightId, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getInsightReportStatus
+     * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getInsightReportStatusCall(String insightId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/insights/{insightId}/status"
+            .replace("{" + "insightId" + "}", localVarApiClient.escapeString(insightId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getInsightReportStatusValidateBeforeCall(String insightId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'insightId' is set
+        if (insightId == null) {
+            throw new ApiException("Missing the required parameter 'insightId' when calling getInsightReportStatus(Async)");
+        }
+
+        return getInsightReportStatusCall(insightId, _callback);
+
+    }
+
+    /**
+     * /preview/retail-media/insights/{insightId}/status
+     * Returns the status of an async insight
+     * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @return AsyncInsightResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AsyncInsightResponse getInsightReportStatus(String insightId) throws ApiException {
+        ApiResponse<AsyncInsightResponse> localVarResp = getInsightReportStatusWithHttpInfo(insightId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /preview/retail-media/insights/{insightId}/status
+     * Returns the status of an async insight
+     * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @return ApiResponse&lt;AsyncInsightResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AsyncInsightResponse> getInsightReportStatusWithHttpInfo(String insightId) throws ApiException {
+        okhttp3.Call localVarCall = getInsightReportStatusValidateBeforeCall(insightId, null);
+        Type localVarReturnType = new TypeToken<AsyncInsightResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /preview/retail-media/insights/{insightId}/status (asynchronously)
+     * Returns the status of an async insight
+     * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getInsightReportStatusAsync(String insightId, final ApiCallback<AsyncInsightResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getInsightReportStatusValidateBeforeCall(insightId, _callback);
+        Type localVarReturnType = new TypeToken<AsyncInsightResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

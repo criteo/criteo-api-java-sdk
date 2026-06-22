@@ -79,6 +79,8 @@ public class RealTimeProductReportJob {
     
     PRODUCTID("ProductId"),
     
+    SELLERNAME("SellerName"),
+    
     YEAR("Year"),
     
     MONTH("Month"),
@@ -331,7 +333,7 @@ public class RealTimeProductReportJob {
   }
 
    /**
-   * Currency for the export. Default is \&quot;EUR\&quot;.
+   * Currency for the export. Default is _local currency_.
    * @return currency
   **/
   @javax.annotation.Nullable
@@ -383,7 +385,7 @@ public class RealTimeProductReportJob {
   }
 
    /**
-   * End of the reporting interval, in ISOâ€‘8601 dateâ€‘time format (UTC). Mutually exclusive with lookbackWindow.  If omitted while startDate is provided, defaults to the current time.
+   * End of the reporting interval, in ISO‑8601 date‑time format (UTC). Mutually exclusive with lookbackWindow.  If omitted while startDate is provided, defaults to the current time.
    * @return endDate
   **/
   @javax.annotation.Nullable
@@ -427,7 +429,7 @@ public class RealTimeProductReportJob {
   }
 
    /**
-   * Lookback window in days. Default is 60.
+   * Lookback window in minutes. Default is 60.
    * @return lookbackWindow
   **/
   @javax.annotation.Nullable
@@ -539,7 +541,7 @@ public class RealTimeProductReportJob {
   }
 
    /**
-   * Start of the reporting interval, in ISOâ€‘8601 dateâ€‘time format (UTC). Mutually exclusive with lookbackWindow.
+   * Start of the reporting interval, in ISO‑8601 date‑time format (UTC). Mutually exclusive with lookbackWindow.
    * @return startDate
   **/
   @javax.annotation.Nullable

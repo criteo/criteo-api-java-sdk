@@ -56,9 +56,58 @@ public class GenerateTopProductsReportRequestAttributes {
   @SerializedName(SERIALIZED_NAME_AD_SET_IDS)
   private List<String> adSetIds = null;
 
+  /**
+   * Gets or Sets adSetStatus
+   */
+  @JsonAdapter(AdSetStatusEnum.Adapter.class)
+  public enum AdSetStatusEnum {
+    ACTIVE("Active"),
+    
+    NOTRUNNING("NotRunning"),
+    
+    DEAD("Dead");
+
+    private String value;
+
+    AdSetStatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AdSetStatusEnum fromValue(String value) {
+      for (AdSetStatusEnum b : AdSetStatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AdSetStatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AdSetStatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AdSetStatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AdSetStatusEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_AD_SET_STATUS = "adSetStatus";
   @SerializedName(SERIALIZED_NAME_AD_SET_STATUS)
-  private List<String> adSetStatus = null;
+  private List<AdSetStatusEnum> adSetStatus = null;
 
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiserId";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
@@ -157,7 +206,7 @@ public class GenerateTopProductsReportRequestAttributes {
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
-  private Integer limit;
+  private Integer limit = 200;
 
   /**
    * Gets or Sets metrics
@@ -221,7 +270,7 @@ public class GenerateTopProductsReportRequestAttributes {
   private List<MetricsEnum> metrics = null;
 
   /**
-   * The metric used to filter the top products.
+   * Optional metric used to rank the top products. Allowed values: &#39;Clicks&#39;, &#39;Displays&#39;, &#39;Sales&#39;.
    */
   @JsonAdapter(RankProductsByEnum.Adapter.class)
   public enum RankProductsByEnum {
@@ -299,7 +348,7 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * The list of adSet ids.
+   * Optional list of ad set IDs to filter on. The ad sets must already exist. If empty, all ad sets will be included.
    * @return adSetIds
   **/
   @javax.annotation.Nullable
@@ -314,13 +363,13 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
 
-  public GenerateTopProductsReportRequestAttributes adSetStatus(List<String> adSetStatus) {
+  public GenerateTopProductsReportRequestAttributes adSetStatus(List<AdSetStatusEnum> adSetStatus) {
     
     this.adSetStatus = adSetStatus;
     return this;
   }
 
-  public GenerateTopProductsReportRequestAttributes addAdSetStatusItem(String adSetStatusItem) {
+  public GenerateTopProductsReportRequestAttributes addAdSetStatusItem(AdSetStatusEnum adSetStatusItem) {
     if (this.adSetStatus == null) {
       this.adSetStatus = null;
     }
@@ -329,17 +378,17 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * The list of adSet status (ex: &#39;Active&#39;,&#39;NotRunning&#39;).
+   * Optional list of ad set statuses to filter on. If empty, all ad sets will be included.
    * @return adSetStatus
   **/
   @javax.annotation.Nullable
 
-  public List<String> getAdSetStatus() {
+  public List<AdSetStatusEnum> getAdSetStatus() {
     return adSetStatus;
   }
 
 
-  public void setAdSetStatus(List<String> adSetStatus) {
+  public void setAdSetStatus(List<AdSetStatusEnum> adSetStatus) {
     this.adSetStatus = adSetStatus;
   }
 
@@ -351,7 +400,7 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * The client id.
+   * The advertiser ID to report on. The advertiser must already exist. At least one advertiser ID should be provided
    * @return advertiserId
   **/
   @javax.annotation.Nonnull
@@ -381,7 +430,7 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * The list of brands names.
+   * Optional list of brand names to filter on. If empty, all brands will be included.
    * @return brands
   **/
   @javax.annotation.Nullable
@@ -411,7 +460,7 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * The list of campaign ids.
+   * Optional list of campaign IDs to filter on. The campaigns must already exist. If empty, all campaigns will be included.
    * @return campaignIds
   **/
   @javax.annotation.Nullable
@@ -441,7 +490,7 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * The list of category ids.
+   * Optional list of product catalog category IDs to filter on. If empty, all categories will be included.
    * @return categoryIds
   **/
   @javax.annotation.Nullable
@@ -466,7 +515,7 @@ public class GenerateTopProductsReportRequestAttributes {
    * The currency used for the report. ISO 4217 code (three-letter capitals).
    * @return currency
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getCurrency() {
     return currency;
@@ -493,7 +542,7 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * The dimensions for the report.
+   * Optional list of dimensions for the report. If not provided, defaults to [ProductId, Product, ProductUrl]. When an ID dimension is requested (e.g., CampaignId), the corresponding name dimension (e.g., Campaign) is automatically included, and vice versa. This applies to the following pairs: CampaignId/Campaign, AdSetId/AdSet, ProductId/Product, CategoryId/Category, AdvertiserId/Advertiser.
    * @return dimensions
   **/
   @javax.annotation.Nullable
@@ -515,7 +564,7 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * End date of the report. Date component of ISO 8601 format, any time or timezone component is ignored.
    * @return endDate
   **/
   @javax.annotation.Nonnull
@@ -537,7 +586,9 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * The maximum number of top products returned.
+   * Optional maximum number of top products returned. Must be between 1 and 200.
+   * minimum: 1
+   * maximum: 200
    * @return limit
   **/
   @javax.annotation.Nullable
@@ -567,7 +618,7 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * The list of metrics to report.
+   * Optional list of metrics to report. If not provided, defaults to the metric specified in rankProductsBy.
    * @return metrics
   **/
   @javax.annotation.Nullable
@@ -589,7 +640,7 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * The metric used to filter the top products.
+   * Optional metric used to rank the top products. Allowed values: &#39;Clicks&#39;, &#39;Displays&#39;, &#39;Sales&#39;.
    * @return rankProductsBy
   **/
   @javax.annotation.Nonnull
@@ -611,7 +662,7 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * Start date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. Must be ≤ endDate.
    * @return startDate
   **/
   @javax.annotation.Nonnull
@@ -633,7 +684,7 @@ public class GenerateTopProductsReportRequestAttributes {
   }
 
    /**
-   * The timezone used for the report. Timezone Database format (Tz).
+   * Optional timezone used for the report. Timezone Database format (Tz).
    * @return timezone
   **/
   @javax.annotation.Nullable
@@ -748,6 +799,7 @@ public class GenerateTopProductsReportRequestAttributes {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("advertiserId");
+    openapiRequiredFields.add("currency");
     openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("rankProductsBy");
     openapiRequiredFields.add("startDate");
@@ -803,7 +855,7 @@ public class GenerateTopProductsReportRequestAttributes {
       if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonNull() && !jsonObj.get("categoryIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `categoryIds` to be an array in the JSON string but got `%s`", jsonObj.get("categoryIds").toString()));
       }
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
+      if (!jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       // ensure the optional json data is an array if present

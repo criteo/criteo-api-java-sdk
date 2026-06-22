@@ -192,6 +192,9 @@ docs/ExportColumn.md
 docs/ExportMetaData.md
 docs/ExportResult.md
 docs/ExportResultData.md
+docs/ExportStatusModel.md
+docs/ExportStatusModelResource.md
+docs/ExportStatusModelResponse.md
 docs/FileStreamResultResource.md
 docs/FileStreamResultResponse.md
 docs/GatewayApi.md
@@ -630,6 +633,9 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportColumn.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportMetaData.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportResult.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportResultData.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportStatusModel.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportStatusModelResource.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportStatusModelResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/FileStreamResultResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/FileStreamResultResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateAudiencePerformanceReport.java

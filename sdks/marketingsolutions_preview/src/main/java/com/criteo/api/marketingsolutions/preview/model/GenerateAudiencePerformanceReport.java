@@ -441,7 +441,7 @@ public class GenerateAudiencePerformanceReport {
   }
 
    /**
-   * The timezone used for the report. Timezone Database format (Tz).
+   * Optional timezone used for the report. Timezone Database format (Tz).
    * @return timezone
   **/
   @javax.annotation.Nullable

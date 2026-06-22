@@ -60,9 +60,58 @@ public class StatisticsReportQueryMessage {
   @SerializedName(SERIALIZED_NAME_AD_SET_NAMES)
   private List<String> adSetNames = null;
 
+  /**
+   * Gets or Sets adSetStatus
+   */
+  @JsonAdapter(AdSetStatusEnum.Adapter.class)
+  public enum AdSetStatusEnum {
+    ACTIVE("Active"),
+    
+    NOTRUNNING("NotRunning"),
+    
+    DEAD("Dead");
+
+    private String value;
+
+    AdSetStatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AdSetStatusEnum fromValue(String value) {
+      for (AdSetStatusEnum b : AdSetStatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AdSetStatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AdSetStatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AdSetStatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AdSetStatusEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_AD_SET_STATUS = "adSetStatus";
   @SerializedName(SERIALIZED_NAME_AD_SET_STATUS)
-  private List<String> adSetStatus = null;
+  private List<AdSetStatusEnum> adSetStatus = null;
 
   public static final String SERIALIZED_NAME_ADVERTISER_IDS = "advertiserIds";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_IDS)
@@ -176,7 +225,7 @@ public class StatisticsReportQueryMessage {
   private OffsetDateTime endDate;
 
   /**
-   * The file format of the generated report
+   * Optional file format of the generated report.
    */
   @JsonAdapter(FormatEnum.Adapter.class)
   public enum FormatEnum {
@@ -529,6 +578,8 @@ public class StatisticsReportQueryMessage {
     
     VISITSPV1D("VisitsPV1D"),
     
+    VISITSALLPV1D("VisitsAllPv1d"),
+    
     ORDERVALUEPI("OrderValuePi"),
     
     POSTINSTALLORDERVALUE("PostInstallOrderValue"),
@@ -625,28 +676,6 @@ public class StatisticsReportQueryMessage {
     
     RETURNONADVERTISERSPENDINGPI("ReturnOnAdvertiserSpendingPi"),
     
-    CACCLIENTATTRIBUTION("CacClientAttribution"),
-    
-    CACPC30D("CacPc30d"),
-    
-    CACPC7D("CacPc7d"),
-    
-    CACPC1D("CacPc1d"),
-    
-    CACPV24H("CacPv24h"),
-    
-    CACPV7D("CacPv7d"),
-    
-    CACPV14D("CacPv14d"),
-    
-    CACPV30D("CacPv30d"),
-    
-    CACPC30PV24H("CacPc30Pv24h"),
-    
-    CACPC7DPV24H("CacPc7dPv24h"),
-    
-    CACLC30D("CacLc30d"),
-    
     POSTINSTALLROAS("PostInstallRoas"),
     
     RETURNONADVERTISERSPENDINGOFFLINEPC("ReturnOnAdvertiserSpendingOfflinePc"),
@@ -695,7 +724,19 @@ public class StatisticsReportQueryMessage {
     
     VIDEOCPV("VideoCpv"),
     
-    VIDEOCPCV("VideoCpcv");
+    VIDEOCPCV("VideoCpcv"),
+    
+    POTENTIALUSERS("PotentialUsers"),
+    
+    RETAILERMARGINEURO("RetailerMarginEuro"),
+    
+    PLATFORMFEEEURO("PlatformFeeEuro"),
+    
+    ALLINMEDIACOST("AllInMediaCost"),
+    
+    NETMEDIACOST("NetMediaCost"),
+    
+    COS("Cos");
 
     private String value;
 
@@ -765,7 +806,7 @@ public class StatisticsReportQueryMessage {
   }
 
    /**
-   * list of adSets ids. If empty, all the adSets will be fetched
+   * Optional list of ad set IDs to filter on. The ad sets must already exist. If empty, all ad sets will be fetched.
    * @return adSetIds
   **/
   @javax.annotation.Nullable
@@ -795,7 +836,7 @@ public class StatisticsReportQueryMessage {
   }
 
    /**
-   * list of adSets names. If empty, all the adSets will be fetched
+   * Optional list of ad set names to filter on. If empty, all ad sets will be fetched.
    * @return adSetNames
   **/
   @javax.annotation.Nullable
@@ -810,13 +851,13 @@ public class StatisticsReportQueryMessage {
   }
 
 
-  public StatisticsReportQueryMessage adSetStatus(List<String> adSetStatus) {
+  public StatisticsReportQueryMessage adSetStatus(List<AdSetStatusEnum> adSetStatus) {
     
     this.adSetStatus = adSetStatus;
     return this;
   }
 
-  public StatisticsReportQueryMessage addAdSetStatusItem(String adSetStatusItem) {
+  public StatisticsReportQueryMessage addAdSetStatusItem(AdSetStatusEnum adSetStatusItem) {
     if (this.adSetStatus == null) {
       this.adSetStatus = null;
     }
@@ -825,17 +866,17 @@ public class StatisticsReportQueryMessage {
   }
 
    /**
-   * list of adSets status. If empty, all the adSets will be fetched
+   * Optional list of ad set statuses to filter on. If empty, all ad sets will be fetched.
    * @return adSetStatus
   **/
   @javax.annotation.Nullable
 
-  public List<String> getAdSetStatus() {
+  public List<AdSetStatusEnum> getAdSetStatus() {
     return adSetStatus;
   }
 
 
-  public void setAdSetStatus(List<String> adSetStatus) {
+  public void setAdSetStatus(List<AdSetStatusEnum> adSetStatus) {
     this.adSetStatus = adSetStatus;
   }
 
@@ -847,10 +888,10 @@ public class StatisticsReportQueryMessage {
   }
 
    /**
-   * The comma-separated list of advertiser ids. If empty, all the advertisers in the portfolio will be used
+   * List of advertiser IDs to report on, provided as a single comma-separated string (e.g., \&quot;123,456,789\&quot;). The advertisers must already exist. If empty, all advertisers will be used.
    * @return advertiserIds
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getAdvertiserIds() {
     return advertiserIds;
@@ -896,7 +937,7 @@ public class StatisticsReportQueryMessage {
   }
 
    /**
-   * The dimensions for the report.
+   * List of dimensions for the report. At least one dimension should be provided. &lt;br/&gt;&lt;br/&gt; When an ID dimension is requested (e.g., AdsetId), the corresponding name dimension (e.g., Adset) is automatically included, and vice versa. This applies to the following pairs: AdsetId/Adset, AdId/Ad, AdvertiserId/Advertiser, CampaignId/Campaign, CategoryId/Category, CouponId/Coupon, MarketingObjectiveId/MarketingObjective, ChannelId/Channel.
    * @return dimensions
   **/
   @javax.annotation.Nonnull
@@ -918,7 +959,7 @@ public class StatisticsReportQueryMessage {
   }
 
    /**
-   * End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * End date of the report. Date component of ISO 8601 format, any time or timezone component is ignored.
    * @return endDate
   **/
   @javax.annotation.Nonnull
@@ -940,7 +981,7 @@ public class StatisticsReportQueryMessage {
   }
 
    /**
-   * The file format of the generated report
+   * Optional file format of the generated report.
    * @return format
   **/
   @javax.annotation.Nullable
@@ -967,7 +1008,7 @@ public class StatisticsReportQueryMessage {
   }
 
    /**
-   * The list of metrics to report.
+   * List of metrics for the report. Provide at least one metric to return performance data; otherwise, the response will include only dimension-related information.
    * @return metrics
   **/
   @javax.annotation.Nonnull
@@ -989,7 +1030,7 @@ public class StatisticsReportQueryMessage {
   }
 
    /**
-   * Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * Start date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. Must be ≤ endDate.
    * @return startDate
   **/
   @javax.annotation.Nonnull
@@ -1011,7 +1052,7 @@ public class StatisticsReportQueryMessage {
   }
 
    /**
-   * The timezone used for the report. Timezone Database format (Tz).
+   * Optional timezone used for the report. Timezone Database format (Tz).
    * @return timezone
   **/
   @javax.annotation.Nullable
@@ -1116,6 +1157,7 @@ public class StatisticsReportQueryMessage {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("advertiserIds");
     openapiRequiredFields.add("currency");
     openapiRequiredFields.add("dimensions");
     openapiRequiredFields.add("endDate");
@@ -1162,7 +1204,7 @@ public class StatisticsReportQueryMessage {
       if (jsonObj.get("adSetStatus") != null && !jsonObj.get("adSetStatus").isJsonNull() && !jsonObj.get("adSetStatus").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `adSetStatus` to be an array in the JSON string but got `%s`", jsonObj.get("adSetStatus").toString()));
       }
-      if ((jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonNull()) && !jsonObj.get("advertiserIds").isJsonPrimitive()) {
+      if (!jsonObj.get("advertiserIds").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
       }
       if (!jsonObj.get("currency").isJsonPrimitive()) {
