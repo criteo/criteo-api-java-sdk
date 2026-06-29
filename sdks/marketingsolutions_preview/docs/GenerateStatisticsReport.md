@@ -17,7 +17,7 @@ Request attributes for async statistics report
 |**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | The list of metrics to report. |  |
 |**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**timezone** | **String** | Optional timezone used for the report. Timezone Database format (Tz). |  |
+|**timezone** | **String** | Optional timezone used for the report. Timezone Database format (Tz). |  [optional] |
 
 
 

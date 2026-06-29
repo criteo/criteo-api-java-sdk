@@ -1018,7 +1018,7 @@ public class GenerateStatisticsReport {
    * Optional timezone used for the report. Timezone Database format (Tz).
    * @return timezone
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getTimezone() {
     return timezone;
@@ -1122,7 +1122,6 @@ public class GenerateStatisticsReport {
     openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("metrics");
     openapiRequiredFields.add("startDate");
-    openapiRequiredFields.add("timezone");
   }
 
  /**
@@ -1185,7 +1184,7 @@ public class GenerateStatisticsReport {
       } else if (!jsonObj.get("metrics").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
-      if (!jsonObj.get("timezone").isJsonPrimitive()) {
+      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
       }
   }

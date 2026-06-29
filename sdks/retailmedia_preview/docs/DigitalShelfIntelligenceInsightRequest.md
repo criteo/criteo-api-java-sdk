@@ -8,7 +8,7 @@ A top-level object that encapsulates a Criteo API request for a single value obj
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**DigitalShelfIntelligenceInsightResource**](DigitalShelfIntelligenceInsightResource.md) |  |  [optional] |
+|**data** | [**DigitalShelfIntelligenceInsightResource**](DigitalShelfIntelligenceInsightResource.md) |  |  |
 
 
 

@@ -8,7 +8,7 @@ A value resource exposed by the API.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**DigitalShelfIntelligenceInsight**](DigitalShelfIntelligenceInsight.md) |  |  [optional] |
+|**attributes** | [**DigitalShelfIntelligenceInsight**](DigitalShelfIntelligenceInsight.md) |  |  |
 |**type** | **String** | Type of the resource. |  [optional] |
 
 

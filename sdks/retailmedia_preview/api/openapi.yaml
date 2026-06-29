@@ -1833,6 +1833,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ShareOfVoiceInsightRequest'
+        required: true
       responses:
         "200":
           content:
@@ -2366,6 +2367,35 @@ paths:
       - Analytics
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/reports/attributed-transactions:
+    post:
+      description: "Creates an attributed-transactions async report. The request accepts\
+        \ explicit attributed-transaction dimensions, metrics, and filters.\r\n<br\
+        \ />\r\nThis endpoint is subject to specific rate limits."
+      operationId: CreateAsyncAttributedTransactionsReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AsyncAttributedTransactionsReportRequest'
+        description: Required create payload.
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/attributed-transactions
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/reports/campaigns:
     post:
       description: "Return an asynchronous Campaigns Report\r\n<br />\r\nThis endpoint\
@@ -2447,6 +2477,35 @@ paths:
       - Analytics
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/reports/missed-opportunities:
+    post:
+      description: "Creates a missed-opportunities async report. The request accepts\
+        \ explicit missed-opportunities dimensions, metrics, and filters.\r\n<br />\r\
+        \nThis endpoint is subject to specific rate limits."
+      operationId: CreateAsyncMissedOpportunitiesReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AsyncMissedOpportunitiesReportRequest'
+        description: Required create payload.
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/missed-opportunities
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/reports/offsite:
     post:
       description: "Returns an asynchronous Offsite Report\r\n<br />\r\nThis endpoint\
@@ -2470,6 +2529,35 @@ paths:
       - oauth:
         - RetailMedia_Analytics_Read
       summary: /preview/retail-media/reports/offsite
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/reports/performance:
+    post:
+      description: "Creates a performance DSP analytics async report. Dimensions and\
+        \ metrics select the output schema, and filters constrain eligible data.\r\
+        \n<br />\r\nThis endpoint is subject to specific rate limits."
+      operationId: CreateAsyncPerformanceReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AsyncPerformanceReportRequest'
+        description: Required create payload.
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/performance
       tags:
       - Analytics
       x-content-type: application/json
@@ -3414,6 +3502,245 @@ components:
           $ref: '#/components/schemas/AsyncAccountsReport'
         type:
           type: string
+      type: object
+    AsyncAttributedTransactionsReport:
+      additionalProperties: false
+      description: Create payload attributes for an attributed-transactions async
+        report.
+      example:
+        clickAttributionWindow: none
+        endDate: 2000-01-23
+        timezone: UTC
+        format: json-compact
+        viewAttributionWindow: none
+        filters:
+          mediaTypes:
+          - unknown
+          - unknown
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+          accountIds:
+          - accountIds
+          - accountIds
+          - accountIds
+          - accountIds
+          - accountIds
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          - campaignIds
+        metrics:
+        - attributedUnits
+        - attributedUnits
+        startDate: 2000-01-23
+        dimensions:
+        - purchasedDate
+        - purchasedDate
+      properties:
+        clickAttributionWindow:
+          default: none
+          description: Optional click attribution window.
+          enum:
+          - none
+          - 7D
+          - 14D
+          - 30D
+          type: string
+        dimensions:
+          description: Required output grouping fields. Empty array means no grouping
+            fields. At least one of dimensions or metrics must be non-empty.
+          items:
+            enum:
+            - purchasedDate
+            - purchasedHour
+            - advertisedDate
+            - advertisedHour
+            - daysDifference
+            - campaignId
+            - campaignName
+            - lineItemId
+            - lineItemName
+            - advertisedProductId
+            - advertisedProductGtin
+            - advertisedProductMpn
+            - advertisedProductName
+            - advertisedProductCategory
+            - purchasedProductId
+            - purchasedProductGtin
+            - purchasedProductMpn
+            - purchasedProductName
+            - purchasedProductCategory
+            - advertisedEngagement
+            - advertisedToPurchasedProductRelationship
+            - salesChannel
+            - retailerId
+            - retailerName
+            - pageType
+            - keyword
+            - attributionWindow
+            - saleSellerId
+            - saleSellerName
+            - activitySellerId
+            - activitySellerName
+            type: string
+          type: array
+        endDate:
+          description: Required inclusive report end date in YYYY-MM-DD format. Must
+            be greater than or equal to startDate.
+          format: date
+          type: string
+        filters:
+          $ref: '#/components/schemas/AttributedTransactionsReportFilters'
+        format:
+          default: json-compact
+          description: "Output format. If omitted, json-compact is used."
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        metrics:
+          description: Required output measure fields. Empty array means no measure
+            fields. At least one of dimensions or metrics must be non-empty.
+          items:
+            enum:
+            - attributedUnits
+            - attributedSales
+            type: string
+          type: array
+        startDate:
+          description: Required inclusive report start date in YYYY-MM-DD format.
+          format: date
+          type: string
+        timezone:
+          default: UTC
+          description: "Optional time zone identifier. If omitted, UTC is used. If\
+            \ provided, it must be valid."
+          type: string
+        viewAttributionWindow:
+          default: none
+          description: Optional view attribution window.
+          enum:
+          - none
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          type: string
+      required:
+      - dimensions
+      - endDate
+      - filters
+      - metrics
+      - startDate
+      type: object
+    AsyncAttributedTransactionsReportRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates an attributed-transactions
+        async report create request.
+      example:
+        data:
+          attributes:
+            clickAttributionWindow: none
+            endDate: 2000-01-23
+            timezone: UTC
+            format: json-compact
+            viewAttributionWindow: none
+            filters:
+              mediaTypes:
+              - unknown
+              - unknown
+              lineItemIds:
+              - lineItemIds
+              - lineItemIds
+              - lineItemIds
+              - lineItemIds
+              - lineItemIds
+              accountIds:
+              - accountIds
+              - accountIds
+              - accountIds
+              - accountIds
+              - accountIds
+              campaignIds:
+              - campaignIds
+              - campaignIds
+              - campaignIds
+              - campaignIds
+              - campaignIds
+            metrics:
+            - attributedUnits
+            - attributedUnits
+            startDate: 2000-01-23
+            dimensions:
+            - purchasedDate
+            - purchasedDate
+          type: AsyncAttributedTransactionsReport
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncAttributedTransactionsReportResource'
+      required:
+      - data
+      type: object
+    AsyncAttributedTransactionsReportResource:
+      additionalProperties: false
+      description: JSON:API resource wrapper for an attributed-transactions async
+        report create request.
+      example:
+        attributes:
+          clickAttributionWindow: none
+          endDate: 2000-01-23
+          timezone: UTC
+          format: json-compact
+          viewAttributionWindow: none
+          filters:
+            mediaTypes:
+            - unknown
+            - unknown
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+            accountIds:
+            - accountIds
+            - accountIds
+            - accountIds
+            - accountIds
+            - accountIds
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            - campaignIds
+          metrics:
+          - attributedUnits
+          - attributedUnits
+          startDate: 2000-01-23
+          dimensions:
+          - purchasedDate
+          - purchasedDate
+        type: AsyncAttributedTransactionsReport
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AsyncAttributedTransactionsReport'
+        type:
+          description: "Optional JSON:API resource type. If provided, it must match\
+            \ this create resource."
+          enum:
+          - AsyncAttributedTransactionsReport
+          type: string
+      required:
+      - attributes
       type: object
     AsyncCampaignsReport:
       description: Async Campaigns report body request
@@ -4411,6 +4738,211 @@ components:
         type:
           type: string
       type: object
+    AsyncMissedOpportunitiesReport:
+      additionalProperties: false
+      description: Create payload attributes for a missed-opportunities async report.
+      example:
+        endDate: 2000-01-23
+        format: json-compact
+        filters:
+          salesChannels:
+          - online
+          - online
+          mediaTypes:
+          - unknown
+          - unknown
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+          accountIds:
+          - accountIds
+          - accountIds
+          - accountIds
+          - accountIds
+          - accountIds
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          - campaignIds
+        metrics:
+        - daypartingScheduled
+        - daypartingScheduled
+        startDate: 2000-01-23
+        dimensions:
+        - date
+        - date
+      properties:
+        dimensions:
+          description: Required output grouping fields. Empty array means no grouping
+            fields. At least one of dimensions or metrics must be non-empty.
+          items:
+            enum:
+            - date
+            - campaignId
+            - campaignName
+            - lineItemId
+            - lineItemName
+            - retailerId
+            - retailerName
+            - buyType
+            - bidStrategy
+            type: string
+          type: array
+        endDate:
+          description: Required inclusive report end date in YYYY-MM-DD format. Must
+            be greater than or equal to startDate.
+          format: date
+          type: string
+        filters:
+          $ref: '#/components/schemas/MissedOpportunitiesReportFilters'
+        format:
+          default: json-compact
+          description: "Output format. If omitted, json-compact is used."
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        metrics:
+          description: Required output measure fields. Empty array means no measure
+            fields. At least one of dimensions or metrics must be non-empty.
+          items:
+            enum:
+            - daypartingScheduled
+            - totalSpend
+            - roas
+            - capoutHour
+            - attributedSales
+            - impressions
+            - clicks
+            - cpc
+            - cpm
+            - ctr
+            - missedTraffic
+            - missedSpend
+            - missedClicks
+            - missedImpressions
+            - missedSales
+            type: string
+          type: array
+        startDate:
+          description: Required inclusive report start date in YYYY-MM-DD format.
+          format: date
+          type: string
+      required:
+      - dimensions
+      - endDate
+      - filters
+      - metrics
+      - startDate
+      type: object
+    AsyncMissedOpportunitiesReportRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a missed-opportunities async
+        report create request.
+      example:
+        data:
+          attributes:
+            endDate: 2000-01-23
+            format: json-compact
+            filters:
+              salesChannels:
+              - online
+              - online
+              mediaTypes:
+              - unknown
+              - unknown
+              lineItemIds:
+              - lineItemIds
+              - lineItemIds
+              - lineItemIds
+              - lineItemIds
+              - lineItemIds
+              accountIds:
+              - accountIds
+              - accountIds
+              - accountIds
+              - accountIds
+              - accountIds
+              campaignIds:
+              - campaignIds
+              - campaignIds
+              - campaignIds
+              - campaignIds
+              - campaignIds
+            metrics:
+            - daypartingScheduled
+            - daypartingScheduled
+            startDate: 2000-01-23
+            dimensions:
+            - date
+            - date
+          type: AsyncMissedOpportunitiesReport
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncMissedOpportunitiesReportResource'
+      required:
+      - data
+      type: object
+    AsyncMissedOpportunitiesReportResource:
+      additionalProperties: false
+      description: JSON:API resource wrapper for a missed-opportunities async report
+        create request.
+      example:
+        attributes:
+          endDate: 2000-01-23
+          format: json-compact
+          filters:
+            salesChannels:
+            - online
+            - online
+            mediaTypes:
+            - unknown
+            - unknown
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+            accountIds:
+            - accountIds
+            - accountIds
+            - accountIds
+            - accountIds
+            - accountIds
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            - campaignIds
+          metrics:
+          - daypartingScheduled
+          - daypartingScheduled
+          startDate: 2000-01-23
+          dimensions:
+          - date
+          - date
+        type: AsyncMissedOpportunitiesReport
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AsyncMissedOpportunitiesReport'
+        type:
+          description: "Optional JSON:API resource type. If provided, it must match\
+            \ this create resource."
+          enum:
+          - AsyncMissedOpportunitiesReport
+          type: string
+      required:
+      - attributes
+      type: object
     AsyncOffsiteReport:
       description: Async Offsite report body request
       example:
@@ -4701,6 +5233,360 @@ components:
         type:
           type: string
       type: object
+    AsyncPerformanceReport:
+      additionalProperties: false
+      description: Create payload attributes for a performance DSP analytics async
+        report.
+      example:
+        clickAttributionWindow: none
+        endDate: 2000-01-23
+        timezone: UTC
+        format: json-compact
+        viewAttributionWindow: none
+        filters:
+          salesChannels:
+          - online
+          - online
+          activationPlatforms:
+          - CommerceMax
+          - CommerceMax
+          mediaTypes:
+          - unknown
+          - unknown
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+          - lineItemIds
+          searchTermTargetings:
+          - unknown
+          - unknown
+          accountIds:
+          - accountIds
+          - accountIds
+          - accountIds
+          - accountIds
+          - accountIds
+          budgetModels:
+          - CriteoBudget
+          - CriteoBudget
+          searchTermTypes:
+          - unknown
+          - unknown
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          buyTypes:
+          - auction
+          - auction
+          campaignTypes:
+          - sponsoredProducts
+          - sponsoredProducts
+          targetedKeywordTypes:
+          - unknown
+          - unknown
+        metrics:
+        - impressions
+        - impressions
+        startDate: 2000-01-23
+        dimensions:
+        - date
+        - date
+      properties:
+        clickAttributionWindow:
+          default: none
+          description: Optional click attribution window.
+          enum:
+          - none
+          - 7D
+          - 14D
+          - 30D
+          type: string
+        dimensions:
+          description: Required output grouping fields. Empty array means no grouping
+            fields. At least one of dimensions or metrics must be non-empty.
+          items:
+            enum:
+            - date
+            - hour
+            - accountId
+            - accountName
+            - campaignId
+            - campaignName
+            - campaignType
+            - lineItemId
+            - lineItemName
+            - retailerId
+            - retailerName
+            - brandId
+            - brandName
+            - productCategory
+            - productId
+            - productName
+            - salesChannel
+            - mediaType
+            - buyType
+            - budgetModel
+            - activationPlatform
+            - environment
+            - pageType
+            - pageCategory
+            - servedCategory
+            - taxonomyBreadcrumb
+            - keyword
+            - searchTerm
+            - searchTermType
+            - searchTermTargeting
+            - creativeId
+            - creativeName
+            - creativeType
+            - creativeTemplateId
+            - creativeTemplateName
+            - targetedKeywordType
+            type: string
+          type: array
+        endDate:
+          description: Required inclusive report end date in YYYY-MM-DD format. Must
+            be greater than or equal to startDate.
+          format: date
+          type: string
+        filters:
+          $ref: '#/components/schemas/PerformanceReportFilters'
+        format:
+          default: json-compact
+          description: "Output format. If omitted, json-compact is used."
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        metrics:
+          description: Required output measure fields. Empty array means no measure
+            fields. At least one of dimensions or metrics must be non-empty.
+          items:
+            enum:
+            - impressions
+            - clicks
+            - spend
+            - attributedSales
+            - attributedUnits
+            - attributedOrders
+            - assistedSales
+            - assistedUnits
+            - ctr
+            - cpc
+            - cpo
+            - cpm
+            - roas
+            - videoViews
+            - videosStarted
+            - videosPlayedTo25
+            - videosPlayedTo50
+            - videosPlayedTo75
+            - videosPlayedTo100
+            - videoPlayingRate
+            - videoCompletionRate
+            - videoImpressions
+            - videoMuted
+            - videoUnmuted
+            - videoPaused
+            - videoResumed
+            - videoAvgInteractionRate
+            - videoViewability
+            - videoStartingRate
+            - videoCPC
+            - videoCPCV
+            - newToBrandAttributedSales
+            - newToBrandAttributedSalesRate
+            - newToBrandAttributedUnits
+            - newToBrandAttributedUnitsRate
+            - uniqueVisitors
+            - frequency
+            - winRate
+            - sampledBidsWon
+            - sampledBidsParticipated
+            type: string
+          type: array
+        startDate:
+          description: Required inclusive report start date in YYYY-MM-DD format.
+          format: date
+          type: string
+        timezone:
+          default: UTC
+          description: "Optional time zone identifier. If omitted, UTC is used. If\
+            \ provided, it must be valid."
+          type: string
+        viewAttributionWindow:
+          default: none
+          description: Optional view attribution window.
+          enum:
+          - none
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          type: string
+      required:
+      - dimensions
+      - endDate
+      - filters
+      - metrics
+      - startDate
+      type: object
+    AsyncPerformanceReportRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a performance DSP analytics
+        async report create request.
+      example:
+        data:
+          attributes:
+            clickAttributionWindow: none
+            endDate: 2000-01-23
+            timezone: UTC
+            format: json-compact
+            viewAttributionWindow: none
+            filters:
+              salesChannels:
+              - online
+              - online
+              activationPlatforms:
+              - CommerceMax
+              - CommerceMax
+              mediaTypes:
+              - unknown
+              - unknown
+              lineItemIds:
+              - lineItemIds
+              - lineItemIds
+              - lineItemIds
+              - lineItemIds
+              - lineItemIds
+              searchTermTargetings:
+              - unknown
+              - unknown
+              accountIds:
+              - accountIds
+              - accountIds
+              - accountIds
+              - accountIds
+              - accountIds
+              budgetModels:
+              - CriteoBudget
+              - CriteoBudget
+              searchTermTypes:
+              - unknown
+              - unknown
+              campaignIds:
+              - campaignIds
+              - campaignIds
+              - campaignIds
+              - campaignIds
+              - campaignIds
+              buyTypes:
+              - auction
+              - auction
+              campaignTypes:
+              - sponsoredProducts
+              - sponsoredProducts
+              targetedKeywordTypes:
+              - unknown
+              - unknown
+            metrics:
+            - impressions
+            - impressions
+            startDate: 2000-01-23
+            dimensions:
+            - date
+            - date
+          type: AsyncPerformanceReport
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncPerformanceReportResource'
+      required:
+      - data
+      type: object
+    AsyncPerformanceReportResource:
+      additionalProperties: false
+      description: JSON:API resource wrapper for a performance DSP analytics async
+        report create request.
+      example:
+        attributes:
+          clickAttributionWindow: none
+          endDate: 2000-01-23
+          timezone: UTC
+          format: json-compact
+          viewAttributionWindow: none
+          filters:
+            salesChannels:
+            - online
+            - online
+            activationPlatforms:
+            - CommerceMax
+            - CommerceMax
+            mediaTypes:
+            - unknown
+            - unknown
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+            - lineItemIds
+            searchTermTargetings:
+            - unknown
+            - unknown
+            accountIds:
+            - accountIds
+            - accountIds
+            - accountIds
+            - accountIds
+            - accountIds
+            budgetModels:
+            - CriteoBudget
+            - CriteoBudget
+            searchTermTypes:
+            - unknown
+            - unknown
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            buyTypes:
+            - auction
+            - auction
+            campaignTypes:
+            - sponsoredProducts
+            - sponsoredProducts
+            targetedKeywordTypes:
+            - unknown
+            - unknown
+          metrics:
+          - impressions
+          - impressions
+          startDate: 2000-01-23
+          dimensions:
+          - date
+          - date
+        type: AsyncPerformanceReport
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AsyncPerformanceReport'
+        type:
+          description: "Optional JSON:API resource type. If provided, it must match\
+            \ this create resource."
+          enum:
+          - AsyncPerformanceReport
+          type: string
+      required:
+      - attributes
+      type: object
     AsyncReportResponse:
       description: Async Report response format
       example:
@@ -4967,6 +5853,65 @@ components:
           $ref: '#/components/schemas/AsyncUnfilledPlacementsReport'
         type:
           type: string
+      type: object
+    AttributedTransactionsReportFilters:
+      additionalProperties: false
+      description: "Array-valued constraints for attributed-transactions reporting.\
+        \ At least one of accountIds, campaignIds, or lineItemIds is required."
+      example:
+        mediaTypes:
+        - unknown
+        - unknown
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+        accountIds:
+        - accountIds
+        - accountIds
+        - accountIds
+        - accountIds
+        - accountIds
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        - campaignIds
+      properties:
+        accountIds:
+          description: Optional scope filter. Allows up to 5 account IDs per request.
+          items:
+            type: string
+          maxItems: 5
+          minItems: 1
+          type: array
+        campaignIds:
+          description: Optional scope filter. Allows up to 50 campaign IDs per request.
+          items:
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+        lineItemIds:
+          description: Optional scope filter. Allows up to 50 line-item IDs per request.
+          items:
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+        mediaTypes:
+          description: Optional media type filter.
+          items:
+            enum:
+            - unknown
+            - video
+            - display
+            type: string
+          minItems: 1
+          type: array
       type: object
     AudienceError:
       description: Definition of an audience error
@@ -6502,6 +7447,8 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/DigitalShelfIntelligenceInsightResource'
+      required:
+      - data
       type: object
     DigitalShelfIntelligenceInsightResource:
       additionalProperties: false
@@ -6542,6 +7489,8 @@ components:
           description: Type of the resource.
           nullable: true
           type: string
+      required:
+      - attributes
       type: object
     DisplayAuctionMinBidRequest:
       additionalProperties: false
@@ -9098,6 +10047,77 @@ components:
       - limit
       - offset
       type: object
+    MissedOpportunitiesReportFilters:
+      additionalProperties: false
+      description: "Array-valued constraints for missed-opportunities reporting. At\
+        \ least one of accountIds, campaignIds, or lineItemIds is required."
+      example:
+        salesChannels:
+        - online
+        - online
+        mediaTypes:
+        - unknown
+        - unknown
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+        accountIds:
+        - accountIds
+        - accountIds
+        - accountIds
+        - accountIds
+        - accountIds
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        - campaignIds
+      properties:
+        accountIds:
+          description: Optional scope filter. Allows up to 5 account IDs per request.
+          items:
+            type: string
+          maxItems: 5
+          minItems: 1
+          type: array
+        campaignIds:
+          description: Optional scope filter. Allows up to 50 campaign IDs per request.
+          items:
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+        lineItemIds:
+          description: Optional scope filter. Allows up to 50 line-item IDs per request.
+          items:
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+        mediaTypes:
+          description: Optional inherited media type filter.
+          items:
+            enum:
+            - unknown
+            - video
+            - display
+            type: string
+          minItems: 1
+          type: array
+        salesChannels:
+          description: Optional inherited sales channel filter.
+          items:
+            enum:
+            - online
+            - offline
+            type: string
+          minItems: 1
+          type: array
+      type: object
     NillableDecimal:
       description: Placeholder object for value for which "null" is a valid business
         value
@@ -9361,6 +10381,166 @@ components:
       required:
       - limit
       - offset
+      type: object
+    PerformanceReportFilters:
+      additionalProperties: false
+      description: "Array-valued constraints for performance DSP analytics. At least\
+        \ one of accountIds, campaignIds, or lineItemIds is required."
+      example:
+        salesChannels:
+        - online
+        - online
+        activationPlatforms:
+        - CommerceMax
+        - CommerceMax
+        mediaTypes:
+        - unknown
+        - unknown
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+        - lineItemIds
+        searchTermTargetings:
+        - unknown
+        - unknown
+        accountIds:
+        - accountIds
+        - accountIds
+        - accountIds
+        - accountIds
+        - accountIds
+        budgetModels:
+        - CriteoBudget
+        - CriteoBudget
+        searchTermTypes:
+        - unknown
+        - unknown
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        buyTypes:
+        - auction
+        - auction
+        campaignTypes:
+        - sponsoredProducts
+        - sponsoredProducts
+        targetedKeywordTypes:
+        - unknown
+        - unknown
+      properties:
+        accountIds:
+          description: Optional scope filter. Allows up to 5 account IDs per request.
+          items:
+            type: string
+          maxItems: 5
+          minItems: 1
+          type: array
+        activationPlatforms:
+          description: Optional activation platform filter.
+          items:
+            enum:
+            - CommerceMax
+            - PrivateMarket
+            type: string
+          minItems: 1
+          type: array
+        budgetModels:
+          description: Optional budget model filter.
+          items:
+            enum:
+            - CriteoBudget
+            - RetailerBudget
+            type: string
+          minItems: 1
+          type: array
+        buyTypes:
+          description: Optional buy type filter.
+          items:
+            enum:
+            - auction
+            - preferredDeals
+            - sponsorship
+            type: string
+          minItems: 1
+          type: array
+        campaignIds:
+          description: Optional scope filter. Allows up to 50 campaign IDs per request.
+          items:
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+        campaignTypes:
+          description: Optional inherited campaign type filter.
+          items:
+            enum:
+            - sponsoredProducts
+            - onSiteDisplays
+            type: string
+          minItems: 1
+          type: array
+        lineItemIds:
+          description: Optional scope filter. Allows up to 50 line-item IDs per request.
+          items:
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+        mediaTypes:
+          description: Optional inherited media type filter.
+          items:
+            enum:
+            - unknown
+            - video
+            - display
+            type: string
+          minItems: 1
+          type: array
+        salesChannels:
+          description: Optional inherited sales channel filter.
+          items:
+            enum:
+            - online
+            - offline
+            type: string
+          minItems: 1
+          type: array
+        searchTermTargetings:
+          description: Optional search term targeting filter.
+          items:
+            enum:
+            - unknown
+            - automatic
+            - manual
+            type: string
+          minItems: 1
+          type: array
+        searchTermTypes:
+          description: Optional search term type filter.
+          items:
+            enum:
+            - unknown
+            - searched
+            - entered
+            type: string
+          minItems: 1
+          type: array
+        targetedKeywordTypes:
+          description: Optional targeted keyword type filter.
+          items:
+            enum:
+            - unknown
+            - generic
+            - branded
+            - conquesting
+            type: string
+          minItems: 1
+          type: array
       type: object
     PreferredLineItemCreateModelV2:
       description: Model used to create a preferred line item
@@ -15409,6 +16589,8 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ShareOfVoiceInsightResource'
+      required:
+      - data
       type: object
     ShareOfVoiceInsightResource:
       additionalProperties: false
@@ -15459,6 +16641,8 @@ components:
           description: Type of the resource.
           nullable: true
           type: string
+      required:
+      - attributes
       type: object
     SkuFilter:
       additionalProperties: false
@@ -16622,8 +17806,8 @@ components:
         - campaignIds
         - campaignIds
         metrics:
-        - billableImpressions
-        - billableImpressions
+        - impressions
+        - impressions
         retailerIds:
         - retailerIds
         - retailerIds
@@ -16649,7 +17833,7 @@ components:
             \ are valid."
           items:
             description: "Dimensions supported by the real-time performance report\
-              \ (streaming + landing).\r\nOnly these values are accepted; invalid\
+              \ (streaming + hourly stats).\r\nOnly these values are accepted; invalid\
               \ values cause deserialization to fail."
             enum:
             - date
@@ -16679,14 +17863,14 @@ components:
         metrics:
           description: "List of metrics to report on (real-time: at least one required).\
             \ Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric\
-            \ are valid (billableImpressions, billableClicks, spend)."
+            \ are valid."
           items:
             description: "Metrics supported by the real-time performance report (streaming\
-              \ + landing).\r\nOnly these values are accepted; invalid values cause\
-              \ deserialization to fail."
+              \ + hourly stats).\r\nOnly these values are accepted; invalid values\
+              \ cause deserialization to fail."
             enum:
-            - billableImpressions
-            - billableClicks
+            - impressions
+            - clicks
             - spend
             type: string
           type: array
@@ -16726,8 +17910,8 @@ components:
             - campaignIds
             - campaignIds
             metrics:
-            - billableImpressions
-            - billableImpressions
+            - impressions
+            - impressions
             retailerIds:
             - retailerIds
             - retailerIds
@@ -16757,8 +17941,8 @@ components:
           - campaignIds
           - campaignIds
           metrics:
-          - billableImpressions
-          - billableImpressions
+          - impressions
+          - impressions
           retailerIds:
           - retailerIds
           - retailerIds

@@ -60,7 +60,7 @@ public class SyncRealTimePerformanceReport {
   private List<String> campaignIds = null;
 
   /**
-   * Dimensions supported by the real-time performance report (streaming + landing).  Only these values are accepted; invalid values cause deserialization to fail.
+   * Dimensions supported by the real-time performance report (streaming + hourly stats).  Only these values are accepted; invalid values cause deserialization to fail.
    */
   @JsonAdapter(DimensionsEnum.Adapter.class)
   public enum DimensionsEnum {
@@ -135,13 +135,13 @@ public class SyncRealTimePerformanceReport {
   private List<String> lineItemIds = null;
 
   /**
-   * Metrics supported by the real-time performance report (streaming + landing).  Only these values are accepted; invalid values cause deserialization to fail.
+   * Metrics supported by the real-time performance report (streaming + hourly stats).  Only these values are accepted; invalid values cause deserialization to fail.
    */
   @JsonAdapter(MetricsEnum.Adapter.class)
   public enum MetricsEnum {
-    BILLABLEIMPRESSIONS("billableImpressions"),
+    IMPRESSIONS("impressions"),
     
-    BILLABLECLICKS("billableClicks"),
+    CLICKS("clicks"),
     
     SPEND("spend");
 
@@ -359,7 +359,7 @@ public class SyncRealTimePerformanceReport {
   }
 
    /**
-   * List of metrics to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric are valid (billableImpressions, billableClicks, spend).
+   * List of metrics to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric are valid.
    * @return metrics
   **/
   @javax.annotation.Nullable

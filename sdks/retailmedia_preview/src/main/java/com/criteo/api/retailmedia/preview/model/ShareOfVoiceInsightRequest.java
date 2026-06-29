@@ -66,7 +66,7 @@ public class ShareOfVoiceInsightRequest {
    * Get data
    * @return data
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public ShareOfVoiceInsightResource getData() {
     return data;
@@ -127,6 +127,7 @@ public class ShareOfVoiceInsightRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("data");
   }
 
  /**
@@ -149,10 +150,15 @@ public class ShareOfVoiceInsightRequest {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ShareOfVoiceInsightRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        ShareOfVoiceInsightResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ShareOfVoiceInsightRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
       }
+      // validate the required field `data`
+      ShareOfVoiceInsightResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
