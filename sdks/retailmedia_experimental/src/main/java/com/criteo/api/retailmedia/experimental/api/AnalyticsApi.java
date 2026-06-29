@@ -951,7 +951,7 @@ public class AnalyticsApi {
     }
     /**
      * Build call for generateShareOfVoiceInsight
-     * @param shareOfVoiceInsightRequest  (optional)
+     * @param shareOfVoiceInsightRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1008,6 +1008,11 @@ public class AnalyticsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call generateShareOfVoiceInsightValidateBeforeCall(ShareOfVoiceInsightRequest shareOfVoiceInsightRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'shareOfVoiceInsightRequest' is set
+        if (shareOfVoiceInsightRequest == null) {
+            throw new ApiException("Missing the required parameter 'shareOfVoiceInsightRequest' when calling generateShareOfVoiceInsight(Async)");
+        }
+
         return generateShareOfVoiceInsightCall(shareOfVoiceInsightRequest, _callback);
 
     }
@@ -1015,7 +1020,7 @@ public class AnalyticsApi {
     /**
      * /experimental/retail-media/insights/share-of-voice
      * Generate a share of voice insight
-     * @param shareOfVoiceInsightRequest  (optional)
+     * @param shareOfVoiceInsightRequest  (required)
      * @return AsyncInsightResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1032,7 +1037,7 @@ public class AnalyticsApi {
     /**
      * /experimental/retail-media/insights/share-of-voice
      * Generate a share of voice insight
-     * @param shareOfVoiceInsightRequest  (optional)
+     * @param shareOfVoiceInsightRequest  (required)
      * @return ApiResponse&lt;AsyncInsightResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1050,7 +1055,7 @@ public class AnalyticsApi {
     /**
      * /experimental/retail-media/insights/share-of-voice (asynchronously)
      * Generate a share of voice insight
-     * @param shareOfVoiceInsightRequest  (optional)
+     * @param shareOfVoiceInsightRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

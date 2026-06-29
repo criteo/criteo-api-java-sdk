@@ -13,7 +13,7 @@ Real Time Performance report body request (one sheeter: startDate, endDate (opti
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeDimension are valid. |  [optional] |
 |**endDate** | **OffsetDateTime** | Optional end date/time (inclusive in the request timezone). If empty or not provided, no end date filter is applied.  When provided, used as the inclusive upper bound for the report range.  Hides base Report.EndDate so this report can treat end date as optional (no [Required]). |  [optional] |
 |**lineItemIds** | **List&lt;String&gt;** | Line item ids to filter. |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric are valid (billableImpressions, billableClicks, spend). |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric are valid. |  [optional] |
 |**retailerIds** | **List&lt;String&gt;** | Retailer ids to filter. This is not used for security, so no need to check for &gt; 0 elements |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date (real-time: must be within the last 7 days). |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
@@ -41,8 +41,8 @@ Real Time Performance report body request (one sheeter: startDate, endDate (opti
 
 | Name | Value |
 |---- | -----|
-| BILLABLEIMPRESSIONS | &quot;billableImpressions&quot; |
-| BILLABLECLICKS | &quot;billableClicks&quot; |
+| IMPRESSIONS | &quot;impressions&quot; |
+| CLICKS | &quot;clicks&quot; |
 | SPEND | &quot;spend&quot; |
 
 

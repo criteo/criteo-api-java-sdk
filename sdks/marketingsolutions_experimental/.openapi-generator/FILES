@@ -198,6 +198,9 @@ docs/ExportStatusModelResponse.md
 docs/FileStreamResultResource.md
 docs/FileStreamResultResponse.md
 docs/GatewayApi.md
+docs/GenerateAllProductsReportRequestAttributes.md
+docs/GenerateAllProductsReportRequestAttributesRequest.md
+docs/GenerateAllProductsReportRequestAttributesResource.md
 docs/GenerateAudiencePerformanceReport.md
 docs/GenerateAudiencePerformanceReportRequest.md
 docs/GenerateAudiencePerformanceReportResource.md
@@ -638,6 +641,9 @@ src/main/java/com/criteo/api/marketingsolutions/experimental/model/ExportStatusM
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/ExportStatusModelResponse.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/FileStreamResultResource.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/FileStreamResultResponse.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/GenerateAllProductsReportRequestAttributes.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/GenerateAllProductsReportRequestAttributesRequest.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/GenerateAllProductsReportRequestAttributesResource.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/GenerateAudiencePerformanceReport.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/GenerateAudiencePerformanceReportRequest.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/GenerateAudiencePerformanceReportResource.java

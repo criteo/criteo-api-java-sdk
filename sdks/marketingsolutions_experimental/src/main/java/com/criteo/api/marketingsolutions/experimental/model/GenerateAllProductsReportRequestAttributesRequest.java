@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo API - RetailMedia
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Experimental
  * 
@@ -11,11 +11,11 @@
  */
 
 
-package com.criteo.api.retailmedia.experimental.model;
+package com.criteo.api.marketingsolutions.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.DigitalShelfIntelligenceInsightResource;
+import com.criteo.api.marketingsolutions.experimental.model.GenerateAllProductsReportRequestAttributesResource;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,21 +42,21 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.criteo.api.retailmedia.experimental.JSON;
+import com.criteo.api.marketingsolutions.experimental.JSON;
 
 /**
  * A top-level object that encapsulates a Criteo API request for a single value object.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class DigitalShelfIntelligenceInsightRequest {
+public class GenerateAllProductsReportRequestAttributesRequest {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private DigitalShelfIntelligenceInsightResource data;
+  private GenerateAllProductsReportRequestAttributesResource data;
 
-  public DigitalShelfIntelligenceInsightRequest() {
+  public GenerateAllProductsReportRequestAttributesRequest() {
   }
 
-  public DigitalShelfIntelligenceInsightRequest data(DigitalShelfIntelligenceInsightResource data) {
+  public GenerateAllProductsReportRequestAttributesRequest data(GenerateAllProductsReportRequestAttributesResource data) {
     
     this.data = data;
     return this;
@@ -66,14 +66,14 @@ public class DigitalShelfIntelligenceInsightRequest {
    * Get data
    * @return data
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public DigitalShelfIntelligenceInsightResource getData() {
+  public GenerateAllProductsReportRequestAttributesResource getData() {
     return data;
   }
 
 
-  public void setData(DigitalShelfIntelligenceInsightResource data) {
+  public void setData(GenerateAllProductsReportRequestAttributesResource data) {
     this.data = data;
   }
 
@@ -87,8 +87,8 @@ public class DigitalShelfIntelligenceInsightRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DigitalShelfIntelligenceInsightRequest digitalShelfIntelligenceInsightRequest = (DigitalShelfIntelligenceInsightRequest) o;
-    return Objects.equals(this.data, digitalShelfIntelligenceInsightRequest.data);
+    GenerateAllProductsReportRequestAttributesRequest generateAllProductsReportRequestAttributesRequest = (GenerateAllProductsReportRequestAttributesRequest) o;
+    return Objects.equals(this.data, generateAllProductsReportRequestAttributesRequest.data);
   }
 
   @Override
@@ -99,7 +99,7 @@ public class DigitalShelfIntelligenceInsightRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DigitalShelfIntelligenceInsightRequest {\n");
+    sb.append("class GenerateAllProductsReportRequestAttributesRequest {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -127,60 +127,54 @@ public class DigitalShelfIntelligenceInsightRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("data");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DigitalShelfIntelligenceInsightRequest
+  * @throws IOException if the JSON Object is invalid with respect to GenerateAllProductsReportRequestAttributesRequest
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!DigitalShelfIntelligenceInsightRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DigitalShelfIntelligenceInsightRequest is not found in the empty JSON string", DigitalShelfIntelligenceInsightRequest.openapiRequiredFields.toString()));
+        if (!GenerateAllProductsReportRequestAttributesRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in GenerateAllProductsReportRequestAttributesRequest is not found in the empty JSON string", GenerateAllProductsReportRequestAttributesRequest.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!DigitalShelfIntelligenceInsightRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DigitalShelfIntelligenceInsightRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!GenerateAllProductsReportRequestAttributesRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GenerateAllProductsReportRequestAttributesRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : DigitalShelfIntelligenceInsightRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
+      // validate the optional field `data`
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        GenerateAllProductsReportRequestAttributesResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
-      // validate the required field `data`
-      DigitalShelfIntelligenceInsightResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DigitalShelfIntelligenceInsightRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DigitalShelfIntelligenceInsightRequest' and its subtypes
+       if (!GenerateAllProductsReportRequestAttributesRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GenerateAllProductsReportRequestAttributesRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DigitalShelfIntelligenceInsightRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DigitalShelfIntelligenceInsightRequest.class));
+       final TypeAdapter<GenerateAllProductsReportRequestAttributesRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GenerateAllProductsReportRequestAttributesRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DigitalShelfIntelligenceInsightRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<GenerateAllProductsReportRequestAttributesRequest>() {
            @Override
-           public void write(JsonWriter out, DigitalShelfIntelligenceInsightRequest value) throws IOException {
+           public void write(JsonWriter out, GenerateAllProductsReportRequestAttributesRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public DigitalShelfIntelligenceInsightRequest read(JsonReader in) throws IOException {
+           public GenerateAllProductsReportRequestAttributesRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -191,18 +185,18 @@ public class DigitalShelfIntelligenceInsightRequest {
   }
 
  /**
-  * Create an instance of DigitalShelfIntelligenceInsightRequest given an JSON string
+  * Create an instance of GenerateAllProductsReportRequestAttributesRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of DigitalShelfIntelligenceInsightRequest
-  * @throws IOException if the JSON string is invalid with respect to DigitalShelfIntelligenceInsightRequest
+  * @return An instance of GenerateAllProductsReportRequestAttributesRequest
+  * @throws IOException if the JSON string is invalid with respect to GenerateAllProductsReportRequestAttributesRequest
   */
-  public static DigitalShelfIntelligenceInsightRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DigitalShelfIntelligenceInsightRequest.class);
+  public static GenerateAllProductsReportRequestAttributesRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GenerateAllProductsReportRequestAttributesRequest.class);
   }
 
  /**
-  * Convert an instance of DigitalShelfIntelligenceInsightRequest to an JSON string
+  * Convert an instance of GenerateAllProductsReportRequestAttributesRequest to an JSON string
   *
   * @return JSON string
   */

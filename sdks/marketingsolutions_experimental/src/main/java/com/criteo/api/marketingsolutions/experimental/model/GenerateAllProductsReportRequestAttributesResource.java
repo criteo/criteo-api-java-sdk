@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo API - RetailMedia
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Experimental
  * 
@@ -11,11 +11,11 @@
  */
 
 
-package com.criteo.api.retailmedia.experimental.model;
+package com.criteo.api.marketingsolutions.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.ShareOfVoiceInsight;
+import com.criteo.api.marketingsolutions.experimental.model.GenerateAllProductsReportRequestAttributes;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -43,25 +43,25 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.criteo.api.retailmedia.experimental.JSON;
+import com.criteo.api.marketingsolutions.experimental.JSON;
 
 /**
  * A value resource exposed by the API.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ShareOfVoiceInsightResource {
+public class GenerateAllProductsReportRequestAttributesResource {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ShareOfVoiceInsight attributes;
+  private GenerateAllProductsReportRequestAttributes attributes;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public ShareOfVoiceInsightResource() {
+  public GenerateAllProductsReportRequestAttributesResource() {
   }
 
-  public ShareOfVoiceInsightResource attributes(ShareOfVoiceInsight attributes) {
+  public GenerateAllProductsReportRequestAttributesResource attributes(GenerateAllProductsReportRequestAttributes attributes) {
     
     this.attributes = attributes;
     return this;
@@ -71,19 +71,19 @@ public class ShareOfVoiceInsightResource {
    * Get attributes
    * @return attributes
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public ShareOfVoiceInsight getAttributes() {
+  public GenerateAllProductsReportRequestAttributes getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(ShareOfVoiceInsight attributes) {
+  public void setAttributes(GenerateAllProductsReportRequestAttributes attributes) {
     this.attributes = attributes;
   }
 
 
-  public ShareOfVoiceInsightResource type(String type) {
+  public GenerateAllProductsReportRequestAttributesResource type(String type) {
     
     this.type = type;
     return this;
@@ -114,9 +114,9 @@ public class ShareOfVoiceInsightResource {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ShareOfVoiceInsightResource shareOfVoiceInsightResource = (ShareOfVoiceInsightResource) o;
-    return Objects.equals(this.attributes, shareOfVoiceInsightResource.attributes) &&
-        Objects.equals(this.type, shareOfVoiceInsightResource.type);
+    GenerateAllProductsReportRequestAttributesResource generateAllProductsReportRequestAttributesResource = (GenerateAllProductsReportRequestAttributesResource) o;
+    return Objects.equals(this.attributes, generateAllProductsReportRequestAttributesResource.attributes) &&
+        Objects.equals(this.type, generateAllProductsReportRequestAttributesResource.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -138,7 +138,7 @@ public class ShareOfVoiceInsightResource {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ShareOfVoiceInsightResource {\n");
+    sb.append("class GenerateAllProductsReportRequestAttributesResource {\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
@@ -168,38 +168,32 @@ public class ShareOfVoiceInsightResource {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("attributes");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ShareOfVoiceInsightResource
+  * @throws IOException if the JSON Object is invalid with respect to GenerateAllProductsReportRequestAttributesResource
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ShareOfVoiceInsightResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ShareOfVoiceInsightResource is not found in the empty JSON string", ShareOfVoiceInsightResource.openapiRequiredFields.toString()));
+        if (!GenerateAllProductsReportRequestAttributesResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in GenerateAllProductsReportRequestAttributesResource is not found in the empty JSON string", GenerateAllProductsReportRequestAttributesResource.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!ShareOfVoiceInsightResource.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ShareOfVoiceInsightResource` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!GenerateAllProductsReportRequestAttributesResource.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GenerateAllProductsReportRequestAttributesResource` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ShareOfVoiceInsightResource.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        GenerateAllProductsReportRequestAttributes.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
-      // validate the required field `attributes`
-      ShareOfVoiceInsight.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
@@ -209,22 +203,22 @@ public class ShareOfVoiceInsightResource {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ShareOfVoiceInsightResource.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ShareOfVoiceInsightResource' and its subtypes
+       if (!GenerateAllProductsReportRequestAttributesResource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GenerateAllProductsReportRequestAttributesResource' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ShareOfVoiceInsightResource> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ShareOfVoiceInsightResource.class));
+       final TypeAdapter<GenerateAllProductsReportRequestAttributesResource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GenerateAllProductsReportRequestAttributesResource.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ShareOfVoiceInsightResource>() {
+       return (TypeAdapter<T>) new TypeAdapter<GenerateAllProductsReportRequestAttributesResource>() {
            @Override
-           public void write(JsonWriter out, ShareOfVoiceInsightResource value) throws IOException {
+           public void write(JsonWriter out, GenerateAllProductsReportRequestAttributesResource value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ShareOfVoiceInsightResource read(JsonReader in) throws IOException {
+           public GenerateAllProductsReportRequestAttributesResource read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -235,18 +229,18 @@ public class ShareOfVoiceInsightResource {
   }
 
  /**
-  * Create an instance of ShareOfVoiceInsightResource given an JSON string
+  * Create an instance of GenerateAllProductsReportRequestAttributesResource given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ShareOfVoiceInsightResource
-  * @throws IOException if the JSON string is invalid with respect to ShareOfVoiceInsightResource
+  * @return An instance of GenerateAllProductsReportRequestAttributesResource
+  * @throws IOException if the JSON string is invalid with respect to GenerateAllProductsReportRequestAttributesResource
   */
-  public static ShareOfVoiceInsightResource fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ShareOfVoiceInsightResource.class);
+  public static GenerateAllProductsReportRequestAttributesResource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GenerateAllProductsReportRequestAttributesResource.class);
   }
 
  /**
-  * Convert an instance of ShareOfVoiceInsightResource to an JSON string
+  * Convert an instance of GenerateAllProductsReportRequestAttributesResource to an JSON string
   *
   * @return JSON string
   */

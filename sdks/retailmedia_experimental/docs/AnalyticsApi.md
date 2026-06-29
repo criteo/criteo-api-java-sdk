@@ -713,7 +713,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **shareOfVoiceInsightRequest** | [**ShareOfVoiceInsightRequest**](ShareOfVoiceInsightRequest.md)|  | [optional] |
+| **shareOfVoiceInsightRequest** | [**ShareOfVoiceInsightRequest**](ShareOfVoiceInsightRequest.md)|  | |
 
 ### Return type
 

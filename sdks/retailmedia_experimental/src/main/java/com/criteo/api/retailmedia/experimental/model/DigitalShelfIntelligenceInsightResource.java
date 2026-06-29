@@ -71,7 +71,7 @@ public class DigitalShelfIntelligenceInsightResource {
    * Get attributes
    * @return attributes
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public DigitalShelfIntelligenceInsight getAttributes() {
     return attributes;
@@ -168,6 +168,7 @@ public class DigitalShelfIntelligenceInsightResource {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("attributes");
   }
 
  /**
@@ -190,10 +191,15 @@ public class DigitalShelfIntelligenceInsightResource {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DigitalShelfIntelligenceInsightResource` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        DigitalShelfIntelligenceInsight.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : DigitalShelfIntelligenceInsightResource.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
       }
+      // validate the required field `attributes`
+      DigitalShelfIntelligenceInsight.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }

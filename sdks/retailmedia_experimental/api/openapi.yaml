@@ -1833,6 +1833,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ShareOfVoiceInsightRequest'
+        required: true
       responses:
         "200":
           content:
@@ -6502,6 +6503,8 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/DigitalShelfIntelligenceInsightResource'
+      required:
+      - data
       type: object
     DigitalShelfIntelligenceInsightResource:
       additionalProperties: false
@@ -6542,6 +6545,8 @@ components:
           description: Type of the resource.
           nullable: true
           type: string
+      required:
+      - attributes
       type: object
     DisplayAuctionMinBidRequest:
       additionalProperties: false
@@ -15409,6 +15414,8 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ShareOfVoiceInsightResource'
+      required:
+      - data
       type: object
     ShareOfVoiceInsightResource:
       additionalProperties: false
@@ -15459,6 +15466,8 @@ components:
           description: Type of the resource.
           nullable: true
           type: string
+      required:
+      - attributes
       type: object
     SkuFilter:
       additionalProperties: false
@@ -16622,8 +16631,8 @@ components:
         - campaignIds
         - campaignIds
         metrics:
-        - billableImpressions
-        - billableImpressions
+        - impressions
+        - impressions
         retailerIds:
         - retailerIds
         - retailerIds
@@ -16649,7 +16658,7 @@ components:
             \ are valid."
           items:
             description: "Dimensions supported by the real-time performance report\
-              \ (streaming + landing).\r\nOnly these values are accepted; invalid\
+              \ (streaming + hourly stats).\r\nOnly these values are accepted; invalid\
               \ values cause deserialization to fail."
             enum:
             - date
@@ -16679,14 +16688,14 @@ components:
         metrics:
           description: "List of metrics to report on (real-time: at least one required).\
             \ Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric\
-            \ are valid (billableImpressions, billableClicks, spend)."
+            \ are valid."
           items:
             description: "Metrics supported by the real-time performance report (streaming\
-              \ + landing).\r\nOnly these values are accepted; invalid values cause\
-              \ deserialization to fail."
+              \ + hourly stats).\r\nOnly these values are accepted; invalid values\
+              \ cause deserialization to fail."
             enum:
-            - billableImpressions
-            - billableClicks
+            - impressions
+            - clicks
             - spend
             type: string
           type: array
@@ -16726,8 +16735,8 @@ components:
             - campaignIds
             - campaignIds
             metrics:
-            - billableImpressions
-            - billableImpressions
+            - impressions
+            - impressions
             retailerIds:
             - retailerIds
             - retailerIds
@@ -16757,8 +16766,8 @@ components:
           - campaignIds
           - campaignIds
           metrics:
-          - billableImpressions
-          - billableImpressions
+          - impressions
+          - impressions
           retailerIds:
           - retailerIds
           - retailerIds

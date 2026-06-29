@@ -31,6 +31,7 @@ import com.criteo.api.marketingsolutions.experimental.model.ExportResult;
 import com.criteo.api.marketingsolutions.experimental.model.ExportStatusModelResponse;
 import java.io.File;
 import com.criteo.api.marketingsolutions.experimental.model.FileStreamResultResponse;
+import com.criteo.api.marketingsolutions.experimental.model.GenerateAllProductsReportRequestAttributesRequest;
 import com.criteo.api.marketingsolutions.experimental.model.GenerateAudiencePerformanceReportRequest;
 import com.criteo.api.marketingsolutions.experimental.model.GenerateCategoriesReportRequestAttributesRequest;
 import com.criteo.api.marketingsolutions.experimental.model.GenerateCreativesReportRequestAttributesRequest;
@@ -91,6 +92,129 @@ public class AnalyticsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for createAllProductsExport
+     * @param generateAllProductsReportRequestAttributesRequest The all-products report export request. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAllProductsExportCall(GenerateAllProductsReportRequestAttributesRequest generateAllProductsReportRequestAttributesRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = generateAllProductsReportRequestAttributesRequest;
+
+        // create path and map variables
+        String localVarPath = "/experimental/marketing-solutions/report/products/export";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/xml",
+            "text/xml"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json",
+            "application/xml",
+            "text/xml",
+            "application/*+xml"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAllProductsExportValidateBeforeCall(GenerateAllProductsReportRequestAttributesRequest generateAllProductsReportRequestAttributesRequest, final ApiCallback _callback) throws ApiException {
+        return createAllProductsExportCall(generateAllProductsReportRequestAttributesRequest, _callback);
+
+    }
+
+    /**
+     * /experimental/marketing-solutions/report/products/export
+     * Creates an all-products report export job.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param generateAllProductsReportRequestAttributesRequest The all-products report export request. (optional)
+     * @return ExportStatusModelResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ExportStatusModelResponse createAllProductsExport(GenerateAllProductsReportRequestAttributesRequest generateAllProductsReportRequestAttributesRequest) throws ApiException {
+        ApiResponse<ExportStatusModelResponse> localVarResp = createAllProductsExportWithHttpInfo(generateAllProductsReportRequestAttributesRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /experimental/marketing-solutions/report/products/export
+     * Creates an all-products report export job.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param generateAllProductsReportRequestAttributesRequest The all-products report export request. (optional)
+     * @return ApiResponse&lt;ExportStatusModelResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ExportStatusModelResponse> createAllProductsExportWithHttpInfo(GenerateAllProductsReportRequestAttributesRequest generateAllProductsReportRequestAttributesRequest) throws ApiException {
+        okhttp3.Call localVarCall = createAllProductsExportValidateBeforeCall(generateAllProductsReportRequestAttributesRequest, null);
+        Type localVarReturnType = new TypeToken<ExportStatusModelResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /experimental/marketing-solutions/report/products/export (asynchronously)
+     * Creates an all-products report export job.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param generateAllProductsReportRequestAttributesRequest The all-products report export request. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAllProductsExportAsync(GenerateAllProductsReportRequestAttributesRequest generateAllProductsReportRequestAttributesRequest, final ApiCallback<ExportStatusModelResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAllProductsExportValidateBeforeCall(generateAllProductsReportRequestAttributesRequest, _callback);
+        Type localVarReturnType = new TypeToken<ExportStatusModelResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for createRealtimeProductReport
      * @param realTimeProductReportJobRequest The realtime report export request. (optional)
@@ -211,6 +335,129 @@ public class AnalyticsApi {
 
         okhttp3.Call localVarCall = createRealtimeProductReportValidateBeforeCall(realTimeProductReportJobRequest, _callback);
         Type localVarReturnType = new TypeToken<RealTimeProductReportJobStatusResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for downloadAllProductsExport
+     * @param reportId The identifier of the all-products report export. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call downloadAllProductsExportCall(String reportId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/experimental/marketing-solutions/report/products/{reportId}"
+            .replace("{" + "reportId" + "}", localVarApiClient.escapeString(reportId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call downloadAllProductsExportValidateBeforeCall(String reportId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'reportId' is set
+        if (reportId == null) {
+            throw new ApiException("Missing the required parameter 'reportId' when calling downloadAllProductsExport(Async)");
+        }
+
+        return downloadAllProductsExportCall(reportId, _callback);
+
+    }
+
+    /**
+     * /experimental/marketing-solutions/report/products/{reportId}
+     * Downloads the generated all-products report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param reportId The identifier of the all-products report export. (required)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public File downloadAllProductsExport(String reportId) throws ApiException {
+        ApiResponse<File> localVarResp = downloadAllProductsExportWithHttpInfo(reportId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /experimental/marketing-solutions/report/products/{reportId}
+     * Downloads the generated all-products report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param reportId The identifier of the all-products report export. (required)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<File> downloadAllProductsExportWithHttpInfo(String reportId) throws ApiException {
+        okhttp3.Call localVarCall = downloadAllProductsExportValidateBeforeCall(reportId, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /experimental/marketing-solutions/report/products/{reportId} (asynchronously)
+     * Downloads the generated all-products report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param reportId The identifier of the all-products report export. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call downloadAllProductsExportAsync(String reportId, final ApiCallback<File> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = downloadAllProductsExportValidateBeforeCall(reportId, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1117,7 +1364,7 @@ public class AnalyticsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/experimental/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}"
+        String localVarPath = "/experimental/marketing-solutions/report-jobs/{reportId}"
             .replace("{" + "reportId" + "}", localVarApiClient.escapeString(reportId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1159,8 +1406,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
-     * Gets the status of a marketplace performance outcomes report export job.
+     * /experimental/marketing-solutions/report-jobs/{reportId}
+     * Gets the status of  report export job.
      * @param reportId The identifier of the report export job. (required)
      * @return ExportStatusModelResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1176,8 +1423,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
-     * Gets the status of a marketplace performance outcomes report export job.
+     * /experimental/marketing-solutions/report-jobs/{reportId}
+     * Gets the status of  report export job.
      * @param reportId The identifier of the report export job. (required)
      * @return ApiResponse&lt;ExportStatusModelResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1194,8 +1441,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} (asynchronously)
-     * Gets the status of a marketplace performance outcomes report export job.
+     * /experimental/marketing-solutions/report-jobs/{reportId} (asynchronously)
+     * Gets the status of  report export job.
      * @param reportId The identifier of the report export job. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1209,6 +1456,131 @@ public class AnalyticsApi {
     public okhttp3.Call getExportStatusAsync(String reportId, final ApiCallback<ExportStatusModelResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExportStatusValidateBeforeCall(reportId, _callback);
+        Type localVarReturnType = new TypeToken<ExportStatusModelResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketplacePerformanceOutcomesExportStatus
+     * @param reportId The identifier of the report export job. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketplacePerformanceOutcomesExportStatusCall(String reportId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/experimental/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}"
+            .replace("{" + "reportId" + "}", localVarApiClient.escapeString(reportId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/xml",
+            "text/xml"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketplacePerformanceOutcomesExportStatusValidateBeforeCall(String reportId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'reportId' is set
+        if (reportId == null) {
+            throw new ApiException("Missing the required parameter 'reportId' when calling getMarketplacePerformanceOutcomesExportStatus(Async)");
+        }
+
+        return getMarketplacePerformanceOutcomesExportStatusCall(reportId, _callback);
+
+    }
+
+    /**
+     * /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
+     * Gets the status of  report export job.
+     * @param reportId The identifier of the report export job. (required)
+     * @return ExportStatusModelResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ExportStatusModelResponse getMarketplacePerformanceOutcomesExportStatus(String reportId) throws ApiException {
+        ApiResponse<ExportStatusModelResponse> localVarResp = getMarketplacePerformanceOutcomesExportStatusWithHttpInfo(reportId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}
+     * Gets the status of  report export job.
+     * @param reportId The identifier of the report export job. (required)
+     * @return ApiResponse&lt;ExportStatusModelResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ExportStatusModelResponse> getMarketplacePerformanceOutcomesExportStatusWithHttpInfo(String reportId) throws ApiException {
+        okhttp3.Call localVarCall = getMarketplacePerformanceOutcomesExportStatusValidateBeforeCall(reportId, null);
+        Type localVarReturnType = new TypeToken<ExportStatusModelResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId} (asynchronously)
+     * Gets the status of  report export job.
+     * @param reportId The identifier of the report export job. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketplacePerformanceOutcomesExportStatusAsync(String reportId, final ApiCallback<ExportStatusModelResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketplacePerformanceOutcomesExportStatusValidateBeforeCall(reportId, _callback);
         Type localVarReturnType = new TypeToken<ExportStatusModelResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

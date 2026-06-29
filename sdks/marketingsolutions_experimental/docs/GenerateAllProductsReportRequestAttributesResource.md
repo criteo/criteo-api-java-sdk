@@ -1,6 +1,6 @@
 
 
-# DigitalShelfIntelligenceInsightResource
+# GenerateAllProductsReportRequestAttributesResource
 
 A value resource exposed by the API.
 
@@ -8,7 +8,7 @@ A value resource exposed by the API.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**DigitalShelfIntelligenceInsight**](DigitalShelfIntelligenceInsight.md) |  |  |
+|**attributes** | [**GenerateAllProductsReportRequestAttributes**](GenerateAllProductsReportRequestAttributes.md) |  |  [optional] |
 |**type** | **String** | Type of the resource. |  [optional] |
 
 

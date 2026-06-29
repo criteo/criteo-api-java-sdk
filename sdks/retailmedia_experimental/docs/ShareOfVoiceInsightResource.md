@@ -8,7 +8,7 @@ A value resource exposed by the API.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**ShareOfVoiceInsight**](ShareOfVoiceInsight.md) |  |  [optional] |
+|**attributes** | [**ShareOfVoiceInsight**](ShareOfVoiceInsight.md) |  |  |
 |**type** | **String** | Type of the resource. |  [optional] |
 
 
