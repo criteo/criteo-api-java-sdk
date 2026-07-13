@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.EntityResourceOfRetailerResult;
+import com.criteo.api.retailmedia.preview.model.EntityResourceOfRetailerResultV2;
 import com.criteo.api.retailmedia.preview.model.Metadata;
 import com.criteo.api.retailmedia.preview.model.SdkApiRestCommonProblem;
 import com.google.gson.TypeAdapter;
@@ -53,10 +53,10 @@ import com.criteo.api.retailmedia.preview.JSON;
  * A top-level object that encapsulates a Criteo API response for several entities and metadata.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {
+public class EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<EntityResourceOfRetailerResult> data = null;
+  private List<EntityResourceOfRetailerResultV2> data = null;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -70,11 +70,11 @@ public class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   private List<SdkApiRestCommonProblem> warnings = null;
 
-  public EntityResourceCollectionOutcomeOfRetailerResultAndMetadata() {
+  public EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata() {
   }
 
   
-  public EntityResourceCollectionOutcomeOfRetailerResultAndMetadata(
+  public EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata(
      List<SdkApiRestCommonProblem> errors, 
      List<SdkApiRestCommonProblem> warnings
   ) {
@@ -83,13 +83,13 @@ public class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {
     this.warnings = warnings;
   }
 
-  public EntityResourceCollectionOutcomeOfRetailerResultAndMetadata data(List<EntityResourceOfRetailerResult> data) {
+  public EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata data(List<EntityResourceOfRetailerResultV2> data) {
     
     this.data = data;
     return this;
   }
 
-  public EntityResourceCollectionOutcomeOfRetailerResultAndMetadata addDataItem(EntityResourceOfRetailerResult dataItem) {
+  public EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata addDataItem(EntityResourceOfRetailerResultV2 dataItem) {
     if (this.data == null) {
       this.data = null;
     }
@@ -103,12 +103,12 @@ public class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {
   **/
   @javax.annotation.Nullable
 
-  public List<EntityResourceOfRetailerResult> getData() {
+  public List<EntityResourceOfRetailerResultV2> getData() {
     return data;
   }
 
 
-  public void setData(List<EntityResourceOfRetailerResult> data) {
+  public void setData(List<EntityResourceOfRetailerResultV2> data) {
     this.data = data;
   }
 
@@ -126,7 +126,7 @@ public class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {
 
 
 
-  public EntityResourceCollectionOutcomeOfRetailerResultAndMetadata metadata(Metadata metadata) {
+  public EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata metadata(Metadata metadata) {
     
     this.metadata = metadata;
     return this;
@@ -170,11 +170,11 @@ public class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    EntityResourceCollectionOutcomeOfRetailerResultAndMetadata entityResourceCollectionOutcomeOfRetailerResultAndMetadata = (EntityResourceCollectionOutcomeOfRetailerResultAndMetadata) o;
-    return Objects.equals(this.data, entityResourceCollectionOutcomeOfRetailerResultAndMetadata.data) &&
-        Objects.equals(this.errors, entityResourceCollectionOutcomeOfRetailerResultAndMetadata.errors) &&
-        Objects.equals(this.metadata, entityResourceCollectionOutcomeOfRetailerResultAndMetadata.metadata) &&
-        Objects.equals(this.warnings, entityResourceCollectionOutcomeOfRetailerResultAndMetadata.warnings);
+    EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata entityResourceCollectionOutcomeOfRetailerResultV2AndMetadata = (EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata) o;
+    return Objects.equals(this.data, entityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.data) &&
+        Objects.equals(this.errors, entityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.errors) &&
+        Objects.equals(this.metadata, entityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.metadata) &&
+        Objects.equals(this.warnings, entityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -196,7 +196,7 @@ public class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {\n");
+    sb.append("class EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
@@ -236,20 +236,20 @@ public class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
+  * @throws IOException if the JSON Object is invalid with respect to EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in EntityResourceCollectionOutcomeOfRetailerResultAndMetadata is not found in the empty JSON string", EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.openapiRequiredFields.toString()));
+        if (!EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata is not found in the empty JSON string", EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EntityResourceCollectionOutcomeOfRetailerResultAndMetadata` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
@@ -262,7 +262,7 @@ public class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {
 
           // validate the optional field `data` (array)
           for (int i = 0; i < jsonArraydata.size(); i++) {
-            EntityResourceOfRetailerResult.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+            EntityResourceOfRetailerResultV2.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
           };
         }
       }
@@ -304,22 +304,22 @@ public class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'EntityResourceCollectionOutcomeOfRetailerResultAndMetadata' and its subtypes
+       if (!EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.class));
+       final TypeAdapter<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata>() {
+       return (TypeAdapter<T>) new TypeAdapter<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata>() {
            @Override
-           public void write(JsonWriter out, EntityResourceCollectionOutcomeOfRetailerResultAndMetadata value) throws IOException {
+           public void write(JsonWriter out, EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public EntityResourceCollectionOutcomeOfRetailerResultAndMetadata read(JsonReader in) throws IOException {
+           public EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -330,18 +330,18 @@ public class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata {
   }
 
  /**
-  * Create an instance of EntityResourceCollectionOutcomeOfRetailerResultAndMetadata given an JSON string
+  * Create an instance of EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
-  * @throws IOException if the JSON string is invalid with respect to EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
+  * @return An instance of EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata
+  * @throws IOException if the JSON string is invalid with respect to EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata
   */
-  public static EntityResourceCollectionOutcomeOfRetailerResultAndMetadata fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.class);
+  public static EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.class);
   }
 
  /**
-  * Convert an instance of EntityResourceCollectionOutcomeOfRetailerResultAndMetadata to an JSON string
+  * Convert an instance of EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata to an JSON string
   *
   * @return JSON string
   */

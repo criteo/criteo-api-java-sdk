@@ -22,7 +22,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +53,7 @@ import com.criteo.api.retailmedia.preview.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AsyncAttributedTransactionsReport {
   /**
-   * Optional click attribution window.
+   * Gets or Sets clickAttributionWindow
    */
   @JsonAdapter(ClickAttributionWindowEnum.Adapter.class)
   public enum ClickAttributionWindowEnum {
@@ -105,7 +105,62 @@ public class AsyncAttributedTransactionsReport {
 
   public static final String SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW = "clickAttributionWindow";
   @SerializedName(SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW)
-  private ClickAttributionWindowEnum clickAttributionWindow = ClickAttributionWindowEnum.NONE;
+  private ClickAttributionWindowEnum clickAttributionWindow;
+
+  /**
+   * Gets or Sets clickMatchLevel
+   */
+  @JsonAdapter(ClickMatchLevelEnum.Adapter.class)
+  public enum ClickMatchLevelEnum {
+    SAMESKU("sameSku"),
+    
+    SAMECATEGORY("sameCategory"),
+    
+    SAMEBRAND("sameBrand"),
+    
+    CAMPAIGN("campaign");
+
+    private String value;
+
+    ClickMatchLevelEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ClickMatchLevelEnum fromValue(String value) {
+      for (ClickMatchLevelEnum b : ClickMatchLevelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ClickMatchLevelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ClickMatchLevelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ClickMatchLevelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ClickMatchLevelEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CLICK_MATCH_LEVEL = "clickMatchLevel";
+  @SerializedName(SERIALIZED_NAME_CLICK_MATCH_LEVEL)
+  private ClickMatchLevelEnum clickMatchLevel = ClickMatchLevelEnum.CAMPAIGN;
 
   /**
    * Gets or Sets dimensions
@@ -218,14 +273,14 @@ public class AsyncAttributedTransactionsReport {
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
-  private LocalDate endDate;
+  private OffsetDateTime endDate;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
   private AttributedTransactionsReportFilters filters;
 
   /**
-   * Output format. If omitted, json-compact is used.
+   * Gets or Sets format
    */
   @JsonAdapter(FormatEnum.Adapter.class)
   public enum FormatEnum {
@@ -277,7 +332,7 @@ public class AsyncAttributedTransactionsReport {
 
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
-  private FormatEnum format = FormatEnum.JSON_COMPACT;
+  private FormatEnum format;
 
   /**
    * Gets or Sets metrics
@@ -332,14 +387,14 @@ public class AsyncAttributedTransactionsReport {
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
-  private LocalDate startDate;
+  private OffsetDateTime startDate;
 
   public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
   @SerializedName(SERIALIZED_NAME_TIMEZONE)
   private String timezone = "UTC";
 
   /**
-   * Optional view attribution window.
+   * Gets or Sets viewAttributionWindow
    */
   @JsonAdapter(ViewAttributionWindowEnum.Adapter.class)
   public enum ViewAttributionWindowEnum {
@@ -393,7 +448,62 @@ public class AsyncAttributedTransactionsReport {
 
   public static final String SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW = "viewAttributionWindow";
   @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW)
-  private ViewAttributionWindowEnum viewAttributionWindow = ViewAttributionWindowEnum.NONE;
+  private ViewAttributionWindowEnum viewAttributionWindow;
+
+  /**
+   * Gets or Sets viewMatchLevel
+   */
+  @JsonAdapter(ViewMatchLevelEnum.Adapter.class)
+  public enum ViewMatchLevelEnum {
+    SAMESKU("sameSku"),
+    
+    SAMECATEGORY("sameCategory"),
+    
+    SAMEBRAND("sameBrand"),
+    
+    CAMPAIGN("campaign");
+
+    private String value;
+
+    ViewMatchLevelEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ViewMatchLevelEnum fromValue(String value) {
+      for (ViewMatchLevelEnum b : ViewMatchLevelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ViewMatchLevelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ViewMatchLevelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ViewMatchLevelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ViewMatchLevelEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VIEW_MATCH_LEVEL = "viewMatchLevel";
+  @SerializedName(SERIALIZED_NAME_VIEW_MATCH_LEVEL)
+  private ViewMatchLevelEnum viewMatchLevel = ViewMatchLevelEnum.CAMPAIGN;
 
   public AsyncAttributedTransactionsReport() {
   }
@@ -405,7 +515,7 @@ public class AsyncAttributedTransactionsReport {
   }
 
    /**
-   * Optional click attribution window.
+   * Get clickAttributionWindow
    * @return clickAttributionWindow
   **/
   @javax.annotation.Nullable
@@ -417,6 +527,28 @@ public class AsyncAttributedTransactionsReport {
 
   public void setClickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
     this.clickAttributionWindow = clickAttributionWindow;
+  }
+
+
+  public AsyncAttributedTransactionsReport clickMatchLevel(ClickMatchLevelEnum clickMatchLevel) {
+    
+    this.clickMatchLevel = clickMatchLevel;
+    return this;
+  }
+
+   /**
+   * Get clickMatchLevel
+   * @return clickMatchLevel
+  **/
+  @javax.annotation.Nullable
+
+  public ClickMatchLevelEnum getClickMatchLevel() {
+    return clickMatchLevel;
+  }
+
+
+  public void setClickMatchLevel(ClickMatchLevelEnum clickMatchLevel) {
+    this.clickMatchLevel = clickMatchLevel;
   }
 
 
@@ -432,7 +564,7 @@ public class AsyncAttributedTransactionsReport {
   }
 
    /**
-   * Required output grouping fields. Empty array means no grouping fields. At least one of dimensions or metrics must be non-empty.
+   * Get dimensions
    * @return dimensions
   **/
   @javax.annotation.Nonnull
@@ -447,24 +579,24 @@ public class AsyncAttributedTransactionsReport {
   }
 
 
-  public AsyncAttributedTransactionsReport endDate(LocalDate endDate) {
+  public AsyncAttributedTransactionsReport endDate(OffsetDateTime endDate) {
     
     this.endDate = endDate;
     return this;
   }
 
    /**
-   * Required inclusive report end date in YYYY-MM-DD format. Must be greater than or equal to startDate.
+   * Get endDate
    * @return endDate
   **/
   @javax.annotation.Nonnull
 
-  public LocalDate getEndDate() {
+  public OffsetDateTime getEndDate() {
     return endDate;
   }
 
 
-  public void setEndDate(LocalDate endDate) {
+  public void setEndDate(OffsetDateTime endDate) {
     this.endDate = endDate;
   }
 
@@ -498,7 +630,7 @@ public class AsyncAttributedTransactionsReport {
   }
 
    /**
-   * Output format. If omitted, json-compact is used.
+   * Get format
    * @return format
   **/
   @javax.annotation.Nullable
@@ -525,7 +657,7 @@ public class AsyncAttributedTransactionsReport {
   }
 
    /**
-   * Required output measure fields. Empty array means no measure fields. At least one of dimensions or metrics must be non-empty.
+   * Get metrics
    * @return metrics
   **/
   @javax.annotation.Nonnull
@@ -540,24 +672,24 @@ public class AsyncAttributedTransactionsReport {
   }
 
 
-  public AsyncAttributedTransactionsReport startDate(LocalDate startDate) {
+  public AsyncAttributedTransactionsReport startDate(OffsetDateTime startDate) {
     
     this.startDate = startDate;
     return this;
   }
 
    /**
-   * Required inclusive report start date in YYYY-MM-DD format.
+   * Get startDate
    * @return startDate
   **/
   @javax.annotation.Nonnull
 
-  public LocalDate getStartDate() {
+  public OffsetDateTime getStartDate() {
     return startDate;
   }
 
 
-  public void setStartDate(LocalDate startDate) {
+  public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
@@ -569,7 +701,7 @@ public class AsyncAttributedTransactionsReport {
   }
 
    /**
-   * Optional time zone identifier. If omitted, UTC is used. If provided, it must be valid.
+   * Get timezone
    * @return timezone
   **/
   @javax.annotation.Nullable
@@ -591,7 +723,7 @@ public class AsyncAttributedTransactionsReport {
   }
 
    /**
-   * Optional view attribution window.
+   * Get viewAttributionWindow
    * @return viewAttributionWindow
   **/
   @javax.annotation.Nullable
@@ -606,6 +738,72 @@ public class AsyncAttributedTransactionsReport {
   }
 
 
+  public AsyncAttributedTransactionsReport viewMatchLevel(ViewMatchLevelEnum viewMatchLevel) {
+    
+    this.viewMatchLevel = viewMatchLevel;
+    return this;
+  }
+
+   /**
+   * Get viewMatchLevel
+   * @return viewMatchLevel
+  **/
+  @javax.annotation.Nullable
+
+  public ViewMatchLevelEnum getViewMatchLevel() {
+    return viewMatchLevel;
+  }
+
+
+  public void setViewMatchLevel(ViewMatchLevelEnum viewMatchLevel) {
+    this.viewMatchLevel = viewMatchLevel;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the AsyncAttributedTransactionsReport instance itself
+   */
+  public AsyncAttributedTransactionsReport putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -617,6 +815,7 @@ public class AsyncAttributedTransactionsReport {
     }
     AsyncAttributedTransactionsReport asyncAttributedTransactionsReport = (AsyncAttributedTransactionsReport) o;
     return Objects.equals(this.clickAttributionWindow, asyncAttributedTransactionsReport.clickAttributionWindow) &&
+        Objects.equals(this.clickMatchLevel, asyncAttributedTransactionsReport.clickMatchLevel) &&
         Objects.equals(this.dimensions, asyncAttributedTransactionsReport.dimensions) &&
         Objects.equals(this.endDate, asyncAttributedTransactionsReport.endDate) &&
         Objects.equals(this.filters, asyncAttributedTransactionsReport.filters) &&
@@ -624,12 +823,14 @@ public class AsyncAttributedTransactionsReport {
         Objects.equals(this.metrics, asyncAttributedTransactionsReport.metrics) &&
         Objects.equals(this.startDate, asyncAttributedTransactionsReport.startDate) &&
         Objects.equals(this.timezone, asyncAttributedTransactionsReport.timezone) &&
-        Objects.equals(this.viewAttributionWindow, asyncAttributedTransactionsReport.viewAttributionWindow);
+        Objects.equals(this.viewAttributionWindow, asyncAttributedTransactionsReport.viewAttributionWindow) &&
+        Objects.equals(this.viewMatchLevel, asyncAttributedTransactionsReport.viewMatchLevel)&&
+        Objects.equals(this.additionalProperties, asyncAttributedTransactionsReport.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clickAttributionWindow, dimensions, endDate, filters, format, metrics, startDate, timezone, viewAttributionWindow);
+    return Objects.hash(clickAttributionWindow, clickMatchLevel, dimensions, endDate, filters, format, metrics, startDate, timezone, viewAttributionWindow, viewMatchLevel, additionalProperties);
   }
 
   @Override
@@ -637,6 +838,7 @@ public class AsyncAttributedTransactionsReport {
     StringBuilder sb = new StringBuilder();
     sb.append("class AsyncAttributedTransactionsReport {\n");
     sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
+    sb.append("    clickMatchLevel: ").append(toIndentedString(clickMatchLevel)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
@@ -645,6 +847,8 @@ public class AsyncAttributedTransactionsReport {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
+    sb.append("    viewMatchLevel: ").append(toIndentedString(viewMatchLevel)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -668,6 +872,7 @@ public class AsyncAttributedTransactionsReport {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("clickAttributionWindow");
+    openapiFields.add("clickMatchLevel");
     openapiFields.add("dimensions");
     openapiFields.add("endDate");
     openapiFields.add("filters");
@@ -676,6 +881,7 @@ public class AsyncAttributedTransactionsReport {
     openapiFields.add("startDate");
     openapiFields.add("timezone");
     openapiFields.add("viewAttributionWindow");
+    openapiFields.add("viewMatchLevel");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -699,14 +905,6 @@ public class AsyncAttributedTransactionsReport {
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!AsyncAttributedTransactionsReport.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AsyncAttributedTransactionsReport` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AsyncAttributedTransactionsReport.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
@@ -715,6 +913,9 @@ public class AsyncAttributedTransactionsReport {
       }
       if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
+      }
+      if ((jsonObj.get("clickMatchLevel") != null && !jsonObj.get("clickMatchLevel").isJsonNull()) && !jsonObj.get("clickMatchLevel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clickMatchLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickMatchLevel").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("dimensions") == null) {
@@ -739,6 +940,9 @@ public class AsyncAttributedTransactionsReport {
       if ((jsonObj.get("viewAttributionWindow") != null && !jsonObj.get("viewAttributionWindow").isJsonNull()) && !jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
       }
+      if ((jsonObj.get("viewMatchLevel") != null && !jsonObj.get("viewMatchLevel").isJsonNull()) && !jsonObj.get("viewMatchLevel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `viewMatchLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewMatchLevel").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -756,6 +960,23 @@ public class AsyncAttributedTransactionsReport {
            @Override
            public void write(JsonWriter out, AsyncAttributedTransactionsReport value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -763,7 +984,27 @@ public class AsyncAttributedTransactionsReport {
            public AsyncAttributedTransactionsReport read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             AsyncAttributedTransactionsReport instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

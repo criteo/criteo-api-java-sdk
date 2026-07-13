@@ -8,7 +8,7 @@ A top-level object that encapsulates a performance DSP analytics async report cr
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**AsyncPerformanceReportResource**](AsyncPerformanceReportResource.md) |  |  |
+|**data** | [**AsyncPerformanceReportResource**](AsyncPerformanceReportResource.md) |  |  [optional] |
 
 
 

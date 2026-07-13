@@ -8,12 +8,12 @@ Create payload attributes for a missed-opportunities async report.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | Required output grouping fields. Empty array means no grouping fields. At least one of dimensions or metrics must be non-empty. |  |
-|**endDate** | **LocalDate** | Required inclusive report end date in YYYY-MM-DD format. Must be greater than or equal to startDate. |  |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) |  |  |
+|**endDate** | **OffsetDateTime** |  |  |
 |**filters** | [**MissedOpportunitiesReportFilters**](MissedOpportunitiesReportFilters.md) |  |  |
-|**format** | [**FormatEnum**](#FormatEnum) | Output format. If omitted, json-compact is used. |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | Required output measure fields. Empty array means no measure fields. At least one of dimensions or metrics must be non-empty. |  |
-|**startDate** | **LocalDate** | Required inclusive report start date in YYYY-MM-DD format. |  |
+|**format** | [**FormatEnum**](#FormatEnum) |  |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) |  |  |
+|**startDate** | **OffsetDateTime** |  |  |
 
 
 

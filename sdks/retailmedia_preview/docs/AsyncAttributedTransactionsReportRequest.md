@@ -8,7 +8,7 @@ A top-level object that encapsulates an attributed-transactions async report cre
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**AsyncAttributedTransactionsReportResource**](AsyncAttributedTransactionsReportResource.md) |  |  |
+|**data** | [**AsyncAttributedTransactionsReportResource**](AsyncAttributedTransactionsReportResource.md) |  |  [optional] |
 
 
 

@@ -1,6 +1,6 @@
 
 
-# PageTypeCombination
+# PageTypeCombinationV2
 
 Represents a combination of page type and page environment type for a specific campaign-buy type.
 
@@ -8,8 +8,8 @@ Represents a combination of page type and page environment type for a specific c
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**pageEnvironmentType** | [**PageEnvironmentTypeEnum**](#PageEnvironmentTypeEnum) | The page types which are supported for this campaign-buy type combination |  [optional] |
-|**pageType** | [**PageTypeEnum**](#PageTypeEnum) | The page types which are supported for this campaign-buy type combination |  [optional] |
+|**pageEnvironmentType** | [**PageEnvironmentTypeEnum**](#PageEnvironmentTypeEnum) | The page environment type supported for this campaign-buy type combination |  [optional] |
+|**pageType** | [**PageTypeEnum**](#PageTypeEnum) | The page type supported for this campaign-buy type combination |  [optional] |
 
 
 
@@ -44,6 +44,7 @@ Represents a combination of page type and page environment type for a specific c
 | FAVORITES | &quot;favorites&quot; |
 | SEARCHBAR | &quot;searchbar&quot; |
 | CATEGORYMENU | &quot;categoryMenu&quot; |
+| AIASSISTANT | &quot;aiAssistant&quot; |
 
 
 

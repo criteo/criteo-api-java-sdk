@@ -50,21 +50,21 @@ import com.criteo.api.retailmedia.preview.JSON;
  * Request model for searching retailers
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class RetailerSearchRequest {
+public class RetailerSearchRequestV2 {
   public static final String SERIALIZED_NAME_RETAILER_ID_FILTER = "retailerIdFilter";
   @SerializedName(SERIALIZED_NAME_RETAILER_ID_FILTER)
   private List<String> retailerIdFilter = null;
 
-  public RetailerSearchRequest() {
+  public RetailerSearchRequestV2() {
   }
 
-  public RetailerSearchRequest retailerIdFilter(List<String> retailerIdFilter) {
+  public RetailerSearchRequestV2 retailerIdFilter(List<String> retailerIdFilter) {
     
     this.retailerIdFilter = retailerIdFilter;
     return this;
   }
 
-  public RetailerSearchRequest addRetailerIdFilterItem(String retailerIdFilterItem) {
+  public RetailerSearchRequestV2 addRetailerIdFilterItem(String retailerIdFilterItem) {
     if (this.retailerIdFilter == null) {
       this.retailerIdFilter = null;
     }
@@ -97,8 +97,8 @@ public class RetailerSearchRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RetailerSearchRequest retailerSearchRequest = (RetailerSearchRequest) o;
-    return Objects.equals(this.retailerIdFilter, retailerSearchRequest.retailerIdFilter);
+    RetailerSearchRequestV2 retailerSearchRequestV2 = (RetailerSearchRequestV2) o;
+    return Objects.equals(this.retailerIdFilter, retailerSearchRequestV2.retailerIdFilter);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -120,7 +120,7 @@ public class RetailerSearchRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RetailerSearchRequest {\n");
+    sb.append("class RetailerSearchRequestV2 {\n");
     sb.append("    retailerIdFilter: ").append(toIndentedString(retailerIdFilter)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -154,20 +154,20 @@ public class RetailerSearchRequest {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to RetailerSearchRequest
+  * @throws IOException if the JSON Object is invalid with respect to RetailerSearchRequestV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!RetailerSearchRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RetailerSearchRequest is not found in the empty JSON string", RetailerSearchRequest.openapiRequiredFields.toString()));
+        if (!RetailerSearchRequestV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RetailerSearchRequestV2 is not found in the empty JSON string", RetailerSearchRequestV2.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!RetailerSearchRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RetailerSearchRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!RetailerSearchRequestV2.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RetailerSearchRequestV2` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       // ensure the optional json data is an array if present
@@ -180,22 +180,22 @@ public class RetailerSearchRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RetailerSearchRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RetailerSearchRequest' and its subtypes
+       if (!RetailerSearchRequestV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RetailerSearchRequestV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RetailerSearchRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RetailerSearchRequest.class));
+       final TypeAdapter<RetailerSearchRequestV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RetailerSearchRequestV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RetailerSearchRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<RetailerSearchRequestV2>() {
            @Override
-           public void write(JsonWriter out, RetailerSearchRequest value) throws IOException {
+           public void write(JsonWriter out, RetailerSearchRequestV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public RetailerSearchRequest read(JsonReader in) throws IOException {
+           public RetailerSearchRequestV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -206,18 +206,18 @@ public class RetailerSearchRequest {
   }
 
  /**
-  * Create an instance of RetailerSearchRequest given an JSON string
+  * Create an instance of RetailerSearchRequestV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of RetailerSearchRequest
-  * @throws IOException if the JSON string is invalid with respect to RetailerSearchRequest
+  * @return An instance of RetailerSearchRequestV2
+  * @throws IOException if the JSON string is invalid with respect to RetailerSearchRequestV2
   */
-  public static RetailerSearchRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RetailerSearchRequest.class);
+  public static RetailerSearchRequestV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RetailerSearchRequestV2.class);
   }
 
  /**
-  * Convert an instance of RetailerSearchRequest to an JSON string
+  * Convert an instance of RetailerSearchRequestV2 to an JSON string
   *
   * @return JSON string
   */

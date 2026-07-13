@@ -8,7 +8,7 @@ A top-level object that encapsulates a missed-opportunities async report create 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**AsyncMissedOpportunitiesReportResource**](AsyncMissedOpportunitiesReportResource.md) |  |  |
+|**data** | [**AsyncMissedOpportunitiesReportResource**](AsyncMissedOpportunitiesReportResource.md) |  |  [optional] |
 
 
 

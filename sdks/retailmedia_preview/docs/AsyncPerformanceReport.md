@@ -8,15 +8,17 @@ Create payload attributes for a performance DSP analytics async report.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Optional click attribution window. |  [optional] |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | Required output grouping fields. Empty array means no grouping fields. At least one of dimensions or metrics must be non-empty. |  |
-|**endDate** | **LocalDate** | Required inclusive report end date in YYYY-MM-DD format. Must be greater than or equal to startDate. |  |
+|**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) |  |  [optional] |
+|**clickMatchLevel** | [**ClickMatchLevelEnum**](#ClickMatchLevelEnum) |  |  [optional] |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) |  |  |
+|**endDate** | **OffsetDateTime** |  |  |
 |**filters** | [**PerformanceReportFilters**](PerformanceReportFilters.md) |  |  |
-|**format** | [**FormatEnum**](#FormatEnum) | Output format. If omitted, json-compact is used. |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | Required output measure fields. Empty array means no measure fields. At least one of dimensions or metrics must be non-empty. |  |
-|**startDate** | **LocalDate** | Required inclusive report start date in YYYY-MM-DD format. |  |
-|**timezone** | **String** | Optional time zone identifier. If omitted, UTC is used. If provided, it must be valid. |  [optional] |
-|**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | Optional view attribution window. |  [optional] |
+|**format** | [**FormatEnum**](#FormatEnum) |  |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) |  |  |
+|**startDate** | **OffsetDateTime** |  |  |
+|**timezone** | **String** |  |  [optional] |
+|**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) |  |  [optional] |
+|**viewMatchLevel** | [**ViewMatchLevelEnum**](#ViewMatchLevelEnum) |  |  [optional] |
 
 
 
@@ -28,6 +30,17 @@ Create payload attributes for a performance DSP analytics async report.
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
+
+
+
+## Enum: ClickMatchLevelEnum
+
+| Name | Value |
+|---- | -----|
+| SAMESKU | &quot;sameSku&quot; |
+| SAMECATEGORY | &quot;sameCategory&quot; |
+| SAMEBRAND | &quot;sameBrand&quot; |
+| CAMPAIGN | &quot;campaign&quot; |
 
 
 
@@ -141,6 +154,17 @@ Create payload attributes for a performance DSP analytics async report.
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
+
+
+
+## Enum: ViewMatchLevelEnum
+
+| Name | Value |
+|---- | -----|
+| SAMESKU | &quot;sameSku&quot; |
+| SAMECATEGORY | &quot;sameCategory&quot; |
+| SAMEBRAND | &quot;sameBrand&quot; |
+| CAMPAIGN | &quot;campaign&quot; |
 
 
 

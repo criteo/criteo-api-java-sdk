@@ -8,30 +8,20 @@ Array-valued constraints for missed-opportunities reporting. At least one of acc
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**accountIds** | **List&lt;String&gt;** | Optional scope filter. Allows up to 5 account IDs per request. |  [optional] |
-|**campaignIds** | **List&lt;String&gt;** | Optional scope filter. Allows up to 50 campaign IDs per request. |  [optional] |
-|**lineItemIds** | **List&lt;String&gt;** | Optional scope filter. Allows up to 50 line-item IDs per request. |  [optional] |
-|**mediaTypes** | [**List&lt;MediaTypesEnum&gt;**](#List&lt;MediaTypesEnum&gt;) | Optional inherited media type filter. |  [optional] |
-|**salesChannels** | [**List&lt;SalesChannelsEnum&gt;**](#List&lt;SalesChannelsEnum&gt;) | Optional inherited sales channel filter. |  [optional] |
+|**accountIds** | **List&lt;String&gt;** |  |  [optional] |
+|**campaignIds** | **List&lt;String&gt;** |  |  [optional] |
+|**campaignTypes** | [**List&lt;CampaignTypesEnum&gt;**](#List&lt;CampaignTypesEnum&gt;) |  |  [optional] |
+|**lineItemIds** | **List&lt;String&gt;** |  |  [optional] |
 
 
 
-## Enum: List&lt;MediaTypesEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;unknown&quot; |
-| VIDEO | &quot;video&quot; |
-| DISPLAY | &quot;display&quot; |
-
-
-
-## Enum: List&lt;SalesChannelsEnum&gt;
+## Enum: List&lt;CampaignTypesEnum&gt;
 
 | Name | Value |
 |---- | -----|
-| ONLINE | &quot;online&quot; |
-| OFFLINE | &quot;offline&quot; |
+| ALL | &quot;all&quot; |
+| SPONSOREDPRODUCTS | &quot;sponsoredProducts&quot; |
+| ONSITEDISPLAYS | &quot;onSiteDisplays&quot; |
 
 
 

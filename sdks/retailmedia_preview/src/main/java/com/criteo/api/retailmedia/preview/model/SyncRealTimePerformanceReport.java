@@ -47,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Real Time Performance report body request (one sheeter: startDate, endDate (optional), RetailerIds, accountIds, campaignIds, lineItemIds, dimensions, metrics, timezones).  Extends SyncReport only (no default filters); adds entry filter arrays.  Dimensions and metrics are restricted to Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeDimension and Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric; invalid values cause deserialization to fail.
+ * Real Time Performance report body request (one sheeter: startDate, endDate (optional), RetailerIds, accountIds, campaignIds, lineItemIds, dimensions, metrics, timezones).  Extends SyncReport only (no default filters); adds entry filter arrays.  Dimensions and metrics are restricted to their supported enumerated values; invalid values cause deserialization to fail.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SyncRealTimePerformanceReport {
@@ -277,7 +277,7 @@ public class SyncRealTimePerformanceReport {
   }
 
    /**
-   * List of dimensions to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeDimension are valid.
+   * List of dimensions to report on (real-time: at least one required). Only the supported dimension values are valid.
    * @return dimensions
   **/
   @javax.annotation.Nullable
@@ -359,7 +359,7 @@ public class SyncRealTimePerformanceReport {
   }
 
    /**
-   * List of metrics to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric are valid.
+   * List of metrics to report on (real-time: at least one required). Only the supported metric values are valid.
    * @return metrics
   **/
   @javax.annotation.Nullable

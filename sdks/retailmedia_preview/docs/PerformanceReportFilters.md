@@ -8,18 +8,18 @@ Array-valued constraints for performance DSP analytics. At least one of accountI
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**accountIds** | **List&lt;String&gt;** | Optional scope filter. Allows up to 5 account IDs per request. |  [optional] |
-|**activationPlatforms** | [**List&lt;ActivationPlatformsEnum&gt;**](#List&lt;ActivationPlatformsEnum&gt;) | Optional activation platform filter. |  [optional] |
-|**budgetModels** | [**List&lt;BudgetModelsEnum&gt;**](#List&lt;BudgetModelsEnum&gt;) | Optional budget model filter. |  [optional] |
-|**buyTypes** | [**List&lt;BuyTypesEnum&gt;**](#List&lt;BuyTypesEnum&gt;) | Optional buy type filter. |  [optional] |
-|**campaignIds** | **List&lt;String&gt;** | Optional scope filter. Allows up to 50 campaign IDs per request. |  [optional] |
-|**campaignTypes** | [**List&lt;CampaignTypesEnum&gt;**](#List&lt;CampaignTypesEnum&gt;) | Optional inherited campaign type filter. |  [optional] |
-|**lineItemIds** | **List&lt;String&gt;** | Optional scope filter. Allows up to 50 line-item IDs per request. |  [optional] |
-|**mediaTypes** | [**List&lt;MediaTypesEnum&gt;**](#List&lt;MediaTypesEnum&gt;) | Optional inherited media type filter. |  [optional] |
-|**salesChannels** | [**List&lt;SalesChannelsEnum&gt;**](#List&lt;SalesChannelsEnum&gt;) | Optional inherited sales channel filter. |  [optional] |
-|**searchTermTargetings** | [**List&lt;SearchTermTargetingsEnum&gt;**](#List&lt;SearchTermTargetingsEnum&gt;) | Optional search term targeting filter. |  [optional] |
-|**searchTermTypes** | [**List&lt;SearchTermTypesEnum&gt;**](#List&lt;SearchTermTypesEnum&gt;) | Optional search term type filter. |  [optional] |
-|**targetedKeywordTypes** | [**List&lt;TargetedKeywordTypesEnum&gt;**](#List&lt;TargetedKeywordTypesEnum&gt;) | Optional targeted keyword type filter. |  [optional] |
+|**accountIds** | **List&lt;String&gt;** |  |  [optional] |
+|**activationPlatforms** | [**List&lt;ActivationPlatformsEnum&gt;**](#List&lt;ActivationPlatformsEnum&gt;) |  |  [optional] |
+|**budgetModels** | [**List&lt;BudgetModelsEnum&gt;**](#List&lt;BudgetModelsEnum&gt;) |  |  [optional] |
+|**buyTypes** | [**List&lt;BuyTypesEnum&gt;**](#List&lt;BuyTypesEnum&gt;) |  |  [optional] |
+|**campaignIds** | **List&lt;String&gt;** |  |  [optional] |
+|**campaignTypes** | [**List&lt;CampaignTypesEnum&gt;**](#List&lt;CampaignTypesEnum&gt;) |  |  [optional] |
+|**lineItemIds** | **List&lt;String&gt;** |  |  [optional] |
+|**mediaTypes** | [**List&lt;MediaTypesEnum&gt;**](#List&lt;MediaTypesEnum&gt;) |  |  [optional] |
+|**salesChannels** | [**List&lt;SalesChannelsEnum&gt;**](#List&lt;SalesChannelsEnum&gt;) |  |  [optional] |
+|**searchTermTargetings** | [**List&lt;SearchTermTargetingsEnum&gt;**](#List&lt;SearchTermTargetingsEnum&gt;) |  |  [optional] |
+|**searchTermTypes** | [**List&lt;SearchTermTypesEnum&gt;**](#List&lt;SearchTermTypesEnum&gt;) |  |  [optional] |
+|**targetedKeywordTypes** | [**List&lt;TargetedKeywordTypesEnum&gt;**](#List&lt;TargetedKeywordTypesEnum&gt;) |  |  [optional] |
 
 
 
@@ -55,6 +55,7 @@ Array-valued constraints for performance DSP analytics. At least one of accountI
 
 | Name | Value |
 |---- | -----|
+| ALL | &quot;all&quot; |
 | SPONSOREDPRODUCTS | &quot;sponsoredProducts&quot; |
 | ONSITEDISPLAYS | &quot;onSiteDisplays&quot; |
 
@@ -67,6 +68,7 @@ Array-valued constraints for performance DSP analytics. At least one of accountI
 | UNKNOWN | &quot;unknown&quot; |
 | VIDEO | &quot;video&quot; |
 | DISPLAY | &quot;display&quot; |
+| ALL | &quot;all&quot; |
 
 
 
@@ -76,6 +78,7 @@ Array-valued constraints for performance DSP analytics. At least one of accountI
 |---- | -----|
 | ONLINE | &quot;online&quot; |
 | OFFLINE | &quot;offline&quot; |
+| ALL | &quot;all&quot; |
 
 
 

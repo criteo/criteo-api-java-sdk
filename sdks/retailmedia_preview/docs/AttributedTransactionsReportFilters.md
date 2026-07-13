@@ -8,10 +8,10 @@ Array-valued constraints for attributed-transactions reporting. At least one of 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**accountIds** | **List&lt;String&gt;** | Optional scope filter. Allows up to 5 account IDs per request. |  [optional] |
-|**campaignIds** | **List&lt;String&gt;** | Optional scope filter. Allows up to 50 campaign IDs per request. |  [optional] |
-|**lineItemIds** | **List&lt;String&gt;** | Optional scope filter. Allows up to 50 line-item IDs per request. |  [optional] |
-|**mediaTypes** | [**List&lt;MediaTypesEnum&gt;**](#List&lt;MediaTypesEnum&gt;) | Optional media type filter. |  [optional] |
+|**accountIds** | **List&lt;String&gt;** |  |  [optional] |
+|**campaignIds** | **List&lt;String&gt;** |  |  [optional] |
+|**lineItemIds** | **List&lt;String&gt;** |  |  [optional] |
+|**mediaTypes** | [**List&lt;MediaTypesEnum&gt;**](#List&lt;MediaTypesEnum&gt;) |  |  [optional] |
 
 
 
@@ -22,6 +22,7 @@ Array-valued constraints for attributed-transactions reporting. At least one of 
 | UNKNOWN | &quot;unknown&quot; |
 | VIDEO | &quot;video&quot; |
 | DISPLAY | &quot;display&quot; |
+| ALL | &quot;all&quot; |
 
 
 

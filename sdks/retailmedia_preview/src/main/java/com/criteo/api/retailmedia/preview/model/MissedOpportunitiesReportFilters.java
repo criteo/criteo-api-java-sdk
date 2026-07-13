@@ -58,113 +58,62 @@ public class MissedOpportunitiesReportFilters {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
   private List<String> campaignIds = null;
 
+  /**
+   * Gets or Sets campaignTypes
+   */
+  @JsonAdapter(CampaignTypesEnum.Adapter.class)
+  public enum CampaignTypesEnum {
+    ALL("all"),
+    
+    SPONSOREDPRODUCTS("sponsoredProducts"),
+    
+    ONSITEDISPLAYS("onSiteDisplays");
+
+    private String value;
+
+    CampaignTypesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CampaignTypesEnum fromValue(String value) {
+      for (CampaignTypesEnum b : CampaignTypesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<CampaignTypesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CampaignTypesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CampaignTypesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CampaignTypesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_TYPES = "campaignTypes";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPES)
+  private List<CampaignTypesEnum> campaignTypes = null;
+
   public static final String SERIALIZED_NAME_LINE_ITEM_IDS = "lineItemIds";
   @SerializedName(SERIALIZED_NAME_LINE_ITEM_IDS)
   private List<String> lineItemIds = null;
-
-  /**
-   * Gets or Sets mediaTypes
-   */
-  @JsonAdapter(MediaTypesEnum.Adapter.class)
-  public enum MediaTypesEnum {
-    UNKNOWN("unknown"),
-    
-    VIDEO("video"),
-    
-    DISPLAY("display");
-
-    private String value;
-
-    MediaTypesEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MediaTypesEnum fromValue(String value) {
-      for (MediaTypesEnum b : MediaTypesEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<MediaTypesEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MediaTypesEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MediaTypesEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MediaTypesEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_MEDIA_TYPES = "mediaTypes";
-  @SerializedName(SERIALIZED_NAME_MEDIA_TYPES)
-  private List<MediaTypesEnum> mediaTypes = null;
-
-  /**
-   * Gets or Sets salesChannels
-   */
-  @JsonAdapter(SalesChannelsEnum.Adapter.class)
-  public enum SalesChannelsEnum {
-    ONLINE("online"),
-    
-    OFFLINE("offline");
-
-    private String value;
-
-    SalesChannelsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SalesChannelsEnum fromValue(String value) {
-      for (SalesChannelsEnum b : SalesChannelsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SalesChannelsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SalesChannelsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SalesChannelsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SalesChannelsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_SALES_CHANNELS = "salesChannels";
-  @SerializedName(SERIALIZED_NAME_SALES_CHANNELS)
-  private List<SalesChannelsEnum> salesChannels = null;
 
   public MissedOpportunitiesReportFilters() {
   }
@@ -184,7 +133,7 @@ public class MissedOpportunitiesReportFilters {
   }
 
    /**
-   * Optional scope filter. Allows up to 5 account IDs per request.
+   * Get accountIds
    * @return accountIds
   **/
   @javax.annotation.Nullable
@@ -214,7 +163,7 @@ public class MissedOpportunitiesReportFilters {
   }
 
    /**
-   * Optional scope filter. Allows up to 50 campaign IDs per request.
+   * Get campaignIds
    * @return campaignIds
   **/
   @javax.annotation.Nullable
@@ -226,6 +175,36 @@ public class MissedOpportunitiesReportFilters {
 
   public void setCampaignIds(List<String> campaignIds) {
     this.campaignIds = campaignIds;
+  }
+
+
+  public MissedOpportunitiesReportFilters campaignTypes(List<CampaignTypesEnum> campaignTypes) {
+    
+    this.campaignTypes = campaignTypes;
+    return this;
+  }
+
+  public MissedOpportunitiesReportFilters addCampaignTypesItem(CampaignTypesEnum campaignTypesItem) {
+    if (this.campaignTypes == null) {
+      this.campaignTypes = new ArrayList<>();
+    }
+    this.campaignTypes.add(campaignTypesItem);
+    return this;
+  }
+
+   /**
+   * Get campaignTypes
+   * @return campaignTypes
+  **/
+  @javax.annotation.Nullable
+
+  public List<CampaignTypesEnum> getCampaignTypes() {
+    return campaignTypes;
+  }
+
+
+  public void setCampaignTypes(List<CampaignTypesEnum> campaignTypes) {
+    this.campaignTypes = campaignTypes;
   }
 
 
@@ -244,7 +223,7 @@ public class MissedOpportunitiesReportFilters {
   }
 
    /**
-   * Optional scope filter. Allows up to 50 line-item IDs per request.
+   * Get lineItemIds
    * @return lineItemIds
   **/
   @javax.annotation.Nullable
@@ -258,66 +237,50 @@ public class MissedOpportunitiesReportFilters {
     this.lineItemIds = lineItemIds;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
 
-  public MissedOpportunitiesReportFilters mediaTypes(List<MediaTypesEnum> mediaTypes) {
-    
-    this.mediaTypes = mediaTypes;
-    return this;
-  }
-
-  public MissedOpportunitiesReportFilters addMediaTypesItem(MediaTypesEnum mediaTypesItem) {
-    if (this.mediaTypes == null) {
-      this.mediaTypes = new ArrayList<>();
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the MissedOpportunitiesReportFilters instance itself
+   */
+  public MissedOpportunitiesReportFilters putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
     }
-    this.mediaTypes.add(mediaTypesItem);
+    this.additionalProperties.put(key, value);
     return this;
   }
 
-   /**
-   * Optional inherited media type filter.
-   * @return mediaTypes
-  **/
-  @javax.annotation.Nullable
-
-  public List<MediaTypesEnum> getMediaTypes() {
-    return mediaTypes;
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
   }
 
-
-  public void setMediaTypes(List<MediaTypesEnum> mediaTypes) {
-    this.mediaTypes = mediaTypes;
-  }
-
-
-  public MissedOpportunitiesReportFilters salesChannels(List<SalesChannelsEnum> salesChannels) {
-    
-    this.salesChannels = salesChannels;
-    return this;
-  }
-
-  public MissedOpportunitiesReportFilters addSalesChannelsItem(SalesChannelsEnum salesChannelsItem) {
-    if (this.salesChannels == null) {
-      this.salesChannels = new ArrayList<>();
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
     }
-    this.salesChannels.add(salesChannelsItem);
-    return this;
+    return this.additionalProperties.get(key);
   }
-
-   /**
-   * Optional inherited sales channel filter.
-   * @return salesChannels
-  **/
-  @javax.annotation.Nullable
-
-  public List<SalesChannelsEnum> getSalesChannels() {
-    return salesChannels;
-  }
-
-
-  public void setSalesChannels(List<SalesChannelsEnum> salesChannels) {
-    this.salesChannels = salesChannels;
-  }
-
 
 
   @Override
@@ -331,14 +294,14 @@ public class MissedOpportunitiesReportFilters {
     MissedOpportunitiesReportFilters missedOpportunitiesReportFilters = (MissedOpportunitiesReportFilters) o;
     return Objects.equals(this.accountIds, missedOpportunitiesReportFilters.accountIds) &&
         Objects.equals(this.campaignIds, missedOpportunitiesReportFilters.campaignIds) &&
-        Objects.equals(this.lineItemIds, missedOpportunitiesReportFilters.lineItemIds) &&
-        Objects.equals(this.mediaTypes, missedOpportunitiesReportFilters.mediaTypes) &&
-        Objects.equals(this.salesChannels, missedOpportunitiesReportFilters.salesChannels);
+        Objects.equals(this.campaignTypes, missedOpportunitiesReportFilters.campaignTypes) &&
+        Objects.equals(this.lineItemIds, missedOpportunitiesReportFilters.lineItemIds)&&
+        Objects.equals(this.additionalProperties, missedOpportunitiesReportFilters.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIds, campaignIds, lineItemIds, mediaTypes, salesChannels);
+    return Objects.hash(accountIds, campaignIds, campaignTypes, lineItemIds, additionalProperties);
   }
 
   @Override
@@ -347,9 +310,9 @@ public class MissedOpportunitiesReportFilters {
     sb.append("class MissedOpportunitiesReportFilters {\n");
     sb.append("    accountIds: ").append(toIndentedString(accountIds)).append("\n");
     sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
+    sb.append("    campaignTypes: ").append(toIndentedString(campaignTypes)).append("\n");
     sb.append("    lineItemIds: ").append(toIndentedString(lineItemIds)).append("\n");
-    sb.append("    mediaTypes: ").append(toIndentedString(mediaTypes)).append("\n");
-    sb.append("    salesChannels: ").append(toIndentedString(salesChannels)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -374,9 +337,8 @@ public class MissedOpportunitiesReportFilters {
     openapiFields = new HashSet<String>();
     openapiFields.add("accountIds");
     openapiFields.add("campaignIds");
+    openapiFields.add("campaignTypes");
     openapiFields.add("lineItemIds");
-    openapiFields.add("mediaTypes");
-    openapiFields.add("salesChannels");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -394,14 +356,6 @@ public class MissedOpportunitiesReportFilters {
           throw new IllegalArgumentException(String.format("The required field(s) %s in MissedOpportunitiesReportFilters is not found in the empty JSON string", MissedOpportunitiesReportFilters.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!MissedOpportunitiesReportFilters.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MissedOpportunitiesReportFilters` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("accountIds") != null && !jsonObj.get("accountIds").isJsonNull() && !jsonObj.get("accountIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountIds` to be an array in the JSON string but got `%s`", jsonObj.get("accountIds").toString()));
@@ -411,16 +365,12 @@ public class MissedOpportunitiesReportFilters {
         throw new IllegalArgumentException(String.format("Expected the field `campaignIds` to be an array in the JSON string but got `%s`", jsonObj.get("campaignIds").toString()));
       }
       // ensure the optional json data is an array if present
+      if (jsonObj.get("campaignTypes") != null && !jsonObj.get("campaignTypes").isJsonNull() && !jsonObj.get("campaignTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaignTypes` to be an array in the JSON string but got `%s`", jsonObj.get("campaignTypes").toString()));
+      }
+      // ensure the optional json data is an array if present
       if (jsonObj.get("lineItemIds") != null && !jsonObj.get("lineItemIds").isJsonNull() && !jsonObj.get("lineItemIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineItemIds` to be an array in the JSON string but got `%s`", jsonObj.get("lineItemIds").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("mediaTypes") != null && !jsonObj.get("mediaTypes").isJsonNull() && !jsonObj.get("mediaTypes").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mediaTypes` to be an array in the JSON string but got `%s`", jsonObj.get("mediaTypes").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("salesChannels") != null && !jsonObj.get("salesChannels").isJsonNull() && !jsonObj.get("salesChannels").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `salesChannels` to be an array in the JSON string but got `%s`", jsonObj.get("salesChannels").toString()));
       }
   }
 
@@ -439,6 +389,23 @@ public class MissedOpportunitiesReportFilters {
            @Override
            public void write(JsonWriter out, MissedOpportunitiesReportFilters value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -446,7 +413,27 @@ public class MissedOpportunitiesReportFilters {
            public MissedOpportunitiesReportFilters read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             MissedOpportunitiesReportFilters instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

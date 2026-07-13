@@ -2046,11 +2046,11 @@ public class Example {
 
 ## searchAccountRetailers
 
-> EntityResourceCollectionOutcomeOfRetailerResultAndMetadata searchAccountRetailers(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset)
+> EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata searchAccountRetailers(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset)
 
 /preview/retail-media/accounts/{accountId}/retailers/search
 
-Searches for retailers associated with the specified account based on provided search criteria
+Searches for retailers associated with the specified account and returns budget model availability for each retailer
 
 ### Example
 
@@ -2092,11 +2092,11 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String accountId = "accountId_example"; // String | The external account identifier
-        ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest = new ValueResourceInputOfRetailerSearchRequest(); // ValueResourceInputOfRetailerSearchRequest | The search request containing filtering parameters
+        ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2 = new ValueResourceInputOfRetailerSearchRequestV2(); // ValueResourceInputOfRetailerSearchRequestV2 | The search request containing filtering parameters
         Integer limit = 5; // Integer | The maximum number of items to return. Must be between 1 and 10. Default is 5.
         Integer offset = 0; // Integer | The number of items to skip before starting to collect the result set. Default is 0.
         try {
-            EntityResourceCollectionOutcomeOfRetailerResultAndMetadata result = apiInstance.searchAccountRetailers(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset);
+            EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata result = apiInstance.searchAccountRetailers(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#searchAccountRetailers");
@@ -2115,13 +2115,13 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The external account identifier | |
-| **valueResourceInputOfRetailerSearchRequest** | [**ValueResourceInputOfRetailerSearchRequest**](ValueResourceInputOfRetailerSearchRequest.md)| The search request containing filtering parameters | |
+| **valueResourceInputOfRetailerSearchRequestV2** | [**ValueResourceInputOfRetailerSearchRequestV2**](ValueResourceInputOfRetailerSearchRequestV2.md)| The search request containing filtering parameters | |
 | **limit** | **Integer**| The maximum number of items to return. Must be between 1 and 10. Default is 5. | [optional] [default to 5] |
 | **offset** | **Integer**| The number of items to skip before starting to collect the result set. Default is 0. | [optional] [default to 0] |
 
 ### Return type
 
-[**EntityResourceCollectionOutcomeOfRetailerResultAndMetadata**](EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.md)
+[**EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata**](EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.md)
 
 ### Authorization
 

@@ -22,7 +22,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,14 +119,14 @@ public class AsyncMissedOpportunitiesReport {
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
-  private LocalDate endDate;
+  private OffsetDateTime endDate;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
   private MissedOpportunitiesReportFilters filters;
 
   /**
-   * Output format. If omitted, json-compact is used.
+   * Gets or Sets format
    */
   @JsonAdapter(FormatEnum.Adapter.class)
   public enum FormatEnum {
@@ -178,7 +178,7 @@ public class AsyncMissedOpportunitiesReport {
 
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
-  private FormatEnum format = FormatEnum.JSON_COMPACT;
+  private FormatEnum format;
 
   /**
    * Gets or Sets metrics
@@ -259,7 +259,7 @@ public class AsyncMissedOpportunitiesReport {
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
-  private LocalDate startDate;
+  private OffsetDateTime startDate;
 
   public AsyncMissedOpportunitiesReport() {
   }
@@ -276,7 +276,7 @@ public class AsyncMissedOpportunitiesReport {
   }
 
    /**
-   * Required output grouping fields. Empty array means no grouping fields. At least one of dimensions or metrics must be non-empty.
+   * Get dimensions
    * @return dimensions
   **/
   @javax.annotation.Nonnull
@@ -291,24 +291,24 @@ public class AsyncMissedOpportunitiesReport {
   }
 
 
-  public AsyncMissedOpportunitiesReport endDate(LocalDate endDate) {
+  public AsyncMissedOpportunitiesReport endDate(OffsetDateTime endDate) {
     
     this.endDate = endDate;
     return this;
   }
 
    /**
-   * Required inclusive report end date in YYYY-MM-DD format. Must be greater than or equal to startDate.
+   * Get endDate
    * @return endDate
   **/
   @javax.annotation.Nonnull
 
-  public LocalDate getEndDate() {
+  public OffsetDateTime getEndDate() {
     return endDate;
   }
 
 
-  public void setEndDate(LocalDate endDate) {
+  public void setEndDate(OffsetDateTime endDate) {
     this.endDate = endDate;
   }
 
@@ -342,7 +342,7 @@ public class AsyncMissedOpportunitiesReport {
   }
 
    /**
-   * Output format. If omitted, json-compact is used.
+   * Get format
    * @return format
   **/
   @javax.annotation.Nullable
@@ -369,7 +369,7 @@ public class AsyncMissedOpportunitiesReport {
   }
 
    /**
-   * Required output measure fields. Empty array means no measure fields. At least one of dimensions or metrics must be non-empty.
+   * Get metrics
    * @return metrics
   **/
   @javax.annotation.Nonnull
@@ -384,27 +384,71 @@ public class AsyncMissedOpportunitiesReport {
   }
 
 
-  public AsyncMissedOpportunitiesReport startDate(LocalDate startDate) {
+  public AsyncMissedOpportunitiesReport startDate(OffsetDateTime startDate) {
     
     this.startDate = startDate;
     return this;
   }
 
    /**
-   * Required inclusive report start date in YYYY-MM-DD format.
+   * Get startDate
    * @return startDate
   **/
   @javax.annotation.Nonnull
 
-  public LocalDate getStartDate() {
+  public OffsetDateTime getStartDate() {
     return startDate;
   }
 
 
-  public void setStartDate(LocalDate startDate) {
+  public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the AsyncMissedOpportunitiesReport instance itself
+   */
+  public AsyncMissedOpportunitiesReport putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -421,12 +465,13 @@ public class AsyncMissedOpportunitiesReport {
         Objects.equals(this.filters, asyncMissedOpportunitiesReport.filters) &&
         Objects.equals(this.format, asyncMissedOpportunitiesReport.format) &&
         Objects.equals(this.metrics, asyncMissedOpportunitiesReport.metrics) &&
-        Objects.equals(this.startDate, asyncMissedOpportunitiesReport.startDate);
+        Objects.equals(this.startDate, asyncMissedOpportunitiesReport.startDate)&&
+        Objects.equals(this.additionalProperties, asyncMissedOpportunitiesReport.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dimensions, endDate, filters, format, metrics, startDate);
+    return Objects.hash(dimensions, endDate, filters, format, metrics, startDate, additionalProperties);
   }
 
   @Override
@@ -439,6 +484,7 @@ public class AsyncMissedOpportunitiesReport {
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -490,14 +536,6 @@ public class AsyncMissedOpportunitiesReport {
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!AsyncMissedOpportunitiesReport.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AsyncMissedOpportunitiesReport` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AsyncMissedOpportunitiesReport.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
@@ -538,6 +576,23 @@ public class AsyncMissedOpportunitiesReport {
            @Override
            public void write(JsonWriter out, AsyncMissedOpportunitiesReport value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -545,7 +600,27 @@ public class AsyncMissedOpportunitiesReport {
            public AsyncMissedOpportunitiesReport read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             AsyncMissedOpportunitiesReport instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

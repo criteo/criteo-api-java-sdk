@@ -31,7 +31,7 @@ import com.criteo.api.retailmedia.preview.model.Creative2Response;
 import com.criteo.api.retailmedia.preview.model.CreativeCreateModel2;
 import com.criteo.api.retailmedia.preview.model.CreativeUpdateModel2;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeCreativeSearchResponse;
-import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfRetailerResultAndMetadata;
+import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceInputCreativeSearchRequest;
 import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfCatalogStatusV2;
@@ -51,7 +51,7 @@ import com.criteo.api.retailmedia.preview.model.ValueResourceInputAppendCampaign
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputDeleteCampaignsRequestV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputDisplayAuctionMinBidRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputLineItemBudgetCapOutHistoryRequest;
-import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfRetailerSearchRequest;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfRetailerSearchRequestV2;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel;
 import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeBalanceCampaignsV1;
@@ -3017,7 +3017,7 @@ public class CampaignApi {
     /**
      * Build call for searchAccountRetailers
      * @param accountId The external account identifier (required)
-     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
+     * @param valueResourceInputOfRetailerSearchRequestV2 The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
      * @param _callback Callback for upload/download progress
@@ -3029,7 +3029,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAccountRetailersCall(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchAccountRetailersCall(String accountId, ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3043,7 +3043,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = valueResourceInputOfRetailerSearchRequest;
+        Object localVarPostBody = valueResourceInputOfRetailerSearchRequestV2;
 
         // create path and map variables
         String localVarPath = "/preview/retail-media/accounts/{accountId}/retailers/search"
@@ -3084,29 +3084,29 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchAccountRetailersValidateBeforeCall(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchAccountRetailersValidateBeforeCall(String accountId, ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling searchAccountRetailers(Async)");
         }
 
-        // verify the required parameter 'valueResourceInputOfRetailerSearchRequest' is set
-        if (valueResourceInputOfRetailerSearchRequest == null) {
-            throw new ApiException("Missing the required parameter 'valueResourceInputOfRetailerSearchRequest' when calling searchAccountRetailers(Async)");
+        // verify the required parameter 'valueResourceInputOfRetailerSearchRequestV2' is set
+        if (valueResourceInputOfRetailerSearchRequestV2 == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfRetailerSearchRequestV2' when calling searchAccountRetailers(Async)");
         }
 
-        return searchAccountRetailersCall(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset, _callback);
+        return searchAccountRetailersCall(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset, _callback);
 
     }
 
     /**
      * /preview/retail-media/accounts/{accountId}/retailers/search
-     * Searches for retailers associated with the specified account based on provided search criteria
+     * Searches for retailers associated with the specified account and returns budget model availability for each retailer
      * @param accountId The external account identifier (required)
-     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
+     * @param valueResourceInputOfRetailerSearchRequestV2 The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @return EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
+     * @return EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3114,19 +3114,19 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceCollectionOutcomeOfRetailerResultAndMetadata searchAccountRetailers(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> localVarResp = searchAccountRetailersWithHttpInfo(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset);
+    public EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata searchAccountRetailers(String accountId, ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata> localVarResp = searchAccountRetailersWithHttpInfo(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset);
         return localVarResp.getData();
     }
 
     /**
      * /preview/retail-media/accounts/{accountId}/retailers/search
-     * Searches for retailers associated with the specified account based on provided search criteria
+     * Searches for retailers associated with the specified account and returns budget model availability for each retailer
      * @param accountId The external account identifier (required)
-     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
+     * @param valueResourceInputOfRetailerSearchRequestV2 The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfRetailerResultAndMetadata&gt;
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3134,17 +3134,17 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> searchAccountRetailersWithHttpInfo(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = searchAccountRetailersValidateBeforeCall(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset, null);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata>(){}.getType();
+    public ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata> searchAccountRetailersWithHttpInfo(String accountId, ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = searchAccountRetailersValidateBeforeCall(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset, null);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * /preview/retail-media/accounts/{accountId}/retailers/search (asynchronously)
-     * Searches for retailers associated with the specified account based on provided search criteria
+     * Searches for retailers associated with the specified account and returns budget model availability for each retailer
      * @param accountId The external account identifier (required)
-     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
+     * @param valueResourceInputOfRetailerSearchRequestV2 The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
@@ -3156,10 +3156,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAccountRetailersAsync(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> _callback) throws ApiException {
+    public okhttp3.Call searchAccountRetailersAsync(String accountId, ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchAccountRetailersValidateBeforeCall(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata>(){}.getType();
+        okhttp3.Call localVarCall = searchAccountRetailersValidateBeforeCall(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

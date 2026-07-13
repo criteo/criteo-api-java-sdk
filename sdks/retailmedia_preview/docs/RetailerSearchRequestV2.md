@@ -1,6 +1,6 @@
 
 
-# RetailerSearchRequest
+# RetailerSearchRequestV2
 
 Request model for searching retailers
 

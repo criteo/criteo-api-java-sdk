@@ -2,22 +2,14 @@
 
 # AsyncAttributedTransactionsReportResource
 
-JSON:API resource wrapper for an attributed-transactions async report create request.
+A top-level object that encapsulates a Criteo API response for a single value
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**AsyncAttributedTransactionsReport**](AsyncAttributedTransactionsReport.md) |  |  |
-|**type** | [**TypeEnum**](#TypeEnum) | Optional JSON:API resource type. If provided, it must match this create resource. |  [optional] |
-
-
-
-## Enum: TypeEnum
-
-| Name | Value |
-|---- | -----|
-| ASYNCATTRIBUTEDTRANSACTIONSREPORT | &quot;AsyncAttributedTransactionsReport&quot; |
+|**attributes** | [**AsyncAttributedTransactionsReport**](AsyncAttributedTransactionsReport.md) |  |  [optional] |
+|**type** | **String** |  |  [optional] |
 
 
 

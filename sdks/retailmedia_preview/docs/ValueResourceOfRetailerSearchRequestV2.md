@@ -1,6 +1,6 @@
 
 
-# ValueResourceOfRetailerSearchRequest
+# ValueResourceOfRetailerSearchRequestV2
 
 A value resource exposed by the API.
 
@@ -8,7 +8,7 @@ A value resource exposed by the API.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**RetailerSearchRequest**](RetailerSearchRequest.md) |  |  [optional] |
+|**attributes** | [**RetailerSearchRequestV2**](RetailerSearchRequestV2.md) |  |  [optional] |
 |**type** | **String** | Type of the resource. |  [optional] |
 
 
