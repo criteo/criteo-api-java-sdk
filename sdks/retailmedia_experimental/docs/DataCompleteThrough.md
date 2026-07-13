@@ -8,8 +8,8 @@ Data freshness: the instant through which report data is complete, expressed in 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**dateTime** | **String** | The instant through which data is complete, in the format \&quot;yyyy-MM-dd HH:mm:ss\&quot; in Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.Timezone. |  [optional] |
-|**timezone** | **String** | IANA timezone for Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.DateTime (e.g. \&quot;UTC\&quot;, \&quot;America/New_York\&quot;). Matches the query timezone. |  [optional] |
+|**dateTime** | **String** | The instant through which data is complete, in the format \&quot;yyyy-MM-dd HH:mm:ss\&quot; in the timezone given by the {timezone} field. |  [optional] |
+|**timezone** | **String** | IANA timezone for the {dateTime} field (e.g. \&quot;UTC\&quot;, \&quot;America/New_York\&quot;). Matches the query timezone. |  [optional] |
 
 
 

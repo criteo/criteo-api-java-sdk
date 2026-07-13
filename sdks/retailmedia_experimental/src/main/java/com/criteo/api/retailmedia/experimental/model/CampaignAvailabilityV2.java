@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.PageTypeCombination;
+import com.criteo.api.retailmedia.experimental.model.PageTypeCombinationV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -48,10 +48,63 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * Information about the availability of a specific campaign type and buy type combination, and page types and environments supported for that combination
+ * Information about the budget model availability for a specific campaign type and buy type combination, and page types and environments supported for that combination
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class CampaignAvailability {
+public class CampaignAvailabilityV2 {
+  /**
+   * Possible budget models for retail media campaigns
+   */
+  @JsonAdapter(BudgetModelAvailabilitiesEnum.Adapter.class)
+  public enum BudgetModelAvailabilitiesEnum {
+    UNKNOWN("unknown"),
+    
+    CRITEOBUDGET("criteoBudget"),
+    
+    RETAILERBUDGET("retailerBudget");
+
+    private String value;
+
+    BudgetModelAvailabilitiesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BudgetModelAvailabilitiesEnum fromValue(String value) {
+      for (BudgetModelAvailabilitiesEnum b : BudgetModelAvailabilitiesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BudgetModelAvailabilitiesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BudgetModelAvailabilitiesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BudgetModelAvailabilitiesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BudgetModelAvailabilitiesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BUDGET_MODEL_AVAILABILITIES = "budgetModelAvailabilities";
+  @SerializedName(SERIALIZED_NAME_BUDGET_MODEL_AVAILABILITIES)
+  private List<BudgetModelAvailabilitiesEnum> budgetModelAvailabilities = null;
+
   /**
    * The buy type this object represents availability for
    */
@@ -164,18 +217,44 @@ public class CampaignAvailability {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
   private CampaignTypeEnum campaignType;
 
-  public static final String SERIALIZED_NAME_IS_AVAILABLE = "isAvailable";
-  @SerializedName(SERIALIZED_NAME_IS_AVAILABLE)
-  private Boolean isAvailable;
-
   public static final String SERIALIZED_NAME_VALID_COMBINATIONS = "validCombinations";
   @SerializedName(SERIALIZED_NAME_VALID_COMBINATIONS)
-  private List<PageTypeCombination> validCombinations = null;
+  private List<PageTypeCombinationV2> validCombinations = null;
 
-  public CampaignAvailability() {
+  public CampaignAvailabilityV2() {
   }
 
-  public CampaignAvailability buyType(BuyTypeEnum buyType) {
+  public CampaignAvailabilityV2 budgetModelAvailabilities(List<BudgetModelAvailabilitiesEnum> budgetModelAvailabilities) {
+    
+    this.budgetModelAvailabilities = budgetModelAvailabilities;
+    return this;
+  }
+
+  public CampaignAvailabilityV2 addBudgetModelAvailabilitiesItem(BudgetModelAvailabilitiesEnum budgetModelAvailabilitiesItem) {
+    if (this.budgetModelAvailabilities == null) {
+      this.budgetModelAvailabilities = null;
+    }
+    this.budgetModelAvailabilities.add(budgetModelAvailabilitiesItem);
+    return this;
+  }
+
+   /**
+   * The budget models available for this campaign type and buy type combination. Presence of a value indicates that budget model is available.
+   * @return budgetModelAvailabilities
+  **/
+  @javax.annotation.Nullable
+
+  public List<BudgetModelAvailabilitiesEnum> getBudgetModelAvailabilities() {
+    return budgetModelAvailabilities;
+  }
+
+
+  public void setBudgetModelAvailabilities(List<BudgetModelAvailabilitiesEnum> budgetModelAvailabilities) {
+    this.budgetModelAvailabilities = budgetModelAvailabilities;
+  }
+
+
+  public CampaignAvailabilityV2 buyType(BuyTypeEnum buyType) {
     
     this.buyType = buyType;
     return this;
@@ -197,7 +276,7 @@ public class CampaignAvailability {
   }
 
 
-  public CampaignAvailability campaignType(CampaignTypeEnum campaignType) {
+  public CampaignAvailabilityV2 campaignType(CampaignTypeEnum campaignType) {
     
     this.campaignType = campaignType;
     return this;
@@ -219,35 +298,13 @@ public class CampaignAvailability {
   }
 
 
-  public CampaignAvailability isAvailable(Boolean isAvailable) {
-    
-    this.isAvailable = isAvailable;
-    return this;
-  }
-
-   /**
-   * Indicates whether the campaign type and buy type combination is available for the retailer
-   * @return isAvailable
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getIsAvailable() {
-    return isAvailable;
-  }
-
-
-  public void setIsAvailable(Boolean isAvailable) {
-    this.isAvailable = isAvailable;
-  }
-
-
-  public CampaignAvailability validCombinations(List<PageTypeCombination> validCombinations) {
+  public CampaignAvailabilityV2 validCombinations(List<PageTypeCombinationV2> validCombinations) {
     
     this.validCombinations = validCombinations;
     return this;
   }
 
-  public CampaignAvailability addValidCombinationsItem(PageTypeCombination validCombinationsItem) {
+  public CampaignAvailabilityV2 addValidCombinationsItem(PageTypeCombinationV2 validCombinationsItem) {
     if (this.validCombinations == null) {
       this.validCombinations = null;
     }
@@ -261,12 +318,12 @@ public class CampaignAvailability {
   **/
   @javax.annotation.Nullable
 
-  public List<PageTypeCombination> getValidCombinations() {
+  public List<PageTypeCombinationV2> getValidCombinations() {
     return validCombinations;
   }
 
 
-  public void setValidCombinations(List<PageTypeCombination> validCombinations) {
+  public void setValidCombinations(List<PageTypeCombinationV2> validCombinations) {
     this.validCombinations = validCombinations;
   }
 
@@ -280,11 +337,11 @@ public class CampaignAvailability {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CampaignAvailability campaignAvailability = (CampaignAvailability) o;
-    return Objects.equals(this.buyType, campaignAvailability.buyType) &&
-        Objects.equals(this.campaignType, campaignAvailability.campaignType) &&
-        Objects.equals(this.isAvailable, campaignAvailability.isAvailable) &&
-        Objects.equals(this.validCombinations, campaignAvailability.validCombinations);
+    CampaignAvailabilityV2 campaignAvailabilityV2 = (CampaignAvailabilityV2) o;
+    return Objects.equals(this.budgetModelAvailabilities, campaignAvailabilityV2.budgetModelAvailabilities) &&
+        Objects.equals(this.buyType, campaignAvailabilityV2.buyType) &&
+        Objects.equals(this.campaignType, campaignAvailabilityV2.campaignType) &&
+        Objects.equals(this.validCombinations, campaignAvailabilityV2.validCombinations);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -293,7 +350,7 @@ public class CampaignAvailability {
 
   @Override
   public int hashCode() {
-    return Objects.hash(buyType, campaignType, isAvailable, validCombinations);
+    return Objects.hash(budgetModelAvailabilities, buyType, campaignType, validCombinations);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -306,10 +363,10 @@ public class CampaignAvailability {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CampaignAvailability {\n");
+    sb.append("class CampaignAvailabilityV2 {\n");
+    sb.append("    budgetModelAvailabilities: ").append(toIndentedString(budgetModelAvailabilities)).append("\n");
     sb.append("    buyType: ").append(toIndentedString(buyType)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
-    sb.append("    isAvailable: ").append(toIndentedString(isAvailable)).append("\n");
     sb.append("    validCombinations: ").append(toIndentedString(validCombinations)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -333,9 +390,9 @@ public class CampaignAvailability {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("budgetModelAvailabilities");
     openapiFields.add("buyType");
     openapiFields.add("campaignType");
-    openapiFields.add("isAvailable");
     openapiFields.add("validCombinations");
 
     // a set of required properties/fields (JSON key names)
@@ -346,21 +403,25 @@ public class CampaignAvailability {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CampaignAvailability
+  * @throws IOException if the JSON Object is invalid with respect to CampaignAvailabilityV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!CampaignAvailability.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignAvailability is not found in the empty JSON string", CampaignAvailability.openapiRequiredFields.toString()));
+        if (!CampaignAvailabilityV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignAvailabilityV2 is not found in the empty JSON string", CampaignAvailabilityV2.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!CampaignAvailability.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CampaignAvailability` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!CampaignAvailabilityV2.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CampaignAvailabilityV2` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("budgetModelAvailabilities") != null && !jsonObj.get("budgetModelAvailabilities").isJsonNull() && !jsonObj.get("budgetModelAvailabilities").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `budgetModelAvailabilities` to be an array in the JSON string but got `%s`", jsonObj.get("budgetModelAvailabilities").toString()));
       }
       if ((jsonObj.get("buyType") != null && !jsonObj.get("buyType").isJsonNull()) && !jsonObj.get("buyType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `buyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buyType").toString()));
@@ -378,7 +439,7 @@ public class CampaignAvailability {
 
           // validate the optional field `validCombinations` (array)
           for (int i = 0; i < jsonArrayvalidCombinations.size(); i++) {
-            PageTypeCombination.validateJsonObject(jsonArrayvalidCombinations.get(i).getAsJsonObject());
+            PageTypeCombinationV2.validateJsonObject(jsonArrayvalidCombinations.get(i).getAsJsonObject());
           };
         }
       }
@@ -388,22 +449,22 @@ public class CampaignAvailability {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CampaignAvailability.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CampaignAvailability' and its subtypes
+       if (!CampaignAvailabilityV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CampaignAvailabilityV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CampaignAvailability> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CampaignAvailability.class));
+       final TypeAdapter<CampaignAvailabilityV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CampaignAvailabilityV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CampaignAvailability>() {
+       return (TypeAdapter<T>) new TypeAdapter<CampaignAvailabilityV2>() {
            @Override
-           public void write(JsonWriter out, CampaignAvailability value) throws IOException {
+           public void write(JsonWriter out, CampaignAvailabilityV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public CampaignAvailability read(JsonReader in) throws IOException {
+           public CampaignAvailabilityV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -414,18 +475,18 @@ public class CampaignAvailability {
   }
 
  /**
-  * Create an instance of CampaignAvailability given an JSON string
+  * Create an instance of CampaignAvailabilityV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of CampaignAvailability
-  * @throws IOException if the JSON string is invalid with respect to CampaignAvailability
+  * @return An instance of CampaignAvailabilityV2
+  * @throws IOException if the JSON string is invalid with respect to CampaignAvailabilityV2
   */
-  public static CampaignAvailability fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CampaignAvailability.class);
+  public static CampaignAvailabilityV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CampaignAvailabilityV2.class);
   }
 
  /**
-  * Convert an instance of CampaignAvailability to an JSON string
+  * Convert an instance of CampaignAvailabilityV2 to an JSON string
   *
   * @return JSON string
   */

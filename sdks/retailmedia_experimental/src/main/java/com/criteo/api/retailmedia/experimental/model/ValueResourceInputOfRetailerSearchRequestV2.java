@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.ValueResourceOfRetailerSearchRequest;
+import com.criteo.api.retailmedia.experimental.model.ValueResourceOfRetailerSearchRequestV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -48,15 +48,15 @@ import com.criteo.api.retailmedia.experimental.JSON;
  * A top-level object that encapsulates a Criteo API request for a single value object.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ValueResourceInputOfRetailerSearchRequest {
+public class ValueResourceInputOfRetailerSearchRequestV2 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private ValueResourceOfRetailerSearchRequest data;
+  private ValueResourceOfRetailerSearchRequestV2 data;
 
-  public ValueResourceInputOfRetailerSearchRequest() {
+  public ValueResourceInputOfRetailerSearchRequestV2() {
   }
 
-  public ValueResourceInputOfRetailerSearchRequest data(ValueResourceOfRetailerSearchRequest data) {
+  public ValueResourceInputOfRetailerSearchRequestV2 data(ValueResourceOfRetailerSearchRequestV2 data) {
     
     this.data = data;
     return this;
@@ -68,12 +68,12 @@ public class ValueResourceInputOfRetailerSearchRequest {
   **/
   @javax.annotation.Nullable
 
-  public ValueResourceOfRetailerSearchRequest getData() {
+  public ValueResourceOfRetailerSearchRequestV2 getData() {
     return data;
   }
 
 
-  public void setData(ValueResourceOfRetailerSearchRequest data) {
+  public void setData(ValueResourceOfRetailerSearchRequestV2 data) {
     this.data = data;
   }
 
@@ -87,8 +87,8 @@ public class ValueResourceInputOfRetailerSearchRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest = (ValueResourceInputOfRetailerSearchRequest) o;
-    return Objects.equals(this.data, valueResourceInputOfRetailerSearchRequest.data);
+    ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2 = (ValueResourceInputOfRetailerSearchRequestV2) o;
+    return Objects.equals(this.data, valueResourceInputOfRetailerSearchRequestV2.data);
   }
 
   @Override
@@ -99,7 +99,7 @@ public class ValueResourceInputOfRetailerSearchRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ValueResourceInputOfRetailerSearchRequest {\n");
+    sb.append("class ValueResourceInputOfRetailerSearchRequestV2 {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -133,25 +133,25 @@ public class ValueResourceInputOfRetailerSearchRequest {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ValueResourceInputOfRetailerSearchRequest
+  * @throws IOException if the JSON Object is invalid with respect to ValueResourceInputOfRetailerSearchRequestV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ValueResourceInputOfRetailerSearchRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceInputOfRetailerSearchRequest is not found in the empty JSON string", ValueResourceInputOfRetailerSearchRequest.openapiRequiredFields.toString()));
+        if (!ValueResourceInputOfRetailerSearchRequestV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceInputOfRetailerSearchRequestV2 is not found in the empty JSON string", ValueResourceInputOfRetailerSearchRequestV2.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!ValueResourceInputOfRetailerSearchRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceInputOfRetailerSearchRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!ValueResourceInputOfRetailerSearchRequestV2.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceInputOfRetailerSearchRequestV2` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        ValueResourceOfRetailerSearchRequest.validateJsonObject(jsonObj.getAsJsonObject("data"));
+        ValueResourceOfRetailerSearchRequestV2.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 
@@ -159,22 +159,22 @@ public class ValueResourceInputOfRetailerSearchRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ValueResourceInputOfRetailerSearchRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ValueResourceInputOfRetailerSearchRequest' and its subtypes
+       if (!ValueResourceInputOfRetailerSearchRequestV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ValueResourceInputOfRetailerSearchRequestV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ValueResourceInputOfRetailerSearchRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceInputOfRetailerSearchRequest.class));
+       final TypeAdapter<ValueResourceInputOfRetailerSearchRequestV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceInputOfRetailerSearchRequestV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ValueResourceInputOfRetailerSearchRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<ValueResourceInputOfRetailerSearchRequestV2>() {
            @Override
-           public void write(JsonWriter out, ValueResourceInputOfRetailerSearchRequest value) throws IOException {
+           public void write(JsonWriter out, ValueResourceInputOfRetailerSearchRequestV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ValueResourceInputOfRetailerSearchRequest read(JsonReader in) throws IOException {
+           public ValueResourceInputOfRetailerSearchRequestV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -185,18 +185,18 @@ public class ValueResourceInputOfRetailerSearchRequest {
   }
 
  /**
-  * Create an instance of ValueResourceInputOfRetailerSearchRequest given an JSON string
+  * Create an instance of ValueResourceInputOfRetailerSearchRequestV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ValueResourceInputOfRetailerSearchRequest
-  * @throws IOException if the JSON string is invalid with respect to ValueResourceInputOfRetailerSearchRequest
+  * @return An instance of ValueResourceInputOfRetailerSearchRequestV2
+  * @throws IOException if the JSON string is invalid with respect to ValueResourceInputOfRetailerSearchRequestV2
   */
-  public static ValueResourceInputOfRetailerSearchRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ValueResourceInputOfRetailerSearchRequest.class);
+  public static ValueResourceInputOfRetailerSearchRequestV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ValueResourceInputOfRetailerSearchRequestV2.class);
   }
 
  /**
-  * Convert an instance of ValueResourceInputOfRetailerSearchRequest to an JSON string
+  * Convert an instance of ValueResourceInputOfRetailerSearchRequestV2 to an JSON string
   *
   * @return JSON string
   */

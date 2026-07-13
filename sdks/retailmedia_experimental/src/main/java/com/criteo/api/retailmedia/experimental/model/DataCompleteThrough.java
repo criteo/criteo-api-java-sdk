@@ -67,7 +67,7 @@ public class DataCompleteThrough {
   }
 
    /**
-   * The instant through which data is complete, in the format \&quot;yyyy-MM-dd HH:mm:ss\&quot; in Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.Timezone.
+   * The instant through which data is complete, in the format \&quot;yyyy-MM-dd HH:mm:ss\&quot; in the timezone given by the {timezone} field.
    * @return dateTime
   **/
   @javax.annotation.Nullable
@@ -89,7 +89,7 @@ public class DataCompleteThrough {
   }
 
    /**
-   * IANA timezone for Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.DateTime (e.g. \&quot;UTC\&quot;, \&quot;America/New_York\&quot;). Matches the query timezone.
+   * IANA timezone for the {dateTime} field (e.g. \&quot;UTC\&quot;, \&quot;America/New_York\&quot;). Matches the query timezone.
    * @return timezone
   **/
   @javax.annotation.Nullable

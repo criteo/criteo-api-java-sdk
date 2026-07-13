@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.CampaignAvailability;
+import com.criteo.api.retailmedia.experimental.model.CampaignAvailabilityV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,25 +51,25 @@ import com.criteo.api.retailmedia.experimental.JSON;
  * The result of a query for the configuration of a retailer
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class RetailerResult {
+public class RetailerResultV2 {
   public static final String SERIALIZED_NAME_CAMPAIGN_AVAILABILITIES = "campaignAvailabilities";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_AVAILABILITIES)
-  private List<CampaignAvailability> campaignAvailabilities = null;
+  private List<CampaignAvailabilityV2> campaignAvailabilities = null;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public RetailerResult() {
+  public RetailerResultV2() {
   }
 
-  public RetailerResult campaignAvailabilities(List<CampaignAvailability> campaignAvailabilities) {
+  public RetailerResultV2 campaignAvailabilities(List<CampaignAvailabilityV2> campaignAvailabilities) {
     
     this.campaignAvailabilities = campaignAvailabilities;
     return this;
   }
 
-  public RetailerResult addCampaignAvailabilitiesItem(CampaignAvailability campaignAvailabilitiesItem) {
+  public RetailerResultV2 addCampaignAvailabilitiesItem(CampaignAvailabilityV2 campaignAvailabilitiesItem) {
     if (this.campaignAvailabilities == null) {
       this.campaignAvailabilities = null;
     }
@@ -78,22 +78,22 @@ public class RetailerResult {
   }
 
    /**
-   * A list of campaign availabilities for the retailer, each of which shows the availability of a specific campaign type and buy type combination
+   * A list of campaign availabilities for the retailer, each showing the budget models available for a specific campaign type and buy type combination
    * @return campaignAvailabilities
   **/
   @javax.annotation.Nullable
 
-  public List<CampaignAvailability> getCampaignAvailabilities() {
+  public List<CampaignAvailabilityV2> getCampaignAvailabilities() {
     return campaignAvailabilities;
   }
 
 
-  public void setCampaignAvailabilities(List<CampaignAvailability> campaignAvailabilities) {
+  public void setCampaignAvailabilities(List<CampaignAvailabilityV2> campaignAvailabilities) {
     this.campaignAvailabilities = campaignAvailabilities;
   }
 
 
-  public RetailerResult name(String name) {
+  public RetailerResultV2 name(String name) {
     
     this.name = name;
     return this;
@@ -124,9 +124,9 @@ public class RetailerResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RetailerResult retailerResult = (RetailerResult) o;
-    return Objects.equals(this.campaignAvailabilities, retailerResult.campaignAvailabilities) &&
-        Objects.equals(this.name, retailerResult.name);
+    RetailerResultV2 retailerResultV2 = (RetailerResultV2) o;
+    return Objects.equals(this.campaignAvailabilities, retailerResultV2.campaignAvailabilities) &&
+        Objects.equals(this.name, retailerResultV2.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -148,7 +148,7 @@ public class RetailerResult {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RetailerResult {\n");
+    sb.append("class RetailerResultV2 {\n");
     sb.append("    campaignAvailabilities: ").append(toIndentedString(campaignAvailabilities)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
@@ -184,20 +184,20 @@ public class RetailerResult {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to RetailerResult
+  * @throws IOException if the JSON Object is invalid with respect to RetailerResultV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!RetailerResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RetailerResult is not found in the empty JSON string", RetailerResult.openapiRequiredFields.toString()));
+        if (!RetailerResultV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RetailerResultV2 is not found in the empty JSON string", RetailerResultV2.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!RetailerResult.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RetailerResult` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!RetailerResultV2.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RetailerResultV2` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       if (jsonObj.get("campaignAvailabilities") != null && !jsonObj.get("campaignAvailabilities").isJsonNull()) {
@@ -210,7 +210,7 @@ public class RetailerResult {
 
           // validate the optional field `campaignAvailabilities` (array)
           for (int i = 0; i < jsonArraycampaignAvailabilities.size(); i++) {
-            CampaignAvailability.validateJsonObject(jsonArraycampaignAvailabilities.get(i).getAsJsonObject());
+            CampaignAvailabilityV2.validateJsonObject(jsonArraycampaignAvailabilities.get(i).getAsJsonObject());
           };
         }
       }
@@ -223,22 +223,22 @@ public class RetailerResult {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RetailerResult.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RetailerResult' and its subtypes
+       if (!RetailerResultV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RetailerResultV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RetailerResult> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RetailerResult.class));
+       final TypeAdapter<RetailerResultV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RetailerResultV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RetailerResult>() {
+       return (TypeAdapter<T>) new TypeAdapter<RetailerResultV2>() {
            @Override
-           public void write(JsonWriter out, RetailerResult value) throws IOException {
+           public void write(JsonWriter out, RetailerResultV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public RetailerResult read(JsonReader in) throws IOException {
+           public RetailerResultV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -249,18 +249,18 @@ public class RetailerResult {
   }
 
  /**
-  * Create an instance of RetailerResult given an JSON string
+  * Create an instance of RetailerResultV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of RetailerResult
-  * @throws IOException if the JSON string is invalid with respect to RetailerResult
+  * @return An instance of RetailerResultV2
+  * @throws IOException if the JSON string is invalid with respect to RetailerResultV2
   */
-  public static RetailerResult fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RetailerResult.class);
+  public static RetailerResultV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RetailerResultV2.class);
   }
 
  /**
-  * Convert an instance of RetailerResult to an JSON string
+  * Convert an instance of RetailerResultV2 to an JSON string
   *
   * @return JSON string
   */

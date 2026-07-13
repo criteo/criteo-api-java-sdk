@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.RetailerSearchRequest;
+import com.criteo.api.retailmedia.experimental.model.RetailerResultV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,22 +46,26 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * A value resource exposed by the API.
+ * A domain entity exposed by the API, identified by a unique id.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ValueResourceOfRetailerSearchRequest {
+public class EntityResourceOfRetailerResultV2 {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private RetailerSearchRequest attributes;
+  private RetailerResultV2 attributes;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public ValueResourceOfRetailerSearchRequest() {
+  public EntityResourceOfRetailerResultV2() {
   }
 
-  public ValueResourceOfRetailerSearchRequest attributes(RetailerSearchRequest attributes) {
+  public EntityResourceOfRetailerResultV2 attributes(RetailerResultV2 attributes) {
     
     this.attributes = attributes;
     return this;
@@ -73,17 +77,39 @@ public class ValueResourceOfRetailerSearchRequest {
   **/
   @javax.annotation.Nullable
 
-  public RetailerSearchRequest getAttributes() {
+  public RetailerResultV2 getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(RetailerSearchRequest attributes) {
+  public void setAttributes(RetailerResultV2 attributes) {
     this.attributes = attributes;
   }
 
 
-  public ValueResourceOfRetailerSearchRequest type(String type) {
+  public EntityResourceOfRetailerResultV2 id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Unique id of the entity.
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public EntityResourceOfRetailerResultV2 type(String type) {
     
     this.type = type;
     return this;
@@ -114,9 +140,10 @@ public class ValueResourceOfRetailerSearchRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ValueResourceOfRetailerSearchRequest valueResourceOfRetailerSearchRequest = (ValueResourceOfRetailerSearchRequest) o;
-    return Objects.equals(this.attributes, valueResourceOfRetailerSearchRequest.attributes) &&
-        Objects.equals(this.type, valueResourceOfRetailerSearchRequest.type);
+    EntityResourceOfRetailerResultV2 entityResourceOfRetailerResultV2 = (EntityResourceOfRetailerResultV2) o;
+    return Objects.equals(this.attributes, entityResourceOfRetailerResultV2.attributes) &&
+        Objects.equals(this.id, entityResourceOfRetailerResultV2.id) &&
+        Objects.equals(this.type, entityResourceOfRetailerResultV2.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -125,7 +152,7 @@ public class ValueResourceOfRetailerSearchRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, type);
+    return Objects.hash(attributes, id, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -138,8 +165,9 @@ public class ValueResourceOfRetailerSearchRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ValueResourceOfRetailerSearchRequest {\n");
+    sb.append("class EntityResourceOfRetailerResultV2 {\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -164,6 +192,7 @@ public class ValueResourceOfRetailerSearchRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("attributes");
+    openapiFields.add("id");
     openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
@@ -174,25 +203,28 @@ public class ValueResourceOfRetailerSearchRequest {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ValueResourceOfRetailerSearchRequest
+  * @throws IOException if the JSON Object is invalid with respect to EntityResourceOfRetailerResultV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ValueResourceOfRetailerSearchRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceOfRetailerSearchRequest is not found in the empty JSON string", ValueResourceOfRetailerSearchRequest.openapiRequiredFields.toString()));
+        if (!EntityResourceOfRetailerResultV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in EntityResourceOfRetailerResultV2 is not found in the empty JSON string", EntityResourceOfRetailerResultV2.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!ValueResourceOfRetailerSearchRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceOfRetailerSearchRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!EntityResourceOfRetailerResultV2.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EntityResourceOfRetailerResultV2` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        RetailerSearchRequest.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        RetailerResultV2.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
@@ -203,22 +235,22 @@ public class ValueResourceOfRetailerSearchRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ValueResourceOfRetailerSearchRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ValueResourceOfRetailerSearchRequest' and its subtypes
+       if (!EntityResourceOfRetailerResultV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'EntityResourceOfRetailerResultV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ValueResourceOfRetailerSearchRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceOfRetailerSearchRequest.class));
+       final TypeAdapter<EntityResourceOfRetailerResultV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(EntityResourceOfRetailerResultV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ValueResourceOfRetailerSearchRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<EntityResourceOfRetailerResultV2>() {
            @Override
-           public void write(JsonWriter out, ValueResourceOfRetailerSearchRequest value) throws IOException {
+           public void write(JsonWriter out, EntityResourceOfRetailerResultV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ValueResourceOfRetailerSearchRequest read(JsonReader in) throws IOException {
+           public EntityResourceOfRetailerResultV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -229,18 +261,18 @@ public class ValueResourceOfRetailerSearchRequest {
   }
 
  /**
-  * Create an instance of ValueResourceOfRetailerSearchRequest given an JSON string
+  * Create an instance of EntityResourceOfRetailerResultV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ValueResourceOfRetailerSearchRequest
-  * @throws IOException if the JSON string is invalid with respect to ValueResourceOfRetailerSearchRequest
+  * @return An instance of EntityResourceOfRetailerResultV2
+  * @throws IOException if the JSON string is invalid with respect to EntityResourceOfRetailerResultV2
   */
-  public static ValueResourceOfRetailerSearchRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ValueResourceOfRetailerSearchRequest.class);
+  public static EntityResourceOfRetailerResultV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, EntityResourceOfRetailerResultV2.class);
   }
 
  /**
-  * Convert an instance of ValueResourceOfRetailerSearchRequest to an JSON string
+  * Convert an instance of EntityResourceOfRetailerResultV2 to an JSON string
   *
   * @return JSON string
   */

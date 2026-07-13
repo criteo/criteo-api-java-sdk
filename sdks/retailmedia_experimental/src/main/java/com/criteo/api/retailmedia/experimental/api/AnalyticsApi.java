@@ -89,7 +89,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * Build call for generateAsyncAccountsReport
+     * Build call for generateAsyncAccountsReportV2
      * @param asyncAccountsReportRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -100,7 +100,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncAccountsReportCall(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateAsyncAccountsReportV2Call(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -146,13 +146,13 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateAsyncAccountsReportValidateBeforeCall(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateAsyncAccountsReportV2ValidateBeforeCall(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'asyncAccountsReportRequest' is set
         if (asyncAccountsReportRequest == null) {
-            throw new ApiException("Missing the required parameter 'asyncAccountsReportRequest' when calling generateAsyncAccountsReport(Async)");
+            throw new ApiException("Missing the required parameter 'asyncAccountsReportRequest' when calling generateAsyncAccountsReportV2(Async)");
         }
 
-        return generateAsyncAccountsReportCall(asyncAccountsReportRequest, _callback);
+        return generateAsyncAccountsReportV2Call(asyncAccountsReportRequest, _callback);
 
     }
 
@@ -168,8 +168,8 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public AsyncReportResponse generateAsyncAccountsReport(AsyncAccountsReportRequest asyncAccountsReportRequest) throws ApiException {
-        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncAccountsReportWithHttpInfo(asyncAccountsReportRequest);
+    public AsyncReportResponse generateAsyncAccountsReportV2(AsyncAccountsReportRequest asyncAccountsReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncAccountsReportV2WithHttpInfo(asyncAccountsReportRequest);
         return localVarResp.getData();
     }
 
@@ -185,8 +185,8 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AsyncReportResponse> generateAsyncAccountsReportWithHttpInfo(AsyncAccountsReportRequest asyncAccountsReportRequest) throws ApiException {
-        okhttp3.Call localVarCall = generateAsyncAccountsReportValidateBeforeCall(asyncAccountsReportRequest, null);
+    public ApiResponse<AsyncReportResponse> generateAsyncAccountsReportV2WithHttpInfo(AsyncAccountsReportRequest asyncAccountsReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncAccountsReportV2ValidateBeforeCall(asyncAccountsReportRequest, null);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -204,15 +204,15 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncAccountsReportAsync(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
+    public okhttp3.Call generateAsyncAccountsReportV2Async(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = generateAsyncAccountsReportValidateBeforeCall(asyncAccountsReportRequest, _callback);
+        okhttp3.Call localVarCall = generateAsyncAccountsReportV2ValidateBeforeCall(asyncAccountsReportRequest, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for generateAsyncCampaignsReport
+     * Build call for generateAsyncCampaignsReportV2
      * @param asyncCampaignsReportRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -223,7 +223,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncCampaignsReportCall(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateAsyncCampaignsReportV2Call(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -269,13 +269,13 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateAsyncCampaignsReportValidateBeforeCall(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateAsyncCampaignsReportV2ValidateBeforeCall(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'asyncCampaignsReportRequest' is set
         if (asyncCampaignsReportRequest == null) {
-            throw new ApiException("Missing the required parameter 'asyncCampaignsReportRequest' when calling generateAsyncCampaignsReport(Async)");
+            throw new ApiException("Missing the required parameter 'asyncCampaignsReportRequest' when calling generateAsyncCampaignsReportV2(Async)");
         }
 
-        return generateAsyncCampaignsReportCall(asyncCampaignsReportRequest, _callback);
+        return generateAsyncCampaignsReportV2Call(asyncCampaignsReportRequest, _callback);
 
     }
 
@@ -291,8 +291,8 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public AsyncReportResponse generateAsyncCampaignsReport(AsyncCampaignsReportRequest asyncCampaignsReportRequest) throws ApiException {
-        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncCampaignsReportWithHttpInfo(asyncCampaignsReportRequest);
+    public AsyncReportResponse generateAsyncCampaignsReportV2(AsyncCampaignsReportRequest asyncCampaignsReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncCampaignsReportV2WithHttpInfo(asyncCampaignsReportRequest);
         return localVarResp.getData();
     }
 
@@ -308,8 +308,8 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AsyncReportResponse> generateAsyncCampaignsReportWithHttpInfo(AsyncCampaignsReportRequest asyncCampaignsReportRequest) throws ApiException {
-        okhttp3.Call localVarCall = generateAsyncCampaignsReportValidateBeforeCall(asyncCampaignsReportRequest, null);
+    public ApiResponse<AsyncReportResponse> generateAsyncCampaignsReportV2WithHttpInfo(AsyncCampaignsReportRequest asyncCampaignsReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncCampaignsReportV2ValidateBeforeCall(asyncCampaignsReportRequest, null);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -327,9 +327,9 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncCampaignsReportAsync(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
+    public okhttp3.Call generateAsyncCampaignsReportV2Async(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = generateAsyncCampaignsReportValidateBeforeCall(asyncCampaignsReportRequest, _callback);
+        okhttp3.Call localVarCall = generateAsyncCampaignsReportV2ValidateBeforeCall(asyncCampaignsReportRequest, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -458,7 +458,7 @@ public class AnalyticsApi {
         return localVarCall;
     }
     /**
-     * Build call for generateAsyncLineItemsReport
+     * Build call for generateAsyncLineItemsReportV2
      * @param asyncLineItemsReportRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -469,7 +469,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncLineItemsReportCall(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateAsyncLineItemsReportV2Call(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -515,13 +515,13 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateAsyncLineItemsReportValidateBeforeCall(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateAsyncLineItemsReportV2ValidateBeforeCall(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'asyncLineItemsReportRequest' is set
         if (asyncLineItemsReportRequest == null) {
-            throw new ApiException("Missing the required parameter 'asyncLineItemsReportRequest' when calling generateAsyncLineItemsReport(Async)");
+            throw new ApiException("Missing the required parameter 'asyncLineItemsReportRequest' when calling generateAsyncLineItemsReportV2(Async)");
         }
 
-        return generateAsyncLineItemsReportCall(asyncLineItemsReportRequest, _callback);
+        return generateAsyncLineItemsReportV2Call(asyncLineItemsReportRequest, _callback);
 
     }
 
@@ -537,8 +537,8 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public AsyncReportResponse generateAsyncLineItemsReport(AsyncLineItemsReportRequest asyncLineItemsReportRequest) throws ApiException {
-        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncLineItemsReportWithHttpInfo(asyncLineItemsReportRequest);
+    public AsyncReportResponse generateAsyncLineItemsReportV2(AsyncLineItemsReportRequest asyncLineItemsReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncLineItemsReportV2WithHttpInfo(asyncLineItemsReportRequest);
         return localVarResp.getData();
     }
 
@@ -554,8 +554,8 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AsyncReportResponse> generateAsyncLineItemsReportWithHttpInfo(AsyncLineItemsReportRequest asyncLineItemsReportRequest) throws ApiException {
-        okhttp3.Call localVarCall = generateAsyncLineItemsReportValidateBeforeCall(asyncLineItemsReportRequest, null);
+    public ApiResponse<AsyncReportResponse> generateAsyncLineItemsReportV2WithHttpInfo(AsyncLineItemsReportRequest asyncLineItemsReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncLineItemsReportV2ValidateBeforeCall(asyncLineItemsReportRequest, null);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -573,9 +573,9 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncLineItemsReportAsync(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
+    public okhttp3.Call generateAsyncLineItemsReportV2Async(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = generateAsyncLineItemsReportValidateBeforeCall(asyncLineItemsReportRequest, _callback);
+        okhttp3.Call localVarCall = generateAsyncLineItemsReportV2ValidateBeforeCall(asyncLineItemsReportRequest, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

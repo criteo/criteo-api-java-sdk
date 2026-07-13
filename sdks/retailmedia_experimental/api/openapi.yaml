@@ -941,8 +941,8 @@ paths:
       x-accepts: application/json
   /experimental/retail-media/accounts/{accountId}/retailers/search:
     post:
-      description: Searches for retailers associated with the specified account based
-        on provided search criteria
+      description: Searches for retailers associated with the specified account and
+        returns budget model availability for each retailer
       operationId: SearchAccountRetailers
       parameters:
       - description: The external account identifier
@@ -983,7 +983,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailerSearchRequest'
+              $ref: '#/components/schemas/ValueResourceInputOfRetailerSearchRequestV2'
         description: The search request containing filtering parameters
         required: true
       responses:
@@ -991,7 +991,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata'
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata'
           description: Success
       security:
       - oauth:
@@ -2344,7 +2344,7 @@ paths:
     post:
       description: "Returns an asynchronous Accounts Report\r\n<br />\r\nThis endpoint\
         \ is subject to specific rate limits."
-      operationId: GenerateAsyncAccountsReport
+      operationId: GenerateAsyncAccountsReportV2
       requestBody:
         content:
           application/json:
@@ -2371,7 +2371,7 @@ paths:
     post:
       description: "Return an asynchronous Campaigns Report\r\n<br />\r\nThis endpoint\
         \ is subject to specific rate limits."
-      operationId: GenerateAsyncCampaignsReport
+      operationId: GenerateAsyncCampaignsReportV2
       requestBody:
         content:
           application/json:
@@ -2425,7 +2425,7 @@ paths:
     post:
       description: "Returns an asynchronous Line Items Report\r\n<br />\r\nThis endpoint\
         \ is subject to specific rate limits."
-      operationId: GenerateAsyncLineItemsReport
+      operationId: GenerateAsyncLineItemsReportV2
       requestBody:
         content:
           application/json:
@@ -5448,13 +5448,15 @@ components:
       - name
       - retailerIds
       type: object
-    CampaignAvailability:
+    CampaignAvailabilityV2:
       additionalProperties: false
-      description: "Information about the availability of a specific campaign type\
-        \ and buy type combination, and page types and environments supported for\
-        \ that combination"
+      description: "Information about the budget model availability for a specific\
+        \ campaign type and buy type combination, and page types and environments\
+        \ supported for that combination"
       example:
-        isAvailable: true
+        budgetModelAvailabilities:
+        - unknown
+        - unknown
         campaignType: unknown
         buyType: unknown
         validCombinations:
@@ -5463,6 +5465,18 @@ components:
         - pageType: unknown
           pageEnvironmentType: unknown
       properties:
+        budgetModelAvailabilities:
+          description: The budget models available for this campaign type and buy
+            type combination. Presence of a value indicates that budget model is available.
+          items:
+            description: Possible budget models for retail media campaigns
+            enum:
+            - unknown
+            - criteoBudget
+            - retailerBudget
+            type: string
+          nullable: true
+          type: array
         buyType:
           description: The buy type this object represents availability for
           enum:
@@ -5482,16 +5496,11 @@ components:
           - offsite
           nullable: true
           type: string
-        isAvailable:
-          description: Indicates whether the campaign type and buy type combination
-            is available for the retailer
-          nullable: true
-          type: boolean
         validCombinations:
           description: PageType-PageEnvironmentType pairs which are supported for
             this campaign-buy type combination
           items:
-            $ref: '#/components/schemas/PageTypeCombination'
+            $ref: '#/components/schemas/PageTypeCombinationV2'
           nullable: true
           type: array
       type: object
@@ -6328,12 +6337,12 @@ components:
       properties:
         dateTime:
           description: "The instant through which data is complete, in the format\
-            \ \"yyyy-MM-dd HH:mm:ss\" in Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.Timezone."
+            \ \"yyyy-MM-dd HH:mm:ss\" in the timezone given by the {timezone} field."
           nullable: true
           type: string
         timezone:
-          description: "IANA timezone for Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.DateTime\
-            \ (e.g. \"UTC\", \"America/New_York\"). Matches the query timezone."
+          description: "IANA timezone for the {dateTime} field (e.g. \"UTC\", \"America/New_York\"\
+            ). Matches the query timezone."
           nullable: true
           type: string
       type: object
@@ -6976,7 +6985,7 @@ components:
           readOnly: true
           type: array
       type: object
-    EntityResourceCollectionOutcomeOfRetailerResultAndMetadata:
+    EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
         several entities and metadata.
@@ -6989,7 +6998,9 @@ components:
         - attributes:
             name: name
             campaignAvailabilities:
-            - isAvailable: true
+            - budgetModelAvailabilities:
+              - unknown
+              - unknown
               campaignType: unknown
               buyType: unknown
               validCombinations:
@@ -6997,7 +7008,9 @@ components:
                 pageEnvironmentType: unknown
               - pageType: unknown
                 pageEnvironmentType: unknown
-            - isAvailable: true
+            - budgetModelAvailabilities:
+              - unknown
+              - unknown
               campaignType: unknown
               buyType: unknown
               validCombinations:
@@ -7010,7 +7023,9 @@ components:
         - attributes:
             name: name
             campaignAvailabilities:
-            - isAvailable: true
+            - budgetModelAvailabilities:
+              - unknown
+              - unknown
               campaignType: unknown
               buyType: unknown
               validCombinations:
@@ -7018,7 +7033,9 @@ components:
                 pageEnvironmentType: unknown
               - pageType: unknown
                 pageEnvironmentType: unknown
-            - isAvailable: true
+            - budgetModelAvailabilities:
+              - unknown
+              - unknown
               campaignType: unknown
               buyType: unknown
               validCombinations:
@@ -7069,7 +7086,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/EntityResourceOfRetailerResult'
+            $ref: '#/components/schemas/EntityResourceOfRetailerResultV2'
           nullable: true
           type: array
         errors:
@@ -7471,14 +7488,16 @@ components:
           nullable: true
           type: string
       type: object
-    EntityResourceOfRetailerResult:
+    EntityResourceOfRetailerResultV2:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
       example:
         attributes:
           name: name
           campaignAvailabilities:
-          - isAvailable: true
+          - budgetModelAvailabilities:
+            - unknown
+            - unknown
             campaignType: unknown
             buyType: unknown
             validCombinations:
@@ -7486,7 +7505,9 @@ components:
               pageEnvironmentType: unknown
             - pageType: unknown
               pageEnvironmentType: unknown
-          - isAvailable: true
+          - budgetModelAvailabilities:
+            - unknown
+            - unknown
             campaignType: unknown
             buyType: unknown
             validCombinations:
@@ -7498,7 +7519,7 @@ components:
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/RetailerResult'
+          $ref: '#/components/schemas/RetailerResultV2'
         id:
           description: Unique id of the entity.
           nullable: true
@@ -9259,7 +9280,7 @@ components:
       - currentPageIndex
       - currentPageSize
       type: object
-    PageTypeCombination:
+    PageTypeCombinationV2:
       additionalProperties: false
       description: Represents a combination of page type and page environment type
         for a specific campaign-buy type.
@@ -9268,7 +9289,7 @@ components:
         pageEnvironmentType: unknown
       properties:
         pageEnvironmentType:
-          description: The page types which are supported for this campaign-buy type
+          description: The page environment type supported for this campaign-buy type
             combination
           enum:
           - unknown
@@ -9282,8 +9303,7 @@ components:
           nullable: true
           type: string
         pageType:
-          description: The page types which are supported for this campaign-buy type
-            combination
+          description: The page type supported for this campaign-buy type combination
           enum:
           - unknown
           - search
@@ -9297,6 +9317,7 @@ components:
           - favorites
           - searchbar
           - categoryMenu
+          - aiAssistant
           nullable: true
           type: string
       type: object
@@ -12163,13 +12184,15 @@ components:
           nullable: true
           type: string
       type: object
-    RetailerResult:
+    RetailerResultV2:
       additionalProperties: false
       description: The result of a query for the configuration of a retailer
       example:
         name: name
         campaignAvailabilities:
-        - isAvailable: true
+        - budgetModelAvailabilities:
+          - unknown
+          - unknown
           campaignType: unknown
           buyType: unknown
           validCombinations:
@@ -12177,7 +12200,9 @@ components:
             pageEnvironmentType: unknown
           - pageType: unknown
             pageEnvironmentType: unknown
-        - isAvailable: true
+        - budgetModelAvailabilities:
+          - unknown
+          - unknown
           campaignType: unknown
           buyType: unknown
           validCombinations:
@@ -12188,11 +12213,11 @@ components:
       nullable: true
       properties:
         campaignAvailabilities:
-          description: "A list of campaign availabilities for the retailer, each of\
-            \ which shows the availability of a specific campaign type and buy type\
+          description: "A list of campaign availabilities for the retailer, each showing\
+            \ the budget models available for a specific campaign type and buy type\
             \ combination"
           items:
-            $ref: '#/components/schemas/CampaignAvailability'
+            $ref: '#/components/schemas/CampaignAvailabilityV2'
           nullable: true
           type: array
         name:
@@ -12200,7 +12225,7 @@ components:
           nullable: true
           type: string
       type: object
-    RetailerSearchRequest:
+    RetailerSearchRequestV2:
       additionalProperties: false
       description: Request model for searching retailers
       example:
@@ -16615,9 +16640,8 @@ components:
       description: "Real Time Performance report body request (one sheeter: startDate,\
         \ endDate (optional), RetailerIds, accountIds, campaignIds, lineItemIds, dimensions,\
         \ metrics, timezones).\r\nExtends SyncReport only (no default filters); adds\
-        \ entry filter arrays.\r\nDimensions and metrics are restricted to Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeDimension\
-        \ and Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric;\
-        \ invalid values cause deserialization to fail."
+        \ entry filter arrays.\r\nDimensions and metrics are restricted to their supported\
+        \ enumerated values; invalid values cause deserialization to fail."
       example:
         endDate: 2000-01-23T04:56:07.000+00:00
         lineItemIds:
@@ -16654,8 +16678,7 @@ components:
           type: array
         dimensions:
           description: "List of dimensions to report on (real-time: at least one required).\
-            \ Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeDimension\
-            \ are valid."
+            \ Only the supported dimension values are valid."
           items:
             description: "Dimensions supported by the real-time performance report\
               \ (streaming + hourly stats).\r\nOnly these values are accepted; invalid\
@@ -16687,8 +16710,7 @@ components:
           type: array
         metrics:
           description: "List of metrics to report on (real-time: at least one required).\
-            \ Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric\
-            \ are valid."
+            \ Only the supported metric values are valid."
           items:
             description: "Metrics supported by the real-time performance report (streaming\
               \ + hourly stats).\r\nOnly these values are accepted; invalid values\
@@ -17386,7 +17408,7 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceLineItemBudgetCapOutHistoryRequest'
       type: object
-    ValueResourceInputOfRetailerSearchRequest:
+    ValueResourceInputOfRetailerSearchRequestV2:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
         single value object.
@@ -17399,7 +17421,7 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/ValueResourceOfRetailerSearchRequest'
+          $ref: '#/components/schemas/ValueResourceOfRetailerSearchRequestV2'
       type: object
     ValueResourceInputOfRetailMediaBrandAccountCreationV2:
       additionalProperties: false
@@ -17650,7 +17672,7 @@ components:
           nullable: true
           type: string
       type: object
-    ValueResourceOfRetailerSearchRequest:
+    ValueResourceOfRetailerSearchRequestV2:
       additionalProperties: false
       description: A value resource exposed by the API.
       example:
@@ -17661,7 +17683,7 @@ components:
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/RetailerSearchRequest'
+          $ref: '#/components/schemas/RetailerSearchRequestV2'
         type:
           description: Type of the resource.
           nullable: true

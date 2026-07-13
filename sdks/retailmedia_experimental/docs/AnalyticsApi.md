@@ -4,10 +4,10 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**generateAsyncAccountsReport**](AnalyticsApi.md#generateAsyncAccountsReport) | **POST** /experimental/retail-media/reports/accounts | /experimental/retail-media/reports/accounts |
-| [**generateAsyncCampaignsReport**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /experimental/retail-media/reports/campaigns | /experimental/retail-media/reports/campaigns |
+| [**generateAsyncAccountsReportV2**](AnalyticsApi.md#generateAsyncAccountsReportV2) | **POST** /experimental/retail-media/reports/accounts | /experimental/retail-media/reports/accounts |
+| [**generateAsyncCampaignsReportV2**](AnalyticsApi.md#generateAsyncCampaignsReportV2) | **POST** /experimental/retail-media/reports/campaigns | /experimental/retail-media/reports/campaigns |
 | [**generateAsyncFillRateReport**](AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /experimental/retail-media/reports/fillrate | /experimental/retail-media/reports/fillrate |
-| [**generateAsyncLineItemsReport**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /experimental/retail-media/reports/line-items | /experimental/retail-media/reports/line-items |
+| [**generateAsyncLineItemsReportV2**](AnalyticsApi.md#generateAsyncLineItemsReportV2) | **POST** /experimental/retail-media/reports/line-items | /experimental/retail-media/reports/line-items |
 | [**generateAsyncOffsiteReport**](AnalyticsApi.md#generateAsyncOffsiteReport) | **POST** /experimental/retail-media/reports/offsite | /experimental/retail-media/reports/offsite |
 | [**generateAsyncUnfilledPlacementsReport**](AnalyticsApi.md#generateAsyncUnfilledPlacementsReport) | **POST** /experimental/retail-media/reports/unfilled-placements | /experimental/retail-media/reports/unfilled-placements |
 | [**generateDigitalShelfIntelligenceInsight**](AnalyticsApi.md#generateDigitalShelfIntelligenceInsight) | **POST** /experimental/retail-media/insights/digital-shelf-intelligence | /experimental/retail-media/insights/digital-shelf-intelligence |
@@ -23,9 +23,9 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 
 
-## generateAsyncAccountsReport
+## generateAsyncAccountsReportV2
 
-> AsyncReportResponse generateAsyncAccountsReport(asyncAccountsReportRequest)
+> AsyncReportResponse generateAsyncAccountsReportV2(asyncAccountsReportRequest)
 
 /experimental/retail-media/reports/accounts
 
@@ -72,10 +72,10 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         AsyncAccountsReportRequest asyncAccountsReportRequest = new AsyncAccountsReportRequest(); // AsyncAccountsReportRequest | 
         try {
-            AsyncReportResponse result = apiInstance.generateAsyncAccountsReport(asyncAccountsReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncAccountsReportV2(asyncAccountsReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#generateAsyncAccountsReport");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncAccountsReportV2");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -112,9 +112,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## generateAsyncCampaignsReport
+## generateAsyncCampaignsReportV2
 
-> AsyncReportResponse generateAsyncCampaignsReport(asyncCampaignsReportRequest)
+> AsyncReportResponse generateAsyncCampaignsReportV2(asyncCampaignsReportRequest)
 
 /experimental/retail-media/reports/campaigns
 
@@ -161,10 +161,10 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         AsyncCampaignsReportRequest asyncCampaignsReportRequest = new AsyncCampaignsReportRequest(); // AsyncCampaignsReportRequest | 
         try {
-            AsyncReportResponse result = apiInstance.generateAsyncCampaignsReport(asyncCampaignsReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncCampaignsReportV2(asyncCampaignsReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#generateAsyncCampaignsReport");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncCampaignsReportV2");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -290,9 +290,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## generateAsyncLineItemsReport
+## generateAsyncLineItemsReportV2
 
-> AsyncReportResponse generateAsyncLineItemsReport(asyncLineItemsReportRequest)
+> AsyncReportResponse generateAsyncLineItemsReportV2(asyncLineItemsReportRequest)
 
 /experimental/retail-media/reports/line-items
 
@@ -339,10 +339,10 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         AsyncLineItemsReportRequest asyncLineItemsReportRequest = new AsyncLineItemsReportRequest(); // AsyncLineItemsReportRequest | 
         try {
-            AsyncReportResponse result = apiInstance.generateAsyncLineItemsReport(asyncLineItemsReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncLineItemsReportV2(asyncLineItemsReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#generateAsyncLineItemsReport");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncLineItemsReportV2");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());

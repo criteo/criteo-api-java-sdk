@@ -48,9 +48,9 @@ import com.criteo.api.retailmedia.experimental.JSON;
  * Represents a combination of page type and page environment type for a specific campaign-buy type.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PageTypeCombination {
+public class PageTypeCombinationV2 {
   /**
-   * The page types which are supported for this campaign-buy type combination
+   * The page environment type supported for this campaign-buy type combination
    */
   @JsonAdapter(PageEnvironmentTypeEnum.Adapter.class)
   public enum PageEnvironmentTypeEnum {
@@ -113,7 +113,7 @@ public class PageTypeCombination {
   private PageEnvironmentTypeEnum pageEnvironmentType;
 
   /**
-   * The page types which are supported for this campaign-buy type combination
+   * The page type supported for this campaign-buy type combination
    */
   @JsonAdapter(PageTypeEnum.Adapter.class)
   public enum PageTypeEnum {
@@ -139,7 +139,9 @@ public class PageTypeCombination {
     
     SEARCHBAR("searchbar"),
     
-    CATEGORYMENU("categoryMenu");
+    CATEGORYMENU("categoryMenu"),
+    
+    AIASSISTANT("aiAssistant");
 
     private String value;
 
@@ -183,17 +185,17 @@ public class PageTypeCombination {
   @SerializedName(SERIALIZED_NAME_PAGE_TYPE)
   private PageTypeEnum pageType;
 
-  public PageTypeCombination() {
+  public PageTypeCombinationV2() {
   }
 
-  public PageTypeCombination pageEnvironmentType(PageEnvironmentTypeEnum pageEnvironmentType) {
+  public PageTypeCombinationV2 pageEnvironmentType(PageEnvironmentTypeEnum pageEnvironmentType) {
     
     this.pageEnvironmentType = pageEnvironmentType;
     return this;
   }
 
    /**
-   * The page types which are supported for this campaign-buy type combination
+   * The page environment type supported for this campaign-buy type combination
    * @return pageEnvironmentType
   **/
   @javax.annotation.Nullable
@@ -208,14 +210,14 @@ public class PageTypeCombination {
   }
 
 
-  public PageTypeCombination pageType(PageTypeEnum pageType) {
+  public PageTypeCombinationV2 pageType(PageTypeEnum pageType) {
     
     this.pageType = pageType;
     return this;
   }
 
    /**
-   * The page types which are supported for this campaign-buy type combination
+   * The page type supported for this campaign-buy type combination
    * @return pageType
   **/
   @javax.annotation.Nullable
@@ -239,9 +241,9 @@ public class PageTypeCombination {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PageTypeCombination pageTypeCombination = (PageTypeCombination) o;
-    return Objects.equals(this.pageEnvironmentType, pageTypeCombination.pageEnvironmentType) &&
-        Objects.equals(this.pageType, pageTypeCombination.pageType);
+    PageTypeCombinationV2 pageTypeCombinationV2 = (PageTypeCombinationV2) o;
+    return Objects.equals(this.pageEnvironmentType, pageTypeCombinationV2.pageEnvironmentType) &&
+        Objects.equals(this.pageType, pageTypeCombinationV2.pageType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -263,7 +265,7 @@ public class PageTypeCombination {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PageTypeCombination {\n");
+    sb.append("class PageTypeCombinationV2 {\n");
     sb.append("    pageEnvironmentType: ").append(toIndentedString(pageEnvironmentType)).append("\n");
     sb.append("    pageType: ").append(toIndentedString(pageType)).append("\n");
     sb.append("}");
@@ -299,20 +301,20 @@ public class PageTypeCombination {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PageTypeCombination
+  * @throws IOException if the JSON Object is invalid with respect to PageTypeCombinationV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!PageTypeCombination.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PageTypeCombination is not found in the empty JSON string", PageTypeCombination.openapiRequiredFields.toString()));
+        if (!PageTypeCombinationV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PageTypeCombinationV2 is not found in the empty JSON string", PageTypeCombinationV2.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!PageTypeCombination.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PageTypeCombination` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!PageTypeCombinationV2.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PageTypeCombinationV2` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       if ((jsonObj.get("pageEnvironmentType") != null && !jsonObj.get("pageEnvironmentType").isJsonNull()) && !jsonObj.get("pageEnvironmentType").isJsonPrimitive()) {
@@ -327,22 +329,22 @@ public class PageTypeCombination {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PageTypeCombination.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PageTypeCombination' and its subtypes
+       if (!PageTypeCombinationV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PageTypeCombinationV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PageTypeCombination> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PageTypeCombination.class));
+       final TypeAdapter<PageTypeCombinationV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PageTypeCombinationV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<PageTypeCombination>() {
+       return (TypeAdapter<T>) new TypeAdapter<PageTypeCombinationV2>() {
            @Override
-           public void write(JsonWriter out, PageTypeCombination value) throws IOException {
+           public void write(JsonWriter out, PageTypeCombinationV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public PageTypeCombination read(JsonReader in) throws IOException {
+           public PageTypeCombinationV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -353,18 +355,18 @@ public class PageTypeCombination {
   }
 
  /**
-  * Create an instance of PageTypeCombination given an JSON string
+  * Create an instance of PageTypeCombinationV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of PageTypeCombination
-  * @throws IOException if the JSON string is invalid with respect to PageTypeCombination
+  * @return An instance of PageTypeCombinationV2
+  * @throws IOException if the JSON string is invalid with respect to PageTypeCombinationV2
   */
-  public static PageTypeCombination fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PageTypeCombination.class);
+  public static PageTypeCombinationV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PageTypeCombinationV2.class);
   }
 
  /**
-  * Convert an instance of PageTypeCombination to an JSON string
+  * Convert an instance of PageTypeCombinationV2 to an JSON string
   *
   * @return JSON string
   */

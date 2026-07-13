@@ -2,7 +2,7 @@
 
 # SyncRealTimePerformanceReport
 
-Real Time Performance report body request (one sheeter: startDate, endDate (optional), RetailerIds, accountIds, campaignIds, lineItemIds, dimensions, metrics, timezones).  Extends SyncReport only (no default filters); adds entry filter arrays.  Dimensions and metrics are restricted to Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeDimension and Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric; invalid values cause deserialization to fail.
+Real Time Performance report body request (one sheeter: startDate, endDate (optional), RetailerIds, accountIds, campaignIds, lineItemIds, dimensions, metrics, timezones).  Extends SyncReport only (no default filters); adds entry filter arrays.  Dimensions and metrics are restricted to their supported enumerated values; invalid values cause deserialization to fail.
 
 ## Properties
 
@@ -10,10 +10,10 @@ Real Time Performance report body request (one sheeter: startDate, endDate (opti
 |------------ | ------------- | ------------- | -------------|
 |**accountIds** | **List&lt;String&gt;** | Account ids to filter (plural; base has AccountId for single account). |  [optional] |
 |**campaignIds** | **List&lt;String&gt;** | Campaign ids to filter. |  [optional] |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeDimension are valid. |  [optional] |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on (real-time: at least one required). Only the supported dimension values are valid. |  [optional] |
 |**endDate** | **OffsetDateTime** | Optional end date/time (inclusive in the request timezone). If empty or not provided, no end date filter is applied.  When provided, used as the inclusive upper bound for the report range.  Hides base Report.EndDate so this report can treat end date as optional (no [Required]). |  [optional] |
 |**lineItemIds** | **List&lt;String&gt;** | Line item ids to filter. |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric are valid. |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on (real-time: at least one required). Only the supported metric values are valid. |  [optional] |
 |**retailerIds** | **List&lt;String&gt;** | Retailer ids to filter. This is not used for security, so no need to check for &gt; 0 elements |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date (real-time: must be within the last 7 days). |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
