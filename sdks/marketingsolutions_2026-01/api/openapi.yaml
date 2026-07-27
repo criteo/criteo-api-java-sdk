@@ -45,6 +45,7 @@ paths:
           description: Success
       security:
       - oauth: []
+      summary: /2026-01/advertisers/me
       tags:
       - Advertiser
       x-accepts: application/json
@@ -53,7 +54,8 @@ paths:
       description: This Statistics endpoint provides publisher data.
       operationId: GetTransparencyReport
       parameters:
-      - description: The advertiser id to fetch the transparency data.
+      - description: The advertiser ID to fetch the transparency data for. The advertiser
+          must already exist. Must be greater than 0.
         explode: false
         in: path
         name: advertiser-id
@@ -67,35 +69,29 @@ paths:
           application/json:
             example:
               shouldDisplayProductIds: false
-              startDate: 2025-08-11T00:00:00.0000000+00:00
-              endDate: 2025-08-14T00:00:00.0000000+00:00
+              startDate: 2024-01-01T00:00:00.0000000+00:00
+              endDate: 2024-01-04T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
           application/xml:
-            example: |-
-              <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2025-08-14T00:00:00+00:00</EndDate>
-                <StartDate>2025-08-11T00:00:00+00:00</StartDate>
-                <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
-              </TransparencyQueryMessage>
+            example: "<TransparencyQueryMessage xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"\
+              \ xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n  <EndDate>2024-01-04T00:00:00</EndDate>\r\n  <StartDate>2024-01-01T00:00:00</StartDate>\r\
+              \n  <ShouldDisplayProductIds>false</ShouldDisplayProductIds>\r\n</TransparencyQueryMessage>"
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
           text/xml:
-            example: |-
-              <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2025-08-14T00:00:00+00:00</EndDate>
-                <StartDate>2025-08-11T00:00:00+00:00</StartDate>
-                <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
-              </TransparencyQueryMessage>
+            example: "<TransparencyQueryMessage xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"\
+              \ xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n  <EndDate>2024-01-04T00:00:00</EndDate>\r\n  <StartDate>2024-01-01T00:00:00</StartDate>\r\
+              \n  <ShouldDisplayProductIds>false</ShouldDisplayProductIds>\r\n</TransparencyQueryMessage>"
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
           application/*+xml:
-            example: |-
-              <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2025-08-14T00:00:00+00:00</EndDate>
-                <StartDate>2025-08-11T00:00:00+00:00</StartDate>
-                <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
-              </TransparencyQueryMessage>
+            example: "<TransparencyQueryMessage xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"\
+              \ xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n  <EndDate>2024-01-04T00:00:00</EndDate>\r\n  <StartDate>2024-01-01T00:00:00</StartDate>\r\
+              \n  <ShouldDisplayProductIds>false</ShouldDisplayProductIds>\r\n</TransparencyQueryMessage>"
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
         description: The query message.
@@ -115,6 +111,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: "/2026-01/log-level/advertisers/{advertiser-id}/report"
       tags:
       - Analytics
       x-content-type: application/json
@@ -141,6 +138,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /2026-01/marketing-solutions/ad-sets
       tags:
       - Campaign
       x-content-type: application/json
@@ -166,6 +164,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /2026-01/marketing-solutions/ad-sets
       tags:
       - Campaign
       x-content-type: application/json
@@ -193,6 +192,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/2026-01/marketing-solutions/ad-sets/{ad-set-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -227,6 +227,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/2026-01/marketing-solutions/ad-sets/{ad-set-id}/audience"
       tags:
       - Campaign
       x-content-type: application/json
@@ -256,6 +257,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/2026-01/marketing-solutions/ad-sets/{ad-set-id}/category-bids"
       tags:
       - Campaign
       x-accepts: application/json
@@ -292,6 +294,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/2026-01/marketing-solutions/ad-sets/{ad-set-id}/category-bids"
       tags:
       - Campaign
       x-content-type: application/json
@@ -321,6 +324,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/2026-01/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers"
       tags:
       - Campaign
       x-accepts: application/json
@@ -358,6 +362,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: "/2026-01/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers"
       tags:
       - Campaign
       x-content-type: application/json
@@ -382,6 +387,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: /2026-01/marketing-solutions/ad-sets/search
       tags:
       - Campaign
       x-content-type: application/json
@@ -408,6 +414,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /2026-01/marketing-solutions/ad-sets/start
       tags:
       - Campaign
       x-content-type: application/json
@@ -434,6 +441,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /2026-01/marketing-solutions/ad-sets/stop
       tags:
       - Campaign
       x-content-type: application/json
@@ -461,6 +469,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: "/2026-01/marketing-solutions/ads/{ad-id}/product-filter"
       tags:
       - Reco
       x-accepts: application/json
@@ -487,6 +496,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Read
+      summary: "/2026-01/marketing-solutions/ads/{ad-id}/product-filter"
       tags:
       - Reco
       x-accepts: application/json
@@ -518,6 +528,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: "/2026-01/marketing-solutions/ads/{ad-id}/product-filter"
       tags:
       - Reco
       x-content-type: application/json
@@ -542,6 +553,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/2026-01/marketing-solutions/ads/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -568,6 +580,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/2026-01/marketing-solutions/ads/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -615,6 +628,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/2026-01/marketing-solutions/advertisers/{advertiser-id}/ads"
       tags:
       - Creative
       x-accepts: application/json
@@ -647,6 +661,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/2026-01/marketing-solutions/advertisers/{advertiser-id}/ads"
       tags:
       - Creative
       x-content-type: application/json
@@ -695,6 +710,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons"
       tags:
       - Creative
       x-accepts: application/json
@@ -727,6 +743,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons"
       tags:
       - Creative
       x-content-type: application/json
@@ -763,6 +780,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons-supported-sizes"
       tags:
       - Creative
       x-accepts: application/json
@@ -793,6 +811,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -826,6 +845,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -866,6 +886,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}"
       tags:
       - Creative
       x-content-type: application/json
@@ -922,6 +943,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}/preview"
       tags:
       - Creative
       x-accepts: application/json
@@ -971,6 +993,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/2026-01/marketing-solutions/advertisers/{advertiser-id}/creatives"
       tags:
       - Creative
       x-accepts: application/json
@@ -1003,6 +1026,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/2026-01/marketing-solutions/advertisers/{advertiser-id}/creatives"
       tags:
       - Creative
       x-content-type: application/json
@@ -1031,6 +1055,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /2026-01/marketing-solutions/audience-segments
       tags:
       - Audience
       x-content-type: application/json
@@ -1071,6 +1096,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: "/2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list"
       tags:
       - Audience
       x-accepts: application/json
@@ -1124,6 +1150,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: "/2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list"
       tags:
       - Audience
       x-content-type: application/json
@@ -1152,6 +1179,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Read
+      summary: "/2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics"
       tags:
       - Audience
       x-accepts: application/json
@@ -1178,6 +1206,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /2026-01/marketing-solutions/audience-segments/compute-sizes
       tags:
       - Audience
       x-content-type: application/json
@@ -1205,6 +1234,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /2026-01/marketing-solutions/audience-segments/create
       tags:
       - Audience
       x-content-type: application/json
@@ -1231,6 +1261,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /2026-01/marketing-solutions/audience-segments/delete
       tags:
       - Audience
       x-content-type: application/json
@@ -1258,6 +1289,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /2026-01/marketing-solutions/audience-segments/estimate-size
       tags:
       - Audience
       x-content-type: application/json
@@ -1294,6 +1326,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Read
+      summary: /2026-01/marketing-solutions/audience-segments/in-market-brands
       tags:
       - Audience
       x-accepts: application/json
@@ -1330,6 +1363,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Read
+      summary: /2026-01/marketing-solutions/audience-segments/in-market-interests
       tags:
       - Audience
       x-accepts: application/json
@@ -1380,6 +1414,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Read
+      summary: /2026-01/marketing-solutions/audience-segments/search
       tags:
       - Audience
       x-content-type: application/json
@@ -1408,6 +1443,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /2026-01/marketing-solutions/audiences
       tags:
       - Audience
       x-content-type: application/json
@@ -1435,6 +1471,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /2026-01/marketing-solutions/audiences/compute-sizes
       tags:
       - Audience
       x-content-type: application/json
@@ -1463,6 +1500,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /2026-01/marketing-solutions/audiences/create
       tags:
       - Audience
       x-content-type: application/json
@@ -1493,6 +1531,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /2026-01/marketing-solutions/audiences/delete
       tags:
       - Audience
       x-content-type: application/json
@@ -1520,6 +1559,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Manage
+      summary: /2026-01/marketing-solutions/audiences/estimate-size
       tags:
       - Audience
       x-content-type: application/json
@@ -1571,6 +1611,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Audience_Read
+      summary: /2026-01/marketing-solutions/audiences/search
       tags:
       - Audience
       x-content-type: application/json
@@ -1599,6 +1640,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /2026-01/marketing-solutions/campaigns
       tags:
       - Campaign
       x-content-type: application/json
@@ -1626,6 +1668,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
+      summary: /2026-01/marketing-solutions/campaigns
       tags:
       - Campaign
       x-content-type: application/json
@@ -1655,6 +1698,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: "/2026-01/marketing-solutions/campaigns/{campaign-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1681,6 +1725,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
+      summary: /2026-01/marketing-solutions/campaigns/search
       tags:
       - Campaign
       x-content-type: application/json
@@ -1704,6 +1749,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/2026-01/marketing-solutions/creatives/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -1729,6 +1775,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
+      summary: "/2026-01/marketing-solutions/creatives/{id}"
       tags:
       - Creative
       x-accepts: application/json
@@ -1761,6 +1808,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/2026-01/marketing-solutions/creatives/{id}"
       tags:
       - Creative
       x-content-type: application/json
@@ -1809,6 +1857,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Creative_Manage
+      summary: "/2026-01/marketing-solutions/creatives/{id}/preview"
       tags:
       - Creative
       x-accepts: application/json
@@ -1828,7 +1877,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: /2026-01/marketing-solutions/marketplace-performance-outcomes/advertisers
       tags:
       - Campaign
       x-accepts: application/json
@@ -1856,7 +1905,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1928,7 +1977,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/ad-preview"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1958,7 +2007,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/adsets"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2063,7 +2112,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/budgets"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2093,7 +2142,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/campaigns"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2123,7 +2172,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/seller-campaigns"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2172,7 +2221,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/sellers"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2194,26 +2243,23 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: /2026-01/marketing-solutions/marketplace-performance-outcomes/advertisers/preview-limit
       tags:
       - Campaign
       x-accepts: application/json
   /2026-01/marketing-solutions/marketplace-performance-outcomes/budgets:
     get:
-      description: "Return a collection of budgets filtered by optional filter parameters.\r\
-        \nIf all parameters are omitted the entire collection to which the user has\r\
-        \naccess is returned, except those whose endDate is in the past. Returned\
-        \ budgets must satisfy all supplied filter\r\ncriteria if multiple parameters\
-        \ are used.\r\n            \r\n<b>Date filter.</b> Filtering can return only\
-        \ budgets that were active for a\r\ndate range by specifying the startBeforeDate\
-        \ and endAfterDate. Leaving off the startBeforeDate\r\nvalue makes budgets\
-        \ with any startDate qualify, whereas when leaving off the endAfterDate value\
-        \ will only return\r\nbudgets whose endDate has not already passed. To get\
-        \ budgets that were active\r\non a specific date, set both values to that\
-        \ day.\r\n            \r\n<b>Spend.</b> If the endAfterDate is supplied, the\
-        \ spend excludes spend that\r\nhappened after that date. In the case of a\
-        \ daily budget, only the spend for\r\nthe final day is displayed.\r\n    \
-        \        \r\nSee the budgets endpoint for additional details."
+      description: "Return a collection of budgets filtered by optional filter parameters,\
+        \ **including archived budgets**. This is the endpoint to use when investigating\
+        \ past budget history.\r\n            \r\nBy default, budgets whose endDate\
+        \ is in the past are excluded. Use `endAfterDate` to retrieve archived budgets\
+        \ (e.g. `endAfterDate=2025-01-01` returns all budgets ending after that date).\
+        \ Use `sellerId` to filter to a specific seller — omitting it on large advertisers\
+        \ causes timeouts.\r\n            \r\n<b>Date filter.</b> To find budgets\
+        \ that were active on a specific date, set both `startBeforeDate` and `endAfterDate`\
+        \ to that day.\r\n            \r\n<b>Spend.</b> If `endAfterDate` is supplied,\
+        \ the spend excludes spend that happened after that date. For daily budgets,\
+        \ only the spend for the final day is displayed."
       operationId: GetMarketplaceSellerBudgets
       parameters:
       - description: Return only budgets belonging to the specified advertiser
@@ -2311,7 +2357,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: /2026-01/marketing-solutions/marketplace-performance-outcomes/budgets
       tags:
       - Campaign
       x-accepts: application/json
@@ -2352,7 +2398,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
-      summary: ""
+      summary: /2026-01/marketing-solutions/marketplace-performance-outcomes/budgets
       tags:
       - Campaign
       x-content-type: application/json
@@ -2392,7 +2438,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
-      summary: ""
+      summary: /2026-01/marketing-solutions/marketplace-performance-outcomes/budgets
       tags:
       - Campaign
       x-content-type: application/json
@@ -2436,7 +2482,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/budgets/{budgetId}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2473,7 +2519,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/budgets/{budgetId}"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2547,7 +2593,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: /2026-01/marketing-solutions/marketplace-performance-outcomes/seller-campaigns
       tags:
       - Campaign
       x-accepts: application/json
@@ -2579,7 +2625,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
-      summary: ""
+      summary: /2026-01/marketing-solutions/marketplace-performance-outcomes/seller-campaigns
       tags:
       - Campaign
       x-content-type: application/json
@@ -2606,7 +2652,8 @@ paths:
         \ has just been created and has not yet been processed."
       operationId: GetMarketplaceSellerCampaign
       parameters:
-      - description: Id of the seller campaign.
+      - description: "Composite id of the seller campaign in the format `{sellerId}.{campaignId}`,\
+          \ e.g. `2578464.187625`."
         explode: false
         in: path
         name: sellerCampaignId
@@ -2619,14 +2666,12 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/SellerCampaignMessage'
-                type: array
+                $ref: '#/components/schemas/SellerCampaignMessage'
           description: Success
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2646,7 +2691,8 @@ paths:
           format: double
           type: number
         style: form
-      - description: Id of the existing seller campaign to update
+      - description: "Composite id of the seller campaign to update in the format\
+          \ `{sellerId}.{campaignId}`, e.g. `2578464.187625`."
         explode: false
         in: path
         name: sellerCampaignId
@@ -2664,7 +2710,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2689,7 +2735,8 @@ paths:
           format: date-time
           type: string
         style: form
-      - description: Return only budgets belonging to the given seller campaign.
+      - description: "Return only budgets belonging to the given seller campaign.\
+          \ Format: `{sellerId}.{campaignId}`, e.g. `2578464.187625`."
         explode: false
         in: path
         name: sellerCampaignId
@@ -2755,7 +2802,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}/budgets"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2836,7 +2883,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: /2026-01/marketing-solutions/marketplace-performance-outcomes/sellers
       tags:
       - Campaign
       x-accepts: application/json
@@ -2865,18 +2912,16 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}"
       tags:
       - Campaign
       x-accepts: application/json
   /2026-01/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/budgets:
     get:
-      description: "Return a collection of budgets for this seller filtered by optional\
-        \ filter parameters.\r\nIf all parameters are omitted the entire collection\
-        \ to which the user has\r\naccess is returned, except those whose endDate\
-        \ is in the past. Returned budgets must satisfy all supplied filter\r\ncriteria\
-        \ if multiple parameters are used. See the budgets endpoint for additional\
-        \ details."
+      description: "Return current (non-archived) budgets for this seller. Budgets\
+        \ whose endDate is in the past are excluded by default. To retrieve archived\
+        \ or past budgets, use the `/budgets` endpoint (GetMarketplaceSellerBudgets)\
+        \ with the `endAfterDate` filter instead."
       operationId: GetMarketplaceBudgetsBySeller
       parameters:
       - description: Return only budgets that pay for a given campaign.
@@ -2965,7 +3010,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/budgets"
       tags:
       - Campaign
       x-accepts: application/json
@@ -3030,7 +3075,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/seller-campaigns"
       tags:
       - Campaign
       x-accepts: application/json
@@ -3065,7 +3110,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
-      summary: ""
+      summary: "/2026-01/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/seller-campaigns"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3136,7 +3181,8 @@ paths:
         \nID values."
       operationId: GetMarketplaceCampaignsStats
       parameters:
-      - description: Show only metrics for this advertiser.
+      - description: Filter metrics to this advertiser. Strongly recommended — omitting
+          this on large accounts causes timeouts.
         explode: true
         in: query
         name: advertiserId
@@ -3229,7 +3275,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: /2026-01/marketing-solutions/marketplace-performance-outcomes/stats/campaigns
       tags:
       - Campaign
       x-accepts: application/json
@@ -3304,7 +3350,8 @@ paths:
         \ using the campaign and/or seller\r\nID values."
       operationId: GetMarketplaceSellerCampaignsStats
       parameters:
-      - description: Show only metrics for this advertiser.
+      - description: Filter metrics to this advertiser. Strongly recommended — omitting
+          this on large accounts causes timeouts.
         explode: true
         in: query
         name: advertiserId
@@ -3405,7 +3452,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: /2026-01/marketing-solutions/marketplace-performance-outcomes/stats/seller-campaigns
       tags:
       - Campaign
       x-accepts: application/json
@@ -3477,7 +3524,8 @@ paths:
         \ using the campaign and/or seller\r\nID values."
       operationId: GetMarketplaceSellersStats
       parameters:
-      - description: Show only metrics for this advertiser.
+      - description: Filter metrics to this advertiser. Strongly recommended — omitting
+          this on large accounts causes timeouts.
         explode: true
         in: query
         name: advertiserId
@@ -3570,7 +3618,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Read
-      summary: ""
+      summary: /2026-01/marketing-solutions/marketplace-performance-outcomes/stats/sellers
       tags:
       - Campaign
       x-accepts: application/json
@@ -3587,6 +3635,7 @@ paths:
           description: Success
       security:
       - oauth: []
+      summary: /2026-01/marketing-solutions/me
       tags:
       - Gateway
       x-accepts: application/json
@@ -3611,6 +3660,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: /2026-01/marketing-solutions/product-sets
       tags:
       - Reco
       x-content-type: application/json
@@ -3638,6 +3688,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: "/2026-01/marketing-solutions/product-sets/{product-set-id}"
       tags:
       - Reco
       x-accepts: application/json
@@ -3663,6 +3714,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Read
+      summary: "/2026-01/marketing-solutions/product-sets/{product-set-id}"
       tags:
       - Reco
       x-accepts: application/json
@@ -3695,6 +3747,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Manage
+      summary: "/2026-01/marketing-solutions/product-sets/{product-set-id}"
       tags:
       - Reco
       x-content-type: application/json
@@ -3722,6 +3775,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Read
+      summary: "/2026-01/marketing-solutions/product-sets/{product-set-id}/product-filters"
       tags:
       - Reco
       x-accepts: application/json
@@ -3748,6 +3802,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Reco_Read
+      summary: "/2026-01/marketing-solutions/product-sets/dataset/{dataset-id}"
       tags:
       - Reco
       x-accepts: application/json
@@ -3756,7 +3811,8 @@ paths:
       description: "Your ads are placed in different domains (publishers) and environments\
         \ (websites and apps). Thanks to the placements endpoint, you can analyse\
         \ the performances for each publisher, comparing displays, clicks and sales\
-        \ generated."
+        \ generated.\r\n<br/><br/>\r\nThis endpoint supports data retrieval for up\
+        \ to three months in the past."
       operationId: GetPlacementsReport
       requestBody:
         content:
@@ -3782,17 +3838,116 @@ paths:
                   disclosed: false
                   format: csv
                   timezone: Europe/Paris
-                  startDate: 2026-01-02T00:00:00.0000000+02:00
-                  endDate: 2026-01-05T00:00:00.0000000+02:00
+                  startDate: 2024-01-01T00:00:00.0000000+00:00
+                  endDate: 2024-01-04T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
           application/xml:
+            example: "<ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdsetIds>\r\n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>135</d6p1:int>\r\n            <d6p1:int>246</d6p1:int>\r\
+              \n            <d6p1:int>357</d6p1:int>\r\n            <d6p1:int>468</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:AdsetIds>\r\n        <d4p1:AdvertiserIds>\r\
+              \n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:CampaignIds>\r\n  \
+              \        <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>111</d6p1:int>\r\n            <d6p1:int>222</d6p1:int>\r\
+              \n            <d6p1:int>333</d6p1:int>\r\n            <d6p1:int>444</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:CampaignIds>\r\n      \
+              \  <d4p1:Currency>EUR</d4p1:Currency>\r\n        <d4p1:Dimensions xmlns:d5p1=\"\
+              http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportDimensions>AdsetId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>AdvertiserId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>Placement</d5p1:PlacementsReportDimensions>\r\
+              \n        </d4p1:Dimensions>\r\n        <d4p1:Disclosed>false</d4p1:Disclosed>\r\
+              \n        <d4p1:Environment>Web</d4p1:Environment>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n        <d4p1:Metrics xmlns:d5p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportMetrics>Clicks</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Displays</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Cost</d5p1:PlacementsReportMetrics>\r\
+              \n        </d4p1:Metrics>\r\n        <d4p1:Placement>MyPlacement</d4p1:Placement>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
           text/xml:
+            example: "<ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdsetIds>\r\n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>135</d6p1:int>\r\n            <d6p1:int>246</d6p1:int>\r\
+              \n            <d6p1:int>357</d6p1:int>\r\n            <d6p1:int>468</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:AdsetIds>\r\n        <d4p1:AdvertiserIds>\r\
+              \n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:CampaignIds>\r\n  \
+              \        <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>111</d6p1:int>\r\n            <d6p1:int>222</d6p1:int>\r\
+              \n            <d6p1:int>333</d6p1:int>\r\n            <d6p1:int>444</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:CampaignIds>\r\n      \
+              \  <d4p1:Currency>EUR</d4p1:Currency>\r\n        <d4p1:Dimensions xmlns:d5p1=\"\
+              http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportDimensions>AdsetId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>AdvertiserId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>Placement</d5p1:PlacementsReportDimensions>\r\
+              \n        </d4p1:Dimensions>\r\n        <d4p1:Disclosed>false</d4p1:Disclosed>\r\
+              \n        <d4p1:Environment>Web</d4p1:Environment>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n        <d4p1:Metrics xmlns:d5p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportMetrics>Clicks</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Displays</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Cost</d5p1:PlacementsReportMetrics>\r\
+              \n        </d4p1:Metrics>\r\n        <d4p1:Placement>MyPlacement</d4p1:Placement>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
           application/*+xml:
+            example: "<ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdsetIds>\r\n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>135</d6p1:int>\r\n            <d6p1:int>246</d6p1:int>\r\
+              \n            <d6p1:int>357</d6p1:int>\r\n            <d6p1:int>468</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:AdsetIds>\r\n        <d4p1:AdvertiserIds>\r\
+              \n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:CampaignIds>\r\n  \
+              \        <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>111</d6p1:int>\r\n            <d6p1:int>222</d6p1:int>\r\
+              \n            <d6p1:int>333</d6p1:int>\r\n            <d6p1:int>444</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:CampaignIds>\r\n      \
+              \  <d4p1:Currency>EUR</d4p1:Currency>\r\n        <d4p1:Dimensions xmlns:d5p1=\"\
+              http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportDimensions>AdsetId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>AdvertiserId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>Placement</d5p1:PlacementsReportDimensions>\r\
+              \n        </d4p1:Dimensions>\r\n        <d4p1:Disclosed>false</d4p1:Disclosed>\r\
+              \n        <d4p1:Environment>Web</d4p1:Environment>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n        <d4p1:Metrics xmlns:d5p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportMetrics>Clicks</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Displays</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Cost</d5p1:PlacementsReportMetrics>\r\
+              \n        </d4p1:Metrics>\r\n        <d4p1:Placement>MyPlacement</d4p1:Placement>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
       responses:
@@ -3818,15 +3973,17 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /2026-01/placements/report
       tags:
       - Analytics
       x-content-type: application/json
       x-accepts: application/json
   /2026-01/statistics/report:
     post:
-      description: "This Statistics endpoint provides adset related data. It is an\
+      description: "This Statistics endpoint provides ad set related data. It is an\
         \ upgrade of our previous Statistics endpoint, and includes new metrics and\
-        \ customization capabilities."
+        \ customization capabilities.\r\n<br/><br/>\r\nThis endpoint supports data\
+        \ retrieval for up to two years in the past."
       operationId: GetAdsetReport
       requestBody:
         content:
@@ -3869,8 +4026,8 @@ paths:
               currency: EUR
               format: csv
               timezone: Europe/Paris
-              startDate: 2025-08-11T00:00:00.0000000+00:00
-              endDate: 2025-08-14T00:00:00.0000000+00:00
+              startDate: 2024-01-01T00:00:00.0000000+00:00
+              endDate: 2024-01-04T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/StatisticsReportQueryMessage'
       responses:
@@ -3896,13 +4053,16 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /2026-01/statistics/report
       tags:
       - Analytics
       x-content-type: application/json
       x-accepts: application/json
   /2026-01/transactions/report:
     post:
-      description: This Transactions endpoint provides transactions id related data.
+      description: "This Transactions endpoint provides transactions id related data.\r\
+        \n<br/><br/>\r\nThis endpoint supports data retrieval for up to two years\
+        \ in the past."
       operationId: GetTransactionsReport
       requestBody:
         content:
@@ -3916,17 +4076,62 @@ paths:
                   currency: EUR
                   format: csv
                   timezone: Europe/Paris
-                  startDate: 2026-01-02T00:00:00.0000000+02:00
-                  endDate: 2026-01-05T00:00:00.0000000+02:00
+                  startDate: 2024-01-01T00:00:00.0000000+00:00
+                  endDate: 2024-01-04T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
           application/xml:
+            example: "<ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdvertiserIds>\r\n          <d4p1:Values xmlns:d6p1=\"\
+              http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n   \
+              \         <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:Currency>EUR</d4p1:Currency>\r\
+              \n        <d4p1:EventType>Display</d4p1:EventType>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
           text/xml:
+            example: "<ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdvertiserIds>\r\n          <d4p1:Values xmlns:d6p1=\"\
+              http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n   \
+              \         <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:Currency>EUR</d4p1:Currency>\r\
+              \n        <d4p1:EventType>Display</d4p1:EventType>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
           application/*+xml:
+            example: "<ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdvertiserIds>\r\n          <d4p1:Values xmlns:d6p1=\"\
+              http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n   \
+              \         <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:Currency>EUR</d4p1:Currency>\r\
+              \n        <d4p1:EventType>Display</d4p1:EventType>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
       responses:
@@ -3952,6 +4157,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Analytics_Read
+      summary: /2026-01/transactions/report
       tags:
       - Analytics
       x-content-type: application/json
@@ -12022,7 +12228,7 @@ components:
         timezone: UTC
         format: json
         advertiserIds: advertiserIds
-        environment: environment
+        environment: Web
         adsetIds: adsetIds
         currency: currency
         campaignIds: campaignIds
@@ -12036,14 +12242,18 @@ components:
         - AdsetId
       properties:
         adsetIds:
-          description: The comma-separated list of adSet ids.
+          description: "Optional list of ad set IDs to filter on. The ad sets must\
+            \ already exist. If empty, all ad sets will be included."
           nullable: true
           type: string
         advertiserIds:
-          description: The comma-separated list of advertiser ids.
+          description: "List of advertiser IDs to report on, provided as a single\
+            \ comma-separated string (e.g., \"123,456,789\"). The advertisers must\
+            \ already exist. If empty, all advertisers will be used."
           type: string
         campaignIds:
-          description: The comma-separated list of campaign ids.
+          description: "Optional list of campaign IDs to filter on. The campaigns\
+            \ must already exist. If empty, all campaigns will be included."
           nullable: true
           type: string
         currency:
@@ -12051,7 +12261,8 @@ components:
             capitals).
           type: string
         dimensions:
-          description: The dimensions for the report.
+          description: List of dimensions for the report. At least one dimension should
+            be provided.
           items:
             enum:
             - AdsetId
@@ -12067,23 +12278,29 @@ components:
             - CategoryId
             - CategoryName
             type: string
+          minItems: 1
           type: array
         disclosed:
           default: true
-          description: Returns disclosed or undisclosed placements.
+          description: Optionally returns disclosed or undisclosed placements.
           type: boolean
         endDate:
-          description: "End date of the report. Date component of ISO 8061 format,\
+          description: "End date of the report. Date component of ISO 8601 format,\
             \ any time or timezone component is ignored."
           format: date-time
           type: string
         environment:
-          description: "Type of environment: Web, Android or iOS."
+          description: "Optional type of environment to filter on. If empty, all environments\
+            \ will be included."
+          enum:
+          - Web
+          - Android
+          - Ios
           nullable: true
           type: string
         format:
           default: json
-          description: The file format of the generated report
+          description: Optional file format of the generated report.
           enum:
           - csv
           - excel
@@ -12091,7 +12308,8 @@ components:
           - json
           type: string
         metrics:
-          description: The list of metrics to report.
+          description: List of metrics for the report. At least one dimension should
+            be provided.
           items:
             enum:
             - Clicks
@@ -12110,19 +12328,21 @@ components:
             - CpoPv1d
             - CvrPv1d
             type: string
+          minItems: 1
           type: array
         placement:
-          description: Filter the value of the placement
+          description: "Optional filter on a specific placement domain name. If empty,\
+            \ all placements will be included."
           nullable: true
           type: string
         startDate:
-          description: "Start date of the report. Date component of ISO 8061 format,\
-            \ any time or timezone component is ignored."
+          description: "Start date of the report. Date component of ISO 8601 format,\
+            \ any time or timezone component is ignored. Must be ≤ endDate."
           format: date-time
           type: string
         timezone:
           default: UTC
-          description: The timezone used for the report. Timezone Database format
+          description: Optional timezone used for the report. Timezone Database format
             (Tz).
           nullable: true
           type: string
@@ -12146,7 +12366,7 @@ components:
             timezone: UTC
             format: json
             advertiserIds: advertiserIds
-            environment: environment
+            environment: Web
             adsetIds: adsetIds
             currency: currency
             campaignIds: campaignIds
@@ -12165,7 +12385,7 @@ components:
             timezone: UTC
             format: json
             advertiserIds: advertiserIds
-            environment: environment
+            environment: Web
             adsetIds: adsetIds
             currency: currency
             campaignIds: campaignIds
@@ -12195,7 +12415,7 @@ components:
           timezone: UTC
           format: json
           advertiserIds: advertiserIds
-          environment: environment
+          environment: Web
           adsetIds: adsetIds
           currency: currency
           campaignIds: campaignIds
@@ -15320,8 +15540,8 @@ components:
         - adSetIds
         advertiserIds: advertiserIds
         adSetStatus:
-        - adSetStatus
-        - adSetStatus
+        - Active
+        - Active
         endDate: 2000-01-23T04:56:07.000+00:00
         timezone: UTC
         adSetNames:
@@ -15338,34 +15558,46 @@ components:
         - AdsetId
       properties:
         adSetIds:
-          description: "list of adSets ids. If empty, all the adSets will be fetched"
+          description: "Optional list of ad set IDs to filter on. The ad sets must\
+            \ already exist. If empty, all ad sets will be fetched."
           items:
             type: string
           nullable: true
           type: array
         adSetNames:
-          description: "list of adSets names. If empty, all the adSets will be fetched"
+          description: "Optional list of ad set names to filter on. If empty, all\
+            \ ad sets will be fetched."
           items:
             type: string
           nullable: true
           type: array
         adSetStatus:
-          description: "list of adSets status. If empty, all the adSets will be fetched"
+          description: "Optional list of ad set statuses to filter on. If empty, all\
+            \ ad sets will be fetched."
           items:
+            enum:
+            - Active
+            - NotRunning
+            - Dead
             type: string
           nullable: true
           type: array
         advertiserIds:
-          description: "The comma-separated list of advertiser ids. If empty, all\
-            \ the advertisers in the portfolio will be used"
-          nullable: true
+          description: "List of advertiser IDs to report on, provided as a single\
+            \ comma-separated string (e.g., \"123,456,789\"). The advertisers must\
+            \ already exist. If empty, all advertisers will be used."
           type: string
         currency:
           description: The currency used for the report. ISO 4217 code (three-letter
             capitals).
           type: string
         dimensions:
-          description: The dimensions for the report.
+          description: "List of dimensions for the report. At least one dimension\
+            \ should be provided. <br/><br/> When an ID dimension is requested (e.g.,\
+            \ AdsetId), the corresponding name dimension (e.g., Adset) is automatically\
+            \ included, and vice versa. This applies to the following pairs: AdsetId/Adset,\
+            \ AdId/Ad, AdvertiserId/Advertiser, CampaignId/Campaign, CategoryId/Category,\
+            \ CouponId/Coupon, MarketingObjectiveId/MarketingObjective, ChannelId/Channel."
           items:
             enum:
             - AdsetId
@@ -15395,15 +15627,16 @@ components:
             - AdChannel
             - SocialPlatform
             type: string
+          minItems: 1
           type: array
         endDate:
-          description: "End date of the report. Date component of ISO 8061 format,\
+          description: "End date of the report. Date component of ISO 8601 format,\
             \ any time or timezone component is ignored."
           format: date-time
           type: string
         format:
           default: json
-          description: The file format of the generated report
+          description: Optional file format of the generated report.
           enum:
           - csv
           - excel
@@ -15411,7 +15644,9 @@ components:
           - json
           type: string
         metrics:
-          description: The list of metrics to report.
+          description: "List of metrics for the report. Provide at least one metric\
+            \ to return performance data; otherwise, the response will include only\
+            \ dimension-related information."
           items:
             enum:
             - Clicks
@@ -15561,6 +15796,7 @@ components:
             - QualifiedVisits
             - Visits
             - VisitsPV1D
+            - VisitsAllPv1d
             - OrderValuePi
             - PostInstallOrderValue
             - BounceRate
@@ -15609,17 +15845,6 @@ components:
             - PostInstallCostOfSale
             - PostInstallCostPerOrder
             - ReturnOnAdvertiserSpendingPi
-            - CacClientAttribution
-            - CacPc30d
-            - CacPc7d
-            - CacPc1d
-            - CacPv24h
-            - CacPv7d
-            - CacPv14d
-            - CacPv30d
-            - CacPc30Pv24h
-            - CacPc7dPv24h
-            - CacLc30d
             - PostInstallRoas
             - ReturnOnAdvertiserSpendingOfflinePc
             - ReturnOnAdvertiserSpendingOfflinePv
@@ -15645,20 +15870,27 @@ components:
             - VideoAverageViewRate
             - VideoCpv
             - VideoCpcv
+            - PotentialUsers
+            - RetailerMarginEuro
+            - PlatformFeeEuro
+            - AllInMediaCost
+            - NetMediaCost
+            - Cos
             type: string
           type: array
         startDate:
-          description: "Start date of the report. Date component of ISO 8061 format,\
-            \ any time or timezone component is ignored."
+          description: "Start date of the report. Date component of ISO 8601 format,\
+            \ any time or timezone component is ignored. Must be ≤ endDate."
           format: date-time
           type: string
         timezone:
           default: UTC
-          description: The timezone used for the report. Timezone Database format
+          description: Optional timezone used for the report. Timezone Database format
             (Tz).
           nullable: true
           type: string
       required:
+      - advertiserIds
       - currency
       - dimensions
       - endDate
@@ -15749,30 +15981,34 @@ components:
         timezone: UTC
         format: json
         currency: currency
-        eventType: eventType
+        eventType: Click
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         advertiserIds:
-          description: "The comma-separated list of advertiser ids. If empty, all\
-            \ the advertisers in the portfolio will be used"
-          nullable: true
+          description: "List of advertiser IDs to report on, provided as a single\
+            \ comma-separated string (e.g., \"123,456,789\"). The advertisers must\
+            \ already exist. If empty, all advertisers will be used."
           type: string
         currency:
           description: The currency used for the report. ISO 4217 code (three-letter
             capitals).
           type: string
         endDate:
-          description: "End date of the report. Date component of ISO 8061 format,\
+          description: "End date of the report. Date component of ISO 8601 format,\
             \ any time or timezone component is ignored."
           format: date-time
           type: string
         eventType:
-          description: Apply a filter on Event type .
+          description: "Optional event type to filter on. If empty, all event types\
+            \ will be included."
+          enum:
+          - Click
+          - Display
           nullable: true
           type: string
         format:
           default: json
-          description: The file format of the generated report
+          description: Optional file format of the generated report.
           enum:
           - csv
           - excel
@@ -15780,17 +16016,18 @@ components:
           - json
           type: string
         startDate:
-          description: "Start date of the report. Date component of ISO 8061 format,\
-            \ any time or timezone component is ignored."
+          description: "Start date of the report. Date component of ISO 8601 format,\
+            \ any time or timezone component is ignored. Must be ≤ endDate."
           format: date-time
           type: string
         timezone:
           default: UTC
-          description: The timezone used for the report. Timezone Database format
+          description: Optional timezone used for the report. Timezone Database format
             (Tz).
           nullable: true
           type: string
       required:
+      - advertiserIds
       - currency
       - endDate
       - startDate
@@ -15807,7 +16044,7 @@ components:
             timezone: UTC
             format: json
             currency: currency
-            eventType: eventType
+            eventType: Click
             startDate: 2000-01-23T04:56:07.000+00:00
           type: type
         - attributes:
@@ -15816,7 +16053,7 @@ components:
             timezone: UTC
             format: json
             currency: currency
-            eventType: eventType
+            eventType: Click
             startDate: 2000-01-23T04:56:07.000+00:00
           type: type
       properties:
@@ -15836,7 +16073,7 @@ components:
           timezone: UTC
           format: json
           currency: currency
-          eventType: eventType
+          eventType: Click
           startDate: 2000-01-23T04:56:07.000+00:00
         type: type
       properties:
@@ -15856,7 +16093,7 @@ components:
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         endDate:
-          description: "End date of the report. Date component of ISO 8061 format,\
+          description: "End date of the report. Date component of ISO 8601 format,\
             \ any time or timezone component is ignored."
           format: date-time
           type: string
@@ -15865,8 +16102,8 @@ components:
           description: Specify if the product ids are displayed in the report.
           type: boolean
         startDate:
-          description: "Start date of the report. Date component of ISO 8061 format,\
-            \ any time or timezone component is ignored."
+          description: "Start date of the report. Date component of ISO 8601 format,\
+            \ any time or timezone component is ignored. Must be ≤ endDate."
           format: date-time
           type: string
       required:

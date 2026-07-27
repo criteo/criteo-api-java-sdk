@@ -177,7 +177,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets
      * Create the specified ad set
      * @param createAdSetV24Q3Request the ad sets to create (required)
      * @return ResponseReadAdSetV24Q3
@@ -194,7 +194,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets
      * Create the specified ad set
      * @param createAdSetV24Q3Request the ad sets to create (required)
      * @return ApiResponse&lt;ResponseReadAdSetV24Q3&gt;
@@ -212,7 +212,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/ad-sets (asynchronously)
      * Create the specified ad set
      * @param createAdSetV24Q3Request the ad sets to create (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -300,7 +300,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/campaigns
      * Create the specified campaign                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param createCampaignRequest the campaigns to create (required)
      * @return CampaignV23Q1Response
@@ -317,7 +317,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/campaigns
      * Create the specified campaign                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param createCampaignRequest the campaigns to create (required)
      * @return ApiResponse&lt;CampaignV23Q1Response&gt;
@@ -335,7 +335,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/campaigns (asynchronously)
      * Create the specified campaign                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param createCampaignRequest the campaigns to create (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -423,7 +423,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets
      * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
      * @param createSellerBudgetMapiMessage  (required)
      * @return List&lt;SellerBudgetMessage&gt;
@@ -440,7 +440,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets
      * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
      * @param createSellerBudgetMapiMessage  (required)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
@@ -458,7 +458,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets (asynchronously)
      * Create one or more new budgets to enable spending with the given limitations.  All three types of budgets can be created this way.                The following constraints apply when creating a new budget.                • &lt;b&gt;sellerId&lt;/b&gt;: the seller MUST be supplied&lt;br /&gt;  • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty array of campaign ids MUST be supplied&lt;br /&gt;  • &lt;b&gt;budgetType&lt;/b&gt;: a budget type MUST be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MUST be supplied&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.
      * @param createSellerBudgetMapiMessage  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -553,7 +553,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/seller-campaigns
      * Associate an existing Seller with an existing Campaign allowing for budget creation
      * @param sellerId Supply a generated Id of an existing Seller (required)
      * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (required)
@@ -571,7 +571,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/seller-campaigns
      * Associate an existing Seller with an existing Campaign allowing for budget creation
      * @param sellerId Supply a generated Id of an existing Seller (required)
      * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (required)
@@ -590,7 +590,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/seller-campaigns (asynchronously)
      * Associate an existing Seller with an existing Campaign allowing for budget creation
      * @param sellerId Supply a generated Id of an existing Seller (required)
      * @param createSellerCampaignMessageMapi Supply the campaign Id and bid to create the mapping (required)
@@ -679,7 +679,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}
      * Get the data for the specified ad set
      * @param adSetId Id of the ad set (required)
      * @return ResponseReadAdSetV24Q3
@@ -696,7 +696,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}
      * Get the data for the specified ad set
      * @param adSetId Id of the ad set (required)
      * @return ApiResponse&lt;ResponseReadAdSetV24Q3&gt;
@@ -714,7 +714,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id} (asynchronously)
      * Get the data for the specified ad set
      * @param adSetId Id of the ad set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -802,7 +802,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/category-bids
      * Get the Category Bids for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @return AdSetCategoryBidListResponse
@@ -819,7 +819,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/category-bids
      * Get the Category Bids for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @return ApiResponse&lt;AdSetCategoryBidListResponse&gt;
@@ -837,7 +837,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/category-bids (asynchronously)
      * Get the Category Bids for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -925,7 +925,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/campaigns/{campaign-id}
      * Get the data for the specified campaign.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignId ID of the marketing campaign; This field is required. (required)
      * @return CampaignV23Q1Response
@@ -942,7 +942,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/campaigns/{campaign-id}
      * Get the data for the specified campaign.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignId ID of the marketing campaign; This field is required. (required)
      * @return ApiResponse&lt;CampaignV23Q1Response&gt;
@@ -960,7 +960,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/campaigns/{campaign-id} (asynchronously)
      * Get the data for the specified campaign.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignId ID of the marketing campaign; This field is required. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1048,7 +1048,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers
      * Get the Display Multipliers for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @return AdSetDisplayMultiplierListResponse
@@ -1065,7 +1065,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers
      * Get the Display Multipliers for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @return ApiResponse&lt;AdSetDisplayMultiplierListResponse&gt;
@@ -1083,7 +1083,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers (asynchronously)
      * Get the Display Multipliers for all valid Categories associated to an Ad Set
      * @param adSetId Id of the Ad Set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1171,7 +1171,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/adsets
      * Get the collection of adsets associated with the advertiserId.
      * @param advertiserId Id of the advertiser (required)
      * @return List&lt;AdvertiserAdsetMessage&gt;
@@ -1188,7 +1188,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/adsets
      * Get the collection of adsets associated with the advertiserId.
      * @param advertiserId Id of the advertiser (required)
      * @return ApiResponse&lt;List&lt;AdvertiserAdsetMessage&gt;&gt;
@@ -1206,7 +1206,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/adsets (asynchronously)
      * Get the collection of adsets associated with the advertiserId.
      * @param advertiserId Id of the advertiser (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1294,7 +1294,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}
      * Get an advertiser.
      * @param advertiserId Id of the advertiser (required)
      * @return AdvertiserInfoMessage
@@ -1311,7 +1311,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}
      * Get an advertiser.
      * @param advertiserId Id of the advertiser (required)
      * @return ApiResponse&lt;AdvertiserInfoMessage&gt;
@@ -1329,7 +1329,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId} (asynchronously)
      * Get an advertiser.
      * @param advertiserId Id of the advertiser (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1410,7 +1410,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/preview-limit
      * Get the collection of advertisers preview limits associated with the authorized user.
      * @return List&lt;AdvertiserQuotaMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1426,7 +1426,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/preview-limit
      * Get the collection of advertisers preview limits associated with the authorized user.
      * @return ApiResponse&lt;List&lt;AdvertiserQuotaMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1443,7 +1443,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/preview-limit (asynchronously)
      * Get the collection of advertisers preview limits associated with the authorized user.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1523,7 +1523,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers
      * Get the collection of advertisers associated with the user.
      * @return List&lt;AdvertiserInfoMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1539,7 +1539,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers
      * Get the collection of advertisers associated with the user.
      * @return ApiResponse&lt;List&lt;AdvertiserInfoMessage&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1556,7 +1556,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers (asynchronously)
      * Get the collection of advertisers associated with the user.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1683,7 +1683,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/budgets
      * Get CRP budgets for a specific advertiser
      * @param advertiserId Id of the advertiser (required)
      * @param budgetId Return only budgets with given Id (optional)
@@ -1708,7 +1708,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/budgets
      * Get CRP budgets for a specific advertiser
      * @param advertiserId Id of the advertiser (required)
      * @param budgetId Return only budgets with given Id (optional)
@@ -1734,7 +1734,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/budgets (asynchronously)
      * Get CRP budgets for a specific advertiser
      * @param advertiserId Id of the advertiser (required)
      * @param budgetId Return only budgets with given Id (optional)
@@ -1865,8 +1865,8 @@ public class CampaignApi {
     }
 
     /**
-     * 
-     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/budgets
+     * Return current (non-archived) budgets for this seller. Budgets whose endDate is in the past are excluded by default. To retrieve archived or past budgets, use the &#x60;/budgets&#x60; endpoint (GetMarketplaceSellerBudgets) with the &#x60;endAfterDate&#x60; filter instead.
      * @param sellerId Return only budgets belonging to the given seller. (required)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
@@ -1889,8 +1889,8 @@ public class CampaignApi {
     }
 
     /**
-     * 
-     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/budgets
+     * Return current (non-archived) budgets for this seller. Budgets whose endDate is in the past are excluded by default. To retrieve archived or past budgets, use the &#x60;/budgets&#x60; endpoint (GetMarketplaceSellerBudgets) with the &#x60;endAfterDate&#x60; filter instead.
      * @param sellerId Return only budgets belonging to the given seller. (required)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
@@ -1914,8 +1914,8 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
-     * Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/budgets (asynchronously)
+     * Return current (non-archived) budgets for this seller. Budgets whose endDate is in the past are excluded by default. To retrieve archived or past budgets, use the &#x60;/budgets&#x60; endpoint (GetMarketplaceSellerBudgets) with the &#x60;endAfterDate&#x60; filter instead.
      * @param sellerId Return only budgets belonging to the given seller. (required)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
@@ -1942,7 +1942,7 @@ public class CampaignApi {
     }
     /**
      * Build call for getMarketplaceBudgetsBySellerCampaign
-     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. Format: &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
      * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param status Return only budgets with the given status. (optional)
@@ -2039,9 +2039,9 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}/budgets
      * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
-     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. Format: &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
      * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param status Return only budgets with the given status. (optional)
@@ -2062,9 +2062,9 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}/budgets
      * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
-     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. Format: &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
      * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param status Return only budgets with the given status. (optional)
@@ -2086,9 +2086,9 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}/budgets (asynchronously)
      * Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
-     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. (required)
+     * @param sellerCampaignId Return only budgets belonging to the given seller campaign. Format: &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
      * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
      * @param startBeforeDate Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. (optional)
      * @param status Return only budgets with the given status. (optional)
@@ -2180,7 +2180,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/campaigns
      * Get the collection of CRP campaigns associated with the advertiserId.
      * @param advertiserId Id of the advertiser (required)
      * @return List&lt;AdvertiserCampaignMessage&gt;
@@ -2197,7 +2197,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/campaigns
      * Get the collection of CRP campaigns associated with the advertiserId.
      * @param advertiserId Id of the advertiser (required)
      * @return ApiResponse&lt;List&lt;AdvertiserCampaignMessage&gt;&gt;
@@ -2215,7 +2215,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/campaigns (asynchronously)
      * Get the collection of CRP campaigns associated with the advertiserId.
      * @param advertiserId Id of the advertiser (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2236,7 +2236,7 @@ public class CampaignApi {
     }
     /**
      * Build call for getMarketplaceCampaignsStats
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
@@ -2336,9 +2336,9 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/stats/campaigns
      * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time  interval appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
@@ -2360,9 +2360,9 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/stats/campaigns
      * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time  interval appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
@@ -2385,9 +2385,9 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/stats/campaigns (asynchronously)
      * ## Dimensions                Get performance statistics aggregated for _campaigns_. The campaign id appears  in the output as the first column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time  interval appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by campaign, date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {     \&quot;columns\&quot;: [ \&quot;campaignId\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot; ],     \&quot;data\&quot;: [         [168423, \&quot;2019-05-01\&quot;, 3969032, 13410, 1111.295, 985, 190758099, 0.073, 1.128, 0.000, 171653.880 ],         [168423, \&quot;2019-06-01\&quot;, 8479603, 25619, 2190.705, 740, 152783656, 0.028, 2.960, 0.000, 69741.775 ]         ],     \&quot;rows\&quot;: 2  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  column comes first and consists of the campaign id.  The interval column comes next and defines the aggregation period.  The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
@@ -2480,7 +2480,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}
      * Return details for the selected seller. For example,                    {          \&quot;id\&quot; : \&quot;123456\&quot;          \&quot;sellerName\&quot;: \&quot;HBogart\&quot;,      }
      * @param sellerId Id of the seller. (required)
      * @return SellerBase
@@ -2497,7 +2497,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}
      * Return details for the selected seller. For example,                    {          \&quot;id\&quot; : \&quot;123456\&quot;          \&quot;sellerName\&quot;: \&quot;HBogart\&quot;,      }
      * @param sellerId Id of the seller. (required)
      * @return ApiResponse&lt;SellerBase&gt;
@@ -2515,7 +2515,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId} (asynchronously)
      * Return details for the selected seller. For example,                    {          \&quot;id\&quot; : \&quot;123456\&quot;          \&quot;sellerName\&quot;: \&quot;HBogart\&quot;,      }
      * @param sellerId Id of the seller. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2628,7 +2628,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/ad-preview
      * Get a preview of an HTML ad with products belonging to the provided seller  • &lt;b&gt;advertiserId&lt;/b&gt;: Valid crp advertiserId, seller belongs to provided advertiser&lt;br /&gt;  • &lt;b&gt;sellerId&lt;/b&gt;: Products from given SellerId will fill the ad preview, must be existing crp sellerId&lt;br /&gt;  • &lt;b&gt;height&lt;/b&gt;: height may be supplied to request a specific ad preview height. Default height: 250&lt;br /&gt;  • &lt;b&gt;width&lt;/b&gt;: width may be supplied to request a specific ad preview width. Default width: 300&lt;br /&gt;                Ad preview api calls are capped to 1000 per day per advertiser by default. Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
      * @param advertiserId Id of the advertiser (required)
      * @param sellerId Id of the seller (required)
@@ -2649,7 +2649,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/ad-preview
      * Get a preview of an HTML ad with products belonging to the provided seller  • &lt;b&gt;advertiserId&lt;/b&gt;: Valid crp advertiserId, seller belongs to provided advertiser&lt;br /&gt;  • &lt;b&gt;sellerId&lt;/b&gt;: Products from given SellerId will fill the ad preview, must be existing crp sellerId&lt;br /&gt;  • &lt;b&gt;height&lt;/b&gt;: height may be supplied to request a specific ad preview height. Default height: 250&lt;br /&gt;  • &lt;b&gt;width&lt;/b&gt;: width may be supplied to request a specific ad preview width. Default width: 300&lt;br /&gt;                Ad preview api calls are capped to 1000 per day per advertiser by default. Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
      * @param advertiserId Id of the advertiser (required)
      * @param sellerId Id of the seller (required)
@@ -2671,7 +2671,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/ad-preview (asynchronously)
      * Get a preview of an HTML ad with products belonging to the provided seller  • &lt;b&gt;advertiserId&lt;/b&gt;: Valid crp advertiserId, seller belongs to provided advertiser&lt;br /&gt;  • &lt;b&gt;sellerId&lt;/b&gt;: Products from given SellerId will fill the ad preview, must be existing crp sellerId&lt;br /&gt;  • &lt;b&gt;height&lt;/b&gt;: height may be supplied to request a specific ad preview height. Default height: 250&lt;br /&gt;  • &lt;b&gt;width&lt;/b&gt;: width may be supplied to request a specific ad preview width. Default width: 300&lt;br /&gt;                Ad preview api calls are capped to 1000 per day per advertiser by default. Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
      * @param advertiserId Id of the advertiser (required)
      * @param sellerId Id of the seller (required)
@@ -2763,7 +2763,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets/{budgetId}
      * Return a budget. For example,                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend. Daily budgets  show spend against the most recent day only.
      * @param budgetId Id of the budget. (required)
      * @return SellerBudgetMessage
@@ -2780,7 +2780,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets/{budgetId}
      * Return a budget. For example,                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend. Daily budgets  show spend against the most recent day only.
      * @param budgetId Id of the budget. (required)
      * @return ApiResponse&lt;SellerBudgetMessage&gt;
@@ -2798,7 +2798,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets/{budgetId} (asynchronously)
      * Return a budget. For example,                    {          \&quot;id\&quot;: \&quot;1759183\&quot;,          \&quot;sellerId\&quot;: \&quot;321392\&quot;,          \&quot;campaignIds\&quot;: [              143962          ],          \&quot;budgetType\&quot;: \&quot;Capped\&quot;,          \&quot;amount\&quot;: 1000,          \&quot;startDate\&quot;: \&quot;2021-01-11\&quot;,          \&quot;endDate\&quot;: \&quot;2021-01-12\&quot;,          \&quot;spend\&quot;: null,          \&quot;status\&quot;: \&quot;Active\&quot;      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:&lt;br /&gt;&lt;b&gt;Uncapped&lt;/b&gt; budgets put no limit on the total amount of spend.&lt;br /&gt;&lt;b&gt;Capped&lt;/b&gt; budgets limit the total spend to a fixed amount.&lt;br /&gt;&lt;b&gt;Daily&lt;/b&gt; budgets limit daily spend to a fixed amount.&lt;br /&gt;                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                &lt;b&gt;Spend&lt;/b&gt; approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend. Daily budgets  show spend against the most recent day only.
      * @param budgetId Id of the budget. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2924,8 +2924,8 @@ public class CampaignApi {
     }
 
     /**
-     * 
-     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off the startBeforeDate  value makes budgets with any startDate qualify, whereas when leaving off the endAfterDate value will only return  budgets whose endDate has not already passed. To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets
+     * Return a collection of budgets filtered by optional filter parameters, **including archived budgets**. This is the endpoint to use when investigating past budget history.                By default, budgets whose endDate is in the past are excluded. Use &#x60;endAfterDate&#x60; to retrieve archived budgets (e.g. &#x60;endAfterDate&#x3D;2025-01-01&#x60; returns all budgets ending after that date). Use &#x60;sellerId&#x60; to filter to a specific seller — omitting it on large advertisers causes timeouts.                &lt;b&gt;Date filter.&lt;/b&gt; To find budgets that were active on a specific date, set both &#x60;startBeforeDate&#x60; and &#x60;endAfterDate&#x60; to that day.                &lt;b&gt;Spend.&lt;/b&gt; If &#x60;endAfterDate&#x60; is supplied, the spend excludes spend that happened after that date. For daily budgets, only the spend for the final day is displayed.
      * @param advertiserId Return only budgets belonging to the specified advertiser (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
@@ -2949,8 +2949,8 @@ public class CampaignApi {
     }
 
     /**
-     * 
-     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off the startBeforeDate  value makes budgets with any startDate qualify, whereas when leaving off the endAfterDate value will only return  budgets whose endDate has not already passed. To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets
+     * Return a collection of budgets filtered by optional filter parameters, **including archived budgets**. This is the endpoint to use when investigating past budget history.                By default, budgets whose endDate is in the past are excluded. Use &#x60;endAfterDate&#x60; to retrieve archived budgets (e.g. &#x60;endAfterDate&#x3D;2025-01-01&#x60; returns all budgets ending after that date). Use &#x60;sellerId&#x60; to filter to a specific seller — omitting it on large advertisers causes timeouts.                &lt;b&gt;Date filter.&lt;/b&gt; To find budgets that were active on a specific date, set both &#x60;startBeforeDate&#x60; and &#x60;endAfterDate&#x60; to that day.                &lt;b&gt;Spend.&lt;/b&gt; If &#x60;endAfterDate&#x60; is supplied, the spend excludes spend that happened after that date. For daily budgets, only the spend for the final day is displayed.
      * @param advertiserId Return only budgets belonging to the specified advertiser (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
@@ -2975,8 +2975,8 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
-     * Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                &lt;b&gt;Date filter.&lt;/b&gt; Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off the startBeforeDate  value makes budgets with any startDate qualify, whereas when leaving off the endAfterDate value will only return  budgets whose endDate has not already passed. To get budgets that were active  on a specific date, set both values to that day.                &lt;b&gt;Spend.&lt;/b&gt; If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets (asynchronously)
+     * Return a collection of budgets filtered by optional filter parameters, **including archived budgets**. This is the endpoint to use when investigating past budget history.                By default, budgets whose endDate is in the past are excluded. Use &#x60;endAfterDate&#x60; to retrieve archived budgets (e.g. &#x60;endAfterDate&#x3D;2025-01-01&#x60; returns all budgets ending after that date). Use &#x60;sellerId&#x60; to filter to a specific seller — omitting it on large advertisers causes timeouts.                &lt;b&gt;Date filter.&lt;/b&gt; To find budgets that were active on a specific date, set both &#x60;startBeforeDate&#x60; and &#x60;endAfterDate&#x60; to that day.                &lt;b&gt;Spend.&lt;/b&gt; If &#x60;endAfterDate&#x60; is supplied, the spend excludes spend that happened after that date. For daily budgets, only the spend for the final day is displayed.
      * @param advertiserId Return only budgets belonging to the specified advertiser (optional)
      * @param campaignId Return only budgets that pay for a given campaign. (optional)
      * @param endAfterDate Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
@@ -3004,7 +3004,7 @@ public class CampaignApi {
     }
     /**
      * Build call for getMarketplaceSellerCampaign
-     * @param sellerCampaignId Id of the seller campaign. (required)
+     * @param sellerCampaignId Composite id of the seller campaign in the format &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3071,10 +3071,10 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}
      * Return details for a seller campaign. For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30T15:15:24.813\&quot;,          \&quot;suspensionReasons\&quot;: [              \&quot;NoMoreBudget\&quot;          ]      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.                Suspension reasons:  - ManuallyStopped: The Seller-Campaign has been manually paused. This is not related to the other suspension reasons.  - NoBudgetDefined: No valid budget has been linked to the Seller-Campaign.  - NoCpcDefined: No CPC has been set for the Seller-Campaign.  - NoMoreBudget: The current budget of the Seller-Campaign has been exhausted.  - RemovedFromCatalog: All the products of the Seller-Campaign have been deleted from the catalog.  - NotYetStarted: The Seller-Campaign has just been created and has not yet been processed.
-     * @param sellerCampaignId Id of the seller campaign. (required)
-     * @return List&lt;SellerCampaignMessage&gt;
+     * @param sellerCampaignId Composite id of the seller campaign in the format &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
+     * @return SellerCampaignMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3082,16 +3082,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public List<SellerCampaignMessage> getMarketplaceSellerCampaign(String sellerCampaignId) throws ApiException {
-        ApiResponse<List<SellerCampaignMessage>> localVarResp = getMarketplaceSellerCampaignWithHttpInfo(sellerCampaignId);
+    public SellerCampaignMessage getMarketplaceSellerCampaign(String sellerCampaignId) throws ApiException {
+        ApiResponse<SellerCampaignMessage> localVarResp = getMarketplaceSellerCampaignWithHttpInfo(sellerCampaignId);
         return localVarResp.getData();
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}
      * Return details for a seller campaign. For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30T15:15:24.813\&quot;,          \&quot;suspensionReasons\&quot;: [              \&quot;NoMoreBudget\&quot;          ]      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.                Suspension reasons:  - ManuallyStopped: The Seller-Campaign has been manually paused. This is not related to the other suspension reasons.  - NoBudgetDefined: No valid budget has been linked to the Seller-Campaign.  - NoCpcDefined: No CPC has been set for the Seller-Campaign.  - NoMoreBudget: The current budget of the Seller-Campaign has been exhausted.  - RemovedFromCatalog: All the products of the Seller-Campaign have been deleted from the catalog.  - NotYetStarted: The Seller-Campaign has just been created and has not yet been processed.
-     * @param sellerCampaignId Id of the seller campaign. (required)
-     * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
+     * @param sellerCampaignId Composite id of the seller campaign in the format &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
+     * @return ApiResponse&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3099,16 +3099,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<SellerCampaignMessage>> getMarketplaceSellerCampaignWithHttpInfo(String sellerCampaignId) throws ApiException {
+    public ApiResponse<SellerCampaignMessage> getMarketplaceSellerCampaignWithHttpInfo(String sellerCampaignId) throws ApiException {
         okhttp3.Call localVarCall = getMarketplaceSellerCampaignValidateBeforeCall(sellerCampaignId, null);
-        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId} (asynchronously)
      * Return details for a seller campaign. For example,                    {          \&quot;id\&quot;: \&quot;543210.123456\&quot;,          \&quot;sellerId\&quot;: \&quot;543210\&quot;,          \&quot;campaignId\&quot;: 123456,          \&quot;bid\&quot;: 1.55,          \&quot;suspendedSince\&quot;: \&quot;2018-07-30T15:15:24.813\&quot;,          \&quot;suspensionReasons\&quot;: [              \&quot;NoMoreBudget\&quot;          ]      }                An active seller campaign is one for which the value of &lt;b&gt;suspendedSince&lt;/b&gt; is null and  the &lt;b&gt;bid&lt;/b&gt; is positive. The currency of the bid is the &lt;b&gt;bidCurrency&lt;/b&gt; of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.                Suspension reasons:  - ManuallyStopped: The Seller-Campaign has been manually paused. This is not related to the other suspension reasons.  - NoBudgetDefined: No valid budget has been linked to the Seller-Campaign.  - NoCpcDefined: No CPC has been set for the Seller-Campaign.  - NoMoreBudget: The current budget of the Seller-Campaign has been exhausted.  - RemovedFromCatalog: All the products of the Seller-Campaign have been deleted from the catalog.  - NotYetStarted: The Seller-Campaign has just been created and has not yet been processed.
-     * @param sellerCampaignId Id of the seller campaign. (required)
+     * @param sellerCampaignId Composite id of the seller campaign in the format &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3118,10 +3118,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketplaceSellerCampaignAsync(String sellerCampaignId, final ApiCallback<List<SellerCampaignMessage>> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceSellerCampaignAsync(String sellerCampaignId, final ApiCallback<SellerCampaignMessage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketplaceSellerCampaignValidateBeforeCall(sellerCampaignId, _callback);
-        Type localVarReturnType = new TypeToken<List<SellerCampaignMessage>>(){}.getType();
+        Type localVarReturnType = new TypeToken<SellerCampaignMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3212,7 +3212,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns
      * Return a collection of seller campaigns filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param advertiserId Return only seller belonging to the specified advertiser (optional)
      * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
@@ -3233,7 +3233,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns
      * Return a collection of seller campaigns filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param advertiserId Return only seller belonging to the specified advertiser (optional)
      * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
@@ -3255,7 +3255,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns (asynchronously)
      * Return a collection of seller campaigns filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param advertiserId Return only seller belonging to the specified advertiser (optional)
      * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
@@ -3347,7 +3347,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/seller-campaigns
      * Get CRP seller campaigns for a specific advertiser
      * @param advertiserId Id of the advertiser (required)
      * @return List&lt;SellerCampaignMessage&gt;
@@ -3364,7 +3364,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/seller-campaigns
      * Get CRP seller campaigns for a specific advertiser
      * @param advertiserId Id of the advertiser (required)
      * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
@@ -3382,7 +3382,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/seller-campaigns (asynchronously)
      * Get CRP seller campaigns for a specific advertiser
      * @param advertiserId Id of the advertiser (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3485,7 +3485,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/seller-campaigns
      * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used. See the seller campaigns endpoint for additional details.
      * @param sellerId Return only seller campaigns belonging to the given seller. (required)
      * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
@@ -3505,7 +3505,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/seller-campaigns
      * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used. See the seller campaigns endpoint for additional details.
      * @param sellerId Return only seller campaigns belonging to the given seller. (required)
      * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
@@ -3526,7 +3526,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers/{sellerId}/seller-campaigns (asynchronously)
      * Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used. See the seller campaigns endpoint for additional details.
      * @param sellerId Return only seller campaigns belonging to the given seller. (required)
      * @param budgetStatus Return only seller campaigns whose budget has the given status. (optional)
@@ -3550,7 +3550,7 @@ public class CampaignApi {
     }
     /**
      * Build call for getMarketplaceSellerCampaignsStats
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
@@ -3655,9 +3655,9 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/stats/seller-campaigns
      * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone if  provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns  are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
@@ -3680,9 +3680,9 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/stats/seller-campaigns
      * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone if  provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns  are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
@@ -3706,9 +3706,9 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/stats/seller-campaigns (asynchronously)
      * ## Dimensions                Get performance statistics aggregated for _seller campaigns_.The campaign id, seller id, and  seller name appear in the first three columns of the output. These are followed by the interval  size column.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone if  provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The remaining columns  are metrics.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by date or count.                Filtering the results to events associated with a specific campaign is done by setting  the &#x60;campaignId&#x60; filter parameter to the desired value.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [          \&quot;campaignId\&quot;, \&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;      ],      \&quot;data\&quot;: [          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110222, \&quot;118883955\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-05-01\&quot;, 12502, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],          [168423, 1110225, \&quot;117980027\&quot;, \&quot;2019-06-01\&quot;, 20266, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the campaign id, seller id, and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param campaignId Show only metrics for this campaign (default all campaigns) (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
@@ -3825,7 +3825,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers
      * Return a collection of sellers filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param advertiserId Return only sellers belonging to the specified advertiser (optional)
      * @param campaignId Return only sellers belonging to the specified campaign (optional)
@@ -3847,7 +3847,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers
      * Return a collection of sellers filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param advertiserId Return only sellers belonging to the specified advertiser (optional)
      * @param campaignId Return only sellers belonging to the specified campaign (optional)
@@ -3870,7 +3870,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/sellers (asynchronously)
      * Return a collection of sellers filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.
      * @param advertiserId Return only sellers belonging to the specified advertiser (optional)
      * @param campaignId Return only sellers belonging to the specified campaign (optional)
@@ -3975,7 +3975,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/sellers
      * Create new sellers for an advertiser
      * @param advertiserId Id of the advertiser (required)
      * @param requestBody Names of the sellers to associate with new Ids (required)
@@ -3994,7 +3994,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/sellers
      * Create new sellers for an advertiser
      * @param advertiserId Id of the advertiser (required)
      * @param requestBody Names of the sellers to associate with new Ids (required)
@@ -4014,7 +4014,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/advertisers/{advertiserId}/sellers (asynchronously)
      * Create new sellers for an advertiser
      * @param advertiserId Id of the advertiser (required)
      * @param requestBody Names of the sellers to associate with new Ids (required)
@@ -4037,7 +4037,7 @@ public class CampaignApi {
     }
     /**
      * Build call for getMarketplaceSellersStats
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
      * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
@@ -4137,9 +4137,9 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/stats/sellers
      * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time interval  appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
      * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
@@ -4161,9 +4161,9 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/stats/sellers
      * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time interval  appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
      * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
@@ -4186,9 +4186,9 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/stats/sellers (asynchronously)
      * ## Dimensions                Get performance statistics aggregated for _sellers_. The seller id appears  in the output in the first column and the seller name appears in the second.                Aggregation can be done by &#x60;hour&#x60;, &#x60;day&#x60;, &#x60;month&#x60;, or &#x60;year&#x60; aligned with the user timezone  if provided. The aggregation interval size is controlled by &#x60;intervalSize&#x60;. The time interval  appears in the output as the second column.                ## Metrics                The metrics reported by this endpoint are                .  | Metric Group | Description  ---|--------------|------------  A | impressions | Number of times product is shown in a banner  B | clicks | Number of clicks on product  C | cost | Amount spent for clicks on products  D | saleUnits | Number of products sold attributed to clicks  E | revenue | Revenue generated by sales  F | CR &#x3D; Conversion Rate | salesUnits / clicks  G | CPO &#x3D; Cost Per Order | cost / salesUnits  H | COS &#x3D; Cost of Sale | cost / revenue  I | ROAS &#x3D; Return On Add Spend | revenue / cost                The last six metrics can be computed in two ways depending on the policy to count only  the sales that result from clicks on the same sellers product in a banner  (same-seller) or not (any-seller).  Reporting can be controlled by &#x60;clickAttributionPolicy&#x60;.                The 9 (or 15) metric values appear in the output as the final 9 (or 15) columns.                ## Filtering                The results can be filtered by seller id, date or count.                Filtering the results to events associated with a specific seller is done by setting  the &#x60;sellerId&#x60; filter parameter to the desired value.                Filtering the results to events  that happened in a time interval is done by setting the &#x60;startDate&#x60; and  &#x60;endDate&#x60; filter parameters using the &#x60;yyyy-MM-DD&#x60; format. The start date  includes all events timestamped since the beginning of that day while the end  date includes events until the end of day. The maximum duration of the date  range is 1 year. If the aggregation interval is &#x60;hour&#x60;, then the maximum  duration of the date range is 31 days. Note that month and year aggregate values  may contain partial data for the interval if filtering by date.                Filtering the results to a maximum number of data rows is done by setting the  &#x60;count&#x60; filter parameter. When combined with startDate this can be used to perform  simple pagination.                ## Response Format                The representation format can be specified by MIME values in the Accept header.  For now the only supported values for the accept header is &#x60;application/json&#x60; and  &#x60;text/csv&#x60;.                &#x60;&#x60;&#x60;json  {      \&quot;columns\&quot;: [\&quot;sellerId\&quot;, \&quot;sellerName\&quot;, \&quot;month\&quot;, \&quot;impressions\&quot;, \&quot;clicks\&quot;, \&quot;cost\&quot;, \&quot;saleUnits\&quot;, \&quot;revenue\&quot;, \&quot;cr\&quot;, \&quot;cpo\&quot;, \&quot;cos\&quot;, \&quot;roas\&quot;],      \&quot;data\&quot;: [         [1200972, \&quot;sellerA\&quot;, \&quot;2019-05-01\&quot;, 14542, 48, 3.36, 0, 0.0, 0.0, null, null, 0.0],         [1200972, \&quot;sellerA\&quot;, \&quot;2019-06-01\&quot;, 16619, 53, 3.71, 0, 0.0, 0.0, null, null, 0.0],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-05-01\&quot;, 10102, 47, 3.29, 3, 396000.0, 0.063, 1.096, 8.308E-6, 120364.741],         [1200974, \&quot;sellerB\&quot;, \&quot;2019-06-01\&quot;, 11576, 54, 3.78, 1, 132000.0, 0.018, 3.78, 2.863E-5, 34920.634]      ],      \&quot;rows\&quot;: 4  }  &#x60;&#x60;&#x60;                The JSON result is an object with three fields (&#x60;columns&#x60;, &#x60;data&#x60;, and &#x60;rows&#x60;). The  “columns” array acts as the header for the data rows. The categorical dimension  columns come first and include the seller id and seller name.  The interval column comes next and defines the aggregation period. The interval size is  determined by the &#x60;intervalSize&#x60; parameter. This is followed by either nine or  fifteen metrics columns. The first three metrics (impressions, clicks, and cost)  always appear. The remaining metrics depend on the &#x60;clickAttributionPolicy&#x60; parameter.                The “data” array contains data rows whose values match the entries in the  “columns” array. Id dimensions are numbers while name and date dimensions are strings. The metrics are JSON objects  whose type is number. Some of these are natural numbers (e.g. clicks and  impressions) whereas others are decimal values. A divide by zero yields null. The  currency is assumed to be the local currency established by the advertiser.                The “row” value is a count of the number of rows in the data array, and can be  used to check the integrity of the data.                Further information on the campaign or seller (e.g. the seller name) can be  obtained from the existing V1 or V2 endpoints using the campaign and/or seller  ID values.
-     * @param advertiserId Show only metrics for this advertiser. (optional)
+     * @param advertiserId Filter metrics to this advertiser. Strongly recommended — omitting this on large accounts causes timeouts. (optional)
      * @param clickAttributionPolicy Specify the click attribution policy for salesUnits, revenue, CR, CPO, COS, and ROAS (optional, default to AnySeller)
      * @param count Return up to the first count rows of data (default is all rows) (optional)
      * @param endDate Filter out all events that occur after date (default is today’s date) (optional)
@@ -4288,7 +4288,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/category-bids
      * Update the Category Bids for given Categories associated to an Ad Set  Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetCategoryBidListRequest Collection of category bids to update (required)
@@ -4306,7 +4306,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/category-bids
      * Update the Category Bids for given Categories associated to an Ad Set  Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetCategoryBidListRequest Collection of category bids to update (required)
@@ -4325,7 +4325,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/category-bids (asynchronously)
      * Update the Category Bids for given Categories associated to an Ad Set  Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetCategoryBidListRequest Collection of category bids to update (required)
@@ -4414,7 +4414,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets
      * Patch a list of AdSets.
      * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @return ResponsesAdSetIdV24Q3
@@ -4431,7 +4431,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets
      * Patch a list of AdSets.
      * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @return ApiResponse&lt;ResponsesAdSetIdV24Q3&gt;
@@ -4449,7 +4449,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/ad-sets (asynchronously)
      * Patch a list of AdSets.
      * @param requestsPatchAdSetV24Q3 List of adsets to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4537,7 +4537,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/campaigns
      * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return PatchResultCampaignListResponse
@@ -4554,7 +4554,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/campaigns
      * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @return ApiResponse&lt;PatchResultCampaignListResponse&gt;
@@ -4572,7 +4572,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/campaigns (asynchronously)
      * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param patchCampaignListRequest List of campaigns to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4667,7 +4667,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers
      * Update the Display Multipliers for given Categories associated to an Ad Set  Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetDisplayMultiplierListRequest List of display multiplier values to change (required)
@@ -4685,7 +4685,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers
      * Update the Display Multipliers for given Categories associated to an Ad Set  Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetDisplayMultiplierListRequest List of display multiplier values to change (required)
@@ -4704,7 +4704,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers (asynchronously)
      * Update the Display Multipliers for given Categories associated to an Ad Set  Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
      * @param adSetId Id of the Ad Set (required)
      * @param patchAdSetDisplayMultiplierListRequest List of display multiplier values to change (required)
@@ -4788,7 +4788,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/search
      * Search for ad sets
      * @param adSetSearchRequestV24Q3  (optional)
      * @return ResponsesReadAdSetV24Q3
@@ -4805,7 +4805,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/search
      * Search for ad sets
      * @param adSetSearchRequestV24Q3  (optional)
      * @return ApiResponse&lt;ResponsesReadAdSetV24Q3&gt;
@@ -4823,7 +4823,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/ad-sets/search (asynchronously)
      * Search for ad sets
      * @param adSetSearchRequestV24Q3  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -4906,7 +4906,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/campaigns/search
      * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
      * @return CampaignV23Q1ListResponse
@@ -4923,7 +4923,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/campaigns/search
      * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
      * @return ApiResponse&lt;CampaignV23Q1ListResponse&gt;
@@ -4941,7 +4941,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/campaigns/search (asynchronously)
      * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
      * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -5024,7 +5024,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/start
      * Start the specified list of ad sets
      * @param requestsAdSetId All the ad sets to start (optional)
      * @return ResponsesAdSetId
@@ -5041,7 +5041,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/start
      * Start the specified list of ad sets
      * @param requestsAdSetId All the ad sets to start (optional)
      * @return ApiResponse&lt;ResponsesAdSetId&gt;
@@ -5059,7 +5059,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/ad-sets/start (asynchronously)
      * Start the specified list of ad sets
      * @param requestsAdSetId All the ad sets to start (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -5142,7 +5142,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/stop
      * Stop the specified list of ad sets
      * @param requestsAdSetId All the ad sets to stop (optional)
      * @return ResponsesAdSetId
@@ -5159,7 +5159,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/stop
      * Stop the specified list of ad sets
      * @param requestsAdSetId All the ad sets to stop (optional)
      * @return ApiResponse&lt;ResponsesAdSetId&gt;
@@ -5177,7 +5177,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/ad-sets/stop (asynchronously)
      * Stop the specified list of ad sets
      * @param requestsAdSetId All the ad sets to stop (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -5272,7 +5272,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/audience
      * Link or unlink an audience with an ad set
      * @param adSetId The ad set ID. (required)
      * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (required)
@@ -5290,7 +5290,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/audience
      * Link or unlink an audience with an ad set
      * @param adSetId The ad set ID. (required)
      * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (required)
@@ -5309,7 +5309,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/ad-sets/{ad-set-id}/audience (asynchronously)
      * Link or unlink an audience with an ad set
      * @param adSetId The ad set ID. (required)
      * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (required)
@@ -5405,7 +5405,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets/{budgetId}
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId Id of the budget (required)
      * @param updateSellerBudgetMessageBase  (required)
@@ -5423,7 +5423,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets/{budgetId}
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId Id of the budget (required)
      * @param updateSellerBudgetMessageBase  (required)
@@ -5442,7 +5442,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets/{budgetId} (asynchronously)
      * Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
      * @param budgetId Id of the budget (required)
      * @param updateSellerBudgetMessageBase  (required)
@@ -5531,7 +5531,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets
      * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
      * @param updateSellerBudgetMessage  (required)
      * @return List&lt;SellerBudgetMessage&gt;
@@ -5548,7 +5548,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets
      * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
      * @param updateSellerBudgetMessage  (required)
      * @return ApiResponse&lt;List&lt;SellerBudgetMessage&gt;&gt;
@@ -5566,7 +5566,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/budgets (asynchronously)
      * Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • &lt;b&gt;campaignIds&lt;/b&gt;: a non-empty subset of the original campaign ids MAY be supplied&lt;br /&gt;  • &lt;b&gt;amount&lt;/b&gt;: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative&lt;br /&gt;  • &lt;b&gt;startDate&lt;/b&gt;: a future start date MAY be supplied for budgets that have not yet started&lt;br /&gt;  • &lt;b&gt;endDate&lt;/b&gt;: an end date MAY be supplied and if supplied MUST be a future date greater than the start date&lt;br /&gt;                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
      * @param updateSellerBudgetMessage  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -5587,7 +5587,7 @@ public class CampaignApi {
     }
     /**
      * Build call for updateMarketplaceSellerCampaign
-     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param sellerCampaignId Composite id of the seller campaign to update in the format &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
      * @param bid The new bid for the seller campaign. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -5659,9 +5659,9 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}
      * Patching a seller campaign allows the bid to be modified. The bid must be a non-negative value.  Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
-     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param sellerCampaignId Composite id of the seller campaign to update in the format &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
      * @param bid The new bid for the seller campaign. (optional)
      * @return SellerCampaignMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5677,9 +5677,9 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId}
      * Patching a seller campaign allows the bid to be modified. The bid must be a non-negative value.  Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
-     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param sellerCampaignId Composite id of the seller campaign to update in the format &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
      * @param bid The new bid for the seller campaign. (optional)
      * @return ApiResponse&lt;SellerCampaignMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5696,9 +5696,9 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns/{sellerCampaignId} (asynchronously)
      * Patching a seller campaign allows the bid to be modified. The bid must be a non-negative value.  Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
-     * @param sellerCampaignId Id of the existing seller campaign to update (required)
+     * @param sellerCampaignId Composite id of the seller campaign to update in the format &#x60;{sellerId}.{campaignId}&#x60;, e.g. &#x60;2578464.187625&#x60;. (required)
      * @param bid The new bid for the seller campaign. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5785,7 +5785,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns
      * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
      * @param sellerCampaignUpdate  (required)
      * @return List&lt;SellerCampaignMessage&gt;
@@ -5802,7 +5802,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns
      * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
      * @param sellerCampaignUpdate  (required)
      * @return ApiResponse&lt;List&lt;SellerCampaignMessage&gt;&gt;
@@ -5820,7 +5820,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/marketing-solutions/marketplace-performance-outcomes/seller-campaigns (asynchronously)
      * Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.
      * @param sellerCampaignUpdate  (required)
      * @param _callback The callback to be executed when the API call finishes

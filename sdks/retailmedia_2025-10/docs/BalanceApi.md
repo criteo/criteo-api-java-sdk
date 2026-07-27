@@ -4,14 +4,14 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addFundsByAccountAndBalanceId**](BalanceApi.md#addFundsByAccountAndBalanceId) | **POST** /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds |  |
-| [**changeDatesByAccountAndBalanceId**](BalanceApi.md#changeDatesByAccountAndBalanceId) | **POST** /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |  |
-| [**createBalanceByAccountId**](BalanceApi.md#createBalanceByAccountId) | **POST** /2025-10/retail-media/accounts/{account-id}/balances |  |
-| [**getBalanceByAccountAndBalanceId**](BalanceApi.md#getBalanceByAccountAndBalanceId) | **GET** /2025-10/retail-media/accounts/{account-id}/balances/{balance-id} |  |
-| [**getBalanceHistory**](BalanceApi.md#getBalanceHistory) | **GET** /2025-10/retail-media/balances/{balanceId}/history |  |
-| [**getBalancesByAccountId**](BalanceApi.md#getBalancesByAccountId) | **GET** /2025-10/retail-media/accounts/{account-id}/balances |  |
-| [**getCampaignsByBalanceId**](BalanceApi.md#getCampaignsByBalanceId) | **GET** /2025-10/retail-media/balances/{balance-id}/campaigns |  |
-| [**modifyBalanceByAccountAndBalanceId**](BalanceApi.md#modifyBalanceByAccountAndBalanceId) | **PATCH** /2025-10/retail-media/accounts/{account-id}/balances/{balance-id} |  |
+| [**addFundsByAccountAndBalanceId**](BalanceApi.md#addFundsByAccountAndBalanceId) | **POST** /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds | /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds |
+| [**changeDatesByAccountAndBalanceId**](BalanceApi.md#changeDatesByAccountAndBalanceId) | **POST** /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates | /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |
+| [**createBalanceByAccountId**](BalanceApi.md#createBalanceByAccountId) | **POST** /2025-10/retail-media/accounts/{account-id}/balances | /2025-10/retail-media/accounts/{account-id}/balances |
+| [**getBalanceByAccountAndBalanceId**](BalanceApi.md#getBalanceByAccountAndBalanceId) | **GET** /2025-10/retail-media/accounts/{account-id}/balances/{balance-id} | /2025-10/retail-media/accounts/{account-id}/balances/{balance-id} |
+| [**getBalanceHistory**](BalanceApi.md#getBalanceHistory) | **GET** /2025-10/retail-media/balances/{balanceId}/history | /2025-10/retail-media/balances/{balanceId}/history |
+| [**getBalancesByAccountId**](BalanceApi.md#getBalancesByAccountId) | **GET** /2025-10/retail-media/accounts/{account-id}/balances | /2025-10/retail-media/accounts/{account-id}/balances |
+| [**getCampaignsByBalanceId**](BalanceApi.md#getCampaignsByBalanceId) | **GET** /2025-10/retail-media/balances/{balance-id}/campaigns | /2025-10/retail-media/balances/{balance-id}/campaigns |
+| [**modifyBalanceByAccountAndBalanceId**](BalanceApi.md#modifyBalanceByAccountAndBalanceId) | **PATCH** /2025-10/retail-media/accounts/{account-id}/balances/{balance-id} | /2025-10/retail-media/accounts/{account-id}/balances/{balance-id} |
 
 
 
@@ -19,7 +19,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > BalanceResponseV2Response addFundsByAccountAndBalanceId(accountId, balanceId, addFundsToBalanceV2Request)
 
-
+/2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds
 
 Add funds to a balance for the given account id
 
@@ -112,7 +112,7 @@ public class Example {
 
 > BalanceResponseV2Response changeDatesByAccountAndBalanceId(accountId, balanceId, changeDatesOfBalanceV2Request)
 
-
+/2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates
 
 Change dates of a balance for the given account id
 
@@ -205,7 +205,7 @@ public class Example {
 
 > BalanceResponseV2Response createBalanceByAccountId(accountId, createBalanceV2Request)
 
-
+/2025-10/retail-media/accounts/{account-id}/balances
 
 Create balance for the given account id
 
@@ -296,7 +296,7 @@ public class Example {
 
 > BalanceResponseV2Response getBalanceByAccountAndBalanceId(accountId, balanceId)
 
-
+/2025-10/retail-media/accounts/{account-id}/balances/{balance-id}
 
 Get a balance for the given account id and balance id
 
@@ -387,7 +387,7 @@ public class Example {
 
 > PageOfBalanceHistoryChangeDataCaptureV1 getBalanceHistory(balanceId, limit, limitToChangeTypes, offset)
 
-
+/2025-10/retail-media/balances/{balanceId}/history
 
 Gets the balance&#39;s historical change data.
 
@@ -482,7 +482,7 @@ public class Example {
 
 > BalanceResponseV2PagedListResponse getBalancesByAccountId(accountId, limitToId, pageIndex, pageSize)
 
-
+/2025-10/retail-media/accounts/{account-id}/balances
 
 Gets page of balance objects for the given account id
 
@@ -577,7 +577,7 @@ public class Example {
 
 > BalanceCampaign202110PagedListResponse getCampaignsByBalanceId(balanceId, limitToId, pageIndex, pageSize)
 
-
+/2025-10/retail-media/balances/{balance-id}/campaigns
 
 Gets page of campaigns for the given balanceId
 
@@ -672,7 +672,7 @@ public class Example {
 
 > BalanceResponseV2Response modifyBalanceByAccountAndBalanceId(accountId, balanceId, updateBalanceModelV2Request)
 
-
+/2025-10/retail-media/accounts/{account-id}/balances/{balance-id}
 
 Modify a balance for the given account id
 

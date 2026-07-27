@@ -51,7 +51,6 @@ import com.criteo.api.retailmedia.v2025_07.model.Creative2ListResponse;
 import com.criteo.api.retailmedia.v2025_07.model.Creative2Response;
 import com.criteo.api.retailmedia.v2025_07.model.CreativeCreateModel202207;
 import com.criteo.api.retailmedia.v2025_07.model.CreativeUpdateModel202207;
-import com.criteo.api.retailmedia.v2025_07.model.EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata;
 import com.criteo.api.retailmedia.v2025_07.model.EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata;
 import com.criteo.api.retailmedia.v2025_07.model.EntityResourceOutcomeOfCatalogStatusV2;
 import java.io.File;
@@ -83,7 +82,6 @@ import com.criteo.api.retailmedia.v2025_07.model.StoreTarget202110Request;
 import com.criteo.api.retailmedia.v2025_07.model.StoreTarget202110Response;
 import com.criteo.api.retailmedia.v2025_07.model.TemplateListResponse;
 import com.criteo.api.retailmedia.v2025_07.model.TemplateResponse;
-import com.criteo.api.retailmedia.v2025_07.model.ValueResourceInputBrandIdSearchRequest;
 import com.criteo.api.retailmedia.v2025_07.model.ValueResourceInputCpcMinBidsRequest;
 import com.criteo.api.retailmedia.v2025_07.model.ValueResourceInputOfBrandCatalogRequestV2;
 import com.criteo.api.retailmedia.v2025_07.model.ValueResourceInputOfCampaignBudgetOverrides;
@@ -211,7 +209,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{id}/keywords/add-remove
      * Add or Remove keywords from the line item in bulk
      * @param id ID of the line item (required)
      * @param addRemoveKeywordsModelRequest  (optional)
@@ -229,7 +227,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{id}/keywords/add-remove
      * Add or Remove keywords from the line item in bulk
      * @param id ID of the line item (required)
      * @param addRemoveKeywordsModelRequest  (optional)
@@ -248,7 +246,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{id}/keywords/add-remove (asynchronously)
      * Add or Remove keywords from the line item in bulk
      * @param id ID of the line item (required)
      * @param addRemoveKeywordsModelRequest  (optional)
@@ -339,7 +337,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append
      * This endpoint appends one or more add to basket ids to targeting on the specified line item.  The resulting state of the add to basket target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param addToBasketIdsUpdateModel202110Request Ids to append to the target (optional)
@@ -357,7 +355,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append
      * This endpoint appends one or more add to basket ids to targeting on the specified line item.  The resulting state of the add to basket target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param addToBasketIdsUpdateModel202110Request Ids to append to the target (optional)
@@ -376,7 +374,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append (asynchronously)
      * This endpoint appends one or more add to basket ids to targeting on the specified line item.  The resulting state of the add to basket target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param addToBasketIdsUpdateModel202110Request Ids to append to the target (optional)
@@ -467,7 +465,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append
      * This endpoint appends one or more audiences ids to targeting on the specified line item.  The resulting state of the audience target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param audienceIdsUpdateModel202110Request Audience ids to append to the target (optional)
@@ -485,7 +483,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append
      * This endpoint appends one or more audiences ids to targeting on the specified line item.  The resulting state of the audience target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param audienceIdsUpdateModel202110Request Audience ids to append to the target (optional)
@@ -504,7 +502,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append (asynchronously)
      * This endpoint appends one or more audiences ids to targeting on the specified line item.  The resulting state of the audience target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param audienceIdsUpdateModel202110Request Audience ids to append to the target (optional)
@@ -595,7 +593,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/balances/{balance-id}/campaigns/append
      * appends one or more campaigns to the specified balance
      * @param balanceId The balance to add campaigns from (required)
      * @param balanceCampaign202110ListRequest The campaigns to append (optional)
@@ -613,7 +611,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/balances/{balance-id}/campaigns/append
      * appends one or more campaigns to the specified balance
      * @param balanceId The balance to add campaigns from (required)
      * @param balanceCampaign202110ListRequest The campaigns to append (optional)
@@ -632,7 +630,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/balances/{balance-id}/campaigns/append (asynchronously)
      * appends one or more campaigns to the specified balance
      * @param balanceId The balance to add campaigns from (required)
      * @param balanceCampaign202110ListRequest The campaigns to append (optional)
@@ -724,7 +722,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/products/append
      * Append a collection of promoted products to a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -743,7 +741,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/products/append
      * Append a collection of promoted products to a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -763,7 +761,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{line-item-id}/products/append (asynchronously)
      * Append a collection of promoted products to a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -855,7 +853,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append
      * This endpoint appends one or more store ids to targeting on the specified line item.  The resulting state of the store target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param storeIdsUpdateModel202110Request Store ids to append to the target (optional)
@@ -873,7 +871,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append
      * This endpoint appends one or more store ids to targeting on the specified line item.  The resulting state of the store target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param storeIdsUpdateModel202110Request Store ids to append to the target (optional)
@@ -892,7 +890,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append (asynchronously)
      * This endpoint appends one or more store ids to targeting on the specified line item.  The resulting state of the store target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param storeIdsUpdateModel202110Request Store ids to append to the target (optional)
@@ -985,7 +983,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/assets
      * Creates an asset
      * @param assetFile The asset binary content (required)
      * @return AssetResponse
@@ -1002,7 +1000,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/assets
      * Creates an asset
      * @param assetFile The asset binary content (required)
      * @return ApiResponse&lt;AssetResponse&gt;
@@ -1020,7 +1018,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/assets (asynchronously)
      * Creates an asset
      * @param assetFile The asset binary content (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1115,7 +1113,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/brand-catalog-export
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param valueResourceInputOfBrandCatalogRequestV2  (required)
@@ -1133,7 +1131,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/brand-catalog-export
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param valueResourceInputOfBrandCatalogRequestV2  (required)
@@ -1152,7 +1150,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{accountId}/brand-catalog-export (asynchronously)
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param valueResourceInputOfBrandCatalogRequestV2  (required)
@@ -1248,7 +1246,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/campaigns
      * Creates a new campaign with the specified settings
      * @param accountId The given account id (required)
      * @param postCampaignV202301 The campaign settings to create a campaign with (required)
@@ -1266,7 +1264,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/campaigns
      * Creates a new campaign with the specified settings
      * @param accountId The given account id (required)
      * @param postCampaignV202301 The campaign settings to create a campaign with (required)
@@ -1285,7 +1283,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{account-id}/campaigns (asynchronously)
      * Creates a new campaign with the specified settings
      * @param accountId The given account id (required)
      * @param postCampaignV202301 The campaign settings to create a campaign with (required)
@@ -1381,7 +1379,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/creatives
      * Create a creative for an account
      * @param accountId External account id to create a creative for (required)
      * @param creativeCreateModel202207 The creative to create (required)
@@ -1399,7 +1397,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/creatives
      * Create a creative for an account
      * @param accountId External account id to create a creative for (required)
      * @param creativeCreateModel202207 The creative to create (required)
@@ -1418,7 +1416,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{account-id}/creatives (asynchronously)
      * Create a creative for an account
      * @param accountId External account id to create a creative for (required)
      * @param creativeCreateModel202207 The creative to create (required)
@@ -1514,7 +1512,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaign-id}/preferred-line-items
      * Creates a new preferred line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (required)
@@ -1532,7 +1530,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaign-id}/preferred-line-items
      * Creates a new preferred line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (required)
@@ -1551,7 +1549,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/campaigns/{campaign-id}/preferred-line-items (asynchronously)
      * Creates a new preferred line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param preferredLineItemCreateModelV2Request The line item settings to create a line item with (required)
@@ -1647,7 +1645,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/seller-catalog-export
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param valueResourceInputOfSellerCatalogRequestV2  (required)
@@ -1665,7 +1663,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/seller-catalog-export
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param valueResourceInputOfSellerCatalogRequestV2  (required)
@@ -1684,7 +1682,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{accountId}/seller-catalog-export (asynchronously)
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param valueResourceInputOfSellerCatalogRequestV2  (required)
@@ -1775,7 +1773,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete
      * This endpoint removes one or more add to basket ids from targeting on the specified line item.  The resulting state of the add to basket target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param addToBasketIdsUpdateModel202110Request Ids to remove from the target (optional)
@@ -1793,7 +1791,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete
      * This endpoint removes one or more add to basket ids from targeting on the specified line item.  The resulting state of the add to basket target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param addToBasketIdsUpdateModel202110Request Ids to remove from the target (optional)
@@ -1812,7 +1810,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete (asynchronously)
      * This endpoint removes one or more add to basket ids from targeting on the specified line item.  The resulting state of the add to basket target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param addToBasketIdsUpdateModel202110Request Ids to remove from the target (optional)
@@ -1903,7 +1901,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete
      * This endpoint removes one or more audiences ids from targeting on the specified line item.  The resulting state of the audience target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param audienceIdsUpdateModel202110Request Audience ids to remove from the target (optional)
@@ -1921,7 +1919,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete
      * This endpoint removes one or more audiences ids from targeting on the specified line item.  The resulting state of the audience target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param audienceIdsUpdateModel202110Request Audience ids to remove from the target (optional)
@@ -1940,7 +1938,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete (asynchronously)
      * This endpoint removes one or more audiences ids from targeting on the specified line item.  The resulting state of the audience target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param audienceIdsUpdateModel202110Request Audience ids to remove from the target (optional)
@@ -2031,7 +2029,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/balances/{balance-id}/campaigns/delete
      * Removes one or more campaigns on the specified balance
      * @param balanceId The balance to remove campaigns from (required)
      * @param balanceCampaign202110ListRequest The campaigns to append (optional)
@@ -2049,7 +2047,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/balances/{balance-id}/campaigns/delete
      * Removes one or more campaigns on the specified balance
      * @param balanceId The balance to remove campaigns from (required)
      * @param balanceCampaign202110ListRequest The campaigns to append (optional)
@@ -2068,7 +2066,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/balances/{balance-id}/campaigns/delete (asynchronously)
      * Removes one or more campaigns on the specified balance
      * @param balanceId The balance to remove campaigns from (required)
      * @param balanceCampaign202110ListRequest The campaigns to append (optional)
@@ -2158,7 +2156,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/products/delete
      * Remove a collection of promoted products from a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -2174,7 +2172,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/products/delete
      * Remove a collection of promoted products from a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -2192,7 +2190,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{line-item-id}/products/delete (asynchronously)
      * Remove a collection of promoted products from a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -2282,7 +2280,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete
      * This endpoint removes one or more store ids from targeting on the specified line item.  The resulting state of the store target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param storeIdsUpdateModel202110Request Store ids to remove from the target (optional)
@@ -2300,7 +2298,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete
      * This endpoint removes one or more store ids from targeting on the specified line item.  The resulting state of the store target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param storeIdsUpdateModel202110Request Store ids to remove from the target (optional)
@@ -2319,7 +2317,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete (asynchronously)
      * This endpoint removes one or more store ids from targeting on the specified line item.  The resulting state of the store target is returned.
      * @param lineItemId The line item to interact with (required)
      * @param storeIdsUpdateModel202110Request Store ids to remove from the target (optional)
@@ -2408,7 +2406,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{id}/keywords
      * Fetch keywords associated with the specified line item
      * @param id ID of the line item (required)
      * @return KeywordsModelResponse
@@ -2425,7 +2423,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{id}/keywords
      * Fetch keywords associated with the specified line item
      * @param id ID of the line item (required)
      * @return ApiResponse&lt;KeywordsModelResponse&gt;
@@ -2443,7 +2441,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{id}/keywords (asynchronously)
      * Fetch keywords associated with the specified line item
      * @param id ID of the line item (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2546,7 +2544,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/products
      * Retrieve a page of promoted products for a line item
      * @param lineItemId ID of the line item. (required)
      * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
@@ -2566,7 +2564,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/products
      * Retrieve a page of promoted products for a line item
      * @param lineItemId ID of the line item. (required)
      * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
@@ -2587,7 +2585,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{line-item-id}/products (asynchronously)
      * Retrieve a page of promoted products for a line item
      * @param lineItemId ID of the line item. (required)
      * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
@@ -2678,7 +2676,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/creatives
      * Get account creatives
      * @param accountId External account id to retrieve creatives for (required)
      * @return Creative202110ListResponse
@@ -2695,7 +2693,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/creatives
      * Get account creatives
      * @param accountId External account id to retrieve creatives for (required)
      * @return ApiResponse&lt;Creative202110ListResponse&gt;
@@ -2713,7 +2711,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{account-id}/creatives (asynchronously)
      * Get account creatives
      * @param accountId External account id to retrieve creatives for (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2801,7 +2799,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
      * This endpoint gets the add to basket target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @return AddToBasketTarget202110Response
@@ -2818,7 +2816,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
      * This endpoint gets the add to basket target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @return ApiResponse&lt;AddToBasketTarget202110Response&gt;
@@ -2836,7 +2834,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket (asynchronously)
      * This endpoint gets the add to basket target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2924,7 +2922,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/retailers/{retailerId}/pages
      * Get the page types available for the given retailer
      * @param retailerId The retailers to fetch pages for (required)
      * @return RetailerPages202110
@@ -2941,7 +2939,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/retailers/{retailerId}/pages
      * Get the page types available for the given retailer
      * @param retailerId The retailers to fetch pages for (required)
      * @return ApiResponse&lt;RetailerPages202110&gt;
@@ -2959,7 +2957,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/retailers/{retailerId}/pages (asynchronously)
      * Get the page types available for the given retailer
      * @param retailerId The retailers to fetch pages for (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3060,7 +3058,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/categories
      * Endpoint to search categories by text and retailer.
      * @param pageIndex The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param pageSize The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
@@ -3080,7 +3078,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/categories
      * Endpoint to search categories by text and retailer.
      * @param pageIndex The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param pageSize The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
@@ -3101,7 +3099,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/categories (asynchronously)
      * Endpoint to search categories by text and retailer.
      * @param pageIndex The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param pageSize The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
@@ -3207,7 +3205,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaign-id}/auction-line-items
      * Gets page of auction line item objects for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -3227,7 +3225,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaign-id}/auction-line-items
      * Gets page of auction line item objects for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -3248,7 +3246,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/campaigns/{campaign-id}/auction-line-items (asynchronously)
      * Gets page of auction line item objects for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -3339,7 +3337,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/auction-line-items/{line-item-id}
      * Gets the auction line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @return AuctionLineItemResponse
@@ -3356,7 +3354,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/auction-line-items/{line-item-id}
      * Gets the auction line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @return ApiResponse&lt;AuctionLineItemResponse&gt;
@@ -3374,7 +3372,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/auction-line-items/{line-item-id} (asynchronously)
      * Gets the auction line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3462,7 +3460,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
      * This endpoint gets the audience target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @return AudienceTarget202110Response
@@ -3479,7 +3477,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
      * This endpoint gets the audience target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @return ApiResponse&lt;AudienceTarget202110Response&gt;
@@ -3497,7 +3495,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences (asynchronously)
      * This endpoint gets the audience target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3585,7 +3583,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/bid-multipliers
      * Fetch all bid multipliers for a given line item
      * @param lineItemId LineItemId for bid multiplier retrieval (required)
      * @return JsonApiSingleResponseOfLineItemBidMultipliersV2
@@ -3602,7 +3600,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/bid-multipliers
      * Fetch all bid multipliers for a given line item
      * @param lineItemId LineItemId for bid multiplier retrieval (required)
      * @return ApiResponse&lt;JsonApiSingleResponseOfLineItemBidMultipliersV2&gt;
@@ -3620,7 +3618,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{line-item-id}/bid-multipliers (asynchronously)
      * Fetch all bid multipliers for a given line item
      * @param lineItemId LineItemId for bid multiplier retrieval (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3723,7 +3721,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/brands
      * Gets page of retailer objects that are associated with the given account
      * @param accountId The given account id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -3743,7 +3741,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/brands
      * Gets page of retailer objects that are associated with the given account
      * @param accountId The given account id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -3764,7 +3762,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{accountId}/brands (asynchronously)
      * Gets page of retailer objects that are associated with the given account
      * @param accountId The given account id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -3855,7 +3853,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaignId}/campaign-budget-overrides
      * Get current campaign budget overrides by given campaign id.
      * @param campaignId Campaign id. (required)
      * @return ValueResourceOutcomeOfCampaignBudgetOverrides
@@ -3872,7 +3870,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaignId}/campaign-budget-overrides
      * Get current campaign budget overrides by given campaign id.
      * @param campaignId Campaign id. (required)
      * @return ApiResponse&lt;ValueResourceOutcomeOfCampaignBudgetOverrides&gt;
@@ -3890,7 +3888,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/campaigns/{campaignId}/campaign-budget-overrides (asynchronously)
      * Get current campaign budget overrides by given campaign id.
      * @param campaignId Campaign id. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3978,7 +3976,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaignId}
      * Gets the campaign for the given campaign id
      * @param campaignId The given campaign id (required)
      * @return JsonApiSingleResponseOfCampaignV202301
@@ -3995,7 +3993,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaignId}
      * Gets the campaign for the given campaign id
      * @param campaignId The given campaign id (required)
      * @return ApiResponse&lt;JsonApiSingleResponseOfCampaignV202301&gt;
@@ -4013,7 +4011,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/campaigns/{campaignId} (asynchronously)
      * Gets the campaign for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4116,7 +4114,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/campaigns
      * Gets page of campaign objects for the given account id
      * @param accountId The given account id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -4136,7 +4134,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/campaigns
      * Gets page of campaign objects for the given account id
      * @param accountId The given account id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -4157,7 +4155,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{account-id}/campaigns (asynchronously)
      * Gets page of campaign objects for the given account id
      * @param accountId The given account id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -4249,7 +4247,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/catalogs/{catalogId}/output
      * Output the indicated catalog. Catalogs are only available for retrieval when their associated status request  is at a Success status.  Produces application/x-json-stream CatalogProduct json objects (first introduced in the 2021-07 version).
      * @param catalogId A catalog ID returned from an account catalog request. (required)
      * @return File
@@ -4267,7 +4265,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/catalogs/{catalogId}/output
      * Output the indicated catalog. Catalogs are only available for retrieval when their associated status request  is at a Success status.  Produces application/x-json-stream CatalogProduct json objects (first introduced in the 2021-07 version).
      * @param catalogId A catalog ID returned from an account catalog request. (required)
      * @return ApiResponse&lt;File&gt;
@@ -4286,7 +4284,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/catalogs/{catalogId}/output (asynchronously)
      * Output the indicated catalog. Catalogs are only available for retrieval when their associated status request  is at a Success status.  Produces application/x-json-stream CatalogProduct json objects (first introduced in the 2021-07 version).
      * @param catalogId A catalog ID returned from an account catalog request. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4375,7 +4373,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/catalogs/{catalogId}/status
      * Check the status of a catalog request.
      * @param catalogId A catalog ID returned from an account catalog request. (required)
      * @return JsonApiSingleResponseOfCatalogStatus
@@ -4392,7 +4390,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/catalogs/{catalogId}/status
      * Check the status of a catalog request.
      * @param catalogId A catalog ID returned from an account catalog request. (required)
      * @return ApiResponse&lt;JsonApiSingleResponseOfCatalogStatus&gt;
@@ -4410,7 +4408,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/catalogs/{catalogId}/status (asynchronously)
      * Check the status of a catalog request.
      * @param catalogId A catalog ID returned from an account catalog request. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4498,7 +4496,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/categories/{categoryId}
      * Endpoint to search for a specific category by categoryId.
      * @param categoryId ID of the desired category (required)
      * @return Category202204
@@ -4515,7 +4513,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/categories/{categoryId}
      * Endpoint to search for a specific category by categoryId.
      * @param categoryId ID of the desired category (required)
      * @return ApiResponse&lt;Category202204&gt;
@@ -4533,7 +4531,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/categories/{categoryId} (asynchronously)
      * Endpoint to search for a specific category by categoryId.
      * @param categoryId ID of the desired category (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4628,7 +4626,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/retailers/{retailerId}/cpc-min-bids
      * Get overall and individual minimum bid amount for given retailer id and sku id list.
      * @param retailerId Retailer Id. (required)
      * @param valueResourceInputCpcMinBidsRequest Cpc minimum bid amount request object. (required)
@@ -4646,7 +4644,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/retailers/{retailerId}/cpc-min-bids
      * Get overall and individual minimum bid amount for given retailer id and sku id list.
      * @param retailerId Retailer Id. (required)
      * @param valueResourceInputCpcMinBidsRequest Cpc minimum bid amount request object. (required)
@@ -4665,7 +4663,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/retailers/{retailerId}/cpc-min-bids (asynchronously)
      * Get overall and individual minimum bid amount for given retailer id and sku id list.
      * @param retailerId Retailer Id. (required)
      * @param valueResourceInputCpcMinBidsRequest Cpc minimum bid amount request object. (required)
@@ -4761,7 +4759,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/creatives/{creative-id}
      * Get the specified creative
      * @param accountId External account id to retrieve creatives for (required)
      * @param creativeId Creative to get (required)
@@ -4779,7 +4777,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/creatives/{creative-id}
      * Get the specified creative
      * @param accountId External account id to retrieve creatives for (required)
      * @param creativeId Creative to get (required)
@@ -4798,7 +4796,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{account-id}/creatives/{creative-id} (asynchronously)
      * Get the specified creative
      * @param accountId External account id to retrieve creatives for (required)
      * @param creativeId Creative to get (required)
@@ -4894,7 +4892,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/retailers/{retailer-id}/templates/{template-id}
      * Gets the template for the specified retailer id and template id
      * @param retailerId Retailer Id (required)
      * @param templateId Template Id (required)
@@ -4912,7 +4910,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/retailers/{retailer-id}/templates/{template-id}
      * Gets the template for the specified retailer id and template id
      * @param retailerId Retailer Id (required)
      * @param templateId Template Id (required)
@@ -4931,7 +4929,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/retailers/{retailer-id}/templates/{template-id} (asynchronously)
      * Gets the template for the specified retailer id and template id
      * @param retailerId Retailer Id (required)
      * @param templateId Template Id (required)
@@ -5030,7 +5028,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/keywords/in-review-report
      * Generate a list of reports for line items which contain one or more actionable keyword reviews
      * @param accountId The account to generate a report for (required)
      * @param limit Number of items per page (optional, default to 25)
@@ -5049,7 +5047,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/keywords/in-review-report
      * Generate a list of reports for line items which contain one or more actionable keyword reviews
      * @param accountId The account to generate a report for (required)
      * @param limit Number of items per page (optional, default to 25)
@@ -5069,7 +5067,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{account-id}/keywords/in-review-report (asynchronously)
      * Generate a list of reports for line items which contain one or more actionable keyword reviews
      * @param accountId The account to generate a report for (required)
      * @param limit Number of items per page (optional, default to 25)
@@ -5159,7 +5157,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{lineItemId}/line-item-budget-overrides
      * Gets a collection of monthly and daily budget overrides for the provided line item.
      * @param lineItemId The line item id to get budget overrides for. (required)
      * @return ValueResourceOutcomeOfLineItemBudgetOverrides
@@ -5176,7 +5174,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{lineItemId}/line-item-budget-overrides
      * Gets a collection of monthly and daily budget overrides for the provided line item.
      * @param lineItemId The line item id to get budget overrides for. (required)
      * @return ApiResponse&lt;ValueResourceOutcomeOfLineItemBudgetOverrides&gt;
@@ -5194,7 +5192,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{lineItemId}/line-item-budget-overrides (asynchronously)
      * Gets a collection of monthly and daily budget overrides for the provided line item.
      * @param lineItemId The line item id to get budget overrides for. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -5307,7 +5305,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/line-items
      * Gets page of line item objects for the given account id
      * @param accountId The given account id (required)
      * @param limitToCampaignId The campaign ids that you would like to limit your result set to (optional)
@@ -5329,7 +5327,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/line-items
      * Gets page of line item objects for the given account id
      * @param accountId The given account id (required)
      * @param limitToCampaignId The campaign ids that you would like to limit your result set to (optional)
@@ -5352,7 +5350,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{account-id}/line-items (asynchronously)
      * Gets page of line item objects for the given account id
      * @param accountId The given account id (required)
      * @param limitToCampaignId The campaign ids that you would like to limit your result set to (optional)
@@ -5445,7 +5443,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}
      * Gets the line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @return CommonLineItemResponse
@@ -5462,7 +5460,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}
      * Gets the line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @return ApiResponse&lt;CommonLineItemResponse&gt;
@@ -5480,7 +5478,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{line-item-id} (asynchronously)
      * Gets the line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -5583,7 +5581,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaign-id}/preferred-line-items
      * Gets page of preferred line item objects for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -5603,7 +5601,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaign-id}/preferred-line-items
      * Gets page of preferred line item objects for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -5624,7 +5622,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/campaigns/{campaign-id}/preferred-line-items (asynchronously)
      * Gets page of preferred line item objects for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -5715,7 +5713,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}
      * Gets the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @return PreferredLineItemV2Response
@@ -5732,7 +5730,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}
      * Gets the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @return ApiResponse&lt;PreferredLineItemV2Response&gt;
@@ -5750,7 +5748,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id} (asynchronously)
      * Gets the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -5780,7 +5778,9 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getRecommendedKeywordsCall(String externalLineItemId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -5826,6 +5826,7 @@ public class CampaignApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getRecommendedKeywordsValidateBeforeCall(String externalLineItemId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'externalLineItemId' is set
@@ -5838,7 +5839,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{externalLineItemId}/keywords/recommended
      * Retrieves a collection of recommended keywords for a line item
      * @param externalLineItemId The line item identifier (required)
      * @return ValueResourceOutcomeOfRecommendedKeywordsResult
@@ -5848,14 +5849,16 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ValueResourceOutcomeOfRecommendedKeywordsResult getRecommendedKeywords(String externalLineItemId) throws ApiException {
         ApiResponse<ValueResourceOutcomeOfRecommendedKeywordsResult> localVarResp = getRecommendedKeywordsWithHttpInfo(externalLineItemId);
         return localVarResp.getData();
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{externalLineItemId}/keywords/recommended
      * Retrieves a collection of recommended keywords for a line item
      * @param externalLineItemId The line item identifier (required)
      * @return ApiResponse&lt;ValueResourceOutcomeOfRecommendedKeywordsResult&gt;
@@ -5865,7 +5868,9 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<ValueResourceOutcomeOfRecommendedKeywordsResult> getRecommendedKeywordsWithHttpInfo(String externalLineItemId) throws ApiException {
         okhttp3.Call localVarCall = getRecommendedKeywordsValidateBeforeCall(externalLineItemId, null);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRecommendedKeywordsResult>(){}.getType();
@@ -5873,7 +5878,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{externalLineItemId}/keywords/recommended (asynchronously)
      * Retrieves a collection of recommended keywords for a line item
      * @param externalLineItemId The line item identifier (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -5884,7 +5889,9 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getRecommendedKeywordsAsync(String externalLineItemId, final ApiCallback<ValueResourceOutcomeOfRecommendedKeywordsResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRecommendedKeywordsValidateBeforeCall(externalLineItemId, _callback);
@@ -5961,7 +5968,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/retailers/{retailer-id}/templates
      * Get retailer creative templates
      * @param retailerId External retailer id to retrieve creative templates for (required)
      * @return TemplateListResponse
@@ -5978,7 +5985,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/retailers/{retailer-id}/templates
      * Get retailer creative templates
      * @param retailerId External retailer id to retrieve creative templates for (required)
      * @return ApiResponse&lt;TemplateListResponse&gt;
@@ -5996,7 +6003,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/retailers/{retailer-id}/templates (asynchronously)
      * Get retailer creative templates
      * @param retailerId External retailer id to retrieve creative templates for (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -6099,7 +6106,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/retailers
      * Gets page of retailer objects that are associated with the given account
      * @param accountId The given account id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -6119,7 +6126,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/retailers
      * Gets page of retailer objects that are associated with the given account
      * @param accountId The given account id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -6140,7 +6147,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{accountId}/retailers (asynchronously)
      * Gets page of retailer objects that are associated with the given account
      * @param accountId The given account id (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -6231,7 +6238,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores
      * This endpoint gets the store target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @return StoreTarget202110Response
@@ -6248,7 +6255,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores
      * This endpoint gets the store target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @return ApiResponse&lt;StoreTarget202110Response&gt;
@@ -6266,7 +6273,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores (asynchronously)
      * This endpoint gets the store target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -6361,7 +6368,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaign-id}/auction-line-items
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param auctionLineItemCreateModelRequest The line item settings to create a line item with (required)
@@ -6379,7 +6386,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaign-id}/auction-line-items
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param auctionLineItemCreateModelRequest The line item settings to create a line item with (required)
@@ -6398,7 +6405,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/campaigns/{campaign-id}/auction-line-items (asynchronously)
      * Creates new auction line item with the specified settings
      * @param campaignId The given campaign id (required)
      * @param auctionLineItemCreateModelRequest The line item settings to create a line item with (required)
@@ -6488,7 +6495,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/products/pause
      * Pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -6504,7 +6511,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/products/pause
      * Pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -6522,7 +6529,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{line-item-id}/products/pause (asynchronously)
      * Pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -6617,7 +6624,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/catalogs/sellers
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param jsonApiRequestOfSellerCatalogRequest  (required)
@@ -6635,7 +6642,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/catalogs/sellers
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param jsonApiRequestOfSellerCatalogRequest  (required)
@@ -6654,7 +6661,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{accountId}/catalogs/sellers (asynchronously)
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param jsonApiRequestOfSellerCatalogRequest  (required)
@@ -6750,7 +6757,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/catalogs
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param jsonApiRequestOfCatalogRequest  (required)
@@ -6768,7 +6775,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/catalogs
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param jsonApiRequestOfCatalogRequest  (required)
@@ -6787,7 +6794,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{accountId}/catalogs (asynchronously)
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
      * @param jsonApiRequestOfCatalogRequest  (required)
@@ -6883,7 +6890,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
      * This endpoint sets the scope of the add to basket target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param addToBasketTarget202110Request The add to basket target to set the scope for (required)
@@ -6901,7 +6908,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
      * This endpoint sets the scope of the add to basket target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param addToBasketTarget202110Request The add to basket target to set the scope for (required)
@@ -6920,7 +6927,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket (asynchronously)
      * This endpoint sets the scope of the add to basket target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param addToBasketTarget202110Request The add to basket target to set the scope for (required)
@@ -7016,7 +7023,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
      * This endpoint sets the scope of the audience target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param audienceTarget202110Request The audience target to set the scope for (required)
@@ -7034,7 +7041,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
      * This endpoint sets the scope of the audience target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param audienceTarget202110Request The audience target to set the scope for (required)
@@ -7053,7 +7060,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences (asynchronously)
      * This endpoint sets the scope of the audience target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param audienceTarget202110Request The audience target to set the scope for (required)
@@ -7149,7 +7156,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores
      * This endpoint sets the scope of the store target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param storeTarget202110Request The store target to set the scope for (required)
@@ -7167,7 +7174,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores
      * This endpoint sets the scope of the store target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param storeTarget202110Request The store target to set the scope for (required)
@@ -7186,7 +7193,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores (asynchronously)
      * This endpoint sets the scope of the store target on the specified line item.
      * @param lineItemId The line item to interact with (required)
      * @param storeTarget202110Request The store target to set the scope for (required)
@@ -7280,7 +7287,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/creatives/search
      * Get account creatives
      * @param accountId External account id to retrieve creatives for (required)
      * @param creativeIds Creatives to filter by (optional)
@@ -7298,7 +7305,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/creatives/search
      * Get account creatives
      * @param accountId External account id to retrieve creatives for (required)
      * @param creativeIds Creatives to filter by (optional)
@@ -7317,7 +7324,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{account-id}/creatives/search (asynchronously)
      * Get account creatives
      * @param accountId External account id to retrieve creatives for (required)
      * @param creativeIds Creatives to filter by (optional)
@@ -7334,140 +7341,6 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = searchAccountCreativesValidateBeforeCall(accountId, creativeIds, _callback);
         Type localVarReturnType = new TypeToken<Creative2ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for searchBrands
-     * @param limit the number of brands to return (optional, default to 25)
-     * @param offset offset of paginated results (optional, default to 0)
-     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call searchBrandsCall(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = valueResourceInputBrandIdSearchRequest;
-
-        // create path and map variables
-        String localVarPath = "/2025-07/retail-media/brands/search";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchBrandsValidateBeforeCall(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
-        return searchBrandsCall(limit, offset, valueResourceInputBrandIdSearchRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * Search for brands given a retailer ID and search term.
-     * @param limit the number of brands to return (optional, default to 25)
-     * @param offset offset of paginated results (optional, default to 0)
-     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
-     * @return EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrands(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> localVarResp = searchBrandsWithHttpInfo(limit, offset, valueResourceInputBrandIdSearchRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Search for brands given a retailer ID and search term.
-     * @param limit the number of brands to return (optional, default to 25)
-     * @param offset offset of paginated results (optional, default to 0)
-     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
-     * @return ApiResponse&lt;EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> searchBrandsWithHttpInfo(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
-        okhttp3.Call localVarCall = searchBrandsValidateBeforeCall(limit, offset, valueResourceInputBrandIdSearchRequest, null);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Search for brands given a retailer ID and search term.
-     * @param limit the number of brands to return (optional, default to 25)
-     * @param offset offset of paginated results (optional, default to 0)
-     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call searchBrandsAsync(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = searchBrandsValidateBeforeCall(limit, offset, valueResourceInputBrandIdSearchRequest, _callback);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -7542,7 +7415,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{id}/keywords/set-bid
      * Set bid overrides for associated keywords to the given line item in bulk
      * @param id ID of the line item (required)
      * @param setBidsModelRequest  (optional)
@@ -7560,7 +7433,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{id}/keywords/set-bid
      * Set bid overrides for associated keywords to the given line item in bulk
      * @param id ID of the line item (required)
      * @param setBidsModelRequest  (optional)
@@ -7579,7 +7452,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{id}/keywords/set-bid (asynchronously)
      * Set bid overrides for associated keywords to the given line item in bulk
      * @param id ID of the line item (required)
      * @param setBidsModelRequest  (optional)
@@ -7669,7 +7542,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/products/unpause
      * Un-pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -7685,7 +7558,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/products/unpause
      * Un-pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -7703,7 +7576,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{line-item-id}/products/unpause (asynchronously)
      * Un-pause a collection of promoted products associated with a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -7798,7 +7671,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/auction-line-items/{line-item-id}
      * Updates the auction line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param auctionLineItemUpdateModelRequest The line item settings to create a line item with (required)
@@ -7816,7 +7689,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/auction-line-items/{line-item-id}
      * Updates the auction line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param auctionLineItemUpdateModelRequest The line item settings to create a line item with (required)
@@ -7835,7 +7708,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/auction-line-items/{line-item-id} (asynchronously)
      * Updates the auction line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param auctionLineItemUpdateModelRequest The line item settings to create a line item with (required)
@@ -7931,7 +7804,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/bid-multipliers
      * Updates the bid multipliers for a given line item
      * @param lineItemId LineItemId for bid multiplier retrieval (required)
      * @param lineItemBidMultipliersV2Request New Bid Multipliers to be set (required)
@@ -7949,7 +7822,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/bid-multipliers
      * Updates the bid multipliers for a given line item
      * @param lineItemId LineItemId for bid multiplier retrieval (required)
      * @param lineItemBidMultipliersV2Request New Bid Multipliers to be set (required)
@@ -7968,7 +7841,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{line-item-id}/bid-multipliers (asynchronously)
      * Updates the bid multipliers for a given line item
      * @param lineItemId LineItemId for bid multiplier retrieval (required)
      * @param lineItemBidMultipliersV2Request New Bid Multipliers to be set (required)
@@ -8064,7 +7937,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaignId}/campaign-budget-overrides
      * Update campaign budget overrides by given campaign id and new campaign budget overrides settings.
      * @param campaignId Campaign id. (required)
      * @param valueResourceInputOfCampaignBudgetOverrides New campaign budget overrides settings value resource input. (required)
@@ -8082,7 +7955,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaignId}/campaign-budget-overrides
      * Update campaign budget overrides by given campaign id and new campaign budget overrides settings.
      * @param campaignId Campaign id. (required)
      * @param valueResourceInputOfCampaignBudgetOverrides New campaign budget overrides settings value resource input. (required)
@@ -8101,7 +7974,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/campaigns/{campaignId}/campaign-budget-overrides (asynchronously)
      * Update campaign budget overrides by given campaign id and new campaign budget overrides settings.
      * @param campaignId Campaign id. (required)
      * @param valueResourceInputOfCampaignBudgetOverrides New campaign budget overrides settings value resource input. (required)
@@ -8197,7 +8070,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaignId}
      * Updates the campaign for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param putCampaignV202301 The campaign settings to update that campaign with (required)
@@ -8215,7 +8088,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/campaigns/{campaignId}
      * Updates the campaign for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param putCampaignV202301 The campaign settings to update that campaign with (required)
@@ -8234,7 +8107,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/campaigns/{campaignId} (asynchronously)
      * Updates the campaign for the given campaign id
      * @param campaignId The given campaign id (required)
      * @param putCampaignV202301 The campaign settings to update that campaign with (required)
@@ -8337,7 +8210,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/creatives/{creative-id}
      * Update a creative
      * @param accountId External account id containing the creative (required)
      * @param creativeId Creative to update (required)
@@ -8356,7 +8229,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{account-id}/creatives/{creative-id}
      * Update a creative
      * @param accountId External account id containing the creative (required)
      * @param creativeId Creative to update (required)
@@ -8376,7 +8249,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{account-id}/creatives/{creative-id} (asynchronously)
      * Update a creative
      * @param accountId External account id containing the creative (required)
      * @param creativeId Creative to update (required)
@@ -8468,7 +8341,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/keywords/review
      * Update the status of keyword reviews under a line item
      * @param lineItemId The line item to update keyword review statuses for (required)
      * @param valueResourceInputRetailMediaKeywordsReview Request object containing a list of Phrase-ReviewState pairs to update (optional)
@@ -8486,7 +8359,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{line-item-id}/keywords/review
      * Update the status of keyword reviews under a line item
      * @param lineItemId The line item to update keyword review statuses for (required)
      * @param valueResourceInputRetailMediaKeywordsReview Request object containing a list of Phrase-ReviewState pairs to update (optional)
@@ -8505,7 +8378,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{line-item-id}/keywords/review (asynchronously)
      * Update the status of keyword reviews under a line item
      * @param lineItemId The line item to update keyword review statuses for (required)
      * @param valueResourceInputRetailMediaKeywordsReview Request object containing a list of Phrase-ReviewState pairs to update (optional)
@@ -8601,7 +8474,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{lineItemId}/line-item-budget-overrides
      * Update line item budget overrides by given external line item id and new line item budget overrides settings.
      * @param lineItemId Line item external id. (required)
      * @param valueResourceInputOfLineItemBudgetOverrides New line item budget overrides settings value resource input. (required)
@@ -8619,7 +8492,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/line-items/{lineItemId}/line-item-budget-overrides
      * Update line item budget overrides by given external line item id and new line item budget overrides settings.
      * @param lineItemId Line item external id. (required)
      * @param valueResourceInputOfLineItemBudgetOverrides New line item budget overrides settings value resource input. (required)
@@ -8638,7 +8511,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/line-items/{lineItemId}/line-item-budget-overrides (asynchronously)
      * Update line item budget overrides by given external line item id and new line item budget overrides settings.
      * @param lineItemId Line item external id. (required)
      * @param valueResourceInputOfLineItemBudgetOverrides New line item budget overrides settings value resource input. (required)
@@ -8734,7 +8607,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}
      * Updates the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (required)
@@ -8752,7 +8625,7 @@ public class CampaignApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/preferred-line-items/{line-item-id}
      * Updates the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (required)
@@ -8771,7 +8644,7 @@ public class CampaignApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/preferred-line-items/{line-item-id} (asynchronously)
      * Updates the preferred line item for the given line item id
      * @param lineItemId The given line item id (required)
      * @param preferredLineItemUpdateModelV2Request The line item settings to create a line item with (required)

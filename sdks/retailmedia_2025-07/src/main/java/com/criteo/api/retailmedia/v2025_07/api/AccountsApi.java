@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.criteo.api.retailmedia.v2025_07.model.EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata;
 import com.criteo.api.retailmedia.v2025_07.model.EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata;
 import com.criteo.api.retailmedia.v2025_07.model.EntityResourceOutcomeOfRetailMediaAccount;
 import com.criteo.api.retailmedia.v2025_07.model.GrantConsentInput;
@@ -34,6 +35,7 @@ import com.criteo.api.retailmedia.v2025_07.model.JsonApiPageResponseOfAccount;
 import com.criteo.api.retailmedia.v2025_07.model.ValueResourceCollectionInputOfRetailMediaSeller;
 import com.criteo.api.retailmedia.v2025_07.model.ValueResourceCollectionOutcomeOfRetailMediaSeller;
 import com.criteo.api.retailmedia.v2025_07.model.ValueResourceCollectionOutcomeOfSellerSearchResult;
+import com.criteo.api.retailmedia.v2025_07.model.ValueResourceInputBrandIdSearchRequest;
 import com.criteo.api.retailmedia.v2025_07.model.ValueResourceInputOfRetailMediaBrandAccountCreation;
 import com.criteo.api.retailmedia.v2025_07.model.ValueResourceInputOfRetailMediaBrands;
 import com.criteo.api.retailmedia.v2025_07.model.ValueResourceInputOfRetailMediaSellerAccountCreation;
@@ -155,7 +157,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/brands/add
      * Add brands to an account
      * @param accountId the account id to update (required)
      * @param valueResourceInputOfRetailMediaBrands  (optional)
@@ -173,7 +175,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/brands/add
      * Add brands to an account
      * @param accountId the account id to update (required)
      * @param valueResourceInputOfRetailMediaBrands  (optional)
@@ -192,7 +194,7 @@ public class AccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/account-management/accounts/{accountId}/brands/add (asynchronously)
      * Add brands to an account
      * @param accountId the account id to update (required)
      * @param valueResourceInputOfRetailMediaBrands  (optional)
@@ -283,7 +285,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/create-brand-account
      * Creates a new child Demand Brand account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
@@ -301,7 +303,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/create-brand-account
      * Creates a new child Demand Brand account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
@@ -320,7 +322,7 @@ public class AccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/account-management/accounts/{accountId}/create-brand-account (asynchronously)
      * Creates a new child Demand Brand account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
@@ -411,7 +413,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/create-seller-account
      * Creates a new child Demand Seller account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreation  (optional)
@@ -429,7 +431,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/create-seller-account
      * Creates a new child Demand Seller account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreation  (optional)
@@ -448,7 +450,7 @@ public class AccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/account-management/accounts/{accountId}/create-seller-account (asynchronously)
      * Creates a new child Demand Seller account for the provided parent Private Market account
      * @param accountId The given account id (required)
      * @param valueResourceInputOfRetailMediaSellerAccountCreation  (optional)
@@ -545,7 +547,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts
      * Gets page of account objects that the current user can access
      * @param limitToId The ids that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -564,7 +566,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts
      * Gets page of account objects that the current user can access
      * @param limitToId The ids that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -584,7 +586,7 @@ public class AccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts (asynchronously)
      * Gets page of account objects that the current user can access
      * @param limitToId The ids that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -684,7 +686,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
      * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
@@ -703,7 +705,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
      * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
@@ -723,7 +725,7 @@ public class AccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/account-management/accounts/{accountId}/private-market-child-accounts (asynchronously)
      * Gets Private Market child accounts that are associated with the given account
      * @param accountId Account Id (required)
      * @param limit The number of accounts to be returned. The default is 25. (optional, default to 25)
@@ -814,7 +816,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/grant-consent
      * Grant consent to a business application on behalf of a Private Market demand account
      * @param accountId The demand account ID on which to grant consent (required)
      * @param grantConsentInput  (optional)
@@ -830,7 +832,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/{accountId}/grant-consent
      * Grant consent to a business application on behalf of a Private Market demand account
      * @param accountId The demand account ID on which to grant consent (required)
      * @param grantConsentInput  (optional)
@@ -848,7 +850,7 @@ public class AccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/{accountId}/grant-consent (asynchronously)
      * Grant consent to a business application on behalf of a Private Market demand account
      * @param accountId The demand account ID on which to grant consent (required)
      * @param grantConsentInput  (optional)
@@ -938,7 +940,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/brands/remove
      * Remove brands from an account
      * @param accountId the account id to update (required)
      * @param valueResourceInputOfRetailMediaBrands  (optional)
@@ -956,7 +958,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/brands/remove
      * Remove brands from an account
      * @param accountId the account id to update (required)
      * @param valueResourceInputOfRetailMediaBrands  (optional)
@@ -975,7 +977,7 @@ public class AccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/account-management/accounts/{accountId}/brands/remove (asynchronously)
      * Remove brands from an account
      * @param accountId the account id to update (required)
      * @param valueResourceInputOfRetailMediaBrands  (optional)
@@ -992,6 +994,140 @@ public class AccountsApi {
 
         okhttp3.Call localVarCall = removeBrandsValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrands, _callback);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRetailMediaBrands>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for searchBrands
+     * @param limit the number of brands to return (optional, default to 25)
+     * @param offset offset of paginated results (optional, default to 0)
+     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchBrandsCall(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputBrandIdSearchRequest;
+
+        // create path and map variables
+        String localVarPath = "/2025-07/retail-media/brands/search";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call searchBrandsValidateBeforeCall(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
+        return searchBrandsCall(limit, offset, valueResourceInputBrandIdSearchRequest, _callback);
+
+    }
+
+    /**
+     * /2025-07/retail-media/brands/search
+     * Search for brands given a retailer ID and search term.
+     * @param limit the number of brands to return (optional, default to 25)
+     * @param offset offset of paginated results (optional, default to 0)
+     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
+     * @return EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrands(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> localVarResp = searchBrandsWithHttpInfo(limit, offset, valueResourceInputBrandIdSearchRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /2025-07/retail-media/brands/search
+     * Search for brands given a retailer ID and search term.
+     * @param limit the number of brands to return (optional, default to 25)
+     * @param offset offset of paginated results (optional, default to 0)
+     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> searchBrandsWithHttpInfo(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
+        okhttp3.Call localVarCall = searchBrandsValidateBeforeCall(limit, offset, valueResourceInputBrandIdSearchRequest, null);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /2025-07/retail-media/brands/search (asynchronously)
+     * Search for brands given a retailer ID and search term.
+     * @param limit the number of brands to return (optional, default to 25)
+     * @param offset offset of paginated results (optional, default to 0)
+     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchBrandsAsync(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = searchBrandsValidateBeforeCall(limit, offset, valueResourceInputBrandIdSearchRequest, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1064,7 +1200,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/sellers/search
      * Get the sellers mapped to provided accounts
      * @param valueResourceInputOfSellerSearch  (required)
      * @return ValueResourceCollectionOutcomeOfSellerSearchResult
@@ -1081,7 +1217,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/accounts/sellers/search
      * Get the sellers mapped to provided accounts
      * @param valueResourceInputOfSellerSearch  (required)
      * @return ApiResponse&lt;ValueResourceCollectionOutcomeOfSellerSearchResult&gt;
@@ -1099,7 +1235,7 @@ public class AccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/accounts/sellers/search (asynchronously)
      * Get the sellers mapped to provided accounts
      * @param valueResourceInputOfSellerSearch  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1194,7 +1330,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/sellers
      * Replace the sellers associated with an account
      * @param accountId The given account id (required)
      * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
@@ -1212,7 +1348,7 @@ public class AccountsApi {
     }
 
     /**
-     * 
+     * /2025-07/retail-media/account-management/accounts/{accountId}/sellers
      * Replace the sellers associated with an account
      * @param accountId The given account id (required)
      * @param valueResourceCollectionInputOfRetailMediaSeller  (required)
@@ -1231,7 +1367,7 @@ public class AccountsApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-07/retail-media/account-management/accounts/{accountId}/sellers (asynchronously)
      * Replace the sellers associated with an account
      * @param accountId The given account id (required)
      * @param valueResourceCollectionInputOfRetailMediaSeller  (required)

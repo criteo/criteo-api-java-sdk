@@ -62,12 +62,59 @@ public class TransactionsReportQueryMessage {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private OffsetDateTime endDate;
 
+  /**
+   * Optional event type to filter on. If empty, all event types will be included.
+   */
+  @JsonAdapter(EventTypeEnum.Adapter.class)
+  public enum EventTypeEnum {
+    CLICK("Click"),
+    
+    DISPLAY("Display");
+
+    private String value;
+
+    EventTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static EventTypeEnum fromValue(String value) {
+      for (EventTypeEnum b : EventTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<EventTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final EventTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public EventTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return EventTypeEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
-  private String eventType;
+  private EventTypeEnum eventType;
 
   /**
-   * The file format of the generated report
+   * Optional file format of the generated report.
    */
   @JsonAdapter(FormatEnum.Adapter.class)
   public enum FormatEnum {
@@ -139,10 +186,10 @@ public class TransactionsReportQueryMessage {
   }
 
    /**
-   * The comma-separated list of advertiser ids. If empty, all the advertisers in the portfolio will be used
+   * List of advertiser IDs to report on, provided as a single comma-separated string (e.g., \&quot;123,456,789\&quot;). The advertisers must already exist. If empty, all advertisers will be used.
    * @return advertiserIds
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getAdvertiserIds() {
     return advertiserIds;
@@ -183,7 +230,7 @@ public class TransactionsReportQueryMessage {
   }
 
    /**
-   * End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * End date of the report. Date component of ISO 8601 format, any time or timezone component is ignored.
    * @return endDate
   **/
   @javax.annotation.Nonnull
@@ -198,24 +245,24 @@ public class TransactionsReportQueryMessage {
   }
 
 
-  public TransactionsReportQueryMessage eventType(String eventType) {
+  public TransactionsReportQueryMessage eventType(EventTypeEnum eventType) {
     
     this.eventType = eventType;
     return this;
   }
 
    /**
-   * Apply a filter on Event type .
+   * Optional event type to filter on. If empty, all event types will be included.
    * @return eventType
   **/
   @javax.annotation.Nullable
 
-  public String getEventType() {
+  public EventTypeEnum getEventType() {
     return eventType;
   }
 
 
-  public void setEventType(String eventType) {
+  public void setEventType(EventTypeEnum eventType) {
     this.eventType = eventType;
   }
 
@@ -227,7 +274,7 @@ public class TransactionsReportQueryMessage {
   }
 
    /**
-   * The file format of the generated report
+   * Optional file format of the generated report.
    * @return format
   **/
   @javax.annotation.Nullable
@@ -249,7 +296,7 @@ public class TransactionsReportQueryMessage {
   }
 
    /**
-   * Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * Start date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. Must be ≤ endDate.
    * @return startDate
   **/
   @javax.annotation.Nonnull
@@ -271,7 +318,7 @@ public class TransactionsReportQueryMessage {
   }
 
    /**
-   * The timezone used for the report. Timezone Database format (Tz).
+   * Optional timezone used for the report. Timezone Database format (Tz).
    * @return timezone
   **/
   @javax.annotation.Nullable
@@ -364,6 +411,7 @@ public class TransactionsReportQueryMessage {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("advertiserIds");
     openapiRequiredFields.add("currency");
     openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("startDate");
@@ -396,7 +444,7 @@ public class TransactionsReportQueryMessage {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonNull()) && !jsonObj.get("advertiserIds").isJsonPrimitive()) {
+      if (!jsonObj.get("advertiserIds").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
       }
       if (!jsonObj.get("currency").isJsonPrimitive()) {

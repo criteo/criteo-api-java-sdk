@@ -163,7 +163,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds
      * Add funds to a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to add funds to (required)
@@ -182,7 +182,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds
      * Add funds to a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to add funds to (required)
@@ -202,7 +202,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds (asynchronously)
      * Add funds to a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to add funds to (required)
@@ -306,7 +306,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates
      * Change dates of a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
@@ -325,7 +325,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates
      * Change dates of a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
@@ -345,7 +345,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates (asynchronously)
      * Change dates of a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
@@ -442,7 +442,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances
      * Create balance for the given account id
      * @param accountId The account to create balances for (required)
      * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (required)
@@ -460,7 +460,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances
      * Create balance for the given account id
      * @param accountId The account to create balances for (required)
      * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (required)
@@ -479,7 +479,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/retail-media/accounts/{account-id}/balances (asynchronously)
      * Create balance for the given account id
      * @param accountId The account to create balances for (required)
      * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (required)
@@ -575,7 +575,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}
      * Get a balance for the given account id and balance id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance id (required)
@@ -593,7 +593,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}
      * Get a balance for the given account id and balance id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance id (required)
@@ -612,7 +612,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id} (asynchronously)
      * Get a balance for the given account id and balance id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance id (required)
@@ -716,7 +716,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/balances/{balanceId}/history
      * Gets the balance&#39;s historical change data.
      * @param balanceId Balance id. (required)
      * @param limit The number of elements to be returned. (optional, default to 25)
@@ -736,7 +736,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/balances/{balanceId}/history
      * Gets the balance&#39;s historical change data.
      * @param balanceId Balance id. (required)
      * @param limit The number of elements to be returned. (optional, default to 25)
@@ -757,7 +757,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/retail-media/balances/{balanceId}/history (asynchronously)
      * Gets the balance&#39;s historical change data.
      * @param balanceId Balance id. (required)
      * @param limit The number of elements to be returned. (optional, default to 25)
@@ -863,7 +863,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances
      * Gets page of balance objects for the given account id
      * @param accountId The account to get balances for (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -883,7 +883,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances
      * Gets page of balance objects for the given account id
      * @param accountId The account to get balances for (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -904,7 +904,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/retail-media/accounts/{account-id}/balances (asynchronously)
      * Gets page of balance objects for the given account id
      * @param accountId The account to get balances for (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -1010,7 +1010,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/balances/{balance-id}/campaigns
      * Gets page of campaigns for the given balanceId
      * @param balanceId The balance to get campaigns from (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -1030,7 +1030,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/balances/{balance-id}/campaigns
      * Gets page of campaigns for the given balanceId
      * @param balanceId The balance to get campaigns from (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -1051,7 +1051,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/retail-media/balances/{balance-id}/campaigns (asynchronously)
      * Gets page of campaigns for the given balanceId
      * @param balanceId The balance to get campaigns from (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
@@ -1156,7 +1156,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
@@ -1175,7 +1175,7 @@ public class BalanceApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id}
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
@@ -1195,7 +1195,7 @@ public class BalanceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/retail-media/accounts/{account-id}/balances/{balance-id} (asynchronously)
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)

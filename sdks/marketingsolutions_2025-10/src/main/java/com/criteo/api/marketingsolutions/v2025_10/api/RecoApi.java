@@ -149,7 +149,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets
      * Create a new product set
      * @param valueResourceInputOfCreateProductSetRequest  (required)
      * @return ResourceOutcomeOfProductSet
@@ -166,7 +166,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets
      * Create a new product set
      * @param valueResourceInputOfCreateProductSetRequest  (required)
      * @return ApiResponse&lt;ResourceOutcomeOfProductSet&gt;
@@ -184,7 +184,7 @@ public class RecoApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/marketing-solutions/product-sets (asynchronously)
      * Create a new product set
      * @param valueResourceInputOfCreateProductSetRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -272,7 +272,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/ads/{ad-id}/product-filter
      * Disable product filtering for a given ad
      * @param adId ID of the ad (required)
      * @return ValueResourceOutcomeOfProductFilterConfig
@@ -289,7 +289,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/ads/{ad-id}/product-filter
      * Disable product filtering for a given ad
      * @param adId ID of the ad (required)
      * @return ApiResponse&lt;ValueResourceOutcomeOfProductFilterConfig&gt;
@@ -307,7 +307,7 @@ public class RecoApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/marketing-solutions/ads/{ad-id}/product-filter (asynchronously)
      * Disable product filtering for a given ad
      * @param adId ID of the ad (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -397,7 +397,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/ads/{ad-id}/product-filter
      * Enable product filtering for a given ad
      * @param adId ID of the ad (required)
      * @param valueResourceInputOfCreateProductFilterRequest  (optional)
@@ -415,7 +415,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/ads/{ad-id}/product-filter
      * Enable product filtering for a given ad
      * @param adId ID of the ad (required)
      * @param valueResourceInputOfCreateProductFilterRequest  (optional)
@@ -434,7 +434,7 @@ public class RecoApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/marketing-solutions/ads/{ad-id}/product-filter (asynchronously)
      * Enable product filtering for a given ad
      * @param adId ID of the ad (required)
      * @param valueResourceInputOfCreateProductFilterRequest  (optional)
@@ -523,7 +523,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/ads/{ad-id}/product-filter
      * Fetch product filtering configuration for a given ad
      * @param adId ID of the ad (required)
      * @return ValueResourceOutcomeOfProductFilterConfig
@@ -540,7 +540,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/ads/{ad-id}/product-filter
      * Fetch product filtering configuration for a given ad
      * @param adId ID of the ad (required)
      * @return ApiResponse&lt;ValueResourceOutcomeOfProductFilterConfig&gt;
@@ -558,7 +558,7 @@ public class RecoApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/marketing-solutions/ads/{ad-id}/product-filter (asynchronously)
      * Fetch product filtering configuration for a given ad
      * @param adId ID of the ad (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -646,7 +646,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets/{product-set-id}/product-filters
      * Fetch product filtering usages for a given product set
      * @param productSetId ID of the product set (required)
      * @return ValueResourceCollectionOutcomeOfProductFilterConfig
@@ -663,7 +663,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets/{product-set-id}/product-filters
      * Fetch product filtering usages for a given product set
      * @param productSetId ID of the product set (required)
      * @return ApiResponse&lt;ValueResourceCollectionOutcomeOfProductFilterConfig&gt;
@@ -681,7 +681,7 @@ public class RecoApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/marketing-solutions/product-sets/{product-set-id}/product-filters (asynchronously)
      * Fetch product filtering usages for a given product set
      * @param productSetId ID of the product set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -769,7 +769,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets/{product-set-id}
      * Fetch an existing product set
      * @param productSetId ID of the product set (required)
      * @return ResourceOutcomeOfProductSet
@@ -786,7 +786,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets/{product-set-id}
      * Fetch an existing product set
      * @param productSetId ID of the product set (required)
      * @return ApiResponse&lt;ResourceOutcomeOfProductSet&gt;
@@ -804,7 +804,7 @@ public class RecoApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/marketing-solutions/product-sets/{product-set-id} (asynchronously)
      * Fetch an existing product set
      * @param productSetId ID of the product set (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -892,7 +892,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets/dataset/{dataset-id}
      * Fetch product sets of a given dataset
      * @param datasetId The ID of the dataset that should be used for product set retrieval (required)
      * @return ResourceCollectionOutcomeOfProductSet
@@ -909,7 +909,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets/dataset/{dataset-id}
      * Fetch product sets of a given dataset
      * @param datasetId The ID of the dataset that should be used for product set retrieval (required)
      * @return ApiResponse&lt;ResourceCollectionOutcomeOfProductSet&gt;
@@ -927,7 +927,7 @@ public class RecoApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/marketing-solutions/product-sets/dataset/{dataset-id} (asynchronously)
      * Fetch product sets of a given dataset
      * @param datasetId The ID of the dataset that should be used for product set retrieval (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1022,7 +1022,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets/{product-set-id}
      * Patch an existing product set
      * @param productSetId ID of the product set (required)
      * @param valueResourceInputOfPatchProductSetRequest  (required)
@@ -1040,7 +1040,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets/{product-set-id}
      * Patch an existing product set
      * @param productSetId ID of the product set (required)
      * @param valueResourceInputOfPatchProductSetRequest  (required)
@@ -1059,7 +1059,7 @@ public class RecoApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/marketing-solutions/product-sets/{product-set-id} (asynchronously)
      * Patch an existing product set
      * @param productSetId ID of the product set (required)
      * @param valueResourceInputOfPatchProductSetRequest  (required)
@@ -1148,7 +1148,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets/{product-set-id}
      * Remove a product set
      * @param productSetId ID of the product set to remove (required)
      * @return Outcome
@@ -1165,7 +1165,7 @@ public class RecoApi {
     }
 
     /**
-     * 
+     * /2025-10/marketing-solutions/product-sets/{product-set-id}
      * Remove a product set
      * @param productSetId ID of the product set to remove (required)
      * @return ApiResponse&lt;Outcome&gt;
@@ -1183,7 +1183,7 @@ public class RecoApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/marketing-solutions/product-sets/{product-set-id} (asynchronously)
      * Remove a product set
      * @param productSetId ID of the product set to remove (required)
      * @param _callback The callback to be executed when the API call finishes

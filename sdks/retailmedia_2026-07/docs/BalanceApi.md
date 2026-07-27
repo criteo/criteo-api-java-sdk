@@ -8,16 +8,17 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**changeDatesByAccountAndBalanceId**](BalanceApi.md#changeDatesByAccountAndBalanceId) | **POST** /2026-07/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates | /2026-07/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |
 | [**createBalanceByAccountId**](BalanceApi.md#createBalanceByAccountId) | **POST** /2026-07/retail-media/accounts/{account-id}/balances | /2026-07/retail-media/accounts/{account-id}/balances |
 | [**getBalanceByAccountAndBalanceId**](BalanceApi.md#getBalanceByAccountAndBalanceId) | **GET** /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} | /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} |
-| [**getBalanceHistory**](BalanceApi.md#getBalanceHistory) | **GET** /2026-07/retail-media/balances/{balanceId}/history | /2026-07/retail-media/balances/{balanceId}/history |
-| [**getBalancesByAccountId**](BalanceApi.md#getBalancesByAccountId) | **GET** /2026-07/retail-media/accounts/{account-id}/balances | /2026-07/retail-media/accounts/{account-id}/balances |
+| [**getBalanceHistoryV1**](BalanceApi.md#getBalanceHistoryV1) | **GET** /2026-07/retail-media/balances/{balanceId}/history | /2026-07/retail-media/balances/{balanceId}/history |
+| [**getBalanceV1**](BalanceApi.md#getBalanceV1) | **GET** /2026-07/retail-media/balances/{balanceId} | /2026-07/retail-media/balances/{balanceId} |
 | [**getCampaignsByBalanceId**](BalanceApi.md#getCampaignsByBalanceId) | **GET** /2026-07/retail-media/balances/{balance-id}/campaigns | /2026-07/retail-media/balances/{balance-id}/campaigns |
-| [**modifyBalanceByAccountAndBalanceId**](BalanceApi.md#modifyBalanceByAccountAndBalanceId) | **PATCH** /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} | /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} |
+| [**getPageOfBalancesV1**](BalanceApi.md#getPageOfBalancesV1) | **GET** /2026-07/retail-media/accounts/{accountId}/balances | /2026-07/retail-media/accounts/{accountId}/balances |
+| [**updateBalanceV1**](BalanceApi.md#updateBalanceV1) | **PATCH** /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} | /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} |
 
 
 
 ## addFundsByAccountAndBalanceId
 
-> BalanceResponseV2Response addFundsByAccountAndBalanceId(accountId, balanceId, addFundsToBalanceV2Request)
+> BalanceResponseV3Response addFundsByAccountAndBalanceId(accountId, balanceId, addFundsToBalanceV3Request)
 
 /2026-07/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds
 
@@ -64,9 +65,9 @@ public class Example {
         BalanceApi apiInstance = new BalanceApi(defaultClient);
         String accountId = "accountId_example"; // String | The account of the balance
         String balanceId = "balanceId_example"; // String | The balance to add funds to
-        AddFundsToBalanceV2Request addFundsToBalanceV2Request = new AddFundsToBalanceV2Request(); // AddFundsToBalanceV2Request | An object that represents the available options of adding funds to a balance.
+        AddFundsToBalanceV3Request addFundsToBalanceV3Request = new AddFundsToBalanceV3Request(); // AddFundsToBalanceV3Request | An object that represents the available options of adding funds to a balance.
         try {
-            BalanceResponseV2Response result = apiInstance.addFundsByAccountAndBalanceId(accountId, balanceId, addFundsToBalanceV2Request);
+            BalanceResponseV3Response result = apiInstance.addFundsByAccountAndBalanceId(accountId, balanceId, addFundsToBalanceV3Request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BalanceApi#addFundsByAccountAndBalanceId");
@@ -86,11 +87,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The account of the balance | |
 | **balanceId** | **String**| The balance to add funds to | |
-| **addFundsToBalanceV2Request** | [**AddFundsToBalanceV2Request**](AddFundsToBalanceV2Request.md)| An object that represents the available options of adding funds to a balance. | |
+| **addFundsToBalanceV3Request** | [**AddFundsToBalanceV3Request**](AddFundsToBalanceV3Request.md)| An object that represents the available options of adding funds to a balance. | |
 
 ### Return type
 
-[**BalanceResponseV2Response**](BalanceResponseV2Response.md)
+[**BalanceResponseV3Response**](BalanceResponseV3Response.md)
 
 ### Authorization
 
@@ -203,7 +204,7 @@ public class Example {
 
 ## createBalanceByAccountId
 
-> BalanceResponseV2Response createBalanceByAccountId(accountId, createBalanceV2Request)
+> BalanceResponseV3Response createBalanceByAccountId(accountId, createBalanceV3Request)
 
 /2026-07/retail-media/accounts/{account-id}/balances
 
@@ -249,9 +250,9 @@ public class Example {
 
         BalanceApi apiInstance = new BalanceApi(defaultClient);
         String accountId = "accountId_example"; // String | The account to create balances for
-        CreateBalanceV2Request createBalanceV2Request = new CreateBalanceV2Request(); // CreateBalanceV2Request | An object that represents the available options to set when creating a Retail Media Balance
+        CreateBalanceV3Request createBalanceV3Request = new CreateBalanceV3Request(); // CreateBalanceV3Request | An object that represents the available options to set when creating a Retail Media Balance
         try {
-            BalanceResponseV2Response result = apiInstance.createBalanceByAccountId(accountId, createBalanceV2Request);
+            BalanceResponseV3Response result = apiInstance.createBalanceByAccountId(accountId, createBalanceV3Request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BalanceApi#createBalanceByAccountId");
@@ -270,11 +271,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The account to create balances for | |
-| **createBalanceV2Request** | [**CreateBalanceV2Request**](CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | |
+| **createBalanceV3Request** | [**CreateBalanceV3Request**](CreateBalanceV3Request.md)| An object that represents the available options to set when creating a Retail Media Balance | |
 
 ### Return type
 
-[**BalanceResponseV2Response**](BalanceResponseV2Response.md)
+[**BalanceResponseV3Response**](BalanceResponseV3Response.md)
 
 ### Authorization
 
@@ -383,9 +384,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## getBalanceHistory
+## getBalanceHistoryV1
 
-> PageOfBalanceHistoryChangeDataCaptureV1 getBalanceHistory(balanceId, limit, limitToChangeTypes, offset)
+> ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata getBalanceHistoryV1(balanceId, limit, limitToChangeTypes, offset)
 
 /2026-07/retail-media/balances/{balanceId}/history
 
@@ -435,10 +436,10 @@ public class Example {
         String limitToChangeTypes = "limitToChangeTypes_example"; // String | Comma separated change types string that will be queried.
         Integer offset = 0; // Integer | The (zero-based) starting offset in the collection.
         try {
-            PageOfBalanceHistoryChangeDataCaptureV1 result = apiInstance.getBalanceHistory(balanceId, limit, limitToChangeTypes, offset);
+            ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata result = apiInstance.getBalanceHistoryV1(balanceId, limit, limitToChangeTypes, offset);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#getBalanceHistory");
+            System.err.println("Exception when calling BalanceApi#getBalanceHistoryV1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -460,7 +461,7 @@ public class Example {
 
 ### Return type
 
-[**PageOfBalanceHistoryChangeDataCaptureV1**](PageOfBalanceHistoryChangeDataCaptureV1.md)
+[**ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata**](ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata.md)
 
 ### Authorization
 
@@ -478,13 +479,13 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## getBalancesByAccountId
+## getBalanceV1
 
-> BalanceResponseV2PagedListResponse getBalancesByAccountId(accountId, limitToId, pageIndex, pageSize)
+> EntityResourceOutcomeBalanceV1 getBalanceV1(balanceId)
 
-/2026-07/retail-media/accounts/{account-id}/balances
+/2026-07/retail-media/balances/{balanceId}
 
-Gets page of balance objects for the given account id
+Get a balance for the given balance id.
 
 ### Example
 
@@ -525,15 +526,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         BalanceApi apiInstance = new BalanceApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account to get balances for
-        List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
-        Integer pageIndex = 0; // Integer | The 0 indexed page index you would like to receive given the page size
-        Integer pageSize = 25; // Integer | The maximum number of items you would like to receive in this request
+        String balanceId = "balanceId_example"; // String | The balance id.
         try {
-            BalanceResponseV2PagedListResponse result = apiInstance.getBalancesByAccountId(accountId, limitToId, pageIndex, pageSize);
+            EntityResourceOutcomeBalanceV1 result = apiInstance.getBalanceV1(balanceId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#getBalancesByAccountId");
+            System.err.println("Exception when calling BalanceApi#getBalanceV1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -548,14 +546,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account to get balances for | |
-| **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
-| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
-| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
+| **balanceId** | **String**| The balance id. | |
 
 ### Return type
 
-[**BalanceResponseV2PagedListResponse**](BalanceResponseV2PagedListResponse.md)
+[**EntityResourceOutcomeBalanceV1**](EntityResourceOutcomeBalanceV1.md)
 
 ### Authorization
 
@@ -668,9 +663,104 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## modifyBalanceByAccountAndBalanceId
+## getPageOfBalancesV1
 
-> BalanceResponseV2Response modifyBalanceByAccountAndBalanceId(accountId, balanceId, updateBalanceModelV2Request)
+> EntityResourceCollectionOutcomeBalanceV1AndMetadata getPageOfBalancesV1(accountId, limit, limitToId, offset)
+
+/2026-07/retail-media/accounts/{accountId}/balances
+
+Gets page of balance objects for the given account id.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2026_07;
+
+import com.criteo.api.retailmedia.v2026_07.ApiClient;
+import com.criteo.api.retailmedia.v2026_07.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2026_07.ApiException;
+import com.criteo.api.retailmedia.v2026_07.Configuration;
+import com.criteo.api.retailmedia.v2026_07.auth.*;
+import com.criteo.api.retailmedia.v2026_07.model.*;
+import com.criteo.api.retailmedia.v2026_07.api.BalanceApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        BalanceApi apiInstance = new BalanceApi(defaultClient);
+        String accountId = "accountId_example"; // String | The account to get balances for.
+        Integer limit = 25; // Integer | The number of elements to be returned.
+        List<String> limitToId = Arrays.asList(); // List<String> | The balance ids which the result is limited to.
+        Integer offset = 0; // Integer | The (zero-based) starting offset in the collection.
+        try {
+            EntityResourceCollectionOutcomeBalanceV1AndMetadata result = apiInstance.getPageOfBalancesV1(accountId, limit, limitToId, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling BalanceApi#getPageOfBalancesV1");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| The account to get balances for. | |
+| **limit** | **Integer**| The number of elements to be returned. | [optional] [default to 25] |
+| **limitToId** | [**List&lt;String&gt;**](String.md)| The balance ids which the result is limited to. | [optional] |
+| **offset** | **Integer**| The (zero-based) starting offset in the collection. | [optional] [default to 0] |
+
+### Return type
+
+[**EntityResourceCollectionOutcomeBalanceV1AndMetadata**](EntityResourceCollectionOutcomeBalanceV1AndMetadata.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## updateBalanceV1
+
+> EntityResourceOutcomeOfBalanceResponseV1 updateBalanceV1(accountId, balanceId, valueResourceInputOfUpdateBalanceModelV1)
 
 /2026-07/retail-media/accounts/{account-id}/balances/{balance-id}
 
@@ -717,12 +807,12 @@ public class Example {
         BalanceApi apiInstance = new BalanceApi(defaultClient);
         String accountId = "accountId_example"; // String | The account of the balance
         String balanceId = "balanceId_example"; // String | The balance to change the dates
-        UpdateBalanceModelV2Request updateBalanceModelV2Request = new UpdateBalanceModelV2Request(); // UpdateBalanceModelV2Request | An object that represents the available options to modify a balance.
+        ValueResourceInputOfUpdateBalanceModelV1 valueResourceInputOfUpdateBalanceModelV1 = new ValueResourceInputOfUpdateBalanceModelV1(); // ValueResourceInputOfUpdateBalanceModelV1 | An object that represents the available options to modify a balance.
         try {
-            BalanceResponseV2Response result = apiInstance.modifyBalanceByAccountAndBalanceId(accountId, balanceId, updateBalanceModelV2Request);
+            EntityResourceOutcomeOfBalanceResponseV1 result = apiInstance.updateBalanceV1(accountId, balanceId, valueResourceInputOfUpdateBalanceModelV1);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#modifyBalanceByAccountAndBalanceId");
+            System.err.println("Exception when calling BalanceApi#updateBalanceV1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -739,11 +829,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The account of the balance | |
 | **balanceId** | **String**| The balance to change the dates | |
-| **updateBalanceModelV2Request** | [**UpdateBalanceModelV2Request**](UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | |
+| **valueResourceInputOfUpdateBalanceModelV1** | [**ValueResourceInputOfUpdateBalanceModelV1**](ValueResourceInputOfUpdateBalanceModelV1.md)| An object that represents the available options to modify a balance. | |
 
 ### Return type
 
-[**BalanceResponseV2Response**](BalanceResponseV2Response.md)
+[**EntityResourceOutcomeOfBalanceResponseV1**](EntityResourceOutcomeOfBalanceResponseV1.md)
 
 ### Authorization
 

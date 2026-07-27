@@ -169,7 +169,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/compute-sizes
      * Gets the size of all segments. An error is returned for those whose size calculation is not supported.
      * @param audienceSegmentComputeSizesInputV1  (required)
      * @return AudienceSegmentSizeEntityV1ListResponse
@@ -186,7 +186,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/compute-sizes
      * Gets the size of all segments. An error is returned for those whose size calculation is not supported.
      * @param audienceSegmentComputeSizesInputV1  (required)
      * @return ApiResponse&lt;AudienceSegmentSizeEntityV1ListResponse&gt;
@@ -204,7 +204,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audience-segments/compute-sizes (asynchronously)
      * Gets the size of all segments. An error is returned for those whose size calculation is not supported.
      * @param audienceSegmentComputeSizesInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -292,7 +292,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences/compute-sizes
      * Gets the size of all audiences. An error is returned for those whose size calculation is not supported.
      * @param audienceComputeSizesInputV1  (required)
      * @return AudienceSizeEntityV1ListResponse
@@ -309,7 +309,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences/compute-sizes
      * Gets the size of all audiences. An error is returned for those whose size calculation is not supported.
      * @param audienceComputeSizesInputV1  (required)
      * @return ApiResponse&lt;AudienceSizeEntityV1ListResponse&gt;
@@ -327,7 +327,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audiences/compute-sizes (asynchronously)
      * Gets the size of all audiences. An error is returned for those whose size calculation is not supported.
      * @param audienceComputeSizesInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -415,7 +415,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/create
      * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
      * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
      * @return AudienceSegmentEntityV1ListResponse
@@ -432,7 +432,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/create
      * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
      * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
      * @return ApiResponse&lt;AudienceSegmentEntityV1ListResponse&gt;
@@ -450,7 +450,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audience-segments/create (asynchronously)
      * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
      * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -538,7 +538,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences/create
      * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
      * @param audienceBulkCreateInputV1  (required)
      * @return AudienceEntityV1ListResponse
@@ -555,7 +555,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences/create
      * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
      * @param audienceBulkCreateInputV1  (required)
      * @return ApiResponse&lt;AudienceEntityV1ListResponse&gt;
@@ -573,7 +573,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audiences/create (asynchronously)
      * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
      * @param audienceBulkCreateInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -661,7 +661,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/delete
      * Delete the segments associated to the given audience IDs.
      * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @return AudienceSegmentIdEntityV1ListResponse
@@ -678,7 +678,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/delete
      * Delete the segments associated to the given audience IDs.
      * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @return ApiResponse&lt;AudienceSegmentIdEntityV1ListResponse&gt;
@@ -696,7 +696,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audience-segments/delete (asynchronously)
      * Delete the segments associated to the given audience IDs.
      * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -785,7 +785,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences/delete
      * Deletes the audiences associated to the given audience IDs.
      * @param audienceBulkDeleteInputV1  (required)
      * @return AudienceIdEntityV1ListResponse
@@ -803,7 +803,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences/delete
      * Deletes the audiences associated to the given audience IDs.
      * @param audienceBulkDeleteInputV1  (required)
      * @return ApiResponse&lt;AudienceIdEntityV1ListResponse&gt;
@@ -822,7 +822,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audiences/delete (asynchronously)
      * Deletes the audiences associated to the given audience IDs.
      * @param audienceBulkDeleteInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -911,7 +911,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list
      * Delete all identifiers from a contact list audience-segment.
      * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
      * @return DeleteAudienceContactListResponse
@@ -928,7 +928,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list
      * Delete all identifiers from a contact list audience-segment.
      * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
      * @return ApiResponse&lt;DeleteAudienceContactListResponse&gt;
@@ -946,7 +946,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list (asynchronously)
      * Delete all identifiers from a contact list audience-segment.
      * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1034,7 +1034,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/estimate-size
      * Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
      * @param audienceSegmentEstimateSizeInputV1  (required)
      * @return AudienceSegmentSizeEstimationV1Response
@@ -1051,7 +1051,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/estimate-size
      * Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
      * @param audienceSegmentEstimateSizeInputV1  (required)
      * @return ApiResponse&lt;AudienceSegmentSizeEstimationV1Response&gt;
@@ -1069,7 +1069,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audience-segments/estimate-size (asynchronously)
      * Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
      * @param audienceSegmentEstimateSizeInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1157,7 +1157,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences/estimate-size
      * Gets the size estimation of a non existent audience. An error is returned when size calculation is not supported.
      * @param audienceEstimateSizeInputV1  (required)
      * @return AudienceSizeEstimationV1Response
@@ -1174,7 +1174,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences/estimate-size
      * Gets the size estimation of a non existent audience. An error is returned when size calculation is not supported.
      * @param audienceEstimateSizeInputV1  (required)
      * @return ApiResponse&lt;AudienceSizeEstimationV1Response&gt;
@@ -1192,7 +1192,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audiences/estimate-size (asynchronously)
      * Gets the size estimation of a non existent audience. An error is returned when size calculation is not supported.
      * @param audienceEstimateSizeInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1280,7 +1280,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics
      * Returns the statistics of a contact list segment.
      * @param audienceSegmentId The segment ID. (required)
      * @return ContactListStatisticsEntityV1Response
@@ -1297,7 +1297,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics
      * Returns the statistics of a contact list segment.
      * @param audienceSegmentId The segment ID. (required)
      * @return ApiResponse&lt;ContactListStatisticsEntityV1Response&gt;
@@ -1315,7 +1315,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list/statistics (asynchronously)
      * Returns the statistics of a contact list segment.
      * @param audienceSegmentId The segment ID. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1416,7 +1416,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/in-market-brands
      * Returns a list with all available in-market brands that can be used to define an in-market segment.
      * @param advertiserId The advertiser ID. (required)
      * @param country The ISO 3166-1 alpha-2 country code. (required)
@@ -1434,7 +1434,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/in-market-brands
      * Returns a list with all available in-market brands that can be used to define an in-market segment.
      * @param advertiserId The advertiser ID. (required)
      * @param country The ISO 3166-1 alpha-2 country code. (required)
@@ -1453,7 +1453,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audience-segments/in-market-brands (asynchronously)
      * Returns a list with all available in-market brands that can be used to define an in-market segment.
      * @param advertiserId The advertiser ID. (required)
      * @param country The ISO 3166-1 alpha-2 country code. (required)
@@ -1555,7 +1555,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/in-market-interests
      * Returns a list with all available in-market interests that can be used to define an in-market segment. These in-market interests correspond to the Google product taxonomy.
      * @param advertiserId The advertiser ID. (required)
      * @param country The ISO 3166-1 alpha-2 country code. (required)
@@ -1573,7 +1573,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/in-market-interests
      * Returns a list with all available in-market interests that can be used to define an in-market segment. These in-market interests correspond to the Google product taxonomy.
      * @param advertiserId The advertiser ID. (required)
      * @param country The ISO 3166-1 alpha-2 country code. (required)
@@ -1592,7 +1592,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audience-segments/in-market-interests (asynchronously)
      * Returns a list with all available in-market interests that can be used to define an in-market segment. These in-market interests correspond to the Google product taxonomy.
      * @param advertiserId The advertiser ID. (required)
      * @param country The ISO 3166-1 alpha-2 country code. (required)
@@ -1691,7 +1691,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/search
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param audienceSegmentSearchInputV1 Segment search filters. (required)
      * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
@@ -1710,7 +1710,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/search
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param audienceSegmentSearchInputV1 Segment search filters. (required)
      * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
@@ -1730,7 +1730,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audience-segments/search (asynchronously)
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param audienceSegmentSearchInputV1 Segment search filters. (required)
      * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
@@ -1830,7 +1830,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences/search
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param audienceSearchInputV1 Audience search filters. (required)
      * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
@@ -1849,7 +1849,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences/search
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param audienceSearchInputV1 Audience search filters. (required)
      * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
@@ -1869,7 +1869,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audiences/search (asynchronously)
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param audienceSearchInputV1 Audience search filters. (required)
      * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
@@ -1959,7 +1959,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments
      * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
      * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
      * @return AudienceSegmentEntityV1ListResponse
@@ -1976,7 +1976,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments
      * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
      * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
      * @return ApiResponse&lt;AudienceSegmentEntityV1ListResponse&gt;
@@ -1994,7 +1994,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audience-segments (asynchronously)
      * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
      * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2082,7 +2082,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences
      * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
      * @param audienceBulkUpdateInputV1  (required)
      * @return AudienceEntityV1ListResponse
@@ -2099,7 +2099,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audiences
      * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
      * @param audienceBulkUpdateInputV1  (required)
      * @return ApiResponse&lt;AudienceEntityV1ListResponse&gt;
@@ -2117,7 +2117,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audiences (asynchronously)
      * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
      * @param audienceBulkUpdateInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2212,7 +2212,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list
      * Add/remove identifiers to or from a contact list audience-segment.
      * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
      * @param contactlistAmendmentRequest  (required)
@@ -2230,7 +2230,7 @@ public class AudienceApi {
     }
 
     /**
-     * 
+     * /2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list
      * Add/remove identifiers to or from a contact list audience-segment.
      * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
      * @param contactlistAmendmentRequest  (required)
@@ -2249,7 +2249,7 @@ public class AudienceApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list (asynchronously)
      * Add/remove identifiers to or from a contact list audience-segment.
      * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
      * @param contactlistAmendmentRequest  (required)

@@ -45,22 +45,18 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2026_07.JSON;
 
 /**
- * Read model for an ad set&#39;s attribution configuration.                The lookback window is only set for ad sets with an attribution method that is postClick or googleAnalyticsLastClick.  It will be null with any other attribution method.
+ * Read model for an ad set&#39;s attribution configuration.                The lookback window is only set for ad sets with an attribution method that is postClick or lastClick.  It will be null with any other attribution method.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadAdSetAttributionConfigurationV26Q1 {
   /**
-   * Ad set attribution method.  This defines how certain events (visits, clicks, sales...) are attributed to the ad set.                Possible values:  - unknown  - criteoAttribution (default attribution method)  - googleAnalyticsLastClick (requires Google Analytics integration)  - postClick  - sftp  - googleAnalytics (requires Google Analytics integration)
+   * Ad set attribution method.  This defines how certain events (visits, clicks, sales...) are attributed to the ad set.                Possible values:  - unknown  - criteoAttribution (default attribution method)  - lastClick  - postClick  - sftp  - googleAnalytics (requires Google Analytics integration)
    */
   @JsonAdapter(AttributionMethodEnum.Adapter.class)
   public enum AttributionMethodEnum {
     UNKNOWN("unknown"),
     
     CRITEOATTRIBUTION("criteoAttribution"),
-    
-    GOOGLEANALYTICSLASTCLICK("googleAnalyticsLastClick"),
-    
-    GOOGLEANALYTICSDATADRIVEN("googleAnalyticsDataDriven"),
     
     LASTCLICK("lastClick"),
     
@@ -179,7 +175,7 @@ public class ReadAdSetAttributionConfigurationV26Q1 {
   }
 
    /**
-   * Ad set attribution method.  This defines how certain events (visits, clicks, sales...) are attributed to the ad set.                Possible values:  - unknown  - criteoAttribution (default attribution method)  - googleAnalyticsLastClick (requires Google Analytics integration)  - postClick  - sftp  - googleAnalytics (requires Google Analytics integration)
+   * Ad set attribution method.  This defines how certain events (visits, clicks, sales...) are attributed to the ad set.                Possible values:  - unknown  - criteoAttribution (default attribution method)  - lastClick  - postClick  - sftp  - googleAnalytics (requires Google Analytics integration)
    * @return attributionMethod
   **/
   @javax.annotation.Nullable

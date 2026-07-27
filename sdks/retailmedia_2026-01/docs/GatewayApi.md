@@ -4,7 +4,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getCurrentApplication**](GatewayApi.md#getCurrentApplication) | **GET** /2026-01/retail-media/me |  |
+| [**getCurrentApplication**](GatewayApi.md#getCurrentApplication) | **GET** /2026-01/retail-media/me | /2026-01/retail-media/me |
 
 
 
@@ -12,7 +12,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > ApplicationSummaryModelResponse getCurrentApplication()
 
-
+/2026-01/retail-media/me
 
 Get information about the currently logged application
 

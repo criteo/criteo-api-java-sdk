@@ -144,7 +144,7 @@ public class BillingApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/billing/partner-report
      * Create a Partner Billing Report request.
      * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (required)
      * @return EntityResourceOutcomePartnerBillingReportStatusV1
@@ -161,7 +161,7 @@ public class BillingApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/billing/partner-report
      * Create a Partner Billing Report request.
      * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (required)
      * @return ApiResponse&lt;EntityResourceOutcomePartnerBillingReportStatusV1&gt;
@@ -179,7 +179,7 @@ public class BillingApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/retail-media/billing/partner-report (asynchronously)
      * Create a Partner Billing Report request.
      * @param valueResourceInputPartnerBillingReportRequestV1 Partner Billing Report request object. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -268,7 +268,7 @@ public class BillingApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/billing/partner-report/{requestId}/output
      * Get the output of an existing Partner Billing Report.
      * @param requestId The id of a Partner Billing Report request. (required)
      * @return File
@@ -285,7 +285,7 @@ public class BillingApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/billing/partner-report/{requestId}/output
      * Get the output of an existing Partner Billing Report.
      * @param requestId The id of a Partner Billing Report request. (required)
      * @return ApiResponse&lt;File&gt;
@@ -303,7 +303,7 @@ public class BillingApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/retail-media/billing/partner-report/{requestId}/output (asynchronously)
      * Get the output of an existing Partner Billing Report.
      * @param requestId The id of a Partner Billing Report request. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -391,7 +391,7 @@ public class BillingApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/billing/partner-report/{requestId}/status
      * Get the status of an existing Partner Billing Report.
      * @param requestId The id of a Partner Billing Report request. (required)
      * @return EntityResourceOutcomePartnerBillingReportStatusV1
@@ -408,7 +408,7 @@ public class BillingApi {
     }
 
     /**
-     * 
+     * /2025-10/retail-media/billing/partner-report/{requestId}/status
      * Get the status of an existing Partner Billing Report.
      * @param requestId The id of a Partner Billing Report request. (required)
      * @return ApiResponse&lt;EntityResourceOutcomePartnerBillingReportStatusV1&gt;
@@ -426,7 +426,7 @@ public class BillingApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2025-10/retail-media/billing/partner-report/{requestId}/status (asynchronously)
      * Get the status of an existing Partner Billing Report.
      * @param requestId The id of a Partner Billing Report request. (required)
      * @param _callback The callback to be executed when the API call finishes

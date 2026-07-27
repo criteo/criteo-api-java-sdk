@@ -4,15 +4,15 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createProductSet**](RecoApi.md#createProductSet) | **POST** /2026-01/marketing-solutions/product-sets |  |
-| [**disableProductFiltering**](RecoApi.md#disableProductFiltering) | **DELETE** /2026-01/marketing-solutions/ads/{ad-id}/product-filter |  |
-| [**enableProductFiltering**](RecoApi.md#enableProductFiltering) | **POST** /2026-01/marketing-solutions/ads/{ad-id}/product-filter |  |
-| [**fetchProductFilteringConfig**](RecoApi.md#fetchProductFilteringConfig) | **GET** /2026-01/marketing-solutions/ads/{ad-id}/product-filter |  |
-| [**fetchProductFilteringUsages**](RecoApi.md#fetchProductFilteringUsages) | **GET** /2026-01/marketing-solutions/product-sets/{product-set-id}/product-filters |  |
-| [**fetchProductSet**](RecoApi.md#fetchProductSet) | **GET** /2026-01/marketing-solutions/product-sets/{product-set-id} |  |
-| [**fetchProductSets**](RecoApi.md#fetchProductSets) | **GET** /2026-01/marketing-solutions/product-sets/dataset/{dataset-id} |  |
-| [**patchProductSet**](RecoApi.md#patchProductSet) | **PATCH** /2026-01/marketing-solutions/product-sets/{product-set-id} |  |
-| [**removeProductSet**](RecoApi.md#removeProductSet) | **DELETE** /2026-01/marketing-solutions/product-sets/{product-set-id} |  |
+| [**createProductSet**](RecoApi.md#createProductSet) | **POST** /2026-01/marketing-solutions/product-sets | /2026-01/marketing-solutions/product-sets |
+| [**disableProductFiltering**](RecoApi.md#disableProductFiltering) | **DELETE** /2026-01/marketing-solutions/ads/{ad-id}/product-filter | /2026-01/marketing-solutions/ads/{ad-id}/product-filter |
+| [**enableProductFiltering**](RecoApi.md#enableProductFiltering) | **POST** /2026-01/marketing-solutions/ads/{ad-id}/product-filter | /2026-01/marketing-solutions/ads/{ad-id}/product-filter |
+| [**fetchProductFilteringConfig**](RecoApi.md#fetchProductFilteringConfig) | **GET** /2026-01/marketing-solutions/ads/{ad-id}/product-filter | /2026-01/marketing-solutions/ads/{ad-id}/product-filter |
+| [**fetchProductFilteringUsages**](RecoApi.md#fetchProductFilteringUsages) | **GET** /2026-01/marketing-solutions/product-sets/{product-set-id}/product-filters | /2026-01/marketing-solutions/product-sets/{product-set-id}/product-filters |
+| [**fetchProductSet**](RecoApi.md#fetchProductSet) | **GET** /2026-01/marketing-solutions/product-sets/{product-set-id} | /2026-01/marketing-solutions/product-sets/{product-set-id} |
+| [**fetchProductSets**](RecoApi.md#fetchProductSets) | **GET** /2026-01/marketing-solutions/product-sets/dataset/{dataset-id} | /2026-01/marketing-solutions/product-sets/dataset/{dataset-id} |
+| [**patchProductSet**](RecoApi.md#patchProductSet) | **PATCH** /2026-01/marketing-solutions/product-sets/{product-set-id} | /2026-01/marketing-solutions/product-sets/{product-set-id} |
+| [**removeProductSet**](RecoApi.md#removeProductSet) | **DELETE** /2026-01/marketing-solutions/product-sets/{product-set-id} | /2026-01/marketing-solutions/product-sets/{product-set-id} |
 
 
 
@@ -20,7 +20,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > ResourceOutcomeOfProductSet createProductSet(valueResourceInputOfCreateProductSetRequest)
 
-
+/2026-01/marketing-solutions/product-sets
 
 Create a new product set
 
@@ -109,7 +109,7 @@ public class Example {
 
 > ValueResourceOutcomeOfProductFilterConfig disableProductFiltering(adId)
 
-
+/2026-01/marketing-solutions/ads/{ad-id}/product-filter
 
 Disable product filtering for a given ad
 
@@ -198,7 +198,7 @@ public class Example {
 
 > ValueResourceOutcomeOfProductFilterConfig enableProductFiltering(adId, valueResourceInputOfCreateProductFilterRequest)
 
-
+/2026-01/marketing-solutions/ads/{ad-id}/product-filter
 
 Enable product filtering for a given ad
 
@@ -289,7 +289,7 @@ public class Example {
 
 > ValueResourceOutcomeOfProductFilterConfig fetchProductFilteringConfig(adId)
 
-
+/2026-01/marketing-solutions/ads/{ad-id}/product-filter
 
 Fetch product filtering configuration for a given ad
 
@@ -378,7 +378,7 @@ public class Example {
 
 > ValueResourceCollectionOutcomeOfProductFilterConfig fetchProductFilteringUsages(productSetId)
 
-
+/2026-01/marketing-solutions/product-sets/{product-set-id}/product-filters
 
 Fetch product filtering usages for a given product set
 
@@ -467,7 +467,7 @@ public class Example {
 
 > ResourceOutcomeOfProductSet fetchProductSet(productSetId)
 
-
+/2026-01/marketing-solutions/product-sets/{product-set-id}
 
 Fetch an existing product set
 
@@ -556,7 +556,7 @@ public class Example {
 
 > ResourceCollectionOutcomeOfProductSet fetchProductSets(datasetId)
 
-
+/2026-01/marketing-solutions/product-sets/dataset/{dataset-id}
 
 Fetch product sets of a given dataset
 
@@ -645,7 +645,7 @@ public class Example {
 
 > ResourceOutcomeOfProductSet patchProductSet(productSetId, valueResourceInputOfPatchProductSetRequest)
 
-
+/2026-01/marketing-solutions/product-sets/{product-set-id}
 
 Patch an existing product set
 
@@ -736,7 +736,7 @@ public class Example {
 
 > Outcome removeProductSet(productSetId)
 
-
+/2026-01/marketing-solutions/product-sets/{product-set-id}
 
 Remove a product set
 

@@ -69,35 +69,29 @@ paths:
           application/json:
             example:
               shouldDisplayProductIds: false
-              startDate: 2026-03-13T00:00:00.0000000+00:00
-              endDate: 2026-03-16T00:00:00.0000000+00:00
+              startDate: 2024-01-01T00:00:00.0000000+00:00
+              endDate: 2024-01-04T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
           application/xml:
-            example: |-
-              <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2026-03-16T00:00:00+00:00</EndDate>
-                <StartDate>2026-03-13T00:00:00+00:00</StartDate>
-                <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
-              </TransparencyQueryMessage>
+            example: "<TransparencyQueryMessage xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"\
+              \ xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n  <EndDate>2024-01-04T00:00:00</EndDate>\r\n  <StartDate>2024-01-01T00:00:00</StartDate>\r\
+              \n  <ShouldDisplayProductIds>false</ShouldDisplayProductIds>\r\n</TransparencyQueryMessage>"
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
           text/xml:
-            example: |-
-              <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2026-03-16T00:00:00+00:00</EndDate>
-                <StartDate>2026-03-13T00:00:00+00:00</StartDate>
-                <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
-              </TransparencyQueryMessage>
+            example: "<TransparencyQueryMessage xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"\
+              \ xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n  <EndDate>2024-01-04T00:00:00</EndDate>\r\n  <StartDate>2024-01-01T00:00:00</StartDate>\r\
+              \n  <ShouldDisplayProductIds>false</ShouldDisplayProductIds>\r\n</TransparencyQueryMessage>"
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
           application/*+xml:
-            example: |-
-              <TransparencyQueryMessage xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                <EndDate>2026-03-16T00:00:00+00:00</EndDate>
-                <StartDate>2026-03-13T00:00:00+00:00</StartDate>
-                <ShouldDisplayProductIds>false</ShouldDisplayProductIds>
-              </TransparencyQueryMessage>
+            example: "<TransparencyQueryMessage xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"\
+              \ xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n  <EndDate>2024-01-04T00:00:00</EndDate>\r\n  <StartDate>2024-01-01T00:00:00</StartDate>\r\
+              \n  <ShouldDisplayProductIds>false</ShouldDisplayProductIds>\r\n</TransparencyQueryMessage>"
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
         description: The query message.
@@ -4032,173 +4026,116 @@ paths:
                   disclosed: false
                   format: csv
                   timezone: Europe/Paris
-                  startDate: 2026-03-13T00:00:00.0000000+00:00
-                  endDate: 2026-03-16T00:00:00.0000000+00:00
+                  startDate: 2024-01-01T00:00:00.0000000+00:00
+                  endDate: 2024-01-04T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
           application/xml:
-            example: |-
-              <ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Resources">
-                <Data>
-                  <ValueResourceOfPlacementsReportQueryMessagetukRIHCU>
-                    <Attributes xmlns:d4p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                      <d4p1:EndDate>2026-03-16T00:00:00+00:00</d4p1:EndDate>
-                      <d4p1:StartDate>2026-03-13T00:00:00+00:00</d4p1:StartDate>
-                      <d4p1:Format>csv</d4p1:Format>
-                      <d4p1:Timezone>Europe/Paris</d4p1:Timezone>
-                      <d4p1:AdsetIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>135</d6p1:int>
-                          <d6p1:int>246</d6p1:int>
-                          <d6p1:int>357</d6p1:int>
-                          <d6p1:int>468</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:AdsetIds>
-                      <d4p1:AdvertiserIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>123</d6p1:int>
-                          <d6p1:int>456</d6p1:int>
-                          <d6p1:int>789</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:AdvertiserIds>
-                      <d4p1:CampaignIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>111</d6p1:int>
-                          <d6p1:int>222</d6p1:int>
-                          <d6p1:int>333</d6p1:int>
-                          <d6p1:int>444</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:CampaignIds>
-                      <d4p1:Currency>EUR</d4p1:Currency>
-                      <d4p1:Dimensions xmlns:d5p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models">
-                        <d5p1:PlacementsReportDimensions>AdsetId</d5p1:PlacementsReportDimensions>
-                        <d5p1:PlacementsReportDimensions>AdvertiserId</d5p1:PlacementsReportDimensions>
-                        <d5p1:PlacementsReportDimensions>Placement</d5p1:PlacementsReportDimensions>
-                      </d4p1:Dimensions>
-                      <d4p1:Disclosed>false</d4p1:Disclosed>
-                      <d4p1:Environment>Web</d4p1:Environment>
-                      <d4p1:IsInternal>false</d4p1:IsInternal>
-                      <d4p1:Metrics xmlns:d5p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models">
-                        <d5p1:PlacementsReportMetrics>Clicks</d5p1:PlacementsReportMetrics>
-                        <d5p1:PlacementsReportMetrics>Displays</d5p1:PlacementsReportMetrics>
-                        <d5p1:PlacementsReportMetrics>Cost</d5p1:PlacementsReportMetrics>
-                      </d4p1:Metrics>
-                      <d4p1:Placement>MyPlacement</d4p1:Placement>
-                    </Attributes>
-                    <Type>report</Type>
-                  </ValueResourceOfPlacementsReportQueryMessagetukRIHCU>
-                </Data>
-              </ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU>
+            example: "<ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdsetIds>\r\n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>135</d6p1:int>\r\n            <d6p1:int>246</d6p1:int>\r\
+              \n            <d6p1:int>357</d6p1:int>\r\n            <d6p1:int>468</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:AdsetIds>\r\n        <d4p1:AdvertiserIds>\r\
+              \n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:CampaignIds>\r\n  \
+              \        <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>111</d6p1:int>\r\n            <d6p1:int>222</d6p1:int>\r\
+              \n            <d6p1:int>333</d6p1:int>\r\n            <d6p1:int>444</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:CampaignIds>\r\n      \
+              \  <d4p1:Currency>EUR</d4p1:Currency>\r\n        <d4p1:Dimensions xmlns:d5p1=\"\
+              http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportDimensions>AdsetId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>AdvertiserId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>Placement</d5p1:PlacementsReportDimensions>\r\
+              \n        </d4p1:Dimensions>\r\n        <d4p1:Disclosed>false</d4p1:Disclosed>\r\
+              \n        <d4p1:Environment>Web</d4p1:Environment>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n        <d4p1:Metrics xmlns:d5p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportMetrics>Clicks</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Displays</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Cost</d5p1:PlacementsReportMetrics>\r\
+              \n        </d4p1:Metrics>\r\n        <d4p1:Placement>MyPlacement</d4p1:Placement>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
           text/xml:
-            example: |-
-              <ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Resources">
-                <Data>
-                  <ValueResourceOfPlacementsReportQueryMessagetukRIHCU>
-                    <Attributes xmlns:d4p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                      <d4p1:EndDate>2026-03-16T00:00:00+00:00</d4p1:EndDate>
-                      <d4p1:StartDate>2026-03-13T00:00:00+00:00</d4p1:StartDate>
-                      <d4p1:Format>csv</d4p1:Format>
-                      <d4p1:Timezone>Europe/Paris</d4p1:Timezone>
-                      <d4p1:AdsetIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>135</d6p1:int>
-                          <d6p1:int>246</d6p1:int>
-                          <d6p1:int>357</d6p1:int>
-                          <d6p1:int>468</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:AdsetIds>
-                      <d4p1:AdvertiserIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>123</d6p1:int>
-                          <d6p1:int>456</d6p1:int>
-                          <d6p1:int>789</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:AdvertiserIds>
-                      <d4p1:CampaignIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>111</d6p1:int>
-                          <d6p1:int>222</d6p1:int>
-                          <d6p1:int>333</d6p1:int>
-                          <d6p1:int>444</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:CampaignIds>
-                      <d4p1:Currency>EUR</d4p1:Currency>
-                      <d4p1:Dimensions xmlns:d5p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models">
-                        <d5p1:PlacementsReportDimensions>AdsetId</d5p1:PlacementsReportDimensions>
-                        <d5p1:PlacementsReportDimensions>AdvertiserId</d5p1:PlacementsReportDimensions>
-                        <d5p1:PlacementsReportDimensions>Placement</d5p1:PlacementsReportDimensions>
-                      </d4p1:Dimensions>
-                      <d4p1:Disclosed>false</d4p1:Disclosed>
-                      <d4p1:Environment>Web</d4p1:Environment>
-                      <d4p1:IsInternal>false</d4p1:IsInternal>
-                      <d4p1:Metrics xmlns:d5p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models">
-                        <d5p1:PlacementsReportMetrics>Clicks</d5p1:PlacementsReportMetrics>
-                        <d5p1:PlacementsReportMetrics>Displays</d5p1:PlacementsReportMetrics>
-                        <d5p1:PlacementsReportMetrics>Cost</d5p1:PlacementsReportMetrics>
-                      </d4p1:Metrics>
-                      <d4p1:Placement>MyPlacement</d4p1:Placement>
-                    </Attributes>
-                    <Type>report</Type>
-                  </ValueResourceOfPlacementsReportQueryMessagetukRIHCU>
-                </Data>
-              </ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU>
+            example: "<ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdsetIds>\r\n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>135</d6p1:int>\r\n            <d6p1:int>246</d6p1:int>\r\
+              \n            <d6p1:int>357</d6p1:int>\r\n            <d6p1:int>468</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:AdsetIds>\r\n        <d4p1:AdvertiserIds>\r\
+              \n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:CampaignIds>\r\n  \
+              \        <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>111</d6p1:int>\r\n            <d6p1:int>222</d6p1:int>\r\
+              \n            <d6p1:int>333</d6p1:int>\r\n            <d6p1:int>444</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:CampaignIds>\r\n      \
+              \  <d4p1:Currency>EUR</d4p1:Currency>\r\n        <d4p1:Dimensions xmlns:d5p1=\"\
+              http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportDimensions>AdsetId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>AdvertiserId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>Placement</d5p1:PlacementsReportDimensions>\r\
+              \n        </d4p1:Dimensions>\r\n        <d4p1:Disclosed>false</d4p1:Disclosed>\r\
+              \n        <d4p1:Environment>Web</d4p1:Environment>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n        <d4p1:Metrics xmlns:d5p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportMetrics>Clicks</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Displays</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Cost</d5p1:PlacementsReportMetrics>\r\
+              \n        </d4p1:Metrics>\r\n        <d4p1:Placement>MyPlacement</d4p1:Placement>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
           application/*+xml:
-            example: |-
-              <ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Resources">
-                <Data>
-                  <ValueResourceOfPlacementsReportQueryMessagetukRIHCU>
-                    <Attributes xmlns:d4p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                      <d4p1:EndDate>2026-03-16T00:00:00+00:00</d4p1:EndDate>
-                      <d4p1:StartDate>2026-03-13T00:00:00+00:00</d4p1:StartDate>
-                      <d4p1:Format>csv</d4p1:Format>
-                      <d4p1:Timezone>Europe/Paris</d4p1:Timezone>
-                      <d4p1:AdsetIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>135</d6p1:int>
-                          <d6p1:int>246</d6p1:int>
-                          <d6p1:int>357</d6p1:int>
-                          <d6p1:int>468</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:AdsetIds>
-                      <d4p1:AdvertiserIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>123</d6p1:int>
-                          <d6p1:int>456</d6p1:int>
-                          <d6p1:int>789</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:AdvertiserIds>
-                      <d4p1:CampaignIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>111</d6p1:int>
-                          <d6p1:int>222</d6p1:int>
-                          <d6p1:int>333</d6p1:int>
-                          <d6p1:int>444</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:CampaignIds>
-                      <d4p1:Currency>EUR</d4p1:Currency>
-                      <d4p1:Dimensions xmlns:d5p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models">
-                        <d5p1:PlacementsReportDimensions>AdsetId</d5p1:PlacementsReportDimensions>
-                        <d5p1:PlacementsReportDimensions>AdvertiserId</d5p1:PlacementsReportDimensions>
-                        <d5p1:PlacementsReportDimensions>Placement</d5p1:PlacementsReportDimensions>
-                      </d4p1:Dimensions>
-                      <d4p1:Disclosed>false</d4p1:Disclosed>
-                      <d4p1:Environment>Web</d4p1:Environment>
-                      <d4p1:IsInternal>false</d4p1:IsInternal>
-                      <d4p1:Metrics xmlns:d5p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models">
-                        <d5p1:PlacementsReportMetrics>Clicks</d5p1:PlacementsReportMetrics>
-                        <d5p1:PlacementsReportMetrics>Displays</d5p1:PlacementsReportMetrics>
-                        <d5p1:PlacementsReportMetrics>Cost</d5p1:PlacementsReportMetrics>
-                      </d4p1:Metrics>
-                      <d4p1:Placement>MyPlacement</d4p1:Placement>
-                    </Attributes>
-                    <Type>report</Type>
-                  </ValueResourceOfPlacementsReportQueryMessagetukRIHCU>
-                </Data>
-              </ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU>
+            example: "<ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdsetIds>\r\n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>135</d6p1:int>\r\n            <d6p1:int>246</d6p1:int>\r\
+              \n            <d6p1:int>357</d6p1:int>\r\n            <d6p1:int>468</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:AdsetIds>\r\n        <d4p1:AdvertiserIds>\r\
+              \n          <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:CampaignIds>\r\n  \
+              \        <d4p1:Values xmlns:d6p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\"\
+              >\r\n            <d6p1:int>111</d6p1:int>\r\n            <d6p1:int>222</d6p1:int>\r\
+              \n            <d6p1:int>333</d6p1:int>\r\n            <d6p1:int>444</d6p1:int>\r\
+              \n          </d4p1:Values>\r\n        </d4p1:CampaignIds>\r\n      \
+              \  <d4p1:Currency>EUR</d4p1:Currency>\r\n        <d4p1:Dimensions xmlns:d5p1=\"\
+              http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportDimensions>AdsetId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>AdvertiserId</d5p1:PlacementsReportDimensions>\r\
+              \n          <d5p1:PlacementsReportDimensions>Placement</d5p1:PlacementsReportDimensions>\r\
+              \n        </d4p1:Dimensions>\r\n        <d4p1:Disclosed>false</d4p1:Disclosed>\r\
+              \n        <d4p1:Environment>Web</d4p1:Environment>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n        <d4p1:Metrics xmlns:d5p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Models\"\
+              >\r\n          <d5p1:PlacementsReportMetrics>Clicks</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Displays</d5p1:PlacementsReportMetrics>\r\
+              \n          <d5p1:PlacementsReportMetrics>Cost</d5p1:PlacementsReportMetrics>\r\
+              \n        </d4p1:Metrics>\r\n        <d4p1:Placement>MyPlacement</d4p1:Placement>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfPlacementsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfPlacementsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
       responses:
@@ -4277,8 +4214,8 @@ paths:
               currency: EUR
               format: csv
               timezone: Europe/Paris
-              startDate: 2026-03-13T00:00:00.0000000+00:00
-              endDate: 2026-03-16T00:00:00.0000000+00:00
+              startDate: 2024-01-01T00:00:00.0000000+00:00
+              endDate: 2024-01-04T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/StatisticsReportQueryMessage'
       responses:
@@ -4327,89 +4264,62 @@ paths:
                   currency: EUR
                   format: csv
                   timezone: Europe/Paris
-                  startDate: 2026-03-13T00:00:00.0000000+00:00
-                  endDate: 2026-03-16T00:00:00.0000000+00:00
+                  startDate: 2024-01-01T00:00:00.0000000+00:00
+                  endDate: 2024-01-04T00:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
           application/xml:
-            example: |-
-              <ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Resources">
-                <Data>
-                  <ValueResourceOfTransactionsReportQueryMessagetukRIHCU>
-                    <Attributes xmlns:d4p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                      <d4p1:EndDate>2026-03-16T00:00:00+00:00</d4p1:EndDate>
-                      <d4p1:StartDate>2026-03-13T00:00:00+00:00</d4p1:StartDate>
-                      <d4p1:Format>csv</d4p1:Format>
-                      <d4p1:Timezone>Europe/Paris</d4p1:Timezone>
-                      <d4p1:AdvertiserIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>123</d6p1:int>
-                          <d6p1:int>456</d6p1:int>
-                          <d6p1:int>789</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:AdvertiserIds>
-                      <d4p1:Currency>EUR</d4p1:Currency>
-                      <d4p1:EventType>Display</d4p1:EventType>
-                      <d4p1:IsInternal>false</d4p1:IsInternal>
-                    </Attributes>
-                    <Type>report</Type>
-                  </ValueResourceOfTransactionsReportQueryMessagetukRIHCU>
-                </Data>
-              </ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU>
+            example: "<ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdvertiserIds>\r\n          <d4p1:Values xmlns:d6p1=\"\
+              http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n   \
+              \         <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:Currency>EUR</d4p1:Currency>\r\
+              \n        <d4p1:EventType>Display</d4p1:EventType>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
           text/xml:
-            example: |-
-              <ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Resources">
-                <Data>
-                  <ValueResourceOfTransactionsReportQueryMessagetukRIHCU>
-                    <Attributes xmlns:d4p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                      <d4p1:EndDate>2026-03-16T00:00:00+00:00</d4p1:EndDate>
-                      <d4p1:StartDate>2026-03-13T00:00:00+00:00</d4p1:StartDate>
-                      <d4p1:Format>csv</d4p1:Format>
-                      <d4p1:Timezone>Europe/Paris</d4p1:Timezone>
-                      <d4p1:AdvertiserIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>123</d6p1:int>
-                          <d6p1:int>456</d6p1:int>
-                          <d6p1:int>789</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:AdvertiserIds>
-                      <d4p1:Currency>EUR</d4p1:Currency>
-                      <d4p1:EventType>Display</d4p1:EventType>
-                      <d4p1:IsInternal>false</d4p1:IsInternal>
-                    </Attributes>
-                    <Type>report</Type>
-                  </ValueResourceOfTransactionsReportQueryMessagetukRIHCU>
-                </Data>
-              </ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU>
+            example: "<ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdvertiserIds>\r\n          <d4p1:Values xmlns:d6p1=\"\
+              http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n   \
+              \         <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:Currency>EUR</d4p1:Currency>\r\
+              \n        <d4p1:EventType>Display</d4p1:EventType>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
           application/*+xml:
-            example: |-
-              <ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Criteo.Api.Resources">
-                <Data>
-                  <ValueResourceOfTransactionsReportQueryMessagetukRIHCU>
-                    <Attributes xmlns:d4p1="http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages">
-                      <d4p1:EndDate>2026-03-16T00:00:00+00:00</d4p1:EndDate>
-                      <d4p1:StartDate>2026-03-13T00:00:00+00:00</d4p1:StartDate>
-                      <d4p1:Format>csv</d4p1:Format>
-                      <d4p1:Timezone>Europe/Paris</d4p1:Timezone>
-                      <d4p1:AdvertiserIds>
-                        <d4p1:Values xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-                          <d6p1:int>123</d6p1:int>
-                          <d6p1:int>456</d6p1:int>
-                          <d6p1:int>789</d6p1:int>
-                        </d4p1:Values>
-                      </d4p1:AdvertiserIds>
-                      <d4p1:Currency>EUR</d4p1:Currency>
-                      <d4p1:EventType>Display</d4p1:EventType>
-                      <d4p1:IsInternal>false</d4p1:IsInternal>
-                    </Attributes>
-                    <Type>report</Type>
-                  </ValueResourceOfTransactionsReportQueryMessagetukRIHCU>
-                </Data>
-              </ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU>
+            example: "<ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU\
+              \ xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Resources\"\
+              >\r\n  <Data>\r\n    <ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n      <Attributes xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/Criteo.Api.Exam.Statistics.Controllers.V1.Messages\"\
+              >\r\n        <d4p1:EndDate>2024-01-04T00:00:00</d4p1:EndDate>\r\n  \
+              \      <d4p1:StartDate>2024-01-01T00:00:00</d4p1:StartDate>\r\n    \
+              \    <d4p1:Format>csv</d4p1:Format>\r\n        <d4p1:Timezone>Europe/Paris</d4p1:Timezone>\r\
+              \n        <d4p1:AdvertiserIds>\r\n          <d4p1:Values xmlns:d6p1=\"\
+              http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n   \
+              \         <d6p1:int>123</d6p1:int>\r\n            <d6p1:int>456</d6p1:int>\r\
+              \n            <d6p1:int>789</d6p1:int>\r\n          </d4p1:Values>\r\
+              \n        </d4p1:AdvertiserIds>\r\n        <d4p1:Currency>EUR</d4p1:Currency>\r\
+              \n        <d4p1:EventType>Display</d4p1:EventType>\r\n        <d4p1:IsInternal>false</d4p1:IsInternal>\r\
+              \n      </Attributes>\r\n      <Type>report</Type>\r\n    </ValueResourceOfTransactionsReportQueryMessagetukRIHCU>\r\
+              \n  </Data>\r\n</ValueResourceCollectionInputOfTransactionsReportQueryMessagetukRIHCU>"
             schema:
               $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
       responses:
@@ -9448,8 +9358,6 @@ components:
           enum:
           - unknown
           - criteoAttribution
-          - googleAnalyticsLastClick
-          - googleAnalyticsDataDriven
           - lastClick
           - postClick
           - sftp
@@ -11948,8 +11856,6 @@ components:
           enum:
           - unknown
           - criteoAttribution
-          - googleAnalyticsLastClick
-          - googleAnalyticsDataDriven
           - lastClick
           - postClick
           - sftp
@@ -13157,8 +13063,8 @@ components:
     ReadAdSetAttributionConfigurationV26Q1:
       description: "Read model for an ad set's attribution configuration.\r\n    \
         \        \r\nThe lookback window is only set for ad sets with an attribution\
-        \ method that is postClick or googleAnalyticsLastClick.\r\nIt will be null\
-        \ with any other attribution method."
+        \ method that is postClick or lastClick.\r\nIt will be null with any other\
+        \ attribution method."
       example:
         attributionMethod: unknown
         lookbackWindow: unknown
@@ -13168,14 +13074,11 @@ components:
           description: "Ad set attribution method.\r\nThis defines how certain events\
             \ (visits, clicks, sales...) are attributed to the ad set.\r\n       \
             \     \r\nPossible values:\r\n- unknown\r\n- criteoAttribution (default\
-            \ attribution method)\r\n- googleAnalyticsLastClick (requires Google Analytics\
-            \ integration)\r\n- postClick\r\n- sftp\r\n- googleAnalytics (requires\
-            \ Google Analytics integration)"
+            \ attribution method)\r\n- lastClick\r\n- postClick\r\n- sftp\r\n- googleAnalytics\
+            \ (requires Google Analytics integration)"
           enum:
           - unknown
           - criteoAttribution
-          - googleAnalyticsLastClick
-          - googleAnalyticsDataDriven
           - lastClick
           - postClick
           - sftp

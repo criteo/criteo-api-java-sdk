@@ -8,13 +8,22 @@ This is the message defining the query for Transaction report
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**advertiserIds** | **String** | The comma-separated list of advertiser ids. If empty, all the advertisers in the portfolio will be used |  [optional] |
+|**advertiserIds** | **String** | List of advertiser IDs to report on, provided as a single comma-separated string (e.g., \&quot;123,456,789\&quot;). The advertisers must already exist. If empty, all advertisers will be used. |  |
 |**currency** | **String** | The currency used for the report. ISO 4217 code (three-letter capitals). |  |
-|**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**eventType** | **String** | Apply a filter on Event type . |  [optional] |
-|**format** | [**FormatEnum**](#FormatEnum) | The file format of the generated report |  [optional] |
-|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional] |
+|**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. |  |
+|**eventType** | [**EventTypeEnum**](#EventTypeEnum) | Optional event type to filter on. If empty, all event types will be included. |  [optional] |
+|**format** | [**FormatEnum**](#FormatEnum) | Optional file format of the generated report. |  [optional] |
+|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. Must be ≤ endDate. |  |
+|**timezone** | **String** | Optional timezone used for the report. Timezone Database format (Tz). |  [optional] |
+
+
+
+## Enum: EventTypeEnum
+
+| Name | Value |
+|---- | -----|
+| CLICK | &quot;Click&quot; |
+| DISPLAY | &quot;Display&quot; |
 
 
 
