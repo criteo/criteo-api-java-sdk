@@ -145,8 +145,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/statistics/report
-     * This Statistics endpoint provides ad set related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
+     * 
+     * This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
      * @param statisticsReportQueryMessage  (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -162,8 +162,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/statistics/report
-     * This Statistics endpoint provides ad set related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
+     * 
+     * This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
      * @param statisticsReportQueryMessage  (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -180,8 +180,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/statistics/report (asynchronously)
-     * This Statistics endpoint provides ad set related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
+     *  (asynchronously)
+     * This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
      * @param statisticsReportQueryMessage  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -269,8 +269,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/placements/report
-     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
+     * 
+     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
      * @param placementsReportQueryMessageListRequest  (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -286,8 +286,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/placements/report
-     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
+     * 
+     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
      * @param placementsReportQueryMessageListRequest  (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -304,8 +304,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/placements/report (asynchronously)
-     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
+     *  (asynchronously)
+     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
      * @param placementsReportQueryMessageListRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -393,8 +393,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/transactions/report
-     * This Transactions endpoint provides transactions id related data.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
+     * 
+     * This Transactions endpoint provides transactions id related data.
      * @param transactionsReportQueryMessageListRequest  (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -410,8 +410,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/transactions/report
-     * This Transactions endpoint provides transactions id related data.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
+     * 
+     * This Transactions endpoint provides transactions id related data.
      * @param transactionsReportQueryMessageListRequest  (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -428,8 +428,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/transactions/report (asynchronously)
-     * This Transactions endpoint provides transactions id related data.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
+     *  (asynchronously)
+     * This Transactions endpoint provides transactions id related data.
      * @param transactionsReportQueryMessageListRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -449,7 +449,7 @@ public class AnalyticsApi {
     }
     /**
      * Build call for getTransparencyReport
-     * @param advertiserId The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0. (required)
+     * @param advertiserId The advertiser id to fetch the transparency data. (required)
      * @param transparencyQueryMessage The query message. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -523,9 +523,9 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/log-level/advertisers/{advertiser-id}/report
+     * 
      * This Statistics endpoint provides publisher data.
-     * @param advertiserId The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0. (required)
+     * @param advertiserId The advertiser id to fetch the transparency data. (required)
      * @param transparencyQueryMessage The query message. (optional)
      * @return TransparencyReportListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -541,9 +541,9 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/log-level/advertisers/{advertiser-id}/report
+     * 
      * This Statistics endpoint provides publisher data.
-     * @param advertiserId The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0. (required)
+     * @param advertiserId The advertiser id to fetch the transparency data. (required)
      * @param transparencyQueryMessage The query message. (optional)
      * @return ApiResponse&lt;TransparencyReportListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -560,9 +560,9 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/log-level/advertisers/{advertiser-id}/report (asynchronously)
+     *  (asynchronously)
      * This Statistics endpoint provides publisher data.
-     * @param advertiserId The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0. (required)
+     * @param advertiserId The advertiser id to fetch the transparency data. (required)
      * @param transparencyQueryMessage The query message. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

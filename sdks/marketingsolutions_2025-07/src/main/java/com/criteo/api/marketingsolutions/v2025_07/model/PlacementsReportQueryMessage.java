@@ -147,61 +147,12 @@ public class PlacementsReportQueryMessage {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private OffsetDateTime endDate;
 
-  /**
-   * Optional type of environment to filter on. If empty, all environments will be included.
-   */
-  @JsonAdapter(EnvironmentEnum.Adapter.class)
-  public enum EnvironmentEnum {
-    WEB("Web"),
-    
-    ANDROID("Android"),
-    
-    IOS("Ios");
-
-    private String value;
-
-    EnvironmentEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static EnvironmentEnum fromValue(String value) {
-      for (EnvironmentEnum b : EnvironmentEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<EnvironmentEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final EnvironmentEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public EnvironmentEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return EnvironmentEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ENVIRONMENT = "environment";
   @SerializedName(SERIALIZED_NAME_ENVIRONMENT)
-  private EnvironmentEnum environment;
+  private String environment;
 
   /**
-   * Optional file format of the generated report.
+   * The file format of the generated report
    */
   @JsonAdapter(FormatEnum.Adapter.class)
   public enum FormatEnum {
@@ -354,7 +305,7 @@ public class PlacementsReportQueryMessage {
   }
 
    /**
-   * Optional list of ad set IDs to filter on. The ad sets must already exist. If empty, all ad sets will be included.
+   * The comma-separated list of adSet ids.
    * @return adsetIds
   **/
   @javax.annotation.Nullable
@@ -376,7 +327,7 @@ public class PlacementsReportQueryMessage {
   }
 
    /**
-   * List of advertiser IDs to report on, provided as a single comma-separated string (e.g., \&quot;123,456,789\&quot;). The advertisers must already exist. If empty, all advertisers will be used.
+   * The comma-separated list of advertiser ids.
    * @return advertiserIds
   **/
   @javax.annotation.Nonnull
@@ -398,7 +349,7 @@ public class PlacementsReportQueryMessage {
   }
 
    /**
-   * Optional list of campaign IDs to filter on. The campaigns must already exist. If empty, all campaigns will be included.
+   * The comma-separated list of campaign ids.
    * @return campaignIds
   **/
   @javax.annotation.Nullable
@@ -447,7 +398,7 @@ public class PlacementsReportQueryMessage {
   }
 
    /**
-   * List of dimensions for the report. At least one dimension should be provided.
+   * The dimensions for the report.
    * @return dimensions
   **/
   @javax.annotation.Nonnull
@@ -469,7 +420,7 @@ public class PlacementsReportQueryMessage {
   }
 
    /**
-   * Optionally returns disclosed or undisclosed placements.
+   * Returns disclosed or undisclosed placements.
    * @return disclosed
   **/
   @javax.annotation.Nullable
@@ -491,7 +442,7 @@ public class PlacementsReportQueryMessage {
   }
 
    /**
-   * End date of the report. Date component of ISO 8601 format, any time or timezone component is ignored.
+   * End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
    * @return endDate
   **/
   @javax.annotation.Nonnull
@@ -506,24 +457,24 @@ public class PlacementsReportQueryMessage {
   }
 
 
-  public PlacementsReportQueryMessage environment(EnvironmentEnum environment) {
+  public PlacementsReportQueryMessage environment(String environment) {
     
     this.environment = environment;
     return this;
   }
 
    /**
-   * Optional type of environment to filter on. If empty, all environments will be included.
+   * Type of environment: Web, Android or iOS.
    * @return environment
   **/
   @javax.annotation.Nullable
 
-  public EnvironmentEnum getEnvironment() {
+  public String getEnvironment() {
     return environment;
   }
 
 
-  public void setEnvironment(EnvironmentEnum environment) {
+  public void setEnvironment(String environment) {
     this.environment = environment;
   }
 
@@ -535,7 +486,7 @@ public class PlacementsReportQueryMessage {
   }
 
    /**
-   * Optional file format of the generated report.
+   * The file format of the generated report
    * @return format
   **/
   @javax.annotation.Nullable
@@ -562,7 +513,7 @@ public class PlacementsReportQueryMessage {
   }
 
    /**
-   * List of metrics for the report. At least one dimension should be provided.
+   * The list of metrics to report.
    * @return metrics
   **/
   @javax.annotation.Nonnull
@@ -584,7 +535,7 @@ public class PlacementsReportQueryMessage {
   }
 
    /**
-   * Optional filter on a specific placement domain name. If empty, all placements will be included.
+   * Filter the value of the placement
    * @return placement
   **/
   @javax.annotation.Nullable
@@ -606,7 +557,7 @@ public class PlacementsReportQueryMessage {
   }
 
    /**
-   * Start date of the report. Date component of ISO 8601 format, any time or timezone component is ignored. Must be ≤ endDate.
+   * Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
    * @return startDate
   **/
   @javax.annotation.Nonnull
@@ -628,7 +579,7 @@ public class PlacementsReportQueryMessage {
   }
 
    /**
-   * Optional timezone used for the report. Timezone Database format (Tz).
+   * The timezone used for the report. Timezone Database format (Tz).
    * @return timezone
   **/
   @javax.annotation.Nullable

@@ -81,7 +81,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * Build call for generateAsyncAccountsReportV2
+     * Build call for generateAsyncAccountsReport
      * @param asyncAccountsReportRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -92,7 +92,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncAccountsReportV2Call(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateAsyncAccountsReportCall(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -138,18 +138,18 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateAsyncAccountsReportV2ValidateBeforeCall(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateAsyncAccountsReportValidateBeforeCall(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'asyncAccountsReportRequest' is set
         if (asyncAccountsReportRequest == null) {
-            throw new ApiException("Missing the required parameter 'asyncAccountsReportRequest' when calling generateAsyncAccountsReportV2(Async)");
+            throw new ApiException("Missing the required parameter 'asyncAccountsReportRequest' when calling generateAsyncAccountsReport(Async)");
         }
 
-        return generateAsyncAccountsReportV2Call(asyncAccountsReportRequest, _callback);
+        return generateAsyncAccountsReportCall(asyncAccountsReportRequest, _callback);
 
     }
 
     /**
-     * /2026-01/retail-media/reports/accounts
+     * 
      * Returns an asynchronous Accounts Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncAccountsReportRequest  (required)
      * @return AsyncReportResponse
@@ -160,13 +160,13 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public AsyncReportResponse generateAsyncAccountsReportV2(AsyncAccountsReportRequest asyncAccountsReportRequest) throws ApiException {
-        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncAccountsReportV2WithHttpInfo(asyncAccountsReportRequest);
+    public AsyncReportResponse generateAsyncAccountsReport(AsyncAccountsReportRequest asyncAccountsReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncAccountsReportWithHttpInfo(asyncAccountsReportRequest);
         return localVarResp.getData();
     }
 
     /**
-     * /2026-01/retail-media/reports/accounts
+     * 
      * Returns an asynchronous Accounts Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncAccountsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -177,14 +177,14 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AsyncReportResponse> generateAsyncAccountsReportV2WithHttpInfo(AsyncAccountsReportRequest asyncAccountsReportRequest) throws ApiException {
-        okhttp3.Call localVarCall = generateAsyncAccountsReportV2ValidateBeforeCall(asyncAccountsReportRequest, null);
+    public ApiResponse<AsyncReportResponse> generateAsyncAccountsReportWithHttpInfo(AsyncAccountsReportRequest asyncAccountsReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncAccountsReportValidateBeforeCall(asyncAccountsReportRequest, null);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * /2026-01/retail-media/reports/accounts (asynchronously)
+     *  (asynchronously)
      * Returns an asynchronous Accounts Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncAccountsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -196,15 +196,15 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncAccountsReportV2Async(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
+    public okhttp3.Call generateAsyncAccountsReportAsync(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = generateAsyncAccountsReportV2ValidateBeforeCall(asyncAccountsReportRequest, _callback);
+        okhttp3.Call localVarCall = generateAsyncAccountsReportValidateBeforeCall(asyncAccountsReportRequest, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for generateAsyncCampaignsReportV2
+     * Build call for generateAsyncCampaignsReport
      * @param asyncCampaignsReportRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -215,7 +215,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncCampaignsReportV2Call(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateAsyncCampaignsReportCall(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -261,18 +261,18 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateAsyncCampaignsReportV2ValidateBeforeCall(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateAsyncCampaignsReportValidateBeforeCall(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'asyncCampaignsReportRequest' is set
         if (asyncCampaignsReportRequest == null) {
-            throw new ApiException("Missing the required parameter 'asyncCampaignsReportRequest' when calling generateAsyncCampaignsReportV2(Async)");
+            throw new ApiException("Missing the required parameter 'asyncCampaignsReportRequest' when calling generateAsyncCampaignsReport(Async)");
         }
 
-        return generateAsyncCampaignsReportV2Call(asyncCampaignsReportRequest, _callback);
+        return generateAsyncCampaignsReportCall(asyncCampaignsReportRequest, _callback);
 
     }
 
     /**
-     * /2026-01/retail-media/reports/campaigns
+     * 
      * Return an asynchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncCampaignsReportRequest  (required)
      * @return AsyncReportResponse
@@ -283,13 +283,13 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public AsyncReportResponse generateAsyncCampaignsReportV2(AsyncCampaignsReportRequest asyncCampaignsReportRequest) throws ApiException {
-        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncCampaignsReportV2WithHttpInfo(asyncCampaignsReportRequest);
+    public AsyncReportResponse generateAsyncCampaignsReport(AsyncCampaignsReportRequest asyncCampaignsReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncCampaignsReportWithHttpInfo(asyncCampaignsReportRequest);
         return localVarResp.getData();
     }
 
     /**
-     * /2026-01/retail-media/reports/campaigns
+     * 
      * Return an asynchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncCampaignsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -300,14 +300,14 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AsyncReportResponse> generateAsyncCampaignsReportV2WithHttpInfo(AsyncCampaignsReportRequest asyncCampaignsReportRequest) throws ApiException {
-        okhttp3.Call localVarCall = generateAsyncCampaignsReportV2ValidateBeforeCall(asyncCampaignsReportRequest, null);
+    public ApiResponse<AsyncReportResponse> generateAsyncCampaignsReportWithHttpInfo(AsyncCampaignsReportRequest asyncCampaignsReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncCampaignsReportValidateBeforeCall(asyncCampaignsReportRequest, null);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * /2026-01/retail-media/reports/campaigns (asynchronously)
+     *  (asynchronously)
      * Return an asynchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncCampaignsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -319,9 +319,9 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncCampaignsReportV2Async(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
+    public okhttp3.Call generateAsyncCampaignsReportAsync(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = generateAsyncCampaignsReportV2ValidateBeforeCall(asyncCampaignsReportRequest, _callback);
+        okhttp3.Call localVarCall = generateAsyncCampaignsReportValidateBeforeCall(asyncCampaignsReportRequest, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -395,7 +395,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/fillrate
+     * 
      * Returns an asynchronous Fill Rate Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncFillRateReportRequest  (required)
      * @return AsyncReportResponse
@@ -412,7 +412,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/fillrate
+     * 
      * Returns an asynchronous Fill Rate Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncFillRateReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -430,7 +430,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/fillrate (asynchronously)
+     *  (asynchronously)
      * Returns an asynchronous Fill Rate Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncFillRateReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -450,7 +450,7 @@ public class AnalyticsApi {
         return localVarCall;
     }
     /**
-     * Build call for generateAsyncLineItemsReportV2
+     * Build call for generateAsyncLineItemsReport
      * @param asyncLineItemsReportRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -461,7 +461,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncLineItemsReportV2Call(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateAsyncLineItemsReportCall(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -507,18 +507,18 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateAsyncLineItemsReportV2ValidateBeforeCall(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateAsyncLineItemsReportValidateBeforeCall(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'asyncLineItemsReportRequest' is set
         if (asyncLineItemsReportRequest == null) {
-            throw new ApiException("Missing the required parameter 'asyncLineItemsReportRequest' when calling generateAsyncLineItemsReportV2(Async)");
+            throw new ApiException("Missing the required parameter 'asyncLineItemsReportRequest' when calling generateAsyncLineItemsReport(Async)");
         }
 
-        return generateAsyncLineItemsReportV2Call(asyncLineItemsReportRequest, _callback);
+        return generateAsyncLineItemsReportCall(asyncLineItemsReportRequest, _callback);
 
     }
 
     /**
-     * /2026-01/retail-media/reports/line-items
+     * 
      * Returns an asynchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncLineItemsReportRequest  (required)
      * @return AsyncReportResponse
@@ -529,13 +529,13 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public AsyncReportResponse generateAsyncLineItemsReportV2(AsyncLineItemsReportRequest asyncLineItemsReportRequest) throws ApiException {
-        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncLineItemsReportV2WithHttpInfo(asyncLineItemsReportRequest);
+    public AsyncReportResponse generateAsyncLineItemsReport(AsyncLineItemsReportRequest asyncLineItemsReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncLineItemsReportWithHttpInfo(asyncLineItemsReportRequest);
         return localVarResp.getData();
     }
 
     /**
-     * /2026-01/retail-media/reports/line-items
+     * 
      * Returns an asynchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncLineItemsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -546,14 +546,14 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AsyncReportResponse> generateAsyncLineItemsReportV2WithHttpInfo(AsyncLineItemsReportRequest asyncLineItemsReportRequest) throws ApiException {
-        okhttp3.Call localVarCall = generateAsyncLineItemsReportV2ValidateBeforeCall(asyncLineItemsReportRequest, null);
+    public ApiResponse<AsyncReportResponse> generateAsyncLineItemsReportWithHttpInfo(AsyncLineItemsReportRequest asyncLineItemsReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncLineItemsReportValidateBeforeCall(asyncLineItemsReportRequest, null);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * /2026-01/retail-media/reports/line-items (asynchronously)
+     *  (asynchronously)
      * Returns an asynchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncLineItemsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -565,9 +565,9 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateAsyncLineItemsReportV2Async(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
+    public okhttp3.Call generateAsyncLineItemsReportAsync(AsyncLineItemsReportRequest asyncLineItemsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = generateAsyncLineItemsReportV2ValidateBeforeCall(asyncLineItemsReportRequest, _callback);
+        okhttp3.Call localVarCall = generateAsyncLineItemsReportValidateBeforeCall(asyncLineItemsReportRequest, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -641,7 +641,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/revenue
+     * 
      * Returns an asynchronous Revenue Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncRevenueReportRequest  (required)
      * @return AsyncReportResponse
@@ -658,7 +658,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/revenue
+     * 
      * Returns an asynchronous Revenue Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncRevenueReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -676,7 +676,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/revenue (asynchronously)
+     *  (asynchronously)
      * Returns an asynchronous Revenue Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncRevenueReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -764,7 +764,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/unfilled-placements
+     * 
      * Returns an asynchronous Unfilled Placements Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncUnfilledPlacementsReportRequest  (required)
      * @return AsyncReportResponse
@@ -781,7 +781,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/unfilled-placements
+     * 
      * Returns an asynchronous Unfilled Placements Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncUnfilledPlacementsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -799,7 +799,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/unfilled-placements (asynchronously)
+     *  (asynchronously)
      * Returns an asynchronous Unfilled Placements Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param asyncUnfilledPlacementsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -887,7 +887,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/{reportId}/output
+     * 
      * Returns the output of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @return File
@@ -904,7 +904,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/{reportId}/output
+     * 
      * Returns the output of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @return ApiResponse&lt;File&gt;
@@ -922,7 +922,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/{reportId}/output (asynchronously)
+     *  (asynchronously)
      * Returns the output of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1010,7 +1010,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/{reportId}/status
+     * 
      * Returns the status of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @return AsyncReportResponse
@@ -1027,7 +1027,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/{reportId}/status
+     * 
      * Returns the status of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
@@ -1045,7 +1045,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * /2026-01/retail-media/reports/{reportId}/status (asynchronously)
+     *  (asynchronously)
      * Returns the status of an async report
      * @param reportId The ID of the report to retrieve (required)
      * @param _callback The callback to be executed when the API call finishes

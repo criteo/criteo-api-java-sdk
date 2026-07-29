@@ -44,7 +44,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Manage
-      summary: "/2025-10/retail-media/account-management/accounts/{accountId}/brands/add"
       tags:
       - Accounts
       x-content-type: application/json
@@ -77,7 +76,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Manage
-      summary: "/2025-10/retail-media/account-management/accounts/{accountId}/brands/remove"
       tags:
       - Accounts
       x-content-type: application/json
@@ -111,7 +109,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Manage
-      summary: "/2025-10/retail-media/account-management/accounts/{accountId}/create-brand-account"
       tags:
       - Accounts
       x-content-type: application/json
@@ -145,7 +142,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Manage
-      summary: "/2025-10/retail-media/account-management/accounts/{accountId}/create-seller-account"
       tags:
       - Accounts
       x-content-type: application/json
@@ -195,7 +191,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Read
-      summary: "/2025-10/retail-media/account-management/accounts/{accountId}/private-market-child-accounts"
       tags:
       - Accounts
       x-accepts: application/json
@@ -228,7 +223,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Manage
-      summary: "/2025-10/retail-media/account-management/accounts/{accountId}/sellers"
       tags:
       - Accounts
       x-content-type: application/json
@@ -280,7 +274,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Read
-      summary: /2025-10/retail-media/accounts
       tags:
       - Accounts
       x-accepts: application/json
@@ -317,7 +310,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
-      summary: "/2025-10/retail-media/accounts/{account-id}/audience-segments"
       tags:
       - Audience
       x-content-type: application/json
@@ -353,7 +345,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Read
-      summary: "/2025-10/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list"
       tags:
       - Audience
       x-accepts: application/json
@@ -390,7 +381,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
-      summary: "/2025-10/retail-media/accounts/{account-id}/audience-segments/create"
       tags:
       - Audience
       x-content-type: application/json
@@ -426,7 +416,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
-      summary: "/2025-10/retail-media/accounts/{account-id}/audience-segments/delete"
       tags:
       - Audience
       x-content-type: application/json
@@ -486,7 +475,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Read
-      summary: "/2025-10/retail-media/accounts/{account-id}/audience-segments/search"
       tags:
       - Audience
       x-content-type: application/json
@@ -546,7 +534,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Read
-      summary: "/2025-10/retail-media/accounts/{account-id}/audiences/search"
       tags:
       - Audience
       x-content-type: application/json
@@ -610,7 +597,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Read
-      summary: "/2025-10/retail-media/accounts/{account-id}/balances"
       tags:
       - Balance
       x-accepts: application/json
@@ -645,7 +631,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Manage
-      summary: "/2025-10/retail-media/accounts/{account-id}/balances"
       tags:
       - Balance
       x-content-type: application/json
@@ -681,7 +666,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Read
-      summary: "/2025-10/retail-media/accounts/{account-id}/balances/{balance-id}"
       tags:
       - Balance
       x-accepts: application/json
@@ -723,7 +707,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Manage
-      summary: "/2025-10/retail-media/accounts/{account-id}/balances/{balance-id}"
       tags:
       - Balance
       x-content-type: application/json
@@ -768,7 +751,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Manage
-      summary: "/2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds"
       tags:
       - Balance
       x-content-type: application/json
@@ -813,7 +795,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Manage
-      summary: "/2025-10/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates"
       tags:
       - Balance
       x-content-type: application/json
@@ -877,7 +858,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/accounts/{account-id}/campaigns"
       tags:
       - Campaign
       x-accepts: application/json
@@ -911,7 +891,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/accounts/{account-id}/campaigns"
       tags:
       - Campaign
       x-content-type: application/json
@@ -939,7 +918,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/accounts/{account-id}/creatives"
       tags:
       - Campaign
       x-accepts: application/json
@@ -972,7 +950,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/accounts/{account-id}/creatives"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1008,7 +985,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/accounts/{account-id}/creatives/{creative-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1049,7 +1025,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/accounts/{account-id}/creatives/{creative-id}"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1087,7 +1062,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/accounts/{account-id}/creatives/search"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1140,7 +1114,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/accounts/{account-id}/keywords/in-review-report"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1228,7 +1201,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/accounts/{account-id}/line-items"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1261,7 +1233,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/accounts/{accountId}/brand-catalog-export"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1322,7 +1293,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/accounts/{accountId}/brands"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1355,7 +1325,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/accounts/{accountId}/catalogs"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1389,7 +1358,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/accounts/{accountId}/catalogs/sellers"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1420,7 +1388,7 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Manage
-      summary: "/2025-10/retail-media/accounts/{accountId}/grant-consent"
+      summary: ""
       tags:
       - Accounts
       x-content-type: application/json
@@ -1481,7 +1449,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/accounts/{accountId}/retailers"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1514,7 +1481,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/accounts/{accountId}/seller-catalog-export"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1565,7 +1531,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Read
-      summary: /2025-10/retail-media/accounts/fees/search
       tags:
       - Accounts
       x-content-type: application/json
@@ -1586,7 +1551,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Manage
-      summary: /2025-10/retail-media/accounts/fees/update
       tags:
       - Accounts
       x-content-type: application/json
@@ -1612,7 +1576,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Accounts_Read
-      summary: /2025-10/retail-media/accounts/sellers/search
       tags:
       - Accounts
       x-content-type: application/json
@@ -1636,7 +1599,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: /2025-10/retail-media/assets
       tags:
       - Campaign
       x-content-type: multipart/form-data
@@ -1664,7 +1626,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/auction-line-items/{line-item-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -1698,7 +1659,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/auction-line-items/{line-item-id}"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1760,7 +1720,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
-      summary: "/2025-10/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove"
       tags:
       - Audience
       x-content-type: application/json
@@ -1789,7 +1748,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Audience_Manage
-      summary: "/2025-10/retail-media/audience-segments/{audience-segment-id}/contact-list/clear"
       tags:
       - Audience
       x-accepts: application/json
@@ -1852,7 +1810,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Read
-      summary: "/2025-10/retail-media/balances/{balance-id}/campaigns"
       tags:
       - Balance
       x-accepts: application/json
@@ -1886,7 +1843,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/balances/{balance-id}/campaigns/append"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1921,7 +1877,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/balances/{balance-id}/campaigns/delete"
       tags:
       - Campaign
       x-content-type: application/json
@@ -1981,7 +1936,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Balance_Read
-      summary: "/2025-10/retail-media/balances/{balanceId}/history"
       tags:
       - Balance
       x-accepts: application/json
@@ -2006,7 +1960,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Billing_Read
-      summary: /2025-10/retail-media/billing/partner-report
       tags:
       - Billing
       x-content-type: application/json
@@ -2039,7 +1992,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Billing_Read
-      summary: "/2025-10/retail-media/billing/partner-report/{requestId}/output"
       tags:
       - Billing
       x-accepts: application/json
@@ -2066,7 +2018,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Billing_Read
-      summary: "/2025-10/retail-media/billing/partner-report/{requestId}/status"
       tags:
       - Billing
       x-accepts: application/json
@@ -2115,10 +2066,9 @@ paths:
           description: Success
       security:
       - oauth:
-        - RetailMedia_Accounts_Read
-      summary: /2025-10/retail-media/brands/search
+        - RetailMedia_Campaign_Read
       tags:
-      - Accounts
+      - Campaign
       x-content-type: application/json
       x-accepts: application/json
   /2025-10/retail-media/campaigns/{campaign-id}/auction-line-items:
@@ -2180,7 +2130,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/campaigns/{campaign-id}/auction-line-items"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2214,7 +2163,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/campaigns/{campaign-id}/auction-line-items"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2279,7 +2227,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/campaigns/{campaign-id}/preferred-line-items"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2313,7 +2260,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/campaigns/{campaign-id}/preferred-line-items"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2341,7 +2287,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/campaigns/{campaignId}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2375,7 +2320,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/campaigns/{campaignId}"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2403,7 +2347,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/campaigns/{campaignId}/campaign-budget-overrides"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2437,7 +2380,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/campaigns/{campaignId}/campaign-budget-overrides"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2471,7 +2413,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/catalogs/{catalogId}/output"
       tags:
       - Campaign
       x-accepts: application/x-json-stream
@@ -2498,7 +2439,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/catalogs/{catalogId}/status"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2560,7 +2500,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: /2025-10/retail-media/categories
       tags:
       - Campaign
       x-accepts: application/json
@@ -2588,13 +2527,11 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/categories/{categoryId}"
       tags:
       - Campaign
       x-accepts: application/json
   /2025-10/retail-media/line-items/{externalLineItemId}/keywords/recommended:
     get:
-      deprecated: true
       description: Retrieves a collection of recommended keywords for a line item
       operationId: GetRecommendedKeywords
       parameters:
@@ -2616,7 +2553,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/line-items/{externalLineItemId}/keywords/recommended"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2643,7 +2579,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/line-items/{id}/keywords"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2675,7 +2610,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/line-items/{id}/keywords/add-remove"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2709,7 +2643,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/line-items/{id}/keywords/set-bid"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2737,7 +2670,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/line-items/{line-item-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2764,7 +2696,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/line-items/{line-item-id}/bid-multipliers"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2798,7 +2729,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/line-items/{line-item-id}/bid-multipliers"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2835,7 +2765,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/line-items/{line-item-id}/keywords/review"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2891,7 +2820,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/line-items/{line-item-id}/products"
       tags:
       - Campaign
       x-accepts: application/json
@@ -2926,7 +2854,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/line-items/{line-item-id}/products/append"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2956,7 +2883,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/line-items/{line-item-id}/products/delete"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2987,7 +2913,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/line-items/{line-item-id}/products/pause"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3018,7 +2943,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/line-items/{line-item-id}/products/unpause"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3047,7 +2971,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/line-items/{lineItemId}/line-item-budget-overrides"
       tags:
       - Campaign
       x-accepts: application/json
@@ -3081,7 +3004,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/line-items/{lineItemId}/line-item-budget-overrides"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3099,7 +3021,6 @@ paths:
           description: Success
       security:
       - oauth: []
-      summary: /2025-10/retail-media/me
       tags:
       - Gateway
       x-accepts: application/json
@@ -3126,7 +3047,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -3160,7 +3080,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3189,7 +3108,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket"
       tags:
       - Campaign
       x-accepts: application/json
@@ -3224,7 +3142,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3261,7 +3178,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3298,7 +3214,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3326,7 +3241,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences"
       tags:
       - Campaign
       x-accepts: application/json
@@ -3361,7 +3275,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3397,7 +3310,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3434,7 +3346,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3462,7 +3373,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores"
       tags:
       - Campaign
       x-accepts: application/json
@@ -3497,7 +3407,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3533,7 +3442,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3569,7 +3477,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3598,7 +3505,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
-      summary: "/2025-10/retail-media/reports/{reportId}/output"
       tags:
       - Analytics
       x-accepts: application/json
@@ -3625,7 +3531,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
-      summary: "/2025-10/retail-media/reports/{reportId}/status"
       tags:
       - Analytics
       x-accepts: application/json
@@ -3633,7 +3538,7 @@ paths:
     post:
       description: "Return an asynchronous Campaigns Report\r\n<br />\r\nThis endpoint\
         \ is subject to specific rate limits."
-      operationId: GenerateAsyncCampaignsReportV2
+      operationId: GenerateAsyncCampaignsReport
       requestBody:
         content:
           application/json:
@@ -3651,7 +3556,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
-      summary: /2025-10/retail-media/reports/campaigns
       tags:
       - Analytics
       x-content-type: application/json
@@ -3660,7 +3564,7 @@ paths:
     post:
       description: "Returns an asynchronous Line Items Report\r\n<br />\r\nThis endpoint\
         \ is subject to specific rate limits."
-      operationId: GenerateAsyncLineItemsReportV2
+      operationId: GenerateAsyncLineItemsReport
       requestBody:
         content:
           application/json:
@@ -3678,7 +3582,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
-      summary: /2025-10/retail-media/reports/line-items
       tags:
       - Analytics
       x-content-type: application/json
@@ -3705,7 +3608,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
-      summary: /2025-10/retail-media/reports/revenue
       tags:
       - Analytics
       x-content-type: application/json
@@ -3734,7 +3636,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/retailers/{retailer-id}/templates"
       tags:
       - Campaign
       x-accepts: application/json
@@ -3771,7 +3672,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/retailers/{retailer-id}/templates/{template-id}"
       tags:
       - Campaign
       x-accepts: application/json
@@ -3831,7 +3731,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/retailers/{retailerId}/categories/search"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3869,7 +3768,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/2025-10/retail-media/retailers/{retailerId}/cpc-min-bids"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3898,7 +3796,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/retailers/{retailerId}/pages"
       tags:
       - Campaign
       x-accepts: application/json
@@ -3935,7 +3832,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/retailers/{retailerId}/recommend-categories"
       tags:
       - Campaign
       x-content-type: application/json
@@ -3970,7 +3866,6 @@ paths:
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/2025-10/retail-media/retailers/{retailerId}/recommend-keywords"
       tags:
       - Campaign
       x-content-type: application/json
@@ -4526,9 +4421,6 @@ components:
     AsyncCampaignsReport:
       description: Async Campaigns report body request
       example:
-        activationPlatforms:
-        - CommerceMax
-        - CommerceMax
         campaignType: all
         clickAttributionWindow: none
         endDate: 2000-01-23T04:56:07.000+00:00
@@ -4541,17 +4433,11 @@ components:
         timezone: UTC
         format: json-compact
         mediaType: all
-        buyTypes:
-        - auction
-        - auction
         salesChannel: all
         targetedKeywordTypes:
         - unknown
         - unknown
         reportType: summary
-        budgetModels:
-        - CriteoBudget
-        - CriteoBudget
         viewAttributionWindow: none
         ids:
         - ids
@@ -4565,31 +4451,6 @@ components:
         - date
         - date
       properties:
-        activationPlatforms:
-          description: "Filter on the activation platform: CommerceMax, PrivateMarket"
-          items:
-            enum:
-            - CommerceMax
-            - PrivateMarket
-            type: string
-          type: array
-        budgetModels:
-          description: "Filter on the budget model: CriteoBudget, RetailerBudget"
-          items:
-            enum:
-            - CriteoBudget
-            - RetailerBudget
-            type: string
-          type: array
-        buyTypes:
-          description: "Filter on the buy type: auction, preferredDeals, sponsorship"
-          items:
-            enum:
-            - auction
-            - preferredDeals
-            - sponsorship
-            type: string
-          type: array
         campaignType:
           default: all
           description: "Filter the type of campaigns to report on: sponsoredProducts\
@@ -4630,9 +4491,6 @@ components:
             - advProductName
             - salesChannel
             - mediaType
-            - buyType
-            - budgetModel
-            - activationPlatform
             - environment
             - pageTypeName
             - pageCategory
@@ -4810,9 +4668,6 @@ components:
       example:
         data:
           attributes:
-            activationPlatforms:
-            - CommerceMax
-            - CommerceMax
             campaignType: all
             clickAttributionWindow: none
             endDate: 2000-01-23T04:56:07.000+00:00
@@ -4825,17 +4680,11 @@ components:
             timezone: UTC
             format: json-compact
             mediaType: all
-            buyTypes:
-            - auction
-            - auction
             salesChannel: all
             targetedKeywordTypes:
             - unknown
             - unknown
             reportType: summary
-            budgetModels:
-            - CriteoBudget
-            - CriteoBudget
             viewAttributionWindow: none
             ids:
             - ids
@@ -4858,9 +4707,6 @@ components:
         a single value
       example:
         attributes:
-          activationPlatforms:
-          - CommerceMax
-          - CommerceMax
           campaignType: all
           clickAttributionWindow: none
           endDate: 2000-01-23T04:56:07.000+00:00
@@ -4873,17 +4719,11 @@ components:
           timezone: UTC
           format: json-compact
           mediaType: all
-          buyTypes:
-          - auction
-          - auction
           salesChannel: all
           targetedKeywordTypes:
           - unknown
           - unknown
           reportType: summary
-          budgetModels:
-          - CriteoBudget
-          - CriteoBudget
           viewAttributionWindow: none
           ids:
           - ids
@@ -4906,9 +4746,6 @@ components:
     AsyncLineItemsReport:
       description: Async Line Items report body request
       example:
-        activationPlatforms:
-        - CommerceMax
-        - CommerceMax
         campaignType: all
         clickAttributionWindow: none
         endDate: 2000-01-23T04:56:07.000+00:00
@@ -4921,17 +4758,11 @@ components:
         timezone: UTC
         format: json-compact
         mediaType: all
-        buyTypes:
-        - auction
-        - auction
         salesChannel: all
         targetedKeywordTypes:
         - unknown
         - unknown
         reportType: summary
-        budgetModels:
-        - CriteoBudget
-        - CriteoBudget
         viewAttributionWindow: none
         ids:
         - ids
@@ -4945,31 +4776,6 @@ components:
         - date
         - date
       properties:
-        activationPlatforms:
-          description: "Filter on the activation platform: CommerceMax, PrivateMarket"
-          items:
-            enum:
-            - CommerceMax
-            - PrivateMarket
-            type: string
-          type: array
-        budgetModels:
-          description: "Filter on the budget model: CriteoBudget, RetailerBudget"
-          items:
-            enum:
-            - CriteoBudget
-            - RetailerBudget
-            type: string
-          type: array
-        buyTypes:
-          description: "Filter on the buy type: auction, preferredDeals, sponsorship"
-          items:
-            enum:
-            - auction
-            - preferredDeals
-            - sponsorship
-            type: string
-          type: array
         campaignType:
           default: all
           description: "Filter the type of campaigns to report on: sponsoredProducts\
@@ -5010,9 +4816,6 @@ components:
             - advProductName
             - salesChannel
             - mediaType
-            - buyType
-            - budgetModel
-            - activationPlatform
             - environment
             - pageTypeName
             - pageCategory
@@ -5190,9 +4993,6 @@ components:
       example:
         data:
           attributes:
-            activationPlatforms:
-            - CommerceMax
-            - CommerceMax
             campaignType: all
             clickAttributionWindow: none
             endDate: 2000-01-23T04:56:07.000+00:00
@@ -5205,17 +5005,11 @@ components:
             timezone: UTC
             format: json-compact
             mediaType: all
-            buyTypes:
-            - auction
-            - auction
             salesChannel: all
             targetedKeywordTypes:
             - unknown
             - unknown
             reportType: summary
-            budgetModels:
-            - CriteoBudget
-            - CriteoBudget
             viewAttributionWindow: none
             ids:
             - ids
@@ -5238,9 +5032,6 @@ components:
         a single value
       example:
         attributes:
-          activationPlatforms:
-          - CommerceMax
-          - CommerceMax
           campaignType: all
           clickAttributionWindow: none
           endDate: 2000-01-23T04:56:07.000+00:00
@@ -5253,17 +5044,11 @@ components:
           timezone: UTC
           format: json-compact
           mediaType: all
-          buyTypes:
-          - auction
-          - auction
           salesChannel: all
           targetedKeywordTypes:
           - unknown
           - unknown
           reportType: summary
-          budgetModels:
-          - CriteoBudget
-          - CriteoBudget
           viewAttributionWindow: none
           ids:
           - ids
@@ -5375,14 +5160,8 @@ components:
         accountIds:
         - accountIds
         - accountIds
-        budgetModels:
-        - CriteoBudget
-        - CriteoBudget
         viewAttributionWindow: none
         id: id
-        activationPlatforms:
-        - CommerceMax
-        - CommerceMax
         campaignType: all
         clickAttributionWindow: none
         lineItemIds:
@@ -5417,14 +5196,6 @@ components:
           items:
             type: string
           type: array
-        activationPlatforms:
-          description: "Filter on the activation platform: CommerceMax, PrivateMarket"
-          items:
-            enum:
-            - CommerceMax
-            - PrivateMarket
-            type: string
-          type: array
         advertiserTypes:
           description: "Filter on the type of advertiser: retailer, brand, seller"
           items:
@@ -5432,14 +5203,6 @@ components:
             - retailer
             - brand
             - seller
-            type: string
-          type: array
-        budgetModels:
-          description: "Filter on the budget model: CriteoBudget, RetailerBudget"
-          items:
-            enum:
-            - CriteoBudget
-            - RetailerBudget
             type: string
           type: array
         buyType:
@@ -5517,8 +5280,6 @@ components:
             - advProductGtin
             - advProductMpn
             - buyType
-            - budgetModel
-            - activationPlatform
             - soldBy
             - saleChannel
             - salesChannel
@@ -5674,13 +5435,12 @@ components:
             type: string
           type: array
         soldBy:
-          description: "Filter on the seller: Indirect Sold, Direct Sold, Authorized\
-            \ Buyer or Private Market"
+          description: "Filter on the seller: Indirect Sold, Direct Sold or Private\
+            \ Market"
           enum:
           - directSold
           - indirectSold
           - privateMarket
-          - authorizedBuyer
           type: string
         startDate:
           description: Start date
@@ -5748,14 +5508,8 @@ components:
             accountIds:
             - accountIds
             - accountIds
-            budgetModels:
-            - CriteoBudget
-            - CriteoBudget
             viewAttributionWindow: none
             id: id
-            activationPlatforms:
-            - CommerceMax
-            - CommerceMax
             campaignType: all
             clickAttributionWindow: none
             lineItemIds:
@@ -5810,14 +5564,8 @@ components:
           accountIds:
           - accountIds
           - accountIds
-          budgetModels:
-          - CriteoBudget
-          - CriteoBudget
           viewAttributionWindow: none
           id: id
-          activationPlatforms:
-          - CommerceMax
-          - CommerceMax
           campaignType: all
           clickAttributionWindow: none
           lineItemIds:
@@ -7177,7 +6925,6 @@ components:
         - drawableBalanceIds
         - drawableBalanceIds
         onBehalfCompanyName: onBehalfCompanyName
-        retailerId: 5
         type: auction
         clickAttributionScope: unknown
         viewAttributionScope: unknown
@@ -7238,9 +6985,6 @@ components:
         onBehalfCompanyName:
           nullable: true
           type: string
-        retailerId:
-          format: int32
-          type: integer
         startDate:
           format: date-time
           nullable: true
@@ -7397,7 +7141,6 @@ components:
         - drawableBalanceIds
         - drawableBalanceIds
         onBehalfCompanyName: onBehalfCompanyName
-        retailerId: 2
         type: auction
         accountId: accountId
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -7485,10 +7228,6 @@ components:
             format: long-id
             type: string
           type: array
-        retailerId:
-          format: int32
-          nullable: true
-          type: integer
         startDate:
           format: date-time
           nullable: true
@@ -11038,19 +10777,16 @@ components:
         - negativeExact
       properties:
         negativeBroad:
-          description: The collection of supplied negative broad phrases.
           items:
             type: string
           nullable: true
           type: array
         negativeExact:
-          description: The collection of supplied negative exact phrases.
           items:
             type: string
           nullable: true
           type: array
         positiveExact:
-          description: The collection of supplied positive exact phrases.
           items:
             type: string
           nullable: true
@@ -11208,7 +10944,6 @@ components:
           - drawableBalanceIds
           - drawableBalanceIds
           onBehalfCompanyName: onBehalfCompanyName
-          retailerId: 2
           type: auction
           accountId: accountId
           createdAt: 2000-01-23T04:56:07.000+00:00
@@ -11330,7 +11065,6 @@ components:
           - drawableBalanceIds
           - drawableBalanceIds
           onBehalfCompanyName: onBehalfCompanyName
-          retailerId: 5
           type: auction
           clickAttributionScope: unknown
           viewAttributionScope: unknown
@@ -11590,7 +11324,6 @@ components:
             - drawableBalanceIds
             - drawableBalanceIds
             onBehalfCompanyName: onBehalfCompanyName
-            retailerId: 2
             type: auction
             accountId: accountId
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -11620,7 +11353,6 @@ components:
             - drawableBalanceIds
             - drawableBalanceIds
             onBehalfCompanyName: onBehalfCompanyName
-            retailerId: 2
             type: auction
             accountId: accountId
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -11831,7 +11563,6 @@ components:
             - drawableBalanceIds
             - drawableBalanceIds
             onBehalfCompanyName: onBehalfCompanyName
-            retailerId: 2
             type: auction
             accountId: accountId
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -12049,10 +11780,10 @@ components:
       type: object
     KeywordDataModel:
       additionalProperties: false
-      description: A single keyword and associated bid override.
+      description: A single keyword and associated bid override
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
-        matchType: PositiveExactMatch
+        matchType: null
         inputKeywords:
           negativeBroad:
           - negativeBroad
@@ -12068,29 +11799,19 @@ components:
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         bid:
-          description: The bid to use when a positive keyword matches the shopper
-            search phrase.
           format: double
           nullable: true
           type: number
         createdAt:
-          description: The time at which this keyword was created in UTC.
           format: date-time
           type: string
         inputKeywords:
           $ref: '#/components/schemas/InputKeywordsModel'
         matchType:
-          description: The matching algorithm to be used when comparing this keyword
-            with the shopper search phrase.
-          enum:
-          - PositiveExactMatch
-          - NegativeExactMatch
-          - NegativeBroadMatch
-          type: string
+          $ref: '#/components/schemas/MatchTypeModel'
         reviewState:
           $ref: '#/components/schemas/ReviewStateModel'
         updatedAt:
-          description: The time at which this keyword was last modified in UTC.
           format: date-time
           type: string
       type: object
@@ -12158,7 +11879,7 @@ components:
         keywords:
           key:
             createdAt: 2000-01-23T04:56:07.000+00:00
-            matchType: PositiveExactMatch
+            matchType: null
             inputKeywords:
               negativeBroad:
               - negativeBroad
@@ -12180,12 +11901,9 @@ components:
         keywords:
           additionalProperties:
             $ref: '#/components/schemas/KeywordDataModel'
-          description: A dictionary of normalized keywords mapped to their properties.
           nullable: true
           type: object
         rank:
-          description: The top suggested keywords for products in this line item ranked
-            by popularity score.
           items:
             type: string
           nullable: true
@@ -12199,7 +11917,7 @@ components:
           keywords:
             key:
               createdAt: 2000-01-23T04:56:07.000+00:00
-              matchType: PositiveExactMatch
+              matchType: null
               inputKeywords:
                 negativeBroad:
                 - negativeBroad
@@ -12238,7 +11956,7 @@ components:
             keywords:
               key:
                 createdAt: 2000-01-23T04:56:07.000+00:00
-                matchType: PositiveExactMatch
+                matchType: null
                 inputKeywords:
                   negativeBroad:
                   - negativeBroad
@@ -13071,7 +12789,6 @@ components:
             - drawableBalanceIds
             - drawableBalanceIds
             onBehalfCompanyName: onBehalfCompanyName
-            retailerId: 5
             type: auction
             clickAttributionScope: unknown
             viewAttributionScope: unknown
@@ -14975,6 +14692,8 @@ components:
           reviewState: Unknown
       properties:
         keywords:
+          description: List of Phrase-ReviewState pairs describing keyword review
+            updates to perform
           items:
             $ref: '#/components/schemas/ReviewSetState'
           minItems: 1
@@ -14995,6 +14714,8 @@ components:
       nullable: true
       properties:
         keywords:
+          description: List of Phrase-ReviewState pairs describing keyword review
+            updates which were performed
           items:
             $ref: '#/components/schemas/ReviewSetState'
           minItems: 1
@@ -18797,7 +18518,7 @@ components:
     ValueResourceInputRetailMediaKeywordsReview:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value object.
+        single value objects.
       example:
         data:
           attributes:
@@ -19736,6 +19457,7 @@ components:
         attributes:
           $ref: '#/components/schemas/RetailMediaKeywordsReviewResult'
         type:
+          description: Type of the resource.
           nullable: true
           type: string
       type: object

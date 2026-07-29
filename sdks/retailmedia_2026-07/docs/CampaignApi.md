@@ -7,7 +7,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**addRemoveKeywords**](CampaignApi.md#addRemoveKeywords) | **POST** /2026-07/retail-media/line-items/{id}/keywords/add-remove | /2026-07/retail-media/line-items/{id}/keywords/add-remove |
 | [**appendAddToBasketTargetsByLineItemId**](CampaignApi.md#appendAddToBasketTargetsByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append |
 | [**appendAudienceTargetsByLineItemId**](CampaignApi.md#appendAudienceTargetsByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append |
-| [**appendCampaignsToBalanceV1**](CampaignApi.md#appendCampaignsToBalanceV1) | **POST** /2026-07/retail-media/balances/{balanceId}/campaigns/append | /2026-07/retail-media/balances/{balanceId}/campaigns/append |
+| [**appendCampaignsByBalanceId**](CampaignApi.md#appendCampaignsByBalanceId) | **POST** /2026-07/retail-media/balances/{balance-id}/campaigns/append | /2026-07/retail-media/balances/{balance-id}/campaigns/append |
 | [**appendPromotedProducts**](CampaignApi.md#appendPromotedProducts) | **POST** /2026-07/retail-media/line-items/{line-item-id}/products/append | /2026-07/retail-media/line-items/{line-item-id}/products/append |
 | [**appendStoreTargetsByLineItemId**](CampaignApi.md#appendStoreTargetsByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append |
 | [**createAsset**](CampaignApi.md#createAsset) | **POST** /2026-07/retail-media/assets | /2026-07/retail-media/assets |
@@ -19,7 +19,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**createSellerCatalogExport**](CampaignApi.md#createSellerCatalogExport) | **POST** /2026-07/retail-media/accounts/{accountId}/seller-catalog-export | /2026-07/retail-media/accounts/{accountId}/seller-catalog-export |
 | [**deleteAddToBasketTargetsByLineItemId**](CampaignApi.md#deleteAddToBasketTargetsByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete |
 | [**deleteAudienceTargetsByLineItemId**](CampaignApi.md#deleteAudienceTargetsByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete |
-| [**deleteCampaignsFromBalanceV1**](CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /2026-07/retail-media/balances/{balanceId}/campaigns/delete | /2026-07/retail-media/balances/{balanceId}/campaigns/delete |
+| [**deleteCampaignsByBalanceId**](CampaignApi.md#deleteCampaignsByBalanceId) | **POST** /2026-07/retail-media/balances/{balance-id}/campaigns/delete | /2026-07/retail-media/balances/{balance-id}/campaigns/delete |
 | [**deletePromotedProducts**](CampaignApi.md#deletePromotedProducts) | **POST** /2026-07/retail-media/line-items/{line-item-id}/products/delete | /2026-07/retail-media/line-items/{line-item-id}/products/delete |
 | [**deleteStoreTargetByLineItemId**](CampaignApi.md#deleteStoreTargetByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete |
 | [**fetchKeywords**](CampaignApi.md#fetchKeywords) | **GET** /2026-07/retail-media/line-items/{id}/keywords | /2026-07/retail-media/line-items/{id}/keywords |
@@ -348,13 +348,13 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## appendCampaignsToBalanceV1
+## appendCampaignsByBalanceId
 
-> ValueResourceOutcomeBalanceCampaignsV1 appendCampaignsToBalanceV1(balanceId, valueResourceInputAppendCampaignsRequestV1)
+> BalanceCampaign202110PagedListResponse appendCampaignsByBalanceId(balanceId, balanceCampaign202110ListRequest)
 
-/2026-07/retail-media/balances/{balanceId}/campaigns/append
+/2026-07/retail-media/balances/{balance-id}/campaigns/append
 
-Appends one or more campaigns to the specified balance
+appends one or more campaigns to the specified balance
 
 ### Example
 
@@ -396,12 +396,12 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String balanceId = "balanceId_example"; // String | The balance to add campaigns from
-        ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1 = new ValueResourceInputAppendCampaignsRequestV1(); // ValueResourceInputAppendCampaignsRequestV1 | The balance campaign appending request.
+        BalanceCampaign202110ListRequest balanceCampaign202110ListRequest = new BalanceCampaign202110ListRequest(); // BalanceCampaign202110ListRequest | The campaigns to append
         try {
-            ValueResourceOutcomeBalanceCampaignsV1 result = apiInstance.appendCampaignsToBalanceV1(balanceId, valueResourceInputAppendCampaignsRequestV1);
+            BalanceCampaign202110PagedListResponse result = apiInstance.appendCampaignsByBalanceId(balanceId, balanceCampaign202110ListRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#appendCampaignsToBalanceV1");
+            System.err.println("Exception when calling CampaignApi#appendCampaignsByBalanceId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -417,11 +417,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **balanceId** | **String**| The balance to add campaigns from | |
-| **valueResourceInputAppendCampaignsRequestV1** | [**ValueResourceInputAppendCampaignsRequestV1**](ValueResourceInputAppendCampaignsRequestV1.md)| The balance campaign appending request. | |
+| **balanceCampaign202110ListRequest** | [**BalanceCampaign202110ListRequest**](BalanceCampaign202110ListRequest.md)| The campaigns to append | [optional] |
 
 ### Return type
 
-[**ValueResourceOutcomeBalanceCampaignsV1**](ValueResourceOutcomeBalanceCampaignsV1.md)
+[**BalanceCampaign202110PagedListResponse**](BalanceCampaign202110PagedListResponse.md)
 
 ### Authorization
 
@@ -1439,13 +1439,13 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## deleteCampaignsFromBalanceV1
+## deleteCampaignsByBalanceId
 
-> ValueResourceOutcomeBalanceCampaignsV1 deleteCampaignsFromBalanceV1(balanceId, valueResourceInputDeleteCampaignsRequestV1)
+> BalanceCampaign202110PagedListResponse deleteCampaignsByBalanceId(balanceId, balanceCampaign202110ListRequest)
 
-/2026-07/retail-media/balances/{balanceId}/campaigns/delete
+/2026-07/retail-media/balances/{balance-id}/campaigns/delete
 
-Deletes one or more campaigns on the specified balance
+Removes one or more campaigns on the specified balance
 
 ### Example
 
@@ -1487,12 +1487,12 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String balanceId = "balanceId_example"; // String | The balance to remove campaigns from
-        ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1 = new ValueResourceInputDeleteCampaignsRequestV1(); // ValueResourceInputDeleteCampaignsRequestV1 | The balance campaign deleting request.
+        BalanceCampaign202110ListRequest balanceCampaign202110ListRequest = new BalanceCampaign202110ListRequest(); // BalanceCampaign202110ListRequest | The campaigns to append
         try {
-            ValueResourceOutcomeBalanceCampaignsV1 result = apiInstance.deleteCampaignsFromBalanceV1(balanceId, valueResourceInputDeleteCampaignsRequestV1);
+            BalanceCampaign202110PagedListResponse result = apiInstance.deleteCampaignsByBalanceId(balanceId, balanceCampaign202110ListRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#deleteCampaignsFromBalanceV1");
+            System.err.println("Exception when calling CampaignApi#deleteCampaignsByBalanceId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1508,11 +1508,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **balanceId** | **String**| The balance to remove campaigns from | |
-| **valueResourceInputDeleteCampaignsRequestV1** | [**ValueResourceInputDeleteCampaignsRequestV1**](ValueResourceInputDeleteCampaignsRequestV1.md)| The balance campaign deleting request. | |
+| **balanceCampaign202110ListRequest** | [**BalanceCampaign202110ListRequest**](BalanceCampaign202110ListRequest.md)| The campaigns to append | [optional] |
 
 ### Return type
 
-[**ValueResourceOutcomeBalanceCampaignsV1**](ValueResourceOutcomeBalanceCampaignsV1.md)
+[**BalanceCampaign202110PagedListResponse**](BalanceCampaign202110PagedListResponse.md)
 
 ### Authorization
 
@@ -5169,11 +5169,11 @@ public class Example {
 
 ## searchAccountRetailers
 
-> EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata searchAccountRetailers(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset)
+> EntityResourceCollectionOutcomeOfRetailerResultAndMetadata searchAccountRetailers(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset)
 
 /2026-07/retail-media/accounts/{accountId}/retailers/search
 
-Searches for retailers associated with the specified account and returns budget model availability for each retailer
+Searches for retailers associated with the specified account based on provided search criteria
 
 ### Example
 
@@ -5215,11 +5215,11 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String accountId = "accountId_example"; // String | The external account identifier
-        ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2 = new ValueResourceInputOfRetailerSearchRequestV2(); // ValueResourceInputOfRetailerSearchRequestV2 | The search request containing filtering parameters
+        ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest = new ValueResourceInputOfRetailerSearchRequest(); // ValueResourceInputOfRetailerSearchRequest | The search request containing filtering parameters
         Integer limit = 5; // Integer | The maximum number of items to return. Must be between 1 and 10. Default is 5.
         Integer offset = 0; // Integer | The number of items to skip before starting to collect the result set. Default is 0.
         try {
-            EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata result = apiInstance.searchAccountRetailers(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset);
+            EntityResourceCollectionOutcomeOfRetailerResultAndMetadata result = apiInstance.searchAccountRetailers(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#searchAccountRetailers");
@@ -5238,13 +5238,13 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The external account identifier | |
-| **valueResourceInputOfRetailerSearchRequestV2** | [**ValueResourceInputOfRetailerSearchRequestV2**](ValueResourceInputOfRetailerSearchRequestV2.md)| The search request containing filtering parameters | |
+| **valueResourceInputOfRetailerSearchRequest** | [**ValueResourceInputOfRetailerSearchRequest**](ValueResourceInputOfRetailerSearchRequest.md)| The search request containing filtering parameters | |
 | **limit** | **Integer**| The maximum number of items to return. Must be between 1 and 10. Default is 5. | [optional] [default to 5] |
 | **offset** | **Integer**| The number of items to skip before starting to collect the result set. Default is 0. | [optional] [default to 0] |
 
 ### Return type
 
-[**EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata**](EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.md)
+[**EntityResourceCollectionOutcomeOfRetailerResultAndMetadata**](EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.md)
 
 ### Authorization
 

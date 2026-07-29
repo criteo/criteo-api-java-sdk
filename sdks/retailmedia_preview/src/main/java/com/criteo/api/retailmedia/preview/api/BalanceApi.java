@@ -29,7 +29,6 @@ import java.io.IOException;
 
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBalanceV1AndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeBalanceV1;
-import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfBalanceResponseV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfUpdateBalanceModelV1;
 
@@ -536,7 +535,6 @@ public class BalanceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -582,7 +580,6 @@ public class BalanceApi {
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
      * @param valueResourceInputOfUpdateBalanceModelV1 An object that represents the available options to modify a balance. (required)
-     * @return EntityResourceOutcomeOfBalanceResponseV1
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -590,9 +587,8 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceOutcomeOfBalanceResponseV1 updateBalanceV1(String accountId, String balanceId, ValueResourceInputOfUpdateBalanceModelV1 valueResourceInputOfUpdateBalanceModelV1) throws ApiException {
-        ApiResponse<EntityResourceOutcomeOfBalanceResponseV1> localVarResp = updateBalanceV1WithHttpInfo(accountId, balanceId, valueResourceInputOfUpdateBalanceModelV1);
-        return localVarResp.getData();
+    public void updateBalanceV1(String accountId, String balanceId, ValueResourceInputOfUpdateBalanceModelV1 valueResourceInputOfUpdateBalanceModelV1) throws ApiException {
+        updateBalanceV1WithHttpInfo(accountId, balanceId, valueResourceInputOfUpdateBalanceModelV1);
     }
 
     /**
@@ -601,7 +597,7 @@ public class BalanceApi {
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
      * @param valueResourceInputOfUpdateBalanceModelV1 An object that represents the available options to modify a balance. (required)
-     * @return ApiResponse&lt;EntityResourceOutcomeOfBalanceResponseV1&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -609,10 +605,9 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceOutcomeOfBalanceResponseV1> updateBalanceV1WithHttpInfo(String accountId, String balanceId, ValueResourceInputOfUpdateBalanceModelV1 valueResourceInputOfUpdateBalanceModelV1) throws ApiException {
+    public ApiResponse<Void> updateBalanceV1WithHttpInfo(String accountId, String balanceId, ValueResourceInputOfUpdateBalanceModelV1 valueResourceInputOfUpdateBalanceModelV1) throws ApiException {
         okhttp3.Call localVarCall = updateBalanceV1ValidateBeforeCall(accountId, balanceId, valueResourceInputOfUpdateBalanceModelV1, null);
-        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfBalanceResponseV1>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -630,11 +625,10 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateBalanceV1Async(String accountId, String balanceId, ValueResourceInputOfUpdateBalanceModelV1 valueResourceInputOfUpdateBalanceModelV1, final ApiCallback<EntityResourceOutcomeOfBalanceResponseV1> _callback) throws ApiException {
+    public okhttp3.Call updateBalanceV1Async(String accountId, String balanceId, ValueResourceInputOfUpdateBalanceModelV1 valueResourceInputOfUpdateBalanceModelV1, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateBalanceV1ValidateBeforeCall(accountId, balanceId, valueResourceInputOfUpdateBalanceModelV1, _callback);
-        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfBalanceResponseV1>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

@@ -90,7 +90,7 @@ public class ValueResourceRetailMediaKeywordsReviewResult {
   }
 
    /**
-   * Get type
+   * Type of the resource.
    * @return type
   **/
   @javax.annotation.Nullable

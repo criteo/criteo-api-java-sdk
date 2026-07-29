@@ -9,9 +9,7 @@ Async Revenue report body request
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**accountIds** | **List&lt;String&gt;** | Account ids to filter |  [optional] |
-|**activationPlatforms** | [**List&lt;ActivationPlatformsEnum&gt;**](#List&lt;ActivationPlatformsEnum&gt;) | Filter on the activation platform: CommerceMax, PrivateMarket |  [optional] |
 |**advertiserTypes** | [**List&lt;AdvertiserTypesEnum&gt;**](#List&lt;AdvertiserTypesEnum&gt;) | Filter on the type of advertiser: retailer, brand, seller |  [optional] |
-|**budgetModels** | [**List&lt;BudgetModelsEnum&gt;**](#List&lt;BudgetModelsEnum&gt;) | Filter on the budget model: CriteoBudget, RetailerBudget |  [optional] |
 |**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) | Filter on buy type: Auction, Preferred Deals or Sponsorship |  [optional] |
 |**campaignIds** | **List&lt;String&gt;** | Campaign ids to filter |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
@@ -30,21 +28,12 @@ Async Revenue report body request
 |**revenueType** | [**RevenueTypeEnum**](#RevenueTypeEnum) | Type of revenue |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
 |**skuRelations** | [**List&lt;SkuRelationsEnum&gt;**](#List&lt;SkuRelationsEnum&gt;) | Filter on sku relations: Same SKU, Same Parent SKU, Same Category, Same Brand or Same Seller |  [optional] |
-|**soldBy** | [**SoldByEnum**](#SoldByEnum) | Filter on the seller: Indirect Sold, Direct Sold, Authorized Buyer or Private Market |  [optional] |
+|**soldBy** | [**SoldByEnum**](#SoldByEnum) | Filter on the seller: Indirect Sold, Direct Sold or Private Market |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date |  |
 |**targetedKeywordTypes** | [**List&lt;TargetedKeywordTypesEnum&gt;**](#List&lt;TargetedKeywordTypesEnum&gt;) | Filter on targeted keyword type: unknown, generic, branded, conquesting |  [optional] |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 |**viewMatchLevel** | [**ViewMatchLevelEnum**](#ViewMatchLevelEnum) | View Match Level: Campaign, Same SKU, Same Category or Same Brand |  [optional] |
-
-
-
-## Enum: List&lt;ActivationPlatformsEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| COMMERCEMAX | &quot;CommerceMax&quot; |
-| PRIVATEMARKET | &quot;PrivateMarket&quot; |
 
 
 
@@ -55,15 +44,6 @@ Async Revenue report body request
 | RETAILER | &quot;retailer&quot; |
 | BRAND | &quot;brand&quot; |
 | SELLER | &quot;seller&quot; |
-
-
-
-## Enum: List&lt;BudgetModelsEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| CRITEOBUDGET | &quot;CriteoBudget&quot; |
-| RETAILERBUDGET | &quot;RetailerBudget&quot; |
 
 
 
@@ -144,8 +124,6 @@ Async Revenue report body request
 | ADVPRODUCTGTIN | &quot;advProductGtin&quot; |
 | ADVPRODUCTMPN | &quot;advProductMpn&quot; |
 | BUYTYPE | &quot;buyType&quot; |
-| BUDGETMODEL | &quot;budgetModel&quot; |
-| ACTIVATIONPLATFORM | &quot;activationPlatform&quot; |
 | SOLDBY | &quot;soldBy&quot; |
 | SALECHANNEL | &quot;saleChannel&quot; |
 | SALESCHANNEL | &quot;salesChannel&quot; |
@@ -298,7 +276,6 @@ Async Revenue report body request
 | DIRECTSOLD | &quot;directSold&quot; |
 | INDIRECTSOLD | &quot;indirectSold&quot; |
 | PRIVATEMARKET | &quot;privateMarket&quot; |
-| AUTHORIZEDBUYER | &quot;authorizedBuyer&quot; |
 
 
 

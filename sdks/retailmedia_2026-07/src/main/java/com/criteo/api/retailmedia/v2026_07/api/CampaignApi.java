@@ -35,6 +35,8 @@ import com.criteo.api.retailmedia.v2026_07.model.AssetResponse;
 import com.criteo.api.retailmedia.v2026_07.model.AudienceIdsUpdateModel202110Request;
 import com.criteo.api.retailmedia.v2026_07.model.AudienceTarget202110Request;
 import com.criteo.api.retailmedia.v2026_07.model.AudienceTarget202110Response;
+import com.criteo.api.retailmedia.v2026_07.model.BalanceCampaign202110ListRequest;
+import com.criteo.api.retailmedia.v2026_07.model.BalanceCampaign202110PagedListResponse;
 import com.criteo.api.retailmedia.v2026_07.model.Category202204;
 import com.criteo.api.retailmedia.v2026_07.model.Category202204ListResponse;
 import com.criteo.api.retailmedia.v2026_07.model.CommonLineItemPagedListResponse;
@@ -48,7 +50,7 @@ import com.criteo.api.retailmedia.v2026_07.model.CreativeUpdateModel202207;
 import com.criteo.api.retailmedia.v2026_07.model.EntityResourceCollectionOutcomeCategory202204;
 import com.criteo.api.retailmedia.v2026_07.model.EntityResourceCollectionOutcomeCategory202204Metadata;
 import com.criteo.api.retailmedia.v2026_07.model.EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata;
-import com.criteo.api.retailmedia.v2026_07.model.EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata;
+import com.criteo.api.retailmedia.v2026_07.model.EntityResourceCollectionOutcomeOfRetailerResultAndMetadata;
 import com.criteo.api.retailmedia.v2026_07.model.EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata;
 import com.criteo.api.retailmedia.v2026_07.model.EntityResourceOutcomeOfCatalogStatusV2;
 import com.criteo.api.retailmedia.v2026_07.model.EntityResourceOutcomeOfSponsoredProductsLineItem;
@@ -80,21 +82,18 @@ import com.criteo.api.retailmedia.v2026_07.model.StoreTarget202110Request;
 import com.criteo.api.retailmedia.v2026_07.model.StoreTarget202110Response;
 import com.criteo.api.retailmedia.v2026_07.model.TemplateListResponse;
 import com.criteo.api.retailmedia.v2026_07.model.TemplateResponse;
-import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputAppendCampaignsRequestV1;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputCategoriesSearchRequestV1;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputCpcMinBidsRequest;
-import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputDeleteCampaignsRequestV1;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputOfBrandCatalogRequestV2;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputOfCampaignBudgetOverrides;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputOfLineItemBudgetOverrides;
-import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputOfRetailerSearchRequestV2;
+import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputOfRetailerSearchRequest;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputOfSellerCatalogRequestV2;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputRecommendedCategoriesRequestV1;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputRecommendedKeywordsRequestV1;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceInputRetailMediaKeywordsReview;
-import com.criteo.api.retailmedia.v2026_07.model.ValueResourceOutcomeBalanceCampaignsV1;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceOutcomeCpcMinBidsResponse;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceOutcomeOfCampaignBudgetOverrides;
 import com.criteo.api.retailmedia.v2026_07.model.ValueResourceOutcomeOfLineItemBudgetOverrides;
@@ -531,9 +530,9 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for appendCampaignsToBalanceV1
+     * Build call for appendCampaignsByBalanceId
      * @param balanceId The balance to add campaigns from (required)
-     * @param valueResourceInputAppendCampaignsRequestV1 The balance campaign appending request. (required)
+     * @param balanceCampaign202110ListRequest The campaigns to append (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -543,7 +542,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call appendCampaignsToBalanceV1Call(String balanceId, ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call appendCampaignsByBalanceIdCall(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -557,11 +556,11 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = valueResourceInputAppendCampaignsRequestV1;
+        Object localVarPostBody = balanceCampaign202110ListRequest;
 
         // create path and map variables
-        String localVarPath = "/2026-07/retail-media/balances/{balanceId}/campaigns/append"
-            .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
+        String localVarPath = "/2026-07/retail-media/balances/{balance-id}/campaigns/append"
+            .replace("{" + "balance-id" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -590,27 +589,22 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call appendCampaignsToBalanceV1ValidateBeforeCall(String balanceId, ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call appendCampaignsByBalanceIdValidateBeforeCall(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'balanceId' is set
         if (balanceId == null) {
-            throw new ApiException("Missing the required parameter 'balanceId' when calling appendCampaignsToBalanceV1(Async)");
+            throw new ApiException("Missing the required parameter 'balanceId' when calling appendCampaignsByBalanceId(Async)");
         }
 
-        // verify the required parameter 'valueResourceInputAppendCampaignsRequestV1' is set
-        if (valueResourceInputAppendCampaignsRequestV1 == null) {
-            throw new ApiException("Missing the required parameter 'valueResourceInputAppendCampaignsRequestV1' when calling appendCampaignsToBalanceV1(Async)");
-        }
-
-        return appendCampaignsToBalanceV1Call(balanceId, valueResourceInputAppendCampaignsRequestV1, _callback);
+        return appendCampaignsByBalanceIdCall(balanceId, balanceCampaign202110ListRequest, _callback);
 
     }
 
     /**
-     * /2026-07/retail-media/balances/{balanceId}/campaigns/append
-     * Appends one or more campaigns to the specified balance
+     * /2026-07/retail-media/balances/{balance-id}/campaigns/append
+     * appends one or more campaigns to the specified balance
      * @param balanceId The balance to add campaigns from (required)
-     * @param valueResourceInputAppendCampaignsRequestV1 The balance campaign appending request. (required)
-     * @return ValueResourceOutcomeBalanceCampaignsV1
+     * @param balanceCampaign202110ListRequest The campaigns to append (optional)
+     * @return BalanceCampaign202110PagedListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -618,17 +612,17 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceOutcomeBalanceCampaignsV1 appendCampaignsToBalanceV1(String balanceId, ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1) throws ApiException {
-        ApiResponse<ValueResourceOutcomeBalanceCampaignsV1> localVarResp = appendCampaignsToBalanceV1WithHttpInfo(balanceId, valueResourceInputAppendCampaignsRequestV1);
+    public BalanceCampaign202110PagedListResponse appendCampaignsByBalanceId(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest) throws ApiException {
+        ApiResponse<BalanceCampaign202110PagedListResponse> localVarResp = appendCampaignsByBalanceIdWithHttpInfo(balanceId, balanceCampaign202110ListRequest);
         return localVarResp.getData();
     }
 
     /**
-     * /2026-07/retail-media/balances/{balanceId}/campaigns/append
-     * Appends one or more campaigns to the specified balance
+     * /2026-07/retail-media/balances/{balance-id}/campaigns/append
+     * appends one or more campaigns to the specified balance
      * @param balanceId The balance to add campaigns from (required)
-     * @param valueResourceInputAppendCampaignsRequestV1 The balance campaign appending request. (required)
-     * @return ApiResponse&lt;ValueResourceOutcomeBalanceCampaignsV1&gt;
+     * @param balanceCampaign202110ListRequest The campaigns to append (optional)
+     * @return ApiResponse&lt;BalanceCampaign202110PagedListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -636,17 +630,17 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceOutcomeBalanceCampaignsV1> appendCampaignsToBalanceV1WithHttpInfo(String balanceId, ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1) throws ApiException {
-        okhttp3.Call localVarCall = appendCampaignsToBalanceV1ValidateBeforeCall(balanceId, valueResourceInputAppendCampaignsRequestV1, null);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeBalanceCampaignsV1>(){}.getType();
+    public ApiResponse<BalanceCampaign202110PagedListResponse> appendCampaignsByBalanceIdWithHttpInfo(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest) throws ApiException {
+        okhttp3.Call localVarCall = appendCampaignsByBalanceIdValidateBeforeCall(balanceId, balanceCampaign202110ListRequest, null);
+        Type localVarReturnType = new TypeToken<BalanceCampaign202110PagedListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * /2026-07/retail-media/balances/{balanceId}/campaigns/append (asynchronously)
-     * Appends one or more campaigns to the specified balance
+     * /2026-07/retail-media/balances/{balance-id}/campaigns/append (asynchronously)
+     * appends one or more campaigns to the specified balance
      * @param balanceId The balance to add campaigns from (required)
-     * @param valueResourceInputAppendCampaignsRequestV1 The balance campaign appending request. (required)
+     * @param balanceCampaign202110ListRequest The campaigns to append (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -656,10 +650,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call appendCampaignsToBalanceV1Async(String balanceId, ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1, final ApiCallback<ValueResourceOutcomeBalanceCampaignsV1> _callback) throws ApiException {
+    public okhttp3.Call appendCampaignsByBalanceIdAsync(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest, final ApiCallback<BalanceCampaign202110PagedListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = appendCampaignsToBalanceV1ValidateBeforeCall(balanceId, valueResourceInputAppendCampaignsRequestV1, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeBalanceCampaignsV1>(){}.getType();
+        okhttp3.Call localVarCall = appendCampaignsByBalanceIdValidateBeforeCall(balanceId, balanceCampaign202110ListRequest, _callback);
+        Type localVarReturnType = new TypeToken<BalanceCampaign202110PagedListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2105,9 +2099,9 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteCampaignsFromBalanceV1
+     * Build call for deleteCampaignsByBalanceId
      * @param balanceId The balance to remove campaigns from (required)
-     * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
+     * @param balanceCampaign202110ListRequest The campaigns to append (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2117,7 +2111,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCampaignsFromBalanceV1Call(String balanceId, ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCampaignsByBalanceIdCall(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2131,11 +2125,11 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = valueResourceInputDeleteCampaignsRequestV1;
+        Object localVarPostBody = balanceCampaign202110ListRequest;
 
         // create path and map variables
-        String localVarPath = "/2026-07/retail-media/balances/{balanceId}/campaigns/delete"
-            .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
+        String localVarPath = "/2026-07/retail-media/balances/{balance-id}/campaigns/delete"
+            .replace("{" + "balance-id" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2164,27 +2158,22 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCampaignsFromBalanceV1ValidateBeforeCall(String balanceId, ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCampaignsByBalanceIdValidateBeforeCall(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'balanceId' is set
         if (balanceId == null) {
-            throw new ApiException("Missing the required parameter 'balanceId' when calling deleteCampaignsFromBalanceV1(Async)");
+            throw new ApiException("Missing the required parameter 'balanceId' when calling deleteCampaignsByBalanceId(Async)");
         }
 
-        // verify the required parameter 'valueResourceInputDeleteCampaignsRequestV1' is set
-        if (valueResourceInputDeleteCampaignsRequestV1 == null) {
-            throw new ApiException("Missing the required parameter 'valueResourceInputDeleteCampaignsRequestV1' when calling deleteCampaignsFromBalanceV1(Async)");
-        }
-
-        return deleteCampaignsFromBalanceV1Call(balanceId, valueResourceInputDeleteCampaignsRequestV1, _callback);
+        return deleteCampaignsByBalanceIdCall(balanceId, balanceCampaign202110ListRequest, _callback);
 
     }
 
     /**
-     * /2026-07/retail-media/balances/{balanceId}/campaigns/delete
-     * Deletes one or more campaigns on the specified balance
+     * /2026-07/retail-media/balances/{balance-id}/campaigns/delete
+     * Removes one or more campaigns on the specified balance
      * @param balanceId The balance to remove campaigns from (required)
-     * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
-     * @return ValueResourceOutcomeBalanceCampaignsV1
+     * @param balanceCampaign202110ListRequest The campaigns to append (optional)
+     * @return BalanceCampaign202110PagedListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2192,17 +2181,17 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceOutcomeBalanceCampaignsV1 deleteCampaignsFromBalanceV1(String balanceId, ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1) throws ApiException {
-        ApiResponse<ValueResourceOutcomeBalanceCampaignsV1> localVarResp = deleteCampaignsFromBalanceV1WithHttpInfo(balanceId, valueResourceInputDeleteCampaignsRequestV1);
+    public BalanceCampaign202110PagedListResponse deleteCampaignsByBalanceId(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest) throws ApiException {
+        ApiResponse<BalanceCampaign202110PagedListResponse> localVarResp = deleteCampaignsByBalanceIdWithHttpInfo(balanceId, balanceCampaign202110ListRequest);
         return localVarResp.getData();
     }
 
     /**
-     * /2026-07/retail-media/balances/{balanceId}/campaigns/delete
-     * Deletes one or more campaigns on the specified balance
+     * /2026-07/retail-media/balances/{balance-id}/campaigns/delete
+     * Removes one or more campaigns on the specified balance
      * @param balanceId The balance to remove campaigns from (required)
-     * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
-     * @return ApiResponse&lt;ValueResourceOutcomeBalanceCampaignsV1&gt;
+     * @param balanceCampaign202110ListRequest The campaigns to append (optional)
+     * @return ApiResponse&lt;BalanceCampaign202110PagedListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2210,17 +2199,17 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceOutcomeBalanceCampaignsV1> deleteCampaignsFromBalanceV1WithHttpInfo(String balanceId, ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1) throws ApiException {
-        okhttp3.Call localVarCall = deleteCampaignsFromBalanceV1ValidateBeforeCall(balanceId, valueResourceInputDeleteCampaignsRequestV1, null);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeBalanceCampaignsV1>(){}.getType();
+    public ApiResponse<BalanceCampaign202110PagedListResponse> deleteCampaignsByBalanceIdWithHttpInfo(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest) throws ApiException {
+        okhttp3.Call localVarCall = deleteCampaignsByBalanceIdValidateBeforeCall(balanceId, balanceCampaign202110ListRequest, null);
+        Type localVarReturnType = new TypeToken<BalanceCampaign202110PagedListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * /2026-07/retail-media/balances/{balanceId}/campaigns/delete (asynchronously)
-     * Deletes one or more campaigns on the specified balance
+     * /2026-07/retail-media/balances/{balance-id}/campaigns/delete (asynchronously)
+     * Removes one or more campaigns on the specified balance
      * @param balanceId The balance to remove campaigns from (required)
-     * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
+     * @param balanceCampaign202110ListRequest The campaigns to append (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2230,10 +2219,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCampaignsFromBalanceV1Async(String balanceId, ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1, final ApiCallback<ValueResourceOutcomeBalanceCampaignsV1> _callback) throws ApiException {
+    public okhttp3.Call deleteCampaignsByBalanceIdAsync(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest, final ApiCallback<BalanceCampaign202110PagedListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCampaignsFromBalanceV1ValidateBeforeCall(balanceId, valueResourceInputDeleteCampaignsRequestV1, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeBalanceCampaignsV1>(){}.getType();
+        okhttp3.Call localVarCall = deleteCampaignsByBalanceIdValidateBeforeCall(balanceId, balanceCampaign202110ListRequest, _callback);
+        Type localVarReturnType = new TypeToken<BalanceCampaign202110PagedListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -7484,7 +7473,7 @@ public class CampaignApi {
     /**
      * Build call for searchAccountRetailers
      * @param accountId The external account identifier (required)
-     * @param valueResourceInputOfRetailerSearchRequestV2 The search request containing filtering parameters (required)
+     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
      * @param _callback Callback for upload/download progress
@@ -7496,7 +7485,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAccountRetailersCall(String accountId, ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchAccountRetailersCall(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7510,7 +7499,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = valueResourceInputOfRetailerSearchRequestV2;
+        Object localVarPostBody = valueResourceInputOfRetailerSearchRequest;
 
         // create path and map variables
         String localVarPath = "/2026-07/retail-media/accounts/{accountId}/retailers/search"
@@ -7551,29 +7540,29 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchAccountRetailersValidateBeforeCall(String accountId, ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchAccountRetailersValidateBeforeCall(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling searchAccountRetailers(Async)");
         }
 
-        // verify the required parameter 'valueResourceInputOfRetailerSearchRequestV2' is set
-        if (valueResourceInputOfRetailerSearchRequestV2 == null) {
-            throw new ApiException("Missing the required parameter 'valueResourceInputOfRetailerSearchRequestV2' when calling searchAccountRetailers(Async)");
+        // verify the required parameter 'valueResourceInputOfRetailerSearchRequest' is set
+        if (valueResourceInputOfRetailerSearchRequest == null) {
+            throw new ApiException("Missing the required parameter 'valueResourceInputOfRetailerSearchRequest' when calling searchAccountRetailers(Async)");
         }
 
-        return searchAccountRetailersCall(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset, _callback);
+        return searchAccountRetailersCall(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset, _callback);
 
     }
 
     /**
      * /2026-07/retail-media/accounts/{accountId}/retailers/search
-     * Searches for retailers associated with the specified account and returns budget model availability for each retailer
+     * Searches for retailers associated with the specified account based on provided search criteria
      * @param accountId The external account identifier (required)
-     * @param valueResourceInputOfRetailerSearchRequestV2 The search request containing filtering parameters (required)
+     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @return EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata
+     * @return EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -7581,19 +7570,19 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata searchAccountRetailers(String accountId, ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata> localVarResp = searchAccountRetailersWithHttpInfo(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset);
+    public EntityResourceCollectionOutcomeOfRetailerResultAndMetadata searchAccountRetailers(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> localVarResp = searchAccountRetailersWithHttpInfo(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset);
         return localVarResp.getData();
     }
 
     /**
      * /2026-07/retail-media/accounts/{accountId}/retailers/search
-     * Searches for retailers associated with the specified account and returns budget model availability for each retailer
+     * Searches for retailers associated with the specified account based on provided search criteria
      * @param accountId The external account identifier (required)
-     * @param valueResourceInputOfRetailerSearchRequestV2 The search request containing filtering parameters (required)
+     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata&gt;
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeOfRetailerResultAndMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -7601,17 +7590,17 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata> searchAccountRetailersWithHttpInfo(String accountId, ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2, Integer limit, Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = searchAccountRetailersValidateBeforeCall(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset, null);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata>(){}.getType();
+    public ApiResponse<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> searchAccountRetailersWithHttpInfo(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = searchAccountRetailersValidateBeforeCall(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset, null);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * /2026-07/retail-media/accounts/{accountId}/retailers/search (asynchronously)
-     * Searches for retailers associated with the specified account and returns budget model availability for each retailer
+     * Searches for retailers associated with the specified account based on provided search criteria
      * @param accountId The external account identifier (required)
-     * @param valueResourceInputOfRetailerSearchRequestV2 The search request containing filtering parameters (required)
+     * @param valueResourceInputOfRetailerSearchRequest The search request containing filtering parameters (required)
      * @param limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
@@ -7623,10 +7612,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAccountRetailersAsync(String accountId, ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata> _callback) throws ApiException {
+    public okhttp3.Call searchAccountRetailersAsync(String accountId, ValueResourceInputOfRetailerSearchRequest valueResourceInputOfRetailerSearchRequest, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchAccountRetailersValidateBeforeCall(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata>(){}.getType();
+        okhttp3.Call localVarCall = searchAccountRetailersValidateBeforeCall(accountId, valueResourceInputOfRetailerSearchRequest, limit, offset, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeOfRetailerResultAndMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

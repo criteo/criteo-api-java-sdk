@@ -8,8 +8,8 @@ The keywords associated with a line item.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**keywords** | [**Map&lt;String, KeywordDataModel&gt;**](KeywordDataModel.md) | A dictionary of normalized keywords mapped to their properties. |  [optional] |
-|**rank** | **List&lt;String&gt;** | The top suggested keywords for products in this line item ranked by popularity score. |  [optional] |
+|**keywords** | [**Map&lt;String, KeywordDataModel&gt;**](KeywordDataModel.md) |  |  [optional] |
+|**rank** | **List&lt;String&gt;** |  |  [optional] |
 
 
 

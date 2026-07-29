@@ -9,7 +9,7 @@ A value resource exposed by the API.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**attributes** | [**RetailMediaKeywordsReviewResult**](RetailMediaKeywordsReviewResult.md) |  |  [optional] |
-|**type** | **String** |  |  [optional] |
+|**type** | **String** | Type of the resource. |  [optional] |
 
 
 

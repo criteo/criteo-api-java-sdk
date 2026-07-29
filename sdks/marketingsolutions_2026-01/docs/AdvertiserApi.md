@@ -4,7 +4,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**listAdvertisers**](AdvertiserApi.md#listAdvertisers) | **GET** /2026-01/advertisers/me | /2026-01/advertisers/me |
+| [**listAdvertisers**](AdvertiserApi.md#listAdvertisers) | **GET** /2026-01/advertisers/me |  |
 
 
 
@@ -12,7 +12,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > GetPortfolioResponse listAdvertisers()
 
-/2026-01/advertisers/me
+
 
 Fetch the portfolio of Advertisers for this account
 

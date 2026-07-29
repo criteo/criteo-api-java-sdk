@@ -4,22 +4,22 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**generateAsyncAccountsReportV2**](AnalyticsApi.md#generateAsyncAccountsReportV2) | **POST** /2026-01/retail-media/reports/accounts | /2026-01/retail-media/reports/accounts |
-| [**generateAsyncCampaignsReportV2**](AnalyticsApi.md#generateAsyncCampaignsReportV2) | **POST** /2026-01/retail-media/reports/campaigns | /2026-01/retail-media/reports/campaigns |
-| [**generateAsyncFillRateReport**](AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /2026-01/retail-media/reports/fillrate | /2026-01/retail-media/reports/fillrate |
-| [**generateAsyncLineItemsReportV2**](AnalyticsApi.md#generateAsyncLineItemsReportV2) | **POST** /2026-01/retail-media/reports/line-items | /2026-01/retail-media/reports/line-items |
-| [**generateAsyncRevenueReport**](AnalyticsApi.md#generateAsyncRevenueReport) | **POST** /2026-01/retail-media/reports/revenue | /2026-01/retail-media/reports/revenue |
-| [**generateAsyncUnfilledPlacementsReport**](AnalyticsApi.md#generateAsyncUnfilledPlacementsReport) | **POST** /2026-01/retail-media/reports/unfilled-placements | /2026-01/retail-media/reports/unfilled-placements |
-| [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2026-01/retail-media/reports/{reportId}/output | /2026-01/retail-media/reports/{reportId}/output |
-| [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2026-01/retail-media/reports/{reportId}/status | /2026-01/retail-media/reports/{reportId}/status |
+| [**generateAsyncAccountsReport**](AnalyticsApi.md#generateAsyncAccountsReport) | **POST** /2026-01/retail-media/reports/accounts |  |
+| [**generateAsyncCampaignsReport**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /2026-01/retail-media/reports/campaigns |  |
+| [**generateAsyncFillRateReport**](AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /2026-01/retail-media/reports/fillrate |  |
+| [**generateAsyncLineItemsReport**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /2026-01/retail-media/reports/line-items |  |
+| [**generateAsyncRevenueReport**](AnalyticsApi.md#generateAsyncRevenueReport) | **POST** /2026-01/retail-media/reports/revenue |  |
+| [**generateAsyncUnfilledPlacementsReport**](AnalyticsApi.md#generateAsyncUnfilledPlacementsReport) | **POST** /2026-01/retail-media/reports/unfilled-placements |  |
+| [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2026-01/retail-media/reports/{reportId}/output |  |
+| [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2026-01/retail-media/reports/{reportId}/status |  |
 
 
 
-## generateAsyncAccountsReportV2
+## generateAsyncAccountsReport
 
-> AsyncReportResponse generateAsyncAccountsReportV2(asyncAccountsReportRequest)
+> AsyncReportResponse generateAsyncAccountsReport(asyncAccountsReportRequest)
 
-/2026-01/retail-media/reports/accounts
+
 
 Returns an asynchronous Accounts Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -64,10 +64,10 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         AsyncAccountsReportRequest asyncAccountsReportRequest = new AsyncAccountsReportRequest(); // AsyncAccountsReportRequest | 
         try {
-            AsyncReportResponse result = apiInstance.generateAsyncAccountsReportV2(asyncAccountsReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncAccountsReport(asyncAccountsReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#generateAsyncAccountsReportV2");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncAccountsReport");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -104,11 +104,11 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## generateAsyncCampaignsReportV2
+## generateAsyncCampaignsReport
 
-> AsyncReportResponse generateAsyncCampaignsReportV2(asyncCampaignsReportRequest)
+> AsyncReportResponse generateAsyncCampaignsReport(asyncCampaignsReportRequest)
 
-/2026-01/retail-media/reports/campaigns
+
 
 Return an asynchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -153,10 +153,10 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         AsyncCampaignsReportRequest asyncCampaignsReportRequest = new AsyncCampaignsReportRequest(); // AsyncCampaignsReportRequest | 
         try {
-            AsyncReportResponse result = apiInstance.generateAsyncCampaignsReportV2(asyncCampaignsReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncCampaignsReport(asyncCampaignsReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#generateAsyncCampaignsReportV2");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncCampaignsReport");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -197,7 +197,7 @@ public class Example {
 
 > AsyncReportResponse generateAsyncFillRateReport(asyncFillRateReportRequest)
 
-/2026-01/retail-media/reports/fillrate
+
 
 Returns an asynchronous Fill Rate Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -282,11 +282,11 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## generateAsyncLineItemsReportV2
+## generateAsyncLineItemsReport
 
-> AsyncReportResponse generateAsyncLineItemsReportV2(asyncLineItemsReportRequest)
+> AsyncReportResponse generateAsyncLineItemsReport(asyncLineItemsReportRequest)
 
-/2026-01/retail-media/reports/line-items
+
 
 Returns an asynchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -331,10 +331,10 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         AsyncLineItemsReportRequest asyncLineItemsReportRequest = new AsyncLineItemsReportRequest(); // AsyncLineItemsReportRequest | 
         try {
-            AsyncReportResponse result = apiInstance.generateAsyncLineItemsReportV2(asyncLineItemsReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncLineItemsReport(asyncLineItemsReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#generateAsyncLineItemsReportV2");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncLineItemsReport");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -375,7 +375,7 @@ public class Example {
 
 > AsyncReportResponse generateAsyncRevenueReport(asyncRevenueReportRequest)
 
-/2026-01/retail-media/reports/revenue
+
 
 Returns an asynchronous Revenue Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -464,7 +464,7 @@ public class Example {
 
 > AsyncReportResponse generateAsyncUnfilledPlacementsReport(asyncUnfilledPlacementsReportRequest)
 
-/2026-01/retail-media/reports/unfilled-placements
+
 
 Returns an asynchronous Unfilled Placements Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -553,7 +553,7 @@ public class Example {
 
 > File getAsyncExportOutput(reportId)
 
-/2026-01/retail-media/reports/{reportId}/output
+
 
 Returns the output of an async report
 
@@ -642,7 +642,7 @@ public class Example {
 
 > AsyncReportResponse getAsyncExportStatus(reportId)
 
-/2026-01/retail-media/reports/{reportId}/status
+
 
 Returns the status of an async report
 

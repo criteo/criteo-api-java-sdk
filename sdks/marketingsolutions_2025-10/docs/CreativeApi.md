@@ -4,23 +4,23 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAdvertiserAd**](CreativeApi.md#createAdvertiserAd) | **POST** /2025-10/marketing-solutions/advertisers/{advertiser-id}/ads | /2025-10/marketing-solutions/advertisers/{advertiser-id}/ads |
-| [**createAdvertiserCoupon**](CreativeApi.md#createAdvertiserCoupon) | **POST** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons | /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons |
-| [**createAdvertiserCreative**](CreativeApi.md#createAdvertiserCreative) | **POST** /2025-10/marketing-solutions/advertisers/{advertiser-id}/creatives | /2025-10/marketing-solutions/advertisers/{advertiser-id}/creatives |
-| [**deleteAd**](CreativeApi.md#deleteAd) | **DELETE** /2025-10/marketing-solutions/ads/{id} | /2025-10/marketing-solutions/ads/{id} |
-| [**deleteAdvertiserCoupon**](CreativeApi.md#deleteAdvertiserCoupon) | **DELETE** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} | /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} |
-| [**deleteCreative**](CreativeApi.md#deleteCreative) | **DELETE** /2025-10/marketing-solutions/creatives/{id} | /2025-10/marketing-solutions/creatives/{id} |
-| [**editAdvertiserCoupon**](CreativeApi.md#editAdvertiserCoupon) | **PUT** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} | /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} |
-| [**editCreative**](CreativeApi.md#editCreative) | **PUT** /2025-10/marketing-solutions/creatives/{id} | /2025-10/marketing-solutions/creatives/{id} |
-| [**generateCreativePreview**](CreativeApi.md#generateCreativePreview) | **POST** /2025-10/marketing-solutions/creatives/{id}/preview | /2025-10/marketing-solutions/creatives/{id}/preview |
-| [**getAd**](CreativeApi.md#getAd) | **GET** /2025-10/marketing-solutions/ads/{id} | /2025-10/marketing-solutions/ads/{id} |
-| [**getAdvertiserAds**](CreativeApi.md#getAdvertiserAds) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/ads | /2025-10/marketing-solutions/advertisers/{advertiser-id}/ads |
-| [**getAdvertiserCoupon**](CreativeApi.md#getAdvertiserCoupon) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} | /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} |
-| [**getAdvertiserCouponPreview**](CreativeApi.md#getAdvertiserCouponPreview) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}/preview | /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}/preview |
-| [**getAdvertiserCouponSupportedSizes**](CreativeApi.md#getAdvertiserCouponSupportedSizes) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons-supported-sizes | /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons-supported-sizes |
-| [**getAdvertiserCoupons**](CreativeApi.md#getAdvertiserCoupons) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons | /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons |
-| [**getAdvertiserCreatives**](CreativeApi.md#getAdvertiserCreatives) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/creatives | /2025-10/marketing-solutions/advertisers/{advertiser-id}/creatives |
-| [**getCreative**](CreativeApi.md#getCreative) | **GET** /2025-10/marketing-solutions/creatives/{id} | /2025-10/marketing-solutions/creatives/{id} |
+| [**createAdvertiserAd**](CreativeApi.md#createAdvertiserAd) | **POST** /2025-10/marketing-solutions/advertisers/{advertiser-id}/ads |  |
+| [**createAdvertiserCoupon**](CreativeApi.md#createAdvertiserCoupon) | **POST** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons |  |
+| [**createAdvertiserCreative**](CreativeApi.md#createAdvertiserCreative) | **POST** /2025-10/marketing-solutions/advertisers/{advertiser-id}/creatives |  |
+| [**deleteAd**](CreativeApi.md#deleteAd) | **DELETE** /2025-10/marketing-solutions/ads/{id} |  |
+| [**deleteAdvertiserCoupon**](CreativeApi.md#deleteAdvertiserCoupon) | **DELETE** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} |  |
+| [**deleteCreative**](CreativeApi.md#deleteCreative) | **DELETE** /2025-10/marketing-solutions/creatives/{id} |  |
+| [**editAdvertiserCoupon**](CreativeApi.md#editAdvertiserCoupon) | **PUT** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} |  |
+| [**editCreative**](CreativeApi.md#editCreative) | **PUT** /2025-10/marketing-solutions/creatives/{id} |  |
+| [**generateCreativePreview**](CreativeApi.md#generateCreativePreview) | **POST** /2025-10/marketing-solutions/creatives/{id}/preview |  |
+| [**getAd**](CreativeApi.md#getAd) | **GET** /2025-10/marketing-solutions/ads/{id} |  |
+| [**getAdvertiserAds**](CreativeApi.md#getAdvertiserAds) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/ads |  |
+| [**getAdvertiserCoupon**](CreativeApi.md#getAdvertiserCoupon) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} |  |
+| [**getAdvertiserCouponPreview**](CreativeApi.md#getAdvertiserCouponPreview) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}/preview |  |
+| [**getAdvertiserCouponSupportedSizes**](CreativeApi.md#getAdvertiserCouponSupportedSizes) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons-supported-sizes |  |
+| [**getAdvertiserCoupons**](CreativeApi.md#getAdvertiserCoupons) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons |  |
+| [**getAdvertiserCreatives**](CreativeApi.md#getAdvertiserCreatives) | **GET** /2025-10/marketing-solutions/advertisers/{advertiser-id}/creatives |  |
+| [**getCreative**](CreativeApi.md#getCreative) | **GET** /2025-10/marketing-solutions/creatives/{id} |  |
 
 
 
@@ -28,7 +28,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > ResourceOutcomeOfAd createAdvertiserAd(advertiserId, resourceInputOfAdWrite)
 
-/2025-10/marketing-solutions/advertisers/{advertiser-id}/ads
+
 
 Create an Ad
 
@@ -119,7 +119,7 @@ public class Example {
 
 > ResourceOutcomeOfCoupon createAdvertiserCoupon(advertiserId, resourceInputOfCreateCoupon)
 
-/2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons
+
 
 Create a Coupon
 
@@ -210,7 +210,7 @@ public class Example {
 
 > ResourceOutcomeOfCreative createAdvertiserCreative(advertiserId, resourceInputOfCreativeWrite)
 
-/2025-10/marketing-solutions/advertisers/{advertiser-id}/creatives
+
 
 Create a Creative
 
@@ -301,7 +301,7 @@ public class Example {
 
 > deleteAd(id)
 
-/2025-10/marketing-solutions/ads/{id}
+
 
 Delete an Ad
 
@@ -389,7 +389,7 @@ null (empty response body)
 
 > deleteAdvertiserCoupon(advertiserId, id)
 
-/2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}
+
 
 Delete a Coupon
 
@@ -479,7 +479,7 @@ null (empty response body)
 
 > deleteCreative(id)
 
-/2025-10/marketing-solutions/creatives/{id}
+
 
 Delete a Creative if there are no ads binded to it
 
@@ -567,7 +567,7 @@ null (empty response body)
 
 > ResourceOutcomeOfCoupon editAdvertiserCoupon(advertiserId, id, resourceInputOfUpdateCoupon)
 
-/2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}
+
 
 Edit a specific Coupon
 
@@ -660,7 +660,7 @@ public class Example {
 
 > ResourceOutcomeOfCreative editCreative(id, resourceInputOfCreativeWrite)
 
-/2025-10/marketing-solutions/creatives/{id}
+
 
 Edit a specific Creative
 
@@ -751,7 +751,7 @@ public class Example {
 
 > String generateCreativePreview(id, height, width)
 
-/2025-10/marketing-solutions/creatives/{id}/preview
+
 
 Get the preview of a specific Creative
 
@@ -844,7 +844,7 @@ public class Example {
 
 > ResourceOutcomeOfAd getAd(id)
 
-/2025-10/marketing-solutions/ads/{id}
+
 
 Get an Ad with its id
 
@@ -933,7 +933,7 @@ public class Example {
 
 > ResourceCollectionOutcomeOfAd getAdvertiserAds(advertiserId, limit, offset)
 
-/2025-10/marketing-solutions/advertisers/{advertiser-id}/ads
+
 
 Get the list of self-services Ads for a given advertiser
 
@@ -1026,7 +1026,7 @@ public class Example {
 
 > ResourceOutcomeOfCoupon getAdvertiserCoupon(advertiserId, id)
 
-/2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}
+
 
 Get a Coupon with its id
 
@@ -1117,7 +1117,7 @@ public class Example {
 
 > String getAdvertiserCouponPreview(advertiserId, id, height, width)
 
-/2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}/preview
+
 
 Get the preview of a specific Coupon
 
@@ -1212,7 +1212,7 @@ public class Example {
 
 > ResourceOutcomeOfCouponSupportedSizes getAdvertiserCouponSupportedSizes(advertiserId, adSetId)
 
-/2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons-supported-sizes
+
 
 Get the list of Coupon supported sizes
 
@@ -1303,7 +1303,7 @@ public class Example {
 
 > ResourceCollectionOutcomeOfCoupon getAdvertiserCoupons(advertiserId, limit, offset)
 
-/2025-10/marketing-solutions/advertisers/{advertiser-id}/coupons
+
 
 Get the list of self-services Coupons for a given advertiser
 
@@ -1396,7 +1396,7 @@ public class Example {
 
 > ResourceCollectionOutcomeOfCreativeRead getAdvertiserCreatives(advertiserId, limit, offset)
 
-/2025-10/marketing-solutions/advertisers/{advertiser-id}/creatives
+
 
 Get the list of self-services Creatives for a given advertiser
 
@@ -1489,7 +1489,7 @@ public class Example {
 
 > ResourceOutcomeOfCreative getCreative(id)
 
-/2025-10/marketing-solutions/creatives/{id}
+
 
 Get a Creative with its id
 

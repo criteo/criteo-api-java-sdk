@@ -159,7 +159,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/ads
+     * 
      * Create an Ad
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfAdWrite  (required)
@@ -177,7 +177,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/ads
+     * 
      * Create an Ad
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfAdWrite  (required)
@@ -196,7 +196,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/ads (asynchronously)
+     *  (asynchronously)
      * Create an Ad
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfAdWrite  (required)
@@ -292,7 +292,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons
+     * 
      * Create a Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfCreateCoupon  (required)
@@ -310,7 +310,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons
+     * 
      * Create a Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfCreateCoupon  (required)
@@ -329,7 +329,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons (asynchronously)
+     *  (asynchronously)
      * Create a Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfCreateCoupon  (required)
@@ -425,7 +425,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/creatives
+     * 
      * Create a Creative
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfCreativeWrite  (required)
@@ -443,7 +443,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/creatives
+     * 
      * Create a Creative
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfCreativeWrite  (required)
@@ -462,7 +462,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/creatives (asynchronously)
+     *  (asynchronously)
      * Create a Creative
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfCreativeWrite  (required)
@@ -550,7 +550,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/ads/{id}
+     * 
      * Delete an Ad
      * @param id The ad identifier to delete. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -565,7 +565,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/ads/{id}
+     * 
      * Delete an Ad
      * @param id The ad identifier to delete. (required)
      * @return ApiResponse&lt;Void&gt;
@@ -582,7 +582,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/ads/{id} (asynchronously)
+     *  (asynchronously)
      * Delete an Ad
      * @param id The ad identifier to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -675,7 +675,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}
+     * 
      * Delete a Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to delete. (required)
@@ -691,7 +691,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}
+     * 
      * Delete a Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to delete. (required)
@@ -709,7 +709,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} (asynchronously)
+     *  (asynchronously)
      * Delete a Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to delete. (required)
@@ -796,7 +796,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id}
+     * 
      * Delete a Creative if there are no ads binded to it
      * @param id The creative identifier to delete. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -811,7 +811,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id}
+     * 
      * Delete a Creative if there are no ads binded to it
      * @param id The creative identifier to delete. (required)
      * @return ApiResponse&lt;Void&gt;
@@ -828,7 +828,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id} (asynchronously)
+     *  (asynchronously)
      * Delete a Creative if there are no ads binded to it
      * @param id The creative identifier to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -929,7 +929,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}
+     * 
      * Edit a specific Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to edit. (required)
@@ -948,7 +948,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}
+     * 
      * Edit a specific Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to edit. (required)
@@ -968,7 +968,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} (asynchronously)
+     *  (asynchronously)
      * Edit a specific Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to edit. (required)
@@ -1065,7 +1065,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id}
+     * 
      * Edit a specific Creative
      * @param id The creative identifier to edit. (required)
      * @param resourceInputOfCreativeWrite  (required)
@@ -1083,7 +1083,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id}
+     * 
      * Edit a specific Creative
      * @param id The creative identifier to edit. (required)
      * @param resourceInputOfCreativeWrite  (required)
@@ -1102,7 +1102,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id} (asynchronously)
+     *  (asynchronously)
      * Edit a specific Creative
      * @param id The creative identifier to edit. (required)
      * @param resourceInputOfCreativeWrite  (required)
@@ -1202,7 +1202,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id}/preview
+     * 
      * Get the preview of a specific Creative
      * @param id The Creative identifier to preview. (required)
      * @param height The height of the Creative to preview. (optional)
@@ -1221,7 +1221,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id}/preview
+     * 
      * Get the preview of a specific Creative
      * @param id The Creative identifier to preview. (required)
      * @param height The height of the Creative to preview. (optional)
@@ -1241,7 +1241,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id}/preview (asynchronously)
+     *  (asynchronously)
      * Get the preview of a specific Creative
      * @param id The Creative identifier to preview. (required)
      * @param height The height of the Creative to preview. (optional)
@@ -1331,7 +1331,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/ads/{id}
+     * 
      * Get an Ad with its id
      * @param id The ad identifier to retrieve. (required)
      * @return ResourceOutcomeOfAd
@@ -1348,7 +1348,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/ads/{id}
+     * 
      * Get an Ad with its id
      * @param id The ad identifier to retrieve. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfAd&gt;
@@ -1366,7 +1366,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/ads/{id} (asynchronously)
+     *  (asynchronously)
      * Get an Ad with its id
      * @param id The ad identifier to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1464,7 +1464,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/ads
+     * 
      * Get the list of self-services Ads for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of ads to be returned. The default is 50. (optional)
@@ -1483,7 +1483,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/ads
+     * 
      * Get the list of self-services Ads for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of ads to be returned. The default is 50. (optional)
@@ -1503,7 +1503,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/ads (asynchronously)
+     *  (asynchronously)
      * Get the list of self-services Ads for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of ads to be returned. The default is 50. (optional)
@@ -1600,7 +1600,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}
+     * 
      * Get a Coupon with its id
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to retrieve. (required)
@@ -1618,7 +1618,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}
+     * 
      * Get a Coupon with its id
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to retrieve. (required)
@@ -1637,7 +1637,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id} (asynchronously)
+     *  (asynchronously)
      * Get a Coupon with its id
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to retrieve. (required)
@@ -1744,7 +1744,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}/preview
+     * 
      * Get the preview of a specific Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to preview. (required)
@@ -1764,7 +1764,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}/preview
+     * 
      * Get the preview of a specific Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to preview. (required)
@@ -1785,7 +1785,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons/{id}/preview (asynchronously)
+     *  (asynchronously)
      * Get the preview of a specific Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to preview. (required)
@@ -1881,7 +1881,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons-supported-sizes
+     * 
      * Get the list of Coupon supported sizes
      * @param advertiserId The advertiser identifier. (required)
      * @param adSetId The ad set id on which you want to check the Coupon supported sizes. (optional)
@@ -1899,7 +1899,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons-supported-sizes
+     * 
      * Get the list of Coupon supported sizes
      * @param advertiserId The advertiser identifier. (required)
      * @param adSetId The ad set id on which you want to check the Coupon supported sizes. (optional)
@@ -1918,7 +1918,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons-supported-sizes (asynchronously)
+     *  (asynchronously)
      * Get the list of Coupon supported sizes
      * @param advertiserId The advertiser identifier. (required)
      * @param adSetId The ad set id on which you want to check the Coupon supported sizes. (optional)
@@ -2017,7 +2017,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons
+     * 
      * Get the list of self-services Coupons for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of coupons to be returned. The default is 50. (optional)
@@ -2036,7 +2036,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons
+     * 
      * Get the list of self-services Coupons for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of coupons to be returned. The default is 50. (optional)
@@ -2056,7 +2056,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/coupons (asynchronously)
+     *  (asynchronously)
      * Get the list of self-services Coupons for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of coupons to be returned. The default is 50. (optional)
@@ -2156,7 +2156,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/creatives
+     * 
      * Get the list of self-services Creatives for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
@@ -2175,7 +2175,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/creatives
+     * 
      * Get the list of self-services Creatives for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
@@ -2195,7 +2195,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/advertisers/{advertiser-id}/creatives (asynchronously)
+     *  (asynchronously)
      * Get the list of self-services Creatives for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
@@ -2285,7 +2285,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id}
+     * 
      * Get a Creative with its id
      * @param id The creative identifier to retrieve. (required)
      * @return ResourceOutcomeOfCreative
@@ -2302,7 +2302,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id}
+     * 
      * Get a Creative with its id
      * @param id The creative identifier to retrieve. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfCreative&gt;
@@ -2320,7 +2320,7 @@ public class CreativeApi {
     }
 
     /**
-     * /2026-01/marketing-solutions/creatives/{id} (asynchronously)
+     *  (asynchronously)
      * Get a Creative with its id
      * @param id The creative identifier to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes

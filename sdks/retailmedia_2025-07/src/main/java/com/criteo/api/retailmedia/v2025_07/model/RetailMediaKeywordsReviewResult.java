@@ -70,7 +70,7 @@ public class RetailMediaKeywordsReviewResult {
   }
 
    /**
-   * Get keywords
+   * List of Phrase-ReviewState pairs describing keyword review updates which were performed
    * @return keywords
   **/
   @javax.annotation.Nonnull

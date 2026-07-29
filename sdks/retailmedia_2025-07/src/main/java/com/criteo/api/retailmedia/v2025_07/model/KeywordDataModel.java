@@ -16,6 +16,7 @@ package com.criteo.api.retailmedia.v2025_07.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.v2025_07.model.InputKeywordsModel;
+import com.criteo.api.retailmedia.v2025_07.model.MatchTypeModel;
 import com.criteo.api.retailmedia.v2025_07.model.ReviewStateModel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -48,7 +49,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2025_07.JSON;
 
 /**
- * A single keyword and associated bid override.
+ * A single keyword and associated bid override
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class KeywordDataModel {
@@ -64,58 +65,9 @@ public class KeywordDataModel {
   @SerializedName(SERIALIZED_NAME_INPUT_KEYWORDS)
   private InputKeywordsModel inputKeywords;
 
-  /**
-   * The matching algorithm to be used when comparing this keyword with the shopper search phrase.
-   */
-  @JsonAdapter(MatchTypeEnum.Adapter.class)
-  public enum MatchTypeEnum {
-    POSITIVEEXACTMATCH("PositiveExactMatch"),
-    
-    NEGATIVEEXACTMATCH("NegativeExactMatch"),
-    
-    NEGATIVEBROADMATCH("NegativeBroadMatch");
-
-    private String value;
-
-    MatchTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MatchTypeEnum fromValue(String value) {
-      for (MatchTypeEnum b : MatchTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<MatchTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MatchTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MatchTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MatchTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_MATCH_TYPE = "matchType";
   @SerializedName(SERIALIZED_NAME_MATCH_TYPE)
-  private MatchTypeEnum matchType;
+  private MatchTypeModel matchType;
 
   public static final String SERIALIZED_NAME_REVIEW_STATE = "reviewState";
   @SerializedName(SERIALIZED_NAME_REVIEW_STATE)
@@ -135,7 +87,7 @@ public class KeywordDataModel {
   }
 
    /**
-   * The bid to use when a positive keyword matches the shopper search phrase.
+   * Get bid
    * @return bid
   **/
   @javax.annotation.Nullable
@@ -157,7 +109,7 @@ public class KeywordDataModel {
   }
 
    /**
-   * The time at which this keyword was created in UTC.
+   * Get createdAt
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -194,24 +146,24 @@ public class KeywordDataModel {
   }
 
 
-  public KeywordDataModel matchType(MatchTypeEnum matchType) {
+  public KeywordDataModel matchType(MatchTypeModel matchType) {
     
     this.matchType = matchType;
     return this;
   }
 
    /**
-   * The matching algorithm to be used when comparing this keyword with the shopper search phrase.
+   * Get matchType
    * @return matchType
   **/
   @javax.annotation.Nullable
 
-  public MatchTypeEnum getMatchType() {
+  public MatchTypeModel getMatchType() {
     return matchType;
   }
 
 
-  public void setMatchType(MatchTypeEnum matchType) {
+  public void setMatchType(MatchTypeModel matchType) {
     this.matchType = matchType;
   }
 
@@ -245,7 +197,7 @@ public class KeywordDataModel {
   }
 
    /**
-   * The time at which this keyword was last modified in UTC.
+   * Get updatedAt
    * @return updatedAt
   **/
   @javax.annotation.Nullable
@@ -360,9 +312,6 @@ public class KeywordDataModel {
       // validate the optional field `inputKeywords`
       if (jsonObj.get("inputKeywords") != null && !jsonObj.get("inputKeywords").isJsonNull()) {
         InputKeywordsModel.validateJsonObject(jsonObj.getAsJsonObject("inputKeywords"));
-      }
-      if ((jsonObj.get("matchType") != null && !jsonObj.get("matchType").isJsonNull()) && !jsonObj.get("matchType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `matchType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("matchType").toString()));
       }
   }
 

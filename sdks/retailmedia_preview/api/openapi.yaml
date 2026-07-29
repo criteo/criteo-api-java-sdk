@@ -628,10 +628,6 @@ paths:
         required: true
       responses:
         "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EntityResourceOutcomeOfBalanceResponseV1'
           description: Success
       security:
       - oauth:
@@ -2371,6 +2367,34 @@ paths:
       - Analytics
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/reports/attributed-transactions:
+    post:
+      description: "Creates an attributed-transactions async report. The request accepts\
+        \ explicit attributed-transaction dimensions, metrics, and filters.\r\n<br\
+        \ />\r\nThis endpoint is subject to specific rate limits."
+      operationId: GenerateAsyncAttributedTransactionsReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AsyncAttributedTransactionsReportRequest'
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/attributed-transactions
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/reports/campaigns:
     post:
       description: "Return an asynchronous Campaigns Report\r\n<br />\r\nThis endpoint\
@@ -2452,6 +2476,34 @@ paths:
       - Analytics
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/reports/missed-opportunities:
+    post:
+      description: "Creates a missed-opportunities async report. The request accepts\
+        \ explicit missed-opportunities dimensions, metrics, and filters.\r\n<br />\r\
+        \nThis endpoint is subject to specific rate limits."
+      operationId: GenerateAsyncMissedOpportunitiesReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AsyncMissedOpportunitiesReportRequest'
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/missed-opportunities
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/reports/offsite:
     post:
       description: "Returns an asynchronous Offsite Report\r\n<br />\r\nThis endpoint\
@@ -2475,6 +2527,34 @@ paths:
       - oauth:
         - RetailMedia_Analytics_Read
       summary: /preview/retail-media/reports/offsite
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/reports/performance:
+    post:
+      description: "Creates a performance DSP analytics async report. Dimensions and\
+        \ metrics select the output schema, and filters constrain eligible data.\r\
+        \n<br />\r\nThis endpoint is subject to specific rate limits."
+      operationId: GenerateAsyncPerformanceReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AsyncPerformanceReportRequest'
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Analytics_Read
+      summary: /preview/retail-media/reports/performance
       tags:
       - Analytics
       x-content-type: application/json
@@ -3417,6 +3497,214 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/AsyncAccountsReport'
+        type:
+          type: string
+      type: object
+    AsyncAttributedTransactionsReport:
+      description: Create payload attributes for an attributed-transactions async
+        report.
+      example:
+        clickAttributionWindow: none
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
+        clickMatchLevel: campaign
+        format: json
+        viewAttributionWindow: none
+        filters:
+          mediaTypes:
+          - unknown
+          - unknown
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          accountIds:
+          - accountIds
+          - accountIds
+          campaignIds:
+          - campaignIds
+          - campaignIds
+        metrics:
+        - attributedUnits
+        - attributedUnits
+        startDate: 2000-01-23T04:56:07.000+00:00
+        viewMatchLevel: campaign
+        dimensions:
+        - purchasedDate
+        - purchasedDate
+      properties:
+        clickAttributionWindow:
+          enum:
+          - none
+          - 7D
+          - 14D
+          - 30D
+          type: string
+        clickMatchLevel:
+          default: campaign
+          enum:
+          - sameSku
+          - sameCategory
+          - sameBrand
+          - campaign
+          type: string
+        dimensions:
+          items:
+            enum:
+            - purchasedDate
+            - purchasedHour
+            - advertisedDate
+            - advertisedHour
+            - daysDifference
+            - campaignId
+            - campaignName
+            - lineItemId
+            - lineItemName
+            - advertisedProductId
+            - advertisedProductGtin
+            - advertisedProductMpn
+            - advertisedProductName
+            - advertisedProductCategory
+            - purchasedProductId
+            - purchasedProductGtin
+            - purchasedProductMpn
+            - purchasedProductName
+            - purchasedProductCategory
+            - advertisedEngagement
+            - advertisedToPurchasedProductRelationship
+            - salesChannel
+            - retailerId
+            - retailerName
+            - pageType
+            - keyword
+            - attributionWindow
+            - saleSellerId
+            - saleSellerName
+            - activitySellerId
+            - activitySellerName
+            type: string
+          type: array
+        endDate:
+          format: date-time
+          type: string
+        filters:
+          $ref: '#/components/schemas/AttributedTransactionsReportFilters'
+        format:
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        metrics:
+          items:
+            enum:
+            - attributedUnits
+            - attributedSales
+            type: string
+          type: array
+        startDate:
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          type: string
+        viewAttributionWindow:
+          enum:
+          - none
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          type: string
+        viewMatchLevel:
+          default: campaign
+          enum:
+          - sameSku
+          - sameCategory
+          - sameBrand
+          - campaign
+          type: string
+      required:
+      - dimensions
+      - endDate
+      - filters
+      - metrics
+      - startDate
+      type: object
+    AsyncAttributedTransactionsReportRequest:
+      description: A top-level object that encapsulates an attributed-transactions
+        async report create request.
+      example:
+        data:
+          attributes:
+            clickAttributionWindow: none
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
+            clickMatchLevel: campaign
+            format: json
+            viewAttributionWindow: none
+            filters:
+              mediaTypes:
+              - unknown
+              - unknown
+              lineItemIds:
+              - lineItemIds
+              - lineItemIds
+              accountIds:
+              - accountIds
+              - accountIds
+              campaignIds:
+              - campaignIds
+              - campaignIds
+            metrics:
+            - attributedUnits
+            - attributedUnits
+            startDate: 2000-01-23T04:56:07.000+00:00
+            viewMatchLevel: campaign
+            dimensions:
+            - purchasedDate
+            - purchasedDate
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncAttributedTransactionsReportResource'
+      type: object
+    AsyncAttributedTransactionsReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          clickAttributionWindow: none
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: UTC
+          clickMatchLevel: campaign
+          format: json
+          viewAttributionWindow: none
+          filters:
+            mediaTypes:
+            - unknown
+            - unknown
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            accountIds:
+            - accountIds
+            - accountIds
+            campaignIds:
+            - campaignIds
+            - campaignIds
+          metrics:
+          - attributedUnits
+          - attributedUnits
+          startDate: 2000-01-23T04:56:07.000+00:00
+          viewMatchLevel: campaign
+          dimensions:
+          - purchasedDate
+          - purchasedDate
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AsyncAttributedTransactionsReport'
         type:
           type: string
       type: object
@@ -4416,6 +4704,155 @@ components:
         type:
           type: string
       type: object
+    AsyncMissedOpportunitiesReport:
+      description: Create payload attributes for a missed-opportunities async report.
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        format: json
+        filters:
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          accountIds:
+          - accountIds
+          - accountIds
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          campaignTypes:
+          - all
+          - all
+        metrics:
+        - daypartingScheduled
+        - daypartingScheduled
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
+      properties:
+        dimensions:
+          items:
+            enum:
+            - date
+            - campaignId
+            - campaignName
+            - lineItemId
+            - lineItemName
+            - retailerId
+            - retailerName
+            - buyType
+            - bidStrategy
+            type: string
+          type: array
+        endDate:
+          format: date-time
+          type: string
+        filters:
+          $ref: '#/components/schemas/MissedOpportunitiesReportFilters'
+        format:
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        metrics:
+          items:
+            enum:
+            - daypartingScheduled
+            - totalSpend
+            - roas
+            - capoutHour
+            - attributedSales
+            - impressions
+            - clicks
+            - cpc
+            - cpm
+            - ctr
+            - missedTraffic
+            - missedSpend
+            - missedClicks
+            - missedImpressions
+            - missedSales
+            type: string
+          type: array
+        startDate:
+          format: date-time
+          type: string
+      required:
+      - dimensions
+      - endDate
+      - filters
+      - metrics
+      - startDate
+      type: object
+    AsyncMissedOpportunitiesReportRequest:
+      description: A top-level object that encapsulates a missed-opportunities async
+        report create request.
+      example:
+        data:
+          attributes:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            format: json
+            filters:
+              lineItemIds:
+              - lineItemIds
+              - lineItemIds
+              accountIds:
+              - accountIds
+              - accountIds
+              campaignIds:
+              - campaignIds
+              - campaignIds
+              campaignTypes:
+              - all
+              - all
+            metrics:
+            - daypartingScheduled
+            - daypartingScheduled
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - date
+            - date
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncMissedOpportunitiesReportResource'
+      type: object
+    AsyncMissedOpportunitiesReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          format: json
+          filters:
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            accountIds:
+            - accountIds
+            - accountIds
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            campaignTypes:
+            - all
+            - all
+          metrics:
+          - daypartingScheduled
+          - daypartingScheduled
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - date
+          - date
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AsyncMissedOpportunitiesReport'
+        type:
+          type: string
+      type: object
     AsyncOffsiteReport:
       description: Async Offsite report body request
       example:
@@ -4706,6 +5143,329 @@ components:
         type:
           type: string
       type: object
+    AsyncPerformanceReport:
+      description: Create payload attributes for a performance DSP analytics async
+        report.
+      example:
+        clickAttributionWindow: none
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
+        clickMatchLevel: campaign
+        format: json
+        viewAttributionWindow: none
+        filters:
+          salesChannels:
+          - online
+          - online
+          activationPlatforms:
+          - CommerceMax
+          - CommerceMax
+          mediaTypes:
+          - unknown
+          - unknown
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          searchTermTargetings:
+          - unknown
+          - unknown
+          accountIds:
+          - accountIds
+          - accountIds
+          budgetModels:
+          - CriteoBudget
+          - CriteoBudget
+          searchTermTypes:
+          - unknown
+          - unknown
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          buyTypes:
+          - auction
+          - auction
+          campaignTypes:
+          - all
+          - all
+          targetedKeywordTypes:
+          - unknown
+          - unknown
+        metrics:
+        - impressions
+        - impressions
+        startDate: 2000-01-23T04:56:07.000+00:00
+        viewMatchLevel: campaign
+        dimensions:
+        - date
+        - date
+      properties:
+        clickAttributionWindow:
+          enum:
+          - none
+          - 7D
+          - 14D
+          - 30D
+          type: string
+        clickMatchLevel:
+          default: campaign
+          enum:
+          - sameSku
+          - sameCategory
+          - sameBrand
+          - campaign
+          type: string
+        dimensions:
+          items:
+            enum:
+            - date
+            - hour
+            - accountId
+            - accountName
+            - campaignId
+            - campaignName
+            - campaignType
+            - lineItemId
+            - lineItemName
+            - retailerId
+            - retailerName
+            - brandId
+            - brandName
+            - productCategory
+            - productId
+            - productName
+            - salesChannel
+            - mediaType
+            - buyType
+            - budgetModel
+            - activationPlatform
+            - environment
+            - pageType
+            - pageCategory
+            - servedCategory
+            - taxonomyBreadcrumb
+            - keyword
+            - searchTerm
+            - searchTermType
+            - searchTermTargeting
+            - creativeId
+            - creativeName
+            - creativeType
+            - creativeTemplateId
+            - creativeTemplateName
+            - targetedKeywordType
+            type: string
+          type: array
+        endDate:
+          format: date-time
+          type: string
+        filters:
+          $ref: '#/components/schemas/PerformanceReportFilters'
+        format:
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        metrics:
+          items:
+            enum:
+            - impressions
+            - clicks
+            - spend
+            - attributedSales
+            - attributedUnits
+            - attributedOrders
+            - assistedSales
+            - assistedUnits
+            - ctr
+            - cpc
+            - cpo
+            - cpm
+            - roas
+            - videoViews
+            - videosStarted
+            - videosPlayedTo25
+            - videosPlayedTo50
+            - videosPlayedTo75
+            - videosPlayedTo100
+            - videoPlayingRate
+            - videoCompletionRate
+            - videoImpressions
+            - videoMuted
+            - videoUnmuted
+            - videoPaused
+            - videoResumed
+            - videoAvgInteractionRate
+            - videoViewability
+            - videoStartingRate
+            - videoCPC
+            - videoCPCV
+            - newToBrandAttributedSales
+            - newToBrandAttributedSalesRate
+            - newToBrandAttributedUnits
+            - newToBrandAttributedUnitsRate
+            - uniqueVisitors
+            - frequency
+            - winRate
+            - sampledBidsWon
+            - sampledBidsParticipated
+            type: string
+          type: array
+        startDate:
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          type: string
+        viewAttributionWindow:
+          enum:
+          - none
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          type: string
+        viewMatchLevel:
+          default: campaign
+          enum:
+          - sameSku
+          - sameCategory
+          - sameBrand
+          - campaign
+          type: string
+      required:
+      - dimensions
+      - endDate
+      - filters
+      - metrics
+      - startDate
+      type: object
+    AsyncPerformanceReportRequest:
+      description: A top-level object that encapsulates a performance DSP analytics
+        async report create request.
+      example:
+        data:
+          attributes:
+            clickAttributionWindow: none
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
+            clickMatchLevel: campaign
+            format: json
+            viewAttributionWindow: none
+            filters:
+              salesChannels:
+              - online
+              - online
+              activationPlatforms:
+              - CommerceMax
+              - CommerceMax
+              mediaTypes:
+              - unknown
+              - unknown
+              lineItemIds:
+              - lineItemIds
+              - lineItemIds
+              searchTermTargetings:
+              - unknown
+              - unknown
+              accountIds:
+              - accountIds
+              - accountIds
+              budgetModels:
+              - CriteoBudget
+              - CriteoBudget
+              searchTermTypes:
+              - unknown
+              - unknown
+              campaignIds:
+              - campaignIds
+              - campaignIds
+              buyTypes:
+              - auction
+              - auction
+              campaignTypes:
+              - all
+              - all
+              targetedKeywordTypes:
+              - unknown
+              - unknown
+            metrics:
+            - impressions
+            - impressions
+            startDate: 2000-01-23T04:56:07.000+00:00
+            viewMatchLevel: campaign
+            dimensions:
+            - date
+            - date
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncPerformanceReportResource'
+      type: object
+    AsyncPerformanceReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          clickAttributionWindow: none
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: UTC
+          clickMatchLevel: campaign
+          format: json
+          viewAttributionWindow: none
+          filters:
+            salesChannels:
+            - online
+            - online
+            activationPlatforms:
+            - CommerceMax
+            - CommerceMax
+            mediaTypes:
+            - unknown
+            - unknown
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            searchTermTargetings:
+            - unknown
+            - unknown
+            accountIds:
+            - accountIds
+            - accountIds
+            budgetModels:
+            - CriteoBudget
+            - CriteoBudget
+            searchTermTypes:
+            - unknown
+            - unknown
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            buyTypes:
+            - auction
+            - auction
+            campaignTypes:
+            - all
+            - all
+            targetedKeywordTypes:
+            - unknown
+            - unknown
+          metrics:
+          - impressions
+          - impressions
+          startDate: 2000-01-23T04:56:07.000+00:00
+          viewMatchLevel: campaign
+          dimensions:
+          - date
+          - date
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AsyncPerformanceReport'
+        type:
+          type: string
+      type: object
     AsyncReportResponse:
       description: Async Report response format
       example:
@@ -4973,6 +5733,45 @@ components:
         type:
           type: string
       type: object
+    AttributedTransactionsReportFilters:
+      description: "Array-valued constraints for attributed-transactions reporting.\
+        \ At least one of accountIds, campaignIds, or lineItemIds is required."
+      example:
+        mediaTypes:
+        - unknown
+        - unknown
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        accountIds:
+        - accountIds
+        - accountIds
+        campaignIds:
+        - campaignIds
+        - campaignIds
+      properties:
+        accountIds:
+          items:
+            type: string
+          type: array
+        campaignIds:
+          items:
+            type: string
+          type: array
+        lineItemIds:
+          items:
+            type: string
+          type: array
+        mediaTypes:
+          items:
+            enum:
+            - unknown
+            - video
+            - display
+            - all
+            type: string
+          type: array
+      type: object
     AudienceError:
       description: Definition of an audience error
       example:
@@ -5169,115 +5968,6 @@ components:
       - changeType
       - dateOfModification
       - modifiedByUser
-      type: object
-    BalanceResponseV1:
-      additionalProperties: false
-      description: A Retail Media Balance used to determine the funds available for
-        any or all campaigns in an account
-      example:
-        privateMarketBillingType: notApplicable
-        endDate: endDate
-        deposited: 0.8008281904610115
-        spent: 1.4658129805029452
-        memo: memo
-        spendType: unknown
-        remaining: 6.027456183070403
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        balanceType: unknown
-        name: name
-        retailerPoNumber: retailerPoNumber
-        startDate: startDate
-        status: unknown
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      nullable: true
-      properties:
-        balanceType:
-          description: Type of the balance.
-          enum:
-          - unknown
-          - capped
-          - uncapped
-          type: string
-        createdAt:
-          description: Creation time of the balance.
-          format: date-time
-          type: string
-        deposited:
-          description: Amount of billable funds allotted to the balance.
-          format: double
-          nullable: true
-          type: number
-        endDate:
-          description: End date of the balance in the format YYYY-MM-DD.
-          nullable: true
-          type: string
-        memo:
-          description: Memo.
-          nullable: true
-          type: string
-        name:
-          description: Name of the balance.
-          type: string
-        privateMarketBillingType:
-          description: Billing type for Private Market of the balance.
-          enum:
-          - notApplicable
-          - billByRetailer
-          - billByCriteo
-          - unknown
-          type: string
-        remaining:
-          description: Amount of remaining funds of the balance.
-          format: double
-          nullable: true
-          type: number
-        retailerPoNumber:
-          description: Purchase Order number.
-          nullable: true
-          type: string
-        spendType:
-          description: Spend Type of the balance.
-          enum:
-          - unknown
-          - onsite
-          - offsite
-          - offsiteAwareness
-          type: string
-        spent:
-          description: Amount of spent funds of the balance.
-          format: double
-          nullable: true
-          type: number
-        startDate:
-          description: Start date of the balance in the format YYYY-MM-DD.
-          type: string
-        status:
-          description: Status of the balance.
-          enum:
-          - unknown
-          - scheduled
-          - active
-          - ended
-          type: string
-        updatedAt:
-          description: Update time of the balance.
-          format: date-time
-          type: string
-      required:
-      - balanceType
-      - createdAt
-      - deposited
-      - endDate
-      - memo
-      - name
-      - privateMarketBillingType
-      - remaining
-      - retailerPoNumber
-      - spendType
-      - spent
-      - startDate
-      - status
-      - updatedAt
       type: object
     BalanceV1:
       additionalProperties: false
@@ -7575,40 +8265,6 @@ components:
         data:
           $ref: '#/components/schemas/EntityResourceCreativeSearchRequest'
       type: object
-    EntityResourceOfBalanceResponseV1:
-      additionalProperties: false
-      description: "A domain entity exposed by the API, identified by a unique id."
-      example:
-        attributes:
-          privateMarketBillingType: notApplicable
-          endDate: endDate
-          deposited: 0.8008281904610115
-          spent: 1.4658129805029452
-          memo: memo
-          spendType: unknown
-          remaining: 6.027456183070403
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          balanceType: unknown
-          name: name
-          retailerPoNumber: retailerPoNumber
-          startDate: startDate
-          status: unknown
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/BalanceResponseV1'
-        id:
-          description: Unique id of the entity.
-          nullable: true
-          type: string
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
     EntityResourceOfCatalogStatusV2:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
@@ -7849,85 +8505,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/EntityResourceBalanceV1'
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    EntityResourceOutcomeOfBalanceResponseV1:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single entity.
-      example:
-        data:
-          attributes:
-            privateMarketBillingType: notApplicable
-            endDate: endDate
-            deposited: 0.8008281904610115
-            spent: 1.4658129805029452
-            memo: memo
-            spendType: unknown
-            remaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            retailerPoNumber: retailerPoNumber
-            startDate: startDate
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/EntityResourceOfBalanceResponseV1'
         errors:
           description: Errors that occured during this call.
           items:
@@ -9350,6 +9927,44 @@ components:
       - limit
       - offset
       type: object
+    MissedOpportunitiesReportFilters:
+      description: "Array-valued constraints for missed-opportunities reporting. At\
+        \ least one of accountIds, campaignIds, or lineItemIds is required."
+      example:
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        accountIds:
+        - accountIds
+        - accountIds
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        campaignTypes:
+        - all
+        - all
+      properties:
+        accountIds:
+          items:
+            type: string
+          type: array
+        campaignIds:
+          items:
+            type: string
+          type: array
+        campaignTypes:
+          items:
+            enum:
+            - all
+            - sponsoredProducts
+            - onSiteDisplays
+            type: string
+          type: array
+        lineItemIds:
+          items:
+            type: string
+          type: array
+      type: object
     NillableDecimal:
       description: Placeholder object for value for which "null" is a valid business
         value
@@ -9613,6 +10228,132 @@ components:
       required:
       - limit
       - offset
+      type: object
+    PerformanceReportFilters:
+      description: "Array-valued constraints for performance DSP analytics. At least\
+        \ one of accountIds, campaignIds, or lineItemIds is required."
+      example:
+        salesChannels:
+        - online
+        - online
+        activationPlatforms:
+        - CommerceMax
+        - CommerceMax
+        mediaTypes:
+        - unknown
+        - unknown
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        searchTermTargetings:
+        - unknown
+        - unknown
+        accountIds:
+        - accountIds
+        - accountIds
+        budgetModels:
+        - CriteoBudget
+        - CriteoBudget
+        searchTermTypes:
+        - unknown
+        - unknown
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        buyTypes:
+        - auction
+        - auction
+        campaignTypes:
+        - all
+        - all
+        targetedKeywordTypes:
+        - unknown
+        - unknown
+      properties:
+        accountIds:
+          items:
+            type: string
+          type: array
+        activationPlatforms:
+          items:
+            enum:
+            - CommerceMax
+            - PrivateMarket
+            type: string
+          type: array
+        budgetModels:
+          items:
+            enum:
+            - CriteoBudget
+            - RetailerBudget
+            type: string
+          type: array
+        buyTypes:
+          items:
+            enum:
+            - auction
+            - preferredDeals
+            - sponsorship
+            type: string
+          type: array
+        campaignIds:
+          items:
+            type: string
+          type: array
+        campaignTypes:
+          items:
+            enum:
+            - all
+            - sponsoredProducts
+            - onSiteDisplays
+            type: string
+          type: array
+        lineItemIds:
+          items:
+            type: string
+          type: array
+        mediaTypes:
+          items:
+            enum:
+            - unknown
+            - video
+            - display
+            - all
+            type: string
+          type: array
+        salesChannels:
+          items:
+            enum:
+            - online
+            - offline
+            - all
+            type: string
+          type: array
+        searchTermTargetings:
+          items:
+            enum:
+            - unknown
+            - automatic
+            - manual
+            type: string
+          type: array
+        searchTermTypes:
+          items:
+            enum:
+            - unknown
+            - searched
+            - entered
+            type: string
+          type: array
+        targetedKeywordTypes:
+          items:
+            enum:
+            - unknown
+            - generic
+            - branded
+            - conquesting
+            type: string
+          type: array
       type: object
     PreferredLineItemCreateModelV2:
       description: Model used to create a preferred line item

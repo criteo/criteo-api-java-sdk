@@ -56,57 +56,6 @@ public class AsyncRevenueReport {
   private List<String> accountIds = null;
 
   /**
-   * Gets or Sets activationPlatforms
-   */
-  @JsonAdapter(ActivationPlatformsEnum.Adapter.class)
-  public enum ActivationPlatformsEnum {
-    COMMERCEMAX("CommerceMax"),
-    
-    PRIVATEMARKET("PrivateMarket");
-
-    private String value;
-
-    ActivationPlatformsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ActivationPlatformsEnum fromValue(String value) {
-      for (ActivationPlatformsEnum b : ActivationPlatformsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ActivationPlatformsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ActivationPlatformsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ActivationPlatformsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ActivationPlatformsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_ACTIVATION_PLATFORMS = "activationPlatforms";
-  @SerializedName(SERIALIZED_NAME_ACTIVATION_PLATFORMS)
-  private List<ActivationPlatformsEnum> activationPlatforms = null;
-
-  /**
    * Gets or Sets advertiserTypes
    */
   @JsonAdapter(AdvertiserTypesEnum.Adapter.class)
@@ -158,57 +107,6 @@ public class AsyncRevenueReport {
   public static final String SERIALIZED_NAME_ADVERTISER_TYPES = "advertiserTypes";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_TYPES)
   private List<AdvertiserTypesEnum> advertiserTypes = null;
-
-  /**
-   * Gets or Sets budgetModels
-   */
-  @JsonAdapter(BudgetModelsEnum.Adapter.class)
-  public enum BudgetModelsEnum {
-    CRITEOBUDGET("CriteoBudget"),
-    
-    RETAILERBUDGET("RetailerBudget");
-
-    private String value;
-
-    BudgetModelsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static BudgetModelsEnum fromValue(String value) {
-      for (BudgetModelsEnum b : BudgetModelsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<BudgetModelsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final BudgetModelsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public BudgetModelsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return BudgetModelsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_BUDGET_MODELS = "budgetModels";
-  @SerializedName(SERIALIZED_NAME_BUDGET_MODELS)
-  private List<BudgetModelsEnum> budgetModels = null;
 
   /**
    * Filter on buy type: Auction, Preferred Deals or Sponsorship
@@ -496,10 +394,6 @@ public class AsyncRevenueReport {
     ADVPRODUCTMPN("advProductMpn"),
     
     BUYTYPE("buyType"),
-    
-    BUDGETMODEL("budgetModel"),
-    
-    ACTIVATIONPLATFORM("activationPlatform"),
     
     SOLDBY("soldBy"),
     
@@ -1079,7 +973,7 @@ public class AsyncRevenueReport {
   private List<SkuRelationsEnum> skuRelations = null;
 
   /**
-   * Filter on the seller: Indirect Sold, Direct Sold, Authorized Buyer or Private Market
+   * Filter on the seller: Indirect Sold, Direct Sold or Private Market
    */
   @JsonAdapter(SoldByEnum.Adapter.class)
   public enum SoldByEnum {
@@ -1087,9 +981,7 @@ public class AsyncRevenueReport {
     
     INDIRECTSOLD("indirectSold"),
     
-    PRIVATEMARKET("privateMarket"),
-    
-    AUTHORIZEDBUYER("authorizedBuyer");
+    PRIVATEMARKET("privateMarket");
 
     private String value;
 
@@ -1341,36 +1233,6 @@ public class AsyncRevenueReport {
   }
 
 
-  public AsyncRevenueReport activationPlatforms(List<ActivationPlatformsEnum> activationPlatforms) {
-    
-    this.activationPlatforms = activationPlatforms;
-    return this;
-  }
-
-  public AsyncRevenueReport addActivationPlatformsItem(ActivationPlatformsEnum activationPlatformsItem) {
-    if (this.activationPlatforms == null) {
-      this.activationPlatforms = new ArrayList<>();
-    }
-    this.activationPlatforms.add(activationPlatformsItem);
-    return this;
-  }
-
-   /**
-   * Filter on the activation platform: CommerceMax, PrivateMarket
-   * @return activationPlatforms
-  **/
-  @javax.annotation.Nullable
-
-  public List<ActivationPlatformsEnum> getActivationPlatforms() {
-    return activationPlatforms;
-  }
-
-
-  public void setActivationPlatforms(List<ActivationPlatformsEnum> activationPlatforms) {
-    this.activationPlatforms = activationPlatforms;
-  }
-
-
   public AsyncRevenueReport advertiserTypes(List<AdvertiserTypesEnum> advertiserTypes) {
     
     this.advertiserTypes = advertiserTypes;
@@ -1398,36 +1260,6 @@ public class AsyncRevenueReport {
 
   public void setAdvertiserTypes(List<AdvertiserTypesEnum> advertiserTypes) {
     this.advertiserTypes = advertiserTypes;
-  }
-
-
-  public AsyncRevenueReport budgetModels(List<BudgetModelsEnum> budgetModels) {
-    
-    this.budgetModels = budgetModels;
-    return this;
-  }
-
-  public AsyncRevenueReport addBudgetModelsItem(BudgetModelsEnum budgetModelsItem) {
-    if (this.budgetModels == null) {
-      this.budgetModels = new ArrayList<>();
-    }
-    this.budgetModels.add(budgetModelsItem);
-    return this;
-  }
-
-   /**
-   * Filter on the budget model: CriteoBudget, RetailerBudget
-   * @return budgetModels
-  **/
-  @javax.annotation.Nullable
-
-  public List<BudgetModelsEnum> getBudgetModels() {
-    return budgetModels;
-  }
-
-
-  public void setBudgetModels(List<BudgetModelsEnum> budgetModels) {
-    this.budgetModels = budgetModels;
   }
 
 
@@ -1890,7 +1722,7 @@ public class AsyncRevenueReport {
   }
 
    /**
-   * Filter on the seller: Indirect Sold, Direct Sold, Authorized Buyer or Private Market
+   * Filter on the seller: Indirect Sold, Direct Sold or Private Market
    * @return soldBy
   **/
   @javax.annotation.Nullable
@@ -2078,9 +1910,7 @@ public class AsyncRevenueReport {
     }
     AsyncRevenueReport asyncRevenueReport = (AsyncRevenueReport) o;
     return Objects.equals(this.accountIds, asyncRevenueReport.accountIds) &&
-        Objects.equals(this.activationPlatforms, asyncRevenueReport.activationPlatforms) &&
         Objects.equals(this.advertiserTypes, asyncRevenueReport.advertiserTypes) &&
-        Objects.equals(this.budgetModels, asyncRevenueReport.budgetModels) &&
         Objects.equals(this.buyType, asyncRevenueReport.buyType) &&
         Objects.equals(this.campaignIds, asyncRevenueReport.campaignIds) &&
         Objects.equals(this.campaignType, asyncRevenueReport.campaignType) &&
@@ -2110,7 +1940,7 @@ public class AsyncRevenueReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIds, activationPlatforms, advertiserTypes, budgetModels, buyType, campaignIds, campaignType, clickAttributionWindow, clickMatchLevel, dimensions, endDate, format, id, ids, lineItemIds, mediaType, metrics, reportType, retailerIds, revenueType, salesChannel, skuRelations, soldBy, startDate, targetedKeywordTypes, timezone, viewAttributionWindow, viewMatchLevel, additionalProperties);
+    return Objects.hash(accountIds, advertiserTypes, buyType, campaignIds, campaignType, clickAttributionWindow, clickMatchLevel, dimensions, endDate, format, id, ids, lineItemIds, mediaType, metrics, reportType, retailerIds, revenueType, salesChannel, skuRelations, soldBy, startDate, targetedKeywordTypes, timezone, viewAttributionWindow, viewMatchLevel, additionalProperties);
   }
 
   @Override
@@ -2118,9 +1948,7 @@ public class AsyncRevenueReport {
     StringBuilder sb = new StringBuilder();
     sb.append("class AsyncRevenueReport {\n");
     sb.append("    accountIds: ").append(toIndentedString(accountIds)).append("\n");
-    sb.append("    activationPlatforms: ").append(toIndentedString(activationPlatforms)).append("\n");
     sb.append("    advertiserTypes: ").append(toIndentedString(advertiserTypes)).append("\n");
-    sb.append("    budgetModels: ").append(toIndentedString(budgetModels)).append("\n");
     sb.append("    buyType: ").append(toIndentedString(buyType)).append("\n");
     sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
@@ -2169,9 +1997,7 @@ public class AsyncRevenueReport {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("accountIds");
-    openapiFields.add("activationPlatforms");
     openapiFields.add("advertiserTypes");
-    openapiFields.add("budgetModels");
     openapiFields.add("buyType");
     openapiFields.add("campaignIds");
     openapiFields.add("campaignType");
@@ -2227,16 +2053,8 @@ public class AsyncRevenueReport {
         throw new IllegalArgumentException(String.format("Expected the field `accountIds` to be an array in the JSON string but got `%s`", jsonObj.get("accountIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("activationPlatforms") != null && !jsonObj.get("activationPlatforms").isJsonNull() && !jsonObj.get("activationPlatforms").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `activationPlatforms` to be an array in the JSON string but got `%s`", jsonObj.get("activationPlatforms").toString()));
-      }
-      // ensure the optional json data is an array if present
       if (jsonObj.get("advertiserTypes") != null && !jsonObj.get("advertiserTypes").isJsonNull() && !jsonObj.get("advertiserTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserTypes` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserTypes").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("budgetModels") != null && !jsonObj.get("budgetModels").isJsonNull() && !jsonObj.get("budgetModels").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `budgetModels` to be an array in the JSON string but got `%s`", jsonObj.get("budgetModels").toString()));
       }
       if ((jsonObj.get("buyType") != null && !jsonObj.get("buyType").isJsonNull()) && !jsonObj.get("buyType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `buyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buyType").toString()));

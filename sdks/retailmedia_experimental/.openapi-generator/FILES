@@ -38,7 +38,6 @@ docs/AudienceWarning.md
 docs/BalanceApi.md
 docs/BalanceCampaignsV1.md
 docs/BalanceHistoryChangeDataCaptureV1.md
-docs/BalanceResponseV1.md
 docs/BalanceV1.md
 docs/BatchAcceptedResponse.md
 docs/BatchStoreInventoryDeleteRequest.md
@@ -80,14 +79,12 @@ docs/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.md
 docs/EntityResourceCreativeSearchRequest.md
 docs/EntityResourceCreativeSearchResponse.md
 docs/EntityResourceInputCreativeSearchRequest.md
-docs/EntityResourceOfBalanceResponseV1.md
 docs/EntityResourceOfCatalogStatusV2.md
 docs/EntityResourceOfRetailMediaAccountV2.md
 docs/EntityResourceOfRetailMediaChildAccount.md
 docs/EntityResourceOfRetailerResultV2.md
 docs/EntityResourceOfSponsoredProductsLineItem.md
 docs/EntityResourceOutcomeBalanceV1.md
-docs/EntityResourceOutcomeOfBalanceResponseV1.md
 docs/EntityResourceOutcomeOfCatalogStatusV2.md
 docs/EntityResourceOutcomeOfRetailMediaAccountV2.md
 docs/EntityResourceOutcomeOfSponsoredProductsLineItem.md
@@ -397,7 +394,6 @@ src/main/java/com/criteo/api/retailmedia/experimental/model/AudienceError.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/AudienceWarning.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/BalanceCampaignsV1.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/BalanceHistoryChangeDataCaptureV1.java
-src/main/java/com/criteo/api/retailmedia/experimental/model/BalanceResponseV1.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/BalanceV1.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/BatchAcceptedResponse.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/BatchStoreInventoryDeleteRequest.java
@@ -437,14 +433,12 @@ src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceCollec
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceCreativeSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceCreativeSearchResponse.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceInputCreativeSearchRequest.java
-src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceOfBalanceResponseV1.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceOfCatalogStatusV2.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceOfRetailMediaAccountV2.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceOfRetailMediaChildAccount.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceOfRetailerResultV2.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceOfSponsoredProductsLineItem.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceOutcomeBalanceV1.java
-src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceOutcomeOfBalanceResponseV1.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceOutcomeOfCatalogStatusV2.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceOutcomeOfRetailMediaAccountV2.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/EntityResourceOutcomeOfSponsoredProductsLineItem.java

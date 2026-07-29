@@ -4,9 +4,9 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createPartnerBillingReportRequestV1**](BillingApi.md#createPartnerBillingReportRequestV1) | **POST** /2025-07/retail-media/billing/partner-report | /2025-07/retail-media/billing/partner-report |
-| [**getPartnerBillingReportOutputV1**](BillingApi.md#getPartnerBillingReportOutputV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/output | /2025-07/retail-media/billing/partner-report/{requestId}/output |
-| [**getPartnerBillingReportStatusV1**](BillingApi.md#getPartnerBillingReportStatusV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/status | /2025-07/retail-media/billing/partner-report/{requestId}/status |
+| [**createPartnerBillingReportRequestV1**](BillingApi.md#createPartnerBillingReportRequestV1) | **POST** /2025-07/retail-media/billing/partner-report |  |
+| [**getPartnerBillingReportOutputV1**](BillingApi.md#getPartnerBillingReportOutputV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/output |  |
+| [**getPartnerBillingReportStatusV1**](BillingApi.md#getPartnerBillingReportStatusV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/status |  |
 
 
 
@@ -14,7 +14,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > EntityResourceOutcomePartnerBillingReportStatusV1 createPartnerBillingReportRequestV1(valueResourceInputPartnerBillingReportRequestV1)
 
-/2025-07/retail-media/billing/partner-report
+
 
 Create a Partner Billing Report request.
 
@@ -103,7 +103,7 @@ public class Example {
 
 > File getPartnerBillingReportOutputV1(requestId)
 
-/2025-07/retail-media/billing/partner-report/{requestId}/output
+
 
 Get the output of an existing Partner Billing Report.
 
@@ -192,7 +192,7 @@ public class Example {
 
 > EntityResourceOutcomePartnerBillingReportStatusV1 getPartnerBillingReportStatusV1(requestId)
 
-/2025-07/retail-media/billing/partner-report/{requestId}/status
+
 
 Get the status of an existing Partner Billing Report.
 

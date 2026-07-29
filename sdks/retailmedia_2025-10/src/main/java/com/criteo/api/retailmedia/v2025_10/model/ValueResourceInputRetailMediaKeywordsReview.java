@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2025_10.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API request for a single value object.
+ * A top-level object that encapsulates a Criteo API request for a single value objects.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ValueResourceInputRetailMediaKeywordsReview {

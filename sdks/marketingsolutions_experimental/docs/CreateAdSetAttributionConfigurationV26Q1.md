@@ -19,6 +19,8 @@ Create model for an ad set's attribution configuration.
 |---- | -----|
 | UNKNOWN | &quot;unknown&quot; |
 | CRITEOATTRIBUTION | &quot;criteoAttribution&quot; |
+| GOOGLEANALYTICSLASTCLICK | &quot;googleAnalyticsLastClick&quot; |
+| GOOGLEANALYTICSDATADRIVEN | &quot;googleAnalyticsDataDriven&quot; |
 | LASTCLICK | &quot;lastClick&quot; |
 | POSTCLICK | &quot;postClick&quot; |
 | SFTP | &quot;sftp&quot; |

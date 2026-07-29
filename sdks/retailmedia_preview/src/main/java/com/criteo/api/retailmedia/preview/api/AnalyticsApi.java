@@ -28,11 +28,14 @@ import java.io.IOException;
 
 
 import com.criteo.api.retailmedia.preview.model.AsyncAccountsReportRequest;
+import com.criteo.api.retailmedia.preview.model.AsyncAttributedTransactionsReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncCampaignsReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncFillRateReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncInsightResponse;
 import com.criteo.api.retailmedia.preview.model.AsyncLineItemsReportRequest;
+import com.criteo.api.retailmedia.preview.model.AsyncMissedOpportunitiesReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncOffsiteReportRequest;
+import com.criteo.api.retailmedia.preview.model.AsyncPerformanceReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncReportResponse;
 import com.criteo.api.retailmedia.preview.model.AsyncUnfilledPlacementsReportRequest;
 import com.criteo.api.retailmedia.preview.model.DigitalShelfIntelligenceInsightRequest;
@@ -207,6 +210,129 @@ public class AnalyticsApi {
     public okhttp3.Call generateAsyncAccountsReportV2Async(AsyncAccountsReportRequest asyncAccountsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = generateAsyncAccountsReportV2ValidateBeforeCall(asyncAccountsReportRequest, _callback);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for generateAsyncAttributedTransactionsReport
+     * @param asyncAttributedTransactionsReportRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateAsyncAttributedTransactionsReportCall(AsyncAttributedTransactionsReportRequest asyncAttributedTransactionsReportRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = asyncAttributedTransactionsReportRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/reports/attributed-transactions";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call generateAsyncAttributedTransactionsReportValidateBeforeCall(AsyncAttributedTransactionsReportRequest asyncAttributedTransactionsReportRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'asyncAttributedTransactionsReportRequest' is set
+        if (asyncAttributedTransactionsReportRequest == null) {
+            throw new ApiException("Missing the required parameter 'asyncAttributedTransactionsReportRequest' when calling generateAsyncAttributedTransactionsReport(Async)");
+        }
+
+        return generateAsyncAttributedTransactionsReportCall(asyncAttributedTransactionsReportRequest, _callback);
+
+    }
+
+    /**
+     * /preview/retail-media/reports/attributed-transactions
+     * Creates an attributed-transactions async report. The request accepts explicit attributed-transaction dimensions, metrics, and filters.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param asyncAttributedTransactionsReportRequest  (required)
+     * @return AsyncReportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AsyncReportResponse generateAsyncAttributedTransactionsReport(AsyncAttributedTransactionsReportRequest asyncAttributedTransactionsReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncAttributedTransactionsReportWithHttpInfo(asyncAttributedTransactionsReportRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /preview/retail-media/reports/attributed-transactions
+     * Creates an attributed-transactions async report. The request accepts explicit attributed-transaction dimensions, metrics, and filters.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param asyncAttributedTransactionsReportRequest  (required)
+     * @return ApiResponse&lt;AsyncReportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AsyncReportResponse> generateAsyncAttributedTransactionsReportWithHttpInfo(AsyncAttributedTransactionsReportRequest asyncAttributedTransactionsReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncAttributedTransactionsReportValidateBeforeCall(asyncAttributedTransactionsReportRequest, null);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /preview/retail-media/reports/attributed-transactions (asynchronously)
+     * Creates an attributed-transactions async report. The request accepts explicit attributed-transaction dimensions, metrics, and filters.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param asyncAttributedTransactionsReportRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateAsyncAttributedTransactionsReportAsync(AsyncAttributedTransactionsReportRequest asyncAttributedTransactionsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = generateAsyncAttributedTransactionsReportValidateBeforeCall(asyncAttributedTransactionsReportRequest, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -581,6 +707,129 @@ public class AnalyticsApi {
         return localVarCall;
     }
     /**
+     * Build call for generateAsyncMissedOpportunitiesReport
+     * @param asyncMissedOpportunitiesReportRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateAsyncMissedOpportunitiesReportCall(AsyncMissedOpportunitiesReportRequest asyncMissedOpportunitiesReportRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = asyncMissedOpportunitiesReportRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/reports/missed-opportunities";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call generateAsyncMissedOpportunitiesReportValidateBeforeCall(AsyncMissedOpportunitiesReportRequest asyncMissedOpportunitiesReportRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'asyncMissedOpportunitiesReportRequest' is set
+        if (asyncMissedOpportunitiesReportRequest == null) {
+            throw new ApiException("Missing the required parameter 'asyncMissedOpportunitiesReportRequest' when calling generateAsyncMissedOpportunitiesReport(Async)");
+        }
+
+        return generateAsyncMissedOpportunitiesReportCall(asyncMissedOpportunitiesReportRequest, _callback);
+
+    }
+
+    /**
+     * /preview/retail-media/reports/missed-opportunities
+     * Creates a missed-opportunities async report. The request accepts explicit missed-opportunities dimensions, metrics, and filters.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param asyncMissedOpportunitiesReportRequest  (required)
+     * @return AsyncReportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AsyncReportResponse generateAsyncMissedOpportunitiesReport(AsyncMissedOpportunitiesReportRequest asyncMissedOpportunitiesReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncMissedOpportunitiesReportWithHttpInfo(asyncMissedOpportunitiesReportRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /preview/retail-media/reports/missed-opportunities
+     * Creates a missed-opportunities async report. The request accepts explicit missed-opportunities dimensions, metrics, and filters.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param asyncMissedOpportunitiesReportRequest  (required)
+     * @return ApiResponse&lt;AsyncReportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AsyncReportResponse> generateAsyncMissedOpportunitiesReportWithHttpInfo(AsyncMissedOpportunitiesReportRequest asyncMissedOpportunitiesReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncMissedOpportunitiesReportValidateBeforeCall(asyncMissedOpportunitiesReportRequest, null);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /preview/retail-media/reports/missed-opportunities (asynchronously)
+     * Creates a missed-opportunities async report. The request accepts explicit missed-opportunities dimensions, metrics, and filters.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param asyncMissedOpportunitiesReportRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateAsyncMissedOpportunitiesReportAsync(AsyncMissedOpportunitiesReportRequest asyncMissedOpportunitiesReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = generateAsyncMissedOpportunitiesReportValidateBeforeCall(asyncMissedOpportunitiesReportRequest, _callback);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for generateAsyncOffsiteReport
      * @param asyncOffsiteReportRequest  (required)
      * @param _callback Callback for upload/download progress
@@ -699,6 +948,129 @@ public class AnalyticsApi {
     public okhttp3.Call generateAsyncOffsiteReportAsync(AsyncOffsiteReportRequest asyncOffsiteReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = generateAsyncOffsiteReportValidateBeforeCall(asyncOffsiteReportRequest, _callback);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for generateAsyncPerformanceReport
+     * @param asyncPerformanceReportRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateAsyncPerformanceReportCall(AsyncPerformanceReportRequest asyncPerformanceReportRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = asyncPerformanceReportRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/reports/performance";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call generateAsyncPerformanceReportValidateBeforeCall(AsyncPerformanceReportRequest asyncPerformanceReportRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'asyncPerformanceReportRequest' is set
+        if (asyncPerformanceReportRequest == null) {
+            throw new ApiException("Missing the required parameter 'asyncPerformanceReportRequest' when calling generateAsyncPerformanceReport(Async)");
+        }
+
+        return generateAsyncPerformanceReportCall(asyncPerformanceReportRequest, _callback);
+
+    }
+
+    /**
+     * /preview/retail-media/reports/performance
+     * Creates a performance DSP analytics async report. Dimensions and metrics select the output schema, and filters constrain eligible data.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param asyncPerformanceReportRequest  (required)
+     * @return AsyncReportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AsyncReportResponse generateAsyncPerformanceReport(AsyncPerformanceReportRequest asyncPerformanceReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncPerformanceReportWithHttpInfo(asyncPerformanceReportRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /preview/retail-media/reports/performance
+     * Creates a performance DSP analytics async report. Dimensions and metrics select the output schema, and filters constrain eligible data.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param asyncPerformanceReportRequest  (required)
+     * @return ApiResponse&lt;AsyncReportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AsyncReportResponse> generateAsyncPerformanceReportWithHttpInfo(AsyncPerformanceReportRequest asyncPerformanceReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncPerformanceReportValidateBeforeCall(asyncPerformanceReportRequest, null);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /preview/retail-media/reports/performance (asynchronously)
+     * Creates a performance DSP analytics async report. Dimensions and metrics select the output schema, and filters constrain eligible data.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * @param asyncPerformanceReportRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateAsyncPerformanceReportAsync(AsyncPerformanceReportRequest asyncPerformanceReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = generateAsyncPerformanceReportValidateBeforeCall(asyncPerformanceReportRequest, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -4,13 +4,13 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addRemoveContactListByAudienceSegment**](SegmentApi.md#addRemoveContactListByAudienceSegment) | **POST** /2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/add-remove | /2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/add-remove |
-| [**bulkCreateAudienceSegments**](SegmentApi.md#bulkCreateAudienceSegments) | **POST** /2026-01/commerce-grid/audience-segments/create | /2026-01/commerce-grid/audience-segments/create |
-| [**bulkDeleteAudienceSegments**](SegmentApi.md#bulkDeleteAudienceSegments) | **POST** /2026-01/commerce-grid/audience-segments/delete | /2026-01/commerce-grid/audience-segments/delete |
-| [**bulkUpdateAudienceSegments**](SegmentApi.md#bulkUpdateAudienceSegments) | **PATCH** /2026-01/commerce-grid/audience-segments | /2026-01/commerce-grid/audience-segments |
-| [**clearContactListByAudienceSegment**](SegmentApi.md#clearContactListByAudienceSegment) | **POST** /2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/clear | /2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/clear |
-| [**getAudienceSegmentContactListStatistics**](SegmentApi.md#getAudienceSegmentContactListStatistics) | **GET** /2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/statistics | /2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/statistics |
-| [**searchAudienceSegments**](SegmentApi.md#searchAudienceSegments) | **POST** /2026-01/commerce-grid/audience-segments/search | /2026-01/commerce-grid/audience-segments/search |
+| [**addRemoveContactListByAudienceSegment**](SegmentApi.md#addRemoveContactListByAudienceSegment) | **POST** /2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
+| [**bulkCreateAudienceSegments**](SegmentApi.md#bulkCreateAudienceSegments) | **POST** /2026-01/commerce-grid/audience-segments/create |  |
+| [**bulkDeleteAudienceSegments**](SegmentApi.md#bulkDeleteAudienceSegments) | **POST** /2026-01/commerce-grid/audience-segments/delete |  |
+| [**bulkUpdateAudienceSegments**](SegmentApi.md#bulkUpdateAudienceSegments) | **PATCH** /2026-01/commerce-grid/audience-segments |  |
+| [**clearContactListByAudienceSegment**](SegmentApi.md#clearContactListByAudienceSegment) | **POST** /2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/clear |  |
+| [**getAudienceSegmentContactListStatistics**](SegmentApi.md#getAudienceSegmentContactListStatistics) | **GET** /2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/statistics |  |
+| [**searchAudienceSegments**](SegmentApi.md#searchAudienceSegments) | **POST** /2026-01/commerce-grid/audience-segments/search |  |
 
 
 
@@ -18,7 +18,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > CommerceGridContactlistOperation addRemoveContactListByAudienceSegment(audienceSegmentId, commerceGridContactlistAmendmentRequest)
 
-/2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/add-remove
+
 
 Add/remove identifiers to or from a Commerce Grid audience segment of type Contact List.
 
@@ -109,7 +109,7 @@ public class Example {
 
 > CgAudienceSegmentEntityV1ListResponse bulkCreateAudienceSegments(cgAudienceSegmentBulkCreateInputV1)
 
-/2026-01/commerce-grid/audience-segments/create
+
 
 Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
 
@@ -198,7 +198,7 @@ public class Example {
 
 > CgAudienceSegmentIdEntityV1ListResponse bulkDeleteAudienceSegments(cgAudienceSegmentBulkDeleteInputV1)
 
-/2026-01/commerce-grid/audience-segments/delete
+
 
 Delete the segments associated to the given IDs.
 
@@ -287,7 +287,7 @@ public class Example {
 
 > CgAudienceSegmentEntityV1ListResponse bulkUpdateAudienceSegments(cgAudienceSegmentBulkUpdateInputV1)
 
-/2026-01/commerce-grid/audience-segments
+
 
 Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
 
@@ -376,7 +376,7 @@ public class Example {
 
 > clearContactListByAudienceSegment(audienceSegmentId)
 
-/2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/clear
+
 
 Delete all identifiers from a Commerce Grid audience segment of type Contact List.
 
@@ -464,7 +464,7 @@ null (empty response body)
 
 > CgContactListStatisticsEntityV1Response getAudienceSegmentContactListStatistics(audienceSegmentId)
 
-/2026-01/commerce-grid/audience-segments/{audience-segment-id}/contact-list/statistics
+
 
 Returns the statistics of a contact list segment.
 
@@ -553,7 +553,7 @@ public class Example {
 
 > CgAudienceSegmentEntityV1CgAudienceSegmentSearchMetadataV1ListResponse searchAudienceSegments(cgAudienceSegmentSearchInputV1, limit, offset)
 
-/2026-01/commerce-grid/audience-segments/search
+
 
 Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
 

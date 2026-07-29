@@ -160,7 +160,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove
+     * 
      * Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
      * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param retailMediaContactlistAmendmentRequest  (required)
@@ -178,7 +178,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove
+     * 
      * Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
      * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param retailMediaContactlistAmendmentRequest  (required)
@@ -197,7 +197,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove (asynchronously)
+     *  (asynchronously)
      * Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
      * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param retailMediaContactlistAmendmentRequest  (required)
@@ -293,7 +293,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/create
+     * 
      * Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentBulkCreateInputV1 Segment creation parameter (required)
@@ -311,7 +311,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/create
+     * 
      * Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentBulkCreateInputV1 Segment creation parameter (required)
@@ -330,7 +330,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/create (asynchronously)
+     *  (asynchronously)
      * Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentBulkCreateInputV1 Segment creation parameter (required)
@@ -426,7 +426,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/delete
+     * 
      * Delete the segments associated to the given IDs.
      * @param accountId Account id (required)
      * @param rmAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
@@ -444,7 +444,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/delete
+     * 
      * Delete the segments associated to the given IDs.
      * @param accountId Account id (required)
      * @param rmAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
@@ -463,7 +463,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/delete (asynchronously)
+     *  (asynchronously)
      * Delete the segments associated to the given IDs.
      * @param accountId Account id (required)
      * @param rmAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
@@ -559,7 +559,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments
+     * 
      * Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
      * @param accountId Account id (required)
      * @param rmAudienceSegmentBulkUpdateInputV1 Segment Update request (required)
@@ -577,7 +577,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments
+     * 
      * Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
      * @param accountId Account id (required)
      * @param rmAudienceSegmentBulkUpdateInputV1 Segment Update request (required)
@@ -596,7 +596,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments (asynchronously)
+     *  (asynchronously)
      * Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
      * @param accountId Account id (required)
      * @param rmAudienceSegmentBulkUpdateInputV1 Segment Update request (required)
@@ -685,7 +685,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/audience-segments/{audience-segment-id}/contact-list/clear
+     * 
      * Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
      * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -700,7 +700,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/audience-segments/{audience-segment-id}/contact-list/clear
+     * 
      * Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
      * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @return ApiResponse&lt;Void&gt;
@@ -717,7 +717,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/audience-segments/{audience-segment-id}/contact-list/clear (asynchronously)
+     *  (asynchronously)
      * Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
      * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -811,7 +811,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list
+     * 
      * Returns the statistics of a contact list segment.
      * @param accountId Account Id (required)
      * @param audienceSegmentId Segment Id. (required)
@@ -829,7 +829,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list
+     * 
      * Returns the statistics of a contact list segment.
      * @param accountId Account Id (required)
      * @param audienceSegmentId Segment Id. (required)
@@ -848,7 +848,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list (asynchronously)
+     *  (asynchronously)
      * Returns the statistics of a contact list segment.
      * @param accountId Account Id (required)
      * @param audienceSegmentId Segment Id. (required)
@@ -954,7 +954,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/search
+     * 
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentSearchInputV1 Segment search filters. (required)
@@ -974,7 +974,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/search
+     * 
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentSearchInputV1 Segment search filters. (required)
@@ -995,7 +995,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audience-segments/search (asynchronously)
+     *  (asynchronously)
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentSearchInputV1 Segment search filters. (required)
@@ -1103,7 +1103,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audiences/search
+     * 
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSearchInputV1 Audience search filters. (required)
@@ -1123,7 +1123,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audiences/search
+     * 
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSearchInputV1 Audience search filters. (required)
@@ -1144,7 +1144,7 @@ public class AudienceApi {
     }
 
     /**
-     * /2025-07/retail-media/accounts/{account-id}/audiences/search (asynchronously)
+     *  (asynchronously)
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
      * @param accountId Account Id (required)
      * @param rmAudienceSearchInputV1 Audience search filters. (required)

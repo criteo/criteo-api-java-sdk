@@ -4,10 +4,10 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getAdsetReport**](AnalyticsApi.md#getAdsetReport) | **POST** /2025-10/statistics/report | /2025-10/statistics/report |
-| [**getPlacementsReport**](AnalyticsApi.md#getPlacementsReport) | **POST** /2025-10/placements/report | /2025-10/placements/report |
-| [**getTransactionsReport**](AnalyticsApi.md#getTransactionsReport) | **POST** /2025-10/transactions/report | /2025-10/transactions/report |
-| [**getTransparencyReport**](AnalyticsApi.md#getTransparencyReport) | **POST** /2025-10/log-level/advertisers/{advertiser-id}/report | /2025-10/log-level/advertisers/{advertiser-id}/report |
+| [**getAdsetReport**](AnalyticsApi.md#getAdsetReport) | **POST** /2025-10/statistics/report |  |
+| [**getPlacementsReport**](AnalyticsApi.md#getPlacementsReport) | **POST** /2025-10/placements/report |  |
+| [**getTransactionsReport**](AnalyticsApi.md#getTransactionsReport) | **POST** /2025-10/transactions/report |  |
+| [**getTransparencyReport**](AnalyticsApi.md#getTransparencyReport) | **POST** /2025-10/log-level/advertisers/{advertiser-id}/report |  |
 
 
 
@@ -15,9 +15,9 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > File getAdsetReport(statisticsReportQueryMessage)
 
-/2025-10/statistics/report
 
-This Statistics endpoint provides ad set related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
+
+This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
 
 ### Example
 
@@ -104,9 +104,9 @@ public class Example {
 
 > File getPlacementsReport(placementsReportQueryMessageListRequest)
 
-/2025-10/placements/report
 
-Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to three months in the past.
+
+Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
 
 ### Example
 
@@ -193,9 +193,9 @@ public class Example {
 
 > File getTransactionsReport(transactionsReportQueryMessageListRequest)
 
-/2025-10/transactions/report
 
-This Transactions endpoint provides transactions id related data.  &lt;br/&gt;&lt;br/&gt;  This endpoint supports data retrieval for up to two years in the past.
+
+This Transactions endpoint provides transactions id related data.
 
 ### Example
 
@@ -282,7 +282,7 @@ public class Example {
 
 > TransparencyReportListResponse getTransparencyReport(advertiserId, transparencyQueryMessage)
 
-/2025-10/log-level/advertisers/{advertiser-id}/report
+
 
 This Statistics endpoint provides publisher data.
 
@@ -325,7 +325,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        String advertiserId = "advertiserId_example"; // String | The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0.
+        String advertiserId = "advertiserId_example"; // String | The advertiser id to fetch the transparency data.
         TransparencyQueryMessage transparencyQueryMessage = new TransparencyQueryMessage(); // TransparencyQueryMessage | The query message.
         try {
             TransparencyReportListResponse result = apiInstance.getTransparencyReport(advertiserId, transparencyQueryMessage);
@@ -346,7 +346,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **String**| The advertiser ID to fetch the transparency data for. The advertiser must already exist. Must be greater than 0. | |
+| **advertiserId** | **String**| The advertiser id to fetch the transparency data. | |
 | **transparencyQueryMessage** | [**TransparencyQueryMessage**](TransparencyQueryMessage.md)| The query message. | [optional] |
 
 ### Return type

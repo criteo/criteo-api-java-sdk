@@ -58,6 +58,10 @@ public class CreateAdSetAttributionConfigurationV26Q1 {
     
     CRITEOATTRIBUTION("criteoAttribution"),
     
+    GOOGLEANALYTICSLASTCLICK("googleAnalyticsLastClick"),
+    
+    GOOGLEANALYTICSDATADRIVEN("googleAnalyticsDataDriven"),
+    
     LASTCLICK("lastClick"),
     
     POSTCLICK("postClick"),
