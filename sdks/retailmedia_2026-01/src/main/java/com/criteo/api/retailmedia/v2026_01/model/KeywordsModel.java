@@ -80,7 +80,7 @@ public class KeywordsModel {
   }
 
    /**
-   * Get keywords
+   * A dictionary of normalized keywords mapped to their properties.
    * @return keywords
   **/
   @javax.annotation.Nullable
@@ -110,7 +110,7 @@ public class KeywordsModel {
   }
 
    /**
-   * Get rank
+   * The top suggested keywords for products in this line item ranked by popularity score.
    * @return rank
   **/
   @javax.annotation.Nullable

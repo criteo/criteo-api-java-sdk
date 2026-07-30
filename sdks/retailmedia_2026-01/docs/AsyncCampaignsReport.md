@@ -8,6 +8,9 @@ Async Campaigns report body request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**activationPlatforms** | [**List&lt;ActivationPlatformsEnum&gt;**](#List&lt;ActivationPlatformsEnum&gt;) | Filter on the activation platform: CommerceMax, PrivateMarket |  [optional] |
+|**budgetModels** | [**List&lt;BudgetModelsEnum&gt;**](#List&lt;BudgetModelsEnum&gt;) | Filter on the budget model: CriteoBudget, RetailerBudget |  [optional] |
+|**buyTypes** | [**List&lt;BuyTypesEnum&gt;**](#List&lt;BuyTypesEnum&gt;) | Filter on the buy type: auction, preferredDeals, sponsorship |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
@@ -25,6 +28,34 @@ Async Campaigns report body request
 |**targetedKeywordTypes** | [**List&lt;TargetedKeywordTypesEnum&gt;**](#List&lt;TargetedKeywordTypesEnum&gt;) | Filter on targeted keyword type: unknown, generic, branded, conquesting |  [optional] |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
+
+
+
+## Enum: List&lt;ActivationPlatformsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| COMMERCEMAX | &quot;CommerceMax&quot; |
+| PRIVATEMARKET | &quot;PrivateMarket&quot; |
+
+
+
+## Enum: List&lt;BudgetModelsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| CRITEOBUDGET | &quot;CriteoBudget&quot; |
+| RETAILERBUDGET | &quot;RetailerBudget&quot; |
+
+
+
+## Enum: List&lt;BuyTypesEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| AUCTION | &quot;auction&quot; |
+| PREFERREDDEALS | &quot;preferredDeals&quot; |
+| SPONSORSHIP | &quot;sponsorship&quot; |
 
 
 
@@ -71,6 +102,9 @@ Async Campaigns report body request
 | ADVPRODUCTNAME | &quot;advProductName&quot; |
 | SALESCHANNEL | &quot;salesChannel&quot; |
 | MEDIATYPE | &quot;mediaType&quot; |
+| BUYTYPE | &quot;buyType&quot; |
+| BUDGETMODEL | &quot;budgetModel&quot; |
+| ACTIVATIONPLATFORM | &quot;activationPlatform&quot; |
 | ENVIRONMENT | &quot;environment&quot; |
 | PAGETYPENAME | &quot;pageTypeName&quot; |
 | PAGECATEGORY | &quot;pageCategory&quot; |

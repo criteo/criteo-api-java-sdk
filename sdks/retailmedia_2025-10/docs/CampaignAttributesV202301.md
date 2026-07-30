@@ -19,6 +19,7 @@ An object that represents the available options to set when creating a Retail Me
 |**monthlyPacing** | **Double** |  |  [optional] |
 |**name** | **String** |  |  |
 |**onBehalfCompanyName** | **String** |  |  [optional] |
+|**retailerId** | **Integer** |  |  [optional] |
 |**startDate** | **OffsetDateTime** |  |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
 |**viewAttributionScope** | [**ViewAttributionScopeEnum**](#ViewAttributionScopeEnum) |  |  [optional] |

@@ -135,7 +135,7 @@ public class AdvertiserApi {
     }
 
     /**
-     * 
+     * /2026-01/advertisers/me
      * Fetch the portfolio of Advertisers for this account
      * @return GetPortfolioResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -151,7 +151,7 @@ public class AdvertiserApi {
     }
 
     /**
-     * 
+     * /2026-01/advertisers/me
      * Fetch the portfolio of Advertisers for this account
      * @return ApiResponse&lt;GetPortfolioResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -168,7 +168,7 @@ public class AdvertiserApi {
     }
 
     /**
-     *  (asynchronously)
+     * /2026-01/advertisers/me (asynchronously)
      * Fetch the portfolio of Advertisers for this account
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

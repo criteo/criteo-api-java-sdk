@@ -198,6 +198,10 @@ public class CampaignAttributesV202301 {
   @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
   private String onBehalfCompanyName;
 
+  public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
+  @SerializedName(SERIALIZED_NAME_RETAILER_ID)
+  private Integer retailerId;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
@@ -622,6 +626,28 @@ public class CampaignAttributesV202301 {
   }
 
 
+  public CampaignAttributesV202301 retailerId(Integer retailerId) {
+    
+    this.retailerId = retailerId;
+    return this;
+  }
+
+   /**
+   * Get retailerId
+   * @return retailerId
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getRetailerId() {
+    return retailerId;
+  }
+
+
+  public void setRetailerId(Integer retailerId) {
+    this.retailerId = retailerId;
+  }
+
+
   public CampaignAttributesV202301 startDate(OffsetDateTime startDate) {
     
     this.startDate = startDate;
@@ -775,6 +801,7 @@ public class CampaignAttributesV202301 {
         Objects.equals(this.monthlyPacing, campaignAttributesV202301.monthlyPacing) &&
         Objects.equals(this.name, campaignAttributesV202301.name) &&
         Objects.equals(this.onBehalfCompanyName, campaignAttributesV202301.onBehalfCompanyName) &&
+        Objects.equals(this.retailerId, campaignAttributesV202301.retailerId) &&
         Objects.equals(this.startDate, campaignAttributesV202301.startDate) &&
         Objects.equals(this.type, campaignAttributesV202301.type) &&
         Objects.equals(this.viewAttributionScope, campaignAttributesV202301.viewAttributionScope) &&
@@ -788,7 +815,7 @@ public class CampaignAttributesV202301 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(budget, clickAttributionScope, clickAttributionWindow, companyName, dailyPacing, drawableBalanceIds, endDate, isAutoDailyPacing, monthlyPacing, name, onBehalfCompanyName, startDate, type, viewAttributionScope, viewAttributionWindow, additionalProperties);
+    return Objects.hash(budget, clickAttributionScope, clickAttributionWindow, companyName, dailyPacing, drawableBalanceIds, endDate, isAutoDailyPacing, monthlyPacing, name, onBehalfCompanyName, retailerId, startDate, type, viewAttributionScope, viewAttributionWindow, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -813,6 +840,7 @@ public class CampaignAttributesV202301 {
     sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
+    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    viewAttributionScope: ").append(toIndentedString(viewAttributionScope)).append("\n");
@@ -851,6 +879,7 @@ public class CampaignAttributesV202301 {
     openapiFields.add("monthlyPacing");
     openapiFields.add("name");
     openapiFields.add("onBehalfCompanyName");
+    openapiFields.add("retailerId");
     openapiFields.add("startDate");
     openapiFields.add("type");
     openapiFields.add("viewAttributionScope");

@@ -628,6 +628,10 @@ paths:
         required: true
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceOutcomeOfBalanceResponseV1'
           description: Success
       security:
       - oauth:
@@ -5166,6 +5170,115 @@ components:
       - dateOfModification
       - modifiedByUser
       type: object
+    BalanceResponseV1:
+      additionalProperties: false
+      description: A Retail Media Balance used to determine the funds available for
+        any or all campaigns in an account
+      example:
+        privateMarketBillingType: notApplicable
+        endDate: endDate
+        deposited: 0.8008281904610115
+        spent: 1.4658129805029452
+        memo: memo
+        spendType: unknown
+        remaining: 6.027456183070403
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        balanceType: unknown
+        name: name
+        retailerPoNumber: retailerPoNumber
+        startDate: startDate
+        status: unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        balanceType:
+          description: Type of the balance.
+          enum:
+          - unknown
+          - capped
+          - uncapped
+          type: string
+        createdAt:
+          description: Creation time of the balance.
+          format: date-time
+          type: string
+        deposited:
+          description: Amount of billable funds allotted to the balance.
+          format: double
+          nullable: true
+          type: number
+        endDate:
+          description: End date of the balance in the format YYYY-MM-DD.
+          nullable: true
+          type: string
+        memo:
+          description: Memo.
+          nullable: true
+          type: string
+        name:
+          description: Name of the balance.
+          type: string
+        privateMarketBillingType:
+          description: Billing type for Private Market of the balance.
+          enum:
+          - notApplicable
+          - billByRetailer
+          - billByCriteo
+          - unknown
+          type: string
+        remaining:
+          description: Amount of remaining funds of the balance.
+          format: double
+          nullable: true
+          type: number
+        retailerPoNumber:
+          description: Purchase Order number.
+          nullable: true
+          type: string
+        spendType:
+          description: Spend Type of the balance.
+          enum:
+          - unknown
+          - onsite
+          - offsite
+          - offsiteAwareness
+          type: string
+        spent:
+          description: Amount of spent funds of the balance.
+          format: double
+          nullable: true
+          type: number
+        startDate:
+          description: Start date of the balance in the format YYYY-MM-DD.
+          type: string
+        status:
+          description: Status of the balance.
+          enum:
+          - unknown
+          - scheduled
+          - active
+          - ended
+          type: string
+        updatedAt:
+          description: Update time of the balance.
+          format: date-time
+          type: string
+      required:
+      - balanceType
+      - createdAt
+      - deposited
+      - endDate
+      - memo
+      - name
+      - privateMarketBillingType
+      - remaining
+      - retailerPoNumber
+      - spendType
+      - spent
+      - startDate
+      - status
+      - updatedAt
+      type: object
     BalanceV1:
       additionalProperties: false
       description: A Retail Media Balance used to determine the funds available for
@@ -7462,6 +7575,40 @@ components:
         data:
           $ref: '#/components/schemas/EntityResourceCreativeSearchRequest'
       type: object
+    EntityResourceOfBalanceResponseV1:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          privateMarketBillingType: notApplicable
+          endDate: endDate
+          deposited: 0.8008281904610115
+          spent: 1.4658129805029452
+          memo: memo
+          spendType: unknown
+          remaining: 6.027456183070403
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          balanceType: unknown
+          name: name
+          retailerPoNumber: retailerPoNumber
+          startDate: startDate
+          status: unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/BalanceResponseV1'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     EntityResourceOfCatalogStatusV2:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
@@ -7702,6 +7849,85 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/EntityResourceBalanceV1'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    EntityResourceOutcomeOfBalanceResponseV1:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
+      example:
+        data:
+          attributes:
+            privateMarketBillingType: notApplicable
+            endDate: endDate
+            deposited: 0.8008281904610115
+            spent: 1.4658129805029452
+            memo: memo
+            spendType: unknown
+            remaining: 6.027456183070403
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            retailerPoNumber: retailerPoNumber
+            startDate: startDate
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/EntityResourceOfBalanceResponseV1'
         errors:
           description: Errors that occured during this call.
           items:
@@ -8743,16 +8969,16 @@ components:
       example:
         lineItemId: lineItemId
         capoutTimes:
-          total:
+          Hourly:
           - 2000-01-23T04:56:07.000+00:00
           - 2000-01-23T04:56:07.000+00:00
-          daily:
+          Daily:
           - 2000-01-23T04:56:07.000+00:00
           - 2000-01-23T04:56:07.000+00:00
-          monthly:
+          Monthly:
           - 2000-01-23T04:56:07.000+00:00
           - 2000-01-23T04:56:07.000+00:00
-          hourly:
+          Total:
           - 2000-01-23T04:56:07.000+00:00
           - 2000-01-23T04:56:07.000+00:00
       properties:
@@ -8805,30 +9031,30 @@ components:
         lineItemBudgetCapOutHistories:
         - lineItemId: lineItemId
           capoutTimes:
-            total:
+            Hourly:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            daily:
+            Daily:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            monthly:
+            Monthly:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            hourly:
+            Total:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
         - lineItemId: lineItemId
           capoutTimes:
-            total:
+            Hourly:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            daily:
+            Daily:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            monthly:
+            Monthly:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            hourly:
+            Total:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
       nullable: true
@@ -17636,30 +17862,30 @@ components:
           lineItemBudgetCapOutHistories:
           - lineItemId: lineItemId
             capoutTimes:
-              total:
+              Hourly:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              daily:
+              Daily:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              monthly:
+              Monthly:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              hourly:
+              Total:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
           - lineItemId: lineItemId
             capoutTimes:
-              total:
+              Hourly:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              daily:
+              Daily:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              monthly:
+              Monthly:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              hourly:
+              Total:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
         type: type
@@ -17931,30 +18157,30 @@ components:
             lineItemBudgetCapOutHistories:
             - lineItemId: lineItemId
               capoutTimes:
-                total:
+                Hourly:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                daily:
+                Daily:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                monthly:
+                Monthly:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                hourly:
+                Total:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
             - lineItemId: lineItemId
               capoutTimes:
-                total:
+                Hourly:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                daily:
+                Daily:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                monthly:
+                Monthly:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                hourly:
+                Total:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
           type: type
@@ -18168,39 +18394,39 @@ components:
       description: The dictionary of budget type to the list of cap out times up to
         3 most recent cap out times
       example:
-        total:
+        Hourly:
         - 2000-01-23T04:56:07.000+00:00
         - 2000-01-23T04:56:07.000+00:00
-        daily:
+        Daily:
         - 2000-01-23T04:56:07.000+00:00
         - 2000-01-23T04:56:07.000+00:00
-        monthly:
+        Monthly:
         - 2000-01-23T04:56:07.000+00:00
         - 2000-01-23T04:56:07.000+00:00
-        hourly:
+        Total:
         - 2000-01-23T04:56:07.000+00:00
         - 2000-01-23T04:56:07.000+00:00
       nullable: true
       properties:
-        daily:
+        Daily:
           items:
             format: date-time
             type: string
           nullable: true
           type: array
-        hourly:
+        Hourly:
           items:
             format: date-time
             type: string
           nullable: true
           type: array
-        monthly:
+        Monthly:
           items:
             format: date-time
             type: string
           nullable: true
           type: array
-        total:
+        Total:
           items:
             format: date-time
             type: string

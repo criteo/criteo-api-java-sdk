@@ -4,19 +4,19 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**generateAsyncCampaignsReport**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /2025-10/retail-media/reports/campaigns |  |
-| [**generateAsyncLineItemsReport**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /2025-10/retail-media/reports/line-items |  |
-| [**generateAsyncRevenueReport**](AnalyticsApi.md#generateAsyncRevenueReport) | **POST** /2025-10/retail-media/reports/revenue |  |
-| [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2025-10/retail-media/reports/{reportId}/output |  |
-| [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2025-10/retail-media/reports/{reportId}/status |  |
+| [**generateAsyncCampaignsReportV2**](AnalyticsApi.md#generateAsyncCampaignsReportV2) | **POST** /2025-10/retail-media/reports/campaigns | /2025-10/retail-media/reports/campaigns |
+| [**generateAsyncLineItemsReportV2**](AnalyticsApi.md#generateAsyncLineItemsReportV2) | **POST** /2025-10/retail-media/reports/line-items | /2025-10/retail-media/reports/line-items |
+| [**generateAsyncRevenueReport**](AnalyticsApi.md#generateAsyncRevenueReport) | **POST** /2025-10/retail-media/reports/revenue | /2025-10/retail-media/reports/revenue |
+| [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2025-10/retail-media/reports/{reportId}/output | /2025-10/retail-media/reports/{reportId}/output |
+| [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2025-10/retail-media/reports/{reportId}/status | /2025-10/retail-media/reports/{reportId}/status |
 
 
 
-## generateAsyncCampaignsReport
+## generateAsyncCampaignsReportV2
 
-> AsyncReportResponse generateAsyncCampaignsReport(asyncCampaignsReportRequest)
+> AsyncReportResponse generateAsyncCampaignsReportV2(asyncCampaignsReportRequest)
 
-
+/2025-10/retail-media/reports/campaigns
 
 Return an asynchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -61,10 +61,10 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         AsyncCampaignsReportRequest asyncCampaignsReportRequest = new AsyncCampaignsReportRequest(); // AsyncCampaignsReportRequest | 
         try {
-            AsyncReportResponse result = apiInstance.generateAsyncCampaignsReport(asyncCampaignsReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncCampaignsReportV2(asyncCampaignsReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#generateAsyncCampaignsReport");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncCampaignsReportV2");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -101,11 +101,11 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## generateAsyncLineItemsReport
+## generateAsyncLineItemsReportV2
 
-> AsyncReportResponse generateAsyncLineItemsReport(asyncLineItemsReportRequest)
+> AsyncReportResponse generateAsyncLineItemsReportV2(asyncLineItemsReportRequest)
 
-
+/2025-10/retail-media/reports/line-items
 
 Returns an asynchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -150,10 +150,10 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         AsyncLineItemsReportRequest asyncLineItemsReportRequest = new AsyncLineItemsReportRequest(); // AsyncLineItemsReportRequest | 
         try {
-            AsyncReportResponse result = apiInstance.generateAsyncLineItemsReport(asyncLineItemsReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncLineItemsReportV2(asyncLineItemsReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#generateAsyncLineItemsReport");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncLineItemsReportV2");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -194,7 +194,7 @@ public class Example {
 
 > AsyncReportResponse generateAsyncRevenueReport(asyncRevenueReportRequest)
 
-
+/2025-10/retail-media/reports/revenue
 
 Returns an asynchronous Revenue Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
@@ -283,7 +283,7 @@ public class Example {
 
 > File getAsyncExportOutput(reportId)
 
-
+/2025-10/retail-media/reports/{reportId}/output
 
 Returns the output of an async report
 
@@ -372,7 +372,7 @@ public class Example {
 
 > AsyncReportResponse getAsyncExportStatus(reportId)
 
-
+/2025-10/retail-media/reports/{reportId}/status
 
 Returns the status of an async report
 

@@ -10510,8 +10510,6 @@ components:
           enum:
           - unknown
           - criteoAttribution
-          - googleAnalyticsLastClick
-          - googleAnalyticsDataDriven
           - lastClick
           - postClick
           - sftp
@@ -15786,8 +15784,6 @@ components:
           enum:
           - unknown
           - criteoAttribution
-          - googleAnalyticsLastClick
-          - googleAnalyticsDataDriven
           - lastClick
           - postClick
           - sftp
@@ -18325,8 +18321,8 @@ components:
     ReadAdSetAttributionConfigurationV26Q1:
       description: "Read model for an ad set's attribution configuration.\r\n    \
         \        \r\nThe lookback window is only set for ad sets with an attribution\
-        \ method that is postClick or googleAnalyticsLastClick.\r\nIt will be null\
-        \ with any other attribution method."
+        \ method that is postClick or lastClick.\r\nIt will be null with any other\
+        \ attribution method."
       example:
         attributionMethod: unknown
         lookbackWindow: unknown
@@ -18336,14 +18332,11 @@ components:
           description: "Ad set attribution method.\r\nThis defines how certain events\
             \ (visits, clicks, sales...) are attributed to the ad set.\r\n       \
             \     \r\nPossible values:\r\n- unknown\r\n- criteoAttribution (default\
-            \ attribution method)\r\n- googleAnalyticsLastClick (requires Google Analytics\
-            \ integration)\r\n- postClick\r\n- sftp\r\n- googleAnalytics (requires\
-            \ Google Analytics integration)"
+            \ attribution method)\r\n- lastClick\r\n- postClick\r\n- sftp\r\n- googleAnalytics\
+            \ (requires Google Analytics integration)"
           enum:
           - unknown
           - criteoAttribution
-          - googleAnalyticsLastClick
-          - googleAnalyticsDataDriven
           - lastClick
           - postClick
           - sftp

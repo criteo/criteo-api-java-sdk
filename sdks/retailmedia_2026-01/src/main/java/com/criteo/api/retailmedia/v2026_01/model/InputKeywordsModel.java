@@ -81,7 +81,7 @@ public class InputKeywordsModel {
   }
 
    /**
-   * Get negativeBroad
+   * The collection of supplied negative broad phrases.
    * @return negativeBroad
   **/
   @javax.annotation.Nullable
@@ -111,7 +111,7 @@ public class InputKeywordsModel {
   }
 
    /**
-   * Get negativeExact
+   * The collection of supplied negative exact phrases.
    * @return negativeExact
   **/
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class InputKeywordsModel {
   }
 
    /**
-   * Get positiveExact
+   * The collection of supplied positive exact phrases.
    * @return positiveExact
   **/
   @javax.annotation.Nullable

@@ -24,6 +24,7 @@ A Retail Media Campaign used to represent an advertiser's marketing objective
 |**name** | **String** |  |  |
 |**onBehalfCompanyName** | **String** |  |  [optional] |
 |**promotedBrandIds** | **List&lt;String&gt;** |  |  [optional] |
+|**retailerId** | **Integer** |  |  [optional] |
 |**startDate** | **OffsetDateTime** |  |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |

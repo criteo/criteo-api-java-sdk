@@ -292,7 +292,7 @@ public class Example {
 
 ## updateBalanceV1
 
-> updateBalanceV1(accountId, balanceId, valueResourceInputOfUpdateBalanceModelV1)
+> EntityResourceOutcomeOfBalanceResponseV1 updateBalanceV1(accountId, balanceId, valueResourceInputOfUpdateBalanceModelV1)
 
 /experimental/retail-media/accounts/{account-id}/balances/{balance-id}
 
@@ -341,7 +341,8 @@ public class Example {
         String balanceId = "balanceId_example"; // String | The balance to change the dates
         ValueResourceInputOfUpdateBalanceModelV1 valueResourceInputOfUpdateBalanceModelV1 = new ValueResourceInputOfUpdateBalanceModelV1(); // ValueResourceInputOfUpdateBalanceModelV1 | An object that represents the available options to modify a balance.
         try {
-            apiInstance.updateBalanceV1(accountId, balanceId, valueResourceInputOfUpdateBalanceModelV1);
+            EntityResourceOutcomeOfBalanceResponseV1 result = apiInstance.updateBalanceV1(accountId, balanceId, valueResourceInputOfUpdateBalanceModelV1);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BalanceApi#updateBalanceV1");
             System.err.println("Status code: " + e.getCode());
@@ -364,7 +365,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**EntityResourceOutcomeOfBalanceResponseV1**](EntityResourceOutcomeOfBalanceResponseV1.md)
 
 ### Authorization
 
@@ -373,7 +374,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ### HTTP response details

@@ -52,19 +52,19 @@ import com.criteo.api.retailmedia.experimental.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LineItemBudgetCapOutHistoryCapoutTimes {
-  public static final String SERIALIZED_NAME_DAILY = "daily";
+  public static final String SERIALIZED_NAME_DAILY = "Daily";
   @SerializedName(SERIALIZED_NAME_DAILY)
   private List<OffsetDateTime> daily = null;
 
-  public static final String SERIALIZED_NAME_HOURLY = "hourly";
+  public static final String SERIALIZED_NAME_HOURLY = "Hourly";
   @SerializedName(SERIALIZED_NAME_HOURLY)
   private List<OffsetDateTime> hourly = null;
 
-  public static final String SERIALIZED_NAME_MONTHLY = "monthly";
+  public static final String SERIALIZED_NAME_MONTHLY = "Monthly";
   @SerializedName(SERIALIZED_NAME_MONTHLY)
   private List<OffsetDateTime> monthly = null;
 
-  public static final String SERIALIZED_NAME_TOTAL = "total";
+  public static final String SERIALIZED_NAME_TOTAL = "Total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   private List<OffsetDateTime> total = null;
 
@@ -253,10 +253,10 @@ public class LineItemBudgetCapOutHistoryCapoutTimes {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("daily");
-    openapiFields.add("hourly");
-    openapiFields.add("monthly");
-    openapiFields.add("total");
+    openapiFields.add("Daily");
+    openapiFields.add("Hourly");
+    openapiFields.add("Monthly");
+    openapiFields.add("Total");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -283,20 +283,20 @@ public class LineItemBudgetCapOutHistoryCapoutTimes {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("daily") != null && !jsonObj.get("daily").isJsonNull() && !jsonObj.get("daily").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `daily` to be an array in the JSON string but got `%s`", jsonObj.get("daily").toString()));
+      if (jsonObj.get("Daily") != null && !jsonObj.get("Daily").isJsonNull() && !jsonObj.get("Daily").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Daily` to be an array in the JSON string but got `%s`", jsonObj.get("Daily").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("hourly") != null && !jsonObj.get("hourly").isJsonNull() && !jsonObj.get("hourly").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `hourly` to be an array in the JSON string but got `%s`", jsonObj.get("hourly").toString()));
+      if (jsonObj.get("Hourly") != null && !jsonObj.get("Hourly").isJsonNull() && !jsonObj.get("Hourly").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Hourly` to be an array in the JSON string but got `%s`", jsonObj.get("Hourly").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("monthly") != null && !jsonObj.get("monthly").isJsonNull() && !jsonObj.get("monthly").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `monthly` to be an array in the JSON string but got `%s`", jsonObj.get("monthly").toString()));
+      if (jsonObj.get("Monthly") != null && !jsonObj.get("Monthly").isJsonNull() && !jsonObj.get("Monthly").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Monthly` to be an array in the JSON string but got `%s`", jsonObj.get("Monthly").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("total") != null && !jsonObj.get("total").isJsonNull() && !jsonObj.get("total").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `total` to be an array in the JSON string but got `%s`", jsonObj.get("total").toString()));
+      if (jsonObj.get("Total") != null && !jsonObj.get("Total").isJsonNull() && !jsonObj.get("Total").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Total` to be an array in the JSON string but got `%s`", jsonObj.get("Total").toString()));
       }
   }
 
