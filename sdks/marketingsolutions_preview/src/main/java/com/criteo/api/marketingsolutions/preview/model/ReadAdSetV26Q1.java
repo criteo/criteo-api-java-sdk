@@ -20,12 +20,15 @@ import com.criteo.api.marketingsolutions.preview.model.ReadAdSetAttributionConfi
 import com.criteo.api.marketingsolutions.preview.model.ReadAdSetBiddingV26Q1;
 import com.criteo.api.marketingsolutions.preview.model.ReadAdSetBudgetV26Q1;
 import com.criteo.api.marketingsolutions.preview.model.ReadAdSetScheduleV26Q1;
+import com.criteo.api.marketingsolutions.preview.model.ReadAdSetScheduledBudgetV26Q1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -258,6 +261,10 @@ public class ReadAdSetV26Q1 {
   public static final String SERIALIZED_NAME_SCHEDULE = "schedule";
   @SerializedName(SERIALIZED_NAME_SCHEDULE)
   private ReadAdSetScheduleV26Q1 schedule;
+
+  public static final String SERIALIZED_NAME_SCHEDULED_BUDGETS = "scheduledBudgets";
+  @SerializedName(SERIALIZED_NAME_SCHEDULED_BUDGETS)
+  private List<ReadAdSetScheduledBudgetV26Q1> scheduledBudgets = null;
 
   public static final String SERIALIZED_NAME_TARGETING = "targeting";
   @SerializedName(SERIALIZED_NAME_TARGETING)
@@ -559,6 +566,36 @@ public class ReadAdSetV26Q1 {
   }
 
 
+  public ReadAdSetV26Q1 scheduledBudgets(List<ReadAdSetScheduledBudgetV26Q1> scheduledBudgets) {
+    
+    this.scheduledBudgets = scheduledBudgets;
+    return this;
+  }
+
+  public ReadAdSetV26Q1 addScheduledBudgetsItem(ReadAdSetScheduledBudgetV26Q1 scheduledBudgetsItem) {
+    if (this.scheduledBudgets == null) {
+      this.scheduledBudgets = null;
+    }
+    this.scheduledBudgets.add(scheduledBudgetsItem);
+    return this;
+  }
+
+   /**
+   * Get scheduledBudgets
+   * @return scheduledBudgets
+  **/
+  @javax.annotation.Nullable
+
+  public List<ReadAdSetScheduledBudgetV26Q1> getScheduledBudgets() {
+    return scheduledBudgets;
+  }
+
+
+  public void setScheduledBudgets(List<ReadAdSetScheduledBudgetV26Q1> scheduledBudgets) {
+    this.scheduledBudgets = scheduledBudgets;
+  }
+
+
   public ReadAdSetV26Q1 targeting(AdSetTargetingV26Q1 targeting) {
     
     this.targeting = targeting;
@@ -668,6 +705,7 @@ public class ReadAdSetV26Q1 {
         Objects.equals(this.name, readAdSetV26Q1.name) &&
         Objects.equals(this.objective, readAdSetV26Q1.objective) &&
         Objects.equals(this.schedule, readAdSetV26Q1.schedule) &&
+        Objects.equals(this.scheduledBudgets, readAdSetV26Q1.scheduledBudgets) &&
         Objects.equals(this.targeting, readAdSetV26Q1.targeting) &&
         Objects.equals(this.videoChannel, readAdSetV26Q1.videoChannel)&&
         Objects.equals(this.additionalProperties, readAdSetV26Q1.additionalProperties);
@@ -679,7 +717,7 @@ public class ReadAdSetV26Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserId, attributionConfiguration, bidding, budget, campaignId, datasetId, destinationEnvironment, mediaType, name, objective, schedule, targeting, videoChannel, additionalProperties);
+    return Objects.hash(advertiserId, attributionConfiguration, bidding, budget, campaignId, datasetId, destinationEnvironment, mediaType, name, objective, schedule, scheduledBudgets, targeting, videoChannel, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -704,6 +742,7 @@ public class ReadAdSetV26Q1 {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
     sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
+    sb.append("    scheduledBudgets: ").append(toIndentedString(scheduledBudgets)).append("\n");
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
     sb.append("    videoChannel: ").append(toIndentedString(videoChannel)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -740,6 +779,7 @@ public class ReadAdSetV26Q1 {
     openapiFields.add("name");
     openapiFields.add("objective");
     openapiFields.add("schedule");
+    openapiFields.add("scheduledBudgets");
     openapiFields.add("targeting");
     openapiFields.add("videoChannel");
 
@@ -795,6 +835,20 @@ public class ReadAdSetV26Q1 {
       // validate the optional field `schedule`
       if (jsonObj.get("schedule") != null && !jsonObj.get("schedule").isJsonNull()) {
         ReadAdSetScheduleV26Q1.validateJsonObject(jsonObj.getAsJsonObject("schedule"));
+      }
+      if (jsonObj.get("scheduledBudgets") != null && !jsonObj.get("scheduledBudgets").isJsonNull()) {
+        JsonArray jsonArrayscheduledBudgets = jsonObj.getAsJsonArray("scheduledBudgets");
+        if (jsonArrayscheduledBudgets != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("scheduledBudgets").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `scheduledBudgets` to be an array in the JSON string but got `%s`", jsonObj.get("scheduledBudgets").toString()));
+          }
+
+          // validate the optional field `scheduledBudgets` (array)
+          for (int i = 0; i < jsonArrayscheduledBudgets.size(); i++) {
+            ReadAdSetScheduledBudgetV26Q1.validateJsonObject(jsonArrayscheduledBudgets.get(i).getAsJsonObject());
+          };
+        }
       }
       // validate the optional field `targeting`
       if (jsonObj.get("targeting") != null && !jsonObj.get("targeting").isJsonNull()) {

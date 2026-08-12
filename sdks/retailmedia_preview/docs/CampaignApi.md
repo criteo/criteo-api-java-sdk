@@ -1951,7 +1951,7 @@ null (empty response body)
 
 ## searchAccountCreatives
 
-> EntityResourceCollectionOutcomeCreativeSearchResponse searchAccountCreatives(accountId, entityResourceInputCreativeSearchRequest, limit, offset)
+> EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata searchAccountCreatives(accountId, entityResourceInputCreativeSearchRequest, limit, offset)
 
 /preview/retail-media/accounts/{account-id}/creatives/search
 
@@ -2001,7 +2001,7 @@ public class Example {
         Integer limit = 50; // Integer | limit to paginated result
         Integer offset = 0; // Integer | offset to paginated result
         try {
-            EntityResourceCollectionOutcomeCreativeSearchResponse result = apiInstance.searchAccountCreatives(accountId, entityResourceInputCreativeSearchRequest, limit, offset);
+            EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata result = apiInstance.searchAccountCreatives(accountId, entityResourceInputCreativeSearchRequest, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#searchAccountCreatives");
@@ -2026,7 +2026,7 @@ public class Example {
 
 ### Return type
 
-[**EntityResourceCollectionOutcomeCreativeSearchResponse**](EntityResourceCollectionOutcomeCreativeSearchResponse.md)
+[**EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata**](EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata.md)
 
 ### Authorization
 

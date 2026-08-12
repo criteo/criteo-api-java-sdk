@@ -177,6 +177,10 @@ public class AsyncAttributedTransactionsReport {
     
     DAYSDIFFERENCE("daysDifference"),
     
+    ACCOUNTID("accountId"),
+    
+    ACCOUNTNAME("accountName"),
+    
     CAMPAIGNID("campaignId"),
     
     CAMPAIGNNAME("campaignName"),

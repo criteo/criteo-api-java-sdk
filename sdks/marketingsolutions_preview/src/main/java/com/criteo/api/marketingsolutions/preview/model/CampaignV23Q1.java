@@ -16,6 +16,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.marketingsolutions.preview.model.CampaignBudgetAutomationV23Q1;
+import com.criteo.api.marketingsolutions.preview.model.CampaignScheduledSpendLimitV23Q1;
 import com.criteo.api.marketingsolutions.preview.model.CampaignSpendLimitV23Q1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,6 +24,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -119,6 +122,10 @@ public class CampaignV23Q1 {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_SCHEDULED_SPEND_LIMITS = "scheduledSpendLimits";
+  @SerializedName(SERIALIZED_NAME_SCHEDULED_SPEND_LIMITS)
+  private List<CampaignScheduledSpendLimitV23Q1> scheduledSpendLimits = null;
 
   public static final String SERIALIZED_NAME_SPEND_LIMIT = "spendLimit";
   @SerializedName(SERIALIZED_NAME_SPEND_LIMIT)
@@ -237,6 +244,36 @@ public class CampaignV23Q1 {
   }
 
 
+  public CampaignV23Q1 scheduledSpendLimits(List<CampaignScheduledSpendLimitV23Q1> scheduledSpendLimits) {
+    
+    this.scheduledSpendLimits = scheduledSpendLimits;
+    return this;
+  }
+
+  public CampaignV23Q1 addScheduledSpendLimitsItem(CampaignScheduledSpendLimitV23Q1 scheduledSpendLimitsItem) {
+    if (this.scheduledSpendLimits == null) {
+      this.scheduledSpendLimits = null;
+    }
+    this.scheduledSpendLimits.add(scheduledSpendLimitsItem);
+    return this;
+  }
+
+   /**
+   * Spend limits scheduled to become active in the future. Empty when the campaign has no scheduled spend limits.
+   * @return scheduledSpendLimits
+  **/
+  @javax.annotation.Nullable
+
+  public List<CampaignScheduledSpendLimitV23Q1> getScheduledSpendLimits() {
+    return scheduledSpendLimits;
+  }
+
+
+  public void setScheduledSpendLimits(List<CampaignScheduledSpendLimitV23Q1> scheduledSpendLimits) {
+    this.scheduledSpendLimits = scheduledSpendLimits;
+  }
+
+
   public CampaignV23Q1 spendLimit(CampaignSpendLimitV23Q1 spendLimit) {
     
     this.spendLimit = spendLimit;
@@ -318,6 +355,7 @@ public class CampaignV23Q1 {
         Objects.equals(this.goal, campaignV23Q1.goal) &&
         Objects.equals(this.id, campaignV23Q1.id) &&
         Objects.equals(this.name, campaignV23Q1.name) &&
+        Objects.equals(this.scheduledSpendLimits, campaignV23Q1.scheduledSpendLimits) &&
         Objects.equals(this.spendLimit, campaignV23Q1.spendLimit)&&
         Objects.equals(this.additionalProperties, campaignV23Q1.additionalProperties);
   }
@@ -328,7 +366,7 @@ public class CampaignV23Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserId, budgetAutomation, goal, id, name, spendLimit, additionalProperties);
+    return Objects.hash(advertiserId, budgetAutomation, goal, id, name, scheduledSpendLimits, spendLimit, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -347,6 +385,7 @@ public class CampaignV23Q1 {
     sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    scheduledSpendLimits: ").append(toIndentedString(scheduledSpendLimits)).append("\n");
     sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -376,6 +415,7 @@ public class CampaignV23Q1 {
     openapiFields.add("goal");
     openapiFields.add("id");
     openapiFields.add("name");
+    openapiFields.add("scheduledSpendLimits");
     openapiFields.add("spendLimit");
 
     // a set of required properties/fields (JSON key names)
@@ -409,6 +449,20 @@ public class CampaignV23Q1 {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (jsonObj.get("scheduledSpendLimits") != null && !jsonObj.get("scheduledSpendLimits").isJsonNull()) {
+        JsonArray jsonArrayscheduledSpendLimits = jsonObj.getAsJsonArray("scheduledSpendLimits");
+        if (jsonArrayscheduledSpendLimits != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("scheduledSpendLimits").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `scheduledSpendLimits` to be an array in the JSON string but got `%s`", jsonObj.get("scheduledSpendLimits").toString()));
+          }
+
+          // validate the optional field `scheduledSpendLimits` (array)
+          for (int i = 0; i < jsonArrayscheduledSpendLimits.size(); i++) {
+            CampaignScheduledSpendLimitV23Q1.validateJsonObject(jsonArrayscheduledSpendLimits.get(i).getAsJsonObject());
+          };
+        }
       }
       // validate the optional field `spendLimit`
       if (jsonObj.get("spendLimit") != null && !jsonObj.get("spendLimit").isJsonNull()) {

@@ -19,6 +19,7 @@ import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingV26Q1;
 import com.criteo.api.marketingsolutions.preview.model.PatchAdSetAttributionConfigurationV26Q1;
 import com.criteo.api.marketingsolutions.preview.model.PatchAdSetBiddingV26Q1;
 import com.criteo.api.marketingsolutions.preview.model.PatchAdSetBudgetV26Q1;
+import com.criteo.api.marketingsolutions.preview.model.PatchAdSetScheduledBudgetV26Q1;
 import com.criteo.api.marketingsolutions.preview.model.PatchAdSetSchedulingV26Q1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -69,6 +70,10 @@ public class PatchAdSetV26Q1 {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_SCHEDULED_BUDGET = "scheduledBudget";
+  @SerializedName(SERIALIZED_NAME_SCHEDULED_BUDGET)
+  private PatchAdSetScheduledBudgetV26Q1 scheduledBudget;
 
   public static final String SERIALIZED_NAME_SCHEDULING = "scheduling";
   @SerializedName(SERIALIZED_NAME_SCHEDULING)
@@ -166,6 +171,28 @@ public class PatchAdSetV26Q1 {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public PatchAdSetV26Q1 scheduledBudget(PatchAdSetScheduledBudgetV26Q1 scheduledBudget) {
+    
+    this.scheduledBudget = scheduledBudget;
+    return this;
+  }
+
+   /**
+   * Get scheduledBudget
+   * @return scheduledBudget
+  **/
+  @javax.annotation.Nullable
+
+  public PatchAdSetScheduledBudgetV26Q1 getScheduledBudget() {
+    return scheduledBudget;
+  }
+
+
+  public void setScheduledBudget(PatchAdSetScheduledBudgetV26Q1 scheduledBudget) {
+    this.scheduledBudget = scheduledBudget;
   }
 
 
@@ -271,6 +298,7 @@ public class PatchAdSetV26Q1 {
         Objects.equals(this.bidding, patchAdSetV26Q1.bidding) &&
         Objects.equals(this.budget, patchAdSetV26Q1.budget) &&
         Objects.equals(this.name, patchAdSetV26Q1.name) &&
+        Objects.equals(this.scheduledBudget, patchAdSetV26Q1.scheduledBudget) &&
         Objects.equals(this.scheduling, patchAdSetV26Q1.scheduling) &&
         Objects.equals(this.targeting, patchAdSetV26Q1.targeting)&&
         Objects.equals(this.additionalProperties, patchAdSetV26Q1.additionalProperties);
@@ -282,7 +310,7 @@ public class PatchAdSetV26Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributionConfiguration, bidding, budget, name, scheduling, targeting, additionalProperties);
+    return Objects.hash(attributionConfiguration, bidding, budget, name, scheduledBudget, scheduling, targeting, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -300,6 +328,7 @@ public class PatchAdSetV26Q1 {
     sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    scheduledBudget: ").append(toIndentedString(scheduledBudget)).append("\n");
     sb.append("    scheduling: ").append(toIndentedString(scheduling)).append("\n");
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -329,6 +358,7 @@ public class PatchAdSetV26Q1 {
     openapiFields.add("bidding");
     openapiFields.add("budget");
     openapiFields.add("name");
+    openapiFields.add("scheduledBudget");
     openapiFields.add("scheduling");
     openapiFields.add("targeting");
 
@@ -362,6 +392,10 @@ public class PatchAdSetV26Q1 {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // validate the optional field `scheduledBudget`
+      if (jsonObj.get("scheduledBudget") != null && !jsonObj.get("scheduledBudget").isJsonNull()) {
+        PatchAdSetScheduledBudgetV26Q1.validateJsonObject(jsonObj.getAsJsonObject("scheduledBudget"));
       }
       // validate the optional field `scheduling`
       if (jsonObj.get("scheduling") != null && !jsonObj.get("scheduling").isJsonNull()) {

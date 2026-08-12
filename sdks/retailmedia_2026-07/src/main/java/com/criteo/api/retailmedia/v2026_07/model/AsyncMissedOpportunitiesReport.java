@@ -59,6 +59,10 @@ public class AsyncMissedOpportunitiesReport {
   public enum DimensionsEnum {
     DATE("date"),
     
+    ACCOUNTID("accountId"),
+    
+    ACCOUNTNAME("accountName"),
+    
     CAMPAIGNID("campaignId"),
     
     CAMPAIGNNAME("campaignName"),

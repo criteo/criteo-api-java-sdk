@@ -804,7 +804,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityResourceCollectionOutcomeCreativeSearchResponse'
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata'
           description: Creatives found
       security:
       - oauth:
@@ -1853,6 +1853,67 @@ paths:
       - Analytics
       x-content-type: application/json
       x-accepts: application/json
+  /experimental/retail-media/line-items:
+    post:
+      description: Create a new line item.
+      operationId: CreateLineItem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExperimentalCreateLineItemModelRequest'
+        description: Line item details
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperimentalLineItemModelResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      summary: /experimental/retail-media/line-items
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /experimental/retail-media/line-items/{line-item-id}:
+    patch:
+      description: Update an existing line item.
+      operationId: UpdateLineItem
+      parameters:
+      - description: The line item id
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExperimentalUpdateLineItemModelRequest'
+        description: Line item details
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperimentalLineItemModelResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      summary: "/experimental/retail-media/line-items/{line-item-id}"
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}/product-buttons:
     get:
       description: Get LineItem Product Buttons
@@ -2206,6 +2267,58 @@ paths:
       - oauth:
         - RetailMedia_Campaign_Manage
       summary: "/experimental/retail-media/line-items/{line-item-id}/products/unpause"
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /experimental/retail-media/line-items/demand-search:
+    post:
+      description: Search line items accessible from demand accounts.
+      operationId: LineItemsDemandSearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DemandSearchRequest'
+        description: Search criteria and pagination.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItemListResponseWithPagination'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
+      summary: /experimental/retail-media/line-items/demand-search
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /experimental/retail-media/line-items/supply-search:
+    post:
+      description: Search line items accessible from a supply account and its retailers.
+      operationId: LineItemsSupplySearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplySearchRequest'
+        description: Search criteria and pagination.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItemListResponseWithPagination'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
+      summary: /experimental/retail-media/line-items/supply-search
       tags:
       - Campaign
       x-content-type: application/json
@@ -5125,7 +5238,7 @@ components:
       description: Data model represents the data change capture of balance history.
       example:
         dateOfModification: 2000-01-23T04:56:07.000+00:00
-        changeType: balanceCreated
+        changeType: BalanceCreated
         modifiedByUser: modifiedByUser
         memo: memo
         changeDetails:
@@ -5139,19 +5252,19 @@ components:
         changeType:
           description: Represent the type of change states of the history.
           enum:
-          - balanceCreated
-          - balanceAdded
-          - balanceRemoved
-          - balanceUncapped
-          - balanceCapped
-          - endDate
-          - startDate
-          - balanceName
-          - retailerPoNumber
-          - criteoPoNumber
-          - retailerId
-          - valueAdd
-          - unknown
+          - BalanceCreated
+          - BalanceAdded
+          - BalanceRemoved
+          - BalanceUncapped
+          - BalanceCapped
+          - EndDate
+          - StartDate
+          - BalanceName
+          - RetailerPoNumber
+          - CriteoPoNumber
+          - RetailerId
+          - ValueAdd
+          - Unknown
           type: string
         dateOfModification:
           description: Date when data change has occured.
@@ -5723,6 +5836,29 @@ components:
       required:
       - color
       type: object
+    CommerceDisplayAttributes:
+      additionalProperties: false
+      description: Extended attributes for a Commerce Display Line Item
+      example:
+        auction:
+          isDynamicMatch: true
+      nullable: true
+      properties:
+        auction:
+          $ref: '#/components/schemas/CommerceDisplayAuctionAttributes'
+      type: object
+    CommerceDisplayAuctionAttributes:
+      additionalProperties: false
+      description: Extended attributes for a Auction Commerce Display Line Item
+      example:
+        isDynamicMatch: true
+      nullable: true
+      properties:
+        isDynamicMatch:
+          description: Whether dynamic match or automatic SKU filtering is enabled.
+          nullable: true
+          type: boolean
+      type: object
     CommonProblem:
       description: Common problem object.
       example:
@@ -5786,6 +5922,39 @@ components:
           - validation
           nullable: true
           type: string
+      type: object
+    ConquestingSettings:
+      additionalProperties: false
+      description: Conquesting Settings
+      example:
+        defensiveAdStrategyEnabled: true
+        isAdStrategyLocked: true
+        neutralAdStrategyEnabled: true
+        conquestingAdStrategyEnabled: true
+      nullable: true
+      properties:
+        conquestingAdStrategyEnabled:
+          description: Flag indicating if Conquesting ad strategy is enabled for the
+            line item.
+          nullable: true
+          type: boolean
+        defensiveAdStrategyEnabled:
+          description: Flag indicating if Defensive ad strategy is enabled for the
+            line item.
+          nullable: true
+          type: boolean
+        isAdStrategyLocked:
+          description: "Indicates whether the ad strategy settings (conquesting, neutral,\
+            \ and defensive) are locked\r\nand cannot be modified for this line item.\
+            \ When true, any attempt to update the ad strategy\r\nsettings will be\
+            \ rejected."
+          nullable: true
+          type: boolean
+        neutralAdStrategyEnabled:
+          description: Flag indicating if Neutral ad strategy is enabled for the line
+            item.
+          nullable: true
+          type: boolean
       type: object
     Creative2:
       additionalProperties: false
@@ -6495,6 +6664,107 @@ components:
       - attributes
       - type
       type: object
+    DemandSearch:
+      additionalProperties: false
+      description: Request attributes for a Demand Account Line Item search
+      example:
+        includeChildrenAccounts: true
+        offset: 6
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        accountIds:
+        - accountIds
+        - accountIds
+        limit: 0
+        campaignIds:
+        - campaignIds
+        - campaignIds
+      properties:
+        accountIds:
+          description: Demand account ids to search from.
+          items:
+            type: string
+          nullable: true
+          type: array
+        campaignIds:
+          description: Campaign ids to filter line items by.
+          items:
+            type: string
+          nullable: true
+          type: array
+        includeChildrenAccounts:
+          description: Include line items from child demand accounts of requested
+            private supply accounts.
+          type: boolean
+        limit:
+          description: Optional result limit. Defaults to the maximum allowed page
+            size when omitted.
+          format: int32
+          nullable: true
+          type: integer
+        lineItemIds:
+          description: Line item ids to filter line items by.
+          items:
+            type: string
+          nullable: true
+          type: array
+        offset:
+          description: Optional result offset.
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    DemandSearchRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            includeChildrenAccounts: true
+            offset: 6
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            accountIds:
+            - accountIds
+            - accountIds
+            limit: 0
+            campaignIds:
+            - campaignIds
+            - campaignIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/DemandSearchResource'
+      type: object
+    DemandSearchResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          includeChildrenAccounts: true
+          offset: 6
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          accountIds:
+          - accountIds
+          - accountIds
+          limit: 0
+          campaignIds:
+          - campaignIds
+          - campaignIds
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/DemandSearch'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     DigitalShelfIntelligenceInsight:
       additionalProperties: false
       description: Description of a Digital Shelf Intelligence insight
@@ -6997,11 +7267,15 @@ components:
           readOnly: true
           type: array
       type: object
-    EntityResourceCollectionOutcomeCreativeSearchResponse:
+    EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
-        several entities.
+        several entities and metadata.
       example:
+        metadata:
+          offset: 1
+          count: 0
+          limit: 6
         data:
         - attributes:
             lineItems:
@@ -7090,6 +7364,8 @@ components:
           nullable: true
           readOnly: true
           type: array
+        metadata:
+          $ref: '#/components/schemas/Metadata'
         warnings:
           description: Warnings that occured during this call.
           items:
@@ -8182,6 +8458,495 @@ components:
           readOnly: true
           type: array
       type: object
+    ExperimentalConquestingSettingsModel:
+      additionalProperties: false
+      description: Which categories of search keyword the line item is eligible to
+        bid on.
+      example:
+        defensiveAdStrategyEnabled: true
+        isAdStrategyLocked: true
+        neutralAdStrategyEnabled: true
+        conquestingAdStrategyEnabled: true
+      nullable: true
+      properties:
+        conquestingAdStrategyEnabled:
+          description: Whether the line item may bid on competitors' branded keywords.
+            Defaults to false.
+          nullable: true
+          type: boolean
+        defensiveAdStrategyEnabled:
+          description: Whether the line item may bid on the advertiser's own branded
+            keywords. Defaults to true.
+          nullable: true
+          type: boolean
+        isAdStrategyLocked:
+          description: Whether the keyword strategy flags have been set and can no
+            longer be changed.
+          nullable: true
+          type: boolean
+        neutralAdStrategyEnabled:
+          description: "Whether the line item may bid on generic, unbranded category\
+            \ keywords. Defaults to true."
+          nullable: true
+          type: boolean
+      type: object
+    ExperimentalCreateLineItemModel:
+      additionalProperties: false
+      description: The settings to create a line item with.
+      example:
+        isPaused: true
+        serveToOptOutUser: true
+        campaignId: campaignId
+        name: name
+        onsiteDisplayDetails:
+          auctionDetails:
+            isDynamicMatch: true
+        retailerId: retailerId
+        flightDates:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        campaignId:
+          description: The campaign id of the associated campaign.
+          nullable: true
+          type: string
+        flightDates:
+          $ref: '#/components/schemas/ExperimentalFlightDatesModel'
+        isPaused:
+          description: Whether the line item should be paused or unpaused.
+          nullable: true
+          type: boolean
+        name:
+          description: The name of the line item.
+          nullable: true
+          type: string
+        onsiteDisplayDetails:
+          $ref: '#/components/schemas/ExperimentalCreateOnsiteDisplayLineItemDetails'
+        retailerId:
+          description: The retailer id of the associated retailer.
+          nullable: true
+          type: string
+        serveToOptOutUser:
+          description: Whether to serve ads to users who have opted out of personalization.
+          nullable: true
+          type: boolean
+      type: object
+    ExperimentalCreateLineItemModelRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            isPaused: true
+            serveToOptOutUser: true
+            campaignId: campaignId
+            name: name
+            onsiteDisplayDetails:
+              auctionDetails:
+                isDynamicMatch: true
+            retailerId: retailerId
+            flightDates:
+              endDate: 2000-01-23T04:56:07.000+00:00
+              startDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ExperimentalCreateLineItemModelResource'
+      type: object
+    ExperimentalCreateLineItemModelResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          isPaused: true
+          serveToOptOutUser: true
+          campaignId: campaignId
+          name: name
+          onsiteDisplayDetails:
+            auctionDetails:
+              isDynamicMatch: true
+          retailerId: retailerId
+          flightDates:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExperimentalCreateLineItemModel'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ExperimentalCreateOnsiteDisplayAuctionLineItemDetails:
+      additionalProperties: false
+      description: Auction settings to create an onsite display line item with.
+      example:
+        isDynamicMatch: true
+      properties:
+        isDynamicMatch:
+          description: "Whether to serve only products relevant to the page context,\
+            \ replacing manual SKU curation."
+          nullable: true
+          type: boolean
+      type: object
+    ExperimentalCreateOnsiteDisplayLineItemDetails:
+      additionalProperties: false
+      description: Onsite display settings to create a line item with.
+      example:
+        auctionDetails:
+          isDynamicMatch: true
+      properties:
+        auctionDetails:
+          $ref: '#/components/schemas/ExperimentalCreateOnsiteDisplayAuctionLineItemDetails'
+      type: object
+    ExperimentalFlightDatesModel:
+      additionalProperties: false
+      description: Active date range for a line item.
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        endDate:
+          description: When the line item expires.
+          format: date-time
+          nullable: true
+          type: string
+        startDate:
+          description: When the line item becomes active.
+          format: date-time
+          nullable: true
+          type: string
+      type: object
+    ExperimentalLineItemModel:
+      additionalProperties: false
+      description: "A unit of ad delivery configuration within a campaign. It defines\
+        \ how a specific subset of ads\r\nis targeted."
+      example:
+        effectiveFlightDates:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2000-01-23T04:56:07.000+00:00
+        isPaused: true
+        serveToOptOutUser: true
+        lineItemId: lineItemId
+        campaignId: campaignId
+        financialStatus: Unknown
+        name: name
+        onsiteDisplayDetails:
+          auctionDetails:
+            isDynamicMatch: true
+        conquestingSettings:
+          defensiveAdStrategyEnabled: true
+          isAdStrategyLocked: true
+          neutralAdStrategyEnabled: true
+          conquestingAdStrategyEnabled: true
+        retailerId: retailerId
+        type: Unknown
+      nullable: true
+      properties:
+        campaignId:
+          description: The campaign id of the associated campaign.
+          nullable: true
+          type: string
+        conquestingSettings:
+          $ref: '#/components/schemas/ExperimentalConquestingSettingsModel'
+        effectiveFlightDates:
+          $ref: '#/components/schemas/ExperimentalFlightDatesModel'
+        financialStatus:
+          description: The financial status of the line item.
+          enum:
+          - Unknown
+          - Active
+          - BudgetHitDaily
+          - BudgetHitMonthly
+          - BudgetHitTotal
+          - BalanceHit
+          nullable: true
+          type: string
+        isPaused:
+          description: Whether the line item should be paused or unpaused.
+          nullable: true
+          type: boolean
+        lineItemId:
+          description: The unique identifier of the line item.
+          nullable: true
+          type: string
+        name:
+          description: The name of the line item.
+          nullable: true
+          type: string
+        onsiteDisplayDetails:
+          $ref: '#/components/schemas/ExperimentalOnsiteDisplayLineItemDetails'
+        retailerId:
+          description: The retailer id of the associated retailer.
+          nullable: true
+          type: string
+        serveToOptOutUser:
+          description: Whether ads are served to users who have opted out of personalization.
+          nullable: true
+          type: boolean
+        type:
+          description: The type of the line item.
+          enum:
+          - Unknown
+          - SponsoredProduct
+          - OnsiteDisplay
+          nullable: true
+          type: string
+      type: object
+    ExperimentalLineItemModelResource:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          effectiveFlightDates:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+          isPaused: true
+          serveToOptOutUser: true
+          lineItemId: lineItemId
+          campaignId: campaignId
+          financialStatus: Unknown
+          name: name
+          onsiteDisplayDetails:
+            auctionDetails:
+              isDynamicMatch: true
+          conquestingSettings:
+            defensiveAdStrategyEnabled: true
+            isAdStrategyLocked: true
+            neutralAdStrategyEnabled: true
+            conquestingAdStrategyEnabled: true
+          retailerId: retailerId
+          type: Unknown
+        id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExperimentalLineItemModel'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ExperimentalLineItemModelResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
+      example:
+        data:
+          attributes:
+            effectiveFlightDates:
+              endDate: 2000-01-23T04:56:07.000+00:00
+              startDate: 2000-01-23T04:56:07.000+00:00
+            isPaused: true
+            serveToOptOutUser: true
+            lineItemId: lineItemId
+            campaignId: campaignId
+            financialStatus: Unknown
+            name: name
+            onsiteDisplayDetails:
+              auctionDetails:
+                isDynamicMatch: true
+            conquestingSettings:
+              defensiveAdStrategyEnabled: true
+              isAdStrategyLocked: true
+              neutralAdStrategyEnabled: true
+              conquestingAdStrategyEnabled: true
+            retailerId: retailerId
+            type: Unknown
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/ExperimentalLineItemModelResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    ExperimentalOnsiteDisplayAuctionLineItemDetails:
+      additionalProperties: false
+      description: Settings that only apply to auction-bought onsite display line
+        items.
+      example:
+        isDynamicMatch: true
+      nullable: true
+      properties:
+        isDynamicMatch:
+          description: "Whether only products relevant to the page context serve,\
+            \ replacing manual SKU curation."
+          nullable: true
+          type: boolean
+      type: object
+    ExperimentalOnsiteDisplayLineItemDetails:
+      additionalProperties: false
+      description: Settings that only apply to onsite display line items.
+      example:
+        auctionDetails:
+          isDynamicMatch: true
+      nullable: true
+      properties:
+        auctionDetails:
+          $ref: '#/components/schemas/ExperimentalOnsiteDisplayAuctionLineItemDetails'
+      type: object
+    ExperimentalUpdateLineItemModel:
+      additionalProperties: false
+      description: The line item settings to change. Omitted fields are left unchanged.
+      example:
+        isPaused: true
+        serveToOptOutUser: true
+        name: name
+        onsiteDisplayDetails:
+          auctionDetails:
+            isDynamicMatch: true
+        flightDates:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        flightDates:
+          $ref: '#/components/schemas/ExperimentalFlightDatesModel'
+        isPaused:
+          description: Whether the line item should be paused or unpaused.
+          nullable: true
+          type: boolean
+        name:
+          description: The name of the line item.
+          nullable: true
+          type: string
+        onsiteDisplayDetails:
+          $ref: '#/components/schemas/ExperimentalUpdateOnsiteDisplayLineItemDetails'
+        serveToOptOutUser:
+          description: Whether to serve ads to users who have opted out of personalization.
+          nullable: true
+          type: boolean
+      type: object
+    ExperimentalUpdateLineItemModelRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            isPaused: true
+            serveToOptOutUser: true
+            name: name
+            onsiteDisplayDetails:
+              auctionDetails:
+                isDynamicMatch: true
+            flightDates:
+              endDate: 2000-01-23T04:56:07.000+00:00
+              startDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ExperimentalUpdateLineItemModelResource'
+      type: object
+    ExperimentalUpdateLineItemModelResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          isPaused: true
+          serveToOptOutUser: true
+          name: name
+          onsiteDisplayDetails:
+            auctionDetails:
+              isDynamicMatch: true
+          flightDates:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExperimentalUpdateLineItemModel'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ExperimentalUpdateOnsiteDisplayAuctionLineItemDetails:
+      additionalProperties: false
+      description: The auction settings to change on an onsite display line item.
+        Omitted fields are left unchanged.
+      example:
+        isDynamicMatch: true
+      properties:
+        isDynamicMatch:
+          description: "Whether to serve only products relevant to the page context,\
+            \ replacing manual SKU curation."
+          nullable: true
+          type: boolean
+      type: object
+    ExperimentalUpdateOnsiteDisplayLineItemDetails:
+      additionalProperties: false
+      description: The onsite display settings to change. Omitted fields are left
+        unchanged.
+      example:
+        auctionDetails:
+          isDynamicMatch: true
+      properties:
+        auctionDetails:
+          $ref: '#/components/schemas/ExperimentalUpdateOnsiteDisplayAuctionLineItemDetails'
+      type: object
     ExportReportColumn:
       description: Description of a column from an async report request
       example:
@@ -8532,6 +9297,25 @@ components:
           type: array
       required:
       - assetIds
+      type: object
+    FlightDates:
+      additionalProperties: false
+      description: Flight Dates of a Line Item
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        endDate:
+          description: When the line item expires.
+          format: date-time
+          nullable: true
+          type: string
+        startDate:
+          description: When the line item becomes active.
+          format: date-time
+          nullable: true
+          type: string
       type: object
     FlightLeg:
       additionalProperties: false
@@ -8963,6 +9747,82 @@ components:
           format: int64
           type: integer
       type: object
+    LineItem:
+      additionalProperties: false
+      description: Line Item search attributes
+      example:
+        accountId: accountId
+        serveToOptOutUser: true
+        lineItemId: lineItemId
+        campaignId: campaignId
+        lineItemType: SponsoredProduct
+        name: name
+        sponsoredProducts:
+          auction:
+            allInventory: true
+        buyType: Auction
+        commerceDisplay:
+          auction:
+            isDynamicMatch: true
+        conquestingSettings:
+          defensiveAdStrategyEnabled: true
+          isAdStrategyLocked: true
+          neutralAdStrategyEnabled: true
+          conquestingAdStrategyEnabled: true
+        retailerId: retailerId
+        flightDates:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        accountId:
+          description: The account id of the associated account.
+          nullable: true
+          type: string
+        buyType:
+          description: The buy type of the line item.
+          enum:
+          - Auction
+          - PreferredDeals
+          - Sponsorship
+          nullable: true
+          type: string
+        campaignId:
+          description: The campaign id of the associated campaign.
+          nullable: true
+          type: string
+        commerceDisplay:
+          $ref: '#/components/schemas/CommerceDisplayAttributes'
+        conquestingSettings:
+          $ref: '#/components/schemas/ConquestingSettings'
+        flightDates:
+          $ref: '#/components/schemas/FlightDates'
+        lineItemId:
+          description: The id of the line item.
+          nullable: true
+          type: string
+        lineItemType:
+          description: The type of the line item.
+          enum:
+          - SponsoredProduct
+          - CommerceDisplay
+          nullable: true
+          type: string
+        name:
+          description: The name of the line item.
+          nullable: true
+          type: string
+        retailerId:
+          description: The retailer id of the associated retailer.
+          nullable: true
+          type: string
+        serveToOptOutUser:
+          description: Whether to serve ads to users who have opted out of personalization.
+          nullable: true
+          type: boolean
+        sponsoredProducts:
+          $ref: '#/components/schemas/SponsoredProductsAttributes'
+      type: object
     LineItemBudgetCapOutHistory:
       additionalProperties: false
       description: The cap out history for a line item
@@ -9087,6 +9947,131 @@ components:
       - count
       - type
       type: object
+    LineItemListResponseWithPagination:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata.
+      example:
+        metadata:
+          offset: 1
+          count: 0
+          limit: 6
+        data:
+        - attributes:
+            accountId: accountId
+            serveToOptOutUser: true
+            lineItemId: lineItemId
+            campaignId: campaignId
+            lineItemType: SponsoredProduct
+            name: name
+            sponsoredProducts:
+              auction:
+                allInventory: true
+            buyType: Auction
+            commerceDisplay:
+              auction:
+                isDynamicMatch: true
+            conquestingSettings:
+              defensiveAdStrategyEnabled: true
+              isAdStrategyLocked: true
+              neutralAdStrategyEnabled: true
+              conquestingAdStrategyEnabled: true
+            retailerId: retailerId
+            flightDates:
+              endDate: 2000-01-23T04:56:07.000+00:00
+              startDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            accountId: accountId
+            serveToOptOutUser: true
+            lineItemId: lineItemId
+            campaignId: campaignId
+            lineItemType: SponsoredProduct
+            name: name
+            sponsoredProducts:
+              auction:
+                allInventory: true
+            buyType: Auction
+            commerceDisplay:
+              auction:
+                isDynamicMatch: true
+            conquestingSettings:
+              defensiveAdStrategyEnabled: true
+              isAdStrategyLocked: true
+              neutralAdStrategyEnabled: true
+              conquestingAdStrategyEnabled: true
+            retailerId: retailerId
+            flightDates:
+              endDate: 2000-01-23T04:56:07.000+00:00
+              startDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/LineItemResource'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/Pagination'
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     LineItemPageCategoryV2:
       description: Category information for a preferred line item page
       example:
@@ -9153,6 +10138,47 @@ components:
       - paused
       nullable: true
       type: string
+    LineItemResource:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          accountId: accountId
+          serveToOptOutUser: true
+          lineItemId: lineItemId
+          campaignId: campaignId
+          lineItemType: SponsoredProduct
+          name: name
+          sponsoredProducts:
+            auction:
+              allInventory: true
+          buyType: Auction
+          commerceDisplay:
+            auction:
+              isDynamicMatch: true
+          conquestingSettings:
+            defensiveAdStrategyEnabled: true
+            isAdStrategyLocked: true
+            neutralAdStrategyEnabled: true
+            conquestingAdStrategyEnabled: true
+          retailerId: retailerId
+          flightDates:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/LineItem'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     LoyaltyPoints:
       description: Defines how a client earns loyalty points after buying this product.
       example:
@@ -9589,6 +10615,31 @@ components:
           - CategoryMenu
           nullable: true
           type: string
+      type: object
+    Pagination:
+      additionalProperties: false
+      description: Pagination of a Line Item search result
+      example:
+        offset: 1
+        count: 0
+        limit: 6
+      nullable: true
+      properties:
+        count:
+          description: Total number of line items matching the search.
+          format: int32
+          nullable: true
+          type: integer
+        limit:
+          description: Maximum size of the paginated result set.
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          description: Zero based offset for the paginated result set.
+          format: int32
+          nullable: true
+          type: integer
       type: object
     PagingOffsetLimitMetadata:
       description: Metadata for paging data.
@@ -15740,6 +16791,29 @@ components:
       - retailerId
       - retailerSkuIds
       type: object
+    SponsoredProductsAttributes:
+      additionalProperties: false
+      description: Extended attributes for a Auction Sponsored Products Line Item
+      example:
+        auction:
+          allInventory: true
+      nullable: true
+      properties:
+        auction:
+          $ref: '#/components/schemas/SponsoredProductsAuctionAttributes'
+      type: object
+    SponsoredProductsAuctionAttributes:
+      additionalProperties: false
+      description: Extended attributes for a Auction Sponsored Products Line Item
+      example:
+        allInventory: true
+      nullable: true
+      properties:
+        allInventory:
+          description: Whether to target all inventory.
+          nullable: true
+          type: boolean
+      type: object
     SponsoredProductsLineItem:
       additionalProperties: false
       description: Model of a retail media auction line item.
@@ -16229,6 +17303,120 @@ components:
       - price
       - productId
       - storeId
+      type: object
+    SupplySearch:
+      additionalProperties: false
+      description: Request attributes for a Supply Account Line Item search
+      example:
+        offset: 6
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        limit: 0
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        retailerIds:
+        - retailerIds
+        - retailerIds
+        relationship: Direct
+        supplyAccountId: supplyAccountId
+      properties:
+        campaignIds:
+          description: Campaign ids to filter line items by.
+          items:
+            type: string
+          nullable: true
+          type: array
+        limit:
+          description: Optional result limit. Defaults to the maximum allowed page
+            size when omitted.
+          format: int32
+          nullable: true
+          type: integer
+        lineItemIds:
+          description: Line item ids to filter line items by.
+          items:
+            type: string
+          nullable: true
+          type: array
+        offset:
+          description: Optional result offset.
+          format: int32
+          nullable: true
+          type: integer
+        relationship:
+          description: "Relationship to filter line items by. When omitted, all relationships\
+            \ are returned."
+          enum:
+          - Direct
+          - PrivateMarket
+          - Network
+          - AnyIndirect
+          nullable: true
+          type: string
+        retailerIds:
+          description: Retailer ids to search from.
+          items:
+            type: string
+          nullable: true
+          type: array
+        supplyAccountId:
+          description: Supply account id to search from.
+          nullable: true
+          type: string
+      type: object
+    SupplySearchRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            offset: 6
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            limit: 0
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            retailerIds:
+            - retailerIds
+            - retailerIds
+            relationship: Direct
+            supplyAccountId: supplyAccountId
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/SupplySearchResource'
+      type: object
+    SupplySearchResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          offset: 6
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          limit: 0
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          retailerIds:
+          - retailerIds
+          - retailerIds
+          relationship: Direct
+          supplyAccountId: supplyAccountId
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SupplySearch'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
       type: object
     SyncAttributedTransactionsReport:
       description: Attributed Transactions report body request
@@ -17189,7 +18377,7 @@ components:
       example:
         attributes:
           dateOfModification: 2000-01-23T04:56:07.000+00:00
-          changeType: balanceCreated
+          changeType: BalanceCreated
           modifiedByUser: modifiedByUser
           memo: memo
           changeDetails:
@@ -17256,7 +18444,7 @@ components:
         data:
         - attributes:
             dateOfModification: 2000-01-23T04:56:07.000+00:00
-            changeType: balanceCreated
+            changeType: BalanceCreated
             modifiedByUser: modifiedByUser
             memo: memo
             changeDetails:
@@ -17266,7 +18454,7 @@ components:
           type: type
         - attributes:
             dateOfModification: 2000-01-23T04:56:07.000+00:00
-            changeType: balanceCreated
+            changeType: BalanceCreated
             modifiedByUser: modifiedByUser
             memo: memo
             changeDetails:

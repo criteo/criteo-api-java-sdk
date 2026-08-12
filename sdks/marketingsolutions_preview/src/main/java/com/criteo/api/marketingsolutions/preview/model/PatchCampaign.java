@@ -15,6 +15,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.preview.model.PatchCampaignScheduledSpendLimit;
 import com.criteo.api.marketingsolutions.preview.model.PatchCampaignSpendLimit;
 import com.criteo.api.marketingsolutions.preview.model.PatchMarketingCampaignBudgetAutomation;
 import com.google.gson.TypeAdapter;
@@ -54,6 +55,10 @@ public class PatchCampaign {
   @SerializedName(SERIALIZED_NAME_BUDGET_AUTOMATION)
   private PatchMarketingCampaignBudgetAutomation budgetAutomation;
 
+  public static final String SERIALIZED_NAME_SCHEDULED_SPEND_LIMIT = "scheduledSpendLimit";
+  @SerializedName(SERIALIZED_NAME_SCHEDULED_SPEND_LIMIT)
+  private PatchCampaignScheduledSpendLimit scheduledSpendLimit;
+
   public static final String SERIALIZED_NAME_SPEND_LIMIT = "spendLimit";
   @SerializedName(SERIALIZED_NAME_SPEND_LIMIT)
   private PatchCampaignSpendLimit spendLimit;
@@ -80,6 +85,28 @@ public class PatchCampaign {
 
   public void setBudgetAutomation(PatchMarketingCampaignBudgetAutomation budgetAutomation) {
     this.budgetAutomation = budgetAutomation;
+  }
+
+
+  public PatchCampaign scheduledSpendLimit(PatchCampaignScheduledSpendLimit scheduledSpendLimit) {
+    
+    this.scheduledSpendLimit = scheduledSpendLimit;
+    return this;
+  }
+
+   /**
+   * Get scheduledSpendLimit
+   * @return scheduledSpendLimit
+  **/
+  @javax.annotation.Nullable
+
+  public PatchCampaignScheduledSpendLimit getScheduledSpendLimit() {
+    return scheduledSpendLimit;
+  }
+
+
+  public void setScheduledSpendLimit(PatchCampaignScheduledSpendLimit scheduledSpendLimit) {
+    this.scheduledSpendLimit = scheduledSpendLimit;
   }
 
 
@@ -160,13 +187,14 @@ public class PatchCampaign {
     }
     PatchCampaign patchCampaign = (PatchCampaign) o;
     return Objects.equals(this.budgetAutomation, patchCampaign.budgetAutomation) &&
+        Objects.equals(this.scheduledSpendLimit, patchCampaign.scheduledSpendLimit) &&
         Objects.equals(this.spendLimit, patchCampaign.spendLimit)&&
         Objects.equals(this.additionalProperties, patchCampaign.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgetAutomation, spendLimit, additionalProperties);
+    return Objects.hash(budgetAutomation, scheduledSpendLimit, spendLimit, additionalProperties);
   }
 
   @Override
@@ -174,6 +202,7 @@ public class PatchCampaign {
     StringBuilder sb = new StringBuilder();
     sb.append("class PatchCampaign {\n");
     sb.append("    budgetAutomation: ").append(toIndentedString(budgetAutomation)).append("\n");
+    sb.append("    scheduledSpendLimit: ").append(toIndentedString(scheduledSpendLimit)).append("\n");
     sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -199,6 +228,7 @@ public class PatchCampaign {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("budgetAutomation");
+    openapiFields.add("scheduledSpendLimit");
     openapiFields.add("spendLimit");
 
     // a set of required properties/fields (JSON key names)
@@ -220,6 +250,10 @@ public class PatchCampaign {
       // validate the optional field `budgetAutomation`
       if (jsonObj.get("budgetAutomation") != null && !jsonObj.get("budgetAutomation").isJsonNull()) {
         PatchMarketingCampaignBudgetAutomation.validateJsonObject(jsonObj.getAsJsonObject("budgetAutomation"));
+      }
+      // validate the optional field `scheduledSpendLimit`
+      if (jsonObj.get("scheduledSpendLimit") != null && !jsonObj.get("scheduledSpendLimit").isJsonNull()) {
+        PatchCampaignScheduledSpendLimit.validateJsonObject(jsonObj.getAsJsonObject("scheduledSpendLimit"));
       }
       // validate the optional field `spendLimit`
       if (jsonObj.get("spendLimit") != null && !jsonObj.get("spendLimit").isJsonNull()) {

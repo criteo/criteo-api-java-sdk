@@ -19,6 +19,7 @@ Ad set read model.                The ad set is the configuration unit that defi
 |**name** | **String** | Name of the ad set |  [optional] |
 |**objective** | [**ObjectiveEnum**](#ObjectiveEnum) | Ad set objective.                Possible values:  - customAction (previously \&quot;Actions\&quot;)  - clicks  - conversions  - displays  - appPromotion (previously \&quot;Installs\&quot;)  - revenue  - storeConversions  - value  - reach (previously \&quot;ViewedImpressions\&quot;)  - visits  - videoViews (previously \&quot;CompletedVideoViews\&quot;) |  [optional] |
 |**schedule** | [**ReadAdSetScheduleV26Q1**](ReadAdSetScheduleV26Q1.md) |  |  [optional] |
+|**scheduledBudgets** | [**List&lt;ReadAdSetScheduledBudgetV26Q1&gt;**](ReadAdSetScheduledBudgetV26Q1.md) |  |  [optional] |
 |**targeting** | [**AdSetTargetingV26Q1**](AdSetTargetingV26Q1.md) |  |  [optional] |
 |**videoChannel** | [**VideoChannelEnum**](#VideoChannelEnum) |  |  [optional] |
 

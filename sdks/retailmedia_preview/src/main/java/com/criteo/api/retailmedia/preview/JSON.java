@@ -154,7 +154,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.EntityResourceBrandIdSearchResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBalanceV1AndMetadata.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeCreativeSearchResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.CustomTypeAdapterFactory());

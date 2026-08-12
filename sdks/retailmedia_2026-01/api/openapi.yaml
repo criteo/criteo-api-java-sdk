@@ -9159,6 +9159,14 @@ components:
           - CUSTOM
           - DisplayPanel
           - DigitalShelfTalker
+          - CommerceVideoSpotlight
+          - BrandingVideoStandout
+          - CommerceDisplaySpotlight
+          - BrandingDisplaySpotlightSolo
+          - CommerceDisplayGridShelf
+          - CommerceDisplayGridDuet
+          - BrandingDisplayGridSolo
+          - CommerceVideoGridDuet
           type: string
         environments:
           description: "Environment type (e.g. mobile, web, app)"
@@ -18446,6 +18454,14 @@ components:
           - CUSTOM
           - DisplayPanel
           - DigitalShelfTalker
+          - CommerceVideoSpotlight
+          - BrandingVideoStandout
+          - CommerceDisplaySpotlight
+          - BrandingDisplaySpotlightSolo
+          - CommerceDisplayGridShelf
+          - CommerceDisplayGridDuet
+          - BrandingDisplayGridSolo
+          - CommerceVideoGridDuet
           type: string
         displayableSkusMax:
           description: Maximum number of displayable skus

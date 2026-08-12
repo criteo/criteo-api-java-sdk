@@ -85,7 +85,23 @@ public class Creative202210 {
     
     DISPLAYPANEL("DisplayPanel"),
     
-    DIGITALSHELFTALKER("DigitalShelfTalker");
+    DIGITALSHELFTALKER("DigitalShelfTalker"),
+    
+    COMMERCEVIDEOSPOTLIGHT("CommerceVideoSpotlight"),
+    
+    BRANDINGVIDEOSTANDOUT("BrandingVideoStandout"),
+    
+    COMMERCEDISPLAYSPOTLIGHT("CommerceDisplaySpotlight"),
+    
+    BRANDINGDISPLAYSPOTLIGHTSOLO("BrandingDisplaySpotlightSolo"),
+    
+    COMMERCEDISPLAYGRIDSHELF("CommerceDisplayGridShelf"),
+    
+    COMMERCEDISPLAYGRIDDUET("CommerceDisplayGridDuet"),
+    
+    BRANDINGDISPLAYGRIDSOLO("BrandingDisplayGridSolo"),
+    
+    COMMERCEVIDEOGRIDDUET("CommerceVideoGridDuet");
 
     private String value;
 

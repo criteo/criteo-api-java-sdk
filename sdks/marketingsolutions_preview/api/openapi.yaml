@@ -5639,7 +5639,7 @@ components:
       description: "Ad set frequency capping.\r\n            \r\nSettings that can\
         \ limit the number of impression by viewer and by period."
       example:
-        maximumImpressions: 1
+        maximumImpressions: 5
         frequency: hourly
       nullable: true
       properties:
@@ -6072,7 +6072,7 @@ components:
             value: null
         frequencyCapping:
           value:
-            maximumImpressions: 1
+            maximumImpressions: 5
             frequency: hourly
         deliveryLimitations:
           operatingSystems:
@@ -9739,6 +9739,54 @@ components:
           nullable: true
           type: boolean
       type: object
+    CampaignScheduledSpendLimitV23Q1:
+      description: A campaign spend limit scheduled to become active on the specified
+        "startDate".
+      example:
+        spendLimitRenewal: undefined
+        spendLimitAmount:
+          value: 0.8008281904610115
+        id: id
+        spendLimitType: capped
+        startDate: 2000-01-23
+      properties:
+        id:
+          description: "Identifier of the scheduled spend limit, for example \"12345\"\
+            ."
+          nullable: true
+          type: string
+        spendLimitAmount:
+          $ref: '#/components/schemas/NillableDecimal'
+        spendLimitRenewal:
+          description: "The period over which the campaign spend limit is applied.\r\
+            \n- \"daily\", \"monthly\", and \"lifetime\" are valid when spendLimitType\
+            \ is \"capped\".\r\n- \"undefined\" is returned when spendLimitType is\
+            \ \"uncapped\"."
+          enum:
+          - undefined
+          - daily
+          - monthly
+          - lifetime
+          nullable: true
+          type: string
+        spendLimitType:
+          description: "Controls whether the campaign has a spend limit.\r\n- \"capped\"\
+            : a spend limit applies, spendLimitAmount.value is non-null, and spendLimitRenewal\
+            \ is \"daily\", \"monthly\", or \"lifetime\".\r\n- \"uncapped\": no spend\
+            \ limit applies, spendLimitAmount.value is null, and spendLimitRenewal\
+            \ is \"undefined\"."
+          enum:
+          - capped
+          - uncapped
+          nullable: true
+          type: string
+        startDate:
+          description: "Advertiser-local calendar date when the scheduled spend limit\
+            \ becomes active, for example \"2026-08-01\"."
+          format: date
+          nullable: true
+          type: string
+      type: object
     CampaignSearchFiltersV23Q1:
       description: "Filters for searching campaigns.\r\n            \r\nMultiple filters\
         \ are combined with an implicit AND operation.\r\nIdentifiers are string-encoded\
@@ -9819,6 +9867,19 @@ components:
       description: "Campaign read model\r\n            \r\nThe {id} field is the campaign\
         \ identifier (string-encoded integer)."
       example:
+        scheduledSpendLimits:
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          id: id
+          spendLimitType: capped
+          startDate: 2000-01-23
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          id: id
+          spendLimitType: capped
+          startDate: 2000-01-23
         goal: unspecified
         name: name
         budgetAutomation:
@@ -9863,6 +9924,13 @@ components:
           description: Name of the campaign
           nullable: true
           type: string
+        scheduledSpendLimits:
+          description: Spend limits scheduled to become active in the future. Empty
+            when the campaign has no scheduled spend limits.
+          items:
+            $ref: '#/components/schemas/CampaignScheduledSpendLimitV23Q1'
+          nullable: true
+          type: array
         spendLimit:
           $ref: '#/components/schemas/CampaignSpendLimitV23Q1'
       type: object
@@ -9871,6 +9939,19 @@ components:
       example:
         data:
         - attributes:
+            scheduledSpendLimits:
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
             goal: unspecified
             name: name
             budgetAutomation:
@@ -9887,6 +9968,19 @@ components:
           id: id
           type: Campaign
         - attributes:
+            scheduledSpendLimits:
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
             goal: unspecified
             name: name
             budgetAutomation:
@@ -9967,6 +10061,19 @@ components:
       description: Data model for a Resource
       example:
         attributes:
+          scheduledSpendLimits:
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            id: id
+            spendLimitType: capped
+            startDate: 2000-01-23
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            id: id
+            spendLimitType: capped
+            startDate: 2000-01-23
           goal: unspecified
           name: name
           budgetAutomation:
@@ -10001,6 +10108,19 @@ components:
       example:
         data:
           attributes:
+            scheduledSpendLimits:
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
             goal: unspecified
             name: name
             budgetAutomation:
@@ -16173,6 +16293,292 @@ components:
           nullable: true
           type: string
       type: object
+    PatchAdSetScheduledBudgetCreationV26Q1:
+      description: "A budget configuration to schedule on the ad set, becoming active\
+        \ on the specified \"startDate\".\r\nIt contains the same fields as an active-budget\
+        \ patch, plus the required start date.\r\nThe start date must be strictly\
+        \ in the future and unique among the ad set's scheduled budgets.\r\nCreating\
+        \ an \"uncapped\" scheduled budget: set budgetStrategy to \"uncapped\" and\
+        \ omit budgetAmount.\r\nCreating a \"capped\" scheduled budget: set budgetStrategy\
+        \ to \"capped\", budgetAmount to a positive number, budgetRenewal to a period,\
+        \ budgetDeliverySmoothing to a pacing strategy and pacingBehavior if budgetDeliverySmoothing\
+        \ is standard.\r\nManual scheduled budget changes are not supported when the\
+        \ linked marketing campaign has budget automation enabled."
+      example:
+        budgetDeliverySmoothing: accelerated
+        budgetDeliveryWeek: undefined
+        budgetAmount: 6.027456183070403
+        budgetRenewal: undefined
+        pacingBehavior: undefined
+        startDate: 2000-01-23
+        budgetStrategy: capped
+      properties:
+        budgetAmount:
+          description: "Maximum budget amount in the advertiser's currency per renewal\
+            \ period.\r\nRequired when budgetStrategy is \"capped\"; must be omitted\
+            \ when budgetStrategy is \"uncapped\"."
+          format: double
+          nullable: true
+          type: number
+        budgetDeliverySmoothing:
+          description: "Pacing strategy for spending the budget within a renewal period.\
+            \ Only applicable when budgetStrategy is \"capped\".\r\n- \"accelerated\"\
+            : spend pacing is based on delivery efficiency rather than the full budget\
+            \ period.\r\n- \"standard\": spread spending evenly over the renewal period.\r\
+            \nWhen budgetStrategy is \"uncapped\", this field is not set (null in\
+            \ read responses, omit in create/patch requests)."
+          enum:
+          - accelerated
+          - standard
+          nullable: true
+          type: string
+        budgetDeliveryWeek:
+          description: "Defines which day-of-week boundaries are used for weekly budget\
+            \ renewal. Only applicable when budgetStrategy is \"capped\", budgetRenewal\
+            \ is \"weekly\", and budgetDeliverySmoothing is \"standard\".\r\n- \"\
+            mondayToSunday\", \"tuesdayToMonday\", etc.: the day range over which\
+            \ the weekly budget is paced. Changing this value on the active budget\
+            \ also propagates to all scheduled budgets of the same ad set.\r\n- \"\
+            undefined\": used when budgetStrategy is \"uncapped\", when budgetRenewal\
+            \ is not \"weekly\", or when budgetDeliverySmoothing is \"accelerated\"\
+            ."
+          enum:
+          - undefined
+          - mondayToSunday
+          - tuesdayToMonday
+          - wednesdayToTuesday
+          - thursdayToWednesday
+          - fridayToThursday
+          - saturdayToFriday
+          - sundayToSaturday
+          nullable: true
+          type: string
+        budgetRenewal:
+          description: "The period over which the budget is spent.\r\n- \"daily\"\
+            , \"monthly\", \"weekly\": budget resets at the start of each period.\r\
+            \n- \"lifetime\": budget covers the entire ad set duration without resetting.\r\
+            \n- \"undefined\": only used when budgetStrategy is \"uncapped\" (no renewal\
+            \ applies). Required for capped budgets (must not be \"undefined\")."
+          enum:
+          - undefined
+          - daily
+          - monthly
+          - lifetime
+          - weekly
+          nullable: true
+          type: string
+        budgetStrategy:
+          description: "Controls whether the ad set has a spending limit.\r\n- \"\
+            capped\": spending is limited to budgetAmount. Requires budgetAmount (non-null),\
+            \ budgetRenewal (not \"undefined\"), and budgetDeliverySmoothing (not\
+            \ null).\r\n- \"uncapped\": no spending limit. budgetAmount is null, budgetRenewal\
+            \ is \"undefined\", and budgetDeliverySmoothing is null."
+          enum:
+          - capped
+          - uncapped
+          nullable: true
+          type: string
+        pacingBehavior:
+          description: "Controls how a standard capped budget is paced.\r\n- \"targetFullBudget\"\
+            : spend toward the full budget amount within the renewal period.\r\n-\
+            \ \"targetAverageDailyBudget\": spend toward an average daily amount.\
+            \ Only supported for capped, standard, monthly budgets.\r\n- \"undefined\"\
+            : no explicit pacing behavior. Required for uncapped budgets and accelerated\
+            \ budgets."
+          enum:
+          - undefined
+          - targetFullBudget
+          - targetAverageDailyBudget
+          nullable: true
+          type: string
+        startDate:
+          description: "Advertiser-local calendar date when the scheduled budget becomes\
+            \ active. Required, strictly in the future."
+          format: date
+          type: string
+      required:
+      - startDate
+      type: object
+    PatchAdSetScheduledBudgetDeletionV26Q1:
+      description: "Deletion of an existing scheduled budget of the ad set, identified\
+        \ by its \"id\"."
+      example:
+        id: id
+      properties:
+        id:
+          description: Identifier of the scheduled budget to delete.
+          nullable: true
+          type: string
+      required:
+      - id
+      type: object
+    PatchAdSetScheduledBudgetUpdateV26Q1:
+      description: "A patch of an existing scheduled budget of the ad set, identified\
+        \ by its \"id\".\r\nOnly provided fields are updated; omitted fields are left\
+        \ unchanged.\r\nSwitching to \"uncapped\": set budgetStrategy to \"uncapped\"\
+        \ and budgetAmount.value to null. The explicit null triggers the transition\
+        \ and automatically clears budgetRenewal, budgetDeliverySmoothing, budgetDeliveryWeek,\
+        \ and pacingBehavior.\r\nSwitching to \"capped\": set budgetStrategy to \"\
+        capped\", budgetAmount.value to a positive number, budgetRenewal to a period,\
+        \ budgetDeliverySmoothing to a pacing strategy and pacingBehavior if budgetDeliverySmoothing\
+        \ is standard.\r\nManual scheduled budget changes are not supported when the\
+        \ linked marketing campaign has budget automation enabled."
+      example:
+        budgetDeliverySmoothing: accelerated
+        budgetDeliveryWeek: undefined
+        budgetAmount:
+          value: 0.8008281904610115
+        budgetRenewal: undefined
+        id: id
+        pacingBehavior: undefined
+        startDate: 2000-01-23
+        budgetStrategy: capped
+      properties:
+        budgetAmount:
+          $ref: '#/components/schemas/NillableDecimal'
+        budgetDeliverySmoothing:
+          description: "Pacing strategy for spending the budget within a renewal period.\
+            \ Only applicable when budgetStrategy is \"capped\".\r\n- \"accelerated\"\
+            : spend pacing is based on delivery efficiency rather than the full budget\
+            \ period.\r\n- \"standard\": spread spending evenly over the renewal period.\r\
+            \nWhen budgetStrategy is \"uncapped\", this field is not set (null in\
+            \ read responses, omit in create/patch requests)."
+          enum:
+          - accelerated
+          - standard
+          nullable: true
+          type: string
+        budgetDeliveryWeek:
+          description: "Defines which day-of-week boundaries are used for weekly budget\
+            \ renewal. Only applicable when budgetStrategy is \"capped\", budgetRenewal\
+            \ is \"weekly\", and budgetDeliverySmoothing is \"standard\".\r\n- \"\
+            mondayToSunday\", \"tuesdayToMonday\", etc.: the day range over which\
+            \ the weekly budget is paced. Changing this value on the active budget\
+            \ also propagates to all scheduled budgets of the same ad set.\r\n- \"\
+            undefined\": used when budgetStrategy is \"uncapped\", when budgetRenewal\
+            \ is not \"weekly\", or when budgetDeliverySmoothing is \"accelerated\"\
+            ."
+          enum:
+          - undefined
+          - mondayToSunday
+          - tuesdayToMonday
+          - wednesdayToTuesday
+          - thursdayToWednesday
+          - fridayToThursday
+          - saturdayToFriday
+          - sundayToSaturday
+          nullable: true
+          type: string
+        budgetRenewal:
+          description: "The period over which the budget is spent.\r\n- \"daily\"\
+            , \"monthly\", \"weekly\": budget resets at the start of each period.\r\
+            \n- \"lifetime\": budget covers the entire ad set duration without resetting.\r\
+            \n- \"undefined\": only used when budgetStrategy is \"uncapped\" (no renewal\
+            \ applies). Required for capped budgets (must not be \"undefined\")."
+          enum:
+          - undefined
+          - daily
+          - monthly
+          - lifetime
+          - weekly
+          nullable: true
+          type: string
+        budgetStrategy:
+          description: "Controls whether the ad set has a spending limit.\r\n- \"\
+            capped\": spending is limited to budgetAmount. Requires budgetAmount (non-null),\
+            \ budgetRenewal (not \"undefined\"), and budgetDeliverySmoothing (not\
+            \ null).\r\n- \"uncapped\": no spending limit. budgetAmount is null, budgetRenewal\
+            \ is \"undefined\", and budgetDeliverySmoothing is null."
+          enum:
+          - capped
+          - uncapped
+          nullable: true
+          type: string
+        id:
+          description: Identifier of the scheduled budget to update.
+          nullable: true
+          type: string
+        pacingBehavior:
+          description: "Controls how a standard capped budget is paced.\r\n- \"targetFullBudget\"\
+            : spend toward the full budget amount within the renewal period.\r\n-\
+            \ \"targetAverageDailyBudget\": spend toward an average daily amount.\
+            \ Only supported for capped, standard, monthly budgets.\r\n- \"undefined\"\
+            : no explicit pacing behavior. Required for uncapped budgets and accelerated\
+            \ budgets."
+          enum:
+          - undefined
+          - targetFullBudget
+          - targetAverageDailyBudget
+          nullable: true
+          type: string
+        startDate:
+          description: "New advertiser-local calendar date when the scheduled budget\
+            \ becomes active. Must be strictly in the future\r\nand unique among the\
+            \ ad set's scheduled budgets."
+          format: date
+          nullable: true
+          type: string
+      required:
+      - id
+      type: object
+    PatchAdSetScheduledBudgetV26Q1:
+      description: "Scheduled budget patch model for an ad set. Groups the operations\
+        \ (Create, Update, Delete) on the ad set's scheduled budget."
+      example:
+        scheduledBudgetCreations:
+        - budgetDeliverySmoothing: accelerated
+          budgetDeliveryWeek: undefined
+          budgetAmount: 6.027456183070403
+          budgetRenewal: undefined
+          pacingBehavior: undefined
+          startDate: 2000-01-23
+          budgetStrategy: capped
+        - budgetDeliverySmoothing: accelerated
+          budgetDeliveryWeek: undefined
+          budgetAmount: 6.027456183070403
+          budgetRenewal: undefined
+          pacingBehavior: undefined
+          startDate: 2000-01-23
+          budgetStrategy: capped
+        scheduledBudgetUpdates:
+        - budgetDeliverySmoothing: accelerated
+          budgetDeliveryWeek: undefined
+          budgetAmount:
+            value: 0.8008281904610115
+          budgetRenewal: undefined
+          id: id
+          pacingBehavior: undefined
+          startDate: 2000-01-23
+          budgetStrategy: capped
+        - budgetDeliverySmoothing: accelerated
+          budgetDeliveryWeek: undefined
+          budgetAmount:
+            value: 0.8008281904610115
+          budgetRenewal: undefined
+          id: id
+          pacingBehavior: undefined
+          startDate: 2000-01-23
+          budgetStrategy: capped
+        scheduledBudgetDeletions:
+        - id: id
+        - id: id
+      properties:
+        scheduledBudgetCreations:
+          items:
+            $ref: '#/components/schemas/PatchAdSetScheduledBudgetCreationV26Q1'
+          nullable: true
+          type: array
+        scheduledBudgetDeletions:
+          items:
+            $ref: '#/components/schemas/PatchAdSetScheduledBudgetDeletionV26Q1'
+          nullable: true
+          type: array
+        scheduledBudgetUpdates:
+          items:
+            $ref: '#/components/schemas/PatchAdSetScheduledBudgetUpdateV26Q1'
+          nullable: true
+          type: array
+      type: object
     PatchAdSetSchedulingV26Q1:
       description: Model for patching ad set scheduling.
       example:
@@ -16199,7 +16605,7 @@ components:
               value: null
           frequencyCapping:
             value:
-              maximumImpressions: 1
+              maximumImpressions: 5
               frequency: hourly
           deliveryLimitations:
             operatingSystems:
@@ -16211,6 +16617,44 @@ components:
             environments:
             - web
             - web
+        scheduledBudget:
+          scheduledBudgetCreations:
+          - budgetDeliverySmoothing: accelerated
+            budgetDeliveryWeek: undefined
+            budgetAmount: 6.027456183070403
+            budgetRenewal: undefined
+            pacingBehavior: undefined
+            startDate: 2000-01-23
+            budgetStrategy: capped
+          - budgetDeliverySmoothing: accelerated
+            budgetDeliveryWeek: undefined
+            budgetAmount: 6.027456183070403
+            budgetRenewal: undefined
+            pacingBehavior: undefined
+            startDate: 2000-01-23
+            budgetStrategy: capped
+          scheduledBudgetUpdates:
+          - budgetDeliverySmoothing: accelerated
+            budgetDeliveryWeek: undefined
+            budgetAmount:
+              value: 0.8008281904610115
+            budgetRenewal: undefined
+            id: id
+            pacingBehavior: undefined
+            startDate: 2000-01-23
+            budgetStrategy: capped
+          - budgetDeliverySmoothing: accelerated
+            budgetDeliveryWeek: undefined
+            budgetAmount:
+              value: 0.8008281904610115
+            budgetRenewal: undefined
+            id: id
+            pacingBehavior: undefined
+            startDate: 2000-01-23
+            budgetStrategy: capped
+          scheduledBudgetDeletions:
+          - id: id
+          - id: id
         bidding:
           bidAmount:
             value: 0.8008281904610115
@@ -16242,6 +16686,8 @@ components:
           description: Name of the ad set.
           nullable: true
           type: string
+        scheduledBudget:
+          $ref: '#/components/schemas/PatchAdSetScheduledBudgetV26Q1'
         scheduling:
           $ref: '#/components/schemas/PatchAdSetSchedulingV26Q1'
         targeting:
@@ -16260,9 +16706,39 @@ components:
           spendLimitAmount:
             value: 0.8008281904610115
           spendLimitType: capped
+        scheduledSpendLimit:
+          scheduledSpendLimitCreations:
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            spendLimitType: capped
+            startDate: 2000-01-23
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            spendLimitType: capped
+            startDate: 2000-01-23
+          scheduledSpendLimitDeletions:
+          - id: id
+          - id: id
+          scheduledSpendLimitUpdates:
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            id: id
+            spendLimitType: capped
+            startDate: 2000-01-23
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            id: id
+            spendLimitType: capped
+            startDate: 2000-01-23
       properties:
         budgetAutomation:
           $ref: '#/components/schemas/PatchMarketingCampaignBudgetAutomation'
+        scheduledSpendLimit:
+          $ref: '#/components/schemas/PatchCampaignScheduledSpendLimit'
         spendLimit:
           $ref: '#/components/schemas/PatchCampaignSpendLimit'
       type: object
@@ -16280,6 +16756,34 @@ components:
               spendLimitAmount:
                 value: 0.8008281904610115
               spendLimitType: capped
+            scheduledSpendLimit:
+              scheduledSpendLimitCreations:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              scheduledSpendLimitDeletions:
+              - id: id
+              - id: id
+              scheduledSpendLimitUpdates:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
           id: id
           type: Campaign
         - attributes:
@@ -16292,6 +16796,34 @@ components:
               spendLimitAmount:
                 value: 0.8008281904610115
               spendLimitType: capped
+            scheduledSpendLimit:
+              scheduledSpendLimitCreations:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              scheduledSpendLimitDeletions:
+              - id: id
+              - id: id
+              scheduledSpendLimitUpdates:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
           id: id
           type: Campaign
       properties:
@@ -16300,6 +16832,173 @@ components:
             $ref: '#/components/schemas/PatchCampaignWriteResource'
           nullable: true
           type: array
+      type: object
+    PatchCampaignScheduledSpendLimit:
+      description: "Scheduled spend-limit operations for a marketing campaign (patch).\r\
+        \nCreate, update, and delete operations are applied together by the backend."
+      example:
+        scheduledSpendLimitCreations:
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          spendLimitType: capped
+          startDate: 2000-01-23
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          spendLimitType: capped
+          startDate: 2000-01-23
+        scheduledSpendLimitDeletions:
+        - id: id
+        - id: id
+        scheduledSpendLimitUpdates:
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          id: id
+          spendLimitType: capped
+          startDate: 2000-01-23
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          id: id
+          spendLimitType: capped
+          startDate: 2000-01-23
+      properties:
+        scheduledSpendLimitCreations:
+          description: Scheduled spend limits to create.
+          items:
+            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitCreation'
+          nullable: true
+          type: array
+        scheduledSpendLimitDeletions:
+          description: Scheduled spend limits to delete.
+          items:
+            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitDeletion'
+          nullable: true
+          type: array
+        scheduledSpendLimitUpdates:
+          description: Scheduled spend limits to update.
+          items:
+            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitUpdate'
+          nullable: true
+          type: array
+      type: object
+    PatchCampaignScheduledSpendLimitCreation:
+      description: "Scheduled spend-limit creation.\r\nThe startDate is an advertiser-local\
+        \ calendar date, for example 2026-09-01.\r\nWhen spendLimitType is \"capped\"\
+        : spendLimitAmount and spendLimitRenewal are required.\r\nWhen spendLimitType\
+        \ is \"uncapped\": spendLimitAmount.value is null and spendLimitRenewal is\
+        \ \"undefined\".\r\nAll scheduled spend limits for the campaign must use the\
+        \ same spendLimitRenewal as the active spend limit.\r\nWhen spendLimitRenewal\
+        \ is \"monthly\", startDate must be the first day of the month."
+      example:
+        spendLimitRenewal: undefined
+        spendLimitAmount:
+          value: 0.8008281904610115
+        spendLimitType: capped
+        startDate: 2000-01-23
+      properties:
+        spendLimitAmount:
+          $ref: '#/components/schemas/NillableDecimal'
+        spendLimitRenewal:
+          description: "The period over which the campaign spend limit is applied.\r\
+            \nWhen spendLimitType is \"capped\", this is \"daily\", \"monthly\", or\
+            \ \"lifetime\".\r\nWhen spendLimitType is \"uncapped\", this is \"undefined\"\
+            ."
+          enum:
+          - undefined
+          - daily
+          - monthly
+          - lifetime
+          nullable: true
+          type: string
+        spendLimitType:
+          description: "Controls whether the campaign has a spend limit.\r\n\"capped\"\
+            \ returns a non-null spendLimitAmount.value and a spendLimitRenewal of\
+            \ \"daily\", \"monthly\", or \"lifetime\".\r\n\"uncapped\" returns spendLimitAmount.value\
+            \ as null and spendLimitRenewal as \"undefined\"."
+          enum:
+          - capped
+          - uncapped
+          nullable: true
+          type: string
+        startDate:
+          description: "Advertiser-local calendar date when the scheduled spend limit\
+            \ becomes active, for example \"2026-09-01\"."
+          format: date
+          nullable: true
+          type: string
+      required:
+      - spendLimitType
+      - startDate
+      type: object
+    PatchCampaignScheduledSpendLimitDeletion:
+      description: Scheduled spend-limit deletion.
+      example:
+        id: id
+      properties:
+        id:
+          description: Identifier of the scheduled spend limit to delete.
+          nullable: true
+          type: string
+      required:
+      - id
+      type: object
+    PatchCampaignScheduledSpendLimitUpdate:
+      description: "Scheduled spend-limit update.\r\nUpdates are full replacements:\
+        \ id, startDate, spendLimitType, and the capped or uncapped spend-limit values\
+        \ must describe the complete desired state.\r\nThe startDate is an advertiser-local\
+        \ calendar date, for example 2026-09-01.\r\nAll scheduled spend limits for\
+        \ the campaign must use the same spendLimitRenewal as the active spend limit.\r\
+        \nWhen spendLimitRenewal is \"monthly\", startDate must be the first day of\
+        \ the month."
+      example:
+        spendLimitRenewal: undefined
+        spendLimitAmount:
+          value: 0.8008281904610115
+        id: id
+        spendLimitType: capped
+        startDate: 2000-01-23
+      properties:
+        id:
+          description: Identifier of the scheduled spend limit to update.
+          nullable: true
+          type: string
+        spendLimitAmount:
+          $ref: '#/components/schemas/NillableDecimal'
+        spendLimitRenewal:
+          description: "The period over which the campaign spend limit is applied.\r\
+            \nWhen spendLimitType is \"capped\", this is \"daily\", \"monthly\", or\
+            \ \"lifetime\".\r\nWhen spendLimitType is \"uncapped\", this is \"undefined\"\
+            ."
+          enum:
+          - undefined
+          - daily
+          - monthly
+          - lifetime
+          nullable: true
+          type: string
+        spendLimitType:
+          description: "Controls whether the campaign has a spend limit.\r\n\"capped\"\
+            \ returns a non-null spendLimitAmount.value and a spendLimitRenewal of\
+            \ \"daily\", \"monthly\", or \"lifetime\".\r\n\"uncapped\" returns spendLimitAmount.value\
+            \ as null and spendLimitRenewal as \"undefined\"."
+          enum:
+          - capped
+          - uncapped
+          nullable: true
+          type: string
+        startDate:
+          description: "Advertiser-local calendar date when the scheduled spend limit\
+            \ becomes active, for example \"2026-09-01\"."
+          format: date
+          nullable: true
+          type: string
+      required:
+      - id
+      - spendLimitType
+      - startDate
       type: object
     PatchCampaignSpendLimit:
       description: "Spend limit configuration for a marketing campaign (patch).\r\n\
@@ -16351,6 +17050,34 @@ components:
             spendLimitAmount:
               value: 0.8008281904610115
             spendLimitType: capped
+          scheduledSpendLimit:
+            scheduledSpendLimitCreations:
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              spendLimitType: capped
+              startDate: 2000-01-23
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              spendLimitType: capped
+              startDate: 2000-01-23
+            scheduledSpendLimitDeletions:
+            - id: id
+            - id: id
+            scheduledSpendLimitUpdates:
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
         id: id
         type: Campaign
       properties:
@@ -18480,6 +19207,108 @@ components:
           nullable: true
           type: string
       type: object
+    ReadAdSetScheduledBudgetV26Q1:
+      description: "A budget configuration scheduled to replace the ad set's active\
+        \ budget on the specified \"startDate\".\r\nIt contains the same fields as\
+        \ the active budget, plus the scheduled budget identifier and start date."
+      example:
+        budgetDeliverySmoothing: accelerated
+        budgetDeliveryWeek: undefined
+        budgetAmount: 1.4658129805029452
+        budgetRenewal: undefined
+        id: id
+        pacingBehavior: undefined
+        startDate: 2000-01-23
+        budgetStrategy: capped
+      properties:
+        budgetAmount:
+          description: Maximum budget amount in the advertiser's currency per renewal
+            period. Non-null when capped. null when uncapped.
+          format: double
+          nullable: true
+          type: number
+        budgetDeliverySmoothing:
+          description: "Pacing strategy for spending the budget within a renewal period.\
+            \ Only applicable when budgetStrategy is \"capped\".\r\n- \"accelerated\"\
+            : spend pacing is based on delivery efficiency rather than the full budget\
+            \ period.\r\n- \"standard\": spread spending evenly over the renewal period.\r\
+            \nWhen budgetStrategy is \"uncapped\", this field is not set (null in\
+            \ read responses, omit in create/patch requests)."
+          enum:
+          - accelerated
+          - standard
+          nullable: true
+          type: string
+        budgetDeliveryWeek:
+          description: "Defines which day-of-week boundaries are used for weekly budget\
+            \ renewal. Only applicable when budgetStrategy is \"capped\", budgetRenewal\
+            \ is \"weekly\", and budgetDeliverySmoothing is \"standard\".\r\n- \"\
+            mondayToSunday\", \"tuesdayToMonday\", etc.: the day range over which\
+            \ the weekly budget is paced. Changing this value on the active budget\
+            \ also propagates to all scheduled budgets of the same ad set.\r\n- \"\
+            undefined\": used when budgetStrategy is \"uncapped\", when budgetRenewal\
+            \ is not \"weekly\", or when budgetDeliverySmoothing is \"accelerated\"\
+            ."
+          enum:
+          - undefined
+          - mondayToSunday
+          - tuesdayToMonday
+          - wednesdayToTuesday
+          - thursdayToWednesday
+          - fridayToThursday
+          - saturdayToFriday
+          - sundayToSaturday
+          nullable: true
+          type: string
+        budgetRenewal:
+          description: "The period over which the budget is spent.\r\n- \"daily\"\
+            , \"monthly\", \"weekly\": budget resets at the start of each period.\r\
+            \n- \"lifetime\": budget covers the entire ad set duration without resetting.\r\
+            \n- \"undefined\": only used when budgetStrategy is \"uncapped\" (no renewal\
+            \ applies). Required for capped budgets (must not be \"undefined\")."
+          enum:
+          - undefined
+          - daily
+          - monthly
+          - lifetime
+          - weekly
+          nullable: true
+          type: string
+        budgetStrategy:
+          description: "Controls whether the ad set has a spending limit.\r\n- \"\
+            capped\": spending is limited to budgetAmount. Requires budgetAmount (non-null),\
+            \ budgetRenewal (not \"undefined\"), and budgetDeliverySmoothing (not\
+            \ null).\r\n- \"uncapped\": no spending limit. budgetAmount is null, budgetRenewal\
+            \ is \"undefined\", and budgetDeliverySmoothing is null."
+          enum:
+          - capped
+          - uncapped
+          nullable: true
+          type: string
+        id:
+          description: Identifier of the scheduled budget.
+          nullable: true
+          type: string
+        pacingBehavior:
+          description: "Controls how a standard capped budget is paced.\r\n- \"targetFullBudget\"\
+            : spend toward the full budget amount within the renewal period.\r\n-\
+            \ \"targetAverageDailyBudget\": spend toward an average daily amount.\
+            \ Only supported for capped, standard, monthly budgets.\r\n- \"undefined\"\
+            : no explicit pacing behavior. Use for uncapped or accelerated budgets,\
+            \ or omit pacingBehavior."
+          enum:
+          - undefined
+          - targetFullBudget
+          - targetAverageDailyBudget
+          nullable: true
+          type: string
+        startDate:
+          description: Advertiser-local calendar date when the scheduled budget becomes
+            active.
+          format: date
+          nullable: true
+          type: string
+      type: object
     ReadAdSetScheduleV26Q1:
       description: Ad set schedule read model
       example:
@@ -18556,7 +19385,7 @@ components:
               value: null
           frequencyCapping:
             value:
-              maximumImpressions: 1
+              maximumImpressions: 5
               frequency: hourly
           deliveryLimitations:
             operatingSystems:
@@ -18570,6 +19399,23 @@ components:
             - web
         name: name
         datasetId: datasetId
+        scheduledBudgets:
+        - budgetDeliverySmoothing: accelerated
+          budgetDeliveryWeek: undefined
+          budgetAmount: 1.4658129805029452
+          budgetRenewal: undefined
+          id: id
+          pacingBehavior: undefined
+          startDate: 2000-01-23
+          budgetStrategy: capped
+        - budgetDeliverySmoothing: accelerated
+          budgetDeliveryWeek: undefined
+          budgetAmount: 1.4658129805029452
+          budgetRenewal: undefined
+          id: id
+          pacingBehavior: undefined
+          startDate: 2000-01-23
+          budgetStrategy: capped
         budget:
           budgetDeliverySmoothing: accelerated
           budgetDeliveryWeek: undefined
@@ -18645,6 +19491,11 @@ components:
           type: string
         schedule:
           $ref: '#/components/schemas/ReadAdSetScheduleV26Q1'
+        scheduledBudgets:
+          items:
+            $ref: '#/components/schemas/ReadAdSetScheduledBudgetV26Q1'
+          nullable: true
+          type: array
         targeting:
           $ref: '#/components/schemas/AdSetTargetingV26Q1'
         videoChannel:
@@ -18726,7 +19577,7 @@ components:
                 value: null
             frequencyCapping:
               value:
-                maximumImpressions: 1
+                maximumImpressions: 5
                 frequency: hourly
             deliveryLimitations:
               operatingSystems:
@@ -18740,6 +19591,23 @@ components:
               - web
           name: name
           datasetId: datasetId
+          scheduledBudgets:
+          - budgetDeliverySmoothing: accelerated
+            budgetDeliveryWeek: undefined
+            budgetAmount: 1.4658129805029452
+            budgetRenewal: undefined
+            id: id
+            pacingBehavior: undefined
+            startDate: 2000-01-23
+            budgetStrategy: capped
+          - budgetDeliverySmoothing: accelerated
+            budgetDeliveryWeek: undefined
+            budgetAmount: 1.4658129805029452
+            budgetRenewal: undefined
+            id: id
+            pacingBehavior: undefined
+            startDate: 2000-01-23
+            budgetStrategy: capped
           budget:
             budgetDeliverySmoothing: accelerated
             budgetDeliveryWeek: undefined
@@ -19390,7 +20258,7 @@ components:
                   value: null
               frequencyCapping:
                 value:
-                  maximumImpressions: 1
+                  maximumImpressions: 5
                   frequency: hourly
               deliveryLimitations:
                 operatingSystems:
@@ -19402,6 +20270,44 @@ components:
                 environments:
                 - web
                 - web
+            scheduledBudget:
+              scheduledBudgetCreations:
+              - budgetDeliverySmoothing: accelerated
+                budgetDeliveryWeek: undefined
+                budgetAmount: 6.027456183070403
+                budgetRenewal: undefined
+                pacingBehavior: undefined
+                startDate: 2000-01-23
+                budgetStrategy: capped
+              - budgetDeliverySmoothing: accelerated
+                budgetDeliveryWeek: undefined
+                budgetAmount: 6.027456183070403
+                budgetRenewal: undefined
+                pacingBehavior: undefined
+                startDate: 2000-01-23
+                budgetStrategy: capped
+              scheduledBudgetUpdates:
+              - budgetDeliverySmoothing: accelerated
+                budgetDeliveryWeek: undefined
+                budgetAmount:
+                  value: 0.8008281904610115
+                budgetRenewal: undefined
+                id: id
+                pacingBehavior: undefined
+                startDate: 2000-01-23
+                budgetStrategy: capped
+              - budgetDeliverySmoothing: accelerated
+                budgetDeliveryWeek: undefined
+                budgetAmount:
+                  value: 0.8008281904610115
+                budgetRenewal: undefined
+                id: id
+                pacingBehavior: undefined
+                startDate: 2000-01-23
+                budgetStrategy: capped
+              scheduledBudgetDeletions:
+              - id: id
+              - id: id
             bidding:
               bidAmount:
                 value: 0.8008281904610115
@@ -19435,7 +20341,7 @@ components:
                   value: null
               frequencyCapping:
                 value:
-                  maximumImpressions: 1
+                  maximumImpressions: 5
                   frequency: hourly
               deliveryLimitations:
                 operatingSystems:
@@ -19447,6 +20353,44 @@ components:
                 environments:
                 - web
                 - web
+            scheduledBudget:
+              scheduledBudgetCreations:
+              - budgetDeliverySmoothing: accelerated
+                budgetDeliveryWeek: undefined
+                budgetAmount: 6.027456183070403
+                budgetRenewal: undefined
+                pacingBehavior: undefined
+                startDate: 2000-01-23
+                budgetStrategy: capped
+              - budgetDeliverySmoothing: accelerated
+                budgetDeliveryWeek: undefined
+                budgetAmount: 6.027456183070403
+                budgetRenewal: undefined
+                pacingBehavior: undefined
+                startDate: 2000-01-23
+                budgetStrategy: capped
+              scheduledBudgetUpdates:
+              - budgetDeliverySmoothing: accelerated
+                budgetDeliveryWeek: undefined
+                budgetAmount:
+                  value: 0.8008281904610115
+                budgetRenewal: undefined
+                id: id
+                pacingBehavior: undefined
+                startDate: 2000-01-23
+                budgetStrategy: capped
+              - budgetDeliverySmoothing: accelerated
+                budgetDeliveryWeek: undefined
+                budgetAmount:
+                  value: 0.8008281904610115
+                budgetRenewal: undefined
+                id: id
+                pacingBehavior: undefined
+                startDate: 2000-01-23
+                budgetStrategy: capped
+              scheduledBudgetDeletions:
+              - id: id
+              - id: id
             bidding:
               bidAmount:
                 value: 0.8008281904610115
@@ -21174,7 +22118,7 @@ components:
                   value: null
               frequencyCapping:
                 value:
-                  maximumImpressions: 1
+                  maximumImpressions: 5
                   frequency: hourly
               deliveryLimitations:
                 operatingSystems:
@@ -21188,6 +22132,23 @@ components:
                 - web
             name: name
             datasetId: datasetId
+            scheduledBudgets:
+            - budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount: 1.4658129805029452
+              budgetRenewal: undefined
+              id: id
+              pacingBehavior: undefined
+              startDate: 2000-01-23
+              budgetStrategy: capped
+            - budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount: 1.4658129805029452
+              budgetRenewal: undefined
+              id: id
+              pacingBehavior: undefined
+              startDate: 2000-01-23
+              budgetStrategy: capped
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
@@ -21431,7 +22392,7 @@ components:
                   value: null
               frequencyCapping:
                 value:
-                  maximumImpressions: 1
+                  maximumImpressions: 5
                   frequency: hourly
               deliveryLimitations:
                 operatingSystems:
@@ -21445,6 +22406,23 @@ components:
                 - web
             name: name
             datasetId: datasetId
+            scheduledBudgets:
+            - budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount: 1.4658129805029452
+              budgetRenewal: undefined
+              id: id
+              pacingBehavior: undefined
+              startDate: 2000-01-23
+              budgetStrategy: capped
+            - budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount: 1.4658129805029452
+              budgetRenewal: undefined
+              id: id
+              pacingBehavior: undefined
+              startDate: 2000-01-23
+              budgetStrategy: capped
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
@@ -21484,7 +22462,7 @@ components:
                   value: null
               frequencyCapping:
                 value:
-                  maximumImpressions: 1
+                  maximumImpressions: 5
                   frequency: hourly
               deliveryLimitations:
                 operatingSystems:
@@ -21498,6 +22476,23 @@ components:
                 - web
             name: name
             datasetId: datasetId
+            scheduledBudgets:
+            - budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount: 1.4658129805029452
+              budgetRenewal: undefined
+              id: id
+              pacingBehavior: undefined
+              startDate: 2000-01-23
+              budgetStrategy: capped
+            - budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount: 1.4658129805029452
+              budgetRenewal: undefined
+              id: id
+              pacingBehavior: undefined
+              startDate: 2000-01-23
+              budgetStrategy: capped
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
@@ -23537,7 +24532,7 @@ components:
                 value: null
             frequencyCapping:
               value:
-                maximumImpressions: 1
+                maximumImpressions: 5
                 frequency: hourly
             deliveryLimitations:
               operatingSystems:
@@ -23549,6 +24544,44 @@ components:
               environments:
               - web
               - web
+          scheduledBudget:
+            scheduledBudgetCreations:
+            - budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount: 6.027456183070403
+              budgetRenewal: undefined
+              pacingBehavior: undefined
+              startDate: 2000-01-23
+              budgetStrategy: capped
+            - budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount: 6.027456183070403
+              budgetRenewal: undefined
+              pacingBehavior: undefined
+              startDate: 2000-01-23
+              budgetStrategy: capped
+            scheduledBudgetUpdates:
+            - budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount:
+                value: 0.8008281904610115
+              budgetRenewal: undefined
+              id: id
+              pacingBehavior: undefined
+              startDate: 2000-01-23
+              budgetStrategy: capped
+            - budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount:
+                value: 0.8008281904610115
+              budgetRenewal: undefined
+              id: id
+              pacingBehavior: undefined
+              startDate: 2000-01-23
+              budgetStrategy: capped
+            scheduledBudgetDeletions:
+            - id: id
+            - id: id
           bidding:
             bidAmount:
               value: 0.8008281904610115
@@ -23587,7 +24620,7 @@ components:
     AdSetTargetingV26Q1_frequencyCapping:
       example:
         value:
-          maximumImpressions: 1
+          maximumImpressions: 5
           frequency: hourly
       nullable: true
       properties:

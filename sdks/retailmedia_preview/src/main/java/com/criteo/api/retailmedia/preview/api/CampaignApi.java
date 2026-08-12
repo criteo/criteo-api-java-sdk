@@ -30,7 +30,7 @@ import java.io.IOException;
 import com.criteo.api.retailmedia.preview.model.Creative2Response;
 import com.criteo.api.retailmedia.preview.model.CreativeCreateModel2;
 import com.criteo.api.retailmedia.preview.model.CreativeUpdateModel2;
-import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeCreativeSearchResponse;
+import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceInputCreativeSearchRequest;
@@ -2957,7 +2957,7 @@ public class CampaignApi {
      * @param entityResourceInputCreativeSearchRequest search request filter (required)
      * @param limit limit to paginated result (optional, default to 50)
      * @param offset offset to paginated result (optional, default to 0)
-     * @return EntityResourceCollectionOutcomeCreativeSearchResponse
+     * @return EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2965,8 +2965,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Creatives found </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceCollectionOutcomeCreativeSearchResponse searchAccountCreatives(String accountId, EntityResourceInputCreativeSearchRequest entityResourceInputCreativeSearchRequest, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeCreativeSearchResponse> localVarResp = searchAccountCreativesWithHttpInfo(accountId, entityResourceInputCreativeSearchRequest, limit, offset);
+    public EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata searchAccountCreatives(String accountId, EntityResourceInputCreativeSearchRequest entityResourceInputCreativeSearchRequest, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata> localVarResp = searchAccountCreativesWithHttpInfo(accountId, entityResourceInputCreativeSearchRequest, limit, offset);
         return localVarResp.getData();
     }
 
@@ -2977,7 +2977,7 @@ public class CampaignApi {
      * @param entityResourceInputCreativeSearchRequest search request filter (required)
      * @param limit limit to paginated result (optional, default to 50)
      * @param offset offset to paginated result (optional, default to 0)
-     * @return ApiResponse&lt;EntityResourceCollectionOutcomeCreativeSearchResponse&gt;
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2985,9 +2985,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Creatives found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceCollectionOutcomeCreativeSearchResponse> searchAccountCreativesWithHttpInfo(String accountId, EntityResourceInputCreativeSearchRequest entityResourceInputCreativeSearchRequest, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata> searchAccountCreativesWithHttpInfo(String accountId, EntityResourceInputCreativeSearchRequest entityResourceInputCreativeSearchRequest, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = searchAccountCreativesValidateBeforeCall(accountId, entityResourceInputCreativeSearchRequest, limit, offset, null);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeCreativeSearchResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3007,10 +3007,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Creatives found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAccountCreativesAsync(String accountId, EntityResourceInputCreativeSearchRequest entityResourceInputCreativeSearchRequest, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeCreativeSearchResponse> _callback) throws ApiException {
+    public okhttp3.Call searchAccountCreativesAsync(String accountId, EntityResourceInputCreativeSearchRequest entityResourceInputCreativeSearchRequest, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchAccountCreativesValidateBeforeCall(accountId, entityResourceInputCreativeSearchRequest, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeCreativeSearchResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

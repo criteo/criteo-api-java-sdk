@@ -804,7 +804,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityResourceCollectionOutcomeCreativeSearchResponse'
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata'
           description: Creatives found
       security:
       - oauth:
@@ -5125,7 +5125,7 @@ components:
       description: Data model represents the data change capture of balance history.
       example:
         dateOfModification: 2000-01-23T04:56:07.000+00:00
-        changeType: balanceCreated
+        changeType: BalanceCreated
         modifiedByUser: modifiedByUser
         memo: memo
         changeDetails:
@@ -5139,19 +5139,19 @@ components:
         changeType:
           description: Represent the type of change states of the history.
           enum:
-          - balanceCreated
-          - balanceAdded
-          - balanceRemoved
-          - balanceUncapped
-          - balanceCapped
-          - endDate
-          - startDate
-          - balanceName
-          - retailerPoNumber
-          - criteoPoNumber
-          - retailerId
-          - valueAdd
-          - unknown
+          - BalanceCreated
+          - BalanceAdded
+          - BalanceRemoved
+          - BalanceUncapped
+          - BalanceCapped
+          - EndDate
+          - StartDate
+          - BalanceName
+          - RetailerPoNumber
+          - CriteoPoNumber
+          - RetailerId
+          - ValueAdd
+          - Unknown
           type: string
         dateOfModification:
           description: Date when data change has occured.
@@ -6997,11 +6997,15 @@ components:
           readOnly: true
           type: array
       type: object
-    EntityResourceCollectionOutcomeCreativeSearchResponse:
+    EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
-        several entities.
+        several entities and metadata.
       example:
+        metadata:
+          offset: 1
+          count: 0
+          limit: 6
         data:
         - attributes:
             lineItems:
@@ -7090,6 +7094,8 @@ components:
           nullable: true
           readOnly: true
           type: array
+        metadata:
+          $ref: '#/components/schemas/Metadata'
         warnings:
           description: Warnings that occured during this call.
           items:
@@ -8969,16 +8975,16 @@ components:
       example:
         lineItemId: lineItemId
         capoutTimes:
-          total:
+          Hourly:
           - 2000-01-23T04:56:07.000+00:00
           - 2000-01-23T04:56:07.000+00:00
-          daily:
+          Daily:
           - 2000-01-23T04:56:07.000+00:00
           - 2000-01-23T04:56:07.000+00:00
-          monthly:
+          Monthly:
           - 2000-01-23T04:56:07.000+00:00
           - 2000-01-23T04:56:07.000+00:00
-          hourly:
+          Total:
           - 2000-01-23T04:56:07.000+00:00
           - 2000-01-23T04:56:07.000+00:00
       properties:
@@ -9031,30 +9037,30 @@ components:
         lineItemBudgetCapOutHistories:
         - lineItemId: lineItemId
           capoutTimes:
-            total:
+            Hourly:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            daily:
+            Daily:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            monthly:
+            Monthly:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            hourly:
+            Total:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
         - lineItemId: lineItemId
           capoutTimes:
-            total:
+            Hourly:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            daily:
+            Daily:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            monthly:
+            Monthly:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
-            hourly:
+            Total:
             - 2000-01-23T04:56:07.000+00:00
             - 2000-01-23T04:56:07.000+00:00
       nullable: true
@@ -17189,7 +17195,7 @@ components:
       example:
         attributes:
           dateOfModification: 2000-01-23T04:56:07.000+00:00
-          changeType: balanceCreated
+          changeType: BalanceCreated
           modifiedByUser: modifiedByUser
           memo: memo
           changeDetails:
@@ -17256,7 +17262,7 @@ components:
         data:
         - attributes:
             dateOfModification: 2000-01-23T04:56:07.000+00:00
-            changeType: balanceCreated
+            changeType: BalanceCreated
             modifiedByUser: modifiedByUser
             memo: memo
             changeDetails:
@@ -17266,7 +17272,7 @@ components:
           type: type
         - attributes:
             dateOfModification: 2000-01-23T04:56:07.000+00:00
-            changeType: balanceCreated
+            changeType: BalanceCreated
             modifiedByUser: modifiedByUser
             memo: memo
             changeDetails:
@@ -17862,30 +17868,30 @@ components:
           lineItemBudgetCapOutHistories:
           - lineItemId: lineItemId
             capoutTimes:
-              total:
+              Hourly:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              daily:
+              Daily:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              monthly:
+              Monthly:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              hourly:
+              Total:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
           - lineItemId: lineItemId
             capoutTimes:
-              total:
+              Hourly:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              daily:
+              Daily:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              monthly:
+              Monthly:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
-              hourly:
+              Total:
               - 2000-01-23T04:56:07.000+00:00
               - 2000-01-23T04:56:07.000+00:00
         type: type
@@ -18157,30 +18163,30 @@ components:
             lineItemBudgetCapOutHistories:
             - lineItemId: lineItemId
               capoutTimes:
-                total:
+                Hourly:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                daily:
+                Daily:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                monthly:
+                Monthly:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                hourly:
+                Total:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
             - lineItemId: lineItemId
               capoutTimes:
-                total:
+                Hourly:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                daily:
+                Daily:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                monthly:
+                Monthly:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
-                hourly:
+                Total:
                 - 2000-01-23T04:56:07.000+00:00
                 - 2000-01-23T04:56:07.000+00:00
           type: type
@@ -18394,39 +18400,39 @@ components:
       description: The dictionary of budget type to the list of cap out times up to
         3 most recent cap out times
       example:
-        total:
+        Hourly:
         - 2000-01-23T04:56:07.000+00:00
         - 2000-01-23T04:56:07.000+00:00
-        daily:
+        Daily:
         - 2000-01-23T04:56:07.000+00:00
         - 2000-01-23T04:56:07.000+00:00
-        monthly:
+        Monthly:
         - 2000-01-23T04:56:07.000+00:00
         - 2000-01-23T04:56:07.000+00:00
-        hourly:
+        Total:
         - 2000-01-23T04:56:07.000+00:00
         - 2000-01-23T04:56:07.000+00:00
       nullable: true
       properties:
-        daily:
+        Daily:
           items:
             format: date-time
             type: string
           nullable: true
           type: array
-        hourly:
+        Hourly:
           items:
             format: date-time
             type: string
           nullable: true
           type: array
-        monthly:
+        Monthly:
           items:
             format: date-time
             type: string
           nullable: true
           type: array
-        total:
+        Total:
           items:
             format: date-time
             type: string

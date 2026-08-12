@@ -38,6 +38,14 @@ A creative entity
 | CUSTOM | &quot;CUSTOM&quot; |
 | DISPLAYPANEL | &quot;DisplayPanel&quot; |
 | DIGITALSHELFTALKER | &quot;DigitalShelfTalker&quot; |
+| COMMERCEVIDEOSPOTLIGHT | &quot;CommerceVideoSpotlight&quot; |
+| BRANDINGVIDEOSTANDOUT | &quot;BrandingVideoStandout&quot; |
+| COMMERCEDISPLAYSPOTLIGHT | &quot;CommerceDisplaySpotlight&quot; |
+| BRANDINGDISPLAYSPOTLIGHTSOLO | &quot;BrandingDisplaySpotlightSolo&quot; |
+| COMMERCEDISPLAYGRIDSHELF | &quot;CommerceDisplayGridShelf&quot; |
+| COMMERCEDISPLAYGRIDDUET | &quot;CommerceDisplayGridDuet&quot; |
+| BRANDINGDISPLAYGRIDSOLO | &quot;BrandingDisplayGridSolo&quot; |
+| COMMERCEVIDEOGRIDDUET | &quot;CommerceVideoGridDuet&quot; |
 
 
 
