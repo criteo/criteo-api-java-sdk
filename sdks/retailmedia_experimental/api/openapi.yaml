@@ -641,6 +641,41 @@ paths:
       - Balance
       x-content-type: application/json
       x-accepts: application/json
+  /experimental/retail-media/accounts/{account-id}/campaigns:
+    post:
+      description: Creates a campaign under the specified account.
+      operationId: CreateCampaign
+      parameters:
+      - description: The external id of the account.
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfOrchestratorContractCampaignCreateModelV2'
+        description: The campaign to create.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceOutcomeOfOrchestratorContractCampaignResponseModelV2'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      summary: "/experimental/retail-media/accounts/{account-id}/campaigns"
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
   /experimental/retail-media/accounts/{account-id}/creatives:
     post:
       description: Create a creative for an account
@@ -2143,6 +2178,41 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
+  /experimental/retail-media/line-items/{line-item-id}/products/add:
+    post:
+      description: Add products to a line item.
+      operationId: AddProducts
+      parameters:
+      - description: The line item id.
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddProductsModelRequest'
+        description: The products to add.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddProductsResultModelResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      summary: "/experimental/retail-media/line-items/{line-item-id}/products/add"
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}/products/append:
     post:
       description: Append a collection of promoted products to a line item
@@ -3012,6 +3082,194 @@ paths:
       x-accepts: application/json
 components:
   schemas:
+    AddProductsModel:
+      additionalProperties: false
+      description: The products to add to a line item.
+      example:
+        displayProductDetails:
+        - productId: productId
+        - productId: productId
+        - productId: productId
+        - productId: productId
+        - productId: productId
+        productType: DisplayProduct
+      properties:
+        displayProductDetails:
+          description: The display products to add to the line item.
+          items:
+            $ref: '#/components/schemas/ProductModel'
+          maxItems: 1500
+          nullable: true
+          type: array
+        productType:
+          default: DisplayProduct
+          description: The type of product being added.
+          enum:
+          - DisplayProduct
+          - SponsoredProduct
+          type: string
+      type: object
+    AddProductsModelRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            displayProductDetails:
+            - productId: productId
+            - productId: productId
+            - productId: productId
+            - productId: productId
+            - productId: productId
+            productType: DisplayProduct
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/AddProductsModelResource'
+      type: object
+    AddProductsModelResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          displayProductDetails:
+          - productId: productId
+          - productId: productId
+          - productId: productId
+          - productId: productId
+          - productId: productId
+          productType: DisplayProduct
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AddProductsModel'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    AddProductsResultModel:
+      additionalProperties: false
+      description: The result of adding products to a line item.
+      example:
+        displayProductDetails:
+        - approvalStatus: Unknown
+          productId: productId
+        - approvalStatus: Unknown
+          productId: productId
+        productType: DisplayProduct
+      nullable: true
+      properties:
+        displayProductDetails:
+          description: The display products added to the line item.
+          items:
+            $ref: '#/components/schemas/DisplayProductResultModel'
+          nullable: true
+          type: array
+        productType:
+          description: The type of product that was added.
+          enum:
+          - DisplayProduct
+          - SponsoredProduct
+          nullable: true
+          type: string
+      type: object
+    AddProductsResultModelResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          displayProductDetails:
+          - approvalStatus: Unknown
+            productId: productId
+          - approvalStatus: Unknown
+            productId: productId
+          productType: DisplayProduct
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AddProductsResultModel'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    AddProductsResultModelResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            displayProductDetails:
+            - approvalStatus: Unknown
+              productId: productId
+            - approvalStatus: Unknown
+              productId: productId
+            productType: DisplayProduct
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/AddProductsResultModelResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     AppendCampaignsRequestV1:
       additionalProperties: false
       description: Request object for appending campaigns to balance campaigns mapping.
@@ -5730,6 +5988,129 @@ components:
           nullable: true
           type: array
       type: object
+    CampaignServiceContractAttributionSettingsCreateModelV2:
+      additionalProperties: false
+      description: "Wrapper for attribution settings. Each setting may be omitted,\
+        \ in which case it is populated with the default for the campaign type."
+      example:
+        clickAttributionWindow: OneWeek
+        clickAttributionScope: SameSku
+        viewAttributionScope: SameSku
+        viewAttributionWindow: None
+      properties:
+        clickAttributionScope:
+          enum:
+          - SameSku
+          - SameSkuCategory
+          - SameSkuCategoryBrand
+          nullable: true
+          type: string
+        clickAttributionWindow:
+          enum:
+          - OneWeek
+          - TwoWeeks
+          - OneMonth
+          nullable: true
+          type: string
+        viewAttributionScope:
+          enum:
+          - SameSku
+          - SameSkuCategory
+          - SameSkuCategoryBrand
+          nullable: true
+          type: string
+        viewAttributionWindow:
+          enum:
+          - None
+          - OneDay
+          - OneWeek
+          - TwoWeeks
+          - OneMonth
+          nullable: true
+          type: string
+      type: object
+    CampaignServiceContractAttributionSettingsModelV2:
+      additionalProperties: false
+      description: Wrapper for attribution settings.
+      example:
+        clickAttributionWindow: OneWeek
+        clickAttributionScope: SameSku
+        viewAttributionScope: SameSku
+        viewAttributionWindow: None
+      nullable: true
+      properties:
+        clickAttributionScope:
+          enum:
+          - SameSku
+          - SameSkuCategory
+          - SameSkuCategoryBrand
+          - Unknown
+          nullable: true
+          type: string
+        clickAttributionWindow:
+          enum:
+          - OneWeek
+          - TwoWeeks
+          - OneMonth
+          - Unknown
+          nullable: true
+          type: string
+        viewAttributionScope:
+          enum:
+          - SameSku
+          - SameSkuCategory
+          - SameSkuCategoryBrand
+          - Unknown
+          nullable: true
+          type: string
+        viewAttributionWindow:
+          enum:
+          - None
+          - OneDay
+          - OneWeek
+          - TwoWeeks
+          - OneMonth
+          - Unknown
+          nullable: true
+          type: string
+      type: object
+    CampaignServiceContractScheduleDetailsCreateModelV2:
+      additionalProperties: false
+      description: Flight dates of the campaign. Applies to SponsoredProducts only;
+        OnsiteDisplay campaigns derive their dates from their line items and reject
+        this node.
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        endDate:
+          format: date-time
+          type: string
+        startDate:
+          format: date-time
+          type: string
+      required:
+      - endDate
+      - startDate
+      type: object
+    CampaignServiceContractScheduleDetailsModelV2:
+      additionalProperties: false
+      description: Flight dates of the campaign. Applies to SponsoredProducts only;
+        OnsiteDisplay campaigns derive their dates from their line items.
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        endDate:
+          format: date-time
+          nullable: true
+          type: string
+        startDate:
+          format: date-time
+          nullable: true
+          type: string
+      type: object
     CatalogStatusV2:
       additionalProperties: false
       description: The status of an asynchronous request to generate a catalog
@@ -7010,6 +7391,30 @@ components:
           nullable: true
           type: string
       type: object
+    DisplayProductResultModel:
+      additionalProperties: false
+      description: A display product returned after being added to a line item.
+      example:
+        approvalStatus: Unknown
+        productId: productId
+      properties:
+        approvalStatus:
+          description: The approval status of the product.
+          enum:
+          - Unknown
+          - Approved
+          - AutoApproved
+          - InReview
+          - Rejected
+          - AutoRejected
+          - Unsubmitted
+          nullable: true
+          type: string
+        productId:
+          description: The identifier of the product.
+          nullable: true
+          type: string
+      type: object
     EntityResourceBalanceV1:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
@@ -7911,6 +8316,56 @@ components:
           nullable: true
           type: string
       type: object
+    EntityResourceOfOrchestratorContractCampaignResponseModelV2:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          billByRetailerId: billByRetailerId
+          campaignType: Unknown
+          attributionSettings:
+            clickAttributionWindow: OneWeek
+            clickAttributionScope: SameSku
+            viewAttributionScope: SameSku
+            viewAttributionWindow: None
+          companyName: companyName
+          budgetDetails:
+            budgetRemaining: 6.027456183070403
+            budgetSpent: 1.4658129805029452
+            isAutoDailyPacing: true
+            dailyPacing: 5.962133916683182
+            monthlyPacing: 5.637376656633329
+            budget: 0.8008281904610115
+          drawableBalanceIds:
+          - drawableBalanceIds
+          - drawableBalanceIds
+          onBehalfCompanyName: onBehalfCompanyName
+          objective: Manual
+          accountId: accountId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          name: name
+          buyType: Unknown
+          id: id
+          scheduleDetails:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+          status: Unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/OrchestratorContractCampaignResponseModelV2'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     EntityResourceOfRetailerResultV2:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
@@ -8286,6 +8741,105 @@ components:
           description: Warnings that occured during this call.
           items:
             $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    EntityResourceOutcomeOfOrchestratorContractCampaignResponseModelV2:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
+      example:
+        data:
+          attributes:
+            billByRetailerId: billByRetailerId
+            campaignType: Unknown
+            attributionSettings:
+              clickAttributionWindow: OneWeek
+              clickAttributionScope: SameSku
+              viewAttributionScope: SameSku
+              viewAttributionWindow: None
+            companyName: companyName
+            budgetDetails:
+              budgetRemaining: 6.027456183070403
+              budgetSpent: 1.4658129805029452
+              isAutoDailyPacing: true
+              dailyPacing: 5.962133916683182
+              monthlyPacing: 5.637376656633329
+              budget: 0.8008281904610115
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            onBehalfCompanyName: onBehalfCompanyName
+            objective: Manual
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            name: name
+            buyType: Unknown
+            id: id
+            scheduleDetails:
+              endDate: 2000-01-23T04:56:07.000+00:00
+              startDate: 2000-01-23T04:56:07.000+00:00
+            status: Unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/EntityResourceOfOrchestratorContractCampaignResponseModelV2'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
@@ -10440,6 +10994,243 @@ components:
       - offerId
       - price
       type: object
+    OrchestratorContractBudgetDetailsCreateModelV2:
+      additionalProperties: false
+      description: Budget and pacing of the campaign.
+      example:
+        isAutoDailyPacing: true
+        dailyPacing: 6.027456183070403
+        monthlyPacing: 1.4658129805029452
+        budget: 0.8008281904610115
+      properties:
+        budget:
+          format: double
+          nullable: true
+          type: number
+        dailyPacing:
+          format: double
+          nullable: true
+          type: number
+        isAutoDailyPacing:
+          type: boolean
+        monthlyPacing:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    OrchestratorContractBudgetDetailsModelV2:
+      additionalProperties: false
+      description: "Budget and pacing of the campaign, including the amounts spent\
+        \ and remaining."
+      example:
+        budgetRemaining: 6.027456183070403
+        budgetSpent: 1.4658129805029452
+        isAutoDailyPacing: true
+        dailyPacing: 5.962133916683182
+        monthlyPacing: 5.637376656633329
+        budget: 0.8008281904610115
+      nullable: true
+      properties:
+        budget:
+          format: double
+          nullable: true
+          type: number
+        budgetRemaining:
+          format: double
+          nullable: true
+          type: number
+        budgetSpent:
+          format: double
+          nullable: true
+          type: number
+        dailyPacing:
+          format: double
+          nullable: true
+          type: number
+        isAutoDailyPacing:
+          nullable: true
+          type: boolean
+        monthlyPacing:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    OrchestratorContractCampaignCreateModelV2:
+      additionalProperties: false
+      description: An object that represents the available options to set when creating
+        a Retail Media Campaign
+      example:
+        billByRetailerId: billByRetailerId
+        campaignType: SponsoredProducts
+        attributionSettings:
+          clickAttributionWindow: OneWeek
+          clickAttributionScope: SameSku
+          viewAttributionScope: SameSku
+          viewAttributionWindow: None
+        companyName: companyName
+        budgetDetails:
+          isAutoDailyPacing: true
+          dailyPacing: 6.027456183070403
+          monthlyPacing: 1.4658129805029452
+          budget: 0.8008281904610115
+        drawableBalanceIds:
+        - drawableBalanceIds
+        - drawableBalanceIds
+        name: name
+        onBehalfCompanyName: onBehalfCompanyName
+        buyType: Auction
+        objective: Manual
+        scheduleDetails:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        attributionSettings:
+          $ref: '#/components/schemas/CampaignServiceContractAttributionSettingsCreateModelV2'
+        billByRetailerId:
+          nullable: true
+          type: string
+        budgetDetails:
+          $ref: '#/components/schemas/OrchestratorContractBudgetDetailsCreateModelV2'
+        buyType:
+          enum:
+          - Auction
+          type: string
+        campaignType:
+          enum:
+          - SponsoredProducts
+          - OnsiteDisplay
+          type: string
+        companyName:
+          nullable: true
+          type: string
+        drawableBalanceIds:
+          items:
+            type: string
+          nullable: true
+          type: array
+        name:
+          nullable: true
+          type: string
+        objective:
+          enum:
+          - Manual
+          - Clicks
+          - Conversion
+          - Revenue
+          nullable: true
+          type: string
+        onBehalfCompanyName:
+          nullable: true
+          type: string
+        scheduleDetails:
+          $ref: '#/components/schemas/CampaignServiceContractScheduleDetailsCreateModelV2'
+      type: object
+    OrchestratorContractCampaignResponseModelV2:
+      additionalProperties: false
+      description: A Retail Media Campaign used to represent an advertiser's marketing
+        objective
+      example:
+        billByRetailerId: billByRetailerId
+        campaignType: Unknown
+        attributionSettings:
+          clickAttributionWindow: OneWeek
+          clickAttributionScope: SameSku
+          viewAttributionScope: SameSku
+          viewAttributionWindow: None
+        companyName: companyName
+        budgetDetails:
+          budgetRemaining: 6.027456183070403
+          budgetSpent: 1.4658129805029452
+          isAutoDailyPacing: true
+          dailyPacing: 5.962133916683182
+          monthlyPacing: 5.637376656633329
+          budget: 0.8008281904610115
+        drawableBalanceIds:
+        - drawableBalanceIds
+        - drawableBalanceIds
+        onBehalfCompanyName: onBehalfCompanyName
+        objective: Manual
+        accountId: accountId
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        name: name
+        buyType: Unknown
+        id: id
+        scheduleDetails:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2000-01-23T04:56:07.000+00:00
+        status: Unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        accountId:
+          nullable: true
+          type: string
+        attributionSettings:
+          $ref: '#/components/schemas/CampaignServiceContractAttributionSettingsModelV2'
+        billByRetailerId:
+          nullable: true
+          type: string
+        budgetDetails:
+          $ref: '#/components/schemas/OrchestratorContractBudgetDetailsModelV2'
+        buyType:
+          enum:
+          - Unknown
+          - Auction
+          - PreferredDeals
+          - Sponsorship
+          nullable: true
+          type: string
+        campaignType:
+          enum:
+          - Unknown
+          - SponsoredProducts
+          - OnsiteDisplay
+          nullable: true
+          type: string
+        companyName:
+          nullable: true
+          type: string
+        createdAt:
+          format: date-time
+          nullable: true
+          type: string
+        drawableBalanceIds:
+          items:
+            type: string
+          nullable: true
+          type: array
+        id:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        objective:
+          enum:
+          - Manual
+          - Clicks
+          - Conversion
+          - Revenue
+          - Unknown
+          nullable: true
+          type: string
+        onBehalfCompanyName:
+          nullable: true
+          type: string
+        scheduleDetails:
+          $ref: '#/components/schemas/CampaignServiceContractScheduleDetailsModelV2'
+        status:
+          enum:
+          - Unknown
+          - Active
+          - Inactive
+          nullable: true
+          type: string
+        updatedAt:
+          format: date-time
+          nullable: true
+          type: string
+      type: object
     Outcome:
       additionalProperties: false
       description: The outcome of an API call.
@@ -11957,6 +12748,17 @@ components:
           format: int32
           nullable: true
           type: integer
+      type: object
+    ProductModel:
+      additionalProperties: false
+      description: A product associated with a line item.
+      example:
+        productId: productId
+      properties:
+        productId:
+          description: The identifier of the product.
+          nullable: true
+          type: string
       type: object
     ProductRecommendation:
       description: recommendation data for a product
@@ -18822,6 +19624,41 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceLineItemBudgetCapOutHistoryRequest'
       type: object
+    ValueResourceInputOfOrchestratorContractCampaignCreateModelV2:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            billByRetailerId: billByRetailerId
+            campaignType: SponsoredProducts
+            attributionSettings:
+              clickAttributionWindow: OneWeek
+              clickAttributionScope: SameSku
+              viewAttributionScope: SameSku
+              viewAttributionWindow: None
+            companyName: companyName
+            budgetDetails:
+              isAutoDailyPacing: true
+              dailyPacing: 6.027456183070403
+              monthlyPacing: 1.4658129805029452
+              budget: 0.8008281904610115
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            name: name
+            onBehalfCompanyName: onBehalfCompanyName
+            buyType: Auction
+            objective: Manual
+            scheduleDetails:
+              endDate: 2000-01-23T04:56:07.000+00:00
+              startDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfOrchestratorContractCampaignCreateModelV2'
+      type: object
     ValueResourceInputOfRetailerSearchRequestV2:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -19081,6 +19918,43 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/LineItemBudgetCapOutHistoryResponse'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ValueResourceOfOrchestratorContractCampaignCreateModelV2:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          billByRetailerId: billByRetailerId
+          campaignType: SponsoredProducts
+          attributionSettings:
+            clickAttributionWindow: OneWeek
+            clickAttributionScope: SameSku
+            viewAttributionScope: SameSku
+            viewAttributionWindow: None
+          companyName: companyName
+          budgetDetails:
+            isAutoDailyPacing: true
+            dailyPacing: 6.027456183070403
+            monthlyPacing: 1.4658129805029452
+            budget: 0.8008281904610115
+          drawableBalanceIds:
+          - drawableBalanceIds
+          - drawableBalanceIds
+          name: name
+          onBehalfCompanyName: onBehalfCompanyName
+          buyType: Auction
+          objective: Manual
+          scheduleDetails:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/OrchestratorContractCampaignCreateModelV2'
         type:
           description: Type of the resource.
           nullable: true
