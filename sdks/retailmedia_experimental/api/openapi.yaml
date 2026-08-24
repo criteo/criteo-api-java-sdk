@@ -658,7 +658,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ValueResourceInputOfOrchestratorContractCampaignCreateModelV2'
+              $ref: '#/components/schemas/CampaignCreateModelRequest'
         description: The campaign to create.
         required: true
       responses:
@@ -666,7 +666,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityResourceOutcomeOfOrchestratorContractCampaignResponseModelV2'
+                $ref: '#/components/schemas/CampaignResponseModelResponse'
           description: Success
       security:
       - oauth:
@@ -1949,6 +1949,72 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
+  /experimental/retail-media/line-items/{line-item-id}/bidding-strategy:
+    get:
+      description: "Returns the current bidding configuration for a Display auction\
+        \ line item, including the active\r\nbidding strategy and any preserved Standard\
+        \ and Adaptive strategy settings. Other line item types are\r\nnot currently\
+        \ supported by this endpoint."
+      operationId: GetBiddingStrategyByLineItemId
+      parameters:
+      - description: The identifier of the line item whose bidding settings are requested.
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BiddingSettingsResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
+      summary: "/experimental/retail-media/line-items/{line-item-id}/bidding-strategy"
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /experimental/retail-media/line-items/{line-item-id}/creatives/upsert:
+    post:
+      description: "Resolves each supplied stable creative identifier to its latest\
+        \ revision and\r\nassociates those revisions with the line item's proposal."
+      operationId: UpsertCreatives
+      parameters:
+      - description: The line item id.
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertCreativesModelRequest'
+        description: The creatives to upsert.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreativesModelResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      summary: "/experimental/retail-media/line-items/{line-item-id}/creatives/upsert"
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}/product-buttons:
     get:
       description: Get LineItem Product Buttons
@@ -2340,6 +2406,55 @@ paths:
       tags:
       - Campaign
       x-content-type: application/json
+      x-accepts: application/json
+  /experimental/retail-media/line-items/{line-item-id}/targets:
+    get:
+      description: Returns a list of targets for a given line item id
+      operationId: GetTargetsByLineItemId
+      parameters:
+      - description: The number of elements to be returned. Defaults to 500.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 500
+          format: int32
+          type: integer
+        style: form
+      - description: Unique identifier of the Line Item for which targets will be
+          fetched
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The (zero-based) starting offset in the collection. Defaults
+          to 0.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TargetListResponseWithPageMetadata'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
+      summary: "/experimental/retail-media/line-items/{line-item-id}/targets"
+      tags:
+      - Campaign
       x-accepts: application/json
   /experimental/retail-media/line-items/demand-search:
     post:
@@ -2867,43 +2982,6 @@ paths:
       - Catalog
       x-content-type: application/json
       x-accepts: application/json
-  /experimental/retail-media/retailers/{retailerId}/compute-display-min-bid:
-    post:
-      description: Computes the min bid for relevant page types based on the provided
-        information
-      operationId: ComputeDisplayMinBidByRetailerId
-      parameters:
-      - description: The retailer id
-        explode: false
-        in: path
-        name: retailerId
-        required: true
-        schema:
-          format: int32
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputDisplayAuctionMinBidRequest'
-        description: The details for what creatives and product ids to use to compute
-          the min bids
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceCollectionOutcomeDisplayAuctionMinBidResult'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Read
-      summary: "/experimental/retail-media/retailers/{retailerId}/compute-display-min-bid"
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
   /experimental/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove:
     post:
       description: Attempt to remove the provided brand from the account.
@@ -3082,6 +3160,20 @@ paths:
       x-accepts: application/json
 components:
   schemas:
+    AdaptiveBiddingSettings:
+      additionalProperties: false
+      description: Represents the bidding settings used when the active strategy is
+        Adaptive.
+      example:
+        maxBid: 0.8008281904610115
+      nullable: true
+      properties:
+        maxBid:
+          description: The maximum bid that the Adaptive strategy may use.
+          format: double
+          nullable: true
+          type: number
+      type: object
     AddProductsModel:
       additionalProperties: false
       description: The products to add to a line item.
@@ -3269,6 +3361,32 @@ components:
           nullable: true
           readOnly: true
           type: array
+      type: object
+    ApiResourcesPageMetadata:
+      additionalProperties: false
+      description: Offset based pagination metadata.
+      example:
+        offset: 5
+        count: 6
+        limit: 1
+      nullable: true
+      properties:
+        count:
+          description: Total number of items across all pages in the collection.
+          format: int32
+          nullable: true
+          type: integer
+        limit:
+          description: The number of elements to be returned.
+          format: int32
+          type: integer
+        offset:
+          description: The (zero-based) starting offset in the collection.
+          format: int32
+          type: integer
+      required:
+      - limit
+      - offset
       type: object
     AppendCampaignsRequestV1:
       additionalProperties: false
@@ -5344,6 +5462,189 @@ components:
         type:
           type: string
       type: object
+    AttributionSettingsCreateModel:
+      additionalProperties: false
+      description: "Wrapper for attribution settings. Each setting may be omitted,\
+        \ in which case it is\r\npopulated with the default for the campaign type:\
+        \ OnsiteDisplay defaults to a 14D click\r\nwindow, a 14D view window and sameSkuCategory\
+        \ for both scopes; SponsoredProducts defaults\r\nto a 30D click window, a\
+        \ 1D view window, sameSkuCategory click scope and sameSku view\r\nscope."
+      example:
+        clickAttributionWindow: OneWeek
+        clickAttributionScope: SameSku
+        viewAttributionScope: SameSku
+        viewAttributionWindow: None
+      properties:
+        clickAttributionScope:
+          description: Post-click attribution scope setting.
+          enum:
+          - SameSku
+          - SameSkuCategory
+          - SameSkuCategoryBrand
+          nullable: true
+          type: string
+        clickAttributionWindow:
+          description: Post-click attribution window setting.
+          enum:
+          - OneWeek
+          - TwoWeeks
+          - OneMonth
+          nullable: true
+          type: string
+        viewAttributionScope:
+          description: Post-view attribution scope setting. Must not be broader than
+            the click attribution scope.
+          enum:
+          - SameSku
+          - SameSkuCategory
+          - SameSkuCategoryBrand
+          nullable: true
+          type: string
+        viewAttributionWindow:
+          description: Post-view attribution window setting. Must not exceed the click
+            attribution window.
+          enum:
+          - None
+          - OneDay
+          - OneWeek
+          - TwoWeeks
+          - OneMonth
+          nullable: true
+          type: string
+      type: object
+    AttributionSettingsModel:
+      additionalProperties: false
+      description: Wrapper for attribution settings.
+      example:
+        clickAttributionWindow: OneWeek
+        clickAttributionScope: SameSku
+        viewAttributionScope: SameSku
+        viewAttributionWindow: None
+      properties:
+        clickAttributionScope:
+          description: Post-click attribution scope setting.
+          enum:
+          - SameSku
+          - SameSkuCategory
+          - SameSkuCategoryBrand
+          - Unknown
+          nullable: true
+          type: string
+        clickAttributionWindow:
+          description: Post-click attribution window setting.
+          enum:
+          - OneWeek
+          - TwoWeeks
+          - OneMonth
+          - Unknown
+          nullable: true
+          type: string
+        viewAttributionScope:
+          description: Post-view attribution scope setting.
+          enum:
+          - SameSku
+          - SameSkuCategory
+          - SameSkuCategoryBrand
+          - Unknown
+          nullable: true
+          type: string
+        viewAttributionWindow:
+          description: Post-view attribution window setting.
+          enum:
+          - None
+          - OneDay
+          - OneWeek
+          - TwoWeeks
+          - OneMonth
+          - Unknown
+          nullable: true
+          type: string
+      type: object
+    AuctionCreativeDetailsInputModel:
+      additionalProperties: false
+      description: The auction creatives to associate with a line item.
+      example:
+        lineItemCreatives:
+        - creativeProductCollections:
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          creative:
+            id: id
+        - creativeProductCollections:
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          creative:
+            id: id
+      properties:
+        lineItemCreatives:
+          items:
+            $ref: '#/components/schemas/LineItemCreativeInputModel'
+          type: array
+      required:
+      - lineItemCreatives
+      type: object
+    AuctionCreativeDetailsModel:
+      additionalProperties: false
+      description: The auction creatives associated with a line item.
+      example:
+        lineItemCreatives:
+        - approvalStatus: Unknown
+          creativePreviewCode: creativePreviewCode
+          creativeProductCollections:
+          - isMandatory: true
+            products:
+            - approvalStatus: Unknown
+              id: id
+            - approvalStatus: Unknown
+              id: id
+          - isMandatory: true
+            products:
+            - approvalStatus: Unknown
+              id: id
+            - approvalStatus: Unknown
+              id: id
+          creative:
+            modifiedAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+        - approvalStatus: Unknown
+          creativePreviewCode: creativePreviewCode
+          creativeProductCollections:
+          - isMandatory: true
+            products:
+            - approvalStatus: Unknown
+              id: id
+            - approvalStatus: Unknown
+              id: id
+          - isMandatory: true
+            products:
+            - approvalStatus: Unknown
+              id: id
+            - approvalStatus: Unknown
+              id: id
+          creative:
+            modifiedAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+      nullable: true
+      properties:
+        lineItemCreatives:
+          items:
+            $ref: '#/components/schemas/LineItemCreativeModel'
+          type: array
+      required:
+      - lineItemCreatives
+      type: object
     AudienceError:
       description: Definition of an audience error
       example:
@@ -5825,6 +6126,128 @@ components:
       required:
       - data
       type: object
+    BiddingSettings:
+      additionalProperties: false
+      description: Represents the bidding configuration for a line item.
+      example:
+        cpm:
+          standardBiddingSettings:
+            auctionBids:
+            - pageType: Unknown
+              bid: 6.027456183070403
+            - pageType: Unknown
+              bid: 6.027456183070403
+          bidStrategy: Standard
+          adaptiveBiddingSettings:
+            maxBid: 0.8008281904610115
+      nullable: true
+      properties:
+        cpm:
+          $ref: '#/components/schemas/CpmBiddingSettings'
+      type: object
+    BiddingSettingsResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          cpm:
+            standardBiddingSettings:
+              auctionBids:
+              - pageType: Unknown
+                bid: 6.027456183070403
+              - pageType: Unknown
+                bid: 6.027456183070403
+            bidStrategy: Standard
+            adaptiveBiddingSettings:
+              maxBid: 0.8008281904610115
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/BiddingSettings'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    BiddingSettingsResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            cpm:
+              standardBiddingSettings:
+                auctionBids:
+                - pageType: Unknown
+                  bid: 6.027456183070403
+                - pageType: Unknown
+                  bid: 6.027456183070403
+              bidStrategy: Standard
+              adaptiveBiddingSettings:
+                maxBid: 0.8008281904610115
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/BiddingSettingsResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     BotMessage:
       description: bot structured answer to the user prompt
       example:
@@ -5932,6 +6355,67 @@ components:
       - name
       - retailerIds
       type: object
+    BudgetDetailsCreateModel:
+      additionalProperties: false
+      description: Budget and pacing of the campaign.
+      example:
+        isAutoDailyPacing: true
+        dailyPacing: 6.027456183070403
+        monthlyPacing: 1.4658129805029452
+        budget: 0.8008281904610115
+      properties:
+        budget:
+          format: double
+          nullable: true
+          type: number
+        dailyPacing:
+          format: double
+          nullable: true
+          type: number
+        isAutoDailyPacing:
+          type: boolean
+        monthlyPacing:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    BudgetDetailsModel:
+      additionalProperties: false
+      description: "Budget and pacing of the campaign, including the amounts spent\
+        \ and remaining."
+      example:
+        budgetRemaining: 6.027456183070403
+        budgetSpent: 1.4658129805029452
+        isAutoDailyPacing: true
+        dailyPacing: 5.962133916683182
+        monthlyPacing: 5.637376656633329
+        budget: 0.8008281904610115
+      nullable: true
+      properties:
+        budget:
+          format: double
+          nullable: true
+          type: number
+        budgetRemaining:
+          format: double
+          nullable: true
+          type: number
+        budgetSpent:
+          format: double
+          nullable: true
+          type: number
+        dailyPacing:
+          format: double
+          nullable: true
+          type: number
+        isAutoDailyPacing:
+          nullable: true
+          type: boolean
+        monthlyPacing:
+          format: double
+          nullable: true
+          type: number
+      type: object
     CampaignAvailabilityV2:
       additionalProperties: false
       description: "Information about the budget model availability for a specific\
@@ -5988,128 +6472,420 @@ components:
           nullable: true
           type: array
       type: object
-    CampaignServiceContractAttributionSettingsCreateModelV2:
+    CampaignCreateModel:
       additionalProperties: false
-      description: "Wrapper for attribution settings. Each setting may be omitted,\
-        \ in which case it is populated with the default for the campaign type."
+      description: An object that represents the available options to set when creating
+        a Retail Media Campaign
       example:
-        clickAttributionWindow: OneWeek
-        clickAttributionScope: SameSku
-        viewAttributionScope: SameSku
-        viewAttributionWindow: None
+        billByRetailerId: billByRetailerId
+        campaignType: SponsoredProducts
+        attributionSettings:
+          clickAttributionWindow: OneWeek
+          clickAttributionScope: SameSku
+          viewAttributionScope: SameSku
+          viewAttributionWindow: None
+        companyName: companyName
+        budgetDetails:
+          isAutoDailyPacing: true
+          dailyPacing: 6.027456183070403
+          monthlyPacing: 1.4658129805029452
+          budget: 0.8008281904610115
+        drawableBalanceIds:
+        - drawableBalanceIds
+        - drawableBalanceIds
+        name: name
+        onBehalfCompanyName: onBehalfCompanyName
+        buyType: Auction
+        objective: Manual
+        scheduleDetails:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2000-01-23T04:56:07.000+00:00
       properties:
-        clickAttributionScope:
-          enum:
-          - SameSku
-          - SameSkuCategory
-          - SameSkuCategoryBrand
+        attributionSettings:
+          $ref: '#/components/schemas/AttributionSettingsCreateModel'
+        billByRetailerId:
           nullable: true
           type: string
-        clickAttributionWindow:
+        budgetDetails:
+          $ref: '#/components/schemas/BudgetDetailsCreateModel'
+        buyType:
+          description: "Buy type of campaign, set only on creation. Auction is the\
+            \ only buy type currently supported."
           enum:
-          - OneWeek
-          - TwoWeeks
-          - OneMonth
+          - Auction
+          type: string
+        campaignType:
+          description: "Type of campaign, set only on creation."
+          enum:
+          - SponsoredProducts
+          - OnsiteDisplay
+          type: string
+        companyName:
           nullable: true
           type: string
-        viewAttributionScope:
+        drawableBalanceIds:
+          items:
+            type: string
+          nullable: true
+          type: array
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        objective:
           enum:
-          - SameSku
-          - SameSkuCategory
-          - SameSkuCategoryBrand
+          - Manual
+          - Clicks
+          - Conversion
+          - Revenue
           nullable: true
           type: string
-        viewAttributionWindow:
-          enum:
-          - None
-          - OneDay
-          - OneWeek
-          - TwoWeeks
-          - OneMonth
+        onBehalfCompanyName:
+          nullable: true
+          type: string
+        scheduleDetails:
+          $ref: '#/components/schemas/ScheduleDetailsCreateModel'
+      required:
+      - buyType
+      - campaignType
+      - name
+      type: object
+    CampaignCreateModelRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            billByRetailerId: billByRetailerId
+            campaignType: SponsoredProducts
+            attributionSettings:
+              clickAttributionWindow: OneWeek
+              clickAttributionScope: SameSku
+              viewAttributionScope: SameSku
+              viewAttributionWindow: None
+            companyName: companyName
+            budgetDetails:
+              isAutoDailyPacing: true
+              dailyPacing: 6.027456183070403
+              monthlyPacing: 1.4658129805029452
+              budget: 0.8008281904610115
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            name: name
+            onBehalfCompanyName: onBehalfCompanyName
+            buyType: Auction
+            objective: Manual
+            scheduleDetails:
+              endDate: 2000-01-23T04:56:07.000+00:00
+              startDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/CampaignCreateModelResource'
+      type: object
+    CampaignCreateModelResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          billByRetailerId: billByRetailerId
+          campaignType: SponsoredProducts
+          attributionSettings:
+            clickAttributionWindow: OneWeek
+            clickAttributionScope: SameSku
+            viewAttributionScope: SameSku
+            viewAttributionWindow: None
+          companyName: companyName
+          budgetDetails:
+            isAutoDailyPacing: true
+            dailyPacing: 6.027456183070403
+            monthlyPacing: 1.4658129805029452
+            budget: 0.8008281904610115
+          drawableBalanceIds:
+          - drawableBalanceIds
+          - drawableBalanceIds
+          name: name
+          onBehalfCompanyName: onBehalfCompanyName
+          buyType: Auction
+          objective: Manual
+          scheduleDetails:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CampaignCreateModel'
+        type:
+          description: Type of the resource.
           nullable: true
           type: string
       type: object
-    CampaignServiceContractAttributionSettingsModelV2:
+    CampaignResponseModel:
       additionalProperties: false
-      description: Wrapper for attribution settings.
+      description: A Retail Media Campaign used to represent an advertiser's marketing
+        objective
       example:
-        clickAttributionWindow: OneWeek
-        clickAttributionScope: SameSku
-        viewAttributionScope: SameSku
-        viewAttributionWindow: None
+        billByRetailerId: billByRetailerId
+        campaignType: Unknown
+        attributionSettings:
+          clickAttributionWindow: OneWeek
+          clickAttributionScope: SameSku
+          viewAttributionScope: SameSku
+          viewAttributionWindow: None
+        companyName: companyName
+        budgetDetails:
+          budgetRemaining: 6.027456183070403
+          budgetSpent: 1.4658129805029452
+          isAutoDailyPacing: true
+          dailyPacing: 5.962133916683182
+          monthlyPacing: 5.637376656633329
+          budget: 0.8008281904610115
+        drawableBalanceIds:
+        - drawableBalanceIds
+        - drawableBalanceIds
+        onBehalfCompanyName: onBehalfCompanyName
+        objective: Manual
+        accountId: accountId
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        name: name
+        buyType: Unknown
+        id: id
+        scheduleDetails:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2000-01-23T04:56:07.000+00:00
+        status: Unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       nullable: true
       properties:
-        clickAttributionScope:
-          enum:
-          - SameSku
-          - SameSkuCategory
-          - SameSkuCategoryBrand
-          - Unknown
+        accountId:
+          type: string
+        attributionSettings:
+          $ref: '#/components/schemas/AttributionSettingsModel'
+        billByRetailerId:
           nullable: true
           type: string
-        clickAttributionWindow:
+        budgetDetails:
+          $ref: '#/components/schemas/BudgetDetailsModel'
+        buyType:
+          description: "Buy type of campaign, set only on creation."
           enum:
-          - OneWeek
-          - TwoWeeks
-          - OneMonth
           - Unknown
+          - Auction
+          - PreferredDeals
+          - Sponsorship
+          type: string
+        campaignType:
+          description: "Type of campaign, set only on creation."
+          enum:
+          - Unknown
+          - SponsoredProducts
+          - OnsiteDisplay
+          type: string
+        companyName:
           nullable: true
           type: string
-        viewAttributionScope:
-          enum:
-          - SameSku
-          - SameSkuCategory
-          - SameSkuCategoryBrand
-          - Unknown
-          nullable: true
-          type: string
-        viewAttributionWindow:
-          enum:
-          - None
-          - OneDay
-          - OneWeek
-          - TwoWeeks
-          - OneMonth
-          - Unknown
-          nullable: true
-          type: string
-      type: object
-    CampaignServiceContractScheduleDetailsCreateModelV2:
-      additionalProperties: false
-      description: Flight dates of the campaign. Applies to SponsoredProducts only;
-        OnsiteDisplay campaigns derive their dates from their line items and reject
-        this node.
-      example:
-        endDate: 2000-01-23T04:56:07.000+00:00
-        startDate: 2000-01-23T04:56:07.000+00:00
-      properties:
-        endDate:
+        createdAt:
           format: date-time
           type: string
-        startDate:
+        drawableBalanceIds:
+          items:
+            type: string
+          type: array
+        id:
+          nullable: true
+          type: string
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        objective:
+          description: "Dynamic Campaign Budgets control: manual keeps today's behavior;\
+            \ clicks, conversion and\r\nrevenue activate campaign-level budget allocation."
+          enum:
+          - Manual
+          - Clicks
+          - Conversion
+          - Revenue
+          - Unknown
+          nullable: true
+          type: string
+        onBehalfCompanyName:
+          nullable: true
+          type: string
+        scheduleDetails:
+          $ref: '#/components/schemas/ScheduleDetailsModel'
+        status:
+          description: "Campaign status, derived from the status of Line Items it\
+            \ holds; active if at least\r\none line item is active."
+          enum:
+          - Unknown
+          - Active
+          - Inactive
+          type: string
+        updatedAt:
           format: date-time
           type: string
       required:
-      - endDate
-      - startDate
+      - accountId
+      - attributionSettings
+      - buyType
+      - campaignType
+      - createdAt
+      - drawableBalanceIds
+      - name
+      - status
+      - updatedAt
       type: object
-    CampaignServiceContractScheduleDetailsModelV2:
+    CampaignResponseModelResource:
       additionalProperties: false
-      description: Flight dates of the campaign. Applies to SponsoredProducts only;
-        OnsiteDisplay campaigns derive their dates from their line items.
+      description: "A domain entity exposed by the API, identified by a unique id."
       example:
-        endDate: 2000-01-23T04:56:07.000+00:00
-        startDate: 2000-01-23T04:56:07.000+00:00
+        attributes:
+          billByRetailerId: billByRetailerId
+          campaignType: Unknown
+          attributionSettings:
+            clickAttributionWindow: OneWeek
+            clickAttributionScope: SameSku
+            viewAttributionScope: SameSku
+            viewAttributionWindow: None
+          companyName: companyName
+          budgetDetails:
+            budgetRemaining: 6.027456183070403
+            budgetSpent: 1.4658129805029452
+            isAutoDailyPacing: true
+            dailyPacing: 5.962133916683182
+            monthlyPacing: 5.637376656633329
+            budget: 0.8008281904610115
+          drawableBalanceIds:
+          - drawableBalanceIds
+          - drawableBalanceIds
+          onBehalfCompanyName: onBehalfCompanyName
+          objective: Manual
+          accountId: accountId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          name: name
+          buyType: Unknown
+          id: id
+          scheduleDetails:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+          status: Unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
       nullable: true
       properties:
-        endDate:
-          format: date-time
+        attributes:
+          $ref: '#/components/schemas/CampaignResponseModel'
+        id:
+          description: Unique id of the entity.
           nullable: true
           type: string
-        startDate:
-          format: date-time
+        type:
+          description: Type of the resource.
           nullable: true
           type: string
+      type: object
+    CampaignResponseModelResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
+      example:
+        data:
+          attributes:
+            billByRetailerId: billByRetailerId
+            campaignType: Unknown
+            attributionSettings:
+              clickAttributionWindow: OneWeek
+              clickAttributionScope: SameSku
+              viewAttributionScope: SameSku
+              viewAttributionWindow: None
+            companyName: companyName
+            budgetDetails:
+              budgetRemaining: 6.027456183070403
+              budgetSpent: 1.4658129805029452
+              isAutoDailyPacing: true
+              dailyPacing: 5.962133916683182
+              monthlyPacing: 5.637376656633329
+              budget: 0.8008281904610115
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            onBehalfCompanyName: onBehalfCompanyName
+            objective: Manual
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            name: name
+            buyType: Unknown
+            id: id
+            scheduleDetails:
+              endDate: 2000-01-23T04:56:07.000+00:00
+              startDate: 2000-01-23T04:56:07.000+00:00
+            status: Unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/CampaignResponseModelResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     CatalogStatusV2:
       additionalProperties: false
@@ -6162,6 +6938,21 @@ components:
       required:
       - createdAt
       - status
+      type: object
+    CategoryTargetDetails:
+      additionalProperties: false
+      description: Details on Category Targets
+      example:
+        includeChildren: true
+        categoryId: categoryId
+      nullable: true
+      properties:
+        categoryId:
+          nullable: true
+          type: string
+        includeChildren:
+          nullable: true
+          type: boolean
       type: object
     ChangeDetailsV1:
       additionalProperties: false
@@ -6216,29 +7007,6 @@ components:
           type: string
       required:
       - color
-      type: object
-    CommerceDisplayAttributes:
-      additionalProperties: false
-      description: Extended attributes for a Commerce Display Line Item
-      example:
-        auction:
-          isDynamicMatch: true
-      nullable: true
-      properties:
-        auction:
-          $ref: '#/components/schemas/CommerceDisplayAuctionAttributes'
-      type: object
-    CommerceDisplayAuctionAttributes:
-      additionalProperties: false
-      description: Extended attributes for a Auction Commerce Display Line Item
-      example:
-        isDynamicMatch: true
-      nullable: true
-      properties:
-        isDynamicMatch:
-          description: Whether dynamic match or automatic SKU filtering is enabled.
-          nullable: true
-          type: boolean
       type: object
     CommonProblem:
       description: Common problem object.
@@ -6336,6 +7104,34 @@ components:
             item.
           nullable: true
           type: boolean
+      type: object
+    CpmBiddingSettings:
+      additionalProperties: false
+      description: Represents the bidding configuration for a CPM-based line item.
+      example:
+        standardBiddingSettings:
+          auctionBids:
+          - pageType: Unknown
+            bid: 6.027456183070403
+          - pageType: Unknown
+            bid: 6.027456183070403
+        bidStrategy: Standard
+        adaptiveBiddingSettings:
+          maxBid: 0.8008281904610115
+      nullable: true
+      properties:
+        adaptiveBiddingSettings:
+          $ref: '#/components/schemas/AdaptiveBiddingSettings'
+        bidStrategy:
+          description: The active bidding strategy for the line item.
+          enum:
+          - Standard
+          - Adaptive
+          type: string
+        standardBiddingSettings:
+          $ref: '#/components/schemas/StandardBiddingSettings'
+      required:
+      - bidStrategy
       type: object
     Creative2:
       additionalProperties: false
@@ -6697,6 +7493,73 @@ components:
       - templateId
       - templateVariableValues
       type: object
+    CreativeInputModel:
+      additionalProperties: false
+      description: A reference to the creative to associate with a line item.
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+      required:
+      - id
+      type: object
+    CreativeModel:
+      additionalProperties: false
+      description: A reference to a creative associated with a line item.
+      example:
+        modifiedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+      properties:
+        id:
+          type: string
+        modifiedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - modifiedAt
+      type: object
+    CreativeProductCollectionInputModel:
+      additionalProperties: false
+      description: A collection of products to configure on a creative.
+      example:
+        isMandatory: true
+        products:
+        - id: id
+        - id: id
+      properties:
+        isMandatory:
+          type: boolean
+        products:
+          items:
+            $ref: '#/components/schemas/DisplayProductInputModel'
+          type: array
+      required:
+      - isMandatory
+      - products
+      type: object
+    CreativeProductCollectionModel:
+      additionalProperties: false
+      description: A collection of products associated with a creative.
+      example:
+        isMandatory: true
+        products:
+        - approvalStatus: Unknown
+          id: id
+        - approvalStatus: Unknown
+          id: id
+      properties:
+        isMandatory:
+          type: boolean
+        products:
+          items:
+            $ref: '#/components/schemas/DisplayProductModel'
+          type: array
+      required:
+      - isMandatory
+      - products
+      type: object
     CreativeSearchRequest:
       additionalProperties: false
       description: Creative search request model
@@ -6892,6 +7755,285 @@ components:
           description: Template Id
           nullable: true
           type: string
+      type: object
+    CreativesModel:
+      additionalProperties: false
+      description: Creatives associated with a line item.
+      example:
+        mediaType: Unknown
+        preferredDealsCreativeDetails:
+          lineItemCreative:
+            approvalStatus: Unknown
+            creativePreviewCode: creativePreviewCode
+            creativeProductCollections:
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            creative:
+              modifiedAt: 2000-01-23T04:56:07.000+00:00
+              id: id
+        auctionCreativeDetails:
+          lineItemCreatives:
+          - approvalStatus: Unknown
+            creativePreviewCode: creativePreviewCode
+            creativeProductCollections:
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            creative:
+              modifiedAt: 2000-01-23T04:56:07.000+00:00
+              id: id
+          - approvalStatus: Unknown
+            creativePreviewCode: creativePreviewCode
+            creativeProductCollections:
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            creative:
+              modifiedAt: 2000-01-23T04:56:07.000+00:00
+              id: id
+      nullable: true
+      properties:
+        auctionCreativeDetails:
+          $ref: '#/components/schemas/AuctionCreativeDetailsModel'
+        mediaType:
+          enum:
+          - Unknown
+          - Display
+          - Video
+          type: string
+        preferredDealsCreativeDetails:
+          $ref: '#/components/schemas/PreferredDealsCreativeDetailsModel'
+      required:
+      - mediaType
+      type: object
+    CreativesModelResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          mediaType: Unknown
+          preferredDealsCreativeDetails:
+            lineItemCreative:
+              approvalStatus: Unknown
+              creativePreviewCode: creativePreviewCode
+              creativeProductCollections:
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              creative:
+                modifiedAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+          auctionCreativeDetails:
+            lineItemCreatives:
+            - approvalStatus: Unknown
+              creativePreviewCode: creativePreviewCode
+              creativeProductCollections:
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              creative:
+                modifiedAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+            - approvalStatus: Unknown
+              creativePreviewCode: creativePreviewCode
+              creativeProductCollections:
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              creative:
+                modifiedAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CreativesModel'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    CreativesModelResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            mediaType: Unknown
+            preferredDealsCreativeDetails:
+              lineItemCreative:
+                approvalStatus: Unknown
+                creativePreviewCode: creativePreviewCode
+                creativeProductCollections:
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                creative:
+                  modifiedAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+            auctionCreativeDetails:
+              lineItemCreatives:
+              - approvalStatus: Unknown
+                creativePreviewCode: creativePreviewCode
+                creativeProductCollections:
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                creative:
+                  modifiedAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+              - approvalStatus: Unknown
+                creativePreviewCode: creativePreviewCode
+                creativeProductCollections:
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                creative:
+                  modifiedAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/CreativesModelResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     CreativeUpdateModel2:
       additionalProperties: false
@@ -7321,75 +8463,39 @@ components:
       required:
       - attributes
       type: object
-    DisplayAuctionMinBidRequest:
+    DisplayProductInputModel:
       additionalProperties: false
-      description: Represents the list of creatives and respective product IDs to
-        compute min bid for.
+      description: A product to add to a creative's product collection.
       example:
-        productIds:
-        - productIds
-        - productIds
-        - productIds
-        - productIds
-        - productIds
-        creativeIds:
-        - creativeIds
-        - creativeIds
-        - creativeIds
-        - creativeIds
-        - creativeIds
+        id: id
       properties:
-        creativeIds:
-          description: List of Creatives to use
-          items:
-            type: string
-          maxItems: 50
-          minItems: 1
-          type: array
-        productIds:
-          description: List of potential product ids (SkuIds) to put in creatives
-          items:
-            type: string
-          maxItems: 50
-          nullable: true
-          type: array
+        id:
+          type: string
+      required:
+      - id
       type: object
-    DisplayAuctionMinBidResult:
+    DisplayProductModel:
       additionalProperties: false
-      description: Represents the min bid for a pageType and creative combination.
+      description: A product in a creative's product collection.
       example:
-        minBid: 0.8008281904610115
-        pageType: unknown
-        creativeId: creativeId
-      nullable: true
+        approvalStatus: Unknown
+        id: id
       properties:
-        creativeId:
-          description: The creativeId for the creative
-          nullable: true
-          type: string
-        minBid:
-          description: "The minimum bid for the combination of page type, creative\
-            \ and categories"
-          format: double
-          nullable: true
-          type: number
-        pageType:
-          description: Page type for the creative to display on
+        approvalStatus:
           enum:
-          - unknown
-          - search
-          - home
-          - checkout
-          - category
-          - productDetail
-          - confirmation
-          - merchandising
-          - deals
-          - favorites
-          - searchBar
-          - categoryMenu
-          nullable: true
+          - Unknown
+          - Approved
+          - AutoApproved
+          - InReview
+          - Rejected
+          - AutoRejected
+          - Unsubmitted
           type: string
+        id:
+          type: string
+      required:
+      - approvalStatus
+      - id
       type: object
     DisplayProductResultModel:
       additionalProperties: false
@@ -8316,56 +9422,6 @@ components:
           nullable: true
           type: string
       type: object
-    EntityResourceOfOrchestratorContractCampaignResponseModelV2:
-      additionalProperties: false
-      description: "A domain entity exposed by the API, identified by a unique id."
-      example:
-        attributes:
-          billByRetailerId: billByRetailerId
-          campaignType: Unknown
-          attributionSettings:
-            clickAttributionWindow: OneWeek
-            clickAttributionScope: SameSku
-            viewAttributionScope: SameSku
-            viewAttributionWindow: None
-          companyName: companyName
-          budgetDetails:
-            budgetRemaining: 6.027456183070403
-            budgetSpent: 1.4658129805029452
-            isAutoDailyPacing: true
-            dailyPacing: 5.962133916683182
-            monthlyPacing: 5.637376656633329
-            budget: 0.8008281904610115
-          drawableBalanceIds:
-          - drawableBalanceIds
-          - drawableBalanceIds
-          onBehalfCompanyName: onBehalfCompanyName
-          objective: Manual
-          accountId: accountId
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          name: name
-          buyType: Unknown
-          id: id
-          scheduleDetails:
-            endDate: 2000-01-23T04:56:07.000+00:00
-            startDate: 2000-01-23T04:56:07.000+00:00
-          status: Unknown
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/OrchestratorContractCampaignResponseModelV2'
-        id:
-          description: Unique id of the entity.
-          nullable: true
-          type: string
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
     EntityResourceOfRetailerResultV2:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
@@ -8741,105 +9797,6 @@ components:
           description: Warnings that occured during this call.
           items:
             $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    EntityResourceOutcomeOfOrchestratorContractCampaignResponseModelV2:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single entity.
-      example:
-        data:
-          attributes:
-            billByRetailerId: billByRetailerId
-            campaignType: Unknown
-            attributionSettings:
-              clickAttributionWindow: OneWeek
-              clickAttributionScope: SameSku
-              viewAttributionScope: SameSku
-              viewAttributionWindow: None
-            companyName: companyName
-            budgetDetails:
-              budgetRemaining: 6.027456183070403
-              budgetSpent: 1.4658129805029452
-              isAutoDailyPacing: true
-              dailyPacing: 5.962133916683182
-              monthlyPacing: 5.637376656633329
-              budget: 0.8008281904610115
-            drawableBalanceIds:
-            - drawableBalanceIds
-            - drawableBalanceIds
-            onBehalfCompanyName: onBehalfCompanyName
-            objective: Manual
-            accountId: accountId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            name: name
-            buyType: Unknown
-            id: id
-            scheduleDetails:
-              endDate: 2000-01-23T04:56:07.000+00:00
-              startDate: 2000-01-23T04:56:07.000+00:00
-            status: Unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/EntityResourceOfOrchestratorContractCampaignResponseModelV2'
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
@@ -10315,7 +11272,7 @@ components:
           auction:
             allInventory: true
         buyType: Auction
-        commerceDisplay:
+        onsiteDisplay:
           auction:
             isDynamicMatch: true
         conquestingSettings:
@@ -10345,8 +11302,6 @@ components:
           description: The campaign id of the associated campaign.
           nullable: true
           type: string
-        commerceDisplay:
-          $ref: '#/components/schemas/CommerceDisplayAttributes'
         conquestingSettings:
           $ref: '#/components/schemas/ConquestingSettings'
         flightDates:
@@ -10359,13 +11314,15 @@ components:
           description: The type of the line item.
           enum:
           - SponsoredProduct
-          - CommerceDisplay
+          - OnsiteDisplay
           nullable: true
           type: string
         name:
           description: The name of the line item.
           nullable: true
           type: string
+        onsiteDisplay:
+          $ref: '#/components/schemas/OnsiteDisplayAttributes'
         retailerId:
           description: The retailer id of the associated retailer.
           nullable: true
@@ -10376,6 +11333,39 @@ components:
           type: boolean
         sponsoredProducts:
           $ref: '#/components/schemas/SponsoredProductsAttributes'
+      type: object
+    LineItemAuctionBid:
+      additionalProperties: false
+      description: Represents a manual bid amount for a single page type.
+      example:
+        pageType: Unknown
+        bid: 6.027456183070403
+      properties:
+        bid:
+          description: The bid amount in the line item's currency.
+          format: double
+          type: number
+        pageType:
+          description: The page type to which this bid applies.
+          enum:
+          - Unknown
+          - Search
+          - Home
+          - Browse
+          - Checkout
+          - Category
+          - ProductDetail
+          - Confirmation
+          - Merchandising
+          - Deals
+          - Favorites
+          - SearchBar
+          - CategoryMenu
+          - AiAssistant
+          type: string
+      required:
+      - bid
+      - pageType
       type: object
     LineItemBudgetCapOutHistory:
       additionalProperties: false
@@ -10501,6 +11491,80 @@ components:
       - count
       - type
       type: object
+    LineItemCreativeInputModel:
+      additionalProperties: false
+      description: "A creative to associate with a line item, and the product collections\
+        \ configured on it."
+      example:
+        creativeProductCollections:
+        - isMandatory: true
+          products:
+          - id: id
+          - id: id
+        - isMandatory: true
+          products:
+          - id: id
+          - id: id
+        creative:
+          id: id
+      properties:
+        creative:
+          $ref: '#/components/schemas/CreativeInputModel'
+        creativeProductCollections:
+          items:
+            $ref: '#/components/schemas/CreativeProductCollectionInputModel'
+          type: array
+      required:
+      - creative
+      - creativeProductCollections
+      type: object
+    LineItemCreativeModel:
+      additionalProperties: false
+      description: The association between a line item and one of its creatives.
+      example:
+        approvalStatus: Unknown
+        creativePreviewCode: creativePreviewCode
+        creativeProductCollections:
+        - isMandatory: true
+          products:
+          - approvalStatus: Unknown
+            id: id
+          - approvalStatus: Unknown
+            id: id
+        - isMandatory: true
+          products:
+          - approvalStatus: Unknown
+            id: id
+          - approvalStatus: Unknown
+            id: id
+        creative:
+          modifiedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+      properties:
+        approvalStatus:
+          enum:
+          - Unknown
+          - Approved
+          - AutoApproved
+          - InReview
+          - Rejected
+          - AutoRejected
+          - Unsubmitted
+          type: string
+        creative:
+          $ref: '#/components/schemas/CreativeModel'
+        creativePreviewCode:
+          nullable: true
+          type: string
+        creativeProductCollections:
+          items:
+            $ref: '#/components/schemas/CreativeProductCollectionModel'
+          type: array
+      required:
+      - approvalStatus
+      - creative
+      - creativeProductCollections
+      type: object
     LineItemListResponseWithPagination:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -10522,7 +11586,7 @@ components:
               auction:
                 allInventory: true
             buyType: Auction
-            commerceDisplay:
+            onsiteDisplay:
               auction:
                 isDynamicMatch: true
             conquestingSettings:
@@ -10547,7 +11611,7 @@ components:
               auction:
                 allInventory: true
             buyType: Auction
-            commerceDisplay:
+            onsiteDisplay:
               auction:
                 isDynamicMatch: true
             conquestingSettings:
@@ -10707,7 +11771,7 @@ components:
             auction:
               allInventory: true
           buyType: Auction
-          commerceDisplay:
+          onsiteDisplay:
             auction:
               isDynamicMatch: true
           conquestingSettings:
@@ -10754,6 +11818,26 @@ components:
             \ defaults to 1.0."
           format: double
           type: number
+      type: object
+    ManualKeywordTargetDetails:
+      additionalProperties: false
+      description: Details on Manual Keyword Targets
+      example:
+        matchType: Broad
+        keywordInput: keywordInput
+      nullable: true
+      properties:
+        keywordInput:
+          maxLength: 255
+          minLength: 1
+          nullable: true
+          type: string
+        matchType:
+          enum:
+          - Broad
+          - Exact
+          nullable: true
+          type: string
       type: object
     Message:
       description: message of the discussion
@@ -10994,242 +12078,28 @@ components:
       - offerId
       - price
       type: object
-    OrchestratorContractBudgetDetailsCreateModelV2:
+    OnsiteDisplayAttributes:
       additionalProperties: false
-      description: Budget and pacing of the campaign.
+      description: Extended attributes for a Onsite Display Line Item
       example:
-        isAutoDailyPacing: true
-        dailyPacing: 6.027456183070403
-        monthlyPacing: 1.4658129805029452
-        budget: 0.8008281904610115
-      properties:
-        budget:
-          format: double
-          nullable: true
-          type: number
-        dailyPacing:
-          format: double
-          nullable: true
-          type: number
-        isAutoDailyPacing:
-          type: boolean
-        monthlyPacing:
-          format: double
-          nullable: true
-          type: number
-      type: object
-    OrchestratorContractBudgetDetailsModelV2:
-      additionalProperties: false
-      description: "Budget and pacing of the campaign, including the amounts spent\
-        \ and remaining."
-      example:
-        budgetRemaining: 6.027456183070403
-        budgetSpent: 1.4658129805029452
-        isAutoDailyPacing: true
-        dailyPacing: 5.962133916683182
-        monthlyPacing: 5.637376656633329
-        budget: 0.8008281904610115
+        auction:
+          isDynamicMatch: true
       nullable: true
       properties:
-        budget:
-          format: double
-          nullable: true
-          type: number
-        budgetRemaining:
-          format: double
-          nullable: true
-          type: number
-        budgetSpent:
-          format: double
-          nullable: true
-          type: number
-        dailyPacing:
-          format: double
-          nullable: true
-          type: number
-        isAutoDailyPacing:
-          nullable: true
-          type: boolean
-        monthlyPacing:
-          format: double
-          nullable: true
-          type: number
+        auction:
+          $ref: '#/components/schemas/OnsiteDisplayAuctionAttributes'
       type: object
-    OrchestratorContractCampaignCreateModelV2:
+    OnsiteDisplayAuctionAttributes:
       additionalProperties: false
-      description: An object that represents the available options to set when creating
-        a Retail Media Campaign
+      description: Extended attributes for a Auction Onsite Display Line Item
       example:
-        billByRetailerId: billByRetailerId
-        campaignType: SponsoredProducts
-        attributionSettings:
-          clickAttributionWindow: OneWeek
-          clickAttributionScope: SameSku
-          viewAttributionScope: SameSku
-          viewAttributionWindow: None
-        companyName: companyName
-        budgetDetails:
-          isAutoDailyPacing: true
-          dailyPacing: 6.027456183070403
-          monthlyPacing: 1.4658129805029452
-          budget: 0.8008281904610115
-        drawableBalanceIds:
-        - drawableBalanceIds
-        - drawableBalanceIds
-        name: name
-        onBehalfCompanyName: onBehalfCompanyName
-        buyType: Auction
-        objective: Manual
-        scheduleDetails:
-          endDate: 2000-01-23T04:56:07.000+00:00
-          startDate: 2000-01-23T04:56:07.000+00:00
-      properties:
-        attributionSettings:
-          $ref: '#/components/schemas/CampaignServiceContractAttributionSettingsCreateModelV2'
-        billByRetailerId:
-          nullable: true
-          type: string
-        budgetDetails:
-          $ref: '#/components/schemas/OrchestratorContractBudgetDetailsCreateModelV2'
-        buyType:
-          enum:
-          - Auction
-          type: string
-        campaignType:
-          enum:
-          - SponsoredProducts
-          - OnsiteDisplay
-          type: string
-        companyName:
-          nullable: true
-          type: string
-        drawableBalanceIds:
-          items:
-            type: string
-          nullable: true
-          type: array
-        name:
-          nullable: true
-          type: string
-        objective:
-          enum:
-          - Manual
-          - Clicks
-          - Conversion
-          - Revenue
-          nullable: true
-          type: string
-        onBehalfCompanyName:
-          nullable: true
-          type: string
-        scheduleDetails:
-          $ref: '#/components/schemas/CampaignServiceContractScheduleDetailsCreateModelV2'
-      type: object
-    OrchestratorContractCampaignResponseModelV2:
-      additionalProperties: false
-      description: A Retail Media Campaign used to represent an advertiser's marketing
-        objective
-      example:
-        billByRetailerId: billByRetailerId
-        campaignType: Unknown
-        attributionSettings:
-          clickAttributionWindow: OneWeek
-          clickAttributionScope: SameSku
-          viewAttributionScope: SameSku
-          viewAttributionWindow: None
-        companyName: companyName
-        budgetDetails:
-          budgetRemaining: 6.027456183070403
-          budgetSpent: 1.4658129805029452
-          isAutoDailyPacing: true
-          dailyPacing: 5.962133916683182
-          monthlyPacing: 5.637376656633329
-          budget: 0.8008281904610115
-        drawableBalanceIds:
-        - drawableBalanceIds
-        - drawableBalanceIds
-        onBehalfCompanyName: onBehalfCompanyName
-        objective: Manual
-        accountId: accountId
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        name: name
-        buyType: Unknown
-        id: id
-        scheduleDetails:
-          endDate: 2000-01-23T04:56:07.000+00:00
-          startDate: 2000-01-23T04:56:07.000+00:00
-        status: Unknown
-        updatedAt: 2000-01-23T04:56:07.000+00:00
+        isDynamicMatch: true
       nullable: true
       properties:
-        accountId:
+        isDynamicMatch:
+          description: Whether dynamic match or automatic SKU filtering is enabled.
           nullable: true
-          type: string
-        attributionSettings:
-          $ref: '#/components/schemas/CampaignServiceContractAttributionSettingsModelV2'
-        billByRetailerId:
-          nullable: true
-          type: string
-        budgetDetails:
-          $ref: '#/components/schemas/OrchestratorContractBudgetDetailsModelV2'
-        buyType:
-          enum:
-          - Unknown
-          - Auction
-          - PreferredDeals
-          - Sponsorship
-          nullable: true
-          type: string
-        campaignType:
-          enum:
-          - Unknown
-          - SponsoredProducts
-          - OnsiteDisplay
-          nullable: true
-          type: string
-        companyName:
-          nullable: true
-          type: string
-        createdAt:
-          format: date-time
-          nullable: true
-          type: string
-        drawableBalanceIds:
-          items:
-            type: string
-          nullable: true
-          type: array
-        id:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-        objective:
-          enum:
-          - Manual
-          - Clicks
-          - Conversion
-          - Revenue
-          - Unknown
-          nullable: true
-          type: string
-        onBehalfCompanyName:
-          nullable: true
-          type: string
-        scheduleDetails:
-          $ref: '#/components/schemas/CampaignServiceContractScheduleDetailsModelV2'
-        status:
-          enum:
-          - Unknown
-          - Active
-          - Inactive
-          nullable: true
-          type: string
-        updatedAt:
-          format: date-time
-          nullable: true
-          type: string
+          type: boolean
       type: object
     Outcome:
       additionalProperties: false
@@ -11407,6 +12277,35 @@ components:
           nullable: true
           type: string
       type: object
+    PageTypeTargetDetails:
+      additionalProperties: false
+      description: Details on Page Type Targets
+      example:
+        pageType: Unknown
+      nullable: true
+      properties:
+        pageType:
+          description: "Contract representation of pagetype Ids supplied by Inventory\
+            \ API.\r\nThis enum re-exposes those persisted byte IDs as typed values\
+            \ for target-service clients."
+          enum:
+          - Unknown
+          - Search
+          - Home
+          - Browse
+          - Checkout
+          - Category
+          - ProductDetail
+          - Confirmation
+          - Merchandising
+          - Deals
+          - Favorites
+          - SearchBar
+          - CategoryMenu
+          - AiAssistant
+          nullable: true
+          type: string
+      type: object
     Pagination:
       additionalProperties: false
       description: Pagination of a Line Item search result
@@ -11455,6 +12354,58 @@ components:
       required:
       - limit
       - offset
+      type: object
+    PreferredDealsCreativeDetailsInputModel:
+      additionalProperties: false
+      description: The preferred-deal creative to associate with a line item.
+      example:
+        lineItemCreative:
+          creativeProductCollections:
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          creative:
+            id: id
+      properties:
+        lineItemCreative:
+          $ref: '#/components/schemas/LineItemCreativeInputModel'
+      required:
+      - lineItemCreative
+      type: object
+    PreferredDealsCreativeDetailsModel:
+      additionalProperties: false
+      description: The preferred-deal creative associated with a line item.
+      example:
+        lineItemCreative:
+          approvalStatus: Unknown
+          creativePreviewCode: creativePreviewCode
+          creativeProductCollections:
+          - isMandatory: true
+            products:
+            - approvalStatus: Unknown
+              id: id
+            - approvalStatus: Unknown
+              id: id
+          - isMandatory: true
+            products:
+            - approvalStatus: Unknown
+              id: id
+            - approvalStatus: Unknown
+              id: id
+          creative:
+            modifiedAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+      nullable: true
+      properties:
+        lineItemCreative:
+          $ref: '#/components/schemas/LineItemCreativeModel'
+      required:
+      - lineItemCreative
       type: object
     PreferredLineItemCreateModelV2:
       description: Model used to create a preferred line item
@@ -17206,6 +18157,47 @@ components:
           nullable: true
           type: string
       type: object
+    ScheduleDetailsCreateModel:
+      additionalProperties: false
+      description: "Flight dates of the campaign. Applies to SponsoredProducts only;\
+        \ OnsiteDisplay campaigns\r\nderive their dates from their line items and\
+        \ reject this node."
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        endDate:
+          description: Campaign end date.
+          format: date-time
+          type: string
+        startDate:
+          description: Campaign start date.
+          format: date-time
+          type: string
+      required:
+      - endDate
+      - startDate
+      type: object
+    ScheduleDetailsModel:
+      additionalProperties: false
+      description: "Flight dates of the campaign. Applies to SponsoredProducts only;\
+        \ OnsiteDisplay campaigns\r\nderive their dates from their line items."
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        endDate:
+          description: Campaign end date. Omitted for a campaign that runs open-ended.
+          format: date-time
+          nullable: true
+          type: string
+        startDate:
+          description: Campaign start date. Defaults to the creation timestamp.
+          format: date-time
+          nullable: true
+          type: string
+      type: object
     SdkApiRestCommonProblem:
       additionalProperties: false
       description: Common problem object.
@@ -17971,6 +18963,26 @@ components:
       - name
       - startDate
       - status
+      type: object
+    StandardBiddingSettings:
+      additionalProperties: false
+      description: Represents the bidding settings used when the active strategy is
+        Standard.
+      example:
+        auctionBids:
+        - pageType: Unknown
+          bid: 6.027456183070403
+        - pageType: Unknown
+          bid: 6.027456183070403
+      nullable: true
+      properties:
+        auctionBids:
+          description: The manual bid amounts configured per page type.
+          items:
+            $ref: '#/components/schemas/LineItemAuctionBid'
+          type: array
+      required:
+      - auctionBids
       type: object
     StatusResponse:
       description: Status of an async report request
@@ -19020,6 +20032,186 @@ components:
         type:
           type: string
       type: object
+    Target:
+      additionalProperties: false
+      description: A specific Target configured on the line item
+      example:
+        approvalStatus: Unknown
+        manualKeywordTargetDetails:
+          matchType: Broad
+          keywordInput: keywordInput
+        negative: true
+        bidMultiplier: 0.8008281904610115
+        pageTypeTargetDetails:
+          pageType: Unknown
+        targetType: Unknown
+        categoryTargetDetails:
+          includeChildren: true
+          categoryId: categoryId
+      nullable: true
+      properties:
+        approvalStatus:
+          enum:
+          - Unknown
+          - Approved
+          - AutoApproved
+          - InReview
+          - Rejected
+          - AutoRejected
+          - Unsubmitted
+          nullable: true
+          type: string
+        bidMultiplier:
+          format: double
+          nullable: true
+          type: number
+        categoryTargetDetails:
+          $ref: '#/components/schemas/CategoryTargetDetails'
+        manualKeywordTargetDetails:
+          $ref: '#/components/schemas/ManualKeywordTargetDetails'
+        negative:
+          nullable: true
+          type: boolean
+        pageTypeTargetDetails:
+          $ref: '#/components/schemas/PageTypeTargetDetails'
+        targetType:
+          enum:
+          - Unknown
+          - ManualKeyword
+          - PageType
+          - Category
+          nullable: true
+          type: string
+      type: object
+    TargetListResponseWithPageMetadata:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several value objects and metadata.
+      example:
+        metadata:
+          offset: 5
+          count: 6
+          limit: 1
+        data:
+        - attributes:
+            approvalStatus: Unknown
+            manualKeywordTargetDetails:
+              matchType: Broad
+              keywordInput: keywordInput
+            negative: true
+            bidMultiplier: 0.8008281904610115
+            pageTypeTargetDetails:
+              pageType: Unknown
+            targetType: Unknown
+            categoryTargetDetails:
+              includeChildren: true
+              categoryId: categoryId
+          type: type
+        - attributes:
+            approvalStatus: Unknown
+            manualKeywordTargetDetails:
+              matchType: Broad
+              keywordInput: keywordInput
+            negative: true
+            bidMultiplier: 0.8008281904610115
+            pageTypeTargetDetails:
+              pageType: Unknown
+            targetType: Unknown
+            categoryTargetDetails:
+              includeChildren: true
+              categoryId: categoryId
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/TargetResource'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/ApiResourcesPageMetadata'
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    TargetResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          approvalStatus: Unknown
+          manualKeywordTargetDetails:
+            matchType: Broad
+            keywordInput: keywordInput
+          negative: true
+          bidMultiplier: 0.8008281904610115
+          pageTypeTargetDetails:
+            pageType: Unknown
+          targetType: Unknown
+          categoryTargetDetails:
+            includeChildren: true
+            categoryId: categoryId
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/Target'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     TemplateVariableValue:
       additionalProperties: false
       description: A value for a variable in a creative template.
@@ -19137,6 +20329,164 @@ components:
           type: array
       required:
       - offerUpdates
+      type: object
+    UpsertCreativesModel:
+      additionalProperties: false
+      description: Creatives to associate with a line item.
+      example:
+        creativeType: Unknown
+        preferredDealsCreativeDetails:
+          lineItemCreative:
+            creativeProductCollections:
+            - isMandatory: true
+              products:
+              - id: id
+              - id: id
+            - isMandatory: true
+              products:
+              - id: id
+              - id: id
+            creative:
+              id: id
+        auctionCreativeDetails:
+          lineItemCreatives:
+          - creativeProductCollections:
+            - isMandatory: true
+              products:
+              - id: id
+              - id: id
+            - isMandatory: true
+              products:
+              - id: id
+              - id: id
+            creative:
+              id: id
+          - creativeProductCollections:
+            - isMandatory: true
+              products:
+              - id: id
+              - id: id
+            - isMandatory: true
+              products:
+              - id: id
+              - id: id
+            creative:
+              id: id
+      properties:
+        auctionCreativeDetails:
+          $ref: '#/components/schemas/AuctionCreativeDetailsInputModel'
+        creativeType:
+          enum:
+          - Unknown
+          - AuctionCreative
+          - PreferredDealsCreative
+          type: string
+        preferredDealsCreativeDetails:
+          $ref: '#/components/schemas/PreferredDealsCreativeDetailsInputModel'
+      required:
+      - creativeType
+      type: object
+    UpsertCreativesModelRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            creativeType: Unknown
+            preferredDealsCreativeDetails:
+              lineItemCreative:
+                creativeProductCollections:
+                - isMandatory: true
+                  products:
+                  - id: id
+                  - id: id
+                - isMandatory: true
+                  products:
+                  - id: id
+                  - id: id
+                creative:
+                  id: id
+            auctionCreativeDetails:
+              lineItemCreatives:
+              - creativeProductCollections:
+                - isMandatory: true
+                  products:
+                  - id: id
+                  - id: id
+                - isMandatory: true
+                  products:
+                  - id: id
+                  - id: id
+                creative:
+                  id: id
+              - creativeProductCollections:
+                - isMandatory: true
+                  products:
+                  - id: id
+                  - id: id
+                - isMandatory: true
+                  products:
+                  - id: id
+                  - id: id
+                creative:
+                  id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/UpsertCreativesModelResource'
+      type: object
+    UpsertCreativesModelResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          creativeType: Unknown
+          preferredDealsCreativeDetails:
+            lineItemCreative:
+              creativeProductCollections:
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              creative:
+                id: id
+          auctionCreativeDetails:
+            lineItemCreatives:
+            - creativeProductCollections:
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              creative:
+                id: id
+            - creativeProductCollections:
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              creative:
+                id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/UpsertCreativesModel'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
       type: object
     ValueResourceAppendCampaignsRequestV1:
       additionalProperties: false
@@ -19325,81 +20675,6 @@ components:
           readOnly: true
           type: array
       type: object
-    ValueResourceCollectionOutcomeDisplayAuctionMinBidResult:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        several value objects.
-      example:
-        data:
-        - attributes:
-            minBid: 0.8008281904610115
-            pageType: unknown
-            creativeId: creativeId
-          type: type
-        - attributes:
-            minBid: 0.8008281904610115
-            pageType: unknown
-            creativeId: creativeId
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ValueResourceDisplayAuctionMinBidResult'
-          nullable: true
-          type: array
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     ValueResourceCollectionOutcomeOfRetailMediaSeller:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -19490,49 +20765,6 @@ components:
           nullable: true
           type: string
       type: object
-    ValueResourceDisplayAuctionMinBidRequest:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          productIds:
-          - productIds
-          - productIds
-          - productIds
-          - productIds
-          - productIds
-          creativeIds:
-          - creativeIds
-          - creativeIds
-          - creativeIds
-          - creativeIds
-          - creativeIds
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/DisplayAuctionMinBidRequest'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceDisplayAuctionMinBidResult:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          minBid: 0.8008281904610115
-          pageType: unknown
-          creativeId: creativeId
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/DisplayAuctionMinBidResult'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
     ValueResourceInputAppendCampaignsRequestV1:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -19579,30 +20811,6 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceDeleteCampaignsRequestV1'
       type: object
-    ValueResourceInputDisplayAuctionMinBidRequest:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value object.
-      example:
-        data:
-          attributes:
-            productIds:
-            - productIds
-            - productIds
-            - productIds
-            - productIds
-            - productIds
-            creativeIds:
-            - creativeIds
-            - creativeIds
-            - creativeIds
-            - creativeIds
-            - creativeIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceDisplayAuctionMinBidRequest'
-      type: object
     ValueResourceInputLineItemBudgetCapOutHistoryRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -19623,41 +20831,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceLineItemBudgetCapOutHistoryRequest'
-      type: object
-    ValueResourceInputOfOrchestratorContractCampaignCreateModelV2:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value object.
-      example:
-        data:
-          attributes:
-            billByRetailerId: billByRetailerId
-            campaignType: SponsoredProducts
-            attributionSettings:
-              clickAttributionWindow: OneWeek
-              clickAttributionScope: SameSku
-              viewAttributionScope: SameSku
-              viewAttributionWindow: None
-            companyName: companyName
-            budgetDetails:
-              isAutoDailyPacing: true
-              dailyPacing: 6.027456183070403
-              monthlyPacing: 1.4658129805029452
-              budget: 0.8008281904610115
-            drawableBalanceIds:
-            - drawableBalanceIds
-            - drawableBalanceIds
-            name: name
-            onBehalfCompanyName: onBehalfCompanyName
-            buyType: Auction
-            objective: Manual
-            scheduleDetails:
-              endDate: 2000-01-23T04:56:07.000+00:00
-              startDate: 2000-01-23T04:56:07.000+00:00
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfOrchestratorContractCampaignCreateModelV2'
       type: object
     ValueResourceInputOfRetailerSearchRequestV2:
       additionalProperties: false
@@ -19918,43 +21091,6 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/LineItemBudgetCapOutHistoryResponse'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceOfOrchestratorContractCampaignCreateModelV2:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          billByRetailerId: billByRetailerId
-          campaignType: SponsoredProducts
-          attributionSettings:
-            clickAttributionWindow: OneWeek
-            clickAttributionScope: SameSku
-            viewAttributionScope: SameSku
-            viewAttributionWindow: None
-          companyName: companyName
-          budgetDetails:
-            isAutoDailyPacing: true
-            dailyPacing: 6.027456183070403
-            monthlyPacing: 1.4658129805029452
-            budget: 0.8008281904610115
-          drawableBalanceIds:
-          - drawableBalanceIds
-          - drawableBalanceIds
-          name: name
-          onBehalfCompanyName: onBehalfCompanyName
-          buyType: Auction
-          objective: Manual
-          scheduleDetails:
-            endDate: 2000-01-23T04:56:07.000+00:00
-            startDate: 2000-01-23T04:56:07.000+00:00
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/OrchestratorContractCampaignCreateModelV2'
         type:
           description: Type of the resource.
           nullable: true

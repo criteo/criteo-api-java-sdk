@@ -15,9 +15,9 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.CommerceDisplayAttributes;
 import com.criteo.api.retailmedia.experimental.model.ConquestingSettings;
 import com.criteo.api.retailmedia.experimental.model.FlightDates;
+import com.criteo.api.retailmedia.experimental.model.OnsiteDisplayAttributes;
 import com.criteo.api.retailmedia.experimental.model.SponsoredProductsAttributes;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -114,10 +114,6 @@ public class LineItem {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private String campaignId;
 
-  public static final String SERIALIZED_NAME_COMMERCE_DISPLAY = "commerceDisplay";
-  @SerializedName(SERIALIZED_NAME_COMMERCE_DISPLAY)
-  private CommerceDisplayAttributes commerceDisplay;
-
   public static final String SERIALIZED_NAME_CONQUESTING_SETTINGS = "conquestingSettings";
   @SerializedName(SERIALIZED_NAME_CONQUESTING_SETTINGS)
   private ConquestingSettings conquestingSettings;
@@ -137,7 +133,7 @@ public class LineItem {
   public enum LineItemTypeEnum {
     SPONSOREDPRODUCT("SponsoredProduct"),
     
-    COMMERCEDISPLAY("CommerceDisplay");
+    ONSITEDISPLAY("OnsiteDisplay");
 
     private String value;
 
@@ -184,6 +180,10 @@ public class LineItem {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_ONSITE_DISPLAY = "onsiteDisplay";
+  @SerializedName(SERIALIZED_NAME_ONSITE_DISPLAY)
+  private OnsiteDisplayAttributes onsiteDisplay;
 
   public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
   @SerializedName(SERIALIZED_NAME_RETAILER_ID)
@@ -263,28 +263,6 @@ public class LineItem {
 
   public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
-  }
-
-
-  public LineItem commerceDisplay(CommerceDisplayAttributes commerceDisplay) {
-    
-    this.commerceDisplay = commerceDisplay;
-    return this;
-  }
-
-   /**
-   * Get commerceDisplay
-   * @return commerceDisplay
-  **/
-  @javax.annotation.Nullable
-
-  public CommerceDisplayAttributes getCommerceDisplay() {
-    return commerceDisplay;
-  }
-
-
-  public void setCommerceDisplay(CommerceDisplayAttributes commerceDisplay) {
-    this.commerceDisplay = commerceDisplay;
   }
 
 
@@ -398,6 +376,28 @@ public class LineItem {
   }
 
 
+  public LineItem onsiteDisplay(OnsiteDisplayAttributes onsiteDisplay) {
+    
+    this.onsiteDisplay = onsiteDisplay;
+    return this;
+  }
+
+   /**
+   * Get onsiteDisplay
+   * @return onsiteDisplay
+  **/
+  @javax.annotation.Nullable
+
+  public OnsiteDisplayAttributes getOnsiteDisplay() {
+    return onsiteDisplay;
+  }
+
+
+  public void setOnsiteDisplay(OnsiteDisplayAttributes onsiteDisplay) {
+    this.onsiteDisplay = onsiteDisplay;
+  }
+
+
   public LineItem retailerId(String retailerId) {
     
     this.retailerId = retailerId;
@@ -477,12 +477,12 @@ public class LineItem {
     return Objects.equals(this.accountId, lineItem.accountId) &&
         Objects.equals(this.buyType, lineItem.buyType) &&
         Objects.equals(this.campaignId, lineItem.campaignId) &&
-        Objects.equals(this.commerceDisplay, lineItem.commerceDisplay) &&
         Objects.equals(this.conquestingSettings, lineItem.conquestingSettings) &&
         Objects.equals(this.flightDates, lineItem.flightDates) &&
         Objects.equals(this.lineItemId, lineItem.lineItemId) &&
         Objects.equals(this.lineItemType, lineItem.lineItemType) &&
         Objects.equals(this.name, lineItem.name) &&
+        Objects.equals(this.onsiteDisplay, lineItem.onsiteDisplay) &&
         Objects.equals(this.retailerId, lineItem.retailerId) &&
         Objects.equals(this.serveToOptOutUser, lineItem.serveToOptOutUser) &&
         Objects.equals(this.sponsoredProducts, lineItem.sponsoredProducts);
@@ -494,7 +494,7 @@ public class LineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, buyType, campaignId, commerceDisplay, conquestingSettings, flightDates, lineItemId, lineItemType, name, retailerId, serveToOptOutUser, sponsoredProducts);
+    return Objects.hash(accountId, buyType, campaignId, conquestingSettings, flightDates, lineItemId, lineItemType, name, onsiteDisplay, retailerId, serveToOptOutUser, sponsoredProducts);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -511,12 +511,12 @@ public class LineItem {
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    buyType: ").append(toIndentedString(buyType)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    commerceDisplay: ").append(toIndentedString(commerceDisplay)).append("\n");
     sb.append("    conquestingSettings: ").append(toIndentedString(conquestingSettings)).append("\n");
     sb.append("    flightDates: ").append(toIndentedString(flightDates)).append("\n");
     sb.append("    lineItemId: ").append(toIndentedString(lineItemId)).append("\n");
     sb.append("    lineItemType: ").append(toIndentedString(lineItemType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    onsiteDisplay: ").append(toIndentedString(onsiteDisplay)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    serveToOptOutUser: ").append(toIndentedString(serveToOptOutUser)).append("\n");
     sb.append("    sponsoredProducts: ").append(toIndentedString(sponsoredProducts)).append("\n");
@@ -545,12 +545,12 @@ public class LineItem {
     openapiFields.add("accountId");
     openapiFields.add("buyType");
     openapiFields.add("campaignId");
-    openapiFields.add("commerceDisplay");
     openapiFields.add("conquestingSettings");
     openapiFields.add("flightDates");
     openapiFields.add("lineItemId");
     openapiFields.add("lineItemType");
     openapiFields.add("name");
+    openapiFields.add("onsiteDisplay");
     openapiFields.add("retailerId");
     openapiFields.add("serveToOptOutUser");
     openapiFields.add("sponsoredProducts");
@@ -588,10 +588,6 @@ public class LineItem {
       if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
       }
-      // validate the optional field `commerceDisplay`
-      if (jsonObj.get("commerceDisplay") != null && !jsonObj.get("commerceDisplay").isJsonNull()) {
-        CommerceDisplayAttributes.validateJsonObject(jsonObj.getAsJsonObject("commerceDisplay"));
-      }
       // validate the optional field `conquestingSettings`
       if (jsonObj.get("conquestingSettings") != null && !jsonObj.get("conquestingSettings").isJsonNull()) {
         ConquestingSettings.validateJsonObject(jsonObj.getAsJsonObject("conquestingSettings"));
@@ -608,6 +604,10 @@ public class LineItem {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // validate the optional field `onsiteDisplay`
+      if (jsonObj.get("onsiteDisplay") != null && !jsonObj.get("onsiteDisplay").isJsonNull()) {
+        OnsiteDisplayAttributes.validateJsonObject(jsonObj.getAsJsonObject("onsiteDisplay"));
       }
       if ((jsonObj.get("retailerId") != null && !jsonObj.get("retailerId").isJsonNull()) && !jsonObj.get("retailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
