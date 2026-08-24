@@ -15786,6 +15786,7 @@ components:
     OnSiteRecoResponse:
       description: Recommendation response
       example:
+        impressionId: impressionId
         extraInfos:
         - 0
         - 0
@@ -15824,6 +15825,11 @@ components:
             type: integer
           nullable: true
           type: array
+        impressionId:
+          description: "Identifier of the recommendation impression, to be used to\
+            \ correlate displays and clicks"
+          nullable: true
+          type: string
         products:
           description: Recommended products
           items:

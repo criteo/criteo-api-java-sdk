@@ -2684,43 +2684,6 @@ paths:
       - Catalog
       x-content-type: application/json
       x-accepts: application/json
-  /preview/retail-media/retailers/{retailerId}/compute-display-min-bid:
-    post:
-      description: Computes the min bid for relevant page types based on the provided
-        information
-      operationId: ComputeDisplayMinBidByRetailerId
-      parameters:
-      - description: The retailer id
-        explode: false
-        in: path
-        name: retailerId
-        required: true
-        schema:
-          format: int32
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputDisplayAuctionMinBidRequest'
-        description: The details for what creatives and product ids to use to compute
-          the min bids
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceCollectionOutcomeDisplayAuctionMinBidResult'
-          description: Success
-      security:
-      - oauth:
-        - RetailMedia_Campaign_Read
-      summary: "/preview/retail-media/retailers/{retailerId}/compute-display-min-bid"
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
   /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove:
     post:
       description: Attempt to remove the provided brand from the account.
@@ -6669,76 +6632,6 @@ components:
           type: string
       required:
       - attributes
-      type: object
-    DisplayAuctionMinBidRequest:
-      additionalProperties: false
-      description: Represents the list of creatives and respective product IDs to
-        compute min bid for.
-      example:
-        productIds:
-        - productIds
-        - productIds
-        - productIds
-        - productIds
-        - productIds
-        creativeIds:
-        - creativeIds
-        - creativeIds
-        - creativeIds
-        - creativeIds
-        - creativeIds
-      properties:
-        creativeIds:
-          description: List of Creatives to use
-          items:
-            type: string
-          maxItems: 50
-          minItems: 1
-          type: array
-        productIds:
-          description: List of potential product ids (SkuIds) to put in creatives
-          items:
-            type: string
-          maxItems: 50
-          nullable: true
-          type: array
-      type: object
-    DisplayAuctionMinBidResult:
-      additionalProperties: false
-      description: Represents the min bid for a pageType and creative combination.
-      example:
-        minBid: 0.8008281904610115
-        pageType: unknown
-        creativeId: creativeId
-      nullable: true
-      properties:
-        creativeId:
-          description: The creativeId for the creative
-          nullable: true
-          type: string
-        minBid:
-          description: "The minimum bid for the combination of page type, creative\
-            \ and categories"
-          format: double
-          nullable: true
-          type: number
-        pageType:
-          description: Page type for the creative to display on
-          enum:
-          - unknown
-          - search
-          - home
-          - checkout
-          - category
-          - productDetail
-          - confirmation
-          - merchandising
-          - deals
-          - favorites
-          - searchBar
-          - categoryMenu
-          nullable: true
-          type: string
       type: object
     EntityResourceBalanceV1:
       additionalProperties: false
@@ -17341,81 +17234,6 @@ components:
           readOnly: true
           type: array
       type: object
-    ValueResourceCollectionOutcomeDisplayAuctionMinBidResult:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        several value objects.
-      example:
-        data:
-        - attributes:
-            minBid: 0.8008281904610115
-            pageType: unknown
-            creativeId: creativeId
-          type: type
-        - attributes:
-            minBid: 0.8008281904610115
-            pageType: unknown
-            creativeId: creativeId
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ValueResourceDisplayAuctionMinBidResult'
-          nullable: true
-          type: array
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     ValueResourceCollectionOutcomeOfRetailMediaSeller:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -17506,49 +17324,6 @@ components:
           nullable: true
           type: string
       type: object
-    ValueResourceDisplayAuctionMinBidRequest:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          productIds:
-          - productIds
-          - productIds
-          - productIds
-          - productIds
-          - productIds
-          creativeIds:
-          - creativeIds
-          - creativeIds
-          - creativeIds
-          - creativeIds
-          - creativeIds
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/DisplayAuctionMinBidRequest'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceDisplayAuctionMinBidResult:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          minBid: 0.8008281904610115
-          pageType: unknown
-          creativeId: creativeId
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/DisplayAuctionMinBidResult'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
     ValueResourceInputAppendCampaignsRequestV1:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -17594,30 +17369,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceDeleteCampaignsRequestV1'
-      type: object
-    ValueResourceInputDisplayAuctionMinBidRequest:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value object.
-      example:
-        data:
-          attributes:
-            productIds:
-            - productIds
-            - productIds
-            - productIds
-            - productIds
-            - productIds
-            creativeIds:
-            - creativeIds
-            - creativeIds
-            - creativeIds
-            - creativeIds
-            - creativeIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceDisplayAuctionMinBidRequest'
       type: object
     ValueResourceInputLineItemBudgetCapOutHistoryRequest:
       additionalProperties: false

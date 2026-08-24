@@ -56,6 +56,10 @@ public class OnSiteRecoResponse {
   @SerializedName(SERIALIZED_NAME_EXTRA_INFOS)
   private List<Integer> extraInfos = null;
 
+  public static final String SERIALIZED_NAME_IMPRESSION_ID = "impressionId";
+  @SerializedName(SERIALIZED_NAME_IMPRESSION_ID)
+  private String impressionId;
+
   public static final String SERIALIZED_NAME_PRODUCTS = "products";
   @SerializedName(SERIALIZED_NAME_PRODUCTS)
   private List<RecommendedProduct> products = null;
@@ -90,6 +94,28 @@ public class OnSiteRecoResponse {
 
   public void setExtraInfos(List<Integer> extraInfos) {
     this.extraInfos = extraInfos;
+  }
+
+
+  public OnSiteRecoResponse impressionId(String impressionId) {
+    
+    this.impressionId = impressionId;
+    return this;
+  }
+
+   /**
+   * Identifier of the recommendation impression, to be used to correlate displays and clicks
+   * @return impressionId
+  **/
+  @javax.annotation.Nullable
+
+  public String getImpressionId() {
+    return impressionId;
+  }
+
+
+  public void setImpressionId(String impressionId) {
+    this.impressionId = impressionId;
   }
 
 
@@ -178,6 +204,7 @@ public class OnSiteRecoResponse {
     }
     OnSiteRecoResponse onSiteRecoResponse = (OnSiteRecoResponse) o;
     return Objects.equals(this.extraInfos, onSiteRecoResponse.extraInfos) &&
+        Objects.equals(this.impressionId, onSiteRecoResponse.impressionId) &&
         Objects.equals(this.products, onSiteRecoResponse.products)&&
         Objects.equals(this.additionalProperties, onSiteRecoResponse.additionalProperties);
   }
@@ -188,7 +215,7 @@ public class OnSiteRecoResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(extraInfos, products, additionalProperties);
+    return Objects.hash(extraInfos, impressionId, products, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -203,6 +230,7 @@ public class OnSiteRecoResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class OnSiteRecoResponse {\n");
     sb.append("    extraInfos: ").append(toIndentedString(extraInfos)).append("\n");
+    sb.append("    impressionId: ").append(toIndentedString(impressionId)).append("\n");
     sb.append("    products: ").append(toIndentedString(products)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -228,6 +256,7 @@ public class OnSiteRecoResponse {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("extraInfos");
+    openapiFields.add("impressionId");
     openapiFields.add("products");
 
     // a set of required properties/fields (JSON key names)
@@ -249,6 +278,9 @@ public class OnSiteRecoResponse {
       // ensure the optional json data is an array if present
       if (jsonObj.get("extraInfos") != null && !jsonObj.get("extraInfos").isJsonNull() && !jsonObj.get("extraInfos").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `extraInfos` to be an array in the JSON string but got `%s`", jsonObj.get("extraInfos").toString()));
+      }
+      if ((jsonObj.get("impressionId") != null && !jsonObj.get("impressionId").isJsonNull()) && !jsonObj.get("impressionId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `impressionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("impressionId").toString()));
       }
       if (jsonObj.get("products") != null && !jsonObj.get("products").isJsonNull()) {
         JsonArray jsonArrayproducts = jsonObj.getAsJsonArray("products");
