@@ -2,22 +2,19 @@
 
 # DigitalShelfIntelligenceInsight
 
-Description of a Digital Shelf Intelligence insight
+Parameters of a Digital Shelf Intelligence insight.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**accountId** | **String** |  |  |
-|**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) |  |  |
-|**brandIds** | **List&lt;String&gt;** |  |  [optional] |
-|**categories** | **List&lt;String&gt;** |  |  [optional] |
-|**endDate** | **OffsetDateTime** |  |  |
-|**format** | [**FormatEnum**](#FormatEnum) |  |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) |  |  |
-|**retailerIds** | **List&lt;String&gt;** |  |  [optional] |
-|**skuIds** | [**List&lt;SkuFilter&gt;**](SkuFilter.md) |  |  [optional] |
-|**startDate** | **OffsetDateTime** |  |  |
+|**accountId** | **String** | Account ID the insight report is generated for. |  |
+|**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) | Aggregation level of the report. Allowed values: &#x60;brand&#x60;, &#x60;sku&#x60;. |  |
+|**endDate** | **String** | End date of the report (inclusive), in ISO 8601 format (YYYY-MM-DD).  Adjusted to the Sunday of the week containing the provided date. |  |
+|**filters** | [**DigitalShelfIntelligenceFilters**](DigitalShelfIntelligenceFilters.md) |  |  [optional] |
+|**format** | [**FormatEnum**](#FormatEnum) | Output format of the report. Allowed values: &#x60;json&#x60;, &#x60;json-compact&#x60;, &#x60;json-newline&#x60;, &#x60;csv&#x60;. Defaults to &#x60;json-compact&#x60;. |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | Metrics to report on. |  |
+|**startDate** | **String** | Start date of the report (inclusive), in ISO 8601 format (YYYY-MM-DD).  Adjusted to the Monday of the week containing the provided date. |  |
 
 
 

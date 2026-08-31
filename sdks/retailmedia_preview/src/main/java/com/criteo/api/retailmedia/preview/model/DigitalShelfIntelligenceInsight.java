@@ -15,17 +15,15 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.SkuFilter;
+import com.criteo.api.retailmedia.preview.model.DigitalShelfIntelligenceFilters;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Description of a Digital Shelf Intelligence insight
+ * Parameters of a Digital Shelf Intelligence insight.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DigitalShelfIntelligenceInsight {
@@ -58,7 +56,7 @@ public class DigitalShelfIntelligenceInsight {
   private String accountId;
 
   /**
-   * Gets or Sets aggregationLevel
+   * Aggregation level of the report. Allowed values: &#x60;brand&#x60;, &#x60;sku&#x60;.
    */
   @JsonAdapter(AggregationLevelEnum.Adapter.class)
   public enum AggregationLevelEnum {
@@ -108,20 +106,16 @@ public class DigitalShelfIntelligenceInsight {
   @SerializedName(SERIALIZED_NAME_AGGREGATION_LEVEL)
   private AggregationLevelEnum aggregationLevel;
 
-  public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
-  @SerializedName(SERIALIZED_NAME_BRAND_IDS)
-  private List<String> brandIds = null;
-
-  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
-  @SerializedName(SERIALIZED_NAME_CATEGORIES)
-  private List<String> categories = null;
-
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
+  private String endDate;
+
+  public static final String SERIALIZED_NAME_FILTERS = "filters";
+  @SerializedName(SERIALIZED_NAME_FILTERS)
+  private DigitalShelfIntelligenceFilters filters;
 
   /**
-   * Gets or Sets format
+   * Output format of the report. Allowed values: &#x60;json&#x60;, &#x60;json-compact&#x60;, &#x60;json-newline&#x60;, &#x60;csv&#x60;. Defaults to &#x60;json-compact&#x60;.
    */
   @JsonAdapter(FormatEnum.Adapter.class)
   public enum FormatEnum {
@@ -176,7 +170,7 @@ public class DigitalShelfIntelligenceInsight {
   private FormatEnum format = FormatEnum.JSON_COMPACT;
 
   /**
-   * Gets or Sets metrics
+   * Metric available in a Digital Shelf Intelligence insight.
    */
   @JsonAdapter(MetricsEnum.Adapter.class)
   public enum MetricsEnum {
@@ -238,17 +232,9 @@ public class DigitalShelfIntelligenceInsight {
   @SerializedName(SERIALIZED_NAME_METRICS)
   private List<MetricsEnum> metrics = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
-  @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
-  private List<String> retailerIds = null;
-
-  public static final String SERIALIZED_NAME_SKU_IDS = "skuIds";
-  @SerializedName(SERIALIZED_NAME_SKU_IDS)
-  private List<SkuFilter> skuIds = null;
-
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
-  private OffsetDateTime startDate;
+  private String startDate;
 
   public DigitalShelfIntelligenceInsight() {
   }
@@ -260,7 +246,7 @@ public class DigitalShelfIntelligenceInsight {
   }
 
    /**
-   * Get accountId
+   * Account ID the insight report is generated for.
    * @return accountId
   **/
   @javax.annotation.Nonnull
@@ -282,7 +268,7 @@ public class DigitalShelfIntelligenceInsight {
   }
 
    /**
-   * Get aggregationLevel
+   * Aggregation level of the report. Allowed values: &#x60;brand&#x60;, &#x60;sku&#x60;.
    * @return aggregationLevel
   **/
   @javax.annotation.Nonnull
@@ -297,85 +283,47 @@ public class DigitalShelfIntelligenceInsight {
   }
 
 
-  public DigitalShelfIntelligenceInsight brandIds(List<String> brandIds) {
-    
-    this.brandIds = brandIds;
-    return this;
-  }
-
-  public DigitalShelfIntelligenceInsight addBrandIdsItem(String brandIdsItem) {
-    if (this.brandIds == null) {
-      this.brandIds = null;
-    }
-    this.brandIds.add(brandIdsItem);
-    return this;
-  }
-
-   /**
-   * Get brandIds
-   * @return brandIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getBrandIds() {
-    return brandIds;
-  }
-
-
-  public void setBrandIds(List<String> brandIds) {
-    this.brandIds = brandIds;
-  }
-
-
-  public DigitalShelfIntelligenceInsight categories(List<String> categories) {
-    
-    this.categories = categories;
-    return this;
-  }
-
-  public DigitalShelfIntelligenceInsight addCategoriesItem(String categoriesItem) {
-    if (this.categories == null) {
-      this.categories = null;
-    }
-    this.categories.add(categoriesItem);
-    return this;
-  }
-
-   /**
-   * Get categories
-   * @return categories
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getCategories() {
-    return categories;
-  }
-
-
-  public void setCategories(List<String> categories) {
-    this.categories = categories;
-  }
-
-
-  public DigitalShelfIntelligenceInsight endDate(OffsetDateTime endDate) {
+  public DigitalShelfIntelligenceInsight endDate(String endDate) {
     
     this.endDate = endDate;
     return this;
   }
 
    /**
-   * Get endDate
+   * End date of the report (inclusive), in ISO 8601 format (YYYY-MM-DD).  Adjusted to the Sunday of the week containing the provided date.
    * @return endDate
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getEndDate() {
+  public String getEndDate() {
     return endDate;
   }
 
 
-  public void setEndDate(OffsetDateTime endDate) {
+  public void setEndDate(String endDate) {
     this.endDate = endDate;
+  }
+
+
+  public DigitalShelfIntelligenceInsight filters(DigitalShelfIntelligenceFilters filters) {
+    
+    this.filters = filters;
+    return this;
+  }
+
+   /**
+   * Get filters
+   * @return filters
+  **/
+  @javax.annotation.Nullable
+
+  public DigitalShelfIntelligenceFilters getFilters() {
+    return filters;
+  }
+
+
+  public void setFilters(DigitalShelfIntelligenceFilters filters) {
+    this.filters = filters;
   }
 
 
@@ -386,7 +334,7 @@ public class DigitalShelfIntelligenceInsight {
   }
 
    /**
-   * Get format
+   * Output format of the report. Allowed values: &#x60;json&#x60;, &#x60;json-compact&#x60;, &#x60;json-newline&#x60;, &#x60;csv&#x60;. Defaults to &#x60;json-compact&#x60;.
    * @return format
   **/
   @javax.annotation.Nullable
@@ -413,7 +361,7 @@ public class DigitalShelfIntelligenceInsight {
   }
 
    /**
-   * Get metrics
+   * Metrics to report on.
    * @return metrics
   **/
   @javax.annotation.Nonnull
@@ -428,84 +376,24 @@ public class DigitalShelfIntelligenceInsight {
   }
 
 
-  public DigitalShelfIntelligenceInsight retailerIds(List<String> retailerIds) {
-    
-    this.retailerIds = retailerIds;
-    return this;
-  }
-
-  public DigitalShelfIntelligenceInsight addRetailerIdsItem(String retailerIdsItem) {
-    if (this.retailerIds == null) {
-      this.retailerIds = null;
-    }
-    this.retailerIds.add(retailerIdsItem);
-    return this;
-  }
-
-   /**
-   * Get retailerIds
-   * @return retailerIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getRetailerIds() {
-    return retailerIds;
-  }
-
-
-  public void setRetailerIds(List<String> retailerIds) {
-    this.retailerIds = retailerIds;
-  }
-
-
-  public DigitalShelfIntelligenceInsight skuIds(List<SkuFilter> skuIds) {
-    
-    this.skuIds = skuIds;
-    return this;
-  }
-
-  public DigitalShelfIntelligenceInsight addSkuIdsItem(SkuFilter skuIdsItem) {
-    if (this.skuIds == null) {
-      this.skuIds = null;
-    }
-    this.skuIds.add(skuIdsItem);
-    return this;
-  }
-
-   /**
-   * Get skuIds
-   * @return skuIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<SkuFilter> getSkuIds() {
-    return skuIds;
-  }
-
-
-  public void setSkuIds(List<SkuFilter> skuIds) {
-    this.skuIds = skuIds;
-  }
-
-
-  public DigitalShelfIntelligenceInsight startDate(OffsetDateTime startDate) {
+  public DigitalShelfIntelligenceInsight startDate(String startDate) {
     
     this.startDate = startDate;
     return this;
   }
 
    /**
-   * Get startDate
+   * Start date of the report (inclusive), in ISO 8601 format (YYYY-MM-DD).  Adjusted to the Monday of the week containing the provided date.
    * @return startDate
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getStartDate() {
+  public String getStartDate() {
     return startDate;
   }
 
 
-  public void setStartDate(OffsetDateTime startDate) {
+  public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
@@ -522,30 +410,16 @@ public class DigitalShelfIntelligenceInsight {
     DigitalShelfIntelligenceInsight digitalShelfIntelligenceInsight = (DigitalShelfIntelligenceInsight) o;
     return Objects.equals(this.accountId, digitalShelfIntelligenceInsight.accountId) &&
         Objects.equals(this.aggregationLevel, digitalShelfIntelligenceInsight.aggregationLevel) &&
-        Objects.equals(this.brandIds, digitalShelfIntelligenceInsight.brandIds) &&
-        Objects.equals(this.categories, digitalShelfIntelligenceInsight.categories) &&
         Objects.equals(this.endDate, digitalShelfIntelligenceInsight.endDate) &&
+        Objects.equals(this.filters, digitalShelfIntelligenceInsight.filters) &&
         Objects.equals(this.format, digitalShelfIntelligenceInsight.format) &&
         Objects.equals(this.metrics, digitalShelfIntelligenceInsight.metrics) &&
-        Objects.equals(this.retailerIds, digitalShelfIntelligenceInsight.retailerIds) &&
-        Objects.equals(this.skuIds, digitalShelfIntelligenceInsight.skuIds) &&
         Objects.equals(this.startDate, digitalShelfIntelligenceInsight.startDate);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, aggregationLevel, brandIds, categories, endDate, format, metrics, retailerIds, skuIds, startDate);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(accountId, aggregationLevel, endDate, filters, format, metrics, startDate);
   }
 
   @Override
@@ -554,13 +428,10 @@ public class DigitalShelfIntelligenceInsight {
     sb.append("class DigitalShelfIntelligenceInsight {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    aggregationLevel: ").append(toIndentedString(aggregationLevel)).append("\n");
-    sb.append("    brandIds: ").append(toIndentedString(brandIds)).append("\n");
-    sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
-    sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
-    sb.append("    skuIds: ").append(toIndentedString(skuIds)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -586,13 +457,10 @@ public class DigitalShelfIntelligenceInsight {
     openapiFields = new HashSet<String>();
     openapiFields.add("accountId");
     openapiFields.add("aggregationLevel");
-    openapiFields.add("brandIds");
-    openapiFields.add("categories");
     openapiFields.add("endDate");
+    openapiFields.add("filters");
     openapiFields.add("format");
     openapiFields.add("metrics");
-    openapiFields.add("retailerIds");
-    openapiFields.add("skuIds");
     openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
@@ -637,13 +505,12 @@ public class DigitalShelfIntelligenceInsight {
       if (!jsonObj.get("aggregationLevel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `aggregationLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aggregationLevel").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonNull() && !jsonObj.get("brandIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
+      if (!jsonObj.get("endDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull() && !jsonObj.get("categories").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
+      // validate the optional field `filters`
+      if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
+        DigitalShelfIntelligenceFilters.validateJsonObject(jsonObj.getAsJsonObject("filters"));
       }
       if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
@@ -654,23 +521,8 @@ public class DigitalShelfIntelligenceInsight {
       } else if (!jsonObj.get("metrics").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonNull() && !jsonObj.get("retailerIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
-      }
-      if (jsonObj.get("skuIds") != null && !jsonObj.get("skuIds").isJsonNull()) {
-        JsonArray jsonArrayskuIds = jsonObj.getAsJsonArray("skuIds");
-        if (jsonArrayskuIds != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("skuIds").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `skuIds` to be an array in the JSON string but got `%s`", jsonObj.get("skuIds").toString()));
-          }
-
-          // validate the optional field `skuIds` (array)
-          for (int i = 0; i < jsonArrayskuIds.size(); i++) {
-            SkuFilter.validateJsonObject(jsonArrayskuIds.get(i).getAsJsonObject());
-          };
-        }
+      if (!jsonObj.get("startDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
       }
   }
 

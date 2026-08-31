@@ -64,6 +64,7 @@ docs/CustomAttribute.md
 docs/DataCompleteThrough.md
 docs/DeleteCampaignsRequestV1.md
 docs/DeleteEntry.md
+docs/DigitalShelfIntelligenceFilters.md
 docs/DigitalShelfIntelligenceInsight.md
 docs/DigitalShelfIntelligenceInsightRequest.md
 docs/DigitalShelfIntelligenceInsightResource.md
@@ -257,6 +258,7 @@ docs/RmEventsV1.md
 docs/RmcaCommonProblem.md
 docs/SdkApiRestCommonProblem.md
 docs/SetProductBuyBoxWinnersRequest.md
+docs/ShareOfVoiceFilters.md
 docs/ShareOfVoiceInsight.md
 docs/ShareOfVoiceInsightRequest.md
 docs/ShareOfVoiceInsightResource.md
@@ -415,6 +417,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/CustomAttribute.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DataCompleteThrough.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DeleteCampaignsRequestV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DeleteEntry.java
+src/main/java/com/criteo/api/retailmedia/preview/model/DigitalShelfIntelligenceFilters.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DigitalShelfIntelligenceInsight.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DigitalShelfIntelligenceInsightRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/DigitalShelfIntelligenceInsightResource.java
@@ -606,6 +609,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/RmEventsV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RmcaCommonProblem.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SdkApiRestCommonProblem.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SetProductBuyBoxWinnersRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceFilters.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceInsight.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceInsightRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ShareOfVoiceInsightResource.java

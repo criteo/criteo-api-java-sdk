@@ -198,6 +198,11 @@ docs/ExportStatusModelResource.md
 docs/ExportStatusModelResponse.md
 docs/FileStreamResultResource.md
 docs/FileStreamResultResponse.md
+docs/FilterBasedAlgebraNodeV1.md
+docs/FilterBasedCreateV1.md
+docs/FilterBasedDefinitionV1.md
+docs/FilterBasedUpdateV1.md
+docs/FilterBasedV1.md
 docs/GatewayApi.md
 docs/GenerateAllProductsReportRequestAttributes.md
 docs/GenerateAllProductsReportRequestAttributesRequest.md
@@ -240,6 +245,7 @@ docs/InMarketSizeEstimationV1.md
 docs/InMarketUpdateV1.md
 docs/InMarketV1.md
 docs/Installment.md
+docs/IntegerFilterV1.md
 docs/JsonReportRows.md
 docs/JsonReportRowsListResponse.md
 docs/JsonReportRowsResource.md
@@ -248,6 +254,7 @@ docs/LocationCreateV1.md
 docs/LocationSizeEstimationV1.md
 docs/LocationUpdateV1.md
 docs/LocationV1.md
+docs/LongFilterV1.md
 docs/LookalikeCreateV1.md
 docs/LookalikeUpdateV1.md
 docs/LookalikeV1.md
@@ -307,6 +314,8 @@ docs/PointOfInterestV1.md
 docs/PortfolioMessage.md
 docs/Price.md
 docs/Product.md
+docs/ProductCategoryFilterV1.md
+docs/ProductCategoryV1.md
 docs/ProductContext.md
 docs/ProductFilterConfig.md
 docs/ProductImporterError.md
@@ -652,6 +661,11 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportStatusModelR
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportStatusModelResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/FileStreamResultResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/FileStreamResultResponse.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/FilterBasedAlgebraNodeV1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/FilterBasedCreateV1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/FilterBasedDefinitionV1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/FilterBasedUpdateV1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/FilterBasedV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateAllProductsReportRequestAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateAllProductsReportRequestAttributesRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateAllProductsReportRequestAttributesResource.java
@@ -693,6 +707,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/InMarketSizeEstima
 src/main/java/com/criteo/api/marketingsolutions/preview/model/InMarketUpdateV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/InMarketV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Installment.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/IntegerFilterV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/JsonReportRows.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/JsonReportRowsListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/JsonReportRowsResource.java
@@ -701,6 +716,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/LocationCreateV1.j
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LocationSizeEstimationV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LocationUpdateV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LocationV1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/LongFilterV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LookalikeCreateV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LookalikeUpdateV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LookalikeV1.java
@@ -759,6 +775,8 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/PointOfInterestV1.
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PortfolioMessage.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Price.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Product.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductCategoryFilterV1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductCategoryV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductContext.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductFilterConfig.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductImporterError.java

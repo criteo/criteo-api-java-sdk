@@ -11,6 +11,7 @@ Set of rules that defines specific people to target.
 |**advertiserId** | **String** | Advertiser associated to the segment |  |
 |**contactList** | **Object** | Settings to target users with your contact lists. |  [optional] |
 |**description** | **String** | Description of the segment |  [optional] |
+|**filterBased** | [**FilterBasedCreateV1**](FilterBasedCreateV1.md) |  |  [optional] |
 |**inMarket** | [**InMarketCreateV1**](InMarketCreateV1.md) |  |  [optional] |
 |**location** | [**LocationCreateV1**](LocationCreateV1.md) |  |  [optional] |
 |**lookalike** | [**LookalikeCreateV1**](LookalikeCreateV1.md) |  |  [optional] |

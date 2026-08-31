@@ -1746,16 +1746,18 @@ paths:
       - OnSiteRecommendation
       x-content-type: application/json
       x-accepts: application/json
-  /preview/retail-media/insights/{insightId}/output:
+  /preview/retail-media/insights/{insight-id}/output:
     get:
-      description: Returns the output of an async insight
+      description: "Downloads the file output of a completed insight report. The report\
+        \ must have reached the `Success`\r\nstatus; otherwise an error is returned.\
+        \ Check readiness first with the insight status endpoint."
       operationId: GetInsightReportOutput
       parameters:
       - description: The ID of the asynchronous insight report. Must be a valid ID
           format.
         explode: false
         in: path
-        name: insightId
+        name: insight-id
         required: true
         schema:
           type: string
@@ -1763,7 +1765,7 @@ paths:
       responses:
         "200":
           content:
-            application/json:
+            text/plain:
               schema:
                 format: binary
                 type: string
@@ -1771,20 +1773,22 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
-      summary: "/preview/retail-media/insights/{insightId}/output"
+      summary: "/preview/retail-media/insights/{insight-id}/output"
       tags:
       - Analytics
-      x-accepts: application/json
-  /preview/retail-media/insights/{insightId}/status:
+      x-accepts: text/plain
+  /preview/retail-media/insights/{insight-id}/status:
     get:
-      description: Returns the status of an async insight
+      description: "Returns the current status of an asynchronously generated insight\
+        \ report. Poll this endpoint until the\r\nstatus is `Success`, then download\
+        \ the report from the insight output endpoint."
       operationId: GetInsightReportStatus
       parameters:
       - description: The ID of the asynchronous insight report. Must be a valid ID
           format.
         explode: false
         in: path
-        name: insightId
+        name: insight-id
         required: true
         schema:
           type: string
@@ -1799,13 +1803,18 @@ paths:
       security:
       - oauth:
         - RetailMedia_Analytics_Read
-      summary: "/preview/retail-media/insights/{insightId}/status"
+      summary: "/preview/retail-media/insights/{insight-id}/status"
       tags:
       - Analytics
       x-accepts: application/json
   /preview/retail-media/insights/digital-shelf-intelligence:
     post:
-      description: Generate a Digital Shelf Intelligence insight
+      description: "Requests a Digital Shelf Intelligence insight report. This is\
+        \ an asynchronous, non-transactional operation:\r\nit does not return the\
+        \ analytic data. It enqueues an export job and returns the created insight\r\
+        \nreport, whose id is then used to poll the insight status endpoint until\
+        \ the report is ready and to\r\ndownload the result from the insight output\
+        \ endpoint."
       operationId: GenerateDigitalShelfIntelligenceInsight
       requestBody:
         content:
@@ -1830,7 +1839,11 @@ paths:
       x-accepts: application/json
   /preview/retail-media/insights/share-of-voice:
     post:
-      description: Generate a share of voice insight
+      description: "Requests a Share of Voice insight report. This is an asynchronous,\
+        \ non-transactional operation:\r\nit does not return the analytic data. It\
+        \ enqueues an export job and returns the created insight\r\nreport, whose\
+        \ id is then used to poll the insight status endpoint until the report is\
+        \ ready and to\r\ndownload the result from the insight output endpoint."
       operationId: GenerateShareOfVoiceInsight
       requestBody:
         content:
@@ -3204,6 +3217,7 @@ components:
             - winRate
             - sampledBidsWon
             - sampledBidsParticipated
+            - makeGoodSpend
             type: string
           type: array
         reportType:
@@ -3585,6 +3599,7 @@ components:
             - winRate
             - sampledBidsWon
             - sampledBidsParticipated
+            - makeGoodSpend
             type: string
           type: array
         reportType:
@@ -3925,62 +3940,22 @@ components:
       type: object
     AsyncInsightResponse:
       additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single entity.
+      description: "Response returned by the asynchronous insight endpoints, carrying\
+        \ the insight report status."
       example:
         data:
+          id: 12345678-90ab-cdef-1234-567890abcdef
+          type: InsightStatus
           attributes:
-            fileSizeBytes: 0
-            createdAt: createdAt
-            md5CheckSum: md5CheckSum
-            rowCount: 6
-            message: message
-            expiresAt: expiresAt
-            status: Unknown
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
+            status: Success
+            message: rows_count=1234
+            createdAt: 2026-07-01T12:00:00.0000000+00:00
+            expiresAt: 2026-07-08T12:00:00.0000000+00:00
+            rowCount: 1234
+            md5CheckSum: 0123456789abcdef0123456789abcdef
+            fileSizeBytes: 154321
+        warnings: []
+        errors: []
       properties:
         data:
           $ref: '#/components/schemas/InsightStatusResponseResource'
@@ -4201,6 +4176,7 @@ components:
             - winRate
             - sampledBidsWon
             - sampledBidsParticipated
+            - makeGoodSpend
             type: string
           type: array
         reportType:
@@ -6458,59 +6434,86 @@ components:
       - attributes
       - type
       type: object
+    DigitalShelfIntelligenceFilters:
+      additionalProperties: false
+      description: Filters for a Digital Shelf Intelligence insight.
+      properties:
+        brandIds:
+          description: Brands to filter on.
+          items:
+            type: string
+          nullable: true
+          type: array
+        categories:
+          description: Category taxonomy values to filter on.
+          items:
+            type: string
+          nullable: true
+          type: array
+        retailerIds:
+          description: Retailers to filter on.
+          items:
+            type: string
+          nullable: true
+          type: array
+        skuIds:
+          description: "SKUs to filter on, grouped by retailer."
+          items:
+            $ref: '#/components/schemas/SkuFilter'
+          nullable: true
+          type: array
+      type: object
     DigitalShelfIntelligenceInsight:
       additionalProperties: false
-      description: Description of a Digital Shelf Intelligence insight
+      description: Parameters of a Digital Shelf Intelligence insight.
       example:
-        accountId: accountId
-        endDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2026-06-01
+        endDate: 2026-06-07
         aggregationLevel: brand
-        format: json-compact
-        categories:
-        - categories
-        - categories
         metrics:
         - considerationIndex
-        - considerationIndex
-        retailerIds:
-        - retailerIds
-        - retailerIds
-        skuIds:
-        - retailerSkuIds:
-          - retailerSkuIds
-          - retailerSkuIds
-          retailerId: retailerId
-        - retailerSkuIds:
-          - retailerSkuIds
-          - retailerSkuIds
-          retailerId: retailerId
-        brandIds:
-        - brandIds
-        - brandIds
-        startDate: 2000-01-23T04:56:07.000+00:00
+        - listingPrice
+        - pdpViewRank
+        - salesIndex
+        - salesRank
+        - totalPdpPageViews
+        - totalSalesOnline
+        - totalSoldUnitsOnline
+        filters:
+          retailerIds:
+          - "123"
+          brandIds:
+          - "456"
+          skuIds:
+          - retailerId: "123"
+            retailerSkuIds:
+            - SKU-001
+            - SKU-002
+          categories:
+          - Electronics/Mobile Phones
+        accountId: "12345"
+        format: json-compact
       properties:
         accountId:
+          description: Account ID the insight report is generated for.
           type: string
         aggregationLevel:
+          description: "Aggregation level of the report. Allowed values: `brand`,\
+            \ `sku`."
           enum:
           - brand
           - sku
           type: string
-        brandIds:
-          items:
-            type: string
-          nullable: true
-          type: array
-        categories:
-          items:
-            type: string
-          nullable: true
-          type: array
         endDate:
-          format: date-time
+          description: "End date of the report (inclusive), in ISO 8601 format (YYYY-MM-DD).\r\
+            \nAdjusted to the Sunday of the week containing the provided date."
           type: string
+        filters:
+          $ref: '#/components/schemas/DigitalShelfIntelligenceFilters'
         format:
           default: json-compact
+          description: "Output format of the report. Allowed values: `json`, `json-compact`,\
+            \ `json-newline`, `csv`. Defaults to `json-compact`."
           enum:
           - json
           - json-compact
@@ -6518,7 +6521,9 @@ components:
           - csv
           type: string
         metrics:
+          description: Metrics to report on.
           items:
+            description: Metric available in a Digital Shelf Intelligence insight.
             enum:
             - considerationIndex
             - listingPrice
@@ -6531,18 +6536,9 @@ components:
             type: string
           minItems: 1
           type: array
-        retailerIds:
-          items:
-            type: string
-          nullable: true
-          type: array
-        skuIds:
-          items:
-            $ref: '#/components/schemas/SkuFilter'
-          nullable: true
-          type: array
         startDate:
-          format: date-time
+          description: "Start date of the report (inclusive), in ISO 8601 format (YYYY-MM-DD).\r\
+            \nAdjusted to the Monday of the week containing the provided date."
           type: string
       required:
       - accountId
@@ -6557,34 +6553,34 @@ components:
         single value object.
       example:
         data:
+          type: DigitalShelfIntelligenceInsight
           attributes:
-            accountId: accountId
-            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2026-06-01T00:00:00.0000000+00:00
+            endDate: 2026-06-07T00:00:00.0000000+00:00
             aggregationLevel: brand
-            format: json-compact
-            categories:
-            - categories
-            - categories
             metrics:
             - considerationIndex
-            - considerationIndex
-            retailerIds:
-            - retailerIds
-            - retailerIds
-            skuIds:
-            - retailerSkuIds:
-              - retailerSkuIds
-              - retailerSkuIds
-              retailerId: retailerId
-            - retailerSkuIds:
-              - retailerSkuIds
-              - retailerSkuIds
-              retailerId: retailerId
-            brandIds:
-            - brandIds
-            - brandIds
-            startDate: 2000-01-23T04:56:07.000+00:00
-          type: type
+            - listingPrice
+            - pdpViewRank
+            - salesIndex
+            - salesRank
+            - totalPdpPageViews
+            - totalSalesOnline
+            - totalSoldUnitsOnline
+            filters:
+              retailerIds:
+              - "123"
+              brandIds:
+              - "456"
+              skuIds:
+              - retailerId: "123"
+                retailerSkuIds:
+                - SKU-001
+                - SKU-002
+              categories:
+              - Electronics/Mobile Phones
+            accountId: "12345"
+            format: json-compact
       properties:
         data:
           $ref: '#/components/schemas/DigitalShelfIntelligenceInsightResource'
@@ -6594,35 +6590,6 @@ components:
     DigitalShelfIntelligenceInsightResource:
       additionalProperties: false
       description: A value resource exposed by the API.
-      example:
-        attributes:
-          accountId: accountId
-          endDate: 2000-01-23T04:56:07.000+00:00
-          aggregationLevel: brand
-          format: json-compact
-          categories:
-          - categories
-          - categories
-          metrics:
-          - considerationIndex
-          - considerationIndex
-          retailerIds:
-          - retailerIds
-          - retailerIds
-          skuIds:
-          - retailerSkuIds:
-            - retailerSkuIds
-            - retailerSkuIds
-            retailerId: retailerId
-          - retailerSkuIds:
-            - retailerSkuIds
-            - retailerSkuIds
-            retailerId: retailerId
-          brandIds:
-          - brandIds
-          - brandIds
-          startDate: 2000-01-23T04:56:07.000+00:00
-        type: type
       properties:
         attributes:
           $ref: '#/components/schemas/DigitalShelfIntelligenceInsight'
@@ -8777,39 +8744,45 @@ components:
       type: object
     InsightStatusResponse:
       additionalProperties: false
-      description: Status of an async insight request
+      description: Status of an asynchronous insight report request.
       example:
-        fileSizeBytes: 0
-        createdAt: createdAt
-        md5CheckSum: md5CheckSum
-        rowCount: 6
-        message: message
-        expiresAt: expiresAt
-        status: Unknown
+        status: Success
+        message: rows_count=1234
+        createdAt: 2026-07-01T12:00:00Z
+        expiresAt: 2026-07-08T12:00:00Z
+        rowCount: 1234
+        md5CheckSum: 0123456789abcdef0123456789abcdef
+        fileSizeBytes: 154321
       nullable: true
       properties:
         createdAt:
+          description: When the insight report was created.
           nullable: true
           type: string
         expiresAt:
+          description: When the insight report expires and can no longer be downloaded.
           nullable: true
           type: string
         fileSizeBytes:
+          description: "Size of the generated report file in bytes, when available."
           format: int64
           nullable: true
           type: integer
         md5CheckSum:
+          description: "MD5 checksum of the generated report file, when available."
           nullable: true
           type: string
         message:
+          description: "Additional information about the report status, when available."
           nullable: true
           type: string
         rowCount:
+          description: "Number of rows in the generated report, when available."
           format: int32
           nullable: true
           type: integer
         status:
-          description: Status of an async insight request
+          description: Current status of the insight report.
           enum:
           - Unknown
           - Pending
@@ -8823,17 +8796,6 @@ components:
     InsightStatusResponseResource:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
-      example:
-        attributes:
-          fileSizeBytes: 0
-          createdAt: createdAt
-          md5CheckSum: md5CheckSum
-          rowCount: 6
-          message: message
-          expiresAt: expiresAt
-          status: Unknown
-        id: id
-        type: type
       nullable: true
       properties:
         attributes:
@@ -15332,75 +15294,38 @@ components:
       required:
       - productBuyBoxWinners
       type: object
-    ShareOfVoiceInsight:
+    ShareOfVoiceFilters:
       additionalProperties: false
-      description: Description of a Share of voice insight
-      example:
-        activationPlatforms:
-        - commerceMax
-        - commerceMax
-        campaignType: all
-        keywords:
-        - keywords
-        - keywords
-        endDate: 2000-01-23T04:56:07.000+00:00
-        format: json-compact
-        retailerIds:
-        - retailerIds
-        - retailerIds
-        brandIds:
-        - brandIds
-        - brandIds
-        accountId: accountId
-        servedCategories:
-        - servedCategories
-        - servedCategories
-        accountIds:
-        - accountIds
-        - accountIds
-        budgetModels:
-        - criteoBudget
-        - criteoBudget
-        keywordTypes:
-        - unknown
-        - unknown
-        aggregationLevel: category
-        metrics:
-        - impressions
-        - impressions
-        startDate: 2000-01-23T04:56:07.000+00:00
-        dimensions:
-        - date
-        - date
+      description: Filters for a Share of Voice insight.
       properties:
-        accountId:
-          type: string
         accountIds:
+          description: Accounts to filter on.
           items:
             type: string
           nullable: true
           type: array
         activationPlatforms:
+          description: "Activation platforms to filter on. Allowed values: `commerceMax`,\
+            \ `privateMarket`."
           items:
+            description: Platform on which a campaign is activated.
             enum:
             - commerceMax
             - privateMarket
             type: string
           nullable: true
           type: array
-        aggregationLevel:
-          default: category
-          enum:
-          - category
-          - keyword
-          type: string
         brandIds:
+          description: Brands to filter on.
           items:
             type: string
           nullable: true
           type: array
         budgetModels:
+          description: "Budget models to filter on. Allowed values: `criteoBudget`,\
+            \ `retailerBudget`."
           items:
+            description: Budget model funding a campaign.
             enum:
             - criteoBudget
             - retailerBudget
@@ -15409,13 +15334,135 @@ components:
           type: array
         campaignType:
           default: all
+          description: "Campaign type to filter on. Allowed values: `all`, `onsiteSponsoredProducts`,\
+            \ `onsiteDisplay`. Defaults to `all`."
           enum:
           - all
           - onsiteSponsoredProducts
           - onsiteDisplay
           type: string
-        dimensions:
+        keywords:
+          description: Keywords to filter on.
           items:
+            type: string
+          nullable: true
+          type: array
+        keywordTypes:
+          description: "Keyword types to filter on. Allowed values: `unknown`, `generic`,\
+            \ `branded`, `conquesting`."
+          items:
+            description: Type of keyword targeted in a campaign.
+            enum:
+            - unknown
+            - generic
+            - branded
+            - conquesting
+            type: string
+          nullable: true
+          type: array
+        retailerIds:
+          description: Retailers to filter on.
+          items:
+            type: string
+          nullable: true
+          type: array
+        servedCategories:
+          description: Retailer-specific category taxonomy values to filter on.
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    ShareOfVoiceInsight:
+      additionalProperties: false
+      description: Parameters of a Share of Voice insight.
+      example:
+        startDate: 2026-06-01
+        endDate: 2026-06-07
+        aggregationLevel: category
+        dimensions:
+        - date
+        - accountId
+        - accountName
+        - retailerId
+        - retailerName
+        - brandId
+        - brandName
+        - campaignId
+        - campaignName
+        - buyType
+        - skuId
+        - skuName
+        - lineItemId
+        - lineItemName
+        - pageTypeId
+        - pageTypeName
+        - productGtin
+        - productMpn
+        - productCategory
+        - servedCategory
+        - keyword
+        - keywordType
+        - campaignType
+        - creativeType
+        - adFormat
+        - creativeName
+        - environment
+        - budgetModel
+        - activationPlatform
+        metrics:
+        - impressions
+        - clicks
+        - grossClicks
+        - spend
+        - cpc
+        - ctr
+        - cpm
+        - roas
+        - attributedSales
+        - attributedUnits
+        - assistedUnits
+        - assistedSales
+        - exposedUsers
+        - impressionShare
+        - clickShare
+        - invalidClicks
+        filters:
+          campaignType: onsiteSponsoredProducts
+          accountIds:
+          - "12345"
+          retailerIds:
+          - "123"
+          brandIds:
+          - "456"
+          servedCategories:
+          - Sports & Outdoors/Footwear/Running Shoes
+          keywords:
+          - running shoes
+          keywordTypes:
+          - generic
+          budgetModels:
+          - criteoBudget
+          activationPlatforms:
+          - commerceMax
+        accountId: "12345"
+        format: json-compact
+      properties:
+        accountId:
+          description: Account ID the insight report is generated for.
+          type: string
+        aggregationLevel:
+          default: category
+          description: "Aggregation level of the report. Allowed values: `category`,\
+            \ `keyword`. Defaults to `category`."
+          enum:
+          - category
+          - keyword
+          type: string
+        dimensions:
+          description: Dimensions to report on.
+          items:
+            description: Dimension by which Share of Voice results can be broken down.
             enum:
             - date
             - accountId
@@ -15450,33 +15497,24 @@ components:
           minItems: 1
           type: array
         endDate:
-          format: date-time
+          description: "End date of the report, in ISO 8601 format (YYYY-MM-DD)."
           type: string
+        filters:
+          $ref: '#/components/schemas/ShareOfVoiceFilters'
         format:
           default: json-compact
+          description: "Output format of the report. Allowed values: `json`, `json-compact`,\
+            \ `json-newline`, `csv`. Defaults to `json-compact`."
           enum:
           - json
           - json-compact
           - json-newline
           - csv
           type: string
-        keywords:
-          items:
-            type: string
-          nullable: true
-          type: array
-        keywordTypes:
-          items:
-            enum:
-            - unknown
-            - generic
-            - branded
-            - conquesting
-            type: string
-          nullable: true
-          type: array
         metrics:
+          description: Metrics to report on.
           items:
+            description: Metric available in a Share of Voice insight.
             enum:
             - impressions
             - clicks
@@ -15497,18 +15535,8 @@ components:
             type: string
           minItems: 1
           type: array
-        retailerIds:
-          items:
-            type: string
-          nullable: true
-          type: array
-        servedCategories:
-          items:
-            type: string
-          nullable: true
-          type: array
         startDate:
-          format: date-time
+          description: "Start date of the report, in ISO 8601 format (YYYY-MM-DD)."
           type: string
       required:
       - accountId
@@ -15523,44 +15551,78 @@ components:
         single value object.
       example:
         data:
+          type: ShareOfVoiceInsight
           attributes:
-            activationPlatforms:
-            - commerceMax
-            - commerceMax
-            campaignType: all
-            keywords:
-            - keywords
-            - keywords
-            endDate: 2000-01-23T04:56:07.000+00:00
-            format: json-compact
-            retailerIds:
-            - retailerIds
-            - retailerIds
-            brandIds:
-            - brandIds
-            - brandIds
-            accountId: accountId
-            servedCategories:
-            - servedCategories
-            - servedCategories
-            accountIds:
-            - accountIds
-            - accountIds
-            budgetModels:
-            - criteoBudget
-            - criteoBudget
-            keywordTypes:
-            - unknown
-            - unknown
+            startDate: 2026-06-01T00:00:00.0000000+00:00
+            endDate: 2026-06-07T00:00:00.0000000+00:00
             aggregationLevel: category
-            metrics:
-            - impressions
-            - impressions
-            startDate: 2000-01-23T04:56:07.000+00:00
             dimensions:
             - date
-            - date
-          type: type
+            - accountId
+            - accountName
+            - retailerId
+            - retailerName
+            - brandId
+            - brandName
+            - campaignId
+            - campaignName
+            - buyType
+            - skuId
+            - skuName
+            - lineItemId
+            - lineItemName
+            - pageTypeId
+            - pageTypeName
+            - productGtin
+            - productMpn
+            - productCategory
+            - servedCategory
+            - keyword
+            - keywordType
+            - campaignType
+            - creativeType
+            - adFormat
+            - creativeName
+            - environment
+            - budgetModel
+            - activationPlatform
+            metrics:
+            - impressions
+            - clicks
+            - grossClicks
+            - spend
+            - cpc
+            - ctr
+            - cpm
+            - roas
+            - attributedSales
+            - attributedUnits
+            - assistedUnits
+            - assistedSales
+            - exposedUsers
+            - impressionShare
+            - clickShare
+            - invalidClicks
+            filters:
+              campaignType: onsiteSponsoredProducts
+              accountIds:
+              - "12345"
+              retailerIds:
+              - "123"
+              brandIds:
+              - "456"
+              servedCategories:
+              - Sports & Outdoors/Footwear/Running Shoes
+              keywords:
+              - running shoes
+              keywordTypes:
+              - generic
+              budgetModels:
+              - criteoBudget
+              activationPlatforms:
+              - commerceMax
+            accountId: "12345"
+            format: json-compact
       properties:
         data:
           $ref: '#/components/schemas/ShareOfVoiceInsightResource'
@@ -15570,45 +15632,6 @@ components:
     ShareOfVoiceInsightResource:
       additionalProperties: false
       description: A value resource exposed by the API.
-      example:
-        attributes:
-          activationPlatforms:
-          - commerceMax
-          - commerceMax
-          campaignType: all
-          keywords:
-          - keywords
-          - keywords
-          endDate: 2000-01-23T04:56:07.000+00:00
-          format: json-compact
-          retailerIds:
-          - retailerIds
-          - retailerIds
-          brandIds:
-          - brandIds
-          - brandIds
-          accountId: accountId
-          servedCategories:
-          - servedCategories
-          - servedCategories
-          accountIds:
-          - accountIds
-          - accountIds
-          budgetModels:
-          - criteoBudget
-          - criteoBudget
-          keywordTypes:
-          - unknown
-          - unknown
-          aggregationLevel: category
-          metrics:
-          - impressions
-          - impressions
-          startDate: 2000-01-23T04:56:07.000+00:00
-          dimensions:
-          - date
-          - date
-        type: type
       properties:
         attributes:
           $ref: '#/components/schemas/ShareOfVoiceInsight'
@@ -15621,16 +15644,13 @@ components:
       type: object
     SkuFilter:
       additionalProperties: false
-      description: The filters to apply
-      example:
-        retailerSkuIds:
-        - retailerSkuIds
-        - retailerSkuIds
-        retailerId: retailerId
+      description: A set of retailer SKUs to filter on.
       properties:
         retailerId:
+          description: Retailer the SKUs belong to.
           type: string
         retailerSkuIds:
+          description: Retailer SKU IDs to filter on.
           items:
             type: string
           minItems: 1

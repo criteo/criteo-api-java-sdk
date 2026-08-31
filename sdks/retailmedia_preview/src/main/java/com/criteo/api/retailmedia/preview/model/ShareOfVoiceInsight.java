@@ -15,16 +15,15 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.retailmedia.preview.model.ShareOfVoiceFilters;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Description of a Share of voice insight
+ * Parameters of a Share of Voice insight.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ShareOfVoiceInsight {
@@ -56,63 +55,8 @@ public class ShareOfVoiceInsight {
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
   private String accountId;
 
-  public static final String SERIALIZED_NAME_ACCOUNT_IDS = "accountIds";
-  @SerializedName(SERIALIZED_NAME_ACCOUNT_IDS)
-  private List<String> accountIds = null;
-
   /**
-   * Gets or Sets activationPlatforms
-   */
-  @JsonAdapter(ActivationPlatformsEnum.Adapter.class)
-  public enum ActivationPlatformsEnum {
-    COMMERCEMAX("commerceMax"),
-    
-    PRIVATEMARKET("privateMarket");
-
-    private String value;
-
-    ActivationPlatformsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ActivationPlatformsEnum fromValue(String value) {
-      for (ActivationPlatformsEnum b : ActivationPlatformsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ActivationPlatformsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ActivationPlatformsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ActivationPlatformsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ActivationPlatformsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_ACTIVATION_PLATFORMS = "activationPlatforms";
-  @SerializedName(SERIALIZED_NAME_ACTIVATION_PLATFORMS)
-  private List<ActivationPlatformsEnum> activationPlatforms = null;
-
-  /**
-   * Gets or Sets aggregationLevel
+   * Aggregation level of the report. Allowed values: &#x60;category&#x60;, &#x60;keyword&#x60;. Defaults to &#x60;category&#x60;.
    */
   @JsonAdapter(AggregationLevelEnum.Adapter.class)
   public enum AggregationLevelEnum {
@@ -162,116 +106,8 @@ public class ShareOfVoiceInsight {
   @SerializedName(SERIALIZED_NAME_AGGREGATION_LEVEL)
   private AggregationLevelEnum aggregationLevel = AggregationLevelEnum.CATEGORY;
 
-  public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
-  @SerializedName(SERIALIZED_NAME_BRAND_IDS)
-  private List<String> brandIds = null;
-
   /**
-   * Gets or Sets budgetModels
-   */
-  @JsonAdapter(BudgetModelsEnum.Adapter.class)
-  public enum BudgetModelsEnum {
-    CRITEOBUDGET("criteoBudget"),
-    
-    RETAILERBUDGET("retailerBudget");
-
-    private String value;
-
-    BudgetModelsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static BudgetModelsEnum fromValue(String value) {
-      for (BudgetModelsEnum b : BudgetModelsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<BudgetModelsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final BudgetModelsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public BudgetModelsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return BudgetModelsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_BUDGET_MODELS = "budgetModels";
-  @SerializedName(SERIALIZED_NAME_BUDGET_MODELS)
-  private List<BudgetModelsEnum> budgetModels = null;
-
-  /**
-   * Gets or Sets campaignType
-   */
-  @JsonAdapter(CampaignTypeEnum.Adapter.class)
-  public enum CampaignTypeEnum {
-    ALL("all"),
-    
-    ONSITESPONSOREDPRODUCTS("onsiteSponsoredProducts"),
-    
-    ONSITEDISPLAY("onsiteDisplay");
-
-    private String value;
-
-    CampaignTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CampaignTypeEnum fromValue(String value) {
-      for (CampaignTypeEnum b : CampaignTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CampaignTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CampaignTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CampaignTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_TYPE = "campaignType";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
-  private CampaignTypeEnum campaignType = CampaignTypeEnum.ALL;
-
-  /**
-   * Gets or Sets dimensions
+   * Dimension by which Share of Voice results can be broken down.
    */
   @JsonAdapter(DimensionsEnum.Adapter.class)
   public enum DimensionsEnum {
@@ -377,10 +213,14 @@ public class ShareOfVoiceInsight {
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
+  private String endDate;
+
+  public static final String SERIALIZED_NAME_FILTERS = "filters";
+  @SerializedName(SERIALIZED_NAME_FILTERS)
+  private ShareOfVoiceFilters filters;
 
   /**
-   * Gets or Sets format
+   * Output format of the report. Allowed values: &#x60;json&#x60;, &#x60;json-compact&#x60;, &#x60;json-newline&#x60;, &#x60;csv&#x60;. Defaults to &#x60;json-compact&#x60;.
    */
   @JsonAdapter(FormatEnum.Adapter.class)
   public enum FormatEnum {
@@ -434,67 +274,8 @@ public class ShareOfVoiceInsight {
   @SerializedName(SERIALIZED_NAME_FORMAT)
   private FormatEnum format = FormatEnum.JSON_COMPACT;
 
-  public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
-  @SerializedName(SERIALIZED_NAME_KEYWORDS)
-  private List<String> keywords = null;
-
   /**
-   * Gets or Sets keywordTypes
-   */
-  @JsonAdapter(KeywordTypesEnum.Adapter.class)
-  public enum KeywordTypesEnum {
-    UNKNOWN("unknown"),
-    
-    GENERIC("generic"),
-    
-    BRANDED("branded"),
-    
-    CONQUESTING("conquesting");
-
-    private String value;
-
-    KeywordTypesEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static KeywordTypesEnum fromValue(String value) {
-      for (KeywordTypesEnum b : KeywordTypesEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<KeywordTypesEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final KeywordTypesEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public KeywordTypesEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return KeywordTypesEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_KEYWORD_TYPES = "keywordTypes";
-  @SerializedName(SERIALIZED_NAME_KEYWORD_TYPES)
-  private List<KeywordTypesEnum> keywordTypes = null;
-
-  /**
-   * Gets or Sets metrics
+   * Metric available in a Share of Voice insight.
    */
   @JsonAdapter(MetricsEnum.Adapter.class)
   public enum MetricsEnum {
@@ -572,17 +353,9 @@ public class ShareOfVoiceInsight {
   @SerializedName(SERIALIZED_NAME_METRICS)
   private List<MetricsEnum> metrics = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
-  @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
-  private List<String> retailerIds = null;
-
-  public static final String SERIALIZED_NAME_SERVED_CATEGORIES = "servedCategories";
-  @SerializedName(SERIALIZED_NAME_SERVED_CATEGORIES)
-  private List<String> servedCategories = null;
-
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
-  private OffsetDateTime startDate;
+  private String startDate;
 
   public ShareOfVoiceInsight() {
   }
@@ -594,7 +367,7 @@ public class ShareOfVoiceInsight {
   }
 
    /**
-   * Get accountId
+   * Account ID the insight report is generated for.
    * @return accountId
   **/
   @javax.annotation.Nonnull
@@ -609,66 +382,6 @@ public class ShareOfVoiceInsight {
   }
 
 
-  public ShareOfVoiceInsight accountIds(List<String> accountIds) {
-    
-    this.accountIds = accountIds;
-    return this;
-  }
-
-  public ShareOfVoiceInsight addAccountIdsItem(String accountIdsItem) {
-    if (this.accountIds == null) {
-      this.accountIds = null;
-    }
-    this.accountIds.add(accountIdsItem);
-    return this;
-  }
-
-   /**
-   * Get accountIds
-   * @return accountIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getAccountIds() {
-    return accountIds;
-  }
-
-
-  public void setAccountIds(List<String> accountIds) {
-    this.accountIds = accountIds;
-  }
-
-
-  public ShareOfVoiceInsight activationPlatforms(List<ActivationPlatformsEnum> activationPlatforms) {
-    
-    this.activationPlatforms = activationPlatforms;
-    return this;
-  }
-
-  public ShareOfVoiceInsight addActivationPlatformsItem(ActivationPlatformsEnum activationPlatformsItem) {
-    if (this.activationPlatforms == null) {
-      this.activationPlatforms = null;
-    }
-    this.activationPlatforms.add(activationPlatformsItem);
-    return this;
-  }
-
-   /**
-   * Get activationPlatforms
-   * @return activationPlatforms
-  **/
-  @javax.annotation.Nullable
-
-  public List<ActivationPlatformsEnum> getActivationPlatforms() {
-    return activationPlatforms;
-  }
-
-
-  public void setActivationPlatforms(List<ActivationPlatformsEnum> activationPlatforms) {
-    this.activationPlatforms = activationPlatforms;
-  }
-
-
   public ShareOfVoiceInsight aggregationLevel(AggregationLevelEnum aggregationLevel) {
     
     this.aggregationLevel = aggregationLevel;
@@ -676,7 +389,7 @@ public class ShareOfVoiceInsight {
   }
 
    /**
-   * Get aggregationLevel
+   * Aggregation level of the report. Allowed values: &#x60;category&#x60;, &#x60;keyword&#x60;. Defaults to &#x60;category&#x60;.
    * @return aggregationLevel
   **/
   @javax.annotation.Nullable
@@ -688,88 +401,6 @@ public class ShareOfVoiceInsight {
 
   public void setAggregationLevel(AggregationLevelEnum aggregationLevel) {
     this.aggregationLevel = aggregationLevel;
-  }
-
-
-  public ShareOfVoiceInsight brandIds(List<String> brandIds) {
-    
-    this.brandIds = brandIds;
-    return this;
-  }
-
-  public ShareOfVoiceInsight addBrandIdsItem(String brandIdsItem) {
-    if (this.brandIds == null) {
-      this.brandIds = null;
-    }
-    this.brandIds.add(brandIdsItem);
-    return this;
-  }
-
-   /**
-   * Get brandIds
-   * @return brandIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getBrandIds() {
-    return brandIds;
-  }
-
-
-  public void setBrandIds(List<String> brandIds) {
-    this.brandIds = brandIds;
-  }
-
-
-  public ShareOfVoiceInsight budgetModels(List<BudgetModelsEnum> budgetModels) {
-    
-    this.budgetModels = budgetModels;
-    return this;
-  }
-
-  public ShareOfVoiceInsight addBudgetModelsItem(BudgetModelsEnum budgetModelsItem) {
-    if (this.budgetModels == null) {
-      this.budgetModels = null;
-    }
-    this.budgetModels.add(budgetModelsItem);
-    return this;
-  }
-
-   /**
-   * Get budgetModels
-   * @return budgetModels
-  **/
-  @javax.annotation.Nullable
-
-  public List<BudgetModelsEnum> getBudgetModels() {
-    return budgetModels;
-  }
-
-
-  public void setBudgetModels(List<BudgetModelsEnum> budgetModels) {
-    this.budgetModels = budgetModels;
-  }
-
-
-  public ShareOfVoiceInsight campaignType(CampaignTypeEnum campaignType) {
-    
-    this.campaignType = campaignType;
-    return this;
-  }
-
-   /**
-   * Get campaignType
-   * @return campaignType
-  **/
-  @javax.annotation.Nullable
-
-  public CampaignTypeEnum getCampaignType() {
-    return campaignType;
-  }
-
-
-  public void setCampaignType(CampaignTypeEnum campaignType) {
-    this.campaignType = campaignType;
   }
 
 
@@ -785,7 +416,7 @@ public class ShareOfVoiceInsight {
   }
 
    /**
-   * Get dimensions
+   * Dimensions to report on.
    * @return dimensions
   **/
   @javax.annotation.Nonnull
@@ -800,25 +431,47 @@ public class ShareOfVoiceInsight {
   }
 
 
-  public ShareOfVoiceInsight endDate(OffsetDateTime endDate) {
+  public ShareOfVoiceInsight endDate(String endDate) {
     
     this.endDate = endDate;
     return this;
   }
 
    /**
-   * Get endDate
+   * End date of the report, in ISO 8601 format (YYYY-MM-DD).
    * @return endDate
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getEndDate() {
+  public String getEndDate() {
     return endDate;
   }
 
 
-  public void setEndDate(OffsetDateTime endDate) {
+  public void setEndDate(String endDate) {
     this.endDate = endDate;
+  }
+
+
+  public ShareOfVoiceInsight filters(ShareOfVoiceFilters filters) {
+    
+    this.filters = filters;
+    return this;
+  }
+
+   /**
+   * Get filters
+   * @return filters
+  **/
+  @javax.annotation.Nullable
+
+  public ShareOfVoiceFilters getFilters() {
+    return filters;
+  }
+
+
+  public void setFilters(ShareOfVoiceFilters filters) {
+    this.filters = filters;
   }
 
 
@@ -829,7 +482,7 @@ public class ShareOfVoiceInsight {
   }
 
    /**
-   * Get format
+   * Output format of the report. Allowed values: &#x60;json&#x60;, &#x60;json-compact&#x60;, &#x60;json-newline&#x60;, &#x60;csv&#x60;. Defaults to &#x60;json-compact&#x60;.
    * @return format
   **/
   @javax.annotation.Nullable
@@ -841,66 +494,6 @@ public class ShareOfVoiceInsight {
 
   public void setFormat(FormatEnum format) {
     this.format = format;
-  }
-
-
-  public ShareOfVoiceInsight keywords(List<String> keywords) {
-    
-    this.keywords = keywords;
-    return this;
-  }
-
-  public ShareOfVoiceInsight addKeywordsItem(String keywordsItem) {
-    if (this.keywords == null) {
-      this.keywords = null;
-    }
-    this.keywords.add(keywordsItem);
-    return this;
-  }
-
-   /**
-   * Get keywords
-   * @return keywords
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getKeywords() {
-    return keywords;
-  }
-
-
-  public void setKeywords(List<String> keywords) {
-    this.keywords = keywords;
-  }
-
-
-  public ShareOfVoiceInsight keywordTypes(List<KeywordTypesEnum> keywordTypes) {
-    
-    this.keywordTypes = keywordTypes;
-    return this;
-  }
-
-  public ShareOfVoiceInsight addKeywordTypesItem(KeywordTypesEnum keywordTypesItem) {
-    if (this.keywordTypes == null) {
-      this.keywordTypes = null;
-    }
-    this.keywordTypes.add(keywordTypesItem);
-    return this;
-  }
-
-   /**
-   * Get keywordTypes
-   * @return keywordTypes
-  **/
-  @javax.annotation.Nullable
-
-  public List<KeywordTypesEnum> getKeywordTypes() {
-    return keywordTypes;
-  }
-
-
-  public void setKeywordTypes(List<KeywordTypesEnum> keywordTypes) {
-    this.keywordTypes = keywordTypes;
   }
 
 
@@ -916,7 +509,7 @@ public class ShareOfVoiceInsight {
   }
 
    /**
-   * Get metrics
+   * Metrics to report on.
    * @return metrics
   **/
   @javax.annotation.Nonnull
@@ -931,84 +524,24 @@ public class ShareOfVoiceInsight {
   }
 
 
-  public ShareOfVoiceInsight retailerIds(List<String> retailerIds) {
-    
-    this.retailerIds = retailerIds;
-    return this;
-  }
-
-  public ShareOfVoiceInsight addRetailerIdsItem(String retailerIdsItem) {
-    if (this.retailerIds == null) {
-      this.retailerIds = null;
-    }
-    this.retailerIds.add(retailerIdsItem);
-    return this;
-  }
-
-   /**
-   * Get retailerIds
-   * @return retailerIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getRetailerIds() {
-    return retailerIds;
-  }
-
-
-  public void setRetailerIds(List<String> retailerIds) {
-    this.retailerIds = retailerIds;
-  }
-
-
-  public ShareOfVoiceInsight servedCategories(List<String> servedCategories) {
-    
-    this.servedCategories = servedCategories;
-    return this;
-  }
-
-  public ShareOfVoiceInsight addServedCategoriesItem(String servedCategoriesItem) {
-    if (this.servedCategories == null) {
-      this.servedCategories = null;
-    }
-    this.servedCategories.add(servedCategoriesItem);
-    return this;
-  }
-
-   /**
-   * Get servedCategories
-   * @return servedCategories
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getServedCategories() {
-    return servedCategories;
-  }
-
-
-  public void setServedCategories(List<String> servedCategories) {
-    this.servedCategories = servedCategories;
-  }
-
-
-  public ShareOfVoiceInsight startDate(OffsetDateTime startDate) {
+  public ShareOfVoiceInsight startDate(String startDate) {
     
     this.startDate = startDate;
     return this;
   }
 
    /**
-   * Get startDate
+   * Start date of the report, in ISO 8601 format (YYYY-MM-DD).
    * @return startDate
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getStartDate() {
+  public String getStartDate() {
     return startDate;
   }
 
 
-  public void setStartDate(OffsetDateTime startDate) {
+  public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
@@ -1024,37 +557,18 @@ public class ShareOfVoiceInsight {
     }
     ShareOfVoiceInsight shareOfVoiceInsight = (ShareOfVoiceInsight) o;
     return Objects.equals(this.accountId, shareOfVoiceInsight.accountId) &&
-        Objects.equals(this.accountIds, shareOfVoiceInsight.accountIds) &&
-        Objects.equals(this.activationPlatforms, shareOfVoiceInsight.activationPlatforms) &&
         Objects.equals(this.aggregationLevel, shareOfVoiceInsight.aggregationLevel) &&
-        Objects.equals(this.brandIds, shareOfVoiceInsight.brandIds) &&
-        Objects.equals(this.budgetModels, shareOfVoiceInsight.budgetModels) &&
-        Objects.equals(this.campaignType, shareOfVoiceInsight.campaignType) &&
         Objects.equals(this.dimensions, shareOfVoiceInsight.dimensions) &&
         Objects.equals(this.endDate, shareOfVoiceInsight.endDate) &&
+        Objects.equals(this.filters, shareOfVoiceInsight.filters) &&
         Objects.equals(this.format, shareOfVoiceInsight.format) &&
-        Objects.equals(this.keywords, shareOfVoiceInsight.keywords) &&
-        Objects.equals(this.keywordTypes, shareOfVoiceInsight.keywordTypes) &&
         Objects.equals(this.metrics, shareOfVoiceInsight.metrics) &&
-        Objects.equals(this.retailerIds, shareOfVoiceInsight.retailerIds) &&
-        Objects.equals(this.servedCategories, shareOfVoiceInsight.servedCategories) &&
         Objects.equals(this.startDate, shareOfVoiceInsight.startDate);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, accountIds, activationPlatforms, aggregationLevel, brandIds, budgetModels, campaignType, dimensions, endDate, format, keywords, keywordTypes, metrics, retailerIds, servedCategories, startDate);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(accountId, aggregationLevel, dimensions, endDate, filters, format, metrics, startDate);
   }
 
   @Override
@@ -1062,20 +576,12 @@ public class ShareOfVoiceInsight {
     StringBuilder sb = new StringBuilder();
     sb.append("class ShareOfVoiceInsight {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    accountIds: ").append(toIndentedString(accountIds)).append("\n");
-    sb.append("    activationPlatforms: ").append(toIndentedString(activationPlatforms)).append("\n");
     sb.append("    aggregationLevel: ").append(toIndentedString(aggregationLevel)).append("\n");
-    sb.append("    brandIds: ").append(toIndentedString(brandIds)).append("\n");
-    sb.append("    budgetModels: ").append(toIndentedString(budgetModels)).append("\n");
-    sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
-    sb.append("    keywordTypes: ").append(toIndentedString(keywordTypes)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
-    sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
-    sb.append("    servedCategories: ").append(toIndentedString(servedCategories)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1100,20 +606,12 @@ public class ShareOfVoiceInsight {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("accountId");
-    openapiFields.add("accountIds");
-    openapiFields.add("activationPlatforms");
     openapiFields.add("aggregationLevel");
-    openapiFields.add("brandIds");
-    openapiFields.add("budgetModels");
-    openapiFields.add("campaignType");
     openapiFields.add("dimensions");
     openapiFields.add("endDate");
+    openapiFields.add("filters");
     openapiFields.add("format");
-    openapiFields.add("keywords");
-    openapiFields.add("keywordTypes");
     openapiFields.add("metrics");
-    openapiFields.add("retailerIds");
-    openapiFields.add("servedCategories");
     openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
@@ -1155,27 +653,8 @@ public class ShareOfVoiceInsight {
       if (!jsonObj.get("accountId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("accountIds") != null && !jsonObj.get("accountIds").isJsonNull() && !jsonObj.get("accountIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accountIds` to be an array in the JSON string but got `%s`", jsonObj.get("accountIds").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("activationPlatforms") != null && !jsonObj.get("activationPlatforms").isJsonNull() && !jsonObj.get("activationPlatforms").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `activationPlatforms` to be an array in the JSON string but got `%s`", jsonObj.get("activationPlatforms").toString()));
-      }
       if ((jsonObj.get("aggregationLevel") != null && !jsonObj.get("aggregationLevel").isJsonNull()) && !jsonObj.get("aggregationLevel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `aggregationLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aggregationLevel").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonNull() && !jsonObj.get("brandIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("budgetModels") != null && !jsonObj.get("budgetModels").isJsonNull() && !jsonObj.get("budgetModels").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `budgetModels` to be an array in the JSON string but got `%s`", jsonObj.get("budgetModels").toString()));
-      }
-      if ((jsonObj.get("campaignType") != null && !jsonObj.get("campaignType").isJsonNull()) && !jsonObj.get("campaignType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaignType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignType").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("dimensions") == null) {
@@ -1183,16 +662,15 @@ public class ShareOfVoiceInsight {
       } else if (!jsonObj.get("dimensions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
       }
+      if (!jsonObj.get("endDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
+      }
+      // validate the optional field `filters`
+      if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
+        ShareOfVoiceFilters.validateJsonObject(jsonObj.getAsJsonObject("filters"));
+      }
       if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("keywords") != null && !jsonObj.get("keywords").isJsonNull() && !jsonObj.get("keywords").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `keywords` to be an array in the JSON string but got `%s`", jsonObj.get("keywords").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("keywordTypes") != null && !jsonObj.get("keywordTypes").isJsonNull() && !jsonObj.get("keywordTypes").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `keywordTypes` to be an array in the JSON string but got `%s`", jsonObj.get("keywordTypes").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("metrics") == null) {
@@ -1200,13 +678,8 @@ public class ShareOfVoiceInsight {
       } else if (!jsonObj.get("metrics").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonNull() && !jsonObj.get("retailerIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("servedCategories") != null && !jsonObj.get("servedCategories").isJsonNull() && !jsonObj.get("servedCategories").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `servedCategories` to be an array in the JSON string but got `%s`", jsonObj.get("servedCategories").toString()));
+      if (!jsonObj.get("startDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
       }
   }
 

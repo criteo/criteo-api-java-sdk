@@ -2,7 +2,7 @@
 
 # AsyncInsightResponse
 
-A top-level object that encapsulates a Criteo API response for a single entity.
+Response returned by the asynchronous insight endpoints, carrying the insight report status.
 
 ## Properties
 

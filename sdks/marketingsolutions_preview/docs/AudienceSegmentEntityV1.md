@@ -13,6 +13,7 @@ Set of rules that defines specific people to target.
 |**contactList** | [**ContactListV1**](ContactListV1.md) |  |  [optional] |
 |**createdAt** | **OffsetDateTime** | ISO-8601 timestamp in UTC of segment creation (read-only) |  [optional] |
 |**description** | **String** | Description of the segment |  [optional] |
+|**filterBased** | [**FilterBasedV1**](FilterBasedV1.md) |  |  [optional] |
 |**inMarket** | [**InMarketV1**](InMarketV1.md) |  |  [optional] |
 |**location** | [**LocationV1**](LocationV1.md) |  |  [optional] |
 |**lookalike** | [**LookalikeV1**](LookalikeV1.md) |  |  [optional] |

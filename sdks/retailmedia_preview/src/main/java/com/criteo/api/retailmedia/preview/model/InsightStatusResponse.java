@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Status of an async insight request
+ * Status of an asynchronous insight report request.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InsightStatusResponse {
@@ -74,7 +74,7 @@ public class InsightStatusResponse {
   private Integer rowCount;
 
   /**
-   * Status of an async insight request
+   * Current status of the insight report.
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -142,7 +142,7 @@ public class InsightStatusResponse {
   }
 
    /**
-   * Get createdAt
+   * When the insight report was created.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -164,7 +164,7 @@ public class InsightStatusResponse {
   }
 
    /**
-   * Get expiresAt
+   * When the insight report expires and can no longer be downloaded.
    * @return expiresAt
   **/
   @javax.annotation.Nullable
@@ -186,7 +186,7 @@ public class InsightStatusResponse {
   }
 
    /**
-   * Get fileSizeBytes
+   * Size of the generated report file in bytes, when available.
    * @return fileSizeBytes
   **/
   @javax.annotation.Nullable
@@ -208,7 +208,7 @@ public class InsightStatusResponse {
   }
 
    /**
-   * Get md5CheckSum
+   * MD5 checksum of the generated report file, when available.
    * @return md5CheckSum
   **/
   @javax.annotation.Nullable
@@ -230,7 +230,7 @@ public class InsightStatusResponse {
   }
 
    /**
-   * Get message
+   * Additional information about the report status, when available.
    * @return message
   **/
   @javax.annotation.Nullable
@@ -252,7 +252,7 @@ public class InsightStatusResponse {
   }
 
    /**
-   * Get rowCount
+   * Number of rows in the generated report, when available.
    * @return rowCount
   **/
   @javax.annotation.Nullable
@@ -274,7 +274,7 @@ public class InsightStatusResponse {
   }
 
    /**
-   * Status of an async insight request
+   * Current status of the insight report.
    * @return status
   **/
   @javax.annotation.Nullable
