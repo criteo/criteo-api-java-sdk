@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * The filters to apply
+ * A set of retailer SKUs to filter on.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SkuFilter {
@@ -68,7 +68,7 @@ public class SkuFilter {
   }
 
    /**
-   * Get retailerId
+   * Retailer the SKUs belong to.
    * @return retailerId
   **/
   @javax.annotation.Nonnull
@@ -95,7 +95,7 @@ public class SkuFilter {
   }
 
    /**
-   * Get retailerSkuIds
+   * Retailer SKU IDs to filter on.
    * @return retailerSkuIds
   **/
   @javax.annotation.Nonnull

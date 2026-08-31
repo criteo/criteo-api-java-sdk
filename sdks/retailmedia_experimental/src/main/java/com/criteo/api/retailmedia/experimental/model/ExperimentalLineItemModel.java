@@ -65,25 +65,25 @@ public class ExperimentalLineItemModel {
   private ExperimentalFlightDatesModel effectiveFlightDates;
 
   /**
-   * The financial status of the line item.
+   * Indicates whether the line item is funded.
    */
-  @JsonAdapter(FinancialStatusEnum.Adapter.class)
-  public enum FinancialStatusEnum {
+  @JsonAdapter(FundingStatusEnum.Adapter.class)
+  public enum FundingStatusEnum {
     UNKNOWN("Unknown"),
     
-    ACTIVE("Active"),
+    FUNDED("Funded"),
     
-    BUDGETHITDAILY("BudgetHitDaily"),
+    DAILYBUDGETREACHED("DailyBudgetReached"),
     
-    BUDGETHITMONTHLY("BudgetHitMonthly"),
+    MONTHLYBUDGETREACHED("MonthlyBudgetReached"),
     
-    BUDGETHITTOTAL("BudgetHitTotal"),
+    TOTALBUDGETREACHED("TotalBudgetReached"),
     
-    BALANCEHIT("BalanceHit");
+    BALANCEEXHAUSTED("BalanceExhausted");
 
     private String value;
 
-    FinancialStatusEnum(String value) {
+    FundingStatusEnum(String value) {
       this.value = value;
     }
 
@@ -96,8 +96,8 @@ public class ExperimentalLineItemModel {
       return String.valueOf(value);
     }
 
-    public static FinancialStatusEnum fromValue(String value) {
-      for (FinancialStatusEnum b : FinancialStatusEnum.values()) {
+    public static FundingStatusEnum fromValue(String value) {
+      for (FundingStatusEnum b : FundingStatusEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -105,23 +105,23 @@ public class ExperimentalLineItemModel {
       return null;
     }
 
-    public static class Adapter extends TypeAdapter<FinancialStatusEnum> {
+    public static class Adapter extends TypeAdapter<FundingStatusEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final FinancialStatusEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final FundingStatusEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public FinancialStatusEnum read(final JsonReader jsonReader) throws IOException {
+      public FundingStatusEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return FinancialStatusEnum.fromValue(value);
+        return FundingStatusEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_FINANCIAL_STATUS = "financialStatus";
-  @SerializedName(SERIALIZED_NAME_FINANCIAL_STATUS)
-  private FinancialStatusEnum financialStatus;
+  public static final String SERIALIZED_NAME_FUNDING_STATUS = "fundingStatus";
+  @SerializedName(SERIALIZED_NAME_FUNDING_STATUS)
+  private FundingStatusEnum fundingStatus;
 
   public static final String SERIALIZED_NAME_IS_PAUSED = "isPaused";
   @SerializedName(SERIALIZED_NAME_IS_PAUSED)
@@ -269,25 +269,25 @@ public class ExperimentalLineItemModel {
   }
 
 
-  public ExperimentalLineItemModel financialStatus(FinancialStatusEnum financialStatus) {
+  public ExperimentalLineItemModel fundingStatus(FundingStatusEnum fundingStatus) {
     
-    this.financialStatus = financialStatus;
+    this.fundingStatus = fundingStatus;
     return this;
   }
 
    /**
-   * The financial status of the line item.
-   * @return financialStatus
+   * Indicates whether the line item is funded.
+   * @return fundingStatus
   **/
   @javax.annotation.Nullable
 
-  public FinancialStatusEnum getFinancialStatus() {
-    return financialStatus;
+  public FundingStatusEnum getFundingStatus() {
+    return fundingStatus;
   }
 
 
-  public void setFinancialStatus(FinancialStatusEnum financialStatus) {
-    this.financialStatus = financialStatus;
+  public void setFundingStatus(FundingStatusEnum fundingStatus) {
+    this.fundingStatus = fundingStatus;
   }
 
 
@@ -298,7 +298,7 @@ public class ExperimentalLineItemModel {
   }
 
    /**
-   * Whether the line item should be paused or unpaused.
+   * Indicates whether the line item is paused.
    * @return isPaused
   **/
   @javax.annotation.Nullable
@@ -458,7 +458,7 @@ public class ExperimentalLineItemModel {
     return Objects.equals(this.campaignId, experimentalLineItemModel.campaignId) &&
         Objects.equals(this.conquestingSettings, experimentalLineItemModel.conquestingSettings) &&
         Objects.equals(this.effectiveFlightDates, experimentalLineItemModel.effectiveFlightDates) &&
-        Objects.equals(this.financialStatus, experimentalLineItemModel.financialStatus) &&
+        Objects.equals(this.fundingStatus, experimentalLineItemModel.fundingStatus) &&
         Objects.equals(this.isPaused, experimentalLineItemModel.isPaused) &&
         Objects.equals(this.lineItemId, experimentalLineItemModel.lineItemId) &&
         Objects.equals(this.name, experimentalLineItemModel.name) &&
@@ -474,7 +474,7 @@ public class ExperimentalLineItemModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, conquestingSettings, effectiveFlightDates, financialStatus, isPaused, lineItemId, name, onsiteDisplayDetails, retailerId, serveToOptOutUser, type);
+    return Objects.hash(campaignId, conquestingSettings, effectiveFlightDates, fundingStatus, isPaused, lineItemId, name, onsiteDisplayDetails, retailerId, serveToOptOutUser, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -491,7 +491,7 @@ public class ExperimentalLineItemModel {
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    conquestingSettings: ").append(toIndentedString(conquestingSettings)).append("\n");
     sb.append("    effectiveFlightDates: ").append(toIndentedString(effectiveFlightDates)).append("\n");
-    sb.append("    financialStatus: ").append(toIndentedString(financialStatus)).append("\n");
+    sb.append("    fundingStatus: ").append(toIndentedString(fundingStatus)).append("\n");
     sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
     sb.append("    lineItemId: ").append(toIndentedString(lineItemId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -524,7 +524,7 @@ public class ExperimentalLineItemModel {
     openapiFields.add("campaignId");
     openapiFields.add("conquestingSettings");
     openapiFields.add("effectiveFlightDates");
-    openapiFields.add("financialStatus");
+    openapiFields.add("fundingStatus");
     openapiFields.add("isPaused");
     openapiFields.add("lineItemId");
     openapiFields.add("name");
@@ -568,8 +568,8 @@ public class ExperimentalLineItemModel {
       if (jsonObj.get("effectiveFlightDates") != null && !jsonObj.get("effectiveFlightDates").isJsonNull()) {
         ExperimentalFlightDatesModel.validateJsonObject(jsonObj.getAsJsonObject("effectiveFlightDates"));
       }
-      if ((jsonObj.get("financialStatus") != null && !jsonObj.get("financialStatus").isJsonNull()) && !jsonObj.get("financialStatus").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `financialStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("financialStatus").toString()));
+      if ((jsonObj.get("fundingStatus") != null && !jsonObj.get("fundingStatus").isJsonNull()) && !jsonObj.get("fundingStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fundingStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fundingStatus").toString()));
       }
       if ((jsonObj.get("lineItemId") != null && !jsonObj.get("lineItemId").isJsonNull()) && !jsonObj.get("lineItemId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineItemId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineItemId").toString()));

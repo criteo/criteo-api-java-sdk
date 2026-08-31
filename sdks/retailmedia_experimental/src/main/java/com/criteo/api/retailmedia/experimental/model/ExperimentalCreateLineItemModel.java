@@ -133,7 +133,7 @@ public class ExperimentalCreateLineItemModel {
   }
 
    /**
-   * Whether the line item should be paused or unpaused.
+   * Indicates whether the line item is paused. Defaults to false.
    * @return isPaused
   **/
   @javax.annotation.Nullable

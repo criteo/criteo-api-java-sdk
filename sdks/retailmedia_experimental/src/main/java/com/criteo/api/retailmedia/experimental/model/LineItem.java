@@ -122,6 +122,69 @@ public class LineItem {
   @SerializedName(SERIALIZED_NAME_FLIGHT_DATES)
   private FlightDates flightDates;
 
+  /**
+   * Indicates whether the line item is funded.
+   */
+  @JsonAdapter(FundingStatusEnum.Adapter.class)
+  public enum FundingStatusEnum {
+    UNKNOWN("Unknown"),
+    
+    FUNDED("Funded"),
+    
+    DAILYBUDGETREACHED("DailyBudgetReached"),
+    
+    MONTHLYBUDGETREACHED("MonthlyBudgetReached"),
+    
+    TOTALBUDGETREACHED("TotalBudgetReached"),
+    
+    BALANCEEXHAUSTED("BalanceExhausted");
+
+    private String value;
+
+    FundingStatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FundingStatusEnum fromValue(String value) {
+      for (FundingStatusEnum b : FundingStatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<FundingStatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FundingStatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FundingStatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FundingStatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_FUNDING_STATUS = "fundingStatus";
+  @SerializedName(SERIALIZED_NAME_FUNDING_STATUS)
+  private FundingStatusEnum fundingStatus;
+
+  public static final String SERIALIZED_NAME_IS_PAUSED = "isPaused";
+  @SerializedName(SERIALIZED_NAME_IS_PAUSED)
+  private Boolean isPaused;
+
   public static final String SERIALIZED_NAME_LINE_ITEM_ID = "lineItemId";
   @SerializedName(SERIALIZED_NAME_LINE_ITEM_ID)
   private String lineItemId;
@@ -310,6 +373,50 @@ public class LineItem {
   }
 
 
+  public LineItem fundingStatus(FundingStatusEnum fundingStatus) {
+    
+    this.fundingStatus = fundingStatus;
+    return this;
+  }
+
+   /**
+   * Indicates whether the line item is funded.
+   * @return fundingStatus
+  **/
+  @javax.annotation.Nullable
+
+  public FundingStatusEnum getFundingStatus() {
+    return fundingStatus;
+  }
+
+
+  public void setFundingStatus(FundingStatusEnum fundingStatus) {
+    this.fundingStatus = fundingStatus;
+  }
+
+
+  public LineItem isPaused(Boolean isPaused) {
+    
+    this.isPaused = isPaused;
+    return this;
+  }
+
+   /**
+   * Indicates whether the line item is paused.
+   * @return isPaused
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getIsPaused() {
+    return isPaused;
+  }
+
+
+  public void setIsPaused(Boolean isPaused) {
+    this.isPaused = isPaused;
+  }
+
+
   public LineItem lineItemId(String lineItemId) {
     
     this.lineItemId = lineItemId;
@@ -479,6 +586,8 @@ public class LineItem {
         Objects.equals(this.campaignId, lineItem.campaignId) &&
         Objects.equals(this.conquestingSettings, lineItem.conquestingSettings) &&
         Objects.equals(this.flightDates, lineItem.flightDates) &&
+        Objects.equals(this.fundingStatus, lineItem.fundingStatus) &&
+        Objects.equals(this.isPaused, lineItem.isPaused) &&
         Objects.equals(this.lineItemId, lineItem.lineItemId) &&
         Objects.equals(this.lineItemType, lineItem.lineItemType) &&
         Objects.equals(this.name, lineItem.name) &&
@@ -494,7 +603,7 @@ public class LineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, buyType, campaignId, conquestingSettings, flightDates, lineItemId, lineItemType, name, onsiteDisplay, retailerId, serveToOptOutUser, sponsoredProducts);
+    return Objects.hash(accountId, buyType, campaignId, conquestingSettings, flightDates, fundingStatus, isPaused, lineItemId, lineItemType, name, onsiteDisplay, retailerId, serveToOptOutUser, sponsoredProducts);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -513,6 +622,8 @@ public class LineItem {
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    conquestingSettings: ").append(toIndentedString(conquestingSettings)).append("\n");
     sb.append("    flightDates: ").append(toIndentedString(flightDates)).append("\n");
+    sb.append("    fundingStatus: ").append(toIndentedString(fundingStatus)).append("\n");
+    sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
     sb.append("    lineItemId: ").append(toIndentedString(lineItemId)).append("\n");
     sb.append("    lineItemType: ").append(toIndentedString(lineItemType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -547,6 +658,8 @@ public class LineItem {
     openapiFields.add("campaignId");
     openapiFields.add("conquestingSettings");
     openapiFields.add("flightDates");
+    openapiFields.add("fundingStatus");
+    openapiFields.add("isPaused");
     openapiFields.add("lineItemId");
     openapiFields.add("lineItemType");
     openapiFields.add("name");
@@ -595,6 +708,9 @@ public class LineItem {
       // validate the optional field `flightDates`
       if (jsonObj.get("flightDates") != null && !jsonObj.get("flightDates").isJsonNull()) {
         FlightDates.validateJsonObject(jsonObj.getAsJsonObject("flightDates"));
+      }
+      if ((jsonObj.get("fundingStatus") != null && !jsonObj.get("fundingStatus").isJsonNull()) && !jsonObj.get("fundingStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fundingStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fundingStatus").toString()));
       }
       if ((jsonObj.get("lineItemId") != null && !jsonObj.get("lineItemId").isJsonNull()) && !jsonObj.get("lineItemId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineItemId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineItemId").toString()));

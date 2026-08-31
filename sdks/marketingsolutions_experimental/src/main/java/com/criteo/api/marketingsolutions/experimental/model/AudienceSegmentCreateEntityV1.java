@@ -15,6 +15,7 @@ package com.criteo.api.marketingsolutions.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.experimental.model.FilterBasedCreateV1;
 import com.criteo.api.marketingsolutions.experimental.model.InMarketCreateV1;
 import com.criteo.api.marketingsolutions.experimental.model.LocationCreateV1;
 import com.criteo.api.marketingsolutions.experimental.model.LookalikeCreateV1;
@@ -64,6 +65,10 @@ public class AudienceSegmentCreateEntityV1 {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_FILTER_BASED = "filterBased";
+  @SerializedName(SERIALIZED_NAME_FILTER_BASED)
+  private FilterBasedCreateV1 filterBased;
 
   public static final String SERIALIZED_NAME_IN_MARKET = "inMarket";
   @SerializedName(SERIALIZED_NAME_IN_MARKET)
@@ -155,6 +160,28 @@ public class AudienceSegmentCreateEntityV1 {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public AudienceSegmentCreateEntityV1 filterBased(FilterBasedCreateV1 filterBased) {
+    
+    this.filterBased = filterBased;
+    return this;
+  }
+
+   /**
+   * Get filterBased
+   * @return filterBased
+  **/
+  @javax.annotation.Nullable
+
+  public FilterBasedCreateV1 getFilterBased() {
+    return filterBased;
+  }
+
+
+  public void setFilterBased(FilterBasedCreateV1 filterBased) {
+    this.filterBased = filterBased;
   }
 
 
@@ -347,6 +374,7 @@ public class AudienceSegmentCreateEntityV1 {
     return Objects.equals(this.advertiserId, audienceSegmentCreateEntityV1.advertiserId) &&
         Objects.equals(this.contactList, audienceSegmentCreateEntityV1.contactList) &&
         Objects.equals(this.description, audienceSegmentCreateEntityV1.description) &&
+        Objects.equals(this.filterBased, audienceSegmentCreateEntityV1.filterBased) &&
         Objects.equals(this.inMarket, audienceSegmentCreateEntityV1.inMarket) &&
         Objects.equals(this.location, audienceSegmentCreateEntityV1.location) &&
         Objects.equals(this.lookalike, audienceSegmentCreateEntityV1.lookalike) &&
@@ -358,7 +386,7 @@ public class AudienceSegmentCreateEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserId, contactList, description, inMarket, location, lookalike, name, prospecting, retargeting, additionalProperties);
+    return Objects.hash(advertiserId, contactList, description, filterBased, inMarket, location, lookalike, name, prospecting, retargeting, additionalProperties);
   }
 
   @Override
@@ -368,6 +396,7 @@ public class AudienceSegmentCreateEntityV1 {
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
     sb.append("    contactList: ").append(toIndentedString(contactList)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    filterBased: ").append(toIndentedString(filterBased)).append("\n");
     sb.append("    inMarket: ").append(toIndentedString(inMarket)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    lookalike: ").append(toIndentedString(lookalike)).append("\n");
@@ -400,6 +429,7 @@ public class AudienceSegmentCreateEntityV1 {
     openapiFields.add("advertiserId");
     openapiFields.add("contactList");
     openapiFields.add("description");
+    openapiFields.add("filterBased");
     openapiFields.add("inMarket");
     openapiFields.add("location");
     openapiFields.add("lookalike");
@@ -437,6 +467,10 @@ public class AudienceSegmentCreateEntityV1 {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      // validate the optional field `filterBased`
+      if (jsonObj.get("filterBased") != null && !jsonObj.get("filterBased").isJsonNull()) {
+        FilterBasedCreateV1.validateJsonObject(jsonObj.getAsJsonObject("filterBased"));
       }
       // validate the optional field `inMarket`
       if (jsonObj.get("inMarket") != null && !jsonObj.get("inMarket").isJsonNull()) {

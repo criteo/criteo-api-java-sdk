@@ -49,7 +49,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for a single entity.
+ * Response returned by the asynchronous insight endpoints, carrying the insight report status.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AsyncInsightResponse {

@@ -9,6 +9,7 @@ Set of rules that defines specific people to target.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**description** | [**NillableString**](NillableString.md) |  |  [optional] |
+|**filterBased** | [**FilterBasedUpdateV1**](FilterBasedUpdateV1.md) |  |  [optional] |
 |**inMarket** | [**InMarketUpdateV1**](InMarketUpdateV1.md) |  |  [optional] |
 |**location** | [**LocationUpdateV1**](LocationUpdateV1.md) |  |  [optional] |
 |**lookalike** | [**LookalikeUpdateV1**](LookalikeUpdateV1.md) |  |  [optional] |

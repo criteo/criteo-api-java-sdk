@@ -18,8 +18,8 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**generateSyncRealTimePerformanceReport**](AnalyticsApi.md#generateSyncRealTimePerformanceReport) | **POST** /experimental/retail-media/reports/sync/real-time-performance | /experimental/retail-media/reports/sync/real-time-performance |
 | [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /experimental/retail-media/reports/{reportId}/output | /experimental/retail-media/reports/{reportId}/output |
 | [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /experimental/retail-media/reports/{reportId}/status | /experimental/retail-media/reports/{reportId}/status |
-| [**getInsightReportOutput**](AnalyticsApi.md#getInsightReportOutput) | **GET** /experimental/retail-media/insights/{insightId}/output | /experimental/retail-media/insights/{insightId}/output |
-| [**getInsightReportStatus**](AnalyticsApi.md#getInsightReportStatus) | **GET** /experimental/retail-media/insights/{insightId}/status | /experimental/retail-media/insights/{insightId}/status |
+| [**getInsightReportOutput**](AnalyticsApi.md#getInsightReportOutput) | **GET** /experimental/retail-media/insights/{insight-id}/output | /experimental/retail-media/insights/{insight-id}/output |
+| [**getInsightReportStatus**](AnalyticsApi.md#getInsightReportStatus) | **GET** /experimental/retail-media/insights/{insight-id}/status | /experimental/retail-media/insights/{insight-id}/status |
 
 
 
@@ -563,7 +563,7 @@ public class Example {
 
 /experimental/retail-media/insights/digital-shelf-intelligence
 
-Generate a Digital Shelf Intelligence insight
+Requests a Digital Shelf Intelligence insight report. This is an asynchronous, non-transactional operation:  it does not return the analytic data. It enqueues an export job and returns the created insight  report, whose id is then used to poll the insight status endpoint until the report is ready and to  download the result from the insight output endpoint.
 
 ### Example
 
@@ -652,7 +652,7 @@ public class Example {
 
 /experimental/retail-media/insights/share-of-voice
 
-Generate a share of voice insight
+Requests a Share of Voice insight report. This is an asynchronous, non-transactional operation:  it does not return the analytic data. It enqueues an export job and returns the created insight  report, whose id is then used to poll the insight status endpoint until the report is ready and to  download the result from the insight output endpoint.
 
 ### Example
 
@@ -1273,9 +1273,9 @@ public class Example {
 
 > File getInsightReportOutput(insightId)
 
-/experimental/retail-media/insights/{insightId}/output
+/experimental/retail-media/insights/{insight-id}/output
 
-Returns the output of an async insight
+Downloads the file output of a completed insight report. The report must have reached the &#x60;Success&#x60;  status; otherwise an error is returned. Check readiness first with the insight status endpoint.
 
 ### Example
 
@@ -1349,7 +1349,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain
 
 
 ### HTTP response details
@@ -1362,9 +1362,9 @@ public class Example {
 
 > AsyncInsightResponse getInsightReportStatus(insightId)
 
-/experimental/retail-media/insights/{insightId}/status
+/experimental/retail-media/insights/{insight-id}/status
 
-Returns the status of an async insight
+Returns the current status of an asynchronously generated insight report. Poll this endpoint until the  status is &#x60;Success&#x60;, then download the report from the insight output endpoint.
 
 ### Example
 

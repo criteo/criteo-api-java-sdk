@@ -103,7 +103,7 @@ public class ExperimentalUpdateLineItemModel {
   }
 
    /**
-   * Whether the line item should be paused or unpaused.
+   * Indicates whether the line item is paused.
    * @return isPaused
   **/
   @javax.annotation.Nullable

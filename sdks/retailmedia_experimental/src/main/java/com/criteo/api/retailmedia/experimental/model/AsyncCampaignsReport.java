@@ -640,7 +640,9 @@ public class AsyncCampaignsReport {
     
     SAMPLEDBIDSWON("sampledBidsWon"),
     
-    SAMPLEDBIDSPARTICIPATED("sampledBidsParticipated");
+    SAMPLEDBIDSPARTICIPATED("sampledBidsParticipated"),
+    
+    MAKEGOODSPEND("makeGoodSpend");
 
     private String value;
 

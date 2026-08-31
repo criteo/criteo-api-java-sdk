@@ -7690,16 +7690,46 @@ components:
               daysSinceLastVisitMax: 1
               usersType: Prospects
               daysSinceLastVisitMin: 5
+            filterBased:
+              countryCodes:
+              - countryCodes
+              - countryCodes
+              algebra:
+                filter:
+                  sellerId:
+                    values:
+                    - 1
+                    - 1
+                    operator: Unknown
+                  partnerId:
+                    values:
+                    - 0
+                    - 0
+                    operator: Unknown
+                  productCategory:
+                    values:
+                    - level: 6
+                      id: id
+                    - level: 6
+                      id: id
+                    operator: Unknown
+                not: null
+                or:
+                - null
+                - null
+                and:
+                - null
+                - null
             name: name
             description: description
             location:
               pointsOfInterest:
-              - latitude: 0.8008281904610115
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              - latitude: 0.8008281904610115
+                longitude: 5.637376656633329
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
+                longitude: 5.637376656633329
               radiusInKm: 0
             retargeting:
               visitorsType: All
@@ -7731,16 +7761,46 @@ components:
               daysSinceLastVisitMax: 1
               usersType: Prospects
               daysSinceLastVisitMin: 5
+            filterBased:
+              countryCodes:
+              - countryCodes
+              - countryCodes
+              algebra:
+                filter:
+                  sellerId:
+                    values:
+                    - 1
+                    - 1
+                    operator: Unknown
+                  partnerId:
+                    values:
+                    - 0
+                    - 0
+                    operator: Unknown
+                  productCategory:
+                    values:
+                    - level: 6
+                      id: id
+                    - level: 6
+                      id: id
+                    operator: Unknown
+                not: null
+                or:
+                - null
+                - null
+                and:
+                - null
+                - null
             name: name
             description: description
             location:
               pointsOfInterest:
-              - latitude: 0.8008281904610115
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              - latitude: 0.8008281904610115
+                longitude: 5.637376656633329
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
+                longitude: 5.637376656633329
               radiusInKm: 0
             retargeting:
               visitorsType: All
@@ -7799,18 +7859,48 @@ components:
               usersType: Prospects
               daysSinceLastVisitMin:
                 value: 1
+            filterBased:
+              countryCodes:
+              - countryCodes
+              - countryCodes
+              algebra:
+                filter:
+                  sellerId:
+                    values:
+                    - 1
+                    - 1
+                    operator: Unknown
+                  partnerId:
+                    values:
+                    - 0
+                    - 0
+                    operator: Unknown
+                  productCategory:
+                    values:
+                    - level: 6
+                      id: id
+                    - level: 6
+                      id: id
+                    operator: Unknown
+                not: null
+                or:
+                - null
+                - null
+                and:
+                - null
+                - null
             name: name
             description:
               value: value
             location:
               registryType: PointOfInterest
               pointsOfInterest:
-              - latitude: 0.8008281904610115
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              - latitude: 0.8008281904610115
+                longitude: 5.637376656633329
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
+                longitude: 5.637376656633329
               radiusInKm: 0
             retargeting:
               visitorsType: All
@@ -7843,18 +7933,48 @@ components:
               usersType: Prospects
               daysSinceLastVisitMin:
                 value: 1
+            filterBased:
+              countryCodes:
+              - countryCodes
+              - countryCodes
+              algebra:
+                filter:
+                  sellerId:
+                    values:
+                    - 1
+                    - 1
+                    operator: Unknown
+                  partnerId:
+                    values:
+                    - 0
+                    - 0
+                    operator: Unknown
+                  productCategory:
+                    values:
+                    - level: 6
+                      id: id
+                    - level: 6
+                      id: id
+                    operator: Unknown
+                not: null
+                or:
+                - null
+                - null
+                and:
+                - null
+                - null
             name: name
             description:
               value: value
             location:
               registryType: PointOfInterest
               pointsOfInterest:
-              - latitude: 0.8008281904610115
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              - latitude: 0.8008281904610115
+                longitude: 5.637376656633329
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
+                longitude: 5.637376656633329
               radiusInKm: 0
             retargeting:
               visitorsType: All
@@ -7937,16 +8057,46 @@ components:
           daysSinceLastVisitMax: 1
           usersType: Prospects
           daysSinceLastVisitMin: 5
+        filterBased:
+          countryCodes:
+          - countryCodes
+          - countryCodes
+          algebra:
+            filter:
+              sellerId:
+                values:
+                - 1
+                - 1
+                operator: Unknown
+              partnerId:
+                values:
+                - 0
+                - 0
+                operator: Unknown
+              productCategory:
+                values:
+                - level: 6
+                  id: id
+                - level: 6
+                  id: id
+                operator: Unknown
+            not: null
+            or:
+            - null
+            - null
+            and:
+            - null
+            - null
         name: name
         description: description
         location:
           pointsOfInterest:
-          - latitude: 0.8008281904610115
+          - latitude: 5.962133916683182
             name: name
-            longitude: 6.027456183070403
-          - latitude: 0.8008281904610115
+            longitude: 5.637376656633329
+          - latitude: 5.962133916683182
             name: name
-            longitude: 6.027456183070403
+            longitude: 5.637376656633329
           radiusInKm: 0
         retargeting:
           visitorsType: All
@@ -7981,6 +8131,8 @@ components:
         description:
           description: Description of the segment
           type: string
+        filterBased:
+          $ref: '#/components/schemas/FilterBasedCreateV1'
         inMarket:
           $ref: '#/components/schemas/InMarketCreateV1'
         location:
@@ -8008,16 +8160,46 @@ components:
             daysSinceLastVisitMax: 1
             usersType: Prospects
             daysSinceLastVisitMin: 5
+          filterBased:
+            countryCodes:
+            - countryCodes
+            - countryCodes
+            algebra:
+              filter:
+                sellerId:
+                  values:
+                  - 1
+                  - 1
+                  operator: Unknown
+                partnerId:
+                  values:
+                  - 0
+                  - 0
+                  operator: Unknown
+                productCategory:
+                  values:
+                  - level: 6
+                    id: id
+                  - level: 6
+                    id: id
+                  operator: Unknown
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
           name: name
           description: description
           location:
             pointsOfInterest:
-            - latitude: 0.8008281904610115
+            - latitude: 5.962133916683182
               name: name
-              longitude: 6.027456183070403
-            - latitude: 0.8008281904610115
+              longitude: 5.637376656633329
+            - latitude: 5.962133916683182
               name: name
-              longitude: 6.027456183070403
+              longitude: 5.637376656633329
             radiusInKm: 0
           retargeting:
             visitorsType: All
@@ -8080,16 +8262,46 @@ components:
       description: Set of rules that defines specific people to target.
       example:
         prospecting:
-          daysSinceLastVisitMax: 5
+          daysSinceLastVisitMax: 9
           usersType: Unknown
-          daysSinceLastVisitMin: 2
+          daysSinceLastVisitMin: 3
+        filterBased:
+          countryCodes:
+          - countryCodes
+          - countryCodes
+          algebra:
+            filter:
+              sellerId:
+                values:
+                - 1
+                - 1
+                operator: Unknown
+              partnerId:
+                values:
+                - 0
+                - 0
+                operator: Unknown
+              productCategory:
+                values:
+                - level: 6
+                  id: id
+                - level: 6
+                  id: id
+                operator: Unknown
+            not: null
+            or:
+            - null
+            - null
+            and:
+            - null
+            - null
         description: description
         retargeting:
           visitorsType: Unknown
-          daysSinceLastVisitMax: 7
-          daysSinceLastVisitMin: 9
+          daysSinceLastVisitMax: 2
+          daysSinceLastVisitMin: 4
         lookalike:
-          targetSize: 5
+          targetSize: 7
           seedSegmentId: seedSegmentId
         type: Unknown
         advertiserId: advertiserId
@@ -8105,13 +8317,13 @@ components:
         location:
           registryType: Unknown
           pointsOfInterest:
-          - latitude: 0.8008281904610115
+          - latitude: 5.962133916683182
             name: name
-            longitude: 6.027456183070403
-          - latitude: 0.8008281904610115
+            longitude: 5.637376656633329
+          - latitude: 5.962133916683182
             name: name
-            longitude: 6.027456183070403
-          radiusInKm: 1
+            longitude: 5.637376656633329
+          radiusInKm: 2
         inMarket:
           country: country
           interestIds:
@@ -8147,6 +8359,8 @@ components:
           description: Description of the segment
           nullable: true
           type: string
+        filterBased:
+          $ref: '#/components/schemas/FilterBasedV1'
         inMarket:
           $ref: '#/components/schemas/InMarketV1'
         location:
@@ -8191,16 +8405,46 @@ components:
         data:
         - attributes:
             prospecting:
-              daysSinceLastVisitMax: 5
+              daysSinceLastVisitMax: 9
               usersType: Unknown
-              daysSinceLastVisitMin: 2
+              daysSinceLastVisitMin: 3
+            filterBased:
+              countryCodes:
+              - countryCodes
+              - countryCodes
+              algebra:
+                filter:
+                  sellerId:
+                    values:
+                    - 1
+                    - 1
+                    operator: Unknown
+                  partnerId:
+                    values:
+                    - 0
+                    - 0
+                    operator: Unknown
+                  productCategory:
+                    values:
+                    - level: 6
+                      id: id
+                    - level: 6
+                      id: id
+                    operator: Unknown
+                not: null
+                or:
+                - null
+                - null
+                and:
+                - null
+                - null
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 7
-              daysSinceLastVisitMin: 9
+              daysSinceLastVisitMax: 2
+              daysSinceLastVisitMin: 4
             lookalike:
-              targetSize: 5
+              targetSize: 7
               seedSegmentId: seedSegmentId
             type: Unknown
             advertiserId: advertiserId
@@ -8216,13 +8460,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 0.8008281904610115
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              - latitude: 0.8008281904610115
+                longitude: 5.637376656633329
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              radiusInKm: 1
+                longitude: 5.637376656633329
+              radiusInKm: 2
             inMarket:
               country: country
               interestIds:
@@ -8243,16 +8487,46 @@ components:
           type: type
         - attributes:
             prospecting:
-              daysSinceLastVisitMax: 5
+              daysSinceLastVisitMax: 9
               usersType: Unknown
-              daysSinceLastVisitMin: 2
+              daysSinceLastVisitMin: 3
+            filterBased:
+              countryCodes:
+              - countryCodes
+              - countryCodes
+              algebra:
+                filter:
+                  sellerId:
+                    values:
+                    - 1
+                    - 1
+                    operator: Unknown
+                  partnerId:
+                    values:
+                    - 0
+                    - 0
+                    operator: Unknown
+                  productCategory:
+                    values:
+                    - level: 6
+                      id: id
+                    - level: 6
+                      id: id
+                    operator: Unknown
+                not: null
+                or:
+                - null
+                - null
+                and:
+                - null
+                - null
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 7
-              daysSinceLastVisitMin: 9
+              daysSinceLastVisitMax: 2
+              daysSinceLastVisitMin: 4
             lookalike:
-              targetSize: 5
+              targetSize: 7
               seedSegmentId: seedSegmentId
             type: Unknown
             advertiserId: advertiserId
@@ -8268,13 +8542,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 0.8008281904610115
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              - latitude: 0.8008281904610115
+                longitude: 5.637376656633329
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              radiusInKm: 1
+                longitude: 5.637376656633329
+              radiusInKm: 2
             inMarket:
               country: country
               interestIds:
@@ -8367,16 +8641,46 @@ components:
         data:
         - attributes:
             prospecting:
-              daysSinceLastVisitMax: 5
+              daysSinceLastVisitMax: 9
               usersType: Unknown
-              daysSinceLastVisitMin: 2
+              daysSinceLastVisitMin: 3
+            filterBased:
+              countryCodes:
+              - countryCodes
+              - countryCodes
+              algebra:
+                filter:
+                  sellerId:
+                    values:
+                    - 1
+                    - 1
+                    operator: Unknown
+                  partnerId:
+                    values:
+                    - 0
+                    - 0
+                    operator: Unknown
+                  productCategory:
+                    values:
+                    - level: 6
+                      id: id
+                    - level: 6
+                      id: id
+                    operator: Unknown
+                not: null
+                or:
+                - null
+                - null
+                and:
+                - null
+                - null
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 7
-              daysSinceLastVisitMin: 9
+              daysSinceLastVisitMax: 2
+              daysSinceLastVisitMin: 4
             lookalike:
-              targetSize: 5
+              targetSize: 7
               seedSegmentId: seedSegmentId
             type: Unknown
             advertiserId: advertiserId
@@ -8392,13 +8696,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 0.8008281904610115
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              - latitude: 0.8008281904610115
+                longitude: 5.637376656633329
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              radiusInKm: 1
+                longitude: 5.637376656633329
+              radiusInKm: 2
             inMarket:
               country: country
               interestIds:
@@ -8419,16 +8723,46 @@ components:
           type: type
         - attributes:
             prospecting:
-              daysSinceLastVisitMax: 5
+              daysSinceLastVisitMax: 9
               usersType: Unknown
-              daysSinceLastVisitMin: 2
+              daysSinceLastVisitMin: 3
+            filterBased:
+              countryCodes:
+              - countryCodes
+              - countryCodes
+              algebra:
+                filter:
+                  sellerId:
+                    values:
+                    - 1
+                    - 1
+                    operator: Unknown
+                  partnerId:
+                    values:
+                    - 0
+                    - 0
+                    operator: Unknown
+                  productCategory:
+                    values:
+                    - level: 6
+                      id: id
+                    - level: 6
+                      id: id
+                    operator: Unknown
+                not: null
+                or:
+                - null
+                - null
+                and:
+                - null
+                - null
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 7
-              daysSinceLastVisitMin: 9
+              daysSinceLastVisitMax: 2
+              daysSinceLastVisitMin: 4
             lookalike:
-              targetSize: 5
+              targetSize: 7
               seedSegmentId: seedSegmentId
             type: Unknown
             advertiserId: advertiserId
@@ -8444,13 +8778,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 0.8008281904610115
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              - latitude: 0.8008281904610115
+                longitude: 5.637376656633329
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              radiusInKm: 1
+                longitude: 5.637376656633329
+              radiusInKm: 2
             inMarket:
               country: country
               interestIds:
@@ -8535,16 +8869,46 @@ components:
       example:
         attributes:
           prospecting:
-            daysSinceLastVisitMax: 5
+            daysSinceLastVisitMax: 9
             usersType: Unknown
-            daysSinceLastVisitMin: 2
+            daysSinceLastVisitMin: 3
+          filterBased:
+            countryCodes:
+            - countryCodes
+            - countryCodes
+            algebra:
+              filter:
+                sellerId:
+                  values:
+                  - 1
+                  - 1
+                  operator: Unknown
+                partnerId:
+                  values:
+                  - 0
+                  - 0
+                  operator: Unknown
+                productCategory:
+                  values:
+                  - level: 6
+                    id: id
+                  - level: 6
+                    id: id
+                  operator: Unknown
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
           description: description
           retargeting:
             visitorsType: Unknown
-            daysSinceLastVisitMax: 7
-            daysSinceLastVisitMin: 9
+            daysSinceLastVisitMax: 2
+            daysSinceLastVisitMin: 4
           lookalike:
-            targetSize: 5
+            targetSize: 7
             seedSegmentId: seedSegmentId
           type: Unknown
           advertiserId: advertiserId
@@ -8560,13 +8924,13 @@ components:
           location:
             registryType: Unknown
             pointsOfInterest:
-            - latitude: 0.8008281904610115
+            - latitude: 5.962133916683182
               name: name
-              longitude: 6.027456183070403
-            - latitude: 0.8008281904610115
+              longitude: 5.637376656633329
+            - latitude: 5.962133916683182
               name: name
-              longitude: 6.027456183070403
-            radiusInKm: 1
+              longitude: 5.637376656633329
+            radiusInKm: 2
           inMarket:
             country: country
             interestIds:
@@ -8603,12 +8967,12 @@ components:
           attributes:
             location:
               pointsOfInterest:
-              - latitude: 0.8008281904610115
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
-              - latitude: 0.8008281904610115
+                longitude: 5.637376656633329
+              - latitude: 5.962133916683182
                 name: name
-                longitude: 6.027456183070403
+                longitude: 5.637376656633329
               radiusInKm: 0
             inMarket:
               country: country
@@ -8949,12 +9313,12 @@ components:
       example:
         location:
           pointsOfInterest:
-          - latitude: 0.8008281904610115
+          - latitude: 5.962133916683182
             name: name
-            longitude: 6.027456183070403
-          - latitude: 0.8008281904610115
+            longitude: 5.637376656633329
+          - latitude: 5.962133916683182
             name: name
-            longitude: 6.027456183070403
+            longitude: 5.637376656633329
           radiusInKm: 0
         inMarket:
           country: country
@@ -8990,12 +9354,12 @@ components:
         attributes:
           location:
             pointsOfInterest:
-            - latitude: 0.8008281904610115
+            - latitude: 5.962133916683182
               name: name
-              longitude: 6.027456183070403
-            - latitude: 0.8008281904610115
+              longitude: 5.637376656633329
+            - latitude: 5.962133916683182
               name: name
-              longitude: 6.027456183070403
+              longitude: 5.637376656633329
             radiusInKm: 0
           inMarket:
             country: country
@@ -9121,18 +9485,48 @@ components:
           usersType: Prospects
           daysSinceLastVisitMin:
             value: 1
+        filterBased:
+          countryCodes:
+          - countryCodes
+          - countryCodes
+          algebra:
+            filter:
+              sellerId:
+                values:
+                - 1
+                - 1
+                operator: Unknown
+              partnerId:
+                values:
+                - 0
+                - 0
+                operator: Unknown
+              productCategory:
+                values:
+                - level: 6
+                  id: id
+                - level: 6
+                  id: id
+                operator: Unknown
+            not: null
+            or:
+            - null
+            - null
+            and:
+            - null
+            - null
         name: name
         description:
           value: value
         location:
           registryType: PointOfInterest
           pointsOfInterest:
-          - latitude: 0.8008281904610115
+          - latitude: 5.962133916683182
             name: name
-            longitude: 6.027456183070403
-          - latitude: 0.8008281904610115
+            longitude: 5.637376656633329
+          - latitude: 5.962133916683182
             name: name
-            longitude: 6.027456183070403
+            longitude: 5.637376656633329
           radiusInKm: 0
         retargeting:
           visitorsType: All
@@ -9159,6 +9553,8 @@ components:
       properties:
         description:
           $ref: '#/components/schemas/NillableString'
+        filterBased:
+          $ref: '#/components/schemas/FilterBasedUpdateV1'
         inMarket:
           $ref: '#/components/schemas/InMarketUpdateV1'
         location:
@@ -9187,18 +9583,48 @@ components:
             usersType: Prospects
             daysSinceLastVisitMin:
               value: 1
+          filterBased:
+            countryCodes:
+            - countryCodes
+            - countryCodes
+            algebra:
+              filter:
+                sellerId:
+                  values:
+                  - 1
+                  - 1
+                  operator: Unknown
+                partnerId:
+                  values:
+                  - 0
+                  - 0
+                  operator: Unknown
+                productCategory:
+                  values:
+                  - level: 6
+                    id: id
+                  - level: 6
+                    id: id
+                  operator: Unknown
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
           name: name
           description:
             value: value
           location:
             registryType: PointOfInterest
             pointsOfInterest:
-            - latitude: 0.8008281904610115
+            - latitude: 5.962133916683182
               name: name
-              longitude: 6.027456183070403
-            - latitude: 0.8008281904610115
+              longitude: 5.637376656633329
+            - latitude: 5.962133916683182
               name: name
-              longitude: 6.027456183070403
+              longitude: 5.637376656633329
             radiusInKm: 0
           retargeting:
             visitorsType: All
@@ -12652,6 +13078,211 @@ components:
           readOnly: true
           type: array
       type: object
+    FilterBasedAlgebraNodeV1:
+      description: "Boolean algebra tree used to combine filters with And, Or and\
+        \ Not operators."
+      example:
+        filter:
+          sellerId:
+            values:
+            - 1
+            - 1
+            operator: Unknown
+          partnerId:
+            values:
+            - 0
+            - 0
+            operator: Unknown
+          productCategory:
+            values:
+            - level: 6
+              id: id
+            - level: 6
+              id: id
+            operator: Unknown
+        not: null
+        or:
+        - null
+        - null
+        and:
+        - null
+        - null
+      nullable: true
+      properties:
+        and:
+          description: And node in the algebra tree.
+          items:
+            $ref: '#/components/schemas/FilterBasedAlgebraNodeV1'
+          nullable: true
+          type: array
+        filter:
+          $ref: '#/components/schemas/FilterBasedDefinitionV1'
+        not:
+          $ref: '#/components/schemas/FilterBasedAlgebraNodeV1'
+        or:
+          description: Or node in the algebra tree.
+          items:
+            $ref: '#/components/schemas/FilterBasedAlgebraNodeV1'
+          nullable: true
+          type: array
+      type: object
+    FilterBasedCreateV1:
+      description: Settings to target users based on a combination of filters.
+      example:
+        countryCodes:
+        - countryCodes
+        - countryCodes
+        algebra:
+          filter:
+            sellerId:
+              values:
+              - 1
+              - 1
+              operator: Unknown
+            partnerId:
+              values:
+              - 0
+              - 0
+              operator: Unknown
+            productCategory:
+              values:
+              - level: 6
+                id: id
+              - level: 6
+                id: id
+              operator: Unknown
+          not: null
+          or:
+          - null
+          - null
+          and:
+          - null
+          - null
+      properties:
+        algebra:
+          $ref: '#/components/schemas/FilterBasedAlgebraNodeV1'
+        countryCodes:
+          description: Use only signals coming from partners from these countries
+          items:
+            type: string
+          type: array
+      required:
+      - algebra
+      type: object
+    FilterBasedDefinitionV1:
+      description: "Definition of one or more filters. If multiple filters are defined,\
+        \ a user signal must match all the filters to be\r\nconsidered in the segment."
+      example:
+        sellerId:
+          values:
+          - 1
+          - 1
+          operator: Unknown
+        partnerId:
+          values:
+          - 0
+          - 0
+          operator: Unknown
+        productCategory:
+          values:
+          - level: 6
+            id: id
+          - level: 6
+            id: id
+          operator: Unknown
+      nullable: true
+      properties:
+        partnerId:
+          $ref: '#/components/schemas/IntegerFilterV1'
+        productCategory:
+          $ref: '#/components/schemas/ProductCategoryFilterV1'
+        sellerId:
+          $ref: '#/components/schemas/LongFilterV1'
+      type: object
+    FilterBasedUpdateV1:
+      description: Settings to target users based on a combination of filters.
+      example:
+        countryCodes:
+        - countryCodes
+        - countryCodes
+        algebra:
+          filter:
+            sellerId:
+              values:
+              - 1
+              - 1
+              operator: Unknown
+            partnerId:
+              values:
+              - 0
+              - 0
+              operator: Unknown
+            productCategory:
+              values:
+              - level: 6
+                id: id
+              - level: 6
+                id: id
+              operator: Unknown
+          not: null
+          or:
+          - null
+          - null
+          and:
+          - null
+          - null
+      properties:
+        algebra:
+          $ref: '#/components/schemas/FilterBasedAlgebraNodeV1'
+        countryCodes:
+          description: Use signals coming from partners from these countries
+          items:
+            type: string
+          type: array
+      type: object
+    FilterBasedV1:
+      description: Settings to target users based on a combination of filters.
+      example:
+        countryCodes:
+        - countryCodes
+        - countryCodes
+        algebra:
+          filter:
+            sellerId:
+              values:
+              - 1
+              - 1
+              operator: Unknown
+            partnerId:
+              values:
+              - 0
+              - 0
+              operator: Unknown
+            productCategory:
+              values:
+              - level: 6
+                id: id
+              - level: 6
+                id: id
+              operator: Unknown
+          not: null
+          or:
+          - null
+          - null
+          and:
+          - null
+          - null
+      nullable: true
+      properties:
+        algebra:
+          $ref: '#/components/schemas/FilterBasedAlgebraNodeV1'
+        countryCodes:
+          description: Use only signals coming from partners from these countries
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     GenerateAllProductsReportRequestAttributes:
       additionalProperties: false
       description: This is the message defining the query for AllProducts report (async
@@ -15034,6 +15665,30 @@ components:
           format: int64
           type: integer
       type: object
+    IntegerFilterV1:
+      description: Filter that compares integers against one or more values.
+      example:
+        values:
+        - 0
+        - 0
+        operator: Unknown
+      nullable: true
+      properties:
+        operator:
+          description: Comparison operator for the integer filter
+          enum:
+          - Unknown
+          - Equals
+          nullable: true
+          type: string
+        values:
+          description: Integer values to compare against
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+      type: object
     JsonReportRows:
       additionalProperties: false
       description: This is the message defining the json report rows
@@ -15227,12 +15882,12 @@ components:
       description: Settings to target users based on their location.
       example:
         pointsOfInterest:
-        - latitude: 0.8008281904610115
+        - latitude: 5.962133916683182
           name: name
-          longitude: 6.027456183070403
-        - latitude: 0.8008281904610115
+          longitude: 5.637376656633329
+        - latitude: 5.962133916683182
           name: name
-          longitude: 6.027456183070403
+          longitude: 5.637376656633329
         radiusInKm: 0
       properties:
         pointsOfInterest:
@@ -15254,12 +15909,12 @@ components:
       description: Settings to define your audience based on their location.
       example:
         pointsOfInterest:
-        - latitude: 0.8008281904610115
+        - latitude: 5.962133916683182
           name: name
-          longitude: 6.027456183070403
-        - latitude: 0.8008281904610115
+          longitude: 5.637376656633329
+        - latitude: 5.962133916683182
           name: name
-          longitude: 6.027456183070403
+          longitude: 5.637376656633329
         radiusInKm: 0
       properties:
         pointsOfInterest:
@@ -15278,12 +15933,12 @@ components:
       example:
         registryType: PointOfInterest
         pointsOfInterest:
-        - latitude: 0.8008281904610115
+        - latitude: 5.962133916683182
           name: name
-          longitude: 6.027456183070403
-        - latitude: 0.8008281904610115
+          longitude: 5.637376656633329
+        - latitude: 5.962133916683182
           name: name
-          longitude: 6.027456183070403
+          longitude: 5.637376656633329
         radiusInKm: 0
       properties:
         pointsOfInterest:
@@ -15307,13 +15962,13 @@ components:
       example:
         registryType: Unknown
         pointsOfInterest:
-        - latitude: 0.8008281904610115
+        - latitude: 5.962133916683182
           name: name
-          longitude: 6.027456183070403
-        - latitude: 0.8008281904610115
+          longitude: 5.637376656633329
+        - latitude: 5.962133916683182
           name: name
-          longitude: 6.027456183070403
-        radiusInKm: 1
+          longitude: 5.637376656633329
+        radiusInKm: 2
       nullable: true
       properties:
         pointsOfInterest:
@@ -15336,6 +15991,30 @@ components:
           - PointOfInterest
           nullable: true
           type: string
+      type: object
+    LongFilterV1:
+      description: Filter that compares 64-bit integers against one or more values.
+      example:
+        values:
+        - 1
+        - 1
+        operator: Unknown
+      nullable: true
+      properties:
+        operator:
+          description: Comparison operator for the long filter
+          enum:
+          - Unknown
+          - Equals
+          nullable: true
+          type: string
+        values:
+          description: 64-bit integer values to compare against
+          items:
+            format: int64
+            type: integer
+          nullable: true
+          type: array
       type: object
     LookalikeCreateV1:
       description: Settings to target users close to a given seed segment.
@@ -15366,7 +16045,7 @@ components:
     LookalikeV1:
       description: Settings to target users that behave like a given seed segment
       example:
-        targetSize: 5
+        targetSize: 7
         seedSegmentId: seedSegmentId
       nullable: true
       properties:
@@ -17469,9 +18148,9 @@ components:
       description: "Named coordinate defined by its latitude and longitude.\r\nLatitude\
         \ and Longitude are rounded at 5 decimals."
       example:
-        latitude: 0.8008281904610115
+        latitude: 5.962133916683182
         name: name
-        longitude: 6.027456183070403
+        longitude: 5.637376656633329
       properties:
         latitude:
           description: ISO-6709 latitude (rounded at 5 decimals)
@@ -17993,6 +18672,49 @@ components:
       - imageLink
       - link
       - title
+      type: object
+    ProductCategoryFilterV1:
+      description: Filter that matches when a product category (identified by its
+        id and level) is among the provided values.
+      example:
+        values:
+        - level: 6
+          id: id
+        - level: 6
+          id: id
+        operator: Unknown
+      nullable: true
+      properties:
+        operator:
+          description: Comparison operator for the product category filter
+          enum:
+          - Unknown
+          - Equals
+          - In
+          nullable: true
+          type: string
+        values:
+          description: Product categories to compare against
+          items:
+            $ref: '#/components/schemas/ProductCategoryV1'
+          nullable: true
+          type: array
+      type: object
+    ProductCategoryV1:
+      description: A product category identified by its id and its level in the hierarchy.
+      example:
+        level: 6
+        id: id
+      properties:
+        id:
+          description: Identifier of the product category.
+          nullable: true
+          type: string
+        level:
+          description: Level of the product category in the hierarchy.
+          format: int32
+          nullable: true
+          type: integer
       type: object
     ProductContext:
       description: Information about a product used as context for conversational
@@ -19025,9 +19747,9 @@ components:
     ProspectingV1:
       description: Settings to target prospecting users to website visitors.
       example:
-        daysSinceLastVisitMax: 5
+        daysSinceLastVisitMax: 9
         usersType: Unknown
-        daysSinceLastVisitMin: 2
+        daysSinceLastVisitMin: 3
       nullable: true
       properties:
         daysSinceLastVisitMax:
@@ -22627,8 +23349,8 @@ components:
         visit.
       example:
         visitorsType: Unknown
-        daysSinceLastVisitMax: 7
-        daysSinceLastVisitMin: 9
+        daysSinceLastVisitMax: 2
+        daysSinceLastVisitMin: 4
       nullable: true
       properties:
         daysSinceLastVisitMax:

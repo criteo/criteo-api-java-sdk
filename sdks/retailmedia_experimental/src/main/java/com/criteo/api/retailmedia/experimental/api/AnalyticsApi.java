@@ -896,7 +896,7 @@ public class AnalyticsApi {
 
     /**
      * /experimental/retail-media/insights/digital-shelf-intelligence
-     * Generate a Digital Shelf Intelligence insight
+     * Requests a Digital Shelf Intelligence insight report. This is an asynchronous, non-transactional operation:  it does not return the analytic data. It enqueues an export job and returns the created insight  report, whose id is then used to poll the insight status endpoint until the report is ready and to  download the result from the insight output endpoint.
      * @param digitalShelfIntelligenceInsightRequest  (required)
      * @return AsyncInsightResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -913,7 +913,7 @@ public class AnalyticsApi {
 
     /**
      * /experimental/retail-media/insights/digital-shelf-intelligence
-     * Generate a Digital Shelf Intelligence insight
+     * Requests a Digital Shelf Intelligence insight report. This is an asynchronous, non-transactional operation:  it does not return the analytic data. It enqueues an export job and returns the created insight  report, whose id is then used to poll the insight status endpoint until the report is ready and to  download the result from the insight output endpoint.
      * @param digitalShelfIntelligenceInsightRequest  (required)
      * @return ApiResponse&lt;AsyncInsightResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -931,7 +931,7 @@ public class AnalyticsApi {
 
     /**
      * /experimental/retail-media/insights/digital-shelf-intelligence (asynchronously)
-     * Generate a Digital Shelf Intelligence insight
+     * Requests a Digital Shelf Intelligence insight report. This is an asynchronous, non-transactional operation:  it does not return the analytic data. It enqueues an export job and returns the created insight  report, whose id is then used to poll the insight status endpoint until the report is ready and to  download the result from the insight output endpoint.
      * @param digitalShelfIntelligenceInsightRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1019,7 +1019,7 @@ public class AnalyticsApi {
 
     /**
      * /experimental/retail-media/insights/share-of-voice
-     * Generate a share of voice insight
+     * Requests a Share of Voice insight report. This is an asynchronous, non-transactional operation:  it does not return the analytic data. It enqueues an export job and returns the created insight  report, whose id is then used to poll the insight status endpoint until the report is ready and to  download the result from the insight output endpoint.
      * @param shareOfVoiceInsightRequest  (required)
      * @return AsyncInsightResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1036,7 +1036,7 @@ public class AnalyticsApi {
 
     /**
      * /experimental/retail-media/insights/share-of-voice
-     * Generate a share of voice insight
+     * Requests a Share of Voice insight report. This is an asynchronous, non-transactional operation:  it does not return the analytic data. It enqueues an export job and returns the created insight  report, whose id is then used to poll the insight status endpoint until the report is ready and to  download the result from the insight output endpoint.
      * @param shareOfVoiceInsightRequest  (required)
      * @return ApiResponse&lt;AsyncInsightResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1054,7 +1054,7 @@ public class AnalyticsApi {
 
     /**
      * /experimental/retail-media/insights/share-of-voice (asynchronously)
-     * Generate a share of voice insight
+     * Requests a Share of Voice insight report. This is an asynchronous, non-transactional operation:  it does not return the analytic data. It enqueues an export job and returns the created insight  report, whose id is then used to poll the insight status endpoint until the report is ready and to  download the result from the insight output endpoint.
      * @param shareOfVoiceInsightRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1839,8 +1839,8 @@ public class AnalyticsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/experimental/retail-media/insights/{insightId}/output"
-            .replace("{" + "insightId" + "}", localVarApiClient.escapeString(insightId.toString()));
+        String localVarPath = "/experimental/retail-media/insights/{insight-id}/output"
+            .replace("{" + "insight-id" + "}", localVarApiClient.escapeString(insightId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1849,7 +1849,7 @@ public class AnalyticsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1879,8 +1879,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /experimental/retail-media/insights/{insightId}/output
-     * Returns the output of an async insight
+     * /experimental/retail-media/insights/{insight-id}/output
+     * Downloads the file output of a completed insight report. The report must have reached the &#x60;Success&#x60;  status; otherwise an error is returned. Check readiness first with the insight status endpoint.
      * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1896,8 +1896,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /experimental/retail-media/insights/{insightId}/output
-     * Returns the output of an async insight
+     * /experimental/retail-media/insights/{insight-id}/output
+     * Downloads the file output of a completed insight report. The report must have reached the &#x60;Success&#x60;  status; otherwise an error is returned. Check readiness first with the insight status endpoint.
      * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1914,8 +1914,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /experimental/retail-media/insights/{insightId}/output (asynchronously)
-     * Returns the output of an async insight
+     * /experimental/retail-media/insights/{insight-id}/output (asynchronously)
+     * Downloads the file output of a completed insight report. The report must have reached the &#x60;Success&#x60;  status; otherwise an error is returned. Check readiness first with the insight status endpoint.
      * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1962,8 +1962,8 @@ public class AnalyticsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/experimental/retail-media/insights/{insightId}/status"
-            .replace("{" + "insightId" + "}", localVarApiClient.escapeString(insightId.toString()));
+        String localVarPath = "/experimental/retail-media/insights/{insight-id}/status"
+            .replace("{" + "insight-id" + "}", localVarApiClient.escapeString(insightId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2002,8 +2002,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /experimental/retail-media/insights/{insightId}/status
-     * Returns the status of an async insight
+     * /experimental/retail-media/insights/{insight-id}/status
+     * Returns the current status of an asynchronously generated insight report. Poll this endpoint until the  status is &#x60;Success&#x60;, then download the report from the insight output endpoint.
      * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @return AsyncInsightResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2019,8 +2019,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /experimental/retail-media/insights/{insightId}/status
-     * Returns the status of an async insight
+     * /experimental/retail-media/insights/{insight-id}/status
+     * Returns the current status of an asynchronously generated insight report. Poll this endpoint until the  status is &#x60;Success&#x60;, then download the report from the insight output endpoint.
      * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @return ApiResponse&lt;AsyncInsightResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2037,8 +2037,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * /experimental/retail-media/insights/{insightId}/status (asynchronously)
-     * Returns the status of an async insight
+     * /experimental/retail-media/insights/{insight-id}/status (asynchronously)
+     * Returns the current status of an asynchronously generated insight report. Poll this endpoint until the  status is &#x60;Success&#x60;, then download the report from the insight output endpoint.
      * @param insightId The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

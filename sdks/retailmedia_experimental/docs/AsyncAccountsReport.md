@@ -199,6 +199,7 @@ Async Accounts report body request
 | WINRATE | &quot;winRate&quot; |
 | SAMPLEDBIDSWON | &quot;sampledBidsWon&quot; |
 | SAMPLEDBIDSPARTICIPATED | &quot;sampledBidsParticipated&quot; |
+| MAKEGOODSPEND | &quot;makeGoodSpend&quot; |
 
 
 

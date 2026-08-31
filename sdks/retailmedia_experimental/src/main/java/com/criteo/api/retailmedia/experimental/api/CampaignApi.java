@@ -32,10 +32,12 @@ import com.criteo.api.retailmedia.experimental.model.AddProductsResultModelRespo
 import com.criteo.api.retailmedia.experimental.model.BiddingSettingsResponse;
 import com.criteo.api.retailmedia.experimental.model.CampaignCreateModelRequest;
 import com.criteo.api.retailmedia.experimental.model.CampaignResponseModelResponse;
+import com.criteo.api.retailmedia.experimental.model.CreateTargetRequestModelListRequest;
 import com.criteo.api.retailmedia.experimental.model.Creative2Response;
 import com.criteo.api.retailmedia.experimental.model.CreativeCreateModel2;
 import com.criteo.api.retailmedia.experimental.model.CreativeUpdateModel2;
 import com.criteo.api.retailmedia.experimental.model.CreativesModelResponse;
+import com.criteo.api.retailmedia.experimental.model.DeleteProductModelRequest;
 import com.criteo.api.retailmedia.experimental.model.DemandSearchRequest;
 import com.criteo.api.retailmedia.experimental.model.EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata;
 import com.criteo.api.retailmedia.experimental.model.EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata;
@@ -47,6 +49,7 @@ import com.criteo.api.retailmedia.experimental.model.ExperimentalCreateLineItemM
 import com.criteo.api.retailmedia.experimental.model.ExperimentalLineItemModelResponse;
 import com.criteo.api.retailmedia.experimental.model.ExperimentalUpdateLineItemModelRequest;
 import com.criteo.api.retailmedia.experimental.model.LineItemListResponseWithPagination;
+import com.criteo.api.retailmedia.experimental.model.Outcome;
 import com.criteo.api.retailmedia.experimental.model.PreferredLineItemCreateModelV2Request;
 import com.criteo.api.retailmedia.experimental.model.PreferredLineItemUpdateModelV2Request;
 import com.criteo.api.retailmedia.experimental.model.PreferredLineItemV2PagedListResponse;
@@ -58,6 +61,7 @@ import com.criteo.api.retailmedia.experimental.model.ProductResourceOutcome;
 import com.criteo.api.retailmedia.experimental.model.PromotedProductResourceCollectionInput;
 import com.criteo.api.retailmedia.experimental.model.PromotedProductResourceCollectionOutcome;
 import com.criteo.api.retailmedia.experimental.model.SupplySearchRequest;
+import com.criteo.api.retailmedia.experimental.model.TargetListResponse;
 import com.criteo.api.retailmedia.experimental.model.TargetListResponseWithPageMetadata;
 import com.criteo.api.retailmedia.experimental.model.UpsertCreativesModelRequest;
 import com.criteo.api.retailmedia.experimental.model.ValueResourceInputAppendCampaignsRequestV1;
@@ -1295,6 +1299,134 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for createTargetsByLineItemId
+     * @param lineItemId Unique identifier for the line item (required)
+     * @param createTargetRequestModelListRequest Target to configure on the line item (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createTargetsByLineItemIdCall(String lineItemId, CreateTargetRequestModelListRequest createTargetRequestModelListRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createTargetRequestModelListRequest;
+
+        // create path and map variables
+        String localVarPath = "/experimental/retail-media/line-items/{line-item-id}/targets/create"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createTargetsByLineItemIdValidateBeforeCall(String lineItemId, CreateTargetRequestModelListRequest createTargetRequestModelListRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling createTargetsByLineItemId(Async)");
+        }
+
+        return createTargetsByLineItemIdCall(lineItemId, createTargetRequestModelListRequest, _callback);
+
+    }
+
+    /**
+     * /experimental/retail-media/line-items/{line-item-id}/targets/create
+     * Creates a given target
+     * @param lineItemId Unique identifier for the line item (required)
+     * @param createTargetRequestModelListRequest Target to configure on the line item (optional)
+     * @return TargetListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public TargetListResponse createTargetsByLineItemId(String lineItemId, CreateTargetRequestModelListRequest createTargetRequestModelListRequest) throws ApiException {
+        ApiResponse<TargetListResponse> localVarResp = createTargetsByLineItemIdWithHttpInfo(lineItemId, createTargetRequestModelListRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /experimental/retail-media/line-items/{line-item-id}/targets/create
+     * Creates a given target
+     * @param lineItemId Unique identifier for the line item (required)
+     * @param createTargetRequestModelListRequest Target to configure on the line item (optional)
+     * @return ApiResponse&lt;TargetListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TargetListResponse> createTargetsByLineItemIdWithHttpInfo(String lineItemId, CreateTargetRequestModelListRequest createTargetRequestModelListRequest) throws ApiException {
+        okhttp3.Call localVarCall = createTargetsByLineItemIdValidateBeforeCall(lineItemId, createTargetRequestModelListRequest, null);
+        Type localVarReturnType = new TypeToken<TargetListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /experimental/retail-media/line-items/{line-item-id}/targets/create (asynchronously)
+     * Creates a given target
+     * @param lineItemId Unique identifier for the line item (required)
+     * @param createTargetRequestModelListRequest Target to configure on the line item (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createTargetsByLineItemIdAsync(String lineItemId, CreateTargetRequestModelListRequest createTargetRequestModelListRequest, final ApiCallback<TargetListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createTargetsByLineItemIdValidateBeforeCall(lineItemId, createTargetRequestModelListRequest, _callback);
+        Type localVarReturnType = new TypeToken<TargetListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for deleteCampaignsFromBalanceV1
      * @param balanceId The balance to remove campaigns from (required)
      * @param valueResourceInputDeleteCampaignsRequestV1 The balance campaign deleting request. (required)
@@ -1561,19 +1693,19 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for deletePromotedProducts
-     * @param lineItemId ID of the line item (required)
-     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * Build call for deleteProducts
+     * @param lineItemId The line item id. (required)
+     * @param deleteProductModelRequest The products to delete. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePromotedProductsCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteProductsCall(String lineItemId, DeleteProductModelRequest deleteProductModelRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1587,7 +1719,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = promotedProductResourceCollectionInput;
+        Object localVarPostBody = deleteProductModelRequest;
 
         // create path and map variables
         String localVarPath = "/experimental/retail-media/line-items/{line-item-id}/products/delete"
@@ -1600,6 +1732,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1619,68 +1752,77 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePromotedProductsValidateBeforeCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteProductsValidateBeforeCall(String lineItemId, DeleteProductModelRequest deleteProductModelRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling deletePromotedProducts(Async)");
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling deleteProducts(Async)");
         }
 
-        return deletePromotedProductsCall(lineItemId, promotedProductResourceCollectionInput, _callback);
+        // verify the required parameter 'deleteProductModelRequest' is set
+        if (deleteProductModelRequest == null) {
+            throw new ApiException("Missing the required parameter 'deleteProductModelRequest' when calling deleteProducts(Async)");
+        }
+
+        return deleteProductsCall(lineItemId, deleteProductModelRequest, _callback);
 
     }
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
-     * Remove a collection of promoted products from a line item
-     * @param lineItemId ID of the line item (required)
-     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * Delete products from a line item.
+     * @param lineItemId The line item id. (required)
+     * @param deleteProductModelRequest The products to delete. (required)
+     * @return Outcome
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public void deletePromotedProducts(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
-        deletePromotedProductsWithHttpInfo(lineItemId, promotedProductResourceCollectionInput);
+    public Outcome deleteProducts(String lineItemId, DeleteProductModelRequest deleteProductModelRequest) throws ApiException {
+        ApiResponse<Outcome> localVarResp = deleteProductsWithHttpInfo(lineItemId, deleteProductModelRequest);
+        return localVarResp.getData();
     }
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
-     * Remove a collection of promoted products from a line item
-     * @param lineItemId ID of the line item (required)
-     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * Delete products from a line item.
+     * @param lineItemId The line item id. (required)
+     * @param deleteProductModelRequest The products to delete. (required)
+     * @return ApiResponse&lt;Outcome&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deletePromotedProductsWithHttpInfo(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
-        okhttp3.Call localVarCall = deletePromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<Outcome> deleteProductsWithHttpInfo(String lineItemId, DeleteProductModelRequest deleteProductModelRequest) throws ApiException {
+        okhttp3.Call localVarCall = deleteProductsValidateBeforeCall(lineItemId, deleteProductModelRequest, null);
+        Type localVarReturnType = new TypeToken<Outcome>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products/delete (asynchronously)
-     * Remove a collection of promoted products from a line item
-     * @param lineItemId ID of the line item (required)
-     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * Delete products from a line item.
+     * @param lineItemId The line item id. (required)
+     * @param deleteProductModelRequest The products to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePromotedProductsAsync(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteProductsAsync(String lineItemId, DeleteProductModelRequest deleteProductModelRequest, final ApiCallback<Outcome> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = deleteProductsValidateBeforeCall(lineItemId, deleteProductModelRequest, _callback);
+        Type localVarReturnType = new TypeToken<Outcome>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

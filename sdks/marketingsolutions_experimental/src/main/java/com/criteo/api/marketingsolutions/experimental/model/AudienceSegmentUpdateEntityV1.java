@@ -15,6 +15,7 @@ package com.criteo.api.marketingsolutions.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.experimental.model.FilterBasedUpdateV1;
 import com.criteo.api.marketingsolutions.experimental.model.InMarketUpdateV1;
 import com.criteo.api.marketingsolutions.experimental.model.LocationUpdateV1;
 import com.criteo.api.marketingsolutions.experimental.model.LookalikeUpdateV1;
@@ -58,6 +59,10 @@ public class AudienceSegmentUpdateEntityV1 {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private NillableString description;
+
+  public static final String SERIALIZED_NAME_FILTER_BASED = "filterBased";
+  @SerializedName(SERIALIZED_NAME_FILTER_BASED)
+  private FilterBasedUpdateV1 filterBased;
 
   public static final String SERIALIZED_NAME_IN_MARKET = "inMarket";
   @SerializedName(SERIALIZED_NAME_IN_MARKET)
@@ -105,6 +110,28 @@ public class AudienceSegmentUpdateEntityV1 {
 
   public void setDescription(NillableString description) {
     this.description = description;
+  }
+
+
+  public AudienceSegmentUpdateEntityV1 filterBased(FilterBasedUpdateV1 filterBased) {
+    
+    this.filterBased = filterBased;
+    return this;
+  }
+
+   /**
+   * Get filterBased
+   * @return filterBased
+  **/
+  @javax.annotation.Nullable
+
+  public FilterBasedUpdateV1 getFilterBased() {
+    return filterBased;
+  }
+
+
+  public void setFilterBased(FilterBasedUpdateV1 filterBased) {
+    this.filterBased = filterBased;
   }
 
 
@@ -295,6 +322,7 @@ public class AudienceSegmentUpdateEntityV1 {
     }
     AudienceSegmentUpdateEntityV1 audienceSegmentUpdateEntityV1 = (AudienceSegmentUpdateEntityV1) o;
     return Objects.equals(this.description, audienceSegmentUpdateEntityV1.description) &&
+        Objects.equals(this.filterBased, audienceSegmentUpdateEntityV1.filterBased) &&
         Objects.equals(this.inMarket, audienceSegmentUpdateEntityV1.inMarket) &&
         Objects.equals(this.location, audienceSegmentUpdateEntityV1.location) &&
         Objects.equals(this.lookalike, audienceSegmentUpdateEntityV1.lookalike) &&
@@ -310,7 +338,7 @@ public class AudienceSegmentUpdateEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, inMarket, location, lookalike, name, prospecting, retargeting, additionalProperties);
+    return Objects.hash(description, filterBased, inMarket, location, lookalike, name, prospecting, retargeting, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -325,6 +353,7 @@ public class AudienceSegmentUpdateEntityV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSegmentUpdateEntityV1 {\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    filterBased: ").append(toIndentedString(filterBased)).append("\n");
     sb.append("    inMarket: ").append(toIndentedString(inMarket)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    lookalike: ").append(toIndentedString(lookalike)).append("\n");
@@ -355,6 +384,7 @@ public class AudienceSegmentUpdateEntityV1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("description");
+    openapiFields.add("filterBased");
     openapiFields.add("inMarket");
     openapiFields.add("location");
     openapiFields.add("lookalike");
@@ -381,6 +411,10 @@ public class AudienceSegmentUpdateEntityV1 {
       // validate the optional field `description`
       if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) {
         NillableString.validateJsonObject(jsonObj.getAsJsonObject("description"));
+      }
+      // validate the optional field `filterBased`
+      if (jsonObj.get("filterBased") != null && !jsonObj.get("filterBased").isJsonNull()) {
+        FilterBasedUpdateV1.validateJsonObject(jsonObj.getAsJsonObject("filterBased"));
       }
       // validate the optional field `inMarket`
       if (jsonObj.get("inMarket") != null && !jsonObj.get("inMarket").isJsonNull()) {

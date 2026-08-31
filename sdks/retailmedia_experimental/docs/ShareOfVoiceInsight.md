@@ -2,37 +2,20 @@
 
 # ShareOfVoiceInsight
 
-Description of a Share of voice insight
+Parameters of a Share of Voice insight.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**accountId** | **String** |  |  |
-|**accountIds** | **List&lt;String&gt;** |  |  [optional] |
-|**activationPlatforms** | [**List&lt;ActivationPlatformsEnum&gt;**](#List&lt;ActivationPlatformsEnum&gt;) |  |  [optional] |
-|**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) |  |  [optional] |
-|**brandIds** | **List&lt;String&gt;** |  |  [optional] |
-|**budgetModels** | [**List&lt;BudgetModelsEnum&gt;**](#List&lt;BudgetModelsEnum&gt;) |  |  [optional] |
-|**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) |  |  [optional] |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) |  |  |
-|**endDate** | **OffsetDateTime** |  |  |
-|**format** | [**FormatEnum**](#FormatEnum) |  |  [optional] |
-|**keywords** | **List&lt;String&gt;** |  |  [optional] |
-|**keywordTypes** | [**List&lt;KeywordTypesEnum&gt;**](#List&lt;KeywordTypesEnum&gt;) |  |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) |  |  |
-|**retailerIds** | **List&lt;String&gt;** |  |  [optional] |
-|**servedCategories** | **List&lt;String&gt;** |  |  [optional] |
-|**startDate** | **OffsetDateTime** |  |  |
-
-
-
-## Enum: List&lt;ActivationPlatformsEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| COMMERCEMAX | &quot;commerceMax&quot; |
-| PRIVATEMARKET | &quot;privateMarket&quot; |
+|**accountId** | **String** | Account ID the insight report is generated for. |  |
+|**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) | Aggregation level of the report. Allowed values: &#x60;category&#x60;, &#x60;keyword&#x60;. Defaults to &#x60;category&#x60;. |  [optional] |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | Dimensions to report on. |  |
+|**endDate** | **String** | End date of the report, in ISO 8601 format (YYYY-MM-DD). |  |
+|**filters** | [**ShareOfVoiceFilters**](ShareOfVoiceFilters.md) |  |  [optional] |
+|**format** | [**FormatEnum**](#FormatEnum) | Output format of the report. Allowed values: &#x60;json&#x60;, &#x60;json-compact&#x60;, &#x60;json-newline&#x60;, &#x60;csv&#x60;. Defaults to &#x60;json-compact&#x60;. |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | Metrics to report on. |  |
+|**startDate** | **String** | Start date of the report, in ISO 8601 format (YYYY-MM-DD). |  |
 
 
 
@@ -42,25 +25,6 @@ Description of a Share of voice insight
 |---- | -----|
 | CATEGORY | &quot;category&quot; |
 | KEYWORD | &quot;keyword&quot; |
-
-
-
-## Enum: List&lt;BudgetModelsEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| CRITEOBUDGET | &quot;criteoBudget&quot; |
-| RETAILERBUDGET | &quot;retailerBudget&quot; |
-
-
-
-## Enum: CampaignTypeEnum
-
-| Name | Value |
-|---- | -----|
-| ALL | &quot;all&quot; |
-| ONSITESPONSOREDPRODUCTS | &quot;onsiteSponsoredProducts&quot; |
-| ONSITEDISPLAY | &quot;onsiteDisplay&quot; |
 
 
 
@@ -108,17 +72,6 @@ Description of a Share of voice insight
 | JSON_COMPACT | &quot;json-compact&quot; |
 | JSON_NEWLINE | &quot;json-newline&quot; |
 | CSV | &quot;csv&quot; |
-
-
-
-## Enum: List&lt;KeywordTypesEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;unknown&quot; |
-| GENERIC | &quot;generic&quot; |
-| BRANDED | &quot;branded&quot; |
-| CONQUESTING | &quot;conquesting&quot; |
 
 
 

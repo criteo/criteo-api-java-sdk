@@ -80,6 +80,9 @@ docs/ColorVariableValue.md
 docs/CommonProblem.md
 docs/ConquestingSettings.md
 docs/CpmBiddingSettings.md
+docs/CreateTargetRequestModel.md
+docs/CreateTargetRequestModelListRequest.md
+docs/CreateTargetRequestModelResource.md
 docs/Creative2.md
 docs/Creative2Response.md
 docs/CreativeCreateModel2.md
@@ -97,9 +100,13 @@ docs/CustomAttribute.md
 docs/DataCompleteThrough.md
 docs/DeleteCampaignsRequestV1.md
 docs/DeleteEntry.md
+docs/DeleteProductModel.md
+docs/DeleteProductModelRequest.md
+docs/DeleteProductModelResource.md
 docs/DemandSearch.md
 docs/DemandSearchRequest.md
 docs/DemandSearchResource.md
+docs/DigitalShelfIntelligenceFilters.md
 docs/DigitalShelfIntelligenceInsight.md
 docs/DigitalShelfIntelligenceInsightRequest.md
 docs/DigitalShelfIntelligenceInsightResource.md
@@ -330,6 +337,7 @@ docs/ScheduleDetailsCreateModel.md
 docs/ScheduleDetailsModel.md
 docs/SdkApiRestCommonProblem.md
 docs/SetProductBuyBoxWinnersRequest.md
+docs/ShareOfVoiceFilters.md
 docs/ShareOfVoiceInsight.md
 docs/ShareOfVoiceInsightRequest.md
 docs/ShareOfVoiceInsightResource.md
@@ -360,6 +368,7 @@ docs/SyncRealTimePerformanceReport.md
 docs/SyncRealTimePerformanceReportRequest.md
 docs/SyncRealTimePerformanceReportResource.md
 docs/Target.md
+docs/TargetListResponse.md
 docs/TargetListResponseWithPageMetadata.md
 docs/TargetResource.md
 docs/TemplateVariableValue.md
@@ -516,6 +525,9 @@ src/main/java/com/criteo/api/retailmedia/experimental/model/ColorVariableValue.j
 src/main/java/com/criteo/api/retailmedia/experimental/model/CommonProblem.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/ConquestingSettings.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/CpmBiddingSettings.java
+src/main/java/com/criteo/api/retailmedia/experimental/model/CreateTargetRequestModel.java
+src/main/java/com/criteo/api/retailmedia/experimental/model/CreateTargetRequestModelListRequest.java
+src/main/java/com/criteo/api/retailmedia/experimental/model/CreateTargetRequestModelResource.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/Creative2.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/Creative2Response.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/CreativeCreateModel2.java
@@ -533,9 +545,13 @@ src/main/java/com/criteo/api/retailmedia/experimental/model/CustomAttribute.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/DataCompleteThrough.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/DeleteCampaignsRequestV1.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/DeleteEntry.java
+src/main/java/com/criteo/api/retailmedia/experimental/model/DeleteProductModel.java
+src/main/java/com/criteo/api/retailmedia/experimental/model/DeleteProductModelRequest.java
+src/main/java/com/criteo/api/retailmedia/experimental/model/DeleteProductModelResource.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/DemandSearch.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/DemandSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/DemandSearchResource.java
+src/main/java/com/criteo/api/retailmedia/experimental/model/DigitalShelfIntelligenceFilters.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/DigitalShelfIntelligenceInsight.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/DigitalShelfIntelligenceInsightRequest.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/DigitalShelfIntelligenceInsightResource.java
@@ -764,6 +780,7 @@ src/main/java/com/criteo/api/retailmedia/experimental/model/ScheduleDetailsCreat
 src/main/java/com/criteo/api/retailmedia/experimental/model/ScheduleDetailsModel.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/SdkApiRestCommonProblem.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/SetProductBuyBoxWinnersRequest.java
+src/main/java/com/criteo/api/retailmedia/experimental/model/ShareOfVoiceFilters.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/ShareOfVoiceInsight.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/ShareOfVoiceInsightRequest.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/ShareOfVoiceInsightResource.java
@@ -794,6 +811,7 @@ src/main/java/com/criteo/api/retailmedia/experimental/model/SyncRealTimePerforma
 src/main/java/com/criteo/api/retailmedia/experimental/model/SyncRealTimePerformanceReportRequest.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/SyncRealTimePerformanceReportResource.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/Target.java
+src/main/java/com/criteo/api/retailmedia/experimental/model/TargetListResponse.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/TargetListResponseWithPageMetadata.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/TargetResource.java
 src/main/java/com/criteo/api/retailmedia/experimental/model/TemplateVariableValue.java
