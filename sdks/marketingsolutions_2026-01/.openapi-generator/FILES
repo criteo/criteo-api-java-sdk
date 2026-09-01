@@ -314,6 +314,7 @@ settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/criteo/api/marketingsolutions/v2026_01/ApiCallback.java
 src/main/java/com/criteo/api/marketingsolutions/v2026_01/ApiClient.java
+src/main/java/com/criteo/api/marketingsolutions/v2026_01/ApiClient.java
 src/main/java/com/criteo/api/marketingsolutions/v2026_01/ApiClientBuilder.java
 src/main/java/com/criteo/api/marketingsolutions/v2026_01/ApiException.java
 src/main/java/com/criteo/api/marketingsolutions/v2026_01/ApiResponse.java

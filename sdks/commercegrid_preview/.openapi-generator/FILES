@@ -54,6 +54,7 @@ settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/criteo/api/commercegrid/preview/ApiCallback.java
 src/main/java/com/criteo/api/commercegrid/preview/ApiClient.java
+src/main/java/com/criteo/api/commercegrid/preview/ApiClient.java
 src/main/java/com/criteo/api/commercegrid/preview/ApiClientBuilder.java
 src/main/java/com/criteo/api/commercegrid/preview/ApiException.java
 src/main/java/com/criteo/api/commercegrid/preview/ApiResponse.java

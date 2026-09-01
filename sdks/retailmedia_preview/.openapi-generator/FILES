@@ -335,6 +335,7 @@ settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/criteo/api/retailmedia/preview/ApiCallback.java
 src/main/java/com/criteo/api/retailmedia/preview/ApiClient.java
+src/main/java/com/criteo/api/retailmedia/preview/ApiClient.java
 src/main/java/com/criteo/api/retailmedia/preview/ApiClientBuilder.java
 src/main/java/com/criteo/api/retailmedia/preview/ApiException.java
 src/main/java/com/criteo/api/retailmedia/preview/ApiResponse.java

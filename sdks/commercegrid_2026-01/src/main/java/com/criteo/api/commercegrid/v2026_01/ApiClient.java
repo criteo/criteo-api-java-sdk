@@ -199,7 +199,11 @@ public class ApiClient {
 
     private void initHttpClient(List<Interceptor> interceptors) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.callTimeout(5, TimeUnit.MINUTES);
+        builder.readTimeout(5, TimeUnit.MINUTES);
+        builder.writeTimeout(5, TimeUnit.MINUTES);
         builder.addNetworkInterceptor(getProgressInterceptor());
+
         for (Interceptor interceptor: interceptors) {
             builder.addInterceptor(interceptor);
         }
@@ -213,7 +217,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("OpenAPI-Generator/2026.01.0.260831/java");
+        setUserAgent("OpenAPI-Generator/2026.01.0.260901/java");
 
         authentications = new HashMap<String, Authentication>();
     }
