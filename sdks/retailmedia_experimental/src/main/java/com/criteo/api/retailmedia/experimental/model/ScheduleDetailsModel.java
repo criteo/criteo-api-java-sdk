@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * Flight dates of the campaign. Applies to SponsoredProducts only; OnsiteDisplay campaigns  derive their dates from their line items.
+ * Flight dates of the campaign. Always complete: both dates are present on every read.  A SponsoredProducts campaign that runs indefinitely reports the documented indefinite end date  rather than omitting it.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ScheduleDetailsModel {
@@ -68,7 +68,7 @@ public class ScheduleDetailsModel {
   }
 
    /**
-   * Campaign end date. Omitted for a campaign that runs open-ended.
+   * Campaign end date. A SponsoredProducts campaign that runs indefinitely reports  {9999-12-30T00:00:00Z}.
    * @return endDate
   **/
   @javax.annotation.Nullable

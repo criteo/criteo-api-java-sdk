@@ -1015,7 +1015,7 @@ public class CampaignApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable"
+        String localVarPath = "/experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning/disable"
             .replace("{" + "ad-set-id" + "}", localVarApiClient.escapeString(adSetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1055,7 +1055,7 @@ public class CampaignApi {
     }
 
     /**
-     * /experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable
+     * /experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning/disable
      * Disable the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @return AdSetTargetingVideoPositioningDisableResultResponse
@@ -1072,7 +1072,7 @@ public class CampaignApi {
     }
 
     /**
-     * /experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable
+     * /experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning/disable
      * Disable the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @return ApiResponse&lt;AdSetTargetingVideoPositioningDisableResultResponse&gt;
@@ -1090,7 +1090,7 @@ public class CampaignApi {
     }
 
     /**
-     * /experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable (asynchronously)
+     * /experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning/disable (asynchronously)
      * Disable the Video Positioning Targeting configuration for the ad set whose id is specified
      * @param adSetId Id of the Ad Set (required)
      * @param _callback The callback to be executed when the API call finishes

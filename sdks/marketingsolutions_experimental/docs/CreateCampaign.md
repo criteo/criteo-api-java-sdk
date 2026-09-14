@@ -12,6 +12,7 @@ Campaign create model.
 |**budgetAutomation** | [**BudgetAutomation**](BudgetAutomation.md) |  |  [optional] |
 |**goal** | [**GoalEnum**](#GoalEnum) | Goal of the campaign                Serialized values are {Unspecified}, {Acquisition} and {Retention}.                Acquisition and retention are defined as follows:  - Acquisition: campaign with the goal of acquiring new customers. The success of an acquisition campaign is measured by the number of new customers it brings.  - Retention: campaign with the goal of retaining existing customers. The success of a retention campaign is measured by the number of existing customers it retains. |  |
 |**name** | **String** | Name of the campaign |  |
+|**sellerId** | **String** | Optional marketplace seller id attached to this campaign (string-encoded long) |  [optional] |
 |**spendLimit** | [**CreateCampaignSpendLimit**](CreateCampaignSpendLimit.md) |  |  |
 
 

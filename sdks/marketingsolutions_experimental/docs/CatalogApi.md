@@ -4,10 +4,194 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**getCatalogIngestionReportSummary**](CatalogApi.md#getCatalogIngestionReportSummary) | **GET** /experimental/catalog/ingestion/{ingestion-id}/reports/summary | /experimental/catalog/ingestion/{ingestion-id}/reports/summary |
+| [**getCatalogIngestionReports**](CatalogApi.md#getCatalogIngestionReports) | **GET** /experimental/catalog/merchants/{merchant-id}/ingestion/reports | /experimental/catalog/merchants/{merchant-id}/ingestion/reports |
 | [**getCatalogMerchantStats**](CatalogApi.md#getCatalogMerchantStats) | **GET** /experimental/catalog/stats/merchants/{merchant-id} | /experimental/catalog/stats/merchants/{merchant-id} |
 | [**getCatalogProductsBatchReport**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /experimental/catalog/products/batch/report/{operation-token} | /experimental/catalog/products/batch/report/{operation-token} |
 | [**submitCatalogProductsBatch**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /experimental/catalog/products/batch | /experimental/catalog/products/batch |
 
+
+
+## getCatalogIngestionReportSummary
+
+> CatalogIngestionSummaryResponse getCatalogIngestionReportSummary(ingestionId)
+
+/experimental/catalog/ingestion/{ingestion-id}/reports/summary
+
+Get the summary report of a catalog ingestion: what triggered it, how long it ran, how many offers it held, what it changed and how clean the data was.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.experimental;
+
+import com.criteo.api.marketingsolutions.experimental.ApiClient;
+import com.criteo.api.marketingsolutions.experimental.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.experimental.ApiException;
+import com.criteo.api.marketingsolutions.experimental.Configuration;
+import com.criteo.api.marketingsolutions.experimental.auth.*;
+import com.criteo.api.marketingsolutions.experimental.model.*;
+import com.criteo.api.marketingsolutions.experimental.api.CatalogApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CatalogApi apiInstance = new CatalogApi(defaultClient);
+        String ingestionId = "ingestionId_example"; // String | Identifies the catalog ingestion to report on.
+        try {
+            CatalogIngestionSummaryResponse result = apiInstance.getCatalogIngestionReportSummary(ingestionId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CatalogApi#getCatalogIngestionReportSummary");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **ingestionId** | **String**| Identifies the catalog ingestion to report on. | |
+
+### Return type
+
+[**CatalogIngestionSummaryResponse**](CatalogIngestionSummaryResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The summary report of the ingestion. |  -  |
+
+
+## getCatalogIngestionReports
+
+> CatalogIngestionReportListResponse getCatalogIngestionReports(merchantId, limit, offset)
+
+/experimental/catalog/merchants/{merchant-id}/ingestion/reports
+
+List the catalog ingestions of a merchant, most recent first, with their type, status and timing.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.experimental;
+
+import com.criteo.api.marketingsolutions.experimental.ApiClient;
+import com.criteo.api.marketingsolutions.experimental.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.experimental.ApiException;
+import com.criteo.api.marketingsolutions.experimental.Configuration;
+import com.criteo.api.marketingsolutions.experimental.auth.*;
+import com.criteo.api.marketingsolutions.experimental.model.*;
+import com.criteo.api.marketingsolutions.experimental.api.CatalogApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CatalogApi apiInstance = new CatalogApi(defaultClient);
+        String merchantId = "merchantId_example"; // String | Identifies the merchant whose catalog ingestions are reported.
+        Integer limit = 25; // Integer | Maximum number of ingestion reports returned in the page.
+        Integer offset = 0; // Integer | Index of the first ingestion report of the page, used to page through the collection.
+        try {
+            CatalogIngestionReportListResponse result = apiInstance.getCatalogIngestionReports(merchantId, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CatalogApi#getCatalogIngestionReports");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **merchantId** | **String**| Identifies the merchant whose catalog ingestions are reported. | |
+| **limit** | **Integer**| Maximum number of ingestion reports returned in the page. | [optional] [default to 25] |
+| **offset** | **Integer**| Index of the first ingestion report of the page, used to page through the collection. | [optional] [default to 0] |
+
+### Return type
+
+[**CatalogIngestionReportListResponse**](CatalogIngestionReportListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The page of catalog ingestion reports. |  -  |
 
 
 ## getCatalogMerchantStats

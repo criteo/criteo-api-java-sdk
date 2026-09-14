@@ -189,7 +189,9 @@ public class CampaignCreateModel {
     
     CONVERSION("Conversion"),
     
-    REVENUE("Revenue");
+    REVENUE("Revenue"),
+    
+    IMPRESSIONS("Impressions");
 
     private String value;
 

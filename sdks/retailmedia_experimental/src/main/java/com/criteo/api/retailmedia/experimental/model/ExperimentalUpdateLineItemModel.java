@@ -15,7 +15,6 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.ExperimentalFlightDatesModel;
 import com.criteo.api.retailmedia.experimental.model.ExperimentalUpdateOnsiteDisplayLineItemDetails;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -51,10 +50,6 @@ import com.criteo.api.retailmedia.experimental.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExperimentalUpdateLineItemModel {
-  public static final String SERIALIZED_NAME_FLIGHT_DATES = "flightDates";
-  @SerializedName(SERIALIZED_NAME_FLIGHT_DATES)
-  private ExperimentalFlightDatesModel flightDates;
-
   public static final String SERIALIZED_NAME_IS_PAUSED = "isPaused";
   @SerializedName(SERIALIZED_NAME_IS_PAUSED)
   private Boolean isPaused;
@@ -73,28 +68,6 @@ public class ExperimentalUpdateLineItemModel {
 
   public ExperimentalUpdateLineItemModel() {
   }
-
-  public ExperimentalUpdateLineItemModel flightDates(ExperimentalFlightDatesModel flightDates) {
-    
-    this.flightDates = flightDates;
-    return this;
-  }
-
-   /**
-   * Get flightDates
-   * @return flightDates
-  **/
-  @javax.annotation.Nullable
-
-  public ExperimentalFlightDatesModel getFlightDates() {
-    return flightDates;
-  }
-
-
-  public void setFlightDates(ExperimentalFlightDatesModel flightDates) {
-    this.flightDates = flightDates;
-  }
-
 
   public ExperimentalUpdateLineItemModel isPaused(Boolean isPaused) {
     
@@ -194,8 +167,7 @@ public class ExperimentalUpdateLineItemModel {
       return false;
     }
     ExperimentalUpdateLineItemModel experimentalUpdateLineItemModel = (ExperimentalUpdateLineItemModel) o;
-    return Objects.equals(this.flightDates, experimentalUpdateLineItemModel.flightDates) &&
-        Objects.equals(this.isPaused, experimentalUpdateLineItemModel.isPaused) &&
+    return Objects.equals(this.isPaused, experimentalUpdateLineItemModel.isPaused) &&
         Objects.equals(this.name, experimentalUpdateLineItemModel.name) &&
         Objects.equals(this.onsiteDisplayDetails, experimentalUpdateLineItemModel.onsiteDisplayDetails) &&
         Objects.equals(this.serveToOptOutUser, experimentalUpdateLineItemModel.serveToOptOutUser);
@@ -207,7 +179,7 @@ public class ExperimentalUpdateLineItemModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(flightDates, isPaused, name, onsiteDisplayDetails, serveToOptOutUser);
+    return Objects.hash(isPaused, name, onsiteDisplayDetails, serveToOptOutUser);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -221,7 +193,6 @@ public class ExperimentalUpdateLineItemModel {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExperimentalUpdateLineItemModel {\n");
-    sb.append("    flightDates: ").append(toIndentedString(flightDates)).append("\n");
     sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onsiteDisplayDetails: ").append(toIndentedString(onsiteDisplayDetails)).append("\n");
@@ -248,7 +219,6 @@ public class ExperimentalUpdateLineItemModel {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("flightDates");
     openapiFields.add("isPaused");
     openapiFields.add("name");
     openapiFields.add("onsiteDisplayDetails");
@@ -277,10 +247,6 @@ public class ExperimentalUpdateLineItemModel {
         if (!ExperimentalUpdateLineItemModel.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExperimentalUpdateLineItemModel` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
-      }
-      // validate the optional field `flightDates`
-      if (jsonObj.get("flightDates") != null && !jsonObj.get("flightDates").isJsonNull()) {
-        ExperimentalFlightDatesModel.validateJsonObject(jsonObj.getAsJsonObject("flightDates"));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

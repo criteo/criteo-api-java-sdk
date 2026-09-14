@@ -47,6 +47,7 @@ An object that represents the available options to set when creating a Retail Me
 | CLICKS | &quot;Clicks&quot; |
 | CONVERSION | &quot;Conversion&quot; |
 | REVENUE | &quot;Revenue&quot; |
+| IMPRESSIONS | &quot;Impressions&quot; |
 
 
 

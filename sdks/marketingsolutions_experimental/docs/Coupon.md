@@ -14,7 +14,7 @@ Coupons are static images applied on ad set which can be displayed within an ad 
 |**description** | **String** | The description of the Coupon |  [optional] |
 |**endDate** | **String** | The date when when we will stop to show this Coupon. If the end date is not specified (i.e. null) then the Coupon will go on forever  String must be in ISO8601 format |  [optional] |
 |**format** | **String** | Format of the Coupon, it can have two values: \&quot;FullFrame\&quot; or \&quot;LogoZone\&quot; |  [optional] |
-|**id** | **String** | Unique identifier (duplicate of the parent id). |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**images** | [**List&lt;ImageSlide&gt;**](ImageSlide.md) | List of slides containing the image URLs |  [optional] |
 |**landingPageUrl** | **String** | Web redirection of the landing page url |  [optional] |
 |**name** | **String** | The name of the Coupon |  [optional] |

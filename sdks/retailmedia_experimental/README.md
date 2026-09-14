@@ -73,86 +73,61 @@ All URIs are relative to *https://api.criteo.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountsApi* | [**getPrivateMarketChildAccountsByAccountId**](docs/AccountsApi.md#getPrivateMarketChildAccountsByAccountId) | **GET** /experimental/retail-media/account-management/accounts/{accountId}/private-market-child-accounts | /experimental/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
 *AccountsApi* | [**searchBrands**](docs/AccountsApi.md#searchBrands) | **POST** /experimental/retail-media/brands/search | /experimental/retail-media/brands/search
 *AnalyticsApi* | [**generateAsyncAccountsReportV2**](docs/AnalyticsApi.md#generateAsyncAccountsReportV2) | **POST** /experimental/retail-media/reports/accounts | /experimental/retail-media/reports/accounts
 *AnalyticsApi* | [**generateAsyncCampaignsReportV2**](docs/AnalyticsApi.md#generateAsyncCampaignsReportV2) | **POST** /experimental/retail-media/reports/campaigns | /experimental/retail-media/reports/campaigns
-*AnalyticsApi* | [**generateAsyncFillRateReport**](docs/AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /experimental/retail-media/reports/fillrate | /experimental/retail-media/reports/fillrate
 *AnalyticsApi* | [**generateAsyncLineItemsReportV2**](docs/AnalyticsApi.md#generateAsyncLineItemsReportV2) | **POST** /experimental/retail-media/reports/line-items | /experimental/retail-media/reports/line-items
 *AnalyticsApi* | [**generateAsyncOffsiteReport**](docs/AnalyticsApi.md#generateAsyncOffsiteReport) | **POST** /experimental/retail-media/reports/offsite | /experimental/retail-media/reports/offsite
-*AnalyticsApi* | [**generateAsyncUnfilledPlacementsReport**](docs/AnalyticsApi.md#generateAsyncUnfilledPlacementsReport) | **POST** /experimental/retail-media/reports/unfilled-placements | /experimental/retail-media/reports/unfilled-placements
 *AnalyticsApi* | [**generateDigitalShelfIntelligenceInsight**](docs/AnalyticsApi.md#generateDigitalShelfIntelligenceInsight) | **POST** /experimental/retail-media/insights/digital-shelf-intelligence | /experimental/retail-media/insights/digital-shelf-intelligence
 *AnalyticsApi* | [**generateShareOfVoiceInsight**](docs/AnalyticsApi.md#generateShareOfVoiceInsight) | **POST** /experimental/retail-media/insights/share-of-voice | /experimental/retail-media/insights/share-of-voice
-*AnalyticsApi* | [**generateSyncAttributedTransactionsReport**](docs/AnalyticsApi.md#generateSyncAttributedTransactionsReport) | **POST** /experimental/retail-media/reports/sync/attributed-transactions | /experimental/retail-media/reports/sync/attributed-transactions
-*AnalyticsApi* | [**generateSyncCampaignsReport**](docs/AnalyticsApi.md#generateSyncCampaignsReport) | **POST** /experimental/retail-media/reports/sync/campaigns | /experimental/retail-media/reports/sync/campaigns
-*AnalyticsApi* | [**generateSyncLineItemsReport**](docs/AnalyticsApi.md#generateSyncLineItemsReport) | **POST** /experimental/retail-media/reports/sync/line-items | /experimental/retail-media/reports/sync/line-items
 *AnalyticsApi* | [**generateSyncRealTimePerformanceReport**](docs/AnalyticsApi.md#generateSyncRealTimePerformanceReport) | **POST** /experimental/retail-media/reports/sync/real-time-performance | /experimental/retail-media/reports/sync/real-time-performance
-*AnalyticsApi* | [**getAsyncExportOutput**](docs/AnalyticsApi.md#getAsyncExportOutput) | **GET** /experimental/retail-media/reports/{reportId}/output | /experimental/retail-media/reports/{reportId}/output
-*AnalyticsApi* | [**getAsyncExportStatus**](docs/AnalyticsApi.md#getAsyncExportStatus) | **GET** /experimental/retail-media/reports/{reportId}/status | /experimental/retail-media/reports/{reportId}/status
 *AnalyticsApi* | [**getInsightReportOutput**](docs/AnalyticsApi.md#getInsightReportOutput) | **GET** /experimental/retail-media/insights/{insight-id}/output | /experimental/retail-media/insights/{insight-id}/output
 *AnalyticsApi* | [**getInsightReportStatus**](docs/AnalyticsApi.md#getInsightReportStatus) | **GET** /experimental/retail-media/insights/{insight-id}/status | /experimental/retail-media/insights/{insight-id}/status
-*AudienceApi* | [**addRemoveContactListByAudienceSegment**](docs/AudienceApi.md#addRemoveContactListByAudienceSegment) | **POST** /experimental/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove | /experimental/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove
 *AudienceApi* | [**bulkCreateAudience**](docs/AudienceApi.md#bulkCreateAudience) | **POST** /experimental/retail-media/accounts/{account-id}/audiences/create | /experimental/retail-media/accounts/{account-id}/audiences/create
-*AudienceApi* | [**bulkCreateAudienceSegments**](docs/AudienceApi.md#bulkCreateAudienceSegments) | **POST** /experimental/retail-media/accounts/{account-id}/audience-segments/create | /experimental/retail-media/accounts/{account-id}/audience-segments/create
-*AudienceApi* | [**bulkDeleteAudienceSegments**](docs/AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /experimental/retail-media/accounts/{account-id}/audience-segments/delete | /experimental/retail-media/accounts/{account-id}/audience-segments/delete
 *AudienceApi* | [**bulkDeleteAudiences**](docs/AudienceApi.md#bulkDeleteAudiences) | **POST** /experimental/retail-media/accounts/{account-id}/audiences/delete | /experimental/retail-media/accounts/{account-id}/audiences/delete
 *AudienceApi* | [**bulkUpdateAudience**](docs/AudienceApi.md#bulkUpdateAudience) | **PATCH** /experimental/retail-media/accounts/{account-id}/audiences | /experimental/retail-media/accounts/{account-id}/audiences
-*AudienceApi* | [**bulkUpdateAudienceSegments**](docs/AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /experimental/retail-media/accounts/{account-id}/audience-segments | /experimental/retail-media/accounts/{account-id}/audience-segments
-*AudienceApi* | [**clearContactListByAudienceSegment**](docs/AudienceApi.md#clearContactListByAudienceSegment) | **POST** /experimental/retail-media/audience-segments/{audience-segment-id}/contact-list/clear | /experimental/retail-media/audience-segments/{audience-segment-id}/contact-list/clear
 *AudienceApi* | [**computeAudienceSegmentsSizes**](docs/AudienceApi.md#computeAudienceSegmentsSizes) | **POST** /experimental/retail-media/accounts/{account-id}/audience-segments/compute-sizes | /experimental/retail-media/accounts/{account-id}/audience-segments/compute-sizes
 *AudienceApi* | [**computeAudiencesSizes**](docs/AudienceApi.md#computeAudiencesSizes) | **POST** /experimental/retail-media/accounts/{account-id}/audiences/compute-sizes | /experimental/retail-media/accounts/{account-id}/audiences/compute-sizes
 *AudienceApi* | [**estimateAudienceSegmentSize**](docs/AudienceApi.md#estimateAudienceSegmentSize) | **POST** /experimental/retail-media/accounts/{account-id}/audience-segments/estimate-size | /experimental/retail-media/accounts/{account-id}/audience-segments/estimate-size
 *AudienceApi* | [**estimateAudienceSize**](docs/AudienceApi.md#estimateAudienceSize) | **POST** /experimental/retail-media/accounts/{account-id}/audiences/estimate-size | /experimental/retail-media/accounts/{account-id}/audiences/estimate-size
-*AudienceApi* | [**getAudienceSegmentContactListStatistics**](docs/AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /experimental/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list | /experimental/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list
-*AudienceApi* | [**searchAudienceSegments**](docs/AudienceApi.md#searchAudienceSegments) | **POST** /experimental/retail-media/accounts/{account-id}/audience-segments/search | /experimental/retail-media/accounts/{account-id}/audience-segments/search
-*AudienceApi* | [**searchAudiences**](docs/AudienceApi.md#searchAudiences) | **POST** /experimental/retail-media/accounts/{account-id}/audiences/search | /experimental/retail-media/accounts/{account-id}/audiences/search
-*BalanceApi* | [**getBalanceHistoryV1**](docs/BalanceApi.md#getBalanceHistoryV1) | **GET** /experimental/retail-media/balances/{balanceId}/history | /experimental/retail-media/balances/{balanceId}/history
-*BalanceApi* | [**getBalanceV1**](docs/BalanceApi.md#getBalanceV1) | **GET** /experimental/retail-media/balances/{balanceId} | /experimental/retail-media/balances/{balanceId}
 *BalanceApi* | [**getPageOfBalancesV1**](docs/BalanceApi.md#getPageOfBalancesV1) | **GET** /experimental/retail-media/accounts/{accountId}/balances | /experimental/retail-media/accounts/{accountId}/balances
-*BalanceApi* | [**updateBalanceV1**](docs/BalanceApi.md#updateBalanceV1) | **PATCH** /experimental/retail-media/accounts/{account-id}/balances/{balance-id} | /experimental/retail-media/accounts/{account-id}/balances/{balance-id}
 *CampaignApi* | [**addProducts**](docs/CampaignApi.md#addProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/add | /experimental/retail-media/line-items/{line-item-id}/products/add
-*CampaignApi* | [**appendCampaignsToBalanceV1**](docs/CampaignApi.md#appendCampaignsToBalanceV1) | **POST** /experimental/retail-media/balances/{balanceId}/campaigns/append | /experimental/retail-media/balances/{balanceId}/campaigns/append
 *CampaignApi* | [**appendProductButtonByLineItemId**](docs/CampaignApi.md#appendProductButtonByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/product-buttons/create | /experimental/retail-media/line-items/{line-item-id}/product-buttons/create
-*CampaignApi* | [**appendPromotedProducts**](docs/CampaignApi.md#appendPromotedProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/append | /experimental/retail-media/line-items/{line-item-id}/products/append
 *CampaignApi* | [**createAuctionLineItem**](docs/CampaignApi.md#createAuctionLineItem) | **POST** /experimental/retail-media/campaigns/{campaignId}/auction-line-items | /experimental/retail-media/campaigns/{campaignId}/auction-line-items
 *CampaignApi* | [**createCampaign**](docs/CampaignApi.md#createCampaign) | **POST** /experimental/retail-media/accounts/{account-id}/campaigns | /experimental/retail-media/accounts/{account-id}/campaigns
 *CampaignApi* | [**createCreative**](docs/CampaignApi.md#createCreative) | **POST** /experimental/retail-media/accounts/{account-id}/creatives | /experimental/retail-media/accounts/{account-id}/creatives
 *CampaignApi* | [**createLineItem**](docs/CampaignApi.md#createLineItem) | **POST** /experimental/retail-media/line-items | /experimental/retail-media/line-items
 *CampaignApi* | [**createPreferredLineItemByCampaignId**](docs/CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items | /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items
 *CampaignApi* | [**createTargetsByLineItemId**](docs/CampaignApi.md#createTargetsByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/targets/create | /experimental/retail-media/line-items/{line-item-id}/targets/create
-*CampaignApi* | [**deleteCampaignsFromBalanceV1**](docs/CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /experimental/retail-media/balances/{balanceId}/campaigns/delete | /experimental/retail-media/balances/{balanceId}/campaigns/delete
+*CampaignApi* | [**deleteCreatives**](docs/CampaignApi.md#deleteCreatives) | **POST** /experimental/retail-media/line-items/{line-item-id}/creatives/delete | /experimental/retail-media/line-items/{line-item-id}/creatives/delete
 *CampaignApi* | [**deleteProductButtonByLineItemAndProductButtonId**](docs/CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
 *CampaignApi* | [**deleteProducts**](docs/CampaignApi.md#deleteProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/delete | /experimental/retail-media/line-items/{line-item-id}/products/delete
-*CampaignApi* | [**fetchPromotedProducts**](docs/CampaignApi.md#fetchPromotedProducts) | **GET** /experimental/retail-media/line-items/{line-item-id}/products | /experimental/retail-media/line-items/{line-item-id}/products
-*CampaignApi* | [**getAuctionLineItem**](docs/CampaignApi.md#getAuctionLineItem) | **GET** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId}
-*CampaignApi* | [**getAuctionLineItemsByCampaign**](docs/CampaignApi.md#getAuctionLineItemsByCampaign) | **GET** /experimental/retail-media/campaigns/{campaignId}/auction-line-items | /experimental/retail-media/campaigns/{campaignId}/auction-line-items
+*CampaignApi* | [**fetchCreatives**](docs/CampaignApi.md#fetchCreatives) | **GET** /experimental/retail-media/line-items/{line-item-id}/creatives | /experimental/retail-media/line-items/{line-item-id}/creatives
 *CampaignApi* | [**getBiddingStrategyByLineItemId**](docs/CampaignApi.md#getBiddingStrategyByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/bidding-strategy
+*CampaignApi* | [**getCampaign**](docs/CampaignApi.md#getCampaign) | **GET** /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} | /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
 *CampaignApi* | [**getCapoutHistory**](docs/CampaignApi.md#getCapoutHistory) | **POST** /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history | /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history
 *CampaignApi* | [**getCatalogStatus**](docs/CampaignApi.md#getCatalogStatus) | **GET** /experimental/retail-media/catalogs/{catalogId}/status | /experimental/retail-media/catalogs/{catalogId}/status
 *CampaignApi* | [**getCreative**](docs/CampaignApi.md#getCreative) | **GET** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id}
-*CampaignApi* | [**getPreferredLineItemsByCampaignId**](docs/CampaignApi.md#getPreferredLineItemsByCampaignId) | **GET** /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items | /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items
-*CampaignApi* | [**getPreferredLineItemsByLineItemId**](docs/CampaignApi.md#getPreferredLineItemsByLineItemId) | **GET** /experimental/retail-media/preferred-line-items/{line-item-id} | /experimental/retail-media/preferred-line-items/{line-item-id}
 *CampaignApi* | [**getProductButtonByLineItemAndProductButtonId**](docs/CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
 *CampaignApi* | [**getProductButtonsByLineItemId**](docs/CampaignApi.md#getProductButtonsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons | /experimental/retail-media/line-items/{line-item-id}/product-buttons
 *CampaignApi* | [**getTargetsByLineItemId**](docs/CampaignApi.md#getTargetsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/targets | /experimental/retail-media/line-items/{line-item-id}/targets
 *CampaignApi* | [**lineItemsDemandSearch**](docs/CampaignApi.md#lineItemsDemandSearch) | **POST** /experimental/retail-media/line-items/demand-search | /experimental/retail-media/line-items/demand-search
 *CampaignApi* | [**lineItemsSupplySearch**](docs/CampaignApi.md#lineItemsSupplySearch) | **POST** /experimental/retail-media/line-items/supply-search | /experimental/retail-media/line-items/supply-search
-*CampaignApi* | [**pausePromotedProducts**](docs/CampaignApi.md#pausePromotedProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/pause | /experimental/retail-media/line-items/{line-item-id}/products/pause
 *CampaignApi* | [**searchAccountCreatives**](docs/CampaignApi.md#searchAccountCreatives) | **POST** /experimental/retail-media/accounts/{account-id}/creatives/search | /experimental/retail-media/accounts/{account-id}/creatives/search
-*CampaignApi* | [**searchAccountRetailers**](docs/CampaignApi.md#searchAccountRetailers) | **POST** /experimental/retail-media/accounts/{accountId}/retailers/search | /experimental/retail-media/accounts/{accountId}/retailers/search
-*CampaignApi* | [**unpausePromotedProducts**](docs/CampaignApi.md#unpausePromotedProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/unpause | /experimental/retail-media/line-items/{line-item-id}/products/unpause
+*CampaignApi* | [**searchCampaigns**](docs/CampaignApi.md#searchCampaigns) | **POST** /experimental/retail-media/accounts/{account-id}/campaigns/search | /experimental/retail-media/accounts/{account-id}/campaigns/search
 *CampaignApi* | [**updateAuctionLineItem**](docs/CampaignApi.md#updateAuctionLineItem) | **PUT** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId}
+*CampaignApi* | [**updateCampaign**](docs/CampaignApi.md#updateCampaign) | **PATCH** /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} | /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
 *CampaignApi* | [**updateCreative**](docs/CampaignApi.md#updateCreative) | **PUT** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id}
 *CampaignApi* | [**updateLineItem**](docs/CampaignApi.md#updateLineItem) | **PATCH** /experimental/retail-media/line-items/{line-item-id} | /experimental/retail-media/line-items/{line-item-id}
 *CampaignApi* | [**updatePreferredLineItemByLineItemId**](docs/CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /experimental/retail-media/preferred-line-items/{line-item-id} | /experimental/retail-media/preferred-line-items/{line-item-id}
 *CampaignApi* | [**updateProductButtonByLineItemAndProductButtonId**](docs/CampaignApi.md#updateProductButtonByLineItemAndProductButtonId) | **PUT** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
 *CampaignApi* | [**upsertCreatives**](docs/CampaignApi.md#upsertCreatives) | **POST** /experimental/retail-media/line-items/{line-item-id}/creatives/upsert | /experimental/retail-media/line-items/{line-item-id}/creatives/upsert
-*CatalogApi* | [**deleteStoreInventoryPerMerchantId**](docs/CatalogApi.md#deleteStoreInventoryPerMerchantId) | **POST** /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete | /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
+*CatalogApi* | [**getCatalogIngestionReportSummary**](docs/CatalogApi.md#getCatalogIngestionReportSummary) | **GET** /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary | /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary
+*CatalogApi* | [**getCatalogIngestionReports**](docs/CatalogApi.md#getCatalogIngestionReports) | **GET** /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports | /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports
 *CatalogApi* | [**getCatalogProductsBatchReport**](docs/CatalogApi.md#getCatalogProductsBatchReport) | **GET** /experimental/retail-media/catalog/products/batch/report/{operation-token} | /experimental/retail-media/catalog/products/batch/report/{operation-token}
 *CatalogApi* | [**offerSetBbwV1**](docs/CatalogApi.md#offerSetBbwV1) | **POST** /experimental/retail-media/retailers/{retailer-id}/products/set-buy-box-winners | /experimental/retail-media/retailers/{retailer-id}/products/set-buy-box-winners
 *CatalogApi* | [**offerUpdateV1**](docs/CatalogApi.md#offerUpdateV1) | **POST** /experimental/retail-media/retailers/{retailer-id}/offers/update | /experimental/retail-media/retailers/{retailer-id}/offers/update
 *CatalogApi* | [**submitCatalogProductsBatch**](docs/CatalogApi.md#submitCatalogProductsBatch) | **POST** /experimental/retail-media/catalog/products/batch | /experimental/retail-media/catalog/products/batch
-*CatalogApi* | [**upsertStoreInventoryPerMerchantId**](docs/CatalogApi.md#upsertStoreInventoryPerMerchantId) | **POST** /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert | /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
 *GatewayApi* | [**getCurrentApplication**](docs/GatewayApi.md#getCurrentApplication) | **GET** /experimental/retail-media/me | /experimental/retail-media/me
 *OnSiteRecommendationApi* | [**chatbotProductRecommendations**](docs/OnSiteRecommendationApi.md#chatbotProductRecommendations) | **POST** /experimental/retail-media/chatbot-catalogs/{catalogid}/product-recommendations | /experimental/retail-media/chatbot-catalogs/{catalogid}/product-recommendations
 *ThirdPartyAccountsApi* | [**addThirdPartyAccountBrands**](docs/ThirdPartyAccountsApi.md#addThirdPartyAccountBrands) | **POST** /experimental/retail-media/third-party-accounts/{accountId}/brands/add | /experimental/retail-media/third-party-accounts/{accountId}/brands/add
@@ -173,7 +148,6 @@ Class | Method | HTTP request | Description
  - [AddProductsResultModelResource](docs/AddProductsResultModelResource.md)
  - [AddProductsResultModelResponse](docs/AddProductsResultModelResponse.md)
  - [ApiResourcesPageMetadata](docs/ApiResourcesPageMetadata.md)
- - [AppendCampaignsRequestV1](docs/AppendCampaignsRequestV1.md)
  - [ApplicationSummaryModel](docs/ApplicationSummaryModel.md)
  - [ApplicationSummaryModelResource](docs/ApplicationSummaryModelResource.md)
  - [ApplicationSummaryModelResponse](docs/ApplicationSummaryModelResponse.md)
@@ -183,9 +157,6 @@ Class | Method | HTTP request | Description
  - [AsyncCampaignsReport](docs/AsyncCampaignsReport.md)
  - [AsyncCampaignsReportRequest](docs/AsyncCampaignsReportRequest.md)
  - [AsyncCampaignsReportResource](docs/AsyncCampaignsReportResource.md)
- - [AsyncFillRateReport](docs/AsyncFillRateReport.md)
- - [AsyncFillRateReportRequest](docs/AsyncFillRateReportRequest.md)
- - [AsyncFillRateReportResource](docs/AsyncFillRateReportResource.md)
  - [AsyncInsightResponse](docs/AsyncInsightResponse.md)
  - [AsyncLineItemsReport](docs/AsyncLineItemsReport.md)
  - [AsyncLineItemsReportRequest](docs/AsyncLineItemsReportRequest.md)
@@ -194,22 +165,13 @@ Class | Method | HTTP request | Description
  - [AsyncOffsiteReportRequest](docs/AsyncOffsiteReportRequest.md)
  - [AsyncOffsiteReportResource](docs/AsyncOffsiteReportResource.md)
  - [AsyncReportResponse](docs/AsyncReportResponse.md)
- - [AsyncUnfilledPlacementsReport](docs/AsyncUnfilledPlacementsReport.md)
- - [AsyncUnfilledPlacementsReportRequest](docs/AsyncUnfilledPlacementsReportRequest.md)
- - [AsyncUnfilledPlacementsReportResource](docs/AsyncUnfilledPlacementsReportResource.md)
  - [AttributionSettingsCreateModel](docs/AttributionSettingsCreateModel.md)
  - [AttributionSettingsModel](docs/AttributionSettingsModel.md)
+ - [AttributionSettingsUpdateModel](docs/AttributionSettingsUpdateModel.md)
  - [AuctionCreativeDetailsInputModel](docs/AuctionCreativeDetailsInputModel.md)
  - [AuctionCreativeDetailsModel](docs/AuctionCreativeDetailsModel.md)
- - [AudienceError](docs/AudienceError.md)
- - [AudienceWarning](docs/AudienceWarning.md)
- - [BalanceCampaignsV1](docs/BalanceCampaignsV1.md)
- - [BalanceHistoryChangeDataCaptureV1](docs/BalanceHistoryChangeDataCaptureV1.md)
- - [BalanceResponseV1](docs/BalanceResponseV1.md)
  - [BalanceV1](docs/BalanceV1.md)
  - [BatchAcceptedResponse](docs/BatchAcceptedResponse.md)
- - [BatchStoreInventoryDeleteRequest](docs/BatchStoreInventoryDeleteRequest.md)
- - [BatchStoreInventoryRequest](docs/BatchStoreInventoryRequest.md)
  - [BiddingSettings](docs/BiddingSettings.md)
  - [BiddingSettingsResource](docs/BiddingSettingsResource.md)
  - [BiddingSettingsResponse](docs/BiddingSettingsResponse.md)
@@ -218,16 +180,38 @@ Class | Method | HTTP request | Description
  - [BrandIdSearchResult](docs/BrandIdSearchResult.md)
  - [BudgetDetailsCreateModel](docs/BudgetDetailsCreateModel.md)
  - [BudgetDetailsModel](docs/BudgetDetailsModel.md)
- - [CampaignAvailabilityV2](docs/CampaignAvailabilityV2.md)
+ - [BudgetDetailsUpdateModel](docs/BudgetDetailsUpdateModel.md)
  - [CampaignCreateModel](docs/CampaignCreateModel.md)
  - [CampaignCreateModelRequest](docs/CampaignCreateModelRequest.md)
  - [CampaignCreateModelResource](docs/CampaignCreateModelResource.md)
  - [CampaignResponseModel](docs/CampaignResponseModel.md)
+ - [CampaignResponseModelListResponseWithCampaignSearchMetadataModel](docs/CampaignResponseModelListResponseWithCampaignSearchMetadataModel.md)
  - [CampaignResponseModelResource](docs/CampaignResponseModelResource.md)
  - [CampaignResponseModelResponse](docs/CampaignResponseModelResponse.md)
+ - [CampaignSearchMetadataModel](docs/CampaignSearchMetadataModel.md)
+ - [CampaignSearchModel](docs/CampaignSearchModel.md)
+ - [CampaignSearchModelRequest](docs/CampaignSearchModelRequest.md)
+ - [CampaignSearchModelResource](docs/CampaignSearchModelResource.md)
+ - [CampaignUpdateModel](docs/CampaignUpdateModel.md)
+ - [CampaignUpdateModelRequest](docs/CampaignUpdateModelRequest.md)
+ - [CampaignUpdateModelResource](docs/CampaignUpdateModelResource.md)
+ - [CatalogIngestionReport](docs/CatalogIngestionReport.md)
+ - [CatalogIngestionReportListResponse](docs/CatalogIngestionReportListResponse.md)
+ - [CatalogIngestionReportResource](docs/CatalogIngestionReportResource.md)
+ - [CatalogIngestionReportingDataQuality](docs/CatalogIngestionReportingDataQuality.md)
+ - [CatalogIngestionReportingDataQualitySummary](docs/CatalogIngestionReportingDataQualitySummary.md)
+ - [CatalogIngestionReportingDelta](docs/CatalogIngestionReportingDelta.md)
+ - [CatalogIngestionReportingError](docs/CatalogIngestionReportingError.md)
+ - [CatalogIngestionReportingErrors](docs/CatalogIngestionReportingErrors.md)
+ - [CatalogIngestionReportingQuality](docs/CatalogIngestionReportingQuality.md)
+ - [CatalogIngestionReportingTrigger](docs/CatalogIngestionReportingTrigger.md)
+ - [CatalogIngestionReportingVolume](docs/CatalogIngestionReportingVolume.md)
+ - [CatalogIngestionReportingWarnings](docs/CatalogIngestionReportingWarnings.md)
+ - [CatalogIngestionSummary](docs/CatalogIngestionSummary.md)
+ - [CatalogIngestionSummaryResource](docs/CatalogIngestionSummaryResource.md)
+ - [CatalogIngestionSummaryResponse](docs/CatalogIngestionSummaryResponse.md)
  - [CatalogStatusV2](docs/CatalogStatusV2.md)
  - [CategoryTargetDetails](docs/CategoryTargetDetails.md)
- - [ChangeDetailsV1](docs/ChangeDetailsV1.md)
  - [ChoiceVariableValue](docs/ChoiceVariableValue.md)
  - [ColorVariableValue](docs/ColorVariableValue.md)
  - [CommonProblem](docs/CommonProblem.md)
@@ -251,8 +235,10 @@ Class | Method | HTTP request | Description
  - [CreativesModelResponse](docs/CreativesModelResponse.md)
  - [CustomAttribute](docs/CustomAttribute.md)
  - [DataCompleteThrough](docs/DataCompleteThrough.md)
- - [DeleteCampaignsRequestV1](docs/DeleteCampaignsRequestV1.md)
- - [DeleteEntry](docs/DeleteEntry.md)
+ - [DecimalNullableNillableV2](docs/DecimalNullableNillableV2.md)
+ - [DeleteCreativesModel](docs/DeleteCreativesModel.md)
+ - [DeleteCreativesModelRequest](docs/DeleteCreativesModelRequest.md)
+ - [DeleteCreativesModelResource](docs/DeleteCreativesModelResource.md)
  - [DeleteProductModel](docs/DeleteProductModel.md)
  - [DeleteProductModelRequest](docs/DeleteProductModelRequest.md)
  - [DeleteProductModelResource](docs/DeleteProductModelResource.md)
@@ -271,20 +257,12 @@ Class | Method | HTTP request | Description
  - [EntityResourceCollectionOutcomeBalanceV1AndMetadata](docs/EntityResourceCollectionOutcomeBalanceV1AndMetadata.md)
  - [EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata](docs/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md)
  - [EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata](docs/EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata.md)
- - [EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata](docs/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md)
- - [EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata](docs/EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.md)
- - [EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata](docs/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.md)
  - [EntityResourceCreativeSearchRequest](docs/EntityResourceCreativeSearchRequest.md)
  - [EntityResourceCreativeSearchResponse](docs/EntityResourceCreativeSearchResponse.md)
  - [EntityResourceInputCreativeSearchRequest](docs/EntityResourceInputCreativeSearchRequest.md)
- - [EntityResourceOfBalanceResponseV1](docs/EntityResourceOfBalanceResponseV1.md)
  - [EntityResourceOfCatalogStatusV2](docs/EntityResourceOfCatalogStatusV2.md)
  - [EntityResourceOfRetailMediaAccountV2](docs/EntityResourceOfRetailMediaAccountV2.md)
- - [EntityResourceOfRetailMediaChildAccount](docs/EntityResourceOfRetailMediaChildAccount.md)
- - [EntityResourceOfRetailerResultV2](docs/EntityResourceOfRetailerResultV2.md)
  - [EntityResourceOfSponsoredProductsLineItem](docs/EntityResourceOfSponsoredProductsLineItem.md)
- - [EntityResourceOutcomeBalanceV1](docs/EntityResourceOutcomeBalanceV1.md)
- - [EntityResourceOutcomeOfBalanceResponseV1](docs/EntityResourceOutcomeOfBalanceResponseV1.md)
  - [EntityResourceOutcomeOfCatalogStatusV2](docs/EntityResourceOutcomeOfCatalogStatusV2.md)
  - [EntityResourceOutcomeOfRetailMediaAccountV2](docs/EntityResourceOutcomeOfRetailMediaAccountV2.md)
  - [EntityResourceOutcomeOfSponsoredProductsLineItem](docs/EntityResourceOutcomeOfSponsoredProductsLineItem.md)
@@ -295,6 +273,8 @@ Class | Method | HTTP request | Description
  - [ExperimentalCreateOnsiteDisplayAuctionLineItemDetails](docs/ExperimentalCreateOnsiteDisplayAuctionLineItemDetails.md)
  - [ExperimentalCreateOnsiteDisplayLineItemDetails](docs/ExperimentalCreateOnsiteDisplayLineItemDetails.md)
  - [ExperimentalFlightDatesModel](docs/ExperimentalFlightDatesModel.md)
+ - [ExperimentalFrequencyCappingModel](docs/ExperimentalFrequencyCappingModel.md)
+ - [ExperimentalFrequencyCappingModelNillableV2](docs/ExperimentalFrequencyCappingModelNillableV2.md)
  - [ExperimentalLineItemModel](docs/ExperimentalLineItemModel.md)
  - [ExperimentalLineItemModelResource](docs/ExperimentalLineItemModelResource.md)
  - [ExperimentalLineItemModelResponse](docs/ExperimentalLineItemModelResponse.md)
@@ -310,13 +290,17 @@ Class | Method | HTTP request | Description
  - [ExternalRetailMediaAccountV2](docs/ExternalRetailMediaAccountV2.md)
  - [ExternalRetailMediaBrandAccountCreationV2](docs/ExternalRetailMediaBrandAccountCreationV2.md)
  - [ExternalRetailMediaBrands](docs/ExternalRetailMediaBrands.md)
- - [ExternalRetailMediaChildAccount](docs/ExternalRetailMediaChildAccount.md)
  - [ExternalRetailMediaSeller](docs/ExternalRetailMediaSeller.md)
  - [ExternalRetailMediaSellerAccountCreationV2](docs/ExternalRetailMediaSellerAccountCreationV2.md)
+ - [FetchCreativesModel](docs/FetchCreativesModel.md)
+ - [FetchCreativesModelResource](docs/FetchCreativesModelResource.md)
+ - [FetchCreativesModelResponse](docs/FetchCreativesModelResponse.md)
  - [FilesVariableValue](docs/FilesVariableValue.md)
  - [FlightDates](docs/FlightDates.md)
  - [FlightLeg](docs/FlightLeg.md)
  - [FlightSchedule](docs/FlightSchedule.md)
+ - [FrequencyCappingModel](docs/FrequencyCappingModel.md)
+ - [GeographyTargetDetails](docs/GeographyTargetDetails.md)
  - [GrantConsentInput](docs/GrantConsentInput.md)
  - [GrantConsentModel](docs/GrantConsentModel.md)
  - [GrantConsentModelValueResource](docs/GrantConsentModelValueResource.md)
@@ -324,8 +308,9 @@ Class | Method | HTTP request | Description
  - [InbotDiscussion](docs/InbotDiscussion.md)
  - [InbotDiscussionBodyModel](docs/InbotDiscussionBodyModel.md)
  - [InbotDiscussionDataInstanceModel](docs/InbotDiscussionDataInstanceModel.md)
+ - [IngestionStatus](docs/IngestionStatus.md)
+ - [IngestionType](docs/IngestionType.md)
  - [InputResourceOfPreferredLineItemCreateModelV2](docs/InputResourceOfPreferredLineItemCreateModelV2.md)
- - [InsertEntry](docs/InsertEntry.md)
  - [InsightStatusResponse](docs/InsightStatusResponse.md)
  - [InsightStatusResponseResource](docs/InsightStatusResponseResource.md)
  - [Installment](docs/Installment.md)
@@ -341,7 +326,6 @@ Class | Method | HTTP request | Description
  - [LineItemListResponseWithPagination](docs/LineItemListResponseWithPagination.md)
  - [LineItemPageCategoryV2](docs/LineItemPageCategoryV2.md)
  - [LineItemPageV2](docs/LineItemPageV2.md)
- - [LineItemProductStatus](docs/LineItemProductStatus.md)
  - [LineItemResource](docs/LineItemResource.md)
  - [LoyaltyPoints](docs/LoyaltyPoints.md)
  - [ManualKeywordTargetDetails](docs/ManualKeywordTargetDetails.md)
@@ -350,18 +334,24 @@ Class | Method | HTTP request | Description
  - [MessageDataInstanceModel](docs/MessageDataInstanceModel.md)
  - [MessageError](docs/MessageError.md)
  - [Metadata](docs/Metadata.md)
- - [NillableDecimal](docs/NillableDecimal.md)
- - [NillableOfNullableOfDateOnly](docs/NillableOfNullableOfDateOnly.md)
+ - [MultiSourceAttributeCoverage](docs/MultiSourceAttributeCoverage.md)
+ - [MultiSourceAttributeDetails](docs/MultiSourceAttributeDetails.md)
+ - [MultiSourceAttributeMapping](docs/MultiSourceAttributeMapping.md)
+ - [MultiSourceAttributeResolution](docs/MultiSourceAttributeResolution.md)
+ - [MultiSourceConfiguration](docs/MultiSourceConfiguration.md)
+ - [MultiSourceImpact](docs/MultiSourceImpact.md)
+ - [MultiSourceReporting](docs/MultiSourceReporting.md)
+ - [MultiSourceReportingStatus](docs/MultiSourceReportingStatus.md)
+ - [MultiSourceValueOrigin](docs/MultiSourceValueOrigin.md)
  - [NillableString](docs/NillableString.md)
  - [OfferUpdate](docs/OfferUpdate.md)
  - [OnsiteDisplayAttributes](docs/OnsiteDisplayAttributes.md)
  - [OnsiteDisplayAuctionAttributes](docs/OnsiteDisplayAuctionAttributes.md)
  - [Outcome](docs/Outcome.md)
- - [PageMetadata](docs/PageMetadata.md)
- - [PageTypeCombinationV2](docs/PageTypeCombinationV2.md)
  - [PageTypeEnvironment2](docs/PageTypeEnvironment2.md)
  - [PageTypeTargetDetails](docs/PageTypeTargetDetails.md)
  - [Pagination](docs/Pagination.md)
+ - [PaginationMetadata](docs/PaginationMetadata.md)
  - [PagingOffsetLimitMetadata](docs/PagingOffsetLimitMetadata.md)
  - [PreferredDealsCreativeDetailsInputModel](docs/PreferredDealsCreativeDetailsInputModel.md)
  - [PreferredDealsCreativeDetailsModel](docs/PreferredDealsCreativeDetailsModel.md)
@@ -370,7 +360,6 @@ Class | Method | HTTP request | Description
  - [PreferredLineItemUpdateModelV2](docs/PreferredLineItemUpdateModelV2.md)
  - [PreferredLineItemUpdateModelV2Request](docs/PreferredLineItemUpdateModelV2Request.md)
  - [PreferredLineItemV2](docs/PreferredLineItemV2.md)
- - [PreferredLineItemV2PagedListResponse](docs/PreferredLineItemV2PagedListResponse.md)
  - [PreferredLineItemV2Response](docs/PreferredLineItemV2Response.md)
  - [Price](docs/Price.md)
  - [Product](docs/Product.md)
@@ -380,10 +369,8 @@ Class | Method | HTTP request | Description
  - [ProductButtonResponse](docs/ProductButtonResponse.md)
  - [ProductButtonResponseListResponse](docs/ProductButtonResponseListResponse.md)
  - [ProductBuyBoxWinner](docs/ProductBuyBoxWinner.md)
- - [ProductMetadata](docs/ProductMetadata.md)
  - [ProductModel](docs/ProductModel.md)
  - [ProductRecommendation](docs/ProductRecommendation.md)
- - [ProductResourceOutcome](docs/ProductResourceOutcome.md)
  - [ProductShipping](docs/ProductShipping.md)
  - [ProductShippingDimension](docs/ProductShippingDimension.md)
  - [ProductShippingWeight](docs/ProductShippingWeight.md)
@@ -392,10 +379,7 @@ Class | Method | HTTP request | Description
  - [ProductUnitPricingMeasure](docs/ProductUnitPricingMeasure.md)
  - [ProductsCustomBatchRequest](docs/ProductsCustomBatchRequest.md)
  - [ProductsCustomBatchRequestEntry](docs/ProductsCustomBatchRequestEntry.md)
- - [PromotedProduct](docs/PromotedProduct.md)
- - [PromotedProductResource](docs/PromotedProductResource.md)
- - [PromotedProductResourceCollectionInput](docs/PromotedProductResourceCollectionInput.md)
- - [PromotedProductResourceCollectionOutcome](docs/PromotedProductResourceCollectionOutcome.md)
+ - [QualityDecision](docs/QualityDecision.md)
  - [ReportDataResponseResource](docs/ReportDataResponseResource.md)
  - [ReportDetailError](docs/ReportDetailError.md)
  - [ReportDetailErrors](docs/ReportDetailErrors.md)
@@ -408,13 +392,6 @@ Class | Method | HTTP request | Description
  - [ResourceOfPreferredLineItemV2](docs/ResourceOfPreferredLineItemV2.md)
  - [ResourceOfProductButtonRequest](docs/ResourceOfProductButtonRequest.md)
  - [ResourceOfProductButtonResponse](docs/ResourceOfProductButtonResponse.md)
- - [RetailMediaContactlistAmendment](docs/RetailMediaContactlistAmendment.md)
- - [RetailMediaContactlistAmendmentAttributes](docs/RetailMediaContactlistAmendmentAttributes.md)
- - [RetailMediaContactlistAmendmentRequest](docs/RetailMediaContactlistAmendmentRequest.md)
- - [RetailMediaContactlistOperation](docs/RetailMediaContactlistOperation.md)
- - [RetailMediaContactlistOperationResponseAttributes](docs/RetailMediaContactlistOperationResponseAttributes.md)
- - [RetailerResultV2](docs/RetailerResultV2.md)
- - [RetailerSearchRequestV2](docs/RetailerSearchRequestV2.md)
  - [RmAlgebraNodeV1](docs/RmAlgebraNodeV1.md)
  - [RmAudienceBulkCreateInputV1](docs/RmAudienceBulkCreateInputV1.md)
  - [RmAudienceBulkDeleteInputV1](docs/RmAudienceBulkDeleteInputV1.md)
@@ -428,44 +405,23 @@ Class | Method | HTTP request | Description
  - [RmAudienceEntityV1](docs/RmAudienceEntityV1.md)
  - [RmAudienceEntityV1ListResponse](docs/RmAudienceEntityV1ListResponse.md)
  - [RmAudienceEntityV1Resource](docs/RmAudienceEntityV1Resource.md)
- - [RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse](docs/RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse.md)
  - [RmAudienceEstimateSizeEntityV1](docs/RmAudienceEstimateSizeEntityV1.md)
  - [RmAudienceEstimateSizeEntityV1Resource](docs/RmAudienceEstimateSizeEntityV1Resource.md)
  - [RmAudienceEstimateSizeInputV1](docs/RmAudienceEstimateSizeInputV1.md)
- - [RmAudienceSearchEntityV1](docs/RmAudienceSearchEntityV1.md)
- - [RmAudienceSearchEntityV1Resource](docs/RmAudienceSearchEntityV1Resource.md)
- - [RmAudienceSearchInputV1](docs/RmAudienceSearchInputV1.md)
- - [RmAudienceSearchMetadataV1](docs/RmAudienceSearchMetadataV1.md)
- - [RmAudienceSegmentBulkCreateInputV1](docs/RmAudienceSegmentBulkCreateInputV1.md)
- - [RmAudienceSegmentBulkDeleteInputV1](docs/RmAudienceSegmentBulkDeleteInputV1.md)
- - [RmAudienceSegmentBulkUpdateInputV1](docs/RmAudienceSegmentBulkUpdateInputV1.md)
  - [RmAudienceSegmentComputeSizeEntityV1](docs/RmAudienceSegmentComputeSizeEntityV1.md)
  - [RmAudienceSegmentComputeSizeEntityV1Resource](docs/RmAudienceSegmentComputeSizeEntityV1Resource.md)
  - [RmAudienceSegmentComputeSizesInputV1](docs/RmAudienceSegmentComputeSizesInputV1.md)
- - [RmAudienceSegmentCreateEntityV1](docs/RmAudienceSegmentCreateEntityV1.md)
- - [RmAudienceSegmentCreateEntityV1Resource](docs/RmAudienceSegmentCreateEntityV1Resource.md)
- - [RmAudienceSegmentDeleteEntityV1Resource](docs/RmAudienceSegmentDeleteEntityV1Resource.md)
- - [RmAudienceSegmentEntityV1](docs/RmAudienceSegmentEntityV1.md)
- - [RmAudienceSegmentEntityV1ListResponse](docs/RmAudienceSegmentEntityV1ListResponse.md)
- - [RmAudienceSegmentEntityV1Resource](docs/RmAudienceSegmentEntityV1Resource.md)
- - [RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse](docs/RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse.md)
  - [RmAudienceSegmentEstimateSizeEntityV1](docs/RmAudienceSegmentEstimateSizeEntityV1.md)
  - [RmAudienceSegmentEstimateSizeEntityV1Resource](docs/RmAudienceSegmentEstimateSizeEntityV1Resource.md)
  - [RmAudienceSegmentEstimateSizeInputV1](docs/RmAudienceSegmentEstimateSizeInputV1.md)
  - [RmAudienceSegmentIdEntityV1ListResponse](docs/RmAudienceSegmentIdEntityV1ListResponse.md)
  - [RmAudienceSegmentIdEntityV1Resource](docs/RmAudienceSegmentIdEntityV1Resource.md)
- - [RmAudienceSegmentSearchEntityV1](docs/RmAudienceSegmentSearchEntityV1.md)
- - [RmAudienceSegmentSearchEntityV1Resource](docs/RmAudienceSegmentSearchEntityV1Resource.md)
- - [RmAudienceSegmentSearchInputV1](docs/RmAudienceSegmentSearchInputV1.md)
- - [RmAudienceSegmentSearchMetadataV1](docs/RmAudienceSegmentSearchMetadataV1.md)
  - [RmAudienceSegmentSizeEntityV1](docs/RmAudienceSegmentSizeEntityV1.md)
  - [RmAudienceSegmentSizeEntityV1ListResponse](docs/RmAudienceSegmentSizeEntityV1ListResponse.md)
  - [RmAudienceSegmentSizeEntityV1Resource](docs/RmAudienceSegmentSizeEntityV1Resource.md)
  - [RmAudienceSegmentSizeEstimationV1](docs/RmAudienceSegmentSizeEstimationV1.md)
  - [RmAudienceSegmentSizeEstimationV1Resource](docs/RmAudienceSegmentSizeEstimationV1Resource.md)
  - [RmAudienceSegmentSizeEstimationV1Response](docs/RmAudienceSegmentSizeEstimationV1Response.md)
- - [RmAudienceSegmentUpdateEntityV1](docs/RmAudienceSegmentUpdateEntityV1.md)
- - [RmAudienceSegmentUpdateEntityV1Resource](docs/RmAudienceSegmentUpdateEntityV1Resource.md)
  - [RmAudienceSizeEntityV1](docs/RmAudienceSizeEntityV1.md)
  - [RmAudienceSizeEntityV1ListResponse](docs/RmAudienceSizeEntityV1ListResponse.md)
  - [RmAudienceSizeEntityV1Resource](docs/RmAudienceSizeEntityV1Resource.md)
@@ -474,18 +430,10 @@ Class | Method | HTTP request | Description
  - [RmAudienceSizeEstimationV1Response](docs/RmAudienceSizeEstimationV1Response.md)
  - [RmAudienceUpdateEntityV1](docs/RmAudienceUpdateEntityV1.md)
  - [RmAudienceUpdateEntityV1Resource](docs/RmAudienceUpdateEntityV1Resource.md)
- - [RmContactListCreateV1](docs/RmContactListCreateV1.md)
- - [RmContactListStatisticsEntityV1](docs/RmContactListStatisticsEntityV1.md)
- - [RmContactListStatisticsEntityV1Resource](docs/RmContactListStatisticsEntityV1Resource.md)
- - [RmContactListStatisticsEntityV1Response](docs/RmContactListStatisticsEntityV1Response.md)
- - [RmContactListV1](docs/RmContactListV1.md)
- - [RmEventsCreateV1](docs/RmEventsCreateV1.md)
  - [RmEventsEstimationV1](docs/RmEventsEstimationV1.md)
- - [RmEventsUpdateV1](docs/RmEventsUpdateV1.md)
- - [RmEventsV1](docs/RmEventsV1.md)
- - [RmcaCommonProblem](docs/RmcaCommonProblem.md)
  - [ScheduleDetailsCreateModel](docs/ScheduleDetailsCreateModel.md)
  - [ScheduleDetailsModel](docs/ScheduleDetailsModel.md)
+ - [ScheduleDetailsUpdateModel](docs/ScheduleDetailsUpdateModel.md)
  - [SdkApiRestCommonProblem](docs/SdkApiRestCommonProblem.md)
  - [SetProductBuyBoxWinnersRequest](docs/SetProductBuyBoxWinnersRequest.md)
  - [ShareOfVoiceFilters](docs/ShareOfVoiceFilters.md)
@@ -501,20 +449,10 @@ Class | Method | HTTP request | Description
  - [StandardBiddingSettings](docs/StandardBiddingSettings.md)
  - [StatusResponse](docs/StatusResponse.md)
  - [StatusResponseResource](docs/StatusResponseResource.md)
- - [StoreInventoryDelete](docs/StoreInventoryDelete.md)
- - [StoreInventoryUpsert](docs/StoreInventoryUpsert.md)
+ - [StringNillableV2](docs/StringNillableV2.md)
  - [SupplySearch](docs/SupplySearch.md)
  - [SupplySearchRequest](docs/SupplySearchRequest.md)
  - [SupplySearchResource](docs/SupplySearchResource.md)
- - [SyncAttributedTransactionsReport](docs/SyncAttributedTransactionsReport.md)
- - [SyncAttributedTransactionsReportRequest](docs/SyncAttributedTransactionsReportRequest.md)
- - [SyncAttributedTransactionsReportResource](docs/SyncAttributedTransactionsReportResource.md)
- - [SyncCampaignsReport](docs/SyncCampaignsReport.md)
- - [SyncCampaignsReportRequest](docs/SyncCampaignsReportRequest.md)
- - [SyncCampaignsReportResource](docs/SyncCampaignsReportResource.md)
- - [SyncLineItemsReport](docs/SyncLineItemsReport.md)
- - [SyncLineItemsReportRequest](docs/SyncLineItemsReportRequest.md)
- - [SyncLineItemsReportResource](docs/SyncLineItemsReportResource.md)
  - [SyncRealTimePerformanceReport](docs/SyncRealTimePerformanceReport.md)
  - [SyncRealTimePerformanceReportRequest](docs/SyncRealTimePerformanceReportRequest.md)
  - [SyncRealTimePerformanceReportResource](docs/SyncRealTimePerformanceReportResource.md)
@@ -524,30 +462,21 @@ Class | Method | HTTP request | Description
  - [TargetResource](docs/TargetResource.md)
  - [TemplateVariableValue](docs/TemplateVariableValue.md)
  - [TextVariableValue](docs/TextVariableValue.md)
- - [UpdateBalanceModelV1](docs/UpdateBalanceModelV1.md)
+ - [TriggerType](docs/TriggerType.md)
  - [UpdateOffersRequest](docs/UpdateOffersRequest.md)
  - [UpsertCreativesModel](docs/UpsertCreativesModel.md)
  - [UpsertCreativesModelRequest](docs/UpsertCreativesModelRequest.md)
  - [UpsertCreativesModelResource](docs/UpsertCreativesModelResource.md)
- - [ValueResourceAppendCampaignsRequestV1](docs/ValueResourceAppendCampaignsRequestV1.md)
- - [ValueResourceBalanceCampaignsV1](docs/ValueResourceBalanceCampaignsV1.md)
- - [ValueResourceBalanceHistoryChangeDataCaptureV1](docs/ValueResourceBalanceHistoryChangeDataCaptureV1.md)
  - [ValueResourceBrandIdSearchRequest](docs/ValueResourceBrandIdSearchRequest.md)
  - [ValueResourceCollectionInputOfRetailMediaSeller](docs/ValueResourceCollectionInputOfRetailMediaSeller.md)
- - [ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata](docs/ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata.md)
  - [ValueResourceCollectionOutcomeOfRetailMediaSeller](docs/ValueResourceCollectionOutcomeOfRetailMediaSeller.md)
- - [ValueResourceDeleteCampaignsRequestV1](docs/ValueResourceDeleteCampaignsRequestV1.md)
- - [ValueResourceInputAppendCampaignsRequestV1](docs/ValueResourceInputAppendCampaignsRequestV1.md)
  - [ValueResourceInputBrandIdSearchRequest](docs/ValueResourceInputBrandIdSearchRequest.md)
- - [ValueResourceInputDeleteCampaignsRequestV1](docs/ValueResourceInputDeleteCampaignsRequestV1.md)
  - [ValueResourceInputLineItemBudgetCapOutHistoryRequest](docs/ValueResourceInputLineItemBudgetCapOutHistoryRequest.md)
  - [ValueResourceInputOfRetailMediaBrandAccountCreationV2](docs/ValueResourceInputOfRetailMediaBrandAccountCreationV2.md)
  - [ValueResourceInputOfRetailMediaBrands](docs/ValueResourceInputOfRetailMediaBrands.md)
  - [ValueResourceInputOfRetailMediaSellerAccountCreationV2](docs/ValueResourceInputOfRetailMediaSellerAccountCreationV2.md)
- - [ValueResourceInputOfRetailerSearchRequestV2](docs/ValueResourceInputOfRetailerSearchRequestV2.md)
  - [ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel](docs/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.md)
  - [ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel](docs/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md)
- - [ValueResourceInputOfUpdateBalanceModelV1](docs/ValueResourceInputOfUpdateBalanceModelV1.md)
  - [ValueResourceInputSetProductBuyBoxWinnersRequest](docs/ValueResourceInputSetProductBuyBoxWinnersRequest.md)
  - [ValueResourceInputUpdateOffersRequest](docs/ValueResourceInputUpdateOffersRequest.md)
  - [ValueResourceLineItemBudgetCapOutHistoryRequest](docs/ValueResourceLineItemBudgetCapOutHistoryRequest.md)
@@ -556,11 +485,8 @@ Class | Method | HTTP request | Description
  - [ValueResourceOfRetailMediaBrands](docs/ValueResourceOfRetailMediaBrands.md)
  - [ValueResourceOfRetailMediaSeller](docs/ValueResourceOfRetailMediaSeller.md)
  - [ValueResourceOfRetailMediaSellerAccountCreationV2](docs/ValueResourceOfRetailMediaSellerAccountCreationV2.md)
- - [ValueResourceOfRetailerSearchRequestV2](docs/ValueResourceOfRetailerSearchRequestV2.md)
  - [ValueResourceOfSponsoredProductsLineItemCreateRequestModel](docs/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.md)
  - [ValueResourceOfSponsoredProductsLineItemUpdateRequestModel](docs/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.md)
- - [ValueResourceOfUpdateBalanceModelV1](docs/ValueResourceOfUpdateBalanceModelV1.md)
- - [ValueResourceOutcomeBalanceCampaignsV1](docs/ValueResourceOutcomeBalanceCampaignsV1.md)
  - [ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse](docs/ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse.md)
  - [ValueResourceOutcomeOfRetailMediaBrands](docs/ValueResourceOutcomeOfRetailMediaBrands.md)
  - [ValueResourceSetProductBuyBoxWinnersRequest](docs/ValueResourceSetProductBuyBoxWinnersRequest.md)

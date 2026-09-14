@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.experimental.JSON;
 
 /**
- * Entity to create or update an ad
+ * Entity to create an ad
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdWrite {

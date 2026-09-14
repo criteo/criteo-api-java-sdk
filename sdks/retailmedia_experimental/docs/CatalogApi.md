@@ -4,22 +4,22 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteStoreInventoryPerMerchantId**](CatalogApi.md#deleteStoreInventoryPerMerchantId) | **POST** /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete | /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete |
+| [**getCatalogIngestionReportSummary**](CatalogApi.md#getCatalogIngestionReportSummary) | **GET** /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary | /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary |
+| [**getCatalogIngestionReports**](CatalogApi.md#getCatalogIngestionReports) | **GET** /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports | /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports |
 | [**getCatalogProductsBatchReport**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /experimental/retail-media/catalog/products/batch/report/{operation-token} | /experimental/retail-media/catalog/products/batch/report/{operation-token} |
 | [**offerSetBbwV1**](CatalogApi.md#offerSetBbwV1) | **POST** /experimental/retail-media/retailers/{retailer-id}/products/set-buy-box-winners | /experimental/retail-media/retailers/{retailer-id}/products/set-buy-box-winners |
 | [**offerUpdateV1**](CatalogApi.md#offerUpdateV1) | **POST** /experimental/retail-media/retailers/{retailer-id}/offers/update | /experimental/retail-media/retailers/{retailer-id}/offers/update |
 | [**submitCatalogProductsBatch**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /experimental/retail-media/catalog/products/batch | /experimental/retail-media/catalog/products/batch |
-| [**upsertStoreInventoryPerMerchantId**](CatalogApi.md#upsertStoreInventoryPerMerchantId) | **POST** /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert | /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert |
 
 
 
-## deleteStoreInventoryPerMerchantId
+## getCatalogIngestionReportSummary
 
-> deleteStoreInventoryPerMerchantId(merchantId, batchStoreInventoryDeleteRequest)
+> CatalogIngestionSummaryResponse getCatalogIngestionReportSummary(ingestionId)
 
-/experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
+/experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary
 
-Used to publish a batch of store inventories to delete. The batch is processed asynchronously.
+Get the summary report of a catalog ingestion: what triggered it, how long it ran, how many offers it held, what it changed and how clean the data was.
 
 ### Example
 
@@ -60,12 +60,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CatalogApi apiInstance = new CatalogApi(defaultClient);
-        String merchantId = "merchantId_example"; // String | Identifies the merchant, can also be called partnerId
-        BatchStoreInventoryDeleteRequest batchStoreInventoryDeleteRequest = new BatchStoreInventoryDeleteRequest(); // BatchStoreInventoryDeleteRequest | 
+        String ingestionId = "ingestionId_example"; // String | Identifies the catalog ingestion to report on.
         try {
-            apiInstance.deleteStoreInventoryPerMerchantId(merchantId, batchStoreInventoryDeleteRequest);
+            CatalogIngestionSummaryResponse result = apiInstance.getCatalogIngestionReportSummary(ingestionId);
+            System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CatalogApi#deleteStoreInventoryPerMerchantId");
+            System.err.println("Exception when calling CatalogApi#getCatalogIngestionReportSummary");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -80,12 +80,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **merchantId** | **String**| Identifies the merchant, can also be called partnerId | |
-| **batchStoreInventoryDeleteRequest** | [**BatchStoreInventoryDeleteRequest**](BatchStoreInventoryDeleteRequest.md)|  | |
+| **ingestionId** | **String**| Identifies the catalog ingestion to report on. | |
 
 ### Return type
 
-null (empty response body)
+[**CatalogIngestionSummaryResponse**](CatalogIngestionSummaryResponse.md)
 
 ### Authorization
 
@@ -93,14 +92,107 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Batch accepted. |  -  |
+| **200** | The summary report of the ingestion. |  -  |
+
+
+## getCatalogIngestionReports
+
+> CatalogIngestionReportListResponse getCatalogIngestionReports(merchantId, limit, offset)
+
+/experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports
+
+List the catalog ingestions of a merchant, most recent first, with their type, status and timing.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.experimental;
+
+import com.criteo.api.retailmedia.experimental.ApiClient;
+import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
+import com.criteo.api.retailmedia.experimental.ApiException;
+import com.criteo.api.retailmedia.experimental.Configuration;
+import com.criteo.api.retailmedia.experimental.auth.*;
+import com.criteo.api.retailmedia.experimental.model.*;
+import com.criteo.api.retailmedia.experimental.api.CatalogApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CatalogApi apiInstance = new CatalogApi(defaultClient);
+        String merchantId = "merchantId_example"; // String | Identifies the merchant whose catalog ingestions are reported.
+        Integer limit = 25; // Integer | Maximum number of ingestion reports returned in the page.
+        Integer offset = 0; // Integer | Index of the first ingestion report of the page, used to page through the collection.
+        try {
+            CatalogIngestionReportListResponse result = apiInstance.getCatalogIngestionReports(merchantId, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CatalogApi#getCatalogIngestionReports");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **merchantId** | **String**| Identifies the merchant whose catalog ingestions are reported. | |
+| **limit** | **Integer**| Maximum number of ingestion reports returned in the page. | [optional] [default to 25] |
+| **offset** | **Integer**| Index of the first ingestion report of the page, used to page through the collection. | [optional] [default to 0] |
+
+### Return type
+
+[**CatalogIngestionReportListResponse**](CatalogIngestionReportListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The page of catalog ingestion reports. |  -  |
 
 
 ## getCatalogProductsBatchReport
@@ -461,94 +553,4 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. |  -  |
-
-
-## upsertStoreInventoryPerMerchantId
-
-> upsertStoreInventoryPerMerchantId(merchantId, batchStoreInventoryRequest)
-
-/experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
-
-Used to publish a batch of store inventories to upsert. The batch is processed asynchronously.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CatalogApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CatalogApi apiInstance = new CatalogApi(defaultClient);
-        String merchantId = "merchantId_example"; // String | Identifies the merchant, can also be called partnerId
-        BatchStoreInventoryRequest batchStoreInventoryRequest = new BatchStoreInventoryRequest(); // BatchStoreInventoryRequest | 
-        try {
-            apiInstance.upsertStoreInventoryPerMerchantId(merchantId, batchStoreInventoryRequest);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CatalogApi#upsertStoreInventoryPerMerchantId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **merchantId** | **String**| Identifies the merchant, can also be called partnerId | |
-| **batchStoreInventoryRequest** | [**BatchStoreInventoryRequest**](BatchStoreInventoryRequest.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Batch accepted. |  -  |
 

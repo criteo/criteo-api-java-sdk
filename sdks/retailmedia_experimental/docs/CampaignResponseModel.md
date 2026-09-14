@@ -19,7 +19,7 @@ A Retail Media Campaign used to represent an advertiser's marketing objective
 |**drawableBalanceIds** | **List&lt;String&gt;** |  |  |
 |**id** | **String** |  |  [optional] |
 |**name** | **String** |  |  |
-|**objective** | [**ObjectiveEnum**](#ObjectiveEnum) | Dynamic Campaign Budgets control: manual keeps today&#39;s behavior; clicks, conversion and  revenue activate campaign-level budget allocation. |  [optional] |
+|**objective** | [**ObjectiveEnum**](#ObjectiveEnum) | Dynamic Campaign Budgets control: manual keeps today&#39;s behavior; clicks, conversion and  revenue activate campaign-level budget allocation. Impressions is the Onsite Display  objective. |  [optional] |
 |**onBehalfCompanyName** | **String** |  |  [optional] |
 |**scheduleDetails** | [**ScheduleDetailsModel**](ScheduleDetailsModel.md) |  |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) | Campaign status, derived from the status of Line Items it holds; active if at least  one line item is active. |  |
@@ -56,6 +56,7 @@ A Retail Media Campaign used to represent an advertiser's marketing objective
 | CLICKS | &quot;Clicks&quot; |
 | CONVERSION | &quot;Conversion&quot; |
 | REVENUE | &quot;Revenue&quot; |
+| IMPRESSIONS | &quot;Impressions&quot; |
 | UNKNOWN | &quot;Unknown&quot; |
 
 

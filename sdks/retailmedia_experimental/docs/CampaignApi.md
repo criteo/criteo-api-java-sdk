@@ -5,37 +5,31 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**addProducts**](CampaignApi.md#addProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/add | /experimental/retail-media/line-items/{line-item-id}/products/add |
-| [**appendCampaignsToBalanceV1**](CampaignApi.md#appendCampaignsToBalanceV1) | **POST** /experimental/retail-media/balances/{balanceId}/campaigns/append | /experimental/retail-media/balances/{balanceId}/campaigns/append |
 | [**appendProductButtonByLineItemId**](CampaignApi.md#appendProductButtonByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/product-buttons/create | /experimental/retail-media/line-items/{line-item-id}/product-buttons/create |
-| [**appendPromotedProducts**](CampaignApi.md#appendPromotedProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/append | /experimental/retail-media/line-items/{line-item-id}/products/append |
 | [**createAuctionLineItem**](CampaignApi.md#createAuctionLineItem) | **POST** /experimental/retail-media/campaigns/{campaignId}/auction-line-items | /experimental/retail-media/campaigns/{campaignId}/auction-line-items |
 | [**createCampaign**](CampaignApi.md#createCampaign) | **POST** /experimental/retail-media/accounts/{account-id}/campaigns | /experimental/retail-media/accounts/{account-id}/campaigns |
 | [**createCreative**](CampaignApi.md#createCreative) | **POST** /experimental/retail-media/accounts/{account-id}/creatives | /experimental/retail-media/accounts/{account-id}/creatives |
 | [**createLineItem**](CampaignApi.md#createLineItem) | **POST** /experimental/retail-media/line-items | /experimental/retail-media/line-items |
 | [**createPreferredLineItemByCampaignId**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items | /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items |
 | [**createTargetsByLineItemId**](CampaignApi.md#createTargetsByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/targets/create | /experimental/retail-media/line-items/{line-item-id}/targets/create |
-| [**deleteCampaignsFromBalanceV1**](CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /experimental/retail-media/balances/{balanceId}/campaigns/delete | /experimental/retail-media/balances/{balanceId}/campaigns/delete |
+| [**deleteCreatives**](CampaignApi.md#deleteCreatives) | **POST** /experimental/retail-media/line-items/{line-item-id}/creatives/delete | /experimental/retail-media/line-items/{line-item-id}/creatives/delete |
 | [**deleteProductButtonByLineItemAndProductButtonId**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**deleteProducts**](CampaignApi.md#deleteProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/delete | /experimental/retail-media/line-items/{line-item-id}/products/delete |
-| [**fetchPromotedProducts**](CampaignApi.md#fetchPromotedProducts) | **GET** /experimental/retail-media/line-items/{line-item-id}/products | /experimental/retail-media/line-items/{line-item-id}/products |
-| [**getAuctionLineItem**](CampaignApi.md#getAuctionLineItem) | **GET** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId} |
-| [**getAuctionLineItemsByCampaign**](CampaignApi.md#getAuctionLineItemsByCampaign) | **GET** /experimental/retail-media/campaigns/{campaignId}/auction-line-items | /experimental/retail-media/campaigns/{campaignId}/auction-line-items |
+| [**fetchCreatives**](CampaignApi.md#fetchCreatives) | **GET** /experimental/retail-media/line-items/{line-item-id}/creatives | /experimental/retail-media/line-items/{line-item-id}/creatives |
 | [**getBiddingStrategyByLineItemId**](CampaignApi.md#getBiddingStrategyByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/bidding-strategy |
+| [**getCampaign**](CampaignApi.md#getCampaign) | **GET** /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} | /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} |
 | [**getCapoutHistory**](CampaignApi.md#getCapoutHistory) | **POST** /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history | /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history |
 | [**getCatalogStatus**](CampaignApi.md#getCatalogStatus) | **GET** /experimental/retail-media/catalogs/{catalogId}/status | /experimental/retail-media/catalogs/{catalogId}/status |
 | [**getCreative**](CampaignApi.md#getCreative) | **GET** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
-| [**getPreferredLineItemsByCampaignId**](CampaignApi.md#getPreferredLineItemsByCampaignId) | **GET** /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items | /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items |
-| [**getPreferredLineItemsByLineItemId**](CampaignApi.md#getPreferredLineItemsByLineItemId) | **GET** /experimental/retail-media/preferred-line-items/{line-item-id} | /experimental/retail-media/preferred-line-items/{line-item-id} |
 | [**getProductButtonByLineItemAndProductButtonId**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**getProductButtonsByLineItemId**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons | /experimental/retail-media/line-items/{line-item-id}/product-buttons |
 | [**getTargetsByLineItemId**](CampaignApi.md#getTargetsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/targets | /experimental/retail-media/line-items/{line-item-id}/targets |
 | [**lineItemsDemandSearch**](CampaignApi.md#lineItemsDemandSearch) | **POST** /experimental/retail-media/line-items/demand-search | /experimental/retail-media/line-items/demand-search |
 | [**lineItemsSupplySearch**](CampaignApi.md#lineItemsSupplySearch) | **POST** /experimental/retail-media/line-items/supply-search | /experimental/retail-media/line-items/supply-search |
-| [**pausePromotedProducts**](CampaignApi.md#pausePromotedProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/pause | /experimental/retail-media/line-items/{line-item-id}/products/pause |
 | [**searchAccountCreatives**](CampaignApi.md#searchAccountCreatives) | **POST** /experimental/retail-media/accounts/{account-id}/creatives/search | /experimental/retail-media/accounts/{account-id}/creatives/search |
-| [**searchAccountRetailers**](CampaignApi.md#searchAccountRetailers) | **POST** /experimental/retail-media/accounts/{accountId}/retailers/search | /experimental/retail-media/accounts/{accountId}/retailers/search |
-| [**unpausePromotedProducts**](CampaignApi.md#unpausePromotedProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/unpause | /experimental/retail-media/line-items/{line-item-id}/products/unpause |
+| [**searchCampaigns**](CampaignApi.md#searchCampaigns) | **POST** /experimental/retail-media/accounts/{account-id}/campaigns/search | /experimental/retail-media/accounts/{account-id}/campaigns/search |
 | [**updateAuctionLineItem**](CampaignApi.md#updateAuctionLineItem) | **PUT** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId} |
+| [**updateCampaign**](CampaignApi.md#updateCampaign) | **PATCH** /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} | /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} |
 | [**updateCreative**](CampaignApi.md#updateCreative) | **PUT** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
 | [**updateLineItem**](CampaignApi.md#updateLineItem) | **PATCH** /experimental/retail-media/line-items/{line-item-id} | /experimental/retail-media/line-items/{line-item-id} |
 | [**updatePreferredLineItemByLineItemId**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /experimental/retail-media/preferred-line-items/{line-item-id} | /experimental/retail-media/preferred-line-items/{line-item-id} |
@@ -118,97 +112,6 @@ public class Example {
 ### Return type
 
 [**AddProductsResultModelResponse**](AddProductsResultModelResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## appendCampaignsToBalanceV1
-
-> ValueResourceOutcomeBalanceCampaignsV1 appendCampaignsToBalanceV1(balanceId, valueResourceInputAppendCampaignsRequestV1)
-
-/experimental/retail-media/balances/{balanceId}/campaigns/append
-
-Appends one or more campaigns to the specified balance
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String balanceId = "balanceId_example"; // String | The balance to add campaigns from
-        ValueResourceInputAppendCampaignsRequestV1 valueResourceInputAppendCampaignsRequestV1 = new ValueResourceInputAppendCampaignsRequestV1(); // ValueResourceInputAppendCampaignsRequestV1 | The balance campaign appending request.
-        try {
-            ValueResourceOutcomeBalanceCampaignsV1 result = apiInstance.appendCampaignsToBalanceV1(balanceId, valueResourceInputAppendCampaignsRequestV1);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#appendCampaignsToBalanceV1");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **balanceId** | **String**| The balance to add campaigns from | |
-| **valueResourceInputAppendCampaignsRequestV1** | [**ValueResourceInputAppendCampaignsRequestV1**](ValueResourceInputAppendCampaignsRequestV1.md)| The balance campaign appending request. | |
-
-### Return type
-
-[**ValueResourceOutcomeBalanceCampaignsV1**](ValueResourceOutcomeBalanceCampaignsV1.md)
 
 ### Authorization
 
@@ -315,98 +218,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | ProductButtons added |  -  |
-
-
-## appendPromotedProducts
-
-> ProductResourceOutcome appendPromotedProducts(lineItemId, promotedProductResourceCollectionInput)
-
-/experimental/retail-media/line-items/{line-item-id}/products/append
-
-Append a collection of promoted products to a line item
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | ID of the line item
-        PromotedProductResourceCollectionInput promotedProductResourceCollectionInput = new PromotedProductResourceCollectionInput(); // PromotedProductResourceCollectionInput | Request body whose {data} contains an array of promoted products.
-        try {
-            ProductResourceOutcome result = apiInstance.appendPromotedProducts(lineItemId, promotedProductResourceCollectionInput);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#appendPromotedProducts");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| ID of the line item | |
-| **promotedProductResourceCollectionInput** | [**PromotedProductResourceCollectionInput**](PromotedProductResourceCollectionInput.md)| Request body whose {data} contains an array of promoted products. | [optional] |
-
-### Return type
-
-[**ProductResourceOutcome**](ProductResourceOutcome.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Promoted products appended to the line item with warnings |  -  |
-| **204** | Promoted products appended to the line item |  -  |
 
 
 ## createAuctionLineItem
@@ -953,13 +764,13 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## deleteCampaignsFromBalanceV1
+## deleteCreatives
 
-> ValueResourceOutcomeBalanceCampaignsV1 deleteCampaignsFromBalanceV1(balanceId, valueResourceInputDeleteCampaignsRequestV1)
+> Outcome deleteCreatives(lineItemId, deleteCreativesModelRequest)
 
-/experimental/retail-media/balances/{balanceId}/campaigns/delete
+/experimental/retail-media/line-items/{line-item-id}/creatives/delete
 
-Deletes one or more campaigns on the specified balance
+Delete creatives and their product collections from a line item.
 
 ### Example
 
@@ -1000,13 +811,13 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String balanceId = "balanceId_example"; // String | The balance to remove campaigns from
-        ValueResourceInputDeleteCampaignsRequestV1 valueResourceInputDeleteCampaignsRequestV1 = new ValueResourceInputDeleteCampaignsRequestV1(); // ValueResourceInputDeleteCampaignsRequestV1 | The balance campaign deleting request.
+        String lineItemId = "lineItemId_example"; // String | The external line item id.
+        DeleteCreativesModelRequest deleteCreativesModelRequest = new DeleteCreativesModelRequest(); // DeleteCreativesModelRequest | The stable creative identifiers to delete.
         try {
-            ValueResourceOutcomeBalanceCampaignsV1 result = apiInstance.deleteCampaignsFromBalanceV1(balanceId, valueResourceInputDeleteCampaignsRequestV1);
+            Outcome result = apiInstance.deleteCreatives(lineItemId, deleteCreativesModelRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#deleteCampaignsFromBalanceV1");
+            System.err.println("Exception when calling CampaignApi#deleteCreatives");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1021,12 +832,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **balanceId** | **String**| The balance to remove campaigns from | |
-| **valueResourceInputDeleteCampaignsRequestV1** | [**ValueResourceInputDeleteCampaignsRequestV1**](ValueResourceInputDeleteCampaignsRequestV1.md)| The balance campaign deleting request. | |
+| **lineItemId** | **String**| The external line item id. | |
+| **deleteCreativesModelRequest** | [**DeleteCreativesModelRequest**](DeleteCreativesModelRequest.md)| The stable creative identifiers to delete. | |
 
 ### Return type
 
-[**ValueResourceOutcomeBalanceCampaignsV1**](ValueResourceOutcomeBalanceCampaignsV1.md)
+[**Outcome**](Outcome.md)
 
 ### Authorization
 
@@ -1226,108 +1037,13 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## fetchPromotedProducts
+## fetchCreatives
 
-> PromotedProductResourceCollectionOutcome fetchPromotedProducts(lineItemId, fields, limit, offset)
+> FetchCreativesModelResponse fetchCreatives(lineItemId)
 
-/experimental/retail-media/line-items/{line-item-id}/products
+/experimental/retail-media/line-items/{line-item-id}/creatives
 
-Retrieve a page of promoted products for a line item
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | ID of the line item.
-        String fields = "fields_example"; // String | A comma separated list of attribute names from the response model to compute and return.              Valid values are `status` and `bidOverride` in any order. Defaults to `status`.
-        Integer limit = 56; // Integer | Maximum page size to fetch. Defaults to 500.
-        Integer offset = 56; // Integer | Offset of the first item to fetch. Defaults to zero.
-        try {
-            PromotedProductResourceCollectionOutcome result = apiInstance.fetchPromotedProducts(lineItemId, fields, limit, offset);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#fetchPromotedProducts");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| ID of the line item. | |
-| **fields** | **String**| A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. | [optional] |
-| **limit** | **Integer**| Maximum page size to fetch. Defaults to 500. | [optional] |
-| **offset** | **Integer**| Offset of the first item to fetch. Defaults to zero. | [optional] |
-
-### Return type
-
-[**PromotedProductResourceCollectionOutcome**](PromotedProductResourceCollectionOutcome.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Promoted products associated with the line item |  -  |
-
-
-## getAuctionLineItem
-
-> EntityResourceOutcomeOfSponsoredProductsLineItem getAuctionLineItem(lineItemId)
-
-/experimental/retail-media/auction-line-items/{lineItemId}
-
-Gets a sponsored product line item by its id.
+Retrieve the creatives and product collections associated with a line item.
 
 ### Example
 
@@ -1368,12 +1084,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The id of the line item
+        String lineItemId = "lineItemId_example"; // String | The external line item id.
         try {
-            EntityResourceOutcomeOfSponsoredProductsLineItem result = apiInstance.getAuctionLineItem(lineItemId);
+            FetchCreativesModelResponse result = apiInstance.fetchCreatives(lineItemId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getAuctionLineItem");
+            System.err.println("Exception when calling CampaignApi#fetchCreatives");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1388,106 +1104,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The id of the line item | |
+| **lineItemId** | **String**| The external line item id. | |
 
 ### Return type
 
-[**EntityResourceOutcomeOfSponsoredProductsLineItem**](EntityResourceOutcomeOfSponsoredProductsLineItem.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## getAuctionLineItemsByCampaign
-
-> EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata getAuctionLineItemsByCampaign(campaignId, limit, limitToIds, offset)
-
-/experimental/retail-media/campaigns/{campaignId}/auction-line-items
-
-Gets a page of sponsored product line items by campaign id.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String campaignId = "campaignId_example"; // String | The id of the campaign
-        Integer limit = 25; // Integer | The number of elements to be returned on a page.
-        List<String> limitToIds = Arrays.asList(); // List<String> | The ids to limit the auction line item results to
-        Integer offset = 0; // Integer | The (zero-based) starting offset into the collection.
-        try {
-            EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata result = apiInstance.getAuctionLineItemsByCampaign(campaignId, limit, limitToIds, offset);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getAuctionLineItemsByCampaign");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| The id of the campaign | |
-| **limit** | **Integer**| The number of elements to be returned on a page. | [optional] [default to 25] |
-| **limitToIds** | [**List&lt;String&gt;**](String.md)| The ids to limit the auction line item results to | [optional] |
-| **offset** | **Integer**| The (zero-based) starting offset into the collection. | [optional] [default to 0] |
-
-### Return type
-
-[**EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata**](EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.md)
+[**FetchCreativesModelResponse**](FetchCreativesModelResponse.md)
 
 ### Authorization
 
@@ -1577,6 +1198,97 @@ public class Example {
 ### Return type
 
 [**BiddingSettingsResponse**](BiddingSettingsResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## getCampaign
+
+> CampaignResponseModelResponse getCampaign(accountId, campaignId)
+
+/experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+
+Gets a campaign by its external id.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.experimental;
+
+import com.criteo.api.retailmedia.experimental.ApiClient;
+import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
+import com.criteo.api.retailmedia.experimental.ApiException;
+import com.criteo.api.retailmedia.experimental.Configuration;
+import com.criteo.api.retailmedia.experimental.auth.*;
+import com.criteo.api.retailmedia.experimental.model.*;
+import com.criteo.api.retailmedia.experimental.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String accountId = "accountId_example"; // String | The external id of the account.
+        String campaignId = "campaignId_example"; // String | The external id of the campaign.
+        try {
+            CampaignResponseModelResponse result = apiInstance.getCampaign(accountId, campaignId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#getCampaign");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| The external id of the account. | |
+| **campaignId** | **String**| The external id of the campaign. | |
+
+### Return type
+
+[**CampaignResponseModelResponse**](CampaignResponseModelResponse.md)
 
 ### Authorization
 
@@ -1863,190 +1575,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Creatives found |  -  |
-
-
-## getPreferredLineItemsByCampaignId
-
-> PreferredLineItemV2PagedListResponse getPreferredLineItemsByCampaignId(campaignId, limitToId, pageIndex, pageSize)
-
-/experimental/retail-media/campaigns/{campaign-id}/preferred-line-items
-
-Gets page of preferred line item objects for the given campaign id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String campaignId = "campaignId_example"; // String | The given campaign id
-        List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
-        Integer pageIndex = 0; // Integer | The 0 indexed page index you would like to receive given the page size
-        Integer pageSize = 25; // Integer | The maximum number of items you would like to receive in this request
-        try {
-            PreferredLineItemV2PagedListResponse result = apiInstance.getPreferredLineItemsByCampaignId(campaignId, limitToId, pageIndex, pageSize);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getPreferredLineItemsByCampaignId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| The given campaign id | |
-| **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
-| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
-| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
-
-### Return type
-
-[**PreferredLineItemV2PagedListResponse**](PreferredLineItemV2PagedListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## getPreferredLineItemsByLineItemId
-
-> PreferredLineItemV2Response getPreferredLineItemsByLineItemId(lineItemId)
-
-/experimental/retail-media/preferred-line-items/{line-item-id}
-
-Gets the preferred line item for the given line item id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The given line item id
-        try {
-            PreferredLineItemV2Response result = apiInstance.getPreferredLineItemsByLineItemId(lineItemId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getPreferredLineItemsByLineItemId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The given line item id | |
-
-### Return type
-
-[**PreferredLineItemV2Response**](PreferredLineItemV2Response.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
 
 
 ## getProductButtonByLineItemAndProductButtonId
@@ -2500,96 +2028,6 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## pausePromotedProducts
-
-> pausePromotedProducts(lineItemId, promotedProductResourceCollectionInput)
-
-/experimental/retail-media/line-items/{line-item-id}/products/pause
-
-Pause a collection of promoted products associated with a line item
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | ID of the line item
-        PromotedProductResourceCollectionInput promotedProductResourceCollectionInput = new PromotedProductResourceCollectionInput(); // PromotedProductResourceCollectionInput | Request body whose {data} contains an array of promoted products.
-        try {
-            apiInstance.pausePromotedProducts(lineItemId, promotedProductResourceCollectionInput);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#pausePromotedProducts");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| ID of the line item | |
-| **promotedProductResourceCollectionInput** | [**PromotedProductResourceCollectionInput**](PromotedProductResourceCollectionInput.md)| Request body whose {data} contains an array of promoted products. | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Promoted products paused |  -  |
-
-
 ## searchAccountCreatives
 
 > EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata searchAccountCreatives(accountId, entityResourceInputCreativeSearchRequest, limit, offset)
@@ -2685,13 +2123,13 @@ public class Example {
 | **200** | Creatives found |  -  |
 
 
-## searchAccountRetailers
+## searchCampaigns
 
-> EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata searchAccountRetailers(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset)
+> CampaignResponseModelListResponseWithCampaignSearchMetadataModel searchCampaigns(accountId, campaignSearchModelRequest)
 
-/experimental/retail-media/accounts/{accountId}/retailers/search
+/experimental/retail-media/accounts/{account-id}/campaigns/search
 
-Searches for retailers associated with the specified account and returns budget model availability for each retailer
+Searches campaigns under an account using optional filters and pagination.  Budget details are sourced from the search index and may be eventually consistent with the  Kobalos-backed campaign returned by GET.  Search does not perform Kobalos enrichment, so drawable balance ids are not included.
 
 ### Example
 
@@ -2732,15 +2170,13 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | The external account identifier
-        ValueResourceInputOfRetailerSearchRequestV2 valueResourceInputOfRetailerSearchRequestV2 = new ValueResourceInputOfRetailerSearchRequestV2(); // ValueResourceInputOfRetailerSearchRequestV2 | The search request containing filtering parameters
-        Integer limit = 5; // Integer | The maximum number of items to return. Must be between 1 and 10. Default is 5.
-        Integer offset = 0; // Integer | The number of items to skip before starting to collect the result set. Default is 0.
+        String accountId = "accountId_example"; // String | The external id of the account.
+        CampaignSearchModelRequest campaignSearchModelRequest = new CampaignSearchModelRequest(); // CampaignSearchModelRequest | Optional search filters and pagination.
         try {
-            EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata result = apiInstance.searchAccountRetailers(accountId, valueResourceInputOfRetailerSearchRequestV2, limit, offset);
+            CampaignResponseModelListResponseWithCampaignSearchMetadataModel result = apiInstance.searchCampaigns(accountId, campaignSearchModelRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#searchAccountRetailers");
+            System.err.println("Exception when calling CampaignApi#searchCampaigns");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -2755,14 +2191,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The external account identifier | |
-| **valueResourceInputOfRetailerSearchRequestV2** | [**ValueResourceInputOfRetailerSearchRequestV2**](ValueResourceInputOfRetailerSearchRequestV2.md)| The search request containing filtering parameters | |
-| **limit** | **Integer**| The maximum number of items to return. Must be between 1 and 10. Default is 5. | [optional] [default to 5] |
-| **offset** | **Integer**| The number of items to skip before starting to collect the result set. Default is 0. | [optional] [default to 0] |
+| **accountId** | **String**| The external id of the account. | |
+| **campaignSearchModelRequest** | [**CampaignSearchModelRequest**](CampaignSearchModelRequest.md)| Optional search filters and pagination. | [optional] |
 
 ### Return type
 
-[**EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata**](EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.md)
+[**CampaignResponseModelListResponseWithCampaignSearchMetadataModel**](CampaignResponseModelListResponseWithCampaignSearchMetadataModel.md)
 
 ### Authorization
 
@@ -2778,96 +2212,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-
-
-## unpausePromotedProducts
-
-> unpausePromotedProducts(lineItemId, promotedProductResourceCollectionInput)
-
-/experimental/retail-media/line-items/{line-item-id}/products/unpause
-
-Un-pause a collection of promoted products associated with a line item
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | ID of the line item
-        PromotedProductResourceCollectionInput promotedProductResourceCollectionInput = new PromotedProductResourceCollectionInput(); // PromotedProductResourceCollectionInput | Request body whose {data} contains an array of promoted products.
-        try {
-            apiInstance.unpausePromotedProducts(lineItemId, promotedProductResourceCollectionInput);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#unpausePromotedProducts");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| ID of the line item | |
-| **promotedProductResourceCollectionInput** | [**PromotedProductResourceCollectionInput**](PromotedProductResourceCollectionInput.md)| Request body whose {data} contains an array of promoted products. | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Promoted products un-paused |  -  |
 
 
 ## updateAuctionLineItem
@@ -2944,6 +2288,99 @@ public class Example {
 ### Return type
 
 [**EntityResourceOutcomeOfSponsoredProductsLineItem**](EntityResourceOutcomeOfSponsoredProductsLineItem.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## updateCampaign
+
+> CampaignResponseModelResponse updateCampaign(accountId, campaignId, campaignUpdateModelRequest)
+
+/experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+
+Selectively updates a campaign. Omitted properties remain unchanged.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.experimental;
+
+import com.criteo.api.retailmedia.experimental.ApiClient;
+import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
+import com.criteo.api.retailmedia.experimental.ApiException;
+import com.criteo.api.retailmedia.experimental.Configuration;
+import com.criteo.api.retailmedia.experimental.auth.*;
+import com.criteo.api.retailmedia.experimental.model.*;
+import com.criteo.api.retailmedia.experimental.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String accountId = "accountId_example"; // String | The external id of the account.
+        String campaignId = "campaignId_example"; // String | The external id of the campaign.
+        CampaignUpdateModelRequest campaignUpdateModelRequest = new CampaignUpdateModelRequest(); // CampaignUpdateModelRequest | The campaign fields to update.
+        try {
+            CampaignResponseModelResponse result = apiInstance.updateCampaign(accountId, campaignId, campaignUpdateModelRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#updateCampaign");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| The external id of the account. | |
+| **campaignId** | **String**| The external id of the campaign. | |
+| **campaignUpdateModelRequest** | [**CampaignUpdateModelRequest**](CampaignUpdateModelRequest.md)| The campaign fields to update. | |
+
+### Return type
+
+[**CampaignResponseModelResponse**](CampaignResponseModelResponse.md)
 
 ### Authorization
 

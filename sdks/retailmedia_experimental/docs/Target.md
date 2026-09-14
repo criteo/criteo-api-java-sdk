@@ -11,6 +11,7 @@ A specific Target configured on the line item
 |**approvalStatus** | [**ApprovalStatusEnum**](#ApprovalStatusEnum) |  |  [optional] |
 |**bidMultiplier** | **Double** |  |  [optional] |
 |**categoryTargetDetails** | [**CategoryTargetDetails**](CategoryTargetDetails.md) |  |  [optional] |
+|**geographyTargetDetails** | [**GeographyTargetDetails**](GeographyTargetDetails.md) |  |  [optional] |
 |**manualKeywordTargetDetails** | [**ManualKeywordTargetDetails**](ManualKeywordTargetDetails.md) |  |  [optional] |
 |**negative** | **Boolean** |  |  [optional] |
 |**pageTypeTargetDetails** | [**PageTypeTargetDetails**](PageTypeTargetDetails.md) |  |  [optional] |
@@ -40,6 +41,7 @@ A specific Target configured on the line item
 | MANUALKEYWORD | &quot;ManualKeyword&quot; |
 | PAGETYPE | &quot;PageType&quot; |
 | CATEGORY | &quot;Category&quot; |
+| GEOGRAPHY | &quot;Geography&quot; |
 
 
 

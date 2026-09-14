@@ -45,21 +45,13 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * Budget and pacing of the campaign, including the amounts spent and remaining.
+ * Indexed budget and pacing details returned for Sponsored Products campaigns.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BudgetDetailsModel {
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
   private Double budget;
-
-  public static final String SERIALIZED_NAME_BUDGET_REMAINING = "budgetRemaining";
-  @SerializedName(SERIALIZED_NAME_BUDGET_REMAINING)
-  private Double budgetRemaining;
-
-  public static final String SERIALIZED_NAME_BUDGET_SPENT = "budgetSpent";
-  @SerializedName(SERIALIZED_NAME_BUDGET_SPENT)
-  private Double budgetSpent;
 
   public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
   @SerializedName(SERIALIZED_NAME_DAILY_PACING)
@@ -95,50 +87,6 @@ public class BudgetDetailsModel {
 
   public void setBudget(Double budget) {
     this.budget = budget;
-  }
-
-
-  public BudgetDetailsModel budgetRemaining(Double budgetRemaining) {
-    
-    this.budgetRemaining = budgetRemaining;
-    return this;
-  }
-
-   /**
-   * Get budgetRemaining
-   * @return budgetRemaining
-  **/
-  @javax.annotation.Nullable
-
-  public Double getBudgetRemaining() {
-    return budgetRemaining;
-  }
-
-
-  public void setBudgetRemaining(Double budgetRemaining) {
-    this.budgetRemaining = budgetRemaining;
-  }
-
-
-  public BudgetDetailsModel budgetSpent(Double budgetSpent) {
-    
-    this.budgetSpent = budgetSpent;
-    return this;
-  }
-
-   /**
-   * Get budgetSpent
-   * @return budgetSpent
-  **/
-  @javax.annotation.Nullable
-
-  public Double getBudgetSpent() {
-    return budgetSpent;
-  }
-
-
-  public void setBudgetSpent(Double budgetSpent) {
-    this.budgetSpent = budgetSpent;
   }
 
 
@@ -219,8 +167,6 @@ public class BudgetDetailsModel {
     }
     BudgetDetailsModel budgetDetailsModel = (BudgetDetailsModel) o;
     return Objects.equals(this.budget, budgetDetailsModel.budget) &&
-        Objects.equals(this.budgetRemaining, budgetDetailsModel.budgetRemaining) &&
-        Objects.equals(this.budgetSpent, budgetDetailsModel.budgetSpent) &&
         Objects.equals(this.dailyPacing, budgetDetailsModel.dailyPacing) &&
         Objects.equals(this.isAutoDailyPacing, budgetDetailsModel.isAutoDailyPacing) &&
         Objects.equals(this.monthlyPacing, budgetDetailsModel.monthlyPacing);
@@ -232,7 +178,7 @@ public class BudgetDetailsModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(budget, budgetRemaining, budgetSpent, dailyPacing, isAutoDailyPacing, monthlyPacing);
+    return Objects.hash(budget, dailyPacing, isAutoDailyPacing, monthlyPacing);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -247,8 +193,6 @@ public class BudgetDetailsModel {
     StringBuilder sb = new StringBuilder();
     sb.append("class BudgetDetailsModel {\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
-    sb.append("    budgetRemaining: ").append(toIndentedString(budgetRemaining)).append("\n");
-    sb.append("    budgetSpent: ").append(toIndentedString(budgetSpent)).append("\n");
     sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
     sb.append("    isAutoDailyPacing: ").append(toIndentedString(isAutoDailyPacing)).append("\n");
     sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
@@ -275,8 +219,6 @@ public class BudgetDetailsModel {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("budget");
-    openapiFields.add("budgetRemaining");
-    openapiFields.add("budgetSpent");
     openapiFields.add("dailyPacing");
     openapiFields.add("isAutoDailyPacing");
     openapiFields.add("monthlyPacing");

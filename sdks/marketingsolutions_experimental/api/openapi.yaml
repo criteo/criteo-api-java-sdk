@@ -221,6 +221,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfAdWrite'
+        description: The ad information.
         required: true
         x-bodyName: request
       responses:
@@ -559,9 +560,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreativeRead'
-          description: The list of self-services Creatives is returned.This list will
-            contain creatives in draft status as well which will have some properties
-            as null
+          description: The list of self-services Creatives is returned.
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
@@ -586,6 +585,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
+        description: The creative information.
         required: true
         x-bodyName: request
       responses:
@@ -1234,6 +1234,86 @@ paths:
       tags:
       - Campaign
       x-content-type: application/json
+      x-accepts: application/json
+  /experimental/catalog/ingestion/{ingestion-id}/reports/summary:
+    get:
+      description: "Get the summary report of a catalog ingestion: what triggered\
+        \ it, how long it ran, how many offers it held, what it changed and how clean\
+        \ the data was."
+      operationId: GetCatalogIngestionReportSummary
+      parameters:
+      - description: Identifies the catalog ingestion to report on.
+        explode: false
+        in: path
+        name: ingestion-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogIngestionSummaryResponse'
+          description: The summary report of the ingestion.
+      security:
+      - oauth:
+        - MarketingSolutions_Catalog_Read
+      summary: "/experimental/catalog/ingestion/{ingestion-id}/reports/summary"
+      tags:
+      - Catalog
+      x-accepts: application/json
+  /experimental/catalog/merchants/{merchant-id}/ingestion/reports:
+    get:
+      description: "List the catalog ingestions of a merchant, most recent first,\
+        \ with their type, status and timing."
+      operationId: GetCatalogIngestionReports
+      parameters:
+      - description: Maximum number of ingestion reports returned in the page.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          format: int32
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: Identifies the merchant whose catalog ingestions are reported.
+        explode: false
+        in: path
+        name: merchant-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "Index of the first ingestion report of the page, used to page\
+          \ through the collection."
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogIngestionReportListResponse'
+          description: The page of catalog ingestion reports.
+      security:
+      - oauth:
+        - MarketingSolutions_Catalog_Read
+      summary: "/experimental/catalog/merchants/{merchant-id}/ingestion/reports"
+      tags:
+      - Catalog
       x-accepts: application/json
   /experimental/catalog/products/batch:
     post:
@@ -2086,7 +2166,7 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable:
+  /experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning/disable:
     post:
       description: Disable the Video Positioning Targeting configuration for the ad
         set whose id is specified
@@ -2110,7 +2190,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
-      summary: "/experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable"
+      summary: "/experimental/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning/disable"
       tags:
       - Campaign
       x-accepts: application/json
@@ -4781,6 +4861,7 @@ components:
     Ad:
       description: An ad is the binding that connects a creative with an ad set
       example:
+        adDeliveryStatus: Live
         inventoryType: Native
         endDate: endDate
         adSetId: adSetId
@@ -4791,6 +4872,15 @@ components:
         startDate: startDate
       nullable: true
       properties:
+        adDeliveryStatus:
+          description: "The delivery status of the ad. Possible values are \"Live\"\
+            \ and \"Paused\". This is read-only: use the\r\ndedicated pause and unpause\
+            \ operations to change it."
+          enum:
+          - Live
+          - Paused
+          nullable: true
+          type: string
         adSetId:
           description: The id of the Ad Set binded to this Ad
           nullable: true
@@ -4810,7 +4900,6 @@ components:
           nullable: true
           type: string
         id:
-          description: Unique identifier (duplicate of the parent id).
           nullable: true
           type: string
         inventoryType:
@@ -6548,7 +6637,7 @@ components:
           uniqueItems: false
       type: object
     AdWrite:
-      description: Entity to create or update an ad
+      description: Entity to create an ad
       example:
         inventoryType: Display
         endDate: endDate
@@ -10307,6 +10396,7 @@ components:
           spendLimitType: capped
           startDate: 2000-01-23
         goal: unspecified
+        sellerId: sellerId
         name: name
         budgetAutomation:
           automatedBudgetConfiguration:
@@ -10357,6 +10447,11 @@ components:
             $ref: '#/components/schemas/CampaignScheduledSpendLimitV23Q1'
           nullable: true
           type: array
+        sellerId:
+          description: Optional marketplace seller id of the campaign (string-encoded
+            long)
+          nullable: true
+          type: string
         spendLimit:
           $ref: '#/components/schemas/CampaignSpendLimitV23Q1'
       type: object
@@ -10379,6 +10474,7 @@ components:
               spendLimitType: capped
               startDate: 2000-01-23
             goal: unspecified
+            sellerId: sellerId
             name: name
             budgetAutomation:
               automatedBudgetConfiguration:
@@ -10408,6 +10504,7 @@ components:
               spendLimitType: capped
               startDate: 2000-01-23
             goal: unspecified
+            sellerId: sellerId
             name: name
             budgetAutomation:
               automatedBudgetConfiguration:
@@ -10501,6 +10598,7 @@ components:
             spendLimitType: capped
             startDate: 2000-01-23
           goal: unspecified
+          sellerId: sellerId
           name: name
           budgetAutomation:
             automatedBudgetConfiguration:
@@ -10548,6 +10646,7 @@ components:
               spendLimitType: capped
               startDate: 2000-01-23
             goal: unspecified
+            sellerId: sellerId
             name: name
             budgetAutomation:
               automatedBudgetConfiguration:
@@ -10619,6 +10718,803 @@ components:
           nullable: true
           readOnly: true
           type: array
+      type: object
+    CatalogIngestionReport:
+      description: "Identification, timing and status of a single catalog ingestion.\
+        \ The summary report of the same ingestion repeats these fields and adds its\
+        \ volume, delta and data quality."
+      example:
+        duration: duration
+        componentId: componentId
+        merchantId: merchantId
+        ingestionStatus: null
+        multiSourceReportingStatus: null
+        ingestionType: null
+        startTime: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        componentId:
+          nullable: true
+          type: string
+        duration:
+          nullable: true
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
+          type: string
+        ingestionStatus:
+          $ref: '#/components/schemas/IngestionStatus'
+        ingestionType:
+          $ref: '#/components/schemas/IngestionType'
+        merchantId:
+          nullable: true
+          type: string
+        multiSourceReportingStatus:
+          $ref: '#/components/schemas/MultiSourceReportingStatus'
+        startTime:
+          format: date-time
+          type: string
+      type: object
+    CatalogIngestionReportingDataQuality:
+      description: "Data quality outcome of the ingestion: quality score, per-error\
+        \ and per-warning product counts, and their totals."
+      example:
+        summary:
+          totalErrors: 1
+          totalWarnings: 6
+        warnings:
+          missingMpn: 5
+          missingGoogleProductCategory: 1
+          missingGtin: 4
+          missingBrand: 7
+        errors:
+          invalidGoogleProductCategory: 0
+          invalidGtin: 6
+          missingImageLink: 5
+          productsWithInvalidSellerId: 4
+          productsWithInvalidExternalId: 3
+          missingPrice: 2
+          missingLink: 5
+          productsWithInvalidItemGroupId: 2
+          missingDescription: 1
+          missingTitle: 7
+          productsWithInvalidCrossSellersProductId: 9
+          productsWithInvalidSellerName: 7
+        quality:
+          score: 1
+          qualityDecision: null
+          threshold: 1
+      nullable: true
+      properties:
+        errors:
+          $ref: '#/components/schemas/CatalogIngestionReportingErrors'
+        quality:
+          $ref: '#/components/schemas/CatalogIngestionReportingQuality'
+        summary:
+          $ref: '#/components/schemas/CatalogIngestionReportingDataQualitySummary'
+        warnings:
+          $ref: '#/components/schemas/CatalogIngestionReportingWarnings'
+      type: object
+    CatalogIngestionReportingDataQualitySummary:
+      description: Total number of data quality errors and warnings raised by the
+        ingestion.
+      example:
+        totalErrors: 1
+        totalWarnings: 6
+      nullable: true
+      properties:
+        totalErrors:
+          format: int64
+          type: integer
+        totalWarnings:
+          format: int64
+          type: integer
+      type: object
+    CatalogIngestionReportingDelta:
+      description: "Number of offers added, updated, deleted and left unchanged by\
+        \ the ingestion, compared to the previous one."
+      example:
+        addedOffers: 9
+        unchangedOffers: 6
+        updatedOffers: 8
+        deletedOffers: 9
+      nullable: true
+      properties:
+        addedOffers:
+          format: int64
+          type: integer
+        deletedOffers:
+          format: int64
+          type: integer
+        unchangedOffers:
+          format: int64
+          type: integer
+        updatedOffers:
+          format: int64
+          type: integer
+      type: object
+    CatalogIngestionReportingError:
+      description: Error that made the ingestion fail.
+      example:
+        code: code
+        message: message
+      nullable: true
+      properties:
+        code:
+          nullable: true
+          type: string
+        message:
+          nullable: true
+          type: string
+      type: object
+    CatalogIngestionReportingErrors:
+      description: "Number of products rejected by the ingestion, broken down by the\
+        \ error that rejected them."
+      example:
+        invalidGoogleProductCategory: 0
+        invalidGtin: 6
+        missingImageLink: 5
+        productsWithInvalidSellerId: 4
+        productsWithInvalidExternalId: 3
+        missingPrice: 2
+        missingLink: 5
+        productsWithInvalidItemGroupId: 2
+        missingDescription: 1
+        missingTitle: 7
+        productsWithInvalidCrossSellersProductId: 9
+        productsWithInvalidSellerName: 7
+      nullable: true
+      properties:
+        invalidGoogleProductCategory:
+          format: int64
+          nullable: true
+          type: integer
+        invalidGtin:
+          format: int64
+          nullable: true
+          type: integer
+        missingDescription:
+          format: int64
+          nullable: true
+          type: integer
+        missingImageLink:
+          format: int64
+          nullable: true
+          type: integer
+        missingLink:
+          format: int64
+          nullable: true
+          type: integer
+        missingPrice:
+          format: int64
+          nullable: true
+          type: integer
+        missingTitle:
+          format: int64
+          nullable: true
+          type: integer
+        productsWithInvalidCrossSellersProductId:
+          format: int64
+          nullable: true
+          type: integer
+        productsWithInvalidExternalId:
+          description: "Offers missing ID, overlarge ID, or invalid format."
+          format: int64
+          nullable: true
+          type: integer
+        productsWithInvalidItemGroupId:
+          format: int64
+          nullable: true
+          type: integer
+        productsWithInvalidSellerId:
+          format: int64
+          nullable: true
+          type: integer
+        productsWithInvalidSellerName:
+          format: int64
+          nullable: true
+          type: integer
+      type: object
+    CatalogIngestionReportingQuality:
+      description: "Quality score of the ingested catalog, the threshold it was compared\
+        \ to, and the resulting decision."
+      example:
+        score: 1
+        qualityDecision: null
+        threshold: 1
+      nullable: true
+      properties:
+        qualityDecision:
+          $ref: '#/components/schemas/QualityDecision'
+        score:
+          description: Feed quality score (0–100).
+          format: int32
+          type: integer
+        threshold:
+          description: Minimum acceptable quality threshold.
+          format: int32
+          type: integer
+      type: object
+    CatalogIngestionReportingTrigger:
+      description: What started the ingestion.
+      example:
+        type: null
+        initiatedBy: initiatedBy
+      nullable: true
+      properties:
+        initiatedBy:
+          nullable: true
+          type: string
+        type:
+          $ref: '#/components/schemas/TriggerType'
+      type: object
+    CatalogIngestionReportingVolume:
+      description: "Number of offers held by the ingested catalog, broken down by\
+        \ offer kind."
+      example:
+        totalOffers: 0
+        totalSingleOffers: 8
+        totalParentOffers: 4
+        multisourceProducts: 6
+        totalVariantOffers: 7
+      nullable: true
+      properties:
+        multisourceProducts:
+          format: int64
+          type: integer
+        totalOffers:
+          format: int64
+          type: integer
+        totalParentOffers:
+          format: int64
+          type: integer
+        totalSingleOffers:
+          format: int64
+          type: integer
+        totalVariantOffers:
+          format: int64
+          type: integer
+      type: object
+    CatalogIngestionReportingWarnings:
+      description: "Number of products missing an optional attribute, broken down\
+        \ by attribute."
+      example:
+        missingMpn: 5
+        missingGoogleProductCategory: 1
+        missingGtin: 4
+        missingBrand: 7
+      nullable: true
+      properties:
+        missingBrand:
+          format: int64
+          nullable: true
+          type: integer
+        missingGoogleProductCategory:
+          format: int64
+          nullable: true
+          type: integer
+        missingGtin:
+          format: int64
+          nullable: true
+          type: integer
+        missingMpn:
+          format: int64
+          nullable: true
+          type: integer
+      type: object
+    CatalogIngestionReportListResponse:
+      description: Paginated response holding the catalog ingestion reports of a merchant.
+      example:
+        data:
+        - attributes:
+            duration: duration
+            componentId: componentId
+            merchantId: merchantId
+            ingestionStatus: null
+            multiSourceReportingStatus: null
+            ingestionType: null
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            duration: duration
+            componentId: componentId
+            merchantId: merchantId
+            ingestionStatus: null
+            multiSourceReportingStatus: null
+            ingestionType: null
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        meta:
+          offset: 6
+          limit: 0
+          totalCount: 1
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      nullable: true
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CatalogIngestionReportResource'
+          nullable: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        meta:
+          $ref: '#/components/schemas/PaginationMetadata'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      required:
+      - data
+      type: object
+    CatalogIngestionReportResource:
+      description: Resource holding the basic information of a catalog ingestion.
+      example:
+        attributes:
+          duration: duration
+          componentId: componentId
+          merchantId: merchantId
+          ingestionStatus: null
+          multiSourceReportingStatus: null
+          ingestionType: null
+          startTime: 2000-01-23T04:56:07.000+00:00
+          endTime: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CatalogIngestionReport'
+        id:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+      type: object
+    CatalogIngestionSummary:
+      description: "Summary report of a catalog ingestion: identification, timing,\
+        \ status, volume, delta and data quality."
+      example:
+        componentId: componentId
+        ingestionStatus: null
+        delta:
+          addedOffers: 9
+          unchangedOffers: 6
+          updatedOffers: 8
+          deletedOffers: 9
+        trigger:
+          type: null
+          initiatedBy: initiatedBy
+        error:
+          code: code
+          message: message
+        merchantName: merchantName
+        multiSource:
+          configuration:
+            mainComponentId: 5
+            attributeMappings:
+            - sourceField: sourceField
+              attributeName: attributeName
+              sourceComponentId: 6
+              sourcePriority: 6
+            - sourceField: sourceField
+              attributeName: attributeName
+              sourceComponentId: 6
+              sourcePriority: 6
+            matchingKeys:
+            - matchingKeys
+            - matchingKeys
+            sourcesCount: 6
+            enabled: true
+          impact:
+            productsMatched: 7
+            productsEvaluated: 3
+            productsEnriched: 3
+            productsModified: 0
+            productsUnmatched: 7
+          attributeDetails:
+            key:
+              coverage:
+                filledFromSource: 9
+                overridden: 6
+              sourceField: sourceField
+              resolution:
+                valueOrigin:
+                  additionalSource: 6
+                  primaryComponent: 1
+                overrideRate: 3.5571952270680973
+              sourcePriority: 2
+        duration: duration
+        volume:
+          totalOffers: 0
+          totalSingleOffers: 8
+          totalParentOffers: 4
+          multisourceProducts: 6
+          totalVariantOffers: 7
+        dataQuality:
+          summary:
+            totalErrors: 1
+            totalWarnings: 6
+          warnings:
+            missingMpn: 5
+            missingGoogleProductCategory: 1
+            missingGtin: 4
+            missingBrand: 7
+          errors:
+            invalidGoogleProductCategory: 0
+            invalidGtin: 6
+            missingImageLink: 5
+            productsWithInvalidSellerId: 4
+            productsWithInvalidExternalId: 3
+            missingPrice: 2
+            missingLink: 5
+            productsWithInvalidItemGroupId: 2
+            missingDescription: 1
+            missingTitle: 7
+            productsWithInvalidCrossSellersProductId: 9
+            productsWithInvalidSellerName: 7
+          quality:
+            score: 1
+            qualityDecision: null
+            threshold: 1
+        merchantId: merchantId
+        multiSourceReportingStatus: null
+        ingestionType: null
+        startTime: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        componentId:
+          nullable: true
+          type: string
+        dataQuality:
+          $ref: '#/components/schemas/CatalogIngestionReportingDataQuality'
+        delta:
+          $ref: '#/components/schemas/CatalogIngestionReportingDelta'
+        duration:
+          description: Total ingestion processing time as an ISO 8601 duration.
+          nullable: true
+          type: string
+        endTime:
+          format: date-time
+          nullable: true
+          type: string
+        error:
+          $ref: '#/components/schemas/CatalogIngestionReportingError'
+        ingestionStatus:
+          $ref: '#/components/schemas/IngestionStatus'
+        ingestionType:
+          $ref: '#/components/schemas/IngestionType'
+        merchantId:
+          nullable: true
+          type: string
+        merchantName:
+          nullable: true
+          type: string
+        multiSource:
+          $ref: '#/components/schemas/MultiSourceReporting'
+        multiSourceReportingStatus:
+          $ref: '#/components/schemas/MultiSourceReportingStatus'
+        startTime:
+          format: date-time
+          type: string
+        trigger:
+          $ref: '#/components/schemas/CatalogIngestionReportingTrigger'
+        volume:
+          $ref: '#/components/schemas/CatalogIngestionReportingVolume'
+      type: object
+    CatalogIngestionSummaryResource:
+      description: Resource holding the summary report of a catalog ingestion.
+      example:
+        attributes:
+          componentId: componentId
+          ingestionStatus: null
+          delta:
+            addedOffers: 9
+            unchangedOffers: 6
+            updatedOffers: 8
+            deletedOffers: 9
+          trigger:
+            type: null
+            initiatedBy: initiatedBy
+          error:
+            code: code
+            message: message
+          merchantName: merchantName
+          multiSource:
+            configuration:
+              mainComponentId: 5
+              attributeMappings:
+              - sourceField: sourceField
+                attributeName: attributeName
+                sourceComponentId: 6
+                sourcePriority: 6
+              - sourceField: sourceField
+                attributeName: attributeName
+                sourceComponentId: 6
+                sourcePriority: 6
+              matchingKeys:
+              - matchingKeys
+              - matchingKeys
+              sourcesCount: 6
+              enabled: true
+            impact:
+              productsMatched: 7
+              productsEvaluated: 3
+              productsEnriched: 3
+              productsModified: 0
+              productsUnmatched: 7
+            attributeDetails:
+              key:
+                coverage:
+                  filledFromSource: 9
+                  overridden: 6
+                sourceField: sourceField
+                resolution:
+                  valueOrigin:
+                    additionalSource: 6
+                    primaryComponent: 1
+                  overrideRate: 3.5571952270680973
+                sourcePriority: 2
+          duration: duration
+          volume:
+            totalOffers: 0
+            totalSingleOffers: 8
+            totalParentOffers: 4
+            multisourceProducts: 6
+            totalVariantOffers: 7
+          dataQuality:
+            summary:
+              totalErrors: 1
+              totalWarnings: 6
+            warnings:
+              missingMpn: 5
+              missingGoogleProductCategory: 1
+              missingGtin: 4
+              missingBrand: 7
+            errors:
+              invalidGoogleProductCategory: 0
+              invalidGtin: 6
+              missingImageLink: 5
+              productsWithInvalidSellerId: 4
+              productsWithInvalidExternalId: 3
+              missingPrice: 2
+              missingLink: 5
+              productsWithInvalidItemGroupId: 2
+              missingDescription: 1
+              missingTitle: 7
+              productsWithInvalidCrossSellersProductId: 9
+              productsWithInvalidSellerName: 7
+            quality:
+              score: 1
+              qualityDecision: null
+              threshold: 1
+          merchantId: merchantId
+          multiSourceReportingStatus: null
+          ingestionType: null
+          startTime: 2000-01-23T04:56:07.000+00:00
+          endTime: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CatalogIngestionSummary'
+        id:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+      type: object
+    CatalogIngestionSummaryResponse:
+      description: Response holding the summary report of a single catalog ingestion.
+      example:
+        data:
+          attributes:
+            componentId: componentId
+            ingestionStatus: null
+            delta:
+              addedOffers: 9
+              unchangedOffers: 6
+              updatedOffers: 8
+              deletedOffers: 9
+            trigger:
+              type: null
+              initiatedBy: initiatedBy
+            error:
+              code: code
+              message: message
+            merchantName: merchantName
+            multiSource:
+              configuration:
+                mainComponentId: 5
+                attributeMappings:
+                - sourceField: sourceField
+                  attributeName: attributeName
+                  sourceComponentId: 6
+                  sourcePriority: 6
+                - sourceField: sourceField
+                  attributeName: attributeName
+                  sourceComponentId: 6
+                  sourcePriority: 6
+                matchingKeys:
+                - matchingKeys
+                - matchingKeys
+                sourcesCount: 6
+                enabled: true
+              impact:
+                productsMatched: 7
+                productsEvaluated: 3
+                productsEnriched: 3
+                productsModified: 0
+                productsUnmatched: 7
+              attributeDetails:
+                key:
+                  coverage:
+                    filledFromSource: 9
+                    overridden: 6
+                  sourceField: sourceField
+                  resolution:
+                    valueOrigin:
+                      additionalSource: 6
+                      primaryComponent: 1
+                    overrideRate: 3.5571952270680973
+                  sourcePriority: 2
+            duration: duration
+            volume:
+              totalOffers: 0
+              totalSingleOffers: 8
+              totalParentOffers: 4
+              multisourceProducts: 6
+              totalVariantOffers: 7
+            dataQuality:
+              summary:
+                totalErrors: 1
+                totalWarnings: 6
+              warnings:
+                missingMpn: 5
+                missingGoogleProductCategory: 1
+                missingGtin: 4
+                missingBrand: 7
+              errors:
+                invalidGoogleProductCategory: 0
+                invalidGtin: 6
+                missingImageLink: 5
+                productsWithInvalidSellerId: 4
+                productsWithInvalidExternalId: 3
+                missingPrice: 2
+                missingLink: 5
+                productsWithInvalidItemGroupId: 2
+                missingDescription: 1
+                missingTitle: 7
+                productsWithInvalidCrossSellersProductId: 9
+                productsWithInvalidSellerName: 7
+              quality:
+                score: 1
+                qualityDecision: null
+                threshold: 1
+            merchantId: merchantId
+            multiSourceReportingStatus: null
+            ingestionType: null
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      nullable: true
+      properties:
+        data:
+          $ref: '#/components/schemas/CatalogIngestionSummaryResource'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      required:
+      - data
       type: object
     CommonProblem:
       description: Common problem object.
@@ -10982,7 +11878,6 @@ components:
           nullable: true
           type: string
         id:
-          description: Unique identifier (duplicate of the parent id).
           nullable: true
           type: string
         images:
@@ -11419,6 +12314,7 @@ components:
       description: Campaign create model.
       example:
         goal: Unspecified
+        sellerId: sellerId
         name: name
         budgetAutomation:
           budgetConfiguration:
@@ -11454,6 +12350,11 @@ components:
           description: Name of the campaign
           nullable: true
           type: string
+        sellerId:
+          description: Optional marketplace seller id attached to this campaign (string-encoded
+            long)
+          nullable: true
+          type: string
         spendLimit:
           $ref: '#/components/schemas/CreateCampaignSpendLimit'
       required:
@@ -11468,6 +12369,7 @@ components:
         data:
           attributes:
             goal: Unspecified
+            sellerId: sellerId
             name: name
             budgetAutomation:
               budgetConfiguration:
@@ -11488,6 +12390,7 @@ components:
       example:
         attributes:
           goal: Unspecified
+          sellerId: sellerId
           name: name
           budgetAutomation:
             budgetConfiguration:
@@ -11800,7 +12703,6 @@ components:
         htmlTagAttributes:
           $ref: '#/components/schemas/HtmlTagAttributes'
         id:
-          description: Unique identifier (duplicate of the parent id).
           nullable: true
           type: string
         imageAttributes:
@@ -12630,7 +13532,7 @@ components:
       type: object
     ExamAdAudienceSegmentLinkInput:
       description: A top-level object that encapsulates a Criteo API request for a
-        single value object.
+        single value.
       example:
         data:
           attributes:
@@ -15170,6 +16072,36 @@ components:
       - base64Strings
       - landingPageUrl
       type: object
+    IngestionStatus:
+      description: Status of the ingestion.
+      enum:
+      - inProgress
+      - finished
+      - failed
+      - blocked
+      type: string
+      x-enumNames:
+      - InProgress
+      - Finished
+      - Failed
+      - Blocked
+      x-enum-varnames:
+      - InProgress
+      - Finished
+      - Failed
+      - Blocked
+    IngestionType:
+      description: Pipeline that ran the ingestion.
+      enum:
+      - catalogImport
+      - productImporter
+      type: string
+      x-enumNames:
+      - CatalogImport
+      - ProductImporter
+      x-enum-varnames:
+      - CatalogImport
+      - ProductImporter
     InMarketAudienceSegmentBrandEntityV1:
       description: In-market segment brand entity
       example:
@@ -16269,6 +17201,282 @@ components:
       - errors
       - warnings
       type: object
+    MultiSourceAttributeCoverage:
+      description: "Number of products whose attribute was filled from the source,\
+        \ and number of products whose attribute was overridden."
+      example:
+        filledFromSource: 9
+        overridden: 6
+      nullable: true
+      properties:
+        filledFromSource:
+          description: "Products that kept this attribute from the primary catalog:\
+            \ the number of products in the ingestion, less the products where the\
+            \ attribute was overridden. The same value as valueOrigin.primaryComponent.\
+            \ Products whose attribute is absent from every source are counted here\
+            \ too."
+          format: int64
+          type: integer
+        overridden:
+          description: Products where an existing value was replaced.
+          format: int64
+          type: integer
+      type: object
+    MultiSourceAttributeDetails:
+      description: "Multi-Source enrichment details of a single attribute: source\
+        \ field, source priority, coverage and resolution."
+      example:
+        coverage:
+          filledFromSource: 9
+          overridden: 6
+        sourceField: sourceField
+        resolution:
+          valueOrigin:
+            additionalSource: 6
+            primaryComponent: 1
+          overrideRate: 3.5571952270680973
+        sourcePriority: 2
+      nullable: true
+      properties:
+        coverage:
+          $ref: '#/components/schemas/MultiSourceAttributeCoverage'
+        resolution:
+          $ref: '#/components/schemas/MultiSourceAttributeResolution'
+        sourceField:
+          description: Source field used for this attribute.
+          nullable: true
+          type: string
+        sourcePriority:
+          description: "Priority of the additional source that wins for this attribute,\
+            \ which is the lowest priority configured for it. Zero when no additional\
+            \ source overrides the attribute, and also when the winning source is\
+            \ itself configured with priority zero; the two cases cannot be told apart."
+          format: int32
+          type: integer
+      type: object
+    MultiSourceAttributeMapping:
+      description: Mapping of one catalog attribute to the source component field
+        it is filled from.
+      example:
+        sourceField: sourceField
+        attributeName: attributeName
+        sourceComponentId: 6
+        sourcePriority: 6
+      nullable: true
+      properties:
+        attributeName:
+          description: Target attribute in the catalog schema.
+          nullable: true
+          type: string
+        sourceComponentId:
+          description: "Identifies the additional source component this attribute\
+            \ is overridden from. Several mappings share it when one component overrides\
+            \ more than one attribute, which is why sourcesCount counts only the distinct\
+            \ ones."
+          format: int32
+          type: integer
+        sourceField:
+          description: Field name from the additional source mapped to this attribute.
+          nullable: true
+          type: string
+        sourcePriority:
+          description: "Priority of this source for this attribute: lower wins (1\
+            \ overrides 2)."
+          format: int32
+          type: integer
+      type: object
+    MultiSourceAttributeResolution:
+      description: How the value of the attribute was resolved between the primary
+        component and the additional sources.
+      example:
+        valueOrigin:
+          additionalSource: 6
+          primaryComponent: 1
+        overrideRate: 3.5571952270680973
+      nullable: true
+      properties:
+        overrideRate:
+          description: "Percentage of products where the primary value was overridden\
+            \ for this attribute, out of the number of products in the ingestion,\
+            \ rounded to the nearest whole percent."
+          format: double
+          type: number
+        valueOrigin:
+          $ref: '#/components/schemas/MultiSourceValueOrigin'
+      type: object
+    MultiSourceConfiguration:
+      description: "Multi-Source Catalog configuration applied to the ingestion: main\
+        \ component, number of sources, matching keys and attribute mappings."
+      example:
+        mainComponentId: 5
+        attributeMappings:
+        - sourceField: sourceField
+          attributeName: attributeName
+          sourceComponentId: 6
+          sourcePriority: 6
+        - sourceField: sourceField
+          attributeName: attributeName
+          sourceComponentId: 6
+          sourcePriority: 6
+        matchingKeys:
+        - matchingKeys
+        - matchingKeys
+        sourcesCount: 6
+        enabled: true
+      nullable: true
+      properties:
+        attributeMappings:
+          description: Attribute-level mapping rules applied during enrichment.
+          items:
+            $ref: '#/components/schemas/MultiSourceAttributeMapping'
+          nullable: true
+          type: array
+        enabled:
+          description: Whether Multi-Source Catalog was enabled for this ingestion.
+          type: boolean
+        mainComponentId:
+          description: Identifier of the primary catalog component.
+          format: int32
+          type: integer
+        matchingKeys:
+          description: Keys used to match products between the primary catalog and
+            the additional sources.
+          items:
+            nullable: true
+            type: string
+          nullable: true
+          type: array
+        sourcesCount:
+          description: "Number of additional sources configured, excluding the primary\
+            \ catalog."
+          format: int32
+          type: integer
+      type: object
+    MultiSourceImpact:
+      description: "Number of products evaluated, matched, enriched, modified and\
+        \ left unmatched by the Multi-Source enrichment."
+      example:
+        productsMatched: 7
+        productsEvaluated: 3
+        productsEnriched: 3
+        productsModified: 0
+        productsUnmatched: 7
+      nullable: true
+      properties:
+        productsEnriched:
+          description: "Products where at least one missing attribute was filled.\
+            \ Not exclusive with productsModified: a product can be both enriched\
+            \ and modified."
+          format: int64
+          type: integer
+        productsEvaluated:
+          description: Total products considered for Multi-Source enrichment.
+          format: int64
+          type: integer
+        productsMatched:
+          description: Products matched with at least one additional source using
+            the matching keys.
+          format: int64
+          type: integer
+        productsModified:
+          description: Products where an existing value was overridden.
+          format: int64
+          type: integer
+        productsUnmatched:
+          description: Products not matched with any additional source.
+          format: int64
+          type: integer
+      type: object
+    MultiSourceReporting:
+      description: "The Multi-Source Catalog enrichment of one ingestion, as reported\
+        \ under multiSource in the ingestion summary: the configuration that was applied,\
+        \ its impact on the products, and the per-attribute details."
+      example:
+        configuration:
+          mainComponentId: 5
+          attributeMappings:
+          - sourceField: sourceField
+            attributeName: attributeName
+            sourceComponentId: 6
+            sourcePriority: 6
+          - sourceField: sourceField
+            attributeName: attributeName
+            sourceComponentId: 6
+            sourcePriority: 6
+          matchingKeys:
+          - matchingKeys
+          - matchingKeys
+          sourcesCount: 6
+          enabled: true
+        impact:
+          productsMatched: 7
+          productsEvaluated: 3
+          productsEnriched: 3
+          productsModified: 0
+          productsUnmatched: 7
+        attributeDetails:
+          key:
+            coverage:
+              filledFromSource: 9
+              overridden: 6
+            sourceField: sourceField
+            resolution:
+              valueOrigin:
+                additionalSource: 6
+                primaryComponent: 1
+              overrideRate: 3.5571952270680973
+            sourcePriority: 2
+      nullable: true
+      properties:
+        attributeDetails:
+          additionalProperties:
+            $ref: '#/components/schemas/MultiSourceAttributeDetails'
+          description: "Attribute-level reporting keyed by catalog attribute name\
+            \ (e.g. brand, color, gtin)."
+          nullable: true
+          type: object
+        configuration:
+          $ref: '#/components/schemas/MultiSourceConfiguration'
+        impact:
+          $ref: '#/components/schemas/MultiSourceImpact'
+      type: object
+    MultiSourceReportingStatus:
+      description: Status of the Multi-Source Catalog enrichment for the ingestion.
+      enum:
+      - notEnabled
+      - inProgress
+      - success
+      - failed
+      type: string
+      x-enumNames:
+      - NotEnabled
+      - InProgress
+      - Success
+      - Failed
+      x-enum-varnames:
+      - NotEnabled
+      - InProgress
+      - Success
+      - Failed
+    MultiSourceValueOrigin:
+      description: "Number of products whose attribute value came from the primary\
+        \ component, and number whose value came from an additional source."
+      example:
+        additionalSource: 6
+        primaryComponent: 1
+      nullable: true
+      properties:
+        additionalSource:
+          description: Products where the final value came from an additional source.
+          format: int64
+          type: integer
+        primaryComponent:
+          description: "Products where the final value came from the main component:\
+            \ the number of products in the ingestion, less the products where this\
+            \ attribute came from an additional source."
+          format: int64
+          type: integer
+      type: object
     NillableAdSetTargetingRuleV26Q1:
       description: "structure that encapsulates an object that have valid business\
         \ null values. If the structure is provided (i.e. not null), then the value\
@@ -16577,6 +17785,24 @@ components:
           readOnly: true
           type: array
           uniqueItems: false
+      type: object
+    PaginationMetadata:
+      description: Pagination applied to the returned collection.
+      example:
+        offset: 6
+        limit: 0
+        totalCount: 1
+      nullable: true
+      properties:
+        limit:
+          format: int32
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        totalCount:
+          format: int32
+          type: integer
       type: object
     PatchAdSetAttributionConfigurationV26Q1:
       description: Patch model for an ad set's attribution configuration.
@@ -19773,6 +20999,21 @@ components:
           nullable: true
           type: string
       type: object
+    QualityDecision:
+      description: Decision taken from the quality score of the ingested catalog.
+      enum:
+      - accepted
+      - blocked
+      - overridden
+      type: string
+      x-enumNames:
+      - Accepted
+      - Blocked
+      - Overridden
+      x-enum-varnames:
+      - Accepted
+      - Blocked
+      - Overridden
     ReadAdSetAttributionConfigurationV26Q1:
       description: "Read model for an ad set's attribution configuration.\r\n    \
         \        \r\nThe lookback window is only set for ad sets with an attribution\
@@ -21154,6 +22395,7 @@ components:
       example:
         data:
         - attributes:
+            adDeliveryStatus: Live
             inventoryType: Native
             endDate: endDate
             adSetId: adSetId
@@ -21165,6 +22407,7 @@ components:
           id: id
           type: type
         - attributes:
+            adDeliveryStatus: Live
             inventoryType: Native
             endDate: endDate
             adSetId: adSetId
@@ -21853,6 +23096,7 @@ components:
       description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
+          adDeliveryStatus: Live
           inventoryType: Native
           endDate: endDate
           adSetId: adSetId
@@ -22344,6 +23588,7 @@ components:
       example:
         data:
           attributes:
+            adDeliveryStatus: Live
             inventoryType: Native
             endDate: endDate
             adSetId: adSetId
@@ -24617,6 +25862,18 @@ components:
           nullable: true
           type: string
       type: object
+    TriggerType:
+      description: How the ingestion was started.
+      enum:
+      - manual
+      - scheduled
+      type: string
+      x-enumNames:
+      - Manual
+      - Scheduled
+      x-enum-varnames:
+      - Manual
+      - Scheduled
     UpdateCoupon:
       description: Entity to edit a Coupon
       example:
@@ -24942,7 +26199,8 @@ components:
           type: string
       type: object
     ValueResourceOfExamAdAudienceSegmentLinkWrite:
-      description: A value resource exposed by the API.
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
       example:
         attributes:
           audienceSegmentId: audienceSegmentId
@@ -24951,7 +26209,6 @@ components:
         attributes:
           $ref: '#/components/schemas/ExamAdAudienceSegmentLinkWrite'
         type:
-          description: Type of the resource.
           nullable: true
           type: string
       type: object

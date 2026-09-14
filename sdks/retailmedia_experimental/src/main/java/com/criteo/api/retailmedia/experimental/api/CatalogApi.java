@@ -28,8 +28,8 @@ import java.io.IOException;
 
 
 import com.criteo.api.retailmedia.experimental.model.BatchAcceptedResponse;
-import com.criteo.api.retailmedia.experimental.model.BatchStoreInventoryDeleteRequest;
-import com.criteo.api.retailmedia.experimental.model.BatchStoreInventoryRequest;
+import com.criteo.api.retailmedia.experimental.model.CatalogIngestionReportListResponse;
+import com.criteo.api.retailmedia.experimental.model.CatalogIngestionSummaryResponse;
 import com.criteo.api.retailmedia.experimental.model.Outcome;
 import com.criteo.api.retailmedia.experimental.model.ProductsCustomBatchRequest;
 import com.criteo.api.retailmedia.experimental.model.ReportOkResponse;
@@ -81,19 +81,18 @@ public class CatalogApi {
     }
 
     /**
-     * Build call for deleteStoreInventoryPerMerchantId
-     * @param merchantId Identifies the merchant, can also be called partnerId (required)
-     * @param batchStoreInventoryDeleteRequest  (required)
+     * Build call for getCatalogIngestionReportSummary
+     * @param ingestionId Identifies the catalog ingestion to report on. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Batch accepted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The summary report of the ingestion. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteStoreInventoryPerMerchantIdCall(String merchantId, BatchStoreInventoryDeleteRequest batchStoreInventoryDeleteRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCatalogIngestionReportSummaryCall(String ingestionId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -107,11 +106,11 @@ public class CatalogApi {
             basePath = null;
         }
 
-        Object localVarPostBody = batchStoreInventoryDeleteRequest;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete"
-            .replace("{" + "merchantId" + "}", localVarApiClient.escapeString(merchantId.toString()));
+        String localVarPath = "/experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary"
+            .replace("{" + "ingestion-id" + "}", localVarApiClient.escapeString(ingestionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -128,7 +127,6 @@ public class CatalogApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -136,77 +134,212 @@ public class CatalogApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteStoreInventoryPerMerchantIdValidateBeforeCall(String merchantId, BatchStoreInventoryDeleteRequest batchStoreInventoryDeleteRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'merchantId' is set
-        if (merchantId == null) {
-            throw new ApiException("Missing the required parameter 'merchantId' when calling deleteStoreInventoryPerMerchantId(Async)");
+    private okhttp3.Call getCatalogIngestionReportSummaryValidateBeforeCall(String ingestionId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'ingestionId' is set
+        if (ingestionId == null) {
+            throw new ApiException("Missing the required parameter 'ingestionId' when calling getCatalogIngestionReportSummary(Async)");
         }
 
-        // verify the required parameter 'batchStoreInventoryDeleteRequest' is set
-        if (batchStoreInventoryDeleteRequest == null) {
-            throw new ApiException("Missing the required parameter 'batchStoreInventoryDeleteRequest' when calling deleteStoreInventoryPerMerchantId(Async)");
-        }
-
-        return deleteStoreInventoryPerMerchantIdCall(merchantId, batchStoreInventoryDeleteRequest, _callback);
+        return getCatalogIngestionReportSummaryCall(ingestionId, _callback);
 
     }
 
     /**
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
-     * Used to publish a batch of store inventories to delete. The batch is processed asynchronously.
-     * @param merchantId Identifies the merchant, can also be called partnerId (required)
-     * @param batchStoreInventoryDeleteRequest  (required)
+     * /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary
+     * Get the summary report of a catalog ingestion: what triggered it, how long it ran, how many offers it held, what it changed and how clean the data was.
+     * @param ingestionId Identifies the catalog ingestion to report on. (required)
+     * @return CatalogIngestionSummaryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Batch accepted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The summary report of the ingestion. </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteStoreInventoryPerMerchantId(String merchantId, BatchStoreInventoryDeleteRequest batchStoreInventoryDeleteRequest) throws ApiException {
-        deleteStoreInventoryPerMerchantIdWithHttpInfo(merchantId, batchStoreInventoryDeleteRequest);
+    public CatalogIngestionSummaryResponse getCatalogIngestionReportSummary(String ingestionId) throws ApiException {
+        ApiResponse<CatalogIngestionSummaryResponse> localVarResp = getCatalogIngestionReportSummaryWithHttpInfo(ingestionId);
+        return localVarResp.getData();
     }
 
     /**
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
-     * Used to publish a batch of store inventories to delete. The batch is processed asynchronously.
-     * @param merchantId Identifies the merchant, can also be called partnerId (required)
-     * @param batchStoreInventoryDeleteRequest  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary
+     * Get the summary report of a catalog ingestion: what triggered it, how long it ran, how many offers it held, what it changed and how clean the data was.
+     * @param ingestionId Identifies the catalog ingestion to report on. (required)
+     * @return ApiResponse&lt;CatalogIngestionSummaryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Batch accepted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The summary report of the ingestion. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteStoreInventoryPerMerchantIdWithHttpInfo(String merchantId, BatchStoreInventoryDeleteRequest batchStoreInventoryDeleteRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteStoreInventoryPerMerchantIdValidateBeforeCall(merchantId, batchStoreInventoryDeleteRequest, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CatalogIngestionSummaryResponse> getCatalogIngestionReportSummaryWithHttpInfo(String ingestionId) throws ApiException {
+        okhttp3.Call localVarCall = getCatalogIngestionReportSummaryValidateBeforeCall(ingestionId, null);
+        Type localVarReturnType = new TypeToken<CatalogIngestionSummaryResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete (asynchronously)
-     * Used to publish a batch of store inventories to delete. The batch is processed asynchronously.
-     * @param merchantId Identifies the merchant, can also be called partnerId (required)
-     * @param batchStoreInventoryDeleteRequest  (required)
+     * /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary (asynchronously)
+     * Get the summary report of a catalog ingestion: what triggered it, how long it ran, how many offers it held, what it changed and how clean the data was.
+     * @param ingestionId Identifies the catalog ingestion to report on. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Batch accepted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The summary report of the ingestion. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteStoreInventoryPerMerchantIdAsync(String merchantId, BatchStoreInventoryDeleteRequest batchStoreInventoryDeleteRequest, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCatalogIngestionReportSummaryAsync(String ingestionId, final ApiCallback<CatalogIngestionSummaryResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteStoreInventoryPerMerchantIdValidateBeforeCall(merchantId, batchStoreInventoryDeleteRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = getCatalogIngestionReportSummaryValidateBeforeCall(ingestionId, _callback);
+        Type localVarReturnType = new TypeToken<CatalogIngestionSummaryResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCatalogIngestionReports
+     * @param merchantId Identifies the merchant whose catalog ingestions are reported. (required)
+     * @param limit Maximum number of ingestion reports returned in the page. (optional, default to 25)
+     * @param offset Index of the first ingestion report of the page, used to page through the collection. (optional, default to 0)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The page of catalog ingestion reports. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCatalogIngestionReportsCall(String merchantId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports"
+            .replace("{" + "merchant-id" + "}", localVarApiClient.escapeString(merchantId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCatalogIngestionReportsValidateBeforeCall(String merchantId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'merchantId' is set
+        if (merchantId == null) {
+            throw new ApiException("Missing the required parameter 'merchantId' when calling getCatalogIngestionReports(Async)");
+        }
+
+        return getCatalogIngestionReportsCall(merchantId, limit, offset, _callback);
+
+    }
+
+    /**
+     * /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports
+     * List the catalog ingestions of a merchant, most recent first, with their type, status and timing.
+     * @param merchantId Identifies the merchant whose catalog ingestions are reported. (required)
+     * @param limit Maximum number of ingestion reports returned in the page. (optional, default to 25)
+     * @param offset Index of the first ingestion report of the page, used to page through the collection. (optional, default to 0)
+     * @return CatalogIngestionReportListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The page of catalog ingestion reports. </td><td>  -  </td></tr>
+     </table>
+     */
+    public CatalogIngestionReportListResponse getCatalogIngestionReports(String merchantId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<CatalogIngestionReportListResponse> localVarResp = getCatalogIngestionReportsWithHttpInfo(merchantId, limit, offset);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports
+     * List the catalog ingestions of a merchant, most recent first, with their type, status and timing.
+     * @param merchantId Identifies the merchant whose catalog ingestions are reported. (required)
+     * @param limit Maximum number of ingestion reports returned in the page. (optional, default to 25)
+     * @param offset Index of the first ingestion report of the page, used to page through the collection. (optional, default to 0)
+     * @return ApiResponse&lt;CatalogIngestionReportListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The page of catalog ingestion reports. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CatalogIngestionReportListResponse> getCatalogIngestionReportsWithHttpInfo(String merchantId, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = getCatalogIngestionReportsValidateBeforeCall(merchantId, limit, offset, null);
+        Type localVarReturnType = new TypeToken<CatalogIngestionReportListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports (asynchronously)
+     * List the catalog ingestions of a merchant, most recent first, with their type, status and timing.
+     * @param merchantId Identifies the merchant whose catalog ingestions are reported. (required)
+     * @param limit Maximum number of ingestion reports returned in the page. (optional, default to 25)
+     * @param offset Index of the first ingestion report of the page, used to page through the collection. (optional, default to 0)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The page of catalog ingestion reports. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCatalogIngestionReportsAsync(String merchantId, Integer limit, Integer offset, final ApiCallback<CatalogIngestionReportListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCatalogIngestionReportsValidateBeforeCall(merchantId, limit, offset, _callback);
+        Type localVarReturnType = new TypeToken<CatalogIngestionReportListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -719,135 +852,6 @@ public class CatalogApi {
         okhttp3.Call localVarCall = submitCatalogProductsBatchValidateBeforeCall(productsCustomBatchRequest, _callback);
         Type localVarReturnType = new TypeToken<BatchAcceptedResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for upsertStoreInventoryPerMerchantId
-     * @param merchantId Identifies the merchant, can also be called partnerId (required)
-     * @param batchStoreInventoryRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Batch accepted. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertStoreInventoryPerMerchantIdCall(String merchantId, BatchStoreInventoryRequest batchStoreInventoryRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = batchStoreInventoryRequest;
-
-        // create path and map variables
-        String localVarPath = "/experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert"
-            .replace("{" + "merchantId" + "}", localVarApiClient.escapeString(merchantId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertStoreInventoryPerMerchantIdValidateBeforeCall(String merchantId, BatchStoreInventoryRequest batchStoreInventoryRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'merchantId' is set
-        if (merchantId == null) {
-            throw new ApiException("Missing the required parameter 'merchantId' when calling upsertStoreInventoryPerMerchantId(Async)");
-        }
-
-        // verify the required parameter 'batchStoreInventoryRequest' is set
-        if (batchStoreInventoryRequest == null) {
-            throw new ApiException("Missing the required parameter 'batchStoreInventoryRequest' when calling upsertStoreInventoryPerMerchantId(Async)");
-        }
-
-        return upsertStoreInventoryPerMerchantIdCall(merchantId, batchStoreInventoryRequest, _callback);
-
-    }
-
-    /**
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
-     * Used to publish a batch of store inventories to upsert. The batch is processed asynchronously.
-     * @param merchantId Identifies the merchant, can also be called partnerId (required)
-     * @param batchStoreInventoryRequest  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Batch accepted. </td><td>  -  </td></tr>
-     </table>
-     */
-    public void upsertStoreInventoryPerMerchantId(String merchantId, BatchStoreInventoryRequest batchStoreInventoryRequest) throws ApiException {
-        upsertStoreInventoryPerMerchantIdWithHttpInfo(merchantId, batchStoreInventoryRequest);
-    }
-
-    /**
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
-     * Used to publish a batch of store inventories to upsert. The batch is processed asynchronously.
-     * @param merchantId Identifies the merchant, can also be called partnerId (required)
-     * @param batchStoreInventoryRequest  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Batch accepted. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> upsertStoreInventoryPerMerchantIdWithHttpInfo(String merchantId, BatchStoreInventoryRequest batchStoreInventoryRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertStoreInventoryPerMerchantIdValidateBeforeCall(merchantId, batchStoreInventoryRequest, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert (asynchronously)
-     * Used to publish a batch of store inventories to upsert. The batch is processed asynchronously.
-     * @param merchantId Identifies the merchant, can also be called partnerId (required)
-     * @param batchStoreInventoryRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Batch accepted. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call upsertStoreInventoryPerMerchantIdAsync(String merchantId, BatchStoreInventoryRequest batchStoreInventoryRequest, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = upsertStoreInventoryPerMerchantIdValidateBeforeCall(merchantId, batchStoreInventoryRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

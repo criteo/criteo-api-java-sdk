@@ -9,6 +9,7 @@ Onsite display settings to create a line item with.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**auctionDetails** | [**ExperimentalCreateOnsiteDisplayAuctionLineItemDetails**](ExperimentalCreateOnsiteDisplayAuctionLineItemDetails.md) |  |  [optional] |
+|**frequencyCapping** | [**ExperimentalFrequencyCappingModel**](ExperimentalFrequencyCappingModel.md) |  |  [optional] |
 
 
 

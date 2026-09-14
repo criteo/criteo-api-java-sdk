@@ -200,7 +200,7 @@ public class CampaignResponseModel {
   private String name;
 
   /**
-   * Dynamic Campaign Budgets control: manual keeps today&#39;s behavior; clicks, conversion and  revenue activate campaign-level budget allocation.
+   * Dynamic Campaign Budgets control: manual keeps today&#39;s behavior; clicks, conversion and  revenue activate campaign-level budget allocation. Impressions is the Onsite Display  objective.
    */
   @JsonAdapter(ObjectiveEnum.Adapter.class)
   public enum ObjectiveEnum {
@@ -211,6 +211,8 @@ public class CampaignResponseModel {
     CONVERSION("Conversion"),
     
     REVENUE("Revenue"),
+    
+    IMPRESSIONS("Impressions"),
     
     UNKNOWN("Unknown");
 
@@ -578,7 +580,7 @@ public class CampaignResponseModel {
   }
 
    /**
-   * Dynamic Campaign Budgets control: manual keeps today&#39;s behavior; clicks, conversion and  revenue activate campaign-level budget allocation.
+   * Dynamic Campaign Budgets control: manual keeps today&#39;s behavior; clicks, conversion and  revenue activate campaign-level budget allocation. Impressions is the Onsite Display  objective.
    * @return objective
   **/
   @javax.annotation.Nullable

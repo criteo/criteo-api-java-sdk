@@ -10,6 +10,7 @@ Target to configure on a line item.
 |------------ | ------------- | ------------- | -------------|
 |**bidMultiplier** | **Double** |  |  [optional] |
 |**categoryTargetDetails** | [**CategoryTargetDetails**](CategoryTargetDetails.md) |  |  [optional] |
+|**geographyTargetDetails** | [**GeographyTargetDetails**](GeographyTargetDetails.md) |  |  [optional] |
 |**manualKeywordTargetDetails** | [**ManualKeywordTargetDetails**](ManualKeywordTargetDetails.md) |  |  [optional] |
 |**negative** | **Boolean** |  |  |
 |**pageTypeTargetDetails** | [**PageTypeTargetDetails**](PageTypeTargetDetails.md) |  |  [optional] |
@@ -25,6 +26,7 @@ Target to configure on a line item.
 | MANUALKEYWORD | &quot;ManualKeyword&quot; |
 | PAGETYPE | &quot;PageType&quot; |
 | CATEGORY | &quot;Category&quot; |
+| GEOGRAPHY | &quot;Geography&quot; |
 
 
 

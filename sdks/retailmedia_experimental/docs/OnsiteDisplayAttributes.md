@@ -9,6 +9,7 @@ Extended attributes for a Onsite Display Line Item
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**auction** | [**OnsiteDisplayAuctionAttributes**](OnsiteDisplayAuctionAttributes.md) |  |  [optional] |
+|**frequencyCapping** | [**FrequencyCappingModel**](FrequencyCappingModel.md) |  |  [optional] |
 
 
 

@@ -16,6 +16,7 @@ package com.criteo.api.retailmedia.experimental.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.experimental.model.CategoryTargetDetails;
+import com.criteo.api.retailmedia.experimental.model.GeographyTargetDetails;
 import com.criteo.api.retailmedia.experimental.model.ManualKeywordTargetDetails;
 import com.criteo.api.retailmedia.experimental.model.PageTypeTargetDetails;
 import com.google.gson.TypeAdapter;
@@ -121,6 +122,10 @@ public class Target {
   @SerializedName(SERIALIZED_NAME_CATEGORY_TARGET_DETAILS)
   private CategoryTargetDetails categoryTargetDetails;
 
+  public static final String SERIALIZED_NAME_GEOGRAPHY_TARGET_DETAILS = "geographyTargetDetails";
+  @SerializedName(SERIALIZED_NAME_GEOGRAPHY_TARGET_DETAILS)
+  private GeographyTargetDetails geographyTargetDetails;
+
   public static final String SERIALIZED_NAME_MANUAL_KEYWORD_TARGET_DETAILS = "manualKeywordTargetDetails";
   @SerializedName(SERIALIZED_NAME_MANUAL_KEYWORD_TARGET_DETAILS)
   private ManualKeywordTargetDetails manualKeywordTargetDetails;
@@ -144,7 +149,9 @@ public class Target {
     
     PAGETYPE("PageType"),
     
-    CATEGORY("Category");
+    CATEGORY("Category"),
+    
+    GEOGRAPHY("Geography");
 
     private String value;
 
@@ -257,6 +264,28 @@ public class Target {
   }
 
 
+  public Target geographyTargetDetails(GeographyTargetDetails geographyTargetDetails) {
+    
+    this.geographyTargetDetails = geographyTargetDetails;
+    return this;
+  }
+
+   /**
+   * Get geographyTargetDetails
+   * @return geographyTargetDetails
+  **/
+  @javax.annotation.Nullable
+
+  public GeographyTargetDetails getGeographyTargetDetails() {
+    return geographyTargetDetails;
+  }
+
+
+  public void setGeographyTargetDetails(GeographyTargetDetails geographyTargetDetails) {
+    this.geographyTargetDetails = geographyTargetDetails;
+  }
+
+
   public Target manualKeywordTargetDetails(ManualKeywordTargetDetails manualKeywordTargetDetails) {
     
     this.manualKeywordTargetDetails = manualKeywordTargetDetails;
@@ -358,6 +387,7 @@ public class Target {
     return Objects.equals(this.approvalStatus, target.approvalStatus) &&
         Objects.equals(this.bidMultiplier, target.bidMultiplier) &&
         Objects.equals(this.categoryTargetDetails, target.categoryTargetDetails) &&
+        Objects.equals(this.geographyTargetDetails, target.geographyTargetDetails) &&
         Objects.equals(this.manualKeywordTargetDetails, target.manualKeywordTargetDetails) &&
         Objects.equals(this.negative, target.negative) &&
         Objects.equals(this.pageTypeTargetDetails, target.pageTypeTargetDetails) &&
@@ -370,7 +400,7 @@ public class Target {
 
   @Override
   public int hashCode() {
-    return Objects.hash(approvalStatus, bidMultiplier, categoryTargetDetails, manualKeywordTargetDetails, negative, pageTypeTargetDetails, targetType);
+    return Objects.hash(approvalStatus, bidMultiplier, categoryTargetDetails, geographyTargetDetails, manualKeywordTargetDetails, negative, pageTypeTargetDetails, targetType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -387,6 +417,7 @@ public class Target {
     sb.append("    approvalStatus: ").append(toIndentedString(approvalStatus)).append("\n");
     sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
     sb.append("    categoryTargetDetails: ").append(toIndentedString(categoryTargetDetails)).append("\n");
+    sb.append("    geographyTargetDetails: ").append(toIndentedString(geographyTargetDetails)).append("\n");
     sb.append("    manualKeywordTargetDetails: ").append(toIndentedString(manualKeywordTargetDetails)).append("\n");
     sb.append("    negative: ").append(toIndentedString(negative)).append("\n");
     sb.append("    pageTypeTargetDetails: ").append(toIndentedString(pageTypeTargetDetails)).append("\n");
@@ -416,6 +447,7 @@ public class Target {
     openapiFields.add("approvalStatus");
     openapiFields.add("bidMultiplier");
     openapiFields.add("categoryTargetDetails");
+    openapiFields.add("geographyTargetDetails");
     openapiFields.add("manualKeywordTargetDetails");
     openapiFields.add("negative");
     openapiFields.add("pageTypeTargetDetails");
@@ -451,6 +483,10 @@ public class Target {
       // validate the optional field `categoryTargetDetails`
       if (jsonObj.get("categoryTargetDetails") != null && !jsonObj.get("categoryTargetDetails").isJsonNull()) {
         CategoryTargetDetails.validateJsonObject(jsonObj.getAsJsonObject("categoryTargetDetails"));
+      }
+      // validate the optional field `geographyTargetDetails`
+      if (jsonObj.get("geographyTargetDetails") != null && !jsonObj.get("geographyTargetDetails").isJsonNull()) {
+        GeographyTargetDetails.validateJsonObject(jsonObj.getAsJsonObject("geographyTargetDetails"));
       }
       // validate the optional field `manualKeywordTargetDetails`
       if (jsonObj.get("manualKeywordTargetDetails") != null && !jsonObj.get("manualKeywordTargetDetails").isJsonNull()) {

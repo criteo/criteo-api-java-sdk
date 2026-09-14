@@ -23,6 +23,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -114,6 +115,10 @@ public class CreateCampaign {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
+  @SerializedName(SERIALIZED_NAME_SELLER_ID)
+  private String sellerId;
 
   public static final String SERIALIZED_NAME_SPEND_LIMIT = "spendLimit";
   @SerializedName(SERIALIZED_NAME_SPEND_LIMIT)
@@ -210,6 +215,28 @@ public class CreateCampaign {
   }
 
 
+  public CreateCampaign sellerId(String sellerId) {
+    
+    this.sellerId = sellerId;
+    return this;
+  }
+
+   /**
+   * Optional marketplace seller id attached to this campaign (string-encoded long)
+   * @return sellerId
+  **/
+  @javax.annotation.Nullable
+
+  public String getSellerId() {
+    return sellerId;
+  }
+
+
+  public void setSellerId(String sellerId) {
+    this.sellerId = sellerId;
+  }
+
+
   public CreateCampaign spendLimit(CreateCampaignSpendLimit spendLimit) {
     
     this.spendLimit = spendLimit;
@@ -290,13 +317,25 @@ public class CreateCampaign {
         Objects.equals(this.budgetAutomation, createCampaign.budgetAutomation) &&
         Objects.equals(this.goal, createCampaign.goal) &&
         Objects.equals(this.name, createCampaign.name) &&
+        Objects.equals(this.sellerId, createCampaign.sellerId) &&
         Objects.equals(this.spendLimit, createCampaign.spendLimit)&&
         Objects.equals(this.additionalProperties, createCampaign.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserId, budgetAutomation, goal, name, spendLimit, additionalProperties);
+    return Objects.hash(advertiserId, budgetAutomation, goal, name, sellerId, spendLimit, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -307,6 +346,7 @@ public class CreateCampaign {
     sb.append("    budgetAutomation: ").append(toIndentedString(budgetAutomation)).append("\n");
     sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -335,6 +375,7 @@ public class CreateCampaign {
     openapiFields.add("budgetAutomation");
     openapiFields.add("goal");
     openapiFields.add("name");
+    openapiFields.add("sellerId");
     openapiFields.add("spendLimit");
 
     // a set of required properties/fields (JSON key names)
@@ -376,6 +417,9 @@ public class CreateCampaign {
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull()) && !jsonObj.get("sellerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sellerId").toString()));
       }
       // validate the required field `spendLimit`
       CreateCampaignSpendLimit.validateJsonObject(jsonObj.getAsJsonObject("spendLimit"));

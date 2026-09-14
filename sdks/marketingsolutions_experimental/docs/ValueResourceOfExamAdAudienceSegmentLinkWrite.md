@@ -2,14 +2,14 @@
 
 # ValueResourceOfExamAdAudienceSegmentLinkWrite
 
-A value resource exposed by the API.
+A top-level object that encapsulates a Criteo API response for a single value.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**attributes** | [**ExamAdAudienceSegmentLinkWrite**](ExamAdAudienceSegmentLinkWrite.md) |  |  [optional] |
-|**type** | **String** | Type of the resource. |  [optional] |
+|**type** | **String** |  |  [optional] |
 
 
 

@@ -2,15 +2,13 @@
 
 # BudgetDetailsModel
 
-Budget and pacing of the campaign, including the amounts spent and remaining.
+Indexed budget and pacing details returned for Sponsored Products campaigns.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**budget** | **Double** |  |  [optional] |
-|**budgetRemaining** | **Double** |  |  [optional] |
-|**budgetSpent** | **Double** |  |  [optional] |
 |**dailyPacing** | **Double** |  |  [optional] |
 |**isAutoDailyPacing** | **Boolean** |  |  [optional] |
 |**monthlyPacing** | **Double** |  |  [optional] |

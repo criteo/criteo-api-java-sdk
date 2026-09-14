@@ -67,7 +67,7 @@ public class ScheduleDetailsCreateModel {
   }
 
    /**
-   * Campaign end date.
+   * Campaign end date. Pass exactly {9999-12-30T00:00:00Z} for a SponsoredProducts campaign that  runs indefinitely; any other value, including a neighbouring far-future date, is a real end date.
    * @return endDate
   **/
   @javax.annotation.Nonnull

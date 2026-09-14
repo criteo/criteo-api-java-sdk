@@ -75,7 +75,7 @@ public class Example {
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
-        ResourceInputOfAdWrite resourceInputOfAdWrite = new ResourceInputOfAdWrite(); // ResourceInputOfAdWrite | 
+        ResourceInputOfAdWrite resourceInputOfAdWrite = new ResourceInputOfAdWrite(); // ResourceInputOfAdWrite | The ad information.
         try {
             ResourceOutcomeOfAd result = apiInstance.createAdvertiserAd(advertiserId, resourceInputOfAdWrite);
             System.out.println(result);
@@ -96,7 +96,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **advertiserId** | **String**| The advertiser identifier. | |
-| **resourceInputOfAdWrite** | [**ResourceInputOfAdWrite**](ResourceInputOfAdWrite.md)|  | |
+| **resourceInputOfAdWrite** | [**ResourceInputOfAdWrite**](ResourceInputOfAdWrite.md)| The ad information. | |
 
 ### Return type
 
@@ -257,7 +257,7 @@ public class Example {
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
-        ResourceInputOfCreativeWrite resourceInputOfCreativeWrite = new ResourceInputOfCreativeWrite(); // ResourceInputOfCreativeWrite | 
+        ResourceInputOfCreativeWrite resourceInputOfCreativeWrite = new ResourceInputOfCreativeWrite(); // ResourceInputOfCreativeWrite | The creative information.
         try {
             ResourceOutcomeOfCreative result = apiInstance.createAdvertiserCreative(advertiserId, resourceInputOfCreativeWrite);
             System.out.println(result);
@@ -278,7 +278,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **advertiserId** | **String**| The advertiser identifier. | |
-| **resourceInputOfCreativeWrite** | [**ResourceInputOfCreativeWrite**](ResourceInputOfCreativeWrite.md)|  | |
+| **resourceInputOfCreativeWrite** | [**ResourceInputOfCreativeWrite**](ResourceInputOfCreativeWrite.md)| The creative information. | |
 
 ### Return type
 
@@ -1662,7 +1662,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null |  -  |
+| **200** | The list of self-services Creatives is returned. |  -  |
 
 
 ## getCreative
