@@ -254,7 +254,7 @@ public class Coupon {
   }
 
    /**
-   * Unique identifier (duplicate of the parent id).
+   * Get id
    * @return id
   **/
   @javax.annotation.Nullable

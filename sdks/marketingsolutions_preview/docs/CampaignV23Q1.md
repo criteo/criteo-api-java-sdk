@@ -14,6 +14,7 @@ Campaign read model                The {id} field is the campaign identifier (st
 |**id** | **String** | Id of the entity (duplicate of the parent id). |  [optional] |
 |**name** | **String** | Name of the campaign |  [optional] |
 |**scheduledSpendLimits** | [**List&lt;CampaignScheduledSpendLimitV23Q1&gt;**](CampaignScheduledSpendLimitV23Q1.md) | Spend limits scheduled to become active in the future. Empty when the campaign has no scheduled spend limits. |  [optional] |
+|**sellerId** | **String** | Optional marketplace seller id of the campaign (string-encoded long) |  [optional] |
 |**spendLimit** | [**CampaignSpendLimitV23Q1**](CampaignSpendLimitV23Q1.md) |  |  [optional] |
 
 

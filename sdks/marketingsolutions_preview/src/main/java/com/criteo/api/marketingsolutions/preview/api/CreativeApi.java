@@ -88,7 +88,7 @@ public class CreativeApi {
     /**
      * Build call for createAdvertiserAd
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfAdWrite  (required)
+     * @param resourceInputOfAdWrite The ad information. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -164,7 +164,7 @@ public class CreativeApi {
      * /preview/advertisers/{advertiser-id}/ads
      * Create an Ad
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfAdWrite  (required)
+     * @param resourceInputOfAdWrite The ad information. (required)
      * @return ResourceOutcomeOfAd
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -182,7 +182,7 @@ public class CreativeApi {
      * /preview/advertisers/{advertiser-id}/ads
      * Create an Ad
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfAdWrite  (required)
+     * @param resourceInputOfAdWrite The ad information. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfAd&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -201,7 +201,7 @@ public class CreativeApi {
      * /preview/advertisers/{advertiser-id}/ads (asynchronously)
      * Create an Ad
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfAdWrite  (required)
+     * @param resourceInputOfAdWrite The ad information. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -354,7 +354,7 @@ public class CreativeApi {
     /**
      * Build call for createAdvertiserCreative
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfCreativeWrite  (required)
+     * @param resourceInputOfCreativeWrite The creative information. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -430,7 +430,7 @@ public class CreativeApi {
      * /preview/advertisers/{advertiser-id}/creatives
      * Create a Creative
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfCreativeWrite  (required)
+     * @param resourceInputOfCreativeWrite The creative information. (required)
      * @return ResourceOutcomeOfCreative
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -448,7 +448,7 @@ public class CreativeApi {
      * /preview/advertisers/{advertiser-id}/creatives
      * Create a Creative
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfCreativeWrite  (required)
+     * @param resourceInputOfCreativeWrite The creative information. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfCreative&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -467,7 +467,7 @@ public class CreativeApi {
      * /preview/advertisers/{advertiser-id}/creatives (asynchronously)
      * Create a Creative
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfCreativeWrite  (required)
+     * @param resourceInputOfCreativeWrite The creative information. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2331,7 +2331,7 @@ public class CreativeApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCreativesCall(String advertiserId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
@@ -2409,7 +2409,7 @@ public class CreativeApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
      </table>
      */
     public ResourceCollectionOutcomeOfCreativeRead getAdvertiserCreatives(String advertiserId, Integer limit, Integer offset) throws ApiException {
@@ -2428,7 +2428,7 @@ public class CreativeApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResourceCollectionOutcomeOfCreativeRead> getAdvertiserCreativesWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
@@ -2449,7 +2449,7 @@ public class CreativeApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The list of self-services Creatives is returned.This list will contain creatives in draft status as well which will have some properties as null </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The list of self-services Creatives is returned. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdvertiserCreativesAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<ResourceCollectionOutcomeOfCreativeRead> _callback) throws ApiException {

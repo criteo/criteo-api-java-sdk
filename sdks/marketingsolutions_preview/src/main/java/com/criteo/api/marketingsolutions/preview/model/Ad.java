@@ -49,6 +49,57 @@ import com.criteo.api.marketingsolutions.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Ad {
+  /**
+   * The delivery status of the ad. Possible values are \&quot;Live\&quot; and \&quot;Paused\&quot;. This is read-only: use the  dedicated pause and unpause operations to change it.
+   */
+  @JsonAdapter(AdDeliveryStatusEnum.Adapter.class)
+  public enum AdDeliveryStatusEnum {
+    LIVE("Live"),
+    
+    PAUSED("Paused");
+
+    private String value;
+
+    AdDeliveryStatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AdDeliveryStatusEnum fromValue(String value) {
+      for (AdDeliveryStatusEnum b : AdDeliveryStatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<AdDeliveryStatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AdDeliveryStatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AdDeliveryStatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AdDeliveryStatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_AD_DELIVERY_STATUS = "adDeliveryStatus";
+  @SerializedName(SERIALIZED_NAME_AD_DELIVERY_STATUS)
+  private AdDeliveryStatusEnum adDeliveryStatus;
+
   public static final String SERIALIZED_NAME_AD_SET_ID = "adSetId";
   @SerializedName(SERIALIZED_NAME_AD_SET_ID)
   private String adSetId;
@@ -132,6 +183,28 @@ public class Ad {
 
   public Ad() {
   }
+
+  public Ad adDeliveryStatus(AdDeliveryStatusEnum adDeliveryStatus) {
+    
+    this.adDeliveryStatus = adDeliveryStatus;
+    return this;
+  }
+
+   /**
+   * The delivery status of the ad. Possible values are \&quot;Live\&quot; and \&quot;Paused\&quot;. This is read-only: use the  dedicated pause and unpause operations to change it.
+   * @return adDeliveryStatus
+  **/
+  @javax.annotation.Nullable
+
+  public AdDeliveryStatusEnum getAdDeliveryStatus() {
+    return adDeliveryStatus;
+  }
+
+
+  public void setAdDeliveryStatus(AdDeliveryStatusEnum adDeliveryStatus) {
+    this.adDeliveryStatus = adDeliveryStatus;
+  }
+
 
   public Ad adSetId(String adSetId) {
     
@@ -228,7 +301,7 @@ public class Ad {
   }
 
    /**
-   * Unique identifier (duplicate of the parent id).
+   * Get id
    * @return id
   **/
   @javax.annotation.Nullable
@@ -363,7 +436,8 @@ public class Ad {
       return false;
     }
     Ad ad = (Ad) o;
-    return Objects.equals(this.adSetId, ad.adSetId) &&
+    return Objects.equals(this.adDeliveryStatus, ad.adDeliveryStatus) &&
+        Objects.equals(this.adSetId, ad.adSetId) &&
         Objects.equals(this.creativeId, ad.creativeId) &&
         Objects.equals(this.description, ad.description) &&
         Objects.equals(this.endDate, ad.endDate) &&
@@ -380,7 +454,7 @@ public class Ad {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adSetId, creativeId, description, endDate, id, inventoryType, name, startDate, additionalProperties);
+    return Objects.hash(adDeliveryStatus, adSetId, creativeId, description, endDate, id, inventoryType, name, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -394,6 +468,7 @@ public class Ad {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Ad {\n");
+    sb.append("    adDeliveryStatus: ").append(toIndentedString(adDeliveryStatus)).append("\n");
     sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
     sb.append("    creativeId: ").append(toIndentedString(creativeId)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -425,6 +500,7 @@ public class Ad {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("adDeliveryStatus");
     openapiFields.add("adSetId");
     openapiFields.add("creativeId");
     openapiFields.add("description");
@@ -449,6 +525,9 @@ public class Ad {
         if (!Ad.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Ad is not found in the empty JSON string", Ad.openapiRequiredFields.toString()));
         }
+      }
+      if ((jsonObj.get("adDeliveryStatus") != null && !jsonObj.get("adDeliveryStatus").isJsonNull()) && !jsonObj.get("adDeliveryStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adDeliveryStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adDeliveryStatus").toString()));
       }
       if ((jsonObj.get("adSetId") != null && !jsonObj.get("adSetId").isJsonNull()) && !jsonObj.get("adSetId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `adSetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adSetId").toString()));

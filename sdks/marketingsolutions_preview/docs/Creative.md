@@ -16,7 +16,7 @@ A creative is a project with the necessary information to display a creative
 |**dynamicAttributes** | [**DynamicAttributes**](DynamicAttributes.md) |  |  [optional] |
 |**format** | **String** | The format of the creative |  [optional] |
 |**htmlTagAttributes** | [**HtmlTagAttributes**](HtmlTagAttributes.md) |  |  [optional] |
-|**id** | **String** | Unique identifier (duplicate of the parent id). |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**imageAttributes** | [**ImageAttributes**](ImageAttributes.md) |  |  [optional] |
 |**name** | **String** | The name of the creative |  |
 |**status** | **String** | The status of the creative |  |

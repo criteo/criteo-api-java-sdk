@@ -127,6 +127,10 @@ public class CampaignV23Q1 {
   @SerializedName(SERIALIZED_NAME_SCHEDULED_SPEND_LIMITS)
   private List<CampaignScheduledSpendLimitV23Q1> scheduledSpendLimits = null;
 
+  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
+  @SerializedName(SERIALIZED_NAME_SELLER_ID)
+  private String sellerId;
+
   public static final String SERIALIZED_NAME_SPEND_LIMIT = "spendLimit";
   @SerializedName(SERIALIZED_NAME_SPEND_LIMIT)
   private CampaignSpendLimitV23Q1 spendLimit;
@@ -274,6 +278,28 @@ public class CampaignV23Q1 {
   }
 
 
+  public CampaignV23Q1 sellerId(String sellerId) {
+    
+    this.sellerId = sellerId;
+    return this;
+  }
+
+   /**
+   * Optional marketplace seller id of the campaign (string-encoded long)
+   * @return sellerId
+  **/
+  @javax.annotation.Nullable
+
+  public String getSellerId() {
+    return sellerId;
+  }
+
+
+  public void setSellerId(String sellerId) {
+    this.sellerId = sellerId;
+  }
+
+
   public CampaignV23Q1 spendLimit(CampaignSpendLimitV23Q1 spendLimit) {
     
     this.spendLimit = spendLimit;
@@ -356,6 +382,7 @@ public class CampaignV23Q1 {
         Objects.equals(this.id, campaignV23Q1.id) &&
         Objects.equals(this.name, campaignV23Q1.name) &&
         Objects.equals(this.scheduledSpendLimits, campaignV23Q1.scheduledSpendLimits) &&
+        Objects.equals(this.sellerId, campaignV23Q1.sellerId) &&
         Objects.equals(this.spendLimit, campaignV23Q1.spendLimit)&&
         Objects.equals(this.additionalProperties, campaignV23Q1.additionalProperties);
   }
@@ -366,7 +393,7 @@ public class CampaignV23Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserId, budgetAutomation, goal, id, name, scheduledSpendLimits, spendLimit, additionalProperties);
+    return Objects.hash(advertiserId, budgetAutomation, goal, id, name, scheduledSpendLimits, sellerId, spendLimit, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -386,6 +413,7 @@ public class CampaignV23Q1 {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    scheduledSpendLimits: ").append(toIndentedString(scheduledSpendLimits)).append("\n");
+    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -416,6 +444,7 @@ public class CampaignV23Q1 {
     openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("scheduledSpendLimits");
+    openapiFields.add("sellerId");
     openapiFields.add("spendLimit");
 
     // a set of required properties/fields (JSON key names)
@@ -463,6 +492,9 @@ public class CampaignV23Q1 {
             CampaignScheduledSpendLimitV23Q1.validateJsonObject(jsonArrayscheduledSpendLimits.get(i).getAsJsonObject());
           };
         }
+      }
+      if ((jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull()) && !jsonObj.get("sellerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sellerId").toString()));
       }
       // validate the optional field `spendLimit`
       if (jsonObj.get("spendLimit") != null && !jsonObj.get("spendLimit").isJsonNull()) {

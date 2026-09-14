@@ -1142,7 +1142,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/sync/attributed-transactions
-     * Returns a synchronous Attributed Transactions Report
+     * Returns a synchronous Attributed Transactions Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncAttributedTransactionsReportRequest  (required)
      * @return ReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1159,7 +1159,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/sync/attributed-transactions
-     * Returns a synchronous Attributed Transactions Report
+     * Returns a synchronous Attributed Transactions Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncAttributedTransactionsReportRequest  (required)
      * @return ApiResponse&lt;ReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1177,7 +1177,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/sync/attributed-transactions (asynchronously)
-     * Returns a synchronous Attributed Transactions Report
+     * Returns a synchronous Attributed Transactions Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncAttributedTransactionsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1265,7 +1265,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/sync/campaigns
-     * Returns a synchronous Campaigns Report
+     * Returns a synchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncCampaignsReportRequest  (required)
      * @return ReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1282,7 +1282,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/sync/campaigns
-     * Returns a synchronous Campaigns Report
+     * Returns a synchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncCampaignsReportRequest  (required)
      * @return ApiResponse&lt;ReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1300,7 +1300,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/sync/campaigns (asynchronously)
-     * Returns a synchronous Campaigns Report
+     * Returns a synchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncCampaignsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1388,7 +1388,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/sync/line-items
-     * Returns a synchronous Line Items Report
+     * Returns a synchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncLineItemsReportRequest  (required)
      * @return ReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1405,7 +1405,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/sync/line-items
-     * Returns a synchronous Line Items Report
+     * Returns a synchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncLineItemsReportRequest  (required)
      * @return ApiResponse&lt;ReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1423,7 +1423,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/sync/line-items (asynchronously)
-     * Returns a synchronous Line Items Report
+     * Returns a synchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
      * @param syncLineItemsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

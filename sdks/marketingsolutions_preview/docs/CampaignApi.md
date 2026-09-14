@@ -11,7 +11,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**deleteCampaignBundleRules**](CampaignApi.md#deleteCampaignBundleRules) | **DELETE** /preview/campaigns/{campaignId}/targeting/bundle-rules | /preview/campaigns/{campaignId}/targeting/bundle-rules |
 | [**deleteCampaignDomainRules**](CampaignApi.md#deleteCampaignDomainRules) | **DELETE** /preview/campaigns/{campaignId}/targeting/domain-rules | /preview/campaigns/{campaignId}/targeting/domain-rules |
 | [**disableAdSetTargetingDealIds**](CampaignApi.md#disableAdSetTargetingDealIds) | **POST** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids/disable | /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids/disable |
-| [**disableAdSetTargetingVideoPositioning**](CampaignApi.md#disableAdSetTargetingVideoPositioning) | **POST** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable | /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable |
+| [**disableAdSetTargetingVideoPositioning**](CampaignApi.md#disableAdSetTargetingVideoPositioning) | **POST** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning/disable | /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning/disable |
 | [**getAdSet**](CampaignApi.md#getAdSet) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id} | /preview/marketing-solutions/ad-sets/{ad-set-id} |
 | [**getAdSetCategoryBids**](CampaignApi.md#getAdSetCategoryBids) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids | /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids |
 | [**getAdSetTargetingDealIds**](CampaignApi.md#getAdSetTargetingDealIds) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids | /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids |
@@ -680,7 +680,7 @@ public class Example {
 
 > AdSetTargetingVideoPositioningDisableResultResponse disableAdSetTargetingVideoPositioning(adSetId)
 
-/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable
+/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning/disable
 
 Disable the Video Positioning Targeting configuration for the ad set whose id is specified
 

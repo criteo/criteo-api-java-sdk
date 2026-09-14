@@ -741,7 +741,7 @@ public class Example {
 
 /preview/retail-media/reports/sync/attributed-transactions
 
-Returns a synchronous Attributed Transactions Report
+Returns a synchronous Attributed Transactions Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -830,7 +830,7 @@ public class Example {
 
 /preview/retail-media/reports/sync/campaigns
 
-Returns a synchronous Campaigns Report
+Returns a synchronous Campaigns Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -919,7 +919,7 @@ public class Example {
 
 /preview/retail-media/reports/sync/line-items
 
-Returns a synchronous Line Items Report
+Returns a synchronous Line Items Report  &lt;br /&gt;  This endpoint is subject to specific rate limits.
 
 ### Example
 

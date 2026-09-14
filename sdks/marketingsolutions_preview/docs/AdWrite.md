@@ -2,7 +2,7 @@
 
 # AdWrite
 
-Entity to create or update an ad
+Entity to create an ad
 
 ## Properties
 

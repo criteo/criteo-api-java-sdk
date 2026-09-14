@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * A value resource exposed by the API.
+ * A top-level object that encapsulates a Criteo API response for a single value.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ValueResourceOfExamAdAudienceSegmentLinkWrite {
@@ -90,7 +90,7 @@ public class ValueResourceOfExamAdAudienceSegmentLinkWrite {
   }
 
    /**
-   * Type of the resource.
+   * Get type
    * @return type
   **/
   @javax.annotation.Nullable

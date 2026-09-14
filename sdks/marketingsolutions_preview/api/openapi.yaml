@@ -221,6 +221,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfAdWrite'
+        description: The ad information.
         required: true
         x-bodyName: request
       responses:
@@ -559,9 +560,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreativeRead'
-          description: The list of self-services Creatives is returned.This list will
-            contain creatives in draft status as well which will have some properties
-            as null
+          description: The list of self-services Creatives is returned.
       security:
       - oauth:
         - MarketingSolutions_Creative_Read
@@ -586,6 +585,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
+        description: The creative information.
         required: true
         x-bodyName: request
       responses:
@@ -2086,7 +2086,7 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable:
+  /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning/disable:
     post:
       description: Disable the Video Positioning Targeting configuration for the ad
         set whose id is specified
@@ -2110,7 +2110,7 @@ paths:
       security:
       - oauth:
         - MarketingSolutions_Campaign_Manage
-      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable"
+      summary: "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning/disable"
       tags:
       - Campaign
       x-accepts: application/json
@@ -4781,6 +4781,7 @@ components:
     Ad:
       description: An ad is the binding that connects a creative with an ad set
       example:
+        adDeliveryStatus: Live
         inventoryType: Native
         endDate: endDate
         adSetId: adSetId
@@ -4791,6 +4792,15 @@ components:
         startDate: startDate
       nullable: true
       properties:
+        adDeliveryStatus:
+          description: "The delivery status of the ad. Possible values are \"Live\"\
+            \ and \"Paused\". This is read-only: use the\r\ndedicated pause and unpause\
+            \ operations to change it."
+          enum:
+          - Live
+          - Paused
+          nullable: true
+          type: string
         adSetId:
           description: The id of the Ad Set binded to this Ad
           nullable: true
@@ -4810,7 +4820,6 @@ components:
           nullable: true
           type: string
         id:
-          description: Unique identifier (duplicate of the parent id).
           nullable: true
           type: string
         inventoryType:
@@ -6548,7 +6557,7 @@ components:
           uniqueItems: false
       type: object
     AdWrite:
-      description: Entity to create or update an ad
+      description: Entity to create an ad
       example:
         inventoryType: Display
         endDate: endDate
@@ -10307,6 +10316,7 @@ components:
           spendLimitType: capped
           startDate: 2000-01-23
         goal: unspecified
+        sellerId: sellerId
         name: name
         budgetAutomation:
           automatedBudgetConfiguration:
@@ -10357,6 +10367,11 @@ components:
             $ref: '#/components/schemas/CampaignScheduledSpendLimitV23Q1'
           nullable: true
           type: array
+        sellerId:
+          description: Optional marketplace seller id of the campaign (string-encoded
+            long)
+          nullable: true
+          type: string
         spendLimit:
           $ref: '#/components/schemas/CampaignSpendLimitV23Q1'
       type: object
@@ -10379,6 +10394,7 @@ components:
               spendLimitType: capped
               startDate: 2000-01-23
             goal: unspecified
+            sellerId: sellerId
             name: name
             budgetAutomation:
               automatedBudgetConfiguration:
@@ -10408,6 +10424,7 @@ components:
               spendLimitType: capped
               startDate: 2000-01-23
             goal: unspecified
+            sellerId: sellerId
             name: name
             budgetAutomation:
               automatedBudgetConfiguration:
@@ -10501,6 +10518,7 @@ components:
             spendLimitType: capped
             startDate: 2000-01-23
           goal: unspecified
+          sellerId: sellerId
           name: name
           budgetAutomation:
             automatedBudgetConfiguration:
@@ -10548,6 +10566,7 @@ components:
               spendLimitType: capped
               startDate: 2000-01-23
             goal: unspecified
+            sellerId: sellerId
             name: name
             budgetAutomation:
               automatedBudgetConfiguration:
@@ -10982,7 +11001,6 @@ components:
           nullable: true
           type: string
         id:
-          description: Unique identifier (duplicate of the parent id).
           nullable: true
           type: string
         images:
@@ -11419,6 +11437,7 @@ components:
       description: Campaign create model.
       example:
         goal: Unspecified
+        sellerId: sellerId
         name: name
         budgetAutomation:
           budgetConfiguration:
@@ -11454,6 +11473,11 @@ components:
           description: Name of the campaign
           nullable: true
           type: string
+        sellerId:
+          description: Optional marketplace seller id attached to this campaign (string-encoded
+            long)
+          nullable: true
+          type: string
         spendLimit:
           $ref: '#/components/schemas/CreateCampaignSpendLimit'
       required:
@@ -11468,6 +11492,7 @@ components:
         data:
           attributes:
             goal: Unspecified
+            sellerId: sellerId
             name: name
             budgetAutomation:
               budgetConfiguration:
@@ -11488,6 +11513,7 @@ components:
       example:
         attributes:
           goal: Unspecified
+          sellerId: sellerId
           name: name
           budgetAutomation:
             budgetConfiguration:
@@ -11800,7 +11826,6 @@ components:
         htmlTagAttributes:
           $ref: '#/components/schemas/HtmlTagAttributes'
         id:
-          description: Unique identifier (duplicate of the parent id).
           nullable: true
           type: string
         imageAttributes:
@@ -12630,7 +12655,7 @@ components:
       type: object
     ExamAdAudienceSegmentLinkInput:
       description: A top-level object that encapsulates a Criteo API request for a
-        single value object.
+        single value.
       example:
         data:
           attributes:
@@ -21154,6 +21179,7 @@ components:
       example:
         data:
         - attributes:
+            adDeliveryStatus: Live
             inventoryType: Native
             endDate: endDate
             adSetId: adSetId
@@ -21165,6 +21191,7 @@ components:
           id: id
           type: type
         - attributes:
+            adDeliveryStatus: Live
             inventoryType: Native
             endDate: endDate
             adSetId: adSetId
@@ -21853,6 +21880,7 @@ components:
       description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
+          adDeliveryStatus: Live
           inventoryType: Native
           endDate: endDate
           adSetId: adSetId
@@ -22344,6 +22372,7 @@ components:
       example:
         data:
           attributes:
+            adDeliveryStatus: Live
             inventoryType: Native
             endDate: endDate
             adSetId: adSetId
@@ -24942,7 +24971,8 @@ components:
           type: string
       type: object
     ValueResourceOfExamAdAudienceSegmentLinkWrite:
-      description: A value resource exposed by the API.
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
       example:
         attributes:
           audienceSegmentId: audienceSegmentId
@@ -24951,7 +24981,6 @@ components:
         attributes:
           $ref: '#/components/schemas/ExamAdAudienceSegmentLinkWrite'
         type:
-          description: Type of the resource.
           nullable: true
           type: string
       type: object
