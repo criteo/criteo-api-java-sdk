@@ -123,6 +123,7 @@ docs/BatchAcceptedResponse.md
 docs/BehavioralV1.md
 docs/BoostedAdProductSet.md
 docs/BoostingConfigurationRequest.md
+docs/BrandingImageInput.md
 docs/BudgetAutomation.md
 docs/BudgetAutomationConfiguration.md
 docs/CampaignApi.md
@@ -170,7 +171,9 @@ docs/CreateProductFilterRequest.md
 docs/CreateProductSetRequest.md
 docs/Creative.md
 docs/CreativeApi.md
+docs/CreativeMetaSetting.md
 docs/CreativeRead.md
+docs/CreativeTikTokSetting.md
 docs/CreativeWrite.md
 docs/CriteoApiError.md
 docs/CriteoApiWarning.md
@@ -189,6 +192,8 @@ docs/EntityWrapperOfTargetingEntity.md
 docs/ExamAdAudienceSegmentLink.md
 docs/ExamAdAudienceSegmentLinkInput.md
 docs/ExamAdAudienceSegmentLinkWrite.md
+docs/ExamAdClickTracking.md
+docs/ExamAdImpressionTracking.md
 docs/ExportColumn.md
 docs/ExportMetaData.md
 docs/ExportResult.md
@@ -228,6 +233,7 @@ docs/GenerateTopProductsReportRequestAttributesResource.md
 docs/GetPortfolioResponse.md
 docs/HtmlTagAttributes.md
 docs/HtmlTagWriteAttributes.md
+docs/IdFilterV1.md
 docs/ImageAttributes.md
 docs/ImageSet.md
 docs/ImageSetBase64.md
@@ -245,7 +251,6 @@ docs/InMarketSizeEstimationV1.md
 docs/InMarketUpdateV1.md
 docs/InMarketV1.md
 docs/Installment.md
-docs/IntegerFilterV1.md
 docs/JsonReportRows.md
 docs/JsonReportRowsListResponse.md
 docs/JsonReportRowsResource.md
@@ -254,7 +259,7 @@ docs/LocationCreateV1.md
 docs/LocationSizeEstimationV1.md
 docs/LocationUpdateV1.md
 docs/LocationV1.md
-docs/LongFilterV1.md
+docs/LogoInput.md
 docs/LookalikeCreateV1.md
 docs/LookalikeUpdateV1.md
 docs/LookalikeV1.md
@@ -394,7 +399,15 @@ docs/SetAdSetTargetingDealIdsResource.md
 docs/SetAdSetTargetingVideoPositioning.md
 docs/SetAdSetTargetingVideoPositioningRequest.md
 docs/SetAdSetTargetingVideoPositioningResource.md
+docs/ShowcaseAttributes.md
+docs/ShowcaseBrandingImage.md
+docs/ShowcaseColors.md
+docs/ShowcaseLogo.md
+docs/ShowcaseMetaSetting.md
+docs/ShowcasePriceSettings.md
+docs/ShowcaseWriteAttributes.md
 docs/Size.md
+docs/SocialSettings.md
 docs/StatisticsOkResponse.md
 docs/StatisticsRecord.md
 docs/StatisticsRecordList.md
@@ -431,6 +444,8 @@ docs/ValueResourceOfProductFilterConfig.md
 docs/ValueResourceOutcomeOfBoostedAdProductSet.md
 docs/ValueResourceOutcomeOfExamAdAudienceSegmentLink.md
 docs/ValueResourceOutcomeOfProductFilterConfig.md
+docs/VastTagAttributes.md
+docs/VastTagWriteAttributes.md
 docs/VideoDetail.md
 docs/WriteModelAdSetId.md
 docs/WriteModelPatchAdSetV26Q1.md
@@ -590,6 +605,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/BatchAcceptedRespo
 src/main/java/com/criteo/api/marketingsolutions/preview/model/BehavioralV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/BoostedAdProductSet.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/BoostingConfigurationRequest.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/BrandingImageInput.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/BudgetAutomation.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/BudgetAutomationConfiguration.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CampaignBudgetAutomationV23Q1.java
@@ -634,7 +650,9 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateImageSlide.j
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateProductFilterRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateProductSetRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Creative.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreativeMetaSetting.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreativeRead.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreativeTikTokSetting.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreativeWrite.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CriteoApiError.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CriteoApiWarning.java
@@ -653,6 +671,8 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/EntityWrapperOfTar
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExamAdAudienceSegmentLink.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExamAdAudienceSegmentLinkInput.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExamAdAudienceSegmentLinkWrite.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ExamAdClickTracking.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ExamAdImpressionTracking.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportColumn.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportMetaData.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ExportResult.java
@@ -691,6 +711,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateTopProduct
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GetPortfolioResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/HtmlTagAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/HtmlTagWriteAttributes.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/IdFilterV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ImageAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ImageSet.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ImageSetBase64.java
@@ -708,7 +729,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/InMarketSizeEstima
 src/main/java/com/criteo/api/marketingsolutions/preview/model/InMarketUpdateV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/InMarketV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Installment.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/IntegerFilterV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/JsonReportRows.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/JsonReportRowsListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/JsonReportRowsResource.java
@@ -717,7 +737,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/LocationCreateV1.j
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LocationSizeEstimationV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LocationUpdateV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LocationV1.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/LongFilterV1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/LogoInput.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LookalikeCreateV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LookalikeUpdateV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LookalikeV1.java
@@ -855,7 +875,15 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/SetAdSetTargetingD
 src/main/java/com/criteo/api/marketingsolutions/preview/model/SetAdSetTargetingVideoPositioning.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/SetAdSetTargetingVideoPositioningRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/SetAdSetTargetingVideoPositioningResource.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ShowcaseAttributes.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ShowcaseBrandingImage.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ShowcaseColors.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ShowcaseLogo.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ShowcaseMetaSetting.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ShowcasePriceSettings.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ShowcaseWriteAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Size.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/SocialSettings.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/StatisticsOkResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/StatisticsRecord.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/StatisticsRecordList.java
@@ -892,6 +920,8 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfPro
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOutcomeOfBoostedAdProductSet.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOutcomeOfExamAdAudienceSegmentLink.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOutcomeOfProductFilterConfig.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/VastTagAttributes.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/VastTagWriteAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/VideoDetail.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelPatchAdSetV26Q1.java

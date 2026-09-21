@@ -15,12 +15,16 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.preview.model.ExamAdClickTracking;
+import com.criteo.api.marketingsolutions.preview.model.ExamAdImpressionTracking;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -49,6 +53,10 @@ import com.criteo.api.marketingsolutions.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Ad {
+  public static final String SERIALIZED_NAME_AD_CLICK_TRACKING = "adClickTracking";
+  @SerializedName(SERIALIZED_NAME_AD_CLICK_TRACKING)
+  private List<ExamAdClickTracking> adClickTracking = null;
+
   /**
    * The delivery status of the ad. Possible values are \&quot;Live\&quot; and \&quot;Paused\&quot;. This is read-only: use the  dedicated pause and unpause operations to change it.
    */
@@ -100,6 +108,10 @@ public class Ad {
   @SerializedName(SERIALIZED_NAME_AD_DELIVERY_STATUS)
   private AdDeliveryStatusEnum adDeliveryStatus;
 
+  public static final String SERIALIZED_NAME_AD_IMPRESSION_TRACKING = "adImpressionTracking";
+  @SerializedName(SERIALIZED_NAME_AD_IMPRESSION_TRACKING)
+  private List<ExamAdImpressionTracking> adImpressionTracking = null;
+
   public static final String SERIALIZED_NAME_AD_SET_ID = "adSetId";
   @SerializedName(SERIALIZED_NAME_AD_SET_ID)
   private String adSetId;
@@ -121,7 +133,7 @@ public class Ad {
   private String id;
 
   /**
-   * The inventory the Ad belongs to. Possible values are \&quot;Display\&quot; and \&quot;Native\&quot;. This is optional since this doesn&#39;t make sense for every creative type but will throw an error if not set for a dynamic creative.
+   * The inventory the Ad belongs to. Possible values are \&quot;Display\&quot;, \&quot;Native\&quot;, \&quot;Video\&quot; and \&quot;Meta\&quot;. This is  optional since it doesn&#39;t make sense for every creative type: it is inferred from the creative for a  video creative, and an error is returned if it is not set for a dynamic creative.
    */
   @JsonAdapter(InventoryTypeEnum.Adapter.class)
   public enum InventoryTypeEnum {
@@ -129,7 +141,9 @@ public class Ad {
     
     DISPLAY("Display"),
     
-    VIDEO("Video");
+    VIDEO("Video"),
+    
+    META("Meta");
 
     private String value;
 
@@ -184,6 +198,36 @@ public class Ad {
   public Ad() {
   }
 
+  public Ad adClickTracking(List<ExamAdClickTracking> adClickTracking) {
+    
+    this.adClickTracking = adClickTracking;
+    return this;
+  }
+
+  public Ad addAdClickTrackingItem(ExamAdClickTracking adClickTrackingItem) {
+    if (this.adClickTracking == null) {
+      this.adClickTracking = null;
+    }
+    this.adClickTracking.add(adClickTrackingItem);
+    return this;
+  }
+
+   /**
+   * Optional ad-level click tracking configuration.
+   * @return adClickTracking
+  **/
+  @javax.annotation.Nullable
+
+  public List<ExamAdClickTracking> getAdClickTracking() {
+    return adClickTracking;
+  }
+
+
+  public void setAdClickTracking(List<ExamAdClickTracking> adClickTracking) {
+    this.adClickTracking = adClickTracking;
+  }
+
+
   public Ad adDeliveryStatus(AdDeliveryStatusEnum adDeliveryStatus) {
     
     this.adDeliveryStatus = adDeliveryStatus;
@@ -203,6 +247,36 @@ public class Ad {
 
   public void setAdDeliveryStatus(AdDeliveryStatusEnum adDeliveryStatus) {
     this.adDeliveryStatus = adDeliveryStatus;
+  }
+
+
+  public Ad adImpressionTracking(List<ExamAdImpressionTracking> adImpressionTracking) {
+    
+    this.adImpressionTracking = adImpressionTracking;
+    return this;
+  }
+
+  public Ad addAdImpressionTrackingItem(ExamAdImpressionTracking adImpressionTrackingItem) {
+    if (this.adImpressionTracking == null) {
+      this.adImpressionTracking = null;
+    }
+    this.adImpressionTracking.add(adImpressionTrackingItem);
+    return this;
+  }
+
+   /**
+   * Optional ad-level impression tracking configuration.
+   * @return adImpressionTracking
+  **/
+  @javax.annotation.Nullable
+
+  public List<ExamAdImpressionTracking> getAdImpressionTracking() {
+    return adImpressionTracking;
+  }
+
+
+  public void setAdImpressionTracking(List<ExamAdImpressionTracking> adImpressionTracking) {
+    this.adImpressionTracking = adImpressionTracking;
   }
 
 
@@ -323,7 +397,7 @@ public class Ad {
   }
 
    /**
-   * The inventory the Ad belongs to. Possible values are \&quot;Display\&quot; and \&quot;Native\&quot;. This is optional since this doesn&#39;t make sense for every creative type but will throw an error if not set for a dynamic creative.
+   * The inventory the Ad belongs to. Possible values are \&quot;Display\&quot;, \&quot;Native\&quot;, \&quot;Video\&quot; and \&quot;Meta\&quot;. This is  optional since it doesn&#39;t make sense for every creative type: it is inferred from the creative for a  video creative, and an error is returned if it is not set for a dynamic creative.
    * @return inventoryType
   **/
   @javax.annotation.Nullable
@@ -436,7 +510,9 @@ public class Ad {
       return false;
     }
     Ad ad = (Ad) o;
-    return Objects.equals(this.adDeliveryStatus, ad.adDeliveryStatus) &&
+    return Objects.equals(this.adClickTracking, ad.adClickTracking) &&
+        Objects.equals(this.adDeliveryStatus, ad.adDeliveryStatus) &&
+        Objects.equals(this.adImpressionTracking, ad.adImpressionTracking) &&
         Objects.equals(this.adSetId, ad.adSetId) &&
         Objects.equals(this.creativeId, ad.creativeId) &&
         Objects.equals(this.description, ad.description) &&
@@ -454,7 +530,7 @@ public class Ad {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adDeliveryStatus, adSetId, creativeId, description, endDate, id, inventoryType, name, startDate, additionalProperties);
+    return Objects.hash(adClickTracking, adDeliveryStatus, adImpressionTracking, adSetId, creativeId, description, endDate, id, inventoryType, name, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -468,7 +544,9 @@ public class Ad {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Ad {\n");
+    sb.append("    adClickTracking: ").append(toIndentedString(adClickTracking)).append("\n");
     sb.append("    adDeliveryStatus: ").append(toIndentedString(adDeliveryStatus)).append("\n");
+    sb.append("    adImpressionTracking: ").append(toIndentedString(adImpressionTracking)).append("\n");
     sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
     sb.append("    creativeId: ").append(toIndentedString(creativeId)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -500,7 +578,9 @@ public class Ad {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("adClickTracking");
     openapiFields.add("adDeliveryStatus");
+    openapiFields.add("adImpressionTracking");
     openapiFields.add("adSetId");
     openapiFields.add("creativeId");
     openapiFields.add("description");
@@ -526,8 +606,36 @@ public class Ad {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Ad is not found in the empty JSON string", Ad.openapiRequiredFields.toString()));
         }
       }
+      if (jsonObj.get("adClickTracking") != null && !jsonObj.get("adClickTracking").isJsonNull()) {
+        JsonArray jsonArrayadClickTracking = jsonObj.getAsJsonArray("adClickTracking");
+        if (jsonArrayadClickTracking != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("adClickTracking").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `adClickTracking` to be an array in the JSON string but got `%s`", jsonObj.get("adClickTracking").toString()));
+          }
+
+          // validate the optional field `adClickTracking` (array)
+          for (int i = 0; i < jsonArrayadClickTracking.size(); i++) {
+            ExamAdClickTracking.validateJsonObject(jsonArrayadClickTracking.get(i).getAsJsonObject());
+          };
+        }
+      }
       if ((jsonObj.get("adDeliveryStatus") != null && !jsonObj.get("adDeliveryStatus").isJsonNull()) && !jsonObj.get("adDeliveryStatus").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `adDeliveryStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adDeliveryStatus").toString()));
+      }
+      if (jsonObj.get("adImpressionTracking") != null && !jsonObj.get("adImpressionTracking").isJsonNull()) {
+        JsonArray jsonArrayadImpressionTracking = jsonObj.getAsJsonArray("adImpressionTracking");
+        if (jsonArrayadImpressionTracking != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("adImpressionTracking").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `adImpressionTracking` to be an array in the JSON string but got `%s`", jsonObj.get("adImpressionTracking").toString()));
+          }
+
+          // validate the optional field `adImpressionTracking` (array)
+          for (int i = 0; i < jsonArrayadImpressionTracking.size(); i++) {
+            ExamAdImpressionTracking.validateJsonObject(jsonArrayadImpressionTracking.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("adSetId") != null && !jsonObj.get("adSetId").isJsonNull()) && !jsonObj.get("adSetId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `adSetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adSetId").toString()));

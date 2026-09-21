@@ -103,7 +103,7 @@ public class ImageSlide {
   }
 
    /**
-   * Array of images of the same size uploaded on demostatic.criteo.com when deploying and then static.criteo.net
+   * Array of images of the same size uploaded on demostatic.criteo.com when deploying and then static.criteo.net
    * @return slideUrls
   **/
   @javax.annotation.Nullable

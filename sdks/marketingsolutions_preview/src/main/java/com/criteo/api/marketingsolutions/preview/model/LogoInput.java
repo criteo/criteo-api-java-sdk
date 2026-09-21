@@ -21,9 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,117 +44,62 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * Filter that compares integers against one or more values.
+ * Logo input with shape and base-64 encoded image data.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class IntegerFilterV1 {
-  /**
-   * Comparison operator for the integer filter
-   */
-  @JsonAdapter(OperatorEnum.Adapter.class)
-  public enum OperatorEnum {
-    UNKNOWN("Unknown"),
-    
-    EQUALS("Equals");
+public class LogoInput {
+  public static final String SERIALIZED_NAME_BASE64_STRING = "base64String";
+  @SerializedName(SERIALIZED_NAME_BASE64_STRING)
+  private String base64String;
 
-    private String value;
+  public static final String SERIALIZED_NAME_SHAPE = "shape";
+  @SerializedName(SERIALIZED_NAME_SHAPE)
+  private String shape;
 
-    OperatorEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static OperatorEnum fromValue(String value) {
-      for (OperatorEnum b : OperatorEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<OperatorEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final OperatorEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public OperatorEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return OperatorEnum.fromValue(value);
-      }
-    }
+  public LogoInput() {
   }
 
-  public static final String SERIALIZED_NAME_OPERATOR = "operator";
-  @SerializedName(SERIALIZED_NAME_OPERATOR)
-  private OperatorEnum operator;
-
-  public static final String SERIALIZED_NAME_VALUES = "values";
-  @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<Integer> values = null;
-
-  public IntegerFilterV1() {
-  }
-
-  public IntegerFilterV1 operator(OperatorEnum operator) {
+  public LogoInput base64String(String base64String) {
     
-    this.operator = operator;
+    this.base64String = base64String;
     return this;
   }
 
    /**
-   * Comparison operator for the integer filter
-   * @return operator
+   * Logo image as a base-64 encoded string.
+   * @return base64String
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public OperatorEnum getOperator() {
-    return operator;
+  public String getBase64String() {
+    return base64String;
   }
 
 
-  public void setOperator(OperatorEnum operator) {
-    this.operator = operator;
+  public void setBase64String(String base64String) {
+    this.base64String = base64String;
   }
 
 
-  public IntegerFilterV1 values(List<Integer> values) {
+  public LogoInput shape(String shape) {
     
-    this.values = values;
-    return this;
-  }
-
-  public IntegerFilterV1 addValuesItem(Integer valuesItem) {
-    if (this.values == null) {
-      this.values = null;
-    }
-    this.values.add(valuesItem);
+    this.shape = shape;
     return this;
   }
 
    /**
-   * Integer values to compare against
-   * @return values
+   * Shape of the logo.  Possible values are \&quot;Horizontal\&quot;, \&quot;Vertical\&quot;, \&quot;Square\&quot;.
+   * @return shape
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public List<Integer> getValues() {
-    return values;
+  public String getShape() {
+    return shape;
   }
 
 
-  public void setValues(List<Integer> values) {
-    this.values = values;
+  public void setShape(String shape) {
+    this.shape = shape;
   }
 
   /**
@@ -173,9 +115,9 @@ public class IntegerFilterV1 {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the IntegerFilterV1 instance itself
+   * @return the LogoInput instance itself
    */
-  public IntegerFilterV1 putAdditionalProperty(String key, Object value) {
+  public LogoInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -214,34 +156,23 @@ public class IntegerFilterV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IntegerFilterV1 integerFilterV1 = (IntegerFilterV1) o;
-    return Objects.equals(this.operator, integerFilterV1.operator) &&
-        Objects.equals(this.values, integerFilterV1.values)&&
-        Objects.equals(this.additionalProperties, integerFilterV1.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    LogoInput logoInput = (LogoInput) o;
+    return Objects.equals(this.base64String, logoInput.base64String) &&
+        Objects.equals(this.shape, logoInput.shape)&&
+        Objects.equals(this.additionalProperties, logoInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operator, values, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(base64String, shape, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IntegerFilterV1 {\n");
-    sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
+    sb.append("class LogoInput {\n");
+    sb.append("    base64String: ").append(toIndentedString(base64String)).append("\n");
+    sb.append("    shape: ").append(toIndentedString(shape)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -265,31 +196,39 @@ public class IntegerFilterV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("operator");
-    openapiFields.add("values");
+    openapiFields.add("base64String");
+    openapiFields.add("shape");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("base64String");
+    openapiRequiredFields.add("shape");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to IntegerFilterV1
+  * @throws IOException if the JSON Object is invalid with respect to LogoInput
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!IntegerFilterV1.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IntegerFilterV1 is not found in the empty JSON string", IntegerFilterV1.openapiRequiredFields.toString()));
+        if (!LogoInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LogoInput is not found in the empty JSON string", LogoInput.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("operator") != null && !jsonObj.get("operator").isJsonNull()) && !jsonObj.get("operator").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `operator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operator").toString()));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : LogoInput.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("values") != null && !jsonObj.get("values").isJsonNull() && !jsonObj.get("values").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `values` to be an array in the JSON string but got `%s`", jsonObj.get("values").toString()));
+      if (!jsonObj.get("base64String").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `base64String` to be a primitive type in the JSON string but got `%s`", jsonObj.get("base64String").toString()));
+      }
+      if (!jsonObj.get("shape").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shape` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shape").toString()));
       }
   }
 
@@ -297,16 +236,16 @@ public class IntegerFilterV1 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IntegerFilterV1.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IntegerFilterV1' and its subtypes
+       if (!LogoInput.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LogoInput' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IntegerFilterV1> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IntegerFilterV1.class));
+       final TypeAdapter<LogoInput> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LogoInput.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<IntegerFilterV1>() {
+       return (TypeAdapter<T>) new TypeAdapter<LogoInput>() {
            @Override
-           public void write(JsonWriter out, IntegerFilterV1 value) throws IOException {
+           public void write(JsonWriter out, LogoInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -329,11 +268,11 @@ public class IntegerFilterV1 {
            }
 
            @Override
-           public IntegerFilterV1 read(JsonReader in) throws IOException {
+           public LogoInput read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             IntegerFilterV1 instance = thisAdapter.fromJsonTree(jsonObj);
+             LogoInput instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -360,18 +299,18 @@ public class IntegerFilterV1 {
   }
 
  /**
-  * Create an instance of IntegerFilterV1 given an JSON string
+  * Create an instance of LogoInput given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of IntegerFilterV1
-  * @throws IOException if the JSON string is invalid with respect to IntegerFilterV1
+  * @return An instance of LogoInput
+  * @throws IOException if the JSON string is invalid with respect to LogoInput
   */
-  public static IntegerFilterV1 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, IntegerFilterV1.class);
+  public static LogoInput fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LogoInput.class);
   }
 
  /**
-  * Convert an instance of IntegerFilterV1 to an JSON string
+  * Convert an instance of LogoInput to an JSON string
   *
   * @return JSON string
   */

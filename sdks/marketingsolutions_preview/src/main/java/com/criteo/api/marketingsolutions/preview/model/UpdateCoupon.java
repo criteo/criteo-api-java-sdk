@@ -53,6 +53,10 @@ public class UpdateCoupon {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private String endDate;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private String startDate;
@@ -79,6 +83,28 @@ public class UpdateCoupon {
 
   public void setEndDate(String endDate) {
     this.endDate = endDate;
+  }
+
+
+  public UpdateCoupon id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -159,6 +185,7 @@ public class UpdateCoupon {
     }
     UpdateCoupon updateCoupon = (UpdateCoupon) o;
     return Objects.equals(this.endDate, updateCoupon.endDate) &&
+        Objects.equals(this.id, updateCoupon.id) &&
         Objects.equals(this.startDate, updateCoupon.startDate)&&
         Objects.equals(this.additionalProperties, updateCoupon.additionalProperties);
   }
@@ -169,7 +196,7 @@ public class UpdateCoupon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(endDate, startDate, additionalProperties);
+    return Objects.hash(endDate, id, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -184,6 +211,7 @@ public class UpdateCoupon {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateCoupon {\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -209,6 +237,7 @@ public class UpdateCoupon {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("endDate");
+    openapiFields.add("id");
     openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
@@ -237,6 +266,9 @@ public class UpdateCoupon {
       }
       if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("startDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));

@@ -9,6 +9,7 @@ Entity containing the list of Coupon supported sizes
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**fullFrame** | **List&lt;String&gt;** | Array of FullFrame sizes as string in width x height format |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**logoZone** | **List&lt;String&gt;** | Array of LogoZone sizes as string in width x height format |  [optional] |
 
 

@@ -15,8 +15,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.IntegerFilterV1;
-import com.criteo.api.marketingsolutions.preview.model.LongFilterV1;
+import com.criteo.api.marketingsolutions.preview.model.IdFilterV1;
 import com.criteo.api.marketingsolutions.preview.model.ProductCategoryFilterV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -54,7 +53,7 @@ import com.criteo.api.marketingsolutions.preview.JSON;
 public class FilterBasedDefinitionV1 {
   public static final String SERIALIZED_NAME_PARTNER_ID = "partnerId";
   @SerializedName(SERIALIZED_NAME_PARTNER_ID)
-  private IntegerFilterV1 partnerId;
+  private IdFilterV1 partnerId;
 
   public static final String SERIALIZED_NAME_PRODUCT_CATEGORY = "productCategory";
   @SerializedName(SERIALIZED_NAME_PRODUCT_CATEGORY)
@@ -62,12 +61,12 @@ public class FilterBasedDefinitionV1 {
 
   public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
   @SerializedName(SERIALIZED_NAME_SELLER_ID)
-  private LongFilterV1 sellerId;
+  private IdFilterV1 sellerId;
 
   public FilterBasedDefinitionV1() {
   }
 
-  public FilterBasedDefinitionV1 partnerId(IntegerFilterV1 partnerId) {
+  public FilterBasedDefinitionV1 partnerId(IdFilterV1 partnerId) {
     
     this.partnerId = partnerId;
     return this;
@@ -79,12 +78,12 @@ public class FilterBasedDefinitionV1 {
   **/
   @javax.annotation.Nullable
 
-  public IntegerFilterV1 getPartnerId() {
+  public IdFilterV1 getPartnerId() {
     return partnerId;
   }
 
 
-  public void setPartnerId(IntegerFilterV1 partnerId) {
+  public void setPartnerId(IdFilterV1 partnerId) {
     this.partnerId = partnerId;
   }
 
@@ -111,7 +110,7 @@ public class FilterBasedDefinitionV1 {
   }
 
 
-  public FilterBasedDefinitionV1 sellerId(LongFilterV1 sellerId) {
+  public FilterBasedDefinitionV1 sellerId(IdFilterV1 sellerId) {
     
     this.sellerId = sellerId;
     return this;
@@ -123,12 +122,12 @@ public class FilterBasedDefinitionV1 {
   **/
   @javax.annotation.Nullable
 
-  public LongFilterV1 getSellerId() {
+  public IdFilterV1 getSellerId() {
     return sellerId;
   }
 
 
-  public void setSellerId(LongFilterV1 sellerId) {
+  public void setSellerId(IdFilterV1 sellerId) {
     this.sellerId = sellerId;
   }
 
@@ -261,7 +260,7 @@ public class FilterBasedDefinitionV1 {
       }
       // validate the optional field `partnerId`
       if (jsonObj.get("partnerId") != null && !jsonObj.get("partnerId").isJsonNull()) {
-        IntegerFilterV1.validateJsonObject(jsonObj.getAsJsonObject("partnerId"));
+        IdFilterV1.validateJsonObject(jsonObj.getAsJsonObject("partnerId"));
       }
       // validate the optional field `productCategory`
       if (jsonObj.get("productCategory") != null && !jsonObj.get("productCategory").isJsonNull()) {
@@ -269,7 +268,7 @@ public class FilterBasedDefinitionV1 {
       }
       // validate the optional field `sellerId`
       if (jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull()) {
-        LongFilterV1.validateJsonObject(jsonObj.getAsJsonObject("sellerId"));
+        IdFilterV1.validateJsonObject(jsonObj.getAsJsonObject("sellerId"));
       }
   }
 

@@ -115,6 +115,10 @@ public class CreateCoupon {
   @SerializedName(SERIALIZED_NAME_FORMAT)
   private FormatEnum format;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
   private List<CreateImageSlide> images = new ArrayList<>();
@@ -231,6 +235,28 @@ public class CreateCoupon {
 
   public void setFormat(FormatEnum format) {
     this.format = format;
+  }
+
+
+  public CreateCoupon id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -457,6 +483,7 @@ public class CreateCoupon {
         Objects.equals(this.description, createCoupon.description) &&
         Objects.equals(this.endDate, createCoupon.endDate) &&
         Objects.equals(this.format, createCoupon.format) &&
+        Objects.equals(this.id, createCoupon.id) &&
         Objects.equals(this.images, createCoupon.images) &&
         Objects.equals(this.landingPageUrl, createCoupon.landingPageUrl) &&
         Objects.equals(this.name, createCoupon.name) &&
@@ -473,7 +500,7 @@ public class CreateCoupon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adSetId, description, endDate, format, images, landingPageUrl, name, rotationsNumber, showDuration, showEvery, startDate, additionalProperties);
+    return Objects.hash(adSetId, description, endDate, format, id, images, landingPageUrl, name, rotationsNumber, showDuration, showEvery, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -491,6 +518,7 @@ public class CreateCoupon {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    landingPageUrl: ").append(toIndentedString(landingPageUrl)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -525,6 +553,7 @@ public class CreateCoupon {
     openapiFields.add("description");
     openapiFields.add("endDate");
     openapiFields.add("format");
+    openapiFields.add("id");
     openapiFields.add("images");
     openapiFields.add("landingPageUrl");
     openapiFields.add("name");
@@ -576,6 +605,9 @@ public class CreateCoupon {
       }
       if (!jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // ensure the json data is an array
       if (!jsonObj.get("images").isJsonArray()) {

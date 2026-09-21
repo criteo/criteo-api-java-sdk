@@ -19,7 +19,10 @@ A creative is a project with the necessary information to display a creative
 |**id** | **String** |  |  [optional] |
 |**imageAttributes** | [**ImageAttributes**](ImageAttributes.md) |  |  [optional] |
 |**name** | **String** | The name of the creative |  |
+|**showcaseAttributes** | [**ShowcaseAttributes**](ShowcaseAttributes.md) |  |  [optional] |
+|**socialSettings** | [**SocialSettings**](SocialSettings.md) |  |  [optional] |
 |**status** | **String** | The status of the creative |  |
+|**vastTagAttributes** | [**VastTagAttributes**](VastTagAttributes.md) |  |  [optional] |
 
 
 
