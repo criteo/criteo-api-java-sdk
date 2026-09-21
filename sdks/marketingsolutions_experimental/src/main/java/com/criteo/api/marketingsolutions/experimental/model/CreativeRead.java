@@ -19,6 +19,9 @@ import com.criteo.api.marketingsolutions.experimental.model.AdaptiveReadAttribut
 import com.criteo.api.marketingsolutions.experimental.model.DynamicAttributes;
 import com.criteo.api.marketingsolutions.experimental.model.HtmlTagAttributes;
 import com.criteo.api.marketingsolutions.experimental.model.ImageAttributes;
+import com.criteo.api.marketingsolutions.experimental.model.ShowcaseAttributes;
+import com.criteo.api.marketingsolutions.experimental.model.SocialSettings;
+import com.criteo.api.marketingsolutions.experimental.model.VastTagAttributes;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -85,6 +88,10 @@ public class CreativeRead {
   @SerializedName(SERIALIZED_NAME_HTML_TAG_ATTRIBUTES)
   private HtmlTagAttributes htmlTagAttributes;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_IMAGE_ATTRIBUTES = "imageAttributes";
   @SerializedName(SERIALIZED_NAME_IMAGE_ATTRIBUTES)
   private ImageAttributes imageAttributes;
@@ -93,9 +100,21 @@ public class CreativeRead {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_SHOWCASE_ATTRIBUTES = "showcaseAttributes";
+  @SerializedName(SERIALIZED_NAME_SHOWCASE_ATTRIBUTES)
+  private ShowcaseAttributes showcaseAttributes;
+
+  public static final String SERIALIZED_NAME_SOCIAL_SETTINGS = "socialSettings";
+  @SerializedName(SERIALIZED_NAME_SOCIAL_SETTINGS)
+  private SocialSettings socialSettings;
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
+
+  public static final String SERIALIZED_NAME_VAST_TAG_ATTRIBUTES = "vastTagAttributes";
+  @SerializedName(SERIALIZED_NAME_VAST_TAG_ATTRIBUTES)
+  private VastTagAttributes vastTagAttributes;
 
   public CreativeRead() {
   }
@@ -276,6 +295,28 @@ public class CreativeRead {
   }
 
 
+  public CreativeRead id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
   public CreativeRead imageAttributes(ImageAttributes imageAttributes) {
     
     this.imageAttributes = imageAttributes;
@@ -320,6 +361,50 @@ public class CreativeRead {
   }
 
 
+  public CreativeRead showcaseAttributes(ShowcaseAttributes showcaseAttributes) {
+    
+    this.showcaseAttributes = showcaseAttributes;
+    return this;
+  }
+
+   /**
+   * Get showcaseAttributes
+   * @return showcaseAttributes
+  **/
+  @javax.annotation.Nullable
+
+  public ShowcaseAttributes getShowcaseAttributes() {
+    return showcaseAttributes;
+  }
+
+
+  public void setShowcaseAttributes(ShowcaseAttributes showcaseAttributes) {
+    this.showcaseAttributes = showcaseAttributes;
+  }
+
+
+  public CreativeRead socialSettings(SocialSettings socialSettings) {
+    
+    this.socialSettings = socialSettings;
+    return this;
+  }
+
+   /**
+   * Get socialSettings
+   * @return socialSettings
+  **/
+  @javax.annotation.Nullable
+
+  public SocialSettings getSocialSettings() {
+    return socialSettings;
+  }
+
+
+  public void setSocialSettings(SocialSettings socialSettings) {
+    this.socialSettings = socialSettings;
+  }
+
+
   public CreativeRead status(String status) {
     
     this.status = status;
@@ -339,6 +424,28 @@ public class CreativeRead {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+
+  public CreativeRead vastTagAttributes(VastTagAttributes vastTagAttributes) {
+    
+    this.vastTagAttributes = vastTagAttributes;
+    return this;
+  }
+
+   /**
+   * Get vastTagAttributes
+   * @return vastTagAttributes
+  **/
+  @javax.annotation.Nullable
+
+  public VastTagAttributes getVastTagAttributes() {
+    return vastTagAttributes;
+  }
+
+
+  public void setVastTagAttributes(VastTagAttributes vastTagAttributes) {
+    this.vastTagAttributes = vastTagAttributes;
   }
 
   /**
@@ -404,9 +511,13 @@ public class CreativeRead {
         Objects.equals(this.dynamicAttributes, creativeRead.dynamicAttributes) &&
         Objects.equals(this.format, creativeRead.format) &&
         Objects.equals(this.htmlTagAttributes, creativeRead.htmlTagAttributes) &&
+        Objects.equals(this.id, creativeRead.id) &&
         Objects.equals(this.imageAttributes, creativeRead.imageAttributes) &&
         Objects.equals(this.name, creativeRead.name) &&
-        Objects.equals(this.status, creativeRead.status)&&
+        Objects.equals(this.showcaseAttributes, creativeRead.showcaseAttributes) &&
+        Objects.equals(this.socialSettings, creativeRead.socialSettings) &&
+        Objects.equals(this.status, creativeRead.status) &&
+        Objects.equals(this.vastTagAttributes, creativeRead.vastTagAttributes)&&
         Objects.equals(this.additionalProperties, creativeRead.additionalProperties);
   }
 
@@ -416,7 +527,7 @@ public class CreativeRead {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adaptiveAttributes, advertiserId, author, datasetId, description, dynamicAttributes, format, htmlTagAttributes, imageAttributes, name, status, additionalProperties);
+    return Objects.hash(adaptiveAttributes, advertiserId, author, datasetId, description, dynamicAttributes, format, htmlTagAttributes, id, imageAttributes, name, showcaseAttributes, socialSettings, status, vastTagAttributes, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -438,9 +549,13 @@ public class CreativeRead {
     sb.append("    dynamicAttributes: ").append(toIndentedString(dynamicAttributes)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    htmlTagAttributes: ").append(toIndentedString(htmlTagAttributes)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    imageAttributes: ").append(toIndentedString(imageAttributes)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    showcaseAttributes: ").append(toIndentedString(showcaseAttributes)).append("\n");
+    sb.append("    socialSettings: ").append(toIndentedString(socialSettings)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    vastTagAttributes: ").append(toIndentedString(vastTagAttributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -472,9 +587,13 @@ public class CreativeRead {
     openapiFields.add("dynamicAttributes");
     openapiFields.add("format");
     openapiFields.add("htmlTagAttributes");
+    openapiFields.add("id");
     openapiFields.add("imageAttributes");
     openapiFields.add("name");
+    openapiFields.add("showcaseAttributes");
+    openapiFields.add("socialSettings");
     openapiFields.add("status");
+    openapiFields.add("vastTagAttributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -530,6 +649,9 @@ public class CreativeRead {
       if (jsonObj.get("htmlTagAttributes") != null && !jsonObj.get("htmlTagAttributes").isJsonNull()) {
         HtmlTagAttributes.validateJsonObject(jsonObj.getAsJsonObject("htmlTagAttributes"));
       }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
       // validate the optional field `imageAttributes`
       if (jsonObj.get("imageAttributes") != null && !jsonObj.get("imageAttributes").isJsonNull()) {
         ImageAttributes.validateJsonObject(jsonObj.getAsJsonObject("imageAttributes"));
@@ -537,8 +659,20 @@ public class CreativeRead {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
+      // validate the optional field `showcaseAttributes`
+      if (jsonObj.get("showcaseAttributes") != null && !jsonObj.get("showcaseAttributes").isJsonNull()) {
+        ShowcaseAttributes.validateJsonObject(jsonObj.getAsJsonObject("showcaseAttributes"));
+      }
+      // validate the optional field `socialSettings`
+      if (jsonObj.get("socialSettings") != null && !jsonObj.get("socialSettings").isJsonNull()) {
+        SocialSettings.validateJsonObject(jsonObj.getAsJsonObject("socialSettings"));
+      }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      // validate the optional field `vastTagAttributes`
+      if (jsonObj.get("vastTagAttributes") != null && !jsonObj.get("vastTagAttributes").isJsonNull()) {
+        VastTagAttributes.validateJsonObject(jsonObj.getAsJsonObject("vastTagAttributes"));
       }
   }
 

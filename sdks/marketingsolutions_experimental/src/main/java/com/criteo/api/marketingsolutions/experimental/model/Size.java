@@ -67,7 +67,7 @@ public class Size {
   }
 
    /**
-   * Get height
+   * The height of the creative, in pixels
    * @return height
   **/
   @javax.annotation.Nullable
@@ -89,7 +89,7 @@ public class Size {
   }
 
    /**
-   * Get width
+   * The width of the creative, in pixels
    * @return width
   **/
   @javax.annotation.Nullable

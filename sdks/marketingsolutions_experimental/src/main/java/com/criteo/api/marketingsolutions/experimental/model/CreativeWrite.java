@@ -19,6 +19,9 @@ import com.criteo.api.marketingsolutions.experimental.model.AdaptiveWriteAttribu
 import com.criteo.api.marketingsolutions.experimental.model.DynamicWriteAttributes;
 import com.criteo.api.marketingsolutions.experimental.model.HtmlTagWriteAttributes;
 import com.criteo.api.marketingsolutions.experimental.model.ImageWriteAttributes;
+import com.criteo.api.marketingsolutions.experimental.model.ShowcaseWriteAttributes;
+import com.criteo.api.marketingsolutions.experimental.model.SocialSettings;
+import com.criteo.api.marketingsolutions.experimental.model.VastTagWriteAttributes;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -70,17 +73,21 @@ public class CreativeWrite {
   private DynamicWriteAttributes dynamicWriteAttributes;
 
   /**
-   * The format of the creative  You can use \&quot;Image\&quot;, \&quot; HtmlTag\&quot;, \&quot;Dynamic\&quot; or \&quot;Adaptive\&quot;
+   * The format of the creative.  You can use \&quot;Image\&quot;, \&quot;HtmlTag\&quot;, \&quot;Dynamic\&quot;, \&quot;Adaptive\&quot;, \&quot;Showcase\&quot; or \&quot;VastTag\&quot;
    */
   @JsonAdapter(FormatEnum.Adapter.class)
   public enum FormatEnum {
-    IMAGE("Image"),
+    DYNAMIC("Dynamic"),
     
     HTMLTAG("HtmlTag"),
     
-    DYNAMIC("Dynamic"),
+    IMAGE("Image"),
     
-    ADAPTIVE("Adaptive");
+    ADAPTIVE("Adaptive"),
+    
+    SHOWCASE("Showcase"),
+    
+    VASTTAG("VastTag");
 
     private String value;
 
@@ -128,6 +135,10 @@ public class CreativeWrite {
   @SerializedName(SERIALIZED_NAME_HTML_TAG_WRITE_ATTRIBUTES)
   private HtmlTagWriteAttributes htmlTagWriteAttributes;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_IMAGE_WRITE_ATTRIBUTES = "imageWriteAttributes";
   @SerializedName(SERIALIZED_NAME_IMAGE_WRITE_ATTRIBUTES)
   private ImageWriteAttributes imageWriteAttributes;
@@ -135,6 +146,18 @@ public class CreativeWrite {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_SHOWCASE_WRITE_ATTRIBUTES = "showcaseWriteAttributes";
+  @SerializedName(SERIALIZED_NAME_SHOWCASE_WRITE_ATTRIBUTES)
+  private ShowcaseWriteAttributes showcaseWriteAttributes;
+
+  public static final String SERIALIZED_NAME_SOCIAL_SETTINGS = "socialSettings";
+  @SerializedName(SERIALIZED_NAME_SOCIAL_SETTINGS)
+  private SocialSettings socialSettings;
+
+  public static final String SERIALIZED_NAME_VAST_TAG_WRITE_ATTRIBUTES = "vastTagWriteAttributes";
+  @SerializedName(SERIALIZED_NAME_VAST_TAG_WRITE_ATTRIBUTES)
+  private VastTagWriteAttributes vastTagWriteAttributes;
 
   public CreativeWrite() {
   }
@@ -234,7 +257,7 @@ public class CreativeWrite {
   }
 
    /**
-   * The format of the creative  You can use \&quot;Image\&quot;, \&quot; HtmlTag\&quot;, \&quot;Dynamic\&quot; or \&quot;Adaptive\&quot;
+   * The format of the creative.  You can use \&quot;Image\&quot;, \&quot;HtmlTag\&quot;, \&quot;Dynamic\&quot;, \&quot;Adaptive\&quot;, \&quot;Showcase\&quot; or \&quot;VastTag\&quot;
    * @return format
   **/
   @javax.annotation.Nonnull
@@ -268,6 +291,28 @@ public class CreativeWrite {
 
   public void setHtmlTagWriteAttributes(HtmlTagWriteAttributes htmlTagWriteAttributes) {
     this.htmlTagWriteAttributes = htmlTagWriteAttributes;
+  }
+
+
+  public CreativeWrite id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -312,6 +357,72 @@ public class CreativeWrite {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public CreativeWrite showcaseWriteAttributes(ShowcaseWriteAttributes showcaseWriteAttributes) {
+    
+    this.showcaseWriteAttributes = showcaseWriteAttributes;
+    return this;
+  }
+
+   /**
+   * Get showcaseWriteAttributes
+   * @return showcaseWriteAttributes
+  **/
+  @javax.annotation.Nullable
+
+  public ShowcaseWriteAttributes getShowcaseWriteAttributes() {
+    return showcaseWriteAttributes;
+  }
+
+
+  public void setShowcaseWriteAttributes(ShowcaseWriteAttributes showcaseWriteAttributes) {
+    this.showcaseWriteAttributes = showcaseWriteAttributes;
+  }
+
+
+  public CreativeWrite socialSettings(SocialSettings socialSettings) {
+    
+    this.socialSettings = socialSettings;
+    return this;
+  }
+
+   /**
+   * Get socialSettings
+   * @return socialSettings
+  **/
+  @javax.annotation.Nullable
+
+  public SocialSettings getSocialSettings() {
+    return socialSettings;
+  }
+
+
+  public void setSocialSettings(SocialSettings socialSettings) {
+    this.socialSettings = socialSettings;
+  }
+
+
+  public CreativeWrite vastTagWriteAttributes(VastTagWriteAttributes vastTagWriteAttributes) {
+    
+    this.vastTagWriteAttributes = vastTagWriteAttributes;
+    return this;
+  }
+
+   /**
+   * Get vastTagWriteAttributes
+   * @return vastTagWriteAttributes
+  **/
+  @javax.annotation.Nullable
+
+  public VastTagWriteAttributes getVastTagWriteAttributes() {
+    return vastTagWriteAttributes;
+  }
+
+
+  public void setVastTagWriteAttributes(VastTagWriteAttributes vastTagWriteAttributes) {
+    this.vastTagWriteAttributes = vastTagWriteAttributes;
   }
 
   /**
@@ -375,8 +486,12 @@ public class CreativeWrite {
         Objects.equals(this.dynamicWriteAttributes, creativeWrite.dynamicWriteAttributes) &&
         Objects.equals(this.format, creativeWrite.format) &&
         Objects.equals(this.htmlTagWriteAttributes, creativeWrite.htmlTagWriteAttributes) &&
+        Objects.equals(this.id, creativeWrite.id) &&
         Objects.equals(this.imageWriteAttributes, creativeWrite.imageWriteAttributes) &&
-        Objects.equals(this.name, creativeWrite.name)&&
+        Objects.equals(this.name, creativeWrite.name) &&
+        Objects.equals(this.showcaseWriteAttributes, creativeWrite.showcaseWriteAttributes) &&
+        Objects.equals(this.socialSettings, creativeWrite.socialSettings) &&
+        Objects.equals(this.vastTagWriteAttributes, creativeWrite.vastTagWriteAttributes)&&
         Objects.equals(this.additionalProperties, creativeWrite.additionalProperties);
   }
 
@@ -386,7 +501,7 @@ public class CreativeWrite {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adaptiveWriteAttributes, datasetId, description, dynamicWriteAttributes, format, htmlTagWriteAttributes, imageWriteAttributes, name, additionalProperties);
+    return Objects.hash(adaptiveWriteAttributes, datasetId, description, dynamicWriteAttributes, format, htmlTagWriteAttributes, id, imageWriteAttributes, name, showcaseWriteAttributes, socialSettings, vastTagWriteAttributes, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -406,8 +521,12 @@ public class CreativeWrite {
     sb.append("    dynamicWriteAttributes: ").append(toIndentedString(dynamicWriteAttributes)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    htmlTagWriteAttributes: ").append(toIndentedString(htmlTagWriteAttributes)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    imageWriteAttributes: ").append(toIndentedString(imageWriteAttributes)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    showcaseWriteAttributes: ").append(toIndentedString(showcaseWriteAttributes)).append("\n");
+    sb.append("    socialSettings: ").append(toIndentedString(socialSettings)).append("\n");
+    sb.append("    vastTagWriteAttributes: ").append(toIndentedString(vastTagWriteAttributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -437,8 +556,12 @@ public class CreativeWrite {
     openapiFields.add("dynamicWriteAttributes");
     openapiFields.add("format");
     openapiFields.add("htmlTagWriteAttributes");
+    openapiFields.add("id");
     openapiFields.add("imageWriteAttributes");
     openapiFields.add("name");
+    openapiFields.add("showcaseWriteAttributes");
+    openapiFields.add("socialSettings");
+    openapiFields.add("vastTagWriteAttributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -487,12 +610,27 @@ public class CreativeWrite {
       if (jsonObj.get("htmlTagWriteAttributes") != null && !jsonObj.get("htmlTagWriteAttributes").isJsonNull()) {
         HtmlTagWriteAttributes.validateJsonObject(jsonObj.getAsJsonObject("htmlTagWriteAttributes"));
       }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
       // validate the optional field `imageWriteAttributes`
       if (jsonObj.get("imageWriteAttributes") != null && !jsonObj.get("imageWriteAttributes").isJsonNull()) {
         ImageWriteAttributes.validateJsonObject(jsonObj.getAsJsonObject("imageWriteAttributes"));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // validate the optional field `showcaseWriteAttributes`
+      if (jsonObj.get("showcaseWriteAttributes") != null && !jsonObj.get("showcaseWriteAttributes").isJsonNull()) {
+        ShowcaseWriteAttributes.validateJsonObject(jsonObj.getAsJsonObject("showcaseWriteAttributes"));
+      }
+      // validate the optional field `socialSettings`
+      if (jsonObj.get("socialSettings") != null && !jsonObj.get("socialSettings").isJsonNull()) {
+        SocialSettings.validateJsonObject(jsonObj.getAsJsonObject("socialSettings"));
+      }
+      // validate the optional field `vastTagWriteAttributes`
+      if (jsonObj.get("vastTagWriteAttributes") != null && !jsonObj.get("vastTagWriteAttributes").isJsonNull()) {
+        VastTagWriteAttributes.validateJsonObject(jsonObj.getAsJsonObject("vastTagWriteAttributes"));
       }
   }
 

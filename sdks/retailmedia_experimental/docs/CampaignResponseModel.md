@@ -11,7 +11,6 @@ A Retail Media Campaign used to represent an advertiser's marketing objective
 |**accountId** | **String** |  |  |
 |**attributionSettings** | [**AttributionSettingsModel**](AttributionSettingsModel.md) |  |  |
 |**billByRetailerId** | **String** |  |  [optional] |
-|**budgetDetails** | [**BudgetDetailsModel**](BudgetDetailsModel.md) |  |  [optional] |
 |**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) | Buy type of campaign, set only on creation. |  |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Type of campaign, set only on creation. |  |
 |**companyName** | **String** |  |  [optional] |
@@ -19,9 +18,11 @@ A Retail Media Campaign used to represent an advertiser's marketing objective
 |**drawableBalanceIds** | **List&lt;String&gt;** |  |  |
 |**id** | **String** |  |  [optional] |
 |**name** | **String** |  |  |
-|**objective** | [**ObjectiveEnum**](#ObjectiveEnum) | Dynamic Campaign Budgets control: manual keeps today&#39;s behavior; clicks, conversion and  revenue activate campaign-level budget allocation. Impressions is the Onsite Display  objective. |  [optional] |
 |**onBehalfCompanyName** | **String** |  |  [optional] |
+|**onsiteDisplayDetails** | [**OnsiteDisplayDetailsModel**](OnsiteDisplayDetailsModel.md) |  |  [optional] |
+|**regulatedCategory** | [**RegulatedCategoryEnum**](#RegulatedCategoryEnum) | Regulated category the campaign advertises in, set only on creation. |  |
 |**scheduleDetails** | [**ScheduleDetailsModel**](ScheduleDetailsModel.md) |  |  [optional] |
+|**sponsoredProductsDetails** | [**SponsoredProductsDetailsModel**](SponsoredProductsDetailsModel.md) |  |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) | Campaign status, derived from the status of Line Items it holds; active if at least  one line item is active. |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
 
@@ -48,16 +49,13 @@ A Retail Media Campaign used to represent an advertiser's marketing objective
 
 
 
-## Enum: ObjectiveEnum
+## Enum: RegulatedCategoryEnum
 
 | Name | Value |
 |---- | -----|
-| MANUAL | &quot;Manual&quot; |
-| CLICKS | &quot;Clicks&quot; |
-| CONVERSION | &quot;Conversion&quot; |
-| REVENUE | &quot;Revenue&quot; |
-| IMPRESSIONS | &quot;Impressions&quot; |
 | UNKNOWN | &quot;Unknown&quot; |
+| NONE | &quot;None&quot; |
+| ALCOHOL | &quot;Alcohol&quot; |
 
 
 

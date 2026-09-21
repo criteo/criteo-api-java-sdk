@@ -16,7 +16,6 @@ package com.criteo.api.retailmedia.experimental.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.experimental.model.ExperimentalCreateOnsiteDisplayLineItemDetails;
-import com.criteo.api.retailmedia.experimental.model.ExperimentalFlightDatesModel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -54,10 +53,6 @@ public class ExperimentalCreateLineItemModel {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private String campaignId;
-
-  public static final String SERIALIZED_NAME_FLIGHT_DATES = "flightDates";
-  @SerializedName(SERIALIZED_NAME_FLIGHT_DATES)
-  private ExperimentalFlightDatesModel flightDates;
 
   public static final String SERIALIZED_NAME_IS_PAUSED = "isPaused";
   @SerializedName(SERIALIZED_NAME_IS_PAUSED)
@@ -101,28 +96,6 @@ public class ExperimentalCreateLineItemModel {
 
   public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
-  }
-
-
-  public ExperimentalCreateLineItemModel flightDates(ExperimentalFlightDatesModel flightDates) {
-    
-    this.flightDates = flightDates;
-    return this;
-  }
-
-   /**
-   * Get flightDates
-   * @return flightDates
-  **/
-  @javax.annotation.Nullable
-
-  public ExperimentalFlightDatesModel getFlightDates() {
-    return flightDates;
-  }
-
-
-  public void setFlightDates(ExperimentalFlightDatesModel flightDates) {
-    this.flightDates = flightDates;
   }
 
 
@@ -247,7 +220,6 @@ public class ExperimentalCreateLineItemModel {
     }
     ExperimentalCreateLineItemModel experimentalCreateLineItemModel = (ExperimentalCreateLineItemModel) o;
     return Objects.equals(this.campaignId, experimentalCreateLineItemModel.campaignId) &&
-        Objects.equals(this.flightDates, experimentalCreateLineItemModel.flightDates) &&
         Objects.equals(this.isPaused, experimentalCreateLineItemModel.isPaused) &&
         Objects.equals(this.name, experimentalCreateLineItemModel.name) &&
         Objects.equals(this.onsiteDisplayDetails, experimentalCreateLineItemModel.onsiteDisplayDetails) &&
@@ -261,7 +233,7 @@ public class ExperimentalCreateLineItemModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, flightDates, isPaused, name, onsiteDisplayDetails, retailerId, serveToOptOutUser);
+    return Objects.hash(campaignId, isPaused, name, onsiteDisplayDetails, retailerId, serveToOptOutUser);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -276,7 +248,6 @@ public class ExperimentalCreateLineItemModel {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExperimentalCreateLineItemModel {\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    flightDates: ").append(toIndentedString(flightDates)).append("\n");
     sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onsiteDisplayDetails: ").append(toIndentedString(onsiteDisplayDetails)).append("\n");
@@ -305,7 +276,6 @@ public class ExperimentalCreateLineItemModel {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("campaignId");
-    openapiFields.add("flightDates");
     openapiFields.add("isPaused");
     openapiFields.add("name");
     openapiFields.add("onsiteDisplayDetails");
@@ -338,10 +308,6 @@ public class ExperimentalCreateLineItemModel {
       }
       if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
-      }
-      // validate the optional field `flightDates`
-      if (jsonObj.get("flightDates") != null && !jsonObj.get("flightDates").isJsonNull()) {
-        ExperimentalFlightDatesModel.validateJsonObject(jsonObj.getAsJsonObject("flightDates"));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

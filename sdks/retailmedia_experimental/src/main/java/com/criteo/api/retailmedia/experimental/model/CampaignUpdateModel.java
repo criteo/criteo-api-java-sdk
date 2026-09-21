@@ -16,8 +16,9 @@ package com.criteo.api.retailmedia.experimental.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.experimental.model.AttributionSettingsUpdateModel;
-import com.criteo.api.retailmedia.experimental.model.BudgetDetailsUpdateModel;
+import com.criteo.api.retailmedia.experimental.model.OnsiteDisplayDetailsUpdateModel;
 import com.criteo.api.retailmedia.experimental.model.ScheduleDetailsUpdateModel;
+import com.criteo.api.retailmedia.experimental.model.SponsoredProductsDetailsUpdateModel;
 import com.criteo.api.retailmedia.experimental.model.StringNillableV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -57,10 +58,6 @@ public class CampaignUpdateModel {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTION_SETTINGS)
   private AttributionSettingsUpdateModel attributionSettings;
 
-  public static final String SERIALIZED_NAME_BUDGET_DETAILS = "budgetDetails";
-  @SerializedName(SERIALIZED_NAME_BUDGET_DETAILS)
-  private BudgetDetailsUpdateModel budgetDetails;
-
   public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
   @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
   private StringNillableV2 companyName;
@@ -69,70 +66,21 @@ public class CampaignUpdateModel {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  /**
-   * Gets or Sets objective
-   */
-  @JsonAdapter(ObjectiveEnum.Adapter.class)
-  public enum ObjectiveEnum {
-    MANUAL("Manual"),
-    
-    CLICKS("Clicks"),
-    
-    CONVERSION("Conversion"),
-    
-    REVENUE("Revenue"),
-    
-    IMPRESSIONS("Impressions");
-
-    private String value;
-
-    ObjectiveEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ObjectiveEnum fromValue(String value) {
-      for (ObjectiveEnum b : ObjectiveEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<ObjectiveEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ObjectiveEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ObjectiveEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ObjectiveEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_OBJECTIVE = "objective";
-  @SerializedName(SERIALIZED_NAME_OBJECTIVE)
-  private ObjectiveEnum objective;
-
   public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
   @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
   private StringNillableV2 onBehalfCompanyName;
 
+  public static final String SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS = "onsiteDisplayDetails";
+  @SerializedName(SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS)
+  private OnsiteDisplayDetailsUpdateModel onsiteDisplayDetails;
+
   public static final String SERIALIZED_NAME_SCHEDULE_DETAILS = "scheduleDetails";
   @SerializedName(SERIALIZED_NAME_SCHEDULE_DETAILS)
   private ScheduleDetailsUpdateModel scheduleDetails;
+
+  public static final String SERIALIZED_NAME_SPONSORED_PRODUCTS_DETAILS = "sponsoredProductsDetails";
+  @SerializedName(SERIALIZED_NAME_SPONSORED_PRODUCTS_DETAILS)
+  private SponsoredProductsDetailsUpdateModel sponsoredProductsDetails;
 
   public CampaignUpdateModel() {
   }
@@ -156,28 +104,6 @@ public class CampaignUpdateModel {
 
   public void setAttributionSettings(AttributionSettingsUpdateModel attributionSettings) {
     this.attributionSettings = attributionSettings;
-  }
-
-
-  public CampaignUpdateModel budgetDetails(BudgetDetailsUpdateModel budgetDetails) {
-    
-    this.budgetDetails = budgetDetails;
-    return this;
-  }
-
-   /**
-   * Get budgetDetails
-   * @return budgetDetails
-  **/
-  @javax.annotation.Nullable
-
-  public BudgetDetailsUpdateModel getBudgetDetails() {
-    return budgetDetails;
-  }
-
-
-  public void setBudgetDetails(BudgetDetailsUpdateModel budgetDetails) {
-    this.budgetDetails = budgetDetails;
   }
 
 
@@ -225,28 +151,6 @@ public class CampaignUpdateModel {
   }
 
 
-  public CampaignUpdateModel objective(ObjectiveEnum objective) {
-    
-    this.objective = objective;
-    return this;
-  }
-
-   /**
-   * Get objective
-   * @return objective
-  **/
-  @javax.annotation.Nullable
-
-  public ObjectiveEnum getObjective() {
-    return objective;
-  }
-
-
-  public void setObjective(ObjectiveEnum objective) {
-    this.objective = objective;
-  }
-
-
   public CampaignUpdateModel onBehalfCompanyName(StringNillableV2 onBehalfCompanyName) {
     
     this.onBehalfCompanyName = onBehalfCompanyName;
@@ -266,6 +170,28 @@ public class CampaignUpdateModel {
 
   public void setOnBehalfCompanyName(StringNillableV2 onBehalfCompanyName) {
     this.onBehalfCompanyName = onBehalfCompanyName;
+  }
+
+
+  public CampaignUpdateModel onsiteDisplayDetails(OnsiteDisplayDetailsUpdateModel onsiteDisplayDetails) {
+    
+    this.onsiteDisplayDetails = onsiteDisplayDetails;
+    return this;
+  }
+
+   /**
+   * Get onsiteDisplayDetails
+   * @return onsiteDisplayDetails
+  **/
+  @javax.annotation.Nullable
+
+  public OnsiteDisplayDetailsUpdateModel getOnsiteDisplayDetails() {
+    return onsiteDisplayDetails;
+  }
+
+
+  public void setOnsiteDisplayDetails(OnsiteDisplayDetailsUpdateModel onsiteDisplayDetails) {
+    this.onsiteDisplayDetails = onsiteDisplayDetails;
   }
 
 
@@ -291,6 +217,28 @@ public class CampaignUpdateModel {
   }
 
 
+  public CampaignUpdateModel sponsoredProductsDetails(SponsoredProductsDetailsUpdateModel sponsoredProductsDetails) {
+    
+    this.sponsoredProductsDetails = sponsoredProductsDetails;
+    return this;
+  }
+
+   /**
+   * Get sponsoredProductsDetails
+   * @return sponsoredProductsDetails
+  **/
+  @javax.annotation.Nullable
+
+  public SponsoredProductsDetailsUpdateModel getSponsoredProductsDetails() {
+    return sponsoredProductsDetails;
+  }
+
+
+  public void setSponsoredProductsDetails(SponsoredProductsDetailsUpdateModel sponsoredProductsDetails) {
+    this.sponsoredProductsDetails = sponsoredProductsDetails;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -302,12 +250,12 @@ public class CampaignUpdateModel {
     }
     CampaignUpdateModel campaignUpdateModel = (CampaignUpdateModel) o;
     return Objects.equals(this.attributionSettings, campaignUpdateModel.attributionSettings) &&
-        Objects.equals(this.budgetDetails, campaignUpdateModel.budgetDetails) &&
         Objects.equals(this.companyName, campaignUpdateModel.companyName) &&
         Objects.equals(this.name, campaignUpdateModel.name) &&
-        Objects.equals(this.objective, campaignUpdateModel.objective) &&
         Objects.equals(this.onBehalfCompanyName, campaignUpdateModel.onBehalfCompanyName) &&
-        Objects.equals(this.scheduleDetails, campaignUpdateModel.scheduleDetails);
+        Objects.equals(this.onsiteDisplayDetails, campaignUpdateModel.onsiteDisplayDetails) &&
+        Objects.equals(this.scheduleDetails, campaignUpdateModel.scheduleDetails) &&
+        Objects.equals(this.sponsoredProductsDetails, campaignUpdateModel.sponsoredProductsDetails);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -316,7 +264,7 @@ public class CampaignUpdateModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributionSettings, budgetDetails, companyName, name, objective, onBehalfCompanyName, scheduleDetails);
+    return Objects.hash(attributionSettings, companyName, name, onBehalfCompanyName, onsiteDisplayDetails, scheduleDetails, sponsoredProductsDetails);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -331,12 +279,12 @@ public class CampaignUpdateModel {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignUpdateModel {\n");
     sb.append("    attributionSettings: ").append(toIndentedString(attributionSettings)).append("\n");
-    sb.append("    budgetDetails: ").append(toIndentedString(budgetDetails)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
     sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
+    sb.append("    onsiteDisplayDetails: ").append(toIndentedString(onsiteDisplayDetails)).append("\n");
     sb.append("    scheduleDetails: ").append(toIndentedString(scheduleDetails)).append("\n");
+    sb.append("    sponsoredProductsDetails: ").append(toIndentedString(sponsoredProductsDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -360,12 +308,12 @@ public class CampaignUpdateModel {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("attributionSettings");
-    openapiFields.add("budgetDetails");
     openapiFields.add("companyName");
     openapiFields.add("name");
-    openapiFields.add("objective");
     openapiFields.add("onBehalfCompanyName");
+    openapiFields.add("onsiteDisplayDetails");
     openapiFields.add("scheduleDetails");
+    openapiFields.add("sponsoredProductsDetails");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -395,10 +343,6 @@ public class CampaignUpdateModel {
       if (jsonObj.get("attributionSettings") != null && !jsonObj.get("attributionSettings").isJsonNull()) {
         AttributionSettingsUpdateModel.validateJsonObject(jsonObj.getAsJsonObject("attributionSettings"));
       }
-      // validate the optional field `budgetDetails`
-      if (jsonObj.get("budgetDetails") != null && !jsonObj.get("budgetDetails").isJsonNull()) {
-        BudgetDetailsUpdateModel.validateJsonObject(jsonObj.getAsJsonObject("budgetDetails"));
-      }
       // validate the optional field `companyName`
       if (jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) {
         StringNillableV2.validateJsonObject(jsonObj.getAsJsonObject("companyName"));
@@ -406,16 +350,21 @@ public class CampaignUpdateModel {
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("objective") != null && !jsonObj.get("objective").isJsonNull()) && !jsonObj.get("objective").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `objective` to be a primitive type in the JSON string but got `%s`", jsonObj.get("objective").toString()));
-      }
       // validate the optional field `onBehalfCompanyName`
       if (jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) {
         StringNillableV2.validateJsonObject(jsonObj.getAsJsonObject("onBehalfCompanyName"));
       }
+      // validate the optional field `onsiteDisplayDetails`
+      if (jsonObj.get("onsiteDisplayDetails") != null && !jsonObj.get("onsiteDisplayDetails").isJsonNull()) {
+        OnsiteDisplayDetailsUpdateModel.validateJsonObject(jsonObj.getAsJsonObject("onsiteDisplayDetails"));
+      }
       // validate the optional field `scheduleDetails`
       if (jsonObj.get("scheduleDetails") != null && !jsonObj.get("scheduleDetails").isJsonNull()) {
         ScheduleDetailsUpdateModel.validateJsonObject(jsonObj.getAsJsonObject("scheduleDetails"));
+      }
+      // validate the optional field `sponsoredProductsDetails`
+      if (jsonObj.get("sponsoredProductsDetails") != null && !jsonObj.get("sponsoredProductsDetails").isJsonNull()) {
+        SponsoredProductsDetailsUpdateModel.validateJsonObject(jsonObj.getAsJsonObject("sponsoredProductsDetails"));
       }
   }
 

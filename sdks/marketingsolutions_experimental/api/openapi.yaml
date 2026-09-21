@@ -107,7 +107,9 @@ paths:
       x-accepts: application/json
   /experimental/ads/{id}:
     delete:
-      description: Delete an Ad
+      description: "Deletes one ad, which stops it delivering for good. The creative\
+        \ it was bound to is kept and can be\r\nreused; to stop delivery without losing\
+        \ the ad, pause it instead."
       operationId: DeleteAd
       parameters:
       - description: The ad identifier to delete.
@@ -130,7 +132,9 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get an Ad with its id
+      description: "Reads one ad by its id: the creative and ad set it binds, its\
+        \ schedule and its delivery status. The\r\nid comes from the ad list of the\
+        \ advertiser."
       operationId: GetAd
       parameters:
       - description: The ad identifier to retrieve.
@@ -158,7 +162,9 @@ paths:
       x-accepts: application/json
   /experimental/advertisers/{advertiser-id}/ads:
     get:
-      description: Get the list of self-services Ads for a given advertiser
+      description: "Lists the ads of one advertiser, each one binding a creative to\
+        \ an ad set. Use it to find an ad id\r\nbefore reading, pausing, unpausing\
+        \ or deleting a single ad. Page through the ads with limit and\r\noffset."
       operationId: GetAdvertiserAds
       parameters:
       - description: The advertiser identifier.
@@ -205,7 +211,10 @@ paths:
       - Creative
       x-accepts: application/json
     post:
-      description: Create an Ad
+      description: "Creates an ad by binding an existing creative to an existing ad\
+        \ set of the advertiser, delivering\r\nfrom the start date given. The creative\
+        \ and the ad set must both belong to that advertiser. Returns\r\nthe new ad\
+        \ and its id."
       operationId: CreateAdvertiserAd
       parameters:
       - description: The advertiser identifier.
@@ -241,7 +250,9 @@ paths:
       x-accepts: application/json
   /experimental/advertisers/{advertiser-id}/coupons:
     get:
-      description: Get the list of self-services Coupons for a given advertiser
+      description: "Lists the coupons of one advertiser. Use it to find a coupon id\
+        \ before reading, editing, previewing\r\nor deleting a single coupon. Page\
+        \ through the coupons with limit and offset."
       operationId: GetAdvertiserCoupons
       parameters:
       - description: The advertiser identifier.
@@ -288,7 +299,10 @@ paths:
       - Creative
       x-accepts: application/json
     post:
-      description: Create a Coupon
+      description: "Creates a coupon on one ad set of the advertiser. The ad set must\
+        \ already carry dynamic display or\r\nHTML ads, and each slide image must\
+        \ match a size that ad set supports, which the supported-sizes\r\noperation\
+        \ lists. Returns the new coupon and its id."
       operationId: CreateAdvertiserCoupon
       parameters:
       - description: The advertiser identifier.
@@ -304,6 +318,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
+        description: The coupon to create.
         required: true
         x-bodyName: request
       responses:
@@ -323,7 +338,9 @@ paths:
       x-accepts: application/json
   /experimental/advertisers/{advertiser-id}/coupons-supported-sizes:
     get:
-      description: Get the list of Coupon supported sizes
+      description: "Lists, per coupon format, the sizes an ad set supports. Call it\
+        \ before creating a coupon to pick a\r\nvalid slide size; the ad set must\
+        \ already carry dynamic ads."
       operationId: GetAdvertiserCouponSupportedSizes
       parameters:
       - description: The ad set id on which you want to check the Coupon supported
@@ -359,7 +376,8 @@ paths:
       x-accepts: application/json
   /experimental/advertisers/{advertiser-id}/coupons/{id}:
     delete:
-      description: Delete a Coupon
+      description: "Deletes one coupon of an advertiser. A coupon that is already\
+        \ deleted or under review cannot be\r\ndeleted."
       operationId: DeleteAdvertiserCoupon
       parameters:
       - description: The advertiser identifier.
@@ -389,7 +407,9 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get a Coupon with its id
+      description: "Reads one coupon of an advertiser by its id: its schedule, its\
+        \ slides and the ad set it runs on. The\r\nid comes from the coupon list of\
+        \ the advertiser."
       operationId: GetAdvertiserCoupon
       parameters:
       - description: The advertiser identifier.
@@ -423,7 +443,9 @@ paths:
       - Creative
       x-accepts: application/json
     put:
-      description: Edit a specific Coupon
+      description: "Changes when a coupon runs; only the start and end dates can be\
+        \ edited, and the start date must come\r\nbefore the end date. The coupon\
+        \ must still be a draft or live coupon that is not yet delivering."
       operationId: EditAdvertiserCoupon
       parameters:
       - description: The advertiser identifier.
@@ -447,6 +469,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
+        description: The new start and end dates of the coupon.
         required: true
         x-bodyName: request
       responses:
@@ -466,7 +489,9 @@ paths:
       x-accepts: application/json
   /experimental/advertisers/{advertiser-id}/coupons/{id}/preview:
     get:
-      description: Get the preview of a specific Coupon
+      description: "Renders one coupon as preview HTML at the size asked for. The\
+        \ size must be one the coupon's ad set\r\nsupports, as listed by the supported-sizes\
+        \ operation."
       operationId: GetAdvertiserCouponPreview
       parameters:
       - description: The advertiser identifier.
@@ -522,7 +547,10 @@ paths:
       x-accepts: application/json
   /experimental/advertisers/{advertiser-id}/creatives:
     get:
-      description: Get the list of self-services Creatives for a given advertiser
+      description: "Lists the creatives in the library of one advertiser. Use it to\
+        \ find a creative id before reading,\r\nediting or previewing a creative,\
+        \ or before binding one to an ad. Page through the library with\r\nlimit and\
+        \ offset."
       operationId: GetAdvertiserCreatives
       parameters:
       - description: The advertiser identifier.
@@ -569,7 +597,10 @@ paths:
       - Creative
       x-accepts: application/json
     post:
-      description: Create a Creative
+      description: "Creates a creative in the library of one advertiser. The format\
+        \ decides which attributes block must\r\nbe filled in, and the dataset must\
+        \ be one of that advertiser's. Returns the new creative, whose id is\r\nwhat\
+        \ an ad binds to."
       operationId: CreateAdvertiserCreative
       parameters:
       - description: The advertiser identifier.
@@ -1235,86 +1266,6 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /experimental/catalog/ingestion/{ingestion-id}/reports/summary:
-    get:
-      description: "Get the summary report of a catalog ingestion: what triggered\
-        \ it, how long it ran, how many offers it held, what it changed and how clean\
-        \ the data was."
-      operationId: GetCatalogIngestionReportSummary
-      parameters:
-      - description: Identifies the catalog ingestion to report on.
-        explode: false
-        in: path
-        name: ingestion-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CatalogIngestionSummaryResponse'
-          description: The summary report of the ingestion.
-      security:
-      - oauth:
-        - MarketingSolutions_Catalog_Read
-      summary: "/experimental/catalog/ingestion/{ingestion-id}/reports/summary"
-      tags:
-      - Catalog
-      x-accepts: application/json
-  /experimental/catalog/merchants/{merchant-id}/ingestion/reports:
-    get:
-      description: "List the catalog ingestions of a merchant, most recent first,\
-        \ with their type, status and timing."
-      operationId: GetCatalogIngestionReports
-      parameters:
-      - description: Maximum number of ingestion reports returned in the page.
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 25
-          format: int32
-          maximum: 100
-          minimum: 1
-          type: integer
-        style: form
-      - description: Identifies the merchant whose catalog ingestions are reported.
-        explode: false
-        in: path
-        name: merchant-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: "Index of the first ingestion report of the page, used to page\
-          \ through the collection."
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CatalogIngestionReportListResponse'
-          description: The page of catalog ingestion reports.
-      security:
-      - oauth:
-        - MarketingSolutions_Catalog_Read
-      summary: "/experimental/catalog/merchants/{merchant-id}/ingestion/reports"
-      tags:
-      - Catalog
-      x-accepts: application/json
   /experimental/catalog/products/batch:
     post:
       description: |-
@@ -1536,7 +1487,9 @@ paths:
       x-accepts: application/json
   /experimental/creatives/{id}:
     delete:
-      description: Delete a Creative if there are no ads binded to it
+      description: "Deletes one creative. Every ad bound to it must be deleted or\
+        \ rebound first, and a creative that is\r\nalready deleted or under review\
+        \ cannot be deleted."
       operationId: DeleteCreative
       parameters:
       - description: The creative identifier to delete.
@@ -1558,7 +1511,8 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get a Creative with its id
+      description: "Reads one creative by its id, with the attributes of its format.\
+        \ Use it to check a creative before\r\nediting it or binding it to an ad."
       operationId: GetCreative
       parameters:
       - description: The creative identifier to retrieve.
@@ -1584,7 +1538,11 @@ paths:
       - Creative
       x-accepts: application/json
     put:
-      description: Edit a specific Creative
+      description: "Replaces the attributes of one creative: any attribute left out\
+        \ is cleared, so read the creative\r\nfirst and send it back with your changes\
+        \ applied. The format must be the creative's existing format\r\nand the dataset\
+        \ must stay the one it already belongs to; neither can be changed here. A\
+        \ creative\r\nthat is being deployed, archived or deleted cannot be edited."
       operationId: EditCreative
       parameters:
       - description: The creative identifier to edit.
@@ -1600,6 +1558,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
+        description: The complete new attributes of the creative.
         required: true
         x-bodyName: request
       responses:
@@ -1619,7 +1578,9 @@ paths:
       x-accepts: application/json
   /experimental/creatives/{id}/preview:
     post:
-      description: Get the preview of a specific Creative
+      description: "Renders one creative as preview HTML at the size asked for. Only\
+        \ the sizes the creative was built for\r\ncan be previewed; when the size\
+        \ does not match, the error lists the ones that can."
       operationId: GenerateCreativePreview
       parameters:
       - description: The height of the Creative to preview.
@@ -3276,6 +3237,86 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
+  /experimental/marketing-solutions/catalog/ingestion/{ingestion-id}/reports/summary:
+    get:
+      description: "Get the summary report of a catalog ingestion: what triggered\
+        \ it, how long it ran, how many offers it held, what it changed and how clean\
+        \ the data was."
+      operationId: GetCatalogIngestionReportSummary
+      parameters:
+      - description: Identifies the catalog ingestion to report on.
+        explode: false
+        in: path
+        name: ingestion-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogIngestionSummaryResponse'
+          description: The summary report of the ingestion.
+      security:
+      - oauth:
+        - MarketingSolutions_Catalog_Read
+      summary: "/experimental/marketing-solutions/catalog/ingestion/{ingestion-id}/reports/summary"
+      tags:
+      - Catalog
+      x-accepts: application/json
+  /experimental/marketing-solutions/catalog/merchants/{merchant-id}/ingestion/reports:
+    get:
+      description: "List the catalog ingestions of a merchant, most recent first,\
+        \ with their type, status and timing."
+      operationId: GetCatalogIngestionReports
+      parameters:
+      - description: Maximum number of ingestion reports returned in the page.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          format: int32
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: Identifies the merchant whose catalog ingestions are reported.
+        explode: false
+        in: path
+        name: merchant-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "Index of the first ingestion report of the page, used to page\
+          \ through the collection."
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogIngestionReportListResponse'
+          description: The page of catalog ingestion reports.
+      security:
+      - oauth:
+        - MarketingSolutions_Catalog_Read
+      summary: "/experimental/marketing-solutions/catalog/merchants/{merchant-id}/ingestion/reports"
+      tags:
+      - Catalog
+      x-accepts: application/json
   /experimental/marketing-solutions/dataset/{dataset-id}/product-boost:
     get:
       description: Fetch boosting association and configuration for a given partner
@@ -4866,12 +4907,52 @@ components:
         endDate: endDate
         adSetId: adSetId
         name: name
+        adClickTracking:
+        - displayHeight: 0
+          urlSuffix: urlSuffix
+          displayWidth: 6
+          clickZone: Unknown
+          disableLandingUrlEncode: true
+          urlPrefix: urlPrefix
+          disableForCoupons: true
+          disableMacroUrlEncode: true
+          bindingId: bindingId
+          id: id
+        - displayHeight: 0
+          urlSuffix: urlSuffix
+          displayWidth: 6
+          clickZone: Unknown
+          disableLandingUrlEncode: true
+          urlPrefix: urlPrefix
+          disableForCoupons: true
+          disableMacroUrlEncode: true
+          bindingId: bindingId
+          id: id
         description: description
         id: id
+        adImpressionTracking:
+        - displayHeight: 1
+          displayWidth: 5
+          vendorId: vendorId
+          bindingId: bindingId
+          id: id
+          url: url
+        - displayHeight: 1
+          displayWidth: 5
+          vendorId: vendorId
+          bindingId: bindingId
+          id: id
+          url: url
         creativeId: creativeId
         startDate: startDate
       nullable: true
       properties:
+        adClickTracking:
+          description: Optional ad-level click tracking configuration.
+          items:
+            $ref: '#/components/schemas/ExamAdClickTracking'
+          nullable: true
+          type: array
         adDeliveryStatus:
           description: "The delivery status of the ad. Possible values are \"Live\"\
             \ and \"Paused\". This is read-only: use the\r\ndedicated pause and unpause\
@@ -4881,6 +4962,12 @@ components:
           - Paused
           nullable: true
           type: string
+        adImpressionTracking:
+          description: Optional ad-level impression tracking configuration.
+          items:
+            $ref: '#/components/schemas/ExamAdImpressionTracking'
+          nullable: true
+          type: array
         adSetId:
           description: The id of the Ad Set binded to this Ad
           nullable: true
@@ -4903,13 +4990,16 @@ components:
           nullable: true
           type: string
         inventoryType:
-          description: The inventory the Ad belongs to. Possible values are "Display"
-            and "Native". This is optional since this doesn't make sense for every
-            creative type but will throw an error if not set for a dynamic creative.
+          description: "The inventory the Ad belongs to. Possible values are \"Display\"\
+            , \"Native\", \"Video\" and \"Meta\". This is\r\noptional since it doesn't\
+            \ make sense for every creative type: it is inferred from the creative\
+            \ for a\r\nvideo creative, and an error is returned if it is not set for\
+            \ a dynamic creative."
           enum:
           - Native
           - Display
           - Video
+          - Meta
           nullable: true
           type: string
         name:
@@ -6639,14 +6729,61 @@ components:
     AdWrite:
       description: Entity to create an ad
       example:
-        inventoryType: Display
+        inventoryType: Native
         endDate: endDate
         adSetId: adSetId
         name: name
+        adClickTracking:
+        - displayHeight: 0
+          urlSuffix: urlSuffix
+          displayWidth: 6
+          clickZone: Unknown
+          disableLandingUrlEncode: true
+          urlPrefix: urlPrefix
+          disableForCoupons: true
+          disableMacroUrlEncode: true
+          bindingId: bindingId
+          id: id
+        - displayHeight: 0
+          urlSuffix: urlSuffix
+          displayWidth: 6
+          clickZone: Unknown
+          disableLandingUrlEncode: true
+          urlPrefix: urlPrefix
+          disableForCoupons: true
+          disableMacroUrlEncode: true
+          bindingId: bindingId
+          id: id
         description: description
+        id: id
+        adImpressionTracking:
+        - displayHeight: 1
+          displayWidth: 5
+          vendorId: vendorId
+          bindingId: bindingId
+          id: id
+          url: url
+        - displayHeight: 1
+          displayWidth: 5
+          vendorId: vendorId
+          bindingId: bindingId
+          id: id
+          url: url
         creativeId: creativeId
         startDate: startDate
       properties:
+        adClickTracking:
+          description: Optional ad-level click tracking configuration.
+          items:
+            $ref: '#/components/schemas/ExamAdClickTracking'
+          nullable: true
+          type: array
+        adImpressionTracking:
+          description: Optional ad-level impression tracking configuration.
+          items:
+            $ref: '#/components/schemas/ExamAdImpressionTracking'
+          nullable: true
+          type: array
         adSetId:
           description: The id of the Ad Set bound to this Ad
           type: string
@@ -6663,14 +6800,21 @@ components:
             String must be in ISO8601 format"
           nullable: true
           type: string
+        id:
+          nullable: true
+          type: string
         inventoryType:
-          description: The inventory the Ad to be created or updated belongs to. Possible
-            values are "Display" and "Native". This is optional since this doesn't
-            make sense for every creative type but will throw an error if not set
-            for a dynamic creative.
+          description: "The inventory the Ad to be created or updated belongs to.\
+            \ Possible values are \"Display\", \"Native\",\r\n\"Video\" and \"Meta\"\
+            . This is optional since it doesn't make sense for every creative type:\
+            \ it is inferred\r\nfrom the creative for a video creative, and an error\
+            \ is returned if it is not set for a dynamic creative.\r\n\"Meta\" additionally\
+            \ requires the target ad set to be linked to Meta."
           enum:
-          - Display
           - Native
+          - Display
+          - Video
+          - Meta
           nullable: true
           type: string
         name:
@@ -7787,19 +7931,19 @@ components:
                 filter:
                   sellerId:
                     values:
-                    - 1
-                    - 1
+                    - values
+                    - values
                     operator: Unknown
                   partnerId:
                     values:
-                    - 0
-                    - 0
+                    - values
+                    - values
                     operator: Unknown
                   productCategory:
                     values:
-                    - level: 6
+                    - level: 0
                       id: id
-                    - level: 6
+                    - level: 0
                       id: id
                     operator: Unknown
                 not: null
@@ -7813,12 +7957,12 @@ components:
             description: description
             location:
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 1.4658129805029452
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
+                longitude: 1.4658129805029452
               radiusInKm: 0
             retargeting:
               visitorsType: All
@@ -7858,19 +8002,19 @@ components:
                 filter:
                   sellerId:
                     values:
-                    - 1
-                    - 1
+                    - values
+                    - values
                     operator: Unknown
                   partnerId:
                     values:
-                    - 0
-                    - 0
+                    - values
+                    - values
                     operator: Unknown
                   productCategory:
                     values:
-                    - level: 6
+                    - level: 0
                       id: id
-                    - level: 6
+                    - level: 0
                       id: id
                     operator: Unknown
                 not: null
@@ -7884,12 +8028,12 @@ components:
             description: description
             location:
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 1.4658129805029452
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
+                longitude: 1.4658129805029452
               radiusInKm: 0
             retargeting:
               visitorsType: All
@@ -7956,19 +8100,19 @@ components:
                 filter:
                   sellerId:
                     values:
-                    - 1
-                    - 1
+                    - values
+                    - values
                     operator: Unknown
                   partnerId:
                     values:
-                    - 0
-                    - 0
+                    - values
+                    - values
                     operator: Unknown
                   productCategory:
                     values:
-                    - level: 6
+                    - level: 0
                       id: id
-                    - level: 6
+                    - level: 0
                       id: id
                     operator: Unknown
                 not: null
@@ -7984,12 +8128,12 @@ components:
             location:
               registryType: PointOfInterest
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 1.4658129805029452
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
+                longitude: 1.4658129805029452
               radiusInKm: 0
             retargeting:
               visitorsType: All
@@ -8030,19 +8174,19 @@ components:
                 filter:
                   sellerId:
                     values:
-                    - 1
-                    - 1
+                    - values
+                    - values
                     operator: Unknown
                   partnerId:
                     values:
-                    - 0
-                    - 0
+                    - values
+                    - values
                     operator: Unknown
                   productCategory:
                     values:
-                    - level: 6
+                    - level: 0
                       id: id
-                    - level: 6
+                    - level: 0
                       id: id
                     operator: Unknown
                 not: null
@@ -8058,12 +8202,12 @@ components:
             location:
               registryType: PointOfInterest
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 1.4658129805029452
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
+                longitude: 1.4658129805029452
               radiusInKm: 0
             retargeting:
               visitorsType: All
@@ -8154,19 +8298,19 @@ components:
             filter:
               sellerId:
                 values:
-                - 1
-                - 1
+                - values
+                - values
                 operator: Unknown
               partnerId:
                 values:
-                - 0
-                - 0
+                - values
+                - values
                 operator: Unknown
               productCategory:
                 values:
-                - level: 6
+                - level: 0
                   id: id
-                - level: 6
+                - level: 0
                   id: id
                 operator: Unknown
             not: null
@@ -8180,12 +8324,12 @@ components:
         description: description
         location:
           pointsOfInterest:
-          - latitude: 5.962133916683182
+          - latitude: 6.027456183070403
             name: name
-            longitude: 5.637376656633329
-          - latitude: 5.962133916683182
+            longitude: 1.4658129805029452
+          - latitude: 6.027456183070403
             name: name
-            longitude: 5.637376656633329
+            longitude: 1.4658129805029452
           radiusInKm: 0
         retargeting:
           visitorsType: All
@@ -8257,19 +8401,19 @@ components:
               filter:
                 sellerId:
                   values:
-                  - 1
-                  - 1
+                  - values
+                  - values
                   operator: Unknown
                 partnerId:
                   values:
-                  - 0
-                  - 0
+                  - values
+                  - values
                   operator: Unknown
                 productCategory:
                   values:
-                  - level: 6
+                  - level: 0
                     id: id
-                  - level: 6
+                  - level: 0
                     id: id
                   operator: Unknown
               not: null
@@ -8283,12 +8427,12 @@ components:
           description: description
           location:
             pointsOfInterest:
-            - latitude: 5.962133916683182
+            - latitude: 6.027456183070403
               name: name
-              longitude: 5.637376656633329
-            - latitude: 5.962133916683182
+              longitude: 1.4658129805029452
+            - latitude: 6.027456183070403
               name: name
-              longitude: 5.637376656633329
+              longitude: 1.4658129805029452
             radiusInKm: 0
           retargeting:
             visitorsType: All
@@ -8351,9 +8495,9 @@ components:
       description: Set of rules that defines specific people to target.
       example:
         prospecting:
-          daysSinceLastVisitMax: 9
+          daysSinceLastVisitMax: 2
           usersType: Unknown
-          daysSinceLastVisitMin: 3
+          daysSinceLastVisitMin: 7
         filterBased:
           countryCodes:
           - countryCodes
@@ -8362,19 +8506,19 @@ components:
             filter:
               sellerId:
                 values:
-                - 1
-                - 1
+                - values
+                - values
                 operator: Unknown
               partnerId:
                 values:
-                - 0
-                - 0
+                - values
+                - values
                 operator: Unknown
               productCategory:
                 values:
-                - level: 6
+                - level: 0
                   id: id
-                - level: 6
+                - level: 0
                   id: id
                 operator: Unknown
             not: null
@@ -8387,10 +8531,10 @@ components:
         description: description
         retargeting:
           visitorsType: Unknown
-          daysSinceLastVisitMax: 2
-          daysSinceLastVisitMin: 4
+          daysSinceLastVisitMax: 9
+          daysSinceLastVisitMin: 3
         lookalike:
-          targetSize: 7
+          targetSize: 5
           seedSegmentId: seedSegmentId
         type: Unknown
         advertiserId: advertiserId
@@ -8406,13 +8550,13 @@ components:
         location:
           registryType: Unknown
           pointsOfInterest:
-          - latitude: 5.962133916683182
+          - latitude: 6.027456183070403
             name: name
-            longitude: 5.637376656633329
-          - latitude: 5.962133916683182
+            longitude: 1.4658129805029452
+          - latitude: 6.027456183070403
             name: name
-            longitude: 5.637376656633329
-          radiusInKm: 2
+            longitude: 1.4658129805029452
+          radiusInKm: 5
         inMarket:
           country: country
           interestIds:
@@ -8494,9 +8638,9 @@ components:
         data:
         - attributes:
             prospecting:
-              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMax: 2
               usersType: Unknown
-              daysSinceLastVisitMin: 3
+              daysSinceLastVisitMin: 7
             filterBased:
               countryCodes:
               - countryCodes
@@ -8505,19 +8649,19 @@ components:
                 filter:
                   sellerId:
                     values:
-                    - 1
-                    - 1
+                    - values
+                    - values
                     operator: Unknown
                   partnerId:
                     values:
-                    - 0
-                    - 0
+                    - values
+                    - values
                     operator: Unknown
                   productCategory:
                     values:
-                    - level: 6
+                    - level: 0
                       id: id
-                    - level: 6
+                    - level: 0
                       id: id
                     operator: Unknown
                 not: null
@@ -8530,10 +8674,10 @@ components:
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 2
-              daysSinceLastVisitMin: 4
+              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMin: 3
             lookalike:
-              targetSize: 7
+              targetSize: 5
               seedSegmentId: seedSegmentId
             type: Unknown
             advertiserId: advertiserId
@@ -8549,13 +8693,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 1.4658129805029452
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              radiusInKm: 2
+                longitude: 1.4658129805029452
+              radiusInKm: 5
             inMarket:
               country: country
               interestIds:
@@ -8576,9 +8720,9 @@ components:
           type: type
         - attributes:
             prospecting:
-              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMax: 2
               usersType: Unknown
-              daysSinceLastVisitMin: 3
+              daysSinceLastVisitMin: 7
             filterBased:
               countryCodes:
               - countryCodes
@@ -8587,19 +8731,19 @@ components:
                 filter:
                   sellerId:
                     values:
-                    - 1
-                    - 1
+                    - values
+                    - values
                     operator: Unknown
                   partnerId:
                     values:
-                    - 0
-                    - 0
+                    - values
+                    - values
                     operator: Unknown
                   productCategory:
                     values:
-                    - level: 6
+                    - level: 0
                       id: id
-                    - level: 6
+                    - level: 0
                       id: id
                     operator: Unknown
                 not: null
@@ -8612,10 +8756,10 @@ components:
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 2
-              daysSinceLastVisitMin: 4
+              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMin: 3
             lookalike:
-              targetSize: 7
+              targetSize: 5
               seedSegmentId: seedSegmentId
             type: Unknown
             advertiserId: advertiserId
@@ -8631,13 +8775,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 1.4658129805029452
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              radiusInKm: 2
+                longitude: 1.4658129805029452
+              radiusInKm: 5
             inMarket:
               country: country
               interestIds:
@@ -8730,9 +8874,9 @@ components:
         data:
         - attributes:
             prospecting:
-              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMax: 2
               usersType: Unknown
-              daysSinceLastVisitMin: 3
+              daysSinceLastVisitMin: 7
             filterBased:
               countryCodes:
               - countryCodes
@@ -8741,19 +8885,19 @@ components:
                 filter:
                   sellerId:
                     values:
-                    - 1
-                    - 1
+                    - values
+                    - values
                     operator: Unknown
                   partnerId:
                     values:
-                    - 0
-                    - 0
+                    - values
+                    - values
                     operator: Unknown
                   productCategory:
                     values:
-                    - level: 6
+                    - level: 0
                       id: id
-                    - level: 6
+                    - level: 0
                       id: id
                     operator: Unknown
                 not: null
@@ -8766,10 +8910,10 @@ components:
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 2
-              daysSinceLastVisitMin: 4
+              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMin: 3
             lookalike:
-              targetSize: 7
+              targetSize: 5
               seedSegmentId: seedSegmentId
             type: Unknown
             advertiserId: advertiserId
@@ -8785,13 +8929,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 1.4658129805029452
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              radiusInKm: 2
+                longitude: 1.4658129805029452
+              radiusInKm: 5
             inMarket:
               country: country
               interestIds:
@@ -8812,9 +8956,9 @@ components:
           type: type
         - attributes:
             prospecting:
-              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMax: 2
               usersType: Unknown
-              daysSinceLastVisitMin: 3
+              daysSinceLastVisitMin: 7
             filterBased:
               countryCodes:
               - countryCodes
@@ -8823,19 +8967,19 @@ components:
                 filter:
                   sellerId:
                     values:
-                    - 1
-                    - 1
+                    - values
+                    - values
                     operator: Unknown
                   partnerId:
                     values:
-                    - 0
-                    - 0
+                    - values
+                    - values
                     operator: Unknown
                   productCategory:
                     values:
-                    - level: 6
+                    - level: 0
                       id: id
-                    - level: 6
+                    - level: 0
                       id: id
                     operator: Unknown
                 not: null
@@ -8848,10 +8992,10 @@ components:
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 2
-              daysSinceLastVisitMin: 4
+              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMin: 3
             lookalike:
-              targetSize: 7
+              targetSize: 5
               seedSegmentId: seedSegmentId
             type: Unknown
             advertiserId: advertiserId
@@ -8867,13 +9011,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 1.4658129805029452
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              radiusInKm: 2
+                longitude: 1.4658129805029452
+              radiusInKm: 5
             inMarket:
               country: country
               interestIds:
@@ -8958,9 +9102,9 @@ components:
       example:
         attributes:
           prospecting:
-            daysSinceLastVisitMax: 9
+            daysSinceLastVisitMax: 2
             usersType: Unknown
-            daysSinceLastVisitMin: 3
+            daysSinceLastVisitMin: 7
           filterBased:
             countryCodes:
             - countryCodes
@@ -8969,19 +9113,19 @@ components:
               filter:
                 sellerId:
                   values:
-                  - 1
-                  - 1
+                  - values
+                  - values
                   operator: Unknown
                 partnerId:
                   values:
-                  - 0
-                  - 0
+                  - values
+                  - values
                   operator: Unknown
                 productCategory:
                   values:
-                  - level: 6
+                  - level: 0
                     id: id
-                  - level: 6
+                  - level: 0
                     id: id
                   operator: Unknown
               not: null
@@ -8994,10 +9138,10 @@ components:
           description: description
           retargeting:
             visitorsType: Unknown
-            daysSinceLastVisitMax: 2
-            daysSinceLastVisitMin: 4
+            daysSinceLastVisitMax: 9
+            daysSinceLastVisitMin: 3
           lookalike:
-            targetSize: 7
+            targetSize: 5
             seedSegmentId: seedSegmentId
           type: Unknown
           advertiserId: advertiserId
@@ -9013,13 +9157,13 @@ components:
           location:
             registryType: Unknown
             pointsOfInterest:
-            - latitude: 5.962133916683182
+            - latitude: 6.027456183070403
               name: name
-              longitude: 5.637376656633329
-            - latitude: 5.962133916683182
+              longitude: 1.4658129805029452
+            - latitude: 6.027456183070403
               name: name
-              longitude: 5.637376656633329
-            radiusInKm: 2
+              longitude: 1.4658129805029452
+            radiusInKm: 5
           inMarket:
             country: country
             interestIds:
@@ -9056,12 +9200,12 @@ components:
           attributes:
             location:
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 1.4658129805029452
+              - latitude: 6.027456183070403
                 name: name
-                longitude: 5.637376656633329
+                longitude: 1.4658129805029452
               radiusInKm: 0
             inMarket:
               country: country
@@ -9402,12 +9546,12 @@ components:
       example:
         location:
           pointsOfInterest:
-          - latitude: 5.962133916683182
+          - latitude: 6.027456183070403
             name: name
-            longitude: 5.637376656633329
-          - latitude: 5.962133916683182
+            longitude: 1.4658129805029452
+          - latitude: 6.027456183070403
             name: name
-            longitude: 5.637376656633329
+            longitude: 1.4658129805029452
           radiusInKm: 0
         inMarket:
           country: country
@@ -9443,12 +9587,12 @@ components:
         attributes:
           location:
             pointsOfInterest:
-            - latitude: 5.962133916683182
+            - latitude: 6.027456183070403
               name: name
-              longitude: 5.637376656633329
-            - latitude: 5.962133916683182
+              longitude: 1.4658129805029452
+            - latitude: 6.027456183070403
               name: name
-              longitude: 5.637376656633329
+              longitude: 1.4658129805029452
             radiusInKm: 0
           inMarket:
             country: country
@@ -9582,19 +9726,19 @@ components:
             filter:
               sellerId:
                 values:
-                - 1
-                - 1
+                - values
+                - values
                 operator: Unknown
               partnerId:
                 values:
-                - 0
-                - 0
+                - values
+                - values
                 operator: Unknown
               productCategory:
                 values:
-                - level: 6
+                - level: 0
                   id: id
-                - level: 6
+                - level: 0
                   id: id
                 operator: Unknown
             not: null
@@ -9610,12 +9754,12 @@ components:
         location:
           registryType: PointOfInterest
           pointsOfInterest:
-          - latitude: 5.962133916683182
+          - latitude: 6.027456183070403
             name: name
-            longitude: 5.637376656633329
-          - latitude: 5.962133916683182
+            longitude: 1.4658129805029452
+          - latitude: 6.027456183070403
             name: name
-            longitude: 5.637376656633329
+            longitude: 1.4658129805029452
           radiusInKm: 0
         retargeting:
           visitorsType: All
@@ -9680,19 +9824,19 @@ components:
               filter:
                 sellerId:
                   values:
-                  - 1
-                  - 1
+                  - values
+                  - values
                   operator: Unknown
                 partnerId:
                   values:
-                  - 0
-                  - 0
+                  - values
+                  - values
                   operator: Unknown
                 productCategory:
                   values:
-                  - level: 6
+                  - level: 0
                     id: id
-                  - level: 6
+                  - level: 0
                     id: id
                   operator: Unknown
               not: null
@@ -9708,12 +9852,12 @@ components:
           location:
             registryType: PointOfInterest
             pointsOfInterest:
-            - latitude: 5.962133916683182
+            - latitude: 6.027456183070403
               name: name
-              longitude: 5.637376656633329
-            - latitude: 5.962133916683182
+              longitude: 1.4658129805029452
+            - latitude: 6.027456183070403
               name: name
-              longitude: 5.637376656633329
+              longitude: 1.4658129805029452
             radiusInKm: 0
           retargeting:
             visitorsType: All
@@ -10189,6 +10333,23 @@ components:
           type: number
       required:
       - boostingFactor
+      type: object
+    BrandingImageInput:
+      description: Branding image input with shape and base-64 encoded image data.
+      example:
+        base64String: base64String
+        shape: shape
+      properties:
+        base64String:
+          description: Branding image as a base-64 encoded string.
+          type: string
+        shape:
+          description: "Shape of the branding image.\r\nPossible values are \"Horizontal\"\
+            , \"Vertical\", \"Square\"."
+          type: string
+      required:
+      - base64String
+      - shape
       type: object
     BudgetAutomation:
       description: "Budget automation, lets users configure budgets once at the campaign\
@@ -11925,6 +12086,7 @@ components:
         fullFrame:
         - fullFrame
         - fullFrame
+        id: id
         logoZone:
         - logoZone
         - logoZone
@@ -11936,6 +12098,9 @@ components:
             type: string
           nullable: true
           type: array
+        id:
+          nullable: true
+          type: string
         logoZone:
           description: Array of LogoZone sizes as string in width x height format
           items:
@@ -12473,6 +12638,7 @@ components:
         name: name
         rotationsNumber: 2
         description: description
+        id: id
         landingPageUrl: landingPageUrl
         showDuration: 3
         startDate: startDate
@@ -12496,6 +12662,9 @@ components:
           enum:
           - FullFrame
           - LogoZone
+          type: string
+        id:
+          nullable: true
           type: string
         images:
           description: List of slides containing the images as a base-64 encoded string
@@ -12608,6 +12777,27 @@ components:
           - shape: Horizontal
             url: https://openapi-generator.tech
           productImageDisplay: ShowFullImage
+        author: author
+        format: format
+        description: description
+        advertiserId: advertiserId
+        htmlTagAttributes:
+          tags:
+          - htmlTag: htmlTag
+            size:
+              width: 1
+              height: 6
+          - htmlTag: htmlTag
+            size:
+              width: 1
+              height: 6
+        socialSettings:
+          meta:
+            headline: headline
+            callToAction: callToAction
+          tiktok:
+            headline: headline
+            callToAction: callToAction
         adaptiveAttributes:
           descriptionFont: descriptionFont
           imageDisplay: ShowFullImage
@@ -12658,23 +12848,57 @@ components:
           - urls
           - urls
           landingPageUrl: landingPageUrl
-        author: author
-        format: format
+        vastTagAttributes:
+          vastTagUrl: vastTagUrl
+          mimeTypes:
+          - mimeTypes
+          - mimeTypes
+          videoDurationMs: 5.962133916683182
+          hasVpaid: true
+          isSkippable: true
+          vastVersion: vastVersion
         name: name
         datasetId: datasetId
-        description: description
         id: id
-        advertiserId: advertiserId
-        htmlTagAttributes:
-          tags:
-          - htmlTag: htmlTag
-            size:
-              width: 1
-              height: 6
-          - htmlTag: htmlTag
-            size:
-              width: 1
-              height: 6
+        showcaseAttributes:
+          brandingImageClickUrl: https://openapi-generator.tech
+          iosDeeplinkUrl: https://openapi-generator.tech
+          universalLinkUrl: https://openapi-generator.tech
+          brandingImages:
+          - shape: shape
+            url: https://openapi-generator.tech
+          - shape: shape
+            url: https://openapi-generator.tech
+          secondaryFont: secondaryFont
+          layouts:
+          - layouts
+          - layouts
+          logos:
+          - shape: shape
+            url: https://openapi-generator.tech
+          - shape: shape
+            url: https://openapi-generator.tech
+          colors:
+            creativeBackgroundColor: creativeBackgroundColor
+            pricesColor: pricesColor
+            bodyTextColor: bodyTextColor
+          metaSetting:
+            headline: headline
+            callToAction: callToAction
+          androidDeeplinkUrl: https://openapi-generator.tech
+          primaryFont: primaryFont
+          priceSettings:
+            priceTextBefore: priceTextBefore
+            priceFormat: priceFormat
+            priceTextAfter: priceTextAfter
+            priceFormatBody: priceFormatBody
+            hideDecimals: true
+          appLinkUrl: https://openapi-generator.tech
+          callsToAction:
+          - callsToAction
+          - callsToAction
+          landingPageUrl: https://openapi-generator.tech
+          productImageDisplay: productImageDisplay
         status: status
       nullable: true
       properties:
@@ -12710,14 +12934,39 @@ components:
         name:
           description: The name of the creative
           type: string
+        showcaseAttributes:
+          $ref: '#/components/schemas/ShowcaseAttributes'
+        socialSettings:
+          $ref: '#/components/schemas/SocialSettings'
         status:
           description: The status of the creative
           type: string
+        vastTagAttributes:
+          $ref: '#/components/schemas/VastTagAttributes'
       required:
       - advertiserId
       - author
       - name
       - status
+      type: object
+    CreativeMetaSetting:
+      description: Meta social metadata for a creative.
+      example:
+        headline: headline
+        callToAction: callToAction
+      nullable: true
+      properties:
+        callToAction:
+          description: "Call-to-Action for Meta placements.\r\nPossible values: \"\
+            BookTravel\", \"ShopNow\", \"LearnMore\", \"SignUp\", \"Download\", \"\
+            OpenLink\".\r\nMatched without case sensitivity. The list follows what\
+            \ Meta supports and can change."
+          nullable: true
+          type: string
+        headline:
+          description: Headline text for Meta placements. Maximum 125 characters.
+          nullable: true
+          type: string
       type: object
     CreativeRead:
       description: A CreativeRead is a project with the necessary information to display
@@ -12737,6 +12986,27 @@ components:
           - shape: Horizontal
             url: https://openapi-generator.tech
           productImageDisplay: ShowFullImage
+        author: author
+        format: format
+        description: description
+        advertiserId: advertiserId
+        htmlTagAttributes:
+          tags:
+          - htmlTag: htmlTag
+            size:
+              width: 1
+              height: 6
+          - htmlTag: htmlTag
+            size:
+              width: 1
+              height: 6
+        socialSettings:
+          meta:
+            headline: headline
+            callToAction: callToAction
+          tiktok:
+            headline: headline
+            callToAction: callToAction
         adaptiveAttributes:
           descriptionFont: descriptionFont
           imageDisplay: ShowFullImage
@@ -12787,22 +13057,57 @@ components:
           - urls
           - urls
           landingPageUrl: landingPageUrl
-        author: author
-        format: format
+        vastTagAttributes:
+          vastTagUrl: vastTagUrl
+          mimeTypes:
+          - mimeTypes
+          - mimeTypes
+          videoDurationMs: 5.962133916683182
+          hasVpaid: true
+          isSkippable: true
+          vastVersion: vastVersion
         name: name
         datasetId: datasetId
-        description: description
-        advertiserId: advertiserId
-        htmlTagAttributes:
-          tags:
-          - htmlTag: htmlTag
-            size:
-              width: 1
-              height: 6
-          - htmlTag: htmlTag
-            size:
-              width: 1
-              height: 6
+        id: id
+        showcaseAttributes:
+          brandingImageClickUrl: https://openapi-generator.tech
+          iosDeeplinkUrl: https://openapi-generator.tech
+          universalLinkUrl: https://openapi-generator.tech
+          brandingImages:
+          - shape: shape
+            url: https://openapi-generator.tech
+          - shape: shape
+            url: https://openapi-generator.tech
+          secondaryFont: secondaryFont
+          layouts:
+          - layouts
+          - layouts
+          logos:
+          - shape: shape
+            url: https://openapi-generator.tech
+          - shape: shape
+            url: https://openapi-generator.tech
+          colors:
+            creativeBackgroundColor: creativeBackgroundColor
+            pricesColor: pricesColor
+            bodyTextColor: bodyTextColor
+          metaSetting:
+            headline: headline
+            callToAction: callToAction
+          androidDeeplinkUrl: https://openapi-generator.tech
+          primaryFont: primaryFont
+          priceSettings:
+            priceTextBefore: priceTextBefore
+            priceFormat: priceFormat
+            priceTextAfter: priceTextAfter
+            priceFormatBody: priceFormatBody
+            hideDecimals: true
+          appLinkUrl: https://openapi-generator.tech
+          callsToAction:
+          - callsToAction
+          - callsToAction
+          landingPageUrl: https://openapi-generator.tech
+          productImageDisplay: productImageDisplay
         status: status
       nullable: true
       properties:
@@ -12830,23 +13135,98 @@ components:
           type: string
         htmlTagAttributes:
           $ref: '#/components/schemas/HtmlTagAttributes'
+        id:
+          nullable: true
+          type: string
         imageAttributes:
           $ref: '#/components/schemas/ImageAttributes'
         name:
           description: The name of the creative
           type: string
+        showcaseAttributes:
+          $ref: '#/components/schemas/ShowcaseAttributes'
+        socialSettings:
+          $ref: '#/components/schemas/SocialSettings'
         status:
           description: The status of the creative
           type: string
+        vastTagAttributes:
+          $ref: '#/components/schemas/VastTagAttributes'
       required:
       - advertiserId
       - author
       - name
       - status
       type: object
+    CreativeTikTokSetting:
+      description: TikTok social metadata for a creative.
+      example:
+        headline: headline
+        callToAction: callToAction
+      nullable: true
+      properties:
+        callToAction:
+          description: "Call-to-Action for TikTok placements.\r\nPossible values:\
+            \ \"BOOK_NOW\", \"EXPERIENCE_NOW\", \"LEARN_MORE\", \"ORDER_NOW\", \"\
+            READ_MORE\",\r\n\"SHOP_NOW\", \"SUBSCRIBE\", \"VIEW_NOW\", \"VISIT_STORE\"\
+            , \"DOWNLOAD_NOW\".\r\nMatched without case sensitivity. The list follows\
+            \ what TikTok supports and can change."
+          nullable: true
+          type: string
+        headline:
+          description: Headline text for TikTok placements. Maximum 100 characters.
+          nullable: true
+          type: string
+      type: object
     CreativeWrite:
       description: Entity to create or update a creative
       example:
+        socialSettings:
+          meta:
+            headline: headline
+            callToAction: callToAction
+          tiktok:
+            headline: headline
+            callToAction: callToAction
+        showcaseWriteAttributes:
+          brandingImageClickUrl: https://openapi-generator.tech
+          iosDeeplinkUrl: https://openapi-generator.tech
+          universalLinkUrl: https://openapi-generator.tech
+          secondaryFont: secondaryFont
+          logoBase64Strings:
+          - base64String: base64String
+            shape: shape
+          - base64String: base64String
+            shape: shape
+          layouts:
+          - Showcase
+          - Showcase
+          colors:
+            creativeBackgroundColor: creativeBackgroundColor
+            pricesColor: pricesColor
+            bodyTextColor: bodyTextColor
+          metaSetting:
+            headline: headline
+            callToAction: callToAction
+          androidDeeplinkUrl: https://openapi-generator.tech
+          primaryFont: primaryFont
+          priceSettings:
+            priceTextBefore: priceTextBefore
+            priceFormat: priceFormat
+            priceTextAfter: priceTextAfter
+            priceFormatBody: priceFormatBody
+            hideDecimals: true
+          appLinkUrl: https://openapi-generator.tech
+          brandingImageBase64Strings:
+          - base64String: base64String
+            shape: shape
+          - base64String: base64String
+            shape: shape
+          callsToAction:
+          - callsToAction
+          - callsToAction
+          landingPageUrl: https://openapi-generator.tech
+          productImageDisplay: ShowFullImage
         htmlTagWriteAttributes:
           tags:
           - htmlTag: htmlTag
@@ -12867,7 +13247,7 @@ components:
           - callsToAction
           - callsToAction
           productImageDisplay: ShowFullImage
-        format: Image
+        format: Dynamic
         imageWriteAttributes:
           base64Strings:
           - base64Strings
@@ -12909,6 +13289,9 @@ components:
           headlineText: headlineText
         datasetId: datasetId
         description: description
+        id: id
+        vastTagWriteAttributes:
+          vastTagUrl: https://openapi-generator.tech
       properties:
         adaptiveWriteAttributes:
           $ref: '#/components/schemas/AdaptiveWriteAttributes'
@@ -12922,21 +13305,32 @@ components:
         dynamicWriteAttributes:
           $ref: '#/components/schemas/DynamicWriteAttributes'
         format:
-          description: "The format of the creative\r\nYou can use \"Image\", \" HtmlTag\"\
-            , \"Dynamic\" or \"Adaptive\""
+          description: "The format of the creative.\r\nYou can use \"Image\", \"HtmlTag\"\
+            , \"Dynamic\", \"Adaptive\", \"Showcase\" or \"VastTag\""
           enum:
-          - Image
-          - HtmlTag
           - Dynamic
+          - HtmlTag
+          - Image
           - Adaptive
+          - Showcase
+          - VastTag
           type: string
         htmlTagWriteAttributes:
           $ref: '#/components/schemas/HtmlTagWriteAttributes'
+        id:
+          nullable: true
+          type: string
         imageWriteAttributes:
           $ref: '#/components/schemas/ImageWriteAttributes'
         name:
           description: The name of the creative
           type: string
+        showcaseWriteAttributes:
+          $ref: '#/components/schemas/ShowcaseWriteAttributes'
+        socialSettings:
+          $ref: '#/components/schemas/SocialSettings'
+        vastTagWriteAttributes:
+          $ref: '#/components/schemas/VastTagWriteAttributes'
       required:
       - datasetId
       - format
@@ -13553,6 +13947,141 @@ components:
       required:
       - audienceSegmentId
       type: object
+    ExamAdClickTracking:
+      description: "An ad-level click tracking rule. A rule wraps the landing url\
+        \ of the clicks it covers with a prefix and a\r\nsuffix. It applies either\
+        \ to the whole ad (neither clickZone nor a display size set), to one banner\
+        \ zone\r\n(clickZone set), or to one display size (displayWidth and displayHeight\
+        \ both set)."
+      example:
+        displayHeight: 0
+        urlSuffix: urlSuffix
+        displayWidth: 6
+        clickZone: Unknown
+        disableLandingUrlEncode: true
+        urlPrefix: urlPrefix
+        disableForCoupons: true
+        disableMacroUrlEncode: true
+        bindingId: bindingId
+        id: id
+      properties:
+        bindingId:
+          description: "Unique ID of the ad the rule belongs to. It always names the\
+            \ ad of the request path, so it can be left\r\nout of a write; when it\
+            \ is sent it must match that ad, and a rule naming another one is refused."
+          nullable: true
+          type: string
+        clickZone:
+          description: "The banner zone this rule applies to. Leave it out for a rule\
+            \ that is not specific to a zone.\r\nPossible values are \"AppInstall\"\
+            , \"Coupon\", \"Logo\", \"Main\", \"Product\", \"Store\", \"Video\" and\r\
+            \n\"BrandingImage\"."
+          enum:
+          - Unknown
+          - AppInstall
+          - Coupon
+          - Logo
+          - Main
+          - Product
+          - Store
+          - Video
+          - BrandingImage
+          nullable: true
+          type: string
+        disableForCoupons:
+          description: Whether this rule is skipped for clicks on coupons.
+          nullable: true
+          type: boolean
+        disableLandingUrlEncode:
+          description: Whether the landing url is left unencoded when it is substituted
+            into the tracking url.
+          nullable: true
+          type: boolean
+        disableMacroUrlEncode:
+          description: Whether url macros are left unencoded when they are substituted
+            into the tracking url.
+          nullable: true
+          type: boolean
+        displayHeight:
+          description: "The height in pixels of the display size this rule applies\
+            \ to. Set it together with displayWidth, and\r\nleave both out for a rule\
+            \ that is not specific to a display size."
+          format: int32
+          nullable: true
+          type: integer
+        displayWidth:
+          description: "The width in pixels of the display size this rule applies\
+            \ to. Set it together with displayHeight, and\r\nleave both out for a\
+            \ rule that is not specific to a display size."
+          format: int32
+          nullable: true
+          type: integer
+        id:
+          description: "Unique ID of the click tracking rule. Leave it out to create\
+            \ a rule; send back the ID of an existing\r\nrule to update it. Rules\
+            \ of the ad that are absent from a write request are deleted."
+          nullable: true
+          type: string
+        urlPrefix:
+          description: The url prepended to the landing url of the clicks this rule
+            covers.
+          nullable: true
+          type: string
+        urlSuffix:
+          description: The url appended to the landing url of the clicks this rule
+            covers.
+          nullable: true
+          type: string
+      type: object
+    ExamAdImpressionTracking:
+      description: "An ad-level impression tracking rule. The rule calls its url when\
+        \ an impression it covers is served. It\r\napplies either to the whole ad\
+        \ (no display size set) or to one display size (displayWidth and displayHeight\r\
+        \nboth set)."
+      example:
+        displayHeight: 1
+        displayWidth: 5
+        vendorId: vendorId
+        bindingId: bindingId
+        id: id
+        url: url
+      properties:
+        bindingId:
+          description: "Unique ID of the ad the rule belongs to. It always names the\
+            \ ad of the request path, so it can be left\r\nout of a write; when it\
+            \ is sent it must match that ad, and a rule naming another one is refused."
+          nullable: true
+          type: string
+        displayHeight:
+          description: "The height in pixels of the display size this rule applies\
+            \ to. Set it together with displayWidth, and\r\nleave both out for a rule\
+            \ that is not specific to a display size."
+          format: int32
+          nullable: true
+          type: integer
+        displayWidth:
+          description: "The width in pixels of the display size this rule applies\
+            \ to. Set it together with displayHeight, and\r\nleave both out for a\
+            \ rule that is not specific to a display size."
+          format: int32
+          nullable: true
+          type: integer
+        id:
+          description: "Unique ID of the impression tracking rule. Leave it out to\
+            \ create a rule; send back the ID of an\r\nexisting rule to update it.\
+            \ Rules of the ad that are absent from a write request are deleted."
+          nullable: true
+          type: string
+        url:
+          description: The url called when an impression covered by this rule is served.
+          nullable: true
+          type: string
+        vendorId:
+          description: Unique ID of the third party vendor the tracking url belongs
+            to.
+          nullable: true
+          type: string
+      type: object
     ExportColumn:
       additionalProperties: false
       description: Description of a column from an async report request
@@ -13987,19 +14516,19 @@ components:
         filter:
           sellerId:
             values:
-            - 1
-            - 1
+            - values
+            - values
             operator: Unknown
           partnerId:
             values:
-            - 0
-            - 0
+            - values
+            - values
             operator: Unknown
           productCategory:
             values:
-            - level: 6
+            - level: 0
               id: id
-            - level: 6
+            - level: 0
               id: id
             operator: Unknown
         not: null
@@ -14038,19 +14567,19 @@ components:
           filter:
             sellerId:
               values:
-              - 1
-              - 1
+              - values
+              - values
               operator: Unknown
             partnerId:
               values:
-              - 0
-              - 0
+              - values
+              - values
               operator: Unknown
             productCategory:
               values:
-              - level: 6
+              - level: 0
                 id: id
-              - level: 6
+              - level: 0
                 id: id
               operator: Unknown
           not: null
@@ -14077,29 +14606,29 @@ components:
       example:
         sellerId:
           values:
-          - 1
-          - 1
+          - values
+          - values
           operator: Unknown
         partnerId:
           values:
-          - 0
-          - 0
+          - values
+          - values
           operator: Unknown
         productCategory:
           values:
-          - level: 6
+          - level: 0
             id: id
-          - level: 6
+          - level: 0
             id: id
           operator: Unknown
       nullable: true
       properties:
         partnerId:
-          $ref: '#/components/schemas/IntegerFilterV1'
+          $ref: '#/components/schemas/IdFilterV1'
         productCategory:
           $ref: '#/components/schemas/ProductCategoryFilterV1'
         sellerId:
-          $ref: '#/components/schemas/LongFilterV1'
+          $ref: '#/components/schemas/IdFilterV1'
       type: object
     FilterBasedUpdateV1:
       description: Settings to target users based on a combination of filters.
@@ -14111,19 +14640,19 @@ components:
           filter:
             sellerId:
               values:
-              - 1
-              - 1
+              - values
+              - values
               operator: Unknown
             partnerId:
               values:
-              - 0
-              - 0
+              - values
+              - values
               operator: Unknown
             productCategory:
               values:
-              - level: 6
+              - level: 0
                 id: id
-              - level: 6
+              - level: 0
                 id: id
               operator: Unknown
           not: null
@@ -14152,19 +14681,19 @@ components:
           filter:
             sellerId:
               values:
-              - 1
-              - 1
+              - values
+              - values
               operator: Unknown
             partnerId:
               values:
-              - 0
-              - 0
+              - values
+              - values
               operator: Unknown
             productCategory:
               values:
-              - level: 6
+              - level: 0
                 id: id
-              - level: 6
+              - level: 0
                 id: id
               operator: Unknown
           not: null
@@ -15934,6 +16463,29 @@ components:
       required:
       - tags
       type: object
+    IdFilterV1:
+      description: Filter that compares identifiers against one or more values.
+      example:
+        values:
+        - values
+        - values
+        operator: Unknown
+      nullable: true
+      properties:
+        operator:
+          description: Comparison operator for the id filter
+          enum:
+          - Unknown
+          - Equals
+          nullable: true
+          type: string
+        values:
+          description: Identifiers to compare against
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     ImageAttributes:
       description: The attributes specific to Image creatives
       example:
@@ -16039,7 +16591,7 @@ components:
           type: integer
         slideUrls:
           description: Array of images of the same size uploaded on demostatic.criteo.com
-            when deploying and then static.criteo.net
+            when deploying and then static.criteo.net
           items:
             type: string
           nullable: true
@@ -16597,30 +17149,6 @@ components:
           format: int64
           type: integer
       type: object
-    IntegerFilterV1:
-      description: Filter that compares integers against one or more values.
-      example:
-        values:
-        - 0
-        - 0
-        operator: Unknown
-      nullable: true
-      properties:
-        operator:
-          description: Comparison operator for the integer filter
-          enum:
-          - Unknown
-          - Equals
-          nullable: true
-          type: string
-        values:
-          description: Integer values to compare against
-          items:
-            format: int32
-            type: integer
-          nullable: true
-          type: array
-      type: object
     JsonReportRows:
       additionalProperties: false
       description: This is the message defining the json report rows
@@ -16814,12 +17342,12 @@ components:
       description: Settings to target users based on their location.
       example:
         pointsOfInterest:
-        - latitude: 5.962133916683182
+        - latitude: 6.027456183070403
           name: name
-          longitude: 5.637376656633329
-        - latitude: 5.962133916683182
+          longitude: 1.4658129805029452
+        - latitude: 6.027456183070403
           name: name
-          longitude: 5.637376656633329
+          longitude: 1.4658129805029452
         radiusInKm: 0
       properties:
         pointsOfInterest:
@@ -16841,12 +17369,12 @@ components:
       description: Settings to define your audience based on their location.
       example:
         pointsOfInterest:
-        - latitude: 5.962133916683182
+        - latitude: 6.027456183070403
           name: name
-          longitude: 5.637376656633329
-        - latitude: 5.962133916683182
+          longitude: 1.4658129805029452
+        - latitude: 6.027456183070403
           name: name
-          longitude: 5.637376656633329
+          longitude: 1.4658129805029452
         radiusInKm: 0
       properties:
         pointsOfInterest:
@@ -16865,12 +17393,12 @@ components:
       example:
         registryType: PointOfInterest
         pointsOfInterest:
-        - latitude: 5.962133916683182
+        - latitude: 6.027456183070403
           name: name
-          longitude: 5.637376656633329
-        - latitude: 5.962133916683182
+          longitude: 1.4658129805029452
+        - latitude: 6.027456183070403
           name: name
-          longitude: 5.637376656633329
+          longitude: 1.4658129805029452
         radiusInKm: 0
       properties:
         pointsOfInterest:
@@ -16894,13 +17422,13 @@ components:
       example:
         registryType: Unknown
         pointsOfInterest:
-        - latitude: 5.962133916683182
+        - latitude: 6.027456183070403
           name: name
-          longitude: 5.637376656633329
-        - latitude: 5.962133916683182
+          longitude: 1.4658129805029452
+        - latitude: 6.027456183070403
           name: name
-          longitude: 5.637376656633329
-        radiusInKm: 2
+          longitude: 1.4658129805029452
+        radiusInKm: 5
       nullable: true
       properties:
         pointsOfInterest:
@@ -16924,29 +17452,22 @@ components:
           nullable: true
           type: string
       type: object
-    LongFilterV1:
-      description: Filter that compares 64-bit integers against one or more values.
+    LogoInput:
+      description: Logo input with shape and base-64 encoded image data.
       example:
-        values:
-        - 1
-        - 1
-        operator: Unknown
-      nullable: true
+        base64String: base64String
+        shape: shape
       properties:
-        operator:
-          description: Comparison operator for the long filter
-          enum:
-          - Unknown
-          - Equals
-          nullable: true
+        base64String:
+          description: Logo image as a base-64 encoded string.
           type: string
-        values:
-          description: 64-bit integer values to compare against
-          items:
-            format: int64
-            type: integer
-          nullable: true
-          type: array
+        shape:
+          description: "Shape of the logo.\r\nPossible values are \"Horizontal\",\
+            \ \"Vertical\", \"Square\"."
+          type: string
+      required:
+      - base64String
+      - shape
       type: object
     LookalikeCreateV1:
       description: Settings to target users close to a given seed segment.
@@ -16977,7 +17498,7 @@ components:
     LookalikeV1:
       description: Settings to target users that behave like a given seed segment
       example:
-        targetSize: 7
+        targetSize: 5
         seedSegmentId: seedSegmentId
       nullable: true
       properties:
@@ -19374,9 +19895,9 @@ components:
       description: "Named coordinate defined by its latitude and longitude.\r\nLatitude\
         \ and Longitude are rounded at 5 decimals."
       example:
-        latitude: 5.962133916683182
+        latitude: 6.027456183070403
         name: name
-        longitude: 5.637376656633329
+        longitude: 1.4658129805029452
       properties:
         latitude:
           description: ISO-6709 latitude (rounded at 5 decimals)
@@ -19904,9 +20425,9 @@ components:
         id and level) is among the provided values.
       example:
         values:
-        - level: 6
+        - level: 0
           id: id
-        - level: 6
+        - level: 0
           id: id
         operator: Unknown
       nullable: true
@@ -19929,7 +20450,7 @@ components:
     ProductCategoryV1:
       description: A product category identified by its id and its level in the hierarchy.
       example:
-        level: 6
+        level: 0
         id: id
       properties:
         id:
@@ -20973,9 +21494,9 @@ components:
     ProspectingV1:
       description: Settings to target prospecting users to website visitors.
       example:
-        daysSinceLastVisitMax: 9
+        daysSinceLastVisitMax: 2
         usersType: Unknown
-        daysSinceLastVisitMin: 3
+        daysSinceLastVisitMin: 7
       nullable: true
       properties:
         daysSinceLastVisitMax:
@@ -22400,8 +22921,42 @@ components:
             endDate: endDate
             adSetId: adSetId
             name: name
+            adClickTracking:
+            - displayHeight: 0
+              urlSuffix: urlSuffix
+              displayWidth: 6
+              clickZone: Unknown
+              disableLandingUrlEncode: true
+              urlPrefix: urlPrefix
+              disableForCoupons: true
+              disableMacroUrlEncode: true
+              bindingId: bindingId
+              id: id
+            - displayHeight: 0
+              urlSuffix: urlSuffix
+              displayWidth: 6
+              clickZone: Unknown
+              disableLandingUrlEncode: true
+              urlPrefix: urlPrefix
+              disableForCoupons: true
+              disableMacroUrlEncode: true
+              bindingId: bindingId
+              id: id
             description: description
             id: id
+            adImpressionTracking:
+            - displayHeight: 1
+              displayWidth: 5
+              vendorId: vendorId
+              bindingId: bindingId
+              id: id
+              url: url
+            - displayHeight: 1
+              displayWidth: 5
+              vendorId: vendorId
+              bindingId: bindingId
+              id: id
+              url: url
             creativeId: creativeId
             startDate: startDate
           id: id
@@ -22412,8 +22967,42 @@ components:
             endDate: endDate
             adSetId: adSetId
             name: name
+            adClickTracking:
+            - displayHeight: 0
+              urlSuffix: urlSuffix
+              displayWidth: 6
+              clickZone: Unknown
+              disableLandingUrlEncode: true
+              urlPrefix: urlPrefix
+              disableForCoupons: true
+              disableMacroUrlEncode: true
+              bindingId: bindingId
+              id: id
+            - displayHeight: 0
+              urlSuffix: urlSuffix
+              displayWidth: 6
+              clickZone: Unknown
+              disableLandingUrlEncode: true
+              urlPrefix: urlPrefix
+              disableForCoupons: true
+              disableMacroUrlEncode: true
+              bindingId: bindingId
+              id: id
             description: description
             id: id
+            adImpressionTracking:
+            - displayHeight: 1
+              displayWidth: 5
+              vendorId: vendorId
+              bindingId: bindingId
+              id: id
+              url: url
+            - displayHeight: 1
+              displayWidth: 5
+              vendorId: vendorId
+              bindingId: bindingId
+              id: id
+              url: url
             creativeId: creativeId
             startDate: startDate
           id: id
@@ -22621,6 +23210,27 @@ components:
               - shape: Horizontal
                 url: https://openapi-generator.tech
               productImageDisplay: ShowFullImage
+            author: author
+            format: format
+            description: description
+            advertiserId: advertiserId
+            htmlTagAttributes:
+              tags:
+              - htmlTag: htmlTag
+                size:
+                  width: 1
+                  height: 6
+              - htmlTag: htmlTag
+                size:
+                  width: 1
+                  height: 6
+            socialSettings:
+              meta:
+                headline: headline
+                callToAction: callToAction
+              tiktok:
+                headline: headline
+                callToAction: callToAction
             adaptiveAttributes:
               descriptionFont: descriptionFont
               imageDisplay: ShowFullImage
@@ -22671,22 +23281,57 @@ components:
               - urls
               - urls
               landingPageUrl: landingPageUrl
-            author: author
-            format: format
+            vastTagAttributes:
+              vastTagUrl: vastTagUrl
+              mimeTypes:
+              - mimeTypes
+              - mimeTypes
+              videoDurationMs: 5.962133916683182
+              hasVpaid: true
+              isSkippable: true
+              vastVersion: vastVersion
             name: name
             datasetId: datasetId
-            description: description
-            advertiserId: advertiserId
-            htmlTagAttributes:
-              tags:
-              - htmlTag: htmlTag
-                size:
-                  width: 1
-                  height: 6
-              - htmlTag: htmlTag
-                size:
-                  width: 1
-                  height: 6
+            id: id
+            showcaseAttributes:
+              brandingImageClickUrl: https://openapi-generator.tech
+              iosDeeplinkUrl: https://openapi-generator.tech
+              universalLinkUrl: https://openapi-generator.tech
+              brandingImages:
+              - shape: shape
+                url: https://openapi-generator.tech
+              - shape: shape
+                url: https://openapi-generator.tech
+              secondaryFont: secondaryFont
+              layouts:
+              - layouts
+              - layouts
+              logos:
+              - shape: shape
+                url: https://openapi-generator.tech
+              - shape: shape
+                url: https://openapi-generator.tech
+              colors:
+                creativeBackgroundColor: creativeBackgroundColor
+                pricesColor: pricesColor
+                bodyTextColor: bodyTextColor
+              metaSetting:
+                headline: headline
+                callToAction: callToAction
+              androidDeeplinkUrl: https://openapi-generator.tech
+              primaryFont: primaryFont
+              priceSettings:
+                priceTextBefore: priceTextBefore
+                priceFormat: priceFormat
+                priceTextAfter: priceTextAfter
+                priceFormatBody: priceFormatBody
+                hideDecimals: true
+              appLinkUrl: https://openapi-generator.tech
+              callsToAction:
+              - callsToAction
+              - callsToAction
+              landingPageUrl: https://openapi-generator.tech
+              productImageDisplay: productImageDisplay
             status: status
           id: id
           type: type
@@ -22705,6 +23350,27 @@ components:
               - shape: Horizontal
                 url: https://openapi-generator.tech
               productImageDisplay: ShowFullImage
+            author: author
+            format: format
+            description: description
+            advertiserId: advertiserId
+            htmlTagAttributes:
+              tags:
+              - htmlTag: htmlTag
+                size:
+                  width: 1
+                  height: 6
+              - htmlTag: htmlTag
+                size:
+                  width: 1
+                  height: 6
+            socialSettings:
+              meta:
+                headline: headline
+                callToAction: callToAction
+              tiktok:
+                headline: headline
+                callToAction: callToAction
             adaptiveAttributes:
               descriptionFont: descriptionFont
               imageDisplay: ShowFullImage
@@ -22755,22 +23421,57 @@ components:
               - urls
               - urls
               landingPageUrl: landingPageUrl
-            author: author
-            format: format
+            vastTagAttributes:
+              vastTagUrl: vastTagUrl
+              mimeTypes:
+              - mimeTypes
+              - mimeTypes
+              videoDurationMs: 5.962133916683182
+              hasVpaid: true
+              isSkippable: true
+              vastVersion: vastVersion
             name: name
             datasetId: datasetId
-            description: description
-            advertiserId: advertiserId
-            htmlTagAttributes:
-              tags:
-              - htmlTag: htmlTag
-                size:
-                  width: 1
-                  height: 6
-              - htmlTag: htmlTag
-                size:
-                  width: 1
-                  height: 6
+            id: id
+            showcaseAttributes:
+              brandingImageClickUrl: https://openapi-generator.tech
+              iosDeeplinkUrl: https://openapi-generator.tech
+              universalLinkUrl: https://openapi-generator.tech
+              brandingImages:
+              - shape: shape
+                url: https://openapi-generator.tech
+              - shape: shape
+                url: https://openapi-generator.tech
+              secondaryFont: secondaryFont
+              layouts:
+              - layouts
+              - layouts
+              logos:
+              - shape: shape
+                url: https://openapi-generator.tech
+              - shape: shape
+                url: https://openapi-generator.tech
+              colors:
+                creativeBackgroundColor: creativeBackgroundColor
+                pricesColor: pricesColor
+                bodyTextColor: bodyTextColor
+              metaSetting:
+                headline: headline
+                callToAction: callToAction
+              androidDeeplinkUrl: https://openapi-generator.tech
+              primaryFont: primaryFont
+              priceSettings:
+                priceTextBefore: priceTextBefore
+                priceFormat: priceFormat
+                priceTextAfter: priceTextAfter
+                priceFormatBody: priceFormatBody
+                hideDecimals: true
+              appLinkUrl: https://openapi-generator.tech
+              callsToAction:
+              - callsToAction
+              - callsToAction
+              landingPageUrl: https://openapi-generator.tech
+              productImageDisplay: productImageDisplay
             status: status
           id: id
           type: type
@@ -22958,11 +23659,46 @@ components:
       example:
         data:
           attributes:
-            inventoryType: Display
+            inventoryType: Native
             endDate: endDate
             adSetId: adSetId
             name: name
+            adClickTracking:
+            - displayHeight: 0
+              urlSuffix: urlSuffix
+              displayWidth: 6
+              clickZone: Unknown
+              disableLandingUrlEncode: true
+              urlPrefix: urlPrefix
+              disableForCoupons: true
+              disableMacroUrlEncode: true
+              bindingId: bindingId
+              id: id
+            - displayHeight: 0
+              urlSuffix: urlSuffix
+              displayWidth: 6
+              clickZone: Unknown
+              disableLandingUrlEncode: true
+              urlPrefix: urlPrefix
+              disableForCoupons: true
+              disableMacroUrlEncode: true
+              bindingId: bindingId
+              id: id
             description: description
+            id: id
+            adImpressionTracking:
+            - displayHeight: 1
+              displayWidth: 5
+              vendorId: vendorId
+              bindingId: bindingId
+              id: id
+              url: url
+            - displayHeight: 1
+              displayWidth: 5
+              vendorId: vendorId
+              bindingId: bindingId
+              id: id
+              url: url
             creativeId: creativeId
             startDate: startDate
           id: id
@@ -22995,6 +23731,7 @@ components:
             name: name
             rotationsNumber: 2
             description: description
+            id: id
             landingPageUrl: landingPageUrl
             showDuration: 3
             startDate: startDate
@@ -23010,6 +23747,52 @@ components:
       example:
         data:
           attributes:
+            socialSettings:
+              meta:
+                headline: headline
+                callToAction: callToAction
+              tiktok:
+                headline: headline
+                callToAction: callToAction
+            showcaseWriteAttributes:
+              brandingImageClickUrl: https://openapi-generator.tech
+              iosDeeplinkUrl: https://openapi-generator.tech
+              universalLinkUrl: https://openapi-generator.tech
+              secondaryFont: secondaryFont
+              logoBase64Strings:
+              - base64String: base64String
+                shape: shape
+              - base64String: base64String
+                shape: shape
+              layouts:
+              - Showcase
+              - Showcase
+              colors:
+                creativeBackgroundColor: creativeBackgroundColor
+                pricesColor: pricesColor
+                bodyTextColor: bodyTextColor
+              metaSetting:
+                headline: headline
+                callToAction: callToAction
+              androidDeeplinkUrl: https://openapi-generator.tech
+              primaryFont: primaryFont
+              priceSettings:
+                priceTextBefore: priceTextBefore
+                priceFormat: priceFormat
+                priceTextAfter: priceTextAfter
+                priceFormatBody: priceFormatBody
+                hideDecimals: true
+              appLinkUrl: https://openapi-generator.tech
+              brandingImageBase64Strings:
+              - base64String: base64String
+                shape: shape
+              - base64String: base64String
+                shape: shape
+              callsToAction:
+              - callsToAction
+              - callsToAction
+              landingPageUrl: https://openapi-generator.tech
+              productImageDisplay: ShowFullImage
             htmlTagWriteAttributes:
               tags:
               - htmlTag: htmlTag
@@ -23030,7 +23813,7 @@ components:
               - callsToAction
               - callsToAction
               productImageDisplay: ShowFullImage
-            format: Image
+            format: Dynamic
             imageWriteAttributes:
               base64Strings:
               - base64Strings
@@ -23072,6 +23855,9 @@ components:
               headlineText: headlineText
             datasetId: datasetId
             description: description
+            id: id
+            vastTagWriteAttributes:
+              vastTagUrl: https://openapi-generator.tech
           id: id
           type: type
       properties:
@@ -23085,6 +23871,7 @@ components:
         data:
           attributes:
             endDate: endDate
+            id: id
             startDate: startDate
           id: id
           type: type
@@ -23101,8 +23888,42 @@ components:
           endDate: endDate
           adSetId: adSetId
           name: name
+          adClickTracking:
+          - displayHeight: 0
+            urlSuffix: urlSuffix
+            displayWidth: 6
+            clickZone: Unknown
+            disableLandingUrlEncode: true
+            urlPrefix: urlPrefix
+            disableForCoupons: true
+            disableMacroUrlEncode: true
+            bindingId: bindingId
+            id: id
+          - displayHeight: 0
+            urlSuffix: urlSuffix
+            displayWidth: 6
+            clickZone: Unknown
+            disableLandingUrlEncode: true
+            urlPrefix: urlPrefix
+            disableForCoupons: true
+            disableMacroUrlEncode: true
+            bindingId: bindingId
+            id: id
           description: description
           id: id
+          adImpressionTracking:
+          - displayHeight: 1
+            displayWidth: 5
+            vendorId: vendorId
+            bindingId: bindingId
+            id: id
+            url: url
+          - displayHeight: 1
+            displayWidth: 5
+            vendorId: vendorId
+            bindingId: bindingId
+            id: id
+            url: url
           creativeId: creativeId
           startDate: startDate
         id: id
@@ -23123,11 +23944,46 @@ components:
       description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
-          inventoryType: Display
+          inventoryType: Native
           endDate: endDate
           adSetId: adSetId
           name: name
+          adClickTracking:
+          - displayHeight: 0
+            urlSuffix: urlSuffix
+            displayWidth: 6
+            clickZone: Unknown
+            disableLandingUrlEncode: true
+            urlPrefix: urlPrefix
+            disableForCoupons: true
+            disableMacroUrlEncode: true
+            bindingId: bindingId
+            id: id
+          - displayHeight: 0
+            urlSuffix: urlSuffix
+            displayWidth: 6
+            clickZone: Unknown
+            disableLandingUrlEncode: true
+            urlPrefix: urlPrefix
+            disableForCoupons: true
+            disableMacroUrlEncode: true
+            bindingId: bindingId
+            id: id
           description: description
+          id: id
+          adImpressionTracking:
+          - displayHeight: 1
+            displayWidth: 5
+            vendorId: vendorId
+            bindingId: bindingId
+            id: id
+            url: url
+          - displayHeight: 1
+            displayWidth: 5
+            vendorId: vendorId
+            bindingId: bindingId
+            id: id
+            url: url
           creativeId: creativeId
           startDate: startDate
         id: id
@@ -23193,6 +24049,7 @@ components:
           fullFrame:
           - fullFrame
           - fullFrame
+          id: id
           logoZone:
           - logoZone
           - logoZone
@@ -23232,6 +24089,7 @@ components:
           name: name
           rotationsNumber: 2
           description: description
+          id: id
           landingPageUrl: landingPageUrl
           showDuration: 3
           startDate: startDate
@@ -23266,6 +24124,27 @@ components:
             - shape: Horizontal
               url: https://openapi-generator.tech
             productImageDisplay: ShowFullImage
+          author: author
+          format: format
+          description: description
+          advertiserId: advertiserId
+          htmlTagAttributes:
+            tags:
+            - htmlTag: htmlTag
+              size:
+                width: 1
+                height: 6
+            - htmlTag: htmlTag
+              size:
+                width: 1
+                height: 6
+          socialSettings:
+            meta:
+              headline: headline
+              callToAction: callToAction
+            tiktok:
+              headline: headline
+              callToAction: callToAction
           adaptiveAttributes:
             descriptionFont: descriptionFont
             imageDisplay: ShowFullImage
@@ -23316,23 +24195,57 @@ components:
             - urls
             - urls
             landingPageUrl: landingPageUrl
-          author: author
-          format: format
+          vastTagAttributes:
+            vastTagUrl: vastTagUrl
+            mimeTypes:
+            - mimeTypes
+            - mimeTypes
+            videoDurationMs: 5.962133916683182
+            hasVpaid: true
+            isSkippable: true
+            vastVersion: vastVersion
           name: name
           datasetId: datasetId
-          description: description
           id: id
-          advertiserId: advertiserId
-          htmlTagAttributes:
-            tags:
-            - htmlTag: htmlTag
-              size:
-                width: 1
-                height: 6
-            - htmlTag: htmlTag
-              size:
-                width: 1
-                height: 6
+          showcaseAttributes:
+            brandingImageClickUrl: https://openapi-generator.tech
+            iosDeeplinkUrl: https://openapi-generator.tech
+            universalLinkUrl: https://openapi-generator.tech
+            brandingImages:
+            - shape: shape
+              url: https://openapi-generator.tech
+            - shape: shape
+              url: https://openapi-generator.tech
+            secondaryFont: secondaryFont
+            layouts:
+            - layouts
+            - layouts
+            logos:
+            - shape: shape
+              url: https://openapi-generator.tech
+            - shape: shape
+              url: https://openapi-generator.tech
+            colors:
+              creativeBackgroundColor: creativeBackgroundColor
+              pricesColor: pricesColor
+              bodyTextColor: bodyTextColor
+            metaSetting:
+              headline: headline
+              callToAction: callToAction
+            androidDeeplinkUrl: https://openapi-generator.tech
+            primaryFont: primaryFont
+            priceSettings:
+              priceTextBefore: priceTextBefore
+              priceFormat: priceFormat
+              priceTextAfter: priceTextAfter
+              priceFormatBody: priceFormatBody
+              hideDecimals: true
+            appLinkUrl: https://openapi-generator.tech
+            callsToAction:
+            - callsToAction
+            - callsToAction
+            landingPageUrl: https://openapi-generator.tech
+            productImageDisplay: productImageDisplay
           status: status
         id: id
         type: type
@@ -23366,6 +24279,27 @@ components:
             - shape: Horizontal
               url: https://openapi-generator.tech
             productImageDisplay: ShowFullImage
+          author: author
+          format: format
+          description: description
+          advertiserId: advertiserId
+          htmlTagAttributes:
+            tags:
+            - htmlTag: htmlTag
+              size:
+                width: 1
+                height: 6
+            - htmlTag: htmlTag
+              size:
+                width: 1
+                height: 6
+          socialSettings:
+            meta:
+              headline: headline
+              callToAction: callToAction
+            tiktok:
+              headline: headline
+              callToAction: callToAction
           adaptiveAttributes:
             descriptionFont: descriptionFont
             imageDisplay: ShowFullImage
@@ -23416,22 +24350,57 @@ components:
             - urls
             - urls
             landingPageUrl: landingPageUrl
-          author: author
-          format: format
+          vastTagAttributes:
+            vastTagUrl: vastTagUrl
+            mimeTypes:
+            - mimeTypes
+            - mimeTypes
+            videoDurationMs: 5.962133916683182
+            hasVpaid: true
+            isSkippable: true
+            vastVersion: vastVersion
           name: name
           datasetId: datasetId
-          description: description
-          advertiserId: advertiserId
-          htmlTagAttributes:
-            tags:
-            - htmlTag: htmlTag
-              size:
-                width: 1
-                height: 6
-            - htmlTag: htmlTag
-              size:
-                width: 1
-                height: 6
+          id: id
+          showcaseAttributes:
+            brandingImageClickUrl: https://openapi-generator.tech
+            iosDeeplinkUrl: https://openapi-generator.tech
+            universalLinkUrl: https://openapi-generator.tech
+            brandingImages:
+            - shape: shape
+              url: https://openapi-generator.tech
+            - shape: shape
+              url: https://openapi-generator.tech
+            secondaryFont: secondaryFont
+            layouts:
+            - layouts
+            - layouts
+            logos:
+            - shape: shape
+              url: https://openapi-generator.tech
+            - shape: shape
+              url: https://openapi-generator.tech
+            colors:
+              creativeBackgroundColor: creativeBackgroundColor
+              pricesColor: pricesColor
+              bodyTextColor: bodyTextColor
+            metaSetting:
+              headline: headline
+              callToAction: callToAction
+            androidDeeplinkUrl: https://openapi-generator.tech
+            primaryFont: primaryFont
+            priceSettings:
+              priceTextBefore: priceTextBefore
+              priceFormat: priceFormat
+              priceTextAfter: priceTextAfter
+              priceFormatBody: priceFormatBody
+              hideDecimals: true
+            appLinkUrl: https://openapi-generator.tech
+            callsToAction:
+            - callsToAction
+            - callsToAction
+            landingPageUrl: https://openapi-generator.tech
+            productImageDisplay: productImageDisplay
           status: status
         id: id
         type: type
@@ -23450,6 +24419,52 @@ components:
       description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
+          socialSettings:
+            meta:
+              headline: headline
+              callToAction: callToAction
+            tiktok:
+              headline: headline
+              callToAction: callToAction
+          showcaseWriteAttributes:
+            brandingImageClickUrl: https://openapi-generator.tech
+            iosDeeplinkUrl: https://openapi-generator.tech
+            universalLinkUrl: https://openapi-generator.tech
+            secondaryFont: secondaryFont
+            logoBase64Strings:
+            - base64String: base64String
+              shape: shape
+            - base64String: base64String
+              shape: shape
+            layouts:
+            - Showcase
+            - Showcase
+            colors:
+              creativeBackgroundColor: creativeBackgroundColor
+              pricesColor: pricesColor
+              bodyTextColor: bodyTextColor
+            metaSetting:
+              headline: headline
+              callToAction: callToAction
+            androidDeeplinkUrl: https://openapi-generator.tech
+            primaryFont: primaryFont
+            priceSettings:
+              priceTextBefore: priceTextBefore
+              priceFormat: priceFormat
+              priceTextAfter: priceTextAfter
+              priceFormatBody: priceFormatBody
+              hideDecimals: true
+            appLinkUrl: https://openapi-generator.tech
+            brandingImageBase64Strings:
+            - base64String: base64String
+              shape: shape
+            - base64String: base64String
+              shape: shape
+            callsToAction:
+            - callsToAction
+            - callsToAction
+            landingPageUrl: https://openapi-generator.tech
+            productImageDisplay: ShowFullImage
           htmlTagWriteAttributes:
             tags:
             - htmlTag: htmlTag
@@ -23470,7 +24485,7 @@ components:
             - callsToAction
             - callsToAction
             productImageDisplay: ShowFullImage
-          format: Image
+          format: Dynamic
           imageWriteAttributes:
             base64Strings:
             - base64Strings
@@ -23512,6 +24527,9 @@ components:
             headlineText: headlineText
           datasetId: datasetId
           description: description
+          id: id
+          vastTagWriteAttributes:
+            vastTagUrl: https://openapi-generator.tech
         id: id
         type: type
       properties:
@@ -23568,6 +24586,7 @@ components:
       example:
         attributes:
           endDate: endDate
+          id: id
           startDate: startDate
         id: id
         type: type
@@ -23593,8 +24612,42 @@ components:
             endDate: endDate
             adSetId: adSetId
             name: name
+            adClickTracking:
+            - displayHeight: 0
+              urlSuffix: urlSuffix
+              displayWidth: 6
+              clickZone: Unknown
+              disableLandingUrlEncode: true
+              urlPrefix: urlPrefix
+              disableForCoupons: true
+              disableMacroUrlEncode: true
+              bindingId: bindingId
+              id: id
+            - displayHeight: 0
+              urlSuffix: urlSuffix
+              displayWidth: 6
+              clickZone: Unknown
+              disableLandingUrlEncode: true
+              urlPrefix: urlPrefix
+              disableForCoupons: true
+              disableMacroUrlEncode: true
+              bindingId: bindingId
+              id: id
             description: description
             id: id
+            adImpressionTracking:
+            - displayHeight: 1
+              displayWidth: 5
+              vendorId: vendorId
+              bindingId: bindingId
+              id: id
+              url: url
+            - displayHeight: 1
+              displayWidth: 5
+              vendorId: vendorId
+              bindingId: bindingId
+              id: id
+              url: url
             creativeId: creativeId
             startDate: startDate
           id: id
@@ -23757,6 +24810,7 @@ components:
             fullFrame:
             - fullFrame
             - fullFrame
+            id: id
             logoZone:
             - logoZone
             - logoZone
@@ -23840,6 +24894,27 @@ components:
               - shape: Horizontal
                 url: https://openapi-generator.tech
               productImageDisplay: ShowFullImage
+            author: author
+            format: format
+            description: description
+            advertiserId: advertiserId
+            htmlTagAttributes:
+              tags:
+              - htmlTag: htmlTag
+                size:
+                  width: 1
+                  height: 6
+              - htmlTag: htmlTag
+                size:
+                  width: 1
+                  height: 6
+            socialSettings:
+              meta:
+                headline: headline
+                callToAction: callToAction
+              tiktok:
+                headline: headline
+                callToAction: callToAction
             adaptiveAttributes:
               descriptionFont: descriptionFont
               imageDisplay: ShowFullImage
@@ -23890,23 +24965,57 @@ components:
               - urls
               - urls
               landingPageUrl: landingPageUrl
-            author: author
-            format: format
+            vastTagAttributes:
+              vastTagUrl: vastTagUrl
+              mimeTypes:
+              - mimeTypes
+              - mimeTypes
+              videoDurationMs: 5.962133916683182
+              hasVpaid: true
+              isSkippable: true
+              vastVersion: vastVersion
             name: name
             datasetId: datasetId
-            description: description
             id: id
-            advertiserId: advertiserId
-            htmlTagAttributes:
-              tags:
-              - htmlTag: htmlTag
-                size:
-                  width: 1
-                  height: 6
-              - htmlTag: htmlTag
-                size:
-                  width: 1
-                  height: 6
+            showcaseAttributes:
+              brandingImageClickUrl: https://openapi-generator.tech
+              iosDeeplinkUrl: https://openapi-generator.tech
+              universalLinkUrl: https://openapi-generator.tech
+              brandingImages:
+              - shape: shape
+                url: https://openapi-generator.tech
+              - shape: shape
+                url: https://openapi-generator.tech
+              secondaryFont: secondaryFont
+              layouts:
+              - layouts
+              - layouts
+              logos:
+              - shape: shape
+                url: https://openapi-generator.tech
+              - shape: shape
+                url: https://openapi-generator.tech
+              colors:
+                creativeBackgroundColor: creativeBackgroundColor
+                pricesColor: pricesColor
+                bodyTextColor: bodyTextColor
+              metaSetting:
+                headline: headline
+                callToAction: callToAction
+              androidDeeplinkUrl: https://openapi-generator.tech
+              primaryFont: primaryFont
+              priceSettings:
+                priceTextBefore: priceTextBefore
+                priceFormat: priceFormat
+                priceTextAfter: priceTextAfter
+                priceFormatBody: priceFormatBody
+                hideDecimals: true
+              appLinkUrl: https://openapi-generator.tech
+              callsToAction:
+              - callsToAction
+              - callsToAction
+              landingPageUrl: https://openapi-generator.tech
+              productImageDisplay: productImageDisplay
             status: status
           id: id
           type: type
@@ -24594,8 +25703,8 @@ components:
         visit.
       example:
         visitorsType: Unknown
-        daysSinceLastVisitMax: 2
-        daysSinceLastVisitMin: 4
+        daysSinceLastVisitMax: 9
+        daysSinceLastVisitMin: 3
       nullable: true
       properties:
         daysSinceLastVisitMax:
@@ -24801,6 +25910,381 @@ components:
         type:
           type: string
       type: object
+    ShowcaseAttributes:
+      description: "The attributes specific to Showcase creatives (read).\r\nOn read,\
+        \ URLs are returned instead of base64."
+      example:
+        brandingImageClickUrl: https://openapi-generator.tech
+        iosDeeplinkUrl: https://openapi-generator.tech
+        universalLinkUrl: https://openapi-generator.tech
+        brandingImages:
+        - shape: shape
+          url: https://openapi-generator.tech
+        - shape: shape
+          url: https://openapi-generator.tech
+        secondaryFont: secondaryFont
+        layouts:
+        - layouts
+        - layouts
+        logos:
+        - shape: shape
+          url: https://openapi-generator.tech
+        - shape: shape
+          url: https://openapi-generator.tech
+        colors:
+          creativeBackgroundColor: creativeBackgroundColor
+          pricesColor: pricesColor
+          bodyTextColor: bodyTextColor
+        metaSetting:
+          headline: headline
+          callToAction: callToAction
+        androidDeeplinkUrl: https://openapi-generator.tech
+        primaryFont: primaryFont
+        priceSettings:
+          priceTextBefore: priceTextBefore
+          priceFormat: priceFormat
+          priceTextAfter: priceTextAfter
+          priceFormatBody: priceFormatBody
+          hideDecimals: true
+        appLinkUrl: https://openapi-generator.tech
+        callsToAction:
+        - callsToAction
+        - callsToAction
+        landingPageUrl: https://openapi-generator.tech
+        productImageDisplay: productImageDisplay
+      nullable: true
+      properties:
+        androidDeeplinkUrl:
+          description: Android deep-link URL.
+          format: uri
+          nullable: true
+          type: string
+        appLinkUrl:
+          description: App link URL (Android fallback).
+          format: uri
+          nullable: true
+          type: string
+        brandingImageClickUrl:
+          description: Click URL associated with the branding images.
+          format: uri
+          nullable: true
+          type: string
+        brandingImages:
+          description: "Branding images per shape (horizontal, vertical, square) displayed\
+            \ in the creative."
+          items:
+            $ref: '#/components/schemas/ShowcaseBrandingImage'
+          nullable: true
+          type: array
+        callsToAction:
+          description: "A Call-to-Action (CTA) is an action-driven instruction to\
+            \ your audience intended to provoke an immediate\r\nresponse, such as\
+            \ \"Buy now\" or \"Go!\"."
+          items:
+            type: string
+          nullable: true
+          type: array
+        colors:
+          $ref: '#/components/schemas/ShowcaseColors'
+        iosDeeplinkUrl:
+          description: iOS deep-link URL.
+          format: uri
+          nullable: true
+          type: string
+        landingPageUrl:
+          description: Web redirection of the landing page URL.
+          format: uri
+          nullable: true
+          type: string
+        layouts:
+          description: "The layouts enabled for this Showcase creative.\r\nPossible\
+            \ values include \"Showcase\"."
+          items:
+            type: string
+          nullable: true
+          type: array
+        logos:
+          description: Logo images with their shape and URL.
+          items:
+            $ref: '#/components/schemas/ShowcaseLogo'
+          nullable: true
+          type: array
+        metaSetting:
+          $ref: '#/components/schemas/ShowcaseMetaSetting'
+        priceSettings:
+          $ref: '#/components/schemas/ShowcasePriceSettings'
+        primaryFont:
+          description: "Font of the primary font.\r\nValid supported font like \"\
+            Arial\""
+          nullable: true
+          type: string
+        productImageDisplay:
+          description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
+            \ whether your product catalog images should fit inside the allocated\r\
+            \nspace (\"ShowFullImage\") or whether they should fill that space (\"\
+            ZoomOnImage\"). If you choose ZoomOnImage, there may be some\r\nimage\
+            \ cropping."
+          nullable: true
+          type: string
+        secondaryFont:
+          description: "Font of the secondary font.\r\nValid supported font like \"\
+            Arial\""
+          nullable: true
+          type: string
+        universalLinkUrl:
+          description: Universal link URL (iOS fallback).
+          format: uri
+          nullable: true
+          type: string
+      type: object
+    ShowcaseBrandingImage:
+      description: A branding image with its shape as an explicit string and its URL
+        (read model).
+      example:
+        shape: shape
+        url: https://openapi-generator.tech
+      properties:
+        shape:
+          description: "Shape of the branding image.\r\nPossible values are \"Horizontal\"\
+            , \"Vertical\", \"Square\"."
+          type: string
+        url:
+          description: URL of the branding image.
+          format: uri
+          type: string
+      required:
+      - shape
+      - url
+      type: object
+    ShowcaseColors:
+      description: "Colors of the different elements of a Showcase creative.\r\nAll\
+        \ values are valid RGB24 hexadecimal colors (e.g. \"#AB00FF\")."
+      example:
+        creativeBackgroundColor: creativeBackgroundColor
+        pricesColor: pricesColor
+        bodyTextColor: bodyTextColor
+      nullable: true
+      properties:
+        bodyTextColor:
+          description: "Color of the creative's body text.\r\nA valid RGB24 color\
+            \ in hexadecimal (e.g. \"#AB00FF\")."
+          type: string
+        creativeBackgroundColor:
+          description: "Color of the creative's background.\r\nA valid RGB24 color\
+            \ in hexadecimal (e.g. \"#AB00FF\")."
+          type: string
+        pricesColor:
+          description: "Color of the creative's prices.\r\nA valid RGB24 color in\
+            \ hexadecimal (e.g. \"#AB00FF\")."
+          type: string
+      required:
+      - bodyTextColor
+      - creativeBackgroundColor
+      - pricesColor
+      type: object
+    ShowcaseLogo:
+      description: Logo with its shape and URL (read model).
+      example:
+        shape: shape
+        url: https://openapi-generator.tech
+      properties:
+        shape:
+          description: "Shape of the logo.\r\nPossible values are \"Horizontal\",\
+            \ \"Vertical\", \"Square\"."
+          type: string
+        url:
+          description: URL of the logo image.
+          format: uri
+          type: string
+      required:
+      - shape
+      - url
+      type: object
+    ShowcaseMetaSetting:
+      description: Creative-level social metadata for Meta placements.
+      example:
+        headline: headline
+        callToAction: callToAction
+      nullable: true
+      properties:
+        callToAction:
+          description: "Call-to-Action for Meta placements.\r\nPossible values: \"\
+            BookTravel\", \"ShopNow\", \"LearnMore\", \"SignUp\", \"Download\", \"\
+            OpenLink\"."
+          nullable: true
+          type: string
+        headline:
+          description: Headline text for Meta placements.
+          nullable: true
+          type: string
+      type: object
+    ShowcasePriceSettings:
+      description: Price formatting settings for Showcase creatives.
+      example:
+        priceTextBefore: priceTextBefore
+        priceFormat: priceFormat
+        priceTextAfter: priceTextAfter
+        priceFormatBody: priceFormatBody
+        hideDecimals: true
+      nullable: true
+      properties:
+        hideDecimals:
+          description: Whether to hide decimal values in prices.
+          nullable: true
+          type: boolean
+        priceFormat:
+          description: Price format expression used to display product prices.
+          nullable: true
+          type: string
+        priceFormatBody:
+          description: Price format body expression.
+          nullable: true
+          type: string
+        priceTextAfter:
+          description: Text displayed after the price.
+          nullable: true
+          type: string
+        priceTextBefore:
+          description: Text displayed before the price.
+          nullable: true
+          type: string
+      type: object
+    ShowcaseWriteAttributes:
+      description: The attributes specific to create or update a Showcase creative
+        (write).
+      example:
+        brandingImageClickUrl: https://openapi-generator.tech
+        iosDeeplinkUrl: https://openapi-generator.tech
+        universalLinkUrl: https://openapi-generator.tech
+        secondaryFont: secondaryFont
+        logoBase64Strings:
+        - base64String: base64String
+          shape: shape
+        - base64String: base64String
+          shape: shape
+        layouts:
+        - Showcase
+        - Showcase
+        colors:
+          creativeBackgroundColor: creativeBackgroundColor
+          pricesColor: pricesColor
+          bodyTextColor: bodyTextColor
+        metaSetting:
+          headline: headline
+          callToAction: callToAction
+        androidDeeplinkUrl: https://openapi-generator.tech
+        primaryFont: primaryFont
+        priceSettings:
+          priceTextBefore: priceTextBefore
+          priceFormat: priceFormat
+          priceTextAfter: priceTextAfter
+          priceFormatBody: priceFormatBody
+          hideDecimals: true
+        appLinkUrl: https://openapi-generator.tech
+        brandingImageBase64Strings:
+        - base64String: base64String
+          shape: shape
+        - base64String: base64String
+          shape: shape
+        callsToAction:
+        - callsToAction
+        - callsToAction
+        landingPageUrl: https://openapi-generator.tech
+        productImageDisplay: ShowFullImage
+      properties:
+        androidDeeplinkUrl:
+          description: Android deep-link URL.
+          format: uri
+          nullable: true
+          type: string
+        appLinkUrl:
+          description: App link URL (Android fallback).
+          format: uri
+          nullable: true
+          type: string
+        brandingImageBase64Strings:
+          description: Branding images as base-64 encoded strings with their shape.
+          items:
+            $ref: '#/components/schemas/BrandingImageInput'
+          nullable: true
+          type: array
+        brandingImageClickUrl:
+          description: Click URL associated with the branding images.
+          format: uri
+          nullable: true
+          type: string
+        callsToAction:
+          description: "A Call-to-Action (CTA) is an action-driven instruction to\
+            \ your audience intended to provoke an immediate\r\nresponse, such as\
+            \ \"Buy now\" or \"Go!\"."
+          items:
+            type: string
+          minItems: 1
+          type: array
+        colors:
+          $ref: '#/components/schemas/ShowcaseColors'
+        iosDeeplinkUrl:
+          description: iOS deep-link URL.
+          format: uri
+          nullable: true
+          type: string
+        landingPageUrl:
+          description: Web redirection of the landing page URL.
+          format: uri
+          nullable: true
+          type: string
+        layouts:
+          description: "The layouts to enable for this Showcase creative.\r\nPossible\
+            \ values include \"Showcase\"."
+          items:
+            enum:
+            - Showcase
+            type: string
+          minItems: 1
+          type: array
+        logoBase64Strings:
+          description: "Logo images as base-64 encoded strings with their shape.\r\
+            \nAt least one logo is required."
+          items:
+            $ref: '#/components/schemas/LogoInput'
+          minItems: 1
+          type: array
+        metaSetting:
+          $ref: '#/components/schemas/ShowcaseMetaSetting'
+        priceSettings:
+          $ref: '#/components/schemas/ShowcasePriceSettings'
+        primaryFont:
+          description: "Font of the primary font.\r\nValid supported font like \"\
+            Arial\""
+          nullable: true
+          type: string
+        productImageDisplay:
+          description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
+            \ whether your product catalog images should fit inside the allocated\r\
+            \nspace (\"ShowFullImage\") or whether they should fill that space (\"\
+            ZoomOnImage\"). If you choose ZoomOnImage, there may be some\r\nimage\
+            \ cropping."
+          enum:
+          - ShowFullImage
+          - ZoomOnImage
+          type: string
+        secondaryFont:
+          description: "Font of the secondary font.\r\nValid supported font like \"\
+            Arial\""
+          nullable: true
+          type: string
+        universalLinkUrl:
+          description: Universal link URL (iOS fallback).
+          format: uri
+          nullable: true
+          type: string
+      required:
+      - callsToAction
+      - colors
+      - layouts
+      - logoBase64Strings
+      - productImageDisplay
+      type: object
     Size:
       description: Size entity containing width and height of the creative
       example:
@@ -24809,13 +26293,31 @@ components:
       nullable: true
       properties:
         height:
+          description: "The height of the creative, in pixels"
           format: int32
           nullable: true
           type: integer
         width:
+          description: "The width of the creative, in pixels"
           format: int32
           nullable: true
           type: integer
+      type: object
+    SocialSettings:
+      description: Creative-level social metadata for Meta and TikTok placements.
+      example:
+        meta:
+          headline: headline
+          callToAction: callToAction
+        tiktok:
+          headline: headline
+          callToAction: callToAction
+      nullable: true
+      properties:
+        meta:
+          $ref: '#/components/schemas/CreativeMetaSetting'
+        tiktok:
+          $ref: '#/components/schemas/CreativeTikTokSetting'
       type: object
     StatisticsOkResponse:
       description: The statistics reports
@@ -25878,12 +27380,16 @@ components:
       description: Entity to edit a Coupon
       example:
         endDate: endDate
+        id: id
         startDate: startDate
       properties:
         endDate:
           description: "The date when when we will stop to show this Coupon. If the\
             \ end date is not specified (i.e. null) then the Coupon will go on forever\r\
             \nString must be in ISO8601 format"
+          nullable: true
+          type: string
+        id:
           nullable: true
           type: string
         startDate:
@@ -26456,6 +27962,67 @@ components:
           nullable: true
           readOnly: true
           type: array
+      type: object
+    VastTagAttributes:
+      description: "The attributes specific to VastTag creatives (read model).\r\n\
+        Most fields are derived by parsing the VAST tag and are read-only."
+      example:
+        vastTagUrl: vastTagUrl
+        mimeTypes:
+        - mimeTypes
+        - mimeTypes
+        videoDurationMs: 5.962133916683182
+        hasVpaid: true
+        isSkippable: true
+        vastVersion: vastVersion
+      nullable: true
+      properties:
+        hasVpaid:
+          description: "Whether the tag contains a VPAID unit (vpaid y/n). Derived\
+            \ from the tag. VPAID is a deprecated\r\ninteractivity standard; this\
+            \ flag is recorded for information but interactive playback is not guaranteed."
+          nullable: true
+          type: boolean
+        isSkippable:
+          description: Whether the video is skippable. Derived from the tag.
+          nullable: true
+          type: boolean
+        mimeTypes:
+          description: The supported media-file mime types (e.g. "video/mp4"). Derived
+            from the tag.
+          items:
+            type: string
+          nullable: true
+          type: array
+        vastTagUrl:
+          description: The VAST tag URL (a hosted VAST XML endpoint).
+          nullable: true
+          type: string
+        vastVersion:
+          description: The VAST version declared by the tag (e.g. "4.2"). Derived
+            from the tag.
+          nullable: true
+          type: string
+        videoDurationMs:
+          description: The video duration in milliseconds. Derived from the tag.
+          format: double
+          nullable: true
+          type: number
+      type: object
+    VastTagWriteAttributes:
+      description: "The attributes specific to create or update a VastTag (VAST tag)\
+        \ creative.\r\nThe VAST tag is parsed server-side to derive version, duration,\
+        \ media-file mime types and skippability."
+      example:
+        vastTagUrl: https://openapi-generator.tech
+      properties:
+        vastTagUrl:
+          description: The VAST tag URL (a hosted VAST XML endpoint). This is the
+            only essential input for a VastTag creative.
+          format: uri
+          type: string
+      required:
+      - vastTagUrl
       type: object
     VideoDetail:
       description: "Entity consists of the url of the video, its duration and its\

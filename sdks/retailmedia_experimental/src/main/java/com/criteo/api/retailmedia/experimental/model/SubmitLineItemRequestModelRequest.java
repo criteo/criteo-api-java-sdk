@@ -15,13 +15,13 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.retailmedia.experimental.model.SubmitLineItemRequestModelResource;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,36 +45,36 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * A wrapper around an optional decimal value in an update payload. Omit the property to leave the current value unchanged, or send a null value to clear it.
+ * A top-level object that encapsulates a Criteo API request for a single value object.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class DecimalNullableNillableV2 {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private Double value;
+public class SubmitLineItemRequestModelRequest {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private SubmitLineItemRequestModelResource data;
 
-  public DecimalNullableNillableV2() {
+  public SubmitLineItemRequestModelRequest() {
   }
 
-  public DecimalNullableNillableV2 value(Double value) {
+  public SubmitLineItemRequestModelRequest data(SubmitLineItemRequestModelResource data) {
     
-    this.value = value;
+    this.data = data;
     return this;
   }
 
    /**
-   * Get value
-   * @return value
+   * Get data
+   * @return data
   **/
   @javax.annotation.Nullable
 
-  public Double getValue() {
-    return value;
+  public SubmitLineItemRequestModelResource getData() {
+    return data;
   }
 
 
-  public void setValue(Double value) {
-    this.value = value;
+  public void setData(SubmitLineItemRequestModelResource data) {
+    this.data = data;
   }
 
 
@@ -87,31 +87,20 @@ public class DecimalNullableNillableV2 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DecimalNullableNillableV2 decimalNullableNillableV2 = (DecimalNullableNillableV2) o;
-    return Objects.equals(this.value, decimalNullableNillableV2.value);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    SubmitLineItemRequestModelRequest submitLineItemRequestModelRequest = (SubmitLineItemRequestModelRequest) o;
+    return Objects.equals(this.data, submitLineItemRequestModelRequest.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(data);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DecimalNullableNillableV2 {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("class SubmitLineItemRequestModelRequest {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -134,7 +123,7 @@ public class DecimalNullableNillableV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("value");
+    openapiFields.add("data");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -144,21 +133,25 @@ public class DecimalNullableNillableV2 {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DecimalNullableNillableV2
+  * @throws IOException if the JSON Object is invalid with respect to SubmitLineItemRequestModelRequest
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!DecimalNullableNillableV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DecimalNullableNillableV2 is not found in the empty JSON string", DecimalNullableNillableV2.openapiRequiredFields.toString()));
+        if (!SubmitLineItemRequestModelRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SubmitLineItemRequestModelRequest is not found in the empty JSON string", SubmitLineItemRequestModelRequest.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!DecimalNullableNillableV2.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DecimalNullableNillableV2` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!SubmitLineItemRequestModelRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SubmitLineItemRequestModelRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
+      }
+      // validate the optional field `data`
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        SubmitLineItemRequestModelResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 
@@ -166,22 +159,22 @@ public class DecimalNullableNillableV2 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DecimalNullableNillableV2.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DecimalNullableNillableV2' and its subtypes
+       if (!SubmitLineItemRequestModelRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SubmitLineItemRequestModelRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DecimalNullableNillableV2> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DecimalNullableNillableV2.class));
+       final TypeAdapter<SubmitLineItemRequestModelRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SubmitLineItemRequestModelRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DecimalNullableNillableV2>() {
+       return (TypeAdapter<T>) new TypeAdapter<SubmitLineItemRequestModelRequest>() {
            @Override
-           public void write(JsonWriter out, DecimalNullableNillableV2 value) throws IOException {
+           public void write(JsonWriter out, SubmitLineItemRequestModelRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public DecimalNullableNillableV2 read(JsonReader in) throws IOException {
+           public SubmitLineItemRequestModelRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -192,18 +185,18 @@ public class DecimalNullableNillableV2 {
   }
 
  /**
-  * Create an instance of DecimalNullableNillableV2 given an JSON string
+  * Create an instance of SubmitLineItemRequestModelRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of DecimalNullableNillableV2
-  * @throws IOException if the JSON string is invalid with respect to DecimalNullableNillableV2
+  * @return An instance of SubmitLineItemRequestModelRequest
+  * @throws IOException if the JSON string is invalid with respect to SubmitLineItemRequestModelRequest
   */
-  public static DecimalNullableNillableV2 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DecimalNullableNillableV2.class);
+  public static SubmitLineItemRequestModelRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SubmitLineItemRequestModelRequest.class);
   }
 
  /**
-  * Convert an instance of DecimalNullableNillableV2 to an JSON string
+  * Convert an instance of SubmitLineItemRequestModelRequest to an JSON string
   *
   * @return JSON string
   */

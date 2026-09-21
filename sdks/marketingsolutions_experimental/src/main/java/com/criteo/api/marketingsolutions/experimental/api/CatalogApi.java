@@ -107,7 +107,7 @@ public class CatalogApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/experimental/catalog/ingestion/{ingestion-id}/reports/summary"
+        String localVarPath = "/experimental/marketing-solutions/catalog/ingestion/{ingestion-id}/reports/summary"
             .replace("{" + "ingestion-id" + "}", localVarApiClient.escapeString(ingestionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -147,7 +147,7 @@ public class CatalogApi {
     }
 
     /**
-     * /experimental/catalog/ingestion/{ingestion-id}/reports/summary
+     * /experimental/marketing-solutions/catalog/ingestion/{ingestion-id}/reports/summary
      * Get the summary report of a catalog ingestion: what triggered it, how long it ran, how many offers it held, what it changed and how clean the data was.
      * @param ingestionId Identifies the catalog ingestion to report on. (required)
      * @return CatalogIngestionSummaryResponse
@@ -164,7 +164,7 @@ public class CatalogApi {
     }
 
     /**
-     * /experimental/catalog/ingestion/{ingestion-id}/reports/summary
+     * /experimental/marketing-solutions/catalog/ingestion/{ingestion-id}/reports/summary
      * Get the summary report of a catalog ingestion: what triggered it, how long it ran, how many offers it held, what it changed and how clean the data was.
      * @param ingestionId Identifies the catalog ingestion to report on. (required)
      * @return ApiResponse&lt;CatalogIngestionSummaryResponse&gt;
@@ -182,7 +182,7 @@ public class CatalogApi {
     }
 
     /**
-     * /experimental/catalog/ingestion/{ingestion-id}/reports/summary (asynchronously)
+     * /experimental/marketing-solutions/catalog/ingestion/{ingestion-id}/reports/summary (asynchronously)
      * Get the summary report of a catalog ingestion: what triggered it, how long it ran, how many offers it held, what it changed and how clean the data was.
      * @param ingestionId Identifies the catalog ingestion to report on. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -232,7 +232,7 @@ public class CatalogApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/experimental/catalog/merchants/{merchant-id}/ingestion/reports"
+        String localVarPath = "/experimental/marketing-solutions/catalog/merchants/{merchant-id}/ingestion/reports"
             .replace("{" + "merchant-id" + "}", localVarApiClient.escapeString(merchantId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -280,7 +280,7 @@ public class CatalogApi {
     }
 
     /**
-     * /experimental/catalog/merchants/{merchant-id}/ingestion/reports
+     * /experimental/marketing-solutions/catalog/merchants/{merchant-id}/ingestion/reports
      * List the catalog ingestions of a merchant, most recent first, with their type, status and timing.
      * @param merchantId Identifies the merchant whose catalog ingestions are reported. (required)
      * @param limit Maximum number of ingestion reports returned in the page. (optional, default to 25)
@@ -299,7 +299,7 @@ public class CatalogApi {
     }
 
     /**
-     * /experimental/catalog/merchants/{merchant-id}/ingestion/reports
+     * /experimental/marketing-solutions/catalog/merchants/{merchant-id}/ingestion/reports
      * List the catalog ingestions of a merchant, most recent first, with their type, status and timing.
      * @param merchantId Identifies the merchant whose catalog ingestions are reported. (required)
      * @param limit Maximum number of ingestion reports returned in the page. (optional, default to 25)
@@ -319,7 +319,7 @@ public class CatalogApi {
     }
 
     /**
-     * /experimental/catalog/merchants/{merchant-id}/ingestion/reports (asynchronously)
+     * /experimental/marketing-solutions/catalog/merchants/{merchant-id}/ingestion/reports (asynchronously)
      * List the catalog ingestions of a merchant, most recent first, with their type, status and timing.
      * @param merchantId Identifies the merchant whose catalog ingestions are reported. (required)
      * @param limit Maximum number of ingestion reports returned in the page. (optional, default to 25)

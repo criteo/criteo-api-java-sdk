@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * New flight dates for a SponsoredProducts campaign. Omit the whole node to leave the schedule  unchanged; when present, both dates are required together.
+ * New flight dates for a campaign that owns them: a SponsoredProducts or OnsiteDisplay Auction  campaign. Omit the whole node to leave the schedule unchanged; when present, both dates are  required together. Any other OnsiteDisplay campaign derives its dates from its line items and  rejects this node.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ScheduleDetailsUpdateModel {
@@ -67,7 +67,7 @@ public class ScheduleDetailsUpdateModel {
   }
 
    /**
-   * New campaign end date. Pass exactly {9999-12-30T00:00:00Z} to make the campaign run  indefinitely; any other value is a real end date.
+   * New campaign end date. Pass exactly {9999-12-30T00:00:00Z} to make a SponsoredProducts  campaign run indefinitely; any other value is a real end date. An OnsiteDisplay Auction  campaign cannot run indefinitely and rejects that date.
    * @return endDate
   **/
   @javax.annotation.Nonnull

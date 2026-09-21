@@ -162,7 +162,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/ads
-     * Create an Ad
+     * Creates an ad by binding an existing creative to an existing ad set of the advertiser, delivering  from the start date given. The creative and the ad set must both belong to that advertiser. Returns  the new ad and its id.
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfAdWrite The ad information. (required)
      * @return ResourceOutcomeOfAd
@@ -180,7 +180,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/ads
-     * Create an Ad
+     * Creates an ad by binding an existing creative to an existing ad set of the advertiser, delivering  from the start date given. The creative and the ad set must both belong to that advertiser. Returns  the new ad and its id.
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfAdWrite The ad information. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfAd&gt;
@@ -199,7 +199,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/ads (asynchronously)
-     * Create an Ad
+     * Creates an ad by binding an existing creative to an existing ad set of the advertiser, delivering  from the start date given. The creative and the ad set must both belong to that advertiser. Returns  the new ad and its id.
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfAdWrite The ad information. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -221,7 +221,7 @@ public class CreativeApi {
     /**
      * Build call for createAdvertiserCoupon
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfCreateCoupon  (required)
+     * @param resourceInputOfCreateCoupon The coupon to create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -295,9 +295,9 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons
-     * Create a Coupon
+     * Creates a coupon on one ad set of the advertiser. The ad set must already carry dynamic display or  HTML ads, and each slide image must match a size that ad set supports, which the supported-sizes  operation lists. Returns the new coupon and its id.
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfCreateCoupon  (required)
+     * @param resourceInputOfCreateCoupon The coupon to create. (required)
      * @return ResourceOutcomeOfCoupon
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -313,9 +313,9 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons
-     * Create a Coupon
+     * Creates a coupon on one ad set of the advertiser. The ad set must already carry dynamic display or  HTML ads, and each slide image must match a size that ad set supports, which the supported-sizes  operation lists. Returns the new coupon and its id.
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfCreateCoupon  (required)
+     * @param resourceInputOfCreateCoupon The coupon to create. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfCoupon&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -332,9 +332,9 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons (asynchronously)
-     * Create a Coupon
+     * Creates a coupon on one ad set of the advertiser. The ad set must already carry dynamic display or  HTML ads, and each slide image must match a size that ad set supports, which the supported-sizes  operation lists. Returns the new coupon and its id.
      * @param advertiserId The advertiser identifier. (required)
-     * @param resourceInputOfCreateCoupon  (required)
+     * @param resourceInputOfCreateCoupon The coupon to create. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -428,7 +428,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/creatives
-     * Create a Creative
+     * Creates a creative in the library of one advertiser. The format decides which attributes block must  be filled in, and the dataset must be one of that advertiser&#39;s. Returns the new creative, whose id is  what an ad binds to.
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfCreativeWrite The creative information. (required)
      * @return ResourceOutcomeOfCreative
@@ -446,7 +446,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/creatives
-     * Create a Creative
+     * Creates a creative in the library of one advertiser. The format decides which attributes block must  be filled in, and the dataset must be one of that advertiser&#39;s. Returns the new creative, whose id is  what an ad binds to.
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfCreativeWrite The creative information. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfCreative&gt;
@@ -465,7 +465,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/creatives (asynchronously)
-     * Create a Creative
+     * Creates a creative in the library of one advertiser. The format decides which attributes block must  be filled in, and the dataset must be one of that advertiser&#39;s. Returns the new creative, whose id is  what an ad binds to.
      * @param advertiserId The advertiser identifier. (required)
      * @param resourceInputOfCreativeWrite The creative information. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -553,7 +553,7 @@ public class CreativeApi {
 
     /**
      * /experimental/ads/{id}
-     * Delete an Ad
+     * Deletes one ad, which stops it delivering for good. The creative it was bound to is kept and can be  reused; to stop delivery without losing the ad, pause it instead.
      * @param id The ad identifier to delete. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -568,7 +568,7 @@ public class CreativeApi {
 
     /**
      * /experimental/ads/{id}
-     * Delete an Ad
+     * Deletes one ad, which stops it delivering for good. The creative it was bound to is kept and can be  reused; to stop delivery without losing the ad, pause it instead.
      * @param id The ad identifier to delete. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -585,7 +585,7 @@ public class CreativeApi {
 
     /**
      * /experimental/ads/{id} (asynchronously)
-     * Delete an Ad
+     * Deletes one ad, which stops it delivering for good. The creative it was bound to is kept and can be  reused; to stop delivery without losing the ad, pause it instead.
      * @param id The ad identifier to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -796,7 +796,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id}
-     * Delete a Coupon
+     * Deletes one coupon of an advertiser. A coupon that is already deleted or under review cannot be  deleted.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to delete. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -812,7 +812,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id}
-     * Delete a Coupon
+     * Deletes one coupon of an advertiser. A coupon that is already deleted or under review cannot be  deleted.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to delete. (required)
      * @return ApiResponse&lt;Void&gt;
@@ -830,7 +830,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id} (asynchronously)
-     * Delete a Coupon
+     * Deletes one coupon of an advertiser. A coupon that is already deleted or under review cannot be  deleted.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -917,7 +917,7 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id}
-     * Delete a Creative if there are no ads binded to it
+     * Deletes one creative. Every ad bound to it must be deleted or rebound first, and a creative that is  already deleted or under review cannot be deleted.
      * @param id The creative identifier to delete. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -932,7 +932,7 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id}
-     * Delete a Creative if there are no ads binded to it
+     * Deletes one creative. Every ad bound to it must be deleted or rebound first, and a creative that is  already deleted or under review cannot be deleted.
      * @param id The creative identifier to delete. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -949,7 +949,7 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id} (asynchronously)
-     * Delete a Creative if there are no ads binded to it
+     * Deletes one creative. Every ad bound to it must be deleted or rebound first, and a creative that is  already deleted or under review cannot be deleted.
      * @param id The creative identifier to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -970,7 +970,7 @@ public class CreativeApi {
      * Build call for editAdvertiserCoupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to edit. (required)
-     * @param resourceInputOfUpdateCoupon  (required)
+     * @param resourceInputOfUpdateCoupon The new start and end dates of the coupon. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1050,10 +1050,10 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id}
-     * Edit a specific Coupon
+     * Changes when a coupon runs; only the start and end dates can be edited, and the start date must come  before the end date. The coupon must still be a draft or live coupon that is not yet delivering.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to edit. (required)
-     * @param resourceInputOfUpdateCoupon  (required)
+     * @param resourceInputOfUpdateCoupon The new start and end dates of the coupon. (required)
      * @return ResourceOutcomeOfCoupon
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1069,10 +1069,10 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id}
-     * Edit a specific Coupon
+     * Changes when a coupon runs; only the start and end dates can be edited, and the start date must come  before the end date. The coupon must still be a draft or live coupon that is not yet delivering.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to edit. (required)
-     * @param resourceInputOfUpdateCoupon  (required)
+     * @param resourceInputOfUpdateCoupon The new start and end dates of the coupon. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfCoupon&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1089,10 +1089,10 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id} (asynchronously)
-     * Edit a specific Coupon
+     * Changes when a coupon runs; only the start and end dates can be edited, and the start date must come  before the end date. The coupon must still be a draft or live coupon that is not yet delivering.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to edit. (required)
-     * @param resourceInputOfUpdateCoupon  (required)
+     * @param resourceInputOfUpdateCoupon The new start and end dates of the coupon. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1112,7 +1112,7 @@ public class CreativeApi {
     /**
      * Build call for editCreative
      * @param id The creative identifier to edit. (required)
-     * @param resourceInputOfCreativeWrite  (required)
+     * @param resourceInputOfCreativeWrite The complete new attributes of the creative. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1186,9 +1186,9 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id}
-     * Edit a specific Creative
+     * Replaces the attributes of one creative: any attribute left out is cleared, so read the creative  first and send it back with your changes applied. The format must be the creative&#39;s existing format  and the dataset must stay the one it already belongs to; neither can be changed here. A creative  that is being deployed, archived or deleted cannot be edited.
      * @param id The creative identifier to edit. (required)
-     * @param resourceInputOfCreativeWrite  (required)
+     * @param resourceInputOfCreativeWrite The complete new attributes of the creative. (required)
      * @return ResourceOutcomeOfCreative
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1204,9 +1204,9 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id}
-     * Edit a specific Creative
+     * Replaces the attributes of one creative: any attribute left out is cleared, so read the creative  first and send it back with your changes applied. The format must be the creative&#39;s existing format  and the dataset must stay the one it already belongs to; neither can be changed here. A creative  that is being deployed, archived or deleted cannot be edited.
      * @param id The creative identifier to edit. (required)
-     * @param resourceInputOfCreativeWrite  (required)
+     * @param resourceInputOfCreativeWrite The complete new attributes of the creative. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfCreative&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1223,9 +1223,9 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id} (asynchronously)
-     * Edit a specific Creative
+     * Replaces the attributes of one creative: any attribute left out is cleared, so read the creative  first and send it back with your changes applied. The format must be the creative&#39;s existing format  and the dataset must stay the one it already belongs to; neither can be changed here. A creative  that is being deployed, archived or deleted cannot be edited.
      * @param id The creative identifier to edit. (required)
-     * @param resourceInputOfCreativeWrite  (required)
+     * @param resourceInputOfCreativeWrite The complete new attributes of the creative. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1323,7 +1323,7 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id}/preview
-     * Get the preview of a specific Creative
+     * Renders one creative as preview HTML at the size asked for. Only the sizes the creative was built for  can be previewed; when the size does not match, the error lists the ones that can.
      * @param id The Creative identifier to preview. (required)
      * @param height The height of the Creative to preview. (optional)
      * @param width The width of the Creative to preview. (optional)
@@ -1342,7 +1342,7 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id}/preview
-     * Get the preview of a specific Creative
+     * Renders one creative as preview HTML at the size asked for. Only the sizes the creative was built for  can be previewed; when the size does not match, the error lists the ones that can.
      * @param id The Creative identifier to preview. (required)
      * @param height The height of the Creative to preview. (optional)
      * @param width The width of the Creative to preview. (optional)
@@ -1362,7 +1362,7 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id}/preview (asynchronously)
-     * Get the preview of a specific Creative
+     * Renders one creative as preview HTML at the size asked for. Only the sizes the creative was built for  can be previewed; when the size does not match, the error lists the ones that can.
      * @param id The Creative identifier to preview. (required)
      * @param height The height of the Creative to preview. (optional)
      * @param width The width of the Creative to preview. (optional)
@@ -1452,7 +1452,7 @@ public class CreativeApi {
 
     /**
      * /experimental/ads/{id}
-     * Get an Ad with its id
+     * Reads one ad by its id: the creative and ad set it binds, its schedule and its delivery status. The  id comes from the ad list of the advertiser.
      * @param id The ad identifier to retrieve. (required)
      * @return ResourceOutcomeOfAd
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1469,7 +1469,7 @@ public class CreativeApi {
 
     /**
      * /experimental/ads/{id}
-     * Get an Ad with its id
+     * Reads one ad by its id: the creative and ad set it binds, its schedule and its delivery status. The  id comes from the ad list of the advertiser.
      * @param id The ad identifier to retrieve. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfAd&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1487,7 +1487,7 @@ public class CreativeApi {
 
     /**
      * /experimental/ads/{id} (asynchronously)
-     * Get an Ad with its id
+     * Reads one ad by its id: the creative and ad set it binds, its schedule and its delivery status. The  id comes from the ad list of the advertiser.
      * @param id The ad identifier to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1708,7 +1708,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/ads
-     * Get the list of self-services Ads for a given advertiser
+     * Lists the ads of one advertiser, each one binding a creative to an ad set. Use it to find an ad id  before reading, pausing, unpausing or deleting a single ad. Page through the ads with limit and  offset.
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of ads to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of ads. The default is 0. (optional)
@@ -1727,7 +1727,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/ads
-     * Get the list of self-services Ads for a given advertiser
+     * Lists the ads of one advertiser, each one binding a creative to an ad set. Use it to find an ad id  before reading, pausing, unpausing or deleting a single ad. Page through the ads with limit and  offset.
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of ads to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of ads. The default is 0. (optional)
@@ -1747,7 +1747,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/ads (asynchronously)
-     * Get the list of self-services Ads for a given advertiser
+     * Lists the ads of one advertiser, each one binding a creative to an ad set. Use it to find an ad id  before reading, pausing, unpausing or deleting a single ad. Page through the ads with limit and  offset.
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of ads to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of ads. The default is 0. (optional)
@@ -1844,7 +1844,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id}
-     * Get a Coupon with its id
+     * Reads one coupon of an advertiser by its id: its schedule, its slides and the ad set it runs on. The  id comes from the coupon list of the advertiser.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to retrieve. (required)
      * @return ResourceOutcomeOfCoupon
@@ -1862,7 +1862,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id}
-     * Get a Coupon with its id
+     * Reads one coupon of an advertiser by its id: its schedule, its slides and the ad set it runs on. The  id comes from the coupon list of the advertiser.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to retrieve. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfCoupon&gt;
@@ -1881,7 +1881,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id} (asynchronously)
-     * Get a Coupon with its id
+     * Reads one coupon of an advertiser by its id: its schedule, its slides and the ad set it runs on. The  id comes from the coupon list of the advertiser.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1988,7 +1988,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id}/preview
-     * Get the preview of a specific Coupon
+     * Renders one coupon as preview HTML at the size asked for. The size must be one the coupon&#39;s ad set  supports, as listed by the supported-sizes operation.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to preview. (required)
      * @param height The height of the coupon to preview. (optional)
@@ -2008,7 +2008,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id}/preview
-     * Get the preview of a specific Coupon
+     * Renders one coupon as preview HTML at the size asked for. The size must be one the coupon&#39;s ad set  supports, as listed by the supported-sizes operation.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to preview. (required)
      * @param height The height of the coupon to preview. (optional)
@@ -2029,7 +2029,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons/{id}/preview (asynchronously)
-     * Get the preview of a specific Coupon
+     * Renders one coupon as preview HTML at the size asked for. The size must be one the coupon&#39;s ad set  supports, as listed by the supported-sizes operation.
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to preview. (required)
      * @param height The height of the coupon to preview. (optional)
@@ -2125,7 +2125,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons-supported-sizes
-     * Get the list of Coupon supported sizes
+     * Lists, per coupon format, the sizes an ad set supports. Call it before creating a coupon to pick a  valid slide size; the ad set must already carry dynamic ads.
      * @param advertiserId The advertiser identifier. (required)
      * @param adSetId The ad set id on which you want to check the Coupon supported sizes. (optional)
      * @return ResourceOutcomeOfCouponSupportedSizes
@@ -2143,7 +2143,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons-supported-sizes
-     * Get the list of Coupon supported sizes
+     * Lists, per coupon format, the sizes an ad set supports. Call it before creating a coupon to pick a  valid slide size; the ad set must already carry dynamic ads.
      * @param advertiserId The advertiser identifier. (required)
      * @param adSetId The ad set id on which you want to check the Coupon supported sizes. (optional)
      * @return ApiResponse&lt;ResourceOutcomeOfCouponSupportedSizes&gt;
@@ -2162,7 +2162,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons-supported-sizes (asynchronously)
-     * Get the list of Coupon supported sizes
+     * Lists, per coupon format, the sizes an ad set supports. Call it before creating a coupon to pick a  valid slide size; the ad set must already carry dynamic ads.
      * @param advertiserId The advertiser identifier. (required)
      * @param adSetId The ad set id on which you want to check the Coupon supported sizes. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -2261,7 +2261,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons
-     * Get the list of self-services Coupons for a given advertiser
+     * Lists the coupons of one advertiser. Use it to find a coupon id before reading, editing, previewing  or deleting a single coupon. Page through the coupons with limit and offset.
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of coupons to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of coupons. The default is 0. (optional)
@@ -2280,7 +2280,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons
-     * Get the list of self-services Coupons for a given advertiser
+     * Lists the coupons of one advertiser. Use it to find a coupon id before reading, editing, previewing  or deleting a single coupon. Page through the coupons with limit and offset.
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of coupons to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of coupons. The default is 0. (optional)
@@ -2300,7 +2300,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/coupons (asynchronously)
-     * Get the list of self-services Coupons for a given advertiser
+     * Lists the coupons of one advertiser. Use it to find a coupon id before reading, editing, previewing  or deleting a single coupon. Page through the coupons with limit and offset.
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of coupons to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of coupons. The default is 0. (optional)
@@ -2400,7 +2400,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/creatives
-     * Get the list of self-services Creatives for a given advertiser
+     * Lists the creatives in the library of one advertiser. Use it to find a creative id before reading,  editing or previewing a creative, or before binding one to an ad. Page through the library with  limit and offset.
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)
@@ -2419,7 +2419,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/creatives
-     * Get the list of self-services Creatives for a given advertiser
+     * Lists the creatives in the library of one advertiser. Use it to find a creative id before reading,  editing or previewing a creative, or before binding one to an ad. Page through the library with  limit and offset.
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)
@@ -2439,7 +2439,7 @@ public class CreativeApi {
 
     /**
      * /experimental/advertisers/{advertiser-id}/creatives (asynchronously)
-     * Get the list of self-services Creatives for a given advertiser
+     * Lists the creatives in the library of one advertiser. Use it to find a creative id before reading,  editing or previewing a creative, or before binding one to an ad. Page through the library with  limit and offset.
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)
@@ -2529,7 +2529,7 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id}
-     * Get a Creative with its id
+     * Reads one creative by its id, with the attributes of its format. Use it to check a creative before  editing it or binding it to an ad.
      * @param id The creative identifier to retrieve. (required)
      * @return ResourceOutcomeOfCreative
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2546,7 +2546,7 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id}
-     * Get a Creative with its id
+     * Reads one creative by its id, with the attributes of its format. Use it to check a creative before  editing it or binding it to an ad.
      * @param id The creative identifier to retrieve. (required)
      * @return ApiResponse&lt;ResourceOutcomeOfCreative&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2564,7 +2564,7 @@ public class CreativeApi {
 
     /**
      * /experimental/creatives/{id} (asynchronously)
-     * Get a Creative with its id
+     * Reads one creative by its id, with the attributes of its format. Use it to check a creative before  editing it or binding it to an ad.
      * @param id The creative identifier to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

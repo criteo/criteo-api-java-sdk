@@ -4,8 +4,8 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getCatalogIngestionReportSummary**](CatalogApi.md#getCatalogIngestionReportSummary) | **GET** /experimental/catalog/ingestion/{ingestion-id}/reports/summary | /experimental/catalog/ingestion/{ingestion-id}/reports/summary |
-| [**getCatalogIngestionReports**](CatalogApi.md#getCatalogIngestionReports) | **GET** /experimental/catalog/merchants/{merchant-id}/ingestion/reports | /experimental/catalog/merchants/{merchant-id}/ingestion/reports |
+| [**getCatalogIngestionReportSummary**](CatalogApi.md#getCatalogIngestionReportSummary) | **GET** /experimental/marketing-solutions/catalog/ingestion/{ingestion-id}/reports/summary | /experimental/marketing-solutions/catalog/ingestion/{ingestion-id}/reports/summary |
+| [**getCatalogIngestionReports**](CatalogApi.md#getCatalogIngestionReports) | **GET** /experimental/marketing-solutions/catalog/merchants/{merchant-id}/ingestion/reports | /experimental/marketing-solutions/catalog/merchants/{merchant-id}/ingestion/reports |
 | [**getCatalogMerchantStats**](CatalogApi.md#getCatalogMerchantStats) | **GET** /experimental/catalog/stats/merchants/{merchant-id} | /experimental/catalog/stats/merchants/{merchant-id} |
 | [**getCatalogProductsBatchReport**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /experimental/catalog/products/batch/report/{operation-token} | /experimental/catalog/products/batch/report/{operation-token} |
 | [**submitCatalogProductsBatch**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /experimental/catalog/products/batch | /experimental/catalog/products/batch |
@@ -16,7 +16,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 > CatalogIngestionSummaryResponse getCatalogIngestionReportSummary(ingestionId)
 
-/experimental/catalog/ingestion/{ingestion-id}/reports/summary
+/experimental/marketing-solutions/catalog/ingestion/{ingestion-id}/reports/summary
 
 Get the summary report of a catalog ingestion: what triggered it, how long it ran, how many offers it held, what it changed and how clean the data was.
 
@@ -105,7 +105,7 @@ public class Example {
 
 > CatalogIngestionReportListResponse getCatalogIngestionReports(merchantId, limit, offset)
 
-/experimental/catalog/merchants/{merchant-id}/ingestion/reports
+/experimental/marketing-solutions/catalog/merchants/{merchant-id}/ingestion/reports
 
 List the catalog ingestions of a merchant, most recent first, with their type, status and timing.
 

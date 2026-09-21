@@ -16,8 +16,9 @@ package com.criteo.api.retailmedia.experimental.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.experimental.model.AttributionSettingsModel;
-import com.criteo.api.retailmedia.experimental.model.BudgetDetailsModel;
+import com.criteo.api.retailmedia.experimental.model.OnsiteDisplayDetailsModel;
 import com.criteo.api.retailmedia.experimental.model.ScheduleDetailsModel;
+import com.criteo.api.retailmedia.experimental.model.SponsoredProductsDetailsModel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -66,10 +67,6 @@ public class CampaignResponseModel {
   public static final String SERIALIZED_NAME_BILL_BY_RETAILER_ID = "billByRetailerId";
   @SerializedName(SERIALIZED_NAME_BILL_BY_RETAILER_ID)
   private String billByRetailerId;
-
-  public static final String SERIALIZED_NAME_BUDGET_DETAILS = "budgetDetails";
-  @SerializedName(SERIALIZED_NAME_BUDGET_DETAILS)
-  private BudgetDetailsModel budgetDetails;
 
   /**
    * Buy type of campaign, set only on creation.
@@ -199,26 +196,28 @@ public class CampaignResponseModel {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
+  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
+  private String onBehalfCompanyName;
+
+  public static final String SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS = "onsiteDisplayDetails";
+  @SerializedName(SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS)
+  private OnsiteDisplayDetailsModel onsiteDisplayDetails;
+
   /**
-   * Dynamic Campaign Budgets control: manual keeps today&#39;s behavior; clicks, conversion and  revenue activate campaign-level budget allocation. Impressions is the Onsite Display  objective.
+   * Regulated category the campaign advertises in, set only on creation.
    */
-  @JsonAdapter(ObjectiveEnum.Adapter.class)
-  public enum ObjectiveEnum {
-    MANUAL("Manual"),
+  @JsonAdapter(RegulatedCategoryEnum.Adapter.class)
+  public enum RegulatedCategoryEnum {
+    UNKNOWN("Unknown"),
     
-    CLICKS("Clicks"),
+    NONE("None"),
     
-    CONVERSION("Conversion"),
-    
-    REVENUE("Revenue"),
-    
-    IMPRESSIONS("Impressions"),
-    
-    UNKNOWN("Unknown");
+    ALCOHOL("Alcohol");
 
     private String value;
 
-    ObjectiveEnum(String value) {
+    RegulatedCategoryEnum(String value) {
       this.value = value;
     }
 
@@ -231,40 +230,40 @@ public class CampaignResponseModel {
       return String.valueOf(value);
     }
 
-    public static ObjectiveEnum fromValue(String value) {
-      for (ObjectiveEnum b : ObjectiveEnum.values()) {
+    public static RegulatedCategoryEnum fromValue(String value) {
+      for (RegulatedCategoryEnum b : RegulatedCategoryEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<ObjectiveEnum> {
+    public static class Adapter extends TypeAdapter<RegulatedCategoryEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final ObjectiveEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final RegulatedCategoryEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public ObjectiveEnum read(final JsonReader jsonReader) throws IOException {
+      public RegulatedCategoryEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return ObjectiveEnum.fromValue(value);
+        return RegulatedCategoryEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_OBJECTIVE = "objective";
-  @SerializedName(SERIALIZED_NAME_OBJECTIVE)
-  private ObjectiveEnum objective;
-
-  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
-  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
-  private String onBehalfCompanyName;
+  public static final String SERIALIZED_NAME_REGULATED_CATEGORY = "regulatedCategory";
+  @SerializedName(SERIALIZED_NAME_REGULATED_CATEGORY)
+  private RegulatedCategoryEnum regulatedCategory;
 
   public static final String SERIALIZED_NAME_SCHEDULE_DETAILS = "scheduleDetails";
   @SerializedName(SERIALIZED_NAME_SCHEDULE_DETAILS)
   private ScheduleDetailsModel scheduleDetails;
+
+  public static final String SERIALIZED_NAME_SPONSORED_PRODUCTS_DETAILS = "sponsoredProductsDetails";
+  @SerializedName(SERIALIZED_NAME_SPONSORED_PRODUCTS_DETAILS)
+  private SponsoredProductsDetailsModel sponsoredProductsDetails;
 
   /**
    * Campaign status, derived from the status of Line Items it holds; active if at least  one line item is active.
@@ -389,28 +388,6 @@ public class CampaignResponseModel {
 
   public void setBillByRetailerId(String billByRetailerId) {
     this.billByRetailerId = billByRetailerId;
-  }
-
-
-  public CampaignResponseModel budgetDetails(BudgetDetailsModel budgetDetails) {
-    
-    this.budgetDetails = budgetDetails;
-    return this;
-  }
-
-   /**
-   * Get budgetDetails
-   * @return budgetDetails
-  **/
-  @javax.annotation.Nullable
-
-  public BudgetDetailsModel getBudgetDetails() {
-    return budgetDetails;
-  }
-
-
-  public void setBudgetDetails(BudgetDetailsModel budgetDetails) {
-    this.budgetDetails = budgetDetails;
   }
 
 
@@ -573,28 +550,6 @@ public class CampaignResponseModel {
   }
 
 
-  public CampaignResponseModel objective(ObjectiveEnum objective) {
-    
-    this.objective = objective;
-    return this;
-  }
-
-   /**
-   * Dynamic Campaign Budgets control: manual keeps today&#39;s behavior; clicks, conversion and  revenue activate campaign-level budget allocation. Impressions is the Onsite Display  objective.
-   * @return objective
-  **/
-  @javax.annotation.Nullable
-
-  public ObjectiveEnum getObjective() {
-    return objective;
-  }
-
-
-  public void setObjective(ObjectiveEnum objective) {
-    this.objective = objective;
-  }
-
-
   public CampaignResponseModel onBehalfCompanyName(String onBehalfCompanyName) {
     
     this.onBehalfCompanyName = onBehalfCompanyName;
@@ -617,6 +572,50 @@ public class CampaignResponseModel {
   }
 
 
+  public CampaignResponseModel onsiteDisplayDetails(OnsiteDisplayDetailsModel onsiteDisplayDetails) {
+    
+    this.onsiteDisplayDetails = onsiteDisplayDetails;
+    return this;
+  }
+
+   /**
+   * Get onsiteDisplayDetails
+   * @return onsiteDisplayDetails
+  **/
+  @javax.annotation.Nullable
+
+  public OnsiteDisplayDetailsModel getOnsiteDisplayDetails() {
+    return onsiteDisplayDetails;
+  }
+
+
+  public void setOnsiteDisplayDetails(OnsiteDisplayDetailsModel onsiteDisplayDetails) {
+    this.onsiteDisplayDetails = onsiteDisplayDetails;
+  }
+
+
+  public CampaignResponseModel regulatedCategory(RegulatedCategoryEnum regulatedCategory) {
+    
+    this.regulatedCategory = regulatedCategory;
+    return this;
+  }
+
+   /**
+   * Regulated category the campaign advertises in, set only on creation.
+   * @return regulatedCategory
+  **/
+  @javax.annotation.Nonnull
+
+  public RegulatedCategoryEnum getRegulatedCategory() {
+    return regulatedCategory;
+  }
+
+
+  public void setRegulatedCategory(RegulatedCategoryEnum regulatedCategory) {
+    this.regulatedCategory = regulatedCategory;
+  }
+
+
   public CampaignResponseModel scheduleDetails(ScheduleDetailsModel scheduleDetails) {
     
     this.scheduleDetails = scheduleDetails;
@@ -636,6 +635,28 @@ public class CampaignResponseModel {
 
   public void setScheduleDetails(ScheduleDetailsModel scheduleDetails) {
     this.scheduleDetails = scheduleDetails;
+  }
+
+
+  public CampaignResponseModel sponsoredProductsDetails(SponsoredProductsDetailsModel sponsoredProductsDetails) {
+    
+    this.sponsoredProductsDetails = sponsoredProductsDetails;
+    return this;
+  }
+
+   /**
+   * Get sponsoredProductsDetails
+   * @return sponsoredProductsDetails
+  **/
+  @javax.annotation.Nullable
+
+  public SponsoredProductsDetailsModel getSponsoredProductsDetails() {
+    return sponsoredProductsDetails;
+  }
+
+
+  public void setSponsoredProductsDetails(SponsoredProductsDetailsModel sponsoredProductsDetails) {
+    this.sponsoredProductsDetails = sponsoredProductsDetails;
   }
 
 
@@ -696,7 +717,6 @@ public class CampaignResponseModel {
     return Objects.equals(this.accountId, campaignResponseModel.accountId) &&
         Objects.equals(this.attributionSettings, campaignResponseModel.attributionSettings) &&
         Objects.equals(this.billByRetailerId, campaignResponseModel.billByRetailerId) &&
-        Objects.equals(this.budgetDetails, campaignResponseModel.budgetDetails) &&
         Objects.equals(this.buyType, campaignResponseModel.buyType) &&
         Objects.equals(this.campaignType, campaignResponseModel.campaignType) &&
         Objects.equals(this.companyName, campaignResponseModel.companyName) &&
@@ -704,9 +724,11 @@ public class CampaignResponseModel {
         Objects.equals(this.drawableBalanceIds, campaignResponseModel.drawableBalanceIds) &&
         Objects.equals(this.id, campaignResponseModel.id) &&
         Objects.equals(this.name, campaignResponseModel.name) &&
-        Objects.equals(this.objective, campaignResponseModel.objective) &&
         Objects.equals(this.onBehalfCompanyName, campaignResponseModel.onBehalfCompanyName) &&
+        Objects.equals(this.onsiteDisplayDetails, campaignResponseModel.onsiteDisplayDetails) &&
+        Objects.equals(this.regulatedCategory, campaignResponseModel.regulatedCategory) &&
         Objects.equals(this.scheduleDetails, campaignResponseModel.scheduleDetails) &&
+        Objects.equals(this.sponsoredProductsDetails, campaignResponseModel.sponsoredProductsDetails) &&
         Objects.equals(this.status, campaignResponseModel.status) &&
         Objects.equals(this.updatedAt, campaignResponseModel.updatedAt);
   }
@@ -717,7 +739,7 @@ public class CampaignResponseModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, attributionSettings, billByRetailerId, budgetDetails, buyType, campaignType, companyName, createdAt, drawableBalanceIds, id, name, objective, onBehalfCompanyName, scheduleDetails, status, updatedAt);
+    return Objects.hash(accountId, attributionSettings, billByRetailerId, buyType, campaignType, companyName, createdAt, drawableBalanceIds, id, name, onBehalfCompanyName, onsiteDisplayDetails, regulatedCategory, scheduleDetails, sponsoredProductsDetails, status, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -734,7 +756,6 @@ public class CampaignResponseModel {
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    attributionSettings: ").append(toIndentedString(attributionSettings)).append("\n");
     sb.append("    billByRetailerId: ").append(toIndentedString(billByRetailerId)).append("\n");
-    sb.append("    budgetDetails: ").append(toIndentedString(budgetDetails)).append("\n");
     sb.append("    buyType: ").append(toIndentedString(buyType)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
@@ -742,9 +763,11 @@ public class CampaignResponseModel {
     sb.append("    drawableBalanceIds: ").append(toIndentedString(drawableBalanceIds)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
     sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
+    sb.append("    onsiteDisplayDetails: ").append(toIndentedString(onsiteDisplayDetails)).append("\n");
+    sb.append("    regulatedCategory: ").append(toIndentedString(regulatedCategory)).append("\n");
     sb.append("    scheduleDetails: ").append(toIndentedString(scheduleDetails)).append("\n");
+    sb.append("    sponsoredProductsDetails: ").append(toIndentedString(sponsoredProductsDetails)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
@@ -772,7 +795,6 @@ public class CampaignResponseModel {
     openapiFields.add("accountId");
     openapiFields.add("attributionSettings");
     openapiFields.add("billByRetailerId");
-    openapiFields.add("budgetDetails");
     openapiFields.add("buyType");
     openapiFields.add("campaignType");
     openapiFields.add("companyName");
@@ -780,9 +802,11 @@ public class CampaignResponseModel {
     openapiFields.add("drawableBalanceIds");
     openapiFields.add("id");
     openapiFields.add("name");
-    openapiFields.add("objective");
     openapiFields.add("onBehalfCompanyName");
+    openapiFields.add("onsiteDisplayDetails");
+    openapiFields.add("regulatedCategory");
     openapiFields.add("scheduleDetails");
+    openapiFields.add("sponsoredProductsDetails");
     openapiFields.add("status");
     openapiFields.add("updatedAt");
 
@@ -795,6 +819,7 @@ public class CampaignResponseModel {
     openapiRequiredFields.add("createdAt");
     openapiRequiredFields.add("drawableBalanceIds");
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("regulatedCategory");
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("updatedAt");
   }
@@ -834,10 +859,6 @@ public class CampaignResponseModel {
       if ((jsonObj.get("billByRetailerId") != null && !jsonObj.get("billByRetailerId").isJsonNull()) && !jsonObj.get("billByRetailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billByRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billByRetailerId").toString()));
       }
-      // validate the optional field `budgetDetails`
-      if (jsonObj.get("budgetDetails") != null && !jsonObj.get("budgetDetails").isJsonNull()) {
-        BudgetDetailsModel.validateJsonObject(jsonObj.getAsJsonObject("budgetDetails"));
-      }
       if (!jsonObj.get("buyType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `buyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buyType").toString()));
       }
@@ -859,15 +880,23 @@ public class CampaignResponseModel {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("objective") != null && !jsonObj.get("objective").isJsonNull()) && !jsonObj.get("objective").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `objective` to be a primitive type in the JSON string but got `%s`", jsonObj.get("objective").toString()));
-      }
       if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
+      }
+      // validate the optional field `onsiteDisplayDetails`
+      if (jsonObj.get("onsiteDisplayDetails") != null && !jsonObj.get("onsiteDisplayDetails").isJsonNull()) {
+        OnsiteDisplayDetailsModel.validateJsonObject(jsonObj.getAsJsonObject("onsiteDisplayDetails"));
+      }
+      if (!jsonObj.get("regulatedCategory").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `regulatedCategory` to be a primitive type in the JSON string but got `%s`", jsonObj.get("regulatedCategory").toString()));
       }
       // validate the optional field `scheduleDetails`
       if (jsonObj.get("scheduleDetails") != null && !jsonObj.get("scheduleDetails").isJsonNull()) {
         ScheduleDetailsModel.validateJsonObject(jsonObj.getAsJsonObject("scheduleDetails"));
+      }
+      // validate the optional field `sponsoredProductsDetails`
+      if (jsonObj.get("sponsoredProductsDetails") != null && !jsonObj.get("sponsoredProductsDetails").isJsonNull()) {
+        SponsoredProductsDetailsModel.validateJsonObject(jsonObj.getAsJsonObject("sponsoredProductsDetails"));
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

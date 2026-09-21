@@ -55,6 +55,10 @@ public class CouponSupportedSizes {
   @SerializedName(SERIALIZED_NAME_FULL_FRAME)
   private List<String> fullFrame = null;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_LOGO_ZONE = "logoZone";
   @SerializedName(SERIALIZED_NAME_LOGO_ZONE)
   private List<String> logoZone = null;
@@ -89,6 +93,28 @@ public class CouponSupportedSizes {
 
   public void setFullFrame(List<String> fullFrame) {
     this.fullFrame = fullFrame;
+  }
+
+
+  public CouponSupportedSizes id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -177,6 +203,7 @@ public class CouponSupportedSizes {
     }
     CouponSupportedSizes couponSupportedSizes = (CouponSupportedSizes) o;
     return Objects.equals(this.fullFrame, couponSupportedSizes.fullFrame) &&
+        Objects.equals(this.id, couponSupportedSizes.id) &&
         Objects.equals(this.logoZone, couponSupportedSizes.logoZone)&&
         Objects.equals(this.additionalProperties, couponSupportedSizes.additionalProperties);
   }
@@ -187,7 +214,7 @@ public class CouponSupportedSizes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fullFrame, logoZone, additionalProperties);
+    return Objects.hash(fullFrame, id, logoZone, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -202,6 +229,7 @@ public class CouponSupportedSizes {
     StringBuilder sb = new StringBuilder();
     sb.append("class CouponSupportedSizes {\n");
     sb.append("    fullFrame: ").append(toIndentedString(fullFrame)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    logoZone: ").append(toIndentedString(logoZone)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -227,6 +255,7 @@ public class CouponSupportedSizes {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("fullFrame");
+    openapiFields.add("id");
     openapiFields.add("logoZone");
 
     // a set of required properties/fields (JSON key names)
@@ -248,6 +277,9 @@ public class CouponSupportedSizes {
       // ensure the optional json data is an array if present
       if (jsonObj.get("fullFrame") != null && !jsonObj.get("fullFrame").isJsonNull() && !jsonObj.get("fullFrame").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fullFrame` to be an array in the JSON string but got `%s`", jsonObj.get("fullFrame").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("logoZone") != null && !jsonObj.get("logoZone").isJsonNull() && !jsonObj.get("logoZone").isJsonArray()) {

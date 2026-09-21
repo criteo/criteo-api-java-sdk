@@ -12,10 +12,14 @@ Entity to create or update a creative
 |**datasetId** | **String** | Dataset linked to the Creative |  |
 |**description** | **String** | The description of the creative |  [optional] |
 |**dynamicWriteAttributes** | [**DynamicWriteAttributes**](DynamicWriteAttributes.md) |  |  [optional] |
-|**format** | [**FormatEnum**](#FormatEnum) | The format of the creative  You can use \&quot;Image\&quot;, \&quot; HtmlTag\&quot;, \&quot;Dynamic\&quot; or \&quot;Adaptive\&quot; |  |
+|**format** | [**FormatEnum**](#FormatEnum) | The format of the creative.  You can use \&quot;Image\&quot;, \&quot;HtmlTag\&quot;, \&quot;Dynamic\&quot;, \&quot;Adaptive\&quot;, \&quot;Showcase\&quot; or \&quot;VastTag\&quot; |  |
 |**htmlTagWriteAttributes** | [**HtmlTagWriteAttributes**](HtmlTagWriteAttributes.md) |  |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**imageWriteAttributes** | [**ImageWriteAttributes**](ImageWriteAttributes.md) |  |  [optional] |
 |**name** | **String** | The name of the creative |  |
+|**showcaseWriteAttributes** | [**ShowcaseWriteAttributes**](ShowcaseWriteAttributes.md) |  |  [optional] |
+|**socialSettings** | [**SocialSettings**](SocialSettings.md) |  |  [optional] |
+|**vastTagWriteAttributes** | [**VastTagWriteAttributes**](VastTagWriteAttributes.md) |  |  [optional] |
 
 
 
@@ -23,10 +27,12 @@ Entity to create or update a creative
 
 | Name | Value |
 |---- | -----|
-| IMAGE | &quot;Image&quot; |
-| HTMLTAG | &quot;HtmlTag&quot; |
 | DYNAMIC | &quot;Dynamic&quot; |
+| HTMLTAG | &quot;HtmlTag&quot; |
+| IMAGE | &quot;Image&quot; |
 | ADAPTIVE | &quot;Adaptive&quot; |
+| SHOWCASE | &quot;Showcase&quot; |
+| VASTTAG | &quot;VastTag&quot; |
 
 
 

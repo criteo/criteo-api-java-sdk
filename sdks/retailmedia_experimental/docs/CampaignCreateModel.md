@@ -10,15 +10,16 @@ An object that represents the available options to set when creating a Retail Me
 |------------ | ------------- | ------------- | -------------|
 |**attributionSettings** | [**AttributionSettingsCreateModel**](AttributionSettingsCreateModel.md) |  |  [optional] |
 |**billByRetailerId** | **String** |  |  [optional] |
-|**budgetDetails** | [**BudgetDetailsCreateModel**](BudgetDetailsCreateModel.md) |  |  [optional] |
 |**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) | Buy type of campaign, set only on creation. Auction is the only buy type currently supported. |  |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Type of campaign, set only on creation. |  |
 |**companyName** | **String** |  |  [optional] |
 |**drawableBalanceIds** | **List&lt;String&gt;** |  |  [optional] |
 |**name** | **String** |  |  |
-|**objective** | [**ObjectiveEnum**](#ObjectiveEnum) |  |  [optional] |
 |**onBehalfCompanyName** | **String** |  |  [optional] |
+|**onsiteDisplayDetails** | [**OnsiteDisplayDetailsCreateModel**](OnsiteDisplayDetailsCreateModel.md) |  |  [optional] |
+|**regulatedCategory** | [**RegulatedCategoryEnum**](#RegulatedCategoryEnum) |  |  [optional] |
 |**scheduleDetails** | [**ScheduleDetailsCreateModel**](ScheduleDetailsCreateModel.md) |  |  [optional] |
+|**sponsoredProductsDetails** | [**SponsoredProductsDetailsCreateModel**](SponsoredProductsDetailsCreateModel.md) |  |  [optional] |
 
 
 
@@ -39,15 +40,12 @@ An object that represents the available options to set when creating a Retail Me
 
 
 
-## Enum: ObjectiveEnum
+## Enum: RegulatedCategoryEnum
 
 | Name | Value |
 |---- | -----|
-| MANUAL | &quot;Manual&quot; |
-| CLICKS | &quot;Clicks&quot; |
-| CONVERSION | &quot;Conversion&quot; |
-| REVENUE | &quot;Revenue&quot; |
-| IMPRESSIONS | &quot;Impressions&quot; |
+| NONE | &quot;None&quot; |
+| ALCOHOL | &quot;Alcohol&quot; |
 
 
 

@@ -397,10 +397,9 @@ paths:
   /experimental/retail-media/accounts/{account-id}/campaigns/search:
     post:
       description: "Searches campaigns under an account using optional filters and\
-        \ pagination.\r\nBudget details are sourced from the search index and may\
-        \ be eventually consistent with the\r\nKobalos-backed campaign returned by\
-        \ GET.\r\nSearch does not perform Kobalos enrichment, so drawable balance\
-        \ ids are not included."
+        \ pagination.\r\nBudgets are sourced from the search index, so they lag a\
+        \ campaign that has just changed.\r\nSearch does not perform Kobalos enrichment,\
+        \ so drawable balance ids are not included."
       operationId: SearchCampaigns
       parameters:
       - description: The external id of the account.
@@ -1646,6 +1645,76 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
+  /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy:
+    post:
+      description: "Replaces the submitted Standard page-type bids and updates the\
+        \ supplied strategy settings. Omitted\r\nsettings are preserved. Other line\
+        \ item types are not currently supported by this endpoint."
+      operationId: SetBiddingStrategyByLineItemId
+      parameters:
+      - description: The identifier of the line item whose bidding settings are being
+          updated.
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BiddingSettingsRequest'
+        description: The bidding settings to apply.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BiddingSettingsResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      summary: "/experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy"
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /experimental/retail-media/line-items/{line-item-id}/submit:
+    post:
+      description: "Submits a Commerce Display line item for retailer review, transitioning\
+        \ its eligible reviewable\r\nproperties to In Review. A successful submission\
+        \ responds with 204 No Content and an empty body."
+      operationId: SubmitLineItem
+      parameters:
+      - description: The external id of the line item to submit.
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitLineItemRequestModelRequest'
+        description: "The submission details, including an optional comment for the\
+          \ reviewer."
+      responses:
+        "204":
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      summary: "/experimental/retail-media/line-items/{line-item-id}/submit"
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}/targets:
     get:
       description: Returns a list of targets for a given line item id
@@ -1725,6 +1794,42 @@ paths:
       - oauth:
         - RetailMedia_Campaign_Manage
       summary: "/experimental/retail-media/line-items/{line-item-id}/targets/create"
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /experimental/retail-media/line-items/{line-item-id}/targets/update:
+    post:
+      description: "Updates targets in bulk. The request has PATCH-like semantics:\
+        \ immutable target details identify\r\neach target, while mutable fields supplied\
+        \ in the request are updated."
+      operationId: UpdateTargetsByLineItemId
+      parameters:
+      - description: Unique identifier for the line item.
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TargetListRequest'
+        description: Targets to update.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TargetListResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      summary: "/experimental/retail-media/line-items/{line-item-id}/targets/update"
       tags:
       - Campaign
       x-content-type: application/json
@@ -4488,6 +4593,28 @@ components:
         cpm:
           $ref: '#/components/schemas/CpmBiddingSettings'
       type: object
+    BiddingSettingsRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            cpm:
+              standardBiddingSettings:
+                auctionBids:
+                - pageType: Unknown
+                  bid: 6.027456183070403
+                - pageType: Unknown
+                  bid: 6.027456183070403
+              bidStrategy: Standard
+              adaptiveBiddingSettings:
+                maxBid: 0.8008281904610115
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/BiddingSettingsResource'
+      type: object
     BiddingSettingsResource:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -4698,79 +4825,48 @@ components:
       - name
       - retailerIds
       type: object
-    BudgetDetailsCreateModel:
+    BudgetCappingModel:
       additionalProperties: false
-      description: Budget and pacing of the campaign.
+      description: A ceiling on what a campaign may spend within one period.
       example:
-        isAutoDailyPacing: true
-        dailyPacing: 6.027456183070403
-        monthlyPacing: 1.4658129805029452
-        budget: 0.8008281904610115
+        amount: 1.4658129805029452
+        type: Unknown
       properties:
-        budget:
+        amount:
+          description: Ceiling for the period.
           format: double
           nullable: true
           type: number
-        dailyPacing:
-          format: double
+        type:
+          description: Period the ceiling applies to.
+          enum:
+          - Unknown
+          - Daily
+          - Monthly
           nullable: true
-          type: number
-        isAutoDailyPacing:
-          type: boolean
-        monthlyPacing:
-          format: double
-          nullable: true
-          type: number
+          type: string
       type: object
-    BudgetDetailsModel:
+    BudgetCappingRequestModel:
       additionalProperties: false
-      description: Indexed budget and pacing details returned for Sponsored Products
-        campaigns.
+      description: A ceiling on what a campaign may spend within one period.
       example:
-        isAutoDailyPacing: true
-        dailyPacing: 6.027456183070403
-        monthlyPacing: 1.4658129805029452
-        budget: 0.8008281904610115
-      nullable: true
+        amount: 1.4658129805029452
+        type: Daily
       properties:
-        budget:
+        amount:
+          description: Ceiling for the period.
           format: double
-          nullable: true
           type: number
-        dailyPacing:
-          format: double
-          nullable: true
-          type: number
-        isAutoDailyPacing:
-          nullable: true
-          type: boolean
-        monthlyPacing:
-          format: double
-          nullable: true
-          type: number
-      type: object
-    BudgetDetailsUpdateModel:
-      additionalProperties: false
-      description: "Writable budget and pacing fields for a SponsoredProducts campaign.\r\
-        \nOmitted fields remain unchanged."
-      example:
-        isAutoDailyPacing: true
-        dailyPacing:
-          value: 0.8008281904610115
-        monthlyPacing:
-          value: 0.8008281904610115
-        budget:
-          value: 0.8008281904610115
-      properties:
-        budget:
-          $ref: '#/components/schemas/DecimalNullableNillableV2'
-        dailyPacing:
-          $ref: '#/components/schemas/DecimalNullableNillableV2'
-        isAutoDailyPacing:
-          nullable: true
-          type: boolean
-        monthlyPacing:
-          $ref: '#/components/schemas/DecimalNullableNillableV2'
+        type:
+          description: Period the ceiling applies to. Each period may appear at most
+            once on a budget.
+          enum:
+          - Daily
+          - Monthly
+          type: string
+      required:
+      - amount
+      - type
       type: object
     CampaignCreateModel:
       additionalProperties: false
@@ -4779,24 +4875,33 @@ components:
       example:
         billByRetailerId: billByRetailerId
         campaignType: SponsoredProducts
+        sponsoredProductsDetails:
+          budget:
+            amount: 6.027456183070403
+            cappings:
+            - amount: 1.4658129805029452
+              type: Daily
+            - amount: 1.4658129805029452
+              type: Daily
+            pacing:
+              type: Automatic
+          objective: Manual
+        regulatedCategory: None
         attributionSettings:
           clickAttributionWindow: OneWeek
           clickAttributionScope: SameSku
           viewAttributionScope: SameSku
           viewAttributionWindow: None
         companyName: companyName
-        budgetDetails:
-          isAutoDailyPacing: true
-          dailyPacing: 6.027456183070403
-          monthlyPacing: 1.4658129805029452
-          budget: 0.8008281904610115
         drawableBalanceIds:
         - drawableBalanceIds
         - drawableBalanceIds
         name: name
         onBehalfCompanyName: onBehalfCompanyName
         buyType: Auction
-        objective: Manual
+        onsiteDisplayDetails:
+          budget:
+            amount: 0.8008281904610115
         scheduleDetails:
           endDate: 2000-01-23T04:56:07.000+00:00
           startDate: 2000-01-23T04:56:07.000+00:00
@@ -4806,8 +4911,6 @@ components:
         billByRetailerId:
           nullable: true
           type: string
-        budgetDetails:
-          $ref: '#/components/schemas/BudgetDetailsCreateModel'
         buyType:
           description: "Buy type of campaign, set only on creation. Auction is the\
             \ only buy type currently supported."
@@ -4832,20 +4935,21 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-        objective:
-          enum:
-          - Manual
-          - Clicks
-          - Conversion
-          - Revenue
-          - Impressions
+        onBehalfCompanyName:
           nullable: true
           type: string
-        onBehalfCompanyName:
+        onsiteDisplayDetails:
+          $ref: '#/components/schemas/OnsiteDisplayDetailsCreateModel'
+        regulatedCategory:
+          enum:
+          - None
+          - Alcohol
           nullable: true
           type: string
         scheduleDetails:
           $ref: '#/components/schemas/ScheduleDetailsCreateModel'
+        sponsoredProductsDetails:
+          $ref: '#/components/schemas/SponsoredProductsDetailsCreateModel'
       required:
       - buyType
       - campaignType
@@ -4860,24 +4964,33 @@ components:
           attributes:
             billByRetailerId: billByRetailerId
             campaignType: SponsoredProducts
+            sponsoredProductsDetails:
+              budget:
+                amount: 6.027456183070403
+                cappings:
+                - amount: 1.4658129805029452
+                  type: Daily
+                - amount: 1.4658129805029452
+                  type: Daily
+                pacing:
+                  type: Automatic
+              objective: Manual
+            regulatedCategory: None
             attributionSettings:
               clickAttributionWindow: OneWeek
               clickAttributionScope: SameSku
               viewAttributionScope: SameSku
               viewAttributionWindow: None
             companyName: companyName
-            budgetDetails:
-              isAutoDailyPacing: true
-              dailyPacing: 6.027456183070403
-              monthlyPacing: 1.4658129805029452
-              budget: 0.8008281904610115
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
             name: name
             onBehalfCompanyName: onBehalfCompanyName
             buyType: Auction
-            objective: Manual
+            onsiteDisplayDetails:
+              budget:
+                amount: 0.8008281904610115
             scheduleDetails:
               endDate: 2000-01-23T04:56:07.000+00:00
               startDate: 2000-01-23T04:56:07.000+00:00
@@ -4893,24 +5006,33 @@ components:
         attributes:
           billByRetailerId: billByRetailerId
           campaignType: SponsoredProducts
+          sponsoredProductsDetails:
+            budget:
+              amount: 6.027456183070403
+              cappings:
+              - amount: 1.4658129805029452
+                type: Daily
+              - amount: 1.4658129805029452
+                type: Daily
+              pacing:
+                type: Automatic
+            objective: Manual
+          regulatedCategory: None
           attributionSettings:
             clickAttributionWindow: OneWeek
             clickAttributionScope: SameSku
             viewAttributionScope: SameSku
             viewAttributionWindow: None
           companyName: companyName
-          budgetDetails:
-            isAutoDailyPacing: true
-            dailyPacing: 6.027456183070403
-            monthlyPacing: 1.4658129805029452
-            budget: 0.8008281904610115
           drawableBalanceIds:
           - drawableBalanceIds
           - drawableBalanceIds
           name: name
           onBehalfCompanyName: onBehalfCompanyName
           buyType: Auction
-          objective: Manual
+          onsiteDisplayDetails:
+            budget:
+              amount: 0.8008281904610115
           scheduleDetails:
             endDate: 2000-01-23T04:56:07.000+00:00
             startDate: 2000-01-23T04:56:07.000+00:00
@@ -4930,24 +5052,33 @@ components:
       example:
         billByRetailerId: billByRetailerId
         campaignType: Unknown
+        regulatedCategory: Unknown
         attributionSettings:
           clickAttributionWindow: OneWeek
           clickAttributionScope: SameSku
           viewAttributionScope: SameSku
           viewAttributionWindow: None
         companyName: companyName
-        budgetDetails:
-          isAutoDailyPacing: true
-          dailyPacing: 6.027456183070403
-          monthlyPacing: 1.4658129805029452
-          budget: 0.8008281904610115
         drawableBalanceIds:
         - drawableBalanceIds
         - drawableBalanceIds
         onBehalfCompanyName: onBehalfCompanyName
-        objective: Manual
+        onsiteDisplayDetails:
+          budget:
+            amount: 0.8008281904610115
         accountId: accountId
         createdAt: 2000-01-23T04:56:07.000+00:00
+        sponsoredProductsDetails:
+          budget:
+            amount: 6.027456183070403
+            cappings:
+            - amount: 1.4658129805029452
+              type: Unknown
+            - amount: 1.4658129805029452
+              type: Unknown
+            pacing:
+              type: Unknown
+          objective: Manual
         name: name
         buyType: Unknown
         id: id
@@ -4965,8 +5096,6 @@ components:
         billByRetailerId:
           nullable: true
           type: string
-        budgetDetails:
-          $ref: '#/components/schemas/BudgetDetailsModel'
         buyType:
           description: "Buy type of campaign, set only on creation."
           enum:
@@ -4999,24 +5128,23 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-        objective:
-          description: "Dynamic Campaign Budgets control: manual keeps today's behavior;\
-            \ clicks, conversion and\r\nrevenue activate campaign-level budget allocation.\
-            \ Impressions is the Onsite Display\r\nobjective."
-          enum:
-          - Manual
-          - Clicks
-          - Conversion
-          - Revenue
-          - Impressions
-          - Unknown
-          nullable: true
-          type: string
         onBehalfCompanyName:
           nullable: true
           type: string
+        onsiteDisplayDetails:
+          $ref: '#/components/schemas/OnsiteDisplayDetailsModel'
+        regulatedCategory:
+          description: "Regulated category the campaign advertises in, set only on\
+            \ creation."
+          enum:
+          - Unknown
+          - None
+          - Alcohol
+          type: string
         scheduleDetails:
           $ref: '#/components/schemas/ScheduleDetailsModel'
+        sponsoredProductsDetails:
+          $ref: '#/components/schemas/SponsoredProductsDetailsModel'
         status:
           description: "Campaign status, derived from the status of Line Items it\
             \ holds; active if at least\r\none line item is active."
@@ -5036,6 +5164,7 @@ components:
       - createdAt
       - drawableBalanceIds
       - name
+      - regulatedCategory
       - status
       - updatedAt
       type: object
@@ -5052,24 +5181,33 @@ components:
         - attributes:
             billByRetailerId: billByRetailerId
             campaignType: Unknown
+            regulatedCategory: Unknown
             attributionSettings:
               clickAttributionWindow: OneWeek
               clickAttributionScope: SameSku
               viewAttributionScope: SameSku
               viewAttributionWindow: None
             companyName: companyName
-            budgetDetails:
-              isAutoDailyPacing: true
-              dailyPacing: 6.027456183070403
-              monthlyPacing: 1.4658129805029452
-              budget: 0.8008281904610115
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
             onBehalfCompanyName: onBehalfCompanyName
-            objective: Manual
+            onsiteDisplayDetails:
+              budget:
+                amount: 0.8008281904610115
             accountId: accountId
             createdAt: 2000-01-23T04:56:07.000+00:00
+            sponsoredProductsDetails:
+              budget:
+                amount: 6.027456183070403
+                cappings:
+                - amount: 1.4658129805029452
+                  type: Unknown
+                - amount: 1.4658129805029452
+                  type: Unknown
+                pacing:
+                  type: Unknown
+              objective: Manual
             name: name
             buyType: Unknown
             id: id
@@ -5083,24 +5221,33 @@ components:
         - attributes:
             billByRetailerId: billByRetailerId
             campaignType: Unknown
+            regulatedCategory: Unknown
             attributionSettings:
               clickAttributionWindow: OneWeek
               clickAttributionScope: SameSku
               viewAttributionScope: SameSku
               viewAttributionWindow: None
             companyName: companyName
-            budgetDetails:
-              isAutoDailyPacing: true
-              dailyPacing: 6.027456183070403
-              monthlyPacing: 1.4658129805029452
-              budget: 0.8008281904610115
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
             onBehalfCompanyName: onBehalfCompanyName
-            objective: Manual
+            onsiteDisplayDetails:
+              budget:
+                amount: 0.8008281904610115
             accountId: accountId
             createdAt: 2000-01-23T04:56:07.000+00:00
+            sponsoredProductsDetails:
+              budget:
+                amount: 6.027456183070403
+                cappings:
+                - amount: 1.4658129805029452
+                  type: Unknown
+                - amount: 1.4658129805029452
+                  type: Unknown
+                pacing:
+                  type: Unknown
+              objective: Manual
             name: name
             buyType: Unknown
             id: id
@@ -5183,24 +5330,33 @@ components:
         attributes:
           billByRetailerId: billByRetailerId
           campaignType: Unknown
+          regulatedCategory: Unknown
           attributionSettings:
             clickAttributionWindow: OneWeek
             clickAttributionScope: SameSku
             viewAttributionScope: SameSku
             viewAttributionWindow: None
           companyName: companyName
-          budgetDetails:
-            isAutoDailyPacing: true
-            dailyPacing: 6.027456183070403
-            monthlyPacing: 1.4658129805029452
-            budget: 0.8008281904610115
           drawableBalanceIds:
           - drawableBalanceIds
           - drawableBalanceIds
           onBehalfCompanyName: onBehalfCompanyName
-          objective: Manual
+          onsiteDisplayDetails:
+            budget:
+              amount: 0.8008281904610115
           accountId: accountId
           createdAt: 2000-01-23T04:56:07.000+00:00
+          sponsoredProductsDetails:
+            budget:
+              amount: 6.027456183070403
+              cappings:
+              - amount: 1.4658129805029452
+                type: Unknown
+              - amount: 1.4658129805029452
+                type: Unknown
+              pacing:
+                type: Unknown
+            objective: Manual
           name: name
           buyType: Unknown
           id: id
@@ -5233,24 +5389,33 @@ components:
           attributes:
             billByRetailerId: billByRetailerId
             campaignType: Unknown
+            regulatedCategory: Unknown
             attributionSettings:
               clickAttributionWindow: OneWeek
               clickAttributionScope: SameSku
               viewAttributionScope: SameSku
               viewAttributionWindow: None
             companyName: companyName
-            budgetDetails:
-              isAutoDailyPacing: true
-              dailyPacing: 6.027456183070403
-              monthlyPacing: 1.4658129805029452
-              budget: 0.8008281904610115
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
             onBehalfCompanyName: onBehalfCompanyName
-            objective: Manual
+            onsiteDisplayDetails:
+              budget:
+                amount: 0.8008281904610115
             accountId: accountId
             createdAt: 2000-01-23T04:56:07.000+00:00
+            sponsoredProductsDetails:
+              budget:
+                amount: 6.027456183070403
+                cappings:
+                - amount: 1.4658129805029452
+                  type: Unknown
+                - amount: 1.4658129805029452
+                  type: Unknown
+                pacing:
+                  type: Unknown
+              objective: Manual
             name: name
             buyType: Unknown
             id: id
@@ -5467,6 +5632,16 @@ components:
         \ fields remain unchanged; nullable wrappers distinguish omission from an\
         \ explicit null."
       example:
+        sponsoredProductsDetails:
+          budget:
+            amount: 6.027456183070403
+            cappings:
+            - amount: 1.4658129805029452
+              type: Daily
+            - amount: 1.4658129805029452
+              type: Daily
+            pacing:
+              type: Automatic
         attributionSettings:
           clickAttributionWindow: OneWeek
           clickAttributionScope: SameSku
@@ -5474,44 +5649,31 @@ components:
           viewAttributionWindow: None
         companyName:
           value: value
-        budgetDetails:
-          isAutoDailyPacing: true
-          dailyPacing:
-            value: 0.8008281904610115
-          monthlyPacing:
-            value: 0.8008281904610115
-          budget:
-            value: 0.8008281904610115
         name: name
         onBehalfCompanyName:
           value: value
-        objective: Manual
+        onsiteDisplayDetails:
+          budget:
+            amount: 0.8008281904610115
         scheduleDetails:
           endDate: 2000-01-23T04:56:07.000+00:00
           startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         attributionSettings:
           $ref: '#/components/schemas/AttributionSettingsUpdateModel'
-        budgetDetails:
-          $ref: '#/components/schemas/BudgetDetailsUpdateModel'
         companyName:
           $ref: '#/components/schemas/StringNillableV2'
         name:
           nullable: true
           type: string
-        objective:
-          enum:
-          - Manual
-          - Clicks
-          - Conversion
-          - Revenue
-          - Impressions
-          nullable: true
-          type: string
         onBehalfCompanyName:
           $ref: '#/components/schemas/StringNillableV2'
+        onsiteDisplayDetails:
+          $ref: '#/components/schemas/OnsiteDisplayDetailsUpdateModel'
         scheduleDetails:
           $ref: '#/components/schemas/ScheduleDetailsUpdateModel'
+        sponsoredProductsDetails:
+          $ref: '#/components/schemas/SponsoredProductsDetailsUpdateModel'
       type: object
     CampaignUpdateModelRequest:
       additionalProperties: false
@@ -5520,6 +5682,16 @@ components:
       example:
         data:
           attributes:
+            sponsoredProductsDetails:
+              budget:
+                amount: 6.027456183070403
+                cappings:
+                - amount: 1.4658129805029452
+                  type: Daily
+                - amount: 1.4658129805029452
+                  type: Daily
+                pacing:
+                  type: Automatic
             attributionSettings:
               clickAttributionWindow: OneWeek
               clickAttributionScope: SameSku
@@ -5527,18 +5699,12 @@ components:
               viewAttributionWindow: None
             companyName:
               value: value
-            budgetDetails:
-              isAutoDailyPacing: true
-              dailyPacing:
-                value: 0.8008281904610115
-              monthlyPacing:
-                value: 0.8008281904610115
-              budget:
-                value: 0.8008281904610115
             name: name
             onBehalfCompanyName:
               value: value
-            objective: Manual
+            onsiteDisplayDetails:
+              budget:
+                amount: 0.8008281904610115
             scheduleDetails:
               endDate: 2000-01-23T04:56:07.000+00:00
               startDate: 2000-01-23T04:56:07.000+00:00
@@ -5552,6 +5718,16 @@ components:
       description: A value resource exposed by the API.
       example:
         attributes:
+          sponsoredProductsDetails:
+            budget:
+              amount: 6.027456183070403
+              cappings:
+              - amount: 1.4658129805029452
+                type: Daily
+              - amount: 1.4658129805029452
+                type: Daily
+              pacing:
+                type: Automatic
           attributionSettings:
             clickAttributionWindow: OneWeek
             clickAttributionScope: SameSku
@@ -5559,18 +5735,12 @@ components:
             viewAttributionWindow: None
           companyName:
             value: value
-          budgetDetails:
-            isAutoDailyPacing: true
-            dailyPacing:
-              value: 0.8008281904610115
-            monthlyPacing:
-              value: 0.8008281904610115
-            budget:
-              value: 0.8008281904610115
           name: name
           onBehalfCompanyName:
             value: value
-          objective: Manual
+          onsiteDisplayDetails:
+            budget:
+              amount: 0.8008281904610115
           scheduleDetails:
             endDate: 2000-01-23T04:56:07.000+00:00
             startDate: 2000-01-23T04:56:07.000+00:00
@@ -7737,19 +7907,6 @@ components:
           nullable: true
           type: string
       type: object
-    DecimalNullableNillableV2:
-      additionalProperties: false
-      description: "A wrapper around an optional decimal value in an update payload.\
-        \ Omit the property to leave the current value unchanged, or send a null value\
-        \ to clear it."
-      example:
-        value: 0.8008281904610115
-      properties:
-        value:
-          format: double
-          nullable: true
-          type: number
-      type: object
     DeleteCreativesModel:
       additionalProperties: false
       description: Creatives to remove from a line item.
@@ -9061,16 +9218,11 @@ components:
             cappingCount: 0
             cappingDurationType: Unknown
         retailerId: retailerId
-        flightDates:
-          endDate: 2000-01-23T04:56:07.000+00:00
-          startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         campaignId:
           description: The campaign id of the associated campaign.
           nullable: true
           type: string
-        flightDates:
-          $ref: '#/components/schemas/ExperimentalFlightDatesModel'
         isPaused:
           description: Indicates whether the line item is paused. Defaults to false.
           nullable: true
@@ -9108,9 +9260,6 @@ components:
                 cappingCount: 0
                 cappingDurationType: Unknown
             retailerId: retailerId
-            flightDates:
-              endDate: 2000-01-23T04:56:07.000+00:00
-              startDate: 2000-01-23T04:56:07.000+00:00
           type: type
       properties:
         data:
@@ -9132,9 +9281,6 @@ components:
               cappingCount: 0
               cappingDurationType: Unknown
           retailerId: retailerId
-          flightDates:
-            endDate: 2000-01-23T04:56:07.000+00:00
-            startDate: 2000-01-23T04:56:07.000+00:00
         type: type
       properties:
         attributes:
@@ -11694,6 +11840,77 @@ components:
           nullable: true
           type: boolean
       type: object
+    OnsiteDisplayBudgetCreateModel:
+      additionalProperties: false
+      description: "Financial intent of an OnsiteDisplay campaign. An amount only:\
+        \ per-period cappings and pacing\r\napply to SponsoredProducts."
+      example:
+        amount: 0.8008281904610115
+      properties:
+        amount:
+          description: Total the campaign may spend over its flight.
+          format: double
+          nullable: true
+          type: number
+      type: object
+    OnsiteDisplayBudgetModel:
+      additionalProperties: false
+      description: Financial intent of an OnsiteDisplay campaign.
+      example:
+        amount: 0.8008281904610115
+      nullable: true
+      properties:
+        amount:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    OnsiteDisplayBudgetUpdateModel:
+      additionalProperties: false
+      description: "New financial intent of an OnsiteDisplay campaign. The whole node\
+        \ replaces the previous budget;\r\nomit it to leave the budget unchanged."
+      example:
+        amount: 0.8008281904610115
+      properties:
+        amount:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    OnsiteDisplayDetailsCreateModel:
+      additionalProperties: false
+      description: "Settings that apply only to an OnsiteDisplay campaign. The objective\
+        \ is not exposed externally;\r\nevery campaign created through this endpoint\
+        \ is an impressions campaign."
+      example:
+        budget:
+          amount: 0.8008281904610115
+      properties:
+        budget:
+          $ref: '#/components/schemas/OnsiteDisplayBudgetCreateModel'
+      type: object
+    OnsiteDisplayDetailsModel:
+      additionalProperties: false
+      description: Settings that apply only to an OnsiteDisplay campaign. The objective
+        is not exposed externally.
+      example:
+        budget:
+          amount: 0.8008281904610115
+      nullable: true
+      properties:
+        budget:
+          $ref: '#/components/schemas/OnsiteDisplayBudgetModel'
+      type: object
+    OnsiteDisplayDetailsUpdateModel:
+      additionalProperties: false
+      description: OnsiteDisplay settings to update. Omitted settings remain unchanged.
+      example:
+        budget:
+          amount: 0.8008281904610115
+      properties:
+        budget:
+          $ref: '#/components/schemas/OnsiteDisplayBudgetUpdateModel'
+      type: object
     Outcome:
       additionalProperties: false
       description: The outcome of an API call.
@@ -11751,6 +11968,36 @@ components:
           nullable: true
           readOnly: true
           type: array
+      type: object
+    PacingModel:
+      additionalProperties: false
+      description: How the platform spreads the campaign budget over its flight.
+      example:
+        type: Unknown
+      nullable: true
+      properties:
+        type:
+          description: How the platform spreads a campaign budget over its flight.
+          enum:
+          - Unknown
+          - Automatic
+          nullable: true
+          type: string
+      type: object
+    PacingRequestModel:
+      additionalProperties: false
+      description: Asks the platform to spread the campaign budget rather than cap
+        it per period.
+      example:
+        type: Automatic
+      properties:
+        type:
+          description: How the platform spreads a campaign budget over its flight.
+          enum:
+          - Automatic
+          type: string
+      required:
+      - type
       type: object
     PageTypeEnvironment2:
       additionalProperties: false
@@ -15742,9 +15989,10 @@ components:
       type: object
     ScheduleDetailsCreateModel:
       additionalProperties: false
-      description: "Flight dates of the campaign. Applies to SponsoredProducts only;\
-        \ OnsiteDisplay campaigns\r\nderive their dates from their line items and\
-        \ reject this node."
+      description: "Flight dates the campaign holds itself. A SponsoredProducts or\
+        \ OnsiteDisplay Auction campaign\r\nowns its dates and requires this node;\
+        \ any other OnsiteDisplay campaign derives its dates from\r\nits line items\
+        \ and rejects it."
       example:
         endDate: 2000-01-23T04:56:07.000+00:00
         startDate: 2000-01-23T04:56:07.000+00:00
@@ -15752,7 +16000,9 @@ components:
         endDate:
           description: "Campaign end date. Pass exactly {9999-12-30T00:00:00Z} for\
             \ a SponsoredProducts campaign that\r\nruns indefinitely; any other value,\
-            \ including a neighbouring far-future date, is a real end date."
+            \ including a neighbouring far-future date, is a real end date.\r\nAn\
+            \ OnsiteDisplay Auction campaign cannot run indefinitely and rejects that\
+            \ date."
           format: date-time
           type: string
         startDate:
@@ -15765,9 +16015,12 @@ components:
       type: object
     ScheduleDetailsModel:
       additionalProperties: false
-      description: "Flight dates of the campaign. Always complete: both dates are\
-        \ present on every read.\r\nA SponsoredProducts campaign that runs indefinitely\
-        \ reports the documented indefinite end date\r\nrather than omitting it."
+      description: "Flight dates of the campaign. A SponsoredProducts campaign and\
+        \ an OnsiteDisplay Auction\r\ncampaign report the dates they hold themselves;\
+        \ any other OnsiteDisplay campaign reports the\r\ndates derived from its line\
+        \ items, which it cannot set through this API. A SponsoredProducts\r\ncampaign\
+        \ that runs indefinitely reports the documented indefinite end date rather\
+        \ than\r\nomitting it."
       example:
         endDate: 2000-01-23T04:56:07.000+00:00
         startDate: 2000-01-23T04:56:07.000+00:00
@@ -15775,7 +16028,9 @@ components:
       properties:
         endDate:
           description: "Campaign end date. A SponsoredProducts campaign that runs\
-            \ indefinitely reports\r\n{9999-12-30T00:00:00Z}."
+            \ indefinitely reports\r\n{9999-12-30T00:00:00Z}. An OnsiteDisplay campaign\
+            \ reports a real end date, and omits\r\nit when neither the campaign nor\
+            \ its line items carry one."
           format: date-time
           nullable: true
           type: string
@@ -15787,17 +16042,20 @@ components:
       type: object
     ScheduleDetailsUpdateModel:
       additionalProperties: false
-      description: "New flight dates for a SponsoredProducts campaign. Omit the whole\
-        \ node to leave the schedule\r\nunchanged; when present, both dates are required\
-        \ together."
+      description: "New flight dates for a campaign that owns them: a SponsoredProducts\
+        \ or OnsiteDisplay Auction\r\ncampaign. Omit the whole node to leave the schedule\
+        \ unchanged; when present, both dates are\r\nrequired together. Any other\
+        \ OnsiteDisplay campaign derives its dates from its line items and\r\nrejects\
+        \ this node."
       example:
         endDate: 2000-01-23T04:56:07.000+00:00
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         endDate:
           description: "New campaign end date. Pass exactly {9999-12-30T00:00:00Z}\
-            \ to make the campaign run\r\nindefinitely; any other value is a real\
-            \ end date."
+            \ to make a SponsoredProducts\r\ncampaign run indefinitely; any other\
+            \ value is a real end date. An OnsiteDisplay Auction\r\ncampaign cannot\
+            \ run indefinitely and rejects that date."
           format: date-time
           type: string
         startDate:
@@ -16276,6 +16534,162 @@ components:
           nullable: true
           type: boolean
       type: object
+    SponsoredProductsBudgetCreateModel:
+      additionalProperties: false
+      description: Financial intent of a SponsoredProducts campaign.
+      example:
+        amount: 6.027456183070403
+        cappings:
+        - amount: 1.4658129805029452
+          type: Daily
+        - amount: 1.4658129805029452
+          type: Daily
+        pacing:
+          type: Automatic
+      properties:
+        amount:
+          description: Total the campaign may spend over its flight.
+          format: double
+          nullable: true
+          type: number
+        cappings:
+          description: Per-period ceilings. At most one entry per period.
+          items:
+            $ref: '#/components/schemas/BudgetCappingRequestModel'
+          nullable: true
+          type: array
+        pacing:
+          $ref: '#/components/schemas/PacingRequestModel'
+      type: object
+    SponsoredProductsBudgetModel:
+      additionalProperties: false
+      description: Financial intent of a SponsoredProducts campaign.
+      example:
+        amount: 6.027456183070403
+        cappings:
+        - amount: 1.4658129805029452
+          type: Unknown
+        - amount: 1.4658129805029452
+          type: Unknown
+        pacing:
+          type: Unknown
+      nullable: true
+      properties:
+        amount:
+          format: double
+          nullable: true
+          type: number
+        cappings:
+          description: Per-period ceilings. Only capped periods are reported.
+          items:
+            $ref: '#/components/schemas/BudgetCappingModel'
+          nullable: true
+          type: array
+        pacing:
+          $ref: '#/components/schemas/PacingModel'
+      type: object
+    SponsoredProductsBudgetUpdateModel:
+      additionalProperties: false
+      description: "New financial intent of a SponsoredProducts campaign. The whole\
+        \ node replaces the previous\r\nbudget; omit it to leave the budget unchanged."
+      example:
+        amount: 6.027456183070403
+        cappings:
+        - amount: 1.4658129805029452
+          type: Daily
+        - amount: 1.4658129805029452
+          type: Daily
+        pacing:
+          type: Automatic
+      properties:
+        amount:
+          format: double
+          nullable: true
+          type: number
+        cappings:
+          description: Per-period ceilings. At most one entry per period.
+          items:
+            $ref: '#/components/schemas/BudgetCappingRequestModel'
+          nullable: true
+          type: array
+        pacing:
+          $ref: '#/components/schemas/PacingRequestModel'
+      type: object
+    SponsoredProductsDetailsCreateModel:
+      additionalProperties: false
+      description: "Settings that apply only to a SponsoredProducts campaign. Sending\
+        \ this node on a campaign of\r\nanother type is refused."
+      example:
+        budget:
+          amount: 6.027456183070403
+          cappings:
+          - amount: 1.4658129805029452
+            type: Daily
+          - amount: 1.4658129805029452
+            type: Daily
+          pacing:
+            type: Automatic
+        objective: Manual
+      properties:
+        budget:
+          $ref: '#/components/schemas/SponsoredProductsBudgetCreateModel'
+        objective:
+          description: Defaults to manual when omitted.
+          enum:
+          - Manual
+          - Clicks
+          - Conversion
+          - Revenue
+          nullable: true
+          type: string
+      type: object
+    SponsoredProductsDetailsModel:
+      additionalProperties: false
+      description: "Settings that apply only to a SponsoredProducts campaign. Present\
+        \ only on campaigns of that\r\ntype."
+      example:
+        budget:
+          amount: 6.027456183070403
+          cappings:
+          - amount: 1.4658129805029452
+            type: Unknown
+          - amount: 1.4658129805029452
+            type: Unknown
+          pacing:
+            type: Unknown
+        objective: Manual
+      nullable: true
+      properties:
+        budget:
+          $ref: '#/components/schemas/SponsoredProductsBudgetModel'
+        objective:
+          description: Objective of a SponsoredProducts campaign.
+          enum:
+          - Manual
+          - Clicks
+          - Conversion
+          - Revenue
+          - Unknown
+          nullable: true
+          type: string
+      type: object
+    SponsoredProductsDetailsUpdateModel:
+      additionalProperties: false
+      description: SponsoredProducts settings to update. Omitted settings remain unchanged.
+      example:
+        budget:
+          amount: 6.027456183070403
+          cappings:
+          - amount: 1.4658129805029452
+            type: Daily
+          - amount: 1.4658129805029452
+            type: Daily
+          pacing:
+            type: Automatic
+      properties:
+        budget:
+          $ref: '#/components/schemas/SponsoredProductsBudgetUpdateModel'
+      type: object
     SponsoredProductsLineItem:
       additionalProperties: false
       description: Model of a retail media auction line item.
@@ -16736,6 +17150,46 @@ components:
           nullable: true
           type: string
       type: object
+    SubmitLineItemRequestModel:
+      additionalProperties: false
+      description: Details supplied when submitting a line item for retailer review.
+      example:
+        comment: comment
+      properties:
+        comment:
+          description: Optional comment for the retailer reviewing the line item.
+          maxLength: 255
+          nullable: true
+          type: string
+      type: object
+    SubmitLineItemRequestModelRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            comment: comment
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/SubmitLineItemRequestModelResource'
+      type: object
+    SubmitLineItemRequestModelResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          comment: comment
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SubmitLineItemRequestModel'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     SupplySearch:
       additionalProperties: false
       description: Request attributes for a Supply Account Line Item search
@@ -17073,6 +17527,51 @@ components:
           - Geography
           nullable: true
           type: string
+      type: object
+    TargetListRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for several
+        value objects.
+      example:
+        data:
+        - attributes:
+            approvalStatus: Unknown
+            manualKeywordTargetDetails:
+              matchType: Broad
+              keywordInput: keywordInput
+            negative: true
+            bidMultiplier: 0.8008281904610115
+            pageTypeTargetDetails:
+              pageType: Unknown
+            targetType: Unknown
+            categoryTargetDetails:
+              includeChildren: true
+              categoryId: categoryId
+            geographyTargetDetails:
+              geoLocationId: geoLocationId
+          type: type
+        - attributes:
+            approvalStatus: Unknown
+            manualKeywordTargetDetails:
+              matchType: Broad
+              keywordInput: keywordInput
+            negative: true
+            bidMultiplier: 0.8008281904610115
+            pageTypeTargetDetails:
+              pageType: Unknown
+            targetType: Unknown
+            categoryTargetDetails:
+              includeChildren: true
+              categoryId: categoryId
+            geographyTargetDetails:
+              geoLocationId: geoLocationId
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/TargetResource'
+          nullable: true
+          type: array
       type: object
     TargetListResponse:
       additionalProperties: false

@@ -33,7 +33,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 /experimental/advertisers/{advertiser-id}/ads
 
-Create an Ad
+Creates an ad by binding an existing creative to an existing ad set of the advertiser, delivering  from the start date given. The creative and the ad set must both belong to that advertiser. Returns  the new ad and its id.
 
 ### Example
 
@@ -124,7 +124,7 @@ public class Example {
 
 /experimental/advertisers/{advertiser-id}/coupons
 
-Create a Coupon
+Creates a coupon on one ad set of the advertiser. The ad set must already carry dynamic display or  HTML ads, and each slide image must match a size that ad set supports, which the supported-sizes  operation lists. Returns the new coupon and its id.
 
 ### Example
 
@@ -166,7 +166,7 @@ public class Example {
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
-        ResourceInputOfCreateCoupon resourceInputOfCreateCoupon = new ResourceInputOfCreateCoupon(); // ResourceInputOfCreateCoupon | 
+        ResourceInputOfCreateCoupon resourceInputOfCreateCoupon = new ResourceInputOfCreateCoupon(); // ResourceInputOfCreateCoupon | The coupon to create.
         try {
             ResourceOutcomeOfCoupon result = apiInstance.createAdvertiserCoupon(advertiserId, resourceInputOfCreateCoupon);
             System.out.println(result);
@@ -187,7 +187,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **advertiserId** | **String**| The advertiser identifier. | |
-| **resourceInputOfCreateCoupon** | [**ResourceInputOfCreateCoupon**](ResourceInputOfCreateCoupon.md)|  | |
+| **resourceInputOfCreateCoupon** | [**ResourceInputOfCreateCoupon**](ResourceInputOfCreateCoupon.md)| The coupon to create. | |
 
 ### Return type
 
@@ -215,7 +215,7 @@ public class Example {
 
 /experimental/advertisers/{advertiser-id}/creatives
 
-Create a Creative
+Creates a creative in the library of one advertiser. The format decides which attributes block must  be filled in, and the dataset must be one of that advertiser&#39;s. Returns the new creative, whose id is  what an ad binds to.
 
 ### Example
 
@@ -306,7 +306,7 @@ public class Example {
 
 /experimental/ads/{id}
 
-Delete an Ad
+Deletes one ad, which stops it delivering for good. The creative it was bound to is kept and can be  reused; to stop delivery without losing the ad, pause it instead.
 
 ### Example
 
@@ -482,7 +482,7 @@ null (empty response body)
 
 /experimental/advertisers/{advertiser-id}/coupons/{id}
 
-Delete a Coupon
+Deletes one coupon of an advertiser. A coupon that is already deleted or under review cannot be  deleted.
 
 ### Example
 
@@ -572,7 +572,7 @@ null (empty response body)
 
 /experimental/creatives/{id}
 
-Delete a Creative if there are no ads binded to it
+Deletes one creative. Every ad bound to it must be deleted or rebound first, and a creative that is  already deleted or under review cannot be deleted.
 
 ### Example
 
@@ -660,7 +660,7 @@ null (empty response body)
 
 /experimental/advertisers/{advertiser-id}/coupons/{id}
 
-Edit a specific Coupon
+Changes when a coupon runs; only the start and end dates can be edited, and the start date must come  before the end date. The coupon must still be a draft or live coupon that is not yet delivering.
 
 ### Example
 
@@ -703,7 +703,7 @@ public class Example {
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
         String id = "id_example"; // String | The Coupon identifier to edit.
-        ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon = new ResourceInputOfUpdateCoupon(); // ResourceInputOfUpdateCoupon | 
+        ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon = new ResourceInputOfUpdateCoupon(); // ResourceInputOfUpdateCoupon | The new start and end dates of the coupon.
         try {
             ResourceOutcomeOfCoupon result = apiInstance.editAdvertiserCoupon(advertiserId, id, resourceInputOfUpdateCoupon);
             System.out.println(result);
@@ -725,7 +725,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **advertiserId** | **String**| The advertiser identifier. | |
 | **id** | **String**| The Coupon identifier to edit. | |
-| **resourceInputOfUpdateCoupon** | [**ResourceInputOfUpdateCoupon**](ResourceInputOfUpdateCoupon.md)|  | |
+| **resourceInputOfUpdateCoupon** | [**ResourceInputOfUpdateCoupon**](ResourceInputOfUpdateCoupon.md)| The new start and end dates of the coupon. | |
 
 ### Return type
 
@@ -753,7 +753,7 @@ public class Example {
 
 /experimental/creatives/{id}
 
-Edit a specific Creative
+Replaces the attributes of one creative: any attribute left out is cleared, so read the creative  first and send it back with your changes applied. The format must be the creative&#39;s existing format  and the dataset must stay the one it already belongs to; neither can be changed here. A creative  that is being deployed, archived or deleted cannot be edited.
 
 ### Example
 
@@ -795,7 +795,7 @@ public class Example {
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String id = "id_example"; // String | The creative identifier to edit.
-        ResourceInputOfCreativeWrite resourceInputOfCreativeWrite = new ResourceInputOfCreativeWrite(); // ResourceInputOfCreativeWrite | 
+        ResourceInputOfCreativeWrite resourceInputOfCreativeWrite = new ResourceInputOfCreativeWrite(); // ResourceInputOfCreativeWrite | The complete new attributes of the creative.
         try {
             ResourceOutcomeOfCreative result = apiInstance.editCreative(id, resourceInputOfCreativeWrite);
             System.out.println(result);
@@ -816,7 +816,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| The creative identifier to edit. | |
-| **resourceInputOfCreativeWrite** | [**ResourceInputOfCreativeWrite**](ResourceInputOfCreativeWrite.md)|  | |
+| **resourceInputOfCreativeWrite** | [**ResourceInputOfCreativeWrite**](ResourceInputOfCreativeWrite.md)| The complete new attributes of the creative. | |
 
 ### Return type
 
@@ -844,7 +844,7 @@ public class Example {
 
 /experimental/creatives/{id}/preview
 
-Get the preview of a specific Creative
+Renders one creative as preview HTML at the size asked for. Only the sizes the creative was built for  can be previewed; when the size does not match, the error lists the ones that can.
 
 ### Example
 
@@ -937,7 +937,7 @@ public class Example {
 
 /experimental/ads/{id}
 
-Get an Ad with its id
+Reads one ad by its id: the creative and ad set it binds, its schedule and its delivery status. The  id comes from the ad list of the advertiser.
 
 ### Example
 
@@ -1115,7 +1115,7 @@ public class Example {
 
 /experimental/advertisers/{advertiser-id}/ads
 
-Get the list of self-services Ads for a given advertiser
+Lists the ads of one advertiser, each one binding a creative to an ad set. Use it to find an ad id  before reading, pausing, unpausing or deleting a single ad. Page through the ads with limit and  offset.
 
 ### Example
 
@@ -1208,7 +1208,7 @@ public class Example {
 
 /experimental/advertisers/{advertiser-id}/coupons/{id}
 
-Get a Coupon with its id
+Reads one coupon of an advertiser by its id: its schedule, its slides and the ad set it runs on. The  id comes from the coupon list of the advertiser.
 
 ### Example
 
@@ -1299,7 +1299,7 @@ public class Example {
 
 /experimental/advertisers/{advertiser-id}/coupons/{id}/preview
 
-Get the preview of a specific Coupon
+Renders one coupon as preview HTML at the size asked for. The size must be one the coupon&#39;s ad set  supports, as listed by the supported-sizes operation.
 
 ### Example
 
@@ -1394,7 +1394,7 @@ public class Example {
 
 /experimental/advertisers/{advertiser-id}/coupons-supported-sizes
 
-Get the list of Coupon supported sizes
+Lists, per coupon format, the sizes an ad set supports. Call it before creating a coupon to pick a  valid slide size; the ad set must already carry dynamic ads.
 
 ### Example
 
@@ -1485,7 +1485,7 @@ public class Example {
 
 /experimental/advertisers/{advertiser-id}/coupons
 
-Get the list of self-services Coupons for a given advertiser
+Lists the coupons of one advertiser. Use it to find a coupon id before reading, editing, previewing  or deleting a single coupon. Page through the coupons with limit and offset.
 
 ### Example
 
@@ -1578,7 +1578,7 @@ public class Example {
 
 /experimental/advertisers/{advertiser-id}/creatives
 
-Get the list of self-services Creatives for a given advertiser
+Lists the creatives in the library of one advertiser. Use it to find a creative id before reading,  editing or previewing a creative, or before binding one to an ad. Page through the library with  limit and offset.
 
 ### Example
 
@@ -1671,7 +1671,7 @@ public class Example {
 
 /experimental/creatives/{id}
 
-Get a Creative with its id
+Reads one creative by its id, with the attributes of its format. Use it to check a creative before  editing it or binding it to an ad.
 
 ### Example
 

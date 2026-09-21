@@ -115,12 +115,15 @@ Class | Method | HTTP request | Description
 *CampaignApi* | [**lineItemsSupplySearch**](docs/CampaignApi.md#lineItemsSupplySearch) | **POST** /experimental/retail-media/line-items/supply-search | /experimental/retail-media/line-items/supply-search
 *CampaignApi* | [**searchAccountCreatives**](docs/CampaignApi.md#searchAccountCreatives) | **POST** /experimental/retail-media/accounts/{account-id}/creatives/search | /experimental/retail-media/accounts/{account-id}/creatives/search
 *CampaignApi* | [**searchCampaigns**](docs/CampaignApi.md#searchCampaigns) | **POST** /experimental/retail-media/accounts/{account-id}/campaigns/search | /experimental/retail-media/accounts/{account-id}/campaigns/search
+*CampaignApi* | [**setBiddingStrategyByLineItemId**](docs/CampaignApi.md#setBiddingStrategyByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy
+*CampaignApi* | [**submitLineItem**](docs/CampaignApi.md#submitLineItem) | **POST** /experimental/retail-media/line-items/{line-item-id}/submit | /experimental/retail-media/line-items/{line-item-id}/submit
 *CampaignApi* | [**updateAuctionLineItem**](docs/CampaignApi.md#updateAuctionLineItem) | **PUT** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId}
 *CampaignApi* | [**updateCampaign**](docs/CampaignApi.md#updateCampaign) | **PATCH** /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} | /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
 *CampaignApi* | [**updateCreative**](docs/CampaignApi.md#updateCreative) | **PUT** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id}
 *CampaignApi* | [**updateLineItem**](docs/CampaignApi.md#updateLineItem) | **PATCH** /experimental/retail-media/line-items/{line-item-id} | /experimental/retail-media/line-items/{line-item-id}
 *CampaignApi* | [**updatePreferredLineItemByLineItemId**](docs/CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /experimental/retail-media/preferred-line-items/{line-item-id} | /experimental/retail-media/preferred-line-items/{line-item-id}
 *CampaignApi* | [**updateProductButtonByLineItemAndProductButtonId**](docs/CampaignApi.md#updateProductButtonByLineItemAndProductButtonId) | **PUT** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
+*CampaignApi* | [**updateTargetsByLineItemId**](docs/CampaignApi.md#updateTargetsByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/targets/update | /experimental/retail-media/line-items/{line-item-id}/targets/update
 *CampaignApi* | [**upsertCreatives**](docs/CampaignApi.md#upsertCreatives) | **POST** /experimental/retail-media/line-items/{line-item-id}/creatives/upsert | /experimental/retail-media/line-items/{line-item-id}/creatives/upsert
 *CatalogApi* | [**getCatalogIngestionReportSummary**](docs/CatalogApi.md#getCatalogIngestionReportSummary) | **GET** /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary | /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary
 *CatalogApi* | [**getCatalogIngestionReports**](docs/CatalogApi.md#getCatalogIngestionReports) | **GET** /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports | /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports
@@ -173,14 +176,14 @@ Class | Method | HTTP request | Description
  - [BalanceV1](docs/BalanceV1.md)
  - [BatchAcceptedResponse](docs/BatchAcceptedResponse.md)
  - [BiddingSettings](docs/BiddingSettings.md)
+ - [BiddingSettingsRequest](docs/BiddingSettingsRequest.md)
  - [BiddingSettingsResource](docs/BiddingSettingsResource.md)
  - [BiddingSettingsResponse](docs/BiddingSettingsResponse.md)
  - [BotMessage](docs/BotMessage.md)
  - [BrandIdSearchRequest](docs/BrandIdSearchRequest.md)
  - [BrandIdSearchResult](docs/BrandIdSearchResult.md)
- - [BudgetDetailsCreateModel](docs/BudgetDetailsCreateModel.md)
- - [BudgetDetailsModel](docs/BudgetDetailsModel.md)
- - [BudgetDetailsUpdateModel](docs/BudgetDetailsUpdateModel.md)
+ - [BudgetCappingModel](docs/BudgetCappingModel.md)
+ - [BudgetCappingRequestModel](docs/BudgetCappingRequestModel.md)
  - [CampaignCreateModel](docs/CampaignCreateModel.md)
  - [CampaignCreateModelRequest](docs/CampaignCreateModelRequest.md)
  - [CampaignCreateModelResource](docs/CampaignCreateModelResource.md)
@@ -235,7 +238,6 @@ Class | Method | HTTP request | Description
  - [CreativesModelResponse](docs/CreativesModelResponse.md)
  - [CustomAttribute](docs/CustomAttribute.md)
  - [DataCompleteThrough](docs/DataCompleteThrough.md)
- - [DecimalNullableNillableV2](docs/DecimalNullableNillableV2.md)
  - [DeleteCreativesModel](docs/DeleteCreativesModel.md)
  - [DeleteCreativesModelRequest](docs/DeleteCreativesModelRequest.md)
  - [DeleteCreativesModelResource](docs/DeleteCreativesModelResource.md)
@@ -347,7 +349,15 @@ Class | Method | HTTP request | Description
  - [OfferUpdate](docs/OfferUpdate.md)
  - [OnsiteDisplayAttributes](docs/OnsiteDisplayAttributes.md)
  - [OnsiteDisplayAuctionAttributes](docs/OnsiteDisplayAuctionAttributes.md)
+ - [OnsiteDisplayBudgetCreateModel](docs/OnsiteDisplayBudgetCreateModel.md)
+ - [OnsiteDisplayBudgetModel](docs/OnsiteDisplayBudgetModel.md)
+ - [OnsiteDisplayBudgetUpdateModel](docs/OnsiteDisplayBudgetUpdateModel.md)
+ - [OnsiteDisplayDetailsCreateModel](docs/OnsiteDisplayDetailsCreateModel.md)
+ - [OnsiteDisplayDetailsModel](docs/OnsiteDisplayDetailsModel.md)
+ - [OnsiteDisplayDetailsUpdateModel](docs/OnsiteDisplayDetailsUpdateModel.md)
  - [Outcome](docs/Outcome.md)
+ - [PacingModel](docs/PacingModel.md)
+ - [PacingRequestModel](docs/PacingRequestModel.md)
  - [PageTypeEnvironment2](docs/PageTypeEnvironment2.md)
  - [PageTypeTargetDetails](docs/PageTypeTargetDetails.md)
  - [Pagination](docs/Pagination.md)
@@ -443,6 +453,12 @@ Class | Method | HTTP request | Description
  - [SkuFilter](docs/SkuFilter.md)
  - [SponsoredProductsAttributes](docs/SponsoredProductsAttributes.md)
  - [SponsoredProductsAuctionAttributes](docs/SponsoredProductsAuctionAttributes.md)
+ - [SponsoredProductsBudgetCreateModel](docs/SponsoredProductsBudgetCreateModel.md)
+ - [SponsoredProductsBudgetModel](docs/SponsoredProductsBudgetModel.md)
+ - [SponsoredProductsBudgetUpdateModel](docs/SponsoredProductsBudgetUpdateModel.md)
+ - [SponsoredProductsDetailsCreateModel](docs/SponsoredProductsDetailsCreateModel.md)
+ - [SponsoredProductsDetailsModel](docs/SponsoredProductsDetailsModel.md)
+ - [SponsoredProductsDetailsUpdateModel](docs/SponsoredProductsDetailsUpdateModel.md)
  - [SponsoredProductsLineItem](docs/SponsoredProductsLineItem.md)
  - [SponsoredProductsLineItemCreateRequestModel](docs/SponsoredProductsLineItemCreateRequestModel.md)
  - [SponsoredProductsLineItemUpdateRequestModel](docs/SponsoredProductsLineItemUpdateRequestModel.md)
@@ -450,6 +466,9 @@ Class | Method | HTTP request | Description
  - [StatusResponse](docs/StatusResponse.md)
  - [StatusResponseResource](docs/StatusResponseResource.md)
  - [StringNillableV2](docs/StringNillableV2.md)
+ - [SubmitLineItemRequestModel](docs/SubmitLineItemRequestModel.md)
+ - [SubmitLineItemRequestModelRequest](docs/SubmitLineItemRequestModelRequest.md)
+ - [SubmitLineItemRequestModelResource](docs/SubmitLineItemRequestModelResource.md)
  - [SupplySearch](docs/SupplySearch.md)
  - [SupplySearchRequest](docs/SupplySearchRequest.md)
  - [SupplySearchResource](docs/SupplySearchResource.md)
@@ -457,6 +476,7 @@ Class | Method | HTTP request | Description
  - [SyncRealTimePerformanceReportRequest](docs/SyncRealTimePerformanceReportRequest.md)
  - [SyncRealTimePerformanceReportResource](docs/SyncRealTimePerformanceReportResource.md)
  - [Target](docs/Target.md)
+ - [TargetListRequest](docs/TargetListRequest.md)
  - [TargetListResponse](docs/TargetListResponse.md)
  - [TargetListResponseWithPageMetadata](docs/TargetListResponseWithPageMetadata.md)
  - [TargetResource](docs/TargetResource.md)
