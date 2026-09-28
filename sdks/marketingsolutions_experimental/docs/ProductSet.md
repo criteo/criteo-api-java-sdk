@@ -29,6 +29,7 @@ Encapsulate a group of product
 | UNKNOWN | &quot;Unknown&quot; |
 | CGROWTH | &quot;CGrowth&quot; |
 | CMAX | &quot;CMax&quot; |
+| GOENTERPRISE | &quot;GoEnterprise&quot; |
 
 
 

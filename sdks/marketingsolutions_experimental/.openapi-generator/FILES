@@ -353,6 +353,12 @@ docs/ProductFilterConfig.md
 docs/ProductImporterError.md
 docs/ProductImporterWarning.md
 docs/ProductPrice.md
+docs/ProductReportData.md
+docs/ProductReportDataResource.md
+docs/ProductReportDataResponse.md
+docs/ProductReportJob.md
+docs/ProductReportJobRequest.md
+docs/ProductReportJobResource.md
 docs/ProductSet.md
 docs/ProductSetRule.md
 docs/ProductShipping.md
@@ -388,6 +394,9 @@ docs/ReportDetailError.md
 docs/ReportDetailErrors.md
 docs/ReportDetailWarning.md
 docs/ReportDetailWarnings.md
+docs/ReportJobStatus.md
+docs/ReportJobStatusResource.md
+docs/ReportJobStatusResponse.md
 docs/ReportOkResponse.md
 docs/RequestsAdSetId.md
 docs/RequestsPatchAdSetV26Q1.md
@@ -859,6 +868,12 @@ src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductFilter
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductImporterError.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductImporterWarning.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductPrice.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductReportData.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductReportDataResource.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductReportDataResponse.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductReportJob.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductReportJobRequest.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductReportJobResource.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductSet.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductSetRule.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/ProductShipping.java
@@ -893,6 +908,9 @@ src/main/java/com/criteo/api/marketingsolutions/experimental/model/ReportDetailE
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/ReportDetailErrors.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/ReportDetailWarning.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/ReportDetailWarnings.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/ReportJobStatus.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/ReportJobStatusResource.java
+src/main/java/com/criteo/api/marketingsolutions/experimental/model/ReportJobStatusResponse.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/ReportOkResponse.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/RequestsAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/experimental/model/RequestsPatchAdSetV26Q1.java

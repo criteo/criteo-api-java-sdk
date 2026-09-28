@@ -5,8 +5,10 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createAllProductsExport**](AnalyticsApi.md#createAllProductsExport) | **POST** /experimental/marketing-solutions/report/products/export | /experimental/marketing-solutions/report/products/export |
+| [**createMpoProductsExport**](AnalyticsApi.md#createMpoProductsExport) | **POST** /experimental/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/export | /experimental/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/export |
 | [**createRealtimeProductReport**](AnalyticsApi.md#createRealtimeProductReport) | **POST** /experimental/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export | /experimental/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export |
 | [**downloadAllProductsExport**](AnalyticsApi.md#downloadAllProductsExport) | **GET** /experimental/marketing-solutions/report/products/{reportId} | /experimental/marketing-solutions/report/products/{reportId} |
+| [**downloadMpoProductsExport**](AnalyticsApi.md#downloadMpoProductsExport) | **GET** /experimental/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/{reportId} | /experimental/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/{reportId} |
 | [**getAdsetReport**](AnalyticsApi.md#getAdsetReport) | **POST** /experimental/statistics/report | /experimental/statistics/report |
 | [**getAsyncAdsetReport**](AnalyticsApi.md#getAsyncAdsetReport) | **POST** /experimental/reports/async-statistics | /experimental/reports/async-statistics |
 | [**getAsyncAudienceReport**](AnalyticsApi.md#getAsyncAudienceReport) | **POST** /experimental/reports/async-audience-performance | /experimental/reports/async-audience-performance |
@@ -31,7 +33,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 /experimental/marketing-solutions/report/products/export
 
-Creates an all-products report export job.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+Creates an all-products report export job. &lt;br /&gt; This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -114,13 +116,102 @@ public class Example {
 | **200** | Success |  -  |
 
 
+## createMpoProductsExport
+
+> ReportJobStatusResponse createMpoProductsExport(productReportJobRequest)
+
+/experimental/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/export
+
+Creates an MPO products report export job. &lt;br /&gt; This endpoint is subject to specific rate limits.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.experimental;
+
+import com.criteo.api.marketingsolutions.experimental.ApiClient;
+import com.criteo.api.marketingsolutions.experimental.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.experimental.ApiException;
+import com.criteo.api.marketingsolutions.experimental.Configuration;
+import com.criteo.api.marketingsolutions.experimental.auth.*;
+import com.criteo.api.marketingsolutions.experimental.model.*;
+import com.criteo.api.marketingsolutions.experimental.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        ProductReportJobRequest productReportJobRequest = new ProductReportJobRequest(); // ProductReportJobRequest | The MPO products report export request.
+        try {
+            ReportJobStatusResponse result = apiInstance.createMpoProductsExport(productReportJobRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#createMpoProductsExport");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **productReportJobRequest** | [**ProductReportJobRequest**](ProductReportJobRequest.md)| The MPO products report export request. | [optional] |
+
+### Return type
+
+[**ReportJobStatusResponse**](ReportJobStatusResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
 ## createRealtimeProductReport
 
 > RealTimeProductReportJobStatusResponse createRealtimeProductReport(realTimeProductReportJobRequest)
 
 /experimental/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
 
-Creates a marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+Creates a marketplace performance outcomes realtime report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -209,7 +300,7 @@ public class Example {
 
 /experimental/marketing-solutions/report/products/{reportId}
 
-Downloads the generated all-products report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+Downloads the generated all-products report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -284,6 +375,95 @@ public class Example {
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## downloadMpoProductsExport
+
+> ProductReportDataResponse downloadMpoProductsExport(reportId)
+
+/experimental/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/{reportId}
+
+Downloads the generated MPO products report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.experimental;
+
+import com.criteo.api.marketingsolutions.experimental.ApiClient;
+import com.criteo.api.marketingsolutions.experimental.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.experimental.ApiException;
+import com.criteo.api.marketingsolutions.experimental.Configuration;
+import com.criteo.api.marketingsolutions.experimental.auth.*;
+import com.criteo.api.marketingsolutions.experimental.model.*;
+import com.criteo.api.marketingsolutions.experimental.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        String reportId = "reportId_example"; // String | The identifier of the MPO products report export.
+        try {
+            ProductReportDataResponse result = apiInstance.downloadMpoProductsExport(reportId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#downloadMpoProductsExport");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportId** | **String**| The identifier of the MPO products report export. | |
+
+### Return type
+
+[**ProductReportDataResponse**](ProductReportDataResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, text/csv
 
 
 ### HTTP response details
@@ -1188,7 +1368,7 @@ public class Example {
 
 /experimental/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
 
-Downloads the generated marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+Downloads the generated marketplace performance outcomes realtime report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
 
 ### Example
 

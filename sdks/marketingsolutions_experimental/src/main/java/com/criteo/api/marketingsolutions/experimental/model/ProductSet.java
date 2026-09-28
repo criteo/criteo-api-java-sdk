@@ -61,7 +61,9 @@ public class ProductSet {
     
     CGROWTH("CGrowth"),
     
-    CMAX("CMax");
+    CMAX("CMax"),
+    
+    GOENTERPRISE("GoEnterprise");
 
     private String value;
 

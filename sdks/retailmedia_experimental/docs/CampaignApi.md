@@ -16,11 +16,13 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**deleteProductButtonByLineItemAndProductButtonId**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**deleteProducts**](CampaignApi.md#deleteProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/delete | /experimental/retail-media/line-items/{line-item-id}/products/delete |
 | [**fetchCreatives**](CampaignApi.md#fetchCreatives) | **GET** /experimental/retail-media/line-items/{line-item-id}/creatives | /experimental/retail-media/line-items/{line-item-id}/creatives |
+| [**fetchProducts**](CampaignApi.md#fetchProducts) | **GET** /experimental/retail-media/line-items/{line-item-id}/products | /experimental/retail-media/line-items/{line-item-id}/products |
 | [**getBiddingStrategyByLineItemId**](CampaignApi.md#getBiddingStrategyByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/bidding-strategy |
 | [**getCampaign**](CampaignApi.md#getCampaign) | **GET** /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} | /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} |
 | [**getCapoutHistory**](CampaignApi.md#getCapoutHistory) | **POST** /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history | /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history |
 | [**getCatalogStatus**](CampaignApi.md#getCatalogStatus) | **GET** /experimental/retail-media/catalogs/{catalogId}/status | /experimental/retail-media/catalogs/{catalogId}/status |
 | [**getCreative**](CampaignApi.md#getCreative) | **GET** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
+| [**getMinBidsByLineItemId**](CampaignApi.md#getMinBidsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/min-bids | /experimental/retail-media/line-items/{line-item-id}/min-bids |
 | [**getProductButtonByLineItemAndProductButtonId**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**getProductButtonsByLineItemId**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons | /experimental/retail-media/line-items/{line-item-id}/product-buttons |
 | [**getTargetsByLineItemId**](CampaignApi.md#getTargetsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/targets | /experimental/retail-media/line-items/{line-item-id}/targets |
@@ -498,7 +500,7 @@ public class Example {
 
 ## createLineItem
 
-> ExperimentalLineItemModelResponse createLineItem(experimentalCreateLineItemModelRequest)
+> LineItemResponse createLineItem(externalCreateLineItemModelRequest)
 
 /experimental/retail-media/line-items
 
@@ -543,9 +545,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        ExperimentalCreateLineItemModelRequest experimentalCreateLineItemModelRequest = new ExperimentalCreateLineItemModelRequest(); // ExperimentalCreateLineItemModelRequest | Line item details
+        ExternalCreateLineItemModelRequest externalCreateLineItemModelRequest = new ExternalCreateLineItemModelRequest(); // ExternalCreateLineItemModelRequest | Line item details
         try {
-            ExperimentalLineItemModelResponse result = apiInstance.createLineItem(experimentalCreateLineItemModelRequest);
+            LineItemResponse result = apiInstance.createLineItem(externalCreateLineItemModelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#createLineItem");
@@ -563,11 +565,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **experimentalCreateLineItemModelRequest** | [**ExperimentalCreateLineItemModelRequest**](ExperimentalCreateLineItemModelRequest.md)| Line item details | |
+| **externalCreateLineItemModelRequest** | [**ExternalCreateLineItemModelRequest**](ExternalCreateLineItemModelRequest.md)| Line item details | |
 
 ### Return type
 
-[**ExperimentalLineItemModelResponse**](ExperimentalLineItemModelResponse.md)
+[**LineItemResponse**](LineItemResponse.md)
 
 ### Authorization
 
@@ -1129,6 +1131,99 @@ public class Example {
 | **200** | Success |  -  |
 
 
+## fetchProducts
+
+> LineItemProductListResponseV2WithPaginationMeta fetchProducts(lineItemId, limit, offset)
+
+/experimental/retail-media/line-items/{line-item-id}/products
+
+Retrieve a page of products configured on a line item.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.experimental;
+
+import com.criteo.api.retailmedia.experimental.ApiClient;
+import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
+import com.criteo.api.retailmedia.experimental.ApiException;
+import com.criteo.api.retailmedia.experimental.Configuration;
+import com.criteo.api.retailmedia.experimental.auth.*;
+import com.criteo.api.retailmedia.experimental.model.*;
+import com.criteo.api.retailmedia.experimental.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | The line item id.
+        Integer limit = 500; // Integer | The maximum number of products to return.
+        Integer offset = 0; // Integer | The zero-based offset into the line item's product pool.
+        try {
+            LineItemProductListResponseV2WithPaginationMeta result = apiInstance.fetchProducts(lineItemId, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#fetchProducts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| The line item id. | |
+| **limit** | **Integer**| The maximum number of products to return. | [optional] [default to 500] |
+| **offset** | **Integer**| The zero-based offset into the line item&#39;s product pool. | [optional] [default to 0] |
+
+### Return type
+
+[**LineItemProductListResponseV2WithPaginationMeta**](LineItemProductListResponseV2WithPaginationMeta.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
 ## getBiddingStrategyByLineItemId
 
 > BiddingSettingsResponse getBiddingStrategyByLineItemId(lineItemId)
@@ -1578,6 +1673,95 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Creatives found |  -  |
+
+
+## getMinBidsByLineItemId
+
+> LineItemMinBidsResponse getMinBidsByLineItemId(lineItemId)
+
+/experimental/retail-media/line-items/{line-item-id}/min-bids
+
+Returns page-type minimum bids and derived bidding thresholds for a Display auction line item.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.experimental;
+
+import com.criteo.api.retailmedia.experimental.ApiClient;
+import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
+import com.criteo.api.retailmedia.experimental.ApiException;
+import com.criteo.api.retailmedia.experimental.Configuration;
+import com.criteo.api.retailmedia.experimental.auth.*;
+import com.criteo.api.retailmedia.experimental.model.*;
+import com.criteo.api.retailmedia.experimental.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | The identifier of the line item whose minimum bids are requested.
+        try {
+            LineItemMinBidsResponse result = apiInstance.getMinBidsByLineItemId(lineItemId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#getMinBidsByLineItemId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| The identifier of the line item whose minimum bids are requested. | |
+
+### Return type
+
+[**LineItemMinBidsResponse**](LineItemMinBidsResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
 
 
 ## getProductButtonByLineItemAndProductButtonId
@@ -2678,7 +2862,7 @@ public class Example {
 
 ## updateLineItem
 
-> ExperimentalLineItemModelResponse updateLineItem(lineItemId, experimentalUpdateLineItemModelRequest)
+> LineItemResponse updateLineItem(lineItemId, externalUpdateLineItemModelRequest)
 
 /experimental/retail-media/line-items/{line-item-id}
 
@@ -2724,9 +2908,9 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String lineItemId = "lineItemId_example"; // String | The line item id
-        ExperimentalUpdateLineItemModelRequest experimentalUpdateLineItemModelRequest = new ExperimentalUpdateLineItemModelRequest(); // ExperimentalUpdateLineItemModelRequest | Line item details
+        ExternalUpdateLineItemModelRequest externalUpdateLineItemModelRequest = new ExternalUpdateLineItemModelRequest(); // ExternalUpdateLineItemModelRequest | Line item details
         try {
-            ExperimentalLineItemModelResponse result = apiInstance.updateLineItem(lineItemId, experimentalUpdateLineItemModelRequest);
+            LineItemResponse result = apiInstance.updateLineItem(lineItemId, externalUpdateLineItemModelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#updateLineItem");
@@ -2745,11 +2929,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| The line item id | |
-| **experimentalUpdateLineItemModelRequest** | [**ExperimentalUpdateLineItemModelRequest**](ExperimentalUpdateLineItemModelRequest.md)| Line item details | |
+| **externalUpdateLineItemModelRequest** | [**ExternalUpdateLineItemModelRequest**](ExternalUpdateLineItemModelRequest.md)| Line item details | |
 
 ### Return type
 
-[**ExperimentalLineItemModelResponse**](ExperimentalLineItemModelResponse.md)
+[**LineItemResponse**](LineItemResponse.md)
 
 ### Authorization
 

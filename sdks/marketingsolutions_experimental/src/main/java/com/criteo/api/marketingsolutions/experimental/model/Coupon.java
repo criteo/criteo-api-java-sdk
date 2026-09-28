@@ -210,7 +210,7 @@ public class Coupon {
   }
 
    /**
-   * The date when when we will stop to show this Coupon. If the end date is not specified (i.e. null) then the Coupon will go on forever  String must be in ISO8601 format
+   * The date when we will stop showing this coupon. If the end date is not specified (i.e. null)  then the coupon will go on forever.  String must be in ISO8601 format, more precisely \&quot;yyyy-MM-ddTHH:mm:ss.fffZ\&quot;: a UTC timestamp whose  three millisecond digits and trailing \&quot;Z\&quot; are always present, for example \&quot;2026-10-01T09:00:00.000Z\&quot;.
    * @return endDate
   **/
   @javax.annotation.Nullable
@@ -416,7 +416,7 @@ public class Coupon {
   }
 
    /**
-   * The date when the Coupon will be launched  String must be in ISO8601 format
+   * The date when the coupon will be launched.  String must be in ISO8601 format, more precisely \&quot;yyyy-MM-ddTHH:mm:ss.fffZ\&quot;: a UTC timestamp whose  three millisecond digits and trailing \&quot;Z\&quot; are always present, for example \&quot;2026-10-01T09:00:00.000Z\&quot;.
    * @return startDate
   **/
   @javax.annotation.Nullable
