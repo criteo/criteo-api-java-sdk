@@ -41,8 +41,11 @@ import com.criteo.api.marketingsolutions.preview.model.GenerateTopProductsReport
 import com.criteo.api.marketingsolutions.preview.model.JsonReportRowsListResponse;
 import com.criteo.api.marketingsolutions.preview.model.MarketingSolutionsReportStatusResponse;
 import com.criteo.api.marketingsolutions.preview.model.PlacementsReportQueryMessageListRequest;
+import com.criteo.api.marketingsolutions.preview.model.ProductReportDataResponse;
+import com.criteo.api.marketingsolutions.preview.model.ProductReportJobRequest;
 import com.criteo.api.marketingsolutions.preview.model.RealTimeProductReportJobRequest;
 import com.criteo.api.marketingsolutions.preview.model.RealTimeProductReportJobStatusResponse;
+import com.criteo.api.marketingsolutions.preview.model.ReportJobStatusResponse;
 import com.criteo.api.marketingsolutions.preview.model.StatisticsReportQueryMessage;
 import com.criteo.api.marketingsolutions.preview.model.TransactionsReportQueryMessageListRequest;
 import com.criteo.api.marketingsolutions.preview.model.TransparencyQueryMessage;
@@ -162,7 +165,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/report/products/export
-     * Creates an all-products report export job.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Creates an all-products report export job. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param generateAllProductsReportRequestAttributesRequest The all-products report export request. (optional)
      * @return ExportStatusModelResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -179,7 +182,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/report/products/export
-     * Creates an all-products report export job.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Creates an all-products report export job. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param generateAllProductsReportRequestAttributesRequest The all-products report export request. (optional)
      * @return ApiResponse&lt;ExportStatusModelResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -197,7 +200,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/report/products/export (asynchronously)
-     * Creates an all-products report export job.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Creates an all-products report export job. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param generateAllProductsReportRequestAttributesRequest The all-products report export request. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -212,6 +215,124 @@ public class AnalyticsApi {
 
         okhttp3.Call localVarCall = createAllProductsExportValidateBeforeCall(generateAllProductsReportRequestAttributesRequest, _callback);
         Type localVarReturnType = new TypeToken<ExportStatusModelResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createMpoProductsExport
+     * @param productReportJobRequest The MPO products report export request. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMpoProductsExportCall(ProductReportJobRequest productReportJobRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = productReportJobRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/export";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createMpoProductsExportValidateBeforeCall(ProductReportJobRequest productReportJobRequest, final ApiCallback _callback) throws ApiException {
+        return createMpoProductsExportCall(productReportJobRequest, _callback);
+
+    }
+
+    /**
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/export
+     * Creates an MPO products report export job. &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * @param productReportJobRequest The MPO products report export request. (optional)
+     * @return ReportJobStatusResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ReportJobStatusResponse createMpoProductsExport(ProductReportJobRequest productReportJobRequest) throws ApiException {
+        ApiResponse<ReportJobStatusResponse> localVarResp = createMpoProductsExportWithHttpInfo(productReportJobRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/export
+     * Creates an MPO products report export job. &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * @param productReportJobRequest The MPO products report export request. (optional)
+     * @return ApiResponse&lt;ReportJobStatusResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ReportJobStatusResponse> createMpoProductsExportWithHttpInfo(ProductReportJobRequest productReportJobRequest) throws ApiException {
+        okhttp3.Call localVarCall = createMpoProductsExportValidateBeforeCall(productReportJobRequest, null);
+        Type localVarReturnType = new TypeToken<ReportJobStatusResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/export (asynchronously)
+     * Creates an MPO products report export job. &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * @param productReportJobRequest The MPO products report export request. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMpoProductsExportAsync(ProductReportJobRequest productReportJobRequest, final ApiCallback<ReportJobStatusResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createMpoProductsExportValidateBeforeCall(productReportJobRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReportJobStatusResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -285,7 +406,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
-     * Creates a marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Creates a marketplace performance outcomes realtime report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param realTimeProductReportJobRequest The realtime report export request. (optional)
      * @return RealTimeProductReportJobStatusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -302,7 +423,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
-     * Creates a marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Creates a marketplace performance outcomes realtime report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param realTimeProductReportJobRequest The realtime report export request. (optional)
      * @return ApiResponse&lt;RealTimeProductReportJobStatusResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -320,7 +441,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export (asynchronously)
-     * Creates a marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Creates a marketplace performance outcomes realtime report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param realTimeProductReportJobRequest The realtime report export request. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -408,7 +529,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/report/products/{reportId}
-     * Downloads the generated all-products report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Downloads the generated all-products report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param reportId The identifier of the all-products report export. (required)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -425,7 +546,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/report/products/{reportId}
-     * Downloads the generated all-products report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Downloads the generated all-products report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param reportId The identifier of the all-products report export. (required)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -443,7 +564,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/report/products/{reportId} (asynchronously)
-     * Downloads the generated all-products report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Downloads the generated all-products report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param reportId The identifier of the all-products report export. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -458,6 +579,130 @@ public class AnalyticsApi {
 
         okhttp3.Call localVarCall = downloadAllProductsExportValidateBeforeCall(reportId, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for downloadMpoProductsExport
+     * @param reportId The identifier of the MPO products report export. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call downloadMpoProductsExportCall(String reportId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/{reportId}"
+            .replace("{" + "reportId" + "}", localVarApiClient.escapeString(reportId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "text/csv"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call downloadMpoProductsExportValidateBeforeCall(String reportId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'reportId' is set
+        if (reportId == null) {
+            throw new ApiException("Missing the required parameter 'reportId' when calling downloadMpoProductsExport(Async)");
+        }
+
+        return downloadMpoProductsExportCall(reportId, _callback);
+
+    }
+
+    /**
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/{reportId}
+     * Downloads the generated MPO products report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * @param reportId The identifier of the MPO products report export. (required)
+     * @return ProductReportDataResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProductReportDataResponse downloadMpoProductsExport(String reportId) throws ApiException {
+        ApiResponse<ProductReportDataResponse> localVarResp = downloadMpoProductsExportWithHttpInfo(reportId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/{reportId}
+     * Downloads the generated MPO products report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * @param reportId The identifier of the MPO products report export. (required)
+     * @return ApiResponse&lt;ProductReportDataResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProductReportDataResponse> downloadMpoProductsExportWithHttpInfo(String reportId) throws ApiException {
+        okhttp3.Call localVarCall = downloadMpoProductsExportValidateBeforeCall(reportId, null);
+        Type localVarReturnType = new TypeToken<ProductReportDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/{reportId} (asynchronously)
+     * Downloads the generated MPO products report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * @param reportId The identifier of the MPO products report export. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call downloadMpoProductsExportAsync(String reportId, final ApiCallback<ProductReportDataResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = downloadMpoProductsExportValidateBeforeCall(reportId, _callback);
+        Type localVarReturnType = new TypeToken<ProductReportDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1781,7 +2026,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
-     * Downloads the generated marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Downloads the generated marketplace performance outcomes realtime report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param reportId The identifier of the realtime report export. (required)
      * @return FileStreamResultResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1798,7 +2043,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}
-     * Downloads the generated marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Downloads the generated marketplace performance outcomes realtime report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param reportId The identifier of the realtime report export. (required)
      * @return ApiResponse&lt;FileStreamResultResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1816,7 +2061,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId} (asynchronously)
-     * Downloads the generated marketplace performance outcomes realtime report export.  &lt;br /&gt;  This endpoint is subject to specific rate limits.
+     * Downloads the generated marketplace performance outcomes realtime report export. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param reportId The identifier of the realtime report export. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

@@ -77,8 +77,10 @@ Class | Method | HTTP request | Description
 *AdvertiserApi* | [**listDatasetsByAdvertiser**](docs/AdvertiserApi.md#listDatasetsByAdvertiser) | **GET** /preview/advertisers/{advertiser-id}/datasets | /preview/advertisers/{advertiser-id}/datasets
 *AdvertiserApi* | [**listIndustries**](docs/AdvertiserApi.md#listIndustries) | **GET** /preview/industries | /preview/industries
 *AnalyticsApi* | [**createAllProductsExport**](docs/AnalyticsApi.md#createAllProductsExport) | **POST** /preview/marketing-solutions/report/products/export | /preview/marketing-solutions/report/products/export
+*AnalyticsApi* | [**createMpoProductsExport**](docs/AnalyticsApi.md#createMpoProductsExport) | **POST** /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/export | /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/export
 *AnalyticsApi* | [**createRealtimeProductReport**](docs/AnalyticsApi.md#createRealtimeProductReport) | **POST** /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export | /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
 *AnalyticsApi* | [**downloadAllProductsExport**](docs/AnalyticsApi.md#downloadAllProductsExport) | **GET** /preview/marketing-solutions/report/products/{reportId} | /preview/marketing-solutions/report/products/{reportId}
+*AnalyticsApi* | [**downloadMpoProductsExport**](docs/AnalyticsApi.md#downloadMpoProductsExport) | **GET** /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/{reportId} | /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/{reportId}
 *AnalyticsApi* | [**getAdsetReport**](docs/AnalyticsApi.md#getAdsetReport) | **POST** /preview/statistics/report | /preview/statistics/report
 *AnalyticsApi* | [**getAsyncAdsetReport**](docs/AnalyticsApi.md#getAsyncAdsetReport) | **POST** /preview/reports/async-statistics | /preview/reports/async-statistics
 *AnalyticsApi* | [**getAsyncAudienceReport**](docs/AnalyticsApi.md#getAsyncAudienceReport) | **POST** /preview/reports/async-audience-performance | /preview/reports/async-audience-performance
@@ -506,6 +508,12 @@ Class | Method | HTTP request | Description
  - [ProductImporterError](docs/ProductImporterError.md)
  - [ProductImporterWarning](docs/ProductImporterWarning.md)
  - [ProductPrice](docs/ProductPrice.md)
+ - [ProductReportData](docs/ProductReportData.md)
+ - [ProductReportDataResource](docs/ProductReportDataResource.md)
+ - [ProductReportDataResponse](docs/ProductReportDataResponse.md)
+ - [ProductReportJob](docs/ProductReportJob.md)
+ - [ProductReportJobRequest](docs/ProductReportJobRequest.md)
+ - [ProductReportJobResource](docs/ProductReportJobResource.md)
  - [ProductSet](docs/ProductSet.md)
  - [ProductSetRule](docs/ProductSetRule.md)
  - [ProductShipping](docs/ProductShipping.md)
@@ -539,6 +547,9 @@ Class | Method | HTTP request | Description
  - [ReportDetailErrors](docs/ReportDetailErrors.md)
  - [ReportDetailWarning](docs/ReportDetailWarning.md)
  - [ReportDetailWarnings](docs/ReportDetailWarnings.md)
+ - [ReportJobStatus](docs/ReportJobStatus.md)
+ - [ReportJobStatusResource](docs/ReportJobStatusResource.md)
+ - [ReportJobStatusResponse](docs/ReportJobStatusResponse.md)
  - [ReportOkResponse](docs/ReportOkResponse.md)
  - [RequestsAdSetId](docs/RequestsAdSetId.md)
  - [RequestsPatchAdSetV26Q1](docs/RequestsPatchAdSetV26Q1.md)

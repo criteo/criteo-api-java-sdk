@@ -635,7 +635,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **datasetId** | **String**| ID of the dataset | |
-| **clientType** | **String**| Client type filter | [optional] [enum: Unknown, CGrowth, CMax] |
+| **clientType** | **String**| Client type filter | [optional] [enum: Unknown, CGrowth, CMax, GoEnterprise] |
 
 ### Return type
 

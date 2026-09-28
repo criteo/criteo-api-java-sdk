@@ -353,7 +353,7 @@ public class Ad {
   }
 
    /**
-   * The date when when we will stop to show this ad. If the end date is not specified (i.e. null) then the ad will go on forever  String must be in ISO8601 format
+   * The date when we will stop showing this ad. If the end date is not specified (i.e. null) then  the ad will go on forever.  String must be in ISO8601 format, more precisely \&quot;yyyy-MM-ddTHH:mm:ss.fffZ\&quot;: a UTC timestamp whose  three millisecond digits and trailing \&quot;Z\&quot; are always present, for example \&quot;2026-10-01T09:30:00.000Z\&quot;.
    * @return endDate
   **/
   @javax.annotation.Nullable
@@ -441,7 +441,7 @@ public class Ad {
   }
 
    /**
-   * The date when the ad will be launched  String must be in ISO8601 format
+   * The date when the ad will be launched.  String must be in ISO8601 format, more precisely \&quot;yyyy-MM-ddTHH:mm:ss.fffZ\&quot;: a UTC timestamp whose  three millisecond digits and trailing \&quot;Z\&quot; are always present, for example \&quot;2026-10-01T09:30:00.000Z\&quot;.
    * @return startDate
   **/
   @javax.annotation.Nullable

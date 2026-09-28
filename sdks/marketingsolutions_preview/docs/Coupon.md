@@ -12,7 +12,7 @@ Coupons are static images applied on ad set which can be displayed within an ad 
 |**advertiserId** | **String** | Advertiser linked to the Coupon |  [optional] |
 |**author** | **String** | The login of the person who created this Coupon |  [optional] |
 |**description** | **String** | The description of the Coupon |  [optional] |
-|**endDate** | **String** | The date when when we will stop to show this Coupon. If the end date is not specified (i.e. null) then the Coupon will go on forever  String must be in ISO8601 format |  [optional] |
+|**endDate** | **String** | The date when we will stop showing this coupon. If the end date is not specified (i.e. null)  then the coupon will go on forever.  String must be in ISO8601 format, more precisely \&quot;yyyy-MM-ddTHH:mm:ss.fffZ\&quot;: a UTC timestamp whose  three millisecond digits and trailing \&quot;Z\&quot; are always present, for example \&quot;2026-10-01T09:00:00.000Z\&quot;. |  [optional] |
 |**format** | **String** | Format of the Coupon, it can have two values: \&quot;FullFrame\&quot; or \&quot;LogoZone\&quot; |  [optional] |
 |**id** | **String** |  |  [optional] |
 |**images** | [**List&lt;ImageSlide&gt;**](ImageSlide.md) | List of slides containing the image URLs |  [optional] |
@@ -21,7 +21,7 @@ Coupons are static images applied on ad set which can be displayed within an ad 
 |**rotationsNumber** | **Integer** | Number of rotations for the Coupons (from 1 to 10 times) |  [optional] |
 |**showDuration** | **Integer** | Show Coupon for a duration of N seconds (between 1 and 5) |  [optional] |
 |**showEvery** | **Integer** | Show the Coupon every N seconds (between 1 and 10) |  [optional] |
-|**startDate** | **String** | The date when the Coupon will be launched  String must be in ISO8601 format |  [optional] |
+|**startDate** | **String** | The date when the coupon will be launched.  String must be in ISO8601 format, more precisely \&quot;yyyy-MM-ddTHH:mm:ss.fffZ\&quot;: a UTC timestamp whose  three millisecond digits and trailing \&quot;Z\&quot; are always present, for example \&quot;2026-10-01T09:00:00.000Z\&quot;. |  [optional] |
 |**status** | **String** | The status of the Coupon |  [optional] |
 
 

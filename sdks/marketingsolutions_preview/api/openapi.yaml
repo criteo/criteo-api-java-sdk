@@ -3252,6 +3252,7 @@ paths:
           - Unknown
           - CGrowth
           - CMax
+          - GoEnterprise
           nullable: true
           type: string
         style: form
@@ -3277,10 +3278,125 @@ paths:
       tags:
       - Reco
       x-accepts: application/json
+  /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/{reportId}:
+    get:
+      description: |-
+        Downloads the generated MPO products report export.
+        <br />
+        This endpoint is subject to specific rate limits.
+      operationId: DownloadMpoProductsExport
+      parameters:
+      - description: The identifier of the MPO products report export.
+        explode: false
+        in: path
+        name: reportId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                data:
+                  type: ProductReportData
+                  attributes:
+                    columns:
+                    - adSetId
+                    - sellerId
+                    - productId
+                    - impressions
+                    - clicks
+                    - cost
+                    data:
+                    - - 123
+                      - 456
+                      - abc
+                      - 100
+                      - 8
+                      - 2
+                    rows: 1
+                warnings: []
+                errors: []
+              schema:
+                $ref: '#/components/schemas/ProductReportDataResponse'
+            text/csv:
+              schema:
+                format: binary
+                type: string
+          description: Success
+      security:
+      - oauth:
+        - MarketingSolutions_Analytics_Read
+      summary: "/preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/{reportId}"
+      tags:
+      - Analytics
+      x-accepts: application/json
+  /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/export:
+    post:
+      description: |-
+        Creates an MPO products report export job.
+        <br />
+        This endpoint is subject to specific rate limits.
+      operationId: CreateMpoProductsExport
+      requestBody:
+        content:
+          application/json:
+            example:
+              data:
+                type: ProductReportJob
+                attributes:
+                  fileFormat: json
+                  startDate: 2026-09-01T00:00:00.0000000+00:00
+                  endDate: 2026-09-04T00:00:00.0000000+00:00
+                  advertiserIds:
+                  - "123"
+                  campaignIds:
+                  - "111"
+                  adSetIds:
+                  - "135"
+                  dimensions:
+                  - adSetId
+                  - sellerId
+                  - productId
+                  metrics:
+                  - impressions
+                  - clicks
+                  - cost
+            schema:
+              $ref: '#/components/schemas/ProductReportJobRequest'
+        description: The MPO products report export request.
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                data:
+                  type: ReportJobStatus
+                  attributes:
+                    exportId: e0893b6b-be25-477f-9ca3-e6e8c8ec9e30
+                    status: Pending
+                    message: null
+                warnings: []
+                errors: []
+              schema:
+                $ref: '#/components/schemas/ReportJobStatusResponse'
+          description: Success
+      security:
+      - oauth:
+        - MarketingSolutions_Analytics_Read
+      summary: /preview/marketing-solutions/marketplace-performance-outcomes/stats/product-reports/export
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/{reportId}:
     get:
-      description: "Downloads the generated marketplace performance outcomes realtime\
-        \ report export.\r\n<br />\r\nThis endpoint is subject to specific rate limits."
+      description: |-
+        Downloads the generated marketplace performance outcomes realtime report export.
+        <br />
+        This endpoint is subject to specific rate limits.
       operationId: GetRealtimeProduct
       parameters:
       - description: The identifier of the realtime report export.
@@ -3313,8 +3429,10 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export:
     post:
-      description: "Creates a marketplace performance outcomes realtime report export.\r\
-        \n<br />\r\nThis endpoint is subject to specific rate limits."
+      description: |-
+        Creates a marketplace performance outcomes realtime report export.
+        <br />
+        This endpoint is subject to specific rate limits.
       operationId: CreateRealtimeProductReport
       requestBody:
         content:
@@ -3437,8 +3555,10 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/report/products/{reportId}:
     get:
-      description: "Downloads the generated all-products report export.\r\n<br />\r\
-        \nThis endpoint is subject to specific rate limits."
+      description: |-
+        Downloads the generated all-products report export.
+        <br />
+        This endpoint is subject to specific rate limits.
       operationId: DownloadAllProductsExport
       parameters:
       - description: The identifier of the all-products report export.
@@ -3466,8 +3586,10 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/report/products/export:
     post:
-      description: "Creates an all-products report export job.\r\n<br />\r\nThis endpoint\
-        \ is subject to specific rate limits."
+      description: |-
+        Creates an all-products report export job.
+        <br />
+        This endpoint is subject to specific rate limits.
       operationId: CreateAllProductsExport
       requestBody:
         content:
@@ -4901,9 +5023,11 @@ components:
           nullable: true
           type: string
         endDate:
-          description: "The date when when we will stop to show this ad. If the end\
-            \ date is not specified (i.e. null) then the ad will go on forever\r\n\
-            String must be in ISO8601 format"
+          description: "The date when we will stop showing this ad. If the end date\
+            \ is not specified (i.e. null) then\r\nthe ad will go on forever.\r\n\
+            String must be in ISO8601 format, more precisely \"yyyy-MM-ddTHH:mm:ss.fffZ\"\
+            : a UTC timestamp whose\r\nthree millisecond digits and trailing \"Z\"\
+            \ are always present, for example \"2026-10-01T09:30:00.000Z\"."
           nullable: true
           type: string
         id:
@@ -4927,8 +5051,10 @@ components:
           nullable: true
           type: string
         startDate:
-          description: "The date when the ad will be launched\r\nString must be in\
-            \ ISO8601 format"
+          description: "The date when the ad will be launched.\r\nString must be in\
+            \ ISO8601 format, more precisely \"yyyy-MM-ddTHH:mm:ss.fffZ\": a UTC timestamp\
+            \ whose\r\nthree millisecond digits and trailing \"Z\" are always present,\
+            \ for example \"2026-10-01T09:30:00.000Z\"."
           nullable: true
           type: string
       type: object
@@ -6715,9 +6841,14 @@ components:
           nullable: true
           type: string
         endDate:
-          description: "The date when when we will stop to show this ad. If the end\
-            \ date is not specified (i.e. null) then the ad will go on forever\r\n\
-            String must be in ISO8601 format"
+          description: "The date when we will stop showing this ad, which must come\
+            \ after the start date. If the end\r\ndate is not specified (i.e. null)\
+            \ then the ad will go on forever.\r\nString must be in ISO8601 format,\
+            \ more precisely \"yyyy-MM-ddTHH:mm:ss.fffZ\": a UTC timestamp whose\r\
+            \nthree millisecond digits and trailing \"Z\" are both required, for example\
+            \ \"2026-10-01T09:30:00.000Z\".\r\nNo other ISO8601 layout is accepted,\
+            \ neither a UTC offset such as \"2026-10-01T11:30:00+02:00\" nor a\r\n\
+            second-precision \"2026-10-01T09:30:00Z\"."
           nullable: true
           type: string
         id:
@@ -6741,8 +6872,12 @@ components:
           description: The name of the ad
           type: string
         startDate:
-          description: "The date when the ad will be launched\r\nString must be in\
-            \ ISO8601 format"
+          description: "The date when the ad will be launched. It must be a date in\
+            \ the future.\r\nString must be in ISO8601 format, more precisely \"yyyy-MM-ddTHH:mm:ss.fffZ\"\
+            : a UTC timestamp whose\r\nthree millisecond digits and trailing \"Z\"\
+            \ are both required, for example \"2026-10-01T09:30:00.000Z\".\r\nNo other\
+            \ ISO8601 layout is accepted, neither a UTC offset such as \"2026-10-01T11:30:00+02:00\"\
+            \ nor a\r\nsecond-precision \"2026-10-01T09:30:00Z\"."
           type: string
       required:
       - adSetId
@@ -11151,9 +11286,11 @@ components:
           nullable: true
           type: string
         endDate:
-          description: "The date when when we will stop to show this Coupon. If the\
-            \ end date is not specified (i.e. null) then the Coupon will go on forever\r\
-            \nString must be in ISO8601 format"
+          description: "The date when we will stop showing this coupon. If the end\
+            \ date is not specified (i.e. null)\r\nthen the coupon will go on forever.\r\
+            \nString must be in ISO8601 format, more precisely \"yyyy-MM-ddTHH:mm:ss.fffZ\"\
+            : a UTC timestamp whose\r\nthree millisecond digits and trailing \"Z\"\
+            \ are always present, for example \"2026-10-01T09:00:00.000Z\"."
           nullable: true
           type: string
         format:
@@ -11194,8 +11331,10 @@ components:
           nullable: true
           type: integer
         startDate:
-          description: "The date when the Coupon will be launched\r\nString must be\
-            \ in ISO8601 format"
+          description: "The date when the coupon will be launched.\r\nString must\
+            \ be in ISO8601 format, more precisely \"yyyy-MM-ddTHH:mm:ss.fffZ\": a\
+            \ UTC timestamp whose\r\nthree millisecond digits and trailing \"Z\" are\
+            \ always present, for example \"2026-10-01T09:00:00.000Z\"."
           nullable: true
           type: string
         status:
@@ -11774,9 +11913,16 @@ components:
           nullable: true
           type: string
         endDate:
-          description: "The date when when we will stop to show this Coupon. If the\
-            \ end date is not specified (i.e. null) then the Coupon will go on forever\r\
-            \nString must be in ISO8601 format"
+          description: "The date when we will stop showing this coupon, which must\
+            \ come after the start date. If the\r\nend date is not specified (i.e.\
+            \ null) then the coupon will go on forever.\r\nString must be in ISO8601\
+            \ format, more precisely \"yyyy-MM-ddTHH:mm:ss.fffZ\": a UTC timestamp\
+            \ whose\r\nthree millisecond digits and trailing \"Z\" are both required,\
+            \ for example \"2026-10-01T09:00:00.000Z\".\r\nNo other ISO8601 layout\
+            \ is accepted, neither a UTC offset such as \"2026-10-01T11:00:00+02:00\"\
+            \ nor a\r\nsecond-precision \"2026-10-01T09:00:00Z\".\r\nA date that does\
+            \ not fall on a whole hour is rounded up to the next one, so\r\n\"2026-10-01T09:30:00.000Z\"\
+            \ is stored as \"2026-10-01T10:00:00.000Z\"."
           nullable: true
           type: string
         format:
@@ -11819,8 +11965,15 @@ components:
           minimum: 1
           type: integer
         startDate:
-          description: "The date when the coupon will be launched\r\nString must be\
-            \ in ISO8601 format"
+          description: "The date when the coupon will be launched. It must be a date\
+            \ in the future.\r\nString must be in ISO8601 format, more precisely \"\
+            yyyy-MM-ddTHH:mm:ss.fffZ\": a UTC timestamp whose\r\nthree millisecond\
+            \ digits and trailing \"Z\" are both required, for example \"2026-10-01T09:00:00.000Z\"\
+            .\r\nNo other ISO8601 layout is accepted, neither a UTC offset such as\
+            \ \"2026-10-01T11:00:00+02:00\" nor a\r\nsecond-precision \"2026-10-01T09:00:00Z\"\
+            .\r\nA date that does not fall on a whole hour is rounded up to the next\
+            \ one, so\r\n\"2026-10-01T09:30:00.000Z\" is stored as \"2026-10-01T10:00:00.000Z\"\
+            ."
           type: string
       required:
       - adSetId
@@ -19418,6 +19571,329 @@ components:
           description: Price currency in ISO 4217 format.
           type: string
       type: object
+    ProductReportData:
+      additionalProperties: false
+      description: The generated product report JSON.
+      example:
+        data:
+        - - ""
+          - ""
+        - - ""
+          - ""
+        columns:
+        - columns
+        - columns
+        rows: 0
+      nullable: true
+      properties:
+        columns:
+          description: Column names
+          items:
+            type: string
+          nullable: true
+          type: array
+        data:
+          description: Report data
+          items:
+            items: {}
+            type: array
+          nullable: true
+          type: array
+        rows:
+          description: Number of rows reported
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    ProductReportDataResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          data:
+          - - ""
+            - ""
+          - - ""
+            - ""
+          columns:
+          - columns
+          - columns
+          rows: 0
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ProductReportData'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ProductReportDataResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            data:
+            - - ""
+              - ""
+            - - ""
+              - ""
+            columns:
+            - columns
+            - columns
+            rows: 0
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/ProductReportDataResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    ProductReportJob:
+      additionalProperties: false
+      description: This is the message defining the query for the MPO product report
+        (async export).
+      example:
+        adSetIds:
+        - adSetIds
+        - adSetIds
+        - adSetIds
+        - adSetIds
+        - adSetIds
+        advertiserIds:
+        - advertiserIds
+        - advertiserIds
+        - advertiserIds
+        - advertiserIds
+        - advertiserIds
+        endDate: 2000-01-23T04:56:07.000+00:00
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        metrics:
+        - clicks
+        - clicks
+        fileFormat: csv
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - advertiserId
+        - advertiserId
+      properties:
+        adSetIds:
+          description: The list of ad set ids. Maximum 10.
+          items:
+            type: string
+          maxItems: 10
+          nullable: true
+          type: array
+        advertiserIds:
+          description: "The list of advertiser account IDs. Maximum 5, numeric."
+          items:
+            type: string
+          maxItems: 5
+          minItems: 1
+          type: array
+        campaignIds:
+          description: The list of marketing campaign ids. Maximum 10.
+          items:
+            type: string
+          maxItems: 10
+          nullable: true
+          type: array
+        dimensions:
+          default:
+          - advertiserId
+          - adSetId
+          - sellerId
+          - productId
+          description: "The dimensions of the report. If not included, the default\
+            \ list of dimensions will be used."
+          items:
+            description: Dimensions available for grouping in an MPO products report.
+            enum:
+            - advertiserId
+            - partnerId
+            - campaignId
+            - adSetId
+            - sellerId
+            - productId
+            type: string
+          nullable: true
+          type: array
+        endDate:
+          description: End of the reporting interval. ISO 8601 date-time (UTC). Defaults
+            to the last complete day.
+          format: date-time
+          type: string
+        fileFormat:
+          default: csv
+          description: "The output file format. Supported: csv, json."
+          nullable: true
+          type: string
+        metrics:
+          default:
+          - clicks
+          - impressions
+          - cost
+          description: "The list of metrics to report. If not included, the default\
+            \ list of metrics will be used."
+          items:
+            description: Metrics available for an MPO products report.
+            enum:
+            - clicks
+            - impressions
+            - cost
+            type: string
+          nullable: true
+          type: array
+        startDate:
+          description: Start of the reporting interval. ISO 8601 date-time (UTC).
+          format: date-time
+          type: string
+      required:
+      - advertiserIds
+      - startDate
+      type: object
+    ProductReportJobRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            adSetIds:
+            - adSetIds
+            - adSetIds
+            - adSetIds
+            - adSetIds
+            - adSetIds
+            advertiserIds:
+            - advertiserIds
+            - advertiserIds
+            - advertiserIds
+            - advertiserIds
+            - advertiserIds
+            endDate: 2000-01-23T04:56:07.000+00:00
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            metrics:
+            - clicks
+            - clicks
+            fileFormat: csv
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - advertiserId
+            - advertiserId
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ProductReportJobResource'
+      type: object
+    ProductReportJobResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          adSetIds:
+          - adSetIds
+          - adSetIds
+          - adSetIds
+          - adSetIds
+          - adSetIds
+          advertiserIds:
+          - advertiserIds
+          - advertiserIds
+          - advertiserIds
+          - advertiserIds
+          - advertiserIds
+          endDate: 2000-01-23T04:56:07.000+00:00
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          metrics:
+          - clicks
+          - clicks
+          fileFormat: csv
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - advertiserId
+          - advertiserId
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ProductReportJob'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     ProductsCustomBatchRequest:
       description: Defines a batch of operations.
       example:
@@ -20009,6 +20485,7 @@ components:
           - Unknown
           - CGrowth
           - CMax
+          - GoEnterprise
           type: string
         creationDate:
           description: "The creation date of the product set (UTC time in ISO8601\
@@ -21393,6 +21870,122 @@ components:
       required:
       - productId
       - warnings
+      type: object
+    ReportJobStatus:
+      additionalProperties: false
+      description: Status of a report export job.
+      example:
+        message: message
+        exportId: exportId
+        status: Pending
+      nullable: true
+      properties:
+        exportId:
+          description: ID of the report job
+          nullable: true
+          type: string
+        message:
+          description: Optional informational message (e.g. rows_count=1232)
+          nullable: true
+          type: string
+        status:
+          description: Status of the report job
+          enum:
+          - Pending
+          - Done
+          - Failure
+          - Expired
+          nullable: true
+          type: string
+      type: object
+    ReportJobStatusResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          message: message
+          exportId: exportId
+          status: Pending
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ReportJobStatus'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ReportJobStatusResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            message: message
+            exportId: exportId
+            status: Pending
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/ReportJobStatusResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     ReportOkResponse:
       description: The report on a given operationToken is ready. The report is available
@@ -26156,17 +26749,32 @@ components:
         startDate: startDate
       properties:
         endDate:
-          description: "The date when when we will stop to show this Coupon. If the\
-            \ end date is not specified (i.e. null) then the Coupon will go on forever\r\
-            \nString must be in ISO8601 format"
+          description: "The date when we will stop showing this coupon, which must\
+            \ come after the start date. If the\r\nend date is not specified (i.e.\
+            \ null) then the coupon will go on forever.\r\nString must be in ISO8601\
+            \ format, more precisely \"yyyy-MM-ddTHH:mm:ss.fffZ\": a UTC timestamp\
+            \ whose\r\nthree millisecond digits and trailing \"Z\" are both required,\
+            \ for example \"2026-10-01T09:00:00.000Z\".\r\nNo other ISO8601 layout\
+            \ is accepted, neither a UTC offset such as \"2026-10-01T11:00:00+02:00\"\
+            \ nor a\r\nsecond-precision \"2026-10-01T09:00:00Z\".\r\nA date that does\
+            \ not fall on a whole hour is rounded up to the next one, so\r\n\"2026-10-01T09:30:00.000Z\"\
+            \ is stored as \"2026-10-01T10:00:00.000Z\"."
           nullable: true
           type: string
         id:
           nullable: true
           type: string
         startDate:
-          description: "The date when the Coupon will be launched\r\nString must be\
-            \ in ISO8601 format"
+          description: "The date when the coupon will be launched. It must be a date\
+            \ in the future, and it must not\r\nmove earlier than the start date the\
+            \ coupon already has.\r\nString must be in ISO8601 format, more precisely\
+            \ \"yyyy-MM-ddTHH:mm:ss.fffZ\": a UTC timestamp whose\r\nthree millisecond\
+            \ digits and trailing \"Z\" are both required, for example \"2026-10-01T09:00:00.000Z\"\
+            .\r\nNo other ISO8601 layout is accepted, neither a UTC offset such as\
+            \ \"2026-10-01T11:00:00+02:00\" nor a\r\nsecond-precision \"2026-10-01T09:00:00Z\"\
+            .\r\nA date that does not fall on a whole hour is rounded up to the next\
+            \ one, so\r\n\"2026-10-01T09:30:00.000Z\" is stored as \"2026-10-01T10:00:00.000Z\"\
+            ."
           type: string
       required:
       - startDate
