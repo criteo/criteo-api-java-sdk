@@ -8,7 +8,7 @@ The products to add to a line item.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**displayProductDetails** | [**List&lt;ProductModel&gt;**](ProductModel.md) | The display products to add to the line item. |  [optional] |
+|**displayProductDetails** | [**List&lt;AddDisplayProductDetailModel&gt;**](AddDisplayProductDetailModel.md) | The display products to add to the line item. |  [optional] |
 |**productType** | [**ProductTypeEnum**](#ProductTypeEnum) | The type of product being added. |  [optional] |
 
 

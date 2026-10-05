@@ -1623,10 +1623,18 @@ components:
       flows:
         authorizationCode:
           authorizationUrl: https://api.criteo.com/oauth2
-          scopes: {}
+          scopes:
+            CommerceGrid_Segment_Manage: "Grants Manage access to the capabilities\
+              \ from the Segment domain, for CommerceGrid applications"
+            CommerceGrid_Segment_Read: "Grants Read access to the capabilities from\
+              \ the Segment domain, for CommerceGrid applications"
           tokenUrl: https://api.criteo.com/oauth2/token
         clientCredentials:
-          scopes: {}
+          scopes:
+            CommerceGrid_Segment_Manage: "Grants Manage access to the capabilities\
+              \ from the Segment domain, for CommerceGrid applications"
+            CommerceGrid_Segment_Read: "Grants Read access to the capabilities from\
+              \ the Segment domain, for CommerceGrid applications"
           tokenUrl: https://api.criteo.com/oauth2/token
       type: oauth2
 x-samples-languages:

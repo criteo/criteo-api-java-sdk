@@ -8,6 +8,9 @@ Video positioning targeting writing model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**includeNotRewarded** | **Boolean** | Should target inventory marked as not rewarded? |  [optional] |
+|**includeRewarded** | **Boolean** | Should target inventory marked as rewarded? |  [optional] |
+|**includeUnknownRewarded** | **Boolean** | Should target inventory which rewarded status is unknown? |  [optional] |
 |**playbackMethod** | [**List&lt;PlaybackMethodEnum&gt;**](#List&lt;PlaybackMethodEnum&gt;) |  |  [optional] |
 |**skippable** | [**SkippableEnum**](#SkippableEnum) |  |  [optional] |
 |**videoAspectRatio** | [**List&lt;VideoAspectRatioEnum&gt;**](#List&lt;VideoAspectRatioEnum&gt;) |  |  [optional] |

@@ -16,8 +16,9 @@ How the platform spreads the campaign budget over its flight.
 
 | Name | Value |
 |---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
+| NONE | &quot;None&quot; |
 | AUTOMATIC | &quot;Automatic&quot; |
+| UNKNOWN | &quot;Unknown&quot; |
 
 
 

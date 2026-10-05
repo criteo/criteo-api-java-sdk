@@ -22,6 +22,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getCapoutHistory**](CampaignApi.md#getCapoutHistory) | **POST** /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history | /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history |
 | [**getCatalogStatus**](CampaignApi.md#getCatalogStatus) | **GET** /experimental/retail-media/catalogs/{catalogId}/status | /experimental/retail-media/catalogs/{catalogId}/status |
 | [**getCreative**](CampaignApi.md#getCreative) | **GET** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
+| [**getLineItem**](CampaignApi.md#getLineItem) | **GET** /experimental/retail-media/line-items/{line-item-id} | /experimental/retail-media/line-items/{line-item-id} |
 | [**getMinBidsByLineItemId**](CampaignApi.md#getMinBidsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/min-bids | /experimental/retail-media/line-items/{line-item-id}/min-bids |
 | [**getProductButtonByLineItemAndProductButtonId**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**getProductButtonsByLineItemId**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons | /experimental/retail-media/line-items/{line-item-id}/product-buttons |
@@ -771,7 +772,7 @@ public class Example {
 
 ## deleteCreatives
 
-> Outcome deleteCreatives(lineItemId, deleteCreativesModelRequest)
+> Outcome deleteCreatives(lineItemId, deleteLineItemCreativesRequest)
 
 /experimental/retail-media/line-items/{line-item-id}/creatives/delete
 
@@ -817,9 +818,9 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String lineItemId = "lineItemId_example"; // String | The external line item id.
-        DeleteCreativesModelRequest deleteCreativesModelRequest = new DeleteCreativesModelRequest(); // DeleteCreativesModelRequest | The stable creative identifiers to delete.
+        DeleteLineItemCreativesRequest deleteLineItemCreativesRequest = new DeleteLineItemCreativesRequest(); // DeleteLineItemCreativesRequest | The stable creative identifiers to delete.
         try {
-            Outcome result = apiInstance.deleteCreatives(lineItemId, deleteCreativesModelRequest);
+            Outcome result = apiInstance.deleteCreatives(lineItemId, deleteLineItemCreativesRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#deleteCreatives");
@@ -838,7 +839,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| The external line item id. | |
-| **deleteCreativesModelRequest** | [**DeleteCreativesModelRequest**](DeleteCreativesModelRequest.md)| The stable creative identifiers to delete. | |
+| **deleteLineItemCreativesRequest** | [**DeleteLineItemCreativesRequest**](DeleteLineItemCreativesRequest.md)| The stable creative identifiers to delete. | |
 
 ### Return type
 
@@ -1044,7 +1045,7 @@ public class Example {
 
 ## fetchCreatives
 
-> FetchCreativesModelResponse fetchCreatives(lineItemId)
+> LineItemCreativesResponse fetchCreatives(lineItemId)
 
 /experimental/retail-media/line-items/{line-item-id}/creatives
 
@@ -1091,7 +1092,7 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String lineItemId = "lineItemId_example"; // String | The external line item id.
         try {
-            FetchCreativesModelResponse result = apiInstance.fetchCreatives(lineItemId);
+            LineItemCreativesResponse result = apiInstance.fetchCreatives(lineItemId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#fetchCreatives");
@@ -1113,7 +1114,7 @@ public class Example {
 
 ### Return type
 
-[**FetchCreativesModelResponse**](FetchCreativesModelResponse.md)
+[**LineItemCreativesResponse**](LineItemCreativesResponse.md)
 
 ### Authorization
 
@@ -1673,6 +1674,95 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Creatives found |  -  |
+
+
+## getLineItem
+
+> LineItemDetailsResponse getLineItem(lineItemId)
+
+/experimental/retail-media/line-items/{line-item-id}
+
+Retrieves a consolidated line item view from the line item domain services.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.experimental;
+
+import com.criteo.api.retailmedia.experimental.ApiClient;
+import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
+import com.criteo.api.retailmedia.experimental.ApiException;
+import com.criteo.api.retailmedia.experimental.Configuration;
+import com.criteo.api.retailmedia.experimental.auth.*;
+import com.criteo.api.retailmedia.experimental.model.*;
+import com.criteo.api.retailmedia.experimental.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | The line item identifier.
+        try {
+            LineItemDetailsResponse result = apiInstance.getLineItem(lineItemId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#getLineItem");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| The line item identifier. | |
+
+### Return type
+
+[**LineItemDetailsResponse**](LineItemDetailsResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
 
 
 ## getMinBidsByLineItemId
@@ -3228,7 +3318,7 @@ public class Example {
 
 ## upsertCreatives
 
-> CreativesModelResponse upsertCreatives(lineItemId, upsertCreativesModelRequest)
+> UpsertLineItemCreativesResponse upsertCreatives(lineItemId, upsertLineItemCreativesRequest)
 
 /experimental/retail-media/line-items/{line-item-id}/creatives/upsert
 
@@ -3274,9 +3364,9 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String lineItemId = "lineItemId_example"; // String | The line item id.
-        UpsertCreativesModelRequest upsertCreativesModelRequest = new UpsertCreativesModelRequest(); // UpsertCreativesModelRequest | The creatives to upsert.
+        UpsertLineItemCreativesRequest upsertLineItemCreativesRequest = new UpsertLineItemCreativesRequest(); // UpsertLineItemCreativesRequest | The creatives to upsert.
         try {
-            CreativesModelResponse result = apiInstance.upsertCreatives(lineItemId, upsertCreativesModelRequest);
+            UpsertLineItemCreativesResponse result = apiInstance.upsertCreatives(lineItemId, upsertLineItemCreativesRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#upsertCreatives");
@@ -3295,11 +3385,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| The line item id. | |
-| **upsertCreativesModelRequest** | [**UpsertCreativesModelRequest**](UpsertCreativesModelRequest.md)| The creatives to upsert. | |
+| **upsertLineItemCreativesRequest** | [**UpsertLineItemCreativesRequest**](UpsertLineItemCreativesRequest.md)| The creatives to upsert. | |
 
 ### Return type
 
-[**CreativesModelResponse**](CreativesModelResponse.md)
+[**UpsertLineItemCreativesResponse**](UpsertLineItemCreativesResponse.md)
 
 ### Authorization
 

@@ -8,7 +8,7 @@ Financial intent of an OnsiteDisplay campaign. An amount only: per-period cappin
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**amount** | **Double** | Total the campaign may spend over its flight. |  [optional] |
+|**amount** | **Double** | Total the campaign may spend over its flight. |  |
 
 
 

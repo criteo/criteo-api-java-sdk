@@ -8,7 +8,7 @@ Flight dates the campaign holds itself. A SponsoredProducts or OnsiteDisplay Auc
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**endDate** | **OffsetDateTime** | Campaign end date. Pass exactly {9999-12-30T00:00:00Z} for a SponsoredProducts campaign that  runs indefinitely; any other value, including a neighbouring far-future date, is a real end date.  An OnsiteDisplay Auction campaign cannot run indefinitely and rejects that date. |  |
+|**endDate** | **OffsetDateTime** | Campaign end date. Pass exactly {9999-12-30T00:00:00Z} for a SponsoredProducts campaign that  runs indefinitely; any other value, including a neighbouring far-future date, is a real end date.  A dynamic objective spends over a flight and rejects that date. An OnsiteDisplay Auction  campaign cannot run indefinitely and rejects it too. |  |
 |**startDate** | **OffsetDateTime** | Campaign start date. |  |
 
 

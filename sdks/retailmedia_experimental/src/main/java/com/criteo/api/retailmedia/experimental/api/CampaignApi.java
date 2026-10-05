@@ -40,8 +40,7 @@ import com.criteo.api.retailmedia.experimental.model.CreateTargetRequestModelLis
 import com.criteo.api.retailmedia.experimental.model.Creative2Response;
 import com.criteo.api.retailmedia.experimental.model.CreativeCreateModel2;
 import com.criteo.api.retailmedia.experimental.model.CreativeUpdateModel2;
-import com.criteo.api.retailmedia.experimental.model.CreativesModelResponse;
-import com.criteo.api.retailmedia.experimental.model.DeleteCreativesModelRequest;
+import com.criteo.api.retailmedia.experimental.model.DeleteLineItemCreativesRequest;
 import com.criteo.api.retailmedia.experimental.model.DeleteProductModelRequest;
 import com.criteo.api.retailmedia.experimental.model.DemandSearchRequest;
 import com.criteo.api.retailmedia.experimental.model.EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata;
@@ -50,7 +49,8 @@ import com.criteo.api.retailmedia.experimental.model.EntityResourceOutcomeOfCata
 import com.criteo.api.retailmedia.experimental.model.EntityResourceOutcomeOfSponsoredProductsLineItem;
 import com.criteo.api.retailmedia.experimental.model.ExternalCreateLineItemModelRequest;
 import com.criteo.api.retailmedia.experimental.model.ExternalUpdateLineItemModelRequest;
-import com.criteo.api.retailmedia.experimental.model.FetchCreativesModelResponse;
+import com.criteo.api.retailmedia.experimental.model.LineItemCreativesResponse;
+import com.criteo.api.retailmedia.experimental.model.LineItemDetailsResponse;
 import com.criteo.api.retailmedia.experimental.model.LineItemListResponseWithPagination;
 import com.criteo.api.retailmedia.experimental.model.LineItemMinBidsResponse;
 import com.criteo.api.retailmedia.experimental.model.LineItemProductListResponseV2WithPaginationMeta;
@@ -67,7 +67,8 @@ import com.criteo.api.retailmedia.experimental.model.SupplySearchRequest;
 import com.criteo.api.retailmedia.experimental.model.TargetListRequest;
 import com.criteo.api.retailmedia.experimental.model.TargetListResponse;
 import com.criteo.api.retailmedia.experimental.model.TargetListResponseWithPageMetadata;
-import com.criteo.api.retailmedia.experimental.model.UpsertCreativesModelRequest;
+import com.criteo.api.retailmedia.experimental.model.UpsertLineItemCreativesRequest;
+import com.criteo.api.retailmedia.experimental.model.UpsertLineItemCreativesResponse;
 import com.criteo.api.retailmedia.experimental.model.ValueResourceInputLineItemBudgetCapOutHistoryRequest;
 import com.criteo.api.retailmedia.experimental.model.ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel;
 import com.criteo.api.retailmedia.experimental.model.ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel;
@@ -1164,7 +1165,7 @@ public class CampaignApi {
     /**
      * Build call for deleteCreatives
      * @param lineItemId The external line item id. (required)
-     * @param deleteCreativesModelRequest The stable creative identifiers to delete. (required)
+     * @param deleteLineItemCreativesRequest The stable creative identifiers to delete. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1174,7 +1175,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCreativesCall(String lineItemId, DeleteCreativesModelRequest deleteCreativesModelRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCreativesCall(String lineItemId, DeleteLineItemCreativesRequest deleteLineItemCreativesRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1188,7 +1189,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = deleteCreativesModelRequest;
+        Object localVarPostBody = deleteLineItemCreativesRequest;
 
         // create path and map variables
         String localVarPath = "/experimental/retail-media/line-items/{line-item-id}/creatives/delete"
@@ -1221,18 +1222,18 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCreativesValidateBeforeCall(String lineItemId, DeleteCreativesModelRequest deleteCreativesModelRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCreativesValidateBeforeCall(String lineItemId, DeleteLineItemCreativesRequest deleteLineItemCreativesRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling deleteCreatives(Async)");
         }
 
-        // verify the required parameter 'deleteCreativesModelRequest' is set
-        if (deleteCreativesModelRequest == null) {
-            throw new ApiException("Missing the required parameter 'deleteCreativesModelRequest' when calling deleteCreatives(Async)");
+        // verify the required parameter 'deleteLineItemCreativesRequest' is set
+        if (deleteLineItemCreativesRequest == null) {
+            throw new ApiException("Missing the required parameter 'deleteLineItemCreativesRequest' when calling deleteCreatives(Async)");
         }
 
-        return deleteCreativesCall(lineItemId, deleteCreativesModelRequest, _callback);
+        return deleteCreativesCall(lineItemId, deleteLineItemCreativesRequest, _callback);
 
     }
 
@@ -1240,7 +1241,7 @@ public class CampaignApi {
      * /experimental/retail-media/line-items/{line-item-id}/creatives/delete
      * Delete creatives and their product collections from a line item.
      * @param lineItemId The external line item id. (required)
-     * @param deleteCreativesModelRequest The stable creative identifiers to delete. (required)
+     * @param deleteLineItemCreativesRequest The stable creative identifiers to delete. (required)
      * @return Outcome
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1249,8 +1250,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public Outcome deleteCreatives(String lineItemId, DeleteCreativesModelRequest deleteCreativesModelRequest) throws ApiException {
-        ApiResponse<Outcome> localVarResp = deleteCreativesWithHttpInfo(lineItemId, deleteCreativesModelRequest);
+    public Outcome deleteCreatives(String lineItemId, DeleteLineItemCreativesRequest deleteLineItemCreativesRequest) throws ApiException {
+        ApiResponse<Outcome> localVarResp = deleteCreativesWithHttpInfo(lineItemId, deleteLineItemCreativesRequest);
         return localVarResp.getData();
     }
 
@@ -1258,7 +1259,7 @@ public class CampaignApi {
      * /experimental/retail-media/line-items/{line-item-id}/creatives/delete
      * Delete creatives and their product collections from a line item.
      * @param lineItemId The external line item id. (required)
-     * @param deleteCreativesModelRequest The stable creative identifiers to delete. (required)
+     * @param deleteLineItemCreativesRequest The stable creative identifiers to delete. (required)
      * @return ApiResponse&lt;Outcome&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1267,8 +1268,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Outcome> deleteCreativesWithHttpInfo(String lineItemId, DeleteCreativesModelRequest deleteCreativesModelRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteCreativesValidateBeforeCall(lineItemId, deleteCreativesModelRequest, null);
+    public ApiResponse<Outcome> deleteCreativesWithHttpInfo(String lineItemId, DeleteLineItemCreativesRequest deleteLineItemCreativesRequest) throws ApiException {
+        okhttp3.Call localVarCall = deleteCreativesValidateBeforeCall(lineItemId, deleteLineItemCreativesRequest, null);
         Type localVarReturnType = new TypeToken<Outcome>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1277,7 +1278,7 @@ public class CampaignApi {
      * /experimental/retail-media/line-items/{line-item-id}/creatives/delete (asynchronously)
      * Delete creatives and their product collections from a line item.
      * @param lineItemId The external line item id. (required)
-     * @param deleteCreativesModelRequest The stable creative identifiers to delete. (required)
+     * @param deleteLineItemCreativesRequest The stable creative identifiers to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1287,9 +1288,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCreativesAsync(String lineItemId, DeleteCreativesModelRequest deleteCreativesModelRequest, final ApiCallback<Outcome> _callback) throws ApiException {
+    public okhttp3.Call deleteCreativesAsync(String lineItemId, DeleteLineItemCreativesRequest deleteLineItemCreativesRequest, final ApiCallback<Outcome> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCreativesValidateBeforeCall(lineItemId, deleteCreativesModelRequest, _callback);
+        okhttp3.Call localVarCall = deleteCreativesValidateBeforeCall(lineItemId, deleteLineItemCreativesRequest, _callback);
         Type localVarReturnType = new TypeToken<Outcome>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1632,7 +1633,7 @@ public class CampaignApi {
      * /experimental/retail-media/line-items/{line-item-id}/creatives
      * Retrieve the creatives and product collections associated with a line item.
      * @param lineItemId The external line item id. (required)
-     * @return FetchCreativesModelResponse
+     * @return LineItemCreativesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1640,8 +1641,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public FetchCreativesModelResponse fetchCreatives(String lineItemId) throws ApiException {
-        ApiResponse<FetchCreativesModelResponse> localVarResp = fetchCreativesWithHttpInfo(lineItemId);
+    public LineItemCreativesResponse fetchCreatives(String lineItemId) throws ApiException {
+        ApiResponse<LineItemCreativesResponse> localVarResp = fetchCreativesWithHttpInfo(lineItemId);
         return localVarResp.getData();
     }
 
@@ -1649,7 +1650,7 @@ public class CampaignApi {
      * /experimental/retail-media/line-items/{line-item-id}/creatives
      * Retrieve the creatives and product collections associated with a line item.
      * @param lineItemId The external line item id. (required)
-     * @return ApiResponse&lt;FetchCreativesModelResponse&gt;
+     * @return ApiResponse&lt;LineItemCreativesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1657,9 +1658,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FetchCreativesModelResponse> fetchCreativesWithHttpInfo(String lineItemId) throws ApiException {
+    public ApiResponse<LineItemCreativesResponse> fetchCreativesWithHttpInfo(String lineItemId) throws ApiException {
         okhttp3.Call localVarCall = fetchCreativesValidateBeforeCall(lineItemId, null);
-        Type localVarReturnType = new TypeToken<FetchCreativesModelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<LineItemCreativesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1676,10 +1677,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call fetchCreativesAsync(String lineItemId, final ApiCallback<FetchCreativesModelResponse> _callback) throws ApiException {
+    public okhttp3.Call fetchCreativesAsync(String lineItemId, final ApiCallback<LineItemCreativesResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = fetchCreativesValidateBeforeCall(lineItemId, _callback);
-        Type localVarReturnType = new TypeToken<FetchCreativesModelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<LineItemCreativesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2464,6 +2465,129 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = getCreativeValidateBeforeCall(accountId, creativeId, _callback);
         Type localVarReturnType = new TypeToken<Creative2Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getLineItem
+     * @param lineItemId The line item identifier. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getLineItemCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/experimental/retail-media/line-items/{line-item-id}"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getLineItemValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling getLineItem(Async)");
+        }
+
+        return getLineItemCall(lineItemId, _callback);
+
+    }
+
+    /**
+     * /experimental/retail-media/line-items/{line-item-id}
+     * Retrieves a consolidated line item view from the line item domain services.
+     * @param lineItemId The line item identifier. (required)
+     * @return LineItemDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public LineItemDetailsResponse getLineItem(String lineItemId) throws ApiException {
+        ApiResponse<LineItemDetailsResponse> localVarResp = getLineItemWithHttpInfo(lineItemId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /experimental/retail-media/line-items/{line-item-id}
+     * Retrieves a consolidated line item view from the line item domain services.
+     * @param lineItemId The line item identifier. (required)
+     * @return ApiResponse&lt;LineItemDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<LineItemDetailsResponse> getLineItemWithHttpInfo(String lineItemId) throws ApiException {
+        okhttp3.Call localVarCall = getLineItemValidateBeforeCall(lineItemId, null);
+        Type localVarReturnType = new TypeToken<LineItemDetailsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /experimental/retail-media/line-items/{line-item-id} (asynchronously)
+     * Retrieves a consolidated line item view from the line item domain services.
+     * @param lineItemId The line item identifier. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getLineItemAsync(String lineItemId, final ApiCallback<LineItemDetailsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getLineItemValidateBeforeCall(lineItemId, _callback);
+        Type localVarReturnType = new TypeToken<LineItemDetailsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4722,7 +4846,7 @@ public class CampaignApi {
     /**
      * Build call for upsertCreatives
      * @param lineItemId The line item id. (required)
-     * @param upsertCreativesModelRequest The creatives to upsert. (required)
+     * @param upsertLineItemCreativesRequest The creatives to upsert. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4732,7 +4856,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCreativesCall(String lineItemId, UpsertCreativesModelRequest upsertCreativesModelRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call upsertCreativesCall(String lineItemId, UpsertLineItemCreativesRequest upsertLineItemCreativesRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4746,7 +4870,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = upsertCreativesModelRequest;
+        Object localVarPostBody = upsertLineItemCreativesRequest;
 
         // create path and map variables
         String localVarPath = "/experimental/retail-media/line-items/{line-item-id}/creatives/upsert"
@@ -4779,18 +4903,18 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertCreativesValidateBeforeCall(String lineItemId, UpsertCreativesModelRequest upsertCreativesModelRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertCreativesValidateBeforeCall(String lineItemId, UpsertLineItemCreativesRequest upsertLineItemCreativesRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling upsertCreatives(Async)");
         }
 
-        // verify the required parameter 'upsertCreativesModelRequest' is set
-        if (upsertCreativesModelRequest == null) {
-            throw new ApiException("Missing the required parameter 'upsertCreativesModelRequest' when calling upsertCreatives(Async)");
+        // verify the required parameter 'upsertLineItemCreativesRequest' is set
+        if (upsertLineItemCreativesRequest == null) {
+            throw new ApiException("Missing the required parameter 'upsertLineItemCreativesRequest' when calling upsertCreatives(Async)");
         }
 
-        return upsertCreativesCall(lineItemId, upsertCreativesModelRequest, _callback);
+        return upsertCreativesCall(lineItemId, upsertLineItemCreativesRequest, _callback);
 
     }
 
@@ -4798,8 +4922,8 @@ public class CampaignApi {
      * /experimental/retail-media/line-items/{line-item-id}/creatives/upsert
      * Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item&#39;s proposal.
      * @param lineItemId The line item id. (required)
-     * @param upsertCreativesModelRequest The creatives to upsert. (required)
-     * @return CreativesModelResponse
+     * @param upsertLineItemCreativesRequest The creatives to upsert. (required)
+     * @return UpsertLineItemCreativesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4807,8 +4931,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public CreativesModelResponse upsertCreatives(String lineItemId, UpsertCreativesModelRequest upsertCreativesModelRequest) throws ApiException {
-        ApiResponse<CreativesModelResponse> localVarResp = upsertCreativesWithHttpInfo(lineItemId, upsertCreativesModelRequest);
+    public UpsertLineItemCreativesResponse upsertCreatives(String lineItemId, UpsertLineItemCreativesRequest upsertLineItemCreativesRequest) throws ApiException {
+        ApiResponse<UpsertLineItemCreativesResponse> localVarResp = upsertCreativesWithHttpInfo(lineItemId, upsertLineItemCreativesRequest);
         return localVarResp.getData();
     }
 
@@ -4816,8 +4940,8 @@ public class CampaignApi {
      * /experimental/retail-media/line-items/{line-item-id}/creatives/upsert
      * Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item&#39;s proposal.
      * @param lineItemId The line item id. (required)
-     * @param upsertCreativesModelRequest The creatives to upsert. (required)
-     * @return ApiResponse&lt;CreativesModelResponse&gt;
+     * @param upsertLineItemCreativesRequest The creatives to upsert. (required)
+     * @return ApiResponse&lt;UpsertLineItemCreativesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4825,9 +4949,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreativesModelResponse> upsertCreativesWithHttpInfo(String lineItemId, UpsertCreativesModelRequest upsertCreativesModelRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertCreativesValidateBeforeCall(lineItemId, upsertCreativesModelRequest, null);
-        Type localVarReturnType = new TypeToken<CreativesModelResponse>(){}.getType();
+    public ApiResponse<UpsertLineItemCreativesResponse> upsertCreativesWithHttpInfo(String lineItemId, UpsertLineItemCreativesRequest upsertLineItemCreativesRequest) throws ApiException {
+        okhttp3.Call localVarCall = upsertCreativesValidateBeforeCall(lineItemId, upsertLineItemCreativesRequest, null);
+        Type localVarReturnType = new TypeToken<UpsertLineItemCreativesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -4835,7 +4959,7 @@ public class CampaignApi {
      * /experimental/retail-media/line-items/{line-item-id}/creatives/upsert (asynchronously)
      * Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item&#39;s proposal.
      * @param lineItemId The line item id. (required)
-     * @param upsertCreativesModelRequest The creatives to upsert. (required)
+     * @param upsertLineItemCreativesRequest The creatives to upsert. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4845,10 +4969,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call upsertCreativesAsync(String lineItemId, UpsertCreativesModelRequest upsertCreativesModelRequest, final ApiCallback<CreativesModelResponse> _callback) throws ApiException {
+    public okhttp3.Call upsertCreativesAsync(String lineItemId, UpsertLineItemCreativesRequest upsertLineItemCreativesRequest, final ApiCallback<UpsertLineItemCreativesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertCreativesValidateBeforeCall(lineItemId, upsertCreativesModelRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreativesModelResponse>(){}.getType();
+        okhttp3.Call localVarCall = upsertCreativesValidateBeforeCall(lineItemId, upsertLineItemCreativesRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpsertLineItemCreativesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

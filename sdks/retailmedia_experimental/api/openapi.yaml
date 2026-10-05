@@ -1238,6 +1238,33 @@ paths:
       x-content-type: application/json
       x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}:
+    get:
+      description: Retrieves a consolidated line item view from the line item domain
+        services.
+      operationId: GetLineItem
+      parameters:
+      - description: The line item identifier.
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItemDetailsResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
+      summary: "/experimental/retail-media/line-items/{line-item-id}"
+      tags:
+      - Campaign
+      x-accepts: application/json
     patch:
       description: Update an existing line item.
       operationId: UpdateLineItem
@@ -1321,7 +1348,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FetchCreativesModelResponse'
+                $ref: '#/components/schemas/LineItemCreativesResponse'
           description: Success
       security:
       - oauth:
@@ -1347,7 +1374,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeleteCreativesModelRequest'
+              $ref: '#/components/schemas/DeleteLineItemCreativesRequest'
         description: The stable creative identifiers to delete.
         required: true
       responses:
@@ -1383,7 +1410,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpsertCreativesModelRequest'
+              $ref: '#/components/schemas/UpsertLineItemCreativesRequest'
         description: The creatives to upsert.
         required: true
       responses:
@@ -1391,7 +1418,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreativesModelResponse'
+                $ref: '#/components/schemas/UpsertLineItemCreativesResponse'
           description: Success
       security:
       - oauth:
@@ -2426,6 +2453,17 @@ components:
           nullable: true
           type: number
       type: object
+    AddDisplayProductDetailModel:
+      additionalProperties: false
+      description: A product associated with a line item.
+      example:
+        productId: productId
+      properties:
+        productId:
+          description: The identifier of the product.
+          nullable: true
+          type: string
+      type: object
     AddProductsModel:
       additionalProperties: false
       description: The products to add to a line item.
@@ -2441,7 +2479,7 @@ components:
         displayProductDetails:
           description: The display products to add to the line item.
           items:
-            $ref: '#/components/schemas/ProductModel'
+            $ref: '#/components/schemas/AddDisplayProductDetailModel'
           maxItems: 1500
           nullable: true
           type: array
@@ -2618,9 +2656,9 @@ components:
       additionalProperties: false
       description: Offset based pagination metadata.
       example:
-        offset: 5
-        count: 6
-        limit: 1
+        offset: 1
+        count: 0
+        limit: 6
       nullable: true
       properties:
         count:
@@ -4451,42 +4489,7 @@ components:
           nullable: true
           type: string
       type: object
-    AuctionCreativeDetailsInputModel:
-      additionalProperties: false
-      description: The auction creatives to associate with a line item.
-      example:
-        lineItemCreatives:
-        - creativeProductCollections:
-          - isMandatory: true
-            products:
-            - id: id
-            - id: id
-          - isMandatory: true
-            products:
-            - id: id
-            - id: id
-          creative:
-            id: id
-        - creativeProductCollections:
-          - isMandatory: true
-            products:
-            - id: id
-            - id: id
-          - isMandatory: true
-            products:
-            - id: id
-            - id: id
-          creative:
-            id: id
-      properties:
-        lineItemCreatives:
-          items:
-            $ref: '#/components/schemas/LineItemCreativeInputModel'
-          type: array
-      required:
-      - lineItemCreatives
-      type: object
-    AuctionCreativeDetailsModel:
+    AuctionCreativeDetails:
       additionalProperties: false
       description: The auction creatives associated with a line item.
       example:
@@ -4531,7 +4534,42 @@ components:
       properties:
         lineItemCreatives:
           items:
-            $ref: '#/components/schemas/LineItemCreativeModel'
+            $ref: '#/components/schemas/LineItemCreative'
+          type: array
+      required:
+      - lineItemCreatives
+      type: object
+    AuctionCreativeDetailsInput:
+      additionalProperties: false
+      description: The auction creatives to associate with a line item.
+      example:
+        lineItemCreatives:
+        - creativeProductCollections:
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          creative:
+            id: id
+        - creativeProductCollections:
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          creative:
+            id: id
+      properties:
+        lineItemCreatives:
+          items:
+            $ref: '#/components/schemas/LineItemCreativeInput'
           type: array
       required:
       - lineItemCreatives
@@ -4971,7 +5009,7 @@ components:
             - amount: 1.4658129805029452
               type: Daily
             pacing:
-              type: Automatic
+              type: None
           objective: Manual
         regulatedCategory: None
         attributionSettings:
@@ -5060,7 +5098,7 @@ components:
                 - amount: 1.4658129805029452
                   type: Daily
                 pacing:
-                  type: Automatic
+                  type: None
               objective: Manual
             regulatedCategory: None
             attributionSettings:
@@ -5102,7 +5140,7 @@ components:
               - amount: 1.4658129805029452
                 type: Daily
               pacing:
-                type: Automatic
+                type: None
             objective: Manual
           regulatedCategory: None
           attributionSettings:
@@ -5164,7 +5202,7 @@ components:
             - amount: 1.4658129805029452
               type: Unknown
             pacing:
-              type: Unknown
+              type: None
           objective: Manual
         name: name
         buyType: Unknown
@@ -5293,7 +5331,7 @@ components:
                 - amount: 1.4658129805029452
                   type: Unknown
                 pacing:
-                  type: Unknown
+                  type: None
               objective: Manual
             name: name
             buyType: Unknown
@@ -5333,7 +5371,7 @@ components:
                 - amount: 1.4658129805029452
                   type: Unknown
                 pacing:
-                  type: Unknown
+                  type: None
               objective: Manual
             name: name
             buyType: Unknown
@@ -5442,7 +5480,7 @@ components:
               - amount: 1.4658129805029452
                 type: Unknown
               pacing:
-                type: Unknown
+                type: None
             objective: Manual
           name: name
           buyType: Unknown
@@ -5501,7 +5539,7 @@ components:
                 - amount: 1.4658129805029452
                   type: Unknown
                 pacing:
-                  type: Unknown
+                  type: None
               objective: Manual
             name: name
             buyType: Unknown
@@ -5721,14 +5759,15 @@ components:
       example:
         sponsoredProductsDetails:
           budget:
-            amount: 6.027456183070403
+            amount:
+              value: 6.027456183070403
             cappings:
             - amount: 1.4658129805029452
               type: Daily
             - amount: 1.4658129805029452
               type: Daily
             pacing:
-              type: Automatic
+              type: None
         attributionSettings:
           clickAttributionWindow: OneWeek
           clickAttributionScope: SameSku
@@ -5771,14 +5810,15 @@ components:
           attributes:
             sponsoredProductsDetails:
               budget:
-                amount: 6.027456183070403
+                amount:
+                  value: 6.027456183070403
                 cappings:
                 - amount: 1.4658129805029452
                   type: Daily
                 - amount: 1.4658129805029452
                   type: Daily
                 pacing:
-                  type: Automatic
+                  type: None
             attributionSettings:
               clickAttributionWindow: OneWeek
               clickAttributionScope: SameSku
@@ -5807,14 +5847,15 @@ components:
         attributes:
           sponsoredProductsDetails:
             budget:
-              amount: 6.027456183070403
+              amount:
+                value: 6.027456183070403
               cappings:
               - amount: 1.4658129805029452
                 type: Daily
               - amount: 1.4658129805029452
                 type: Daily
               pacing:
-                type: Automatic
+                type: None
           attributionSettings:
             clickAttributionWindow: OneWeek
             clickAttributionScope: SameSku
@@ -6976,6 +7017,22 @@ components:
           nullable: true
           type: string
       type: object
+    Creative:
+      additionalProperties: false
+      description: A reference to a creative associated with a line item.
+      example:
+        modifiedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+      properties:
+        id:
+          type: string
+        modifiedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - modifiedAt
+      type: object
     Creative2:
       additionalProperties: false
       description: A creative entity
@@ -7336,7 +7393,7 @@ components:
       - templateId
       - templateVariableValues
       type: object
-    CreativeInputModel:
+    CreativeInput:
       additionalProperties: false
       description: A reference to the creative to associate with a line item.
       example:
@@ -7347,42 +7404,7 @@ components:
       required:
       - id
       type: object
-    CreativeModel:
-      additionalProperties: false
-      description: A reference to a creative associated with a line item.
-      example:
-        modifiedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-      properties:
-        id:
-          type: string
-        modifiedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - modifiedAt
-      type: object
-    CreativeProductCollectionInputModel:
-      additionalProperties: false
-      description: A collection of products to configure on a creative.
-      example:
-        isMandatory: true
-        products:
-        - id: id
-        - id: id
-      properties:
-        isMandatory:
-          type: boolean
-        products:
-          items:
-            $ref: '#/components/schemas/DisplayProductInputModel'
-          type: array
-      required:
-      - isMandatory
-      - products
-      type: object
-    CreativeProductCollectionModel:
+    CreativeProductCollection:
       additionalProperties: false
       description: A collection of products associated with a creative.
       example:
@@ -7397,7 +7419,26 @@ components:
           type: boolean
         products:
           items:
-            $ref: '#/components/schemas/DisplayProductModel'
+            $ref: '#/components/schemas/DisplayProduct'
+          type: array
+      required:
+      - isMandatory
+      - products
+      type: object
+    CreativeProductCollectionInput:
+      additionalProperties: false
+      description: A collection of products to configure on a creative.
+      example:
+        isMandatory: true
+        products:
+        - id: id
+        - id: id
+      properties:
+        isMandatory:
+          type: boolean
+        products:
+          items:
+            $ref: '#/components/schemas/DisplayProductInput'
           type: array
       required:
       - isMandatory
@@ -7599,285 +7640,6 @@ components:
           nullable: true
           type: string
       type: object
-    CreativesModel:
-      additionalProperties: false
-      description: Creatives associated with a line item.
-      example:
-        mediaType: Unknown
-        preferredDealsCreativeDetails:
-          lineItemCreative:
-            approvalStatus: Unknown
-            creativePreviewCode: creativePreviewCode
-            creativeProductCollections:
-            - isMandatory: true
-              products:
-              - approvalStatus: Unknown
-                id: id
-              - approvalStatus: Unknown
-                id: id
-            - isMandatory: true
-              products:
-              - approvalStatus: Unknown
-                id: id
-              - approvalStatus: Unknown
-                id: id
-            creative:
-              modifiedAt: 2000-01-23T04:56:07.000+00:00
-              id: id
-        auctionCreativeDetails:
-          lineItemCreatives:
-          - approvalStatus: Unknown
-            creativePreviewCode: creativePreviewCode
-            creativeProductCollections:
-            - isMandatory: true
-              products:
-              - approvalStatus: Unknown
-                id: id
-              - approvalStatus: Unknown
-                id: id
-            - isMandatory: true
-              products:
-              - approvalStatus: Unknown
-                id: id
-              - approvalStatus: Unknown
-                id: id
-            creative:
-              modifiedAt: 2000-01-23T04:56:07.000+00:00
-              id: id
-          - approvalStatus: Unknown
-            creativePreviewCode: creativePreviewCode
-            creativeProductCollections:
-            - isMandatory: true
-              products:
-              - approvalStatus: Unknown
-                id: id
-              - approvalStatus: Unknown
-                id: id
-            - isMandatory: true
-              products:
-              - approvalStatus: Unknown
-                id: id
-              - approvalStatus: Unknown
-                id: id
-            creative:
-              modifiedAt: 2000-01-23T04:56:07.000+00:00
-              id: id
-      nullable: true
-      properties:
-        auctionCreativeDetails:
-          $ref: '#/components/schemas/AuctionCreativeDetailsModel'
-        mediaType:
-          enum:
-          - Unknown
-          - Display
-          - Video
-          type: string
-        preferredDealsCreativeDetails:
-          $ref: '#/components/schemas/PreferredDealsCreativeDetailsModel'
-      required:
-      - mediaType
-      type: object
-    CreativesModelResource:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          mediaType: Unknown
-          preferredDealsCreativeDetails:
-            lineItemCreative:
-              approvalStatus: Unknown
-              creativePreviewCode: creativePreviewCode
-              creativeProductCollections:
-              - isMandatory: true
-                products:
-                - approvalStatus: Unknown
-                  id: id
-                - approvalStatus: Unknown
-                  id: id
-              - isMandatory: true
-                products:
-                - approvalStatus: Unknown
-                  id: id
-                - approvalStatus: Unknown
-                  id: id
-              creative:
-                modifiedAt: 2000-01-23T04:56:07.000+00:00
-                id: id
-          auctionCreativeDetails:
-            lineItemCreatives:
-            - approvalStatus: Unknown
-              creativePreviewCode: creativePreviewCode
-              creativeProductCollections:
-              - isMandatory: true
-                products:
-                - approvalStatus: Unknown
-                  id: id
-                - approvalStatus: Unknown
-                  id: id
-              - isMandatory: true
-                products:
-                - approvalStatus: Unknown
-                  id: id
-                - approvalStatus: Unknown
-                  id: id
-              creative:
-                modifiedAt: 2000-01-23T04:56:07.000+00:00
-                id: id
-            - approvalStatus: Unknown
-              creativePreviewCode: creativePreviewCode
-              creativeProductCollections:
-              - isMandatory: true
-                products:
-                - approvalStatus: Unknown
-                  id: id
-                - approvalStatus: Unknown
-                  id: id
-              - isMandatory: true
-                products:
-                - approvalStatus: Unknown
-                  id: id
-                - approvalStatus: Unknown
-                  id: id
-              creative:
-                modifiedAt: 2000-01-23T04:56:07.000+00:00
-                id: id
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/CreativesModel'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    CreativesModelResponse:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value object.
-      example:
-        data:
-          attributes:
-            mediaType: Unknown
-            preferredDealsCreativeDetails:
-              lineItemCreative:
-                approvalStatus: Unknown
-                creativePreviewCode: creativePreviewCode
-                creativeProductCollections:
-                - isMandatory: true
-                  products:
-                  - approvalStatus: Unknown
-                    id: id
-                  - approvalStatus: Unknown
-                    id: id
-                - isMandatory: true
-                  products:
-                  - approvalStatus: Unknown
-                    id: id
-                  - approvalStatus: Unknown
-                    id: id
-                creative:
-                  modifiedAt: 2000-01-23T04:56:07.000+00:00
-                  id: id
-            auctionCreativeDetails:
-              lineItemCreatives:
-              - approvalStatus: Unknown
-                creativePreviewCode: creativePreviewCode
-                creativeProductCollections:
-                - isMandatory: true
-                  products:
-                  - approvalStatus: Unknown
-                    id: id
-                  - approvalStatus: Unknown
-                    id: id
-                - isMandatory: true
-                  products:
-                  - approvalStatus: Unknown
-                    id: id
-                  - approvalStatus: Unknown
-                    id: id
-                creative:
-                  modifiedAt: 2000-01-23T04:56:07.000+00:00
-                  id: id
-              - approvalStatus: Unknown
-                creativePreviewCode: creativePreviewCode
-                creativeProductCollections:
-                - isMandatory: true
-                  products:
-                  - approvalStatus: Unknown
-                    id: id
-                  - approvalStatus: Unknown
-                    id: id
-                - isMandatory: true
-                  products:
-                  - approvalStatus: Unknown
-                    id: id
-                  - approvalStatus: Unknown
-                    id: id
-                creative:
-                  modifiedAt: 2000-01-23T04:56:07.000+00:00
-                  id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/CreativesModelResource'
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     CreativeUpdateModel2:
       additionalProperties: false
       description: Update model of a creative
@@ -7994,7 +7756,20 @@ components:
           nullable: true
           type: string
       type: object
-    DeleteCreativesModel:
+    DecimalNullableNillableV2:
+      additionalProperties: false
+      description: "A wrapper around an optional numeric value in an update payload.\
+        \ Omit the property to leave the current value unchanged, or send a null value\
+        \ to clear it."
+      example:
+        value: 6.027456183070403
+      properties:
+        value:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    DeleteLineItemCreativesInput:
       additionalProperties: false
       description: Creatives to remove from a line item.
       example:
@@ -8010,7 +7785,24 @@ components:
       required:
       - creativeIds
       type: object
-    DeleteCreativesModelRequest:
+    DeleteLineItemCreativesInputResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          creativeIds:
+          - creativeIds
+          - creativeIds
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/DeleteLineItemCreativesInput'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    DeleteLineItemCreativesRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
         single value object.
@@ -8023,24 +7815,7 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/DeleteCreativesModelResource'
-      type: object
-    DeleteCreativesModelResource:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          creativeIds:
-          - creativeIds
-          - creativeIds
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/DeleteCreativesModel'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/DeleteLineItemCreativesInputResource'
       type: object
     DeleteProductModel:
       additionalProperties: false
@@ -8366,6 +8141,53 @@ components:
       required:
       - attributes
       type: object
+    DisplayProduct:
+      additionalProperties: false
+      description: A product in a creative's product collection.
+      example:
+        approvalStatus: Unknown
+        id: id
+      properties:
+        approvalStatus:
+          enum:
+          - Unknown
+          - Approved
+          - AutoApproved
+          - InReview
+          - Rejected
+          - AutoRejected
+          - Unsubmitted
+          type: string
+        id:
+          type: string
+      required:
+      - approvalStatus
+      - id
+      type: object
+    DisplayProductDetailModel:
+      additionalProperties: false
+      description: A display product associated with a line item.
+      example:
+        approvalStatus: Unknown
+        productId: productId
+      properties:
+        approvalStatus:
+          description: The approval status of the product.
+          enum:
+          - Unknown
+          - Approved
+          - AutoApproved
+          - InReview
+          - Rejected
+          - AutoRejected
+          - Unsubmitted
+          nullable: true
+          type: string
+        productId:
+          description: The identifier of the product.
+          nullable: true
+          type: string
+      type: object
     DisplayProductDetails:
       additionalProperties: false
       description: Onsite Display-specific product details.
@@ -8387,7 +8209,7 @@ components:
           nullable: true
           type: string
       type: object
-    DisplayProductInputModel:
+    DisplayProductInput:
       additionalProperties: false
       description: A product to add to a creative's product collection.
       example:
@@ -8396,29 +8218,6 @@ components:
         id:
           type: string
       required:
-      - id
-      type: object
-    DisplayProductModel:
-      additionalProperties: false
-      description: A product in a creative's product collection.
-      example:
-        approvalStatus: Unknown
-        id: id
-      properties:
-        approvalStatus:
-          enum:
-          - Unknown
-          - Approved
-          - AutoApproved
-          - InReview
-          - Rejected
-          - AutoRejected
-          - Unsubmitted
-          type: string
-        id:
-          type: string
-      required:
-      - approvalStatus
       - id
       type: object
     DisplayProductResultModel:
@@ -9604,6 +9403,7 @@ components:
           frequencyCapping:
             cappingCount: 0
             cappingDurationType: Unknown
+        budgetStatus: Unknown
         conquestingSettings:
           defensiveAdStrategyEnabled: true
           isAdStrategyLocked: true
@@ -9611,9 +9411,19 @@ components:
           conquestingAdStrategyEnabled: true
         retailerId: retailerId
         type: Unknown
-        fundingStatus: Unknown
       nullable: true
       properties:
+        budgetStatus:
+          description: Indicates whether the line item has budget headroom to serve
+            ads.
+          enum:
+          - Unknown
+          - BudgetAvailable
+          - DailyBudgetReached
+          - MonthlyBudgetReached
+          - TotalBudgetReached
+          nullable: true
+          type: string
         campaignId:
           description: The campaign id of the associated campaign.
           nullable: true
@@ -9622,17 +9432,6 @@ components:
           $ref: '#/components/schemas/ExternalConquestingSettings'
         effectiveFlightDates:
           $ref: '#/components/schemas/ExternalFlightDatesModel'
-        fundingStatus:
-          description: Indicates whether the line item is funded.
-          enum:
-          - Unknown
-          - Funded
-          - DailyBudgetReached
-          - MonthlyBudgetReached
-          - TotalBudgetReached
-          - BalanceExhausted
-          nullable: true
-          type: string
         isPaused:
           description: Indicates whether the line item is paused.
           nullable: true
@@ -9683,6 +9482,7 @@ components:
             frequencyCapping:
               cappingCount: 0
               cappingDurationType: Unknown
+          budgetStatus: Unknown
           conquestingSettings:
             defensiveAdStrategyEnabled: true
             isAdStrategyLocked: true
@@ -9690,7 +9490,6 @@ components:
             conquestingAdStrategyEnabled: true
           retailerId: retailerId
           type: Unknown
-          fundingStatus: Unknown
         id: id
         type: type
       nullable: true
@@ -9979,225 +9778,6 @@ components:
           $ref: '#/components/schemas/ExternalUpdateOnsiteDisplayAuctionLineItemDetails'
         frequencyCapping:
           $ref: '#/components/schemas/ExternalFrequencyCappingModelNillableV2'
-      type: object
-    FetchCreativesModel:
-      additionalProperties: false
-      description: Creatives associated with a line item.
-      example:
-        creatives:
-        - approvalStatus: Unknown
-          creativePreviewCode: creativePreviewCode
-          creativeProductCollections:
-          - isMandatory: true
-            products:
-            - approvalStatus: Unknown
-              id: id
-            - approvalStatus: Unknown
-              id: id
-          - isMandatory: true
-            products:
-            - approvalStatus: Unknown
-              id: id
-            - approvalStatus: Unknown
-              id: id
-          creative:
-            modifiedAt: 2000-01-23T04:56:07.000+00:00
-            id: id
-        - approvalStatus: Unknown
-          creativePreviewCode: creativePreviewCode
-          creativeProductCollections:
-          - isMandatory: true
-            products:
-            - approvalStatus: Unknown
-              id: id
-            - approvalStatus: Unknown
-              id: id
-          - isMandatory: true
-            products:
-            - approvalStatus: Unknown
-              id: id
-            - approvalStatus: Unknown
-              id: id
-          creative:
-            modifiedAt: 2000-01-23T04:56:07.000+00:00
-            id: id
-        mediaType: Unknown
-      nullable: true
-      properties:
-        creatives:
-          description: The creatives associated with the line item.
-          items:
-            $ref: '#/components/schemas/LineItemCreativeModel'
-          type: array
-        mediaType:
-          description: "The media type of the associated creatives, if known."
-          enum:
-          - Unknown
-          - Display
-          - Video
-          nullable: true
-          type: string
-      required:
-      - creatives
-      type: object
-    FetchCreativesModelResource:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          creatives:
-          - approvalStatus: Unknown
-            creativePreviewCode: creativePreviewCode
-            creativeProductCollections:
-            - isMandatory: true
-              products:
-              - approvalStatus: Unknown
-                id: id
-              - approvalStatus: Unknown
-                id: id
-            - isMandatory: true
-              products:
-              - approvalStatus: Unknown
-                id: id
-              - approvalStatus: Unknown
-                id: id
-            creative:
-              modifiedAt: 2000-01-23T04:56:07.000+00:00
-              id: id
-          - approvalStatus: Unknown
-            creativePreviewCode: creativePreviewCode
-            creativeProductCollections:
-            - isMandatory: true
-              products:
-              - approvalStatus: Unknown
-                id: id
-              - approvalStatus: Unknown
-                id: id
-            - isMandatory: true
-              products:
-              - approvalStatus: Unknown
-                id: id
-              - approvalStatus: Unknown
-                id: id
-            creative:
-              modifiedAt: 2000-01-23T04:56:07.000+00:00
-              id: id
-          mediaType: Unknown
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/FetchCreativesModel'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    FetchCreativesModelResponse:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value object.
-      example:
-        data:
-          attributes:
-            creatives:
-            - approvalStatus: Unknown
-              creativePreviewCode: creativePreviewCode
-              creativeProductCollections:
-              - isMandatory: true
-                products:
-                - approvalStatus: Unknown
-                  id: id
-                - approvalStatus: Unknown
-                  id: id
-              - isMandatory: true
-                products:
-                - approvalStatus: Unknown
-                  id: id
-                - approvalStatus: Unknown
-                  id: id
-              creative:
-                modifiedAt: 2000-01-23T04:56:07.000+00:00
-                id: id
-            - approvalStatus: Unknown
-              creativePreviewCode: creativePreviewCode
-              creativeProductCollections:
-              - isMandatory: true
-                products:
-                - approvalStatus: Unknown
-                  id: id
-                - approvalStatus: Unknown
-                  id: id
-              - isMandatory: true
-                products:
-                - approvalStatus: Unknown
-                  id: id
-                - approvalStatus: Unknown
-                  id: id
-              creative:
-                modifiedAt: 2000-01-23T04:56:07.000+00:00
-                id: id
-            mediaType: Unknown
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/FetchCreativesModelResource'
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
       type: object
     FilesVariableValue:
       additionalProperties: false
@@ -10710,6 +10290,7 @@ components:
         serveToOptOutUser: true
         lineItemId: lineItemId
         campaignId: campaignId
+        budgetStatus: Unknown
         onsiteDisplay:
           frequencyCapping:
             cappingCount: 0
@@ -10722,7 +10303,6 @@ components:
           neutralAdStrategyEnabled: true
           conquestingAdStrategyEnabled: true
         retailerId: retailerId
-        fundingStatus: Unknown
         accountId: accountId
         lineItemType: SponsoredProduct
         name: name
@@ -10737,6 +10317,17 @@ components:
       properties:
         accountId:
           description: The account id of the associated account.
+          nullable: true
+          type: string
+        budgetStatus:
+          description: Indicates whether the line item has budget headroom to serve
+            ads.
+          enum:
+          - Unknown
+          - BudgetAvailable
+          - DailyBudgetReached
+          - MonthlyBudgetReached
+          - TotalBudgetReached
           nullable: true
           type: string
         buyType:
@@ -10755,17 +10346,6 @@ components:
           $ref: '#/components/schemas/ConquestingSettings'
         flightDates:
           $ref: '#/components/schemas/FlightDates'
-        fundingStatus:
-          description: Indicates whether the line item is funded.
-          enum:
-          - Unknown
-          - Funded
-          - DailyBudgetReached
-          - MonthlyBudgetReached
-          - TotalBudgetReached
-          - BalanceExhausted
-          nullable: true
-          type: string
         isPaused:
           description: Indicates whether the line item is paused.
           nullable: true
@@ -10797,6 +10377,68 @@ components:
           type: boolean
         sponsoredProducts:
           $ref: '#/components/schemas/SponsoredProductsAttributes'
+      type: object
+    LineItemAdContentDetails:
+      additionalProperties: false
+      description: Ad-content details associated with a line item.
+      example:
+        creatives:
+          creatives:
+          - approvalStatus: Unknown
+            creativePreviewCode: creativePreviewCode
+            creativeProductCollections:
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            creative:
+              modifiedAt: 2000-01-23T04:56:07.000+00:00
+              id: id
+          - approvalStatus: Unknown
+            creativePreviewCode: creativePreviewCode
+            creativeProductCollections:
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            creative:
+              modifiedAt: 2000-01-23T04:56:07.000+00:00
+              id: id
+          mediaType: Unknown
+        products:
+          sponsoredProductDetails:
+          - productId: productId
+            status: Active
+          - productId: productId
+            status: Active
+          displayProductDetails:
+          - approvalStatus: Unknown
+            productId: productId
+          - approvalStatus: Unknown
+            productId: productId
+          productType: Unknown
+      nullable: true
+      properties:
+        creatives:
+          $ref: '#/components/schemas/LineItemCreatives'
+        products:
+          $ref: '#/components/schemas/ProductsModel'
       type: object
     LineItemAuctionBid:
       additionalProperties: false
@@ -10955,34 +10597,7 @@ components:
       - count
       - type
       type: object
-    LineItemCreativeInputModel:
-      additionalProperties: false
-      description: "A creative to associate with a line item, and the product collections\
-        \ configured on it."
-      example:
-        creativeProductCollections:
-        - isMandatory: true
-          products:
-          - id: id
-          - id: id
-        - isMandatory: true
-          products:
-          - id: id
-          - id: id
-        creative:
-          id: id
-      properties:
-        creative:
-          $ref: '#/components/schemas/CreativeInputModel'
-        creativeProductCollections:
-          items:
-            $ref: '#/components/schemas/CreativeProductCollectionInputModel'
-          type: array
-      required:
-      - creative
-      - creativeProductCollections
-      type: object
-    LineItemCreativeModel:
+    LineItemCreative:
       additionalProperties: false
       description: The association between a line item and one of its creatives.
       example:
@@ -11016,18 +10631,718 @@ components:
           - Unsubmitted
           type: string
         creative:
-          $ref: '#/components/schemas/CreativeModel'
+          $ref: '#/components/schemas/Creative'
         creativePreviewCode:
           nullable: true
           type: string
         creativeProductCollections:
           items:
-            $ref: '#/components/schemas/CreativeProductCollectionModel'
+            $ref: '#/components/schemas/CreativeProductCollection'
           type: array
       required:
       - approvalStatus
       - creative
       - creativeProductCollections
+      type: object
+    LineItemCreativeInput:
+      additionalProperties: false
+      description: "A creative to associate with a line item, and the product collections\
+        \ configured on it."
+      example:
+        creativeProductCollections:
+        - isMandatory: true
+          products:
+          - id: id
+          - id: id
+        - isMandatory: true
+          products:
+          - id: id
+          - id: id
+        creative:
+          id: id
+      properties:
+        creative:
+          $ref: '#/components/schemas/CreativeInput'
+        creativeProductCollections:
+          items:
+            $ref: '#/components/schemas/CreativeProductCollectionInput'
+          type: array
+      required:
+      - creative
+      - creativeProductCollections
+      type: object
+    LineItemCreatives:
+      additionalProperties: false
+      description: Creatives associated with a line item.
+      example:
+        creatives:
+        - approvalStatus: Unknown
+          creativePreviewCode: creativePreviewCode
+          creativeProductCollections:
+          - isMandatory: true
+            products:
+            - approvalStatus: Unknown
+              id: id
+            - approvalStatus: Unknown
+              id: id
+          - isMandatory: true
+            products:
+            - approvalStatus: Unknown
+              id: id
+            - approvalStatus: Unknown
+              id: id
+          creative:
+            modifiedAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+        - approvalStatus: Unknown
+          creativePreviewCode: creativePreviewCode
+          creativeProductCollections:
+          - isMandatory: true
+            products:
+            - approvalStatus: Unknown
+              id: id
+            - approvalStatus: Unknown
+              id: id
+          - isMandatory: true
+            products:
+            - approvalStatus: Unknown
+              id: id
+            - approvalStatus: Unknown
+              id: id
+          creative:
+            modifiedAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+        mediaType: Unknown
+      nullable: true
+      properties:
+        creatives:
+          description: The creatives associated with the line item.
+          items:
+            $ref: '#/components/schemas/LineItemCreative'
+          type: array
+        mediaType:
+          description: "The media type of the associated creatives, if known."
+          enum:
+          - Unknown
+          - Display
+          - Video
+          nullable: true
+          type: string
+      required:
+      - creatives
+      type: object
+    LineItemCreativesResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          creatives:
+          - approvalStatus: Unknown
+            creativePreviewCode: creativePreviewCode
+            creativeProductCollections:
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            creative:
+              modifiedAt: 2000-01-23T04:56:07.000+00:00
+              id: id
+          - approvalStatus: Unknown
+            creativePreviewCode: creativePreviewCode
+            creativeProductCollections:
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            creative:
+              modifiedAt: 2000-01-23T04:56:07.000+00:00
+              id: id
+          mediaType: Unknown
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/LineItemCreatives'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    LineItemCreativesResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            creatives:
+            - approvalStatus: Unknown
+              creativePreviewCode: creativePreviewCode
+              creativeProductCollections:
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              creative:
+                modifiedAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+            - approvalStatus: Unknown
+              creativePreviewCode: creativePreviewCode
+              creativeProductCollections:
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              creative:
+                modifiedAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+            mediaType: Unknown
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/LineItemCreativesResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    LineItemDetails:
+      additionalProperties: false
+      description: A consolidated view of a line item and its details.
+      example:
+        core:
+          effectiveFlightDates:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+          isPaused: true
+          serveToOptOutUser: true
+          lineItemId: lineItemId
+          campaignId: campaignId
+          name: name
+          onsiteDisplayDetails:
+            auctionDetails:
+              isDynamicMatch: true
+            frequencyCapping:
+              cappingCount: 0
+              cappingDurationType: Unknown
+          budgetStatus: Unknown
+          conquestingSettings:
+            defensiveAdStrategyEnabled: true
+            isAdStrategyLocked: true
+            neutralAdStrategyEnabled: true
+            conquestingAdStrategyEnabled: true
+          retailerId: retailerId
+          type: Unknown
+        targeting:
+          targets:
+          - approvalStatus: Unknown
+            manualKeywordTargetDetails:
+              matchType: Broad
+              keywordInput: keywordInput
+            negative: true
+            bidMultiplier: 1.4658129805029452
+            pageTypeTargetDetails:
+              pageType: Unknown
+            targetType: Unknown
+            categoryTargetDetails:
+              includeChildren: true
+              categoryId: categoryId
+            geographyTargetDetails:
+              geoLocationId: geoLocationId
+          - approvalStatus: Unknown
+            manualKeywordTargetDetails:
+              matchType: Broad
+              keywordInput: keywordInput
+            negative: true
+            bidMultiplier: 1.4658129805029452
+            pageTypeTargetDetails:
+              pageType: Unknown
+            targetType: Unknown
+            categoryTargetDetails:
+              includeChildren: true
+              categoryId: categoryId
+            geographyTargetDetails:
+              geoLocationId: geoLocationId
+        bidding:
+          cpm:
+            standardBiddingSettings:
+              auctionBids:
+              - pageType: Unknown
+                bid: 6.027456183070403
+              - pageType: Unknown
+                bid: 6.027456183070403
+            bidStrategy: Standard
+            adaptiveBiddingSettings:
+              maxBid: 0.8008281904610115
+        adContent:
+          creatives:
+            creatives:
+            - approvalStatus: Unknown
+              creativePreviewCode: creativePreviewCode
+              creativeProductCollections:
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              creative:
+                modifiedAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+            - approvalStatus: Unknown
+              creativePreviewCode: creativePreviewCode
+              creativeProductCollections:
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              - isMandatory: true
+                products:
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
+              creative:
+                modifiedAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+            mediaType: Unknown
+          products:
+            sponsoredProductDetails:
+            - productId: productId
+              status: Active
+            - productId: productId
+              status: Active
+            displayProductDetails:
+            - approvalStatus: Unknown
+              productId: productId
+            - approvalStatus: Unknown
+              productId: productId
+            productType: Unknown
+      nullable: true
+      properties:
+        adContent:
+          $ref: '#/components/schemas/LineItemAdContentDetails'
+        bidding:
+          $ref: '#/components/schemas/BiddingSettings'
+        core:
+          $ref: '#/components/schemas/ExternalLineItem'
+        targeting:
+          $ref: '#/components/schemas/LineItemTargetingDetails'
+      required:
+      - core
+      type: object
+    LineItemDetailsResource:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          core:
+            effectiveFlightDates:
+              endDate: 2000-01-23T04:56:07.000+00:00
+              startDate: 2000-01-23T04:56:07.000+00:00
+            isPaused: true
+            serveToOptOutUser: true
+            lineItemId: lineItemId
+            campaignId: campaignId
+            name: name
+            onsiteDisplayDetails:
+              auctionDetails:
+                isDynamicMatch: true
+              frequencyCapping:
+                cappingCount: 0
+                cappingDurationType: Unknown
+            budgetStatus: Unknown
+            conquestingSettings:
+              defensiveAdStrategyEnabled: true
+              isAdStrategyLocked: true
+              neutralAdStrategyEnabled: true
+              conquestingAdStrategyEnabled: true
+            retailerId: retailerId
+            type: Unknown
+          targeting:
+            targets:
+            - approvalStatus: Unknown
+              manualKeywordTargetDetails:
+                matchType: Broad
+                keywordInput: keywordInput
+              negative: true
+              bidMultiplier: 1.4658129805029452
+              pageTypeTargetDetails:
+                pageType: Unknown
+              targetType: Unknown
+              categoryTargetDetails:
+                includeChildren: true
+                categoryId: categoryId
+              geographyTargetDetails:
+                geoLocationId: geoLocationId
+            - approvalStatus: Unknown
+              manualKeywordTargetDetails:
+                matchType: Broad
+                keywordInput: keywordInput
+              negative: true
+              bidMultiplier: 1.4658129805029452
+              pageTypeTargetDetails:
+                pageType: Unknown
+              targetType: Unknown
+              categoryTargetDetails:
+                includeChildren: true
+                categoryId: categoryId
+              geographyTargetDetails:
+                geoLocationId: geoLocationId
+          bidding:
+            cpm:
+              standardBiddingSettings:
+                auctionBids:
+                - pageType: Unknown
+                  bid: 6.027456183070403
+                - pageType: Unknown
+                  bid: 6.027456183070403
+              bidStrategy: Standard
+              adaptiveBiddingSettings:
+                maxBid: 0.8008281904610115
+          adContent:
+            creatives:
+              creatives:
+              - approvalStatus: Unknown
+                creativePreviewCode: creativePreviewCode
+                creativeProductCollections:
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                creative:
+                  modifiedAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+              - approvalStatus: Unknown
+                creativePreviewCode: creativePreviewCode
+                creativeProductCollections:
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                creative:
+                  modifiedAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+              mediaType: Unknown
+            products:
+              sponsoredProductDetails:
+              - productId: productId
+                status: Active
+              - productId: productId
+                status: Active
+              displayProductDetails:
+              - approvalStatus: Unknown
+                productId: productId
+              - approvalStatus: Unknown
+                productId: productId
+              productType: Unknown
+        id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/LineItemDetails'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    LineItemDetailsResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
+      example:
+        data:
+          attributes:
+            core:
+              effectiveFlightDates:
+                endDate: 2000-01-23T04:56:07.000+00:00
+                startDate: 2000-01-23T04:56:07.000+00:00
+              isPaused: true
+              serveToOptOutUser: true
+              lineItemId: lineItemId
+              campaignId: campaignId
+              name: name
+              onsiteDisplayDetails:
+                auctionDetails:
+                  isDynamicMatch: true
+                frequencyCapping:
+                  cappingCount: 0
+                  cappingDurationType: Unknown
+              budgetStatus: Unknown
+              conquestingSettings:
+                defensiveAdStrategyEnabled: true
+                isAdStrategyLocked: true
+                neutralAdStrategyEnabled: true
+                conquestingAdStrategyEnabled: true
+              retailerId: retailerId
+              type: Unknown
+            targeting:
+              targets:
+              - approvalStatus: Unknown
+                manualKeywordTargetDetails:
+                  matchType: Broad
+                  keywordInput: keywordInput
+                negative: true
+                bidMultiplier: 1.4658129805029452
+                pageTypeTargetDetails:
+                  pageType: Unknown
+                targetType: Unknown
+                categoryTargetDetails:
+                  includeChildren: true
+                  categoryId: categoryId
+                geographyTargetDetails:
+                  geoLocationId: geoLocationId
+              - approvalStatus: Unknown
+                manualKeywordTargetDetails:
+                  matchType: Broad
+                  keywordInput: keywordInput
+                negative: true
+                bidMultiplier: 1.4658129805029452
+                pageTypeTargetDetails:
+                  pageType: Unknown
+                targetType: Unknown
+                categoryTargetDetails:
+                  includeChildren: true
+                  categoryId: categoryId
+                geographyTargetDetails:
+                  geoLocationId: geoLocationId
+            bidding:
+              cpm:
+                standardBiddingSettings:
+                  auctionBids:
+                  - pageType: Unknown
+                    bid: 6.027456183070403
+                  - pageType: Unknown
+                    bid: 6.027456183070403
+                bidStrategy: Standard
+                adaptiveBiddingSettings:
+                  maxBid: 0.8008281904610115
+            adContent:
+              creatives:
+                creatives:
+                - approvalStatus: Unknown
+                  creativePreviewCode: creativePreviewCode
+                  creativeProductCollections:
+                  - isMandatory: true
+                    products:
+                    - approvalStatus: Unknown
+                      id: id
+                    - approvalStatus: Unknown
+                      id: id
+                  - isMandatory: true
+                    products:
+                    - approvalStatus: Unknown
+                      id: id
+                    - approvalStatus: Unknown
+                      id: id
+                  creative:
+                    modifiedAt: 2000-01-23T04:56:07.000+00:00
+                    id: id
+                - approvalStatus: Unknown
+                  creativePreviewCode: creativePreviewCode
+                  creativeProductCollections:
+                  - isMandatory: true
+                    products:
+                    - approvalStatus: Unknown
+                      id: id
+                    - approvalStatus: Unknown
+                      id: id
+                  - isMandatory: true
+                    products:
+                    - approvalStatus: Unknown
+                      id: id
+                    - approvalStatus: Unknown
+                      id: id
+                  creative:
+                    modifiedAt: 2000-01-23T04:56:07.000+00:00
+                    id: id
+                mediaType: Unknown
+              products:
+                sponsoredProductDetails:
+                - productId: productId
+                  status: Active
+                - productId: productId
+                  status: Active
+                displayProductDetails:
+                - approvalStatus: Unknown
+                  productId: productId
+                - approvalStatus: Unknown
+                  productId: productId
+                productType: Unknown
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/LineItemDetailsResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     LineItemListResponseWithPagination:
       additionalProperties: false
@@ -11044,6 +11359,7 @@ components:
             serveToOptOutUser: true
             lineItemId: lineItemId
             campaignId: campaignId
+            budgetStatus: Unknown
             onsiteDisplay:
               frequencyCapping:
                 cappingCount: 0
@@ -11056,7 +11372,6 @@ components:
               neutralAdStrategyEnabled: true
               conquestingAdStrategyEnabled: true
             retailerId: retailerId
-            fundingStatus: Unknown
             accountId: accountId
             lineItemType: SponsoredProduct
             name: name
@@ -11074,6 +11389,7 @@ components:
             serveToOptOutUser: true
             lineItemId: lineItemId
             campaignId: campaignId
+            budgetStatus: Unknown
             onsiteDisplay:
               frequencyCapping:
                 cappingCount: 0
@@ -11086,7 +11402,6 @@ components:
               neutralAdStrategyEnabled: true
               conquestingAdStrategyEnabled: true
             retailerId: retailerId
-            fundingStatus: Unknown
             accountId: accountId
             lineItemType: SponsoredProduct
             name: name
@@ -11515,6 +11830,7 @@ components:
           serveToOptOutUser: true
           lineItemId: lineItemId
           campaignId: campaignId
+          budgetStatus: Unknown
           onsiteDisplay:
             frequencyCapping:
               cappingCount: 0
@@ -11527,7 +11843,6 @@ components:
             neutralAdStrategyEnabled: true
             conquestingAdStrategyEnabled: true
           retailerId: retailerId
-          fundingStatus: Unknown
           accountId: accountId
           lineItemType: SponsoredProduct
           name: name
@@ -11573,6 +11888,7 @@ components:
               frequencyCapping:
                 cappingCount: 0
                 cappingDurationType: Unknown
+            budgetStatus: Unknown
             conquestingSettings:
               defensiveAdStrategyEnabled: true
               isAdStrategyLocked: true
@@ -11580,7 +11896,6 @@ components:
               conquestingAdStrategyEnabled: true
             retailerId: retailerId
             type: Unknown
-            fundingStatus: Unknown
           id: id
           type: type
         warnings:
@@ -11642,6 +11957,49 @@ components:
           nullable: true
           readOnly: true
           type: array
+      type: object
+    LineItemTargetingDetails:
+      additionalProperties: false
+      description: Targeting details associated with a line item.
+      example:
+        targets:
+        - approvalStatus: Unknown
+          manualKeywordTargetDetails:
+            matchType: Broad
+            keywordInput: keywordInput
+          negative: true
+          bidMultiplier: 1.4658129805029452
+          pageTypeTargetDetails:
+            pageType: Unknown
+          targetType: Unknown
+          categoryTargetDetails:
+            includeChildren: true
+            categoryId: categoryId
+          geographyTargetDetails:
+            geoLocationId: geoLocationId
+        - approvalStatus: Unknown
+          manualKeywordTargetDetails:
+            matchType: Broad
+            keywordInput: keywordInput
+          negative: true
+          bidMultiplier: 1.4658129805029452
+          pageTypeTargetDetails:
+            pageType: Unknown
+          targetType: Unknown
+          categoryTargetDetails:
+            includeChildren: true
+            categoryId: categoryId
+          geographyTargetDetails:
+            geoLocationId: geoLocationId
+      nullable: true
+      properties:
+        targets:
+          description: Targets associated with the line item.
+          items:
+            $ref: '#/components/schemas/Target'
+          type: array
+      required:
+      - targets
       type: object
     LoyaltyPoints:
       description: Defines how a client earns loyalty points after buying this product.
@@ -12227,8 +12585,9 @@ components:
         amount:
           description: Total the campaign may spend over its flight.
           format: double
-          nullable: true
           type: number
+      required:
+      - amount
       type: object
     OnsiteDisplayBudgetModel:
       additionalProperties: false
@@ -12251,8 +12610,9 @@ components:
       properties:
         amount:
           format: double
-          nullable: true
           type: number
+      required:
+      - amount
       type: object
     OnsiteDisplayDetailsCreateModel:
       additionalProperties: false
@@ -12366,14 +12726,15 @@ components:
       additionalProperties: false
       description: How the platform spreads the campaign budget over its flight.
       example:
-        type: Unknown
+        type: None
       nullable: true
       properties:
         type:
           description: How the platform spreads a campaign budget over its flight.
           enum:
-          - Unknown
+          - None
           - Automatic
+          - Unknown
           nullable: true
           type: string
       type: object
@@ -12382,11 +12743,12 @@ components:
       description: Asks the platform to spread the campaign budget rather than cap
         it per period.
       example:
-        type: Automatic
+        type: None
       properties:
         type:
           description: How the platform spreads a campaign budget over its flight.
           enum:
+          - None
           - Automatic
           type: string
       required:
@@ -12604,29 +12966,7 @@ components:
       - limit
       - offset
       type: object
-    PreferredDealsCreativeDetailsInputModel:
-      additionalProperties: false
-      description: The preferred-deal creative to associate with a line item.
-      example:
-        lineItemCreative:
-          creativeProductCollections:
-          - isMandatory: true
-            products:
-            - id: id
-            - id: id
-          - isMandatory: true
-            products:
-            - id: id
-            - id: id
-          creative:
-            id: id
-      properties:
-        lineItemCreative:
-          $ref: '#/components/schemas/LineItemCreativeInputModel'
-      required:
-      - lineItemCreative
-      type: object
-    PreferredDealsCreativeDetailsModel:
+    PreferredDealsCreativeDetails:
       additionalProperties: false
       description: The preferred-deal creative associated with a line item.
       example:
@@ -12652,7 +12992,29 @@ components:
       nullable: true
       properties:
         lineItemCreative:
-          $ref: '#/components/schemas/LineItemCreativeModel'
+          $ref: '#/components/schemas/LineItemCreative'
+      required:
+      - lineItemCreative
+      type: object
+    PreferredDealsCreativeDetailsInput:
+      additionalProperties: false
+      description: The preferred-deal creative to associate with a line item.
+      example:
+        lineItemCreative:
+          creativeProductCollections:
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          - isMandatory: true
+            products:
+            - id: id
+            - id: id
+          creative:
+            id: id
+      properties:
+        lineItemCreative:
+          $ref: '#/components/schemas/LineItemCreativeInput'
       required:
       - lineItemCreative
       type: object
@@ -13787,17 +14149,6 @@ components:
       required:
       - offerId
       type: object
-    ProductModel:
-      additionalProperties: false
-      description: A product associated with a line item.
-      example:
-        productId: productId
-      properties:
-        productId:
-          description: The identifier of the product.
-          nullable: true
-          type: string
-      type: object
     ProductRecommendation:
       description: recommendation data for a product
       example:
@@ -14487,6 +14838,44 @@ components:
             of the item.
           format: double
           type: number
+      type: object
+    ProductsModel:
+      additionalProperties: false
+      description: Products associated with a line item.
+      example:
+        sponsoredProductDetails:
+        - productId: productId
+          status: Active
+        - productId: productId
+          status: Active
+        displayProductDetails:
+        - approvalStatus: Unknown
+          productId: productId
+        - approvalStatus: Unknown
+          productId: productId
+        productType: Unknown
+      nullable: true
+      properties:
+        displayProductDetails:
+          description: The display product details.
+          items:
+            $ref: '#/components/schemas/DisplayProductDetailModel'
+          nullable: true
+          type: array
+        productType:
+          description: The type of products.
+          enum:
+          - Unknown
+          - DisplayProduct
+          - SponsoredProduct
+          nullable: true
+          type: string
+        sponsoredProductDetails:
+          description: The sponsored product details.
+          items:
+            $ref: '#/components/schemas/SponsoredProductDetailModel'
+          nullable: true
+          type: array
       type: object
     ProductTax:
       description: Defines the tax information of a product.
@@ -16466,9 +16855,9 @@ components:
         endDate:
           description: "Campaign end date. Pass exactly {9999-12-30T00:00:00Z} for\
             \ a SponsoredProducts campaign that\r\nruns indefinitely; any other value,\
-            \ including a neighbouring far-future date, is a real end date.\r\nAn\
-            \ OnsiteDisplay Auction campaign cannot run indefinitely and rejects that\
-            \ date."
+            \ including a neighbouring far-future date, is a real end date.\r\nA dynamic\
+            \ objective spends over a flight and rejects that date. An OnsiteDisplay\
+            \ Auction\r\ncampaign cannot run indefinitely and rejects it too."
           format: date-time
           type: string
         startDate:
@@ -16977,6 +17366,28 @@ components:
       - retailerId
       - retailerSkuIds
       type: object
+    SponsoredProductDetailModel:
+      additionalProperties: false
+      description: A sponsored product associated with a line item.
+      example:
+        productId: productId
+        status: Active
+      properties:
+        productId:
+          description: The identifier of the product.
+          nullable: true
+          type: string
+        status:
+          description: The status of the product in the line item's product pool.
+          enum:
+          - Active
+          - Inactive
+          - Expired
+          - Removed
+          - Deleted
+          nullable: true
+          type: string
+      type: object
     SponsoredProductDetails:
       additionalProperties: false
       description: Sponsored Product-specific product details.
@@ -17037,7 +17448,7 @@ components:
         - amount: 1.4658129805029452
           type: Daily
         pacing:
-          type: Automatic
+          type: None
       properties:
         amount:
           description: Total the campaign may spend over its flight.
@@ -17064,7 +17475,7 @@ components:
         - amount: 1.4658129805029452
           type: Unknown
         pacing:
-          type: Unknown
+          type: None
       nullable: true
       properties:
         amount:
@@ -17082,22 +17493,21 @@ components:
       type: object
     SponsoredProductsBudgetUpdateModel:
       additionalProperties: false
-      description: "New financial intent of a SponsoredProducts campaign. The whole\
-        \ node replaces the previous\r\nbudget; omit it to leave the budget unchanged."
+      description: Budget fields of a SponsoredProducts campaign to update. An omitted
+        field is left unchanged.
       example:
-        amount: 6.027456183070403
+        amount:
+          value: 6.027456183070403
         cappings:
         - amount: 1.4658129805029452
           type: Daily
         - amount: 1.4658129805029452
           type: Daily
         pacing:
-          type: Automatic
+          type: None
       properties:
         amount:
-          format: double
-          nullable: true
-          type: number
+          $ref: '#/components/schemas/DecimalNullableNillableV2'
         cappings:
           description: Per-period ceilings. At most one entry per period.
           items:
@@ -17120,7 +17530,7 @@ components:
           - amount: 1.4658129805029452
             type: Daily
           pacing:
-            type: Automatic
+            type: None
         objective: Manual
       properties:
         budget:
@@ -17148,7 +17558,7 @@ components:
           - amount: 1.4658129805029452
             type: Unknown
           pacing:
-            type: Unknown
+            type: None
         objective: Manual
       nullable: true
       properties:
@@ -17170,14 +17580,15 @@ components:
       description: SponsoredProducts settings to update. Omitted settings remain unchanged.
       example:
         budget:
-          amount: 6.027456183070403
+          amount:
+            value: 6.027456183070403
           cappings:
           - amount: 1.4658129805029452
             type: Daily
           - amount: 1.4658129805029452
             type: Daily
           pacing:
-            type: Automatic
+            type: None
       properties:
         budget:
           $ref: '#/components/schemas/SponsoredProductsBudgetUpdateModel'
@@ -17973,7 +18384,7 @@ components:
           matchType: Broad
           keywordInput: keywordInput
         negative: true
-        bidMultiplier: 0.8008281904610115
+        bidMultiplier: 1.4658129805029452
         pageTypeTargetDetails:
           pageType: Unknown
         targetType: Unknown
@@ -17982,7 +18393,6 @@ components:
           categoryId: categoryId
         geographyTargetDetails:
           geoLocationId: geoLocationId
-      nullable: true
       properties:
         approvalStatus:
           enum:
@@ -18032,7 +18442,7 @@ components:
               matchType: Broad
               keywordInput: keywordInput
             negative: true
-            bidMultiplier: 0.8008281904610115
+            bidMultiplier: 1.4658129805029452
             pageTypeTargetDetails:
               pageType: Unknown
             targetType: Unknown
@@ -18048,7 +18458,7 @@ components:
               matchType: Broad
               keywordInput: keywordInput
             negative: true
-            bidMultiplier: 0.8008281904610115
+            bidMultiplier: 1.4658129805029452
             pageTypeTargetDetails:
               pageType: Unknown
             targetType: Unknown
@@ -18077,7 +18487,7 @@ components:
               matchType: Broad
               keywordInput: keywordInput
             negative: true
-            bidMultiplier: 0.8008281904610115
+            bidMultiplier: 1.4658129805029452
             pageTypeTargetDetails:
               pageType: Unknown
             targetType: Unknown
@@ -18093,7 +18503,7 @@ components:
               matchType: Broad
               keywordInput: keywordInput
             negative: true
-            bidMultiplier: 0.8008281904610115
+            bidMultiplier: 1.4658129805029452
             pageTypeTargetDetails:
               pageType: Unknown
             targetType: Unknown
@@ -18172,9 +18582,9 @@ components:
         several value objects and metadata.
       example:
         metadata:
-          offset: 5
-          count: 6
-          limit: 1
+          offset: 1
+          count: 0
+          limit: 6
         data:
         - attributes:
             approvalStatus: Unknown
@@ -18182,7 +18592,7 @@ components:
               matchType: Broad
               keywordInput: keywordInput
             negative: true
-            bidMultiplier: 0.8008281904610115
+            bidMultiplier: 1.4658129805029452
             pageTypeTargetDetails:
               pageType: Unknown
             targetType: Unknown
@@ -18198,7 +18608,7 @@ components:
               matchType: Broad
               keywordInput: keywordInput
             negative: true
-            bidMultiplier: 0.8008281904610115
+            bidMultiplier: 1.4658129805029452
             pageTypeTargetDetails:
               pageType: Unknown
             targetType: Unknown
@@ -18283,7 +18693,7 @@ components:
             matchType: Broad
             keywordInput: keywordInput
           negative: true
-          bidMultiplier: 0.8008281904610115
+          bidMultiplier: 1.4658129805029452
           pageTypeTargetDetails:
             pageType: Unknown
           targetType: Unknown
@@ -18400,7 +18810,85 @@ components:
       required:
       - offerUpdates
       type: object
-    UpsertCreativesModel:
+    UpsertLineItemCreatives:
+      additionalProperties: false
+      description: Creatives associated with a line item.
+      example:
+        mediaType: Unknown
+        preferredDealsCreativeDetails:
+          lineItemCreative:
+            approvalStatus: Unknown
+            creativePreviewCode: creativePreviewCode
+            creativeProductCollections:
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            creative:
+              modifiedAt: 2000-01-23T04:56:07.000+00:00
+              id: id
+        auctionCreativeDetails:
+          lineItemCreatives:
+          - approvalStatus: Unknown
+            creativePreviewCode: creativePreviewCode
+            creativeProductCollections:
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            creative:
+              modifiedAt: 2000-01-23T04:56:07.000+00:00
+              id: id
+          - approvalStatus: Unknown
+            creativePreviewCode: creativePreviewCode
+            creativeProductCollections:
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            - isMandatory: true
+              products:
+              - approvalStatus: Unknown
+                id: id
+              - approvalStatus: Unknown
+                id: id
+            creative:
+              modifiedAt: 2000-01-23T04:56:07.000+00:00
+              id: id
+      nullable: true
+      properties:
+        auctionCreativeDetails:
+          $ref: '#/components/schemas/AuctionCreativeDetails'
+        mediaType:
+          enum:
+          - Unknown
+          - Display
+          - Video
+          type: string
+        preferredDealsCreativeDetails:
+          $ref: '#/components/schemas/PreferredDealsCreativeDetails'
+      required:
+      - mediaType
+      type: object
+    UpsertLineItemCreativesInput:
       additionalProperties: false
       description: Creatives to associate with a line item.
       example:
@@ -18444,7 +18932,7 @@ components:
               id: id
       properties:
         auctionCreativeDetails:
-          $ref: '#/components/schemas/AuctionCreativeDetailsInputModel'
+          $ref: '#/components/schemas/AuctionCreativeDetailsInput'
         creativeType:
           enum:
           - Unknown
@@ -18452,11 +18940,63 @@ components:
           - PreferredDealsCreative
           type: string
         preferredDealsCreativeDetails:
-          $ref: '#/components/schemas/PreferredDealsCreativeDetailsInputModel'
+          $ref: '#/components/schemas/PreferredDealsCreativeDetailsInput'
       required:
       - creativeType
       type: object
-    UpsertCreativesModelRequest:
+    UpsertLineItemCreativesInputResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          creativeType: Unknown
+          preferredDealsCreativeDetails:
+            lineItemCreative:
+              creativeProductCollections:
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              creative:
+                id: id
+          auctionCreativeDetails:
+            lineItemCreatives:
+            - creativeProductCollections:
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              creative:
+                id: id
+            - creativeProductCollections:
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              - isMandatory: true
+                products:
+                - id: id
+                - id: id
+              creative:
+                id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/UpsertLineItemCreativesInput'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    UpsertLineItemCreativesRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
         single value object.
@@ -18504,59 +19044,208 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/UpsertCreativesModelResource'
+          $ref: '#/components/schemas/UpsertLineItemCreativesInputResource'
       type: object
-    UpsertCreativesModelResource:
+    UpsertLineItemCreativesResource:
       additionalProperties: false
       description: A value resource exposed by the API.
       example:
         attributes:
-          creativeType: Unknown
+          mediaType: Unknown
           preferredDealsCreativeDetails:
             lineItemCreative:
+              approvalStatus: Unknown
+              creativePreviewCode: creativePreviewCode
               creativeProductCollections:
               - isMandatory: true
                 products:
-                - id: id
-                - id: id
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
               - isMandatory: true
                 products:
-                - id: id
-                - id: id
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
               creative:
+                modifiedAt: 2000-01-23T04:56:07.000+00:00
                 id: id
           auctionCreativeDetails:
             lineItemCreatives:
-            - creativeProductCollections:
+            - approvalStatus: Unknown
+              creativePreviewCode: creativePreviewCode
+              creativeProductCollections:
               - isMandatory: true
                 products:
-                - id: id
-                - id: id
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
               - isMandatory: true
                 products:
-                - id: id
-                - id: id
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
               creative:
+                modifiedAt: 2000-01-23T04:56:07.000+00:00
                 id: id
-            - creativeProductCollections:
+            - approvalStatus: Unknown
+              creativePreviewCode: creativePreviewCode
+              creativeProductCollections:
               - isMandatory: true
                 products:
-                - id: id
-                - id: id
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
               - isMandatory: true
                 products:
-                - id: id
-                - id: id
+                - approvalStatus: Unknown
+                  id: id
+                - approvalStatus: Unknown
+                  id: id
               creative:
+                modifiedAt: 2000-01-23T04:56:07.000+00:00
                 id: id
         type: type
+      nullable: true
       properties:
         attributes:
-          $ref: '#/components/schemas/UpsertCreativesModel'
+          $ref: '#/components/schemas/UpsertLineItemCreatives'
         type:
           description: Type of the resource.
           nullable: true
           type: string
+      type: object
+    UpsertLineItemCreativesResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            mediaType: Unknown
+            preferredDealsCreativeDetails:
+              lineItemCreative:
+                approvalStatus: Unknown
+                creativePreviewCode: creativePreviewCode
+                creativeProductCollections:
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                creative:
+                  modifiedAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+            auctionCreativeDetails:
+              lineItemCreatives:
+              - approvalStatus: Unknown
+                creativePreviewCode: creativePreviewCode
+                creativeProductCollections:
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                creative:
+                  modifiedAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+              - approvalStatus: Unknown
+                creativePreviewCode: creativePreviewCode
+                creativeProductCollections:
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                - isMandatory: true
+                  products:
+                  - approvalStatus: Unknown
+                    id: id
+                  - approvalStatus: Unknown
+                    id: id
+                creative:
+                  modifiedAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/UpsertLineItemCreativesResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     ValueResourceBrandIdSearchRequest:
       description: A value resource exposed by the API.
@@ -19374,10 +20063,50 @@ components:
       flows:
         authorizationCode:
           authorizationUrl: https://api.criteo.com/oauth2
-          scopes: {}
+          scopes:
+            RetailMedia_Accounts_Read: "Grants Read access to the capabilities from\
+              \ the Accounts domain, for RetailMedia applications"
+            RetailMedia_Analytics_Read: "Grants Read access to the capabilities from\
+              \ the Analytics domain, for RetailMedia applications"
+            RetailMedia_Audience_Manage: "Grants Manage access to the capabilities\
+              \ from the Audience domain, for RetailMedia applications"
+            RetailMedia_Balance_Read: "Grants Read access to the capabilities from\
+              \ the Balance domain, for RetailMedia applications"
+            RetailMedia_Campaign_Manage: "Grants Manage access to the capabilities\
+              \ from the Campaign domain, for RetailMedia applications"
+            RetailMedia_Campaign_Read: "Grants Read access to the capabilities from\
+              \ the Campaign domain, for RetailMedia applications"
+            RetailMedia_Catalog_Manage: "Grants Manage access to the capabilities\
+              \ from the Catalog domain, for RetailMedia applications"
+            RetailMedia_Catalog_Read: "Grants Read access to the capabilities from\
+              \ the Catalog domain, for RetailMedia applications"
+            RetailMedia_OnSiteRecommendation_Read: "Grants Read access to the capabilities\
+              \ from the OnSiteRecommendation domain, for RetailMedia applications"
+            RetailMedia_ThirdPartyAccounts_Manage: "Grants Manage access to the capabilities\
+              \ from the ThirdPartyAccounts domain, for RetailMedia applications"
           tokenUrl: https://api.criteo.com/oauth2/token
         clientCredentials:
-          scopes: {}
+          scopes:
+            RetailMedia_Accounts_Read: "Grants Read access to the capabilities from\
+              \ the Accounts domain, for RetailMedia applications"
+            RetailMedia_Analytics_Read: "Grants Read access to the capabilities from\
+              \ the Analytics domain, for RetailMedia applications"
+            RetailMedia_Audience_Manage: "Grants Manage access to the capabilities\
+              \ from the Audience domain, for RetailMedia applications"
+            RetailMedia_Balance_Read: "Grants Read access to the capabilities from\
+              \ the Balance domain, for RetailMedia applications"
+            RetailMedia_Campaign_Manage: "Grants Manage access to the capabilities\
+              \ from the Campaign domain, for RetailMedia applications"
+            RetailMedia_Campaign_Read: "Grants Read access to the capabilities from\
+              \ the Campaign domain, for RetailMedia applications"
+            RetailMedia_Catalog_Manage: "Grants Manage access to the capabilities\
+              \ from the Catalog domain, for RetailMedia applications"
+            RetailMedia_Catalog_Read: "Grants Read access to the capabilities from\
+              \ the Catalog domain, for RetailMedia applications"
+            RetailMedia_OnSiteRecommendation_Read: "Grants Read access to the capabilities\
+              \ from the OnSiteRecommendation domain, for RetailMedia applications"
+            RetailMedia_ThirdPartyAccounts_Manage: "Grants Manage access to the capabilities\
+              \ from the ThirdPartyAccounts domain, for RetailMedia applications"
           tokenUrl: https://api.criteo.com/oauth2/token
       type: oauth2
 x-samples-languages:

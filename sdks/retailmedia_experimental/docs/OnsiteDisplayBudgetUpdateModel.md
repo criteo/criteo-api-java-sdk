@@ -8,7 +8,7 @@ New financial intent of an OnsiteDisplay campaign. The whole node replaces the p
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**amount** | **Double** |  |  [optional] |
+|**amount** | **Double** |  |  |
 
 
 

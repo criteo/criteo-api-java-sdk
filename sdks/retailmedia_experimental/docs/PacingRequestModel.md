@@ -16,6 +16,7 @@ Asks the platform to spread the campaign budget rather than cap it per period.
 
 | Name | Value |
 |---- | -----|
+| NONE | &quot;None&quot; |
 | AUTOMATIC | &quot;Automatic&quot; |
 
 

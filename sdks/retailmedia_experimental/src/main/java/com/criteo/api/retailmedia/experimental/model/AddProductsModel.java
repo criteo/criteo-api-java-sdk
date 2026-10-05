@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.ProductModel;
+import com.criteo.api.retailmedia.experimental.model.AddDisplayProductDetailModel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -54,7 +54,7 @@ import com.criteo.api.retailmedia.experimental.JSON;
 public class AddProductsModel {
   public static final String SERIALIZED_NAME_DISPLAY_PRODUCT_DETAILS = "displayProductDetails";
   @SerializedName(SERIALIZED_NAME_DISPLAY_PRODUCT_DETAILS)
-  private List<ProductModel> displayProductDetails = null;
+  private List<AddDisplayProductDetailModel> displayProductDetails = null;
 
   /**
    * The type of product being added.
@@ -110,13 +110,13 @@ public class AddProductsModel {
   public AddProductsModel() {
   }
 
-  public AddProductsModel displayProductDetails(List<ProductModel> displayProductDetails) {
+  public AddProductsModel displayProductDetails(List<AddDisplayProductDetailModel> displayProductDetails) {
     
     this.displayProductDetails = displayProductDetails;
     return this;
   }
 
-  public AddProductsModel addDisplayProductDetailsItem(ProductModel displayProductDetailsItem) {
+  public AddProductsModel addDisplayProductDetailsItem(AddDisplayProductDetailModel displayProductDetailsItem) {
     if (this.displayProductDetails == null) {
       this.displayProductDetails = null;
     }
@@ -130,12 +130,12 @@ public class AddProductsModel {
   **/
   @javax.annotation.Nullable
 
-  public List<ProductModel> getDisplayProductDetails() {
+  public List<AddDisplayProductDetailModel> getDisplayProductDetails() {
     return displayProductDetails;
   }
 
 
-  public void setDisplayProductDetails(List<ProductModel> displayProductDetails) {
+  public void setDisplayProductDetails(List<AddDisplayProductDetailModel> displayProductDetails) {
     this.displayProductDetails = displayProductDetails;
   }
 
@@ -257,7 +257,7 @@ public class AddProductsModel {
 
           // validate the optional field `displayProductDetails` (array)
           for (int i = 0; i < jsonArraydisplayProductDetails.size(); i++) {
-            ProductModel.validateJsonObject(jsonArraydisplayProductDetails.get(i).getAsJsonObject());
+            AddDisplayProductDetailModel.validateJsonObject(jsonArraydisplayProductDetails.get(i).getAsJsonObject());
           };
         }
       }

@@ -9,11 +9,11 @@ Line Item search attributes
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**accountId** | **String** | The account id of the associated account. |  [optional] |
+|**budgetStatus** | [**BudgetStatusEnum**](#BudgetStatusEnum) | Indicates whether the line item has budget headroom to serve ads. |  [optional] |
 |**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) | The buy type of the line item. |  [optional] |
 |**campaignId** | **String** | The campaign id of the associated campaign. |  [optional] |
 |**conquestingSettings** | [**ConquestingSettings**](ConquestingSettings.md) |  |  [optional] |
 |**flightDates** | [**FlightDates**](FlightDates.md) |  |  [optional] |
-|**fundingStatus** | [**FundingStatusEnum**](#FundingStatusEnum) | Indicates whether the line item is funded. |  [optional] |
 |**isPaused** | **Boolean** | Indicates whether the line item is paused. |  [optional] |
 |**lineItemId** | **String** | The id of the line item. |  [optional] |
 |**lineItemType** | [**LineItemTypeEnum**](#LineItemTypeEnum) | The type of the line item. |  [optional] |
@@ -25,6 +25,18 @@ Line Item search attributes
 
 
 
+## Enum: BudgetStatusEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;Unknown&quot; |
+| BUDGETAVAILABLE | &quot;BudgetAvailable&quot; |
+| DAILYBUDGETREACHED | &quot;DailyBudgetReached&quot; |
+| MONTHLYBUDGETREACHED | &quot;MonthlyBudgetReached&quot; |
+| TOTALBUDGETREACHED | &quot;TotalBudgetReached&quot; |
+
+
+
 ## Enum: BuyTypeEnum
 
 | Name | Value |
@@ -32,19 +44,6 @@ Line Item search attributes
 | AUCTION | &quot;Auction&quot; |
 | PREFERREDDEALS | &quot;PreferredDeals&quot; |
 | SPONSORSHIP | &quot;Sponsorship&quot; |
-
-
-
-## Enum: FundingStatusEnum
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
-| FUNDED | &quot;Funded&quot; |
-| DAILYBUDGETREACHED | &quot;DailyBudgetReached&quot; |
-| MONTHLYBUDGETREACHED | &quot;MonthlyBudgetReached&quot; |
-| TOTALBUDGETREACHED | &quot;TotalBudgetReached&quot; |
-| BALANCEEXHAUSTED | &quot;BalanceExhausted&quot; |
 
 
 

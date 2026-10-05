@@ -16,6 +16,7 @@ package com.criteo.api.retailmedia.experimental.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.experimental.model.BudgetCappingRequestModel;
+import com.criteo.api.retailmedia.experimental.model.DecimalNullableNillableV2;
 import com.criteo.api.retailmedia.experimental.model.PacingRequestModel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -49,13 +50,13 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * New financial intent of a SponsoredProducts campaign. The whole node replaces the previous  budget; omit it to leave the budget unchanged.
+ * Budget fields of a SponsoredProducts campaign to update. An omitted field is left unchanged.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SponsoredProductsBudgetUpdateModel {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private Double amount;
+  private DecimalNullableNillableV2 amount;
 
   public static final String SERIALIZED_NAME_CAPPINGS = "cappings";
   @SerializedName(SERIALIZED_NAME_CAPPINGS)
@@ -68,7 +69,7 @@ public class SponsoredProductsBudgetUpdateModel {
   public SponsoredProductsBudgetUpdateModel() {
   }
 
-  public SponsoredProductsBudgetUpdateModel amount(Double amount) {
+  public SponsoredProductsBudgetUpdateModel amount(DecimalNullableNillableV2 amount) {
     
     this.amount = amount;
     return this;
@@ -80,12 +81,12 @@ public class SponsoredProductsBudgetUpdateModel {
   **/
   @javax.annotation.Nullable
 
-  public Double getAmount() {
+  public DecimalNullableNillableV2 getAmount() {
     return amount;
   }
 
 
-  public void setAmount(Double amount) {
+  public void setAmount(DecimalNullableNillableV2 amount) {
     this.amount = amount;
   }
 
@@ -229,6 +230,10 @@ public class SponsoredProductsBudgetUpdateModel {
         if (!SponsoredProductsBudgetUpdateModel.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SponsoredProductsBudgetUpdateModel` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
+      }
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        DecimalNullableNillableV2.validateJsonObject(jsonObj.getAsJsonObject("amount"));
       }
       if (jsonObj.get("cappings") != null && !jsonObj.get("cappings").isJsonNull()) {
         JsonArray jsonArraycappings = jsonObj.getAsJsonArray("cappings");

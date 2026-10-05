@@ -54,9 +54,11 @@ public class PacingModel {
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    UNKNOWN("Unknown"),
+    NONE("None"),
     
-    AUTOMATIC("Automatic");
+    AUTOMATIC("Automatic"),
+    
+    UNKNOWN("Unknown");
 
     private String value;
 

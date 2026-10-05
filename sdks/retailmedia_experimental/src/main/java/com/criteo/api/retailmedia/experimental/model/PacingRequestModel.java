@@ -53,6 +53,8 @@ public class PacingRequestModel {
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
+    NONE("None"),
+    
     AUTOMATIC("Automatic");
 
     private String value;

@@ -67,7 +67,7 @@ public class ScheduleDetailsCreateModel {
   }
 
    /**
-   * Campaign end date. Pass exactly {9999-12-30T00:00:00Z} for a SponsoredProducts campaign that  runs indefinitely; any other value, including a neighbouring far-future date, is a real end date.  An OnsiteDisplay Auction campaign cannot run indefinitely and rejects that date.
+   * Campaign end date. Pass exactly {9999-12-30T00:00:00Z} for a SponsoredProducts campaign that  runs indefinitely; any other value, including a neighbouring far-future date, is a real end date.  A dynamic objective spends over a flight and rejects that date. An OnsiteDisplay Auction  campaign cannot run indefinitely and rejects it too.
    * @return endDate
   **/
   @javax.annotation.Nonnull

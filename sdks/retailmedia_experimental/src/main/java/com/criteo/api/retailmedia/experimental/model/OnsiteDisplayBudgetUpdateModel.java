@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -66,7 +65,7 @@ public class OnsiteDisplayBudgetUpdateModel {
    * Get amount
    * @return amount
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public Double getAmount() {
     return amount;
@@ -91,20 +90,9 @@ public class OnsiteDisplayBudgetUpdateModel {
     return Objects.equals(this.amount, onsiteDisplayBudgetUpdateModel.amount);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(amount);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -138,6 +126,7 @@ public class OnsiteDisplayBudgetUpdateModel {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("amount");
   }
 
  /**
@@ -158,6 +147,13 @@ public class OnsiteDisplayBudgetUpdateModel {
       for (Entry<String, JsonElement> entry : entries) {
         if (!OnsiteDisplayBudgetUpdateModel.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OnsiteDisplayBudgetUpdateModel` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : OnsiteDisplayBudgetUpdateModel.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
   }

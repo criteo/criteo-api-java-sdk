@@ -6407,6 +6407,9 @@ components:
         videoAspectRatio:
         - Horizontal
         - Horizontal
+        includeNotRewarded: true
+        includeUnknownRewarded: true
+        includeRewarded: true
         videoPlcmt:
         - InStream
         - InStream
@@ -6419,6 +6422,18 @@ components:
         - PreRoll
       nullable: true
       properties:
+        includeNotRewarded:
+          description: Should target inventory marked as not rewarded?
+          nullable: true
+          type: boolean
+        includeRewarded:
+          description: Should target inventory marked as rewarded?
+          nullable: true
+          type: boolean
+        includeUnknownRewarded:
+          description: Should target inventory which rewarded status is unknown?
+          nullable: true
+          type: boolean
         playbackMethod:
           items:
             enum:
@@ -6584,6 +6599,9 @@ components:
           videoAspectRatio:
           - Horizontal
           - Horizontal
+          includeNotRewarded: true
+          includeUnknownRewarded: true
+          includeRewarded: true
           videoPlcmt:
           - InStream
           - InStream
@@ -6616,6 +6634,9 @@ components:
             videoAspectRatio:
             - Horizontal
             - Horizontal
+            includeNotRewarded: true
+            includeUnknownRewarded: true
+            includeRewarded: true
             videoPlcmt:
             - InStream
             - InStream
@@ -7001,12 +7022,8 @@ components:
           attributes:
             mode: BLOCKLIST
             data:
-            - active: true
-              readOnly: true
-              value: value
-            - active: true
-              readOnly: true
-              value: value
+            - value: value
+            - value: value
             type: DOMAIN
           type: type
       properties:
@@ -7020,12 +7037,8 @@ components:
           attributes:
             mode: BLOCKLIST
             data:
-            - active: true
-              readOnly: true
-              value: value
-            - active: true
-              readOnly: true
-              value: value
+            - value: value
+            - value: value
             type: DOMAIN
           type: type
       properties:
@@ -13902,16 +13915,8 @@ components:
     EntityFilter:
       description: Represents a filter value for a blocklist or allowlist rule
       example:
-        active: true
-        readOnly: true
         value: value
       properties:
-        active:
-          nullable: true
-          type: boolean
-        readOnly:
-          nullable: true
-          type: boolean
         value:
           description: Could be a domain or a bundle depending on the context
           nullable: true
@@ -14044,12 +14049,8 @@ components:
         attributes:
           mode: BLOCKLIST
           data:
-          - active: true
-            readOnly: true
-            value: value
-          - active: true
-            readOnly: true
-            value: value
+          - value: value
+          - value: value
           type: DOMAIN
         type: type
       nullable: true
@@ -26379,6 +26380,9 @@ components:
         videoAspectRatio:
         - Horizontal
         - Horizontal
+        includeNotRewarded: true
+        includeUnknownRewarded: true
+        includeRewarded: true
         videoPlcmt:
         - InStream
         - InStream
@@ -26390,6 +26394,15 @@ components:
         - PreRoll
         - PreRoll
       properties:
+        includeNotRewarded:
+          description: Should target inventory marked as not rewarded?
+          type: boolean
+        includeRewarded:
+          description: Should target inventory marked as rewarded?
+          type: boolean
+        includeUnknownRewarded:
+          description: Should target inventory which rewarded status is unknown?
+          type: boolean
         playbackMethod:
           items:
             enum:
@@ -26461,6 +26474,9 @@ components:
             videoAspectRatio:
             - Horizontal
             - Horizontal
+            includeNotRewarded: true
+            includeUnknownRewarded: true
+            includeRewarded: true
             videoPlcmt:
             - InStream
             - InStream
@@ -26486,6 +26502,9 @@ components:
           videoAspectRatio:
           - Horizontal
           - Horizontal
+          includeNotRewarded: true
+          includeUnknownRewarded: true
+          includeRewarded: true
           videoPlcmt:
           - InStream
           - InStream
@@ -27637,12 +27656,8 @@ components:
       example:
         mode: BLOCKLIST
         data:
-        - active: true
-          readOnly: true
-          value: value
-        - active: true
-          readOnly: true
-          value: value
+        - value: value
+        - value: value
         type: DOMAIN
       nullable: true
       properties:
@@ -28916,10 +28931,60 @@ components:
       flows:
         authorizationCode:
           authorizationUrl: https://api.criteo.com/oauth2
-          scopes: {}
+          scopes:
+            MarketingSolutions_Analytics_Read: "Grants Read access to the capabilities\
+              \ from the Analytics domain, for MarketingSolutions applications"
+            MarketingSolutions_Audience_Manage: "Grants Manage access to the capabilities\
+              \ from the Audience domain, for MarketingSolutions applications"
+            MarketingSolutions_Audience_Read: "Grants Read access to the capabilities\
+              \ from the Audience domain, for MarketingSolutions applications"
+            MarketingSolutions_Campaign_Manage: "Grants Manage access to the capabilities\
+              \ from the Campaign domain, for MarketingSolutions applications"
+            MarketingSolutions_Campaign_Read: "Grants Read access to the capabilities\
+              \ from the Campaign domain, for MarketingSolutions applications"
+            MarketingSolutions_Catalog_Manage: "Grants Manage access to the capabilities\
+              \ from the Catalog domain, for MarketingSolutions applications"
+            MarketingSolutions_Catalog_Read: "Grants Read access to the capabilities\
+              \ from the Catalog domain, for MarketingSolutions applications"
+            MarketingSolutions_Creative_Manage: "Grants Manage access to the capabilities\
+              \ from the Creative domain, for MarketingSolutions applications"
+            MarketingSolutions_Creative_Read: "Grants Read access to the capabilities\
+              \ from the Creative domain, for MarketingSolutions applications"
+            MarketingSolutions_OnSiteRecommendation_Read: "Grants Read access to the\
+              \ capabilities from the OnSiteRecommendation domain, for MarketingSolutions\
+              \ applications"
+            MarketingSolutions_Reco_Manage: "Grants Manage access to the capabilities\
+              \ from the Reco domain, for MarketingSolutions applications"
+            MarketingSolutions_Reco_Read: "Grants Read access to the capabilities\
+              \ from the Reco domain, for MarketingSolutions applications"
           tokenUrl: https://api.criteo.com/oauth2/token
         clientCredentials:
-          scopes: {}
+          scopes:
+            MarketingSolutions_Analytics_Read: "Grants Read access to the capabilities\
+              \ from the Analytics domain, for MarketingSolutions applications"
+            MarketingSolutions_Audience_Manage: "Grants Manage access to the capabilities\
+              \ from the Audience domain, for MarketingSolutions applications"
+            MarketingSolutions_Audience_Read: "Grants Read access to the capabilities\
+              \ from the Audience domain, for MarketingSolutions applications"
+            MarketingSolutions_Campaign_Manage: "Grants Manage access to the capabilities\
+              \ from the Campaign domain, for MarketingSolutions applications"
+            MarketingSolutions_Campaign_Read: "Grants Read access to the capabilities\
+              \ from the Campaign domain, for MarketingSolutions applications"
+            MarketingSolutions_Catalog_Manage: "Grants Manage access to the capabilities\
+              \ from the Catalog domain, for MarketingSolutions applications"
+            MarketingSolutions_Catalog_Read: "Grants Read access to the capabilities\
+              \ from the Catalog domain, for MarketingSolutions applications"
+            MarketingSolutions_Creative_Manage: "Grants Manage access to the capabilities\
+              \ from the Creative domain, for MarketingSolutions applications"
+            MarketingSolutions_Creative_Read: "Grants Read access to the capabilities\
+              \ from the Creative domain, for MarketingSolutions applications"
+            MarketingSolutions_OnSiteRecommendation_Read: "Grants Read access to the\
+              \ capabilities from the OnSiteRecommendation domain, for MarketingSolutions\
+              \ applications"
+            MarketingSolutions_Reco_Manage: "Grants Manage access to the capabilities\
+              \ from the Reco domain, for MarketingSolutions applications"
+            MarketingSolutions_Reco_Read: "Grants Read access to the capabilities\
+              \ from the Reco domain, for MarketingSolutions applications"
           tokenUrl: https://api.criteo.com/oauth2/token
       type: oauth2
 x-samples-languages:

@@ -50,6 +50,18 @@ import com.criteo.api.marketingsolutions.experimental.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SetAdSetTargetingVideoPositioning {
+  public static final String SERIALIZED_NAME_INCLUDE_NOT_REWARDED = "includeNotRewarded";
+  @SerializedName(SERIALIZED_NAME_INCLUDE_NOT_REWARDED)
+  private Boolean includeNotRewarded;
+
+  public static final String SERIALIZED_NAME_INCLUDE_REWARDED = "includeRewarded";
+  @SerializedName(SERIALIZED_NAME_INCLUDE_REWARDED)
+  private Boolean includeRewarded;
+
+  public static final String SERIALIZED_NAME_INCLUDE_UNKNOWN_REWARDED = "includeUnknownRewarded";
+  @SerializedName(SERIALIZED_NAME_INCLUDE_UNKNOWN_REWARDED)
+  private Boolean includeUnknownRewarded;
+
   /**
    * Gets or Sets playbackMethod
    */
@@ -379,6 +391,72 @@ public class SetAdSetTargetingVideoPositioning {
   public SetAdSetTargetingVideoPositioning() {
   }
 
+  public SetAdSetTargetingVideoPositioning includeNotRewarded(Boolean includeNotRewarded) {
+    
+    this.includeNotRewarded = includeNotRewarded;
+    return this;
+  }
+
+   /**
+   * Should target inventory marked as not rewarded?
+   * @return includeNotRewarded
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getIncludeNotRewarded() {
+    return includeNotRewarded;
+  }
+
+
+  public void setIncludeNotRewarded(Boolean includeNotRewarded) {
+    this.includeNotRewarded = includeNotRewarded;
+  }
+
+
+  public SetAdSetTargetingVideoPositioning includeRewarded(Boolean includeRewarded) {
+    
+    this.includeRewarded = includeRewarded;
+    return this;
+  }
+
+   /**
+   * Should target inventory marked as rewarded?
+   * @return includeRewarded
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getIncludeRewarded() {
+    return includeRewarded;
+  }
+
+
+  public void setIncludeRewarded(Boolean includeRewarded) {
+    this.includeRewarded = includeRewarded;
+  }
+
+
+  public SetAdSetTargetingVideoPositioning includeUnknownRewarded(Boolean includeUnknownRewarded) {
+    
+    this.includeUnknownRewarded = includeUnknownRewarded;
+    return this;
+  }
+
+   /**
+   * Should target inventory which rewarded status is unknown?
+   * @return includeUnknownRewarded
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getIncludeUnknownRewarded() {
+    return includeUnknownRewarded;
+  }
+
+
+  public void setIncludeUnknownRewarded(Boolean includeUnknownRewarded) {
+    this.includeUnknownRewarded = includeUnknownRewarded;
+  }
+
+
   public SetAdSetTargetingVideoPositioning playbackMethod(List<PlaybackMethodEnum> playbackMethod) {
     
     this.playbackMethod = playbackMethod;
@@ -605,7 +683,10 @@ public class SetAdSetTargetingVideoPositioning {
       return false;
     }
     SetAdSetTargetingVideoPositioning setAdSetTargetingVideoPositioning = (SetAdSetTargetingVideoPositioning) o;
-    return Objects.equals(this.playbackMethod, setAdSetTargetingVideoPositioning.playbackMethod) &&
+    return Objects.equals(this.includeNotRewarded, setAdSetTargetingVideoPositioning.includeNotRewarded) &&
+        Objects.equals(this.includeRewarded, setAdSetTargetingVideoPositioning.includeRewarded) &&
+        Objects.equals(this.includeUnknownRewarded, setAdSetTargetingVideoPositioning.includeUnknownRewarded) &&
+        Objects.equals(this.playbackMethod, setAdSetTargetingVideoPositioning.playbackMethod) &&
         Objects.equals(this.skippable, setAdSetTargetingVideoPositioning.skippable) &&
         Objects.equals(this.videoAspectRatio, setAdSetTargetingVideoPositioning.videoAspectRatio) &&
         Objects.equals(this.videoInStreamPosition, setAdSetTargetingVideoPositioning.videoInStreamPosition) &&
@@ -616,13 +697,16 @@ public class SetAdSetTargetingVideoPositioning {
 
   @Override
   public int hashCode() {
-    return Objects.hash(playbackMethod, skippable, videoAspectRatio, videoInStreamPosition, videoPlayerSize, videoPlcmt, additionalProperties);
+    return Objects.hash(includeNotRewarded, includeRewarded, includeUnknownRewarded, playbackMethod, skippable, videoAspectRatio, videoInStreamPosition, videoPlayerSize, videoPlcmt, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SetAdSetTargetingVideoPositioning {\n");
+    sb.append("    includeNotRewarded: ").append(toIndentedString(includeNotRewarded)).append("\n");
+    sb.append("    includeRewarded: ").append(toIndentedString(includeRewarded)).append("\n");
+    sb.append("    includeUnknownRewarded: ").append(toIndentedString(includeUnknownRewarded)).append("\n");
     sb.append("    playbackMethod: ").append(toIndentedString(playbackMethod)).append("\n");
     sb.append("    skippable: ").append(toIndentedString(skippable)).append("\n");
     sb.append("    videoAspectRatio: ").append(toIndentedString(videoAspectRatio)).append("\n");
@@ -652,6 +736,9 @@ public class SetAdSetTargetingVideoPositioning {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("includeNotRewarded");
+    openapiFields.add("includeRewarded");
+    openapiFields.add("includeUnknownRewarded");
     openapiFields.add("playbackMethod");
     openapiFields.add("skippable");
     openapiFields.add("videoAspectRatio");

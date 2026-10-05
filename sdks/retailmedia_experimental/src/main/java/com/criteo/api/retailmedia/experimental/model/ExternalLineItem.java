@@ -52,38 +52,24 @@ import com.criteo.api.retailmedia.experimental.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalLineItem {
-  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private String campaignId;
-
-  public static final String SERIALIZED_NAME_CONQUESTING_SETTINGS = "conquestingSettings";
-  @SerializedName(SERIALIZED_NAME_CONQUESTING_SETTINGS)
-  private ExternalConquestingSettings conquestingSettings;
-
-  public static final String SERIALIZED_NAME_EFFECTIVE_FLIGHT_DATES = "effectiveFlightDates";
-  @SerializedName(SERIALIZED_NAME_EFFECTIVE_FLIGHT_DATES)
-  private ExternalFlightDatesModel effectiveFlightDates;
-
   /**
-   * Indicates whether the line item is funded.
+   * Indicates whether the line item has budget headroom to serve ads.
    */
-  @JsonAdapter(FundingStatusEnum.Adapter.class)
-  public enum FundingStatusEnum {
+  @JsonAdapter(BudgetStatusEnum.Adapter.class)
+  public enum BudgetStatusEnum {
     UNKNOWN("Unknown"),
     
-    FUNDED("Funded"),
+    BUDGETAVAILABLE("BudgetAvailable"),
     
     DAILYBUDGETREACHED("DailyBudgetReached"),
     
     MONTHLYBUDGETREACHED("MonthlyBudgetReached"),
     
-    TOTALBUDGETREACHED("TotalBudgetReached"),
-    
-    BALANCEEXHAUSTED("BalanceExhausted");
+    TOTALBUDGETREACHED("TotalBudgetReached");
 
     private String value;
 
-    FundingStatusEnum(String value) {
+    BudgetStatusEnum(String value) {
       this.value = value;
     }
 
@@ -96,8 +82,8 @@ public class ExternalLineItem {
       return String.valueOf(value);
     }
 
-    public static FundingStatusEnum fromValue(String value) {
-      for (FundingStatusEnum b : FundingStatusEnum.values()) {
+    public static BudgetStatusEnum fromValue(String value) {
+      for (BudgetStatusEnum b : BudgetStatusEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -105,23 +91,35 @@ public class ExternalLineItem {
       return null;
     }
 
-    public static class Adapter extends TypeAdapter<FundingStatusEnum> {
+    public static class Adapter extends TypeAdapter<BudgetStatusEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final FundingStatusEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final BudgetStatusEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public FundingStatusEnum read(final JsonReader jsonReader) throws IOException {
+      public BudgetStatusEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return FundingStatusEnum.fromValue(value);
+        return BudgetStatusEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_FUNDING_STATUS = "fundingStatus";
-  @SerializedName(SERIALIZED_NAME_FUNDING_STATUS)
-  private FundingStatusEnum fundingStatus;
+  public static final String SERIALIZED_NAME_BUDGET_STATUS = "budgetStatus";
+  @SerializedName(SERIALIZED_NAME_BUDGET_STATUS)
+  private BudgetStatusEnum budgetStatus;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private String campaignId;
+
+  public static final String SERIALIZED_NAME_CONQUESTING_SETTINGS = "conquestingSettings";
+  @SerializedName(SERIALIZED_NAME_CONQUESTING_SETTINGS)
+  private ExternalConquestingSettings conquestingSettings;
+
+  public static final String SERIALIZED_NAME_EFFECTIVE_FLIGHT_DATES = "effectiveFlightDates";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_FLIGHT_DATES)
+  private ExternalFlightDatesModel effectiveFlightDates;
 
   public static final String SERIALIZED_NAME_IS_PAUSED = "isPaused";
   @SerializedName(SERIALIZED_NAME_IS_PAUSED)
@@ -203,6 +201,28 @@ public class ExternalLineItem {
   public ExternalLineItem() {
   }
 
+  public ExternalLineItem budgetStatus(BudgetStatusEnum budgetStatus) {
+    
+    this.budgetStatus = budgetStatus;
+    return this;
+  }
+
+   /**
+   * Indicates whether the line item has budget headroom to serve ads.
+   * @return budgetStatus
+  **/
+  @javax.annotation.Nullable
+
+  public BudgetStatusEnum getBudgetStatus() {
+    return budgetStatus;
+  }
+
+
+  public void setBudgetStatus(BudgetStatusEnum budgetStatus) {
+    this.budgetStatus = budgetStatus;
+  }
+
+
   public ExternalLineItem campaignId(String campaignId) {
     
     this.campaignId = campaignId;
@@ -266,28 +286,6 @@ public class ExternalLineItem {
 
   public void setEffectiveFlightDates(ExternalFlightDatesModel effectiveFlightDates) {
     this.effectiveFlightDates = effectiveFlightDates;
-  }
-
-
-  public ExternalLineItem fundingStatus(FundingStatusEnum fundingStatus) {
-    
-    this.fundingStatus = fundingStatus;
-    return this;
-  }
-
-   /**
-   * Indicates whether the line item is funded.
-   * @return fundingStatus
-  **/
-  @javax.annotation.Nullable
-
-  public FundingStatusEnum getFundingStatus() {
-    return fundingStatus;
-  }
-
-
-  public void setFundingStatus(FundingStatusEnum fundingStatus) {
-    this.fundingStatus = fundingStatus;
   }
 
 
@@ -455,10 +453,10 @@ public class ExternalLineItem {
       return false;
     }
     ExternalLineItem externalLineItem = (ExternalLineItem) o;
-    return Objects.equals(this.campaignId, externalLineItem.campaignId) &&
+    return Objects.equals(this.budgetStatus, externalLineItem.budgetStatus) &&
+        Objects.equals(this.campaignId, externalLineItem.campaignId) &&
         Objects.equals(this.conquestingSettings, externalLineItem.conquestingSettings) &&
         Objects.equals(this.effectiveFlightDates, externalLineItem.effectiveFlightDates) &&
-        Objects.equals(this.fundingStatus, externalLineItem.fundingStatus) &&
         Objects.equals(this.isPaused, externalLineItem.isPaused) &&
         Objects.equals(this.lineItemId, externalLineItem.lineItemId) &&
         Objects.equals(this.name, externalLineItem.name) &&
@@ -474,7 +472,7 @@ public class ExternalLineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, conquestingSettings, effectiveFlightDates, fundingStatus, isPaused, lineItemId, name, onsiteDisplayDetails, retailerId, serveToOptOutUser, type);
+    return Objects.hash(budgetStatus, campaignId, conquestingSettings, effectiveFlightDates, isPaused, lineItemId, name, onsiteDisplayDetails, retailerId, serveToOptOutUser, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -488,10 +486,10 @@ public class ExternalLineItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalLineItem {\n");
+    sb.append("    budgetStatus: ").append(toIndentedString(budgetStatus)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    conquestingSettings: ").append(toIndentedString(conquestingSettings)).append("\n");
     sb.append("    effectiveFlightDates: ").append(toIndentedString(effectiveFlightDates)).append("\n");
-    sb.append("    fundingStatus: ").append(toIndentedString(fundingStatus)).append("\n");
     sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
     sb.append("    lineItemId: ").append(toIndentedString(lineItemId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -521,10 +519,10 @@ public class ExternalLineItem {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("budgetStatus");
     openapiFields.add("campaignId");
     openapiFields.add("conquestingSettings");
     openapiFields.add("effectiveFlightDates");
-    openapiFields.add("fundingStatus");
     openapiFields.add("isPaused");
     openapiFields.add("lineItemId");
     openapiFields.add("name");
@@ -557,6 +555,9 @@ public class ExternalLineItem {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExternalLineItem` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("budgetStatus") != null && !jsonObj.get("budgetStatus").isJsonNull()) && !jsonObj.get("budgetStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `budgetStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("budgetStatus").toString()));
+      }
       if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
       }
@@ -567,9 +568,6 @@ public class ExternalLineItem {
       // validate the optional field `effectiveFlightDates`
       if (jsonObj.get("effectiveFlightDates") != null && !jsonObj.get("effectiveFlightDates").isJsonNull()) {
         ExternalFlightDatesModel.validateJsonObject(jsonObj.getAsJsonObject("effectiveFlightDates"));
-      }
-      if ((jsonObj.get("fundingStatus") != null && !jsonObj.get("fundingStatus").isJsonNull()) && !jsonObj.get("fundingStatus").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fundingStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fundingStatus").toString()));
       }
       if ((jsonObj.get("lineItemId") != null && !jsonObj.get("lineItemId").isJsonNull()) && !jsonObj.get("lineItemId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineItemId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineItemId").toString()));

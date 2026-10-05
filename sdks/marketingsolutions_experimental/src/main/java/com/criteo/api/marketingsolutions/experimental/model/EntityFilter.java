@@ -49,64 +49,12 @@ import com.criteo.api.marketingsolutions.experimental.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EntityFilter {
-  public static final String SERIALIZED_NAME_ACTIVE = "active";
-  @SerializedName(SERIALIZED_NAME_ACTIVE)
-  private Boolean active;
-
-  public static final String SERIALIZED_NAME_READ_ONLY = "readOnly";
-  @SerializedName(SERIALIZED_NAME_READ_ONLY)
-  private Boolean readOnly;
-
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   private String value;
 
   public EntityFilter() {
   }
-
-  public EntityFilter active(Boolean active) {
-    
-    this.active = active;
-    return this;
-  }
-
-   /**
-   * Get active
-   * @return active
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getActive() {
-    return active;
-  }
-
-
-  public void setActive(Boolean active) {
-    this.active = active;
-  }
-
-
-  public EntityFilter readOnly(Boolean readOnly) {
-    
-    this.readOnly = readOnly;
-    return this;
-  }
-
-   /**
-   * Get readOnly
-   * @return readOnly
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getReadOnly() {
-    return readOnly;
-  }
-
-
-  public void setReadOnly(Boolean readOnly) {
-    this.readOnly = readOnly;
-  }
-
 
   public EntityFilter value(String value) {
     
@@ -184,9 +132,7 @@ public class EntityFilter {
       return false;
     }
     EntityFilter entityFilter = (EntityFilter) o;
-    return Objects.equals(this.active, entityFilter.active) &&
-        Objects.equals(this.readOnly, entityFilter.readOnly) &&
-        Objects.equals(this.value, entityFilter.value)&&
+    return Objects.equals(this.value, entityFilter.value)&&
         Objects.equals(this.additionalProperties, entityFilter.additionalProperties);
   }
 
@@ -196,7 +142,7 @@ public class EntityFilter {
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, readOnly, value, additionalProperties);
+    return Objects.hash(value, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -210,8 +156,6 @@ public class EntityFilter {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityFilter {\n");
-    sb.append("    active: ").append(toIndentedString(active)).append("\n");
-    sb.append("    readOnly: ").append(toIndentedString(readOnly)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -236,8 +180,6 @@ public class EntityFilter {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("active");
-    openapiFields.add("readOnly");
     openapiFields.add("value");
 
     // a set of required properties/fields (JSON key names)
