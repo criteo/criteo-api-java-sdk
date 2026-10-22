@@ -73,7 +73,7 @@ public class PromotedProduct {
   }
 
    /**
-   * The bid override for the promoted product for this line item. Ignored unless adding a product.
+   * The bid override for the promoted product for this line item. Only honored by the products &#x60;/append&#x60; endpoint; ignored by the &#x60;/delete&#x60;, &#x60;/pause&#x60;, and &#x60;/unpause&#x60; endpoints.
    * @return bidOverride
   **/
   @javax.annotation.Nullable

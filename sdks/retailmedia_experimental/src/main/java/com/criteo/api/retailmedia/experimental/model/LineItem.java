@@ -15,10 +15,8 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.ConquestingSettings;
 import com.criteo.api.retailmedia.experimental.model.FlightDates;
 import com.criteo.api.retailmedia.experimental.model.OnsiteDisplayAttributes;
-import com.criteo.api.retailmedia.experimental.model.SponsoredProductsAttributes;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -171,10 +169,6 @@ public class LineItem {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private String campaignId;
 
-  public static final String SERIALIZED_NAME_CONQUESTING_SETTINGS = "conquestingSettings";
-  @SerializedName(SERIALIZED_NAME_CONQUESTING_SETTINGS)
-  private ConquestingSettings conquestingSettings;
-
   public static final String SERIALIZED_NAME_FLIGHT_DATES = "flightDates";
   @SerializedName(SERIALIZED_NAME_FLIGHT_DATES)
   private FlightDates flightDates;
@@ -253,10 +247,6 @@ public class LineItem {
   public static final String SERIALIZED_NAME_SERVE_TO_OPT_OUT_USER = "serveToOptOutUser";
   @SerializedName(SERIALIZED_NAME_SERVE_TO_OPT_OUT_USER)
   private Boolean serveToOptOutUser;
-
-  public static final String SERIALIZED_NAME_SPONSORED_PRODUCTS = "sponsoredProducts";
-  @SerializedName(SERIALIZED_NAME_SPONSORED_PRODUCTS)
-  private SponsoredProductsAttributes sponsoredProducts;
 
   public LineItem() {
   }
@@ -346,28 +336,6 @@ public class LineItem {
 
   public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
-  }
-
-
-  public LineItem conquestingSettings(ConquestingSettings conquestingSettings) {
-    
-    this.conquestingSettings = conquestingSettings;
-    return this;
-  }
-
-   /**
-   * Get conquestingSettings
-   * @return conquestingSettings
-  **/
-  @javax.annotation.Nullable
-
-  public ConquestingSettings getConquestingSettings() {
-    return conquestingSettings;
-  }
-
-
-  public void setConquestingSettings(ConquestingSettings conquestingSettings) {
-    this.conquestingSettings = conquestingSettings;
   }
 
 
@@ -547,28 +515,6 @@ public class LineItem {
   }
 
 
-  public LineItem sponsoredProducts(SponsoredProductsAttributes sponsoredProducts) {
-    
-    this.sponsoredProducts = sponsoredProducts;
-    return this;
-  }
-
-   /**
-   * Get sponsoredProducts
-   * @return sponsoredProducts
-  **/
-  @javax.annotation.Nullable
-
-  public SponsoredProductsAttributes getSponsoredProducts() {
-    return sponsoredProducts;
-  }
-
-
-  public void setSponsoredProducts(SponsoredProductsAttributes sponsoredProducts) {
-    this.sponsoredProducts = sponsoredProducts;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -583,7 +529,6 @@ public class LineItem {
         Objects.equals(this.budgetStatus, lineItem.budgetStatus) &&
         Objects.equals(this.buyType, lineItem.buyType) &&
         Objects.equals(this.campaignId, lineItem.campaignId) &&
-        Objects.equals(this.conquestingSettings, lineItem.conquestingSettings) &&
         Objects.equals(this.flightDates, lineItem.flightDates) &&
         Objects.equals(this.isPaused, lineItem.isPaused) &&
         Objects.equals(this.lineItemId, lineItem.lineItemId) &&
@@ -591,8 +536,7 @@ public class LineItem {
         Objects.equals(this.name, lineItem.name) &&
         Objects.equals(this.onsiteDisplay, lineItem.onsiteDisplay) &&
         Objects.equals(this.retailerId, lineItem.retailerId) &&
-        Objects.equals(this.serveToOptOutUser, lineItem.serveToOptOutUser) &&
-        Objects.equals(this.sponsoredProducts, lineItem.sponsoredProducts);
+        Objects.equals(this.serveToOptOutUser, lineItem.serveToOptOutUser);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -601,7 +545,7 @@ public class LineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, budgetStatus, buyType, campaignId, conquestingSettings, flightDates, isPaused, lineItemId, lineItemType, name, onsiteDisplay, retailerId, serveToOptOutUser, sponsoredProducts);
+    return Objects.hash(accountId, budgetStatus, buyType, campaignId, flightDates, isPaused, lineItemId, lineItemType, name, onsiteDisplay, retailerId, serveToOptOutUser);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -619,7 +563,6 @@ public class LineItem {
     sb.append("    budgetStatus: ").append(toIndentedString(budgetStatus)).append("\n");
     sb.append("    buyType: ").append(toIndentedString(buyType)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    conquestingSettings: ").append(toIndentedString(conquestingSettings)).append("\n");
     sb.append("    flightDates: ").append(toIndentedString(flightDates)).append("\n");
     sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
     sb.append("    lineItemId: ").append(toIndentedString(lineItemId)).append("\n");
@@ -628,7 +571,6 @@ public class LineItem {
     sb.append("    onsiteDisplay: ").append(toIndentedString(onsiteDisplay)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    serveToOptOutUser: ").append(toIndentedString(serveToOptOutUser)).append("\n");
-    sb.append("    sponsoredProducts: ").append(toIndentedString(sponsoredProducts)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -655,7 +597,6 @@ public class LineItem {
     openapiFields.add("budgetStatus");
     openapiFields.add("buyType");
     openapiFields.add("campaignId");
-    openapiFields.add("conquestingSettings");
     openapiFields.add("flightDates");
     openapiFields.add("isPaused");
     openapiFields.add("lineItemId");
@@ -664,7 +605,6 @@ public class LineItem {
     openapiFields.add("onsiteDisplay");
     openapiFields.add("retailerId");
     openapiFields.add("serveToOptOutUser");
-    openapiFields.add("sponsoredProducts");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -702,10 +642,6 @@ public class LineItem {
       if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
       }
-      // validate the optional field `conquestingSettings`
-      if (jsonObj.get("conquestingSettings") != null && !jsonObj.get("conquestingSettings").isJsonNull()) {
-        ConquestingSettings.validateJsonObject(jsonObj.getAsJsonObject("conquestingSettings"));
-      }
       // validate the optional field `flightDates`
       if (jsonObj.get("flightDates") != null && !jsonObj.get("flightDates").isJsonNull()) {
         FlightDates.validateJsonObject(jsonObj.getAsJsonObject("flightDates"));
@@ -725,10 +661,6 @@ public class LineItem {
       }
       if ((jsonObj.get("retailerId") != null && !jsonObj.get("retailerId").isJsonNull()) && !jsonObj.get("retailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
-      }
-      // validate the optional field `sponsoredProducts`
-      if (jsonObj.get("sponsoredProducts") != null && !jsonObj.get("sponsoredProducts").isJsonNull()) {
-        SponsoredProductsAttributes.validateJsonObject(jsonObj.getAsJsonObject("sponsoredProducts"));
       }
   }
 

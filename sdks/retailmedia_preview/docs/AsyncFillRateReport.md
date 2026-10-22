@@ -86,6 +86,8 @@ Async FillRate report body request
 | PLACEMENTSWITHCANDIDATES | &quot;placementsWithCandidates&quot; |
 | COVEREDPLACEMENTS | &quot;coveredPlacements&quot; |
 | COVERAGERATE | &quot;coverageRate&quot; |
+| COVEREDSLOTS | &quot;coveredSlots&quot; |
+| DELIVERABLESLOTSINFERRED | &quot;deliverableSlotsInferred&quot; |
 
 
 

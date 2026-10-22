@@ -63,7 +63,7 @@ public class ExternalCreateOnsiteDisplayAuctionLineItemDetails {
   }
 
    /**
-   * Whether to serve only products relevant to the page context, replacing manual SKU curation.
+   * Whether only products relevant to the page context serve.
    * @return isDynamicMatch
   **/
   @javax.annotation.Nullable

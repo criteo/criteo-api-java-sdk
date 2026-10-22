@@ -54,10 +54,6 @@ public class ExternalCreateLineItemModel {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private String campaignId;
 
-  public static final String SERIALIZED_NAME_IS_PAUSED = "isPaused";
-  @SerializedName(SERIALIZED_NAME_IS_PAUSED)
-  private Boolean isPaused;
-
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -96,28 +92,6 @@ public class ExternalCreateLineItemModel {
 
   public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
-  }
-
-
-  public ExternalCreateLineItemModel isPaused(Boolean isPaused) {
-    
-    this.isPaused = isPaused;
-    return this;
-  }
-
-   /**
-   * Indicates whether the line item is paused. Defaults to false.
-   * @return isPaused
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getIsPaused() {
-    return isPaused;
-  }
-
-
-  public void setIsPaused(Boolean isPaused) {
-    this.isPaused = isPaused;
   }
 
 
@@ -220,7 +194,6 @@ public class ExternalCreateLineItemModel {
     }
     ExternalCreateLineItemModel externalCreateLineItemModel = (ExternalCreateLineItemModel) o;
     return Objects.equals(this.campaignId, externalCreateLineItemModel.campaignId) &&
-        Objects.equals(this.isPaused, externalCreateLineItemModel.isPaused) &&
         Objects.equals(this.name, externalCreateLineItemModel.name) &&
         Objects.equals(this.onsiteDisplayDetails, externalCreateLineItemModel.onsiteDisplayDetails) &&
         Objects.equals(this.retailerId, externalCreateLineItemModel.retailerId) &&
@@ -233,7 +206,7 @@ public class ExternalCreateLineItemModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, isPaused, name, onsiteDisplayDetails, retailerId, serveToOptOutUser);
+    return Objects.hash(campaignId, name, onsiteDisplayDetails, retailerId, serveToOptOutUser);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -248,7 +221,6 @@ public class ExternalCreateLineItemModel {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalCreateLineItemModel {\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onsiteDisplayDetails: ").append(toIndentedString(onsiteDisplayDetails)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
@@ -276,7 +248,6 @@ public class ExternalCreateLineItemModel {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("campaignId");
-    openapiFields.add("isPaused");
     openapiFields.add("name");
     openapiFields.add("onsiteDisplayDetails");
     openapiFields.add("retailerId");
@@ -284,6 +255,9 @@ public class ExternalCreateLineItemModel {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("campaignId");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("retailerId");
   }
 
  /**
@@ -306,17 +280,24 @@ public class ExternalCreateLineItemModel {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExternalCreateLineItemModel` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ExternalCreateLineItemModel.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `onsiteDisplayDetails`
       if (jsonObj.get("onsiteDisplayDetails") != null && !jsonObj.get("onsiteDisplayDetails").isJsonNull()) {
         ExternalCreateOnsiteDisplayLineItemDetails.validateJsonObject(jsonObj.getAsJsonObject("onsiteDisplayDetails"));
       }
-      if ((jsonObj.get("retailerId") != null && !jsonObj.get("retailerId").isJsonNull()) && !jsonObj.get("retailerId").isJsonPrimitive()) {
+      if (!jsonObj.get("retailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
       }
   }

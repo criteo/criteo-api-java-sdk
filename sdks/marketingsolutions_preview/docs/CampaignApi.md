@@ -1922,11 +1922,11 @@ public class Example {
 
 ## patchCampaigns
 
-> PatchResultCampaignListResponse patchCampaigns(patchCampaignListRequest)
+> PatchResultCampaignV27Q1ListResponse patchCampaigns(patchCampaignV27Q1ListRequest)
 
 /preview/marketing-solutions/campaigns
 
-Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+Patch a list of Campaigns: name, spend limit, scheduled spend limits and budget automation.  Omitted attributes are left unchanged. When provided, the name must not be empty.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
 
 ### Example
 
@@ -1967,9 +1967,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        PatchCampaignListRequest patchCampaignListRequest = new PatchCampaignListRequest(); // PatchCampaignListRequest | List of campaigns to patch.
+        PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest = new PatchCampaignV27Q1ListRequest(); // PatchCampaignV27Q1ListRequest | List of campaigns to patch.
         try {
-            PatchResultCampaignListResponse result = apiInstance.patchCampaigns(patchCampaignListRequest);
+            PatchResultCampaignV27Q1ListResponse result = apiInstance.patchCampaigns(patchCampaignV27Q1ListRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#patchCampaigns");
@@ -1987,11 +1987,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **patchCampaignListRequest** | [**PatchCampaignListRequest**](PatchCampaignListRequest.md)| List of campaigns to patch. | |
+| **patchCampaignV27Q1ListRequest** | [**PatchCampaignV27Q1ListRequest**](PatchCampaignV27Q1ListRequest.md)| List of campaigns to patch. | |
 
 ### Return type
 
-[**PatchResultCampaignListResponse**](PatchResultCampaignListResponse.md)
+[**PatchResultCampaignV27Q1ListResponse**](PatchResultCampaignV27Q1ListResponse.md)
 
 ### Authorization
 

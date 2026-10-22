@@ -17,6 +17,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getAudienceSegmentsInMarketBrands**](AudienceApi.md#getAudienceSegmentsInMarketBrands) | **GET** /experimental/marketing-solutions/audience-segments/in-market-brands | /experimental/marketing-solutions/audience-segments/in-market-brands |
 | [**getAudienceSegmentsInMarketInterests**](AudienceApi.md#getAudienceSegmentsInMarketInterests) | **GET** /experimental/marketing-solutions/audience-segments/in-market-interests | /experimental/marketing-solutions/audience-segments/in-market-interests |
 | [**modifyAudienceUsersWithAttributes**](AudienceApi.md#modifyAudienceUsersWithAttributes) | **PATCH** /experimental/marketing-solutions/audiences/{audience-id}/contactlist-attributes | /experimental/marketing-solutions/audiences/{audience-id}/contactlist-attributes |
+| [**recommendSegments**](AudienceApi.md#recommendSegments) | **POST** /experimental/marketing-solutions/audiences/recommend-segments | /experimental/marketing-solutions/audiences/recommend-segments |
 | [**searchAudienceSegments**](AudienceApi.md#searchAudienceSegments) | **POST** /experimental/marketing-solutions/audience-segments/search | /experimental/marketing-solutions/audience-segments/search |
 | [**searchAudiences**](AudienceApi.md#searchAudiences) | **POST** /experimental/marketing-solutions/audiences/search | /experimental/marketing-solutions/audiences/search |
 | [**updateAudienceSegments**](AudienceApi.md#updateAudienceSegments) | **PATCH** /experimental/marketing-solutions/audience-segments | /experimental/marketing-solutions/audience-segments |
@@ -1187,6 +1188,95 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Summary of created request |  -  |
+
+
+## recommendSegments
+
+> RecommendSegmentsResponse recommendSegments(recommendSegmentsRequest)
+
+/experimental/marketing-solutions/audiences/recommend-segments
+
+Recommend audience segments for MarketingSolutions from a freeform brief.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.experimental;
+
+import com.criteo.api.marketingsolutions.experimental.ApiClient;
+import com.criteo.api.marketingsolutions.experimental.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.experimental.ApiException;
+import com.criteo.api.marketingsolutions.experimental.Configuration;
+import com.criteo.api.marketingsolutions.experimental.auth.*;
+import com.criteo.api.marketingsolutions.experimental.model.*;
+import com.criteo.api.marketingsolutions.experimental.api.AudienceApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AudienceApi apiInstance = new AudienceApi(defaultClient);
+        RecommendSegmentsRequest recommendSegmentsRequest = new RecommendSegmentsRequest(); // RecommendSegmentsRequest | 
+        try {
+            RecommendSegmentsResponse result = apiInstance.recommendSegments(recommendSegmentsRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AudienceApi#recommendSegments");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **recommendSegmentsRequest** | [**RecommendSegmentsRequest**](RecommendSegmentsRequest.md)|  | |
+
+### Return type
+
+[**RecommendSegmentsResponse**](RecommendSegmentsResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Recommended audience segments. |  -  |
 
 
 ## searchAudienceSegments

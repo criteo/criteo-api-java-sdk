@@ -16,9 +16,8 @@ package com.criteo.api.retailmedia.experimental.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.experimental.model.AttributionSettingsCreateModel;
-import com.criteo.api.retailmedia.experimental.model.OnsiteDisplayDetailsCreateModel;
+import com.criteo.api.retailmedia.experimental.model.DynamicBudgetCreateModel;
 import com.criteo.api.retailmedia.experimental.model.ScheduleDetailsCreateModel;
-import com.criteo.api.retailmedia.experimental.model.SponsoredProductsDetailsCreateModel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -62,6 +61,10 @@ public class CampaignCreateModel {
   public static final String SERIALIZED_NAME_BILL_BY_RETAILER_ID = "billByRetailerId";
   @SerializedName(SERIALIZED_NAME_BILL_BY_RETAILER_ID)
   private String billByRetailerId;
+
+  public static final String SERIALIZED_NAME_BUDGET = "budget";
+  @SerializedName(SERIALIZED_NAME_BUDGET)
+  private DynamicBudgetCreateModel budget;
 
   /**
    * Buy type of campaign, set only on creation. Auction is the only buy type currently supported.
@@ -175,13 +178,64 @@ public class CampaignCreateModel {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  /**
+   * Objective the campaign is optimized for. The platform derives the line item budgets from the  campaign budget to serve it. SponsoredProducts accepts clicks, conversion and revenue;  OnsiteDisplay accepts impressions.
+   */
+  @JsonAdapter(ObjectiveEnum.Adapter.class)
+  public enum ObjectiveEnum {
+    CLICKS("Clicks"),
+    
+    CONVERSION("Conversion"),
+    
+    REVENUE("Revenue"),
+    
+    IMPRESSIONS("Impressions");
+
+    private String value;
+
+    ObjectiveEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ObjectiveEnum fromValue(String value) {
+      for (ObjectiveEnum b : ObjectiveEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ObjectiveEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ObjectiveEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ObjectiveEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ObjectiveEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_OBJECTIVE = "objective";
+  @SerializedName(SERIALIZED_NAME_OBJECTIVE)
+  private ObjectiveEnum objective;
+
   public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
   @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
   private String onBehalfCompanyName;
-
-  public static final String SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS = "onsiteDisplayDetails";
-  @SerializedName(SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS)
-  private OnsiteDisplayDetailsCreateModel onsiteDisplayDetails;
 
   /**
    * Gets or Sets regulatedCategory
@@ -238,10 +292,6 @@ public class CampaignCreateModel {
   @SerializedName(SERIALIZED_NAME_SCHEDULE_DETAILS)
   private ScheduleDetailsCreateModel scheduleDetails;
 
-  public static final String SERIALIZED_NAME_SPONSORED_PRODUCTS_DETAILS = "sponsoredProductsDetails";
-  @SerializedName(SERIALIZED_NAME_SPONSORED_PRODUCTS_DETAILS)
-  private SponsoredProductsDetailsCreateModel sponsoredProductsDetails;
-
   public CampaignCreateModel() {
   }
 
@@ -286,6 +336,28 @@ public class CampaignCreateModel {
 
   public void setBillByRetailerId(String billByRetailerId) {
     this.billByRetailerId = billByRetailerId;
+  }
+
+
+  public CampaignCreateModel budget(DynamicBudgetCreateModel budget) {
+    
+    this.budget = budget;
+    return this;
+  }
+
+   /**
+   * Get budget
+   * @return budget
+  **/
+  @javax.annotation.Nonnull
+
+  public DynamicBudgetCreateModel getBudget() {
+    return budget;
+  }
+
+
+  public void setBudget(DynamicBudgetCreateModel budget) {
+    this.budget = budget;
   }
 
 
@@ -407,6 +479,28 @@ public class CampaignCreateModel {
   }
 
 
+  public CampaignCreateModel objective(ObjectiveEnum objective) {
+    
+    this.objective = objective;
+    return this;
+  }
+
+   /**
+   * Objective the campaign is optimized for. The platform derives the line item budgets from the  campaign budget to serve it. SponsoredProducts accepts clicks, conversion and revenue;  OnsiteDisplay accepts impressions.
+   * @return objective
+  **/
+  @javax.annotation.Nonnull
+
+  public ObjectiveEnum getObjective() {
+    return objective;
+  }
+
+
+  public void setObjective(ObjectiveEnum objective) {
+    this.objective = objective;
+  }
+
+
   public CampaignCreateModel onBehalfCompanyName(String onBehalfCompanyName) {
     
     this.onBehalfCompanyName = onBehalfCompanyName;
@@ -426,28 +520,6 @@ public class CampaignCreateModel {
 
   public void setOnBehalfCompanyName(String onBehalfCompanyName) {
     this.onBehalfCompanyName = onBehalfCompanyName;
-  }
-
-
-  public CampaignCreateModel onsiteDisplayDetails(OnsiteDisplayDetailsCreateModel onsiteDisplayDetails) {
-    
-    this.onsiteDisplayDetails = onsiteDisplayDetails;
-    return this;
-  }
-
-   /**
-   * Get onsiteDisplayDetails
-   * @return onsiteDisplayDetails
-  **/
-  @javax.annotation.Nullable
-
-  public OnsiteDisplayDetailsCreateModel getOnsiteDisplayDetails() {
-    return onsiteDisplayDetails;
-  }
-
-
-  public void setOnsiteDisplayDetails(OnsiteDisplayDetailsCreateModel onsiteDisplayDetails) {
-    this.onsiteDisplayDetails = onsiteDisplayDetails;
   }
 
 
@@ -483,7 +555,7 @@ public class CampaignCreateModel {
    * Get scheduleDetails
    * @return scheduleDetails
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public ScheduleDetailsCreateModel getScheduleDetails() {
     return scheduleDetails;
@@ -492,28 +564,6 @@ public class CampaignCreateModel {
 
   public void setScheduleDetails(ScheduleDetailsCreateModel scheduleDetails) {
     this.scheduleDetails = scheduleDetails;
-  }
-
-
-  public CampaignCreateModel sponsoredProductsDetails(SponsoredProductsDetailsCreateModel sponsoredProductsDetails) {
-    
-    this.sponsoredProductsDetails = sponsoredProductsDetails;
-    return this;
-  }
-
-   /**
-   * Get sponsoredProductsDetails
-   * @return sponsoredProductsDetails
-  **/
-  @javax.annotation.Nullable
-
-  public SponsoredProductsDetailsCreateModel getSponsoredProductsDetails() {
-    return sponsoredProductsDetails;
-  }
-
-
-  public void setSponsoredProductsDetails(SponsoredProductsDetailsCreateModel sponsoredProductsDetails) {
-    this.sponsoredProductsDetails = sponsoredProductsDetails;
   }
 
 
@@ -529,16 +579,16 @@ public class CampaignCreateModel {
     CampaignCreateModel campaignCreateModel = (CampaignCreateModel) o;
     return Objects.equals(this.attributionSettings, campaignCreateModel.attributionSettings) &&
         Objects.equals(this.billByRetailerId, campaignCreateModel.billByRetailerId) &&
+        Objects.equals(this.budget, campaignCreateModel.budget) &&
         Objects.equals(this.buyType, campaignCreateModel.buyType) &&
         Objects.equals(this.campaignType, campaignCreateModel.campaignType) &&
         Objects.equals(this.companyName, campaignCreateModel.companyName) &&
         Objects.equals(this.drawableBalanceIds, campaignCreateModel.drawableBalanceIds) &&
         Objects.equals(this.name, campaignCreateModel.name) &&
+        Objects.equals(this.objective, campaignCreateModel.objective) &&
         Objects.equals(this.onBehalfCompanyName, campaignCreateModel.onBehalfCompanyName) &&
-        Objects.equals(this.onsiteDisplayDetails, campaignCreateModel.onsiteDisplayDetails) &&
         Objects.equals(this.regulatedCategory, campaignCreateModel.regulatedCategory) &&
-        Objects.equals(this.scheduleDetails, campaignCreateModel.scheduleDetails) &&
-        Objects.equals(this.sponsoredProductsDetails, campaignCreateModel.sponsoredProductsDetails);
+        Objects.equals(this.scheduleDetails, campaignCreateModel.scheduleDetails);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -547,7 +597,7 @@ public class CampaignCreateModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributionSettings, billByRetailerId, buyType, campaignType, companyName, drawableBalanceIds, name, onBehalfCompanyName, onsiteDisplayDetails, regulatedCategory, scheduleDetails, sponsoredProductsDetails);
+    return Objects.hash(attributionSettings, billByRetailerId, budget, buyType, campaignType, companyName, drawableBalanceIds, name, objective, onBehalfCompanyName, regulatedCategory, scheduleDetails);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -563,16 +613,16 @@ public class CampaignCreateModel {
     sb.append("class CampaignCreateModel {\n");
     sb.append("    attributionSettings: ").append(toIndentedString(attributionSettings)).append("\n");
     sb.append("    billByRetailerId: ").append(toIndentedString(billByRetailerId)).append("\n");
+    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    buyType: ").append(toIndentedString(buyType)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    drawableBalanceIds: ").append(toIndentedString(drawableBalanceIds)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
     sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
-    sb.append("    onsiteDisplayDetails: ").append(toIndentedString(onsiteDisplayDetails)).append("\n");
     sb.append("    regulatedCategory: ").append(toIndentedString(regulatedCategory)).append("\n");
     sb.append("    scheduleDetails: ").append(toIndentedString(scheduleDetails)).append("\n");
-    sb.append("    sponsoredProductsDetails: ").append(toIndentedString(sponsoredProductsDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -597,22 +647,25 @@ public class CampaignCreateModel {
     openapiFields = new HashSet<String>();
     openapiFields.add("attributionSettings");
     openapiFields.add("billByRetailerId");
+    openapiFields.add("budget");
     openapiFields.add("buyType");
     openapiFields.add("campaignType");
     openapiFields.add("companyName");
     openapiFields.add("drawableBalanceIds");
     openapiFields.add("name");
+    openapiFields.add("objective");
     openapiFields.add("onBehalfCompanyName");
-    openapiFields.add("onsiteDisplayDetails");
     openapiFields.add("regulatedCategory");
     openapiFields.add("scheduleDetails");
-    openapiFields.add("sponsoredProductsDetails");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("budget");
     openapiRequiredFields.add("buyType");
     openapiRequiredFields.add("campaignType");
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("objective");
+    openapiRequiredFields.add("scheduleDetails");
   }
 
  /**
@@ -649,6 +702,8 @@ public class CampaignCreateModel {
       if ((jsonObj.get("billByRetailerId") != null && !jsonObj.get("billByRetailerId").isJsonNull()) && !jsonObj.get("billByRetailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billByRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billByRetailerId").toString()));
       }
+      // validate the required field `budget`
+      DynamicBudgetCreateModel.validateJsonObject(jsonObj.getAsJsonObject("budget"));
       if (!jsonObj.get("buyType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `buyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buyType").toString()));
       }
@@ -665,24 +720,17 @@ public class CampaignCreateModel {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
+      if (!jsonObj.get("objective").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `objective` to be a primitive type in the JSON string but got `%s`", jsonObj.get("objective").toString()));
+      }
       if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
-      }
-      // validate the optional field `onsiteDisplayDetails`
-      if (jsonObj.get("onsiteDisplayDetails") != null && !jsonObj.get("onsiteDisplayDetails").isJsonNull()) {
-        OnsiteDisplayDetailsCreateModel.validateJsonObject(jsonObj.getAsJsonObject("onsiteDisplayDetails"));
       }
       if ((jsonObj.get("regulatedCategory") != null && !jsonObj.get("regulatedCategory").isJsonNull()) && !jsonObj.get("regulatedCategory").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `regulatedCategory` to be a primitive type in the JSON string but got `%s`", jsonObj.get("regulatedCategory").toString()));
       }
-      // validate the optional field `scheduleDetails`
-      if (jsonObj.get("scheduleDetails") != null && !jsonObj.get("scheduleDetails").isJsonNull()) {
-        ScheduleDetailsCreateModel.validateJsonObject(jsonObj.getAsJsonObject("scheduleDetails"));
-      }
-      // validate the optional field `sponsoredProductsDetails`
-      if (jsonObj.get("sponsoredProductsDetails") != null && !jsonObj.get("sponsoredProductsDetails").isJsonNull()) {
-        SponsoredProductsDetailsCreateModel.validateJsonObject(jsonObj.getAsJsonObject("sponsoredProductsDetails"));
-      }
+      // validate the required field `scheduleDetails`
+      ScheduleDetailsCreateModel.validateJsonObject(jsonObj.getAsJsonObject("scheduleDetails"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

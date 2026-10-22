@@ -126,7 +126,7 @@ public class LineItemDetails {
    * Get core
    * @return core
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public ExternalLineItem getCore() {
     return core;

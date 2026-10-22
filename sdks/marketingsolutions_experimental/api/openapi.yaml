@@ -3071,6 +3071,33 @@ paths:
       - Audience
       x-content-type: application/json
       x-accepts: application/json
+  /experimental/marketing-solutions/audiences/recommend-segments:
+    post:
+      description: Recommend audience segments for MarketingSolutions from a freeform
+        brief.
+      operationId: RecommendSegments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecommendSegmentsRequest'
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecommendSegmentsResponse'
+          description: Recommended audience segments.
+      security:
+      - oauth:
+        - MarketingSolutions_Audience_Read
+      summary: /experimental/marketing-solutions/audiences/recommend-segments
+      tags:
+      - Audience
+      x-content-type: application/json
+      x-accepts: application/json
   /experimental/marketing-solutions/audiences/search:
     post:
       description: "Returns a list of audiences that match the provided filters. If\
@@ -3125,15 +3152,17 @@ paths:
       x-accepts: application/json
   /experimental/marketing-solutions/campaigns:
     patch:
-      description: "Patch a list of Campaigns.\r\n            \r\nA campaign, or in\
-        \ other words a marketing campaign, is an entity that defines advertising\
+      description: "Patch a list of Campaigns: name, spend limit, scheduled spend\
+        \ limits and budget automation.\r\nOmitted attributes are left unchanged.\
+        \ When provided, the name must not be empty.\r\n            \r\nA campaign,\
+        \ or in other words a marketing campaign, is an entity that defines advertising\
         \ objectives and success criteria."
       operationId: PatchCampaigns
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchCampaignListRequest'
+              $ref: '#/components/schemas/PatchCampaignV27Q1ListRequest'
         description: List of campaigns to patch.
         required: true
         x-bodyName: request
@@ -3142,7 +3171,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PatchResultCampaignListResponse'
+                $ref: '#/components/schemas/PatchResultCampaignV27Q1ListResponse'
           description: List of patched campaigns.
       security:
       - oauth:
@@ -3548,6 +3577,37 @@ paths:
       summary: /experimental/marketing-solutions/marketplace-performance-outcomes/stats/realtime-reports/export
       tags:
       - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
+  /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report:
+    post:
+      description: Generates a seller performance report synchronously and returns
+        the report data directly in the response payload.
+      operationId: CreateMarketplaceStatsReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SellerReportRequestRequest'
+        description: "The seller report filters, dimensions, metrics, and output format."
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SellerReportDataResponse'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/SellerReportDataResponse'
+          description: Success
+      security:
+      - oauth:
+        - MarketingSolutions_Campaign_Read
+      summary: /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report
+      tags:
+      - Campaign
       x-content-type: application/json
       x-accepts: application/json
   /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report-jobs/{reportId}:
@@ -6986,6 +7046,59 @@ components:
       - name
       - startDate
       type: object
+    AffinityRecommendationV1:
+      description: Configuration of a recommended affinity segment.
+      example:
+        country: country
+        targetingCategoryIds:
+        - targetingCategoryIds
+        - targetingCategoryIds
+        customCategoryIds:
+        - customCategoryIds
+        - customCategoryIds
+        customCategoryNames:
+        - customCategoryNames
+        - customCategoryNames
+        lookbackDays: 0
+        targetingCategoryNames:
+        - targetingCategoryNames
+        - targetingCategoryNames
+        numberOfEvents: 6
+      nullable: true
+      properties:
+        country:
+          type: string
+        customCategoryIds:
+          items:
+            type: string
+          type: array
+        customCategoryNames:
+          items:
+            type: string
+          type: array
+        lookbackDays:
+          format: int32
+          type: integer
+        numberOfEvents:
+          format: int32
+          type: integer
+        targetingCategoryIds:
+          items:
+            type: string
+          type: array
+        targetingCategoryNames:
+          items:
+            type: string
+          type: array
+      required:
+      - country
+      - customCategoryIds
+      - customCategoryNames
+      - lookbackDays
+      - numberOfEvents
+      - targetingCategoryIds
+      - targetingCategoryNames
+      type: object
     AlgebraNodeV1:
       description: Node in the audience algebra definition.
       example:
@@ -10411,6 +10524,35 @@ components:
       required:
       - operationToken
       type: object
+    BehavioralRecommendationV1:
+      description: Configuration of a recommended behavioral segment.
+      example:
+        country: country
+        endDate: endDate
+        category: seasonal
+        startDate: startDate
+      nullable: true
+      properties:
+        category:
+          enum:
+          - seasonal
+          - lifestyles
+          - lifeEvents
+          - buyingPatterns
+          - unknown
+          type: string
+        country:
+          nullable: true
+          type: string
+        endDate:
+          nullable: true
+          type: string
+        startDate:
+          nullable: true
+          type: string
+      required:
+      - category
+      type: object
     BehavioralV1:
       description: Settings of a behavioral set of users provided by Criteo.
       example:
@@ -12312,15 +12454,17 @@ components:
       - costController
       type: object
     CreateAdSetBudgetV26Q1:
-      description: "Budget create model for an ad set.\r\nFor \"capped\": budgetAmount\
-        \ (required, non-null), budgetRenewal (required, not \"undefined\"), and budgetDeliverySmoothing\
-        \ (required) must all be provided.\r\npacingBehavior is optional; \"targetAverageDailyBudget\"\
-        \ is only supported for capped, standard, monthly budgets.\r\nFor \"uncapped\"\
-        : budgetAmount must be null, budgetRenewal must be \"undefined\", budgetDeliverySmoothing,\
-        \ budgetDeliveryWeek, and pacingBehavior must be omitted or \"undefined\"\
-        .\r\nFor marketing campaigns with budget automation enabled, omit this object.\r\
-        \nIn that case, the ad set budget is initialized from the marketing campaign\
-        \ spend limit amount and renewal period."
+      description: "Budget create model for an ad set.\r\n- For marketing campaigns\
+        \ with budget automation enabled, omit this object. In that case, the ad set\
+        \ budget is initialized from the marketing campaign spend limit amount and\
+        \ renewal period.\r\n- If \"capped\" budget strategy: budgetAmount (required,\
+        \ non-null), budgetRenewal (required, not \"undefined\"), and budgetDeliverySmoothing\
+        \ (required) must all be provided.\r\n  + If \"standard\" budgetDeliverySmoothing:\
+        \ pacingBehavior ( required, not \"undefined\") must be provided.\r\n  + If\
+        \ \"accelerated\" budgetDeliverySmoothing: pacingBehavior must be omitted\
+        \ or \"undefined\".\r\n- If \"uncapped\" budget strategy: budgetAmount must\
+        \ be null, budgetRenewal must be \"undefined\", budgetDeliverySmoothing, budgetDeliveryWeek,\
+        \ and pacingBehavior must be omitted or \"undefined\"."
       properties:
         budgetAmount:
           description: Maximum budget amount in the advertiser's currency per renewal
@@ -17097,6 +17241,77 @@ components:
       required:
       - country
       type: object
+    InMarketRecommendationV1:
+      description: Configuration of a recommended in-market segment.
+      example:
+        country: country
+        interestIds:
+        - interestIds
+        - interestIds
+        brandNames:
+        - brandNames
+        - brandNames
+        brandDesc:
+        - brandDesc
+        - brandDesc
+        buyingPower:
+        - buyingPower
+        - buyingPower
+        gender: gender
+        interestNames:
+        - interestNames
+        - interestNames
+        brandIds:
+        - brandIds
+        - brandIds
+        priceRange:
+        - priceRange
+        - priceRange
+      nullable: true
+      properties:
+        brandDesc:
+          items:
+            type: string
+          type: array
+        brandIds:
+          items:
+            type: string
+          type: array
+        brandNames:
+          items:
+            type: string
+          type: array
+        buyingPower:
+          items:
+            type: string
+          type: array
+        country:
+          type: string
+        gender:
+          nullable: true
+          type: string
+        interestIds:
+          items:
+            type: string
+          type: array
+        interestNames:
+          items:
+            type: string
+          type: array
+        priceRange:
+          items:
+            type: string
+          type: array
+      required:
+      - brandDesc
+      - brandIds
+      - brandNames
+      - buyingPower
+      - country
+      - interestIds
+      - interestNames
+      - priceRange
+      type: object
     InMarketSizeEstimationV1:
       description: Settings to target users based on high shopping intents and demographics.
       example:
@@ -17519,6 +17734,46 @@ components:
       - pointsOfInterest
       - radiusInKm
       type: object
+    LocationRecommendationV1:
+      description: Configuration of a recommended location segment.
+      example:
+        registryType: registryType
+        userGroupId: userGroupId
+        geoDivisions:
+        - "{}"
+        - "{}"
+        pointsOfInterest:
+        - "{}"
+        - "{}"
+        partnerId: partnerId
+        radiusInKm: 1
+      nullable: true
+      properties:
+        geoDivisions:
+          items:
+            type: object
+          type: array
+        partnerId:
+          nullable: true
+          type: string
+        pointsOfInterest:
+          items:
+            type: object
+          type: array
+        radiusInKm:
+          format: int32
+          type: integer
+        registryType:
+          type: string
+        userGroupId:
+          nullable: true
+          type: string
+      required:
+      - geoDivisions
+      - pointsOfInterest
+      - radiusInKm
+      - registryType
+      type: object
     LocationSizeEstimationV1:
       description: Settings to define your audience based on their location.
       example:
@@ -17638,6 +17893,26 @@ components:
           type: integer
       required:
       - seedSegmentId
+      type: object
+    LookalikeRecommendationV1:
+      description: Configuration of a recommended lookalike segment.
+      example:
+        country: country
+        targetSize: 5
+        seedSegmentId: seedSegmentId
+      nullable: true
+      properties:
+        country:
+          type: string
+        seedSegmentId:
+          type: string
+        targetSize:
+          format: int64
+          type: integer
+      required:
+      - country
+      - seedSegmentId
+      - targetSize
       type: object
     LookalikeUpdateV1:
       description: Settings to target users that behave like a given seed segment
@@ -18300,6 +18575,8 @@ components:
           category: category
           brand: brand
         adId: 0
+        identityType: CtoBundle
+        userIdOrigin: userIdOrigin
         adSetId: 6
         nbRequestedProducts: 1
         partnerId: 5
@@ -18325,6 +18602,16 @@ components:
           items:
             $ref: '#/components/schemas/OnSiteRecoChatMessage'
           type: array
+        identityType:
+          description: "Type of the user identifier (CtoBundle, Idfa, Gaid, AgenticUserId...)\
+            \ Optional if its type is CtoBundle"
+          enum:
+          - CtoBundle
+          - Idfa
+          - Gaid
+          - InternalUserId
+          - AgenticUserId
+          type: string
         nbRequestedProducts:
           description: Amount of products to recommend.
           format: int32
@@ -18336,7 +18623,12 @@ components:
         product:
           $ref: '#/components/schemas/ProductContext'
         userId:
-          description: Used to retrieve user events from Criteo trackers.
+          description: "One user identifier: a Criteo bundle, GAID, IDFA, internal\
+            \ user id, or an agentic partner user id."
+          type: string
+        userIdOrigin:
+          description: "When IdentityType is AgenticUserId, the issuer should recognize\
+            \ themselves with their organization name issued by Criteo."
           type: string
       required:
       - adSetId
@@ -19279,205 +19571,29 @@ components:
         targeting:
           $ref: '#/components/schemas/AdSetTargetingV26Q1'
       type: object
-    PatchCampaign:
-      description: "Campaign patch model.\r\nThe campaign identifier is provided in\
-        \ the resource {id} field (string-encoded integer) and is required."
+    PatchBudgetAutomationConfiguration:
+      description: "Configuration for budget automation. Only meaningful when \"enabled\"\
+        \ is true.\r\nWhen \"enabled\" is false or omitted, this field is ignored."
       example:
-        budgetAutomation:
-          budgetConfiguration:
-            adSetObjectives: conversions
-          enabled: true
-        spendLimit:
-          spendLimitRenewal: undefined
-          spendLimitAmount:
-            value: 0.8008281904610115
-          spendLimitType: capped
-        scheduledSpendLimit:
-          scheduledSpendLimitCreations:
-          - spendLimitRenewal: undefined
-            spendLimitAmount:
-              value: 0.8008281904610115
-            spendLimitType: capped
-            startDate: 2000-01-23
-          - spendLimitRenewal: undefined
-            spendLimitAmount:
-              value: 0.8008281904610115
-            spendLimitType: capped
-            startDate: 2000-01-23
-          scheduledSpendLimitDeletions:
-          - id: id
-          - id: id
-          scheduledSpendLimitUpdates:
-          - spendLimitRenewal: undefined
-            spendLimitAmount:
-              value: 0.8008281904610115
-            id: id
-            spendLimitType: capped
-            startDate: 2000-01-23
-          - spendLimitRenewal: undefined
-            spendLimitAmount:
-              value: 0.8008281904610115
-            id: id
-            spendLimitType: capped
-            startDate: 2000-01-23
+        adSetObjectives: conversions
       properties:
-        budgetAutomation:
-          $ref: '#/components/schemas/PatchMarketingCampaignBudgetAutomation'
-        scheduledSpendLimit:
-          $ref: '#/components/schemas/PatchCampaignScheduledSpendLimit'
-        spendLimit:
-          $ref: '#/components/schemas/PatchCampaignSpendLimit'
+        adSetObjectives:
+          enum:
+          - conversions
+          - revenue
+          - visits
+          - videoViews
+          type: string
       type: object
-    PatchCampaignListRequest:
-      description: List of input resources
-      example:
-        data:
-        - attributes:
-            budgetAutomation:
-              budgetConfiguration:
-                adSetObjectives: conversions
-              enabled: true
-            spendLimit:
-              spendLimitRenewal: undefined
-              spendLimitAmount:
-                value: 0.8008281904610115
-              spendLimitType: capped
-            scheduledSpendLimit:
-              scheduledSpendLimitCreations:
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                spendLimitType: capped
-                startDate: 2000-01-23
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                spendLimitType: capped
-                startDate: 2000-01-23
-              scheduledSpendLimitDeletions:
-              - id: id
-              - id: id
-              scheduledSpendLimitUpdates:
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                id: id
-                spendLimitType: capped
-                startDate: 2000-01-23
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                id: id
-                spendLimitType: capped
-                startDate: 2000-01-23
-          id: id
-          type: Campaign
-        - attributes:
-            budgetAutomation:
-              budgetConfiguration:
-                adSetObjectives: conversions
-              enabled: true
-            spendLimit:
-              spendLimitRenewal: undefined
-              spendLimitAmount:
-                value: 0.8008281904610115
-              spendLimitType: capped
-            scheduledSpendLimit:
-              scheduledSpendLimitCreations:
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                spendLimitType: capped
-                startDate: 2000-01-23
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                spendLimitType: capped
-                startDate: 2000-01-23
-              scheduledSpendLimitDeletions:
-              - id: id
-              - id: id
-              scheduledSpendLimitUpdates:
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                id: id
-                spendLimitType: capped
-                startDate: 2000-01-23
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                id: id
-                spendLimitType: capped
-                startDate: 2000-01-23
-          id: id
-          type: Campaign
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/PatchCampaignWriteResource'
-          nullable: true
-          type: array
-      type: object
-    PatchCampaignScheduledSpendLimit:
-      description: "Scheduled spend-limit operations for a marketing campaign (patch).\r\
-        \nCreate, update, and delete operations are applied together by the backend."
-      example:
-        scheduledSpendLimitCreations:
-        - spendLimitRenewal: undefined
-          spendLimitAmount:
-            value: 0.8008281904610115
-          spendLimitType: capped
-          startDate: 2000-01-23
-        - spendLimitRenewal: undefined
-          spendLimitAmount:
-            value: 0.8008281904610115
-          spendLimitType: capped
-          startDate: 2000-01-23
-        scheduledSpendLimitDeletions:
-        - id: id
-        - id: id
-        scheduledSpendLimitUpdates:
-        - spendLimitRenewal: undefined
-          spendLimitAmount:
-            value: 0.8008281904610115
-          id: id
-          spendLimitType: capped
-          startDate: 2000-01-23
-        - spendLimitRenewal: undefined
-          spendLimitAmount:
-            value: 0.8008281904610115
-          id: id
-          spendLimitType: capped
-          startDate: 2000-01-23
-      properties:
-        scheduledSpendLimitCreations:
-          description: Scheduled spend limits to create.
-          items:
-            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitCreation'
-          nullable: true
-          type: array
-        scheduledSpendLimitDeletions:
-          description: Scheduled spend limits to delete.
-          items:
-            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitDeletion'
-          nullable: true
-          type: array
-        scheduledSpendLimitUpdates:
-          description: Scheduled spend limits to update.
-          items:
-            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitUpdate'
-          nullable: true
-          type: array
-      type: object
-    PatchCampaignScheduledSpendLimitCreation:
+    PatchCampaignScheduledSpendLimitCreationV27Q1:
       description: "Scheduled spend-limit creation.\r\nThe startDate is an advertiser-local\
         \ calendar date, for example 2026-09-01.\r\nWhen spendLimitType is \"capped\"\
         : spendLimitAmount and spendLimitRenewal are required.\r\nWhen spendLimitType\
         \ is \"uncapped\": spendLimitAmount.value is null and spendLimitRenewal is\
         \ \"undefined\".\r\nAll scheduled spend limits for the campaign must use the\
-        \ same spendLimitRenewal as the active spend limit.\r\nWhen spendLimitRenewal\
-        \ is \"monthly\", startDate must be the first day of the month."
+        \ same spendLimitRenewal (periodicity) as the active spend limit.\r\nWhen\
+        \ spendLimitRenewal is \"monthly\", startDate must be the first day of the\
+        \ month."
       example:
         spendLimitRenewal: undefined
         spendLimitAmount:
@@ -19519,7 +19635,7 @@ components:
       - spendLimitType
       - startDate
       type: object
-    PatchCampaignScheduledSpendLimitDeletion:
+    PatchCampaignScheduledSpendLimitDeletionV27Q1:
       description: Scheduled spend-limit deletion.
       example:
         id: id
@@ -19531,14 +19647,13 @@ components:
       required:
       - id
       type: object
-    PatchCampaignScheduledSpendLimitUpdate:
-      description: "Scheduled spend-limit update.\r\nUpdates are full replacements:\
-        \ id, startDate, spendLimitType, and the capped or uncapped spend-limit values\
-        \ must describe the complete desired state.\r\nThe startDate is an advertiser-local\
-        \ calendar date, for example 2026-09-01.\r\nAll scheduled spend limits for\
-        \ the campaign must use the same spendLimitRenewal as the active spend limit.\r\
-        \nWhen spendLimitRenewal is \"monthly\", startDate must be the first day of\
-        \ the month."
+    PatchCampaignScheduledSpendLimitUpdateV27Q1:
+      description: "Scheduled spend-limit update.\r\nOnly provided fields are updated;\
+        \ omitted fields are left unchanged. The id is required.\r\nThe startDate\
+        \ is an advertiser-local calendar date, for example 2026-09-01.\r\nAll scheduled\
+        \ spend limits for the campaign must use the same spendLimitRenewal (periodicity)\
+        \ as the active spend limit.\r\nWhen spendLimitRenewal is \"monthly\", startDate\
+        \ must be the first day of the month."
       example:
         spendLimitRenewal: undefined
         spendLimitAmount:
@@ -19583,10 +19698,59 @@ components:
           type: string
       required:
       - id
-      - spendLimitType
-      - startDate
       type: object
-    PatchCampaignSpendLimit:
+    PatchCampaignScheduledSpendLimitV27Q1:
+      description: "Scheduled spend-limit operations for a marketing campaign (patch).\r\
+        \nCreate, update, and delete operations are applied together by the backend."
+      example:
+        scheduledSpendLimitCreations:
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          spendLimitType: capped
+          startDate: 2000-01-23
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          spendLimitType: capped
+          startDate: 2000-01-23
+        scheduledSpendLimitDeletions:
+        - id: id
+        - id: id
+        scheduledSpendLimitUpdates:
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          id: id
+          spendLimitType: capped
+          startDate: 2000-01-23
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          id: id
+          spendLimitType: capped
+          startDate: 2000-01-23
+      properties:
+        scheduledSpendLimitCreations:
+          description: Scheduled spend limits to create.
+          items:
+            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitCreationV27Q1'
+          nullable: true
+          type: array
+        scheduledSpendLimitDeletions:
+          description: Scheduled spend limits to delete.
+          items:
+            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitDeletionV27Q1'
+          nullable: true
+          type: array
+        scheduledSpendLimitUpdates:
+          description: Scheduled spend limits to update.
+          items:
+            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitUpdateV27Q1'
+          nullable: true
+          type: array
+      type: object
+    PatchCampaignSpendLimitV27Q1:
       description: "Spend limit configuration for a marketing campaign (patch).\r\n\
         Only provided fields are updated; omitted fields are left unchanged.\r\nWhen\
         \ spendLimitType is \"capped\": spendLimitAmount and spendLimitRenewal are\
@@ -19601,10 +19765,6 @@ components:
         spendLimitAmount:
           $ref: '#/components/schemas/NillableDecimal'
         spendLimitRenewal:
-          description: "The period over which the campaign spend limit is applied.\r\
-            \nWhen spendLimitType is \"capped\", this is \"daily\", \"monthly\", or\
-            \ \"lifetime\".\r\nWhen spendLimitType is \"uncapped\", this is \"undefined\"\
-            ."
           enum:
           - undefined
           - daily
@@ -19613,20 +19773,165 @@ components:
           nullable: true
           type: string
         spendLimitType:
-          description: "Controls whether the campaign has a spend limit.\r\n\"capped\"\
-            \ returns a non-null spendLimitAmount.value and a spendLimitRenewal of\
-            \ \"daily\", \"monthly\", or \"lifetime\".\r\n\"uncapped\" returns spendLimitAmount.value\
-            \ as null and spendLimitRenewal as \"undefined\"."
           enum:
           - capped
           - uncapped
           nullable: true
           type: string
       type: object
-    PatchCampaignWriteResource:
+    PatchCampaignV27Q1:
+      description: "Campaign patch model.\r\nThe campaign identifier is provided in\
+        \ the resource {id} field (string-encoded integer) and is required."
+      example:
+        name: name
+        budgetAutomation:
+          budgetConfiguration:
+            adSetObjectives: conversions
+          enabled: true
+        spendLimit:
+          spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          spendLimitType: capped
+        scheduledSpendLimit:
+          scheduledSpendLimitCreations:
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            spendLimitType: capped
+            startDate: 2000-01-23
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            spendLimitType: capped
+            startDate: 2000-01-23
+          scheduledSpendLimitDeletions:
+          - id: id
+          - id: id
+          scheduledSpendLimitUpdates:
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            id: id
+            spendLimitType: capped
+            startDate: 2000-01-23
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            id: id
+            spendLimitType: capped
+            startDate: 2000-01-23
+      properties:
+        budgetAutomation:
+          $ref: '#/components/schemas/PatchMarketingCampaignBudgetAutomationV27Q1'
+        name:
+          description: New name of the campaign. Omit to leave unchanged. Must not
+            be empty when provided.
+          nullable: true
+          type: string
+        scheduledSpendLimit:
+          $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitV27Q1'
+        spendLimit:
+          $ref: '#/components/schemas/PatchCampaignSpendLimitV27Q1'
+      type: object
+    PatchCampaignV27Q1ListRequest:
+      description: List of input resources
+      example:
+        data:
+        - attributes:
+            name: name
+            budgetAutomation:
+              budgetConfiguration:
+                adSetObjectives: conversions
+              enabled: true
+            spendLimit:
+              spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              spendLimitType: capped
+            scheduledSpendLimit:
+              scheduledSpendLimitCreations:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              scheduledSpendLimitDeletions:
+              - id: id
+              - id: id
+              scheduledSpendLimitUpdates:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
+          id: id
+          type: Campaign
+        - attributes:
+            name: name
+            budgetAutomation:
+              budgetConfiguration:
+                adSetObjectives: conversions
+              enabled: true
+            spendLimit:
+              spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              spendLimitType: capped
+            scheduledSpendLimit:
+              scheduledSpendLimitCreations:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              scheduledSpendLimitDeletions:
+              - id: id
+              - id: id
+              scheduledSpendLimitUpdates:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
+          id: id
+          type: Campaign
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/PatchCampaignV27Q1WriteResource'
+          nullable: true
+          type: array
+      type: object
+    PatchCampaignV27Q1WriteResource:
       description: write model data for resources
       example:
         attributes:
+          name: name
           budgetAutomation:
             budgetConfiguration:
               adSetObjectives: conversions
@@ -19668,7 +19973,7 @@ components:
         type: Campaign
       properties:
         attributes:
-          $ref: '#/components/schemas/PatchCampaign'
+          $ref: '#/components/schemas/PatchCampaignV27Q1'
         id:
           description: Id of the entity
           nullable: true
@@ -19679,7 +19984,7 @@ components:
           nullable: true
           type: string
       type: object
-    PatchMarketingCampaignBudgetAutomation:
+    PatchMarketingCampaignBudgetAutomationV27Q1:
       description: "Budget automation, lets users configure budgets once at the campaign\
         \ level while Criteo dynamically routes spend toward the best-performing ad\
         \ sets.\r\nOnly provided fields are updated; omitted fields are left unchanged.\r\
@@ -19694,10 +19999,13 @@ components:
         enabled: true
       properties:
         budgetConfiguration:
-          $ref: '#/components/schemas/BudgetAutomationConfiguration'
+          $ref: '#/components/schemas/PatchBudgetAutomationConfiguration'
         enabled:
-          description: Whether budget automation is enabled for this campaign. This
-            field is always present in the response.
+          description: "Whether budget automation is active for this marketing campaign.\r\
+            \n- true: budget automation is enabled and \"budgetConfiguration\" must\
+            \ be provided with a valid objective.\r\n- false (default when omitted):\
+            \ budget automation is disabled; \"budgetConfiguration\" is ignored if\
+            \ provided."
           type: boolean
       type: object
     PatchProductSetRequest:
@@ -19741,7 +20049,7 @@ components:
           type: array
           uniqueItems: false
       type: object
-    PatchResultCampaignListResponse:
+    PatchResultCampaignV27Q1ListResponse:
       description: List of output resources
       example:
         data:
@@ -19794,7 +20102,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/PatchResultCampaignReadResource'
+            $ref: '#/components/schemas/PatchResultCampaignV27Q1ReadResource'
           nullable: true
           readOnly: true
           type: array
@@ -19811,7 +20119,7 @@ components:
           readOnly: true
           type: array
       type: object
-    PatchResultCampaignReadResource:
+    PatchResultCampaignV27Q1ReadResource:
       description: read model data for resources
       example:
         id: id
@@ -22986,6 +23294,375 @@ components:
           format: double
           nullable: true
           type: number
+      type: object
+    RecommendSegmentsData:
+      additionalProperties: false
+      description: A recommended segment wrapped in a JSON:API-style data object.
+      example:
+        attributes:
+          affinityConfiguration:
+            country: country
+            targetingCategoryIds:
+            - targetingCategoryIds
+            - targetingCategoryIds
+            customCategoryIds:
+            - customCategoryIds
+            - customCategoryIds
+            customCategoryNames:
+            - customCategoryNames
+            - customCategoryNames
+            lookbackDays: 0
+            targetingCategoryNames:
+            - targetingCategoryNames
+            - targetingCategoryNames
+            numberOfEvents: 6
+          description: description
+          dataProviderId: dataProviderId
+          locationConfiguration:
+            registryType: registryType
+            userGroupId: userGroupId
+            geoDivisions:
+            - "{}"
+            - "{}"
+            pointsOfInterest:
+            - "{}"
+            - "{}"
+            partnerId: partnerId
+            radiusInKm: 1
+          behavioralConfiguration:
+            country: country
+            endDate: endDate
+            category: seasonal
+            startDate: startDate
+          segmentName: segmentName
+          advertiserId: advertiserId
+          lookalikeConfiguration:
+            country: country
+            targetSize: 5
+            seedSegmentId: seedSegmentId
+          size: 5
+          segmentId: segmentId
+          inMarketConfiguration:
+            country: country
+            interestIds:
+            - interestIds
+            - interestIds
+            brandNames:
+            - brandNames
+            - brandNames
+            brandDesc:
+            - brandDesc
+            - brandDesc
+            buyingPower:
+            - buyingPower
+            - buyingPower
+            gender: gender
+            interestNames:
+            - interestNames
+            - interestNames
+            brandIds:
+            - brandIds
+            - brandIds
+            priceRange:
+            - priceRange
+            - priceRange
+          alreadyCreated: true
+          segmentType: affinity
+        type: SegmentRecommendation
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SegmentConfigurationV1'
+        type:
+          default: SegmentRecommendation
+          enum:
+          - SegmentRecommendation
+          nullable: true
+          type: string
+      required:
+      - attributes
+      type: object
+    RecommendSegmentsProblem:
+      additionalProperties: false
+      description: A warning or an error raised while processing the request.
+      example:
+        detail: detail
+        title: title
+      properties:
+        detail:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+      type: object
+    RecommendSegmentsRequest:
+      additionalProperties: false
+      description: Request to recommend audience segments from a freeform brief.
+      example:
+        data:
+          attributes:
+            brief: brief
+            segmentStatusToRecommend: new
+            segmentTypesToRecommend:
+            - affinityAllLevels
+            - affinityAllLevels
+            nbSegments: 0
+            advertiserId: advertiserId
+          type: RecommendSegmentsRequest
+      properties:
+        data:
+          $ref: '#/components/schemas/RecommendSegmentsRequestData'
+      required:
+      - data
+      type: object
+    RecommendSegmentsRequestAttributes:
+      additionalProperties: false
+      description: Brief and options of a segment recommendation request.
+      example:
+        brief: brief
+        segmentStatusToRecommend: new
+        segmentTypesToRecommend:
+        - affinityAllLevels
+        - affinityAllLevels
+        nbSegments: 0
+        advertiserId: advertiserId
+      properties:
+        advertiserId:
+          description: Advertiser ID the caller has access to.
+          type: string
+        brief:
+          description: A freeform audience description.
+          type: string
+        nbSegments:
+          default: 5
+          description: "Number of segments to recommend, between 1 and 20 (defaults\
+            \ to 5)."
+          format: int32
+          type: integer
+        segmentStatusToRecommend:
+          default: new
+          description: Recommend existing segments or suggest new ones.
+          enum:
+          - new
+          - existing
+          type: string
+        segmentTypesToRecommend:
+          items:
+            enum:
+            - affinityAllLevels
+            - affinityTopLevel
+            - affinityChildren
+            - inMarketCategoryAllLevels
+            - inMarketCategoryLevel1
+            - inMarketCategoryLevel2
+            - inMarketCategoryLevel3
+            - behavioral
+            - websiteVisitor
+            - predictiveCLV
+            - location
+            - lookalike
+            - filterBased
+            type: string
+          type: array
+      required:
+      - brief
+      type: object
+    RecommendSegmentsRequestData:
+      additionalProperties: false
+      description: The request attributes wrapped in a JSON:API-style data object.
+      example:
+        attributes:
+          brief: brief
+          segmentStatusToRecommend: new
+          segmentTypesToRecommend:
+          - affinityAllLevels
+          - affinityAllLevels
+          nbSegments: 0
+          advertiserId: advertiserId
+        type: RecommendSegmentsRequest
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RecommendSegmentsRequestAttributes'
+        type:
+          default: RecommendSegmentsRequest
+          enum:
+          - RecommendSegmentsRequest
+          type: string
+      required:
+      - attributes
+      type: object
+    RecommendSegmentsResponse:
+      additionalProperties: false
+      description: Recommended segments together with any warnings and errors.
+      example:
+        data:
+        - attributes:
+            affinityConfiguration:
+              country: country
+              targetingCategoryIds:
+              - targetingCategoryIds
+              - targetingCategoryIds
+              customCategoryIds:
+              - customCategoryIds
+              - customCategoryIds
+              customCategoryNames:
+              - customCategoryNames
+              - customCategoryNames
+              lookbackDays: 0
+              targetingCategoryNames:
+              - targetingCategoryNames
+              - targetingCategoryNames
+              numberOfEvents: 6
+            description: description
+            dataProviderId: dataProviderId
+            locationConfiguration:
+              registryType: registryType
+              userGroupId: userGroupId
+              geoDivisions:
+              - "{}"
+              - "{}"
+              pointsOfInterest:
+              - "{}"
+              - "{}"
+              partnerId: partnerId
+              radiusInKm: 1
+            behavioralConfiguration:
+              country: country
+              endDate: endDate
+              category: seasonal
+              startDate: startDate
+            segmentName: segmentName
+            advertiserId: advertiserId
+            lookalikeConfiguration:
+              country: country
+              targetSize: 5
+              seedSegmentId: seedSegmentId
+            size: 5
+            segmentId: segmentId
+            inMarketConfiguration:
+              country: country
+              interestIds:
+              - interestIds
+              - interestIds
+              brandNames:
+              - brandNames
+              - brandNames
+              brandDesc:
+              - brandDesc
+              - brandDesc
+              buyingPower:
+              - buyingPower
+              - buyingPower
+              gender: gender
+              interestNames:
+              - interestNames
+              - interestNames
+              brandIds:
+              - brandIds
+              - brandIds
+              priceRange:
+              - priceRange
+              - priceRange
+            alreadyCreated: true
+            segmentType: affinity
+          type: SegmentRecommendation
+        - attributes:
+            affinityConfiguration:
+              country: country
+              targetingCategoryIds:
+              - targetingCategoryIds
+              - targetingCategoryIds
+              customCategoryIds:
+              - customCategoryIds
+              - customCategoryIds
+              customCategoryNames:
+              - customCategoryNames
+              - customCategoryNames
+              lookbackDays: 0
+              targetingCategoryNames:
+              - targetingCategoryNames
+              - targetingCategoryNames
+              numberOfEvents: 6
+            description: description
+            dataProviderId: dataProviderId
+            locationConfiguration:
+              registryType: registryType
+              userGroupId: userGroupId
+              geoDivisions:
+              - "{}"
+              - "{}"
+              pointsOfInterest:
+              - "{}"
+              - "{}"
+              partnerId: partnerId
+              radiusInKm: 1
+            behavioralConfiguration:
+              country: country
+              endDate: endDate
+              category: seasonal
+              startDate: startDate
+            segmentName: segmentName
+            advertiserId: advertiserId
+            lookalikeConfiguration:
+              country: country
+              targetSize: 5
+              seedSegmentId: seedSegmentId
+            size: 5
+            segmentId: segmentId
+            inMarketConfiguration:
+              country: country
+              interestIds:
+              - interestIds
+              - interestIds
+              brandNames:
+              - brandNames
+              - brandNames
+              brandDesc:
+              - brandDesc
+              - brandDesc
+              buyingPower:
+              - buyingPower
+              - buyingPower
+              gender: gender
+              interestNames:
+              - interestNames
+              - interestNames
+              brandIds:
+              - brandIds
+              - brandIds
+              priceRange:
+              - priceRange
+              - priceRange
+            alreadyCreated: true
+            segmentType: affinity
+          type: SegmentRecommendation
+        warnings:
+        - detail: detail
+          title: title
+        - detail: detail
+          title: title
+        errors:
+        - detail: detail
+          title: title
+        - detail: detail
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RecommendSegmentsData'
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/RecommendSegmentsProblem'
+          nullable: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/RecommendSegmentsProblem'
+          nullable: true
+          type: array
+      required:
+      - data
       type: object
     ReportDetailError:
       description: An error on a batch operation.
@@ -26319,6 +26996,558 @@ components:
           - Buyers
           - NonBuyers
           nullable: true
+          type: string
+      type: object
+    SegmentConfigurationV1:
+      additionalProperties: false
+      description: A recommended audience segment and its configuration.
+      example:
+        affinityConfiguration:
+          country: country
+          targetingCategoryIds:
+          - targetingCategoryIds
+          - targetingCategoryIds
+          customCategoryIds:
+          - customCategoryIds
+          - customCategoryIds
+          customCategoryNames:
+          - customCategoryNames
+          - customCategoryNames
+          lookbackDays: 0
+          targetingCategoryNames:
+          - targetingCategoryNames
+          - targetingCategoryNames
+          numberOfEvents: 6
+        description: description
+        dataProviderId: dataProviderId
+        locationConfiguration:
+          registryType: registryType
+          userGroupId: userGroupId
+          geoDivisions:
+          - "{}"
+          - "{}"
+          pointsOfInterest:
+          - "{}"
+          - "{}"
+          partnerId: partnerId
+          radiusInKm: 1
+        behavioralConfiguration:
+          country: country
+          endDate: endDate
+          category: seasonal
+          startDate: startDate
+        segmentName: segmentName
+        advertiserId: advertiserId
+        lookalikeConfiguration:
+          country: country
+          targetSize: 5
+          seedSegmentId: seedSegmentId
+        size: 5
+        segmentId: segmentId
+        inMarketConfiguration:
+          country: country
+          interestIds:
+          - interestIds
+          - interestIds
+          brandNames:
+          - brandNames
+          - brandNames
+          brandDesc:
+          - brandDesc
+          - brandDesc
+          buyingPower:
+          - buyingPower
+          - buyingPower
+          gender: gender
+          interestNames:
+          - interestNames
+          - interestNames
+          brandIds:
+          - brandIds
+          - brandIds
+          priceRange:
+          - priceRange
+          - priceRange
+        alreadyCreated: true
+        segmentType: affinity
+      properties:
+        advertiserId:
+          nullable: true
+          type: string
+        affinityConfiguration:
+          $ref: '#/components/schemas/AffinityRecommendationV1'
+        alreadyCreated:
+          type: boolean
+        behavioralConfiguration:
+          $ref: '#/components/schemas/BehavioralRecommendationV1'
+        dataProviderId:
+          nullable: true
+          type: string
+        description:
+          type: string
+        inMarketConfiguration:
+          $ref: '#/components/schemas/InMarketRecommendationV1'
+        locationConfiguration:
+          $ref: '#/components/schemas/LocationRecommendationV1'
+        lookalikeConfiguration:
+          $ref: '#/components/schemas/LookalikeRecommendationV1'
+        segmentId:
+          nullable: true
+          type: string
+        segmentName:
+          nullable: true
+          type: string
+        segmentType:
+          enum:
+          - affinity
+          - inMarket
+          - websiteVisitor
+          - predictiveCLV
+          - location
+          - lookalike
+          - filterBased
+          - behavioral
+          type: string
+        size:
+          format: int64
+          nullable: true
+          type: integer
+      required:
+      - alreadyCreated
+      - description
+      - segmentType
+      type: object
+    SellerReportData:
+      description: The generated seller performance report.
+      example:
+        data:
+        - - ""
+          - ""
+        - - ""
+          - ""
+        columns:
+        - columns
+        - columns
+        rows: 0
+      properties:
+        columns:
+          description: Column names
+          items:
+            type: string
+          type: array
+        data:
+          description: Report data
+          items:
+            items: {}
+            type: array
+          type: array
+        rows:
+          description: Number of rows reported
+          format: int32
+          type: integer
+      type: object
+    SellerReportDataResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        attributes:
+          data:
+          - - ""
+            - ""
+          - - ""
+            - ""
+          columns:
+          - columns
+          - columns
+          rows: 0
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SellerReportData'
+        type:
+          type: string
+      type: object
+    SellerReportDataResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        data:
+          attributes:
+            data:
+            - - ""
+              - ""
+            - - ""
+              - ""
+            columns:
+            - columns
+            - columns
+            rows: 0
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/SellerReportDataResource'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+      type: object
+      x-readonly-warnings: true
+      x-readonly-errors: true
+    SellerReportRequest:
+      description: Filters and options used to generate a synchronous seller performance
+        report.
+      example:
+        adSetIds:
+        - adSetIds
+        - adSetIds
+        - adSetIds
+        - adSetIds
+        - adSetIds
+        endDate: 2000-01-23
+        timezone: UTC
+        format: json
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        - campaignIds
+        metrics:
+        - impressions
+        - impressions
+        sellerIds:
+        - sellerIds
+        - sellerIds
+        - sellerIds
+        - sellerIds
+        - sellerIds
+        startDate: 2000-01-23
+        advertiserId: advertiserId
+        dimensions:
+        - campaignId
+        - campaignId
+      properties:
+        adSetIds:
+          description: "Restricts the report to the specified ad sets. If omitted,\
+            \ all ad sets in scope are included.\r\nUp to 10 ad set identifiers can\
+            \ be supplied."
+          items:
+            type: string
+          maxItems: 10
+          type: array
+        advertiserId:
+          description: Identifier of the advertiser for which the report is generated.
+          type: string
+        campaignIds:
+          description: "Restricts the report to the specified marketing campaigns.\
+            \ If omitted, all campaigns in scope are included.\r\nUp to 10 campaign\
+            \ identifiers can be supplied."
+          items:
+            type: string
+          maxItems: 10
+          type: array
+        dimensions:
+          description: Dimensions used to group the report. At least one dimension
+            is required.
+          items:
+            enum:
+            - campaignId
+            - adSetId
+            - sellerId
+            - hour
+            - day
+            - month
+            - year
+            format: string
+            type: string
+          minItems: 1
+          type: array
+        endDate:
+          description: "Inclusive end date of the reporting period, formatted as yyyy-MM-dd."
+          format: date
+          type: string
+        format:
+          default: json
+          description: Output format. Defaults to JSON.
+          enum:
+          - json
+          - csv
+          format: string
+          type: string
+        metrics:
+          description: Metrics returned for each dimension combination. At least one
+            metric is required.
+          items:
+            enum:
+            - impressions
+            - clicks
+            - cost
+            - sellerVisits
+            - sellerUniqueUsers
+            - saleUnitsPc1dSameSeller
+            - saleUnitsPc1dAnySeller
+            - saleUnitsPc7dSameSeller
+            - saleUnitsPc7dAnySeller
+            - saleUnitsPc30dSameSeller
+            - saleUnitsPc30dAnySeller
+            - saleUnitsPc1dPv1dSameSeller
+            - saleUnitsPc1dPv1dAnySeller
+            - saleUnitsPc1dPv7dSameSeller
+            - saleUnitsPc1dPv7dAnySeller
+            - saleUnitsPc7dPv1dSameSeller
+            - saleUnitsPc7dPv1dAnySeller
+            - saleUnitsPc7dPv7dSameSeller
+            - saleUnitsPc7dPv7dAnySeller
+            - saleUnitsPc30dPv1dSameSeller
+            - saleUnitsPc30dPv1dAnySeller
+            - saleUnitsPc30dPv7dSameSeller
+            - saleUnitsPc30dPv7dAnySeller
+            - revenuePc1dSameSeller
+            - revenuePc1dAnySeller
+            - revenuePc7dSameSeller
+            - revenuePc7dAnySeller
+            - revenuePc30dSameSeller
+            - revenuePc30dAnySeller
+            - revenuePc1dPv1dSameSeller
+            - revenuePc1dPv1dAnySeller
+            - revenuePc1dPv7dSameSeller
+            - revenuePc1dPv7dAnySeller
+            - revenuePc7dPv1dSameSeller
+            - revenuePc7dPv1dAnySeller
+            - revenuePc7dPv7dSameSeller
+            - revenuePc7dPv7dAnySeller
+            - revenuePc30dPv1dSameSeller
+            - revenuePc30dPv1dAnySeller
+            - revenuePc30dPv7dSameSeller
+            - revenuePc30dPv7dAnySeller
+            - crPc1dSameSeller
+            - crPc1dAnySeller
+            - crPc7dSameSeller
+            - crPc7dAnySeller
+            - crPc30dSameSeller
+            - crPc30dAnySeller
+            - crPc1dPv1dSameSeller
+            - crPc1dPv1dAnySeller
+            - crPc1dPv7dSameSeller
+            - crPc1dPv7dAnySeller
+            - crPc7dPv1dSameSeller
+            - crPc7dPv1dAnySeller
+            - crPc7dPv7dSameSeller
+            - crPc7dPv7dAnySeller
+            - crPc30dPv1dSameSeller
+            - crPc30dPv1dAnySeller
+            - crPc30dPv7dSameSeller
+            - crPc30dPv7dAnySeller
+            - cpoPc1dSameSeller
+            - cpoPc1dAnySeller
+            - cpoPc7dSameSeller
+            - cpoPc7dAnySeller
+            - cpoPc30dSameSeller
+            - cpoPc30dAnySeller
+            - cpoPc1dPv1dSameSeller
+            - cpoPc1dPv1dAnySeller
+            - cpoPc1dPv7dSameSeller
+            - cpoPc1dPv7dAnySeller
+            - cpoPc7dPv1dSameSeller
+            - cpoPc7dPv1dAnySeller
+            - cpoPc7dPv7dSameSeller
+            - cpoPc7dPv7dAnySeller
+            - cpoPc30dPv1dSameSeller
+            - cpoPc30dPv1dAnySeller
+            - cpoPc30dPv7dSameSeller
+            - cpoPc30dPv7dAnySeller
+            - cosPc1dSameSeller
+            - cosPc1dAnySeller
+            - cosPc7dSameSeller
+            - cosPc7dAnySeller
+            - cosPc30dSameSeller
+            - cosPc30dAnySeller
+            - cosPc1dPv1dSameSeller
+            - cosPc1dPv1dAnySeller
+            - cosPc1dPv7dSameSeller
+            - cosPc1dPv7dAnySeller
+            - cosPc7dPv1dSameSeller
+            - cosPc7dPv1dAnySeller
+            - cosPc7dPv7dSameSeller
+            - cosPc7dPv7dAnySeller
+            - cosPc30dPv1dSameSeller
+            - cosPc30dPv1dAnySeller
+            - cosPc30dPv7dSameSeller
+            - cosPc30dPv7dAnySeller
+            - roasPc1dSameSeller
+            - roasPc1dAnySeller
+            - roasPc7dSameSeller
+            - roasPc7dAnySeller
+            - roasPc30dSameSeller
+            - roasPc30dAnySeller
+            - roasPc1dPv1dSameSeller
+            - roasPc1dPv1dAnySeller
+            - roasPc1dPv7dSameSeller
+            - roasPc1dPv7dAnySeller
+            - roasPc7dPv1dSameSeller
+            - roasPc7dPv1dAnySeller
+            - roasPc7dPv7dSameSeller
+            - roasPc7dPv7dAnySeller
+            - roasPc30dPv1dSameSeller
+            - roasPc30dPv1dAnySeller
+            - roasPc30dPv7dSameSeller
+            - roasPc30dPv7dAnySeller
+            format: string
+            type: string
+          minItems: 1
+          type: array
+        sellerIds:
+          description: "Restricts the report to the specified sellers. If omitted,\
+            \ all sellers in scope are included.\r\nUp to 10 seller identifiers can\
+            \ be supplied."
+          items:
+            type: string
+          maxItems: 10
+          type: array
+        startDate:
+          description: "Inclusive start date of the reporting period, formatted as\
+            \ yyyy-MM-dd."
+          format: date
+          type: string
+        timezone:
+          default: UTC
+          description: IANA time zone used for time-based aggregation. Defaults to
+            UTC.
+          type: string
+      required:
+      - advertiserId
+      - dimensions
+      - endDate
+      - metrics
+      - startDate
+      type: object
+    SellerReportRequestRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        data:
+          attributes:
+            adSetIds:
+            - adSetIds
+            - adSetIds
+            - adSetIds
+            - adSetIds
+            - adSetIds
+            endDate: 2000-01-23
+            timezone: UTC
+            format: json
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            - campaignIds
+            metrics:
+            - impressions
+            - impressions
+            sellerIds:
+            - sellerIds
+            - sellerIds
+            - sellerIds
+            - sellerIds
+            - sellerIds
+            startDate: 2000-01-23
+            advertiserId: advertiserId
+            dimensions:
+            - campaignId
+            - campaignId
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/SellerReportRequestResource'
+      type: object
+    SellerReportRequestResource:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        attributes:
+          adSetIds:
+          - adSetIds
+          - adSetIds
+          - adSetIds
+          - adSetIds
+          - adSetIds
+          endDate: 2000-01-23
+          timezone: UTC
+          format: json
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          - campaignIds
+          metrics:
+          - impressions
+          - impressions
+          sellerIds:
+          - sellerIds
+          - sellerIds
+          - sellerIds
+          - sellerIds
+          - sellerIds
+          startDate: 2000-01-23
+          advertiserId: advertiserId
+          dimensions:
+          - campaignId
+          - campaignId
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SellerReportRequest'
+        type:
           type: string
       type: object
     SetAdSetTargetingDealIds:

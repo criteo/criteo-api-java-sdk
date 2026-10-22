@@ -15,7 +15,6 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.FrequencyCappingModel;
 import com.criteo.api.retailmedia.experimental.model.OnsiteDisplayAuctionAttributes;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -55,10 +54,6 @@ public class OnsiteDisplayAttributes {
   @SerializedName(SERIALIZED_NAME_AUCTION)
   private OnsiteDisplayAuctionAttributes auction;
 
-  public static final String SERIALIZED_NAME_FREQUENCY_CAPPING = "frequencyCapping";
-  @SerializedName(SERIALIZED_NAME_FREQUENCY_CAPPING)
-  private FrequencyCappingModel frequencyCapping;
-
   public OnsiteDisplayAttributes() {
   }
 
@@ -84,28 +79,6 @@ public class OnsiteDisplayAttributes {
   }
 
 
-  public OnsiteDisplayAttributes frequencyCapping(FrequencyCappingModel frequencyCapping) {
-    
-    this.frequencyCapping = frequencyCapping;
-    return this;
-  }
-
-   /**
-   * Get frequencyCapping
-   * @return frequencyCapping
-  **/
-  @javax.annotation.Nullable
-
-  public FrequencyCappingModel getFrequencyCapping() {
-    return frequencyCapping;
-  }
-
-
-  public void setFrequencyCapping(FrequencyCappingModel frequencyCapping) {
-    this.frequencyCapping = frequencyCapping;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -116,8 +89,7 @@ public class OnsiteDisplayAttributes {
       return false;
     }
     OnsiteDisplayAttributes onsiteDisplayAttributes = (OnsiteDisplayAttributes) o;
-    return Objects.equals(this.auction, onsiteDisplayAttributes.auction) &&
-        Objects.equals(this.frequencyCapping, onsiteDisplayAttributes.frequencyCapping);
+    return Objects.equals(this.auction, onsiteDisplayAttributes.auction);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -126,7 +98,7 @@ public class OnsiteDisplayAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(auction, frequencyCapping);
+    return Objects.hash(auction);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -141,7 +113,6 @@ public class OnsiteDisplayAttributes {
     StringBuilder sb = new StringBuilder();
     sb.append("class OnsiteDisplayAttributes {\n");
     sb.append("    auction: ").append(toIndentedString(auction)).append("\n");
-    sb.append("    frequencyCapping: ").append(toIndentedString(frequencyCapping)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -165,7 +136,6 @@ public class OnsiteDisplayAttributes {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("auction");
-    openapiFields.add("frequencyCapping");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -194,10 +164,6 @@ public class OnsiteDisplayAttributes {
       // validate the optional field `auction`
       if (jsonObj.get("auction") != null && !jsonObj.get("auction").isJsonNull()) {
         OnsiteDisplayAuctionAttributes.validateJsonObject(jsonObj.getAsJsonObject("auction"));
-      }
-      // validate the optional field `frequencyCapping`
-      if (jsonObj.get("frequencyCapping") != null && !jsonObj.get("frequencyCapping").isJsonNull()) {
-        FrequencyCappingModel.validateJsonObject(jsonObj.getAsJsonObject("frequencyCapping"));
       }
   }
 

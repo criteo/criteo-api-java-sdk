@@ -49,14 +49,16 @@ import com.criteo.api.marketingsolutions.experimental.model.PatchAdSetCategoryBi
 import com.criteo.api.marketingsolutions.experimental.model.PatchAdSetCategoryBidResultListResponse;
 import com.criteo.api.marketingsolutions.experimental.model.PatchAdSetDisplayMultiplierListRequest;
 import com.criteo.api.marketingsolutions.experimental.model.PatchAdSetDisplayMultiplierResultListResponse;
-import com.criteo.api.marketingsolutions.experimental.model.PatchCampaignListRequest;
-import com.criteo.api.marketingsolutions.experimental.model.PatchResultCampaignListResponse;
+import com.criteo.api.marketingsolutions.experimental.model.PatchCampaignV27Q1ListRequest;
+import com.criteo.api.marketingsolutions.experimental.model.PatchResultCampaignV27Q1ListResponse;
 import com.criteo.api.marketingsolutions.experimental.model.RequestsAdSetId;
 import com.criteo.api.marketingsolutions.experimental.model.RequestsPatchAdSetV26Q1;
 import com.criteo.api.marketingsolutions.experimental.model.ResponseReadAdSetV26Q1;
 import com.criteo.api.marketingsolutions.experimental.model.ResponsesAdSetId;
 import com.criteo.api.marketingsolutions.experimental.model.ResponsesAdSetIdV26Q1;
 import com.criteo.api.marketingsolutions.experimental.model.ResponsesReadAdSetV26Q1;
+import com.criteo.api.marketingsolutions.experimental.model.SellerReportDataResponse;
+import com.criteo.api.marketingsolutions.experimental.model.SellerReportRequestRequest;
 import com.criteo.api.marketingsolutions.experimental.model.SetAdSetTargetingDealIdsRequest;
 import com.criteo.api.marketingsolutions.experimental.model.SetAdSetTargetingVideoPositioningRequest;
 import com.criteo.api.marketingsolutions.experimental.model.SupplyVendorListResponse;
@@ -348,6 +350,130 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = createCampaignValidateBeforeCall(createCampaignRequest, _callback);
         Type localVarReturnType = new TypeToken<CampaignV23Q1Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createMarketplaceStatsReport
+     * @param sellerReportRequestRequest The seller report filters, dimensions, metrics, and output format. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMarketplaceStatsReportCall(SellerReportRequestRequest sellerReportRequestRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = sellerReportRequestRequest;
+
+        // create path and map variables
+        String localVarPath = "/experimental/marketing-solutions/marketplace-performance-outcomes/stats/report";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "text/csv"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createMarketplaceStatsReportValidateBeforeCall(SellerReportRequestRequest sellerReportRequestRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sellerReportRequestRequest' is set
+        if (sellerReportRequestRequest == null) {
+            throw new ApiException("Missing the required parameter 'sellerReportRequestRequest' when calling createMarketplaceStatsReport(Async)");
+        }
+
+        return createMarketplaceStatsReportCall(sellerReportRequestRequest, _callback);
+
+    }
+
+    /**
+     * /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report
+     * Generates a seller performance report synchronously and returns the report data directly in the response payload.
+     * @param sellerReportRequestRequest The seller report filters, dimensions, metrics, and output format. (required)
+     * @return SellerReportDataResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public SellerReportDataResponse createMarketplaceStatsReport(SellerReportRequestRequest sellerReportRequestRequest) throws ApiException {
+        ApiResponse<SellerReportDataResponse> localVarResp = createMarketplaceStatsReportWithHttpInfo(sellerReportRequestRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report
+     * Generates a seller performance report synchronously and returns the report data directly in the response payload.
+     * @param sellerReportRequestRequest The seller report filters, dimensions, metrics, and output format. (required)
+     * @return ApiResponse&lt;SellerReportDataResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SellerReportDataResponse> createMarketplaceStatsReportWithHttpInfo(SellerReportRequestRequest sellerReportRequestRequest) throws ApiException {
+        okhttp3.Call localVarCall = createMarketplaceStatsReportValidateBeforeCall(sellerReportRequestRequest, null);
+        Type localVarReturnType = new TypeToken<SellerReportDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report (asynchronously)
+     * Generates a seller performance report synchronously and returns the report data directly in the response payload.
+     * @param sellerReportRequestRequest The seller report filters, dimensions, metrics, and output format. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMarketplaceStatsReportAsync(SellerReportRequestRequest sellerReportRequestRequest, final ApiCallback<SellerReportDataResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createMarketplaceStatsReportValidateBeforeCall(sellerReportRequestRequest, _callback);
+        Type localVarReturnType = new TypeToken<SellerReportDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2710,7 +2836,7 @@ public class CampaignApi {
     }
     /**
      * Build call for patchCampaigns
-     * @param patchCampaignListRequest List of campaigns to patch. (required)
+     * @param patchCampaignV27Q1ListRequest List of campaigns to patch. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2720,7 +2846,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchCampaignsCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCampaignsCall(PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2734,7 +2860,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = patchCampaignListRequest;
+        Object localVarPostBody = patchCampaignV27Q1ListRequest;
 
         // create path and map variables
         String localVarPath = "/experimental/marketing-solutions/campaigns";
@@ -2766,21 +2892,21 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchCampaignsValidateBeforeCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'patchCampaignListRequest' is set
-        if (patchCampaignListRequest == null) {
-            throw new ApiException("Missing the required parameter 'patchCampaignListRequest' when calling patchCampaigns(Async)");
+    private okhttp3.Call patchCampaignsValidateBeforeCall(PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'patchCampaignV27Q1ListRequest' is set
+        if (patchCampaignV27Q1ListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchCampaignV27Q1ListRequest' when calling patchCampaigns(Async)");
         }
 
-        return patchCampaignsCall(patchCampaignListRequest, _callback);
+        return patchCampaignsCall(patchCampaignV27Q1ListRequest, _callback);
 
     }
 
     /**
      * /experimental/marketing-solutions/campaigns
-     * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
-     * @param patchCampaignListRequest List of campaigns to patch. (required)
-     * @return PatchResultCampaignListResponse
+     * Patch a list of Campaigns: name, spend limit, scheduled spend limits and budget automation.  Omitted attributes are left unchanged. When provided, the name must not be empty.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param patchCampaignV27Q1ListRequest List of campaigns to patch. (required)
+     * @return PatchResultCampaignV27Q1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2788,16 +2914,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
      </table>
      */
-    public PatchResultCampaignListResponse patchCampaigns(PatchCampaignListRequest patchCampaignListRequest) throws ApiException {
-        ApiResponse<PatchResultCampaignListResponse> localVarResp = patchCampaignsWithHttpInfo(patchCampaignListRequest);
+    public PatchResultCampaignV27Q1ListResponse patchCampaigns(PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest) throws ApiException {
+        ApiResponse<PatchResultCampaignV27Q1ListResponse> localVarResp = patchCampaignsWithHttpInfo(patchCampaignV27Q1ListRequest);
         return localVarResp.getData();
     }
 
     /**
      * /experimental/marketing-solutions/campaigns
-     * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
-     * @param patchCampaignListRequest List of campaigns to patch. (required)
-     * @return ApiResponse&lt;PatchResultCampaignListResponse&gt;
+     * Patch a list of Campaigns: name, spend limit, scheduled spend limits and budget automation.  Omitted attributes are left unchanged. When provided, the name must not be empty.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param patchCampaignV27Q1ListRequest List of campaigns to patch. (required)
+     * @return ApiResponse&lt;PatchResultCampaignV27Q1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2805,16 +2931,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PatchResultCampaignListResponse> patchCampaignsWithHttpInfo(PatchCampaignListRequest patchCampaignListRequest) throws ApiException {
-        okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignListRequest, null);
-        Type localVarReturnType = new TypeToken<PatchResultCampaignListResponse>(){}.getType();
+    public ApiResponse<PatchResultCampaignV27Q1ListResponse> patchCampaignsWithHttpInfo(PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest) throws ApiException {
+        okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignV27Q1ListRequest, null);
+        Type localVarReturnType = new TypeToken<PatchResultCampaignV27Q1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * /experimental/marketing-solutions/campaigns (asynchronously)
-     * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
-     * @param patchCampaignListRequest List of campaigns to patch. (required)
+     * Patch a list of Campaigns: name, spend limit, scheduled spend limits and budget automation.  Omitted attributes are left unchanged. When provided, the name must not be empty.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param patchCampaignV27Q1ListRequest List of campaigns to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2824,10 +2950,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchCampaignsAsync(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback<PatchResultCampaignListResponse> _callback) throws ApiException {
+    public okhttp3.Call patchCampaignsAsync(PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest, final ApiCallback<PatchResultCampaignV27Q1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignListRequest, _callback);
-        Type localVarReturnType = new TypeToken<PatchResultCampaignListResponse>(){}.getType();
+        okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignV27Q1ListRequest, _callback);
+        Type localVarReturnType = new TypeToken<PatchResultCampaignV27Q1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

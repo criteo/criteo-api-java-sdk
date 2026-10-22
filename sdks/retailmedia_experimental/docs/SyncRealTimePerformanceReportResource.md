@@ -2,13 +2,13 @@
 
 # SyncRealTimePerformanceReportResource
 
-A top-level object that encapsulates a Criteo API response for a single value
+A report request resource containing its type and required attributes.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**SyncRealTimePerformanceReport**](SyncRealTimePerformanceReport.md) |  |  [optional] |
+|**attributes** | [**SyncRealTimePerformanceReport**](SyncRealTimePerformanceReport.md) |  |  |
 |**type** | **String** |  |  [optional] |
 
 

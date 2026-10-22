@@ -147,11 +147,6 @@ docs/PreferredLineItemV2PagedListResponse.md
 docs/PreferredLineItemV2Response.md
 docs/Price.md
 docs/Product.md
-docs/ProductButtonRequest.md
-docs/ProductButtonRequestListRequest.md
-docs/ProductButtonRequestRequest.md
-docs/ProductButtonResponse.md
-docs/ProductButtonResponseListResponse.md
 docs/ProductBuyBoxWinner.md
 docs/ProductMetadata.md
 docs/ProductRecommendation.md
@@ -178,8 +173,6 @@ docs/ReportResponse.md
 docs/ResourceOfCreative2.md
 docs/ResourceOfPreferredLineItemUpdateModelV2.md
 docs/ResourceOfPreferredLineItemV2.md
-docs/ResourceOfProductButtonRequest.md
-docs/ResourceOfProductButtonResponse.md
 docs/RetailMediaContactlistAmendment.md
 docs/RetailMediaContactlistAmendmentAttributes.md
 docs/RetailMediaContactlistAmendmentRequest.md
@@ -499,11 +492,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/PreferredLineItemV2PagedL
 src/main/java/com/criteo/api/retailmedia/preview/model/PreferredLineItemV2Response.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Price.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Product.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ProductButtonRequest.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ProductButtonRequestListRequest.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ProductButtonRequestRequest.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ProductButtonResponse.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ProductButtonResponseListResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ProductBuyBoxWinner.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ProductMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ProductRecommendation.java
@@ -530,8 +518,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ReportResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfCreative2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfPreferredLineItemUpdateModelV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfPreferredLineItemV2.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfProductButtonRequest.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfProductButtonResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaContactlistAmendment.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaContactlistAmendmentAttributes.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaContactlistAmendmentRequest.java

@@ -6,6 +6,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 |------------- | ------------- | -------------|
 | [**createAdSet**](CampaignApi.md#createAdSet) | **POST** /experimental/marketing-solutions/ad-sets | /experimental/marketing-solutions/ad-sets |
 | [**createCampaign**](CampaignApi.md#createCampaign) | **POST** /experimental/marketing-solutions/campaigns | /experimental/marketing-solutions/campaigns |
+| [**createMarketplaceStatsReport**](CampaignApi.md#createMarketplaceStatsReport) | **POST** /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report | /experimental/marketing-solutions/marketplace-performance-outcomes/stats/report |
 | [**deleteAdvertiserBundleRules**](CampaignApi.md#deleteAdvertiserBundleRules) | **DELETE** /experimental/advertisers/{advertiserId}/targeting/bundle-rules | /experimental/advertisers/{advertiserId}/targeting/bundle-rules |
 | [**deleteAdvertiserDomainRules**](CampaignApi.md#deleteAdvertiserDomainRules) | **DELETE** /experimental/advertisers/{advertiserId}/targeting/domain-rules | /experimental/advertisers/{advertiserId}/targeting/domain-rules |
 | [**deleteCampaignBundleRules**](CampaignApi.md#deleteCampaignBundleRules) | **DELETE** /experimental/campaigns/{campaignId}/targeting/bundle-rules | /experimental/campaigns/{campaignId}/targeting/bundle-rules |
@@ -221,6 +222,95 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The campaign that has been created and errors / warnings |  -  |
+
+
+## createMarketplaceStatsReport
+
+> SellerReportDataResponse createMarketplaceStatsReport(sellerReportRequestRequest)
+
+/experimental/marketing-solutions/marketplace-performance-outcomes/stats/report
+
+Generates a seller performance report synchronously and returns the report data directly in the response payload.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.experimental;
+
+import com.criteo.api.marketingsolutions.experimental.ApiClient;
+import com.criteo.api.marketingsolutions.experimental.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.experimental.ApiException;
+import com.criteo.api.marketingsolutions.experimental.Configuration;
+import com.criteo.api.marketingsolutions.experimental.auth.*;
+import com.criteo.api.marketingsolutions.experimental.model.*;
+import com.criteo.api.marketingsolutions.experimental.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        SellerReportRequestRequest sellerReportRequestRequest = new SellerReportRequestRequest(); // SellerReportRequestRequest | The seller report filters, dimensions, metrics, and output format.
+        try {
+            SellerReportDataResponse result = apiInstance.createMarketplaceStatsReport(sellerReportRequestRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#createMarketplaceStatsReport");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **sellerReportRequestRequest** | [**SellerReportRequestRequest**](SellerReportRequestRequest.md)| The seller report filters, dimensions, metrics, and output format. | |
+
+### Return type
+
+[**SellerReportDataResponse**](SellerReportDataResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, text/csv
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
 
 
 ## deleteAdvertiserBundleRules
@@ -1922,11 +2012,11 @@ public class Example {
 
 ## patchCampaigns
 
-> PatchResultCampaignListResponse patchCampaigns(patchCampaignListRequest)
+> PatchResultCampaignV27Q1ListResponse patchCampaigns(patchCampaignV27Q1ListRequest)
 
 /experimental/marketing-solutions/campaigns
 
-Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+Patch a list of Campaigns: name, spend limit, scheduled spend limits and budget automation.  Omitted attributes are left unchanged. When provided, the name must not be empty.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
 
 ### Example
 
@@ -1967,9 +2057,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        PatchCampaignListRequest patchCampaignListRequest = new PatchCampaignListRequest(); // PatchCampaignListRequest | List of campaigns to patch.
+        PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest = new PatchCampaignV27Q1ListRequest(); // PatchCampaignV27Q1ListRequest | List of campaigns to patch.
         try {
-            PatchResultCampaignListResponse result = apiInstance.patchCampaigns(patchCampaignListRequest);
+            PatchResultCampaignV27Q1ListResponse result = apiInstance.patchCampaigns(patchCampaignV27Q1ListRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#patchCampaigns");
@@ -1987,11 +2077,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **patchCampaignListRequest** | [**PatchCampaignListRequest**](PatchCampaignListRequest.md)| List of campaigns to patch. | |
+| **patchCampaignV27Q1ListRequest** | [**PatchCampaignV27Q1ListRequest**](PatchCampaignV27Q1ListRequest.md)| List of campaigns to patch. | |
 
 ### Return type
 
-[**PatchResultCampaignListResponse**](PatchResultCampaignListResponse.md)
+[**PatchResultCampaignV27Q1ListResponse**](PatchResultCampaignV27Q1ListResponse.md)
 
 ### Authorization
 

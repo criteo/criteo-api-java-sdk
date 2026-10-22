@@ -6,6 +6,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 |------------- | ------------- | -------------|
 | [**generateAsyncAccountsReportV2**](AnalyticsApi.md#generateAsyncAccountsReportV2) | **POST** /experimental/retail-media/reports/accounts | /experimental/retail-media/reports/accounts |
 | [**generateAsyncCampaignsReportV2**](AnalyticsApi.md#generateAsyncCampaignsReportV2) | **POST** /experimental/retail-media/reports/campaigns | /experimental/retail-media/reports/campaigns |
+| [**generateAsyncFillRateReport**](AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /experimental/retail-media/reports/fillrate | /experimental/retail-media/reports/fillrate |
 | [**generateAsyncLineItemsReportV2**](AnalyticsApi.md#generateAsyncLineItemsReportV2) | **POST** /experimental/retail-media/reports/line-items | /experimental/retail-media/reports/line-items |
 | [**generateAsyncOffsiteReport**](AnalyticsApi.md#generateAsyncOffsiteReport) | **POST** /experimental/retail-media/reports/offsite | /experimental/retail-media/reports/offsite |
 | [**generateDigitalShelfIntelligenceInsight**](AnalyticsApi.md#generateDigitalShelfIntelligenceInsight) | **POST** /experimental/retail-media/insights/digital-shelf-intelligence | /experimental/retail-media/insights/digital-shelf-intelligence |
@@ -22,7 +23,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 /experimental/retail-media/reports/accounts
 
-Returns an asynchronous Accounts Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+Returns an asynchronous Accounts Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -173,6 +174,95 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asyncCampaignsReportRequest** | [**AsyncCampaignsReportRequest**](AsyncCampaignsReportRequest.md)|  | |
+
+### Return type
+
+[**AsyncReportResponse**](AsyncReportResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## generateAsyncFillRateReport
+
+> AsyncReportResponse generateAsyncFillRateReport(asyncFillRateReportRequest)
+
+/experimental/retail-media/reports/fillrate
+
+Returns an asynchronous Fill Rate Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.experimental;
+
+import com.criteo.api.retailmedia.experimental.ApiClient;
+import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
+import com.criteo.api.retailmedia.experimental.ApiException;
+import com.criteo.api.retailmedia.experimental.Configuration;
+import com.criteo.api.retailmedia.experimental.auth.*;
+import com.criteo.api.retailmedia.experimental.model.*;
+import com.criteo.api.retailmedia.experimental.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        AsyncFillRateReportRequest asyncFillRateReportRequest = new AsyncFillRateReportRequest(); // AsyncFillRateReportRequest | 
+        try {
+            AsyncReportResponse result = apiInstance.generateAsyncFillRateReport(asyncFillRateReportRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncFillRateReport");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asyncFillRateReportRequest** | [**AsyncFillRateReportRequest**](AsyncFillRateReportRequest.md)|  | |
 
 ### Return type
 

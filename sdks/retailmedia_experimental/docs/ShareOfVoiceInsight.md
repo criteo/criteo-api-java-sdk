@@ -10,7 +10,7 @@ Parameters of a Share of Voice insight.
 |------------ | ------------- | ------------- | -------------|
 |**accountId** | **String** | Account ID the insight report is generated for. |  |
 |**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) | Aggregation level of the report. Allowed values: &#x60;category&#x60;, &#x60;keyword&#x60;. Defaults to &#x60;category&#x60;. |  [optional] |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | Dimensions to report on. |  |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | Dimensions to report on. &#x60;week&#x60;, &#x60;month&#x60;, &#x60;quarter&#x60; and &#x60;year&#x60; return the first day of the period  (weeks start on Monday), which may be earlier than &#x60;startDate&#x60;; values cover only the requested range. |  |
 |**endDate** | **String** | End date of the report, in ISO 8601 format (YYYY-MM-DD). |  |
 |**filters** | [**ShareOfVoiceFilters**](ShareOfVoiceFilters.md) |  |  [optional] |
 |**format** | [**FormatEnum**](#FormatEnum) | Output format of the report. Allowed values: &#x60;json&#x60;, &#x60;json-compact&#x60;, &#x60;json-newline&#x60;, &#x60;csv&#x60;. Defaults to &#x60;json-compact&#x60;. |  [optional] |
@@ -33,6 +33,10 @@ Parameters of a Share of Voice insight.
 | Name | Value |
 |---- | -----|
 | DATE | &quot;date&quot; |
+| WEEK | &quot;week&quot; |
+| MONTH | &quot;month&quot; |
+| QUARTER | &quot;quarter&quot; |
+| YEAR | &quot;year&quot; |
 | ACCOUNTID | &quot;accountId&quot; |
 | ACCOUNTNAME | &quot;accountName&quot; |
 | RETAILERID | &quot;retailerId&quot; |

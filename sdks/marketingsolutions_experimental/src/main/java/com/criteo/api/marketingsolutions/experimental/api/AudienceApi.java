@@ -56,6 +56,8 @@ import com.criteo.api.marketingsolutions.experimental.model.DeleteAudienceContac
 import com.criteo.api.marketingsolutions.experimental.model.InMarketAudienceSegmentBrandEntityV1ListResponse;
 import com.criteo.api.marketingsolutions.experimental.model.InMarketAudienceSegmentInterestEntityV1ListResponse;
 import com.criteo.api.marketingsolutions.experimental.model.ModifyAudienceResponse;
+import com.criteo.api.marketingsolutions.experimental.model.RecommendSegmentsRequest;
+import com.criteo.api.marketingsolutions.experimental.model.RecommendSegmentsResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1743,6 +1745,129 @@ public class AudienceApi {
 
         okhttp3.Call localVarCall = modifyAudienceUsersWithAttributesValidateBeforeCall(audienceId, contactlistWithAttributesAmendmentRequest, _callback);
         Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for recommendSegments
+     * @param recommendSegmentsRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Recommended audience segments. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call recommendSegmentsCall(RecommendSegmentsRequest recommendSegmentsRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = recommendSegmentsRequest;
+
+        // create path and map variables
+        String localVarPath = "/experimental/marketing-solutions/audiences/recommend-segments";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call recommendSegmentsValidateBeforeCall(RecommendSegmentsRequest recommendSegmentsRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'recommendSegmentsRequest' is set
+        if (recommendSegmentsRequest == null) {
+            throw new ApiException("Missing the required parameter 'recommendSegmentsRequest' when calling recommendSegments(Async)");
+        }
+
+        return recommendSegmentsCall(recommendSegmentsRequest, _callback);
+
+    }
+
+    /**
+     * /experimental/marketing-solutions/audiences/recommend-segments
+     * Recommend audience segments for MarketingSolutions from a freeform brief.
+     * @param recommendSegmentsRequest  (required)
+     * @return RecommendSegmentsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Recommended audience segments. </td><td>  -  </td></tr>
+     </table>
+     */
+    public RecommendSegmentsResponse recommendSegments(RecommendSegmentsRequest recommendSegmentsRequest) throws ApiException {
+        ApiResponse<RecommendSegmentsResponse> localVarResp = recommendSegmentsWithHttpInfo(recommendSegmentsRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * /experimental/marketing-solutions/audiences/recommend-segments
+     * Recommend audience segments for MarketingSolutions from a freeform brief.
+     * @param recommendSegmentsRequest  (required)
+     * @return ApiResponse&lt;RecommendSegmentsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Recommended audience segments. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RecommendSegmentsResponse> recommendSegmentsWithHttpInfo(RecommendSegmentsRequest recommendSegmentsRequest) throws ApiException {
+        okhttp3.Call localVarCall = recommendSegmentsValidateBeforeCall(recommendSegmentsRequest, null);
+        Type localVarReturnType = new TypeToken<RecommendSegmentsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * /experimental/marketing-solutions/audiences/recommend-segments (asynchronously)
+     * Recommend audience segments for MarketingSolutions from a freeform brief.
+     * @param recommendSegmentsRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Recommended audience segments. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call recommendSegmentsAsync(RecommendSegmentsRequest recommendSegmentsRequest, final ApiCallback<RecommendSegmentsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = recommendSegmentsValidateBeforeCall(recommendSegmentsRequest, _callback);
+        Type localVarReturnType = new TypeToken<RecommendSegmentsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

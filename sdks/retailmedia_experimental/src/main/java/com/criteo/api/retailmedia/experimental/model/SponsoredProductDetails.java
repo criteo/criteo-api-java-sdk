@@ -49,10 +49,6 @@ import com.criteo.api.retailmedia.experimental.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SponsoredProductDetails {
-  public static final String SERIALIZED_NAME_BID_OVERRIDE = "bidOverride";
-  @SerializedName(SERIALIZED_NAME_BID_OVERRIDE)
-  private Double bidOverride;
-
   /**
    * The product&#39;s status in the sponsored products pool.
    */
@@ -63,8 +59,6 @@ public class SponsoredProductDetails {
     ACTIVE("Active"),
     
     INACTIVE("Inactive"),
-    
-    EXPIRED("Expired"),
     
     REMOVED("Removed"),
     
@@ -115,28 +109,6 @@ public class SponsoredProductDetails {
   public SponsoredProductDetails() {
   }
 
-  public SponsoredProductDetails bidOverride(Double bidOverride) {
-    
-    this.bidOverride = bidOverride;
-    return this;
-  }
-
-   /**
-   * The per-product bid override. Null means the line-item bid applies.
-   * @return bidOverride
-  **/
-  @javax.annotation.Nullable
-
-  public Double getBidOverride() {
-    return bidOverride;
-  }
-
-
-  public void setBidOverride(Double bidOverride) {
-    this.bidOverride = bidOverride;
-  }
-
-
   public SponsoredProductDetails status(StatusEnum status) {
     
     this.status = status;
@@ -169,8 +141,7 @@ public class SponsoredProductDetails {
       return false;
     }
     SponsoredProductDetails sponsoredProductDetails = (SponsoredProductDetails) o;
-    return Objects.equals(this.bidOverride, sponsoredProductDetails.bidOverride) &&
-        Objects.equals(this.status, sponsoredProductDetails.status);
+    return Objects.equals(this.status, sponsoredProductDetails.status);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -179,7 +150,7 @@ public class SponsoredProductDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidOverride, status);
+    return Objects.hash(status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -193,7 +164,6 @@ public class SponsoredProductDetails {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SponsoredProductDetails {\n");
-    sb.append("    bidOverride: ").append(toIndentedString(bidOverride)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -217,7 +187,6 @@ public class SponsoredProductDetails {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("bidOverride");
     openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)

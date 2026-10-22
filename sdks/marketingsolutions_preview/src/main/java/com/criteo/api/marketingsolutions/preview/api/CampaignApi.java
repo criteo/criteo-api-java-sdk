@@ -49,8 +49,8 @@ import com.criteo.api.marketingsolutions.preview.model.PatchAdSetCategoryBidList
 import com.criteo.api.marketingsolutions.preview.model.PatchAdSetCategoryBidResultListResponse;
 import com.criteo.api.marketingsolutions.preview.model.PatchAdSetDisplayMultiplierListRequest;
 import com.criteo.api.marketingsolutions.preview.model.PatchAdSetDisplayMultiplierResultListResponse;
-import com.criteo.api.marketingsolutions.preview.model.PatchCampaignListRequest;
-import com.criteo.api.marketingsolutions.preview.model.PatchResultCampaignListResponse;
+import com.criteo.api.marketingsolutions.preview.model.PatchCampaignV27Q1ListRequest;
+import com.criteo.api.marketingsolutions.preview.model.PatchResultCampaignV27Q1ListResponse;
 import com.criteo.api.marketingsolutions.preview.model.RequestsAdSetId;
 import com.criteo.api.marketingsolutions.preview.model.RequestsPatchAdSetV26Q1;
 import com.criteo.api.marketingsolutions.preview.model.ResponseReadAdSetV26Q1;
@@ -2710,7 +2710,7 @@ public class CampaignApi {
     }
     /**
      * Build call for patchCampaigns
-     * @param patchCampaignListRequest List of campaigns to patch. (required)
+     * @param patchCampaignV27Q1ListRequest List of campaigns to patch. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2720,7 +2720,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchCampaignsCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCampaignsCall(PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2734,7 +2734,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = patchCampaignListRequest;
+        Object localVarPostBody = patchCampaignV27Q1ListRequest;
 
         // create path and map variables
         String localVarPath = "/preview/marketing-solutions/campaigns";
@@ -2766,21 +2766,21 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchCampaignsValidateBeforeCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'patchCampaignListRequest' is set
-        if (patchCampaignListRequest == null) {
-            throw new ApiException("Missing the required parameter 'patchCampaignListRequest' when calling patchCampaigns(Async)");
+    private okhttp3.Call patchCampaignsValidateBeforeCall(PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'patchCampaignV27Q1ListRequest' is set
+        if (patchCampaignV27Q1ListRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchCampaignV27Q1ListRequest' when calling patchCampaigns(Async)");
         }
 
-        return patchCampaignsCall(patchCampaignListRequest, _callback);
+        return patchCampaignsCall(patchCampaignV27Q1ListRequest, _callback);
 
     }
 
     /**
      * /preview/marketing-solutions/campaigns
-     * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
-     * @param patchCampaignListRequest List of campaigns to patch. (required)
-     * @return PatchResultCampaignListResponse
+     * Patch a list of Campaigns: name, spend limit, scheduled spend limits and budget automation.  Omitted attributes are left unchanged. When provided, the name must not be empty.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param patchCampaignV27Q1ListRequest List of campaigns to patch. (required)
+     * @return PatchResultCampaignV27Q1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2788,16 +2788,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
      </table>
      */
-    public PatchResultCampaignListResponse patchCampaigns(PatchCampaignListRequest patchCampaignListRequest) throws ApiException {
-        ApiResponse<PatchResultCampaignListResponse> localVarResp = patchCampaignsWithHttpInfo(patchCampaignListRequest);
+    public PatchResultCampaignV27Q1ListResponse patchCampaigns(PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest) throws ApiException {
+        ApiResponse<PatchResultCampaignV27Q1ListResponse> localVarResp = patchCampaignsWithHttpInfo(patchCampaignV27Q1ListRequest);
         return localVarResp.getData();
     }
 
     /**
      * /preview/marketing-solutions/campaigns
-     * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
-     * @param patchCampaignListRequest List of campaigns to patch. (required)
-     * @return ApiResponse&lt;PatchResultCampaignListResponse&gt;
+     * Patch a list of Campaigns: name, spend limit, scheduled spend limits and budget automation.  Omitted attributes are left unchanged. When provided, the name must not be empty.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param patchCampaignV27Q1ListRequest List of campaigns to patch. (required)
+     * @return ApiResponse&lt;PatchResultCampaignV27Q1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2805,16 +2805,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PatchResultCampaignListResponse> patchCampaignsWithHttpInfo(PatchCampaignListRequest patchCampaignListRequest) throws ApiException {
-        okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignListRequest, null);
-        Type localVarReturnType = new TypeToken<PatchResultCampaignListResponse>(){}.getType();
+    public ApiResponse<PatchResultCampaignV27Q1ListResponse> patchCampaignsWithHttpInfo(PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest) throws ApiException {
+        okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignV27Q1ListRequest, null);
+        Type localVarReturnType = new TypeToken<PatchResultCampaignV27Q1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * /preview/marketing-solutions/campaigns (asynchronously)
-     * Patch a list of Campaigns.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
-     * @param patchCampaignListRequest List of campaigns to patch. (required)
+     * Patch a list of Campaigns: name, spend limit, scheduled spend limits and budget automation.  Omitted attributes are left unchanged. When provided, the name must not be empty.                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
+     * @param patchCampaignV27Q1ListRequest List of campaigns to patch. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2824,10 +2824,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchCampaignsAsync(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback<PatchResultCampaignListResponse> _callback) throws ApiException {
+    public okhttp3.Call patchCampaignsAsync(PatchCampaignV27Q1ListRequest patchCampaignV27Q1ListRequest, final ApiCallback<PatchResultCampaignV27Q1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignListRequest, _callback);
-        Type localVarReturnType = new TypeToken<PatchResultCampaignListResponse>(){}.getType();
+        okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignV27Q1ListRequest, _callback);
+        Type localVarReturnType = new TypeToken<PatchResultCampaignV27Q1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

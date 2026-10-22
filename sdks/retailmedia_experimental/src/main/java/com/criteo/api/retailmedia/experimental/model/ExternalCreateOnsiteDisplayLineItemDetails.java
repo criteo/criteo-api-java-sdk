@@ -16,7 +16,6 @@ package com.criteo.api.retailmedia.experimental.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.experimental.model.ExternalCreateOnsiteDisplayAuctionLineItemDetails;
-import com.criteo.api.retailmedia.experimental.model.ExternalFrequencyCappingModel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -55,9 +54,9 @@ public class ExternalCreateOnsiteDisplayLineItemDetails {
   @SerializedName(SERIALIZED_NAME_AUCTION_DETAILS)
   private ExternalCreateOnsiteDisplayAuctionLineItemDetails auctionDetails;
 
-  public static final String SERIALIZED_NAME_FREQUENCY_CAPPING = "frequencyCapping";
-  @SerializedName(SERIALIZED_NAME_FREQUENCY_CAPPING)
-  private ExternalFrequencyCappingModel frequencyCapping;
+  public static final String SERIALIZED_NAME_IS_PAUSED = "isPaused";
+  @SerializedName(SERIALIZED_NAME_IS_PAUSED)
+  private Boolean isPaused;
 
   public ExternalCreateOnsiteDisplayLineItemDetails() {
   }
@@ -84,25 +83,25 @@ public class ExternalCreateOnsiteDisplayLineItemDetails {
   }
 
 
-  public ExternalCreateOnsiteDisplayLineItemDetails frequencyCapping(ExternalFrequencyCappingModel frequencyCapping) {
+  public ExternalCreateOnsiteDisplayLineItemDetails isPaused(Boolean isPaused) {
     
-    this.frequencyCapping = frequencyCapping;
+    this.isPaused = isPaused;
     return this;
   }
 
    /**
-   * Get frequencyCapping
-   * @return frequencyCapping
+   * Whether to pause the display line item. Defaults to false.
+   * @return isPaused
   **/
   @javax.annotation.Nullable
 
-  public ExternalFrequencyCappingModel getFrequencyCapping() {
-    return frequencyCapping;
+  public Boolean getIsPaused() {
+    return isPaused;
   }
 
 
-  public void setFrequencyCapping(ExternalFrequencyCappingModel frequencyCapping) {
-    this.frequencyCapping = frequencyCapping;
+  public void setIsPaused(Boolean isPaused) {
+    this.isPaused = isPaused;
   }
 
 
@@ -117,7 +116,7 @@ public class ExternalCreateOnsiteDisplayLineItemDetails {
     }
     ExternalCreateOnsiteDisplayLineItemDetails externalCreateOnsiteDisplayLineItemDetails = (ExternalCreateOnsiteDisplayLineItemDetails) o;
     return Objects.equals(this.auctionDetails, externalCreateOnsiteDisplayLineItemDetails.auctionDetails) &&
-        Objects.equals(this.frequencyCapping, externalCreateOnsiteDisplayLineItemDetails.frequencyCapping);
+        Objects.equals(this.isPaused, externalCreateOnsiteDisplayLineItemDetails.isPaused);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -126,7 +125,7 @@ public class ExternalCreateOnsiteDisplayLineItemDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(auctionDetails, frequencyCapping);
+    return Objects.hash(auctionDetails, isPaused);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -141,7 +140,7 @@ public class ExternalCreateOnsiteDisplayLineItemDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalCreateOnsiteDisplayLineItemDetails {\n");
     sb.append("    auctionDetails: ").append(toIndentedString(auctionDetails)).append("\n");
-    sb.append("    frequencyCapping: ").append(toIndentedString(frequencyCapping)).append("\n");
+    sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -165,7 +164,7 @@ public class ExternalCreateOnsiteDisplayLineItemDetails {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("auctionDetails");
-    openapiFields.add("frequencyCapping");
+    openapiFields.add("isPaused");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -194,10 +193,6 @@ public class ExternalCreateOnsiteDisplayLineItemDetails {
       // validate the optional field `auctionDetails`
       if (jsonObj.get("auctionDetails") != null && !jsonObj.get("auctionDetails").isJsonNull()) {
         ExternalCreateOnsiteDisplayAuctionLineItemDetails.validateJsonObject(jsonObj.getAsJsonObject("auctionDetails"));
-      }
-      // validate the optional field `frequencyCapping`
-      if (jsonObj.get("frequencyCapping") != null && !jsonObj.get("frequencyCapping").isJsonNull()) {
-        ExternalFrequencyCappingModel.validateJsonObject(jsonObj.getAsJsonObject("frequencyCapping"));
       }
   }
 

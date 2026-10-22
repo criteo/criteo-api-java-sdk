@@ -283,7 +283,11 @@ public class AsyncFillRateReport {
     
     COVEREDPLACEMENTS("coveredPlacements"),
     
-    COVERAGERATE("coverageRate");
+    COVERAGERATE("coverageRate"),
+    
+    COVEREDSLOTS("coveredSlots"),
+    
+    DELIVERABLESLOTSINFERRED("deliverableSlotsInferred");
 
     private String value;
 

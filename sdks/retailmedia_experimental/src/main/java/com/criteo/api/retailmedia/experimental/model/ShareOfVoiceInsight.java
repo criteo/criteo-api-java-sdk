@@ -113,6 +113,14 @@ public class ShareOfVoiceInsight {
   public enum DimensionsEnum {
     DATE("date"),
     
+    WEEK("week"),
+    
+    MONTH("month"),
+    
+    QUARTER("quarter"),
+    
+    YEAR("year"),
+    
     ACCOUNTID("accountId"),
     
     ACCOUNTNAME("accountName"),
@@ -416,7 +424,7 @@ public class ShareOfVoiceInsight {
   }
 
    /**
-   * Dimensions to report on.
+   * Dimensions to report on. &#x60;week&#x60;, &#x60;month&#x60;, &#x60;quarter&#x60; and &#x60;year&#x60; return the first day of the period  (weeks start on Monday), which may be earlier than &#x60;startDate&#x60;; values cover only the requested range.
    * @return dimensions
   **/
   @javax.annotation.Nonnull

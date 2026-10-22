@@ -3125,15 +3125,17 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/campaigns:
     patch:
-      description: "Patch a list of Campaigns.\r\n            \r\nA campaign, or in\
-        \ other words a marketing campaign, is an entity that defines advertising\
+      description: "Patch a list of Campaigns: name, spend limit, scheduled spend\
+        \ limits and budget automation.\r\nOmitted attributes are left unchanged.\
+        \ When provided, the name must not be empty.\r\n            \r\nA campaign,\
+        \ or in other words a marketing campaign, is an entity that defines advertising\
         \ objectives and success criteria."
       operationId: PatchCampaigns
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchCampaignListRequest'
+              $ref: '#/components/schemas/PatchCampaignV27Q1ListRequest'
         description: List of campaigns to patch.
         required: true
         x-bodyName: request
@@ -3142,7 +3144,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PatchResultCampaignListResponse'
+                $ref: '#/components/schemas/PatchResultCampaignV27Q1ListResponse'
           description: List of patched campaigns.
       security:
       - oauth:
@@ -11435,15 +11437,17 @@ components:
       - costController
       type: object
     CreateAdSetBudgetV26Q1:
-      description: "Budget create model for an ad set.\r\nFor \"capped\": budgetAmount\
-        \ (required, non-null), budgetRenewal (required, not \"undefined\"), and budgetDeliverySmoothing\
-        \ (required) must all be provided.\r\npacingBehavior is optional; \"targetAverageDailyBudget\"\
-        \ is only supported for capped, standard, monthly budgets.\r\nFor \"uncapped\"\
-        : budgetAmount must be null, budgetRenewal must be \"undefined\", budgetDeliverySmoothing,\
-        \ budgetDeliveryWeek, and pacingBehavior must be omitted or \"undefined\"\
-        .\r\nFor marketing campaigns with budget automation enabled, omit this object.\r\
-        \nIn that case, the ad set budget is initialized from the marketing campaign\
-        \ spend limit amount and renewal period."
+      description: "Budget create model for an ad set.\r\n- For marketing campaigns\
+        \ with budget automation enabled, omit this object. In that case, the ad set\
+        \ budget is initialized from the marketing campaign spend limit amount and\
+        \ renewal period.\r\n- If \"capped\" budget strategy: budgetAmount (required,\
+        \ non-null), budgetRenewal (required, not \"undefined\"), and budgetDeliverySmoothing\
+        \ (required) must all be provided.\r\n  + If \"standard\" budgetDeliverySmoothing:\
+        \ pacingBehavior ( required, not \"undefined\") must be provided.\r\n  + If\
+        \ \"accelerated\" budgetDeliverySmoothing: pacingBehavior must be omitted\
+        \ or \"undefined\".\r\n- If \"uncapped\" budget strategy: budgetAmount must\
+        \ be null, budgetRenewal must be \"undefined\", budgetDeliverySmoothing, budgetDeliveryWeek,\
+        \ and pacingBehavior must be omitted or \"undefined\"."
       properties:
         budgetAmount:
           description: Maximum budget amount in the advertiser's currency per renewal
@@ -18078,205 +18082,29 @@ components:
         targeting:
           $ref: '#/components/schemas/AdSetTargetingV26Q1'
       type: object
-    PatchCampaign:
-      description: "Campaign patch model.\r\nThe campaign identifier is provided in\
-        \ the resource {id} field (string-encoded integer) and is required."
+    PatchBudgetAutomationConfiguration:
+      description: "Configuration for budget automation. Only meaningful when \"enabled\"\
+        \ is true.\r\nWhen \"enabled\" is false or omitted, this field is ignored."
       example:
-        budgetAutomation:
-          budgetConfiguration:
-            adSetObjectives: conversions
-          enabled: true
-        spendLimit:
-          spendLimitRenewal: undefined
-          spendLimitAmount:
-            value: 0.8008281904610115
-          spendLimitType: capped
-        scheduledSpendLimit:
-          scheduledSpendLimitCreations:
-          - spendLimitRenewal: undefined
-            spendLimitAmount:
-              value: 0.8008281904610115
-            spendLimitType: capped
-            startDate: 2000-01-23
-          - spendLimitRenewal: undefined
-            spendLimitAmount:
-              value: 0.8008281904610115
-            spendLimitType: capped
-            startDate: 2000-01-23
-          scheduledSpendLimitDeletions:
-          - id: id
-          - id: id
-          scheduledSpendLimitUpdates:
-          - spendLimitRenewal: undefined
-            spendLimitAmount:
-              value: 0.8008281904610115
-            id: id
-            spendLimitType: capped
-            startDate: 2000-01-23
-          - spendLimitRenewal: undefined
-            spendLimitAmount:
-              value: 0.8008281904610115
-            id: id
-            spendLimitType: capped
-            startDate: 2000-01-23
+        adSetObjectives: conversions
       properties:
-        budgetAutomation:
-          $ref: '#/components/schemas/PatchMarketingCampaignBudgetAutomation'
-        scheduledSpendLimit:
-          $ref: '#/components/schemas/PatchCampaignScheduledSpendLimit'
-        spendLimit:
-          $ref: '#/components/schemas/PatchCampaignSpendLimit'
+        adSetObjectives:
+          enum:
+          - conversions
+          - revenue
+          - visits
+          - videoViews
+          type: string
       type: object
-    PatchCampaignListRequest:
-      description: List of input resources
-      example:
-        data:
-        - attributes:
-            budgetAutomation:
-              budgetConfiguration:
-                adSetObjectives: conversions
-              enabled: true
-            spendLimit:
-              spendLimitRenewal: undefined
-              spendLimitAmount:
-                value: 0.8008281904610115
-              spendLimitType: capped
-            scheduledSpendLimit:
-              scheduledSpendLimitCreations:
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                spendLimitType: capped
-                startDate: 2000-01-23
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                spendLimitType: capped
-                startDate: 2000-01-23
-              scheduledSpendLimitDeletions:
-              - id: id
-              - id: id
-              scheduledSpendLimitUpdates:
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                id: id
-                spendLimitType: capped
-                startDate: 2000-01-23
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                id: id
-                spendLimitType: capped
-                startDate: 2000-01-23
-          id: id
-          type: Campaign
-        - attributes:
-            budgetAutomation:
-              budgetConfiguration:
-                adSetObjectives: conversions
-              enabled: true
-            spendLimit:
-              spendLimitRenewal: undefined
-              spendLimitAmount:
-                value: 0.8008281904610115
-              spendLimitType: capped
-            scheduledSpendLimit:
-              scheduledSpendLimitCreations:
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                spendLimitType: capped
-                startDate: 2000-01-23
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                spendLimitType: capped
-                startDate: 2000-01-23
-              scheduledSpendLimitDeletions:
-              - id: id
-              - id: id
-              scheduledSpendLimitUpdates:
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                id: id
-                spendLimitType: capped
-                startDate: 2000-01-23
-              - spendLimitRenewal: undefined
-                spendLimitAmount:
-                  value: 0.8008281904610115
-                id: id
-                spendLimitType: capped
-                startDate: 2000-01-23
-          id: id
-          type: Campaign
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/PatchCampaignWriteResource'
-          nullable: true
-          type: array
-      type: object
-    PatchCampaignScheduledSpendLimit:
-      description: "Scheduled spend-limit operations for a marketing campaign (patch).\r\
-        \nCreate, update, and delete operations are applied together by the backend."
-      example:
-        scheduledSpendLimitCreations:
-        - spendLimitRenewal: undefined
-          spendLimitAmount:
-            value: 0.8008281904610115
-          spendLimitType: capped
-          startDate: 2000-01-23
-        - spendLimitRenewal: undefined
-          spendLimitAmount:
-            value: 0.8008281904610115
-          spendLimitType: capped
-          startDate: 2000-01-23
-        scheduledSpendLimitDeletions:
-        - id: id
-        - id: id
-        scheduledSpendLimitUpdates:
-        - spendLimitRenewal: undefined
-          spendLimitAmount:
-            value: 0.8008281904610115
-          id: id
-          spendLimitType: capped
-          startDate: 2000-01-23
-        - spendLimitRenewal: undefined
-          spendLimitAmount:
-            value: 0.8008281904610115
-          id: id
-          spendLimitType: capped
-          startDate: 2000-01-23
-      properties:
-        scheduledSpendLimitCreations:
-          description: Scheduled spend limits to create.
-          items:
-            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitCreation'
-          nullable: true
-          type: array
-        scheduledSpendLimitDeletions:
-          description: Scheduled spend limits to delete.
-          items:
-            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitDeletion'
-          nullable: true
-          type: array
-        scheduledSpendLimitUpdates:
-          description: Scheduled spend limits to update.
-          items:
-            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitUpdate'
-          nullable: true
-          type: array
-      type: object
-    PatchCampaignScheduledSpendLimitCreation:
+    PatchCampaignScheduledSpendLimitCreationV27Q1:
       description: "Scheduled spend-limit creation.\r\nThe startDate is an advertiser-local\
         \ calendar date, for example 2026-09-01.\r\nWhen spendLimitType is \"capped\"\
         : spendLimitAmount and spendLimitRenewal are required.\r\nWhen spendLimitType\
         \ is \"uncapped\": spendLimitAmount.value is null and spendLimitRenewal is\
         \ \"undefined\".\r\nAll scheduled spend limits for the campaign must use the\
-        \ same spendLimitRenewal as the active spend limit.\r\nWhen spendLimitRenewal\
-        \ is \"monthly\", startDate must be the first day of the month."
+        \ same spendLimitRenewal (periodicity) as the active spend limit.\r\nWhen\
+        \ spendLimitRenewal is \"monthly\", startDate must be the first day of the\
+        \ month."
       example:
         spendLimitRenewal: undefined
         spendLimitAmount:
@@ -18318,7 +18146,7 @@ components:
       - spendLimitType
       - startDate
       type: object
-    PatchCampaignScheduledSpendLimitDeletion:
+    PatchCampaignScheduledSpendLimitDeletionV27Q1:
       description: Scheduled spend-limit deletion.
       example:
         id: id
@@ -18330,14 +18158,13 @@ components:
       required:
       - id
       type: object
-    PatchCampaignScheduledSpendLimitUpdate:
-      description: "Scheduled spend-limit update.\r\nUpdates are full replacements:\
-        \ id, startDate, spendLimitType, and the capped or uncapped spend-limit values\
-        \ must describe the complete desired state.\r\nThe startDate is an advertiser-local\
-        \ calendar date, for example 2026-09-01.\r\nAll scheduled spend limits for\
-        \ the campaign must use the same spendLimitRenewal as the active spend limit.\r\
-        \nWhen spendLimitRenewal is \"monthly\", startDate must be the first day of\
-        \ the month."
+    PatchCampaignScheduledSpendLimitUpdateV27Q1:
+      description: "Scheduled spend-limit update.\r\nOnly provided fields are updated;\
+        \ omitted fields are left unchanged. The id is required.\r\nThe startDate\
+        \ is an advertiser-local calendar date, for example 2026-09-01.\r\nAll scheduled\
+        \ spend limits for the campaign must use the same spendLimitRenewal (periodicity)\
+        \ as the active spend limit.\r\nWhen spendLimitRenewal is \"monthly\", startDate\
+        \ must be the first day of the month."
       example:
         spendLimitRenewal: undefined
         spendLimitAmount:
@@ -18382,10 +18209,59 @@ components:
           type: string
       required:
       - id
-      - spendLimitType
-      - startDate
       type: object
-    PatchCampaignSpendLimit:
+    PatchCampaignScheduledSpendLimitV27Q1:
+      description: "Scheduled spend-limit operations for a marketing campaign (patch).\r\
+        \nCreate, update, and delete operations are applied together by the backend."
+      example:
+        scheduledSpendLimitCreations:
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          spendLimitType: capped
+          startDate: 2000-01-23
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          spendLimitType: capped
+          startDate: 2000-01-23
+        scheduledSpendLimitDeletions:
+        - id: id
+        - id: id
+        scheduledSpendLimitUpdates:
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          id: id
+          spendLimitType: capped
+          startDate: 2000-01-23
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          id: id
+          spendLimitType: capped
+          startDate: 2000-01-23
+      properties:
+        scheduledSpendLimitCreations:
+          description: Scheduled spend limits to create.
+          items:
+            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitCreationV27Q1'
+          nullable: true
+          type: array
+        scheduledSpendLimitDeletions:
+          description: Scheduled spend limits to delete.
+          items:
+            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitDeletionV27Q1'
+          nullable: true
+          type: array
+        scheduledSpendLimitUpdates:
+          description: Scheduled spend limits to update.
+          items:
+            $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitUpdateV27Q1'
+          nullable: true
+          type: array
+      type: object
+    PatchCampaignSpendLimitV27Q1:
       description: "Spend limit configuration for a marketing campaign (patch).\r\n\
         Only provided fields are updated; omitted fields are left unchanged.\r\nWhen\
         \ spendLimitType is \"capped\": spendLimitAmount and spendLimitRenewal are\
@@ -18400,10 +18276,6 @@ components:
         spendLimitAmount:
           $ref: '#/components/schemas/NillableDecimal'
         spendLimitRenewal:
-          description: "The period over which the campaign spend limit is applied.\r\
-            \nWhen spendLimitType is \"capped\", this is \"daily\", \"monthly\", or\
-            \ \"lifetime\".\r\nWhen spendLimitType is \"uncapped\", this is \"undefined\"\
-            ."
           enum:
           - undefined
           - daily
@@ -18412,20 +18284,165 @@ components:
           nullable: true
           type: string
         spendLimitType:
-          description: "Controls whether the campaign has a spend limit.\r\n\"capped\"\
-            \ returns a non-null spendLimitAmount.value and a spendLimitRenewal of\
-            \ \"daily\", \"monthly\", or \"lifetime\".\r\n\"uncapped\" returns spendLimitAmount.value\
-            \ as null and spendLimitRenewal as \"undefined\"."
           enum:
           - capped
           - uncapped
           nullable: true
           type: string
       type: object
-    PatchCampaignWriteResource:
+    PatchCampaignV27Q1:
+      description: "Campaign patch model.\r\nThe campaign identifier is provided in\
+        \ the resource {id} field (string-encoded integer) and is required."
+      example:
+        name: name
+        budgetAutomation:
+          budgetConfiguration:
+            adSetObjectives: conversions
+          enabled: true
+        spendLimit:
+          spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          spendLimitType: capped
+        scheduledSpendLimit:
+          scheduledSpendLimitCreations:
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            spendLimitType: capped
+            startDate: 2000-01-23
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            spendLimitType: capped
+            startDate: 2000-01-23
+          scheduledSpendLimitDeletions:
+          - id: id
+          - id: id
+          scheduledSpendLimitUpdates:
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            id: id
+            spendLimitType: capped
+            startDate: 2000-01-23
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            id: id
+            spendLimitType: capped
+            startDate: 2000-01-23
+      properties:
+        budgetAutomation:
+          $ref: '#/components/schemas/PatchMarketingCampaignBudgetAutomationV27Q1'
+        name:
+          description: New name of the campaign. Omit to leave unchanged. Must not
+            be empty when provided.
+          nullable: true
+          type: string
+        scheduledSpendLimit:
+          $ref: '#/components/schemas/PatchCampaignScheduledSpendLimitV27Q1'
+        spendLimit:
+          $ref: '#/components/schemas/PatchCampaignSpendLimitV27Q1'
+      type: object
+    PatchCampaignV27Q1ListRequest:
+      description: List of input resources
+      example:
+        data:
+        - attributes:
+            name: name
+            budgetAutomation:
+              budgetConfiguration:
+                adSetObjectives: conversions
+              enabled: true
+            spendLimit:
+              spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              spendLimitType: capped
+            scheduledSpendLimit:
+              scheduledSpendLimitCreations:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              scheduledSpendLimitDeletions:
+              - id: id
+              - id: id
+              scheduledSpendLimitUpdates:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
+          id: id
+          type: Campaign
+        - attributes:
+            name: name
+            budgetAutomation:
+              budgetConfiguration:
+                adSetObjectives: conversions
+              enabled: true
+            spendLimit:
+              spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              spendLimitType: capped
+            scheduledSpendLimit:
+              scheduledSpendLimitCreations:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                spendLimitType: capped
+                startDate: 2000-01-23
+              scheduledSpendLimitDeletions:
+              - id: id
+              - id: id
+              scheduledSpendLimitUpdates:
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
+              - spendLimitRenewal: undefined
+                spendLimitAmount:
+                  value: 0.8008281904610115
+                id: id
+                spendLimitType: capped
+                startDate: 2000-01-23
+          id: id
+          type: Campaign
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/PatchCampaignV27Q1WriteResource'
+          nullable: true
+          type: array
+      type: object
+    PatchCampaignV27Q1WriteResource:
       description: write model data for resources
       example:
         attributes:
+          name: name
           budgetAutomation:
             budgetConfiguration:
               adSetObjectives: conversions
@@ -18467,7 +18484,7 @@ components:
         type: Campaign
       properties:
         attributes:
-          $ref: '#/components/schemas/PatchCampaign'
+          $ref: '#/components/schemas/PatchCampaignV27Q1'
         id:
           description: Id of the entity
           nullable: true
@@ -18478,7 +18495,7 @@ components:
           nullable: true
           type: string
       type: object
-    PatchMarketingCampaignBudgetAutomation:
+    PatchMarketingCampaignBudgetAutomationV27Q1:
       description: "Budget automation, lets users configure budgets once at the campaign\
         \ level while Criteo dynamically routes spend toward the best-performing ad\
         \ sets.\r\nOnly provided fields are updated; omitted fields are left unchanged.\r\
@@ -18493,10 +18510,13 @@ components:
         enabled: true
       properties:
         budgetConfiguration:
-          $ref: '#/components/schemas/BudgetAutomationConfiguration'
+          $ref: '#/components/schemas/PatchBudgetAutomationConfiguration'
         enabled:
-          description: Whether budget automation is enabled for this campaign. This
-            field is always present in the response.
+          description: "Whether budget automation is active for this marketing campaign.\r\
+            \n- true: budget automation is enabled and \"budgetConfiguration\" must\
+            \ be provided with a valid objective.\r\n- false (default when omitted):\
+            \ budget automation is disabled; \"budgetConfiguration\" is ignored if\
+            \ provided."
           type: boolean
       type: object
     PatchProductSetRequest:
@@ -18540,7 +18560,7 @@ components:
           type: array
           uniqueItems: false
       type: object
-    PatchResultCampaignListResponse:
+    PatchResultCampaignV27Q1ListResponse:
       description: List of output resources
       example:
         data:
@@ -18593,7 +18613,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/PatchResultCampaignReadResource'
+            $ref: '#/components/schemas/PatchResultCampaignV27Q1ReadResource'
           nullable: true
           readOnly: true
           type: array
@@ -18610,7 +18630,7 @@ components:
           readOnly: true
           type: array
       type: object
-    PatchResultCampaignReadResource:
+    PatchResultCampaignV27Q1ReadResource:
       description: read model data for resources
       example:
         id: id

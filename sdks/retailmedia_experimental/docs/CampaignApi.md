@@ -5,7 +5,6 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**addProducts**](CampaignApi.md#addProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/add | /experimental/retail-media/line-items/{line-item-id}/products/add |
-| [**appendProductButtonByLineItemId**](CampaignApi.md#appendProductButtonByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/product-buttons/create | /experimental/retail-media/line-items/{line-item-id}/product-buttons/create |
 | [**createAuctionLineItem**](CampaignApi.md#createAuctionLineItem) | **POST** /experimental/retail-media/campaigns/{campaignId}/auction-line-items | /experimental/retail-media/campaigns/{campaignId}/auction-line-items |
 | [**createCampaign**](CampaignApi.md#createCampaign) | **POST** /experimental/retail-media/accounts/{account-id}/campaigns | /experimental/retail-media/accounts/{account-id}/campaigns |
 | [**createCreative**](CampaignApi.md#createCreative) | **POST** /experimental/retail-media/accounts/{account-id}/creatives | /experimental/retail-media/accounts/{account-id}/creatives |
@@ -13,32 +12,31 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**createPreferredLineItemByCampaignId**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items | /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items |
 | [**createTargetsByLineItemId**](CampaignApi.md#createTargetsByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/targets/create | /experimental/retail-media/line-items/{line-item-id}/targets/create |
 | [**deleteCreatives**](CampaignApi.md#deleteCreatives) | **POST** /experimental/retail-media/line-items/{line-item-id}/creatives/delete | /experimental/retail-media/line-items/{line-item-id}/creatives/delete |
-| [**deleteProductButtonByLineItemAndProductButtonId**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**deleteProducts**](CampaignApi.md#deleteProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/delete | /experimental/retail-media/line-items/{line-item-id}/products/delete |
 | [**fetchCreatives**](CampaignApi.md#fetchCreatives) | **GET** /experimental/retail-media/line-items/{line-item-id}/creatives | /experimental/retail-media/line-items/{line-item-id}/creatives |
 | [**fetchProducts**](CampaignApi.md#fetchProducts) | **GET** /experimental/retail-media/line-items/{line-item-id}/products | /experimental/retail-media/line-items/{line-item-id}/products |
 | [**getBiddingStrategyByLineItemId**](CampaignApi.md#getBiddingStrategyByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/bidding-strategy |
-| [**getCampaign**](CampaignApi.md#getCampaign) | **GET** /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} | /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} |
+| [**getCampaign**](CampaignApi.md#getCampaign) | **GET** /experimental/retail-media/campaigns/{campaign-id} | /experimental/retail-media/campaigns/{campaign-id} |
 | [**getCapoutHistory**](CampaignApi.md#getCapoutHistory) | **POST** /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history | /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history |
 | [**getCatalogStatus**](CampaignApi.md#getCatalogStatus) | **GET** /experimental/retail-media/catalogs/{catalogId}/status | /experimental/retail-media/catalogs/{catalogId}/status |
 | [**getCreative**](CampaignApi.md#getCreative) | **GET** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
 | [**getLineItem**](CampaignApi.md#getLineItem) | **GET** /experimental/retail-media/line-items/{line-item-id} | /experimental/retail-media/line-items/{line-item-id} |
 | [**getMinBidsByLineItemId**](CampaignApi.md#getMinBidsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/min-bids | /experimental/retail-media/line-items/{line-item-id}/min-bids |
-| [**getProductButtonByLineItemAndProductButtonId**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
-| [**getProductButtonsByLineItemId**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons | /experimental/retail-media/line-items/{line-item-id}/product-buttons |
 | [**getTargetsByLineItemId**](CampaignApi.md#getTargetsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/targets | /experimental/retail-media/line-items/{line-item-id}/targets |
 | [**lineItemsDemandSearch**](CampaignApi.md#lineItemsDemandSearch) | **POST** /experimental/retail-media/line-items/demand-search | /experimental/retail-media/line-items/demand-search |
 | [**lineItemsSupplySearch**](CampaignApi.md#lineItemsSupplySearch) | **POST** /experimental/retail-media/line-items/supply-search | /experimental/retail-media/line-items/supply-search |
+| [**listAccountChangeHistoryEntries**](CampaignApi.md#listAccountChangeHistoryEntries) | **GET** /experimental/retail-media/accounts/{account-id}/change-history-entries | /experimental/retail-media/accounts/{account-id}/change-history-entries |
+| [**listRetailerChangeHistoryEntries**](CampaignApi.md#listRetailerChangeHistoryEntries) | **GET** /experimental/retail-media/retailers/{retailer-id}/change-history-entries | /experimental/retail-media/retailers/{retailer-id}/change-history-entries |
 | [**searchAccountCreatives**](CampaignApi.md#searchAccountCreatives) | **POST** /experimental/retail-media/accounts/{account-id}/creatives/search | /experimental/retail-media/accounts/{account-id}/creatives/search |
+| [**searchAccountCreativesEnriched**](CampaignApi.md#searchAccountCreativesEnriched) | **POST** /experimental/retail-media/accounts/{account-id}/creatives/search-enriched | /experimental/retail-media/accounts/{account-id}/creatives/search-enriched |
 | [**searchCampaigns**](CampaignApi.md#searchCampaigns) | **POST** /experimental/retail-media/accounts/{account-id}/campaigns/search | /experimental/retail-media/accounts/{account-id}/campaigns/search |
 | [**setBiddingStrategyByLineItemId**](CampaignApi.md#setBiddingStrategyByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy |
 | [**submitLineItem**](CampaignApi.md#submitLineItem) | **POST** /experimental/retail-media/line-items/{line-item-id}/submit | /experimental/retail-media/line-items/{line-item-id}/submit |
 | [**updateAuctionLineItem**](CampaignApi.md#updateAuctionLineItem) | **PUT** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId} |
-| [**updateCampaign**](CampaignApi.md#updateCampaign) | **PATCH** /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} | /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} |
+| [**updateCampaign**](CampaignApi.md#updateCampaign) | **PATCH** /experimental/retail-media/campaigns/{campaign-id} | /experimental/retail-media/campaigns/{campaign-id} |
 | [**updateCreative**](CampaignApi.md#updateCreative) | **PUT** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
 | [**updateLineItem**](CampaignApi.md#updateLineItem) | **PATCH** /experimental/retail-media/line-items/{line-item-id} | /experimental/retail-media/line-items/{line-item-id} |
 | [**updatePreferredLineItemByLineItemId**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /experimental/retail-media/preferred-line-items/{line-item-id} | /experimental/retail-media/preferred-line-items/{line-item-id} |
-| [**updateProductButtonByLineItemAndProductButtonId**](CampaignApi.md#updateProductButtonByLineItemAndProductButtonId) | **PUT** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**updateTargetsByLineItemId**](CampaignApi.md#updateTargetsByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/targets/update | /experimental/retail-media/line-items/{line-item-id}/targets/update |
 | [**upsertCreatives**](CampaignApi.md#upsertCreatives) | **POST** /experimental/retail-media/line-items/{line-item-id}/creatives/upsert | /experimental/retail-media/line-items/{line-item-id}/creatives/upsert |
 
@@ -46,7 +44,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 ## addProducts
 
-> AddProductsResultModelResponse addProducts(lineItemId, addProductsModelRequest)
+> AddLineItemProductsListResponse addProducts(lineItemId, addLineItemProductsListRequest)
 
 /experimental/retail-media/line-items/{line-item-id}/products/add
 
@@ -92,9 +90,9 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String lineItemId = "lineItemId_example"; // String | The line item id.
-        AddProductsModelRequest addProductsModelRequest = new AddProductsModelRequest(); // AddProductsModelRequest | The products to add.
+        AddLineItemProductsListRequest addLineItemProductsListRequest = new AddLineItemProductsListRequest(); // AddLineItemProductsListRequest | The products to add.
         try {
-            AddProductsResultModelResponse result = apiInstance.addProducts(lineItemId, addProductsModelRequest);
+            AddLineItemProductsListResponse result = apiInstance.addProducts(lineItemId, addLineItemProductsListRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#addProducts");
@@ -113,11 +111,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| The line item id. | |
-| **addProductsModelRequest** | [**AddProductsModelRequest**](AddProductsModelRequest.md)| The products to add. | |
+| **addLineItemProductsListRequest** | [**AddLineItemProductsListRequest**](AddLineItemProductsListRequest.md)| The products to add. | |
 
 ### Return type
 
-[**AddProductsResultModelResponse**](AddProductsResultModelResponse.md)
+[**AddLineItemProductsListResponse**](AddLineItemProductsListResponse.md)
 
 ### Authorization
 
@@ -133,97 +131,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-
-
-## appendProductButtonByLineItemId
-
-> ProductButtonResponseListResponse appendProductButtonByLineItemId(lineItemId, productButtonRequestListRequest)
-
-/experimental/retail-media/line-items/{line-item-id}/product-buttons/create
-
-Add Specific Product Buttons
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | LineItemId for productButton retrieval
-        ProductButtonRequestListRequest productButtonRequestListRequest = new ProductButtonRequestListRequest(); // ProductButtonRequestListRequest | List of Product Buttons to append
-        try {
-            ProductButtonResponseListResponse result = apiInstance.appendProductButtonByLineItemId(lineItemId, productButtonRequestListRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#appendProductButtonByLineItemId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| LineItemId for productButton retrieval | |
-| **productButtonRequestListRequest** | [**ProductButtonRequestListRequest**](ProductButtonRequestListRequest.md)| List of Product Buttons to append | [optional] |
-
-### Return type
-
-[**ProductButtonResponseListResponse**](ProductButtonResponseListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | ProductButtons added |  -  |
 
 
 ## createAuctionLineItem
@@ -501,7 +408,7 @@ public class Example {
 
 ## createLineItem
 
-> LineItemResponse createLineItem(externalCreateLineItemModelRequest)
+> LineItemResponseV2 createLineItem(externalCreateLineItemModelRequest)
 
 /experimental/retail-media/line-items
 
@@ -548,7 +455,7 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         ExternalCreateLineItemModelRequest externalCreateLineItemModelRequest = new ExternalCreateLineItemModelRequest(); // ExternalCreateLineItemModelRequest | Line item details
         try {
-            LineItemResponse result = apiInstance.createLineItem(externalCreateLineItemModelRequest);
+            LineItemResponseV2 result = apiInstance.createLineItem(externalCreateLineItemModelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#createLineItem");
@@ -570,7 +477,7 @@ public class Example {
 
 ### Return type
 
-[**LineItemResponse**](LineItemResponse.md)
+[**LineItemResponseV2**](LineItemResponseV2.md)
 
 ### Authorization
 
@@ -861,100 +768,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## deleteProductButtonByLineItemAndProductButtonId
-
-> ProductButtonResponseListResponse deleteProductButtonByLineItemAndProductButtonId(lineItemId, productButtonId)
-
-/experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
-
-Delete Specific Product Button
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | LineItemId for productButton delete
-        String productButtonId = "productButtonId_example"; // String | productButtonId used for delete
-        try {
-            ProductButtonResponseListResponse result = apiInstance.deleteProductButtonByLineItemAndProductButtonId(lineItemId, productButtonId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#deleteProductButtonByLineItemAndProductButtonId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| LineItemId for productButton delete | |
-| **productButtonId** | **String**| productButtonId used for delete | |
-
-### Return type
-
-[**ProductButtonResponseListResponse**](ProductButtonResponseListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | ProductButton deleted |  -  |
-
-
 ## deleteProducts
 
-> Outcome deleteProducts(lineItemId, deleteProductModelRequest)
+> DeleteLineItemProductsListResponse deleteProducts(lineItemId, deleteLineItemProductsListRequest)
 
 /experimental/retail-media/line-items/{line-item-id}/products/delete
 
@@ -1000,9 +816,9 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String lineItemId = "lineItemId_example"; // String | The line item id.
-        DeleteProductModelRequest deleteProductModelRequest = new DeleteProductModelRequest(); // DeleteProductModelRequest | The products to delete.
+        DeleteLineItemProductsListRequest deleteLineItemProductsListRequest = new DeleteLineItemProductsListRequest(); // DeleteLineItemProductsListRequest | The products to delete.
         try {
-            Outcome result = apiInstance.deleteProducts(lineItemId, deleteProductModelRequest);
+            DeleteLineItemProductsListResponse result = apiInstance.deleteProducts(lineItemId, deleteLineItemProductsListRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#deleteProducts");
@@ -1021,11 +837,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| The line item id. | |
-| **deleteProductModelRequest** | [**DeleteProductModelRequest**](DeleteProductModelRequest.md)| The products to delete. | |
+| **deleteLineItemProductsListRequest** | [**DeleteLineItemProductsListRequest**](DeleteLineItemProductsListRequest.md)| The products to delete. | |
 
 ### Return type
 
-[**Outcome**](Outcome.md)
+[**DeleteLineItemProductsListResponse**](DeleteLineItemProductsListResponse.md)
 
 ### Authorization
 
@@ -1316,9 +1132,9 @@ public class Example {
 
 ## getCampaign
 
-> CampaignResponseModelResponse getCampaign(accountId, campaignId)
+> CampaignResponseModelResponse getCampaign(campaignId)
 
-/experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+/experimental/retail-media/campaigns/{campaign-id}
 
 Gets a campaign by its external id.
 
@@ -1361,10 +1177,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | The external id of the account.
         String campaignId = "campaignId_example"; // String | The external id of the campaign.
         try {
-            CampaignResponseModelResponse result = apiInstance.getCampaign(accountId, campaignId);
+            CampaignResponseModelResponse result = apiInstance.getCampaign(campaignId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getCampaign");
@@ -1382,7 +1197,6 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The external id of the account. | |
 | **campaignId** | **String**| The external id of the campaign. | |
 
 ### Return type
@@ -1854,186 +1668,6 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## getProductButtonByLineItemAndProductButtonId
-
-> ProductButtonResponseListResponse getProductButtonByLineItemAndProductButtonId(lineItemId, productButtonId)
-
-/experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
-
-Get Specific Product Button
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | LineItemId for productButton retrieval
-        String productButtonId = "productButtonId_example"; // String | productButtonId used for retrieval
-        try {
-            ProductButtonResponseListResponse result = apiInstance.getProductButtonByLineItemAndProductButtonId(lineItemId, productButtonId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getProductButtonByLineItemAndProductButtonId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| LineItemId for productButton retrieval | |
-| **productButtonId** | **String**| productButtonId used for retrieval | |
-
-### Return type
-
-[**ProductButtonResponseListResponse**](ProductButtonResponseListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | ProductButton found |  -  |
-
-
-## getProductButtonsByLineItemId
-
-> ProductButtonResponseListResponse getProductButtonsByLineItemId(lineItemId)
-
-/experimental/retail-media/line-items/{line-item-id}/product-buttons
-
-Get LineItem Product Buttons
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | LineItemId for productButton retrieval
-        try {
-            ProductButtonResponseListResponse result = apiInstance.getProductButtonsByLineItemId(lineItemId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getProductButtonsByLineItemId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| LineItemId for productButton retrieval | |
-
-### Return type
-
-[**ProductButtonResponseListResponse**](ProductButtonResponseListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | ProductButtons found |  -  |
-
-
 ## getTargetsByLineItemId
 
 > TargetListResponseWithPageMetadata getTargetsByLineItemId(lineItemId, limit, offset)
@@ -2305,6 +1939,216 @@ public class Example {
 | **200** | Success |  -  |
 
 
+## listAccountChangeHistoryEntries
+
+> EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata listAccountChangeHistoryEntries(accountId, campaignIds, endTime, entityTypes, eventTypes, limit, lineItemIds, offset, startTime)
+
+/experimental/retail-media/accounts/{account-id}/change-history-entries
+
+Returns a paginated collection of changes to Retail Media objects under the requested account. Use &#x60;event-types&#x60; and &#x60;entity-types&#x60; to narrow the results.  Requests for inaccessible or unknown accounts return &#x60;403&#x60;. Changes outside the caller&#39;s access are omitted. Actor information is limited to role labels; user identifiers are not returned.  Results are returned in descending order by &#x60;occurredAt&#x60;. The relative order of entries with identical &#x60;occurredAt&#x60; values is unspecified.  Additional &#x60;eventType&#x60;, entity &#x60;type&#x60;, and change &#x60;field&#x60; values may be returned. Clients must tolerate values they do not recognize. 
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.experimental;
+
+import com.criteo.api.retailmedia.experimental.ApiClient;
+import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
+import com.criteo.api.retailmedia.experimental.ApiException;
+import com.criteo.api.retailmedia.experimental.Configuration;
+import com.criteo.api.retailmedia.experimental.auth.*;
+import com.criteo.api.retailmedia.experimental.model.*;
+import com.criteo.api.retailmedia.experimental.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String accountId = "accountId_example"; // String | External opaque identifier of the advertiser account whose change history is requested.
+        List<String> campaignIds = Arrays.asList(); // List<String> | When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller's account access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. 
+        OffsetDateTime endTime = OffsetDateTime.now(); // OffsetDateTime | Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted.
+        List<String> entityTypes = Arrays.asList(); // List<String> | Restrict results to changes on the given entity types (see the entity `type` field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. 
+        List<String> eventTypes = Arrays.asList(); // List<String> | Restrict results to specific change-event types (see `eventType`). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. 
+        Integer limit = 25; // Integer | Maximum number of change-history entries to return in a single page.
+        List<String> lineItemIds = Arrays.asList(); // List<String> | When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller's account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. 
+        Integer offset = 0; // Integer | Zero-based index of the first change-history entry to return.
+        OffsetDateTime startTime = OffsetDateTime.now(); // OffsetDateTime | Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted.
+        try {
+            EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata result = apiInstance.listAccountChangeHistoryEntries(accountId, campaignIds, endTime, entityTypes, eventTypes, limit, lineItemIds, offset, startTime);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#listAccountChangeHistoryEntries");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| External opaque identifier of the advertiser account whose change history is requested. | |
+| **campaignIds** | [**List&lt;String&gt;**](String.md)| When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s account access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array.  | [optional] |
+| **endTime** | **OffsetDateTime**| Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. | [optional] |
+| **entityTypes** | [**List&lt;String&gt;**](String.md)| Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  | [optional] |
+| **eventTypes** | [**List&lt;String&gt;**](String.md)| Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  | [optional] |
+| **limit** | **Integer**| Maximum number of change-history entries to return in a single page. | [optional] [default to 25] |
+| **lineItemIds** | [**List&lt;String&gt;**](String.md)| When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  | [optional] |
+| **offset** | **Integer**| Zero-based index of the first change-history entry to return. | [optional] [default to 0] |
+| **startTime** | **OffsetDateTime**| Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. | [optional] |
+
+### Return type
+
+[**EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata**](EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Change history entries retrieved. |  -  |
+
+
+## listRetailerChangeHistoryEntries
+
+> EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata listRetailerChangeHistoryEntries(retailerId, campaignIds, endTime, entityTypes, eventTypes, limit, lineItemIds, offset, startTime)
+
+/experimental/retail-media/retailers/{retailer-id}/change-history-entries
+
+Returns a paginated collection of changes to Retail Media objects under the requested retailer. Use &#x60;event-types&#x60; and &#x60;entity-types&#x60; to narrow the results.  Requests for inaccessible or unknown retailers return &#x60;403&#x60;. Changes outside the caller&#39;s access are omitted. Offsite campaign-level changes are not returned; offsite line-item changes are included. Actor information is limited to role labels; user identifiers are not returned.  Results are returned in descending order by &#x60;occurredAt&#x60;. The relative order of entries with identical &#x60;occurredAt&#x60; values is unspecified.  Additional &#x60;eventType&#x60;, entity &#x60;type&#x60;, and change &#x60;field&#x60; values may be returned. Clients must tolerate values they do not recognize. 
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.experimental;
+
+import com.criteo.api.retailmedia.experimental.ApiClient;
+import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
+import com.criteo.api.retailmedia.experimental.ApiException;
+import com.criteo.api.retailmedia.experimental.Configuration;
+import com.criteo.api.retailmedia.experimental.auth.*;
+import com.criteo.api.retailmedia.experimental.model.*;
+import com.criteo.api.retailmedia.experimental.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String retailerId = "retailerId_example"; // String | External opaque identifier of the retailer whose change history is requested.
+        List<String> campaignIds = Arrays.asList(); // List<String> | When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller's retailer access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. 
+        OffsetDateTime endTime = OffsetDateTime.now(); // OffsetDateTime | Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted.
+        List<String> entityTypes = Arrays.asList(); // List<String> | Restrict results to changes on the given entity types (see the entity `type` field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. 
+        List<String> eventTypes = Arrays.asList(); // List<String> | Restrict results to specific change-event types (see `eventType`). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. 
+        Integer limit = 25; // Integer | Maximum number of change-history entries to return in a single page.
+        List<String> lineItemIds = Arrays.asList(); // List<String> | When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller's retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. 
+        Integer offset = 0; // Integer | Zero-based index of the first change-history entry to return.
+        OffsetDateTime startTime = OffsetDateTime.now(); // OffsetDateTime | Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted.
+        try {
+            EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata result = apiInstance.listRetailerChangeHistoryEntries(retailerId, campaignIds, endTime, entityTypes, eventTypes, limit, lineItemIds, offset, startTime);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#listRetailerChangeHistoryEntries");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **retailerId** | **String**| External opaque identifier of the retailer whose change history is requested. | |
+| **campaignIds** | [**List&lt;String&gt;**](String.md)| When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s retailer access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array.  | [optional] |
+| **endTime** | **OffsetDateTime**| Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. | [optional] |
+| **entityTypes** | [**List&lt;String&gt;**](String.md)| Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  | [optional] |
+| **eventTypes** | [**List&lt;String&gt;**](String.md)| Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  | [optional] |
+| **limit** | **Integer**| Maximum number of change-history entries to return in a single page. | [optional] [default to 25] |
+| **lineItemIds** | [**List&lt;String&gt;**](String.md)| When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  | [optional] |
+| **offset** | **Integer**| Zero-based index of the first change-history entry to return. | [optional] [default to 0] |
+| **startTime** | **OffsetDateTime**| Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. | [optional] |
+
+### Return type
+
+[**EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata**](EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Change history entries retrieved. |  -  |
+
+
 ## searchAccountCreatives
 
 > EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata searchAccountCreatives(accountId, entityResourceInputCreativeSearchRequest, limit, offset)
@@ -2383,6 +2227,101 @@ public class Example {
 ### Return type
 
 [**EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata**](EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Creatives found |  -  |
+
+
+## searchAccountCreativesEnriched
+
+> EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata searchAccountCreativesEnriched(accountId, entityResourceInputCreativeSearchEnrichedRequest, limit, offset)
+
+/experimental/retail-media/accounts/{account-id}/creatives/search-enriched
+
+Get account creatives enriched with the product collection constraints of their template.              The returned id is the first parent external id of the creative (stable across versions).
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.experimental;
+
+import com.criteo.api.retailmedia.experimental.ApiClient;
+import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
+import com.criteo.api.retailmedia.experimental.ApiException;
+import com.criteo.api.retailmedia.experimental.Configuration;
+import com.criteo.api.retailmedia.experimental.auth.*;
+import com.criteo.api.retailmedia.experimental.model.*;
+import com.criteo.api.retailmedia.experimental.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String accountId = "accountId_example"; // String | External account id to retrieve creatives for
+        EntityResourceInputCreativeSearchEnrichedRequest entityResourceInputCreativeSearchEnrichedRequest = new EntityResourceInputCreativeSearchEnrichedRequest(); // EntityResourceInputCreativeSearchEnrichedRequest | search request filter
+        Integer limit = 50; // Integer | limit to paginated result
+        Integer offset = 0; // Integer | offset to paginated result
+        try {
+            EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata result = apiInstance.searchAccountCreativesEnriched(accountId, entityResourceInputCreativeSearchEnrichedRequest, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#searchAccountCreativesEnriched");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| External account id to retrieve creatives for | |
+| **entityResourceInputCreativeSearchEnrichedRequest** | [**EntityResourceInputCreativeSearchEnrichedRequest**](EntityResourceInputCreativeSearchEnrichedRequest.md)| search request filter | |
+| **limit** | **Integer**| limit to paginated result | [optional] [default to 50] |
+| **offset** | **Integer**| offset to paginated result | [optional] [default to 0] |
+
+### Return type
+
+[**EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata**](EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata.md)
 
 ### Authorization
 
@@ -2765,9 +2704,9 @@ public class Example {
 
 ## updateCampaign
 
-> CampaignResponseModelResponse updateCampaign(accountId, campaignId, campaignUpdateModelRequest)
+> CampaignModelResponse updateCampaign(campaignId, campaignUpdateModelRequest)
 
-/experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+/experimental/retail-media/campaigns/{campaign-id}
 
 Selectively updates a campaign. Omitted properties remain unchanged.
 
@@ -2810,11 +2749,10 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | The external id of the account.
         String campaignId = "campaignId_example"; // String | The external id of the campaign.
         CampaignUpdateModelRequest campaignUpdateModelRequest = new CampaignUpdateModelRequest(); // CampaignUpdateModelRequest | The campaign fields to update.
         try {
-            CampaignResponseModelResponse result = apiInstance.updateCampaign(accountId, campaignId, campaignUpdateModelRequest);
+            CampaignModelResponse result = apiInstance.updateCampaign(campaignId, campaignUpdateModelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#updateCampaign");
@@ -2832,13 +2770,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The external id of the account. | |
 | **campaignId** | **String**| The external id of the campaign. | |
 | **campaignUpdateModelRequest** | [**CampaignUpdateModelRequest**](CampaignUpdateModelRequest.md)| The campaign fields to update. | |
 
 ### Return type
 
-[**CampaignResponseModelResponse**](CampaignResponseModelResponse.md)
+[**CampaignModelResponse**](CampaignModelResponse.md)
 
 ### Authorization
 
@@ -2952,7 +2889,7 @@ public class Example {
 
 ## updateLineItem
 
-> LineItemResponse updateLineItem(lineItemId, externalUpdateLineItemModelRequest)
+> LineItemResponseV2 updateLineItem(lineItemId, externalPatchLineItemModelRequest)
 
 /experimental/retail-media/line-items/{line-item-id}
 
@@ -2998,9 +2935,9 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String lineItemId = "lineItemId_example"; // String | The line item id
-        ExternalUpdateLineItemModelRequest externalUpdateLineItemModelRequest = new ExternalUpdateLineItemModelRequest(); // ExternalUpdateLineItemModelRequest | Line item details
+        ExternalPatchLineItemModelRequest externalPatchLineItemModelRequest = new ExternalPatchLineItemModelRequest(); // ExternalPatchLineItemModelRequest | Line item details
         try {
-            LineItemResponse result = apiInstance.updateLineItem(lineItemId, externalUpdateLineItemModelRequest);
+            LineItemResponseV2 result = apiInstance.updateLineItem(lineItemId, externalPatchLineItemModelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#updateLineItem");
@@ -3019,11 +2956,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| The line item id | |
-| **externalUpdateLineItemModelRequest** | [**ExternalUpdateLineItemModelRequest**](ExternalUpdateLineItemModelRequest.md)| Line item details | |
+| **externalPatchLineItemModelRequest** | [**ExternalPatchLineItemModelRequest**](ExternalPatchLineItemModelRequest.md)| Line item details | |
 
 ### Return type
 
-[**LineItemResponse**](LineItemResponse.md)
+[**LineItemResponseV2**](LineItemResponseV2.md)
 
 ### Authorization
 
@@ -3130,99 +3067,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-
-
-## updateProductButtonByLineItemAndProductButtonId
-
-> ProductButtonResponseListResponse updateProductButtonByLineItemAndProductButtonId(lineItemId, productButtonId, productButtonRequestRequest)
-
-/experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
-
-Update Specific Product Button
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.experimental;
-
-import com.criteo.api.retailmedia.experimental.ApiClient;
-import com.criteo.api.retailmedia.experimental.ApiClientBuilder;
-import com.criteo.api.retailmedia.experimental.ApiException;
-import com.criteo.api.retailmedia.experimental.Configuration;
-import com.criteo.api.retailmedia.experimental.auth.*;
-import com.criteo.api.retailmedia.experimental.model.*;
-import com.criteo.api.retailmedia.experimental.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | LineItemId for productButton update
-        String productButtonId = "productButtonId_example"; // String | productButtonId used for update
-        ProductButtonRequestRequest productButtonRequestRequest = new ProductButtonRequestRequest(); // ProductButtonRequestRequest | Specific Product button update info
-        try {
-            ProductButtonResponseListResponse result = apiInstance.updateProductButtonByLineItemAndProductButtonId(lineItemId, productButtonId, productButtonRequestRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#updateProductButtonByLineItemAndProductButtonId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| LineItemId for productButton update | |
-| **productButtonId** | **String**| productButtonId used for update | |
-| **productButtonRequestRequest** | [**ProductButtonRequestRequest**](ProductButtonRequestRequest.md)| Specific Product button update info | |
-
-### Return type
-
-[**ProductButtonResponseListResponse**](ProductButtonResponseListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | ProductButton updated |  -  |
 
 
 ## updateTargetsByLineItemId

@@ -8,7 +8,7 @@ Auction settings to create an onsite display line item with.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**isDynamicMatch** | **Boolean** | Whether to serve only products relevant to the page context, replacing manual SKU curation. |  [optional] |
+|**isDynamicMatch** | **Boolean** | Whether only products relevant to the page context serve. |  [optional] |
 
 
 

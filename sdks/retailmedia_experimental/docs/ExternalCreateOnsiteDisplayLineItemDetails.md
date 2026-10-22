@@ -9,7 +9,7 @@ Onsite display settings to create a line item with.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**auctionDetails** | [**ExternalCreateOnsiteDisplayAuctionLineItemDetails**](ExternalCreateOnsiteDisplayAuctionLineItemDetails.md) |  |  [optional] |
-|**frequencyCapping** | [**ExternalFrequencyCappingModel**](ExternalFrequencyCappingModel.md) |  |  [optional] |
+|**isPaused** | **Boolean** | Whether to pause the display line item. Defaults to false. |  [optional] |
 
 
 
