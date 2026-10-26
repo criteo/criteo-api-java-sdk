@@ -216,6 +216,8 @@ public class SyncAttributedTransactionsReport {
     
     SALESCHANNEL("salesChannel"),
     
+    RETAILERID("retailerId"),
+    
     RETAILERNAME("retailerName"),
     
     PAGETYPENAME("pageTypeName"),

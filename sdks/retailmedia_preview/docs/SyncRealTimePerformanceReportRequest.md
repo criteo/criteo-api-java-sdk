@@ -8,7 +8,7 @@ A top-level object that encapsulates a Criteo API request for a single value
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**SyncRealTimePerformanceReportResource**](SyncRealTimePerformanceReportResource.md) |  |  [optional] |
+|**data** | [**SyncRealTimePerformanceReportResource**](SyncRealTimePerformanceReportResource.md) |  |  |
 
 
 

@@ -17121,6 +17121,8 @@ components:
           category: category
           brand: brand
         adId: 0
+        identityType: CtoBundle
+        userIdOrigin: userIdOrigin
         adSetId: 6
         nbRequestedProducts: 1
         partnerId: 5
@@ -17146,6 +17148,16 @@ components:
           items:
             $ref: '#/components/schemas/OnSiteRecoChatMessage'
           type: array
+        identityType:
+          description: "Type of the user identifier (CtoBundle, Idfa, Gaid, AgenticUserId...)\
+            \ Optional if its type is CtoBundle"
+          enum:
+          - CtoBundle
+          - Idfa
+          - Gaid
+          - InternalUserId
+          - AgenticUserId
+          type: string
         nbRequestedProducts:
           description: Amount of products to recommend.
           format: int32
@@ -17157,7 +17169,12 @@ components:
         product:
           $ref: '#/components/schemas/ProductContext'
         userId:
-          description: Used to retrieve user events from Criteo trackers.
+          description: "One user identifier: a Criteo bundle, GAID, IDFA, internal\
+            \ user id, or an agentic partner user id."
+          type: string
+        userIdOrigin:
+          description: "When IdentityType is AgenticUserId, the issuer should recognize\
+            \ themselves with their organization name issued by Criteo."
           type: string
       required:
       - adSetId

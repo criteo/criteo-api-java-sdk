@@ -29,7 +29,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 /preview/retail-media/reports/accounts
 
-Returns an asynchronous Accounts Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+Returns an asynchronous Accounts Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -207,7 +207,7 @@ public class Example {
 
 /preview/retail-media/reports/fillrate
 
-Returns an asynchronous Fill Rate Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+Returns an asynchronous Fill Rate Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -474,7 +474,7 @@ public class Example {
 
 /preview/retail-media/reports/unfilled-placements
 
-Returns an asynchronous Unfilled Placements Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+Returns an asynchronous Unfilled Placements Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
 
 ### Example
 

@@ -66,7 +66,7 @@ public class SyncRealTimePerformanceReportRequest {
    * Get data
    * @return data
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public SyncRealTimePerformanceReportResource getData() {
     return data;
@@ -173,6 +173,7 @@ public class SyncRealTimePerformanceReportRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("data");
   }
 
  /**
@@ -187,10 +188,15 @@ public class SyncRealTimePerformanceReportRequest {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SyncRealTimePerformanceReportRequest is not found in the empty JSON string", SyncRealTimePerformanceReportRequest.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        SyncRealTimePerformanceReportResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : SyncRealTimePerformanceReportRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
       }
+      // validate the required field `data`
+      SyncRealTimePerformanceReportResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

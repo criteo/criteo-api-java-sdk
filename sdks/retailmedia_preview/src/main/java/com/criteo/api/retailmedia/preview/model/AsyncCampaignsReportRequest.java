@@ -66,7 +66,7 @@ public class AsyncCampaignsReportRequest {
    * Get data
    * @return data
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public AsyncCampaignsReportResource getData() {
     return data;
@@ -173,6 +173,7 @@ public class AsyncCampaignsReportRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("data");
   }
 
  /**
@@ -187,10 +188,15 @@ public class AsyncCampaignsReportRequest {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AsyncCampaignsReportRequest is not found in the empty JSON string", AsyncCampaignsReportRequest.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        AsyncCampaignsReportResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : AsyncCampaignsReportRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
       }
+      // validate the required field `data`
+      AsyncCampaignsReportResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

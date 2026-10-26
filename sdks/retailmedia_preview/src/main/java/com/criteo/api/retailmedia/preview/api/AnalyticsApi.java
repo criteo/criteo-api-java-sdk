@@ -158,7 +158,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/accounts
-     * Returns an asynchronous Accounts Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Accounts Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param asyncAccountsReportRequest  (required)
      * @return AsyncReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -175,7 +175,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/accounts
-     * Returns an asynchronous Accounts Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Accounts Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param asyncAccountsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -193,7 +193,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/accounts (asynchronously)
-     * Returns an asynchronous Accounts Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Accounts Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param asyncAccountsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -404,7 +404,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/fillrate
-     * Returns an asynchronous Fill Rate Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Fill Rate Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param asyncFillRateReportRequest  (required)
      * @return AsyncReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -421,7 +421,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/fillrate
-     * Returns an asynchronous Fill Rate Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Fill Rate Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param asyncFillRateReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -439,7 +439,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/fillrate (asynchronously)
-     * Returns an asynchronous Fill Rate Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Fill Rate Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param asyncFillRateReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -773,7 +773,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/unfilled-placements
-     * Returns an asynchronous Unfilled Placements Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Unfilled Placements Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param asyncUnfilledPlacementsReportRequest  (required)
      * @return AsyncReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -790,7 +790,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/unfilled-placements
-     * Returns an asynchronous Unfilled Placements Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Unfilled Placements Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param asyncUnfilledPlacementsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -808,7 +808,7 @@ public class AnalyticsApi {
 
     /**
      * /preview/retail-media/reports/unfilled-placements (asynchronously)
-     * Returns an asynchronous Unfilled Placements Report &lt;br /&gt; This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Unfilled Placements Report  Returns 403 for access issues, such as when access to a requested account is refused. &lt;br /&gt; This endpoint is subject to specific rate limits.
      * @param asyncUnfilledPlacementsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

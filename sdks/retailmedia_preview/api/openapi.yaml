@@ -2185,10 +2185,9 @@ paths:
       x-accepts: application/json
   /preview/retail-media/reports/accounts:
     post:
-      description: |-
-        Returns an asynchronous Accounts Report
-        <br />
-        This endpoint is subject to specific rate limits.
+      description: "Returns an asynchronous Accounts Report\r\nReturns 403 for access\
+        \ issues, such as when access to a requested account is refused.\n<br />\n\
+        This endpoint is subject to specific rate limits."
       operationId: GenerateAsyncAccountsReportV2
       requestBody:
         content:
@@ -2243,10 +2242,9 @@ paths:
       x-accepts: application/json
   /preview/retail-media/reports/fillrate:
     post:
-      description: |-
-        Returns an asynchronous Fill Rate Report
-        <br />
-        This endpoint is subject to specific rate limits.
+      description: "Returns an asynchronous Fill Rate Report\r\nReturns 403 for access\
+        \ issues, such as when access to a requested account is refused.\n<br />\n\
+        This endpoint is subject to specific rate limits."
       operationId: GenerateAsyncFillRateReport
       requestBody:
         content:
@@ -2446,10 +2444,9 @@ paths:
       x-accepts: application/json
   /preview/retail-media/reports/unfilled-placements:
     post:
-      description: |-
-        Returns an asynchronous Unfilled Placements Report
-        <br />
-        This endpoint is subject to specific rate limits.
+      description: "Returns an asynchronous Unfilled Placements Report\r\nReturns\
+        \ 403 for access issues, such as when access to a requested account is refused.\n\
+        <br />\nThis endpoint is subject to specific rate limits."
       operationId: GenerateAsyncUnfilledPlacementsReport
       requestBody:
         content:
@@ -3193,10 +3190,11 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/AsyncAccountsReportResource'
+      required:
+      - data
       type: object
     AsyncAccountsReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
+      description: A report request resource containing its type and required attributes.
       example:
         attributes:
           activationPlatforms:
@@ -3243,6 +3241,8 @@ components:
           $ref: '#/components/schemas/AsyncAccountsReport'
         type:
           type: string
+      required:
+      - attributes
       type: object
     AsyncCampaignsReport:
       description: Async Campaigns report body request
@@ -3574,10 +3574,11 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/AsyncCampaignsReportResource'
+      required:
+      - data
       type: object
     AsyncCampaignsReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
+      description: A report request resource containing its type and required attributes.
       example:
         attributes:
           activationPlatforms:
@@ -3624,6 +3625,8 @@ components:
           $ref: '#/components/schemas/AsyncCampaignsReport'
         type:
           type: string
+      required:
+      - attributes
       type: object
     AsyncFillRateReport:
       description: Async FillRate report body request
@@ -3760,10 +3763,11 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/AsyncFillRateReportResource'
+      required:
+      - data
       type: object
     AsyncFillRateReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
+      description: A report request resource containing its type and required attributes.
       example:
         attributes:
           adServerType: all
@@ -3786,6 +3790,8 @@ components:
           $ref: '#/components/schemas/AsyncFillRateReport'
         type:
           type: string
+      required:
+      - attributes
       type: object
     AsyncInsightResponse:
       additionalProperties: false
@@ -4153,10 +4159,11 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/AsyncLineItemsReportResource'
+      required:
+      - data
       type: object
     AsyncLineItemsReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
+      description: A report request resource containing its type and required attributes.
       example:
         attributes:
           activationPlatforms:
@@ -4203,6 +4210,8 @@ components:
           $ref: '#/components/schemas/AsyncLineItemsReport'
         type:
           type: string
+      required:
+      - attributes
       type: object
     AsyncOffsiteReport:
       description: Async Offsite report body request
@@ -4450,10 +4459,11 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/AsyncOffsiteReportResource'
+      required:
+      - data
       type: object
     AsyncOffsiteReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
+      description: A report request resource containing its type and required attributes.
       example:
         attributes:
           campaignType: all
@@ -4493,6 +4503,8 @@ components:
           $ref: '#/components/schemas/AsyncOffsiteReport'
         type:
           type: string
+      required:
+      - attributes
       type: object
     AsyncReportResponse:
       description: Async Report response format
@@ -4733,10 +4745,11 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/AsyncUnfilledPlacementsReportResource'
+      required:
+      - data
       type: object
     AsyncUnfilledPlacementsReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
+      description: A report request resource containing its type and required attributes.
       example:
         attributes:
           adServerType: all
@@ -4760,6 +4773,8 @@ components:
           $ref: '#/components/schemas/AsyncUnfilledPlacementsReport'
         type:
           type: string
+      required:
+      - attributes
       type: object
     AudienceError:
       description: Definition of an audience error
@@ -14979,6 +14994,10 @@ components:
         aggregationLevel: category
         dimensions:
         - date
+        - week
+        - month
+        - quarter
+        - year
         - accountId
         - accountName
         - retailerId
@@ -15057,11 +15076,17 @@ components:
           - keyword
           type: string
         dimensions:
-          description: Dimensions to report on.
+          description: "Dimensions to report on. `week`, `month`, `quarter` and `year`\
+            \ return the first day of the period\r\n(weeks start on Monday), which\
+            \ may be earlier than `startDate`; values cover only the requested range."
           items:
             description: Dimension by which Share of Voice results can be broken down.
             enum:
             - date
+            - week
+            - month
+            - quarter
+            - year
             - accountId
             - accountName
             - retailerId
@@ -15155,6 +15180,10 @@ components:
             aggregationLevel: category
             dimensions:
             - date
+            - week
+            - month
+            - quarter
+            - year
             - accountId
             - accountName
             - retailerId
@@ -15374,7 +15403,22 @@ components:
           format: date-time
           type: string
         status:
-          description: The current status of the line item.
+          description: "The current status of the line item.\r\n            \r\nunknown:\
+            \ could not be determined (data issue, not a line item state).\r\ndraft:\
+            \ never fully configured, has never served.\r\nscheduled: configured,\
+            \ start date is in the future.\r\nactive: in flight, funded, under no\
+            \ budget cap.\r\npaused: previously active, manually deactivated.\r\n\
+            \            \r\nended: end date passed, within the last 90 days.\r\n\
+            archived: end date passed more than 90 days ago - same as ended, just\
+            \ older, not reversible.\r\n            \r\nnoFunds: no currently-active\
+            \ funding source (no Active mapped Insertion Order, no active\r\nMake-Good\
+            \ credit IO) - a missing-funding problem, separate from any budget cap.\r\
+            \nbudgetHit: a budget cap (daily, hourly, monthly, or total) is capped\
+            \ with zero or below\r\nremaining. Doesn't distinguish line item vs. campaign\
+            \ budget, or which cap type.\r\n            \r\ndraft/scheduled/ended/archived\
+            \ short-circuit before the funding/budget check runs, so\r\nthose states\
+            \ never report noFunds or budgetHit regardless of underlying financial\
+            \ data.\r\nWhere both would apply, noFunds takes precedence over budgetHit."
           enum:
           - unknown
           - active
@@ -15823,6 +15867,7 @@ components:
             - advEngagement
             - advToPurchasedProductRelationship
             - salesChannel
+            - retailerId
             - retailerName
             - pageTypeName
             - keyword
@@ -15922,10 +15967,11 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/SyncAttributedTransactionsReportResource'
+      required:
+      - data
       type: object
     SyncAttributedTransactionsReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
+      description: A report request resource containing its type and required attributes.
       example:
         attributes:
           campaignType: all
@@ -15955,6 +16001,8 @@ components:
           $ref: '#/components/schemas/SyncAttributedTransactionsReport'
         type:
           type: string
+      required:
+      - attributes
       type: object
     SyncCampaignsReport:
       description: Campaigns report body request
@@ -16129,10 +16177,11 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/SyncCampaignsReportResource'
+      required:
+      - data
       type: object
     SyncCampaignsReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
+      description: A report request resource containing its type and required attributes.
       example:
         attributes:
           reportType: summary
@@ -16159,6 +16208,8 @@ components:
           $ref: '#/components/schemas/SyncCampaignsReport'
         type:
           type: string
+      required:
+      - attributes
       type: object
     SyncLineItemsReport:
       description: Line Items report body request
@@ -16344,10 +16395,11 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/SyncLineItemsReportResource'
+      required:
+      - data
       type: object
     SyncLineItemsReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
+      description: A report request resource containing its type and required attributes.
       example:
         attributes:
           campaignType: all
@@ -16377,6 +16429,8 @@ components:
           $ref: '#/components/schemas/SyncLineItemsReport'
         type:
           type: string
+      required:
+      - attributes
       type: object
     SyncRealTimePerformanceReport:
       description: "Real Time Performance report body request (one sheeter: startDate,\
@@ -16512,10 +16566,11 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/SyncRealTimePerformanceReportResource'
+      required:
+      - data
       type: object
     SyncRealTimePerformanceReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
+      description: A report request resource containing its type and required attributes.
       example:
         attributes:
           endDate: 2000-01-23T04:56:07.000+00:00
@@ -16545,6 +16600,8 @@ components:
           $ref: '#/components/schemas/SyncRealTimePerformanceReport'
         type:
           type: string
+      required:
+      - attributes
       type: object
     TemplateVariableValue:
       additionalProperties: false

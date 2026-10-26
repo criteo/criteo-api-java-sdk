@@ -2,13 +2,13 @@
 
 # SyncAttributedTransactionsReportResource
 
-A top-level object that encapsulates a Criteo API response for a single value
+A report request resource containing its type and required attributes.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**SyncAttributedTransactionsReport**](SyncAttributedTransactionsReport.md) |  |  [optional] |
+|**attributes** | [**SyncAttributedTransactionsReport**](SyncAttributedTransactionsReport.md) |  |  |
 |**type** | **String** |  |  [optional] |
 
 

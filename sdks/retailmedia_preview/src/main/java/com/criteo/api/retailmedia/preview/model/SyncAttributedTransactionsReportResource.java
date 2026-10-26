@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for a single value
+ * A report request resource containing its type and required attributes.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SyncAttributedTransactionsReportResource {
@@ -70,7 +70,7 @@ public class SyncAttributedTransactionsReportResource {
    * Get attributes
    * @return attributes
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public SyncAttributedTransactionsReport getAttributes() {
     return attributes;
@@ -202,6 +202,7 @@ public class SyncAttributedTransactionsReportResource {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("attributes");
   }
 
  /**
@@ -216,10 +217,15 @@ public class SyncAttributedTransactionsReportResource {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SyncAttributedTransactionsReportResource is not found in the empty JSON string", SyncAttributedTransactionsReportResource.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        SyncAttributedTransactionsReport.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : SyncAttributedTransactionsReportResource.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
       }
+      // validate the required field `attributes`
+      SyncAttributedTransactionsReport.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }

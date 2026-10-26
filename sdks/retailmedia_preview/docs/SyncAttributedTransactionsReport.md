@@ -71,6 +71,7 @@ Attributed Transactions report body request
 | ADVENGAGEMENT | &quot;advEngagement&quot; |
 | ADVTOPURCHASEDPRODUCTRELATIONSHIP | &quot;advToPurchasedProductRelationship&quot; |
 | SALESCHANNEL | &quot;salesChannel&quot; |
+| RETAILERID | &quot;retailerId&quot; |
 | RETAILERNAME | &quot;retailerName&quot; |
 | PAGETYPENAME | &quot;pageTypeName&quot; |
 | KEYWORD | &quot;keyword&quot; |

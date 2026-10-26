@@ -64,6 +64,63 @@ public class OnSiteRecoRequestConversational {
   @SerializedName(SERIALIZED_NAME_CONVERSATION)
   private List<OnSiteRecoChatMessage> conversation = new ArrayList<>();
 
+  /**
+   * Type of the user identifier (CtoBundle, Idfa, Gaid, AgenticUserId...) Optional if its type is CtoBundle
+   */
+  @JsonAdapter(IdentityTypeEnum.Adapter.class)
+  public enum IdentityTypeEnum {
+    CTOBUNDLE("CtoBundle"),
+    
+    IDFA("Idfa"),
+    
+    GAID("Gaid"),
+    
+    INTERNALUSERID("InternalUserId"),
+    
+    AGENTICUSERID("AgenticUserId");
+
+    private String value;
+
+    IdentityTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static IdentityTypeEnum fromValue(String value) {
+      for (IdentityTypeEnum b : IdentityTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<IdentityTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final IdentityTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public IdentityTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return IdentityTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_IDENTITY_TYPE = "identityType";
+  @SerializedName(SERIALIZED_NAME_IDENTITY_TYPE)
+  private IdentityTypeEnum identityType;
+
   public static final String SERIALIZED_NAME_NB_REQUESTED_PRODUCTS = "nbRequestedProducts";
   @SerializedName(SERIALIZED_NAME_NB_REQUESTED_PRODUCTS)
   private Integer nbRequestedProducts;
@@ -79,6 +136,10 @@ public class OnSiteRecoRequestConversational {
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
+
+  public static final String SERIALIZED_NAME_USER_ID_ORIGIN = "userIdOrigin";
+  @SerializedName(SERIALIZED_NAME_USER_ID_ORIGIN)
+  private String userIdOrigin;
 
   public OnSiteRecoRequestConversational() {
   }
@@ -151,6 +212,28 @@ public class OnSiteRecoRequestConversational {
 
   public void setConversation(List<OnSiteRecoChatMessage> conversation) {
     this.conversation = conversation;
+  }
+
+
+  public OnSiteRecoRequestConversational identityType(IdentityTypeEnum identityType) {
+    
+    this.identityType = identityType;
+    return this;
+  }
+
+   /**
+   * Type of the user identifier (CtoBundle, Idfa, Gaid, AgenticUserId...) Optional if its type is CtoBundle
+   * @return identityType
+  **/
+  @javax.annotation.Nullable
+
+  public IdentityTypeEnum getIdentityType() {
+    return identityType;
+  }
+
+
+  public void setIdentityType(IdentityTypeEnum identityType) {
+    this.identityType = identityType;
   }
 
 
@@ -227,7 +310,7 @@ public class OnSiteRecoRequestConversational {
   }
 
    /**
-   * Used to retrieve user events from Criteo trackers.
+   * One user identifier: a Criteo bundle, GAID, IDFA, internal user id, or an agentic partner user id.
    * @return userId
   **/
   @javax.annotation.Nonnull
@@ -239,6 +322,28 @@ public class OnSiteRecoRequestConversational {
 
   public void setUserId(String userId) {
     this.userId = userId;
+  }
+
+
+  public OnSiteRecoRequestConversational userIdOrigin(String userIdOrigin) {
+    
+    this.userIdOrigin = userIdOrigin;
+    return this;
+  }
+
+   /**
+   * When IdentityType is AgenticUserId, the issuer should recognize themselves with their organization name issued by Criteo.
+   * @return userIdOrigin
+  **/
+  @javax.annotation.Nullable
+
+  public String getUserIdOrigin() {
+    return userIdOrigin;
+  }
+
+
+  public void setUserIdOrigin(String userIdOrigin) {
+    this.userIdOrigin = userIdOrigin;
   }
 
   /**
@@ -299,16 +404,18 @@ public class OnSiteRecoRequestConversational {
     return Objects.equals(this.adId, onSiteRecoRequestConversational.adId) &&
         Objects.equals(this.adSetId, onSiteRecoRequestConversational.adSetId) &&
         Objects.equals(this.conversation, onSiteRecoRequestConversational.conversation) &&
+        Objects.equals(this.identityType, onSiteRecoRequestConversational.identityType) &&
         Objects.equals(this.nbRequestedProducts, onSiteRecoRequestConversational.nbRequestedProducts) &&
         Objects.equals(this.partnerId, onSiteRecoRequestConversational.partnerId) &&
         Objects.equals(this.product, onSiteRecoRequestConversational.product) &&
-        Objects.equals(this.userId, onSiteRecoRequestConversational.userId)&&
+        Objects.equals(this.userId, onSiteRecoRequestConversational.userId) &&
+        Objects.equals(this.userIdOrigin, onSiteRecoRequestConversational.userIdOrigin)&&
         Objects.equals(this.additionalProperties, onSiteRecoRequestConversational.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adId, adSetId, conversation, nbRequestedProducts, partnerId, product, userId, additionalProperties);
+    return Objects.hash(adId, adSetId, conversation, identityType, nbRequestedProducts, partnerId, product, userId, userIdOrigin, additionalProperties);
   }
 
   @Override
@@ -318,10 +425,12 @@ public class OnSiteRecoRequestConversational {
     sb.append("    adId: ").append(toIndentedString(adId)).append("\n");
     sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
     sb.append("    conversation: ").append(toIndentedString(conversation)).append("\n");
+    sb.append("    identityType: ").append(toIndentedString(identityType)).append("\n");
     sb.append("    nbRequestedProducts: ").append(toIndentedString(nbRequestedProducts)).append("\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    userIdOrigin: ").append(toIndentedString(userIdOrigin)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -348,10 +457,12 @@ public class OnSiteRecoRequestConversational {
     openapiFields.add("adId");
     openapiFields.add("adSetId");
     openapiFields.add("conversation");
+    openapiFields.add("identityType");
     openapiFields.add("nbRequestedProducts");
     openapiFields.add("partnerId");
     openapiFields.add("product");
     openapiFields.add("userId");
+    openapiFields.add("userIdOrigin");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -391,12 +502,18 @@ public class OnSiteRecoRequestConversational {
       for (int i = 0; i < jsonArrayconversation.size(); i++) {
         OnSiteRecoChatMessage.validateJsonObject(jsonArrayconversation.get(i).getAsJsonObject());
       };
+      if ((jsonObj.get("identityType") != null && !jsonObj.get("identityType").isJsonNull()) && !jsonObj.get("identityType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `identityType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identityType").toString()));
+      }
       // validate the optional field `product`
       if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
         ProductContext.validateJsonObject(jsonObj.getAsJsonObject("product"));
       }
       if (!jsonObj.get("userId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `userId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userId").toString()));
+      }
+      if ((jsonObj.get("userIdOrigin") != null && !jsonObj.get("userIdOrigin").isJsonNull()) && !jsonObj.get("userIdOrigin").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `userIdOrigin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userIdOrigin").toString()));
       }
   }
 
