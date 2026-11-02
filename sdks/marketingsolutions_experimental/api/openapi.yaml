@@ -2168,14 +2168,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV26Q1'
+              $ref: '#/components/schemas/AdSetSearchRequestV27Q1'
         x-bodyName: request
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponsesReadAdSetV26Q1'
+                $ref: '#/components/schemas/ResponsesReadAdSetV27Q1'
           description: data for the ad sets
       security:
       - oauth:
@@ -3248,7 +3248,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CampaignSearchRequestV23Q1'
+              $ref: '#/components/schemas/CampaignSearchRequestV27Q1'
         description: Filters for searching for campaigns
         x-bodyName: request
       responses:
@@ -3256,7 +3256,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CampaignV23Q1ListResponse'
+                $ref: '#/components/schemas/CampaignV27Q1ListResponse'
           description: Returns a list of marketing campaigns' data.
       security:
       - oauth:
@@ -5884,6 +5884,62 @@ components:
           nullable: true
           type: array
       type: object
+    AdSetDeliveryLimitationsV27Q1:
+      description: Delivery limitations for an ad set.
+      example:
+        operatingSystems:
+        - android
+        - android
+        devices:
+        - other
+        - other
+        environments:
+        - web
+        - web
+      nullable: true
+      properties:
+        devices:
+          description: "List of devices which the ad set should target.\r\n      \
+            \      \r\nNo limitation if the list is empty."
+          items:
+            description: "Targeted device type.\r\n            \r\nPossible values:\r\
+              \n- other\r\n- desktop\r\n- mobile\r\n- tablet"
+            enum:
+            - other
+            - desktop
+            - mobile
+            - tablet
+            type: string
+          nullable: true
+          type: array
+        environments:
+          description: "List of environments which the ad set should target.\r\n \
+            \           \r\nNo limitation if the list is empty."
+          items:
+            description: "Targeted environment type.\r\n            \r\nNote: this\
+              \ is very different from AdSetDestinationEnvironment: this parameter\
+              \ defines a delivery limitation,\r\nnot an impression's destination.\r\
+              \n            \r\nPossible values:\r\n- web\r\n- inApp"
+            enum:
+            - web
+            - inApp
+            type: string
+          nullable: true
+          type: array
+        operatingSystems:
+          description: "List of operating systems which the ad set should target.\r\
+            \n            \r\nNo limitation if the list is empty."
+          items:
+            description: "Targeted operating system.\r\n            \r\nPossible values:\r\
+              \n- android\r\n- ios\r\n- unknown"
+            enum:
+            - android
+            - ios
+            - unknown
+            type: string
+          nullable: true
+          type: array
+      type: object
     AdSetDisplayMultiplier:
       description: Display Multiplier information about a Category for a given Ad
         Set.
@@ -6025,6 +6081,25 @@ components:
           nullable: true
           type: integer
       type: object
+    AdSetFrequencyCappingV27Q1:
+      description: "Ad set frequency capping.\r\n            \r\nSettings that can\
+        \ limit the number of impression by viewer and by period."
+      properties:
+        frequency:
+          description: "Period on which impression limitation is calculated.\r\n \
+            \           \r\nPossible values:\r\n- hourly\r\n- daily\r\n- lifetime\r\
+            \n- advanced"
+          enum:
+          - hourly
+          - daily
+          - lifetime
+          - advanced
+          type: string
+        maximumImpressions:
+          description: Maximum impressions for the specified period.
+          format: int32
+          type: integer
+      type: object
     AdSetGeoLocationV26Q1:
       description: Ad set geolocation options.
       example:
@@ -6043,15 +6118,33 @@ components:
         zipCodes:
           $ref: '#/components/schemas/NillableAdSetTargetingRuleV26Q1'
       type: object
+    AdSetGeoLocationV27Q1:
+      description: Ad set geolocation options.
+      example:
+        zipCodes:
+          value: null
+        countries:
+          value: null
+        subdivisions:
+          value: null
+      nullable: true
+      properties:
+        countries:
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV27Q1'
+        subdivisions:
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV27Q1'
+        zipCodes:
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV27Q1'
+      type: object
     AdSetIdV26Q1:
       description: ad set id model
       nullable: true
       type: object
-    AdSetSearchFilterV26Q1:
-      description: "Filter on ad set ids.\r\n            \r\nMultiple filters are\
-        \ combined with an implicit AND operation.\r\nIdentifiers are string-encoded\
-        \ integers; invalid values are ignored.\r\nIf no filter is provided (both\
-        \ arrays are null or empty), the search returns all accessible campaigns."
+    AdSetSearchInputV27Q1:
+      description: "Multiple filters are combined with an implicit AND operation.\r\
+        \nIdentifiers are string-encoded integers; invalid values are ignored.\r\n\
+        If no filter is provided (both arrays are null or empty), the search returns\
+        \ all accessible campaigns."
       properties:
         adSetIds:
           description: Ad set ids to filter on. Ids are string-encoded integers.
@@ -6073,7 +6166,7 @@ components:
           nullable: true
           type: array
       type: object
-    AdSetSearchRequestMetadataV26Q1:
+    AdSetSearchRequestMetadataV27Q1:
       description: Optional metadata for searching ad sets
       properties:
         fields:
@@ -6106,17 +6199,21 @@ components:
           nullable: true
           type: array
       type: object
-    AdSetSearchRequestV26Q1:
+    AdSetSearchRequestV27Q1:
       description: request payload of the search endpoint
       example:
-        filters:
-          advertiserIds:
-          - "12345"
+        data:
+          type: AdSetSearch
+          attributes:
+            adSetIds: null
+            advertiserIds:
+            - "12345"
+            campaignIds: null
       properties:
-        filters:
-          $ref: '#/components/schemas/AdSetSearchFilterV26Q1'
+        data:
+          $ref: '#/components/schemas/ValueResourceAdSetSearchInputV27Q1'
         meta:
-          $ref: '#/components/schemas/AdSetSearchRequestMetadataV26Q1'
+          $ref: '#/components/schemas/AdSetSearchRequestMetadataV27Q1'
       type: object
     AdSetTargetingDealIds:
       description: Ad set Deal Id targeting model
@@ -6411,6 +6508,21 @@ components:
           uniqueItems: false
       type: object
     AdSetTargetingRuleV26Q1:
+      description: ad set targeting rule model
+      properties:
+        operand:
+          enum:
+          - undefined
+          - in
+          - notIn
+          type: string
+        values:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    AdSetTargetingRuleV27Q1:
       description: ad set targeting rule model
       properties:
         operand:
@@ -10492,6 +10604,26 @@ components:
           nullable: true
           type: string
       type: object
+    AutomatedBudgetConfigurationV27Q1:
+      description: Detailed configuration used when campaign budget automation is
+        enabled.
+      example:
+        adSetOptimizationObjective: conversions
+      nullable: true
+      properties:
+        adSetOptimizationObjective:
+          description: "Optimization objective used to automate budget allocation\
+            \ across ad sets.\r\nExpected when budgetAutomation.enabled is true.\r\
+            \nPossible values are \"conversions\", \"revenue\", \"visits\", and \"\
+            videoViews\"."
+          enum:
+          - conversions
+          - revenue
+          - visits
+          - videoViews
+          nullable: true
+          type: string
+      type: object
     BasicAudienceDefinition:
       description: Common definition of an audience
       example:
@@ -10705,6 +10837,26 @@ components:
           nullable: true
           type: boolean
       type: object
+    CampaignBudgetAutomationV27Q1:
+      description: "Budget automation, also known as automated budget or budget pacing,\
+        \ lets users configure KPIs and budgets once at the campaign level while Criteo\
+        \ dynamically routes spend toward the best-performing ad sets.\r\nWhen enabled\
+        \ is false, automatedBudgetConfiguration is null.\r\nWhen enabled is true,\
+        \ automatedBudgetConfiguration.adSetOptimizationObjective is expected."
+      example:
+        automatedBudgetConfiguration:
+          adSetOptimizationObjective: conversions
+        enabled: true
+      nullable: true
+      properties:
+        automatedBudgetConfiguration:
+          $ref: '#/components/schemas/AutomatedBudgetConfigurationV27Q1'
+        enabled:
+          description: Whether budget automation is enabled for this campaign. This
+            field is always present in the response.
+          nullable: true
+          type: boolean
+      type: object
     CampaignScheduledSpendLimitV23Q1:
       description: A campaign spend limit scheduled to become active on the specified
         "startDate".
@@ -10753,18 +10905,59 @@ components:
           nullable: true
           type: string
       type: object
-    CampaignSearchFiltersV23Q1:
+    CampaignScheduledSpendLimitV27Q1:
+      description: A campaign spend limit scheduled to become active on the specified
+        "startDate".
+      example:
+        spendLimitRenewal: undefined
+        spendLimitAmount:
+          value: 0.8008281904610115
+        id: id
+        spendLimitType: capped
+        startDate: 2000-01-23
+      properties:
+        id:
+          description: "Identifier of the scheduled spend limit, for example \"12745\"\
+            ."
+          nullable: true
+          type: string
+        spendLimitAmount:
+          $ref: '#/components/schemas/NillableDecimal'
+        spendLimitRenewal:
+          description: "The period over which the campaign spend limit is applied.\r\
+            \n- \"daily\", \"monthly\", and \"lifetime\" are valid when spendLimitType\
+            \ is \"capped\".\r\n- \"undefined\" is returned when spendLimitType is\
+            \ \"uncapped\"."
+          enum:
+          - undefined
+          - daily
+          - monthly
+          - lifetime
+          nullable: true
+          type: string
+        spendLimitType:
+          description: "Controls whether the campaign has a spend limit.\r\n- \"capped\"\
+            : a spend limit applies, spendLimitAmount.value is non-null, and spendLimitRenewal\
+            \ is \"daily\", \"monthly\", or \"lifetime\".\r\n- \"uncapped\": no spend\
+            \ limit applies, spendLimitAmount.value is null, and spendLimitRenewal\
+            \ is \"unknown\"."
+          enum:
+          - capped
+          - uncapped
+          nullable: true
+          type: string
+        startDate:
+          description: "Advertiser-local calendar date when the scheduled spend limit\
+            \ becomes active, for example \"2026-08-01\"."
+          format: date
+          nullable: true
+          type: string
+      type: object
+    CampaignSearchInputV27Q1:
       description: "Filters for searching campaigns.\r\n            \r\nMultiple filters\
         \ are combined with an implicit AND operation.\r\nIdentifiers are string-encoded\
         \ integers; invalid values are ignored.\r\nIf no filter is provided (both\
         \ arrays are null or empty), the search returns all accessible campaigns."
-      example:
-        advertiserIds:
-        - advertiserIds
-        - advertiserIds
-        campaignIds:
-        - campaignIds
-        - campaignIds
       properties:
         advertiserIds:
           description: Advertiser IDs to filter on (string-encoded integers).
@@ -10779,21 +10972,56 @@ components:
           nullable: true
           type: array
       type: object
-    CampaignSearchRequestV23Q1:
+    CampaignSearchRequestV27Q1:
       description: Request payload for the campaign search endpoint.
       example:
-        filters:
-          advertiserIds:
-          - advertiserIds
-          - advertiserIds
-          campaignIds:
-          - campaignIds
-          - campaignIds
+        data:
+          type: CampaignSearch
+          attributes:
+            campaignIds: null
+            advertiserIds:
+            - "12345"
       properties:
-        filters:
-          $ref: '#/components/schemas/CampaignSearchFiltersV23Q1'
+        data:
+          $ref: '#/components/schemas/ValueResourceCampaignSearchInputV27Q1'
       type: object
     CampaignSpendLimitV23Q1:
+      description: Campaign spend-limit configuration. A capped spend limit restricts
+        campaign spending per renewal period. An uncapped spend limit does not impose
+        a spending ceiling.
+      example:
+        spendLimitRenewal: undefined
+        spendLimitAmount:
+          value: 0.8008281904610115
+        spendLimitType: capped
+      nullable: true
+      properties:
+        spendLimitAmount:
+          $ref: '#/components/schemas/NillableDecimal'
+        spendLimitRenewal:
+          description: "The period over which the campaign spend limit is applied.\r\
+            \nWhen spendLimitType is \"capped\", this is \"daily\", \"monthly\", or\
+            \ \"lifetime\".\r\nWhen spendLimitType is \"uncapped\", this is \"undefined\"\
+            ."
+          enum:
+          - undefined
+          - daily
+          - monthly
+          - lifetime
+          nullable: true
+          type: string
+        spendLimitType:
+          description: "Controls whether the campaign has a spend limit.\r\n\"capped\"\
+            \ returns a non-null spendLimitAmount.value and a spendLimitRenewal of\
+            \ \"daily\", \"monthly\", or \"lifetime\".\r\n\"uncapped\" returns spendLimitAmount.value\
+            \ as null and spendLimitRenewal as \"undefined\"."
+          enum:
+          - capped
+          - uncapped
+          nullable: true
+          type: string
+      type: object
+    CampaignSpendLimitV27Q1:
       description: Campaign spend-limit configuration. A capped spend limit restricts
         campaign spending per renewal period. An uncapped spend limit does not impose
         a spending ceiling.
@@ -10905,131 +11133,6 @@ components:
           type: string
         spendLimit:
           $ref: '#/components/schemas/CampaignSpendLimitV23Q1'
-      type: object
-    CampaignV23Q1ListResponse:
-      description: Data model for a list of response resources
-      example:
-        data:
-        - attributes:
-            scheduledSpendLimits:
-            - spendLimitRenewal: undefined
-              spendLimitAmount:
-                value: 0.8008281904610115
-              id: id
-              spendLimitType: capped
-              startDate: 2000-01-23
-            - spendLimitRenewal: undefined
-              spendLimitAmount:
-                value: 0.8008281904610115
-              id: id
-              spendLimitType: capped
-              startDate: 2000-01-23
-            goal: unspecified
-            sellerId: sellerId
-            name: name
-            budgetAutomation:
-              automatedBudgetConfiguration:
-                adSetOptimizationObjective: conversions
-              enabled: true
-            spendLimit:
-              spendLimitRenewal: undefined
-              spendLimitAmount:
-                value: 0.8008281904610115
-              spendLimitType: capped
-            id: id
-            advertiserId: advertiserId
-          id: id
-          type: Campaign
-        - attributes:
-            scheduledSpendLimits:
-            - spendLimitRenewal: undefined
-              spendLimitAmount:
-                value: 0.8008281904610115
-              id: id
-              spendLimitType: capped
-              startDate: 2000-01-23
-            - spendLimitRenewal: undefined
-              spendLimitAmount:
-                value: 0.8008281904610115
-              id: id
-              spendLimitType: capped
-              startDate: 2000-01-23
-            goal: unspecified
-            sellerId: sellerId
-            name: name
-            budgetAutomation:
-              automatedBudgetConfiguration:
-                adSetOptimizationObjective: conversions
-              enabled: true
-            spendLimit:
-              spendLimitRenewal: undefined
-              spendLimitAmount:
-                value: 0.8008281904610115
-              spendLimitType: capped
-            id: id
-            advertiserId: advertiserId
-          id: id
-          type: Campaign
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CampaignV23Q1Resource'
-          nullable: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
       type: object
     CampaignV23Q1Resource:
       description: Data model for a Resource
@@ -11169,6 +11272,246 @@ components:
           nullable: true
           readOnly: true
           type: array
+      type: object
+    CampaignV27Q1:
+      description: "Campaign read model\r\n            \r\nThe {id} field is the campaign\
+        \ identifier (string-encoded integer)."
+      example:
+        scheduledSpendLimits:
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          id: id
+          spendLimitType: capped
+          startDate: 2000-01-23
+        - spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          id: id
+          spendLimitType: capped
+          startDate: 2000-01-23
+        goal: unspecified
+        sellerId: sellerId
+        name: name
+        budgetAutomation:
+          automatedBudgetConfiguration:
+            adSetOptimizationObjective: conversions
+          enabled: true
+        spendLimit:
+          spendLimitRenewal: undefined
+          spendLimitAmount:
+            value: 0.8008281904610115
+          spendLimitType: capped
+        advertiserId: advertiserId
+      nullable: true
+      properties:
+        advertiserId:
+          description: Advertiser id of the campaign (string-encoded integer)
+          nullable: true
+          type: string
+        budgetAutomation:
+          $ref: '#/components/schemas/CampaignBudgetAutomationV27Q1'
+        goal:
+          description: "Goal of the campaign\r\n            \r\nSerialized values\
+            \ are {unspecified}, {acquisition} and {retention}.\r\n            \r\n\
+            Acquisition and retention are defined as follows:\r\n- Acquisition: campaign\
+            \ with the goal of acquiring new customers. The success of an acquisition\
+            \ campaign is measured by the number of new customers it brings.\r\n-\
+            \ Retention: campaign with the goal of retaining existing customers. The\
+            \ success of a retention campaign is measured by the number of existing\
+            \ customers it retains."
+          enum:
+          - unspecified
+          - acquisition
+          - retention
+          nullable: true
+          type: string
+        name:
+          description: Name of the campaign
+          nullable: true
+          type: string
+        scheduledSpendLimits:
+          description: Spend limits scheduled to become active in the future. Empty
+            when the campaign has no scheduled spend limits.
+          items:
+            $ref: '#/components/schemas/CampaignScheduledSpendLimitV27Q1'
+          nullable: true
+          type: array
+        sellerId:
+          description: Optional marketplace seller id of the campaign (string-encoded
+            long)
+          nullable: true
+          type: string
+        spendLimit:
+          $ref: '#/components/schemas/CampaignSpendLimitV27Q1'
+      type: object
+    CampaignV27Q1ListResponse:
+      description: Data model for a list of response resources
+      example:
+        data:
+        - attributes:
+            scheduledSpendLimits:
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
+            goal: unspecified
+            sellerId: sellerId
+            name: name
+            budgetAutomation:
+              automatedBudgetConfiguration:
+                adSetOptimizationObjective: conversions
+              enabled: true
+            spendLimit:
+              spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              spendLimitType: capped
+            advertiserId: advertiserId
+          id: id
+          type: Campaign
+        - attributes:
+            scheduledSpendLimits:
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
+            - spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              id: id
+              spendLimitType: capped
+              startDate: 2000-01-23
+            goal: unspecified
+            sellerId: sellerId
+            name: name
+            budgetAutomation:
+              automatedBudgetConfiguration:
+                adSetOptimizationObjective: conversions
+              enabled: true
+            spendLimit:
+              spendLimitRenewal: undefined
+              spendLimitAmount:
+                value: 0.8008281904610115
+              spendLimitType: capped
+            advertiserId: advertiserId
+          id: id
+          type: Campaign
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CampaignV27Q1Resource'
+          nullable: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    CampaignV27Q1Resource:
+      description: Data model for a Resource
+      example:
+        attributes:
+          scheduledSpendLimits:
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            id: id
+            spendLimitType: capped
+            startDate: 2000-01-23
+          - spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            id: id
+            spendLimitType: capped
+            startDate: 2000-01-23
+          goal: unspecified
+          sellerId: sellerId
+          name: name
+          budgetAutomation:
+            automatedBudgetConfiguration:
+              adSetOptimizationObjective: conversions
+            enabled: true
+          spendLimit:
+            spendLimitRenewal: undefined
+            spendLimitAmount:
+              value: 0.8008281904610115
+            spendLimitType: capped
+          advertiserId: advertiserId
+        id: id
+        type: Campaign
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CampaignV27Q1'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          description: Canonical type name of the entity
+          example: Campaign
+          nullable: true
+          type: string
       type: object
     CatalogIngestionReport:
       description: "Identification, timing and status of a single catalog ingestion.\
@@ -18427,6 +18770,17 @@ components:
           format: int64
           type: integer
       type: object
+    NillableAdSetFrequencyCappingV27Q1:
+      description: "structure that encapsulates an object that have valid business\
+        \ null values. If the structure is provided (i.e. not null), then the value\
+        \ in it, even null, is provided."
+      example:
+        value: null
+      nullable: true
+      properties:
+        value:
+          $ref: '#/components/schemas/NillableAdSetFrequencyCappingV27Q1_value'
+      type: object
     NillableAdSetTargetingRuleV26Q1:
       description: "structure that encapsulates an object that have valid business\
         \ null values. If the structure is provided (i.e. not null), then the value\
@@ -18437,6 +18791,17 @@ components:
       properties:
         value:
           $ref: '#/components/schemas/NillableAdSetTargetingRuleV26Q1_value'
+      type: object
+    NillableAdSetTargetingRuleV27Q1:
+      description: "structure that encapsulates an object that have valid business\
+        \ null values. If the structure is provided (i.e. not null), then the value\
+        \ in it, even null, is provided."
+      example:
+        value: null
+      nullable: true
+      properties:
+        value:
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV27Q1_value'
       type: object
     NillableDateTime:
       description: "structure that encapsulates an object that have valid business\
@@ -22358,7 +22723,76 @@ components:
           nullable: true
           type: string
       type: object
+    ReadAdSetAttributionConfigurationV27Q1:
+      description: "Read model for an ad set's attribution configuration.\r\n    \
+        \        \r\nThe lookback window is only set for ad sets with an attribution\
+        \ method that is postClick or lastClick.\r\nIt will be null with any other\
+        \ attribution method."
+      example:
+        attributionMethod: unknown
+        lookbackWindow: unknown
+      nullable: true
+      properties:
+        attributionMethod:
+          description: "Ad set attribution method.\r\nThis defines how certain events\
+            \ (visits, clicks, sales...) are attributed to the ad set.\r\n       \
+            \     \r\nNote: Old Google Analytics attribution methods (lastClickGoogleAnalytics\
+            \ = 2 and googleAnalyticsDataDriven = 3) are not supported anymore. Use\
+            \ the new Google Analytics attribution method instead (googleAnalytics).\r\
+            \n            \r\nPossible values:\r\n- unknown\r\n- criteoAttribution\
+            \ (default attribution method)\r\n- lastClick\r\n- postClick\r\n- sftp\r\
+            \n- googleAnalytics (requires Google Analytics integration)"
+          enum:
+          - unknown
+          - criteoAttribution
+          - lastClick
+          - postClick
+          - sftp
+          - googleAnalytics
+          nullable: true
+          type: string
+        lookbackWindow:
+          enum:
+          - unknown
+          - 30M
+          - 24H
+          - 7D
+          - 30D
+          nullable: true
+          type: string
+      type: object
     ReadAdSetBiddingV26Q1:
+      description: Ad set bidding read configuration.
+      example:
+        bidAmount: 0.8008281904610115
+        costController: COS
+      nullable: true
+      properties:
+        bidAmount:
+          description: "Decimal value target relating to the `adSetObjective` specified.\r\
+            \nMay be `null` for objectives that do not require a target value.\r\n\
+            At most 4 decimals are supported. Additional decimals are rounded."
+          format: double
+          nullable: true
+          type: number
+        costController:
+          description: "Cost controller for the ad set.\r\n            \r\nPossible\
+            \ values:\r\n- COS\r\n- maxCPC\r\n- CPI\r\n- CPM\r\n- CPO\r\n- CPSV\r\n\
+            - CPV\r\n- dailyBudget\r\n- targetCPM"
+          enum:
+          - COS
+          - maxCPC
+          - CPI
+          - CPM
+          - CPO
+          - CPSV
+          - CPV
+          - dailyBudget
+          - targetCPM
+          nullable: true
+          type: string
+      type: object
+    ReadAdSetBiddingV27Q1:
       description: Ad set bidding read configuration.
       example:
         bidAmount: 0.8008281904610115
@@ -22483,7 +22917,196 @@ components:
           nullable: true
           type: string
       type: object
+    ReadAdSetBudgetV27Q1:
+      description: "Budget configuration for an ad set. Controls how much can be spent\
+        \ and how spending is paced.\r\nWhen budgetStrategy is \"capped\": budgetAmount,\
+        \ budgetRenewal, and budgetDeliverySmoothing are all set.\r\nWhen budgetStrategy\
+        \ is \"uncapped\": budgetAmount is null, budgetRenewal is \"undefined\", budgetDeliverySmoothing\
+        \ is null, and budgetDeliveryWeek is \"undefined\"."
+      example:
+        budgetDeliverySmoothing: accelerated
+        budgetDeliveryWeek: undefined
+        budgetAmount: 6.027456183070403
+        budgetRenewal: undefined
+        pacingBehavior: undefined
+        budgetStrategy: capped
+      nullable: true
+      properties:
+        budgetAmount:
+          description: Maximum budget amount in the advertiser's currency per renewal
+            period. Non-null when capped. null when uncapped.
+          format: double
+          nullable: true
+          type: number
+        budgetDeliverySmoothing:
+          enum:
+          - accelerated
+          - standard
+          nullable: true
+          type: string
+        budgetDeliveryWeek:
+          description: "Defines which day-of-week boundaries are used for weekly budget\
+            \ renewal. Only applicable when budgetStrategy is \"capped\", budgetRenewal\
+            \ is \"weekly\", and budgetDeliverySmoothing is \"standard\".\r\n- \"\
+            mondayToSunday\", \"tuesdayToMonday\", etc.: the day range over which\
+            \ the weekly budget is paced. Changing this value on the active budget\
+            \ also propagates to all scheduled budgets of the same ad set.\r\n- \"\
+            undefined\": used when budgetStrategy is \"uncapped\", when budgetRenewal\
+            \ is not \"weekly\", or when budgetDeliverySmoothing is \"accelerated\"\
+            ."
+          enum:
+          - undefined
+          - mondayToSunday
+          - tuesdayToMonday
+          - wednesdayToTuesday
+          - thursdayToWednesday
+          - fridayToThursday
+          - saturdayToFriday
+          - sundayToSaturday
+          nullable: true
+          type: string
+        budgetRenewal:
+          description: "The period over which the budget is spent.\r\n- \"daily\"\
+            , \"monthly\", \"weekly\": budget resets at the start of each period.\r\
+            \n- \"lifetime\": budget covers the entire ad set duration without resetting.\r\
+            \n- \"undefined\": only used when budgetStrategy is \"uncapped\" (no renewal\
+            \ applies). Required for capped budgets (must not be \"undefined\")."
+          enum:
+          - undefined
+          - daily
+          - monthly
+          - lifetime
+          - weekly
+          nullable: true
+          type: string
+        budgetStrategy:
+          description: "Controls whether the ad set has a spending limit.\r\n- \"\
+            capped\": spending is limited to budgetAmount. Requires budgetAmount (non-null),\
+            \ budgetRenewal (not \"undefined\"), and budgetDeliverySmoothing (not\
+            \ null).\r\n- \"uncapped\": no spending limit. budgetAmount is null, budgetRenewal\
+            \ is \"undefined\", and budgetDeliverySmoothing is null."
+          enum:
+          - capped
+          - uncapped
+          nullable: true
+          type: string
+        pacingBehavior:
+          description: "Controls how a standard capped budget is paced.\r\n- \"targetFullBudget\"\
+            : spend toward the full budget amount within the renewal period.\r\n-\
+            \ \"targetAverageDailyBudget\": spend toward an average daily amount.\
+            \ Currently only returned for capped, standard, monthly budgets.\r\n-\
+            \ \"undefined\": no explicit pacing behavior. Returned for uncapped budgets\
+            \ and budgets without explicit pacing behavior."
+          enum:
+          - undefined
+          - targetFullBudget
+          - targetAverageDailyBudget
+          nullable: true
+          type: string
+      type: object
     ReadAdSetScheduledBudgetV26Q1:
+      description: "A budget configuration scheduled to replace the ad set's active\
+        \ budget on the specified \"startDate\".\r\nIt contains the same fields as\
+        \ the active budget, plus the scheduled budget identifier and start date."
+      example:
+        budgetDeliverySmoothing: accelerated
+        budgetDeliveryWeek: undefined
+        budgetAmount: 1.4658129805029452
+        budgetRenewal: undefined
+        id: id
+        pacingBehavior: undefined
+        startDate: 2000-01-23
+        budgetStrategy: capped
+      properties:
+        budgetAmount:
+          description: Maximum budget amount in the advertiser's currency per renewal
+            period. Non-null when capped. null when uncapped.
+          format: double
+          nullable: true
+          type: number
+        budgetDeliverySmoothing:
+          description: "Pacing strategy for spending the budget within a renewal period.\
+            \ Only applicable when budgetStrategy is \"capped\".\r\n- \"accelerated\"\
+            : spend pacing is based on delivery efficiency rather than the full budget\
+            \ period.\r\n- \"standard\": spread spending evenly over the renewal period.\r\
+            \nWhen budgetStrategy is \"uncapped\", this field is not set (null in\
+            \ read responses, omit in create/patch requests)."
+          enum:
+          - accelerated
+          - standard
+          nullable: true
+          type: string
+        budgetDeliveryWeek:
+          description: "Defines which day-of-week boundaries are used for weekly budget\
+            \ renewal. Only applicable when budgetStrategy is \"capped\", budgetRenewal\
+            \ is \"weekly\", and budgetDeliverySmoothing is \"standard\".\r\n- \"\
+            mondayToSunday\", \"tuesdayToMonday\", etc.: the day range over which\
+            \ the weekly budget is paced. Changing this value on the active budget\
+            \ also propagates to all scheduled budgets of the same ad set.\r\n- \"\
+            undefined\": used when budgetStrategy is \"uncapped\", when budgetRenewal\
+            \ is not \"weekly\", or when budgetDeliverySmoothing is \"accelerated\"\
+            ."
+          enum:
+          - undefined
+          - mondayToSunday
+          - tuesdayToMonday
+          - wednesdayToTuesday
+          - thursdayToWednesday
+          - fridayToThursday
+          - saturdayToFriday
+          - sundayToSaturday
+          nullable: true
+          type: string
+        budgetRenewal:
+          description: "The period over which the budget is spent.\r\n- \"daily\"\
+            , \"monthly\", \"weekly\": budget resets at the start of each period.\r\
+            \n- \"lifetime\": budget covers the entire ad set duration without resetting.\r\
+            \n- \"undefined\": only used when budgetStrategy is \"uncapped\" (no renewal\
+            \ applies). Required for capped budgets (must not be \"undefined\")."
+          enum:
+          - undefined
+          - daily
+          - monthly
+          - lifetime
+          - weekly
+          nullable: true
+          type: string
+        budgetStrategy:
+          description: "Controls whether the ad set has a spending limit.\r\n- \"\
+            capped\": spending is limited to budgetAmount. Requires budgetAmount (non-null),\
+            \ budgetRenewal (not \"undefined\"), and budgetDeliverySmoothing (not\
+            \ null).\r\n- \"uncapped\": no spending limit. budgetAmount is null, budgetRenewal\
+            \ is \"undefined\", and budgetDeliverySmoothing is null."
+          enum:
+          - capped
+          - uncapped
+          nullable: true
+          type: string
+        id:
+          description: Identifier of the scheduled budget.
+          nullable: true
+          type: string
+        pacingBehavior:
+          description: "Controls how a standard capped budget is paced.\r\n- \"targetFullBudget\"\
+            : spend toward the full budget amount within the renewal period.\r\n-\
+            \ \"targetAverageDailyBudget\": spend toward an average daily amount.\
+            \ Only supported for capped, standard, monthly budgets.\r\n- \"undefined\"\
+            : no explicit pacing behavior. Use for uncapped or accelerated budgets,\
+            \ or omit pacingBehavior."
+          enum:
+          - undefined
+          - targetFullBudget
+          - targetAverageDailyBudget
+          nullable: true
+          type: string
+        startDate:
+          description: Advertiser-local calendar date when the scheduled budget becomes
+            active.
+          format: date
+          nullable: true
+          type: string
+      type: object
+    ReadAdSetScheduledBudgetV27Q1:
       description: "A budget configuration scheduled to replace the ad set's active\
         \ budget on the specified \"startDate\".\r\nIt contains the same fields as\
         \ the active budget, plus the scheduled budget identifier and start date."
@@ -22627,6 +23250,79 @@ components:
         startDate:
           $ref: '#/components/schemas/NillableDateTime'
       type: object
+    ReadAdSetScheduleV27Q1:
+      description: Ad set schedule read model
+      example:
+        endDate:
+          value: 2000-01-23T04:56:07.000+00:00
+        activationStatus: "on"
+        deliveryStatus: draft
+        startDate:
+          value: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        activationStatus:
+          description: "Activation status of the ad set, i.e. whether the consumer\
+            \ wants it to deliver"
+          enum:
+          - "on"
+          - "off"
+          nullable: true
+          type: string
+        deliveryStatus:
+          description: "Delivery status of the ad set, i.e. whether the ad set is\
+            \ delivering.\r\n            \r\nPossible values:\r\n- draft\r\n- inactive\r\
+            \n- live\r\n- notLive\r\n- pausing\r\n- paused\r\n- scheduled\r\n- ended\r\
+            \n- notDelivering\r\n- archived"
+          enum:
+          - draft
+          - inactive
+          - live
+          - notLive
+          - pausing
+          - paused
+          - scheduled
+          - ended
+          - notDelivering
+          - archived
+          nullable: true
+          type: string
+        endDate:
+          $ref: '#/components/schemas/NillableDateTime'
+        startDate:
+          $ref: '#/components/schemas/NillableDateTime'
+      type: object
+    ReadAdSetTargetingV27Q1:
+      description: Ad set targeting options.
+      example:
+        geoLocation:
+          zipCodes:
+            value: null
+          countries:
+            value: null
+          subdivisions:
+            value: null
+        frequencyCapping:
+          value: null
+        deliveryLimitations:
+          operatingSystems:
+          - android
+          - android
+          devices:
+          - other
+          - other
+          environments:
+          - web
+          - web
+      nullable: true
+      properties:
+        deliveryLimitations:
+          $ref: '#/components/schemas/AdSetDeliveryLimitationsV27Q1'
+        frequencyCapping:
+          $ref: '#/components/schemas/NillableAdSetFrequencyCappingV27Q1'
+        geoLocation:
+          $ref: '#/components/schemas/AdSetGeoLocationV27Q1'
+      type: object
     ReadAdSetV26Q1:
       description: "Ad set read model.\r\n            \r\nThe ad set is the configuration\
         \ unit that defines ads delivery. Its binds together the objective, budget,\r\
@@ -22641,6 +23337,9 @@ components:
           attributionMethod: unknown
           lookbackWindow: unknown
         destinationEnvironment: undefined
+        serverToServerTrackings:
+        - url: url
+        - url: url
         videoChannel: olv
         advertiserId: advertiserId
         objective: customAction
@@ -22673,6 +23372,7 @@ components:
             environments:
             - web
             - web
+        adSetType: standard
         name: name
         datasetId: datasetId
         scheduledBudgets:
@@ -22701,6 +23401,15 @@ components:
           budgetStrategy: capped
       nullable: true
       properties:
+        adSetType:
+          description: "Type of the ad set.\r\nNot returned when field projection\
+            \ (meta.fields) is used in a search."
+          enum:
+          - standard
+          - appRetargeting
+          - unknown
+          nullable: true
+          type: string
         advertiserId:
           description: "Advertiser id of the campaign this ad set belongs to\r\nThis\
             \ value is a string-encoded integer."
@@ -22772,8 +23481,170 @@ components:
             $ref: '#/components/schemas/ReadAdSetScheduledBudgetV26Q1'
           nullable: true
           type: array
+        serverToServerTrackings:
+          description: "MMP / server-to-server tracking URLs. Always present on GET\
+            \ ad-sets/{id} (null when not app retargeting, empty, or unavailable).\r\
+            \nAlways omitted on search."
+          items:
+            $ref: '#/components/schemas/ServerToServerTrackingV26Q1'
+          nullable: true
+          type: array
         targeting:
           $ref: '#/components/schemas/AdSetTargetingV26Q1'
+        videoChannel:
+          enum:
+          - olv
+          - ctv
+          nullable: true
+          type: string
+      type: object
+    ReadAdSetV27Q1:
+      description: "Ad set read model.\r\n            \r\nThe ad set is the configuration\
+        \ unit that defines ads delivery. Its binds together the objective, budget,\r\
+        \nscheduling, targeting options and ads."
+      example:
+        bidding:
+          bidAmount: 0.8008281904610115
+          costController: COS
+        campaignId: campaignId
+        mediaType: display
+        attributionConfiguration:
+          attributionMethod: unknown
+          lookbackWindow: unknown
+        destinationEnvironment: undefined
+        videoChannel: olv
+        advertiserId: advertiserId
+        objective: customAction
+        schedule:
+          endDate:
+            value: 2000-01-23T04:56:07.000+00:00
+          activationStatus: "on"
+          deliveryStatus: draft
+          startDate:
+            value: 2000-01-23T04:56:07.000+00:00
+        targeting:
+          geoLocation:
+            zipCodes:
+              value: null
+            countries:
+              value: null
+            subdivisions:
+              value: null
+          frequencyCapping:
+            value: null
+          deliveryLimitations:
+            operatingSystems:
+            - android
+            - android
+            devices:
+            - other
+            - other
+            environments:
+            - web
+            - web
+        name: name
+        datasetId: datasetId
+        scheduledBudgets:
+        - budgetDeliverySmoothing: accelerated
+          budgetDeliveryWeek: undefined
+          budgetAmount: 1.4658129805029452
+          budgetRenewal: undefined
+          id: id
+          pacingBehavior: undefined
+          startDate: 2000-01-23
+          budgetStrategy: capped
+        - budgetDeliverySmoothing: accelerated
+          budgetDeliveryWeek: undefined
+          budgetAmount: 1.4658129805029452
+          budgetRenewal: undefined
+          id: id
+          pacingBehavior: undefined
+          startDate: 2000-01-23
+          budgetStrategy: capped
+        budget:
+          budgetDeliverySmoothing: accelerated
+          budgetDeliveryWeek: undefined
+          budgetAmount: 6.027456183070403
+          budgetRenewal: undefined
+          pacingBehavior: undefined
+          budgetStrategy: capped
+      nullable: true
+      properties:
+        advertiserId:
+          description: "Advertiser id of the campaign this ad set belongs to\r\nThis\
+            \ value is a string-encoded integer."
+          nullable: true
+          type: string
+        attributionConfiguration:
+          $ref: '#/components/schemas/ReadAdSetAttributionConfigurationV27Q1'
+        bidding:
+          $ref: '#/components/schemas/ReadAdSetBiddingV27Q1'
+        budget:
+          $ref: '#/components/schemas/ReadAdSetBudgetV27Q1'
+        campaignId:
+          description: "Campaign id this ad set belongs to.\r\n            \r\nThis\
+            \ is a key to a MarketingCampaign entity, which can be retrieved using\
+            \ the MarketingCampaigns endpoints.\r\nThis value is a string-encoded\
+            \ integer."
+          nullable: true
+          type: string
+        datasetId:
+          description: "Dataset id of this ad set\r\nThis value is a string-encoded\
+            \ integer."
+          nullable: true
+          type: string
+        destinationEnvironment:
+          description: "The environment that an ad click will lead a user to.\r\n\
+            \            \r\nPossible values:\r\n- undefined: the ad set does not\
+            \ specify its destination environment\r\n- web: the ad set lead users\
+            \ to a web page\r\n- app: the ad set lead users to an app"
+          enum:
+          - undefined
+          - web
+          - app
+          nullable: true
+          type: string
+        mediaType:
+          enum:
+          - display
+          - video
+          nullable: true
+          type: string
+        name:
+          description: Name of the ad set
+          nullable: true
+          type: string
+        objective:
+          description: "Ad set objective.\r\n            \r\nPossible values:\r\n\
+            - customAction (previously \"Actions\")\r\n- clicks\r\n- conversions\r\
+            \n- displays\r\n- appPromotion (previously \"Installs\")\r\n- revenue\r\
+            \n- storeConversions\r\n- value\r\n- reach (previously \"ViewedImpressions\"\
+            )\r\n- qualifiedReach\r\n- visits\r\n- videoViews (previously \"CompletedVideoViews\"\
+            )"
+          enum:
+          - customAction
+          - clicks
+          - conversions
+          - displays
+          - appPromotion
+          - revenue
+          - storeConversions
+          - value
+          - reach
+          - visits
+          - videoViews
+          - qualifiedReach
+          nullable: true
+          type: string
+        schedule:
+          $ref: '#/components/schemas/ReadAdSetScheduleV27Q1'
+        scheduledBudgets:
+          items:
+            $ref: '#/components/schemas/ReadAdSetScheduledBudgetV27Q1'
+          nullable: true
+          type: array
+        targeting:
+          $ref: '#/components/schemas/ReadAdSetTargetingV27Q1'
         videoChannel:
           enum:
           - olv
@@ -22833,6 +23704,9 @@ components:
             attributionMethod: unknown
             lookbackWindow: unknown
           destinationEnvironment: undefined
+          serverToServerTrackings:
+          - url: url
+          - url: url
           videoChannel: olv
           advertiserId: advertiserId
           objective: customAction
@@ -22865,6 +23739,7 @@ components:
               environments:
               - web
               - web
+          adSetType: standard
           name: name
           datasetId: datasetId
           scheduledBudgets:
@@ -22904,6 +23779,91 @@ components:
           type: string
         type:
           example: ReadAdSetV26Q1
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    ReadModelReadAdSetV27Q1:
+      description: read model data for resources
+      example:
+        attributes:
+          bidding:
+            bidAmount: 0.8008281904610115
+            costController: COS
+          campaignId: campaignId
+          mediaType: display
+          attributionConfiguration:
+            attributionMethod: unknown
+            lookbackWindow: unknown
+          destinationEnvironment: undefined
+          videoChannel: olv
+          advertiserId: advertiserId
+          objective: customAction
+          schedule:
+            endDate:
+              value: 2000-01-23T04:56:07.000+00:00
+            activationStatus: "on"
+            deliveryStatus: draft
+            startDate:
+              value: 2000-01-23T04:56:07.000+00:00
+          targeting:
+            geoLocation:
+              zipCodes:
+                value: null
+              countries:
+                value: null
+              subdivisions:
+                value: null
+            frequencyCapping:
+              value: null
+            deliveryLimitations:
+              operatingSystems:
+              - android
+              - android
+              devices:
+              - other
+              - other
+              environments:
+              - web
+              - web
+          name: name
+          datasetId: datasetId
+          scheduledBudgets:
+          - budgetDeliverySmoothing: accelerated
+            budgetDeliveryWeek: undefined
+            budgetAmount: 1.4658129805029452
+            budgetRenewal: undefined
+            id: id
+            pacingBehavior: undefined
+            startDate: 2000-01-23
+            budgetStrategy: capped
+          - budgetDeliverySmoothing: accelerated
+            budgetDeliveryWeek: undefined
+            budgetAmount: 1.4658129805029452
+            budgetRenewal: undefined
+            id: id
+            pacingBehavior: undefined
+            startDate: 2000-01-23
+            budgetStrategy: capped
+          budget:
+            budgetDeliverySmoothing: accelerated
+            budgetDeliveryWeek: undefined
+            budgetAmount: 6.027456183070403
+            budgetRenewal: undefined
+            pacingBehavior: undefined
+            budgetStrategy: capped
+        id: id
+        type: ReadAdSetV27Q1
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ReadAdSetV27Q1'
+        id:
+          description: Id of the entity
+          nullable: true
+          readOnly: true
+          type: string
+        type:
+          example: ReadAdSetV27Q1
           nullable: true
           readOnly: true
           type: string
@@ -26451,6 +27411,9 @@ components:
               attributionMethod: unknown
               lookbackWindow: unknown
             destinationEnvironment: undefined
+            serverToServerTrackings:
+            - url: url
+            - url: url
             videoChannel: olv
             advertiserId: advertiserId
             objective: customAction
@@ -26483,6 +27446,7 @@ components:
                 environments:
                 - web
                 - web
+            adSetType: standard
             name: name
             datasetId: datasetId
             scheduledBudgets:
@@ -26711,7 +27675,7 @@ components:
           readOnly: true
           type: array
       type: object
-    ResponsesReadAdSetV26Q1:
+    ResponsesReadAdSetV27Q1:
       description: List of output resources
       example:
         data:
@@ -26744,9 +27708,7 @@ components:
                 subdivisions:
                   value: null
               frequencyCapping:
-                value:
-                  maximumImpressions: 5
-                  frequency: hourly
+                value: null
               deliveryLimitations:
                 operatingSystems:
                 - android
@@ -26784,7 +27746,7 @@ components:
               pacingBehavior: undefined
               budgetStrategy: capped
           id: id
-          type: ReadAdSetV26Q1
+          type: ReadAdSetV27Q1
         - attributes:
             bidding:
               bidAmount: 0.8008281904610115
@@ -26814,9 +27776,7 @@ components:
                 subdivisions:
                   value: null
               frequencyCapping:
-                value:
-                  maximumImpressions: 5
-                  frequency: hourly
+                value: null
               deliveryLimitations:
                 operatingSystems:
                 - android
@@ -26854,7 +27814,7 @@ components:
               pacingBehavior: undefined
               budgetStrategy: capped
           id: id
-          type: ReadAdSetV26Q1
+          type: ReadAdSetV27Q1
         warnings:
         - traceId: traceId
           code: code
@@ -26900,7 +27860,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/ReadModelReadAdSetV26Q1'
+            $ref: '#/components/schemas/ReadModelReadAdSetV27Q1'
           nullable: true
           readOnly: true
           type: array
@@ -27548,6 +28508,15 @@ components:
         attributes:
           $ref: '#/components/schemas/SellerReportRequest'
         type:
+          type: string
+      type: object
+    ServerToServerTrackingV26Q1:
+      description: Server-to-server (MMP) tracking URL for an app retargeting ad set.
+      example:
+        url: url
+      properties:
+        url:
+          nullable: true
           type: string
       type: object
     SetAdSetTargetingDealIds:
@@ -29265,6 +30234,24 @@ components:
       - attributes
       - identifier
       type: object
+    ValueResourceAdSetSearchInputV27Q1:
+      description: Data model for a value resource
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AdSetSearchInputV27Q1'
+        type:
+          nullable: true
+          type: string
+      type: object
+    ValueResourceCampaignSearchInputV27Q1:
+      description: Data model for a value resource
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CampaignSearchInputV27Q1'
+        type:
+          nullable: true
+          type: string
+      type: object
     ValueResourceCollectionOutcomeOfBoostedAdProductSet:
       description: A top-level object that encapsulates a Criteo API response for
         several values.
@@ -30150,9 +31137,19 @@ components:
       - identifiers
       - operation
       type: object
+    NillableAdSetFrequencyCappingV27Q1_value:
+      allOf:
+      - $ref: '#/components/schemas/AdSetFrequencyCappingV27Q1'
+      nullable: true
+      type: object
     NillableAdSetTargetingRuleV26Q1_value:
       allOf:
       - $ref: '#/components/schemas/AdSetTargetingRuleV26Q1'
+      nullable: true
+      type: object
+    NillableAdSetTargetingRuleV27Q1_value:
+      allOf:
+      - $ref: '#/components/schemas/AdSetTargetingRuleV27Q1'
       nullable: true
       type: object
   securitySchemes:

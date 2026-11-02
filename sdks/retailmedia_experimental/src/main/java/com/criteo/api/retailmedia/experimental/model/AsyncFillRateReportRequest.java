@@ -77,50 +77,6 @@ public class AsyncFillRateReportRequest {
     this.data = data;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the AsyncFillRateReportRequest instance itself
-   */
-  public AsyncFillRateReportRequest putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -132,13 +88,12 @@ public class AsyncFillRateReportRequest {
       return false;
     }
     AsyncFillRateReportRequest asyncFillRateReportRequest = (AsyncFillRateReportRequest) o;
-    return Objects.equals(this.data, asyncFillRateReportRequest.data)&&
-        Objects.equals(this.additionalProperties, asyncFillRateReportRequest.additionalProperties);
+    return Objects.equals(this.data, asyncFillRateReportRequest.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, additionalProperties);
+    return Objects.hash(data);
   }
 
   @Override
@@ -146,7 +101,6 @@ public class AsyncFillRateReportRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class AsyncFillRateReportRequest {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -189,6 +143,14 @@ public class AsyncFillRateReportRequest {
         }
       }
 
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!AsyncFillRateReportRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AsyncFillRateReportRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AsyncFillRateReportRequest.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
@@ -214,23 +176,6 @@ public class AsyncFillRateReportRequest {
            @Override
            public void write(JsonWriter out, AsyncFillRateReportRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
@@ -238,27 +183,7 @@ public class AsyncFillRateReportRequest {
            public AsyncFillRateReportRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             AsyncFillRateReportRequest instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             return thisAdapter.fromJsonTree(jsonObj);
            }
 
        }.nullSafe();

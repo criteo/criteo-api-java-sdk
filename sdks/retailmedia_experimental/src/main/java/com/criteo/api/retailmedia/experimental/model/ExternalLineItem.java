@@ -15,7 +15,6 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.ExternalConquestingSettings;
 import com.criteo.api.retailmedia.experimental.model.ExternalFlightDatesModel;
 import com.criteo.api.retailmedia.experimental.model.OnsiteDisplayLineItemDetails;
 import com.google.gson.TypeAdapter;
@@ -112,10 +111,6 @@ public class ExternalLineItem {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private String campaignId;
-
-  public static final String SERIALIZED_NAME_CONQUESTING_SETTINGS = "conquestingSettings";
-  @SerializedName(SERIALIZED_NAME_CONQUESTING_SETTINGS)
-  private ExternalConquestingSettings conquestingSettings;
 
   public static final String SERIALIZED_NAME_EFFECTIVE_FLIGHT_DATES = "effectiveFlightDates";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_FLIGHT_DATES)
@@ -242,28 +237,6 @@ public class ExternalLineItem {
 
   public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
-  }
-
-
-  public ExternalLineItem conquestingSettings(ExternalConquestingSettings conquestingSettings) {
-    
-    this.conquestingSettings = conquestingSettings;
-    return this;
-  }
-
-   /**
-   * Get conquestingSettings
-   * @return conquestingSettings
-  **/
-  @javax.annotation.Nullable
-
-  public ExternalConquestingSettings getConquestingSettings() {
-    return conquestingSettings;
-  }
-
-
-  public void setConquestingSettings(ExternalConquestingSettings conquestingSettings) {
-    this.conquestingSettings = conquestingSettings;
   }
 
 
@@ -455,7 +428,6 @@ public class ExternalLineItem {
     ExternalLineItem externalLineItem = (ExternalLineItem) o;
     return Objects.equals(this.budgetStatus, externalLineItem.budgetStatus) &&
         Objects.equals(this.campaignId, externalLineItem.campaignId) &&
-        Objects.equals(this.conquestingSettings, externalLineItem.conquestingSettings) &&
         Objects.equals(this.effectiveFlightDates, externalLineItem.effectiveFlightDates) &&
         Objects.equals(this.isPaused, externalLineItem.isPaused) &&
         Objects.equals(this.lineItemId, externalLineItem.lineItemId) &&
@@ -472,7 +444,7 @@ public class ExternalLineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgetStatus, campaignId, conquestingSettings, effectiveFlightDates, isPaused, lineItemId, name, onsiteDisplayDetails, retailerId, serveToOptOutUser, type);
+    return Objects.hash(budgetStatus, campaignId, effectiveFlightDates, isPaused, lineItemId, name, onsiteDisplayDetails, retailerId, serveToOptOutUser, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -488,7 +460,6 @@ public class ExternalLineItem {
     sb.append("class ExternalLineItem {\n");
     sb.append("    budgetStatus: ").append(toIndentedString(budgetStatus)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    conquestingSettings: ").append(toIndentedString(conquestingSettings)).append("\n");
     sb.append("    effectiveFlightDates: ").append(toIndentedString(effectiveFlightDates)).append("\n");
     sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
     sb.append("    lineItemId: ").append(toIndentedString(lineItemId)).append("\n");
@@ -521,7 +492,6 @@ public class ExternalLineItem {
     openapiFields = new HashSet<String>();
     openapiFields.add("budgetStatus");
     openapiFields.add("campaignId");
-    openapiFields.add("conquestingSettings");
     openapiFields.add("effectiveFlightDates");
     openapiFields.add("isPaused");
     openapiFields.add("lineItemId");
@@ -560,10 +530,6 @@ public class ExternalLineItem {
       }
       if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
-      }
-      // validate the optional field `conquestingSettings`
-      if (jsonObj.get("conquestingSettings") != null && !jsonObj.get("conquestingSettings").isJsonNull()) {
-        ExternalConquestingSettings.validateJsonObject(jsonObj.getAsJsonObject("conquestingSettings"));
       }
       // validate the optional field `effectiveFlightDates`
       if (jsonObj.get("effectiveFlightDates") != null && !jsonObj.get("effectiveFlightDates").isJsonNull()) {

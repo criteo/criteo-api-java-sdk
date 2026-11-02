@@ -11,7 +11,7 @@ A campaign. A campaign groups line items that share attribution settings, flight
 |**accountId** | **String** | Account ID associated with the campaign, generated internally by Criteo. |  [optional] |
 |**attributionSettings** | [**AttributionSettingsModel**](AttributionSettingsModel.md) |  |  [optional] |
 |**billByRetailerId** | **String** | The retailer this campaign is associated with, set only on creation. Required when using a  retailer budget balance. |  [optional] |
-|**budget** | [**CampaignBudgetModel**](CampaignBudgetModel.md) |  |  [optional] |
+|**budgetDetails** | [**CampaignBudgetModel**](CampaignBudgetModel.md) |  |  [optional] |
 |**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) | Buy type of campaign, set only on creation. |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Type of campaign, set only on creation. |  [optional] |
 |**companyName** | **String** | This optional field, exclusively accessible to marketplaces within the European Union (in  compliance with the Digital Service Act - DSA), will display the name of the company  associated with the advertisement. |  [optional] |

@@ -62,9 +62,9 @@ public class CampaignCreateModel {
   @SerializedName(SERIALIZED_NAME_BILL_BY_RETAILER_ID)
   private String billByRetailerId;
 
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
-  private DynamicBudgetCreateModel budget;
+  public static final String SERIALIZED_NAME_BUDGET_DETAILS = "budgetDetails";
+  @SerializedName(SERIALIZED_NAME_BUDGET_DETAILS)
+  private DynamicBudgetCreateModel budgetDetails;
 
   /**
    * Buy type of campaign, set only on creation. Auction is the only buy type currently supported.
@@ -339,25 +339,25 @@ public class CampaignCreateModel {
   }
 
 
-  public CampaignCreateModel budget(DynamicBudgetCreateModel budget) {
+  public CampaignCreateModel budgetDetails(DynamicBudgetCreateModel budgetDetails) {
     
-    this.budget = budget;
+    this.budgetDetails = budgetDetails;
     return this;
   }
 
    /**
-   * Get budget
-   * @return budget
+   * Get budgetDetails
+   * @return budgetDetails
   **/
   @javax.annotation.Nonnull
 
-  public DynamicBudgetCreateModel getBudget() {
-    return budget;
+  public DynamicBudgetCreateModel getBudgetDetails() {
+    return budgetDetails;
   }
 
 
-  public void setBudget(DynamicBudgetCreateModel budget) {
-    this.budget = budget;
+  public void setBudgetDetails(DynamicBudgetCreateModel budgetDetails) {
+    this.budgetDetails = budgetDetails;
   }
 
 
@@ -579,7 +579,7 @@ public class CampaignCreateModel {
     CampaignCreateModel campaignCreateModel = (CampaignCreateModel) o;
     return Objects.equals(this.attributionSettings, campaignCreateModel.attributionSettings) &&
         Objects.equals(this.billByRetailerId, campaignCreateModel.billByRetailerId) &&
-        Objects.equals(this.budget, campaignCreateModel.budget) &&
+        Objects.equals(this.budgetDetails, campaignCreateModel.budgetDetails) &&
         Objects.equals(this.buyType, campaignCreateModel.buyType) &&
         Objects.equals(this.campaignType, campaignCreateModel.campaignType) &&
         Objects.equals(this.companyName, campaignCreateModel.companyName) &&
@@ -597,7 +597,7 @@ public class CampaignCreateModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributionSettings, billByRetailerId, budget, buyType, campaignType, companyName, drawableBalanceIds, name, objective, onBehalfCompanyName, regulatedCategory, scheduleDetails);
+    return Objects.hash(attributionSettings, billByRetailerId, budgetDetails, buyType, campaignType, companyName, drawableBalanceIds, name, objective, onBehalfCompanyName, regulatedCategory, scheduleDetails);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -613,7 +613,7 @@ public class CampaignCreateModel {
     sb.append("class CampaignCreateModel {\n");
     sb.append("    attributionSettings: ").append(toIndentedString(attributionSettings)).append("\n");
     sb.append("    billByRetailerId: ").append(toIndentedString(billByRetailerId)).append("\n");
-    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    budgetDetails: ").append(toIndentedString(budgetDetails)).append("\n");
     sb.append("    buyType: ").append(toIndentedString(buyType)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
@@ -647,7 +647,7 @@ public class CampaignCreateModel {
     openapiFields = new HashSet<String>();
     openapiFields.add("attributionSettings");
     openapiFields.add("billByRetailerId");
-    openapiFields.add("budget");
+    openapiFields.add("budgetDetails");
     openapiFields.add("buyType");
     openapiFields.add("campaignType");
     openapiFields.add("companyName");
@@ -660,7 +660,7 @@ public class CampaignCreateModel {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("budget");
+    openapiRequiredFields.add("budgetDetails");
     openapiRequiredFields.add("buyType");
     openapiRequiredFields.add("campaignType");
     openapiRequiredFields.add("name");
@@ -702,8 +702,8 @@ public class CampaignCreateModel {
       if ((jsonObj.get("billByRetailerId") != null && !jsonObj.get("billByRetailerId").isJsonNull()) && !jsonObj.get("billByRetailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billByRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billByRetailerId").toString()));
       }
-      // validate the required field `budget`
-      DynamicBudgetCreateModel.validateJsonObject(jsonObj.getAsJsonObject("budget"));
+      // validate the required field `budgetDetails`
+      DynamicBudgetCreateModel.validateJsonObject(jsonObj.getAsJsonObject("budgetDetails"));
       if (!jsonObj.get("buyType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `buyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buyType").toString()));
       }

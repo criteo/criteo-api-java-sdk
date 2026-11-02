@@ -14,6 +14,19 @@ Financial intent of a campaign.
 |**pacing** | [**PacingModel**](PacingModel.md) |  |  [optional] |
 |**remaining** | **Double** | Amount left under the cap. Null when the campaign is uncapped. |  [optional] |
 |**spent** | **Double** | Amount spent so far. |  [optional] |
+|**status** | [**StatusEnum**](#StatusEnum) | Which budget cap, if any, stops the campaign from spending. Omitted when no status is indexed, Unknown when the indexed one is not recognized. |  [optional] |
+
+
+
+## Enum: StatusEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;Unknown&quot; |
+| BUDGETAVAILABLE | &quot;BudgetAvailable&quot; |
+| DAILYBUDGETREACHED | &quot;DailyBudgetReached&quot; |
+| MONTHLYBUDGETREACHED | &quot;MonthlyBudgetReached&quot; |
+| TOTALBUDGETREACHED | &quot;TotalBudgetReached&quot; |
 
 
 

@@ -77,6 +77,63 @@ public class CampaignBudgetModel {
   @SerializedName(SERIALIZED_NAME_SPENT)
   private Double spent;
 
+  /**
+   * Which budget cap, if any, stops the campaign from spending. Omitted when no status is indexed, Unknown when the indexed one is not recognized.
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    UNKNOWN("Unknown"),
+    
+    BUDGETAVAILABLE("BudgetAvailable"),
+    
+    DAILYBUDGETREACHED("DailyBudgetReached"),
+    
+    MONTHLYBUDGETREACHED("MonthlyBudgetReached"),
+    
+    TOTALBUDGETREACHED("TotalBudgetReached");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private StatusEnum status;
+
   public CampaignBudgetModel() {
   }
 
@@ -220,6 +277,28 @@ public class CampaignBudgetModel {
   }
 
 
+  public CampaignBudgetModel status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Which budget cap, if any, stops the campaign from spending. Omitted when no status is indexed, Unknown when the indexed one is not recognized.
+   * @return status
+  **/
+  @javax.annotation.Nullable
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -235,7 +314,8 @@ public class CampaignBudgetModel {
         Objects.equals(this.memo, campaignBudgetModel.memo) &&
         Objects.equals(this.pacing, campaignBudgetModel.pacing) &&
         Objects.equals(this.remaining, campaignBudgetModel.remaining) &&
-        Objects.equals(this.spent, campaignBudgetModel.spent);
+        Objects.equals(this.spent, campaignBudgetModel.spent) &&
+        Objects.equals(this.status, campaignBudgetModel.status);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -244,7 +324,7 @@ public class CampaignBudgetModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, cappings, memo, pacing, remaining, spent);
+    return Objects.hash(amount, cappings, memo, pacing, remaining, spent, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -264,6 +344,7 @@ public class CampaignBudgetModel {
     sb.append("    pacing: ").append(toIndentedString(pacing)).append("\n");
     sb.append("    remaining: ").append(toIndentedString(remaining)).append("\n");
     sb.append("    spent: ").append(toIndentedString(spent)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -292,6 +373,7 @@ public class CampaignBudgetModel {
     openapiFields.add("pacing");
     openapiFields.add("remaining");
     openapiFields.add("spent");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -337,6 +419,9 @@ public class CampaignBudgetModel {
       // validate the optional field `pacing`
       if (jsonObj.get("pacing") != null && !jsonObj.get("pacing").isJsonNull()) {
         PacingModel.validateJsonObject(jsonObj.getAsJsonObject("pacing"));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

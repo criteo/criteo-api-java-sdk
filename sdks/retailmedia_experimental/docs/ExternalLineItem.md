@@ -10,7 +10,6 @@ A unit of ad delivery configuration within a campaign. It defines how a specific
 |------------ | ------------- | ------------- | -------------|
 |**budgetStatus** | [**BudgetStatusEnum**](#BudgetStatusEnum) | Indicates whether the line item has budget headroom to serve ads. |  [optional] |
 |**campaignId** | **String** | The campaign id of the associated campaign. |  [optional] |
-|**conquestingSettings** | [**ExternalConquestingSettings**](ExternalConquestingSettings.md) |  |  [optional] |
 |**effectiveFlightDates** | [**ExternalFlightDatesModel**](ExternalFlightDatesModel.md) |  |  [optional] |
 |**isPaused** | **Boolean** | Indicates whether the line item is paused. |  [optional] |
 |**lineItemId** | **String** | The unique identifier of the line item. |  [optional] |

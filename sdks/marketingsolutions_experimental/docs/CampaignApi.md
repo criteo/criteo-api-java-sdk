@@ -2920,7 +2920,7 @@ public class Example {
 
 ## searchAdSets
 
-> ResponsesReadAdSetV26Q1 searchAdSets(adSetSearchRequestV26Q1)
+> ResponsesReadAdSetV27Q1 searchAdSets(adSetSearchRequestV27Q1)
 
 /experimental/marketing-solutions/ad-sets/search
 
@@ -2965,9 +2965,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        AdSetSearchRequestV26Q1 adSetSearchRequestV26Q1 = new AdSetSearchRequestV26Q1(); // AdSetSearchRequestV26Q1 | 
+        AdSetSearchRequestV27Q1 adSetSearchRequestV27Q1 = new AdSetSearchRequestV27Q1(); // AdSetSearchRequestV27Q1 | 
         try {
-            ResponsesReadAdSetV26Q1 result = apiInstance.searchAdSets(adSetSearchRequestV26Q1);
+            ResponsesReadAdSetV27Q1 result = apiInstance.searchAdSets(adSetSearchRequestV27Q1);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#searchAdSets");
@@ -2985,11 +2985,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adSetSearchRequestV26Q1** | [**AdSetSearchRequestV26Q1**](AdSetSearchRequestV26Q1.md)|  | [optional] |
+| **adSetSearchRequestV27Q1** | [**AdSetSearchRequestV27Q1**](AdSetSearchRequestV27Q1.md)|  | [optional] |
 
 ### Return type
 
-[**ResponsesReadAdSetV26Q1**](ResponsesReadAdSetV26Q1.md)
+[**ResponsesReadAdSetV27Q1**](ResponsesReadAdSetV27Q1.md)
 
 ### Authorization
 
@@ -3009,7 +3009,7 @@ public class Example {
 
 ## searchCampaigns
 
-> CampaignV23Q1ListResponse searchCampaigns(campaignSearchRequestV23Q1)
+> CampaignV27Q1ListResponse searchCampaigns(campaignSearchRequestV27Q1)
 
 /experimental/marketing-solutions/campaigns/search
 
@@ -3054,9 +3054,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1 = new CampaignSearchRequestV23Q1(); // CampaignSearchRequestV23Q1 | Filters for searching for campaigns
+        CampaignSearchRequestV27Q1 campaignSearchRequestV27Q1 = new CampaignSearchRequestV27Q1(); // CampaignSearchRequestV27Q1 | Filters for searching for campaigns
         try {
-            CampaignV23Q1ListResponse result = apiInstance.searchCampaigns(campaignSearchRequestV23Q1);
+            CampaignV27Q1ListResponse result = apiInstance.searchCampaigns(campaignSearchRequestV27Q1);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#searchCampaigns");
@@ -3074,11 +3074,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignSearchRequestV23Q1** | [**CampaignSearchRequestV23Q1**](CampaignSearchRequestV23Q1.md)| Filters for searching for campaigns | [optional] |
+| **campaignSearchRequestV27Q1** | [**CampaignSearchRequestV27Q1**](CampaignSearchRequestV27Q1.md)| Filters for searching for campaigns | [optional] |
 
 ### Return type
 
-[**CampaignV23Q1ListResponse**](CampaignV23Q1ListResponse.md)
+[**CampaignV27Q1ListResponse**](CampaignV27Q1ListResponse.md)
 
 ### Authorization
 

@@ -31,7 +31,7 @@ import com.criteo.api.marketingsolutions.experimental.model.AdSetAudienceLinkEnt
 import com.criteo.api.marketingsolutions.experimental.model.AdSetAudienceLinkInputEntityV1;
 import com.criteo.api.marketingsolutions.experimental.model.AdSetCategoryBidListResponse;
 import com.criteo.api.marketingsolutions.experimental.model.AdSetDisplayMultiplierListResponse;
-import com.criteo.api.marketingsolutions.experimental.model.AdSetSearchRequestV26Q1;
+import com.criteo.api.marketingsolutions.experimental.model.AdSetSearchRequestV27Q1;
 import com.criteo.api.marketingsolutions.experimental.model.AdSetTargetingDealIdsDisableResultResponse;
 import com.criteo.api.marketingsolutions.experimental.model.AdSetTargetingDealIdsResponse;
 import com.criteo.api.marketingsolutions.experimental.model.AdSetTargetingDealIdsSetResultResponse;
@@ -40,9 +40,9 @@ import com.criteo.api.marketingsolutions.experimental.model.AdSetTargetingVideoP
 import com.criteo.api.marketingsolutions.experimental.model.AdSetTargetingVideoPositioningSetResultResponse;
 import com.criteo.api.marketingsolutions.experimental.model.ApiRequestOfTargetingEntity;
 import com.criteo.api.marketingsolutions.experimental.model.ApiResponseOfTargetingEntity;
-import com.criteo.api.marketingsolutions.experimental.model.CampaignSearchRequestV23Q1;
-import com.criteo.api.marketingsolutions.experimental.model.CampaignV23Q1ListResponse;
+import com.criteo.api.marketingsolutions.experimental.model.CampaignSearchRequestV27Q1;
 import com.criteo.api.marketingsolutions.experimental.model.CampaignV23Q1Response;
+import com.criteo.api.marketingsolutions.experimental.model.CampaignV27Q1ListResponse;
 import com.criteo.api.marketingsolutions.experimental.model.CreateAdSetV26Q1Request;
 import com.criteo.api.marketingsolutions.experimental.model.CreateCampaignRequest;
 import com.criteo.api.marketingsolutions.experimental.model.PatchAdSetCategoryBidListRequest;
@@ -56,7 +56,7 @@ import com.criteo.api.marketingsolutions.experimental.model.RequestsPatchAdSetV2
 import com.criteo.api.marketingsolutions.experimental.model.ResponseReadAdSetV26Q1;
 import com.criteo.api.marketingsolutions.experimental.model.ResponsesAdSetId;
 import com.criteo.api.marketingsolutions.experimental.model.ResponsesAdSetIdV26Q1;
-import com.criteo.api.marketingsolutions.experimental.model.ResponsesReadAdSetV26Q1;
+import com.criteo.api.marketingsolutions.experimental.model.ResponsesReadAdSetV27Q1;
 import com.criteo.api.marketingsolutions.experimental.model.SellerReportDataResponse;
 import com.criteo.api.marketingsolutions.experimental.model.SellerReportRequestRequest;
 import com.criteo.api.marketingsolutions.experimental.model.SetAdSetTargetingDealIdsRequest;
@@ -4156,7 +4156,7 @@ public class CampaignApi {
     }
     /**
      * Build call for searchAdSets
-     * @param adSetSearchRequestV26Q1  (optional)
+     * @param adSetSearchRequestV27Q1  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4166,7 +4166,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAdSetsCall(AdSetSearchRequestV26Q1 adSetSearchRequestV26Q1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchAdSetsCall(AdSetSearchRequestV27Q1 adSetSearchRequestV27Q1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4180,7 +4180,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = adSetSearchRequestV26Q1;
+        Object localVarPostBody = adSetSearchRequestV27Q1;
 
         // create path and map variables
         String localVarPath = "/experimental/marketing-solutions/ad-sets/search";
@@ -4212,16 +4212,16 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchAdSetsValidateBeforeCall(AdSetSearchRequestV26Q1 adSetSearchRequestV26Q1, final ApiCallback _callback) throws ApiException {
-        return searchAdSetsCall(adSetSearchRequestV26Q1, _callback);
+    private okhttp3.Call searchAdSetsValidateBeforeCall(AdSetSearchRequestV27Q1 adSetSearchRequestV27Q1, final ApiCallback _callback) throws ApiException {
+        return searchAdSetsCall(adSetSearchRequestV27Q1, _callback);
 
     }
 
     /**
      * /experimental/marketing-solutions/ad-sets/search
      * Search for ad sets based on provided criteria.  This returns the full configuration of ad sets matching those criteria.  Field projection can be used if only a subset of fields is required, instead of the full configuration.                If specific fields are precised in the user prompt, use meta.fields field projection in order to query only the value of these fields, else, provide every field.
-     * @param adSetSearchRequestV26Q1  (optional)
-     * @return ResponsesReadAdSetV26Q1
+     * @param adSetSearchRequestV27Q1  (optional)
+     * @return ResponsesReadAdSetV27Q1
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4229,16 +4229,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
      </table>
      */
-    public ResponsesReadAdSetV26Q1 searchAdSets(AdSetSearchRequestV26Q1 adSetSearchRequestV26Q1) throws ApiException {
-        ApiResponse<ResponsesReadAdSetV26Q1> localVarResp = searchAdSetsWithHttpInfo(adSetSearchRequestV26Q1);
+    public ResponsesReadAdSetV27Q1 searchAdSets(AdSetSearchRequestV27Q1 adSetSearchRequestV27Q1) throws ApiException {
+        ApiResponse<ResponsesReadAdSetV27Q1> localVarResp = searchAdSetsWithHttpInfo(adSetSearchRequestV27Q1);
         return localVarResp.getData();
     }
 
     /**
      * /experimental/marketing-solutions/ad-sets/search
      * Search for ad sets based on provided criteria.  This returns the full configuration of ad sets matching those criteria.  Field projection can be used if only a subset of fields is required, instead of the full configuration.                If specific fields are precised in the user prompt, use meta.fields field projection in order to query only the value of these fields, else, provide every field.
-     * @param adSetSearchRequestV26Q1  (optional)
-     * @return ApiResponse&lt;ResponsesReadAdSetV26Q1&gt;
+     * @param adSetSearchRequestV27Q1  (optional)
+     * @return ApiResponse&lt;ResponsesReadAdSetV27Q1&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4246,16 +4246,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponsesReadAdSetV26Q1> searchAdSetsWithHttpInfo(AdSetSearchRequestV26Q1 adSetSearchRequestV26Q1) throws ApiException {
-        okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(adSetSearchRequestV26Q1, null);
-        Type localVarReturnType = new TypeToken<ResponsesReadAdSetV26Q1>(){}.getType();
+    public ApiResponse<ResponsesReadAdSetV27Q1> searchAdSetsWithHttpInfo(AdSetSearchRequestV27Q1 adSetSearchRequestV27Q1) throws ApiException {
+        okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(adSetSearchRequestV27Q1, null);
+        Type localVarReturnType = new TypeToken<ResponsesReadAdSetV27Q1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * /experimental/marketing-solutions/ad-sets/search (asynchronously)
      * Search for ad sets based on provided criteria.  This returns the full configuration of ad sets matching those criteria.  Field projection can be used if only a subset of fields is required, instead of the full configuration.                If specific fields are precised in the user prompt, use meta.fields field projection in order to query only the value of these fields, else, provide every field.
-     * @param adSetSearchRequestV26Q1  (optional)
+     * @param adSetSearchRequestV27Q1  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4265,16 +4265,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAdSetsAsync(AdSetSearchRequestV26Q1 adSetSearchRequestV26Q1, final ApiCallback<ResponsesReadAdSetV26Q1> _callback) throws ApiException {
+    public okhttp3.Call searchAdSetsAsync(AdSetSearchRequestV27Q1 adSetSearchRequestV27Q1, final ApiCallback<ResponsesReadAdSetV27Q1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(adSetSearchRequestV26Q1, _callback);
-        Type localVarReturnType = new TypeToken<ResponsesReadAdSetV26Q1>(){}.getType();
+        okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(adSetSearchRequestV27Q1, _callback);
+        Type localVarReturnType = new TypeToken<ResponsesReadAdSetV27Q1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for searchCampaigns
-     * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
+     * @param campaignSearchRequestV27Q1 Filters for searching for campaigns (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4284,7 +4284,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Returns a list of marketing campaigns&#39; data. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCampaignsCall(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchCampaignsCall(CampaignSearchRequestV27Q1 campaignSearchRequestV27Q1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4298,7 +4298,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = campaignSearchRequestV23Q1;
+        Object localVarPostBody = campaignSearchRequestV27Q1;
 
         // create path and map variables
         String localVarPath = "/experimental/marketing-solutions/campaigns/search";
@@ -4330,16 +4330,16 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchCampaignsValidateBeforeCall(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
-        return searchCampaignsCall(campaignSearchRequestV23Q1, _callback);
+    private okhttp3.Call searchCampaignsValidateBeforeCall(CampaignSearchRequestV27Q1 campaignSearchRequestV27Q1, final ApiCallback _callback) throws ApiException {
+        return searchCampaignsCall(campaignSearchRequestV27Q1, _callback);
 
     }
 
     /**
      * /experimental/marketing-solutions/campaigns/search
      * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
-     * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
-     * @return CampaignV23Q1ListResponse
+     * @param campaignSearchRequestV27Q1 Filters for searching for campaigns (optional)
+     * @return CampaignV27Q1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4347,16 +4347,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Returns a list of marketing campaigns&#39; data. </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignV23Q1ListResponse searchCampaigns(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
-        ApiResponse<CampaignV23Q1ListResponse> localVarResp = searchCampaignsWithHttpInfo(campaignSearchRequestV23Q1);
+    public CampaignV27Q1ListResponse searchCampaigns(CampaignSearchRequestV27Q1 campaignSearchRequestV27Q1) throws ApiException {
+        ApiResponse<CampaignV27Q1ListResponse> localVarResp = searchCampaignsWithHttpInfo(campaignSearchRequestV27Q1);
         return localVarResp.getData();
     }
 
     /**
      * /experimental/marketing-solutions/campaigns/search
      * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
-     * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
-     * @return ApiResponse&lt;CampaignV23Q1ListResponse&gt;
+     * @param campaignSearchRequestV27Q1 Filters for searching for campaigns (optional)
+     * @return ApiResponse&lt;CampaignV27Q1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4364,16 +4364,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Returns a list of marketing campaigns&#39; data. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignV23Q1ListResponse> searchCampaignsWithHttpInfo(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
-        okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequestV23Q1, null);
-        Type localVarReturnType = new TypeToken<CampaignV23Q1ListResponse>(){}.getType();
+    public ApiResponse<CampaignV27Q1ListResponse> searchCampaignsWithHttpInfo(CampaignSearchRequestV27Q1 campaignSearchRequestV27Q1) throws ApiException {
+        okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequestV27Q1, null);
+        Type localVarReturnType = new TypeToken<CampaignV27Q1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * /experimental/marketing-solutions/campaigns/search (asynchronously)
      * Search endpoint for campaigns                A campaign, or in other words a marketing campaign, is an entity that defines advertising objectives and success criteria.
-     * @param campaignSearchRequestV23Q1 Filters for searching for campaigns (optional)
+     * @param campaignSearchRequestV27Q1 Filters for searching for campaigns (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4383,10 +4383,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Returns a list of marketing campaigns&#39; data. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCampaignsAsync(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback<CampaignV23Q1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call searchCampaignsAsync(CampaignSearchRequestV27Q1 campaignSearchRequestV27Q1, final ApiCallback<CampaignV27Q1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequestV23Q1, _callback);
-        Type localVarReturnType = new TypeToken<CampaignV23Q1ListResponse>(){}.getType();
+        okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequestV27Q1, _callback);
+        Type localVarReturnType = new TypeToken<CampaignV27Q1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

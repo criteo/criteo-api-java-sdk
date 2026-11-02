@@ -8,6 +8,7 @@ Ad set read model.                The ad set is the configuration unit that defi
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**adSetType** | [**AdSetTypeEnum**](#AdSetTypeEnum) | Type of the ad set.  Not returned when field projection (meta.fields) is used in a search. |  [optional] |
 |**advertiserId** | **String** | Advertiser id of the campaign this ad set belongs to  This value is a string-encoded integer. |  [optional] |
 |**attributionConfiguration** | [**ReadAdSetAttributionConfigurationV26Q1**](ReadAdSetAttributionConfigurationV26Q1.md) |  |  [optional] |
 |**bidding** | [**ReadAdSetBiddingV26Q1**](ReadAdSetBiddingV26Q1.md) |  |  [optional] |
@@ -20,8 +21,19 @@ Ad set read model.                The ad set is the configuration unit that defi
 |**objective** | [**ObjectiveEnum**](#ObjectiveEnum) | Ad set objective.                Possible values:  - customAction (previously \&quot;Actions\&quot;)  - clicks  - conversions  - displays  - appPromotion (previously \&quot;Installs\&quot;)  - revenue  - storeConversions  - value  - reach (previously \&quot;ViewedImpressions\&quot;)  - visits  - videoViews (previously \&quot;CompletedVideoViews\&quot;) |  [optional] |
 |**schedule** | [**ReadAdSetScheduleV26Q1**](ReadAdSetScheduleV26Q1.md) |  |  [optional] |
 |**scheduledBudgets** | [**List&lt;ReadAdSetScheduledBudgetV26Q1&gt;**](ReadAdSetScheduledBudgetV26Q1.md) |  |  [optional] |
+|**serverToServerTrackings** | [**List&lt;ServerToServerTrackingV26Q1&gt;**](ServerToServerTrackingV26Q1.md) | MMP / server-to-server tracking URLs. Always present on GET ad-sets/{id} (null when not app retargeting, empty, or unavailable).  Always omitted on search. |  [optional] |
 |**targeting** | [**AdSetTargetingV26Q1**](AdSetTargetingV26Q1.md) |  |  [optional] |
 |**videoChannel** | [**VideoChannelEnum**](#VideoChannelEnum) |  |  [optional] |
+
+
+
+## Enum: AdSetTypeEnum
+
+| Name | Value |
+|---- | -----|
+| STANDARD | &quot;standard&quot; |
+| APPRETARGETING | &quot;appRetargeting&quot; |
+| UNKNOWN | &quot;unknown&quot; |
 
 
 

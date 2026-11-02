@@ -11,7 +11,7 @@ A Retail Media Campaign used to represent an advertiser's marketing objective
 |**accountId** | **String** |  |  |
 |**attributionSettings** | [**AttributionSettingsModel**](AttributionSettingsModel.md) |  |  |
 |**billByRetailerId** | **String** |  |  [optional] |
-|**budget** | [**CampaignBudgetModel**](CampaignBudgetModel.md) |  |  [optional] |
+|**budgetDetails** | [**CampaignBudgetModel**](CampaignBudgetModel.md) |  |  [optional] |
 |**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) | Buy type of campaign, set only on creation. |  |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Type of campaign, set only on creation. |  |
 |**companyName** | **String** |  |  [optional] |

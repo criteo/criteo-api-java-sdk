@@ -55,59 +55,6 @@ public class DeleteLineItemProductsInput {
   @SerializedName(SERIALIZED_NAME_PRODUCT_IDS)
   private List<String> productIds = null;
 
-  /**
-   * The type of the products being deleted.
-   */
-  @JsonAdapter(ProductTypeEnum.Adapter.class)
-  public enum ProductTypeEnum {
-    UNKNOWN("Unknown"),
-    
-    DISPLAYPRODUCT("DisplayProduct"),
-    
-    SPONSOREDPRODUCT("SponsoredProduct");
-
-    private String value;
-
-    ProductTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ProductTypeEnum fromValue(String value) {
-      for (ProductTypeEnum b : ProductTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ProductTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ProductTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ProductTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ProductTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_PRODUCT_TYPE = "productType";
-  @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE)
-  private ProductTypeEnum productType;
-
   public DeleteLineItemProductsInput() {
   }
 
@@ -141,28 +88,6 @@ public class DeleteLineItemProductsInput {
   }
 
 
-  public DeleteLineItemProductsInput productType(ProductTypeEnum productType) {
-    
-    this.productType = productType;
-    return this;
-  }
-
-   /**
-   * The type of the products being deleted.
-   * @return productType
-  **/
-  @javax.annotation.Nonnull
-
-  public ProductTypeEnum getProductType() {
-    return productType;
-  }
-
-
-  public void setProductType(ProductTypeEnum productType) {
-    this.productType = productType;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -173,8 +98,7 @@ public class DeleteLineItemProductsInput {
       return false;
     }
     DeleteLineItemProductsInput deleteLineItemProductsInput = (DeleteLineItemProductsInput) o;
-    return Objects.equals(this.productIds, deleteLineItemProductsInput.productIds) &&
-        Objects.equals(this.productType, deleteLineItemProductsInput.productType);
+    return Objects.equals(this.productIds, deleteLineItemProductsInput.productIds);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -183,7 +107,7 @@ public class DeleteLineItemProductsInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(productIds, productType);
+    return Objects.hash(productIds);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -198,7 +122,6 @@ public class DeleteLineItemProductsInput {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeleteLineItemProductsInput {\n");
     sb.append("    productIds: ").append(toIndentedString(productIds)).append("\n");
-    sb.append("    productType: ").append(toIndentedString(productType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -222,11 +145,9 @@ public class DeleteLineItemProductsInput {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("productIds");
-    openapiFields.add("productType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("productType");
   }
 
  /**
@@ -249,19 +170,9 @@ public class DeleteLineItemProductsInput {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeleteLineItemProductsInput` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : DeleteLineItemProductsInput.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("productIds") != null && !jsonObj.get("productIds").isJsonNull() && !jsonObj.get("productIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `productIds` to be an array in the JSON string but got `%s`", jsonObj.get("productIds").toString()));
-      }
-      if (!jsonObj.get("productType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `productType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productType").toString()));
       }
   }
 

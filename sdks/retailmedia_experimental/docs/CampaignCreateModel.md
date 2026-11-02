@@ -10,7 +10,7 @@ An object that represents the available options to set when creating a Retail Me
 |------------ | ------------- | ------------- | -------------|
 |**attributionSettings** | [**AttributionSettingsCreateModel**](AttributionSettingsCreateModel.md) |  |  [optional] |
 |**billByRetailerId** | **String** |  |  [optional] |
-|**budget** | [**DynamicBudgetCreateModel**](DynamicBudgetCreateModel.md) |  |  |
+|**budgetDetails** | [**DynamicBudgetCreateModel**](DynamicBudgetCreateModel.md) |  |  |
 |**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) | Buy type of campaign, set only on creation. Auction is the only buy type currently supported. |  |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Type of campaign, set only on creation. |  |
 |**companyName** | **String** |  |  [optional] |

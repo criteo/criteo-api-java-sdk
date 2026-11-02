@@ -14,8 +14,8 @@ tags:
 - name: Balance
 - name: Campaign
 - name: Catalog
+- name: Forecasting
 - name: Gateway
-- name: OnSiteRecommendation
 - name: ThirdPartyAccounts
 paths:
   /experimental/retail-media/accounts/{account-id}/audience-segments/compute-sizes:
@@ -320,9 +320,9 @@ paths:
   /experimental/retail-media/accounts/{account-id}/campaigns/search:
     post:
       description: "Searches campaigns under an account using optional filters and\
-        \ pagination.\r\nBudgets are sourced from the search index, so they lag a\
-        \ campaign that has just changed.\r\nSearch does not perform Kobalos enrichment,\
-        \ so drawable balance ids are not included."
+        \ pagination.\r\nBudgets and their status come from the search index.\r\n\
+        Search does not perform Kobalos enrichment, so drawable balance ids are not\
+        \ included."
       operationId: SearchCampaigns
       parameters:
       - description: The external id of the account.
@@ -495,6 +495,45 @@ paths:
       x-suppress-rules:
       - response-body-naming
       x-operation-type: fetch
+      x-accepts: application/json
+  /experimental/retail-media/accounts/{account-id}/compute-onsite-display-forecast:
+    post:
+      description: |-
+        Computes a forecast of available impressions and budget for a retailer account.
+        <br />
+        This endpoint is subject to specific rate limits.
+      operationId: ComputeOnsiteDisplayForecast
+      parameters:
+      - description: ID of the retailer account for which to compute the onsite display
+          forecast.
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ComputeOnsiteDisplayForecastRequest'
+        description: Forecast computation parameters.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnsiteDisplayForecastListResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Forecasting_Read
+      summary: "/experimental/retail-media/accounts/{account-id}/compute-onsite-display-forecast"
+      tags:
+      - Forecasting
+      x-content-type: application/json
       x-accepts: application/json
   /experimental/retail-media/accounts/{account-id}/creatives:
     post:
@@ -857,6 +896,68 @@ paths:
       summary: "/experimental/retail-media/accounts/{accountId}/grant-third-party-consent"
       tags:
       - ThirdPartyAccounts
+      x-content-type: application/json
+      x-accepts: application/json
+  /experimental/retail-media/accounts/{accountId}/retailers/search:
+    post:
+      description: Searches for retailers associated with the specified account and
+        returns budget model availability for each retailer
+      operationId: SearchAccountRetailers
+      parameters:
+      - description: The external account identifier
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The maximum number of items to return. Must be between 1 and
+          100. Default is 5.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 5
+          format: int32
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: The number of items to skip before starting to collect the result
+          set. Default is 0.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfRetailerSearchRequestV2'
+        description: The search request containing filtering parameters
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Read
+      summary: "/experimental/retail-media/accounts/{accountId}/retailers/search"
+      tags:
+      - Campaign
       x-content-type: application/json
       x-accepts: application/json
   /experimental/retail-media/auction-line-items/{lineItemId}:
@@ -1242,41 +1343,55 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
-  /experimental/retail-media/chatbot-catalogs/{catalogid}/product-recommendations:
-    post:
-      description: Ask a chatbot for a product recommendation
-      operationId: chatbotProductRecommendations
+  /experimental/retail-media/diagnostics/line-item-checks:
+    get:
+      description: |-
+        Retrieve external diagnostics for a line item
+        <br />
+        Retrieves a diagnostic report for a line item accessible to the caller.
+      operationId: GetExternalLineItemChecks
       parameters:
-      - description: the identifier of the catalog to query
-        explode: false
-        in: path
-        name: catalogid
-        required: true
+      - description: "When true, evaluates the approved Onsite Display line item when\
+          \ one exists. This parameter has no effect for Sponsored Products line items."
+        explode: true
+        in: query
+        name: as-approved
+        required: false
         schema:
-          description: the identifier of the catalog to query
-          title: catalogid
+          default: true
+          type: boolean
+        style: form
+      - description: "A comma-separated list of optional attributes to return: context,\
+          \ issues, and parameters. Fixed attributes status and systemData are always\
+          \ returned; requesting them produces a warning."
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
           type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/InbotDiscussionBodyModel'
-        required: true
+        style: form
+      - description: The external identifier of the line item to evaluate.
+        explode: true
+        in: query
+        name: line-item-id
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MessageBodyModel'
-          description: Successful Response
+                $ref: '#/components/schemas/LineItemCheckCollectionResponse'
+          description: The diagnostic report for the requested line item.
       security:
       - oauth:
-        - RetailMedia_OnSiteRecommendation_Read
-      summary: "/experimental/retail-media/chatbot-catalogs/{catalogid}/product-recommendations"
+        - RetailMedia_Campaign_Read
+      summary: /experimental/retail-media/diagnostics/line-item-checks
       tags:
-      - OnSiteRecommendation
-      x-content-type: application/json
+      - Campaign
       x-accepts: application/json
   /experimental/retail-media/insights/{insight-id}/output:
     get:
@@ -1913,6 +2028,39 @@ paths:
       - oauth:
         - RetailMedia_Campaign_Manage
       summary: "/experimental/retail-media/line-items/{line-item-id}/targets/create"
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /experimental/retail-media/line-items/{line-item-id}/targets/delete:
+    post:
+      description: Deletes Targets
+      operationId: DeleteTargetsByLineItemId
+      parameters:
+      - description: Unique identifier for the line item
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TargetListRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TargetListResponse'
+          description: Success
+      security:
+      - oauth:
+        - RetailMedia_Campaign_Manage
+      summary: "/experimental/retail-media/line-items/{line-item-id}/targets/delete"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2903,6 +3051,7 @@ components:
           type: array
       type: object
     AsyncAccountsReport:
+      additionalProperties: false
       description: Async Accounts report body request
       example:
         activationPlatforms:
@@ -2964,6 +3113,7 @@ components:
           enum:
           - campaign
           - lineItem
+          nullable: true
           type: string
         budgetModels:
           description: "Filter on the budget model: CriteoBudget, RetailerBudget"
@@ -2999,6 +3149,7 @@ components:
           - 7D
           - 14D
           - 30D
+          nullable: true
           type: string
         dimensions:
           description: List of dimensions to report on
@@ -3126,6 +3277,7 @@ components:
           - environment
           - servedCategory
           - capout
+          nullable: true
           type: string
         salesChannel:
           default: all
@@ -3174,6 +3326,7 @@ components:
           default: UTC
           description: "Time zone : see criteo developer portal for supported time\
             \ zones"
+          nullable: true
           type: string
         viewAttributionWindow:
           default: none
@@ -3184,6 +3337,7 @@ components:
           - 7D
           - 14D
           - 30D
+          nullable: true
           type: string
       required:
       - accountIds
@@ -3191,6 +3345,7 @@ components:
       - startDate
       type: object
     AsyncAccountsReportRequest:
+      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
@@ -3242,6 +3397,7 @@ components:
       - data
       type: object
     AsyncAccountsReportResource:
+      additionalProperties: false
       description: A report request resource containing its type and required attributes.
       example:
         attributes:
@@ -3288,11 +3444,13 @@ components:
         attributes:
           $ref: '#/components/schemas/AsyncAccountsReport'
         type:
+          nullable: true
           type: string
       required:
       - attributes
       type: object
     AsyncCampaignsReport:
+      additionalProperties: false
       description: Async Campaigns report body request
       example:
         activationPlatforms:
@@ -3376,6 +3534,7 @@ components:
           - 7D
           - 14D
           - 30D
+          nullable: true
           type: string
         dimensions:
           description: List of dimensions to report on
@@ -3435,6 +3594,7 @@ components:
           type: string
         id:
           description: Campaign id to report on
+          nullable: true
           type: string
         ids:
           description: Campaign ids to report on
@@ -3511,6 +3671,7 @@ components:
           - environment
           - servedCategory
           - capout
+          nullable: true
           type: string
         salesChannel:
           default: all
@@ -3559,6 +3720,7 @@ components:
           default: UTC
           description: "Time zone : see criteo developer portal for supported time\
             \ zones"
+          nullable: true
           type: string
         viewAttributionWindow:
           default: none
@@ -3569,12 +3731,14 @@ components:
           - 7D
           - 14D
           - 30D
+          nullable: true
           type: string
       required:
       - endDate
       - startDate
       type: object
     AsyncCampaignsReportRequest:
+      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
@@ -3626,6 +3790,7 @@ components:
       - data
       type: object
     AsyncCampaignsReportResource:
+      additionalProperties: false
       description: A report request resource containing its type and required attributes.
       example:
         attributes:
@@ -3672,11 +3837,13 @@ components:
         attributes:
           $ref: '#/components/schemas/AsyncCampaignsReport'
         type:
+          nullable: true
           type: string
       required:
       - attributes
       type: object
     AsyncFillRateReport:
+      additionalProperties: false
       description: Async FillRate report body request
       example:
         adServerType: all
@@ -3779,6 +3946,7 @@ components:
           default: UTC
           description: "Time zone : see criteo developer portal for supported time\
             \ zones"
+          nullable: true
           type: string
       required:
       - dimensions
@@ -3788,6 +3956,7 @@ components:
       - supplyAccountIds
       type: object
     AsyncFillRateReportRequest:
+      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
@@ -3815,6 +3984,7 @@ components:
       - data
       type: object
     AsyncFillRateReportResource:
+      additionalProperties: false
       description: A report request resource containing its type and required attributes.
       example:
         attributes:
@@ -3837,6 +4007,7 @@ components:
         attributes:
           $ref: '#/components/schemas/AsyncFillRateReport'
         type:
+          nullable: true
           type: string
       required:
       - attributes
@@ -3878,6 +4049,7 @@ components:
           type: array
       type: object
     AsyncLineItemsReport:
+      additionalProperties: false
       description: Async Line Items report body request
       example:
         activationPlatforms:
@@ -3961,6 +4133,7 @@ components:
           - 7D
           - 14D
           - 30D
+          nullable: true
           type: string
         dimensions:
           description: List of dimensions to report on
@@ -4020,6 +4193,7 @@ components:
           type: string
         id:
           description: Line Item id to report on
+          nullable: true
           type: string
         ids:
           description: Line Item ids to report on
@@ -4096,6 +4270,7 @@ components:
           - environment
           - servedCategory
           - capout
+          nullable: true
           type: string
         salesChannel:
           default: all
@@ -4144,6 +4319,7 @@ components:
           default: UTC
           description: "Time zone : see criteo developer portal for supported time\
             \ zones"
+          nullable: true
           type: string
         viewAttributionWindow:
           default: none
@@ -4154,12 +4330,14 @@ components:
           - 7D
           - 14D
           - 30D
+          nullable: true
           type: string
       required:
       - endDate
       - startDate
       type: object
     AsyncLineItemsReportRequest:
+      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
@@ -4211,6 +4389,7 @@ components:
       - data
       type: object
     AsyncLineItemsReportResource:
+      additionalProperties: false
       description: A report request resource containing its type and required attributes.
       example:
         attributes:
@@ -4257,11 +4436,13 @@ components:
         attributes:
           $ref: '#/components/schemas/AsyncLineItemsReport'
         type:
+          nullable: true
           type: string
       required:
       - attributes
       type: object
     AsyncOffsiteReport:
+      additionalProperties: false
       description: Async Offsite report body request
       example:
         campaignType: all
@@ -4307,6 +4488,7 @@ components:
           - auction
           - preferredDeals
           - sponsorship
+          nullable: true
           type: string
         campaignIds:
           description: Campaign ids to filter
@@ -4330,6 +4512,7 @@ components:
           - 7D
           - 14D
           - 30D
+          nullable: true
           type: string
         creativeIds:
           description: Creative ids to filter
@@ -4448,6 +4631,7 @@ components:
           default: UTC
           description: "Time zone : see criteo developer portal for supported time\
             \ zones"
+          nullable: true
           type: string
         viewAttributionWindow:
           default: none
@@ -4458,6 +4642,7 @@ components:
           - 7D
           - 14D
           - 30D
+          nullable: true
           type: string
       required:
       - accountIds
@@ -4467,6 +4652,7 @@ components:
       - startDate
       type: object
     AsyncOffsiteReportRequest:
+      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
@@ -4511,6 +4697,7 @@ components:
       - data
       type: object
     AsyncOffsiteReportResource:
+      additionalProperties: false
       description: A report request resource containing its type and required attributes.
       example:
         attributes:
@@ -4550,11 +4737,13 @@ components:
         attributes:
           $ref: '#/components/schemas/AsyncOffsiteReport'
         type:
+          nullable: true
           type: string
       required:
       - attributes
       type: object
     AsyncReportResponse:
+      additionalProperties: false
       description: Async Report response format
       example:
         data:
@@ -5127,50 +5316,6 @@ components:
           readOnly: true
           type: array
       type: object
-    BotMessage:
-      description: bot structured answer to the user prompt
-      example:
-        closing: closing
-        opening: opening
-        productRecos:
-        - price: 0.8008281904610115
-          imageUrl: https://openapi-generator.tech
-          name: name
-          description: description
-          currency: currency
-          brand: brand
-          rationale: rationale
-          url: https://openapi-generator.tech
-        - price: 0.8008281904610115
-          imageUrl: https://openapi-generator.tech
-          name: name
-          description: description
-          currency: currency
-          brand: brand
-          rationale: rationale
-          url: https://openapi-generator.tech
-      nullable: true
-      properties:
-        closing:
-          description: closing remark from the bot
-          nullable: true
-          title: Closing
-          type: string
-        opening:
-          description: "opening comment from the bot, introducing the list of recommended\
-            \ products if relevant."
-          nullable: true
-          title: Opening
-          type: string
-        productRecos:
-          description: list of recommended products
-          items:
-            $ref: '#/components/schemas/ProductRecommendation'
-          nullable: true
-          title: Productrecos
-          type: array
-      title: BotMessage
-      type: object
     BrandIdSearchRequest:
       description: An object that represents the request of BrandIdSearch endpoint.
       example:
@@ -5255,6 +5400,62 @@ components:
           nullable: true
           type: string
       type: object
+    CampaignAvailabilityV2:
+      additionalProperties: false
+      description: "Information about the budget model availability for a specific\
+        \ campaign type and buy type combination, and page types and environments\
+        \ supported for that combination"
+      example:
+        budgetModelAvailabilities:
+        - unknown
+        - unknown
+        campaignType: unknown
+        buyType: unknown
+        validCombinations:
+        - pageType: unknown
+          pageEnvironmentType: unknown
+        - pageType: unknown
+          pageEnvironmentType: unknown
+      properties:
+        budgetModelAvailabilities:
+          description: The budget models available for this campaign type and buy
+            type combination. Presence of a value indicates that budget model is available.
+          items:
+            description: Possible budget models for retail media campaigns
+            enum:
+            - unknown
+            - criteoBudget
+            - retailerBudget
+            type: string
+          nullable: true
+          type: array
+        buyType:
+          description: The buy type this object represents availability for
+          enum:
+          - unknown
+          - auction
+          - preferredDeals
+          - sponsorship
+          - offsite
+          nullable: true
+          type: string
+        campaignType:
+          description: The type of campaign this object represents availability for
+          enum:
+          - unknown
+          - sponsoredProducts
+          - onsiteDisplay
+          - offsite
+          nullable: true
+          type: string
+        validCombinations:
+          description: PageType-PageEnvironmentType pairs which are supported for
+            this campaign-buy type combination
+          items:
+            $ref: '#/components/schemas/PageTypeCombinationV2'
+          nullable: true
+          type: array
+      type: object
     CampaignBudgetModel:
       additionalProperties: false
       description: Financial intent of a campaign.
@@ -5270,6 +5471,7 @@ components:
         spent: 5.962133916683182
         memo: memo
         remaining: 1.4658129805029452
+        status: Unknown
       nullable: true
       properties:
         amount:
@@ -5300,6 +5502,18 @@ components:
           format: double
           nullable: true
           type: number
+        status:
+          description: "Which budget cap, if any, stops the campaign from spending.\
+            \ Omitted when no status is indexed, Unknown when the indexed one is not\
+            \ recognized."
+          enum:
+          - Unknown
+          - BudgetAvailable
+          - DailyBudgetReached
+          - MonthlyBudgetReached
+          - TotalBudgetReached
+          nullable: true
+          type: string
       type: object
     CampaignCreateModel:
       additionalProperties: false
@@ -5315,14 +5529,14 @@ components:
           viewAttributionScope: SameSku
           viewAttributionWindow: None
         companyName: companyName
+        budgetDetails:
+          amount: 0.8008281904610115
         drawableBalanceIds:
         - drawableBalanceIds
         - drawableBalanceIds
         name: name
         onBehalfCompanyName: onBehalfCompanyName
         buyType: Auction
-        budget:
-          amount: 0.8008281904610115
         objective: Clicks
         scheduleDetails:
           endDate: 2000-01-23T04:56:07.000+00:00
@@ -5333,7 +5547,7 @@ components:
         billByRetailerId:
           nullable: true
           type: string
-        budget:
+        budgetDetails:
           $ref: '#/components/schemas/DynamicBudgetCreateModel'
         buyType:
           description: "Buy type of campaign, set only on creation. Auction is the\
@@ -5381,7 +5595,7 @@ components:
         scheduleDetails:
           $ref: '#/components/schemas/ScheduleDetailsCreateModel'
       required:
-      - budget
+      - budgetDetails
       - buyType
       - campaignType
       - name
@@ -5404,14 +5618,14 @@ components:
               viewAttributionScope: SameSku
               viewAttributionWindow: None
             companyName: companyName
+            budgetDetails:
+              amount: 0.8008281904610115
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
             name: name
             onBehalfCompanyName: onBehalfCompanyName
             buyType: Auction
-            budget:
-              amount: 0.8008281904610115
             objective: Clicks
             scheduleDetails:
               endDate: 2000-01-23T04:56:07.000+00:00
@@ -5435,14 +5649,14 @@ components:
             viewAttributionScope: SameSku
             viewAttributionWindow: None
           companyName: companyName
+          budgetDetails:
+            amount: 0.8008281904610115
           drawableBalanceIds:
           - drawableBalanceIds
           - drawableBalanceIds
           name: name
           onBehalfCompanyName: onBehalfCompanyName
           buyType: Auction
-          budget:
-            amount: 0.8008281904610115
           objective: Clicks
           scheduleDetails:
             endDate: 2000-01-23T04:56:07.000+00:00
@@ -5470,14 +5684,7 @@ components:
           viewAttributionScope: SameSku
           viewAttributionWindow: None
         companyName: companyName
-        onBehalfCompanyName: onBehalfCompanyName
-        objective: Manual
-        accountId: accountId
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        name: name
-        buyType: Unknown
-        id: id
-        budget:
+        budgetDetails:
           amount: 0.8008281904610115
           cappings:
           - amount: 6.027456183070403
@@ -5489,6 +5696,14 @@ components:
           spent: 5.962133916683182
           memo: memo
           remaining: 1.4658129805029452
+          status: Unknown
+        onBehalfCompanyName: onBehalfCompanyName
+        objective: Manual
+        accountId: accountId
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        name: name
+        buyType: Unknown
+        id: id
         scheduleDetails:
           endDate: 2000-01-23T04:56:07.000+00:00
           startDate: 2000-01-23T04:56:07.000+00:00
@@ -5508,7 +5723,7 @@ components:
             \ creation. Required when using a\r\nretailer budget balance."
           nullable: true
           type: string
-        budget:
+        budgetDetails:
           $ref: '#/components/schemas/CampaignBudgetModel'
         buyType:
           description: "Buy type of campaign, set only on creation."
@@ -5605,14 +5820,7 @@ components:
             viewAttributionScope: SameSku
             viewAttributionWindow: None
           companyName: companyName
-          onBehalfCompanyName: onBehalfCompanyName
-          objective: Manual
-          accountId: accountId
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          name: name
-          buyType: Unknown
-          id: id
-          budget:
+          budgetDetails:
             amount: 0.8008281904610115
             cappings:
             - amount: 6.027456183070403
@@ -5624,6 +5832,14 @@ components:
             spent: 5.962133916683182
             memo: memo
             remaining: 1.4658129805029452
+            status: Unknown
+          onBehalfCompanyName: onBehalfCompanyName
+          objective: Manual
+          accountId: accountId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          name: name
+          buyType: Unknown
+          id: id
           scheduleDetails:
             endDate: 2000-01-23T04:56:07.000+00:00
             startDate: 2000-01-23T04:56:07.000+00:00
@@ -5660,14 +5876,7 @@ components:
               viewAttributionScope: SameSku
               viewAttributionWindow: None
             companyName: companyName
-            onBehalfCompanyName: onBehalfCompanyName
-            objective: Manual
-            accountId: accountId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            name: name
-            buyType: Unknown
-            id: id
-            budget:
+            budgetDetails:
               amount: 0.8008281904610115
               cappings:
               - amount: 6.027456183070403
@@ -5679,6 +5888,14 @@ components:
               spent: 5.962133916683182
               memo: memo
               remaining: 1.4658129805029452
+              status: Unknown
+            onBehalfCompanyName: onBehalfCompanyName
+            objective: Manual
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            name: name
+            buyType: Unknown
+            id: id
             scheduleDetails:
               endDate: 2000-01-23T04:56:07.000+00:00
               startDate: 2000-01-23T04:56:07.000+00:00
@@ -5760,17 +5977,7 @@ components:
           viewAttributionScope: SameSku
           viewAttributionWindow: None
         companyName: companyName
-        drawableBalanceIds:
-        - drawableBalanceIds
-        - drawableBalanceIds
-        onBehalfCompanyName: onBehalfCompanyName
-        objective: Manual
-        accountId: accountId
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        name: name
-        buyType: Unknown
-        id: id
-        budget:
+        budgetDetails:
           amount: 0.8008281904610115
           cappings:
           - amount: 6.027456183070403
@@ -5782,6 +5989,17 @@ components:
           spent: 5.962133916683182
           memo: memo
           remaining: 1.4658129805029452
+          status: Unknown
+        drawableBalanceIds:
+        - drawableBalanceIds
+        - drawableBalanceIds
+        onBehalfCompanyName: onBehalfCompanyName
+        objective: Manual
+        accountId: accountId
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        name: name
+        buyType: Unknown
+        id: id
         scheduleDetails:
           endDate: 2000-01-23T04:56:07.000+00:00
           startDate: 2000-01-23T04:56:07.000+00:00
@@ -5796,7 +6014,7 @@ components:
         billByRetailerId:
           nullable: true
           type: string
-        budget:
+        budgetDetails:
           $ref: '#/components/schemas/CampaignBudgetModel'
         buyType:
           description: "Buy type of campaign, set only on creation."
@@ -5897,17 +6115,7 @@ components:
               viewAttributionScope: SameSku
               viewAttributionWindow: None
             companyName: companyName
-            drawableBalanceIds:
-            - drawableBalanceIds
-            - drawableBalanceIds
-            onBehalfCompanyName: onBehalfCompanyName
-            objective: Manual
-            accountId: accountId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            name: name
-            buyType: Unknown
-            id: id
-            budget:
+            budgetDetails:
               amount: 0.8008281904610115
               cappings:
               - amount: 6.027456183070403
@@ -5919,6 +6127,17 @@ components:
               spent: 5.962133916683182
               memo: memo
               remaining: 1.4658129805029452
+              status: Unknown
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            onBehalfCompanyName: onBehalfCompanyName
+            objective: Manual
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            name: name
+            buyType: Unknown
+            id: id
             scheduleDetails:
               endDate: 2000-01-23T04:56:07.000+00:00
               startDate: 2000-01-23T04:56:07.000+00:00
@@ -5936,17 +6155,7 @@ components:
               viewAttributionScope: SameSku
               viewAttributionWindow: None
             companyName: companyName
-            drawableBalanceIds:
-            - drawableBalanceIds
-            - drawableBalanceIds
-            onBehalfCompanyName: onBehalfCompanyName
-            objective: Manual
-            accountId: accountId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            name: name
-            buyType: Unknown
-            id: id
-            budget:
+            budgetDetails:
               amount: 0.8008281904610115
               cappings:
               - amount: 6.027456183070403
@@ -5958,6 +6167,17 @@ components:
               spent: 5.962133916683182
               memo: memo
               remaining: 1.4658129805029452
+              status: Unknown
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            onBehalfCompanyName: onBehalfCompanyName
+            objective: Manual
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            name: name
+            buyType: Unknown
+            id: id
             scheduleDetails:
               endDate: 2000-01-23T04:56:07.000+00:00
               startDate: 2000-01-23T04:56:07.000+00:00
@@ -6044,17 +6264,7 @@ components:
             viewAttributionScope: SameSku
             viewAttributionWindow: None
           companyName: companyName
-          drawableBalanceIds:
-          - drawableBalanceIds
-          - drawableBalanceIds
-          onBehalfCompanyName: onBehalfCompanyName
-          objective: Manual
-          accountId: accountId
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          name: name
-          buyType: Unknown
-          id: id
-          budget:
+          budgetDetails:
             amount: 0.8008281904610115
             cappings:
             - amount: 6.027456183070403
@@ -6066,6 +6276,17 @@ components:
             spent: 5.962133916683182
             memo: memo
             remaining: 1.4658129805029452
+            status: Unknown
+          drawableBalanceIds:
+          - drawableBalanceIds
+          - drawableBalanceIds
+          onBehalfCompanyName: onBehalfCompanyName
+          objective: Manual
+          accountId: accountId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          name: name
+          buyType: Unknown
+          id: id
           scheduleDetails:
             endDate: 2000-01-23T04:56:07.000+00:00
             startDate: 2000-01-23T04:56:07.000+00:00
@@ -6102,17 +6323,7 @@ components:
               viewAttributionScope: SameSku
               viewAttributionWindow: None
             companyName: companyName
-            drawableBalanceIds:
-            - drawableBalanceIds
-            - drawableBalanceIds
-            onBehalfCompanyName: onBehalfCompanyName
-            objective: Manual
-            accountId: accountId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            name: name
-            buyType: Unknown
-            id: id
-            budget:
+            budgetDetails:
               amount: 0.8008281904610115
               cappings:
               - amount: 6.027456183070403
@@ -6124,6 +6335,17 @@ components:
               spent: 5.962133916683182
               memo: memo
               remaining: 1.4658129805029452
+              status: Unknown
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            onBehalfCompanyName: onBehalfCompanyName
+            objective: Manual
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            name: name
+            buyType: Unknown
+            id: id
             scheduleDetails:
               endDate: 2000-01-23T04:56:07.000+00:00
               startDate: 2000-01-23T04:56:07.000+00:00
@@ -6344,19 +6566,19 @@ components:
           viewAttributionWindow: None
         companyName:
           value: value
+        budgetDetails:
+          amount: 0.8008281904610115
+          memo: memo
         name: name
         onBehalfCompanyName:
           value: value
-        budget:
-          amount: 0.8008281904610115
-          memo: memo
         scheduleDetails:
           endDate: 2000-01-23T04:56:07.000+00:00
           startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         attributionSettings:
           $ref: '#/components/schemas/AttributionSettingsUpdateModel'
-        budget:
+        budgetDetails:
           $ref: '#/components/schemas/DynamicBudgetUpdateModel'
         companyName:
           $ref: '#/components/schemas/StringNillableV2'
@@ -6382,12 +6604,12 @@ components:
               viewAttributionWindow: None
             companyName:
               value: value
+            budgetDetails:
+              amount: 0.8008281904610115
+              memo: memo
             name: name
             onBehalfCompanyName:
               value: value
-            budget:
-              amount: 0.8008281904610115
-              memo: memo
             scheduleDetails:
               endDate: 2000-01-23T04:56:07.000+00:00
               startDate: 2000-01-23T04:56:07.000+00:00
@@ -6408,12 +6630,12 @@ components:
             viewAttributionWindow: None
           companyName:
             value: value
+          budgetDetails:
+            amount: 0.8008281904610115
+            memo: memo
           name: name
           onBehalfCompanyName:
             value: value
-          budget:
-            amount: 0.8008281904610115
-            memo: memo
           scheduleDetails:
             endDate: 2000-01-23T04:56:07.000+00:00
             startDate: 2000-01-23T04:56:07.000+00:00
@@ -7389,6 +7611,14 @@ components:
       - eventType
       - occurredAt
       type: object
+    CheckStatus:
+      description: The servability result for a line item.
+      enum:
+      - Unknown
+      - CanFullyServe
+      - CannotServe
+      - CanPartiallyServe
+      type: string
     ChoiceVariableValue:
       additionalProperties: false
       description: A value of a template choice variable (among different accepted
@@ -7485,6 +7715,87 @@ components:
           - validation
           nullable: true
           type: string
+      type: object
+    ComputeOnsiteDisplayForecast:
+      additionalProperties: false
+      description: Parameters for computing an Onsite Display forecast.
+      properties:
+        buyType:
+          default: auction
+          description: How the inventory is bought.
+          enum:
+          - auction
+          - preferredDeals
+          - sponsorship
+          type: string
+        creativeFormats:
+          description: Restricts the forecast to these creative formats. Defaults
+            to all formats.
+          items:
+            description: Creative formats accepted in a request.
+            enum:
+            - flagShip
+            - showcase
+            - butterfly
+            - bundleBoost
+            - iab
+            - custom
+            - displayPanel
+            - digitalShelfTalker
+            - commerceVideoSpotlight
+            - brandingVideoStandout
+            type: string
+          type: array
+        endDate:
+          description: "Last day of the forecast period, inclusive, as `YYYY-MM-DD`.\
+            \ May equal\r\n`startDate` for a single-day forecast."
+          format: date
+          type: string
+        frequencyCapping:
+          $ref: '#/components/schemas/ComputeOnsiteDisplayForecast_frequencyCapping'
+        pageSettings:
+          description: "Page types to include, at least one, and at most one entry\
+            \ per page type."
+          items:
+            $ref: '#/components/schemas/PageSetting'
+          type: array
+        retailerId:
+          description: Identifies the retailer whose inventory is being forecast.
+          type: string
+        startDate:
+          description: "First day of the forecast period, as `YYYY-MM-DD`."
+          format: date
+          type: string
+      required:
+      - endDate
+      - pageSettings
+      - retailerId
+      - startDate
+      type: object
+    ComputeOnsiteDisplayForecastRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data: null
+      properties:
+        data:
+          $ref: '#/components/schemas/ComputeOnsiteDisplayForecastRequest_data'
+      required:
+      - data
+      type: object
+    ComputeOnsiteDisplayForecastResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ComputeOnsiteDisplayForecastResource_attributes'
+        type:
+          description: Type of the resource.
+          type: string
+      required:
+      - attributes
+      - type
       type: object
     CpmBiddingSettings:
       additionalProperties: false
@@ -8561,6 +8872,7 @@ components:
       - value
       type: object
     DataCompleteThrough:
+      additionalProperties: false
       description: "Data freshness: the instant through which report data is complete,\
         \ expressed in the report's request timezone."
       example:
@@ -8634,7 +8946,6 @@ components:
         productIds:
         - productIds
         - productIds
-        productType: Unknown
       properties:
         productIds:
           description: The product ids to soft delete from the line item.
@@ -8642,15 +8953,6 @@ components:
             type: string
           nullable: true
           type: array
-        productType:
-          description: The type of the products being deleted.
-          enum:
-          - Unknown
-          - DisplayProduct
-          - SponsoredProduct
-          type: string
-      required:
-      - productType
       type: object
     DeleteLineItemProductsInputResource:
       additionalProperties: false
@@ -8660,7 +8962,6 @@ components:
           productIds:
           - productIds
           - productIds
-          productType: Unknown
         type: type
       properties:
         attributes:
@@ -8679,7 +8980,6 @@ components:
             productIds:
             - productIds
             - productIds
-            productType: Unknown
           type: type
       properties:
         data:
@@ -8848,6 +9148,108 @@ components:
           description: Type of the resource.
           nullable: true
           type: string
+      type: object
+    DiagnosticContext:
+      additionalProperties: false
+      description: Identifiers and targeting context used to evaluate a line item.
+      example:
+        accountId: accountId
+        campaignType: Unknown
+        lineItemId: lineItemId
+        campaignId: campaignId
+        buyType: Unknown
+        retailerId: retailerId
+      nullable: true
+      properties:
+        accountId:
+          type: string
+        buyType:
+          enum:
+          - Unknown
+          - Auction
+          - PreferredDeals
+          - Sponsorship
+          type: string
+        campaignId:
+          type: string
+        campaignType:
+          enum:
+          - Unknown
+          - SponsoredProducts
+          - OnsiteDisplay
+          type: string
+        lineItemId:
+          type: string
+        retailerId:
+          type: string
+      required:
+      - accountId
+      - buyType
+      - campaignId
+      - campaignType
+      - lineItemId
+      - retailerId
+      type: object
+    DiagnosticIssue:
+      additionalProperties: false
+      description: A rule-based issue that affects line item servability.
+      example:
+        severity: Unknown
+        code: code
+        format: format
+        ruleName: ruleName
+        id: 0
+        message: message
+        ruleId: ruleId
+        parentId: 6
+        outputParameters:
+          key: outputParameters
+        tags:
+        - tags
+        - tags
+      properties:
+        code:
+          type: string
+        format:
+          type: string
+        id:
+          format: int32
+          nullable: true
+          type: integer
+        message:
+          type: string
+        outputParameters:
+          additionalProperties:
+            type: string
+          type: object
+        parentId:
+          format: int32
+          nullable: true
+          type: integer
+        ruleId:
+          type: string
+        ruleName:
+          type: string
+        severity:
+          enum:
+          - Unknown
+          - Error
+          - Warning
+          - Info
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+      required:
+      - code
+      - format
+      - message
+      - outputParameters
+      - ruleId
+      - ruleName
+      - severity
+      - tags
       type: object
     DigitalShelfIntelligenceFilters:
       additionalProperties: false
@@ -9612,6 +10014,127 @@ components:
           readOnly: true
           type: array
       type: object
+    EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata.
+      example:
+        metadata:
+          offset: 1
+          count: 0
+          limit: 6
+        data:
+        - attributes:
+            name: name
+            campaignAvailabilities:
+            - budgetModelAvailabilities:
+              - unknown
+              - unknown
+              campaignType: unknown
+              buyType: unknown
+              validCombinations:
+              - pageType: unknown
+                pageEnvironmentType: unknown
+              - pageType: unknown
+                pageEnvironmentType: unknown
+            - budgetModelAvailabilities:
+              - unknown
+              - unknown
+              campaignType: unknown
+              buyType: unknown
+              validCombinations:
+              - pageType: unknown
+                pageEnvironmentType: unknown
+              - pageType: unknown
+                pageEnvironmentType: unknown
+          id: id
+          type: type
+        - attributes:
+            name: name
+            campaignAvailabilities:
+            - budgetModelAvailabilities:
+              - unknown
+              - unknown
+              campaignType: unknown
+              buyType: unknown
+              validCombinations:
+              - pageType: unknown
+                pageEnvironmentType: unknown
+              - pageType: unknown
+                pageEnvironmentType: unknown
+            - budgetModelAvailabilities:
+              - unknown
+              - unknown
+              campaignType: unknown
+              buyType: unknown
+              validCombinations:
+              - pageType: unknown
+                pageEnvironmentType: unknown
+              - pageType: unknown
+                pageEnvironmentType: unknown
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceOfRetailerResultV2'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -10016,6 +10539,47 @@ components:
           nullable: true
           type: string
       type: object
+    EntityResourceOfRetailerResultV2:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          name: name
+          campaignAvailabilities:
+          - budgetModelAvailabilities:
+            - unknown
+            - unknown
+            campaignType: unknown
+            buyType: unknown
+            validCombinations:
+            - pageType: unknown
+              pageEnvironmentType: unknown
+            - pageType: unknown
+              pageEnvironmentType: unknown
+          - budgetModelAvailabilities:
+            - unknown
+            - unknown
+            campaignType: unknown
+            buyType: unknown
+            validCombinations:
+            - pageType: unknown
+              pageEnvironmentType: unknown
+            - pageType: unknown
+              pageEnvironmentType: unknown
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RetailerResultV2'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
     EntityResourceOfRetailMediaAccountV2:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
@@ -10334,6 +10898,7 @@ components:
           type: array
       type: object
     ExportReportColumn:
+      additionalProperties: false
       description: Description of a column from an async report request
       example:
         duration: duration
@@ -10399,6 +10964,7 @@ components:
       - type
       type: object
     ExportReportMetaData:
+      additionalProperties: false
       description: "Metadata for a report response: data freshness, column descriptions,\
         \ and row count."
       example:
@@ -10438,39 +11004,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      type: object
-    ExternalConquestingSettings:
-      additionalProperties: false
-      description: Which categories of search keyword the line item is eligible to
-        bid on.
-      example:
-        defensiveAdStrategyEnabled: true
-        isAdStrategyLocked: true
-        neutralAdStrategyEnabled: true
-        conquestingAdStrategyEnabled: true
-      nullable: true
-      properties:
-        conquestingAdStrategyEnabled:
-          description: Whether the line item may bid on competitors' branded keywords.
-            Defaults to false.
-          type: boolean
-        defensiveAdStrategyEnabled:
-          description: Whether the line item may bid on the advertiser's own branded
-            keywords. Defaults to true.
-          type: boolean
-        isAdStrategyLocked:
-          description: Whether the keyword strategy flags have been set and can no
-            longer be changed.
-          type: boolean
-        neutralAdStrategyEnabled:
-          description: "Whether the line item may bid on generic, unbranded category\
-            \ keywords. Defaults to true."
-          type: boolean
-      required:
-      - conquestingAdStrategyEnabled
-      - defensiveAdStrategyEnabled
-      - isAdStrategyLocked
-      - neutralAdStrategyEnabled
       type: object
     ExternalCreateLineItemModel:
       additionalProperties: false
@@ -10665,15 +11198,7 @@ components:
         onsiteDisplayDetails:
           auctionDetails:
             isDynamicMatch: true
-          frequencyCapping:
-            cappingCount: 0
-            cappingDurationType: Unknown
         budgetStatus: Unknown
-        conquestingSettings:
-          defensiveAdStrategyEnabled: true
-          isAdStrategyLocked: true
-          neutralAdStrategyEnabled: true
-          conquestingAdStrategyEnabled: true
         retailerId: retailerId
         type: Unknown
       properties:
@@ -10692,8 +11217,6 @@ components:
           description: The campaign id of the associated campaign.
           nullable: true
           type: string
-        conquestingSettings:
-          $ref: '#/components/schemas/ExternalConquestingSettings'
         effectiveFlightDates:
           $ref: '#/components/schemas/ExternalFlightDatesModel'
         isPaused:
@@ -11093,6 +11616,27 @@ components:
           nullable: true
           type: array
       type: object
+    FrequencyCapping:
+      additionalProperties: false
+      description: Caps how often the same user may be shown an impression while the
+        forecast is computed.
+      properties:
+        count:
+          description: "Maximum impressions per user per window. Must be at least\
+            \ 1 - omit the whole frequency\r\ncapping object to forecast without a\
+            \ cap."
+          format: int32
+          type: integer
+        durationType:
+          description: The window the cap applies over.
+          enum:
+          - session
+          - day
+          type: string
+      required:
+      - count
+      - durationType
+      type: object
     GeographyTargetDetails:
       additionalProperties: false
       description: Details on Geography Targets
@@ -11164,178 +11708,6 @@ components:
           type: string
       required:
       - url
-      type: object
-    InbotDiscussion:
-      description: discussion between the user and the chatbot
-      example:
-        messages:
-        - userMessage: userMessage
-          botMessage:
-            closing: closing
-            opening: opening
-            productRecos:
-            - price: 0.8008281904610115
-              imageUrl: https://openapi-generator.tech
-              name: name
-              description: description
-              currency: currency
-              brand: brand
-              rationale: rationale
-              url: https://openapi-generator.tech
-            - price: 0.8008281904610115
-              imageUrl: https://openapi-generator.tech
-              name: name
-              description: description
-              currency: currency
-              brand: brand
-              rationale: rationale
-              url: https://openapi-generator.tech
-        - userMessage: userMessage
-          botMessage:
-            closing: closing
-            opening: opening
-            productRecos:
-            - price: 0.8008281904610115
-              imageUrl: https://openapi-generator.tech
-              name: name
-              description: description
-              currency: currency
-              brand: brand
-              rationale: rationale
-              url: https://openapi-generator.tech
-            - price: 0.8008281904610115
-              imageUrl: https://openapi-generator.tech
-              name: name
-              description: description
-              currency: currency
-              brand: brand
-              rationale: rationale
-              url: https://openapi-generator.tech
-      properties:
-        messages:
-          description: "ordered list of previous messages, alternating between user\
-            \ prompts and bot answers"
-          items:
-            $ref: '#/components/schemas/Message'
-          minItems: 1
-          title: Messages
-          type: array
-      title: InbotDiscussion
-      type: object
-    InbotDiscussionBodyModel:
-      description: an API recommendation message
-      example:
-        data:
-          attributes:
-            messages:
-            - userMessage: userMessage
-              botMessage:
-                closing: closing
-                opening: opening
-                productRecos:
-                - price: 0.8008281904610115
-                  imageUrl: https://openapi-generator.tech
-                  name: name
-                  description: description
-                  currency: currency
-                  brand: brand
-                  rationale: rationale
-                  url: https://openapi-generator.tech
-                - price: 0.8008281904610115
-                  imageUrl: https://openapi-generator.tech
-                  name: name
-                  description: description
-                  currency: currency
-                  brand: brand
-                  rationale: rationale
-                  url: https://openapi-generator.tech
-            - userMessage: userMessage
-              botMessage:
-                closing: closing
-                opening: opening
-                productRecos:
-                - price: 0.8008281904610115
-                  imageUrl: https://openapi-generator.tech
-                  name: name
-                  description: description
-                  currency: currency
-                  brand: brand
-                  rationale: rationale
-                  url: https://openapi-generator.tech
-                - price: 0.8008281904610115
-                  imageUrl: https://openapi-generator.tech
-                  name: name
-                  description: description
-                  currency: currency
-                  brand: brand
-                  rationale: rationale
-                  url: https://openapi-generator.tech
-          type: InbotDiscussion
-      properties:
-        data:
-          $ref: '#/components/schemas/InbotDiscussionDataInstanceModel'
-      required:
-      - data
-      title: InbotDiscussionBodyModel
-      type: object
-    InbotDiscussionDataInstanceModel:
-      description: an API recommendation request
-      example:
-        attributes:
-          messages:
-          - userMessage: userMessage
-            botMessage:
-              closing: closing
-              opening: opening
-              productRecos:
-              - price: 0.8008281904610115
-                imageUrl: https://openapi-generator.tech
-                name: name
-                description: description
-                currency: currency
-                brand: brand
-                rationale: rationale
-                url: https://openapi-generator.tech
-              - price: 0.8008281904610115
-                imageUrl: https://openapi-generator.tech
-                name: name
-                description: description
-                currency: currency
-                brand: brand
-                rationale: rationale
-                url: https://openapi-generator.tech
-          - userMessage: userMessage
-            botMessage:
-              closing: closing
-              opening: opening
-              productRecos:
-              - price: 0.8008281904610115
-                imageUrl: https://openapi-generator.tech
-                name: name
-                description: description
-                currency: currency
-                brand: brand
-                rationale: rationale
-                url: https://openapi-generator.tech
-              - price: 0.8008281904610115
-                imageUrl: https://openapi-generator.tech
-                name: name
-                description: description
-                currency: currency
-                brand: brand
-                rationale: rationale
-                url: https://openapi-generator.tech
-        type: InbotDiscussion
-      properties:
-        attributes:
-          $ref: '#/components/schemas/InbotDiscussion'
-        type:
-          default: InbotDiscussion
-          title: Type
-          type: string
-      required:
-      - attributes
-      title: InbotDiscussionDataInstanceModel
       type: object
     IngestionStatus:
       description: Status of the ingestion.
@@ -11480,6 +11852,61 @@ components:
           description: The number of installments the buyer has to pay.
           format: int64
           type: integer
+      type: object
+    InventoryForecastDetail:
+      additionalProperties: false
+      description: One row of a page type's daily breakdown.
+      properties:
+        availableImpressions:
+          description: Estimated available impressions for this day.
+          format: int64
+          type: integer
+        averageCpm:
+          $ref: '#/components/schemas/InventoryForecastDetail_averageCpm'
+        budget:
+          $ref: '#/components/schemas/InventoryForecastDetail_budget'
+        creativeFormats:
+          description: "Every creative format available on this placement configuration,\
+            \ restricted to the formats\r\nthe request asked for. The row aggregates\
+            \ them - impressions are not split per format."
+          items:
+            description: Creative formats returned in a response.
+            enum:
+            - flagShip
+            - showcase
+            - butterfly
+            - bundleBoost
+            - iab
+            - custom
+            - displayPanel
+            - digitalShelfTalker
+            - commerceVideoSpotlight
+            - brandingVideoStandout
+            - unknown
+            type: string
+          type: array
+        date:
+          description: "The forecast day, as `YYYY-MM-DD`."
+          format: date
+          type: string
+        keyword:
+          description: The keyword this row is for. Present only for search and search
+            bar pages.
+          type: string
+        placementConfigId:
+          description: Placement configuration this row is for.
+          type: string
+        taxonomyId:
+          description: "The taxonomy id this row is for. Present only for category,\
+            \ product detail, category menu\r\nand merchandising pages."
+          type: string
+      required:
+      - availableImpressions
+      - averageCpm
+      - budget
+      - creativeFormats
+      - date
+      - placementConfigId
       type: object
     LineItem:
       additionalProperties: false
@@ -11780,6 +12207,278 @@ components:
       required:
       - count
       - type
+      type: object
+    LineItemCheck:
+      additionalProperties: false
+      description: The servability diagnostic result for a line item.
+      example:
+        systemData:
+          lineItemCreatedTime: 2000-01-23T04:56:07.000+00:00
+          checkTime: 2000-01-23T04:56:07.000+00:00
+          lineItemUpdatedTime: 2000-01-23T04:56:07.000+00:00
+        context:
+          accountId: accountId
+          campaignType: Unknown
+          lineItemId: lineItemId
+          campaignId: campaignId
+          buyType: Unknown
+          retailerId: retailerId
+        issues:
+        - severity: Unknown
+          code: code
+          format: format
+          ruleName: ruleName
+          id: 0
+          message: message
+          ruleId: ruleId
+          parentId: 6
+          outputParameters:
+            key: outputParameters
+          tags:
+          - tags
+          - tags
+        - severity: Unknown
+          code: code
+          format: format
+          ruleName: ruleName
+          id: 0
+          message: message
+          ruleId: ruleId
+          parentId: 6
+          outputParameters:
+            key: outputParameters
+          tags:
+          - tags
+          - tags
+        parameters:
+          key: parameters
+        status: null
+      nullable: true
+      properties:
+        context:
+          $ref: '#/components/schemas/DiagnosticContext'
+        issues:
+          items:
+            $ref: '#/components/schemas/DiagnosticIssue'
+          nullable: true
+          type: array
+        parameters:
+          additionalProperties:
+            type: string
+          nullable: true
+          type: object
+        status:
+          $ref: '#/components/schemas/CheckStatus'
+        systemData:
+          $ref: '#/components/schemas/SystemData'
+      required:
+      - status
+      - systemData
+      type: object
+    LineItemCheckCollectionResponse:
+      additionalProperties: false
+      description: A collection response containing line item diagnostic results and
+        any problems.
+      example:
+        data:
+        - attributes:
+            systemData:
+              lineItemCreatedTime: 2000-01-23T04:56:07.000+00:00
+              checkTime: 2000-01-23T04:56:07.000+00:00
+              lineItemUpdatedTime: 2000-01-23T04:56:07.000+00:00
+            context:
+              accountId: accountId
+              campaignType: Unknown
+              lineItemId: lineItemId
+              campaignId: campaignId
+              buyType: Unknown
+              retailerId: retailerId
+            issues:
+            - severity: Unknown
+              code: code
+              format: format
+              ruleName: ruleName
+              id: 0
+              message: message
+              ruleId: ruleId
+              parentId: 6
+              outputParameters:
+                key: outputParameters
+              tags:
+              - tags
+              - tags
+            - severity: Unknown
+              code: code
+              format: format
+              ruleName: ruleName
+              id: 0
+              message: message
+              ruleId: ruleId
+              parentId: 6
+              outputParameters:
+                key: outputParameters
+              tags:
+              - tags
+              - tags
+            parameters:
+              key: parameters
+            status: null
+          type: type
+        - attributes:
+            systemData:
+              lineItemCreatedTime: 2000-01-23T04:56:07.000+00:00
+              checkTime: 2000-01-23T04:56:07.000+00:00
+              lineItemUpdatedTime: 2000-01-23T04:56:07.000+00:00
+            context:
+              accountId: accountId
+              campaignType: Unknown
+              lineItemId: lineItemId
+              campaignId: campaignId
+              buyType: Unknown
+              retailerId: retailerId
+            issues:
+            - severity: Unknown
+              code: code
+              format: format
+              ruleName: ruleName
+              id: 0
+              message: message
+              ruleId: ruleId
+              parentId: 6
+              outputParameters:
+                key: outputParameters
+              tags:
+              - tags
+              - tags
+            - severity: Unknown
+              code: code
+              format: format
+              ruleName: ruleName
+              id: 0
+              message: message
+              ruleId: ruleId
+              parentId: 6
+              outputParameters:
+                key: outputParameters
+              tags:
+              - tags
+              - tags
+            parameters:
+              key: parameters
+            status: null
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/LineItemCheckResource'
+          nullable: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          type: array
+      type: object
+    LineItemCheckResource:
+      additionalProperties: false
+      description: A resource containing one line item diagnostic result.
+      example:
+        attributes:
+          systemData:
+            lineItemCreatedTime: 2000-01-23T04:56:07.000+00:00
+            checkTime: 2000-01-23T04:56:07.000+00:00
+            lineItemUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          context:
+            accountId: accountId
+            campaignType: Unknown
+            lineItemId: lineItemId
+            campaignId: campaignId
+            buyType: Unknown
+            retailerId: retailerId
+          issues:
+          - severity: Unknown
+            code: code
+            format: format
+            ruleName: ruleName
+            id: 0
+            message: message
+            ruleId: ruleId
+            parentId: 6
+            outputParameters:
+              key: outputParameters
+            tags:
+            - tags
+            - tags
+          - severity: Unknown
+            code: code
+            format: format
+            ruleName: ruleName
+            id: 0
+            message: message
+            ruleId: ruleId
+            parentId: 6
+            outputParameters:
+              key: outputParameters
+            tags:
+            - tags
+            - tags
+          parameters:
+            key: parameters
+          status: null
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/LineItemCheck'
+        type:
+          nullable: true
+          type: string
       type: object
     LineItemCreative:
       additionalProperties: false
@@ -12090,15 +12789,7 @@ components:
           onsiteDisplayDetails:
             auctionDetails:
               isDynamicMatch: true
-            frequencyCapping:
-              cappingCount: 0
-              cappingDurationType: Unknown
           budgetStatus: Unknown
-          conquestingSettings:
-            defensiveAdStrategyEnabled: true
-            isAdStrategyLocked: true
-            neutralAdStrategyEnabled: true
-            conquestingAdStrategyEnabled: true
           retailerId: retailerId
           type: Unknown
         targeting:
@@ -12224,15 +12915,7 @@ components:
             onsiteDisplayDetails:
               auctionDetails:
                 isDynamicMatch: true
-              frequencyCapping:
-                cappingCount: 0
-                cappingDurationType: Unknown
             budgetStatus: Unknown
-            conquestingSettings:
-              defensiveAdStrategyEnabled: true
-              isAdStrategyLocked: true
-              neutralAdStrategyEnabled: true
-              conquestingAdStrategyEnabled: true
             retailerId: retailerId
             type: Unknown
           targeting:
@@ -12362,15 +13045,7 @@ components:
               onsiteDisplayDetails:
                 auctionDetails:
                   isDynamicMatch: true
-                frequencyCapping:
-                  cappingCount: 0
-                  cappingDurationType: Unknown
               budgetStatus: Unknown
-              conquestingSettings:
-                defensiveAdStrategyEnabled: true
-                isAdStrategyLocked: true
-                neutralAdStrategyEnabled: true
-                conquestingAdStrategyEnabled: true
               retailerId: retailerId
               type: Unknown
             targeting:
@@ -13353,156 +14028,6 @@ components:
           nullable: true
           type: string
       type: object
-    Message:
-      description: message of the discussion
-      example:
-        userMessage: userMessage
-        botMessage:
-          closing: closing
-          opening: opening
-          productRecos:
-          - price: 0.8008281904610115
-            imageUrl: https://openapi-generator.tech
-            name: name
-            description: description
-            currency: currency
-            brand: brand
-            rationale: rationale
-            url: https://openapi-generator.tech
-          - price: 0.8008281904610115
-            imageUrl: https://openapi-generator.tech
-            name: name
-            description: description
-            currency: currency
-            brand: brand
-            rationale: rationale
-            url: https://openapi-generator.tech
-      properties:
-        botMessage:
-          $ref: '#/components/schemas/BotMessage'
-        userMessage:
-          description: user prompt
-          nullable: true
-          title: Usermessage
-          type: string
-      title: Message
-      type: object
-    MessageBodyModel:
-      description: error message
-      example:
-        data:
-          attributes:
-            userMessage: userMessage
-            botMessage:
-              closing: closing
-              opening: opening
-              productRecos:
-              - price: 0.8008281904610115
-                imageUrl: https://openapi-generator.tech
-                name: name
-                description: description
-                currency: currency
-                brand: brand
-                rationale: rationale
-                url: https://openapi-generator.tech
-              - price: 0.8008281904610115
-                imageUrl: https://openapi-generator.tech
-                name: name
-                description: description
-                currency: currency
-                brand: brand
-                rationale: rationale
-                url: https://openapi-generator.tech
-          type: Message
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          type: type
-        - traceId: traceId
-          code: code
-          instance: instance
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/MessageDataInstanceModel'
-        errors:
-          items:
-            $ref: '#/components/schemas/MessageError'
-          nullable: true
-          title: Errors
-          type: array
-      title: MessageBodyModel
-      type: object
-    MessageDataInstanceModel:
-      description: an API answer message
-      example:
-        attributes:
-          userMessage: userMessage
-          botMessage:
-            closing: closing
-            opening: opening
-            productRecos:
-            - price: 0.8008281904610115
-              imageUrl: https://openapi-generator.tech
-              name: name
-              description: description
-              currency: currency
-              brand: brand
-              rationale: rationale
-              url: https://openapi-generator.tech
-            - price: 0.8008281904610115
-              imageUrl: https://openapi-generator.tech
-              name: name
-              description: description
-              currency: currency
-              brand: brand
-              rationale: rationale
-              url: https://openapi-generator.tech
-        type: Message
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/Message'
-        type:
-          default: Message
-          nullable: true
-          title: Type
-          type: string
-      required:
-      - attributes
-      title: MessageDataInstanceModel
-      type: object
-    MessageError:
-      description: error message
-      example:
-        traceId: traceId
-        code: code
-        instance: instance
-        type: type
-      properties:
-        code:
-          description: error code
-          nullable: true
-          title: Code
-          type: string
-        instance:
-          description: specific occurrence of the problem
-          nullable: true
-          title: Instance
-          type: string
-        traceId:
-          description: "correlation ID, unique to each request"
-          nullable: true
-          title: Traceid
-          type: string
-        type:
-          description: error category
-          nullable: true
-          title: Type
-          type: string
-      title: MessageError
-      type: object
     Metadata:
       additionalProperties: false
       description: Metadata related to the current request.
@@ -13527,6 +14052,22 @@ components:
       required:
       - limit
       - offset
+      type: object
+    Money:
+      additionalProperties: false
+      description: "A monetary amount, in the account's currency."
+      properties:
+        currency:
+          description: "The ISO 4217 currency code, for example `USD`."
+          type: string
+        value:
+          description: "The monetary value. Decimal so that amounts round-trip without\
+            \ the rounding errors a binary\r\nfloating point type would introduce."
+          format: double
+          type: number
+      required:
+      - currency
+      - value
       type: object
     MultiSourceAttributeCoverage:
       description: "Number of products whose attribute was filled from the source,\
@@ -13894,21 +14435,148 @@ components:
           nullable: true
           type: boolean
       type: object
+    OnsiteDisplayForecast:
+      additionalProperties: false
+      description: "The forecast for one page type, returned as an item of the response\
+        \ `data` array."
+      properties:
+        availableImpressions:
+          description: Estimated available impressions over the whole forecast period.
+          format: int64
+          type: integer
+        averageCpm:
+          $ref: '#/components/schemas/OnsiteDisplayForecast_averageCpm'
+        budget:
+          $ref: '#/components/schemas/OnsiteDisplayForecast_budget'
+        details:
+          description: "Daily breakdown, one entry per row of the grain described\
+            \ on\r\n`InventoryForecastDetail`."
+          items:
+            $ref: '#/components/schemas/InventoryForecastDetail'
+          type: array
+        pageType:
+          description: Page type this forecast applies to.
+          enum:
+          - search
+          - home
+          - browse
+          - checkout
+          - category
+          - productDetail
+          - confirmation
+          - merchandising
+          - deals
+          - favorites
+          - searchBar
+          - categoryMenu
+          - unknown
+          type: string
+        reservationRate:
+          description: "Proportion of inventory already reserved, from 0.0 to 1.0."
+          format: double
+          type: number
+      required:
+      - availableImpressions
+      - budget
+      - details
+      - pageType
+      - reservationRate
+      type: object
+    OnsiteDisplayForecastListResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several value objects.
+      example:
+        data:
+        - attributes: null
+          type: type
+        - attributes: null
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/OnsiteDisplayForecastResource'
+          nullable: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    OnsiteDisplayForecastResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes: null
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/OnsiteDisplayForecastResource_attributes'
+        type:
+          description: Type of the resource.
+          type: string
+      required:
+      - attributes
+      - type
+      type: object
     OnsiteDisplayLineItemDetails:
       additionalProperties: false
       description: Settings that only apply to onsite display line items.
       example:
         auctionDetails:
           isDynamicMatch: true
-        frequencyCapping:
-          cappingCount: 0
-          cappingDurationType: Unknown
       nullable: true
       properties:
         auctionDetails:
           $ref: '#/components/schemas/OnsiteDisplayAuctionLineItemDetails'
-        frequencyCapping:
-          $ref: '#/components/schemas/ExternalFrequencyCappingModel'
       type: object
     OnsiteDisplayLineItemDetailsV2:
       additionalProperties: false
@@ -13997,6 +14665,88 @@ components:
           - None
           - Automatic
           - Unknown
+          nullable: true
+          type: string
+      type: object
+    PageSetting:
+      additionalProperties: false
+      description: "One page type to include in the forecast, and how to filter its\
+        \ inventory."
+      properties:
+        keywords:
+          description: "Keywords to filter inventory by, up to 100. Required when\
+            \ `pageType` is\r\n`search` or `searchBar`. Recommended\r\nkeywords come\
+            \ from `POST /retail-media/retailers/{retailerId}/recommend-keywords`."
+          items:
+            type: string
+          type: array
+        pageCpm:
+          $ref: '#/components/schemas/PageSetting_pageCpm'
+        pageType:
+          description: Page type to forecast.
+          enum:
+          - search
+          - home
+          - browse
+          - checkout
+          - category
+          - productDetail
+          - confirmation
+          - merchandising
+          - deals
+          - favorites
+          - searchBar
+          - categoryMenu
+          type: string
+        taxonomyIds:
+          description: "Retail Media category IDs to filter inventory by, up to 100.\
+            \ Required when\r\n`pageType` is `category`,\r\n`productDetail`, `categoryMenu`\
+            \ or\r\n`merchandising`. The ids come from the returned category `id`\r\
+            \nof `POST /retail-media/retailers/{retailerId}/categories/search`."
+          items:
+            type: string
+          type: array
+      required:
+      - pageType
+      type: object
+    PageTypeCombinationV2:
+      additionalProperties: false
+      description: Represents a combination of page type and page environment type
+        for a specific campaign-buy type.
+      example:
+        pageType: unknown
+        pageEnvironmentType: unknown
+      properties:
+        pageEnvironmentType:
+          description: The page environment type supported for this campaign-buy type
+            combination
+          enum:
+          - unknown
+          - web
+          - mobile
+          - app
+          - lockout
+          - mixed
+          - ios
+          - android
+          nullable: true
+          type: string
+        pageType:
+          description: The page type supported for this campaign-buy type combination
+          enum:
+          - unknown
+          - search
+          - home
+          - checkout
+          - category
+          - productDetail
+          - confirmation
+          - merchandising
+          - deals
+          - favorites
+          - searchbar
+          - categoryMenu
+          - aiAssistant
           nullable: true
           type: string
       type: object
@@ -15191,67 +15941,6 @@ components:
       required:
       - offerId
       type: object
-    ProductRecommendation:
-      description: recommendation data for a product
-      example:
-        price: 0.8008281904610115
-        imageUrl: https://openapi-generator.tech
-        name: name
-        description: description
-        currency: currency
-        brand: brand
-        rationale: rationale
-        url: https://openapi-generator.tech
-      properties:
-        brand:
-          description: brand of the product
-          nullable: true
-          title: Brand
-          type: string
-        currency:
-          description: currency of the price of the product
-          nullable: true
-          title: Currency
-          type: string
-        description:
-          description: description of the product
-          nullable: true
-          title: Description
-          type: string
-        imageUrl:
-          description: url of the product image
-          format: uri
-          maxLength: 65536
-          minLength: 1
-          nullable: true
-          title: Imageurl
-          type: string
-        name:
-          description: name of the product
-          nullable: true
-          title: Name
-          type: string
-        price:
-          description: numerical value of the price of the product
-          nullable: true
-          title: Price
-          type: number
-        rationale:
-          description: "reason for this recommendation, given by the bot"
-          title: Rationale
-          type: string
-        url:
-          description: url of the product on the retailer website
-          format: uri
-          maxLength: 65536
-          minLength: 1
-          nullable: true
-          title: Url
-          type: string
-      required:
-      - rationale
-      title: ProductRecommendation
-      type: object
     ProductsCustomBatchRequest:
       description: Defines a batch of operations.
       example:
@@ -15999,6 +16688,7 @@ components:
       - Blocked
       - Overridden
     ReportDataResponseResource:
+      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
         a single value
       example:
@@ -16232,6 +16922,7 @@ components:
       - warningDetails
       type: object
     ReportResponse:
+      additionalProperties: false
       description: Report response format
       example:
         data:
@@ -16488,6 +17179,62 @@ components:
           description: Canonical type name of the entity
           nullable: true
           type: string
+      type: object
+    RetailerResultV2:
+      additionalProperties: false
+      description: The result of a query for the configuration of a retailer
+      example:
+        name: name
+        campaignAvailabilities:
+        - budgetModelAvailabilities:
+          - unknown
+          - unknown
+          campaignType: unknown
+          buyType: unknown
+          validCombinations:
+          - pageType: unknown
+            pageEnvironmentType: unknown
+          - pageType: unknown
+            pageEnvironmentType: unknown
+        - budgetModelAvailabilities:
+          - unknown
+          - unknown
+          campaignType: unknown
+          buyType: unknown
+          validCombinations:
+          - pageType: unknown
+            pageEnvironmentType: unknown
+          - pageType: unknown
+            pageEnvironmentType: unknown
+      nullable: true
+      properties:
+        campaignAvailabilities:
+          description: "A list of campaign availabilities for the retailer, each showing\
+            \ the budget models available for a specific campaign type and buy type\
+            \ combination"
+          items:
+            $ref: '#/components/schemas/CampaignAvailabilityV2'
+          nullable: true
+          type: array
+        name:
+          description: Name of the retailer
+          nullable: true
+          type: string
+      type: object
+    RetailerSearchRequestV2:
+      additionalProperties: false
+      description: Request model for searching retailers
+      example:
+        retailerIdFilter:
+        - retailerIdFilter
+        - retailerIdFilter
+      properties:
+        retailerIdFilter:
+          description: Optional list of retailer IDs to filter the results
+          items:
+            type: string
+          nullable: true
+          type: array
       type: object
     RmAlgebraNodeV1:
       description: Node in the audience algebra definition.
@@ -18831,6 +19578,7 @@ components:
       - auctionBids
       type: object
     StatusResponse:
+      additionalProperties: false
       description: Status of an async report request
       example:
         fileSizeBytes: 0
@@ -18878,6 +19626,7 @@ components:
       x-criteo-canonical:
         infoType: entity
     StatusResponseResource:
+      additionalProperties: false
       description: A class that represents a domain entity exposed by an API
       example:
         attributes:
@@ -19069,6 +19818,7 @@ components:
           type: string
       type: object
     SyncRealTimePerformanceReport:
+      additionalProperties: false
       description: "Real Time Performance report body request (one sheeter: startDate,\
         \ endDate (optional), RetailerIds, accountIds, campaignIds, lineItemIds, dimensions,\
         \ metrics, timezones).\r\nExtends SyncReport only (no default filters); adds\
@@ -19134,6 +19884,7 @@ components:
             \ used as the inclusive upper bound for the report range.\r\nHides base\
             \ Report.EndDate so this report can treat end date as optional (no [Required])."
           format: date-time
+          nullable: true
           type: string
         lineItemIds:
           description: Line item ids to filter.
@@ -19167,11 +19918,13 @@ components:
           default: UTC
           description: "Time zone : see criteo developer portal for supported time\
             \ zones"
+          nullable: true
           type: string
       required:
       - startDate
       type: object
     SyncRealTimePerformanceReportRequest:
+      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
@@ -19206,6 +19959,7 @@ components:
       - data
       type: object
     SyncRealTimePerformanceReportResource:
+      additionalProperties: false
       description: A report request resource containing its type and required attributes.
       example:
         attributes:
@@ -19235,9 +19989,32 @@ components:
         attributes:
           $ref: '#/components/schemas/SyncRealTimePerformanceReport'
         type:
+          nullable: true
           type: string
       required:
       - attributes
+      type: object
+    SystemData:
+      additionalProperties: false
+      description: Timestamps associated with the diagnostic evaluation and line item.
+      example:
+        lineItemCreatedTime: 2000-01-23T04:56:07.000+00:00
+        checkTime: 2000-01-23T04:56:07.000+00:00
+        lineItemUpdatedTime: 2000-01-23T04:56:07.000+00:00
+      properties:
+        checkTime:
+          format: date-time
+          type: string
+        lineItemCreatedTime:
+          format: date-time
+          type: string
+        lineItemUpdatedTime:
+          format: date-time
+          type: string
+      required:
+      - checkTime
+      - lineItemCreatedTime
+      - lineItemUpdatedTime
       type: object
     Target:
       additionalProperties: false
@@ -20260,6 +21037,21 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceLineItemBudgetCapOutHistoryRequest'
       type: object
+    ValueResourceInputOfRetailerSearchRequestV2:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            retailerIdFilter:
+            - retailerIdFilter
+            - retailerIdFilter
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfRetailerSearchRequestV2'
+      type: object
     ValueResourceInputOfRetailMediaBrandAccountCreationV2:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -20486,6 +21278,23 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/LineItemBudgetCapOutHistoryResponse'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    ValueResourceOfRetailerSearchRequestV2:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          retailerIdFilter:
+          - retailerIdFilter
+          - retailerIdFilter
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RetailerSearchRequestV2'
         type:
           description: Type of the resource.
           nullable: true
@@ -20882,6 +21691,26 @@ components:
       allOf:
       - $ref: '#/components/schemas/ChangeHistoryEntity'
       description: Primary entity affected by the change.
+    ComputeOnsiteDisplayForecast_frequencyCapping:
+      allOf:
+      - $ref: '#/components/schemas/FrequencyCapping'
+      description: Frequency capping to apply. Omit to forecast without a cap.
+    ComputeOnsiteDisplayForecastRequest_data:
+      allOf:
+      - $ref: '#/components/schemas/ComputeOnsiteDisplayForecastResource'
+      description: A value resource exposed by the API.
+    ComputeOnsiteDisplayForecastResource_attributes:
+      allOf:
+      - $ref: '#/components/schemas/ComputeOnsiteDisplayForecast'
+      description: Attributes of the resource.
+    InventoryForecastDetail_averageCpm:
+      allOf:
+      - $ref: '#/components/schemas/Money'
+      description: Average CPM for this day.
+    InventoryForecastDetail_budget:
+      allOf:
+      - $ref: '#/components/schemas/Money'
+      description: Estimated available budget for this day.
     LineItemBudgetCapOutHistory_capoutTimes:
       additionalProperties: false
       description: The dictionary of budget type to the list of cap out times up to
@@ -20926,6 +21755,23 @@ components:
           nullable: true
           type: array
       type: object
+    OnsiteDisplayForecast_averageCpm:
+      allOf:
+      - $ref: '#/components/schemas/Money'
+      description: Average CPM across the period. Omitted when no inventory data is
+        available.
+    OnsiteDisplayForecast_budget:
+      allOf:
+      - $ref: '#/components/schemas/Money'
+      description: Estimated budget over the whole forecast period.
+    OnsiteDisplayForecastResource_attributes:
+      allOf:
+      - $ref: '#/components/schemas/OnsiteDisplayForecast'
+      description: Attributes of the resource.
+    PageSetting_pageCpm:
+      allOf:
+      - $ref: '#/components/schemas/Money'
+      description: "Bid CPM override for this page type, as a price per 1,000 impressions."
   securitySchemes:
     oauth:
       flows:
@@ -20948,8 +21794,8 @@ components:
               \ from the Catalog domain, for RetailMedia applications"
             RetailMedia_Catalog_Read: "Grants Read access to the capabilities from\
               \ the Catalog domain, for RetailMedia applications"
-            RetailMedia_OnSiteRecommendation_Read: "Grants Read access to the capabilities\
-              \ from the OnSiteRecommendation domain, for RetailMedia applications"
+            RetailMedia_Forecasting_Read: "Grants Read access to the capabilities\
+              \ from the Forecasting domain, for RetailMedia applications"
             RetailMedia_ThirdPartyAccounts_Manage: "Grants Manage access to the capabilities\
               \ from the ThirdPartyAccounts domain, for RetailMedia applications"
           tokenUrl: https://api.criteo.com/oauth2/token
@@ -20971,8 +21817,8 @@ components:
               \ from the Catalog domain, for RetailMedia applications"
             RetailMedia_Catalog_Read: "Grants Read access to the capabilities from\
               \ the Catalog domain, for RetailMedia applications"
-            RetailMedia_OnSiteRecommendation_Read: "Grants Read access to the capabilities\
-              \ from the OnSiteRecommendation domain, for RetailMedia applications"
+            RetailMedia_Forecasting_Read: "Grants Read access to the capabilities\
+              \ from the Forecasting domain, for RetailMedia applications"
             RetailMedia_ThirdPartyAccounts_Manage: "Grants Manage access to the capabilities\
               \ from the ThirdPartyAccounts domain, for RetailMedia applications"
           tokenUrl: https://api.criteo.com/oauth2/token

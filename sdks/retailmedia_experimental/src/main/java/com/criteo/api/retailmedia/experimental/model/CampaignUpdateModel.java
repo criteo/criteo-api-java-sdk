@@ -57,9 +57,9 @@ public class CampaignUpdateModel {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTION_SETTINGS)
   private AttributionSettingsUpdateModel attributionSettings;
 
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
-  private DynamicBudgetUpdateModel budget;
+  public static final String SERIALIZED_NAME_BUDGET_DETAILS = "budgetDetails";
+  @SerializedName(SERIALIZED_NAME_BUDGET_DETAILS)
+  private DynamicBudgetUpdateModel budgetDetails;
 
   public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
   @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
@@ -102,25 +102,25 @@ public class CampaignUpdateModel {
   }
 
 
-  public CampaignUpdateModel budget(DynamicBudgetUpdateModel budget) {
+  public CampaignUpdateModel budgetDetails(DynamicBudgetUpdateModel budgetDetails) {
     
-    this.budget = budget;
+    this.budgetDetails = budgetDetails;
     return this;
   }
 
    /**
-   * Get budget
-   * @return budget
+   * Get budgetDetails
+   * @return budgetDetails
   **/
   @javax.annotation.Nullable
 
-  public DynamicBudgetUpdateModel getBudget() {
-    return budget;
+  public DynamicBudgetUpdateModel getBudgetDetails() {
+    return budgetDetails;
   }
 
 
-  public void setBudget(DynamicBudgetUpdateModel budget) {
-    this.budget = budget;
+  public void setBudgetDetails(DynamicBudgetUpdateModel budgetDetails) {
+    this.budgetDetails = budgetDetails;
   }
 
 
@@ -223,7 +223,7 @@ public class CampaignUpdateModel {
     }
     CampaignUpdateModel campaignUpdateModel = (CampaignUpdateModel) o;
     return Objects.equals(this.attributionSettings, campaignUpdateModel.attributionSettings) &&
-        Objects.equals(this.budget, campaignUpdateModel.budget) &&
+        Objects.equals(this.budgetDetails, campaignUpdateModel.budgetDetails) &&
         Objects.equals(this.companyName, campaignUpdateModel.companyName) &&
         Objects.equals(this.name, campaignUpdateModel.name) &&
         Objects.equals(this.onBehalfCompanyName, campaignUpdateModel.onBehalfCompanyName) &&
@@ -236,7 +236,7 @@ public class CampaignUpdateModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributionSettings, budget, companyName, name, onBehalfCompanyName, scheduleDetails);
+    return Objects.hash(attributionSettings, budgetDetails, companyName, name, onBehalfCompanyName, scheduleDetails);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -251,7 +251,7 @@ public class CampaignUpdateModel {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignUpdateModel {\n");
     sb.append("    attributionSettings: ").append(toIndentedString(attributionSettings)).append("\n");
-    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    budgetDetails: ").append(toIndentedString(budgetDetails)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
@@ -279,7 +279,7 @@ public class CampaignUpdateModel {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("attributionSettings");
-    openapiFields.add("budget");
+    openapiFields.add("budgetDetails");
     openapiFields.add("companyName");
     openapiFields.add("name");
     openapiFields.add("onBehalfCompanyName");
@@ -313,9 +313,9 @@ public class CampaignUpdateModel {
       if (jsonObj.get("attributionSettings") != null && !jsonObj.get("attributionSettings").isJsonNull()) {
         AttributionSettingsUpdateModel.validateJsonObject(jsonObj.getAsJsonObject("attributionSettings"));
       }
-      // validate the optional field `budget`
-      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
-        DynamicBudgetUpdateModel.validateJsonObject(jsonObj.getAsJsonObject("budget"));
+      // validate the optional field `budgetDetails`
+      if (jsonObj.get("budgetDetails") != null && !jsonObj.get("budgetDetails").isJsonNull()) {
+        DynamicBudgetUpdateModel.validateJsonObject(jsonObj.getAsJsonObject("budgetDetails"));
       }
       // validate the optional field `companyName`
       if (jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) {

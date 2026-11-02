@@ -67,9 +67,9 @@ public class CampaignResponseModel {
   @SerializedName(SERIALIZED_NAME_BILL_BY_RETAILER_ID)
   private String billByRetailerId;
 
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
-  private CampaignBudgetModel budget;
+  public static final String SERIALIZED_NAME_BUDGET_DETAILS = "budgetDetails";
+  @SerializedName(SERIALIZED_NAME_BUDGET_DETAILS)
+  private CampaignBudgetModel budgetDetails;
 
   /**
    * Buy type of campaign, set only on creation.
@@ -445,25 +445,25 @@ public class CampaignResponseModel {
   }
 
 
-  public CampaignResponseModel budget(CampaignBudgetModel budget) {
+  public CampaignResponseModel budgetDetails(CampaignBudgetModel budgetDetails) {
     
-    this.budget = budget;
+    this.budgetDetails = budgetDetails;
     return this;
   }
 
    /**
-   * Get budget
-   * @return budget
+   * Get budgetDetails
+   * @return budgetDetails
   **/
   @javax.annotation.Nullable
 
-  public CampaignBudgetModel getBudget() {
-    return budget;
+  public CampaignBudgetModel getBudgetDetails() {
+    return budgetDetails;
   }
 
 
-  public void setBudget(CampaignBudgetModel budget) {
-    this.budget = budget;
+  public void setBudgetDetails(CampaignBudgetModel budgetDetails) {
+    this.budgetDetails = budgetDetails;
   }
 
 
@@ -771,7 +771,7 @@ public class CampaignResponseModel {
     return Objects.equals(this.accountId, campaignResponseModel.accountId) &&
         Objects.equals(this.attributionSettings, campaignResponseModel.attributionSettings) &&
         Objects.equals(this.billByRetailerId, campaignResponseModel.billByRetailerId) &&
-        Objects.equals(this.budget, campaignResponseModel.budget) &&
+        Objects.equals(this.budgetDetails, campaignResponseModel.budgetDetails) &&
         Objects.equals(this.buyType, campaignResponseModel.buyType) &&
         Objects.equals(this.campaignType, campaignResponseModel.campaignType) &&
         Objects.equals(this.companyName, campaignResponseModel.companyName) &&
@@ -793,7 +793,7 @@ public class CampaignResponseModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, attributionSettings, billByRetailerId, budget, buyType, campaignType, companyName, createdAt, drawableBalanceIds, id, name, objective, onBehalfCompanyName, regulatedCategory, scheduleDetails, status, updatedAt);
+    return Objects.hash(accountId, attributionSettings, billByRetailerId, budgetDetails, buyType, campaignType, companyName, createdAt, drawableBalanceIds, id, name, objective, onBehalfCompanyName, regulatedCategory, scheduleDetails, status, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -810,7 +810,7 @@ public class CampaignResponseModel {
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    attributionSettings: ").append(toIndentedString(attributionSettings)).append("\n");
     sb.append("    billByRetailerId: ").append(toIndentedString(billByRetailerId)).append("\n");
-    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    budgetDetails: ").append(toIndentedString(budgetDetails)).append("\n");
     sb.append("    buyType: ").append(toIndentedString(buyType)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
@@ -849,7 +849,7 @@ public class CampaignResponseModel {
     openapiFields.add("accountId");
     openapiFields.add("attributionSettings");
     openapiFields.add("billByRetailerId");
-    openapiFields.add("budget");
+    openapiFields.add("budgetDetails");
     openapiFields.add("buyType");
     openapiFields.add("campaignType");
     openapiFields.add("companyName");
@@ -914,9 +914,9 @@ public class CampaignResponseModel {
       if ((jsonObj.get("billByRetailerId") != null && !jsonObj.get("billByRetailerId").isJsonNull()) && !jsonObj.get("billByRetailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billByRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billByRetailerId").toString()));
       }
-      // validate the optional field `budget`
-      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
-        CampaignBudgetModel.validateJsonObject(jsonObj.getAsJsonObject("budget"));
+      // validate the optional field `budgetDetails`
+      if (jsonObj.get("budgetDetails") != null && !jsonObj.get("budgetDetails").isJsonNull()) {
+        CampaignBudgetModel.validateJsonObject(jsonObj.getAsJsonObject("budgetDetails"));
       }
       if (!jsonObj.get("buyType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `buyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buyType").toString()));

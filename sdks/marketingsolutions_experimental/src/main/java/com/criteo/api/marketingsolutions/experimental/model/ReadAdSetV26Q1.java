@@ -21,6 +21,7 @@ import com.criteo.api.marketingsolutions.experimental.model.ReadAdSetBiddingV26Q
 import com.criteo.api.marketingsolutions.experimental.model.ReadAdSetBudgetV26Q1;
 import com.criteo.api.marketingsolutions.experimental.model.ReadAdSetScheduleV26Q1;
 import com.criteo.api.marketingsolutions.experimental.model.ReadAdSetScheduledBudgetV26Q1;
+import com.criteo.api.marketingsolutions.experimental.model.ServerToServerTrackingV26Q1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -57,6 +58,59 @@ import com.criteo.api.marketingsolutions.experimental.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadAdSetV26Q1 {
+  /**
+   * Type of the ad set.  Not returned when field projection (meta.fields) is used in a search.
+   */
+  @JsonAdapter(AdSetTypeEnum.Adapter.class)
+  public enum AdSetTypeEnum {
+    STANDARD("standard"),
+    
+    APPRETARGETING("appRetargeting"),
+    
+    UNKNOWN("unknown");
+
+    private String value;
+
+    AdSetTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AdSetTypeEnum fromValue(String value) {
+      for (AdSetTypeEnum b : AdSetTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<AdSetTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AdSetTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AdSetTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AdSetTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_AD_SET_TYPE = "adSetType";
+  @SerializedName(SERIALIZED_NAME_AD_SET_TYPE)
+  private AdSetTypeEnum adSetType;
+
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiserId";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
@@ -266,6 +320,10 @@ public class ReadAdSetV26Q1 {
   @SerializedName(SERIALIZED_NAME_SCHEDULED_BUDGETS)
   private List<ReadAdSetScheduledBudgetV26Q1> scheduledBudgets = null;
 
+  public static final String SERIALIZED_NAME_SERVER_TO_SERVER_TRACKINGS = "serverToServerTrackings";
+  @SerializedName(SERIALIZED_NAME_SERVER_TO_SERVER_TRACKINGS)
+  private List<ServerToServerTrackingV26Q1> serverToServerTrackings = null;
+
   public static final String SERIALIZED_NAME_TARGETING = "targeting";
   @SerializedName(SERIALIZED_NAME_TARGETING)
   private AdSetTargetingV26Q1 targeting;
@@ -323,6 +381,28 @@ public class ReadAdSetV26Q1 {
 
   public ReadAdSetV26Q1() {
   }
+
+  public ReadAdSetV26Q1 adSetType(AdSetTypeEnum adSetType) {
+    
+    this.adSetType = adSetType;
+    return this;
+  }
+
+   /**
+   * Type of the ad set.  Not returned when field projection (meta.fields) is used in a search.
+   * @return adSetType
+  **/
+  @javax.annotation.Nullable
+
+  public AdSetTypeEnum getAdSetType() {
+    return adSetType;
+  }
+
+
+  public void setAdSetType(AdSetTypeEnum adSetType) {
+    this.adSetType = adSetType;
+  }
+
 
   public ReadAdSetV26Q1 advertiserId(String advertiserId) {
     
@@ -596,6 +676,36 @@ public class ReadAdSetV26Q1 {
   }
 
 
+  public ReadAdSetV26Q1 serverToServerTrackings(List<ServerToServerTrackingV26Q1> serverToServerTrackings) {
+    
+    this.serverToServerTrackings = serverToServerTrackings;
+    return this;
+  }
+
+  public ReadAdSetV26Q1 addServerToServerTrackingsItem(ServerToServerTrackingV26Q1 serverToServerTrackingsItem) {
+    if (this.serverToServerTrackings == null) {
+      this.serverToServerTrackings = null;
+    }
+    this.serverToServerTrackings.add(serverToServerTrackingsItem);
+    return this;
+  }
+
+   /**
+   * MMP / server-to-server tracking URLs. Always present on GET ad-sets/{id} (null when not app retargeting, empty, or unavailable).  Always omitted on search.
+   * @return serverToServerTrackings
+  **/
+  @javax.annotation.Nullable
+
+  public List<ServerToServerTrackingV26Q1> getServerToServerTrackings() {
+    return serverToServerTrackings;
+  }
+
+
+  public void setServerToServerTrackings(List<ServerToServerTrackingV26Q1> serverToServerTrackings) {
+    this.serverToServerTrackings = serverToServerTrackings;
+  }
+
+
   public ReadAdSetV26Q1 targeting(AdSetTargetingV26Q1 targeting) {
     
     this.targeting = targeting;
@@ -694,7 +804,8 @@ public class ReadAdSetV26Q1 {
       return false;
     }
     ReadAdSetV26Q1 readAdSetV26Q1 = (ReadAdSetV26Q1) o;
-    return Objects.equals(this.advertiserId, readAdSetV26Q1.advertiserId) &&
+    return Objects.equals(this.adSetType, readAdSetV26Q1.adSetType) &&
+        Objects.equals(this.advertiserId, readAdSetV26Q1.advertiserId) &&
         Objects.equals(this.attributionConfiguration, readAdSetV26Q1.attributionConfiguration) &&
         Objects.equals(this.bidding, readAdSetV26Q1.bidding) &&
         Objects.equals(this.budget, readAdSetV26Q1.budget) &&
@@ -706,6 +817,7 @@ public class ReadAdSetV26Q1 {
         Objects.equals(this.objective, readAdSetV26Q1.objective) &&
         Objects.equals(this.schedule, readAdSetV26Q1.schedule) &&
         Objects.equals(this.scheduledBudgets, readAdSetV26Q1.scheduledBudgets) &&
+        Objects.equals(this.serverToServerTrackings, readAdSetV26Q1.serverToServerTrackings) &&
         Objects.equals(this.targeting, readAdSetV26Q1.targeting) &&
         Objects.equals(this.videoChannel, readAdSetV26Q1.videoChannel)&&
         Objects.equals(this.additionalProperties, readAdSetV26Q1.additionalProperties);
@@ -717,7 +829,7 @@ public class ReadAdSetV26Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserId, attributionConfiguration, bidding, budget, campaignId, datasetId, destinationEnvironment, mediaType, name, objective, schedule, scheduledBudgets, targeting, videoChannel, additionalProperties);
+    return Objects.hash(adSetType, advertiserId, attributionConfiguration, bidding, budget, campaignId, datasetId, destinationEnvironment, mediaType, name, objective, schedule, scheduledBudgets, serverToServerTrackings, targeting, videoChannel, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -731,6 +843,7 @@ public class ReadAdSetV26Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReadAdSetV26Q1 {\n");
+    sb.append("    adSetType: ").append(toIndentedString(adSetType)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
     sb.append("    attributionConfiguration: ").append(toIndentedString(attributionConfiguration)).append("\n");
     sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
@@ -743,6 +856,7 @@ public class ReadAdSetV26Q1 {
     sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
     sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
     sb.append("    scheduledBudgets: ").append(toIndentedString(scheduledBudgets)).append("\n");
+    sb.append("    serverToServerTrackings: ").append(toIndentedString(serverToServerTrackings)).append("\n");
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
     sb.append("    videoChannel: ").append(toIndentedString(videoChannel)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -768,6 +882,7 @@ public class ReadAdSetV26Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("adSetType");
     openapiFields.add("advertiserId");
     openapiFields.add("attributionConfiguration");
     openapiFields.add("bidding");
@@ -780,6 +895,7 @@ public class ReadAdSetV26Q1 {
     openapiFields.add("objective");
     openapiFields.add("schedule");
     openapiFields.add("scheduledBudgets");
+    openapiFields.add("serverToServerTrackings");
     openapiFields.add("targeting");
     openapiFields.add("videoChannel");
 
@@ -798,6 +914,9 @@ public class ReadAdSetV26Q1 {
         if (!ReadAdSetV26Q1.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ReadAdSetV26Q1 is not found in the empty JSON string", ReadAdSetV26Q1.openapiRequiredFields.toString()));
         }
+      }
+      if ((jsonObj.get("adSetType") != null && !jsonObj.get("adSetType").isJsonNull()) && !jsonObj.get("adSetType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adSetType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adSetType").toString()));
       }
       if ((jsonObj.get("advertiserId") != null && !jsonObj.get("advertiserId").isJsonNull()) && !jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
@@ -847,6 +966,20 @@ public class ReadAdSetV26Q1 {
           // validate the optional field `scheduledBudgets` (array)
           for (int i = 0; i < jsonArrayscheduledBudgets.size(); i++) {
             ReadAdSetScheduledBudgetV26Q1.validateJsonObject(jsonArrayscheduledBudgets.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("serverToServerTrackings") != null && !jsonObj.get("serverToServerTrackings").isJsonNull()) {
+        JsonArray jsonArrayserverToServerTrackings = jsonObj.getAsJsonArray("serverToServerTrackings");
+        if (jsonArrayserverToServerTrackings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("serverToServerTrackings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `serverToServerTrackings` to be an array in the JSON string but got `%s`", jsonObj.get("serverToServerTrackings").toString()));
+          }
+
+          // validate the optional field `serverToServerTrackings` (array)
+          for (int i = 0; i < jsonArrayserverToServerTrackings.size(); i++) {
+            ServerToServerTrackingV26Q1.validateJsonObject(jsonArrayserverToServerTrackings.get(i).getAsJsonObject());
           };
         }
       }
