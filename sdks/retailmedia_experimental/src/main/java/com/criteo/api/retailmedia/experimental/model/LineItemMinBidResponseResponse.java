@@ -16,7 +16,7 @@ package com.criteo.api.retailmedia.experimental.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.experimental.model.CommonProblem;
-import com.criteo.api.retailmedia.experimental.model.LineItemMinBidsResource;
+import com.criteo.api.retailmedia.experimental.model.LineItemMinBidResponseResource;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,10 +52,10 @@ import com.criteo.api.retailmedia.experimental.JSON;
  * A top-level object that encapsulates a Criteo API response for a single value object.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class LineItemMinBidsResponse {
+public class LineItemMinBidResponseResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private LineItemMinBidsResource data;
+  private LineItemMinBidResponseResource data;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -65,11 +65,11 @@ public class LineItemMinBidsResponse {
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   private List<CommonProblem> warnings = null;
 
-  public LineItemMinBidsResponse() {
+  public LineItemMinBidResponseResponse() {
   }
 
   
-  public LineItemMinBidsResponse(
+  public LineItemMinBidResponseResponse(
      List<CommonProblem> errors, 
      List<CommonProblem> warnings
   ) {
@@ -78,7 +78,7 @@ public class LineItemMinBidsResponse {
     this.warnings = warnings;
   }
 
-  public LineItemMinBidsResponse data(LineItemMinBidsResource data) {
+  public LineItemMinBidResponseResponse data(LineItemMinBidResponseResource data) {
     
     this.data = data;
     return this;
@@ -90,12 +90,12 @@ public class LineItemMinBidsResponse {
   **/
   @javax.annotation.Nullable
 
-  public LineItemMinBidsResource getData() {
+  public LineItemMinBidResponseResource getData() {
     return data;
   }
 
 
-  public void setData(LineItemMinBidsResource data) {
+  public void setData(LineItemMinBidResponseResource data) {
     this.data = data;
   }
 
@@ -135,10 +135,10 @@ public class LineItemMinBidsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LineItemMinBidsResponse lineItemMinBidsResponse = (LineItemMinBidsResponse) o;
-    return Objects.equals(this.data, lineItemMinBidsResponse.data) &&
-        Objects.equals(this.errors, lineItemMinBidsResponse.errors) &&
-        Objects.equals(this.warnings, lineItemMinBidsResponse.warnings);
+    LineItemMinBidResponseResponse lineItemMinBidResponseResponse = (LineItemMinBidResponseResponse) o;
+    return Objects.equals(this.data, lineItemMinBidResponseResponse.data) &&
+        Objects.equals(this.errors, lineItemMinBidResponseResponse.errors) &&
+        Objects.equals(this.warnings, lineItemMinBidResponseResponse.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -160,7 +160,7 @@ public class LineItemMinBidsResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LineItemMinBidsResponse {\n");
+    sb.append("class LineItemMinBidResponseResponse {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
@@ -198,25 +198,25 @@ public class LineItemMinBidsResponse {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to LineItemMinBidsResponse
+  * @throws IOException if the JSON Object is invalid with respect to LineItemMinBidResponseResponse
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!LineItemMinBidsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemMinBidsResponse is not found in the empty JSON string", LineItemMinBidsResponse.openapiRequiredFields.toString()));
+        if (!LineItemMinBidResponseResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemMinBidResponseResponse is not found in the empty JSON string", LineItemMinBidResponseResponse.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!LineItemMinBidsResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LineItemMinBidsResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!LineItemMinBidResponseResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LineItemMinBidResponseResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        LineItemMinBidsResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
+        LineItemMinBidResponseResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
@@ -252,22 +252,22 @@ public class LineItemMinBidsResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LineItemMinBidsResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LineItemMinBidsResponse' and its subtypes
+       if (!LineItemMinBidResponseResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LineItemMinBidResponseResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LineItemMinBidsResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemMinBidsResponse.class));
+       final TypeAdapter<LineItemMinBidResponseResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemMinBidResponseResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LineItemMinBidsResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<LineItemMinBidResponseResponse>() {
            @Override
-           public void write(JsonWriter out, LineItemMinBidsResponse value) throws IOException {
+           public void write(JsonWriter out, LineItemMinBidResponseResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public LineItemMinBidsResponse read(JsonReader in) throws IOException {
+           public LineItemMinBidResponseResponse read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -278,18 +278,18 @@ public class LineItemMinBidsResponse {
   }
 
  /**
-  * Create an instance of LineItemMinBidsResponse given an JSON string
+  * Create an instance of LineItemMinBidResponseResponse given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of LineItemMinBidsResponse
-  * @throws IOException if the JSON string is invalid with respect to LineItemMinBidsResponse
+  * @return An instance of LineItemMinBidResponseResponse
+  * @throws IOException if the JSON string is invalid with respect to LineItemMinBidResponseResponse
   */
-  public static LineItemMinBidsResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LineItemMinBidsResponse.class);
+  public static LineItemMinBidResponseResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LineItemMinBidResponseResponse.class);
   }
 
  /**
-  * Convert an instance of LineItemMinBidsResponse to an JSON string
+  * Convert an instance of LineItemMinBidResponseResponse to an JSON string
   *
   * @return JSON string
   */

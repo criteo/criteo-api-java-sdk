@@ -45,104 +45,29 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * Represents minimum bidding guidance for one page type configured on a line item.
+ * Represents the CPM minimum bid guidance of a line item.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PageTypeMinBid {
+public class CpmMinBidDetails {
   public static final String SERIALIZED_NAME_MIN_BID = "minBid";
   @SerializedName(SERIALIZED_NAME_MIN_BID)
   private Double minBid;
-
-  /**
-   * The page type to which the bidding guidance applies.
-   */
-  @JsonAdapter(PageTypeEnum.Adapter.class)
-  public enum PageTypeEnum {
-    UNKNOWN("Unknown"),
-    
-    SEARCH("Search"),
-    
-    HOME("Home"),
-    
-    BROWSE("Browse"),
-    
-    CHECKOUT("Checkout"),
-    
-    CATEGORY("Category"),
-    
-    PRODUCTDETAIL("ProductDetail"),
-    
-    CONFIRMATION("Confirmation"),
-    
-    MERCHANDISING("Merchandising"),
-    
-    DEALS("Deals"),
-    
-    FAVORITES("Favorites"),
-    
-    SEARCHBAR("SearchBar"),
-    
-    CATEGORYMENU("CategoryMenu"),
-    
-    AIASSISTANT("AiAssistant");
-
-    private String value;
-
-    PageTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PageTypeEnum fromValue(String value) {
-      for (PageTypeEnum b : PageTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PageTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PageTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PageTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PageTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_PAGE_TYPE = "pageType";
-  @SerializedName(SERIALIZED_NAME_PAGE_TYPE)
-  private PageTypeEnum pageType;
 
   public static final String SERIALIZED_NAME_RECOMMENDED_MIN_BID = "recommendedMinBid";
   @SerializedName(SERIALIZED_NAME_RECOMMENDED_MIN_BID)
   private Double recommendedMinBid;
 
-  public PageTypeMinBid() {
+  public CpmMinBidDetails() {
   }
 
-  public PageTypeMinBid minBid(Double minBid) {
+  public CpmMinBidDetails minBid(Double minBid) {
     
     this.minBid = minBid;
     return this;
   }
 
    /**
-   * The inclusive minimum valid bid in the line item&#39;s currency.
+   * The lowest allowed max CPM for the line item, or zero if there is no minimum.  A max bid below this value is rejected.
    * @return minBid
   **/
   @javax.annotation.Nonnull
@@ -157,36 +82,14 @@ public class PageTypeMinBid {
   }
 
 
-  public PageTypeMinBid pageType(PageTypeEnum pageType) {
-    
-    this.pageType = pageType;
-    return this;
-  }
-
-   /**
-   * The page type to which the bidding guidance applies.
-   * @return pageType
-  **/
-  @javax.annotation.Nonnull
-
-  public PageTypeEnum getPageType() {
-    return pageType;
-  }
-
-
-  public void setPageType(PageTypeEnum pageType) {
-    this.pageType = pageType;
-  }
-
-
-  public PageTypeMinBid recommendedMinBid(Double recommendedMinBid) {
+  public CpmMinBidDetails recommendedMinBid(Double recommendedMinBid) {
     
     this.recommendedMinBid = recommendedMinBid;
     return this;
   }
 
    /**
-   * The bid below which validation emits a low-bid warning in the line item&#39;s currency.
+   * The recommended max CPM for the line item, or null if no recommendation is available.
    * @return recommendedMinBid
   **/
   @javax.annotation.Nullable
@@ -210,10 +113,9 @@ public class PageTypeMinBid {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PageTypeMinBid pageTypeMinBid = (PageTypeMinBid) o;
-    return Objects.equals(this.minBid, pageTypeMinBid.minBid) &&
-        Objects.equals(this.pageType, pageTypeMinBid.pageType) &&
-        Objects.equals(this.recommendedMinBid, pageTypeMinBid.recommendedMinBid);
+    CpmMinBidDetails cpmMinBidDetails = (CpmMinBidDetails) o;
+    return Objects.equals(this.minBid, cpmMinBidDetails.minBid) &&
+        Objects.equals(this.recommendedMinBid, cpmMinBidDetails.recommendedMinBid);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -222,7 +124,7 @@ public class PageTypeMinBid {
 
   @Override
   public int hashCode() {
-    return Objects.hash(minBid, pageType, recommendedMinBid);
+    return Objects.hash(minBid, recommendedMinBid);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -235,9 +137,8 @@ public class PageTypeMinBid {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PageTypeMinBid {\n");
+    sb.append("class CpmMinBidDetails {\n");
     sb.append("    minBid: ").append(toIndentedString(minBid)).append("\n");
-    sb.append("    pageType: ").append(toIndentedString(pageType)).append("\n");
     sb.append("    recommendedMinBid: ").append(toIndentedString(recommendedMinBid)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -262,44 +163,39 @@ public class PageTypeMinBid {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("minBid");
-    openapiFields.add("pageType");
     openapiFields.add("recommendedMinBid");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("minBid");
-    openapiRequiredFields.add("pageType");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PageTypeMinBid
+  * @throws IOException if the JSON Object is invalid with respect to CpmMinBidDetails
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!PageTypeMinBid.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PageTypeMinBid is not found in the empty JSON string", PageTypeMinBid.openapiRequiredFields.toString()));
+        if (!CpmMinBidDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CpmMinBidDetails is not found in the empty JSON string", CpmMinBidDetails.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!PageTypeMinBid.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PageTypeMinBid` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!CpmMinBidDetails.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CpmMinBidDetails` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PageTypeMinBid.openapiRequiredFields) {
+      for (String requiredField : CpmMinBidDetails.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
-      }
-      if (!jsonObj.get("pageType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pageType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pageType").toString()));
       }
   }
 
@@ -307,22 +203,22 @@ public class PageTypeMinBid {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PageTypeMinBid.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PageTypeMinBid' and its subtypes
+       if (!CpmMinBidDetails.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CpmMinBidDetails' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PageTypeMinBid> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PageTypeMinBid.class));
+       final TypeAdapter<CpmMinBidDetails> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CpmMinBidDetails.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<PageTypeMinBid>() {
+       return (TypeAdapter<T>) new TypeAdapter<CpmMinBidDetails>() {
            @Override
-           public void write(JsonWriter out, PageTypeMinBid value) throws IOException {
+           public void write(JsonWriter out, CpmMinBidDetails value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public PageTypeMinBid read(JsonReader in) throws IOException {
+           public CpmMinBidDetails read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -333,18 +229,18 @@ public class PageTypeMinBid {
   }
 
  /**
-  * Create an instance of PageTypeMinBid given an JSON string
+  * Create an instance of CpmMinBidDetails given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of PageTypeMinBid
-  * @throws IOException if the JSON string is invalid with respect to PageTypeMinBid
+  * @return An instance of CpmMinBidDetails
+  * @throws IOException if the JSON string is invalid with respect to CpmMinBidDetails
   */
-  public static PageTypeMinBid fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PageTypeMinBid.class);
+  public static CpmMinBidDetails fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CpmMinBidDetails.class);
   }
 
  /**
-  * Convert an instance of PageTypeMinBid to an JSON string
+  * Convert an instance of CpmMinBidDetails to an JSON string
   *
   * @return JSON string
   */

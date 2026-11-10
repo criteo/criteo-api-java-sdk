@@ -20,12 +20,16 @@ import com.criteo.api.marketingsolutions.experimental.model.CreateAdSetBiddingV2
 import com.criteo.api.marketingsolutions.experimental.model.CreateAdSetBudgetV26Q1;
 import com.criteo.api.marketingsolutions.experimental.model.CreateAdSetScheduleV26Q1;
 import com.criteo.api.marketingsolutions.experimental.model.CreateAdSetTargetingV26Q1;
+import com.criteo.api.marketingsolutions.experimental.model.ServerToServerTrackingV26Q1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,6 +57,59 @@ import com.criteo.api.marketingsolutions.experimental.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateAdSetV26Q1 {
+  /**
+   * Type of the ad set. Optional, defaults to standard if omitted.  \&quot;unknown\&quot; is read-only and is rejected on create.
+   */
+  @JsonAdapter(AdSetTypeEnum.Adapter.class)
+  public enum AdSetTypeEnum {
+    STANDARD("standard"),
+    
+    APPRETARGETING("appRetargeting"),
+    
+    UNKNOWN("unknown");
+
+    private String value;
+
+    AdSetTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AdSetTypeEnum fromValue(String value) {
+      for (AdSetTypeEnum b : AdSetTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<AdSetTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AdSetTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AdSetTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AdSetTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_AD_SET_TYPE = "adSetType";
+  @SerializedName(SERIALIZED_NAME_AD_SET_TYPE)
+  private AdSetTypeEnum adSetType;
+
   public static final String SERIALIZED_NAME_ATTRIBUTION_CONFIGURATION = "attributionConfiguration";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTION_CONFIGURATION)
   private CreateAdSetAttributionConfigurationV26Q1 attributionConfiguration;
@@ -201,6 +258,10 @@ public class CreateAdSetV26Q1 {
   @SerializedName(SERIALIZED_NAME_SCHEDULE)
   private CreateAdSetScheduleV26Q1 schedule;
 
+  public static final String SERIALIZED_NAME_SERVER_TO_SERVER_TRACKINGS = "serverToServerTrackings";
+  @SerializedName(SERIALIZED_NAME_SERVER_TO_SERVER_TRACKINGS)
+  private List<ServerToServerTrackingV26Q1> serverToServerTrackings = null;
+
   public static final String SERIALIZED_NAME_TARGETING = "targeting";
   @SerializedName(SERIALIZED_NAME_TARGETING)
   private CreateAdSetTargetingV26Q1 targeting;
@@ -211,6 +272,28 @@ public class CreateAdSetV26Q1 {
 
   public CreateAdSetV26Q1() {
   }
+
+  public CreateAdSetV26Q1 adSetType(AdSetTypeEnum adSetType) {
+    
+    this.adSetType = adSetType;
+    return this;
+  }
+
+   /**
+   * Type of the ad set. Optional, defaults to standard if omitted.  \&quot;unknown\&quot; is read-only and is rejected on create.
+   * @return adSetType
+  **/
+  @javax.annotation.Nullable
+
+  public AdSetTypeEnum getAdSetType() {
+    return adSetType;
+  }
+
+
+  public void setAdSetType(AdSetTypeEnum adSetType) {
+    this.adSetType = adSetType;
+  }
+
 
   public CreateAdSetV26Q1 attributionConfiguration(CreateAdSetAttributionConfigurationV26Q1 attributionConfiguration) {
     
@@ -410,6 +493,36 @@ public class CreateAdSetV26Q1 {
   }
 
 
+  public CreateAdSetV26Q1 serverToServerTrackings(List<ServerToServerTrackingV26Q1> serverToServerTrackings) {
+    
+    this.serverToServerTrackings = serverToServerTrackings;
+    return this;
+  }
+
+  public CreateAdSetV26Q1 addServerToServerTrackingsItem(ServerToServerTrackingV26Q1 serverToServerTrackingsItem) {
+    if (this.serverToServerTrackings == null) {
+      this.serverToServerTrackings = null;
+    }
+    this.serverToServerTrackings.add(serverToServerTrackingsItem);
+    return this;
+  }
+
+   /**
+   * MMP server-to-server tracking URLs. Optional, only allowed for app retargeting ad sets.
+   * @return serverToServerTrackings
+  **/
+  @javax.annotation.Nullable
+
+  public List<ServerToServerTrackingV26Q1> getServerToServerTrackings() {
+    return serverToServerTrackings;
+  }
+
+
+  public void setServerToServerTrackings(List<ServerToServerTrackingV26Q1> serverToServerTrackings) {
+    this.serverToServerTrackings = serverToServerTrackings;
+  }
+
+
   public CreateAdSetV26Q1 targeting(CreateAdSetTargetingV26Q1 targeting) {
     
     this.targeting = targeting;
@@ -508,7 +621,8 @@ public class CreateAdSetV26Q1 {
       return false;
     }
     CreateAdSetV26Q1 createAdSetV26Q1 = (CreateAdSetV26Q1) o;
-    return Objects.equals(this.attributionConfiguration, createAdSetV26Q1.attributionConfiguration) &&
+    return Objects.equals(this.adSetType, createAdSetV26Q1.adSetType) &&
+        Objects.equals(this.attributionConfiguration, createAdSetV26Q1.attributionConfiguration) &&
         Objects.equals(this.bidding, createAdSetV26Q1.bidding) &&
         Objects.equals(this.budget, createAdSetV26Q1.budget) &&
         Objects.equals(this.campaignId, createAdSetV26Q1.campaignId) &&
@@ -517,20 +631,33 @@ public class CreateAdSetV26Q1 {
         Objects.equals(this.name, createAdSetV26Q1.name) &&
         Objects.equals(this.objective, createAdSetV26Q1.objective) &&
         Objects.equals(this.schedule, createAdSetV26Q1.schedule) &&
+        Objects.equals(this.serverToServerTrackings, createAdSetV26Q1.serverToServerTrackings) &&
         Objects.equals(this.targeting, createAdSetV26Q1.targeting) &&
         Objects.equals(this.trackingCode, createAdSetV26Q1.trackingCode)&&
         Objects.equals(this.additionalProperties, createAdSetV26Q1.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(attributionConfiguration, bidding, budget, campaignId, datasetId, mediaType, name, objective, schedule, targeting, trackingCode, additionalProperties);
+    return Objects.hash(adSetType, attributionConfiguration, bidding, budget, campaignId, datasetId, mediaType, name, objective, schedule, serverToServerTrackings, targeting, trackingCode, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAdSetV26Q1 {\n");
+    sb.append("    adSetType: ").append(toIndentedString(adSetType)).append("\n");
     sb.append("    attributionConfiguration: ").append(toIndentedString(attributionConfiguration)).append("\n");
     sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
@@ -540,6 +667,7 @@ public class CreateAdSetV26Q1 {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
     sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
+    sb.append("    serverToServerTrackings: ").append(toIndentedString(serverToServerTrackings)).append("\n");
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
     sb.append("    trackingCode: ").append(toIndentedString(trackingCode)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -565,6 +693,7 @@ public class CreateAdSetV26Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("adSetType");
     openapiFields.add("attributionConfiguration");
     openapiFields.add("bidding");
     openapiFields.add("budget");
@@ -574,6 +703,7 @@ public class CreateAdSetV26Q1 {
     openapiFields.add("name");
     openapiFields.add("objective");
     openapiFields.add("schedule");
+    openapiFields.add("serverToServerTrackings");
     openapiFields.add("targeting");
     openapiFields.add("trackingCode");
 
@@ -609,6 +739,9 @@ public class CreateAdSetV26Q1 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("adSetType") != null && !jsonObj.get("adSetType").isJsonNull()) && !jsonObj.get("adSetType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adSetType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adSetType").toString()));
+      }
       // validate the optional field `attributionConfiguration`
       if (jsonObj.get("attributionConfiguration") != null && !jsonObj.get("attributionConfiguration").isJsonNull()) {
         CreateAdSetAttributionConfigurationV26Q1.validateJsonObject(jsonObj.getAsJsonObject("attributionConfiguration"));
@@ -636,6 +769,20 @@ public class CreateAdSetV26Q1 {
       }
       // validate the required field `schedule`
       CreateAdSetScheduleV26Q1.validateJsonObject(jsonObj.getAsJsonObject("schedule"));
+      if (jsonObj.get("serverToServerTrackings") != null && !jsonObj.get("serverToServerTrackings").isJsonNull()) {
+        JsonArray jsonArrayserverToServerTrackings = jsonObj.getAsJsonArray("serverToServerTrackings");
+        if (jsonArrayserverToServerTrackings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("serverToServerTrackings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `serverToServerTrackings` to be an array in the JSON string but got `%s`", jsonObj.get("serverToServerTrackings").toString()));
+          }
+
+          // validate the optional field `serverToServerTrackings` (array)
+          for (int i = 0; i < jsonArrayserverToServerTrackings.size(); i++) {
+            ServerToServerTrackingV26Q1.validateJsonObject(jsonArrayserverToServerTrackings.get(i).getAsJsonObject());
+          };
+        }
+      }
       // validate the required field `targeting`
       CreateAdSetTargetingV26Q1.validateJsonObject(jsonObj.getAsJsonObject("targeting"));
       if (!jsonObj.get("trackingCode").isJsonPrimitive()) {

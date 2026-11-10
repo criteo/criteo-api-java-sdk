@@ -21,6 +21,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -45,20 +47,125 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.experimental.JSON;
 
 /**
- * A warning or an error raised while processing the request.
+ * Common problem object.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecommendSegmentsProblem {
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
+
   public static final String SERIALIZED_NAME_DETAIL = "detail";
   @SerializedName(SERIALIZED_NAME_DETAIL)
   private String detail;
+
+  public static final String SERIALIZED_NAME_INSTANCE = "instance";
+  @SerializedName(SERIALIZED_NAME_INSTANCE)
+  private String instance;
+
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private Map<String, String> source = null;
+
+  public static final String SERIALIZED_NAME_STACK_TRACE = "stackTrace";
+  @SerializedName(SERIALIZED_NAME_STACK_TRACE)
+  private String stackTrace;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
+  public static final String SERIALIZED_NAME_TRACE_ID = "traceId";
+  @SerializedName(SERIALIZED_NAME_TRACE_ID)
+  private String traceId;
+
+  /**
+   * The problem&#39;s category.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    UNKNOWN("unknown"),
+    
+    ACCESS_CONTROL("access-control"),
+    
+    AUTHENTICATION("authentication"),
+    
+    AUTHORIZATION("authorization"),
+    
+    AVAILABILITY("availability"),
+    
+    DEPRECATION("deprecation"),
+    
+    QUOTA("quota"),
+    
+    VALIDATION("validation");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
   public RecommendSegmentsProblem() {
   }
+
+  public RecommendSegmentsProblem code(String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * A machine-readable error code, expressed as a string value.
+   * @return code
+  **/
+  @javax.annotation.Nullable
+
+  public String getCode() {
+    return code;
+  }
+
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
 
   public RecommendSegmentsProblem detail(String detail) {
     
@@ -67,7 +174,7 @@ public class RecommendSegmentsProblem {
   }
 
    /**
-   * Get detail
+   * A human-readable explanation specific to this occurrence of the problem.
    * @return detail
   **/
   @javax.annotation.Nullable
@@ -82,6 +189,80 @@ public class RecommendSegmentsProblem {
   }
 
 
+  public RecommendSegmentsProblem instance(String instance) {
+    
+    this.instance = instance;
+    return this;
+  }
+
+   /**
+   * A URI that identifies the specific occurrence of the problem.
+   * @return instance
+  **/
+  @javax.annotation.Nullable
+
+  public String getInstance() {
+    return instance;
+  }
+
+
+  public void setInstance(String instance) {
+    this.instance = instance;
+  }
+
+
+  public RecommendSegmentsProblem source(Map<String, String> source) {
+    
+    this.source = source;
+    return this;
+  }
+
+  public RecommendSegmentsProblem putSourceItem(String key, String sourceItem) {
+    if (this.source == null) {
+      this.source = null;
+    }
+    this.source.put(key, sourceItem);
+    return this;
+  }
+
+   /**
+   * A machine-readable structure to reference to the exact location(s) causing the error(s).
+   * @return source
+  **/
+  @javax.annotation.Nullable
+
+  public Map<String, String> getSource() {
+    return source;
+  }
+
+
+  public void setSource(Map<String, String> source) {
+    this.source = source;
+  }
+
+
+  public RecommendSegmentsProblem stackTrace(String stackTrace) {
+    
+    this.stackTrace = stackTrace;
+    return this;
+  }
+
+   /**
+   * 
+   * @return stackTrace
+  **/
+  @javax.annotation.Nullable
+
+  public String getStackTrace() {
+    return stackTrace;
+  }
+
+
+  public void setStackTrace(String stackTrace) {
+    this.stackTrace = stackTrace;
+  }
+
+
   public RecommendSegmentsProblem title(String title) {
     
     this.title = title;
@@ -89,7 +270,7 @@ public class RecommendSegmentsProblem {
   }
 
    /**
-   * Get title
+   * A short human-readable description of the problem type.
    * @return title
   **/
   @javax.annotation.Nullable
@@ -104,6 +285,50 @@ public class RecommendSegmentsProblem {
   }
 
 
+  public RecommendSegmentsProblem traceId(String traceId) {
+    
+    this.traceId = traceId;
+    return this;
+  }
+
+   /**
+   * The request correlation ID this problem comes from.
+   * @return traceId
+  **/
+  @javax.annotation.Nullable
+
+  public String getTraceId() {
+    return traceId;
+  }
+
+
+  public void setTraceId(String traceId) {
+    this.traceId = traceId;
+  }
+
+
+  public RecommendSegmentsProblem type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The problem&#39;s category.
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,8 +339,14 @@ public class RecommendSegmentsProblem {
       return false;
     }
     RecommendSegmentsProblem recommendSegmentsProblem = (RecommendSegmentsProblem) o;
-    return Objects.equals(this.detail, recommendSegmentsProblem.detail) &&
-        Objects.equals(this.title, recommendSegmentsProblem.title);
+    return Objects.equals(this.code, recommendSegmentsProblem.code) &&
+        Objects.equals(this.detail, recommendSegmentsProblem.detail) &&
+        Objects.equals(this.instance, recommendSegmentsProblem.instance) &&
+        Objects.equals(this.source, recommendSegmentsProblem.source) &&
+        Objects.equals(this.stackTrace, recommendSegmentsProblem.stackTrace) &&
+        Objects.equals(this.title, recommendSegmentsProblem.title) &&
+        Objects.equals(this.traceId, recommendSegmentsProblem.traceId) &&
+        Objects.equals(this.type, recommendSegmentsProblem.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -124,7 +355,7 @@ public class RecommendSegmentsProblem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(detail, title);
+    return Objects.hash(code, detail, instance, source, stackTrace, title, traceId, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -138,8 +369,14 @@ public class RecommendSegmentsProblem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RecommendSegmentsProblem {\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
+    sb.append("    instance: ").append(toIndentedString(instance)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    stackTrace: ").append(toIndentedString(stackTrace)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -162,8 +399,14 @@ public class RecommendSegmentsProblem {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("code");
     openapiFields.add("detail");
+    openapiFields.add("instance");
+    openapiFields.add("source");
+    openapiFields.add("stackTrace");
     openapiFields.add("title");
+    openapiFields.add("traceId");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -189,11 +432,26 @@ public class RecommendSegmentsProblem {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RecommendSegmentsProblem` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
       if ((jsonObj.get("detail") != null && !jsonObj.get("detail").isJsonNull()) && !jsonObj.get("detail").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `detail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detail").toString()));
       }
+      if ((jsonObj.get("instance") != null && !jsonObj.get("instance").isJsonNull()) && !jsonObj.get("instance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instance").toString()));
+      }
+      if ((jsonObj.get("stackTrace") != null && !jsonObj.get("stackTrace").isJsonNull()) && !jsonObj.get("stackTrace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `stackTrace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stackTrace").toString()));
+      }
       if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+      }
+      if ((jsonObj.get("traceId") != null && !jsonObj.get("traceId").isJsonNull()) && !jsonObj.get("traceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `traceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("traceId").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

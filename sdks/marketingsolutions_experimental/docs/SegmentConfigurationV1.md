@@ -19,7 +19,7 @@ A recommended audience segment and its configuration.
 |**lookalikeConfiguration** | [**LookalikeRecommendationV1**](LookalikeRecommendationV1.md) |  |  [optional] |
 |**segmentId** | **String** |  |  [optional] |
 |**segmentName** | **String** |  |  [optional] |
-|**segmentType** | [**SegmentTypeEnum**](#SegmentTypeEnum) |  |  |
+|**segmentType** | [**SegmentTypeEnum**](#SegmentTypeEnum) | Type of recommended segment. |  |
 |**size** | **Long** |  |  [optional] |
 
 

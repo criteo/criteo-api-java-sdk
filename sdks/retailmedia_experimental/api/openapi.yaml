@@ -459,6 +459,8 @@ paths:
           type: array
         style: form
       - description: Zero-based index of the first change-history entry to return.
+          The sum of offset and limit must not exceed 10000; narrow the time range
+          to page through more history.
         explode: true
         in: query
         name: offset
@@ -466,6 +468,7 @@ paths:
         schema:
           default: 0
           format: int32
+          maximum: 9999
           minimum: 0
           type: integer
         style: form
@@ -1515,7 +1518,10 @@ paths:
       x-accepts: application/json
   /experimental/retail-media/line-items:
     post:
-      description: Create a new line item.
+      description: "Create a line item.\n<br />\n\n\r\nCreates the line item under\
+        \ its parent campaign, then sets up its dynamic budgets when the campaign\
+        \ requires\r\nthem. If setting up the dynamic budgets fails, the request fails\
+        \ and the line item that was created is renamed\r\nwith a [FAILED] prefix."
       operationId: CreateLineItem
       requestBody:
         content:
@@ -1541,8 +1547,9 @@ paths:
       x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}:
     get:
-      description: Retrieves a consolidated line item view from the line item domain
-        services.
+      description: "Get a line item.\n<br />\n\n\r\nReturns the line item with its\
+        \ bidding settings, products, creatives and targets. A part that cannot be\
+        \ retrieved is left out and\r\nreported as a warning."
       operationId: GetLineItem
       parameters:
       - description: The line item identifier.
@@ -1568,7 +1575,8 @@ paths:
       - Campaign
       x-accepts: application/json
     patch:
-      description: Update an existing line item.
+      description: "Update a line item.\n<br />\n\n\r\nUpdates the supplied fields\
+        \ of an existing line item. Omitted fields are left unchanged."
       operationId: UpdateLineItem
       parameters:
       - description: The line item id
@@ -1601,15 +1609,13 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /experimental/retail-media/line-items/{line-item-id}/bidding-strategy:
+  /experimental/retail-media/line-items/{line-item-id}/bidding:
     get:
-      description: "Returns the current bidding configuration for a Display auction\
-        \ line item, including the active\r\nbidding strategy and any preserved Standard\
-        \ and Adaptive strategy settings. Other line item types are\r\nnot currently\
-        \ supported by this endpoint."
-      operationId: GetBiddingStrategyByLineItemId
+      description: Returns the Adaptive bidding configuration of a line item under
+        an adaptive budget campaign.
+      operationId: GetBiddingByLineItemId
       parameters:
-      - description: The identifier of the line item whose bidding settings are requested.
+      - description: The identifier of the line item whose bidding is requested.
         explode: false
         in: path
         name: line-item-id
@@ -1622,19 +1628,20 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BiddingSettingsResponse'
+                $ref: '#/components/schemas/LineItemBiddingResponseResponse'
           description: Success
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/experimental/retail-media/line-items/{line-item-id}/bidding-strategy"
+      summary: "/experimental/retail-media/line-items/{line-item-id}/bidding"
       tags:
       - Campaign
       x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}/creatives:
     get:
-      description: Retrieve the creatives and product collections associated with
-        a line item.
+      description: "Retrieve the creatives and product collections associated with\
+        \ a line item.\n<br />\n\n\r\nReturns each creative of the line item with\
+        \ its product collections."
       operationId: FetchCreatives
       parameters:
       - description: The external line item id.
@@ -1661,7 +1668,8 @@ paths:
       x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}/creatives/delete:
     post:
-      description: Delete creatives and their product collections from a line item.
+      description: "Delete creatives from a line item.\n<br />\n\n\r\nDelete creatives\
+        \ and their product collections from a line item."
       operationId: DeleteCreatives
       parameters:
       - description: The external line item id.
@@ -1696,8 +1704,9 @@ paths:
       x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}/creatives/upsert:
     post:
-      description: "Resolves each supplied stable creative identifier to its latest\
-        \ revision and\r\nassociates those revisions with the line item's proposal."
+      description: "Add or update creatives on a line item.\n<br />\n\n\r\nResolves\
+        \ each supplied stable creative identifier to its latest revision and\r\n\
+        associates those revisions with the line item's proposal."
       operationId: UpsertCreatives
       parameters:
       - description: The line item id.
@@ -1730,11 +1739,10 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /experimental/retail-media/line-items/{line-item-id}/min-bids:
+  /experimental/retail-media/line-items/{line-item-id}/min-bid:
     get:
-      description: Returns page-type minimum bids and derived bidding thresholds for
-        a Display auction line item.
-      operationId: GetMinBidsByLineItemId
+      description: Returns the Adaptive minimum bid guidance of a line item.
+      operationId: GetMinBidByLineItemId
       parameters:
       - description: The identifier of the line item whose minimum bids are requested.
         explode: false
@@ -1749,18 +1757,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LineItemMinBidsResponse'
+                $ref: '#/components/schemas/LineItemMinBidResponseResponse'
           description: Success
       security:
       - oauth:
         - RetailMedia_Campaign_Read
-      summary: "/experimental/retail-media/line-items/{line-item-id}/min-bids"
+      summary: "/experimental/retail-media/line-items/{line-item-id}/min-bid"
       tags:
       - Campaign
       x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}/products:
     get:
-      description: Retrieve a page of products configured on a line item.
+      description: "Fetch the products of a line item.\n<br />\n\n\r\nRetrieve a page\
+        \ of products configured on a line item."
       operationId: FetchProducts
       parameters:
       - description: The maximum number of products to return.
@@ -1811,7 +1820,8 @@ paths:
       x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}/products/add:
     post:
-      description: Add products to a line item.
+      description: "Add products to a line item.\n<br />\n\n\r\nAdd products to a\
+        \ line item. The add is all-or-nothing."
       operationId: AddProducts
       parameters:
       - description: The line item id.
@@ -1846,7 +1856,8 @@ paths:
       x-accepts: application/json
   /experimental/retail-media/line-items/{line-item-id}/products/delete:
     post:
-      description: Delete products from a line item.
+      description: "Delete products from a line item.\n<br />\n\n\r\nDelete products\
+        \ from a line item. The products are soft deleted."
       operationId: DeleteProducts
       parameters:
       - description: The line item id.
@@ -1879,15 +1890,13 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy:
+  /experimental/retail-media/line-items/{line-item-id}/set-bidding:
     post:
-      description: "Replaces the submitted Standard page-type bids and updates the\
-        \ supplied strategy settings. Omitted\r\nsettings are preserved. Other line\
-        \ item types are not currently supported by this endpoint."
-      operationId: SetBiddingStrategyByLineItemId
+      description: Sets the Adaptive bidding configuration of a line item under an
+        adaptive budget campaign.
+      operationId: SetBiddingByLineItemId
       parameters:
-      - description: The identifier of the line item whose bidding settings are being
-          updated.
+      - description: The identifier of the line item whose bidding is being set.
         explode: false
         in: path
         name: line-item-id
@@ -1899,19 +1908,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BiddingSettingsRequest'
-        description: The bidding settings to apply.
+              $ref: '#/components/schemas/LineItemBiddingRequestRequest'
+        description: The bidding configuration to apply.
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BiddingSettingsResponse'
+                $ref: '#/components/schemas/LineItemBiddingResponseResponse'
           description: Success
       security:
       - oauth:
         - RetailMedia_Campaign_Manage
-      summary: "/experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy"
+      summary: "/experimental/retail-media/line-items/{line-item-id}/set-bidding"
       tags:
       - Campaign
       x-content-type: application/json
@@ -2103,7 +2112,8 @@ paths:
       x-accepts: application/json
   /experimental/retail-media/line-items/demand-search:
     post:
-      description: Search line items accessible from demand accounts.
+      description: "Search line items of demand accounts.\n<br />\n\n\r\nSearch line\
+        \ items accessible from demand accounts."
       operationId: LineItemsDemandSearch
       requestBody:
         content:
@@ -2129,7 +2139,8 @@ paths:
       x-accepts: application/json
   /experimental/retail-media/line-items/supply-search:
     post:
-      description: Search line items accessible from a supply account and its retailers.
+      description: "Search line items of a supply account.\n<br />\n\n\r\nSearch line\
+        \ items accessible from a supply account and its retailers."
       operationId: LineItemsSupplySearch
       requestBody:
         content:
@@ -2475,6 +2486,8 @@ paths:
           type: array
         style: form
       - description: Zero-based index of the first change-history entry to return.
+          The sum of offset and limit must not exceed 10000; narrow the time range
+          to page through more history.
         explode: true
         in: query
         name: offset
@@ -2482,6 +2495,7 @@ paths:
         schema:
           default: 0
           format: int32
+          maximum: 9999
           minimum: 0
           type: integer
         style: form
@@ -5191,131 +5205,6 @@ components:
         cpm:
           $ref: '#/components/schemas/CpmBiddingSettings'
       type: object
-    BiddingSettingsRequest:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value object.
-      example:
-        data:
-          attributes:
-            cpm:
-              standardBiddingSettings:
-                auctionBids:
-                - pageType: Unknown
-                  bid: 6.027456183070403
-                - pageType: Unknown
-                  bid: 6.027456183070403
-              bidStrategy: Standard
-              adaptiveBiddingSettings:
-                maxBid: 0.8008281904610115
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/BiddingSettingsResource'
-      type: object
-    BiddingSettingsResource:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          cpm:
-            standardBiddingSettings:
-              auctionBids:
-              - pageType: Unknown
-                bid: 6.027456183070403
-              - pageType: Unknown
-                bid: 6.027456183070403
-            bidStrategy: Standard
-            adaptiveBiddingSettings:
-              maxBid: 0.8008281904610115
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/BiddingSettings'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    BiddingSettingsResponse:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value object.
-      example:
-        data:
-          attributes:
-            cpm:
-              standardBiddingSettings:
-                auctionBids:
-                - pageType: Unknown
-                  bid: 6.027456183070403
-                - pageType: Unknown
-                  bid: 6.027456183070403
-              bidStrategy: Standard
-              adaptiveBiddingSettings:
-                maxBid: 0.8008281904610115
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/BiddingSettingsResource'
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     BrandIdSearchRequest:
       description: An object that represents the request of BrandIdSearch endpoint.
       example:
@@ -7797,6 +7686,23 @@ components:
       - attributes
       - type
       type: object
+    CpcMinBidDetails:
+      additionalProperties: false
+      description: Represents the CPC minimum bid guidance of a Sponsored Products
+        line item.
+      example:
+        minBid: 0.8008281904610115
+      nullable: true
+      properties:
+        minBid:
+          description: "The lowest allowed max CPC for the line item.\r\nIt is the\
+            \ lowest minimum bid across the line item SKUs.\r\nA bid below this value\
+            \ is rejected."
+          format: double
+          type: number
+      required:
+      - minBid
+      type: object
     CpmBiddingSettings:
       additionalProperties: false
       description: Represents the bidding configuration for a CPM-based line item.
@@ -7824,6 +7730,28 @@ components:
           $ref: '#/components/schemas/StandardBiddingSettings'
       required:
       - bidStrategy
+      type: object
+    CpmMinBidDetails:
+      additionalProperties: false
+      description: Represents the CPM minimum bid guidance of a line item.
+      example:
+        minBid: 6.027456183070403
+        recommendedMinBid: 1.4658129805029452
+      nullable: true
+      properties:
+        minBid:
+          description: "The lowest allowed max CPM for the line item, or zero if there\
+            \ is no minimum.\r\nA max bid below this value is rejected."
+          format: double
+          type: number
+        recommendedMinBid:
+          description: "The recommended max CPM for the line item, or null if no recommendation\
+            \ is available."
+          format: double
+          nullable: true
+          type: number
+      required:
+      - minBid
       type: object
     CreateTargetRequestModel:
       additionalProperties: false
@@ -11148,40 +11076,6 @@ components:
       required:
       - startDate
       type: object
-    ExternalFrequencyCappingModel:
-      additionalProperties: false
-      description: How often a single user may be shown the line item's ads.
-      example:
-        cappingCount: 0
-        cappingDurationType: Unknown
-      nullable: true
-      properties:
-        cappingCount:
-          description: How many times the ads may be shown within the duration.
-          format: int32
-          nullable: true
-          type: integer
-        cappingDurationType:
-          description: The period the count applies to.
-          enum:
-          - Unknown
-          - Session
-          - Day
-          nullable: true
-          type: string
-      type: object
-    ExternalFrequencyCappingModelNillableV2:
-      additionalProperties: false
-      description: "Wraps an update value. Omit the containing property to leave it\
-        \ unchanged, or set `value` to null to remove the existing value."
-      example:
-        value:
-          cappingCount: 0
-          cappingDurationType: Unknown
-      properties:
-        value:
-          $ref: '#/components/schemas/ExternalFrequencyCappingModel'
-      type: object
     ExternalLineItem:
       additionalProperties: false
       description: "A unit of ad delivery configuration within a campaign. It defines\
@@ -11260,10 +11154,6 @@ components:
         onsiteDisplayDetails:
           auctionDetails:
             isDynamicMatch: true
-          frequencyCapping:
-            value:
-              cappingCount: 0
-              cappingDurationType: Unknown
       properties:
         isPaused:
           description: Whether the line item is paused.
@@ -11293,10 +11183,6 @@ components:
             onsiteDisplayDetails:
               auctionDetails:
                 isDynamicMatch: true
-              frequencyCapping:
-                value:
-                  cappingCount: 0
-                  cappingDurationType: Unknown
           type: type
       properties:
         data:
@@ -11313,10 +11199,6 @@ components:
           onsiteDisplayDetails:
             auctionDetails:
               isDynamicMatch: true
-            frequencyCapping:
-              value:
-                cappingCount: 0
-                cappingDurationType: Unknown
         type: type
       properties:
         attributes:
@@ -11345,15 +11227,9 @@ components:
       example:
         auctionDetails:
           isDynamicMatch: true
-        frequencyCapping:
-          value:
-            cappingCount: 0
-            cappingDurationType: Unknown
       properties:
         auctionDetails:
           $ref: '#/components/schemas/ExternalPatchOnsiteDisplayAuctionLineItemDetails'
-        frequencyCapping:
-          $ref: '#/components/schemas/ExternalFrequencyCappingModelNillableV2'
       type: object
     ExternalRetailMediaAccountV2:
       additionalProperties: false
@@ -12083,6 +11959,145 @@ components:
       required:
       - bid
       - pageType
+      type: object
+    LineItemBiddingRequest:
+      additionalProperties: false
+      description: Represents the external bidding configuration to apply to a line
+        item.
+      example:
+        maxBid: 0.8008281904610115
+      properties:
+        maxBid:
+          description: The maximum bid to set for the Adaptive strategy.
+          format: double
+          nullable: true
+          type: number
+      type: object
+    LineItemBiddingRequestRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value object.
+      example:
+        data:
+          attributes:
+            maxBid: 0.8008281904610115
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/LineItemBiddingRequestResource'
+      type: object
+    LineItemBiddingRequestResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          maxBid: 0.8008281904610115
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/LineItemBiddingRequest'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    LineItemBiddingResponse:
+      additionalProperties: false
+      description: Represents the external bidding configuration for a line item.
+      example:
+        maxBid: 0.8008281904610115
+      nullable: true
+      properties:
+        maxBid:
+          description: The maximum bid that the Adaptive strategy may use.
+          format: double
+          nullable: true
+          type: number
+      type: object
+    LineItemBiddingResponseResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          maxBid: 0.8008281904610115
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/LineItemBiddingResponse'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+    LineItemBiddingResponseResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            maxBid: 0.8008281904610115
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/LineItemBiddingResponseResource'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     LineItemBudgetCapOutHistory:
       additionalProperties: false
@@ -13316,82 +13331,70 @@ components:
           readOnly: true
           type: array
       type: object
-    LineItemMinBids:
+    LineItemMinBidResponse:
       additionalProperties: false
-      description: Represents minimum bidding guidance calculated for a line item.
+      description: Represents the minimum bid guidance of a line item using Adaptive
+        bidding.
       example:
-        pageTypeMinBids:
-        - minBid: 1.4658129805029452
-          pageType: Unknown
-          recommendedMinBid: 5.962133916683182
-        - minBid: 1.4658129805029452
-          pageType: Unknown
-          recommendedMinBid: 5.962133916683182
-        adaptiveRecommendedMinBid: 6.027456183070403
-        adaptiveMinBid: 0.8008281904610115
+        biddingType: Unknown
+        cpcMinBidDetails:
+          minBid: 0.8008281904610115
+        cpmMinBidDetails:
+          minBid: 6.027456183070403
+          recommendedMinBid: 1.4658129805029452
       nullable: true
       properties:
-        adaptiveMinBid:
-          description: "The lowest strictly positive page-type minimum in the line\
-            \ item's currency, or zero when no positive minimum exists."
-          format: double
-          type: number
-        adaptiveRecommendedMinBid:
-          description: The bid below which Adaptive bidding validation emits a low-bid
-            warning in the line item's currency.
-          format: double
-          nullable: true
-          type: number
-        pageTypeMinBids:
-          description: The minimum bidding guidance for every page type configured
-            on the line item.
-          items:
-            $ref: '#/components/schemas/PageTypeMinBid'
-          type: array
+        biddingType:
+          description: "The type of bidding the guidance applies to. It matches the\
+            \ populated details:\r\nCriteo.RetailMedia.LineItem.Bid.Contract.V1.Models.BiddingType.CpmBidding\
+            \ for CPM details and Criteo.RetailMedia.LineItem.Bid.Contract.V1.Models.BiddingType.CpcBidding\
+            \ for CPC details."
+          enum:
+          - Unknown
+          - CpmBidding
+          - CpcBidding
+          type: string
+        cpcMinBidDetails:
+          $ref: '#/components/schemas/CpcMinBidDetails'
+        cpmMinBidDetails:
+          $ref: '#/components/schemas/CpmMinBidDetails'
       required:
-      - adaptiveMinBid
-      - pageTypeMinBids
+      - biddingType
       type: object
-    LineItemMinBidsResource:
+    LineItemMinBidResponseResource:
       additionalProperties: false
       description: A value resource exposed by the API.
       example:
         attributes:
-          pageTypeMinBids:
-          - minBid: 1.4658129805029452
-            pageType: Unknown
-            recommendedMinBid: 5.962133916683182
-          - minBid: 1.4658129805029452
-            pageType: Unknown
-            recommendedMinBid: 5.962133916683182
-          adaptiveRecommendedMinBid: 6.027456183070403
-          adaptiveMinBid: 0.8008281904610115
+          biddingType: Unknown
+          cpcMinBidDetails:
+            minBid: 0.8008281904610115
+          cpmMinBidDetails:
+            minBid: 6.027456183070403
+            recommendedMinBid: 1.4658129805029452
         type: type
       nullable: true
       properties:
         attributes:
-          $ref: '#/components/schemas/LineItemMinBids'
+          $ref: '#/components/schemas/LineItemMinBidResponse'
         type:
           description: Type of the resource.
           nullable: true
           type: string
       type: object
-    LineItemMinBidsResponse:
+    LineItemMinBidResponseResponse:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
         a single value object.
       example:
         data:
           attributes:
-            pageTypeMinBids:
-            - minBid: 1.4658129805029452
-              pageType: Unknown
-              recommendedMinBid: 5.962133916683182
-            - minBid: 1.4658129805029452
-              pageType: Unknown
-              recommendedMinBid: 5.962133916683182
-            adaptiveRecommendedMinBid: 6.027456183070403
-            adaptiveMinBid: 0.8008281904610115
+            biddingType: Unknown
+            cpcMinBidDetails:
+              minBid: 0.8008281904610115
+            cpmMinBidDetails:
+              minBid: 6.027456183070403
+              recommendedMinBid: 1.4658129805029452
           type: type
         warnings:
         - traceId: traceId
@@ -13437,7 +13440,7 @@ components:
           type: unknown
       properties:
         data:
-          $ref: '#/components/schemas/LineItemMinBidsResource'
+          $ref: '#/components/schemas/LineItemMinBidResponseResource'
         errors:
           description: Errors that occured during this call.
           items:
@@ -13759,9 +13762,6 @@ components:
           onsiteDisplayDetails:
             auctionDetails:
               isDynamicMatch: true
-            frequencyCapping:
-              cappingCount: 0
-              cappingDurationType: Unknown
           budgetStatus: Unknown
           retailerId: retailerId
           type: Unknown
@@ -13798,9 +13798,6 @@ components:
             onsiteDisplayDetails:
               auctionDetails:
                 isDynamicMatch: true
-              frequencyCapping:
-                cappingCount: 0
-                cappingDurationType: Unknown
             budgetStatus: Unknown
             retailerId: retailerId
             type: Unknown
@@ -13925,9 +13922,6 @@ components:
         onsiteDisplayDetails:
           auctionDetails:
             isDynamicMatch: true
-          frequencyCapping:
-            cappingCount: 0
-            cappingDurationType: Unknown
         budgetStatus: Unknown
         retailerId: retailerId
         type: Unknown
@@ -14584,15 +14578,10 @@ components:
       example:
         auctionDetails:
           isDynamicMatch: true
-        frequencyCapping:
-          cappingCount: 0
-          cappingDurationType: Unknown
       nullable: true
       properties:
         auctionDetails:
           $ref: '#/components/schemas/OnsiteDisplayAuctionLineItemDetailsV2'
-        frequencyCapping:
-          $ref: '#/components/schemas/ExternalFrequencyCappingModel'
       type: object
     Outcome:
       additionalProperties: false
@@ -14792,47 +14781,6 @@ components:
           - CategoryMenu
           nullable: true
           type: string
-      type: object
-    PageTypeMinBid:
-      additionalProperties: false
-      description: Represents minimum bidding guidance for one page type configured
-        on a line item.
-      example:
-        minBid: 1.4658129805029452
-        pageType: Unknown
-        recommendedMinBid: 5.962133916683182
-      properties:
-        minBid:
-          description: The inclusive minimum valid bid in the line item's currency.
-          format: double
-          type: number
-        pageType:
-          description: The page type to which the bidding guidance applies.
-          enum:
-          - Unknown
-          - Search
-          - Home
-          - Browse
-          - Checkout
-          - Category
-          - ProductDetail
-          - Confirmation
-          - Merchandising
-          - Deals
-          - Favorites
-          - SearchBar
-          - CategoryMenu
-          - AiAssistant
-          type: string
-        recommendedMinBid:
-          description: The bid below which validation emits a low-bid warning in the
-            line item's currency.
-          format: double
-          nullable: true
-          type: number
-      required:
-      - minBid
-      - pageType
       type: object
     PageTypeTargetDetails:
       additionalProperties: false

@@ -1,6 +1,6 @@
 
 
-# BiddingSettingsResource
+# LineItemBiddingResponseResource
 
 A value resource exposed by the API.
 
@@ -8,7 +8,7 @@ A value resource exposed by the API.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**BiddingSettings**](BiddingSettings.md) |  |  [optional] |
+|**attributes** | [**LineItemBiddingResponse**](LineItemBiddingResponse.md) |  |  [optional] |
 |**type** | **String** | Type of the resource. |  [optional] |
 
 

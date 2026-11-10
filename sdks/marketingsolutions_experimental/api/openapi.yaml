@@ -3089,7 +3089,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RecommendSegmentsResponse'
-          description: Recommended audience segments.
+          description: Successful Response
       security:
       - oauth:
         - MarketingSolutions_Audience_Read
@@ -10666,6 +10666,7 @@ components:
       nullable: true
       properties:
         category:
+          description: Category of a behavioral segment.
           enum:
           - seasonal
           - lifestyles
@@ -12960,6 +12961,15 @@ components:
         attributionConfiguration:
           attributionMethod: criteoAttribution
       properties:
+        adSetType:
+          description: "Type of the ad set. Optional, defaults to standard if omitted.\r\
+            \n\"unknown\" is read-only and is rejected on create."
+          enum:
+          - standard
+          - appRetargeting
+          - unknown
+          nullable: true
+          type: string
         attributionConfiguration:
           $ref: '#/components/schemas/CreateAdSetAttributionConfigurationV26Q1'
         bidding:
@@ -13000,6 +13010,13 @@ components:
           type: string
         schedule:
           $ref: '#/components/schemas/CreateAdSetScheduleV26Q1'
+        serverToServerTrackings:
+          description: "MMP server-to-server tracking URLs. Optional, only allowed\
+            \ for app retargeting ad sets."
+          items:
+            $ref: '#/components/schemas/ServerToServerTrackingV26Q1'
+          nullable: true
+          type: array
         targeting:
           $ref: '#/components/schemas/CreateAdSetTargetingV26Q1'
         trackingCode:
@@ -19910,6 +19927,9 @@ components:
         attributionConfiguration:
           attributionMethod: unknown
           lookbackWindow: unknown
+        serverToServerTrackings:
+        - url: url
+        - url: url
         budget:
           budgetDeliverySmoothing: accelerated
           budgetDeliveryWeek: undefined
@@ -19933,6 +19953,14 @@ components:
           $ref: '#/components/schemas/PatchAdSetScheduledBudgetV26Q1'
         scheduling:
           $ref: '#/components/schemas/PatchAdSetSchedulingV26Q1'
+        serverToServerTrackings:
+          description: "MMP server-to-server tracking URLs. Only allowed for app retargeting\
+            \ ad sets. Replaces the existing URLs when provided, clears them when\
+            \ empty, and leaves them unchanged when omitted"
+          items:
+            $ref: '#/components/schemas/ServerToServerTrackingV26Q1'
+          nullable: true
+          type: array
         targeting:
           $ref: '#/components/schemas/AdSetTargetingV26Q1'
       type: object
@@ -24334,6 +24362,7 @@ components:
           $ref: '#/components/schemas/SegmentConfigurationV1'
         type:
           default: SegmentRecommendation
+          description: Type of recommended segment data object.
           enum:
           - SegmentRecommendation
           nullable: true
@@ -24343,15 +24372,61 @@ components:
       type: object
     RecommendSegmentsProblem:
       additionalProperties: false
-      description: A warning or an error raised while processing the request.
+      description: Common problem object.
       example:
+        traceId: traceId
+        code: code
+        instance: instance
         detail: detail
+        source:
+          key: source
+        stackTrace: stackTrace
         title: title
+        type: unknown
       properties:
+        code:
+          description: "A machine-readable error code, expressed as a string value."
+          nullable: true
+          type: string
         detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          nullable: true
+          type: string
+        instance:
+          description: A URI that identifies the specific occurrence of the problem.
+          nullable: true
+          type: string
+        source:
+          additionalProperties:
+            type: string
+          description: A machine-readable structure to reference to the exact location(s)
+            causing the error(s).
+          nullable: true
+          type: object
+        stackTrace:
+          description: ""
           nullable: true
           type: string
         title:
+          description: A short human-readable description of the problem type.
+          nullable: true
+          type: string
+        traceId:
+          description: The request correlation ID this problem comes from.
+          nullable: true
+          type: string
+        type:
+          description: The problem's category.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
           nullable: true
           type: string
       type: object
@@ -24362,6 +24437,7 @@ components:
         data:
           attributes:
             brief: brief
+            country: country
             segmentStatusToRecommend: new
             segmentTypesToRecommend:
             - affinityAllLevels
@@ -24380,6 +24456,7 @@ components:
       description: Brief and options of a segment recommendation request.
       example:
         brief: brief
+        country: country
         segmentStatusToRecommend: new
         segmentTypesToRecommend:
         - affinityAllLevels
@@ -24388,26 +24465,42 @@ components:
         advertiserId: advertiserId
       properties:
         advertiserId:
-          description: Advertiser ID the caller has access to.
+          description: "[Optional] AdvertiserId this requestor has access to."
           type: string
         brief:
           description: A freeform audience description.
           type: string
+        country:
+          description: "[Optional] Country code. Must be a supported country. When\
+            \ `advertiserId` is set, it must also match the country of the advertiser."
+          type: string
         nbSegments:
           default: 5
-          description: "Number of segments to recommend, between 1 and 20 (defaults\
+          description: "Number of segments to recommend, between 1 and 20 (default\
             \ to 5)."
           format: int32
           type: integer
         segmentStatusToRecommend:
           default: new
-          description: Recommend existing segments or suggest new ones.
+          description: "[Optional] Recommend only existing segments or suggest the\
+            \ new ones. Default to new."
           enum:
           - new
           - existing
           type: string
         segmentTypesToRecommend:
+          description: "[Optional] Restrict the recommended segment types."
           items:
+            description: |-
+              Segment type, and optionally level, that can be requested.
+
+              Only existing segments can be requested for: affinityAllLevels, affinityTopLevel, affinityChildren, behavioral,
+              websiteVisitor, predictiveCLV, filterBased.
+
+              Require an advertiserId: inMarketCategoryAllLevels, inMarketCategoryLevel1, inMarketCategoryLevel2,
+              inMarketCategoryLevel3, behavioral, websiteVisitor, predictiveCLV, lookalike, filterBased.
+
+              Available to data coop advertisers only: behavioral, lookalike.
             enum:
             - affinityAllLevels
             - affinityTopLevel
@@ -24433,6 +24526,7 @@ components:
       example:
         attributes:
           brief: brief
+          country: country
           segmentStatusToRecommend: new
           segmentTypesToRecommend:
           - affinityAllLevels
@@ -24445,6 +24539,7 @@ components:
           $ref: '#/components/schemas/RecommendSegmentsRequestAttributes'
         type:
           default: RecommendSegmentsRequest
+          description: Type of the data object of a segment recommendation request.
           enum:
           - RecommendSegmentsRequest
           type: string
@@ -24597,15 +24692,43 @@ components:
             segmentType: affinity
           type: SegmentRecommendation
         warnings:
-        - detail: detail
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
           title: title
-        - detail: detail
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
           title: title
+          type: unknown
         errors:
-        - detail: detail
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
           title: title
-        - detail: detail
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
           title: title
+          type: unknown
       properties:
         data:
           items:
@@ -25041,6 +25164,9 @@ components:
             attributionConfiguration:
               attributionMethod: unknown
               lookbackWindow: unknown
+            serverToServerTrackings:
+            - url: url
+            - url: url
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
@@ -25124,6 +25250,9 @@ components:
             attributionConfiguration:
               attributionMethod: unknown
               lookbackWindow: unknown
+            serverToServerTrackings:
+            - url: url
+            - url: url
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
@@ -28058,6 +28187,7 @@ components:
           nullable: true
           type: string
         segmentType:
+          description: Type of recommended segment.
           enum:
           - affinity
           - inMarket
@@ -30985,6 +31115,9 @@ components:
           attributionConfiguration:
             attributionMethod: unknown
             lookbackWindow: unknown
+          serverToServerTrackings:
+          - url: url
+          - url: url
           budget:
             budgetDeliverySmoothing: accelerated
             budgetDeliveryWeek: undefined

@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.BiddingSettings;
+import com.criteo.api.retailmedia.experimental.model.LineItemBiddingResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,19 +49,19 @@ import com.criteo.api.retailmedia.experimental.JSON;
  * A value resource exposed by the API.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class BiddingSettingsResource {
+public class LineItemBiddingResponseResource {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private BiddingSettings attributes;
+  private LineItemBiddingResponse attributes;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public BiddingSettingsResource() {
+  public LineItemBiddingResponseResource() {
   }
 
-  public BiddingSettingsResource attributes(BiddingSettings attributes) {
+  public LineItemBiddingResponseResource attributes(LineItemBiddingResponse attributes) {
     
     this.attributes = attributes;
     return this;
@@ -73,17 +73,17 @@ public class BiddingSettingsResource {
   **/
   @javax.annotation.Nullable
 
-  public BiddingSettings getAttributes() {
+  public LineItemBiddingResponse getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(BiddingSettings attributes) {
+  public void setAttributes(LineItemBiddingResponse attributes) {
     this.attributes = attributes;
   }
 
 
-  public BiddingSettingsResource type(String type) {
+  public LineItemBiddingResponseResource type(String type) {
     
     this.type = type;
     return this;
@@ -114,9 +114,9 @@ public class BiddingSettingsResource {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BiddingSettingsResource biddingSettingsResource = (BiddingSettingsResource) o;
-    return Objects.equals(this.attributes, biddingSettingsResource.attributes) &&
-        Objects.equals(this.type, biddingSettingsResource.type);
+    LineItemBiddingResponseResource lineItemBiddingResponseResource = (LineItemBiddingResponseResource) o;
+    return Objects.equals(this.attributes, lineItemBiddingResponseResource.attributes) &&
+        Objects.equals(this.type, lineItemBiddingResponseResource.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -138,7 +138,7 @@ public class BiddingSettingsResource {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BiddingSettingsResource {\n");
+    sb.append("class LineItemBiddingResponseResource {\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
@@ -174,25 +174,25 @@ public class BiddingSettingsResource {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to BiddingSettingsResource
+  * @throws IOException if the JSON Object is invalid with respect to LineItemBiddingResponseResource
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!BiddingSettingsResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in BiddingSettingsResource is not found in the empty JSON string", BiddingSettingsResource.openapiRequiredFields.toString()));
+        if (!LineItemBiddingResponseResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemBiddingResponseResource is not found in the empty JSON string", LineItemBiddingResponseResource.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!BiddingSettingsResource.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BiddingSettingsResource` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!LineItemBiddingResponseResource.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LineItemBiddingResponseResource` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        BiddingSettings.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        LineItemBiddingResponse.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
@@ -203,22 +203,22 @@ public class BiddingSettingsResource {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!BiddingSettingsResource.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'BiddingSettingsResource' and its subtypes
+       if (!LineItemBiddingResponseResource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LineItemBiddingResponseResource' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<BiddingSettingsResource> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(BiddingSettingsResource.class));
+       final TypeAdapter<LineItemBiddingResponseResource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemBiddingResponseResource.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<BiddingSettingsResource>() {
+       return (TypeAdapter<T>) new TypeAdapter<LineItemBiddingResponseResource>() {
            @Override
-           public void write(JsonWriter out, BiddingSettingsResource value) throws IOException {
+           public void write(JsonWriter out, LineItemBiddingResponseResource value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public BiddingSettingsResource read(JsonReader in) throws IOException {
+           public LineItemBiddingResponseResource read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -229,18 +229,18 @@ public class BiddingSettingsResource {
   }
 
  /**
-  * Create an instance of BiddingSettingsResource given an JSON string
+  * Create an instance of LineItemBiddingResponseResource given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of BiddingSettingsResource
-  * @throws IOException if the JSON string is invalid with respect to BiddingSettingsResource
+  * @return An instance of LineItemBiddingResponseResource
+  * @throws IOException if the JSON string is invalid with respect to LineItemBiddingResponseResource
   */
-  public static BiddingSettingsResource fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, BiddingSettingsResource.class);
+  public static LineItemBiddingResponseResource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LineItemBiddingResponseResource.class);
   }
 
  /**
-  * Convert an instance of BiddingSettingsResource to an JSON string
+  * Convert an instance of LineItemBiddingResponseResource to an JSON string
   *
   * @return JSON string
   */

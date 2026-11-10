@@ -8,7 +8,7 @@ Configuration of a recommended behavioral segment.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**category** | [**CategoryEnum**](#CategoryEnum) |  |  |
+|**category** | [**CategoryEnum**](#CategoryEnum) | Category of a behavioral segment. |  |
 |**country** | **String** |  |  [optional] |
 |**endDate** | **String** |  |  [optional] |
 |**startDate** | **String** |  |  [optional] |

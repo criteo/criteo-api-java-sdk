@@ -58,12 +58,16 @@ public class RecommendSegmentsRequestAttributes {
   @SerializedName(SERIALIZED_NAME_BRIEF)
   private String brief;
 
+  public static final String SERIALIZED_NAME_COUNTRY = "country";
+  @SerializedName(SERIALIZED_NAME_COUNTRY)
+  private String country;
+
   public static final String SERIALIZED_NAME_NB_SEGMENTS = "nbSegments";
   @SerializedName(SERIALIZED_NAME_NB_SEGMENTS)
   private Integer nbSegments = 5;
 
   /**
-   * Recommend existing segments or suggest new ones.
+   * [Optional] Recommend only existing segments or suggest the new ones. Default to new.
    */
   @JsonAdapter(SegmentStatusToRecommendEnum.Adapter.class)
   public enum SegmentStatusToRecommendEnum {
@@ -114,7 +118,7 @@ public class RecommendSegmentsRequestAttributes {
   private SegmentStatusToRecommendEnum segmentStatusToRecommend = SegmentStatusToRecommendEnum.NEW;
 
   /**
-   * Gets or Sets segmentTypesToRecommend
+   * Segment type, and optionally level, that can be requested.  Only existing segments can be requested for: affinityAllLevels, affinityTopLevel, affinityChildren, behavioral, websiteVisitor, predictiveCLV, filterBased.  Require an advertiserId: inMarketCategoryAllLevels, inMarketCategoryLevel1, inMarketCategoryLevel2, inMarketCategoryLevel3, behavioral, websiteVisitor, predictiveCLV, lookalike, filterBased.  Available to data coop advertisers only: behavioral, lookalike.
    */
   @JsonAdapter(SegmentTypesToRecommendEnum.Adapter.class)
   public enum SegmentTypesToRecommendEnum {
@@ -196,7 +200,7 @@ public class RecommendSegmentsRequestAttributes {
   }
 
    /**
-   * Advertiser ID the caller has access to.
+   * [Optional] AdvertiserId this requestor has access to.
    * @return advertiserId
   **/
   @javax.annotation.Nullable
@@ -233,6 +237,28 @@ public class RecommendSegmentsRequestAttributes {
   }
 
 
+  public RecommendSegmentsRequestAttributes country(String country) {
+    
+    this.country = country;
+    return this;
+  }
+
+   /**
+   * [Optional] Country code. Must be a supported country. When &#x60;advertiserId&#x60; is set, it must also match the country of the advertiser.
+   * @return country
+  **/
+  @javax.annotation.Nullable
+
+  public String getCountry() {
+    return country;
+  }
+
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+
   public RecommendSegmentsRequestAttributes nbSegments(Integer nbSegments) {
     
     this.nbSegments = nbSegments;
@@ -240,7 +266,7 @@ public class RecommendSegmentsRequestAttributes {
   }
 
    /**
-   * Number of segments to recommend, between 1 and 20 (defaults to 5).
+   * Number of segments to recommend, between 1 and 20 (default to 5).
    * @return nbSegments
   **/
   @javax.annotation.Nullable
@@ -262,7 +288,7 @@ public class RecommendSegmentsRequestAttributes {
   }
 
    /**
-   * Recommend existing segments or suggest new ones.
+   * [Optional] Recommend only existing segments or suggest the new ones. Default to new.
    * @return segmentStatusToRecommend
   **/
   @javax.annotation.Nullable
@@ -292,7 +318,7 @@ public class RecommendSegmentsRequestAttributes {
   }
 
    /**
-   * Get segmentTypesToRecommend
+   * [Optional] Restrict the recommended segment types.
    * @return segmentTypesToRecommend
   **/
   @javax.annotation.Nullable
@@ -319,6 +345,7 @@ public class RecommendSegmentsRequestAttributes {
     RecommendSegmentsRequestAttributes recommendSegmentsRequestAttributes = (RecommendSegmentsRequestAttributes) o;
     return Objects.equals(this.advertiserId, recommendSegmentsRequestAttributes.advertiserId) &&
         Objects.equals(this.brief, recommendSegmentsRequestAttributes.brief) &&
+        Objects.equals(this.country, recommendSegmentsRequestAttributes.country) &&
         Objects.equals(this.nbSegments, recommendSegmentsRequestAttributes.nbSegments) &&
         Objects.equals(this.segmentStatusToRecommend, recommendSegmentsRequestAttributes.segmentStatusToRecommend) &&
         Objects.equals(this.segmentTypesToRecommend, recommendSegmentsRequestAttributes.segmentTypesToRecommend);
@@ -326,7 +353,7 @@ public class RecommendSegmentsRequestAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserId, brief, nbSegments, segmentStatusToRecommend, segmentTypesToRecommend);
+    return Objects.hash(advertiserId, brief, country, nbSegments, segmentStatusToRecommend, segmentTypesToRecommend);
   }
 
   @Override
@@ -335,6 +362,7 @@ public class RecommendSegmentsRequestAttributes {
     sb.append("class RecommendSegmentsRequestAttributes {\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
     sb.append("    brief: ").append(toIndentedString(brief)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    nbSegments: ").append(toIndentedString(nbSegments)).append("\n");
     sb.append("    segmentStatusToRecommend: ").append(toIndentedString(segmentStatusToRecommend)).append("\n");
     sb.append("    segmentTypesToRecommend: ").append(toIndentedString(segmentTypesToRecommend)).append("\n");
@@ -362,6 +390,7 @@ public class RecommendSegmentsRequestAttributes {
     openapiFields = new HashSet<String>();
     openapiFields.add("advertiserId");
     openapiFields.add("brief");
+    openapiFields.add("country");
     openapiFields.add("nbSegments");
     openapiFields.add("segmentStatusToRecommend");
     openapiFields.add("segmentTypesToRecommend");
@@ -403,6 +432,9 @@ public class RecommendSegmentsRequestAttributes {
       }
       if (!jsonObj.get("brief").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `brief` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brief").toString()));
+      }
+      if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
       }
       if ((jsonObj.get("segmentStatusToRecommend") != null && !jsonObj.get("segmentStatusToRecommend").isJsonNull()) && !jsonObj.get("segmentStatusToRecommend").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `segmentStatusToRecommend` to be a primitive type in the JSON string but got `%s`", jsonObj.get("segmentStatusToRecommend").toString()));

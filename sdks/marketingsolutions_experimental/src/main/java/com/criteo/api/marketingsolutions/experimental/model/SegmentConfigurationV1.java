@@ -99,7 +99,7 @@ public class SegmentConfigurationV1 {
   private String segmentName;
 
   /**
-   * Gets or Sets segmentType
+   * Type of recommended segment.
    */
   @JsonAdapter(SegmentTypeEnum.Adapter.class)
   public enum SegmentTypeEnum {
@@ -417,7 +417,7 @@ public class SegmentConfigurationV1 {
   }
 
    /**
-   * Get segmentType
+   * Type of recommended segment.
    * @return segmentType
   **/
   @javax.annotation.Nonnull

@@ -15,8 +15,8 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.BiddingSettingsResource;
 import com.criteo.api.retailmedia.experimental.model.CommonProblem;
+import com.criteo.api.retailmedia.experimental.model.LineItemBiddingResponseResource;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,10 +52,10 @@ import com.criteo.api.retailmedia.experimental.JSON;
  * A top-level object that encapsulates a Criteo API response for a single value object.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class BiddingSettingsResponse {
+public class LineItemBiddingResponseResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private BiddingSettingsResource data;
+  private LineItemBiddingResponseResource data;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -65,11 +65,11 @@ public class BiddingSettingsResponse {
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   private List<CommonProblem> warnings = null;
 
-  public BiddingSettingsResponse() {
+  public LineItemBiddingResponseResponse() {
   }
 
   
-  public BiddingSettingsResponse(
+  public LineItemBiddingResponseResponse(
      List<CommonProblem> errors, 
      List<CommonProblem> warnings
   ) {
@@ -78,7 +78,7 @@ public class BiddingSettingsResponse {
     this.warnings = warnings;
   }
 
-  public BiddingSettingsResponse data(BiddingSettingsResource data) {
+  public LineItemBiddingResponseResponse data(LineItemBiddingResponseResource data) {
     
     this.data = data;
     return this;
@@ -90,12 +90,12 @@ public class BiddingSettingsResponse {
   **/
   @javax.annotation.Nullable
 
-  public BiddingSettingsResource getData() {
+  public LineItemBiddingResponseResource getData() {
     return data;
   }
 
 
-  public void setData(BiddingSettingsResource data) {
+  public void setData(LineItemBiddingResponseResource data) {
     this.data = data;
   }
 
@@ -135,10 +135,10 @@ public class BiddingSettingsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BiddingSettingsResponse biddingSettingsResponse = (BiddingSettingsResponse) o;
-    return Objects.equals(this.data, biddingSettingsResponse.data) &&
-        Objects.equals(this.errors, biddingSettingsResponse.errors) &&
-        Objects.equals(this.warnings, biddingSettingsResponse.warnings);
+    LineItemBiddingResponseResponse lineItemBiddingResponseResponse = (LineItemBiddingResponseResponse) o;
+    return Objects.equals(this.data, lineItemBiddingResponseResponse.data) &&
+        Objects.equals(this.errors, lineItemBiddingResponseResponse.errors) &&
+        Objects.equals(this.warnings, lineItemBiddingResponseResponse.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -160,7 +160,7 @@ public class BiddingSettingsResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BiddingSettingsResponse {\n");
+    sb.append("class LineItemBiddingResponseResponse {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
@@ -198,25 +198,25 @@ public class BiddingSettingsResponse {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to BiddingSettingsResponse
+  * @throws IOException if the JSON Object is invalid with respect to LineItemBiddingResponseResponse
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!BiddingSettingsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in BiddingSettingsResponse is not found in the empty JSON string", BiddingSettingsResponse.openapiRequiredFields.toString()));
+        if (!LineItemBiddingResponseResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemBiddingResponseResponse is not found in the empty JSON string", LineItemBiddingResponseResponse.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!BiddingSettingsResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BiddingSettingsResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!LineItemBiddingResponseResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LineItemBiddingResponseResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        BiddingSettingsResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
+        LineItemBiddingResponseResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
@@ -252,22 +252,22 @@ public class BiddingSettingsResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!BiddingSettingsResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'BiddingSettingsResponse' and its subtypes
+       if (!LineItemBiddingResponseResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LineItemBiddingResponseResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<BiddingSettingsResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(BiddingSettingsResponse.class));
+       final TypeAdapter<LineItemBiddingResponseResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemBiddingResponseResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<BiddingSettingsResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<LineItemBiddingResponseResponse>() {
            @Override
-           public void write(JsonWriter out, BiddingSettingsResponse value) throws IOException {
+           public void write(JsonWriter out, LineItemBiddingResponseResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public BiddingSettingsResponse read(JsonReader in) throws IOException {
+           public LineItemBiddingResponseResponse read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -278,18 +278,18 @@ public class BiddingSettingsResponse {
   }
 
  /**
-  * Create an instance of BiddingSettingsResponse given an JSON string
+  * Create an instance of LineItemBiddingResponseResponse given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of BiddingSettingsResponse
-  * @throws IOException if the JSON string is invalid with respect to BiddingSettingsResponse
+  * @return An instance of LineItemBiddingResponseResponse
+  * @throws IOException if the JSON string is invalid with respect to LineItemBiddingResponseResponse
   */
-  public static BiddingSettingsResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, BiddingSettingsResponse.class);
+  public static LineItemBiddingResponseResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LineItemBiddingResponseResponse.class);
   }
 
  /**
-  * Convert an instance of BiddingSettingsResponse to an JSON string
+  * Convert an instance of LineItemBiddingResponseResponse to an JSON string
   *
   * @return JSON string
   */

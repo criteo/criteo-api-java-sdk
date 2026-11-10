@@ -15,7 +15,6 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.LineItemMinBids;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,62 +45,36 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * A value resource exposed by the API.
+ * Represents the external bidding configuration to apply to a line item.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class LineItemMinBidsResource {
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private LineItemMinBids attributes;
+public class LineItemBiddingRequest {
+  public static final String SERIALIZED_NAME_MAX_BID = "maxBid";
+  @SerializedName(SERIALIZED_NAME_MAX_BID)
+  private Double maxBid;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
-  public LineItemMinBidsResource() {
+  public LineItemBiddingRequest() {
   }
 
-  public LineItemMinBidsResource attributes(LineItemMinBids attributes) {
+  public LineItemBiddingRequest maxBid(Double maxBid) {
     
-    this.attributes = attributes;
+    this.maxBid = maxBid;
     return this;
   }
 
    /**
-   * Get attributes
-   * @return attributes
+   * The maximum bid to set for the Adaptive strategy.
+   * @return maxBid
   **/
   @javax.annotation.Nullable
 
-  public LineItemMinBids getAttributes() {
-    return attributes;
+  public Double getMaxBid() {
+    return maxBid;
   }
 
 
-  public void setAttributes(LineItemMinBids attributes) {
-    this.attributes = attributes;
-  }
-
-
-  public LineItemMinBidsResource type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Type of the resource.
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
+  public void setMaxBid(Double maxBid) {
+    this.maxBid = maxBid;
   }
 
 
@@ -114,9 +87,8 @@ public class LineItemMinBidsResource {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LineItemMinBidsResource lineItemMinBidsResource = (LineItemMinBidsResource) o;
-    return Objects.equals(this.attributes, lineItemMinBidsResource.attributes) &&
-        Objects.equals(this.type, lineItemMinBidsResource.type);
+    LineItemBiddingRequest lineItemBiddingRequest = (LineItemBiddingRequest) o;
+    return Objects.equals(this.maxBid, lineItemBiddingRequest.maxBid);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -125,7 +97,7 @@ public class LineItemMinBidsResource {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, type);
+    return Objects.hash(maxBid);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -138,9 +110,8 @@ public class LineItemMinBidsResource {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LineItemMinBidsResource {\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("class LineItemBiddingRequest {\n");
+    sb.append("    maxBid: ").append(toIndentedString(maxBid)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -163,8 +134,7 @@ public class LineItemMinBidsResource {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("attributes");
-    openapiFields.add("type");
+    openapiFields.add("maxBid");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -174,28 +144,21 @@ public class LineItemMinBidsResource {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to LineItemMinBidsResource
+  * @throws IOException if the JSON Object is invalid with respect to LineItemBiddingRequest
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!LineItemMinBidsResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemMinBidsResource is not found in the empty JSON string", LineItemMinBidsResource.openapiRequiredFields.toString()));
+        if (!LineItemBiddingRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemBiddingRequest is not found in the empty JSON string", LineItemBiddingRequest.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!LineItemMinBidsResource.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LineItemMinBidsResource` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!LineItemBiddingRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LineItemBiddingRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        LineItemMinBids.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 
@@ -203,22 +166,22 @@ public class LineItemMinBidsResource {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LineItemMinBidsResource.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LineItemMinBidsResource' and its subtypes
+       if (!LineItemBiddingRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LineItemBiddingRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LineItemMinBidsResource> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemMinBidsResource.class));
+       final TypeAdapter<LineItemBiddingRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemBiddingRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LineItemMinBidsResource>() {
+       return (TypeAdapter<T>) new TypeAdapter<LineItemBiddingRequest>() {
            @Override
-           public void write(JsonWriter out, LineItemMinBidsResource value) throws IOException {
+           public void write(JsonWriter out, LineItemBiddingRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public LineItemMinBidsResource read(JsonReader in) throws IOException {
+           public LineItemBiddingRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -229,18 +192,18 @@ public class LineItemMinBidsResource {
   }
 
  /**
-  * Create an instance of LineItemMinBidsResource given an JSON string
+  * Create an instance of LineItemBiddingRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of LineItemMinBidsResource
-  * @throws IOException if the JSON string is invalid with respect to LineItemMinBidsResource
+  * @return An instance of LineItemBiddingRequest
+  * @throws IOException if the JSON string is invalid with respect to LineItemBiddingRequest
   */
-  public static LineItemMinBidsResource fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LineItemMinBidsResource.class);
+  public static LineItemBiddingRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LineItemBiddingRequest.class);
   }
 
  /**
-  * Convert an instance of LineItemMinBidsResource to an JSON string
+  * Convert an instance of LineItemBiddingRequest to an JSON string
   *
   * @return JSON string
   */

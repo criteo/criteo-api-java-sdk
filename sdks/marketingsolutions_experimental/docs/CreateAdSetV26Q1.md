@@ -8,6 +8,7 @@ ad set create model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**adSetType** | [**AdSetTypeEnum**](#AdSetTypeEnum) | Type of the ad set. Optional, defaults to standard if omitted.  \&quot;unknown\&quot; is read-only and is rejected on create. |  [optional] |
 |**attributionConfiguration** | [**CreateAdSetAttributionConfigurationV26Q1**](CreateAdSetAttributionConfigurationV26Q1.md) |  |  [optional] |
 |**bidding** | [**CreateAdSetBiddingV26Q1**](CreateAdSetBiddingV26Q1.md) |  |  |
 |**budget** | [**CreateAdSetBudgetV26Q1**](CreateAdSetBudgetV26Q1.md) |  |  [optional] |
@@ -17,8 +18,19 @@ ad set create model
 |**name** | **String** | Name of the ad set |  |
 |**objective** | [**ObjectiveEnum**](#ObjectiveEnum) | Objective of the ad set |  |
 |**schedule** | [**CreateAdSetScheduleV26Q1**](CreateAdSetScheduleV26Q1.md) |  |  |
+|**serverToServerTrackings** | [**List&lt;ServerToServerTrackingV26Q1&gt;**](ServerToServerTrackingV26Q1.md) | MMP server-to-server tracking URLs. Optional, only allowed for app retargeting ad sets. |  [optional] |
 |**targeting** | [**CreateAdSetTargetingV26Q1**](CreateAdSetTargetingV26Q1.md) |  |  |
 |**trackingCode** | **String** | The click tracking code associated to this Ad Set. |  |
+
+
+
+## Enum: AdSetTypeEnum
+
+| Name | Value |
+|---- | -----|
+| STANDARD | &quot;standard&quot; |
+| APPRETARGETING | &quot;appRetargeting&quot; |
+| UNKNOWN | &quot;unknown&quot; |
 
 
 

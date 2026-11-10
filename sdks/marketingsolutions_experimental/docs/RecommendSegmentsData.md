@@ -9,7 +9,7 @@ A recommended segment wrapped in a JSON:API-style data object.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**attributes** | [**SegmentConfigurationV1**](SegmentConfigurationV1.md) |  |  |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) | Type of recommended segment data object. |  [optional] |
 
 
 

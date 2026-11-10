@@ -15,7 +15,6 @@ package com.criteo.api.retailmedia.experimental.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.experimental.model.ExternalFrequencyCappingModel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,36 +45,36 @@ import java.util.Set;
 import com.criteo.api.retailmedia.experimental.JSON;
 
 /**
- * Wraps an update value. Omit the containing property to leave it unchanged, or set &#x60;value&#x60; to null to remove the existing value.
+ * Represents the external bidding configuration for a line item.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExternalFrequencyCappingModelNillableV2 {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private ExternalFrequencyCappingModel value;
+public class LineItemBiddingResponse {
+  public static final String SERIALIZED_NAME_MAX_BID = "maxBid";
+  @SerializedName(SERIALIZED_NAME_MAX_BID)
+  private Double maxBid;
 
-  public ExternalFrequencyCappingModelNillableV2() {
+  public LineItemBiddingResponse() {
   }
 
-  public ExternalFrequencyCappingModelNillableV2 value(ExternalFrequencyCappingModel value) {
+  public LineItemBiddingResponse maxBid(Double maxBid) {
     
-    this.value = value;
+    this.maxBid = maxBid;
     return this;
   }
 
    /**
-   * Get value
-   * @return value
+   * The maximum bid that the Adaptive strategy may use.
+   * @return maxBid
   **/
   @javax.annotation.Nullable
 
-  public ExternalFrequencyCappingModel getValue() {
-    return value;
+  public Double getMaxBid() {
+    return maxBid;
   }
 
 
-  public void setValue(ExternalFrequencyCappingModel value) {
-    this.value = value;
+  public void setMaxBid(Double maxBid) {
+    this.maxBid = maxBid;
   }
 
 
@@ -88,8 +87,8 @@ public class ExternalFrequencyCappingModelNillableV2 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExternalFrequencyCappingModelNillableV2 externalFrequencyCappingModelNillableV2 = (ExternalFrequencyCappingModelNillableV2) o;
-    return Objects.equals(this.value, externalFrequencyCappingModelNillableV2.value);
+    LineItemBiddingResponse lineItemBiddingResponse = (LineItemBiddingResponse) o;
+    return Objects.equals(this.maxBid, lineItemBiddingResponse.maxBid);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -98,7 +97,7 @@ public class ExternalFrequencyCappingModelNillableV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(value);
+    return Objects.hash(maxBid);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -111,8 +110,8 @@ public class ExternalFrequencyCappingModelNillableV2 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExternalFrequencyCappingModelNillableV2 {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("class LineItemBiddingResponse {\n");
+    sb.append("    maxBid: ").append(toIndentedString(maxBid)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -135,7 +134,7 @@ public class ExternalFrequencyCappingModelNillableV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("value");
+    openapiFields.add("maxBid");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -145,25 +144,21 @@ public class ExternalFrequencyCappingModelNillableV2 {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExternalFrequencyCappingModelNillableV2
+  * @throws IOException if the JSON Object is invalid with respect to LineItemBiddingResponse
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ExternalFrequencyCappingModelNillableV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalFrequencyCappingModelNillableV2 is not found in the empty JSON string", ExternalFrequencyCappingModelNillableV2.openapiRequiredFields.toString()));
+        if (!LineItemBiddingResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemBiddingResponse is not found in the empty JSON string", LineItemBiddingResponse.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!ExternalFrequencyCappingModelNillableV2.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExternalFrequencyCappingModelNillableV2` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!LineItemBiddingResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LineItemBiddingResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
-      }
-      // validate the optional field `value`
-      if (jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) {
-        ExternalFrequencyCappingModel.validateJsonObject(jsonObj.getAsJsonObject("value"));
       }
   }
 
@@ -171,22 +166,22 @@ public class ExternalFrequencyCappingModelNillableV2 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExternalFrequencyCappingModelNillableV2.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExternalFrequencyCappingModelNillableV2' and its subtypes
+       if (!LineItemBiddingResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LineItemBiddingResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExternalFrequencyCappingModelNillableV2> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalFrequencyCappingModelNillableV2.class));
+       final TypeAdapter<LineItemBiddingResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemBiddingResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExternalFrequencyCappingModelNillableV2>() {
+       return (TypeAdapter<T>) new TypeAdapter<LineItemBiddingResponse>() {
            @Override
-           public void write(JsonWriter out, ExternalFrequencyCappingModelNillableV2 value) throws IOException {
+           public void write(JsonWriter out, LineItemBiddingResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ExternalFrequencyCappingModelNillableV2 read(JsonReader in) throws IOException {
+           public LineItemBiddingResponse read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -197,18 +192,18 @@ public class ExternalFrequencyCappingModelNillableV2 {
   }
 
  /**
-  * Create an instance of ExternalFrequencyCappingModelNillableV2 given an JSON string
+  * Create an instance of LineItemBiddingResponse given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExternalFrequencyCappingModelNillableV2
-  * @throws IOException if the JSON string is invalid with respect to ExternalFrequencyCappingModelNillableV2
+  * @return An instance of LineItemBiddingResponse
+  * @throws IOException if the JSON string is invalid with respect to LineItemBiddingResponse
   */
-  public static ExternalFrequencyCappingModelNillableV2 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExternalFrequencyCappingModelNillableV2.class);
+  public static LineItemBiddingResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LineItemBiddingResponse.class);
   }
 
  /**
-  * Convert an instance of ExternalFrequencyCappingModelNillableV2 to an JSON string
+  * Convert an instance of LineItemBiddingResponse to an JSON string
   *
   * @return JSON string
   */

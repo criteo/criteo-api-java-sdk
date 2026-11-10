@@ -54,7 +54,7 @@ public class RecommendSegmentsRequestData {
   private RecommendSegmentsRequestAttributes attributes;
 
   /**
-   * Gets or Sets type
+   * Type of the data object of a segment recommendation request.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -134,7 +134,7 @@ public class RecommendSegmentsRequestData {
   }
 
    /**
-   * Get type
+   * Type of the data object of a segment recommendation request.
    * @return type
   **/
   @javax.annotation.Nullable

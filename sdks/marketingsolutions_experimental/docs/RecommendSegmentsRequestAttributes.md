@@ -8,11 +8,12 @@ Brief and options of a segment recommendation request.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**advertiserId** | **String** | Advertiser ID the caller has access to. |  [optional] |
+|**advertiserId** | **String** | [Optional] AdvertiserId this requestor has access to. |  [optional] |
 |**brief** | **String** | A freeform audience description. |  |
-|**nbSegments** | **Integer** | Number of segments to recommend, between 1 and 20 (defaults to 5). |  [optional] |
-|**segmentStatusToRecommend** | [**SegmentStatusToRecommendEnum**](#SegmentStatusToRecommendEnum) | Recommend existing segments or suggest new ones. |  [optional] |
-|**segmentTypesToRecommend** | [**List&lt;SegmentTypesToRecommendEnum&gt;**](#List&lt;SegmentTypesToRecommendEnum&gt;) |  |  [optional] |
+|**country** | **String** | [Optional] Country code. Must be a supported country. When &#x60;advertiserId&#x60; is set, it must also match the country of the advertiser. |  [optional] |
+|**nbSegments** | **Integer** | Number of segments to recommend, between 1 and 20 (default to 5). |  [optional] |
+|**segmentStatusToRecommend** | [**SegmentStatusToRecommendEnum**](#SegmentStatusToRecommendEnum) | [Optional] Recommend only existing segments or suggest the new ones. Default to new. |  [optional] |
+|**segmentTypesToRecommend** | [**List&lt;SegmentTypesToRecommendEnum&gt;**](#List&lt;SegmentTypesToRecommendEnum&gt;) | [Optional] Restrict the recommended segment types. |  [optional] |
 
 
 

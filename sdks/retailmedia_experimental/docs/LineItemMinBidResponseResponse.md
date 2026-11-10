@@ -1,6 +1,6 @@
 
 
-# BiddingSettingsResponse
+# LineItemMinBidResponseResponse
 
 A top-level object that encapsulates a Criteo API response for a single value object.
 
@@ -8,7 +8,7 @@ A top-level object that encapsulates a Criteo API response for a single value ob
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**BiddingSettingsResource**](BiddingSettingsResource.md) |  |  [optional] |
+|**data** | [**LineItemMinBidResponseResource**](LineItemMinBidResponseResource.md) |  |  [optional] |
 |**errors** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) | Errors that occured during this call. |  [optional] [readonly] |
 |**warnings** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) | Warnings that occured during this call. |  [optional] [readonly] |
 

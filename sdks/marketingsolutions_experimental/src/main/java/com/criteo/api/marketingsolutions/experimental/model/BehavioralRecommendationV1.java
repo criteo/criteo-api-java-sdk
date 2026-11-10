@@ -50,7 +50,7 @@ import com.criteo.api.marketingsolutions.experimental.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BehavioralRecommendationV1 {
   /**
-   * Gets or Sets category
+   * Category of a behavioral segment.
    */
   @JsonAdapter(CategoryEnum.Adapter.class)
   public enum CategoryEnum {
@@ -128,7 +128,7 @@ public class BehavioralRecommendationV1 {
   }
 
    /**
-   * Get category
+   * Category of a behavioral segment.
    * @return category
   **/
   @javax.annotation.Nonnull

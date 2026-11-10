@@ -1,6 +1,6 @@
 
 
-# LineItemMinBidsResource
+# LineItemBiddingRequestResource
 
 A value resource exposed by the API.
 
@@ -8,7 +8,7 @@ A value resource exposed by the API.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**attributes** | [**LineItemMinBids**](LineItemMinBids.md) |  |  [optional] |
+|**attributes** | [**LineItemBiddingRequest**](LineItemBiddingRequest.md) |  |  [optional] |
 |**type** | **String** | Type of the resource. |  [optional] |
 
 

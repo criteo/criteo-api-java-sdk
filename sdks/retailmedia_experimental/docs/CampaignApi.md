@@ -16,14 +16,14 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**deleteTargetsByLineItemId**](CampaignApi.md#deleteTargetsByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/targets/delete | /experimental/retail-media/line-items/{line-item-id}/targets/delete |
 | [**fetchCreatives**](CampaignApi.md#fetchCreatives) | **GET** /experimental/retail-media/line-items/{line-item-id}/creatives | /experimental/retail-media/line-items/{line-item-id}/creatives |
 | [**fetchProducts**](CampaignApi.md#fetchProducts) | **GET** /experimental/retail-media/line-items/{line-item-id}/products | /experimental/retail-media/line-items/{line-item-id}/products |
-| [**getBiddingStrategyByLineItemId**](CampaignApi.md#getBiddingStrategyByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/bidding-strategy |
+| [**getBiddingByLineItemId**](CampaignApi.md#getBiddingByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/bidding | /experimental/retail-media/line-items/{line-item-id}/bidding |
 | [**getCampaign**](CampaignApi.md#getCampaign) | **GET** /experimental/retail-media/campaigns/{campaign-id} | /experimental/retail-media/campaigns/{campaign-id} |
 | [**getCapoutHistory**](CampaignApi.md#getCapoutHistory) | **POST** /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history | /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history |
 | [**getCatalogStatus**](CampaignApi.md#getCatalogStatus) | **GET** /experimental/retail-media/catalogs/{catalogId}/status | /experimental/retail-media/catalogs/{catalogId}/status |
 | [**getCreative**](CampaignApi.md#getCreative) | **GET** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
 | [**getExternalLineItemChecks**](CampaignApi.md#getExternalLineItemChecks) | **GET** /experimental/retail-media/diagnostics/line-item-checks | /experimental/retail-media/diagnostics/line-item-checks |
 | [**getLineItem**](CampaignApi.md#getLineItem) | **GET** /experimental/retail-media/line-items/{line-item-id} | /experimental/retail-media/line-items/{line-item-id} |
-| [**getMinBidsByLineItemId**](CampaignApi.md#getMinBidsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/min-bids | /experimental/retail-media/line-items/{line-item-id}/min-bids |
+| [**getMinBidByLineItemId**](CampaignApi.md#getMinBidByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/min-bid | /experimental/retail-media/line-items/{line-item-id}/min-bid |
 | [**getTargetsByLineItemId**](CampaignApi.md#getTargetsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/targets | /experimental/retail-media/line-items/{line-item-id}/targets |
 | [**lineItemsDemandSearch**](CampaignApi.md#lineItemsDemandSearch) | **POST** /experimental/retail-media/line-items/demand-search | /experimental/retail-media/line-items/demand-search |
 | [**lineItemsSupplySearch**](CampaignApi.md#lineItemsSupplySearch) | **POST** /experimental/retail-media/line-items/supply-search | /experimental/retail-media/line-items/supply-search |
@@ -33,7 +33,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**searchAccountCreativesEnriched**](CampaignApi.md#searchAccountCreativesEnriched) | **POST** /experimental/retail-media/accounts/{account-id}/creatives/search-enriched | /experimental/retail-media/accounts/{account-id}/creatives/search-enriched |
 | [**searchAccountRetailers**](CampaignApi.md#searchAccountRetailers) | **POST** /experimental/retail-media/accounts/{accountId}/retailers/search | /experimental/retail-media/accounts/{accountId}/retailers/search |
 | [**searchCampaigns**](CampaignApi.md#searchCampaigns) | **POST** /experimental/retail-media/accounts/{account-id}/campaigns/search | /experimental/retail-media/accounts/{account-id}/campaigns/search |
-| [**setBiddingStrategyByLineItemId**](CampaignApi.md#setBiddingStrategyByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy |
+| [**setBiddingByLineItemId**](CampaignApi.md#setBiddingByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/set-bidding | /experimental/retail-media/line-items/{line-item-id}/set-bidding |
 | [**submitLineItem**](CampaignApi.md#submitLineItem) | **POST** /experimental/retail-media/line-items/{line-item-id}/submit | /experimental/retail-media/line-items/{line-item-id}/submit |
 | [**updateAuctionLineItem**](CampaignApi.md#updateAuctionLineItem) | **PUT** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId} |
 | [**updateCampaign**](CampaignApi.md#updateCampaign) | **PATCH** /experimental/retail-media/campaigns/{campaign-id} | /experimental/retail-media/campaigns/{campaign-id} |
@@ -51,7 +51,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 /experimental/retail-media/line-items/{line-item-id}/products/add
 
-Add products to a line item.
+Add products to a line item. &lt;br /&gt;    Add products to a line item. The add is all-or-nothing.
 
 ### Example
 
@@ -415,7 +415,7 @@ public class Example {
 
 /experimental/retail-media/line-items
 
-Create a new line item.
+Create a line item. &lt;br /&gt;    Creates the line item under its parent campaign, then sets up its dynamic budgets when the campaign requires  them. If setting up the dynamic budgets fails, the request fails and the line item that was created is renamed  with a [FAILED] prefix.
 
 ### Example
 
@@ -686,7 +686,7 @@ public class Example {
 
 /experimental/retail-media/line-items/{line-item-id}/creatives/delete
 
-Delete creatives and their product collections from a line item.
+Delete creatives from a line item. &lt;br /&gt;    Delete creatives and their product collections from a line item.
 
 ### Example
 
@@ -777,7 +777,7 @@ public class Example {
 
 /experimental/retail-media/line-items/{line-item-id}/products/delete
 
-Delete products from a line item.
+Delete products from a line item. &lt;br /&gt;    Delete products from a line item. The products are soft deleted.
 
 ### Example
 
@@ -959,7 +959,7 @@ public class Example {
 
 /experimental/retail-media/line-items/{line-item-id}/creatives
 
-Retrieve the creatives and product collections associated with a line item.
+Retrieve the creatives and product collections associated with a line item. &lt;br /&gt;    Returns each creative of the line item with its product collections.
 
 ### Example
 
@@ -1048,7 +1048,7 @@ public class Example {
 
 /experimental/retail-media/line-items/{line-item-id}/products
 
-Retrieve a page of products configured on a line item.
+Fetch the products of a line item. &lt;br /&gt;    Retrieve a page of products configured on a line item.
 
 ### Example
 
@@ -1135,13 +1135,13 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## getBiddingStrategyByLineItemId
+## getBiddingByLineItemId
 
-> BiddingSettingsResponse getBiddingStrategyByLineItemId(lineItemId)
+> LineItemBiddingResponseResponse getBiddingByLineItemId(lineItemId)
 
-/experimental/retail-media/line-items/{line-item-id}/bidding-strategy
+/experimental/retail-media/line-items/{line-item-id}/bidding
 
-Returns the current bidding configuration for a Display auction line item, including the active  bidding strategy and any preserved Standard and Adaptive strategy settings. Other line item types are  not currently supported by this endpoint.
+Returns the Adaptive bidding configuration of a line item under an adaptive budget campaign.
 
 ### Example
 
@@ -1182,12 +1182,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The identifier of the line item whose bidding settings are requested.
+        String lineItemId = "lineItemId_example"; // String | The identifier of the line item whose bidding is requested.
         try {
-            BiddingSettingsResponse result = apiInstance.getBiddingStrategyByLineItemId(lineItemId);
+            LineItemBiddingResponseResponse result = apiInstance.getBiddingByLineItemId(lineItemId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getBiddingStrategyByLineItemId");
+            System.err.println("Exception when calling CampaignApi#getBiddingByLineItemId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1202,11 +1202,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The identifier of the line item whose bidding settings are requested. | |
+| **lineItemId** | **String**| The identifier of the line item whose bidding is requested. | |
 
 ### Return type
 
-[**BiddingSettingsResponse**](BiddingSettingsResponse.md)
+[**LineItemBiddingResponseResponse**](LineItemBiddingResponseResponse.md)
 
 ### Authorization
 
@@ -1683,7 +1683,7 @@ public class Example {
 
 /experimental/retail-media/line-items/{line-item-id}
 
-Retrieves a consolidated line item view from the line item domain services.
+Get a line item. &lt;br /&gt;    Returns the line item with its bidding settings, products, creatives and targets. A part that cannot be retrieved is left out and  reported as a warning.
 
 ### Example
 
@@ -1766,13 +1766,13 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## getMinBidsByLineItemId
+## getMinBidByLineItemId
 
-> LineItemMinBidsResponse getMinBidsByLineItemId(lineItemId)
+> LineItemMinBidResponseResponse getMinBidByLineItemId(lineItemId)
 
-/experimental/retail-media/line-items/{line-item-id}/min-bids
+/experimental/retail-media/line-items/{line-item-id}/min-bid
 
-Returns page-type minimum bids and derived bidding thresholds for a Display auction line item.
+Returns the Adaptive minimum bid guidance of a line item.
 
 ### Example
 
@@ -1815,10 +1815,10 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String lineItemId = "lineItemId_example"; // String | The identifier of the line item whose minimum bids are requested.
         try {
-            LineItemMinBidsResponse result = apiInstance.getMinBidsByLineItemId(lineItemId);
+            LineItemMinBidResponseResponse result = apiInstance.getMinBidByLineItemId(lineItemId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getMinBidsByLineItemId");
+            System.err.println("Exception when calling CampaignApi#getMinBidByLineItemId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1837,7 +1837,7 @@ public class Example {
 
 ### Return type
 
-[**LineItemMinBidsResponse**](LineItemMinBidsResponse.md)
+[**LineItemMinBidResponseResponse**](LineItemMinBidResponseResponse.md)
 
 ### Authorization
 
@@ -1954,7 +1954,7 @@ public class Example {
 
 /experimental/retail-media/line-items/demand-search
 
-Search line items accessible from demand accounts.
+Search line items of demand accounts. &lt;br /&gt;    Search line items accessible from demand accounts.
 
 ### Example
 
@@ -2043,7 +2043,7 @@ public class Example {
 
 /experimental/retail-media/line-items/supply-search
 
-Search line items accessible from a supply account and its retailers.
+Search line items of a supply account. &lt;br /&gt;    Search line items accessible from a supply account and its retailers.
 
 ### Example
 
@@ -2180,7 +2180,7 @@ public class Example {
         List<String> eventTypes = Arrays.asList(); // List<String> | Restrict results to specific change-event types (see `eventType`). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. 
         Integer limit = 25; // Integer | Maximum number of change-history entries to return in a single page.
         List<String> lineItemIds = Arrays.asList(); // List<String> | When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller's account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. 
-        Integer offset = 0; // Integer | Zero-based index of the first change-history entry to return.
+        Integer offset = 0; // Integer | Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history.
         OffsetDateTime startTime = OffsetDateTime.now(); // OffsetDateTime | Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted.
         try {
             EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata result = apiInstance.listAccountChangeHistoryEntries(accountId, campaignIds, endTime, entityTypes, eventTypes, limit, lineItemIds, offset, startTime);
@@ -2208,7 +2208,7 @@ public class Example {
 | **eventTypes** | [**List&lt;String&gt;**](String.md)| Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  | [optional] |
 | **limit** | **Integer**| Maximum number of change-history entries to return in a single page. | [optional] [default to 25] |
 | **lineItemIds** | [**List&lt;String&gt;**](String.md)| When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  | [optional] |
-| **offset** | **Integer**| Zero-based index of the first change-history entry to return. | [optional] [default to 0] |
+| **offset** | **Integer**| Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. | [optional] [default to 0] |
 | **startTime** | **OffsetDateTime**| Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. | [optional] |
 
 ### Return type
@@ -2285,7 +2285,7 @@ public class Example {
         List<String> eventTypes = Arrays.asList(); // List<String> | Restrict results to specific change-event types (see `eventType`). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. 
         Integer limit = 25; // Integer | Maximum number of change-history entries to return in a single page.
         List<String> lineItemIds = Arrays.asList(); // List<String> | When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller's retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. 
-        Integer offset = 0; // Integer | Zero-based index of the first change-history entry to return.
+        Integer offset = 0; // Integer | Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history.
         OffsetDateTime startTime = OffsetDateTime.now(); // OffsetDateTime | Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted.
         try {
             EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata result = apiInstance.listRetailerChangeHistoryEntries(retailerId, campaignIds, endTime, entityTypes, eventTypes, limit, lineItemIds, offset, startTime);
@@ -2313,7 +2313,7 @@ public class Example {
 | **eventTypes** | [**List&lt;String&gt;**](String.md)| Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  | [optional] |
 | **limit** | **Integer**| Maximum number of change-history entries to return in a single page. | [optional] [default to 25] |
 | **lineItemIds** | [**List&lt;String&gt;**](String.md)| When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  | [optional] |
-| **offset** | **Integer**| Zero-based index of the first change-history entry to return. | [optional] [default to 0] |
+| **offset** | **Integer**| Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. | [optional] [default to 0] |
 | **startTime** | **OffsetDateTime**| Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. | [optional] |
 
 ### Return type
@@ -2712,13 +2712,13 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## setBiddingStrategyByLineItemId
+## setBiddingByLineItemId
 
-> BiddingSettingsResponse setBiddingStrategyByLineItemId(lineItemId, biddingSettingsRequest)
+> LineItemBiddingResponseResponse setBiddingByLineItemId(lineItemId, lineItemBiddingRequestRequest)
 
-/experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy
+/experimental/retail-media/line-items/{line-item-id}/set-bidding
 
-Replaces the submitted Standard page-type bids and updates the supplied strategy settings. Omitted  settings are preserved. Other line item types are not currently supported by this endpoint.
+Sets the Adaptive bidding configuration of a line item under an adaptive budget campaign.
 
 ### Example
 
@@ -2759,13 +2759,13 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The identifier of the line item whose bidding settings are being updated.
-        BiddingSettingsRequest biddingSettingsRequest = new BiddingSettingsRequest(); // BiddingSettingsRequest | The bidding settings to apply.
+        String lineItemId = "lineItemId_example"; // String | The identifier of the line item whose bidding is being set.
+        LineItemBiddingRequestRequest lineItemBiddingRequestRequest = new LineItemBiddingRequestRequest(); // LineItemBiddingRequestRequest | The bidding configuration to apply.
         try {
-            BiddingSettingsResponse result = apiInstance.setBiddingStrategyByLineItemId(lineItemId, biddingSettingsRequest);
+            LineItemBiddingResponseResponse result = apiInstance.setBiddingByLineItemId(lineItemId, lineItemBiddingRequestRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#setBiddingStrategyByLineItemId");
+            System.err.println("Exception when calling CampaignApi#setBiddingByLineItemId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -2780,12 +2780,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The identifier of the line item whose bidding settings are being updated. | |
-| **biddingSettingsRequest** | [**BiddingSettingsRequest**](BiddingSettingsRequest.md)| The bidding settings to apply. | [optional] |
+| **lineItemId** | **String**| The identifier of the line item whose bidding is being set. | |
+| **lineItemBiddingRequestRequest** | [**LineItemBiddingRequestRequest**](LineItemBiddingRequestRequest.md)| The bidding configuration to apply. | [optional] |
 
 ### Return type
 
-[**BiddingSettingsResponse**](BiddingSettingsResponse.md)
+[**LineItemBiddingResponseResponse**](LineItemBiddingResponseResponse.md)
 
 ### Authorization
 
@@ -3175,7 +3175,7 @@ public class Example {
 
 /experimental/retail-media/line-items/{line-item-id}
 
-Update an existing line item.
+Update a line item. &lt;br /&gt;    Updates the supplied fields of an existing line item. Omitted fields are left unchanged.
 
 ### Example
 
@@ -3448,7 +3448,7 @@ public class Example {
 
 /experimental/retail-media/line-items/{line-item-id}/creatives/upsert
 
-Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item&#39;s proposal.
+Add or update creatives on a line item. &lt;br /&gt;    Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item&#39;s proposal.
 
 ### Example
 

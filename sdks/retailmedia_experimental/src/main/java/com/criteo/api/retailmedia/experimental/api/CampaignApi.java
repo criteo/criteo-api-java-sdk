@@ -29,8 +29,6 @@ import java.io.IOException;
 
 import com.criteo.api.retailmedia.experimental.model.AddLineItemProductsListRequest;
 import com.criteo.api.retailmedia.experimental.model.AddLineItemProductsListResponse;
-import com.criteo.api.retailmedia.experimental.model.BiddingSettingsRequest;
-import com.criteo.api.retailmedia.experimental.model.BiddingSettingsResponse;
 import com.criteo.api.retailmedia.experimental.model.CampaignCreateModelRequest;
 import com.criteo.api.retailmedia.experimental.model.CampaignModelResponse;
 import com.criteo.api.retailmedia.experimental.model.CampaignResponseModelListResponseWithCampaignSearchMetadataModel;
@@ -55,11 +53,13 @@ import com.criteo.api.retailmedia.experimental.model.EntityResourceOutcomeOfCata
 import com.criteo.api.retailmedia.experimental.model.EntityResourceOutcomeOfSponsoredProductsLineItem;
 import com.criteo.api.retailmedia.experimental.model.ExternalCreateLineItemModelRequest;
 import com.criteo.api.retailmedia.experimental.model.ExternalPatchLineItemModelRequest;
+import com.criteo.api.retailmedia.experimental.model.LineItemBiddingRequestRequest;
+import com.criteo.api.retailmedia.experimental.model.LineItemBiddingResponseResponse;
 import com.criteo.api.retailmedia.experimental.model.LineItemCheckCollectionResponse;
 import com.criteo.api.retailmedia.experimental.model.LineItemCreativesResponse;
 import com.criteo.api.retailmedia.experimental.model.LineItemDetailsResponse;
 import com.criteo.api.retailmedia.experimental.model.LineItemListResponseWithPagination;
-import com.criteo.api.retailmedia.experimental.model.LineItemMinBidsResponse;
+import com.criteo.api.retailmedia.experimental.model.LineItemMinBidResponseResponse;
 import com.criteo.api.retailmedia.experimental.model.LineItemProductListResponseV2WithPaginationMeta;
 import com.criteo.api.retailmedia.experimental.model.LineItemResponseV2;
 import java.time.OffsetDateTime;
@@ -201,7 +201,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products/add
-     * Add products to a line item.
+     * Add products to a line item. &lt;br /&gt;    Add products to a line item. The add is all-or-nothing.
      * @param lineItemId The line item id. (required)
      * @param addLineItemProductsListRequest The products to add. (required)
      * @return AddLineItemProductsListResponse
@@ -219,7 +219,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products/add
-     * Add products to a line item.
+     * Add products to a line item. &lt;br /&gt;    Add products to a line item. The add is all-or-nothing.
      * @param lineItemId The line item id. (required)
      * @param addLineItemProductsListRequest The products to add. (required)
      * @return ApiResponse&lt;AddLineItemProductsListResponse&gt;
@@ -238,7 +238,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products/add (asynchronously)
-     * Add products to a line item.
+     * Add products to a line item. &lt;br /&gt;    Add products to a line item. The add is all-or-nothing.
      * @param lineItemId The line item id. (required)
      * @param addLineItemProductsListRequest The products to add. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -726,7 +726,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items
-     * Create a new line item.
+     * Create a line item. &lt;br /&gt;    Creates the line item under its parent campaign, then sets up its dynamic budgets when the campaign requires  them. If setting up the dynamic budgets fails, the request fails and the line item that was created is renamed  with a [FAILED] prefix.
      * @param externalCreateLineItemModelRequest Line item details (required)
      * @return LineItemResponseV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -743,7 +743,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items
-     * Create a new line item.
+     * Create a line item. &lt;br /&gt;    Creates the line item under its parent campaign, then sets up its dynamic budgets when the campaign requires  them. If setting up the dynamic budgets fails, the request fails and the line item that was created is renamed  with a [FAILED] prefix.
      * @param externalCreateLineItemModelRequest Line item details (required)
      * @return ApiResponse&lt;LineItemResponseV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -761,7 +761,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items (asynchronously)
-     * Create a new line item.
+     * Create a line item. &lt;br /&gt;    Creates the line item under its parent campaign, then sets up its dynamic budgets when the campaign requires  them. If setting up the dynamic budgets fails, the request fails and the line item that was created is renamed  with a [FAILED] prefix.
      * @param externalCreateLineItemModelRequest Line item details (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1117,7 +1117,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/creatives/delete
-     * Delete creatives and their product collections from a line item.
+     * Delete creatives from a line item. &lt;br /&gt;    Delete creatives and their product collections from a line item.
      * @param lineItemId The external line item id. (required)
      * @param deleteLineItemCreativesRequest The stable creative identifiers to delete. (required)
      * @return Outcome
@@ -1135,7 +1135,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/creatives/delete
-     * Delete creatives and their product collections from a line item.
+     * Delete creatives from a line item. &lt;br /&gt;    Delete creatives and their product collections from a line item.
      * @param lineItemId The external line item id. (required)
      * @param deleteLineItemCreativesRequest The stable creative identifiers to delete. (required)
      * @return ApiResponse&lt;Outcome&gt;
@@ -1154,7 +1154,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/creatives/delete (asynchronously)
-     * Delete creatives and their product collections from a line item.
+     * Delete creatives from a line item. &lt;br /&gt;    Delete creatives and their product collections from a line item.
      * @param lineItemId The external line item id. (required)
      * @param deleteLineItemCreativesRequest The stable creative identifiers to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1250,7 +1250,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
-     * Delete products from a line item.
+     * Delete products from a line item. &lt;br /&gt;    Delete products from a line item. The products are soft deleted.
      * @param lineItemId The line item id. (required)
      * @param deleteLineItemProductsListRequest The products to delete. (required)
      * @return DeleteLineItemProductsListResponse
@@ -1268,7 +1268,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
-     * Delete products from a line item.
+     * Delete products from a line item. &lt;br /&gt;    Delete products from a line item. The products are soft deleted.
      * @param lineItemId The line item id. (required)
      * @param deleteLineItemProductsListRequest The products to delete. (required)
      * @return ApiResponse&lt;DeleteLineItemProductsListResponse&gt;
@@ -1287,7 +1287,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products/delete (asynchronously)
-     * Delete products from a line item.
+     * Delete products from a line item. &lt;br /&gt;    Delete products from a line item. The products are soft deleted.
      * @param lineItemId The line item id. (required)
      * @param deleteLineItemProductsListRequest The products to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1504,7 +1504,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/creatives
-     * Retrieve the creatives and product collections associated with a line item.
+     * Retrieve the creatives and product collections associated with a line item. &lt;br /&gt;    Returns each creative of the line item with its product collections.
      * @param lineItemId The external line item id. (required)
      * @return LineItemCreativesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1521,7 +1521,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/creatives
-     * Retrieve the creatives and product collections associated with a line item.
+     * Retrieve the creatives and product collections associated with a line item. &lt;br /&gt;    Returns each creative of the line item with its product collections.
      * @param lineItemId The external line item id. (required)
      * @return ApiResponse&lt;LineItemCreativesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1539,7 +1539,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/creatives (asynchronously)
-     * Retrieve the creatives and product collections associated with a line item.
+     * Retrieve the creatives and product collections associated with a line item. &lt;br /&gt;    Returns each creative of the line item with its product collections.
      * @param lineItemId The external line item id. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1637,7 +1637,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products
-     * Retrieve a page of products configured on a line item.
+     * Fetch the products of a line item. &lt;br /&gt;    Retrieve a page of products configured on a line item.
      * @param lineItemId The line item id. (required)
      * @param limit The maximum number of products to return. (optional, default to 500)
      * @param offset The zero-based offset into the line item&#39;s product pool. (optional, default to 0)
@@ -1656,7 +1656,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products
-     * Retrieve a page of products configured on a line item.
+     * Fetch the products of a line item. &lt;br /&gt;    Retrieve a page of products configured on a line item.
      * @param lineItemId The line item id. (required)
      * @param limit The maximum number of products to return. (optional, default to 500)
      * @param offset The zero-based offset into the line item&#39;s product pool. (optional, default to 0)
@@ -1676,7 +1676,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/products (asynchronously)
-     * Retrieve a page of products configured on a line item.
+     * Fetch the products of a line item. &lt;br /&gt;    Retrieve a page of products configured on a line item.
      * @param lineItemId The line item id. (required)
      * @param limit The maximum number of products to return. (optional, default to 500)
      * @param offset The zero-based offset into the line item&#39;s product pool. (optional, default to 0)
@@ -1697,8 +1697,8 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for getBiddingStrategyByLineItemId
-     * @param lineItemId The identifier of the line item whose bidding settings are requested. (required)
+     * Build call for getBiddingByLineItemId
+     * @param lineItemId The identifier of the line item whose bidding is requested. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1708,7 +1708,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBiddingStrategyByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBiddingByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1725,7 +1725,7 @@ public class CampaignApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/experimental/retail-media/line-items/{line-item-id}/bidding-strategy"
+        String localVarPath = "/experimental/retail-media/line-items/{line-item-id}/bidding"
             .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1754,21 +1754,21 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBiddingStrategyByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBiddingByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling getBiddingStrategyByLineItemId(Async)");
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling getBiddingByLineItemId(Async)");
         }
 
-        return getBiddingStrategyByLineItemIdCall(lineItemId, _callback);
+        return getBiddingByLineItemIdCall(lineItemId, _callback);
 
     }
 
     /**
-     * /experimental/retail-media/line-items/{line-item-id}/bidding-strategy
-     * Returns the current bidding configuration for a Display auction line item, including the active  bidding strategy and any preserved Standard and Adaptive strategy settings. Other line item types are  not currently supported by this endpoint.
-     * @param lineItemId The identifier of the line item whose bidding settings are requested. (required)
-     * @return BiddingSettingsResponse
+     * /experimental/retail-media/line-items/{line-item-id}/bidding
+     * Returns the Adaptive bidding configuration of a line item under an adaptive budget campaign.
+     * @param lineItemId The identifier of the line item whose bidding is requested. (required)
+     * @return LineItemBiddingResponseResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1776,16 +1776,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public BiddingSettingsResponse getBiddingStrategyByLineItemId(String lineItemId) throws ApiException {
-        ApiResponse<BiddingSettingsResponse> localVarResp = getBiddingStrategyByLineItemIdWithHttpInfo(lineItemId);
+    public LineItemBiddingResponseResponse getBiddingByLineItemId(String lineItemId) throws ApiException {
+        ApiResponse<LineItemBiddingResponseResponse> localVarResp = getBiddingByLineItemIdWithHttpInfo(lineItemId);
         return localVarResp.getData();
     }
 
     /**
-     * /experimental/retail-media/line-items/{line-item-id}/bidding-strategy
-     * Returns the current bidding configuration for a Display auction line item, including the active  bidding strategy and any preserved Standard and Adaptive strategy settings. Other line item types are  not currently supported by this endpoint.
-     * @param lineItemId The identifier of the line item whose bidding settings are requested. (required)
-     * @return ApiResponse&lt;BiddingSettingsResponse&gt;
+     * /experimental/retail-media/line-items/{line-item-id}/bidding
+     * Returns the Adaptive bidding configuration of a line item under an adaptive budget campaign.
+     * @param lineItemId The identifier of the line item whose bidding is requested. (required)
+     * @return ApiResponse&lt;LineItemBiddingResponseResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1793,16 +1793,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BiddingSettingsResponse> getBiddingStrategyByLineItemIdWithHttpInfo(String lineItemId) throws ApiException {
-        okhttp3.Call localVarCall = getBiddingStrategyByLineItemIdValidateBeforeCall(lineItemId, null);
-        Type localVarReturnType = new TypeToken<BiddingSettingsResponse>(){}.getType();
+    public ApiResponse<LineItemBiddingResponseResponse> getBiddingByLineItemIdWithHttpInfo(String lineItemId) throws ApiException {
+        okhttp3.Call localVarCall = getBiddingByLineItemIdValidateBeforeCall(lineItemId, null);
+        Type localVarReturnType = new TypeToken<LineItemBiddingResponseResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * /experimental/retail-media/line-items/{line-item-id}/bidding-strategy (asynchronously)
-     * Returns the current bidding configuration for a Display auction line item, including the active  bidding strategy and any preserved Standard and Adaptive strategy settings. Other line item types are  not currently supported by this endpoint.
-     * @param lineItemId The identifier of the line item whose bidding settings are requested. (required)
+     * /experimental/retail-media/line-items/{line-item-id}/bidding (asynchronously)
+     * Returns the Adaptive bidding configuration of a line item under an adaptive budget campaign.
+     * @param lineItemId The identifier of the line item whose bidding is requested. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1812,10 +1812,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBiddingStrategyByLineItemIdAsync(String lineItemId, final ApiCallback<BiddingSettingsResponse> _callback) throws ApiException {
+    public okhttp3.Call getBiddingByLineItemIdAsync(String lineItemId, final ApiCallback<LineItemBiddingResponseResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBiddingStrategyByLineItemIdValidateBeforeCall(lineItemId, _callback);
-        Type localVarReturnType = new TypeToken<BiddingSettingsResponse>(){}.getType();
+        okhttp3.Call localVarCall = getBiddingByLineItemIdValidateBeforeCall(lineItemId, _callback);
+        Type localVarReturnType = new TypeToken<LineItemBiddingResponseResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2538,7 +2538,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}
-     * Retrieves a consolidated line item view from the line item domain services.
+     * Get a line item. &lt;br /&gt;    Returns the line item with its bidding settings, products, creatives and targets. A part that cannot be retrieved is left out and  reported as a warning.
      * @param lineItemId The line item identifier. (required)
      * @return LineItemDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2555,7 +2555,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}
-     * Retrieves a consolidated line item view from the line item domain services.
+     * Get a line item. &lt;br /&gt;    Returns the line item with its bidding settings, products, creatives and targets. A part that cannot be retrieved is left out and  reported as a warning.
      * @param lineItemId The line item identifier. (required)
      * @return ApiResponse&lt;LineItemDetailsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2573,7 +2573,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id} (asynchronously)
-     * Retrieves a consolidated line item view from the line item domain services.
+     * Get a line item. &lt;br /&gt;    Returns the line item with its bidding settings, products, creatives and targets. A part that cannot be retrieved is left out and  reported as a warning.
      * @param lineItemId The line item identifier. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2592,7 +2592,7 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for getMinBidsByLineItemId
+     * Build call for getMinBidByLineItemId
      * @param lineItemId The identifier of the line item whose minimum bids are requested. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2603,7 +2603,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMinBidsByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMinBidByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2620,7 +2620,7 @@ public class CampaignApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/experimental/retail-media/line-items/{line-item-id}/min-bids"
+        String localVarPath = "/experimental/retail-media/line-items/{line-item-id}/min-bid"
             .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2649,21 +2649,21 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMinBidsByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMinBidByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling getMinBidsByLineItemId(Async)");
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling getMinBidByLineItemId(Async)");
         }
 
-        return getMinBidsByLineItemIdCall(lineItemId, _callback);
+        return getMinBidByLineItemIdCall(lineItemId, _callback);
 
     }
 
     /**
-     * /experimental/retail-media/line-items/{line-item-id}/min-bids
-     * Returns page-type minimum bids and derived bidding thresholds for a Display auction line item.
+     * /experimental/retail-media/line-items/{line-item-id}/min-bid
+     * Returns the Adaptive minimum bid guidance of a line item.
      * @param lineItemId The identifier of the line item whose minimum bids are requested. (required)
-     * @return LineItemMinBidsResponse
+     * @return LineItemMinBidResponseResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2671,16 +2671,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public LineItemMinBidsResponse getMinBidsByLineItemId(String lineItemId) throws ApiException {
-        ApiResponse<LineItemMinBidsResponse> localVarResp = getMinBidsByLineItemIdWithHttpInfo(lineItemId);
+    public LineItemMinBidResponseResponse getMinBidByLineItemId(String lineItemId) throws ApiException {
+        ApiResponse<LineItemMinBidResponseResponse> localVarResp = getMinBidByLineItemIdWithHttpInfo(lineItemId);
         return localVarResp.getData();
     }
 
     /**
-     * /experimental/retail-media/line-items/{line-item-id}/min-bids
-     * Returns page-type minimum bids and derived bidding thresholds for a Display auction line item.
+     * /experimental/retail-media/line-items/{line-item-id}/min-bid
+     * Returns the Adaptive minimum bid guidance of a line item.
      * @param lineItemId The identifier of the line item whose minimum bids are requested. (required)
-     * @return ApiResponse&lt;LineItemMinBidsResponse&gt;
+     * @return ApiResponse&lt;LineItemMinBidResponseResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2688,15 +2688,15 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LineItemMinBidsResponse> getMinBidsByLineItemIdWithHttpInfo(String lineItemId) throws ApiException {
-        okhttp3.Call localVarCall = getMinBidsByLineItemIdValidateBeforeCall(lineItemId, null);
-        Type localVarReturnType = new TypeToken<LineItemMinBidsResponse>(){}.getType();
+    public ApiResponse<LineItemMinBidResponseResponse> getMinBidByLineItemIdWithHttpInfo(String lineItemId) throws ApiException {
+        okhttp3.Call localVarCall = getMinBidByLineItemIdValidateBeforeCall(lineItemId, null);
+        Type localVarReturnType = new TypeToken<LineItemMinBidResponseResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * /experimental/retail-media/line-items/{line-item-id}/min-bids (asynchronously)
-     * Returns page-type minimum bids and derived bidding thresholds for a Display auction line item.
+     * /experimental/retail-media/line-items/{line-item-id}/min-bid (asynchronously)
+     * Returns the Adaptive minimum bid guidance of a line item.
      * @param lineItemId The identifier of the line item whose minimum bids are requested. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2707,10 +2707,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMinBidsByLineItemIdAsync(String lineItemId, final ApiCallback<LineItemMinBidsResponse> _callback) throws ApiException {
+    public okhttp3.Call getMinBidByLineItemIdAsync(String lineItemId, final ApiCallback<LineItemMinBidResponseResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMinBidsByLineItemIdValidateBeforeCall(lineItemId, _callback);
-        Type localVarReturnType = new TypeToken<LineItemMinBidsResponse>(){}.getType();
+        okhttp3.Call localVarCall = getMinBidByLineItemIdValidateBeforeCall(lineItemId, _callback);
+        Type localVarReturnType = new TypeToken<LineItemMinBidResponseResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2923,7 +2923,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/demand-search
-     * Search line items accessible from demand accounts.
+     * Search line items of demand accounts. &lt;br /&gt;    Search line items accessible from demand accounts.
      * @param demandSearchRequest Search criteria and pagination. (required)
      * @return LineItemListResponseWithPagination
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2940,7 +2940,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/demand-search
-     * Search line items accessible from demand accounts.
+     * Search line items of demand accounts. &lt;br /&gt;    Search line items accessible from demand accounts.
      * @param demandSearchRequest Search criteria and pagination. (required)
      * @return ApiResponse&lt;LineItemListResponseWithPagination&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2958,7 +2958,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/demand-search (asynchronously)
-     * Search line items accessible from demand accounts.
+     * Search line items of demand accounts. &lt;br /&gt;    Search line items accessible from demand accounts.
      * @param demandSearchRequest Search criteria and pagination. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3046,7 +3046,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/supply-search
-     * Search line items accessible from a supply account and its retailers.
+     * Search line items of a supply account. &lt;br /&gt;    Search line items accessible from a supply account and its retailers.
      * @param supplySearchRequest Search criteria and pagination. (required)
      * @return LineItemListResponseWithPagination
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3063,7 +3063,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/supply-search
-     * Search line items accessible from a supply account and its retailers.
+     * Search line items of a supply account. &lt;br /&gt;    Search line items accessible from a supply account and its retailers.
      * @param supplySearchRequest Search criteria and pagination. (required)
      * @return ApiResponse&lt;LineItemListResponseWithPagination&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3081,7 +3081,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/supply-search (asynchronously)
-     * Search line items accessible from a supply account and its retailers.
+     * Search line items of a supply account. &lt;br /&gt;    Search line items accessible from a supply account and its retailers.
      * @param supplySearchRequest Search criteria and pagination. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3108,7 +3108,7 @@ public class CampaignApi {
      * @param eventTypes Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  (optional)
      * @param limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param lineItemIds When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  (optional)
-     * @param offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param startTime Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3217,7 +3217,7 @@ public class CampaignApi {
      * @param eventTypes Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  (optional)
      * @param limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param lineItemIds When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  (optional)
-     * @param offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param startTime Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @return EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3242,7 +3242,7 @@ public class CampaignApi {
      * @param eventTypes Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  (optional)
      * @param limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param lineItemIds When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  (optional)
-     * @param offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param startTime Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @return ApiResponse&lt;EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3268,7 +3268,7 @@ public class CampaignApi {
      * @param eventTypes Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  (optional)
      * @param limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param lineItemIds When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  (optional)
-     * @param offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param startTime Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3295,7 +3295,7 @@ public class CampaignApi {
      * @param eventTypes Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  (optional)
      * @param limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param lineItemIds When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  (optional)
-     * @param offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param startTime Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3404,7 +3404,7 @@ public class CampaignApi {
      * @param eventTypes Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  (optional)
      * @param limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param lineItemIds When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  (optional)
-     * @param offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param startTime Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @return EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3429,7 +3429,7 @@ public class CampaignApi {
      * @param eventTypes Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  (optional)
      * @param limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param lineItemIds When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  (optional)
-     * @param offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param startTime Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @return ApiResponse&lt;EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3455,7 +3455,7 @@ public class CampaignApi {
      * @param eventTypes Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.  (optional)
      * @param limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param lineItemIds When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.  (optional)
-     * @param offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param startTime Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4049,9 +4049,9 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for setBiddingStrategyByLineItemId
-     * @param lineItemId The identifier of the line item whose bidding settings are being updated. (required)
-     * @param biddingSettingsRequest The bidding settings to apply. (optional)
+     * Build call for setBiddingByLineItemId
+     * @param lineItemId The identifier of the line item whose bidding is being set. (required)
+     * @param lineItemBiddingRequestRequest The bidding configuration to apply. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4061,7 +4061,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setBiddingStrategyByLineItemIdCall(String lineItemId, BiddingSettingsRequest biddingSettingsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call setBiddingByLineItemIdCall(String lineItemId, LineItemBiddingRequestRequest lineItemBiddingRequestRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4075,10 +4075,10 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = biddingSettingsRequest;
+        Object localVarPostBody = lineItemBiddingRequestRequest;
 
         // create path and map variables
-        String localVarPath = "/experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy"
+        String localVarPath = "/experimental/retail-media/line-items/{line-item-id}/set-bidding"
             .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -4108,22 +4108,22 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setBiddingStrategyByLineItemIdValidateBeforeCall(String lineItemId, BiddingSettingsRequest biddingSettingsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setBiddingByLineItemIdValidateBeforeCall(String lineItemId, LineItemBiddingRequestRequest lineItemBiddingRequestRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling setBiddingStrategyByLineItemId(Async)");
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling setBiddingByLineItemId(Async)");
         }
 
-        return setBiddingStrategyByLineItemIdCall(lineItemId, biddingSettingsRequest, _callback);
+        return setBiddingByLineItemIdCall(lineItemId, lineItemBiddingRequestRequest, _callback);
 
     }
 
     /**
-     * /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy
-     * Replaces the submitted Standard page-type bids and updates the supplied strategy settings. Omitted  settings are preserved. Other line item types are not currently supported by this endpoint.
-     * @param lineItemId The identifier of the line item whose bidding settings are being updated. (required)
-     * @param biddingSettingsRequest The bidding settings to apply. (optional)
-     * @return BiddingSettingsResponse
+     * /experimental/retail-media/line-items/{line-item-id}/set-bidding
+     * Sets the Adaptive bidding configuration of a line item under an adaptive budget campaign.
+     * @param lineItemId The identifier of the line item whose bidding is being set. (required)
+     * @param lineItemBiddingRequestRequest The bidding configuration to apply. (optional)
+     * @return LineItemBiddingResponseResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4131,17 +4131,17 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public BiddingSettingsResponse setBiddingStrategyByLineItemId(String lineItemId, BiddingSettingsRequest biddingSettingsRequest) throws ApiException {
-        ApiResponse<BiddingSettingsResponse> localVarResp = setBiddingStrategyByLineItemIdWithHttpInfo(lineItemId, biddingSettingsRequest);
+    public LineItemBiddingResponseResponse setBiddingByLineItemId(String lineItemId, LineItemBiddingRequestRequest lineItemBiddingRequestRequest) throws ApiException {
+        ApiResponse<LineItemBiddingResponseResponse> localVarResp = setBiddingByLineItemIdWithHttpInfo(lineItemId, lineItemBiddingRequestRequest);
         return localVarResp.getData();
     }
 
     /**
-     * /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy
-     * Replaces the submitted Standard page-type bids and updates the supplied strategy settings. Omitted  settings are preserved. Other line item types are not currently supported by this endpoint.
-     * @param lineItemId The identifier of the line item whose bidding settings are being updated. (required)
-     * @param biddingSettingsRequest The bidding settings to apply. (optional)
-     * @return ApiResponse&lt;BiddingSettingsResponse&gt;
+     * /experimental/retail-media/line-items/{line-item-id}/set-bidding
+     * Sets the Adaptive bidding configuration of a line item under an adaptive budget campaign.
+     * @param lineItemId The identifier of the line item whose bidding is being set. (required)
+     * @param lineItemBiddingRequestRequest The bidding configuration to apply. (optional)
+     * @return ApiResponse&lt;LineItemBiddingResponseResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4149,17 +4149,17 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BiddingSettingsResponse> setBiddingStrategyByLineItemIdWithHttpInfo(String lineItemId, BiddingSettingsRequest biddingSettingsRequest) throws ApiException {
-        okhttp3.Call localVarCall = setBiddingStrategyByLineItemIdValidateBeforeCall(lineItemId, biddingSettingsRequest, null);
-        Type localVarReturnType = new TypeToken<BiddingSettingsResponse>(){}.getType();
+    public ApiResponse<LineItemBiddingResponseResponse> setBiddingByLineItemIdWithHttpInfo(String lineItemId, LineItemBiddingRequestRequest lineItemBiddingRequestRequest) throws ApiException {
+        okhttp3.Call localVarCall = setBiddingByLineItemIdValidateBeforeCall(lineItemId, lineItemBiddingRequestRequest, null);
+        Type localVarReturnType = new TypeToken<LineItemBiddingResponseResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy (asynchronously)
-     * Replaces the submitted Standard page-type bids and updates the supplied strategy settings. Omitted  settings are preserved. Other line item types are not currently supported by this endpoint.
-     * @param lineItemId The identifier of the line item whose bidding settings are being updated. (required)
-     * @param biddingSettingsRequest The bidding settings to apply. (optional)
+     * /experimental/retail-media/line-items/{line-item-id}/set-bidding (asynchronously)
+     * Sets the Adaptive bidding configuration of a line item under an adaptive budget campaign.
+     * @param lineItemId The identifier of the line item whose bidding is being set. (required)
+     * @param lineItemBiddingRequestRequest The bidding configuration to apply. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4169,10 +4169,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setBiddingStrategyByLineItemIdAsync(String lineItemId, BiddingSettingsRequest biddingSettingsRequest, final ApiCallback<BiddingSettingsResponse> _callback) throws ApiException {
+    public okhttp3.Call setBiddingByLineItemIdAsync(String lineItemId, LineItemBiddingRequestRequest lineItemBiddingRequestRequest, final ApiCallback<LineItemBiddingResponseResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setBiddingStrategyByLineItemIdValidateBeforeCall(lineItemId, biddingSettingsRequest, _callback);
-        Type localVarReturnType = new TypeToken<BiddingSettingsResponse>(){}.getType();
+        okhttp3.Call localVarCall = setBiddingByLineItemIdValidateBeforeCall(lineItemId, lineItemBiddingRequestRequest, _callback);
+        Type localVarReturnType = new TypeToken<LineItemBiddingResponseResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4789,7 +4789,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}
-     * Update an existing line item.
+     * Update a line item. &lt;br /&gt;    Updates the supplied fields of an existing line item. Omitted fields are left unchanged.
      * @param lineItemId The line item id (required)
      * @param externalPatchLineItemModelRequest Line item details (required)
      * @return LineItemResponseV2
@@ -4807,7 +4807,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}
-     * Update an existing line item.
+     * Update a line item. &lt;br /&gt;    Updates the supplied fields of an existing line item. Omitted fields are left unchanged.
      * @param lineItemId The line item id (required)
      * @param externalPatchLineItemModelRequest Line item details (required)
      * @return ApiResponse&lt;LineItemResponseV2&gt;
@@ -4826,7 +4826,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id} (asynchronously)
-     * Update an existing line item.
+     * Update a line item. &lt;br /&gt;    Updates the supplied fields of an existing line item. Omitted fields are left unchanged.
      * @param lineItemId The line item id (required)
      * @param externalPatchLineItemModelRequest Line item details (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -5183,7 +5183,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/creatives/upsert
-     * Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item&#39;s proposal.
+     * Add or update creatives on a line item. &lt;br /&gt;    Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item&#39;s proposal.
      * @param lineItemId The line item id. (required)
      * @param upsertLineItemCreativesRequest The creatives to upsert. (required)
      * @return UpsertLineItemCreativesResponse
@@ -5201,7 +5201,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/creatives/upsert
-     * Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item&#39;s proposal.
+     * Add or update creatives on a line item. &lt;br /&gt;    Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item&#39;s proposal.
      * @param lineItemId The line item id. (required)
      * @param upsertLineItemCreativesRequest The creatives to upsert. (required)
      * @return ApiResponse&lt;UpsertLineItemCreativesResponse&gt;
@@ -5220,7 +5220,7 @@ public class CampaignApi {
 
     /**
      * /experimental/retail-media/line-items/{line-item-id}/creatives/upsert (asynchronously)
-     * Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item&#39;s proposal.
+     * Add or update creatives on a line item. &lt;br /&gt;    Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item&#39;s proposal.
      * @param lineItemId The line item id. (required)
      * @param upsertLineItemCreativesRequest The creatives to upsert. (required)
      * @param _callback The callback to be executed when the API call finishes

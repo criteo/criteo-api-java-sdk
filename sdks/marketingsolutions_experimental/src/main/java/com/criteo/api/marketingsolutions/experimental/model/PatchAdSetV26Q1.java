@@ -21,12 +21,15 @@ import com.criteo.api.marketingsolutions.experimental.model.PatchAdSetBiddingV26
 import com.criteo.api.marketingsolutions.experimental.model.PatchAdSetBudgetV26Q1;
 import com.criteo.api.marketingsolutions.experimental.model.PatchAdSetScheduledBudgetV26Q1;
 import com.criteo.api.marketingsolutions.experimental.model.PatchAdSetSchedulingV26Q1;
+import com.criteo.api.marketingsolutions.experimental.model.ServerToServerTrackingV26Q1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -78,6 +81,10 @@ public class PatchAdSetV26Q1 {
   public static final String SERIALIZED_NAME_SCHEDULING = "scheduling";
   @SerializedName(SERIALIZED_NAME_SCHEDULING)
   private PatchAdSetSchedulingV26Q1 scheduling;
+
+  public static final String SERIALIZED_NAME_SERVER_TO_SERVER_TRACKINGS = "serverToServerTrackings";
+  @SerializedName(SERIALIZED_NAME_SERVER_TO_SERVER_TRACKINGS)
+  private List<ServerToServerTrackingV26Q1> serverToServerTrackings = null;
 
   public static final String SERIALIZED_NAME_TARGETING = "targeting";
   @SerializedName(SERIALIZED_NAME_TARGETING)
@@ -218,6 +225,36 @@ public class PatchAdSetV26Q1 {
   }
 
 
+  public PatchAdSetV26Q1 serverToServerTrackings(List<ServerToServerTrackingV26Q1> serverToServerTrackings) {
+    
+    this.serverToServerTrackings = serverToServerTrackings;
+    return this;
+  }
+
+  public PatchAdSetV26Q1 addServerToServerTrackingsItem(ServerToServerTrackingV26Q1 serverToServerTrackingsItem) {
+    if (this.serverToServerTrackings == null) {
+      this.serverToServerTrackings = null;
+    }
+    this.serverToServerTrackings.add(serverToServerTrackingsItem);
+    return this;
+  }
+
+   /**
+   * MMP server-to-server tracking URLs. Only allowed for app retargeting ad sets. Replaces the existing URLs when provided, clears them when empty, and leaves them unchanged when omitted
+   * @return serverToServerTrackings
+  **/
+  @javax.annotation.Nullable
+
+  public List<ServerToServerTrackingV26Q1> getServerToServerTrackings() {
+    return serverToServerTrackings;
+  }
+
+
+  public void setServerToServerTrackings(List<ServerToServerTrackingV26Q1> serverToServerTrackings) {
+    this.serverToServerTrackings = serverToServerTrackings;
+  }
+
+
   public PatchAdSetV26Q1 targeting(AdSetTargetingV26Q1 targeting) {
     
     this.targeting = targeting;
@@ -300,6 +337,7 @@ public class PatchAdSetV26Q1 {
         Objects.equals(this.name, patchAdSetV26Q1.name) &&
         Objects.equals(this.scheduledBudget, patchAdSetV26Q1.scheduledBudget) &&
         Objects.equals(this.scheduling, patchAdSetV26Q1.scheduling) &&
+        Objects.equals(this.serverToServerTrackings, patchAdSetV26Q1.serverToServerTrackings) &&
         Objects.equals(this.targeting, patchAdSetV26Q1.targeting)&&
         Objects.equals(this.additionalProperties, patchAdSetV26Q1.additionalProperties);
   }
@@ -310,7 +348,7 @@ public class PatchAdSetV26Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributionConfiguration, bidding, budget, name, scheduledBudget, scheduling, targeting, additionalProperties);
+    return Objects.hash(attributionConfiguration, bidding, budget, name, scheduledBudget, scheduling, serverToServerTrackings, targeting, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -330,6 +368,7 @@ public class PatchAdSetV26Q1 {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    scheduledBudget: ").append(toIndentedString(scheduledBudget)).append("\n");
     sb.append("    scheduling: ").append(toIndentedString(scheduling)).append("\n");
+    sb.append("    serverToServerTrackings: ").append(toIndentedString(serverToServerTrackings)).append("\n");
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -360,6 +399,7 @@ public class PatchAdSetV26Q1 {
     openapiFields.add("name");
     openapiFields.add("scheduledBudget");
     openapiFields.add("scheduling");
+    openapiFields.add("serverToServerTrackings");
     openapiFields.add("targeting");
 
     // a set of required properties/fields (JSON key names)
@@ -400,6 +440,20 @@ public class PatchAdSetV26Q1 {
       // validate the optional field `scheduling`
       if (jsonObj.get("scheduling") != null && !jsonObj.get("scheduling").isJsonNull()) {
         PatchAdSetSchedulingV26Q1.validateJsonObject(jsonObj.getAsJsonObject("scheduling"));
+      }
+      if (jsonObj.get("serverToServerTrackings") != null && !jsonObj.get("serverToServerTrackings").isJsonNull()) {
+        JsonArray jsonArrayserverToServerTrackings = jsonObj.getAsJsonArray("serverToServerTrackings");
+        if (jsonArrayserverToServerTrackings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("serverToServerTrackings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `serverToServerTrackings` to be an array in the JSON string but got `%s`", jsonObj.get("serverToServerTrackings").toString()));
+          }
+
+          // validate the optional field `serverToServerTrackings` (array)
+          for (int i = 0; i < jsonArrayserverToServerTrackings.size(); i++) {
+            ServerToServerTrackingV26Q1.validateJsonObject(jsonArrayserverToServerTrackings.get(i).getAsJsonObject());
+          };
+        }
       }
       // validate the optional field `targeting`
       if (jsonObj.get("targeting") != null && !jsonObj.get("targeting").isJsonNull()) {
