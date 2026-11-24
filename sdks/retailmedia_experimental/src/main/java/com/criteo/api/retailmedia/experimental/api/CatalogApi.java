@@ -740,7 +740,7 @@ public class CatalogApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operation id in &#x60;operationToken&#x60;. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call submitCatalogProductsBatchCall(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback _callback) throws ApiException {
@@ -801,14 +801,14 @@ public class CatalogApi {
 
     /**
      * /experimental/retail-media/catalog/products/batch
-     * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
+     * Used to publish a batch of operations to insert, update and delete products.  The batch is processed asynchronously. The response provides an operation id in &#x60;operationToken&#x60;  which can be used to track the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @return BatchAcceptedResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operation id in &#x60;operationToken&#x60;. </td><td>  -  </td></tr>
      </table>
      */
     public BatchAcceptedResponse submitCatalogProductsBatch(ProductsCustomBatchRequest productsCustomBatchRequest) throws ApiException {
@@ -818,14 +818,14 @@ public class CatalogApi {
 
     /**
      * /experimental/retail-media/catalog/products/batch
-     * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
+     * Used to publish a batch of operations to insert, update and delete products.  The batch is processed asynchronously. The response provides an operation id in &#x60;operationToken&#x60;  which can be used to track the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @return ApiResponse&lt;BatchAcceptedResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operation id in &#x60;operationToken&#x60;. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<BatchAcceptedResponse> submitCatalogProductsBatchWithHttpInfo(ProductsCustomBatchRequest productsCustomBatchRequest) throws ApiException {
@@ -836,7 +836,7 @@ public class CatalogApi {
 
     /**
      * /experimental/retail-media/catalog/products/batch (asynchronously)
-     * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
+     * Used to publish a batch of operations to insert, update and delete products.  The batch is processed asynchronously. The response provides an operation id in &#x60;operationToken&#x60;  which can be used to track the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -844,7 +844,7 @@ public class CatalogApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operation id in &#x60;operationToken&#x60;. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call submitCatalogProductsBatchAsync(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback<BatchAcceptedResponse> _callback) throws ApiException {

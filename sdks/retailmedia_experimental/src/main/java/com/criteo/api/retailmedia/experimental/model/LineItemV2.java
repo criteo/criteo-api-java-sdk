@@ -124,9 +124,9 @@ public class LineItemV2 {
   @SerializedName(SERIALIZED_NAME_LINE_ITEM_ID)
   private String lineItemId;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_LINE_ITEM_NAME = "lineItemName";
+  @SerializedName(SERIALIZED_NAME_LINE_ITEM_NAME)
+  private String lineItemName;
 
   public static final String SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS = "onsiteDisplayDetails";
   @SerializedName(SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS)
@@ -306,25 +306,25 @@ public class LineItemV2 {
   }
 
 
-  public LineItemV2 name(String name) {
+  public LineItemV2 lineItemName(String lineItemName) {
     
-    this.name = name;
+    this.lineItemName = lineItemName;
     return this;
   }
 
    /**
    * The name of the line item.
-   * @return name
+   * @return lineItemName
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public String getLineItemName() {
+    return lineItemName;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setLineItemName(String lineItemName) {
+    this.lineItemName = lineItemName;
   }
 
 
@@ -431,7 +431,7 @@ public class LineItemV2 {
         Objects.equals(this.effectiveFlightDates, lineItemV2.effectiveFlightDates) &&
         Objects.equals(this.isPaused, lineItemV2.isPaused) &&
         Objects.equals(this.lineItemId, lineItemV2.lineItemId) &&
-        Objects.equals(this.name, lineItemV2.name) &&
+        Objects.equals(this.lineItemName, lineItemV2.lineItemName) &&
         Objects.equals(this.onsiteDisplayDetails, lineItemV2.onsiteDisplayDetails) &&
         Objects.equals(this.retailerId, lineItemV2.retailerId) &&
         Objects.equals(this.serveToOptOutUser, lineItemV2.serveToOptOutUser) &&
@@ -444,7 +444,7 @@ public class LineItemV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgetStatus, campaignId, effectiveFlightDates, isPaused, lineItemId, name, onsiteDisplayDetails, retailerId, serveToOptOutUser, type);
+    return Objects.hash(budgetStatus, campaignId, effectiveFlightDates, isPaused, lineItemId, lineItemName, onsiteDisplayDetails, retailerId, serveToOptOutUser, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -463,7 +463,7 @@ public class LineItemV2 {
     sb.append("    effectiveFlightDates: ").append(toIndentedString(effectiveFlightDates)).append("\n");
     sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
     sb.append("    lineItemId: ").append(toIndentedString(lineItemId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    lineItemName: ").append(toIndentedString(lineItemName)).append("\n");
     sb.append("    onsiteDisplayDetails: ").append(toIndentedString(onsiteDisplayDetails)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    serveToOptOutUser: ").append(toIndentedString(serveToOptOutUser)).append("\n");
@@ -495,7 +495,7 @@ public class LineItemV2 {
     openapiFields.add("effectiveFlightDates");
     openapiFields.add("isPaused");
     openapiFields.add("lineItemId");
-    openapiFields.add("name");
+    openapiFields.add("lineItemName");
     openapiFields.add("onsiteDisplayDetails");
     openapiFields.add("retailerId");
     openapiFields.add("serveToOptOutUser");
@@ -507,7 +507,7 @@ public class LineItemV2 {
     openapiRequiredFields.add("campaignId");
     openapiRequiredFields.add("isPaused");
     openapiRequiredFields.add("lineItemId");
-    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("lineItemName");
     openapiRequiredFields.add("retailerId");
     openapiRequiredFields.add("serveToOptOutUser");
     openapiRequiredFields.add("type");
@@ -553,8 +553,8 @@ public class LineItemV2 {
       if (!jsonObj.get("lineItemId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineItemId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineItemId").toString()));
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if (!jsonObj.get("lineItemName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lineItemName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineItemName").toString()));
       }
       // validate the optional field `onsiteDisplayDetails`
       if (jsonObj.get("onsiteDisplayDetails") != null && !jsonObj.get("onsiteDisplayDetails").isJsonNull()) {

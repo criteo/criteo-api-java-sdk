@@ -63,7 +63,7 @@ public class ProductsCustomBatchRequestEntry {
 
   public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
   @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
-  private Integer merchantId;
+  private String merchantId;
 
   /**
    * The method of the batch entry.
@@ -178,7 +178,7 @@ public class ProductsCustomBatchRequestEntry {
   }
 
    /**
-   * Deprecated (providing this information is no more needed, this field will be removed in next release). The itemGroupId of the product to delete. To be defined when the method is delete and the product is a variant.
+   * Deprecated (providing this information is no longer needed, this field will be removed in the next release). The itemGroupId of the product to delete. To be defined when the method is delete and the product is a variant.
    * @return itemGroupId
   **/
   @javax.annotation.Nullable
@@ -193,7 +193,7 @@ public class ProductsCustomBatchRequestEntry {
   }
 
 
-  public ProductsCustomBatchRequestEntry merchantId(Integer merchantId) {
+  public ProductsCustomBatchRequestEntry merchantId(String merchantId) {
     
     this.merchantId = merchantId;
     return this;
@@ -205,12 +205,12 @@ public class ProductsCustomBatchRequestEntry {
   **/
   @javax.annotation.Nonnull
 
-  public Integer getMerchantId() {
+  public String getMerchantId() {
     return merchantId;
   }
 
 
-  public void setMerchantId(Integer merchantId) {
+  public void setMerchantId(String merchantId) {
     this.merchantId = merchantId;
   }
 
@@ -422,6 +422,9 @@ public class ProductsCustomBatchRequestEntry {
       }
       if ((jsonObj.get("itemGroupId") != null && !jsonObj.get("itemGroupId").isJsonNull()) && !jsonObj.get("itemGroupId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `itemGroupId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemGroupId").toString()));
+      }
+      if (!jsonObj.get("merchantId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `merchantId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("merchantId").toString()));
       }
       if (!jsonObj.get("method").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `method` to be a primitive type in the JSON string but got `%s`", jsonObj.get("method").toString()));

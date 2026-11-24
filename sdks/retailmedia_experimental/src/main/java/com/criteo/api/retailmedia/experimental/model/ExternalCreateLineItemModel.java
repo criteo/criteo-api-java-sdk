@@ -54,9 +54,9 @@ public class ExternalCreateLineItemModel {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private String campaignId;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_LINE_ITEM_NAME = "lineItemName";
+  @SerializedName(SERIALIZED_NAME_LINE_ITEM_NAME)
+  private String lineItemName;
 
   public static final String SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS = "onsiteDisplayDetails";
   @SerializedName(SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS)
@@ -95,25 +95,25 @@ public class ExternalCreateLineItemModel {
   }
 
 
-  public ExternalCreateLineItemModel name(String name) {
+  public ExternalCreateLineItemModel lineItemName(String lineItemName) {
     
-    this.name = name;
+    this.lineItemName = lineItemName;
     return this;
   }
 
    /**
    * The name of the line item.
-   * @return name
+   * @return lineItemName
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public String getLineItemName() {
+    return lineItemName;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setLineItemName(String lineItemName) {
+    this.lineItemName = lineItemName;
   }
 
 
@@ -194,7 +194,7 @@ public class ExternalCreateLineItemModel {
     }
     ExternalCreateLineItemModel externalCreateLineItemModel = (ExternalCreateLineItemModel) o;
     return Objects.equals(this.campaignId, externalCreateLineItemModel.campaignId) &&
-        Objects.equals(this.name, externalCreateLineItemModel.name) &&
+        Objects.equals(this.lineItemName, externalCreateLineItemModel.lineItemName) &&
         Objects.equals(this.onsiteDisplayDetails, externalCreateLineItemModel.onsiteDisplayDetails) &&
         Objects.equals(this.retailerId, externalCreateLineItemModel.retailerId) &&
         Objects.equals(this.serveToOptOutUser, externalCreateLineItemModel.serveToOptOutUser);
@@ -206,7 +206,7 @@ public class ExternalCreateLineItemModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, name, onsiteDisplayDetails, retailerId, serveToOptOutUser);
+    return Objects.hash(campaignId, lineItemName, onsiteDisplayDetails, retailerId, serveToOptOutUser);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -221,7 +221,7 @@ public class ExternalCreateLineItemModel {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalCreateLineItemModel {\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    lineItemName: ").append(toIndentedString(lineItemName)).append("\n");
     sb.append("    onsiteDisplayDetails: ").append(toIndentedString(onsiteDisplayDetails)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    serveToOptOutUser: ").append(toIndentedString(serveToOptOutUser)).append("\n");
@@ -248,7 +248,7 @@ public class ExternalCreateLineItemModel {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("campaignId");
-    openapiFields.add("name");
+    openapiFields.add("lineItemName");
     openapiFields.add("onsiteDisplayDetails");
     openapiFields.add("retailerId");
     openapiFields.add("serveToOptOutUser");
@@ -256,7 +256,7 @@ public class ExternalCreateLineItemModel {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("campaignId");
-    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("lineItemName");
     openapiRequiredFields.add("retailerId");
   }
 
@@ -290,8 +290,8 @@ public class ExternalCreateLineItemModel {
       if (!jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if (!jsonObj.get("lineItemName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lineItemName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineItemName").toString()));
       }
       // validate the optional field `onsiteDisplayDetails`
       if (jsonObj.get("onsiteDisplayDetails") != null && !jsonObj.get("onsiteDisplayDetails").isJsonNull()) {

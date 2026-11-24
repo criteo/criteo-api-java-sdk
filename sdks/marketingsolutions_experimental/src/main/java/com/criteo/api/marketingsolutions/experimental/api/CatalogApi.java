@@ -342,15 +342,15 @@ public class CatalogApi {
     }
     /**
      * Build call for getCatalogMerchantStats
-     * @param merchantId merchant-id to get (required)
-     * @param lastNumHours the last number of hours (optional)
+     * @param merchantId The id of the merchant whose catalog statistics are requested. (required)
+     * @param lastNumHours The number of past hours covered by the statistics (1 to 1000, 24 by default). (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The statistics object </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCatalogMerchantStatsCall(String merchantId, Integer lastNumHours, final ApiCallback _callback) throws ApiException {
@@ -415,15 +415,15 @@ public class CatalogApi {
 
     /**
      * /experimental/catalog/stats/merchants/{merchant-id}
-     * get an stats request
-     * @param merchantId merchant-id to get (required)
-     * @param lastNumHours the last number of hours (optional)
+     * Get the statistics of the catalog of a merchant over the last &#x60;lastNumHours&#x60; hours (24 hours by default)
+     * @param merchantId The id of the merchant whose catalog statistics are requested. (required)
+     * @param lastNumHours The number of past hours covered by the statistics (1 to 1000, 24 by default). (optional)
      * @return StatisticsOkResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The statistics object </td><td>  -  </td></tr>
      </table>
      */
     public StatisticsOkResponse getCatalogMerchantStats(String merchantId, Integer lastNumHours) throws ApiException {
@@ -433,15 +433,15 @@ public class CatalogApi {
 
     /**
      * /experimental/catalog/stats/merchants/{merchant-id}
-     * get an stats request
-     * @param merchantId merchant-id to get (required)
-     * @param lastNumHours the last number of hours (optional)
+     * Get the statistics of the catalog of a merchant over the last &#x60;lastNumHours&#x60; hours (24 hours by default)
+     * @param merchantId The id of the merchant whose catalog statistics are requested. (required)
+     * @param lastNumHours The number of past hours covered by the statistics (1 to 1000, 24 by default). (optional)
      * @return ApiResponse&lt;StatisticsOkResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The statistics object </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<StatisticsOkResponse> getCatalogMerchantStatsWithHttpInfo(String merchantId, Integer lastNumHours) throws ApiException {
@@ -452,16 +452,16 @@ public class CatalogApi {
 
     /**
      * /experimental/catalog/stats/merchants/{merchant-id} (asynchronously)
-     * get an stats request
-     * @param merchantId merchant-id to get (required)
-     * @param lastNumHours the last number of hours (optional)
+     * Get the statistics of the catalog of a merchant over the last &#x60;lastNumHours&#x60; hours (24 hours by default)
+     * @param merchantId The id of the merchant whose catalog statistics are requested. (required)
+     * @param lastNumHours The number of past hours covered by the statistics (1 to 1000, 24 by default). (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The statistics object </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCatalogMerchantStatsAsync(String merchantId, Integer lastNumHours, final ApiCallback<StatisticsOkResponse> _callback) throws ApiException {
@@ -603,7 +603,7 @@ public class CatalogApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operation id in &#x60;operationToken&#x60;. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call submitCatalogProductsBatchCall(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback _callback) throws ApiException {
@@ -664,14 +664,14 @@ public class CatalogApi {
 
     /**
      * /experimental/catalog/products/batch
-     * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
+     * Used to publish a batch of operations to insert, update and delete products.  The batch is processed asynchronously. The response provides an operation id in &#x60;operationToken&#x60;  which can be used to track the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @return BatchAcceptedResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operation id in &#x60;operationToken&#x60;. </td><td>  -  </td></tr>
      </table>
      */
     public BatchAcceptedResponse submitCatalogProductsBatch(ProductsCustomBatchRequest productsCustomBatchRequest) throws ApiException {
@@ -681,14 +681,14 @@ public class CatalogApi {
 
     /**
      * /experimental/catalog/products/batch
-     * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
+     * Used to publish a batch of operations to insert, update and delete products.  The batch is processed asynchronously. The response provides an operation id in &#x60;operationToken&#x60;  which can be used to track the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @return ApiResponse&lt;BatchAcceptedResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operation id in &#x60;operationToken&#x60;. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<BatchAcceptedResponse> submitCatalogProductsBatchWithHttpInfo(ProductsCustomBatchRequest productsCustomBatchRequest) throws ApiException {
@@ -699,7 +699,7 @@ public class CatalogApi {
 
     /**
      * /experimental/catalog/products/batch (asynchronously)
-     * Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
+     * Used to publish a batch of operations to insert, update and delete products.  The batch is processed asynchronously. The response provides an operation id in &#x60;operationToken&#x60;  which can be used to track the status of the report of the operation.
      * @param productsCustomBatchRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -707,7 +707,7 @@ public class CatalogApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> Batch accepted. The status of the operation can be tracked using the report endpoint and the operation id in &#x60;operationToken&#x60;. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call submitCatalogProductsBatchAsync(ProductsCustomBatchRequest productsCustomBatchRequest, final ApiCallback<BatchAcceptedResponse> _callback) throws ApiException {

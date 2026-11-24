@@ -8,12 +8,24 @@ Optional filters and pagination applied when searching campaigns under an accoun
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**budgetStatusFilter** | [**List&lt;BudgetStatusFilterEnum&gt;**](#List&lt;BudgetStatusFilterEnum&gt;) |  |  [optional] |
 |**buyTypeFilter** | [**List&lt;BuyTypeFilterEnum&gt;**](#List&lt;BuyTypeFilterEnum&gt;) |  |  [optional] |
 |**campaignIdFilter** | **List&lt;String&gt;** |  |  [optional] |
 |**campaignStatusFilter** | [**List&lt;CampaignStatusFilterEnum&gt;**](#List&lt;CampaignStatusFilterEnum&gt;) |  |  [optional] |
 |**campaignTypeFilter** | [**List&lt;CampaignTypeFilterEnum&gt;**](#List&lt;CampaignTypeFilterEnum&gt;) |  |  [optional] |
 |**limit** | **Integer** | The maximum number of campaigns to return. |  [optional] |
 |**offset** | **Integer** | The number of matching campaigns to skip. |  [optional] |
+
+
+
+## Enum: List&lt;BudgetStatusFilterEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| BUDGETAVAILABLE | &quot;BudgetAvailable&quot; |
+| DAILYBUDGETREACHED | &quot;DailyBudgetReached&quot; |
+| MONTHLYBUDGETREACHED | &quot;MonthlyBudgetReached&quot; |
+| TOTALBUDGETREACHED | &quot;TotalBudgetReached&quot; |
 
 
 

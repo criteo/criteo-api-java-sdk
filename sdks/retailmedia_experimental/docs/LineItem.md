@@ -15,8 +15,8 @@ Line Item search attributes
 |**flightDates** | [**FlightDates**](FlightDates.md) |  |  [optional] |
 |**isPaused** | **Boolean** | Indicates whether the line item is paused. |  [optional] |
 |**lineItemId** | **String** | The id of the line item. |  [optional] |
+|**lineItemName** | **String** | The name of the line item. |  [optional] |
 |**lineItemType** | [**LineItemTypeEnum**](#LineItemTypeEnum) | The type of the line item. |  [optional] |
-|**name** | **String** | The name of the line item. |  [optional] |
 |**onsiteDisplay** | [**OnsiteDisplayAttributes**](OnsiteDisplayAttributes.md) |  |  [optional] |
 |**retailerId** | **String** | The retailer id of the associated retailer. |  [optional] |
 |**serveToOptOutUser** | **Boolean** | Whether to serve ads to users who have opted out of personalization. |  [optional] |

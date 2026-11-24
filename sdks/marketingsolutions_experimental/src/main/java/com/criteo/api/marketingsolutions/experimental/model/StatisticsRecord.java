@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -67,7 +66,7 @@ public class StatisticsRecord {
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
+  private String endDate;
 
   public static final String SERIALIZED_NAME_MISSING_DESCRIPTION = "missingDescription";
   @SerializedName(SERIALIZED_NAME_MISSING_DESCRIPTION)
@@ -99,7 +98,7 @@ public class StatisticsRecord {
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
-  private OffsetDateTime startDate;
+  private String startDate;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -204,7 +203,7 @@ public class StatisticsRecord {
   }
 
 
-  public StatisticsRecord endDate(OffsetDateTime endDate) {
+  public StatisticsRecord endDate(String endDate) {
     
     this.endDate = endDate;
     return this;
@@ -216,12 +215,12 @@ public class StatisticsRecord {
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getEndDate() {
+  public String getEndDate() {
     return endDate;
   }
 
 
-  public void setEndDate(OffsetDateTime endDate) {
+  public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
 
@@ -380,7 +379,7 @@ public class StatisticsRecord {
   }
 
 
-  public StatisticsRecord startDate(OffsetDateTime startDate) {
+  public StatisticsRecord startDate(String startDate) {
     
     this.startDate = startDate;
     return this;
@@ -392,12 +391,12 @@ public class StatisticsRecord {
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getStartDate() {
+  public String getStartDate() {
     return startDate;
   }
 
 
-  public void setStartDate(OffsetDateTime startDate) {
+  public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
@@ -657,6 +656,9 @@ public class StatisticsRecord {
       if (!jsonObj.get("displayable").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayable` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayable").toString()));
       }
+      if (!jsonObj.get("endDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
+      }
       if (!jsonObj.get("missingDescription").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `missingDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("missingDescription").toString()));
       }
@@ -677,6 +679,9 @@ public class StatisticsRecord {
       }
       if (!jsonObj.get("outOfStock").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `outOfStock` to be a primitive type in the JSON string but got `%s`", jsonObj.get("outOfStock").toString()));
+      }
+      if (!jsonObj.get("startDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
       }
       if (!jsonObj.get("total").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `total` to be a primitive type in the JSON string but got `%s`", jsonObj.get("total").toString()));

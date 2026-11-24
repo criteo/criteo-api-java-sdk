@@ -472,7 +472,7 @@ public class Example {
 
 /experimental/retail-media/catalog/products/batch
 
-Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
+Used to publish a batch of operations to insert, update and delete products.  The batch is processed asynchronously. The response provides an operation id in &#x60;operationToken&#x60;  which can be used to track the status of the report of the operation.
 
 ### Example
 
@@ -552,5 +552,5 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **202** | Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. |  -  |
+| **202** | Batch accepted. The status of the operation can be tracked using the report endpoint and the operation id in &#x60;operationToken&#x60;. |  -  |
 

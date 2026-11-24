@@ -200,7 +200,7 @@ public class Example {
 
 /experimental/catalog/stats/merchants/{merchant-id}
 
-get an stats request
+Get the statistics of the catalog of a merchant over the last &#x60;lastNumHours&#x60; hours (24 hours by default)
 
 ### Example
 
@@ -241,8 +241,8 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CatalogApi apiInstance = new CatalogApi(defaultClient);
-        String merchantId = "merchantId_example"; // String | merchant-id to get
-        Integer lastNumHours = 56; // Integer | the last number of hours
+        String merchantId = "merchantId_example"; // String | The id of the merchant whose catalog statistics are requested.
+        Integer lastNumHours = 56; // Integer | The number of past hours covered by the statistics (1 to 1000, 24 by default).
         try {
             StatisticsOkResponse result = apiInstance.getCatalogMerchantStats(merchantId, lastNumHours);
             System.out.println(result);
@@ -262,8 +262,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **merchantId** | **String**| merchant-id to get | |
-| **lastNumHours** | **Integer**| the last number of hours | [optional] |
+| **merchantId** | **String**| The id of the merchant whose catalog statistics are requested. | |
+| **lastNumHours** | **Integer**| The number of past hours covered by the statistics (1 to 1000, 24 by default). | [optional] |
 
 ### Return type
 
@@ -282,7 +282,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The successful response of GET stats request |  -  |
+| **200** | The statistics object |  -  |
 
 
 ## getCatalogProductsBatchReport
@@ -380,7 +380,7 @@ public class Example {
 
 /experimental/catalog/products/batch
 
-Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
+Used to publish a batch of operations to insert, update and delete products.  The batch is processed asynchronously. The response provides an operation id in &#x60;operationToken&#x60;  which can be used to track the status of the report of the operation.
 
 ### Example
 
@@ -460,5 +460,5 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **202** | Batch accepted. The status of the operation can be tracked using the report endpoint and the operationToken. |  -  |
+| **202** | Batch accepted. The status of the operation can be tracked using the report endpoint and the operation id in &#x60;operationToken&#x60;. |  -  |
 

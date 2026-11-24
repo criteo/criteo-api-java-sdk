@@ -86,9 +86,60 @@ public class Product {
   @SerializedName(SERIALIZED_NAME_AGE_GROUP)
   private String ageGroup;
 
+  /**
+   * Availability status of the item.
+   */
+  @JsonAdapter(AvailabilityEnum.Adapter.class)
+  public enum AvailabilityEnum {
+    IN_STOCK("in_stock"),
+    
+    OUT_OF_STOCK("out_of_stock"),
+    
+    PREORDER("preorder"),
+    
+    BACKORDER("backorder");
+
+    private String value;
+
+    AvailabilityEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AvailabilityEnum fromValue(String value) {
+      for (AvailabilityEnum b : AvailabilityEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AvailabilityEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AvailabilityEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AvailabilityEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AvailabilityEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_AVAILABILITY = "availability";
   @SerializedName(SERIALIZED_NAME_AVAILABILITY)
-  private String availability;
+  private AvailabilityEnum availability;
 
   public static final String SERIALIZED_NAME_AVAILABILITY_DATE = "availabilityDate";
   @SerializedName(SERIALIZED_NAME_AVAILABILITY_DATE)
@@ -102,54 +153,9 @@ public class Product {
   @SerializedName(SERIALIZED_NAME_BRAND)
   private String brand;
 
-  /**
-   * The item&#39;s channel (online only).
-   */
-  @JsonAdapter(ChannelEnum.Adapter.class)
-  public enum ChannelEnum {
-    ONLINE("online");
-
-    private String value;
-
-    ChannelEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ChannelEnum fromValue(String value) {
-      for (ChannelEnum b : ChannelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ChannelEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ChannelEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ChannelEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ChannelEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_CHANNEL = "channel";
   @SerializedName(SERIALIZED_NAME_CHANNEL)
-  private ChannelEnum channel;
+  private String channel;
 
   public static final String SERIALIZED_NAME_COLOR = "color";
   @SerializedName(SERIALIZED_NAME_COLOR)
@@ -219,6 +225,10 @@ public class Product {
   @SerializedName(SERIALIZED_NAME_ENERGY_EFFICIENCY_CLASS)
   private String energyEfficiencyClass;
 
+  public static final String SERIALIZED_NAME_EXCLUDED_CHANNELS = "excludedChannels";
+  @SerializedName(SERIALIZED_NAME_EXCLUDED_CHANNELS)
+  private List<String> excludedChannels = null;
+
   public static final String SERIALIZED_NAME_EXCLUDED_DESTINATIONS = "excludedDestinations";
   @SerializedName(SERIALIZED_NAME_EXCLUDED_DESTINATIONS)
   private List<String> excludedDestinations = null;
@@ -274,6 +284,10 @@ public class Product {
   public static final String SERIALIZED_NAME_IS_BUNDLE = "isBundle";
   @SerializedName(SERIALIZED_NAME_IS_BUNDLE)
   private Boolean isBundle;
+
+  public static final String SERIALIZED_NAME_IS_BUYBOX = "isBuybox";
+  @SerializedName(SERIALIZED_NAME_IS_BUYBOX)
+  private Boolean isBuybox;
 
   public static final String SERIALIZED_NAME_ITEM_GROUP_ID = "itemGroupId";
   @SerializedName(SERIALIZED_NAME_ITEM_GROUP_ID)
@@ -590,24 +604,24 @@ public class Product {
   }
 
 
-  public Product availability(String availability) {
+  public Product availability(AvailabilityEnum availability) {
     
     this.availability = availability;
     return this;
   }
 
    /**
-   * Availability status of the item. RECOMMENDED.
+   * Availability status of the item.
    * @return availability
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getAvailability() {
+  public AvailabilityEnum getAvailability() {
     return availability;
   }
 
 
-  public void setAvailability(String availability) {
+  public void setAvailability(AvailabilityEnum availability) {
     this.availability = availability;
   }
 
@@ -678,7 +692,7 @@ public class Product {
   }
 
 
-  public Product channel(ChannelEnum channel) {
+  public Product channel(String channel) {
     
     this.channel = channel;
     return this;
@@ -688,14 +702,14 @@ public class Product {
    * The item&#39;s channel (online only).
    * @return channel
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public ChannelEnum getChannel() {
+  public String getChannel() {
     return channel;
   }
 
 
-  public void setChannel(ChannelEnum channel) {
+  public void setChannel(String channel) {
     this.channel = channel;
   }
 
@@ -803,7 +817,7 @@ public class Product {
   }
 
    /**
-   * A list of custom (merchant-provided) attributes. This is useful for submitting attributes not explicitly exposed by the API. Declaring attributes explicitly exposed by the API using is forbidden
+   * A list of custom (merchant-provided) attributes. This is useful for submitting attributes not explicitly exposed by the API. Declaring attributes explicitly exposed by the API using this field is forbidden.
    * @return customAttributes
   **/
   @javax.annotation.Nullable
@@ -935,7 +949,7 @@ public class Product {
   }
 
    /**
-   * Description of the item. RECOMMENDED. (5000 UTF8 characters max).
+   * Description of the item. RECOMMENDED. (5000 UTF-8 characters max).
    * @return description
   **/
   @javax.annotation.Nullable
@@ -1090,6 +1104,36 @@ public class Product {
   }
 
 
+  public Product excludedChannels(List<String> excludedChannels) {
+    
+    this.excludedChannels = excludedChannels;
+    return this;
+  }
+
+  public Product addExcludedChannelsItem(String excludedChannelsItem) {
+    if (this.excludedChannels == null) {
+      this.excludedChannels = new ArrayList<>();
+    }
+    this.excludedChannels.add(excludedChannelsItem);
+    return this;
+  }
+
+   /**
+   * List of channels to exclude for this product. Accepted values: PERF_MEDIA, RM_ONSITE, RM_OFFSITE.
+   * @return excludedChannels
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getExcludedChannels() {
+    return excludedChannels;
+  }
+
+
+  public void setExcludedChannels(List<String> excludedChannels) {
+    this.excludedChannels = excludedChannels;
+  }
+
+
   public Product excludedDestinations(List<String> excludedDestinations) {
     
     this.excludedDestinations = excludedDestinations;
@@ -1149,7 +1193,7 @@ public class Product {
   }
 
    /**
-   * The external id of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.
+   * The external ID of the seller (case sensitive and 50 UTF-8 characters max). This information is required by the Criteo Offsite Ads.
    * @return externalSellerId
   **/
   @javax.annotation.Nullable
@@ -1171,7 +1215,7 @@ public class Product {
   }
 
    /**
-   * The external name of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.
+   * The external name of the seller (case sensitive and 750 UTF-8 characters max). This information is required by the Criteo Offsite Ads.
    * @return externalSellerName
   **/
   @javax.annotation.Nullable
@@ -1333,7 +1377,7 @@ public class Product {
   }
 
    /**
-   * URL of an image of the item. Supported formats: PNG, JPEG, GIF. (2000 UTF8 characters max). 
+   * URL of an image of the item. Supported formats: PNG, JPEG, GIF. (2000 UTF-8 characters max). 
    * @return imageLink
   **/
   @javax.annotation.Nonnull
@@ -1422,6 +1466,28 @@ public class Product {
   }
 
 
+  public Product isBuybox(Boolean isBuybox) {
+    
+    this.isBuybox = isBuybox;
+    return this;
+  }
+
+   /**
+   * Flag indicating whether this SKU is currently the Buy Box Winner (BBW) on its Product Detail Page.
+   * @return isBuybox
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getIsBuybox() {
+    return isBuybox;
+  }
+
+
+  public void setIsBuybox(Boolean isBuybox) {
+    this.isBuybox = isBuybox;
+  }
+
+
   public Product itemGroupId(String itemGroupId) {
     
     this.itemGroupId = itemGroupId;
@@ -1473,7 +1539,7 @@ public class Product {
   }
 
    /**
-   * URL directly linking to your item&#39;s page on your website. (1000 UTF8 characters max).
+   * URL directly linking to your item&#39;s page on your website. (2000 UTF-8 characters max).
    * @return link
   **/
   @javax.annotation.Nonnull
@@ -1627,7 +1693,7 @@ public class Product {
   }
 
    /**
-   * accounts.link to a mobile-optimized version of the landing page.
+   * Link to a mobile-optimized version of the landing page.
    * @return mobileLink
   **/
   @javax.annotation.Nullable
@@ -1937,7 +2003,7 @@ public class Product {
   }
 
    /**
-   * (Deprecated Field) The external ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.
+   * (Deprecated Field) The external ID of the seller (case sensitive and 50 UTF-8 characters max). This information is required by the Criteo Offsite Ads.
    * @return sellerId
   **/
   @javax.annotation.Nullable
@@ -2033,7 +2099,7 @@ public class Product {
   }
 
    /**
-   * The shipping label of the product, used to group product in account-level shipping rules.
+   * The shipping label of the product, used to group products in account-level shipping rules.
    * @return shippingLabel
   **/
   @javax.annotation.Nullable
@@ -2129,7 +2195,7 @@ public class Product {
   }
 
    /**
-   * Size of the item. RECOMMENDED. Only one value is allowed. For variants with different sizes, insert a separate product for each size with the same itemGroupId value.
+   * Size of the item. RECOMMENDED. For variants with different sizes, insert a separate product for each size with the same itemGroupId value.
    * @return sizes
   **/
   @javax.annotation.Nullable
@@ -2291,7 +2357,7 @@ public class Product {
   }
 
    /**
-   * Title of the item. (500 UTF8 characters max).
+   * Title of the item. (500 UTF-8 characters max).
    * @return title
   **/
   @javax.annotation.Nonnull
@@ -2313,7 +2379,7 @@ public class Product {
   }
 
    /**
-   * The transit time label of the product, used to group product in account-level transit time tables.
+   * The transit time label of the product, used to group products in account-level transit time tables.
    * @return transitTimeLabel
   **/
   @javax.annotation.Nullable
@@ -2454,6 +2520,7 @@ public class Product {
         Objects.equals(this.displayAdsTitle, product.displayAdsTitle) &&
         Objects.equals(this.displayAdsValue, product.displayAdsValue) &&
         Objects.equals(this.energyEfficiencyClass, product.energyEfficiencyClass) &&
+        Objects.equals(this.excludedChannels, product.excludedChannels) &&
         Objects.equals(this.excludedDestinations, product.excludedDestinations) &&
         Objects.equals(this.expirationDate, product.expirationDate) &&
         Objects.equals(this.externalSellerId, product.externalSellerId) &&
@@ -2468,6 +2535,7 @@ public class Product {
         Objects.equals(this.includedDestinations, product.includedDestinations) &&
         Objects.equals(this.installment, product.installment) &&
         Objects.equals(this.isBundle, product.isBundle) &&
+        Objects.equals(this.isBuybox, product.isBuybox) &&
         Objects.equals(this.itemGroupId, product.itemGroupId) &&
         Objects.equals(this.kind, product.kind) &&
         Objects.equals(this.link, product.link) &&
@@ -2514,7 +2582,7 @@ public class Product {
 
   @Override
   public int hashCode() {
-    return Objects.hash(additionalImageLinks, adsGrouping, adsLabels, adsRedirect, adult, ageGroup, availability, availabilityDate, badge, brand, channel, color, condition, contentLanguage, costOfGoodsSold, customAttributes, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, displayAdsId, displayAdsLink, displayAdsSimilarIds, displayAdsTitle, displayAdsValue, energyEfficiencyClass, excludedDestinations, expirationDate, externalSellerId, externalSellerName, filters, gender, googleProductCategory, gtin, id, identifierExists, imageLink, includedDestinations, installment, isBundle, itemGroupId, kind, link, loyaltyPoints, material, maxEnergyEfficiencyClass, maxHandlingTime, minEnergyEfficiencyClass, minHandlingTime, mobileLink, mpn, multipack, numberOfReviews, offerId, pattern, price, productRating, productTypeKeys, productTypes, promotionIds, salePrice, salePriceEffectiveDate, sellerId, sellOnGoogleQuantity, shipping, shippingHeight, shippingLabel, shippingLength, shippingWeight, shippingWidth, sizes, sizeSystem, sizeType, source, targetCountry, taxCategory, taxes, title, transitTimeLabel, unitPricingBaseMeasure, unitPricingMeasure, additionalProperties);
+    return Objects.hash(additionalImageLinks, adsGrouping, adsLabels, adsRedirect, adult, ageGroup, availability, availabilityDate, badge, brand, channel, color, condition, contentLanguage, costOfGoodsSold, customAttributes, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, displayAdsId, displayAdsLink, displayAdsSimilarIds, displayAdsTitle, displayAdsValue, energyEfficiencyClass, excludedChannels, excludedDestinations, expirationDate, externalSellerId, externalSellerName, filters, gender, googleProductCategory, gtin, id, identifierExists, imageLink, includedDestinations, installment, isBundle, isBuybox, itemGroupId, kind, link, loyaltyPoints, material, maxEnergyEfficiencyClass, maxHandlingTime, minEnergyEfficiencyClass, minHandlingTime, mobileLink, mpn, multipack, numberOfReviews, offerId, pattern, price, productRating, productTypeKeys, productTypes, promotionIds, salePrice, salePriceEffectiveDate, sellerId, sellOnGoogleQuantity, shipping, shippingHeight, shippingLabel, shippingLength, shippingWeight, shippingWidth, sizes, sizeSystem, sizeType, source, targetCountry, taxCategory, taxes, title, transitTimeLabel, unitPricingBaseMeasure, unitPricingMeasure, additionalProperties);
   }
 
   @Override
@@ -2549,6 +2617,7 @@ public class Product {
     sb.append("    displayAdsTitle: ").append(toIndentedString(displayAdsTitle)).append("\n");
     sb.append("    displayAdsValue: ").append(toIndentedString(displayAdsValue)).append("\n");
     sb.append("    energyEfficiencyClass: ").append(toIndentedString(energyEfficiencyClass)).append("\n");
+    sb.append("    excludedChannels: ").append(toIndentedString(excludedChannels)).append("\n");
     sb.append("    excludedDestinations: ").append(toIndentedString(excludedDestinations)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    externalSellerId: ").append(toIndentedString(externalSellerId)).append("\n");
@@ -2563,6 +2632,7 @@ public class Product {
     sb.append("    includedDestinations: ").append(toIndentedString(includedDestinations)).append("\n");
     sb.append("    installment: ").append(toIndentedString(installment)).append("\n");
     sb.append("    isBundle: ").append(toIndentedString(isBundle)).append("\n");
+    sb.append("    isBuybox: ").append(toIndentedString(isBuybox)).append("\n");
     sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
@@ -2655,6 +2725,7 @@ public class Product {
     openapiFields.add("displayAdsTitle");
     openapiFields.add("displayAdsValue");
     openapiFields.add("energyEfficiencyClass");
+    openapiFields.add("excludedChannels");
     openapiFields.add("excludedDestinations");
     openapiFields.add("expirationDate");
     openapiFields.add("externalSellerId");
@@ -2669,6 +2740,7 @@ public class Product {
     openapiFields.add("includedDestinations");
     openapiFields.add("installment");
     openapiFields.add("isBundle");
+    openapiFields.add("isBuybox");
     openapiFields.add("itemGroupId");
     openapiFields.add("kind");
     openapiFields.add("link");
@@ -2713,7 +2785,7 @@ public class Product {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("channel");
+    openapiRequiredFields.add("availability");
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("imageLink");
     openapiRequiredFields.add("link");
@@ -2756,7 +2828,7 @@ public class Product {
       if ((jsonObj.get("ageGroup") != null && !jsonObj.get("ageGroup").isJsonNull()) && !jsonObj.get("ageGroup").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ageGroup` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ageGroup").toString()));
       }
-      if ((jsonObj.get("availability") != null && !jsonObj.get("availability").isJsonNull()) && !jsonObj.get("availability").isJsonPrimitive()) {
+      if (!jsonObj.get("availability").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `availability` to be a primitive type in the JSON string but got `%s`", jsonObj.get("availability").toString()));
       }
       if ((jsonObj.get("availabilityDate") != null && !jsonObj.get("availabilityDate").isJsonNull()) && !jsonObj.get("availabilityDate").isJsonPrimitive()) {
@@ -2768,7 +2840,7 @@ public class Product {
       if ((jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonNull()) && !jsonObj.get("brand").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `brand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brand").toString()));
       }
-      if (!jsonObj.get("channel").isJsonPrimitive()) {
+      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }
       if ((jsonObj.get("color") != null && !jsonObj.get("color").isJsonNull()) && !jsonObj.get("color").isJsonPrimitive()) {
@@ -2831,6 +2903,10 @@ public class Product {
       }
       if ((jsonObj.get("energyEfficiencyClass") != null && !jsonObj.get("energyEfficiencyClass").isJsonNull()) && !jsonObj.get("energyEfficiencyClass").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `energyEfficiencyClass` to be a primitive type in the JSON string but got `%s`", jsonObj.get("energyEfficiencyClass").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("excludedChannels") != null && !jsonObj.get("excludedChannels").isJsonNull() && !jsonObj.get("excludedChannels").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `excludedChannels` to be an array in the JSON string but got `%s`", jsonObj.get("excludedChannels").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("excludedDestinations") != null && !jsonObj.get("excludedDestinations").isJsonNull() && !jsonObj.get("excludedDestinations").isJsonArray()) {

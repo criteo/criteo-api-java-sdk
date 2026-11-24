@@ -1265,9 +1265,9 @@ paths:
   /experimental/retail-media/catalog/products/batch:
     post:
       description: |-
-        Used to publish a batch of operations to insert, update and deletes products.
-         The batch is processed asynchronously.The response provides an operationToken which can be used to track
-         the status of the report of the operation.
+        Used to publish a batch of operations to insert, update and delete products.
+         The batch is processed asynchronously. The response provides an operation id in `operationToken`
+         which can be used to track the status of the report of the operation.
       operationId: SubmitCatalogProductsBatch
       requestBody:
         content:
@@ -1283,7 +1283,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BatchAcceptedResponse'
           description: Batch accepted. The status of the operation can be tracked
-            using the report endpoint and the operationToken.
+            using the report endpoint and the operation id in `operationToken`.
       security:
       - oauth:
         - RetailMedia_Catalog_Manage
@@ -6346,7 +6346,20 @@ components:
         campaignTypeFilter:
         - SponsoredProducts
         - SponsoredProducts
+        budgetStatusFilter:
+        - BudgetAvailable
+        - BudgetAvailable
       properties:
+        budgetStatusFilter:
+          items:
+            enum:
+            - BudgetAvailable
+            - DailyBudgetReached
+            - MonthlyBudgetReached
+            - TotalBudgetReached
+            type: string
+          nullable: true
+          type: array
         buyTypeFilter:
           items:
             enum:
@@ -6409,6 +6422,9 @@ components:
             campaignTypeFilter:
             - SponsoredProducts
             - SponsoredProducts
+            budgetStatusFilter:
+            - BudgetAvailable
+            - BudgetAvailable
           type: type
       properties:
         data:
@@ -6433,6 +6449,9 @@ components:
           campaignTypeFilter:
           - SponsoredProducts
           - SponsoredProducts
+          budgetStatusFilter:
+          - BudgetAvailable
+          - BudgetAvailable
         type: type
       properties:
         attributes:
@@ -10939,7 +10958,7 @@ components:
       example:
         serveToOptOutUser: true
         campaignId: campaignId
-        name: name
+        lineItemName: lineItemName
         onsiteDisplayDetails:
           isPaused: true
           auctionDetails:
@@ -10950,7 +10969,7 @@ components:
           description: The campaign id of the associated campaign.
           nullable: true
           type: string
-        name:
+        lineItemName:
           description: The name of the line item.
           nullable: true
           type: string
@@ -10966,7 +10985,7 @@ components:
           type: boolean
       required:
       - campaignId
-      - name
+      - lineItemName
       - retailerId
       type: object
     ExternalCreateLineItemModelRequest:
@@ -10978,7 +10997,7 @@ components:
           attributes:
             serveToOptOutUser: true
             campaignId: campaignId
-            name: name
+            lineItemName: lineItemName
             onsiteDisplayDetails:
               isPaused: true
               auctionDetails:
@@ -10996,7 +11015,7 @@ components:
         attributes:
           serveToOptOutUser: true
           campaignId: campaignId
-          name: name
+          lineItemName: lineItemName
           onsiteDisplayDetails:
             isPaused: true
             auctionDetails:
@@ -11088,7 +11107,7 @@ components:
         serveToOptOutUser: true
         lineItemId: lineItemId
         campaignId: campaignId
-        name: name
+        lineItemName: lineItemName
         onsiteDisplayDetails:
           auctionDetails:
             isDynamicMatch: true
@@ -11121,7 +11140,7 @@ components:
           description: The unique identifier of the line item.
           nullable: true
           type: string
-        name:
+        lineItemName:
           description: The name of the line item.
           nullable: true
           type: string
@@ -11150,7 +11169,7 @@ components:
       example:
         isPaused: true
         serveToOptOutUser: true
-        name: name
+        lineItemName: lineItemName
         onsiteDisplayDetails:
           auctionDetails:
             isDynamicMatch: true
@@ -11159,7 +11178,7 @@ components:
           description: Whether the line item is paused.
           nullable: true
           type: boolean
-        name:
+        lineItemName:
           description: The name of the line item.
           nullable: true
           type: string
@@ -11179,7 +11198,7 @@ components:
           attributes:
             isPaused: true
             serveToOptOutUser: true
-            name: name
+            lineItemName: lineItemName
             onsiteDisplayDetails:
               auctionDetails:
                 isDynamicMatch: true
@@ -11195,7 +11214,7 @@ components:
         attributes:
           isPaused: true
           serveToOptOutUser: true
-          name: name
+          lineItemName: lineItemName
           onsiteDisplayDetails:
             auctionDetails:
               isDynamicMatch: true
@@ -11720,7 +11739,7 @@ components:
         amount:
           currency: currency
           value: value
-        months: 5
+        months: 1
       properties:
         amount:
           $ref: '#/components/schemas/Price'
@@ -11793,8 +11812,8 @@ components:
         serveToOptOutUser: true
         lineItemId: lineItemId
         campaignId: campaignId
+        lineItemName: lineItemName
         lineItemType: SponsoredProduct
-        name: name
         buyType: Auction
         budgetStatus: Unknown
         onsiteDisplay:
@@ -11843,15 +11862,15 @@ components:
           description: The id of the line item.
           nullable: true
           type: string
+        lineItemName:
+          description: The name of the line item.
+          nullable: true
+          type: string
         lineItemType:
           description: The type of the line item.
           enum:
           - SponsoredProduct
           - OnsiteDisplay
-          nullable: true
-          type: string
-        name:
-          description: The name of the line item.
           nullable: true
           type: string
         onsiteDisplay:
@@ -12800,7 +12819,7 @@ components:
           serveToOptOutUser: true
           lineItemId: lineItemId
           campaignId: campaignId
-          name: name
+          lineItemName: lineItemName
           onsiteDisplayDetails:
             auctionDetails:
               isDynamicMatch: true
@@ -12926,7 +12945,7 @@ components:
             serveToOptOutUser: true
             lineItemId: lineItemId
             campaignId: campaignId
-            name: name
+            lineItemName: lineItemName
             onsiteDisplayDetails:
               auctionDetails:
                 isDynamicMatch: true
@@ -13056,7 +13075,7 @@ components:
               serveToOptOutUser: true
               lineItemId: lineItemId
               campaignId: campaignId
-              name: name
+              lineItemName: lineItemName
               onsiteDisplayDetails:
                 auctionDetails:
                   isDynamicMatch: true
@@ -13234,8 +13253,8 @@ components:
             serveToOptOutUser: true
             lineItemId: lineItemId
             campaignId: campaignId
+            lineItemName: lineItemName
             lineItemType: SponsoredProduct
-            name: name
             buyType: Auction
             budgetStatus: Unknown
             onsiteDisplay:
@@ -13253,8 +13272,8 @@ components:
             serveToOptOutUser: true
             lineItemId: lineItemId
             campaignId: campaignId
+            lineItemName: lineItemName
             lineItemType: SponsoredProduct
-            name: name
             buyType: Auction
             budgetStatus: Unknown
             onsiteDisplay:
@@ -13721,8 +13740,8 @@ components:
           serveToOptOutUser: true
           lineItemId: lineItemId
           campaignId: campaignId
+          lineItemName: lineItemName
           lineItemType: SponsoredProduct
-          name: name
           buyType: Auction
           budgetStatus: Unknown
           onsiteDisplay:
@@ -13758,7 +13777,7 @@ components:
           serveToOptOutUser: true
           lineItemId: lineItemId
           campaignId: campaignId
-          name: name
+          lineItemName: lineItemName
           onsiteDisplayDetails:
             auctionDetails:
               isDynamicMatch: true
@@ -13794,7 +13813,7 @@ components:
             serveToOptOutUser: true
             lineItemId: lineItemId
             campaignId: campaignId
-            name: name
+            lineItemName: lineItemName
             onsiteDisplayDetails:
               auctionDetails:
                 isDynamicMatch: true
@@ -13918,7 +13937,7 @@ components:
         serveToOptOutUser: true
         lineItemId: lineItemId
         campaignId: campaignId
-        name: name
+        lineItemName: lineItemName
         onsiteDisplayDetails:
           auctionDetails:
             isDynamicMatch: true
@@ -13950,7 +13969,7 @@ components:
           description: The unique identifier of the line item.
           nullable: true
           type: string
-        name:
+        lineItemName:
           description: The name of the line item.
           nullable: true
           type: string
@@ -13975,7 +13994,7 @@ components:
       - campaignId
       - isPaused
       - lineItemId
-      - name
+      - lineItemName
       - retailerId
       - serveToOptOutUser
       - type
@@ -13985,7 +14004,7 @@ components:
       example:
         name: name
         pointsValue: 5
-        ratio: 2.3021358869347655
+        ratio: 5.637376656633329
       properties:
         name:
           description: Name of loyalty points program. It is recommended to limit
@@ -15406,20 +15425,20 @@ components:
         includedDestinations:
         - includedDestinations
         - includedDestinations
-        numberOfReviews: 2
+        numberOfReviews: 3
         transitTimeLabel: transitTimeLabel
         customLabel3: customLabel3
-        channel: online
+        channel: channel
         availabilityDate: availabilityDate
         taxes:
         - country: country
-          rate: 6.84685269835264
+          rate: 1.4894159098541704
           locationId: 1
           postalCode: postalCode
           region: region
           taxShip: true
         - country: country
-          rate: 6.84685269835264
+          rate: 1.4894159098541704
           locationId: 1
           postalCode: postalCode
           region: region
@@ -15429,16 +15448,16 @@ components:
         loyaltyPoints:
           name: name
           pointsValue: 5
-          ratio: 2.3021358869347655
+          ratio: 5.637376656633329
         displayAdsLink: displayAdsLink
         shippingHeight:
           unit: unit
-          value: 1.2315135367772556
-        sellOnGoogleQuantity: 4
+          value: 7.386281948385884
+        sellOnGoogleQuantity: 2
         sellerId: sellerId
         shipping:
         - country: country
-          locationId: 7
+          locationId: 4
           price:
             currency: currency
             value: value
@@ -15447,7 +15466,7 @@ components:
           region: region
           locationGroupName: locationGroupName
         - country: country
-          locationId: 7
+          locationId: 4
           price:
             currency: currency
             value: value
@@ -15476,7 +15495,7 @@ components:
         excludedDestinations:
         - excludedDestinations
         - excludedDestinations
-        displayAdsValue: 1.4658129805029452
+        displayAdsValue: 6.027456183070403
         shippingLabel: shippingLabel
         mpn: mpn
         productTypes:
@@ -15497,7 +15516,7 @@ components:
           amount:
             currency: currency
             value: value
-          months: 5
+          months: 1
         contentLanguage: contentLanguage
         offerId: offerId
         identifierExists: true
@@ -15516,27 +15535,31 @@ components:
         pattern: pattern
         salePriceEffectiveDate: salePriceEffectiveDate
         description: description
-        multipack: 3
+        multipack: 9
         adsLabels:
         - adsLabels
         - adsLabels
-        minHandlingTime: 9
-        availability: availability
+        minHandlingTime: 7
+        availability: in_stock
         title: title
         adsGrouping: adsGrouping
         itemGroupId: itemGroupId
         maxEnergyEfficiencyClass: maxEnergyEfficiencyClass
         displayAdsId: displayAdsId
+        excludedChannels:
+        - excludedChannels
+        - excludedChannels
         imageLink: imageLink
         unitPricingBaseMeasure:
           unit: unit
-          value: 7
+          value: 6
         shippingWeight:
           unit: unit
-          value: 1.0246457001441578
+          value: 1.2315135367772556
         shippingWidth:
           unit: unit
-          value: 1.2315135367772556
+          value: 7.386281948385884
+        isBuybox: true
         expirationDate: expirationDate
         costOfGoodsSold:
           currency: currency
@@ -15544,11 +15567,11 @@ components:
         gtin: gtin
         shippingLength:
           unit: unit
-          value: 1.2315135367772556
+          value: 7.386281948385884
         salePrice:
           currency: currency
           value: value
-        maxHandlingTime: 7
+        maxHandlingTime: 2
         promotionIds:
         - promotionIds
         - promotionIds
@@ -15560,7 +15583,7 @@ components:
         displayAdsTitle: displayAdsTitle
         unitPricingMeasure:
           unit: unit
-          value: 1.1730742509559433
+          value: 7.457744773683766
       properties:
         additionalImageLinks:
           description: Additional URLs of images of the item.
@@ -15587,7 +15610,12 @@ components:
           description: Target age group of the item.
           type: string
         availability:
-          description: Availability status of the item. RECOMMENDED.
+          description: Availability status of the item.
+          enum:
+          - in_stock
+          - out_of_stock
+          - preorder
+          - backorder
           type: string
         availabilityDate:
           description: "The day a pre-ordered product becomes available for delivery,\
@@ -15601,8 +15629,6 @@ components:
           type: string
         channel:
           description: The item's channel (online only).
-          enum:
-          - online
           type: string
         color:
           description: Color of the item.
@@ -15618,7 +15644,7 @@ components:
         customAttributes:
           description: A list of custom (merchant-provided) attributes. This is useful
             for submitting attributes not explicitly exposed by the API. Declaring
-            attributes explicitly exposed by the API using is forbidden
+            attributes explicitly exposed by the API using this field is forbidden.
           items:
             $ref: '#/components/schemas/CustomAttribute'
           type: array
@@ -15638,7 +15664,7 @@ components:
           description: Custom label 4 for custom grouping of items in a Shopping campaign.
           type: string
         description:
-          description: Description of the item. RECOMMENDED. (5000 UTF8 characters
+          description: Description of the item. RECOMMENDED. (5000 UTF-8 characters
             max).
           type: string
         displayAdsId:
@@ -15663,6 +15689,12 @@ components:
         energyEfficiencyClass:
           description: The energy efficiency class as defined in EU directive 2010/30/EU.
           type: string
+        excludedChannels:
+          description: "List of channels to exclude for this product. Accepted values:\
+            \ PERF_MEDIA, RM_ONSITE, RM_OFFSITE."
+          items:
+            type: string
+          type: array
         excludedDestinations:
           description: The list of destinations to exclude for this target (corresponds
             to unchecked check boxes in Merchant Center).
@@ -15674,11 +15706,11 @@ components:
             \ in ISO 8601 format."
           type: string
         externalSellerId:
-          description: The external id of the seller (case sensitive and 50 UTF8 characters
-            max). This information is required by the Criteo Offsite Ads.
+          description: The external ID of the seller (case sensitive and 50 UTF-8
+            characters max). This information is required by the Criteo Offsite Ads.
           type: string
         externalSellerName:
-          description: The external name of the seller (case sensitive and 50 UTF8
+          description: The external name of the seller (case sensitive and 750 UTF-8
             characters max). This information is required by the Criteo Offsite Ads.
           type: string
         filters:
@@ -15710,7 +15742,7 @@ components:
           type: boolean
         imageLink:
           description: "URL of an image of the item. Supported formats: PNG, JPEG,\
-            \ GIF. (2000 UTF8 characters max). "
+            \ GIF. (2000 UTF-8 characters max). "
           type: string
         includedDestinations:
           description: The list of destinations to include for this target (corresponds
@@ -15726,6 +15758,10 @@ components:
             a custom grouping of different products sold by a merchant for a single
             price.
           type: boolean
+        isBuybox:
+          description: Flag indicating whether this SKU is currently the Buy Box Winner
+            (BBW) on its Product Detail Page.
+          type: boolean
         itemGroupId:
           description: Shared identifier for all variants of the same product. RECOMMENDED.
             Don’t use casing to make IDs unique. (50 characters max)
@@ -15734,8 +15770,8 @@ components:
           description: Identifies what kind of resource this is.
           type: string
         link:
-          description: URL directly linking to your item's page on your website. (1000
-            UTF8 characters max).
+          description: URL directly linking to your item's page on your website. (2000
+            UTF-8 characters max).
           type: string
         loyaltyPoints:
           $ref: '#/components/schemas/LoyaltyPoints'
@@ -15757,8 +15793,7 @@ components:
           format: int64
           type: integer
         mobileLink:
-          description: accounts.link to a mobile-optimized version of the landing
-            page.
+          description: Link to a mobile-optimized version of the landing page.
           type: string
         mpn:
           description: Manufacturer Part Number (MPN) of the item. RECOMMENDED.
@@ -15805,7 +15840,7 @@ components:
           type: string
         sellerId:
           description: (Deprecated Field) The external ID of the seller (case sensitive
-            and 50 UTF8 characters max). This information is required by the Criteo
+            and 50 UTF-8 characters max). This information is required by the Criteo
             Offsite Ads.
           type: string
         sellOnGoogleQuantity:
@@ -15821,8 +15856,8 @@ components:
         shippingHeight:
           $ref: '#/components/schemas/ProductShippingDimension'
         shippingLabel:
-          description: "The shipping label of the product, used to group product in\
-            \ account-level shipping rules."
+          description: "The shipping label of the product, used to group products\
+            \ in account-level shipping rules."
           type: string
         shippingLength:
           $ref: '#/components/schemas/ProductShippingDimension'
@@ -15831,9 +15866,9 @@ components:
         shippingWidth:
           $ref: '#/components/schemas/ProductShippingDimension'
         sizes:
-          description: "Size of the item. RECOMMENDED. Only one value is allowed.\
-            \ For variants with different sizes, insert a separate product for each\
-            \ size with the same itemGroupId value."
+          description: "Size of the item. RECOMMENDED. For variants with different\
+            \ sizes, insert a separate product for each size with the same itemGroupId\
+            \ value."
           items:
             type: string
           type: array
@@ -15860,10 +15895,10 @@ components:
             $ref: '#/components/schemas/ProductTax'
           type: array
         title:
-          description: Title of the item. (500 UTF8 characters max).
+          description: Title of the item. (500 UTF-8 characters max).
           type: string
         transitTimeLabel:
-          description: "The transit time label of the product, used to group product\
+          description: "The transit time label of the product, used to group products\
             \ in account-level transit time tables."
           type: string
         unitPricingBaseMeasure:
@@ -15871,7 +15906,7 @@ components:
         unitPricingMeasure:
           $ref: '#/components/schemas/ProductUnitPricingMeasure'
       required:
-      - channel
+      - availability
       - id
       - imageLink
       - link
@@ -15902,20 +15937,20 @@ components:
             includedDestinations:
             - includedDestinations
             - includedDestinations
-            numberOfReviews: 2
+            numberOfReviews: 3
             transitTimeLabel: transitTimeLabel
             customLabel3: customLabel3
-            channel: online
+            channel: channel
             availabilityDate: availabilityDate
             taxes:
             - country: country
-              rate: 6.84685269835264
+              rate: 1.4894159098541704
               locationId: 1
               postalCode: postalCode
               region: region
               taxShip: true
             - country: country
-              rate: 6.84685269835264
+              rate: 1.4894159098541704
               locationId: 1
               postalCode: postalCode
               region: region
@@ -15925,16 +15960,16 @@ components:
             loyaltyPoints:
               name: name
               pointsValue: 5
-              ratio: 2.3021358869347655
+              ratio: 5.637376656633329
             displayAdsLink: displayAdsLink
             shippingHeight:
               unit: unit
-              value: 1.2315135367772556
-            sellOnGoogleQuantity: 4
+              value: 7.386281948385884
+            sellOnGoogleQuantity: 2
             sellerId: sellerId
             shipping:
             - country: country
-              locationId: 7
+              locationId: 4
               price:
                 currency: currency
                 value: value
@@ -15943,7 +15978,7 @@ components:
               region: region
               locationGroupName: locationGroupName
             - country: country
-              locationId: 7
+              locationId: 4
               price:
                 currency: currency
                 value: value
@@ -15972,7 +16007,7 @@ components:
             excludedDestinations:
             - excludedDestinations
             - excludedDestinations
-            displayAdsValue: 1.4658129805029452
+            displayAdsValue: 6.027456183070403
             shippingLabel: shippingLabel
             mpn: mpn
             productTypes:
@@ -15993,7 +16028,7 @@ components:
               amount:
                 currency: currency
                 value: value
-              months: 5
+              months: 1
             contentLanguage: contentLanguage
             offerId: offerId
             identifierExists: true
@@ -16012,27 +16047,31 @@ components:
             pattern: pattern
             salePriceEffectiveDate: salePriceEffectiveDate
             description: description
-            multipack: 3
+            multipack: 9
             adsLabels:
             - adsLabels
             - adsLabels
-            minHandlingTime: 9
-            availability: availability
+            minHandlingTime: 7
+            availability: in_stock
             title: title
             adsGrouping: adsGrouping
             itemGroupId: itemGroupId
             maxEnergyEfficiencyClass: maxEnergyEfficiencyClass
             displayAdsId: displayAdsId
+            excludedChannels:
+            - excludedChannels
+            - excludedChannels
             imageLink: imageLink
             unitPricingBaseMeasure:
               unit: unit
-              value: 7
+              value: 6
             shippingWeight:
               unit: unit
-              value: 1.0246457001441578
+              value: 1.2315135367772556
             shippingWidth:
               unit: unit
-              value: 1.2315135367772556
+              value: 7.386281948385884
+            isBuybox: true
             expirationDate: expirationDate
             costOfGoodsSold:
               currency: currency
@@ -16040,11 +16079,11 @@ components:
             gtin: gtin
             shippingLength:
               unit: unit
-              value: 1.2315135367772556
+              value: 7.386281948385884
             salePrice:
               currency: currency
               value: value
-            maxHandlingTime: 7
+            maxHandlingTime: 2
             promotionIds:
             - promotionIds
             - promotionIds
@@ -16056,11 +16095,11 @@ components:
             displayAdsTitle: displayAdsTitle
             unitPricingMeasure:
               unit: unit
-              value: 1.1730742509559433
+              value: 7.457744773683766
           method: delete
           productId: productId
           feedId: feedId
-          merchantId: 6
+          merchantId: merchantId
           batchId: 0
           itemGroupId: itemGroupId
         - product:
@@ -16072,20 +16111,20 @@ components:
             includedDestinations:
             - includedDestinations
             - includedDestinations
-            numberOfReviews: 2
+            numberOfReviews: 3
             transitTimeLabel: transitTimeLabel
             customLabel3: customLabel3
-            channel: online
+            channel: channel
             availabilityDate: availabilityDate
             taxes:
             - country: country
-              rate: 6.84685269835264
+              rate: 1.4894159098541704
               locationId: 1
               postalCode: postalCode
               region: region
               taxShip: true
             - country: country
-              rate: 6.84685269835264
+              rate: 1.4894159098541704
               locationId: 1
               postalCode: postalCode
               region: region
@@ -16095,16 +16134,16 @@ components:
             loyaltyPoints:
               name: name
               pointsValue: 5
-              ratio: 2.3021358869347655
+              ratio: 5.637376656633329
             displayAdsLink: displayAdsLink
             shippingHeight:
               unit: unit
-              value: 1.2315135367772556
-            sellOnGoogleQuantity: 4
+              value: 7.386281948385884
+            sellOnGoogleQuantity: 2
             sellerId: sellerId
             shipping:
             - country: country
-              locationId: 7
+              locationId: 4
               price:
                 currency: currency
                 value: value
@@ -16113,7 +16152,7 @@ components:
               region: region
               locationGroupName: locationGroupName
             - country: country
-              locationId: 7
+              locationId: 4
               price:
                 currency: currency
                 value: value
@@ -16142,7 +16181,7 @@ components:
             excludedDestinations:
             - excludedDestinations
             - excludedDestinations
-            displayAdsValue: 1.4658129805029452
+            displayAdsValue: 6.027456183070403
             shippingLabel: shippingLabel
             mpn: mpn
             productTypes:
@@ -16163,7 +16202,7 @@ components:
               amount:
                 currency: currency
                 value: value
-              months: 5
+              months: 1
             contentLanguage: contentLanguage
             offerId: offerId
             identifierExists: true
@@ -16182,27 +16221,31 @@ components:
             pattern: pattern
             salePriceEffectiveDate: salePriceEffectiveDate
             description: description
-            multipack: 3
+            multipack: 9
             adsLabels:
             - adsLabels
             - adsLabels
-            minHandlingTime: 9
-            availability: availability
+            minHandlingTime: 7
+            availability: in_stock
             title: title
             adsGrouping: adsGrouping
             itemGroupId: itemGroupId
             maxEnergyEfficiencyClass: maxEnergyEfficiencyClass
             displayAdsId: displayAdsId
+            excludedChannels:
+            - excludedChannels
+            - excludedChannels
             imageLink: imageLink
             unitPricingBaseMeasure:
               unit: unit
-              value: 7
+              value: 6
             shippingWeight:
               unit: unit
-              value: 1.0246457001441578
+              value: 1.2315135367772556
             shippingWidth:
               unit: unit
-              value: 1.2315135367772556
+              value: 7.386281948385884
+            isBuybox: true
             expirationDate: expirationDate
             costOfGoodsSold:
               currency: currency
@@ -16210,11 +16253,11 @@ components:
             gtin: gtin
             shippingLength:
               unit: unit
-              value: 1.2315135367772556
+              value: 7.386281948385884
             salePrice:
               currency: currency
               value: value
-            maxHandlingTime: 7
+            maxHandlingTime: 2
             promotionIds:
             - promotionIds
             - promotionIds
@@ -16226,11 +16269,11 @@ components:
             displayAdsTitle: displayAdsTitle
             unitPricingMeasure:
               unit: unit
-              value: 1.1730742509559433
+              value: 7.457744773683766
           method: delete
           productId: productId
           feedId: feedId
-          merchantId: 6
+          merchantId: merchantId
           batchId: 0
           itemGroupId: itemGroupId
       properties:
@@ -16254,20 +16297,20 @@ components:
           includedDestinations:
           - includedDestinations
           - includedDestinations
-          numberOfReviews: 2
+          numberOfReviews: 3
           transitTimeLabel: transitTimeLabel
           customLabel3: customLabel3
-          channel: online
+          channel: channel
           availabilityDate: availabilityDate
           taxes:
           - country: country
-            rate: 6.84685269835264
+            rate: 1.4894159098541704
             locationId: 1
             postalCode: postalCode
             region: region
             taxShip: true
           - country: country
-            rate: 6.84685269835264
+            rate: 1.4894159098541704
             locationId: 1
             postalCode: postalCode
             region: region
@@ -16277,16 +16320,16 @@ components:
           loyaltyPoints:
             name: name
             pointsValue: 5
-            ratio: 2.3021358869347655
+            ratio: 5.637376656633329
           displayAdsLink: displayAdsLink
           shippingHeight:
             unit: unit
-            value: 1.2315135367772556
-          sellOnGoogleQuantity: 4
+            value: 7.386281948385884
+          sellOnGoogleQuantity: 2
           sellerId: sellerId
           shipping:
           - country: country
-            locationId: 7
+            locationId: 4
             price:
               currency: currency
               value: value
@@ -16295,7 +16338,7 @@ components:
             region: region
             locationGroupName: locationGroupName
           - country: country
-            locationId: 7
+            locationId: 4
             price:
               currency: currency
               value: value
@@ -16324,7 +16367,7 @@ components:
           excludedDestinations:
           - excludedDestinations
           - excludedDestinations
-          displayAdsValue: 1.4658129805029452
+          displayAdsValue: 6.027456183070403
           shippingLabel: shippingLabel
           mpn: mpn
           productTypes:
@@ -16345,7 +16388,7 @@ components:
             amount:
               currency: currency
               value: value
-            months: 5
+            months: 1
           contentLanguage: contentLanguage
           offerId: offerId
           identifierExists: true
@@ -16364,27 +16407,31 @@ components:
           pattern: pattern
           salePriceEffectiveDate: salePriceEffectiveDate
           description: description
-          multipack: 3
+          multipack: 9
           adsLabels:
           - adsLabels
           - adsLabels
-          minHandlingTime: 9
-          availability: availability
+          minHandlingTime: 7
+          availability: in_stock
           title: title
           adsGrouping: adsGrouping
           itemGroupId: itemGroupId
           maxEnergyEfficiencyClass: maxEnergyEfficiencyClass
           displayAdsId: displayAdsId
+          excludedChannels:
+          - excludedChannels
+          - excludedChannels
           imageLink: imageLink
           unitPricingBaseMeasure:
             unit: unit
-            value: 7
+            value: 6
           shippingWeight:
             unit: unit
-            value: 1.0246457001441578
+            value: 1.2315135367772556
           shippingWidth:
             unit: unit
-            value: 1.2315135367772556
+            value: 7.386281948385884
+          isBuybox: true
           expirationDate: expirationDate
           costOfGoodsSold:
             currency: currency
@@ -16392,11 +16439,11 @@ components:
           gtin: gtin
           shippingLength:
             unit: unit
-            value: 1.2315135367772556
+            value: 7.386281948385884
           salePrice:
             currency: currency
             value: value
-          maxHandlingTime: 7
+          maxHandlingTime: 2
           promotionIds:
           - promotionIds
           - promotionIds
@@ -16408,11 +16455,11 @@ components:
           displayAdsTitle: displayAdsTitle
           unitPricingMeasure:
             unit: unit
-            value: 1.1730742509559433
+            value: 7.457744773683766
         method: delete
         productId: productId
         feedId: feedId
-        merchantId: 6
+        merchantId: merchantId
         batchId: 0
         itemGroupId: itemGroupId
       properties:
@@ -16424,15 +16471,14 @@ components:
           description: Not used by Criteo.
           type: string
         itemGroupId:
-          description: "Deprecated (providing this information is no more needed,\
-            \ this field will be removed in next release). The itemGroupId of the\
-            \ product to delete. To be defined when the method is delete and the product\
-            \ is a variant."
+          description: "Deprecated (providing this information is no longer needed,\
+            \ this field will be removed in the next release). The itemGroupId of\
+            \ the product to delete. To be defined when the method is delete and the\
+            \ product is a variant."
           type: string
         merchantId:
           description: "The ID of the managing account. Criteo: the partnerId."
-          format: int32
-          type: integer
+          type: string
         method:
           description: The method of the batch entry.
           enum:
@@ -16452,7 +16498,7 @@ components:
       description: Defines the shipping information of a product.
       example:
         country: country
-        locationId: 7
+        locationId: 4
         price:
           currency: currency
           value: value
@@ -16492,7 +16538,7 @@ components:
       description: Defines the shipping dimension of a product.
       example:
         unit: unit
-        value: 1.2315135367772556
+        value: 7.386281948385884
       properties:
         unit:
           description: The unit of value.
@@ -16507,7 +16553,7 @@ components:
       description: Defines the shipping weight of a product.
       example:
         unit: unit
-        value: 1.0246457001441578
+        value: 1.2315135367772556
       properties:
         unit:
           description: The unit of value.
@@ -16560,7 +16606,7 @@ components:
       description: Defines the tax information of a product.
       example:
         country: country
-        rate: 6.84685269835264
+        rate: 1.4894159098541704
         locationId: 1
         postalCode: postalCode
         region: region
@@ -16596,7 +16642,7 @@ components:
       description: Defines a measurement.
       example:
         unit: unit
-        value: 7
+        value: 6
       properties:
         unit:
           description: The unit of the denominator.
@@ -16610,7 +16656,7 @@ components:
       description: Defines a measurement.
       example:
         unit: unit
-        value: 1.1730742509559433
+        value: 7.457744773683766
       properties:
         unit:
           description: The unit of measure.
@@ -16814,33 +16860,21 @@ components:
           type: array
         importRequestTimestamp:
           description: The date when the original batch request was sent.
-          format: int64
-          nullable: true
           type: string
         numberOfProductsDeleted:
           description: The number of products deleted.
-          format: int32
-          nullable: true
           type: string
         numberOfProductsInTheBatch:
           description: The number of products present in the batch.
-          format: int32
-          nullable: true
           type: string
         numberOfProductsUpserted:
           description: The number of products upserted.
-          format: int32
-          nullable: true
           type: string
         numberOfProductsWithErrors:
           description: The number of products with errors.
-          format: int32
-          nullable: true
           type: string
         numberOfProductsWithWarnings:
-          description: The number of products with Warnings.
-          format: int32
-          nullable: true
+          description: The number of products with warnings.
           type: string
         status:
           description: |-
@@ -16854,7 +16888,7 @@ components:
           - FAILED
           type: string
         warningDetails:
-          description: The list of Warnings with details.
+          description: The list of warnings with details.
           items:
             $ref: '#/components/schemas/ReportDetailWarnings'
           type: array

@@ -13,7 +13,7 @@ A unit of ad delivery configuration within a campaign. It defines how a specific
 |**effectiveFlightDates** | [**ExternalFlightDatesModelV2**](ExternalFlightDatesModelV2.md) |  |  [optional] |
 |**isPaused** | **Boolean** | Indicates whether the line item is paused. |  |
 |**lineItemId** | **String** | The unique identifier of the line item. |  |
-|**name** | **String** | The name of the line item. |  |
+|**lineItemName** | **String** | The name of the line item. |  |
 |**onsiteDisplayDetails** | [**OnsiteDisplayLineItemDetailsV2**](OnsiteDisplayLineItemDetailsV2.md) |  |  [optional] |
 |**retailerId** | **String** | The retailer id of the associated retailer. |  |
 |**serveToOptOutUser** | **Boolean** | Whether ads are served to users who have opted out of personalization. |  |

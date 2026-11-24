@@ -181,6 +181,10 @@ public class LineItem {
   @SerializedName(SERIALIZED_NAME_LINE_ITEM_ID)
   private String lineItemId;
 
+  public static final String SERIALIZED_NAME_LINE_ITEM_NAME = "lineItemName";
+  @SerializedName(SERIALIZED_NAME_LINE_ITEM_NAME)
+  private String lineItemName;
+
   /**
    * The type of the line item.
    */
@@ -231,10 +235,6 @@ public class LineItem {
   public static final String SERIALIZED_NAME_LINE_ITEM_TYPE = "lineItemType";
   @SerializedName(SERIALIZED_NAME_LINE_ITEM_TYPE)
   private LineItemTypeEnum lineItemType;
-
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
 
   public static final String SERIALIZED_NAME_ONSITE_DISPLAY = "onsiteDisplay";
   @SerializedName(SERIALIZED_NAME_ONSITE_DISPLAY)
@@ -405,6 +405,28 @@ public class LineItem {
   }
 
 
+  public LineItem lineItemName(String lineItemName) {
+    
+    this.lineItemName = lineItemName;
+    return this;
+  }
+
+   /**
+   * The name of the line item.
+   * @return lineItemName
+  **/
+  @javax.annotation.Nullable
+
+  public String getLineItemName() {
+    return lineItemName;
+  }
+
+
+  public void setLineItemName(String lineItemName) {
+    this.lineItemName = lineItemName;
+  }
+
+
   public LineItem lineItemType(LineItemTypeEnum lineItemType) {
     
     this.lineItemType = lineItemType;
@@ -424,28 +446,6 @@ public class LineItem {
 
   public void setLineItemType(LineItemTypeEnum lineItemType) {
     this.lineItemType = lineItemType;
-  }
-
-
-  public LineItem name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * The name of the line item.
-   * @return name
-  **/
-  @javax.annotation.Nullable
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
   }
 
 
@@ -532,8 +532,8 @@ public class LineItem {
         Objects.equals(this.flightDates, lineItem.flightDates) &&
         Objects.equals(this.isPaused, lineItem.isPaused) &&
         Objects.equals(this.lineItemId, lineItem.lineItemId) &&
+        Objects.equals(this.lineItemName, lineItem.lineItemName) &&
         Objects.equals(this.lineItemType, lineItem.lineItemType) &&
-        Objects.equals(this.name, lineItem.name) &&
         Objects.equals(this.onsiteDisplay, lineItem.onsiteDisplay) &&
         Objects.equals(this.retailerId, lineItem.retailerId) &&
         Objects.equals(this.serveToOptOutUser, lineItem.serveToOptOutUser);
@@ -545,7 +545,7 @@ public class LineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, budgetStatus, buyType, campaignId, flightDates, isPaused, lineItemId, lineItemType, name, onsiteDisplay, retailerId, serveToOptOutUser);
+    return Objects.hash(accountId, budgetStatus, buyType, campaignId, flightDates, isPaused, lineItemId, lineItemName, lineItemType, onsiteDisplay, retailerId, serveToOptOutUser);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -566,8 +566,8 @@ public class LineItem {
     sb.append("    flightDates: ").append(toIndentedString(flightDates)).append("\n");
     sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
     sb.append("    lineItemId: ").append(toIndentedString(lineItemId)).append("\n");
+    sb.append("    lineItemName: ").append(toIndentedString(lineItemName)).append("\n");
     sb.append("    lineItemType: ").append(toIndentedString(lineItemType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onsiteDisplay: ").append(toIndentedString(onsiteDisplay)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    serveToOptOutUser: ").append(toIndentedString(serveToOptOutUser)).append("\n");
@@ -600,8 +600,8 @@ public class LineItem {
     openapiFields.add("flightDates");
     openapiFields.add("isPaused");
     openapiFields.add("lineItemId");
+    openapiFields.add("lineItemName");
     openapiFields.add("lineItemType");
-    openapiFields.add("name");
     openapiFields.add("onsiteDisplay");
     openapiFields.add("retailerId");
     openapiFields.add("serveToOptOutUser");
@@ -649,11 +649,11 @@ public class LineItem {
       if ((jsonObj.get("lineItemId") != null && !jsonObj.get("lineItemId").isJsonNull()) && !jsonObj.get("lineItemId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineItemId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineItemId").toString()));
       }
+      if ((jsonObj.get("lineItemName") != null && !jsonObj.get("lineItemName").isJsonNull()) && !jsonObj.get("lineItemName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lineItemName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineItemName").toString()));
+      }
       if ((jsonObj.get("lineItemType") != null && !jsonObj.get("lineItemType").isJsonNull()) && !jsonObj.get("lineItemType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineItemType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineItemType").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `onsiteDisplay`
       if (jsonObj.get("onsiteDisplay") != null && !jsonObj.get("onsiteDisplay").isJsonNull()) {

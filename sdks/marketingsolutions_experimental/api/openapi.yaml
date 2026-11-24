@@ -1269,9 +1269,9 @@ paths:
   /experimental/catalog/products/batch:
     post:
       description: |-
-        Used to publish a batch of operations to insert, update and deletes products.
-         The batch is processed asynchronously.The response provides an operationToken which can be used to track
-         the status of the report of the operation.
+        Used to publish a batch of operations to insert, update and delete products.
+         The batch is processed asynchronously. The response provides an operation id in `operationToken`
+         which can be used to track the status of the report of the operation.
       operationId: SubmitCatalogProductsBatch
       requestBody:
         content:
@@ -1287,7 +1287,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BatchAcceptedResponse'
           description: Batch accepted. The status of the operation can be tracked
-            using the report endpoint and the operationToken.
+            using the report endpoint and the operation id in `operationToken`.
       security:
       - oauth:
         - MarketingSolutions_Catalog_Manage
@@ -1325,10 +1325,12 @@ paths:
       x-accepts: application/json
   /experimental/catalog/stats/merchants/{merchant-id}:
     get:
-      description: get an stats request
+      description: Get the statistics of the catalog of a merchant over the last `lastNumHours`
+        hours (24 hours by default)
       operationId: GetCatalogMerchantStats
       parameters:
-      - description: the last number of hours
+      - description: "The number of past hours covered by the statistics (1 to 1000,\
+          \ 24 by default)."
         explode: true
         in: query
         name: lastNumHours
@@ -1337,13 +1339,12 @@ paths:
           format: int32
           type: integer
         style: form
-      - description: merchant-id to get
+      - description: The id of the merchant whose catalog statistics are requested.
         explode: false
         in: path
         name: merchant-id
         required: true
         schema:
-          format: int32
           type: string
         style: simple
       responses:
@@ -1352,7 +1353,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StatisticsOkResponse'
-          description: The successful response of GET stats request
+          description: The statistics object
       security:
       - oauth:
         - MarketingSolutions_Catalog_Read
@@ -3660,113 +3661,6 @@ paths:
       tags:
       - Gateway
       x-accepts: application/json
-  /experimental/marketing-solutions/report-jobs/{reportId}:
-    get:
-      description: Gets the status of  report export job.
-      operationId: GetExportStatus
-      parameters:
-      - description: The identifier of the report export job.
-        explode: false
-        in: path
-        name: reportId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExportStatusModelResponse'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/ExportStatusModelResponse'
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ExportStatusModelResponse'
-          description: Success
-      security:
-      - oauth:
-        - MarketingSolutions_Analytics_Read
-      summary: "/experimental/marketing-solutions/report-jobs/{reportId}"
-      tags:
-      - Analytics
-      x-accepts: application/json
-  /experimental/marketing-solutions/report/products/{reportId}:
-    get:
-      description: |-
-        Downloads the generated all-products report export.
-        <br />
-        This endpoint is subject to specific rate limits.
-      operationId: DownloadAllProductsExport
-      parameters:
-      - description: The identifier of the all-products report export.
-        explode: false
-        in: path
-        name: reportId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                format: binary
-                type: string
-          description: Success
-      security:
-      - oauth:
-        - MarketingSolutions_Analytics_Read
-      summary: "/experimental/marketing-solutions/report/products/{reportId}"
-      tags:
-      - Analytics
-      x-accepts: application/json
-  /experimental/marketing-solutions/report/products/export:
-    post:
-      description: |-
-        Creates an all-products report export job.
-        <br />
-        This endpoint is subject to specific rate limits.
-      operationId: CreateAllProductsExport
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GenerateAllProductsReportRequestAttributesRequest'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/GenerateAllProductsReportRequestAttributesRequest'
-          text/xml:
-            schema:
-              $ref: '#/components/schemas/GenerateAllProductsReportRequestAttributesRequest'
-          application/*+xml:
-            schema:
-              $ref: '#/components/schemas/GenerateAllProductsReportRequestAttributesRequest'
-        description: The all-products report export request.
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExportStatusModelResponse'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/ExportStatusModelResponse'
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ExportStatusModelResponse'
-          description: Success
-      security:
-      - oauth:
-        - MarketingSolutions_Analytics_Read
-      summary: /experimental/marketing-solutions/report/products/export
-      tags:
-      - Analytics
-      x-content-type: application/json
-      x-accepts: application/json
   /experimental/placements/report:
     post:
       description: "Your ads are placed in different domains (publishers) and environments\
@@ -4900,7 +4794,8 @@ paths:
       description: "This Statistics endpoint provides ad set related data. It is an\
         \ upgrade of our previous Statistics endpoint, and includes new metrics and\
         \ customization capabilities.\r\n<br/><br/>\r\nThis endpoint supports data\
-        \ retrieval for up to two years in the past."
+        \ retrieval for up to two years in the past.\n<br />\nThis endpoint is subject\
+        \ to specific rate limits."
       operationId: GetAdsetReport
       requestBody:
         content:
@@ -15372,188 +15267,6 @@ components:
           nullable: true
           type: array
       type: object
-    GenerateAllProductsReportRequestAttributes:
-      additionalProperties: false
-      description: This is the message defining the query for AllProducts report (async
-        export)
-      example:
-        adSetIds:
-        - adSetIds
-        - adSetIds
-        advertiserIds:
-        - advertiserIds
-        - advertiserIds
-        endDate: 2000-01-23T04:56:07.000+00:00
-        timezone: UTC
-        currency: EUR
-        campaignIds:
-        - campaignIds
-        - campaignIds
-        metrics:
-        - Clicks
-        - Clicks
-        sellerIds:
-        - sellerIds
-        - sellerIds
-        fileFormat: csv
-        startDate: 2000-01-23T04:56:07.000+00:00
-        dimensions:
-        - AdvertiserId
-        - AdvertiserId
-      properties:
-        adSetIds:
-          description: The list of ad set ids.
-          items:
-            type: string
-          nullable: true
-          type: array
-        advertiserIds:
-          description: The list of advertiser account IDs.
-          items:
-            type: string
-          type: array
-        campaignIds:
-          description: The list of campaign ids.
-          items:
-            type: string
-          nullable: true
-          type: array
-        currency:
-          default: EUR
-          description: The currency used for the report. ISO 4217 code (three-letter
-            capitals).
-          nullable: true
-          type: string
-        dimensions:
-          description: The dimensions for the report.
-          items:
-            enum:
-            - AdvertiserId
-            - PartnerId
-            - CampaignId
-            - AdSetId
-            - ProductId
-            - SellerId
-            type: string
-          nullable: true
-          type: array
-        endDate:
-          description: End date of the report. ISO 8601 date-time (UTC). Defaults
-            to Now if not provided.
-          format: date-time
-          nullable: true
-          type: string
-        fileFormat:
-          default: csv
-          description: "The output file format. Supported: csv, json."
-          nullable: true
-          type: string
-        metrics:
-          description: The list of metrics to report.
-          items:
-            enum:
-            - Clicks
-            - Displays
-            - Ctr
-            - Visits
-            - Sales
-            - Cost
-            - Revenue
-            type: string
-          nullable: true
-          type: array
-        sellerIds:
-          description: The list of seller ids.
-          items:
-            type: string
-          nullable: true
-          type: array
-        startDate:
-          description: Start date of the report. ISO 8601 date-time (UTC).
-          format: date-time
-          type: string
-        timezone:
-          default: UTC
-          description: The timezone used for the report. Timezone Database format
-            (Tz).
-          nullable: true
-          type: string
-      required:
-      - advertiserIds
-      - startDate
-      type: object
-    GenerateAllProductsReportRequestAttributesRequest:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value object.
-      example:
-        data:
-          attributes:
-            adSetIds:
-            - adSetIds
-            - adSetIds
-            advertiserIds:
-            - advertiserIds
-            - advertiserIds
-            endDate: 2000-01-23T04:56:07.000+00:00
-            timezone: UTC
-            currency: EUR
-            campaignIds:
-            - campaignIds
-            - campaignIds
-            metrics:
-            - Clicks
-            - Clicks
-            sellerIds:
-            - sellerIds
-            - sellerIds
-            fileFormat: csv
-            startDate: 2000-01-23T04:56:07.000+00:00
-            dimensions:
-            - AdvertiserId
-            - AdvertiserId
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/GenerateAllProductsReportRequestAttributesResource'
-      type: object
-    GenerateAllProductsReportRequestAttributesResource:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          adSetIds:
-          - adSetIds
-          - adSetIds
-          advertiserIds:
-          - advertiserIds
-          - advertiserIds
-          endDate: 2000-01-23T04:56:07.000+00:00
-          timezone: UTC
-          currency: EUR
-          campaignIds:
-          - campaignIds
-          - campaignIds
-          metrics:
-          - Clicks
-          - Clicks
-          sellerIds:
-          - sellerIds
-          - sellerIds
-          fileFormat: csv
-          startDate: 2000-01-23T04:56:07.000+00:00
-          dimensions:
-          - AdvertiserId
-          - AdvertiserId
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/GenerateAllProductsReportRequestAttributes'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
     GenerateAudiencePerformanceReport:
       additionalProperties: false
       description: Request attributes for async audience performance report
@@ -17869,7 +17582,7 @@ components:
         amount:
           currency: currency
           value: value
-        months: 5
+        months: 1
       properties:
         amount:
           $ref: '#/components/schemas/Price'
@@ -18306,7 +18019,7 @@ components:
       example:
         name: name
         pointsValue: 5
-        ratio: 2.3021358869347655
+        ratio: 5.637376656633329
       properties:
         name:
           description: Name of loyalty points program. It is recommended to limit
@@ -20804,20 +20517,20 @@ components:
         includedDestinations:
         - includedDestinations
         - includedDestinations
-        numberOfReviews: 2
+        numberOfReviews: 3
         transitTimeLabel: transitTimeLabel
         customLabel3: customLabel3
-        channel: online
+        channel: channel
         availabilityDate: availabilityDate
         taxes:
         - country: country
-          rate: 6.84685269835264
+          rate: 1.4894159098541704
           locationId: 1
           postalCode: postalCode
           region: region
           taxShip: true
         - country: country
-          rate: 6.84685269835264
+          rate: 1.4894159098541704
           locationId: 1
           postalCode: postalCode
           region: region
@@ -20827,16 +20540,16 @@ components:
         loyaltyPoints:
           name: name
           pointsValue: 5
-          ratio: 2.3021358869347655
+          ratio: 5.637376656633329
         displayAdsLink: displayAdsLink
         shippingHeight:
           unit: unit
-          value: 1.2315135367772556
-        sellOnGoogleQuantity: 4
+          value: 7.386281948385884
+        sellOnGoogleQuantity: 2
         sellerId: sellerId
         shipping:
         - country: country
-          locationId: 7
+          locationId: 4
           price:
             currency: currency
             value: value
@@ -20845,7 +20558,7 @@ components:
           region: region
           locationGroupName: locationGroupName
         - country: country
-          locationId: 7
+          locationId: 4
           price:
             currency: currency
             value: value
@@ -20874,7 +20587,7 @@ components:
         excludedDestinations:
         - excludedDestinations
         - excludedDestinations
-        displayAdsValue: 1.4658129805029452
+        displayAdsValue: 6.027456183070403
         shippingLabel: shippingLabel
         mpn: mpn
         productTypes:
@@ -20895,7 +20608,7 @@ components:
           amount:
             currency: currency
             value: value
-          months: 5
+          months: 1
         contentLanguage: contentLanguage
         offerId: offerId
         identifierExists: true
@@ -20914,27 +20627,31 @@ components:
         pattern: pattern
         salePriceEffectiveDate: salePriceEffectiveDate
         description: description
-        multipack: 3
+        multipack: 9
         adsLabels:
         - adsLabels
         - adsLabels
-        minHandlingTime: 9
-        availability: availability
+        minHandlingTime: 7
+        availability: in_stock
         title: title
         adsGrouping: adsGrouping
         itemGroupId: itemGroupId
         maxEnergyEfficiencyClass: maxEnergyEfficiencyClass
         displayAdsId: displayAdsId
+        excludedChannels:
+        - excludedChannels
+        - excludedChannels
         imageLink: imageLink
         unitPricingBaseMeasure:
           unit: unit
-          value: 7
+          value: 6
         shippingWeight:
           unit: unit
-          value: 1.0246457001441578
+          value: 1.2315135367772556
         shippingWidth:
           unit: unit
-          value: 1.2315135367772556
+          value: 7.386281948385884
+        isBuybox: true
         expirationDate: expirationDate
         costOfGoodsSold:
           currency: currency
@@ -20942,11 +20659,11 @@ components:
         gtin: gtin
         shippingLength:
           unit: unit
-          value: 1.2315135367772556
+          value: 7.386281948385884
         salePrice:
           currency: currency
           value: value
-        maxHandlingTime: 7
+        maxHandlingTime: 2
         promotionIds:
         - promotionIds
         - promotionIds
@@ -20958,7 +20675,7 @@ components:
         displayAdsTitle: displayAdsTitle
         unitPricingMeasure:
           unit: unit
-          value: 1.1730742509559433
+          value: 7.457744773683766
       properties:
         additionalImageLinks:
           description: Additional URLs of images of the item.
@@ -20985,7 +20702,12 @@ components:
           description: Target age group of the item.
           type: string
         availability:
-          description: Availability status of the item. RECOMMENDED.
+          description: Availability status of the item.
+          enum:
+          - in_stock
+          - out_of_stock
+          - preorder
+          - backorder
           type: string
         availabilityDate:
           description: "The day a pre-ordered product becomes available for delivery,\
@@ -20999,8 +20721,6 @@ components:
           type: string
         channel:
           description: The item's channel (online only).
-          enum:
-          - online
           type: string
         color:
           description: Color of the item.
@@ -21016,7 +20736,7 @@ components:
         customAttributes:
           description: A list of custom (merchant-provided) attributes. This is useful
             for submitting attributes not explicitly exposed by the API. Declaring
-            attributes explicitly exposed by the API using is forbidden
+            attributes explicitly exposed by the API using this field is forbidden.
           items:
             $ref: '#/components/schemas/CustomAttribute'
           type: array
@@ -21036,7 +20756,7 @@ components:
           description: Custom label 4 for custom grouping of items in a Shopping campaign.
           type: string
         description:
-          description: Description of the item. RECOMMENDED. (5000 UTF8 characters
+          description: Description of the item. RECOMMENDED. (5000 UTF-8 characters
             max).
           type: string
         displayAdsId:
@@ -21061,6 +20781,12 @@ components:
         energyEfficiencyClass:
           description: The energy efficiency class as defined in EU directive 2010/30/EU.
           type: string
+        excludedChannels:
+          description: "List of channels to exclude for this product. Accepted values:\
+            \ PERF_MEDIA, RM_ONSITE, RM_OFFSITE."
+          items:
+            type: string
+          type: array
         excludedDestinations:
           description: The list of destinations to exclude for this target (corresponds
             to unchecked check boxes in Merchant Center).
@@ -21072,11 +20798,11 @@ components:
             \ in ISO 8601 format."
           type: string
         externalSellerId:
-          description: The external id of the seller (case sensitive and 50 UTF8 characters
-            max). This information is required by the Criteo Offsite Ads.
+          description: The external ID of the seller (case sensitive and 50 UTF-8
+            characters max). This information is required by the Criteo Offsite Ads.
           type: string
         externalSellerName:
-          description: The external name of the seller (case sensitive and 50 UTF8
+          description: The external name of the seller (case sensitive and 750 UTF-8
             characters max). This information is required by the Criteo Offsite Ads.
           type: string
         filters:
@@ -21108,7 +20834,7 @@ components:
           type: boolean
         imageLink:
           description: "URL of an image of the item. Supported formats: PNG, JPEG,\
-            \ GIF. (2000 UTF8 characters max). "
+            \ GIF. (2000 UTF-8 characters max). "
           type: string
         includedDestinations:
           description: The list of destinations to include for this target (corresponds
@@ -21124,6 +20850,10 @@ components:
             a custom grouping of different products sold by a merchant for a single
             price.
           type: boolean
+        isBuybox:
+          description: Flag indicating whether this SKU is currently the Buy Box Winner
+            (BBW) on its Product Detail Page.
+          type: boolean
         itemGroupId:
           description: Shared identifier for all variants of the same product. RECOMMENDED.
             Don’t use casing to make IDs unique. (50 characters max)
@@ -21132,8 +20862,8 @@ components:
           description: Identifies what kind of resource this is.
           type: string
         link:
-          description: URL directly linking to your item's page on your website. (1000
-            UTF8 characters max).
+          description: URL directly linking to your item's page on your website. (2000
+            UTF-8 characters max).
           type: string
         loyaltyPoints:
           $ref: '#/components/schemas/LoyaltyPoints'
@@ -21155,8 +20885,7 @@ components:
           format: int64
           type: integer
         mobileLink:
-          description: accounts.link to a mobile-optimized version of the landing
-            page.
+          description: Link to a mobile-optimized version of the landing page.
           type: string
         mpn:
           description: Manufacturer Part Number (MPN) of the item. RECOMMENDED.
@@ -21203,7 +20932,7 @@ components:
           type: string
         sellerId:
           description: (Deprecated Field) The external ID of the seller (case sensitive
-            and 50 UTF8 characters max). This information is required by the Criteo
+            and 50 UTF-8 characters max). This information is required by the Criteo
             Offsite Ads.
           type: string
         sellOnGoogleQuantity:
@@ -21219,8 +20948,8 @@ components:
         shippingHeight:
           $ref: '#/components/schemas/ProductShippingDimension'
         shippingLabel:
-          description: "The shipping label of the product, used to group product in\
-            \ account-level shipping rules."
+          description: "The shipping label of the product, used to group products\
+            \ in account-level shipping rules."
           type: string
         shippingLength:
           $ref: '#/components/schemas/ProductShippingDimension'
@@ -21229,9 +20958,9 @@ components:
         shippingWidth:
           $ref: '#/components/schemas/ProductShippingDimension'
         sizes:
-          description: "Size of the item. RECOMMENDED. Only one value is allowed.\
-            \ For variants with different sizes, insert a separate product for each\
-            \ size with the same itemGroupId value."
+          description: "Size of the item. RECOMMENDED. For variants with different\
+            \ sizes, insert a separate product for each size with the same itemGroupId\
+            \ value."
           items:
             type: string
           type: array
@@ -21258,10 +20987,10 @@ components:
             $ref: '#/components/schemas/ProductTax'
           type: array
         title:
-          description: Title of the item. (500 UTF8 characters max).
+          description: Title of the item. (500 UTF-8 characters max).
           type: string
         transitTimeLabel:
-          description: "The transit time label of the product, used to group product\
+          description: "The transit time label of the product, used to group products\
             \ in account-level transit time tables."
           type: string
         unitPricingBaseMeasure:
@@ -21269,7 +20998,7 @@ components:
         unitPricingMeasure:
           $ref: '#/components/schemas/ProductUnitPricingMeasure'
       required:
-      - channel
+      - availability
       - id
       - imageLink
       - link
@@ -21810,20 +21539,20 @@ components:
             includedDestinations:
             - includedDestinations
             - includedDestinations
-            numberOfReviews: 2
+            numberOfReviews: 3
             transitTimeLabel: transitTimeLabel
             customLabel3: customLabel3
-            channel: online
+            channel: channel
             availabilityDate: availabilityDate
             taxes:
             - country: country
-              rate: 6.84685269835264
+              rate: 1.4894159098541704
               locationId: 1
               postalCode: postalCode
               region: region
               taxShip: true
             - country: country
-              rate: 6.84685269835264
+              rate: 1.4894159098541704
               locationId: 1
               postalCode: postalCode
               region: region
@@ -21833,16 +21562,16 @@ components:
             loyaltyPoints:
               name: name
               pointsValue: 5
-              ratio: 2.3021358869347655
+              ratio: 5.637376656633329
             displayAdsLink: displayAdsLink
             shippingHeight:
               unit: unit
-              value: 1.2315135367772556
-            sellOnGoogleQuantity: 4
+              value: 7.386281948385884
+            sellOnGoogleQuantity: 2
             sellerId: sellerId
             shipping:
             - country: country
-              locationId: 7
+              locationId: 4
               price:
                 currency: currency
                 value: value
@@ -21851,7 +21580,7 @@ components:
               region: region
               locationGroupName: locationGroupName
             - country: country
-              locationId: 7
+              locationId: 4
               price:
                 currency: currency
                 value: value
@@ -21880,7 +21609,7 @@ components:
             excludedDestinations:
             - excludedDestinations
             - excludedDestinations
-            displayAdsValue: 1.4658129805029452
+            displayAdsValue: 6.027456183070403
             shippingLabel: shippingLabel
             mpn: mpn
             productTypes:
@@ -21901,7 +21630,7 @@ components:
               amount:
                 currency: currency
                 value: value
-              months: 5
+              months: 1
             contentLanguage: contentLanguage
             offerId: offerId
             identifierExists: true
@@ -21920,27 +21649,31 @@ components:
             pattern: pattern
             salePriceEffectiveDate: salePriceEffectiveDate
             description: description
-            multipack: 3
+            multipack: 9
             adsLabels:
             - adsLabels
             - adsLabels
-            minHandlingTime: 9
-            availability: availability
+            minHandlingTime: 7
+            availability: in_stock
             title: title
             adsGrouping: adsGrouping
             itemGroupId: itemGroupId
             maxEnergyEfficiencyClass: maxEnergyEfficiencyClass
             displayAdsId: displayAdsId
+            excludedChannels:
+            - excludedChannels
+            - excludedChannels
             imageLink: imageLink
             unitPricingBaseMeasure:
               unit: unit
-              value: 7
+              value: 6
             shippingWeight:
               unit: unit
-              value: 1.0246457001441578
+              value: 1.2315135367772556
             shippingWidth:
               unit: unit
-              value: 1.2315135367772556
+              value: 7.386281948385884
+            isBuybox: true
             expirationDate: expirationDate
             costOfGoodsSold:
               currency: currency
@@ -21948,11 +21681,11 @@ components:
             gtin: gtin
             shippingLength:
               unit: unit
-              value: 1.2315135367772556
+              value: 7.386281948385884
             salePrice:
               currency: currency
               value: value
-            maxHandlingTime: 7
+            maxHandlingTime: 2
             promotionIds:
             - promotionIds
             - promotionIds
@@ -21964,11 +21697,11 @@ components:
             displayAdsTitle: displayAdsTitle
             unitPricingMeasure:
               unit: unit
-              value: 1.1730742509559433
+              value: 7.457744773683766
           method: delete
           productId: productId
           feedId: feedId
-          merchantId: 6
+          merchantId: merchantId
           batchId: 0
           itemGroupId: itemGroupId
         - product:
@@ -21980,20 +21713,20 @@ components:
             includedDestinations:
             - includedDestinations
             - includedDestinations
-            numberOfReviews: 2
+            numberOfReviews: 3
             transitTimeLabel: transitTimeLabel
             customLabel3: customLabel3
-            channel: online
+            channel: channel
             availabilityDate: availabilityDate
             taxes:
             - country: country
-              rate: 6.84685269835264
+              rate: 1.4894159098541704
               locationId: 1
               postalCode: postalCode
               region: region
               taxShip: true
             - country: country
-              rate: 6.84685269835264
+              rate: 1.4894159098541704
               locationId: 1
               postalCode: postalCode
               region: region
@@ -22003,16 +21736,16 @@ components:
             loyaltyPoints:
               name: name
               pointsValue: 5
-              ratio: 2.3021358869347655
+              ratio: 5.637376656633329
             displayAdsLink: displayAdsLink
             shippingHeight:
               unit: unit
-              value: 1.2315135367772556
-            sellOnGoogleQuantity: 4
+              value: 7.386281948385884
+            sellOnGoogleQuantity: 2
             sellerId: sellerId
             shipping:
             - country: country
-              locationId: 7
+              locationId: 4
               price:
                 currency: currency
                 value: value
@@ -22021,7 +21754,7 @@ components:
               region: region
               locationGroupName: locationGroupName
             - country: country
-              locationId: 7
+              locationId: 4
               price:
                 currency: currency
                 value: value
@@ -22050,7 +21783,7 @@ components:
             excludedDestinations:
             - excludedDestinations
             - excludedDestinations
-            displayAdsValue: 1.4658129805029452
+            displayAdsValue: 6.027456183070403
             shippingLabel: shippingLabel
             mpn: mpn
             productTypes:
@@ -22071,7 +21804,7 @@ components:
               amount:
                 currency: currency
                 value: value
-              months: 5
+              months: 1
             contentLanguage: contentLanguage
             offerId: offerId
             identifierExists: true
@@ -22090,27 +21823,31 @@ components:
             pattern: pattern
             salePriceEffectiveDate: salePriceEffectiveDate
             description: description
-            multipack: 3
+            multipack: 9
             adsLabels:
             - adsLabels
             - adsLabels
-            minHandlingTime: 9
-            availability: availability
+            minHandlingTime: 7
+            availability: in_stock
             title: title
             adsGrouping: adsGrouping
             itemGroupId: itemGroupId
             maxEnergyEfficiencyClass: maxEnergyEfficiencyClass
             displayAdsId: displayAdsId
+            excludedChannels:
+            - excludedChannels
+            - excludedChannels
             imageLink: imageLink
             unitPricingBaseMeasure:
               unit: unit
-              value: 7
+              value: 6
             shippingWeight:
               unit: unit
-              value: 1.0246457001441578
+              value: 1.2315135367772556
             shippingWidth:
               unit: unit
-              value: 1.2315135367772556
+              value: 7.386281948385884
+            isBuybox: true
             expirationDate: expirationDate
             costOfGoodsSold:
               currency: currency
@@ -22118,11 +21855,11 @@ components:
             gtin: gtin
             shippingLength:
               unit: unit
-              value: 1.2315135367772556
+              value: 7.386281948385884
             salePrice:
               currency: currency
               value: value
-            maxHandlingTime: 7
+            maxHandlingTime: 2
             promotionIds:
             - promotionIds
             - promotionIds
@@ -22134,11 +21871,11 @@ components:
             displayAdsTitle: displayAdsTitle
             unitPricingMeasure:
               unit: unit
-              value: 1.1730742509559433
+              value: 7.457744773683766
           method: delete
           productId: productId
           feedId: feedId
-          merchantId: 6
+          merchantId: merchantId
           batchId: 0
           itemGroupId: itemGroupId
       properties:
@@ -22162,20 +21899,20 @@ components:
           includedDestinations:
           - includedDestinations
           - includedDestinations
-          numberOfReviews: 2
+          numberOfReviews: 3
           transitTimeLabel: transitTimeLabel
           customLabel3: customLabel3
-          channel: online
+          channel: channel
           availabilityDate: availabilityDate
           taxes:
           - country: country
-            rate: 6.84685269835264
+            rate: 1.4894159098541704
             locationId: 1
             postalCode: postalCode
             region: region
             taxShip: true
           - country: country
-            rate: 6.84685269835264
+            rate: 1.4894159098541704
             locationId: 1
             postalCode: postalCode
             region: region
@@ -22185,16 +21922,16 @@ components:
           loyaltyPoints:
             name: name
             pointsValue: 5
-            ratio: 2.3021358869347655
+            ratio: 5.637376656633329
           displayAdsLink: displayAdsLink
           shippingHeight:
             unit: unit
-            value: 1.2315135367772556
-          sellOnGoogleQuantity: 4
+            value: 7.386281948385884
+          sellOnGoogleQuantity: 2
           sellerId: sellerId
           shipping:
           - country: country
-            locationId: 7
+            locationId: 4
             price:
               currency: currency
               value: value
@@ -22203,7 +21940,7 @@ components:
             region: region
             locationGroupName: locationGroupName
           - country: country
-            locationId: 7
+            locationId: 4
             price:
               currency: currency
               value: value
@@ -22232,7 +21969,7 @@ components:
           excludedDestinations:
           - excludedDestinations
           - excludedDestinations
-          displayAdsValue: 1.4658129805029452
+          displayAdsValue: 6.027456183070403
           shippingLabel: shippingLabel
           mpn: mpn
           productTypes:
@@ -22253,7 +21990,7 @@ components:
             amount:
               currency: currency
               value: value
-            months: 5
+            months: 1
           contentLanguage: contentLanguage
           offerId: offerId
           identifierExists: true
@@ -22272,27 +22009,31 @@ components:
           pattern: pattern
           salePriceEffectiveDate: salePriceEffectiveDate
           description: description
-          multipack: 3
+          multipack: 9
           adsLabels:
           - adsLabels
           - adsLabels
-          minHandlingTime: 9
-          availability: availability
+          minHandlingTime: 7
+          availability: in_stock
           title: title
           adsGrouping: adsGrouping
           itemGroupId: itemGroupId
           maxEnergyEfficiencyClass: maxEnergyEfficiencyClass
           displayAdsId: displayAdsId
+          excludedChannels:
+          - excludedChannels
+          - excludedChannels
           imageLink: imageLink
           unitPricingBaseMeasure:
             unit: unit
-            value: 7
+            value: 6
           shippingWeight:
             unit: unit
-            value: 1.0246457001441578
+            value: 1.2315135367772556
           shippingWidth:
             unit: unit
-            value: 1.2315135367772556
+            value: 7.386281948385884
+          isBuybox: true
           expirationDate: expirationDate
           costOfGoodsSold:
             currency: currency
@@ -22300,11 +22041,11 @@ components:
           gtin: gtin
           shippingLength:
             unit: unit
-            value: 1.2315135367772556
+            value: 7.386281948385884
           salePrice:
             currency: currency
             value: value
-          maxHandlingTime: 7
+          maxHandlingTime: 2
           promotionIds:
           - promotionIds
           - promotionIds
@@ -22316,11 +22057,11 @@ components:
           displayAdsTitle: displayAdsTitle
           unitPricingMeasure:
             unit: unit
-            value: 1.1730742509559433
+            value: 7.457744773683766
         method: delete
         productId: productId
         feedId: feedId
-        merchantId: 6
+        merchantId: merchantId
         batchId: 0
         itemGroupId: itemGroupId
       properties:
@@ -22332,15 +22073,14 @@ components:
           description: Not used by Criteo.
           type: string
         itemGroupId:
-          description: "Deprecated (providing this information is no more needed,\
-            \ this field will be removed in next release). The itemGroupId of the\
-            \ product to delete. To be defined when the method is delete and the product\
-            \ is a variant."
+          description: "Deprecated (providing this information is no longer needed,\
+            \ this field will be removed in the next release). The itemGroupId of\
+            \ the product to delete. To be defined when the method is delete and the\
+            \ product is a variant."
           type: string
         merchantId:
           description: "The ID of the managing account. Criteo: the partnerId."
-          format: int32
-          type: integer
+          type: string
         method:
           description: The method of the batch entry.
           enum:
@@ -22494,7 +22234,7 @@ components:
       description: Defines the shipping information of a product.
       example:
         country: country
-        locationId: 7
+        locationId: 4
         price:
           currency: currency
           value: value
@@ -22534,7 +22274,7 @@ components:
       description: Defines the shipping dimension of a product.
       example:
         unit: unit
-        value: 1.2315135367772556
+        value: 7.386281948385884
       properties:
         unit:
           description: The unit of value.
@@ -22549,7 +22289,7 @@ components:
       description: Defines the shipping weight of a product.
       example:
         unit: unit
-        value: 1.0246457001441578
+        value: 1.2315135367772556
       properties:
         unit:
           description: The unit of value.
@@ -22564,7 +22304,7 @@ components:
       description: Defines the tax information of a product.
       example:
         country: country
-        rate: 6.84685269835264
+        rate: 1.4894159098541704
         locationId: 1
         postalCode: postalCode
         region: region
@@ -22600,7 +22340,7 @@ components:
       description: Defines a measurement.
       example:
         unit: unit
-        value: 7
+        value: 6
       properties:
         unit:
           description: The unit of the denominator.
@@ -22614,7 +22354,7 @@ components:
       description: Defines a measurement.
       example:
         unit: unit
-        value: 1.1730742509559433
+        value: 7.457744773683766
       properties:
         unit:
           description: The unit of measure.
@@ -25017,33 +24757,21 @@ components:
           type: array
         importRequestTimestamp:
           description: The date when the original batch request was sent.
-          format: int64
-          nullable: true
           type: string
         numberOfProductsDeleted:
           description: The number of products deleted.
-          format: int32
-          nullable: true
           type: string
         numberOfProductsInTheBatch:
           description: The number of products present in the batch.
-          format: int32
-          nullable: true
           type: string
         numberOfProductsUpserted:
           description: The number of products upserted.
-          format: int32
-          nullable: true
           type: string
         numberOfProductsWithErrors:
           description: The number of products with errors.
-          format: int32
-          nullable: true
           type: string
         numberOfProductsWithWarnings:
-          description: The number of products with Warnings.
-          format: int32
-          nullable: true
+          description: The number of products with warnings.
           type: string
         status:
           description: |-
@@ -25057,7 +24785,7 @@ components:
           - FAILED
           type: string
         warningDetails:
-          description: The list of Warnings with details.
+          description: The list of warnings with details.
           items:
             $ref: '#/components/schemas/ReportDetailWarnings'
           type: array
@@ -29260,13 +28988,13 @@ components:
           $ref: '#/components/schemas/CreativeTikTokSetting'
       type: object
     StatisticsOkResponse:
-      description: The statistics reports
+      description: The statistics successful reports response
       example:
         data:
           statisticsRecordList:
           - nonDisplayable: nonDisplayable
             added: added
-            endDate: 2000-01-23T04:56:07.000+00:00
+            endDate: endDate
             missingImage: missingImage
             displayable: displayable
             missingName: missingName
@@ -29279,10 +29007,10 @@ components:
             variant: variant
             missingUrl: missingUrl
             updated: updated
-            startDate: 2000-01-23T04:56:07.000+00:00
+            startDate: startDate
           - nonDisplayable: nonDisplayable
             added: added
-            endDate: 2000-01-23T04:56:07.000+00:00
+            endDate: endDate
             missingImage: missingImage
             displayable: displayable
             missingName: missingName
@@ -29295,7 +29023,7 @@ components:
             variant: variant
             missingUrl: missingUrl
             updated: updated
-            startDate: 2000-01-23T04:56:07.000+00:00
+            startDate: startDate
         warnings:
         - traceId: traceId
           code: code
@@ -29346,7 +29074,7 @@ components:
       example:
         nonDisplayable: nonDisplayable
         added: added
-        endDate: 2000-01-23T04:56:07.000+00:00
+        endDate: endDate
         missingImage: missingImage
         displayable: displayable
         missingName: missingName
@@ -29359,75 +29087,59 @@ components:
         variant: variant
         missingUrl: missingUrl
         updated: updated
-        startDate: 2000-01-23T04:56:07.000+00:00
+        startDate: startDate
       properties:
         added:
           description: The number of inserted products during the period between startDate
             and endDate
-          format: int64
           type: string
         blacklisted:
           description: The number of total blacklisted products at endDate moment
-          format: int64
           type: string
         deleted:
           description: The number of deleted products during the period between startDate
             and endDate
-          format: int64
           type: string
         displayable:
           description: The number of total displayable products at endDate moment
-          format: int64
           type: string
         endDate:
           description: End date of streaming products collection
-          format: date-time
           type: string
         missingDescription:
           description: The number of total missing description products at endDate
             moment
-          format: int64
           type: string
         missingImage:
           description: The number of total missing image products at endDate moment
-          format: int64
           type: string
         missingName:
           description: The number of total missing name products at endDate moment
-          format: int64
           type: string
         missingPrice:
           description: The number of total missing price products at endDate moment
-          format: int64
           type: string
         missingUrl:
           description: The number of total missing url products at endDate moment
-          format: int64
           type: string
         nonDisplayable:
           description: The number of total non-displayable products at endDate moment
-          format: int64
           type: string
         outOfStock:
           description: The number of total out-of-stock products at endDate moment
-          format: int64
           type: string
         startDate:
           description: Start date of streaming products collection
-          format: date-time
           type: string
         total:
           description: The number of total products at endDate moment
-          format: int64
           type: string
         updated:
           description: The number of updated products during the period between startDate
             and endDate
-          format: int64
           type: string
         variant:
           description: The number of total variant products at endDate moment
-          format: int64
           type: string
       required:
       - added
@@ -29453,7 +29165,7 @@ components:
         statisticsRecordList:
         - nonDisplayable: nonDisplayable
           added: added
-          endDate: 2000-01-23T04:56:07.000+00:00
+          endDate: endDate
           missingImage: missingImage
           displayable: displayable
           missingName: missingName
@@ -29466,10 +29178,10 @@ components:
           variant: variant
           missingUrl: missingUrl
           updated: updated
-          startDate: 2000-01-23T04:56:07.000+00:00
+          startDate: startDate
         - nonDisplayable: nonDisplayable
           added: added
-          endDate: 2000-01-23T04:56:07.000+00:00
+          endDate: endDate
           missingImage: missingImage
           displayable: displayable
           missingName: missingName
@@ -29482,7 +29194,7 @@ components:
           variant: variant
           missingUrl: missingUrl
           updated: updated
-          startDate: 2000-01-23T04:56:07.000+00:00
+          startDate: startDate
       nullable: true
       properties:
         statisticsRecordList:

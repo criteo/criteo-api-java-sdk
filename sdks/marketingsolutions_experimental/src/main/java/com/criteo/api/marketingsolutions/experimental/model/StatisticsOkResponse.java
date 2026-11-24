@@ -50,7 +50,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.experimental.JSON;
 
 /**
- * The statistics reports
+ * The statistics successful reports response
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class StatisticsOkResponse {

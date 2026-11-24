@@ -52,6 +52,61 @@ import com.criteo.api.retailmedia.experimental.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignSearchModel {
   /**
+   * Gets or Sets budgetStatusFilter
+   */
+  @JsonAdapter(BudgetStatusFilterEnum.Adapter.class)
+  public enum BudgetStatusFilterEnum {
+    BUDGETAVAILABLE("BudgetAvailable"),
+    
+    DAILYBUDGETREACHED("DailyBudgetReached"),
+    
+    MONTHLYBUDGETREACHED("MonthlyBudgetReached"),
+    
+    TOTALBUDGETREACHED("TotalBudgetReached");
+
+    private String value;
+
+    BudgetStatusFilterEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BudgetStatusFilterEnum fromValue(String value) {
+      for (BudgetStatusFilterEnum b : BudgetStatusFilterEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BudgetStatusFilterEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BudgetStatusFilterEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BudgetStatusFilterEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BudgetStatusFilterEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BUDGET_STATUS_FILTER = "budgetStatusFilter";
+  @SerializedName(SERIALIZED_NAME_BUDGET_STATUS_FILTER)
+  private List<BudgetStatusFilterEnum> budgetStatusFilter = null;
+
+  /**
    * Gets or Sets buyTypeFilter
    */
   @JsonAdapter(BuyTypeFilterEnum.Adapter.class)
@@ -220,6 +275,36 @@ public class CampaignSearchModel {
 
   public CampaignSearchModel() {
   }
+
+  public CampaignSearchModel budgetStatusFilter(List<BudgetStatusFilterEnum> budgetStatusFilter) {
+    
+    this.budgetStatusFilter = budgetStatusFilter;
+    return this;
+  }
+
+  public CampaignSearchModel addBudgetStatusFilterItem(BudgetStatusFilterEnum budgetStatusFilterItem) {
+    if (this.budgetStatusFilter == null) {
+      this.budgetStatusFilter = null;
+    }
+    this.budgetStatusFilter.add(budgetStatusFilterItem);
+    return this;
+  }
+
+   /**
+   * Get budgetStatusFilter
+   * @return budgetStatusFilter
+  **/
+  @javax.annotation.Nullable
+
+  public List<BudgetStatusFilterEnum> getBudgetStatusFilter() {
+    return budgetStatusFilter;
+  }
+
+
+  public void setBudgetStatusFilter(List<BudgetStatusFilterEnum> budgetStatusFilter) {
+    this.budgetStatusFilter = budgetStatusFilter;
+  }
+
 
   public CampaignSearchModel buyTypeFilter(List<BuyTypeFilterEnum> buyTypeFilter) {
     
@@ -395,7 +480,8 @@ public class CampaignSearchModel {
       return false;
     }
     CampaignSearchModel campaignSearchModel = (CampaignSearchModel) o;
-    return Objects.equals(this.buyTypeFilter, campaignSearchModel.buyTypeFilter) &&
+    return Objects.equals(this.budgetStatusFilter, campaignSearchModel.budgetStatusFilter) &&
+        Objects.equals(this.buyTypeFilter, campaignSearchModel.buyTypeFilter) &&
         Objects.equals(this.campaignIdFilter, campaignSearchModel.campaignIdFilter) &&
         Objects.equals(this.campaignStatusFilter, campaignSearchModel.campaignStatusFilter) &&
         Objects.equals(this.campaignTypeFilter, campaignSearchModel.campaignTypeFilter) &&
@@ -409,7 +495,7 @@ public class CampaignSearchModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(buyTypeFilter, campaignIdFilter, campaignStatusFilter, campaignTypeFilter, limit, offset);
+    return Objects.hash(budgetStatusFilter, buyTypeFilter, campaignIdFilter, campaignStatusFilter, campaignTypeFilter, limit, offset);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -423,6 +509,7 @@ public class CampaignSearchModel {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignSearchModel {\n");
+    sb.append("    budgetStatusFilter: ").append(toIndentedString(budgetStatusFilter)).append("\n");
     sb.append("    buyTypeFilter: ").append(toIndentedString(buyTypeFilter)).append("\n");
     sb.append("    campaignIdFilter: ").append(toIndentedString(campaignIdFilter)).append("\n");
     sb.append("    campaignStatusFilter: ").append(toIndentedString(campaignStatusFilter)).append("\n");
@@ -451,6 +538,7 @@ public class CampaignSearchModel {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("budgetStatusFilter");
     openapiFields.add("buyTypeFilter");
     openapiFields.add("campaignIdFilter");
     openapiFields.add("campaignStatusFilter");
@@ -481,6 +569,10 @@ public class CampaignSearchModel {
         if (!CampaignSearchModel.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CampaignSearchModel` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("budgetStatusFilter") != null && !jsonObj.get("budgetStatusFilter").isJsonNull() && !jsonObj.get("budgetStatusFilter").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `budgetStatusFilter` to be an array in the JSON string but got `%s`", jsonObj.get("budgetStatusFilter").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("buyTypeFilter") != null && !jsonObj.get("buyTypeFilter").isJsonNull() && !jsonObj.get("buyTypeFilter").isJsonArray()) {

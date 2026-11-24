@@ -54,9 +54,9 @@ public class ExternalPatchLineItemModel {
   @SerializedName(SERIALIZED_NAME_IS_PAUSED)
   private Boolean isPaused;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_LINE_ITEM_NAME = "lineItemName";
+  @SerializedName(SERIALIZED_NAME_LINE_ITEM_NAME)
+  private String lineItemName;
 
   public static final String SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS = "onsiteDisplayDetails";
   @SerializedName(SERIALIZED_NAME_ONSITE_DISPLAY_DETAILS)
@@ -91,25 +91,25 @@ public class ExternalPatchLineItemModel {
   }
 
 
-  public ExternalPatchLineItemModel name(String name) {
+  public ExternalPatchLineItemModel lineItemName(String lineItemName) {
     
-    this.name = name;
+    this.lineItemName = lineItemName;
     return this;
   }
 
    /**
    * The name of the line item.
-   * @return name
+   * @return lineItemName
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public String getLineItemName() {
+    return lineItemName;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setLineItemName(String lineItemName) {
+    this.lineItemName = lineItemName;
   }
 
 
@@ -168,7 +168,7 @@ public class ExternalPatchLineItemModel {
     }
     ExternalPatchLineItemModel externalPatchLineItemModel = (ExternalPatchLineItemModel) o;
     return Objects.equals(this.isPaused, externalPatchLineItemModel.isPaused) &&
-        Objects.equals(this.name, externalPatchLineItemModel.name) &&
+        Objects.equals(this.lineItemName, externalPatchLineItemModel.lineItemName) &&
         Objects.equals(this.onsiteDisplayDetails, externalPatchLineItemModel.onsiteDisplayDetails) &&
         Objects.equals(this.serveToOptOutUser, externalPatchLineItemModel.serveToOptOutUser);
   }
@@ -179,7 +179,7 @@ public class ExternalPatchLineItemModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(isPaused, name, onsiteDisplayDetails, serveToOptOutUser);
+    return Objects.hash(isPaused, lineItemName, onsiteDisplayDetails, serveToOptOutUser);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -194,7 +194,7 @@ public class ExternalPatchLineItemModel {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalPatchLineItemModel {\n");
     sb.append("    isPaused: ").append(toIndentedString(isPaused)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    lineItemName: ").append(toIndentedString(lineItemName)).append("\n");
     sb.append("    onsiteDisplayDetails: ").append(toIndentedString(onsiteDisplayDetails)).append("\n");
     sb.append("    serveToOptOutUser: ").append(toIndentedString(serveToOptOutUser)).append("\n");
     sb.append("}");
@@ -220,7 +220,7 @@ public class ExternalPatchLineItemModel {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("isPaused");
-    openapiFields.add("name");
+    openapiFields.add("lineItemName");
     openapiFields.add("onsiteDisplayDetails");
     openapiFields.add("serveToOptOutUser");
 
@@ -248,8 +248,8 @@ public class ExternalPatchLineItemModel {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExternalPatchLineItemModel` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("lineItemName") != null && !jsonObj.get("lineItemName").isJsonNull()) && !jsonObj.get("lineItemName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lineItemName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineItemName").toString()));
       }
       // validate the optional field `onsiteDisplayDetails`
       if (jsonObj.get("onsiteDisplayDetails") != null && !jsonObj.get("onsiteDisplayDetails").isJsonNull()) {
