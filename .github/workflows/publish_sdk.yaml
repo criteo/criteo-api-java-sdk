@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v7
@@ -24,7 +24,7 @@ jobs:
           chmod +x ./scripts/publish_sdk.sh
           ./scripts/publish_sdk.sh
         shell: bash
-        
+
       - name: Send success notification
         if: ${{ success() }}
         uses: slackapi/slack-github-action@v4.0.0
@@ -38,7 +38,7 @@ jobs:
             color: "#80FF00"
             text: "Java SDK publishing succeeded. <https://github.com/criteo/criteo-api-java-sdk/actions/runs/${{github.run_id}}|Link to build>."
             icon_emoji: ":green_check_mark:"
-            
+
       - name: Send failure notification
         if: ${{ failure() }}
         uses: slackapi/slack-github-action@v4.0.0
@@ -52,4 +52,3 @@ jobs:
             color: "#FF0000"
             text: "Java SDK publishing failed. <https://github.com/criteo/criteo-api-java-sdk/actions/runs/${{github.run_id}}|Link to build>."
             icon_emoji: ":x:"
-
